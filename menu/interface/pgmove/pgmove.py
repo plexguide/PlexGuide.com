@@ -40,34 +40,13 @@ with open('/var/plexguide/rclone.tcrypt', 'r') as myfile:
 with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
     gcrypt=myfile.read().replace('\n', '')
 
-############## Port Check
-with open('/var/plexguide/server.ports', 'r') as myfile:
-    ports=myfile.read().replace('\n', '')
-
-    if ports == '':
-        ports = "[OPEN]"
-    else:
-        ports = "[CLOSED]"
-
-############## AppGuard Check
-with open('/var/plexguide/server.ht', 'r') as myfile:
-    appguard=myfile.read().replace('\n', '')
-
-    if appguard == '':
-        appguard = "[NOT ENABLED]"
-    else:
-        appguard = "[ENABLED]"
-
 ############## Traefik Detection
 rc = call("docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed", shell=True)
 
-with open('/var/plexguide/traefik.deployed', 'r') as myfile:
-    traefik=myfile.read().replace('\n', '')
-
-    if traefik== '':
-        traefik = "[NOT DEPLOYED]"
+    if not tdrive == '' and gdrive not == '':
+        configure = "[NOT DEPLOYED]"
     else:
-        traefik = "[DEPLOYED]"
+        configure = "ZONK"
 
 # Menu Start
 
@@ -84,25 +63,14 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-    command_item1 = CommandItem("Mounts & Data Transport System", "python3 /opt/plexguide/menu/interface/transport/transport.py")
-    rollover_item1 = RolloverItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-    rollover_item2 = RolloverItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-    rollover_item3 = RolloverItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py" )
-    command_item2 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
-    command_item3 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
-    command_item4 = CommandItem("Settings", "python3 /opt/plexguide/menu/interface/settings/settings.py")
+    rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
+    rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
+    command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
 
     # Once we're done creating them, we just add the items to the menu
-    menu.append_item(command_item1)
     menu.append_item(rollover_item1)
     menu.append_item(rollover_item2)
-    menu.append_item(rollover_item3)
-    menu.append_item(command_item2)
-    menu.append_item(command_item3)
-    menu.append_item(command_item4)
+    menu.append_item(command_item1)
 
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
-
-# When User Exits Menu; Displays PG Ending
-rc = call("/opt/plexguide/roles/ending/ending.sh", shell=True)
