@@ -37,7 +37,7 @@ with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
 ############## Traefik Detection
 if gdrive != '' and gcrypt == '':
     configure = "[UnEncrypted]"
-elif gdrive != '' and gcrypt == '':
+elif gdrive != '' and gcrypt != '':
     configure = "[Encrypted]"
 else:
     configure = "[Not Configured]"
