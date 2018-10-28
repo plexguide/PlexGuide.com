@@ -20,9 +20,6 @@ from consolemenu import *
 from consolemenu.format import *
 from consolemenu.items import *
 
-# Import for Bash Ending
-from subprocess import call
-
 # Call Variables
 with open('/var/plexguide/server.ports.status', 'r') as myfile:
     ports=myfile.read().replace('\n', '')
