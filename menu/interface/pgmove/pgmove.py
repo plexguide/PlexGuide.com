@@ -44,9 +44,9 @@ with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
 rc = call("docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed", shell=True)
 
     if not tdrive == '' and gdrive not == '':
-        configure = "[NOT DEPLOYED]"
+        configure = "[UnEncrypted]"
     else:
-        configure = "ZONK"
+        configure = "[Not Configured]"
 
 # Menu Start
 
