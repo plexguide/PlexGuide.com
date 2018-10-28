@@ -64,7 +64,7 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 ######################## SUB MENU AREA START
 
 # Create a second submenu, but this time use a standard ConsoleMenu instance
-submenu_1 = ConsoleMenu("PG Move Upload Bandwidth Limit","NOTE: Changing Speeds Requires Redeployment | 8 MB a Safe Limit")
+submenu_item1 = ConsoleMenu("PG Move Upload Bandwidth Limit","NOTE: Changing Speeds Requires Redeployment | 8 MB a Safe Limit")
 rollsub_item2 = RollsubItem("2   MB", "echo '2' > /var/plexguide/move.bw")
 rollsub_item3 = RollsubItem("5   MB", "echo '5' > /var/plexguide/move.bw")
 rollsub_item4 = RollsubItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/move.bw")
