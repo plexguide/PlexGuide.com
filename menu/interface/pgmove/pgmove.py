@@ -62,7 +62,8 @@ menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
-rollover_item1 = RolloverItem("Configure RClone: " + configure, "
+rollover_item1 = RolloverItem("Configure RClone: " + configure,
+    "
     echo ''
     rclone config
     mkdir -p /root/.config/rclone/
