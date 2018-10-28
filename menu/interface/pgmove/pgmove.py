@@ -17,10 +17,10 @@
 from subprocess import call
 
 # Pip Install Menu Fails to Exist
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep "tdrive" | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive", shell=True)
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep "gdrive" | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive", shell=True)
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep "tcrypt" | head -n1 | cut -b1-8 > /var/plexguide/rclone.tcrypt", shell=True)
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep "gcrypt" | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt", shell=True)
+rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive", shell=True)
+rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive", shell=True)
+rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tcrypt", shell=True)
+rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt", shell=True)
 
 # Import for Menu Interface
 from consolemenu import *
