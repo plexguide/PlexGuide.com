@@ -96,7 +96,7 @@ def main():
 
     command_item2 = CommandItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh")
     command_item3 = CommandItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-    command_item4 = CommandItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
+    command_item4 = CommandItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh && exit 1")
     command_item5 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
     command_item6 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
     command_item7 = CommandItem("Settings", "echo 'settings' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
@@ -112,23 +112,6 @@ def main():
 
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
-
-# Call Variables
-with open('/var/plexguide/server.ports.status', 'r') as myfile:
-    ports=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/pg.edition', 'r') as myfile:
-    edition=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/server.id', 'r') as myfile:
-    serverid=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/pg.number', 'r') as myfile:
-    pgversion=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/server.domain', 'r') as myfile:
-    domain=myfile.read().replace('\n', '')
-
 
 if __name__ == "__main__":
     main()
