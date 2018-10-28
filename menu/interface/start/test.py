@@ -22,5 +22,5 @@ rc = call("pip list --format columns --disable-pip-version-check | grep console-
 with open('/var/plexguide/apip.check', 'r') as myfile:
     apip=myfile.read().replace('\n', '')
 
-    if apip != '':
+    if apip == '':
         rc = call("pip install console-menu", shell=True)
