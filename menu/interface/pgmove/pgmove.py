@@ -65,13 +65,14 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 submenu = SelectionMenu(["item1", "item2", "item3"], title="Selection Menu",
                         subtitle="These menu items return to the previous menu")
 
-# Create the menu item that opens the Selection submenu
-submenu_item = SubmenuItem("Submenu item", submenu=submenu)
-submenu_item.set_menu(menu)
-
-item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
-item2 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
-item3 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+# Create a second submenu, but this time use a standard ConsoleMenu instance
+submenu_2 = ConsoleMenu("Another Submenu Title", "Submenu subtitle.")
+function_item_2 = FunctionItem("Fun item", Screen().input, ["Enter an input: "])
+item2 = MenuItem("Another Item")
+submenu_2.append_item(function_item_2)
+submenu_2.append_item(item2)
+submenu_item_2 = SubmenuItem("Another submenu", submenu=submenu_2)
+submenu_item_2.set_menu(menu)
 
 ######################## SUB MENU AREA START
 
@@ -80,7 +81,7 @@ command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item1)
-menu.append_item(submenu_item)
+menu.append_item(submenu_item_2)
 menu.append_item(command_item1)
 
 # Finally, we call show to show the menu and allow the user to interact
