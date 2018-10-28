@@ -67,10 +67,11 @@ function_item_1 = FunctionItem("Fun item", Screen().input, ["Enter an input: "])
 item1 = MenuItem("Another Item")
 submenu_1.append_item(function_item_1)
 submenu_1.append_item(item1)
+###
+submenu_item_1 = SubmenuItem("Another submenu", submenu=submenu_1)
 submenu_item_1.set_menu(menu)
 
 ######################## SUB MENU AREA START
-submenu_item_1 = SubmenuItem("Another submenu", submenu=submenu_1)
 rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
 command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
 
