@@ -78,11 +78,9 @@
     shell: ln -s /opt/plexguide/roles /etc/ansible/
     ignore_errors: yes
 
-  - name: Install Pip Module
-    pip: "name={{item}} state=latest"
-    with_items:
-      - console-menu
-    ignore_errors: yes
+
+  - pip:
+      name: console-menu
 
   #- name: Install ctop
     #get_url:
