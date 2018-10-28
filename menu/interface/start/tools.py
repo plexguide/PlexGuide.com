@@ -13,7 +13,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# https://pypi.org/project/console-menu/
 
 # Import for Menu Interface
 from consolemenu import *

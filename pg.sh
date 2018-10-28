@@ -243,3 +243,4 @@ file="/var/plexguide/multi.unionfs"
     fi
 
 ansible --version | cut -d' ' -f2 | head -n1 > /var/plexguide/ansible.version
+#docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed

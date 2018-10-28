@@ -13,7 +13,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# https://pypi.org/project/console-menu/
 
 # Import for Menu Interface
 from consolemenu import *
@@ -50,6 +49,16 @@ with open('/var/plexguide/server.ht', 'r') as myfile:
     else:
         appguard = "[ENABLED]"
 
+rc = call("docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed", shell=True)
+
+with open('/var/plexguide/traefik.deployed', 'r') as myfile:
+    traefik=myfile.read().replace('\n', '')
+
+    if traefik== '':
+        traefik = "[NOT DEPLOYED]"
+    else:
+        traefik = "[DEPLOYED]"
+
 def main():
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
@@ -71,8 +80,8 @@ def main():
     else:
         command_item1 = CommandItem("Mounts & Data Transport System", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
 
-    command_item2 = CommandItem("Traefik & TLD Deployment       ","bash /opt/plexguide/menu/interface/traefik/main.sh")
-    command_item3 = CommandItem("Server Port Guard              " + ports,  "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
+    command_item2 = CommandItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh")
+    command_item3 = CommandItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh")
     command_item4 = CommandItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
     command_item5 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
     command_item6 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
