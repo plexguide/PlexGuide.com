@@ -111,6 +111,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
     menu.append_item(command2_item)
 
     # Finally, we call show to show the menu and allow the user to interact
+    menu.start()
     menu.join()
 
 
