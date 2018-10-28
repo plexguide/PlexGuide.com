@@ -61,7 +61,7 @@ item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
 rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "python3 /opt/plexguide/menu/interface/start/speeds.py && python3 /opt/plexguide/menu/interface/start/start.py")
+rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "python3 /opt/plexguide/menu/interface/pgmove/speeds.py && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py)
 command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
 
 # Once we're done creating them, we just add the items to the menu
