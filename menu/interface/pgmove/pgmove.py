@@ -65,8 +65,8 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 submenu_1 = ConsoleMenu("Another Submenu Title", "Submenu subtitle.")
 command_item2 = MenuItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
 command_item3 = MenuItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
-submenu_1.append_item(command_item1)
-submenu_1.append_item(command_item1)
+submenu_1.append_item(command_item2)
+submenu_1.append_item(command_item3)
 ###
 submenu_item_1 = SubmenuItem("Another submenu", submenu=submenu_1)
 submenu_item_1.set_menu(menu)
