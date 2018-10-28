@@ -34,6 +34,8 @@ with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
 with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
     gcrypt=myfile.read().replace('\n', '')
 
+with open('/var/plexguide/bw.limit', 'r') as myfile:
+    bwlimit=myfile.read().replace('\n', '')
 ############## Traefik Detection
 if gdrive != '' and gcrypt == '':
     configure = "[UnEncrypted]"
@@ -63,12 +65,12 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 
 # Create a second submenu, but this time use a standard ConsoleMenu instance
 submenu_1 = ConsoleMenu("PG Move Upload Bandwidth Limit","NOTE: Changing Speeds Requires Redeployment | 8 MB a Safe Limit")
-rollover_item2 = RolloverItem("2   MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-rollover_item3 = RolloverItem("5   MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-rollover_item4 = RolloverItem("9   MB (SAFE LIMIT)", "bash /opt/plexguide/menu/interface/apps/main.sh")
-rollover_item5 = RolloverItem("12  MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-rollover_item6 = RolloverItem("20  MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-rollover_item7 = RolloverItem("NO CAP", "bash /opt/plexguide/menu/interface/apps/main.sh")
+rollover_item2 = RolloverItem("2   MB", "echo '2' > /var/plexguide/bw.limit")
+rollover_item3 = RolloverItem("5   MB", "echo '5' > /var/plexguide/bw.limit")
+rollover_item4 = RolloverItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/bw.limit")
+rollover_item5 = RolloverItem("12  MB", "echo '12' > /var/plexguide/bw.limit")
+rollover_item6 = RolloverItem("20  MB", "echo '20' > /var/plexguide/bw.limit")
+rollover_item7 = RolloverItem("NO CAP", "echo '1000' > /var/plexguide/bw.limit")
 submenu_1.append_item(rollover_item2)
 submenu_1.append_item(rollover_item3)
 submenu_1.append_item(rollover_item4)
@@ -76,7 +78,7 @@ submenu_1.append_item(rollover_item5)
 submenu_1.append_item(rollover_item6)
 submenu_1.append_item(rollover_item7)
 ###
-submenu_item_1 = SubmenuItem("Another submenu", submenu=submenu_1)
+submenu_item_1 = SubmenuItem("Upload BW Limit: " + bwlimit + " MB", submenu=submenu_1)
 submenu_item_1.set_menu(menu)
 
 ######################## SUB MENU AREA START
