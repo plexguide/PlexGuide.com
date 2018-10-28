@@ -37,7 +37,7 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .set_right_margin(2)\
     .show_header_bottom_border(True)
 
-menu = ConsoleMenu("PG Move Bandwidth Upload Limit, NOTE: 9MB is SAFE to AVOID the Upload Ban", formatter=menu_format)
+menu = ConsoleMenu("PG Move Bandwidth Upload Limit", "NOTE: 9MB is SAFE to AVOID the Upload Ban", formatter=menu_format)
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
