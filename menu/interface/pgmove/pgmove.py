@@ -69,6 +69,10 @@ submenu = SelectionMenu(["item1", "item2", "item3"], title="Selection Menu",
 submenu_item = SubmenuItem("Submenu item", submenu=submenu)
 submenu_item.set_menu(menu)
 
+item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+item2 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+item3 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+
 ######################## SUB MENU AREA START
 
 rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
