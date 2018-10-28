@@ -20,9 +20,6 @@ from consolemenu import *
 from consolemenu.format import *
 from consolemenu.items import *
 
-# Import for Bash Ending
-from subprocess import call
-
 def main():
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
@@ -38,9 +35,9 @@ def main():
 
     # A CommandItem runs a console command
     if edition == 'PG Edition - HD Solo':
-        command_item1 = CommandItem("No Backup System", 'cmd /c \"echo this is a shell. Press enter to continue." && set /p=\"')
+        command_item1 = CommandItem("No Backup System", 'echo corn')
     elif edition == 'PG Edition - HD Multi':
-        command_item1 = CommandItem("No Backup System", "bash /opt/plexguide/roles/menu-multi/scripts/main.sh")
+        command_item1 = CommandItem("No Backup System", "echo corn")
     else:
         command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
 
