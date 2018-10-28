@@ -61,10 +61,6 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 
 ######################## SUB MENU AREA START
 
-# Create a submenu using a Selection Menu, which takes a list of strings to create the menu items.
-submenu = SelectionMenu(["item1", "item2", "item3"], title="Selection Menu",
-                        subtitle="These menu items return to the previous menu")
-
 # Create a second submenu, but this time use a standard ConsoleMenu instance
 submenu_2 = ConsoleMenu("Another Submenu Title", "Submenu subtitle.")
 function_item_2 = FunctionItem("Fun item", Screen().input, ["Enter an input: "])
