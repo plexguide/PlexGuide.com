@@ -95,7 +95,7 @@ def main():
         command_item1 = CommandItem("Mounts & Data Transport System", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
 
     command_item2 = CommandItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh")
-    command_item3 = CommandItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && exit")
+    command_item3 = CommandItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
     command_item4 = CommandItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh")
     command_item5 = CommandItem("Program Suite Installer", "bash /opt/plexguide/menu/interface/apps/main.sh")
     command_item6 = CommandItem("PG Tools & Services", "python3 /opt/plexguide/menu/interface/start/tools.py")
