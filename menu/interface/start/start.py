@@ -23,7 +23,7 @@ with open('/var/plexguide/apip.check', 'r') as myfile:
     apip=myfile.read().replace('\n', '')
 
     if apip == '':
-        rc = call("echo && echo 'Standby - Installing: PG Interface v0.0.3' && sleep 3 && echo && pip install git+git://github.com/Admin9705/plexguide-menu.git --disable-pip-version-check", shell=True)
+        rc = call("echo && echo 'Standby - Installing: PG Interface v0.0.3' && sleep 4 && echo && pip install git+git://github.com/Admin9705/plexguide-menu.git --disable-pip-version-check", shell=True)
 
 # Import for Menu Interface
 from consolemenu import *
