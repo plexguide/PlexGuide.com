@@ -145,20 +145,20 @@ edition=$( cat /var/plexguide/pg.edition )
 
 if [ "$edition" == "PG Edition - GDrive" ]; then
     echo 'INFO - Deploying GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/menu/interface/start/file.sh
+    python3 /opt/plexguide/menu/interface/start/start.py
     exit
 elif [ "$edition" == "PG Edition - HD Multi" ]; then
     echo 'INFO - Deploying Multi HD Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/menu/interface/start/file.sh
+    python3 /opt/plexguide/menu/interface/start/start.py
     exit
 elif [ "$edition" == "PG Edition - HD Solo" ]; then
    echo 'INFO - Deploying HD Solo Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/menu/interface/start/file.sh
+    python3 /opt/plexguide/menu/interface/start/start.py
     exit
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then
    echo 'INFO - Deploying GCE Feeder Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/menu/interface/gce/gcechecker.sh
-    bash /opt/plexguide/menu/interface/start/file.sh
+    python3 /opt/plexguide/menu/interface/start/start.py
     exit
 else
     file="/var/plexguide/pg.preinstall.stored"
