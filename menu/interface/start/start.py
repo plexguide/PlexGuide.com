@@ -105,7 +105,7 @@ def main():
     menu.append_item(command_item1)
     menu.append_item(command_item2)
     menu.append_item(command_item3)
-    menu.append_item(command_item4)
+    menu.append_item(command_item4 && command_item4)
     menu.append_item(command_item5)
     menu.append_item(command_item6)
     menu.append_item(command_item7)
