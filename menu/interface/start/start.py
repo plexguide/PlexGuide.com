@@ -25,8 +25,6 @@ with open('/var/plexguide/apip.check', 'r') as myfile:
     if apip == '':
         rc = call("echo 'Standby - Installing Console Menu' && echo && pip install git+git://github.com/Admin9705/plexguide-menu.git --disable-pip-version-check", shell=True)
 
-pip install
-
 # Import for Menu Interface
 from consolemenu import *
 from consolemenu.format import *
