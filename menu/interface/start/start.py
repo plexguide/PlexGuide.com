@@ -112,8 +112,6 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
 
     # Finally, we call show to show the menu and allow the user to interact
     menu.start()
-    menu.join()
-
 
 # When User Exits Menu; Displays PG Ending
 rc = call("/opt/plexguide/roles/ending/ending.sh", shell=True)
