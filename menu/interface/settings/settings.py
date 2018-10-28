@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
@@ -33,29 +33,21 @@ def main():
         .set_right_margin(2)\
         .show_header_bottom_border(False)
 
-    menu = ConsoleMenu("Tools Interface Menu", formatter=menu_format)
+    menu = ConsoleMenu("Settings Interface Menu", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-    if edition == 'PG Edition - HD Solo':
-        command_item1 = CommandItem("No Backup System", 'echo corn')
-    elif edition == 'PG Edition - HD Multi':
-        command_item1 = CommandItem("No Backup System", "echo corn")
-    else:
-        command_item1 = CommandItem("Backup & Restore", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
-
-    command_item2 = CommandItem("Deploy GCE Feeder Instance", "echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
-    command_item3 = CommandItem("PGTrak - Fills Up Radarr & Sonarr", "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
-    command_item4 = CommandItem("Server VPN Service Installer", "echo vpnserver > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
-    command_item5 = CommandItem("System & Network Auditor", "bash /opt/plexguide/roles/menu-network/scripts/main.sh")
-    command_item6 = CommandItem("TroubleShoot - PreInstaller & UnInstaller", "echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
+    command_item1 = CommandItem("Download Path  : Change the Processing Location", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+    command_item2 = CommandItem("Processor      : Enhance Processing Power", "echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
+    command_item3 = CommandItem("Kernal Modes   : Enhance Network Throughput", "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
+    command_item4 = CommandItem("WatchTower     : Auto-Update Application Manager", "bash /opt/plexguide/roles/menu-network/scripts/main.sh")
+    command_item5 = CommandItem("Change Time    : Change the Server Time", "echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
     menu.append_item(command_item2)
     menu.append_item(command_item3)
     menu.append_item(command_item4)
     menu.append_item(command_item5)
-    menu.append_item(command_item6)
     # Finally, we call show to show the menu and allow the user to interact
     menu.show()
 
