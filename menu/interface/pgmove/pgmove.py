@@ -58,12 +58,25 @@ item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
 rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
+
+######################## SUB MENU AREA START
+
+# Create a submenu using a Selection Menu, which takes a list of strings to create the menu items.
+submenu = SelectionMenu(["item1", "item2", "item3"], title="Selection Menu",
+                        subtitle="These menu items return to the previous menu")
+
+# Create the menu item that opens the Selection submenu
+submenu_item = SubmenuItem("Submenu item", submenu=submenu)
+submenu_item.set_menu(menu)
+
+######################## SUB MENU AREA START
+
 rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
 command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item1)
-menu.append_item(rollover_item2)
+menu.append_item(submenu_item)
 menu.append_item(command_item1)
 
 # Finally, we call show to show the menu and allow the user to interact
