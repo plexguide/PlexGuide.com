@@ -111,7 +111,7 @@ def main():
     menu.append_item(command_item7)
 
     # Finally, we call show to show the menu and allow the user to interact
-    menu.show()
+    menu.show(True)
     menu.join()
 
 if __name__ == "__main__":
