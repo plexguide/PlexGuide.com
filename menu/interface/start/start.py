@@ -44,7 +44,7 @@ with open('/var/plexguide/ansible.version', 'r') as myfile:
 
 def main():
     # Change some menu formatting
-    menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.DOUBLE_LINE_OUTER_LIGHT_INNER_BORDER)\
+    menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
         .set_prompt("SELECT>")\
         .set_title_align('left')\
         .set_subtitle_align('left')\
