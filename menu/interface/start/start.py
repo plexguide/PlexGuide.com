@@ -98,7 +98,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
     elif edition == 'PG Edition - HD Multi':
         command_item1 = CommandItem("Mounts & HD MergerFS", "bash /opt/plexguide/roles/menu-multi/scripts/main.sh")
     else:
-        command_item1 = CommandItem("Mounts & Data Transport System", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
+        command_item1 = CommandItem("Mounts & Data Transport System", "python3 /opt/plexguide/menu/interface/transport/transport.py")
 
     rollover_item1 = RolloverItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
     rollover_item2 = RolloverItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
