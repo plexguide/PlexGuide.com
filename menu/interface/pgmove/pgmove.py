@@ -71,15 +71,15 @@ rollsub_item4 = RollsubItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/mo
 rollsub_item5 = RollsubItem("12  MB", "echo '12' > /var/plexguide/move.bw")
 rollsub_item6 = RollsubItem("20  MB", "echo '20' > /var/plexguide/move.bw")
 rollsub_item7 = RollsubItem("NO CAP", "echo '1000' > /var/plexguide/move.bw")
-submenu_1.append_item(rollsub_item2)
+rollsub_1.append_item(rollsub_item2)
 rollsub_1.append_item(rollsub_item3)
 rollsub_1.append_item(rollsub_item4)
 rollsub_1.append_item(rollsub_item5)
 rollsub_1.append_item(rollsub_item6)
 rollsub_1.append_item(rollsub_item7)
 ###
-submenu_item_1 = SubmenuItem("Upload BW Limit: " + bwlimit + " MB", submenu=submenu_1)
-submenu_item_1.set_menu(menu)
+submenu_item_1 = SubmenuItem("Upload BW Limit: " + bwlimit + " MB", submenu=rollsub_1)
+rollsub_item_1.set_menu(menu)
 
 ######################## SUB MENU AREA START
 rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
