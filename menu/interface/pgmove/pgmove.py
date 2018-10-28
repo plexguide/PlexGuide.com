@@ -56,7 +56,9 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .set_right_margin(2)\
     .show_header_bottom_border(True)
 
-menu = ConsoleMenu("EMPTY", formatter=menu_format)
+menu = ConsoleMenu("Menu With Item Borders",
+                   prologue_text=("This menu example shows how menu items can be separated into categories."))
+menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
