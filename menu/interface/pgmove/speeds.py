@@ -17,34 +17,15 @@
 # Import for Bash Ending
 from subprocess import call
 
-# Pip Install Menu Fails to Exist
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive", shell=True)
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive", shell=True)
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tcrypt", shell=True)
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt", shell=True)
-
 # Import for Menu Interface
 from consolemenu import *
 from consolemenu.format import *
 from consolemenu.items import *
 
 # Call Variables
-with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
-    gdrive=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
-    gcrypt=myfile.read().replace('\n', '')
-
 with open('/var/plexguide/move.bw', 'r') as myfile:
     bwlimit=myfile.read().replace('\n', '')
 ############## Traefik Detection
-if gdrive != '' and gcrypt == '':
-    configure = "[UnEncrypted]"
-elif gdrive != '' and gcrypt != '':
-    configure = "[Encrypted]"
-else:
-    configure = "[Not Configured]"
-
 # Menu Start
 
     # Change some menu formatting
@@ -60,14 +41,22 @@ menu = ConsoleMenu("EMPTY", formatter=menu_format)
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
-rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "python3 /opt/plexguide/menu/interface/start/speeds.py && python3 /opt/plexguide/menu/interface/start/start.py")
-command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+rollover_item1 = RolloverItem("1   MB", "echo '2' > /var/plexguide/move.bw")
+rollover_item2 = RolloverItem("2   MB", "echo '2' > /var/plexguide/move.bw")
+rollover_item3 = RolloverItem("5   MB", "echo '5' > /var/plexguide/move.bw")
+rollover_item4 = RolloverItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/move.bw")
+rollover_item5 = RolloverItem("12  MB", "echo '12' > /var/plexguide/move.bw")
+rollover_item6 = RolloverItem("20  MB", "echo '20' > /var/plexguide/move.bw")
+rollover_item7 = RolloverItem("NO CAP", "echo '1000' > /var/plexguide/move.bw")
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item1)
 menu.append_item(rollover_item2)
-menu.append_item(command_item1)
+menu.append_item(rollover_item3)
+menu.append_item(rollover_item4)
+menu.append_item(rollover_item5)
+menu.append_item(rollover_item6)
+menu.append_item(rollover_item7)
 
 # Finally, we call show to show the menu and allow the user to interact
 menu.show()
