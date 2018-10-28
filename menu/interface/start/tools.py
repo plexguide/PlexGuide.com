@@ -31,7 +31,7 @@ def main():
         .set_subtitle_align('left')\
         .set_left_margin(2)\
         .set_right_margin(2)\
-        .show_header_bottom_border(Flase)
+        .show_header_bottom_border(False)
 
     menu = ConsoleMenu("Tools Interface Menu", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
