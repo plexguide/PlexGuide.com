@@ -87,7 +87,7 @@ command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item1)
-menu.append_item(submenu_item_1)
+menu.append_item(rollsub_item_1)
 menu.append_item(command_item1)
 
 # Finally, we call show to show the menu and allow the user to interact
