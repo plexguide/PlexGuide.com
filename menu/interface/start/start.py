@@ -38,11 +38,13 @@ with open('/var/plexguide/pg.number', 'r') as myfile:
 with open('/var/plexguide/server.domain', 'r') as myfile:
     domain=myfile.read().replace('\n', '')
 
+############## Ansible Version
+rc = call("ansible --version | cut -d' ' -f2 | head -n1 > /var/plexguide/ansible.version", shell=True)
+
 with open('/var/plexguide/ansible.version', 'r') as myfile:
     ansible=myfile.read().replace('\n', '')
 
-rc = call("ansible --version | cut -d' ' -f2 | head -n1 > /var/plexguide/ansible.version", shell=True)
-
+############## AppGuard Check
 with open('/var/plexguide/server.ht', 'r') as myfile:
     appguard=myfile.read().replace('\n', '')
 
@@ -51,6 +53,7 @@ with open('/var/plexguide/server.ht', 'r') as myfile:
     else:
         appguard = "[ENABLED]"
 
+############## Traefik Detection
 rc = call("docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed", shell=True)
 
 with open('/var/plexguide/traefik.deployed', 'r') as myfile:
@@ -61,6 +64,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
     else:
         traefik = "[DEPLOYED]"
 
+# Menu Start
 def main():
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
