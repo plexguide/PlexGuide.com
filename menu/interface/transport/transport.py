@@ -37,9 +37,9 @@ def main():
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-    command_item1 = CommandItem("PG Move   | Unencrypt & Encrypt | 750 GB Daily Upload | Simple  ", "bash /opt/plexguide/roles/menu-move/scripts/main.sh")
-    command_item2 = CommandItem("PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex ", "bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh")
-    command_item3 = CommandItem("PG Drives | Unencrypted         | Read Only Servers   | Simple  ", "bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh")
+    command_item1 = CommandItem("PG Move   | Unencrypt & Encrypt | 750 GB Daily Upload | Simple ", "bash /opt/plexguide/roles/menu-move/scripts/main.sh")
+    command_item2 = CommandItem("PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex", "bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh")
+    command_item3 = CommandItem("PG Drives | Unencrypted         | Read Only Servers   | Simple ", "bash /opt/plexguide/roles/menu-pgdrives/scripts/manual.sh")
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
     menu.append_item(command_item2)
