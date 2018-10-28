@@ -37,11 +37,11 @@ def main():
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-    command_item1 = CommandItem("Download Path  : Change the Processing Location", "bash /opt/plexguide/roles/menu-transport/scripts/main.sh")
-    command_item2 = CommandItem("Processor      : Enhance Processing Power", "echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
-    command_item3 = CommandItem("Kernal Modes   : Enhance Network Throughput", "bash /opt/plexguide/menu/interface/pgtrak/main.sh")
-    command_item4 = CommandItem("WatchTower     : Auto-Update Application Manager", "bash /opt/plexguide/roles/menu-network/scripts/main.sh")
-    command_item5 = CommandItem("Change Time    : Change the Server Time", "echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh")
+    command_item1 = CommandItem("Download Path  : Change the Processing Location", "bash /opt/plexguide/menu/interface/dlpath/main.sh")
+    command_item2 = CommandItem("Processor      : Enhance Processing Power", "bash /opt/plexguide/roles/processor/scripts/processor-menu.sh")
+    command_item3 = CommandItem("Kernal Modes   : Enhance Network Throughput", "bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh")
+    command_item4 = CommandItem("WatchTower     : Auto-Update Application Manager", "bash /opt/plexguide/menu/interface/watchtower/file.sh")
+    command_item5 = CommandItem("Change Time    : Change the Server Time", "dpkg-reconfigure tzdata")
     # Once we're done creating them, we just add the items to the menu
     menu.append_item(command_item1)
     menu.append_item(command_item2)
