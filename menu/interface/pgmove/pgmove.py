@@ -34,7 +34,7 @@ with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
 with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
     gcrypt=myfile.read().replace('\n', '')
 
-with open('/var/plexguide/bw.limit', 'r') as myfile:
+with open('/var/plexguide/move.bw', 'r') as myfile:
     bwlimit=myfile.read().replace('\n', '')
 ############## Traefik Detection
 if gdrive != '' and gcrypt == '':
@@ -65,12 +65,12 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 
 # Create a second submenu, but this time use a standard ConsoleMenu instance
 submenu_1 = ConsoleMenu("PG Move Upload Bandwidth Limit","NOTE: Changing Speeds Requires Redeployment | 8 MB a Safe Limit")
-rollover_item2 = RolloverItem("2   MB", "echo '2' > /var/plexguide/bw.limit")
-rollover_item3 = RolloverItem("5   MB", "echo '5' > /var/plexguide/bw.limit")
-rollover_item4 = RolloverItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/bw.limit")
-rollover_item5 = RolloverItem("12  MB", "echo '12' > /var/plexguide/bw.limit")
-rollover_item6 = RolloverItem("20  MB", "echo '20' > /var/plexguide/bw.limit")
-rollover_item7 = RolloverItem("NO CAP", "echo '1000' > /var/plexguide/bw.limit")
+rollover_item2 = RolloverItem("2   MB", "echo '2' > /var/plexguide/move.bw")
+rollover_item3 = RolloverItem("5   MB", "echo '5' > /var/plexguide/move.bw")
+rollover_item4 = RolloverItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/move.bw")
+rollover_item5 = RolloverItem("12  MB", "echo '12' > /var/plexguide/move.bw")
+rollover_item6 = RolloverItem("20  MB", "echo '20' > /var/plexguide/move.bw")
+rollover_item7 = RolloverItem("NO CAP", "echo '1000' > /var/plexguide/move.bw")
 submenu_1.append_item(rollover_item2)
 submenu_1.append_item(rollover_item3)
 submenu_1.append_item(rollover_item4)
