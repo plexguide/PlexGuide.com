@@ -31,13 +31,13 @@ from consolemenu.items import *
 #with open('/var/plexguide/rclone.tdrive', 'r') as myfile:
 #    tdrive=myfile.read().replace('\n', '')
 
-with open('/root/.config/rclone/rclone.conf', 'r') as myfile:
+with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
     gdrive=myfile.read().replace('\n', '')
 
 #with open('/var/plexguide/rclone.tcrypt', 'r') as myfile:
 #    tcrypt=myfile.read().replace('\n', '')
 
-with open('/root/.config/rclone/rclone.conf', 'r') as myfile:
+with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
     gcrypt=myfile.read().replace('\n', '')
 
 ############## Traefik Detection
