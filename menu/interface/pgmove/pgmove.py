@@ -84,13 +84,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
-    if edition == 'PG Edition - HD Solo':
-        command_item1 = CommandItem("No Data & Transport System", 'cmd /c \"echo this is a shell. Press enter to continue." && set /p=\"')
-    elif edition == 'PG Edition - HD Multi':
-        command_item1 = CommandItem("Mounts & HD MergerFS", "bash /opt/plexguide/roles/menu-multi/scripts/main.sh")
-    else:
-        command_item1 = CommandItem("Mounts & Data Transport System", "python3 /opt/plexguide/menu/interface/transport/transport.py")
-
+    command_item1 = CommandItem("Mounts & Data Transport System", "python3 /opt/plexguide/menu/interface/transport/transport.py")
     rollover_item1 = RolloverItem("Traefik & TLD Deployment       " + traefik, "bash /opt/plexguide/menu/interface/traefik/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
     rollover_item2 = RolloverItem("Server Port Guard              " + ports, "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
     rollover_item3 = RolloverItem("Applicaiton Guard              " + appguard , "bash /opt/plexguide/roles/menu-appguard/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py" )
