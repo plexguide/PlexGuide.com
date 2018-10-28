@@ -78,7 +78,7 @@ rollsub_1.append_item(rollsub_item5)
 rollsub_1.append_item(rollsub_item6)
 rollsub_1.append_item(rollsub_item7)
 ###
-rollsub_item_1 = RollSubItem("Upload BW Limit: " + bwlimit + " MB", submenu=rollsub_1)
+rollsub_item_1 = RollSubItem("Upload BW Limit: " + bwlimit + " MB", rollmenu=rollsub_1)
 rollsub_item_1.set_menu(menu)
 
 ######################## SUB MENU AREA START
