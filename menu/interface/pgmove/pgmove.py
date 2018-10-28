@@ -62,7 +62,7 @@ menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
-rollover_item1 = RolloverItem("Configure RClone: " + configure,"echo '' && rclone config && mkdir -p /root/.config/rclone/ && chown -R 1000:1000 /root/.config/rclone/ && cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1 && echo '' && bash /opt/plexguide/roles/menu-move/scripts/main.sh")
+rollover_item1 = RolloverItem("Configure RClone: " + configure,"echo && rclone config && mkdir -p /root/.config/rclone/ && chown -R 1000:1000 /root/.config/rclone/ && cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1 && echo")
 rollover_item2 = RolloverItem("Upload BW Limit : " + bwlimit + " MB", "python3 /opt/plexguide/menu/interface/pgmove/speeds.py && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
 command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
 
