@@ -63,25 +63,25 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 
 # Create a second submenu, but this time use a standard ConsoleMenu instance
 submenu_1 = ConsoleMenu("PG Move Upload Bandwidth Limit Controls","NOTE: Changing Speeds Requires Redeployment | 8 MB a Safe Limit")
-command_item2 = CommandItem("2   MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-command_item3 = CommandItem("4   MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-command_item4 = CommandItem("8   MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-command_item5 = CommandItem("10  MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-command_item6 = CommandItem("20  MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-command_item7 = CommandItem("999 MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
-submenu_1.append_item(command_item2)
-submenu_1.append_item(command_item3)
-submenu_1.append_item(command_item4)
-submenu_1.append_item(command_item5)
-submenu_1.append_item(command_item6)
-submenu_1.append_item(command_item7)
+rollover_item2 = RolloverItem("2   MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
+rollover_item3 = RolloverItem("4   MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
+rollover_item4 = RolloverItem("8   MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
+rollover_item5 = RolloverItem("10  MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
+rollover_item6 = RolloverItem("20  MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
+rollover_item7 = RolloverItem("999 MB", "bash /opt/plexguide/menu/interface/apps/main.sh")
+submenu_1.append_item(rollover_item2)
+submenu_1.append_item(rollover_item3)
+submenu_1.append_item(rollover_item4)
+submenu_1.append_item(rollover_item5)
+submenu_1.append_item(rollover_item6)
+submenu_1.append_item(rollover_item7)
 ###
 submenu_item_1 = SubmenuItem("Another submenu", submenu=submenu_1)
 submenu_item_1.set_menu(menu)
 
 ######################## SUB MENU AREA START
 rollover_item2 = RolloverItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
-command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+rollover_item1 = RolloverItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item1)
