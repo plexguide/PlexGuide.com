@@ -28,22 +28,20 @@ from consolemenu.format import *
 from consolemenu.items import *
 
 # Call Variables
-with open('/var/plexguide/rclone.tdrive', 'r') as myfile:
+#with open('/var/plexguide/rclone.tdrive', 'r') as myfile:
     tdrive=myfile.read().replace('\n', '')
 
 with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
     gdrive=myfile.read().replace('\n', '')
 
-with open('/var/plexguide/rclone.tcrypt', 'r') as myfile:
-    tcrypt=myfile.read().replace('\n', '')
+#with open('/var/plexguide/rclone.tcrypt', 'r') as myfile:
+#    tcrypt=myfile.read().replace('\n', '')
 
-with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
+#with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
     gcrypt=myfile.read().replace('\n', '')
 
 ############## Traefik Detection
-rc = call("docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed", shell=True)
-
-if tdrive != '' and gdrive != '':
+if gdrive != '' and tdrive == '':
     configure = "[UnEncrypted]"
 else:
     configure = "[Not Configured]"
