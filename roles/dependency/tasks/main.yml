@@ -78,6 +78,11 @@
     shell: ln -s /opt/plexguide/roles /etc/ansible/
     ignore_errors: yes
 
+  - name: Install docker pip module
+    pip:
+      name: console-menu
+      state: latest
+
   #- name: Install ctop
     #get_url:
       #url:  https://github.com/bcicen/ctop/releases/download/v0.7/ctop-0.7-linux-amd64
