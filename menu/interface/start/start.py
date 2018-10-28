@@ -73,7 +73,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
         traefik = "[DEPLOYED]"
 
 # Menu Start
-def main():
+
     # Change some menu formatting
     menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
         .set_prompt("SELECT>")\
@@ -115,8 +115,6 @@ def main():
     menu.show(True)
     menu.join()
 
-if __name__ == "__main__":
-    main()
 
 # When User Exits Menu; Displays PG Ending
 rc = call("/opt/plexguide/roles/ending/ending.sh", shell=True)
