@@ -75,8 +75,6 @@ submenu_1.append_item(rollover_item4)
 submenu_1.append_item(rollover_item5)
 submenu_1.append_item(rollover_item6)
 submenu_1.append_item(rollover_item7)
-submenu_1.append_item(rollover_item2)
-submenu_1.append_item(rollover_item3)
 ###
 submenu_item_1 = SubmenuItem("Another submenu", submenu=submenu_1)
 submenu_item_1.set_menu(menu)
