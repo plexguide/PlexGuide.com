@@ -65,12 +65,12 @@ rollover_item1 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexg
 
 # Create a second submenu, but this time use a standard ConsoleMenu instance
 submenu_1 = ConsoleMenu("PG Move Upload Bandwidth Limit","NOTE: Changing Speeds Requires Redeployment | 8 MB a Safe Limit")
-rollsub_item2 = RollSubItem("2   MB", "echo '2' > /var/plexguide/move.bw")
-rollsub_item3 = RollSubItem("5   MB", "echo '5' > /var/plexguide/move.bw")
-rollsub_item4 = RollSubItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/move.bw")
-rollsub_item5 = RollSubItem("12  MB", "echo '12' > /var/plexguide/move.bw")
-rollsub_item6 = RollSubItem("20  MB", "echo '20' > /var/plexguide/move.bw")
-rollsub_item7 = RollSubItem("NO CAP", "echo '1000' > /var/plexguide/move.bw")
+rollsub_item2 = RollsubItem("2   MB", "echo '2' > /var/plexguide/move.bw")
+rollsub_item3 = RollsubItem("5   MB", "echo '5' > /var/plexguide/move.bw")
+rollsub_item4 = RollsubItem("9   MB (SAFE LIMIT)", "echo '9' > /var/plexguide/move.bw")
+rollsub_item5 = RollsubItem("12  MB", "echo '12' > /var/plexguide/move.bw")
+rollsub_item6 = RollsubItem("20  MB", "echo '20' > /var/plexguide/move.bw")
+rollsub_item7 = RollsubItem("NO CAP", "echo '1000' > /var/plexguide/move.bw")
 submenu_1.append_item(rollsub_item2)
 submenu_1.append_item(rollsub_item3)
 submenu_1.append_item(rollsub_item4)
@@ -82,12 +82,11 @@ submenu_item_1 = SubmenuItem("Upload BW Limit: " + bwlimit + " MB", submenu=subm
 submenu_item_1.set_menu(menu)
 
 ######################## SUB MENU AREA START
-rollover_item2 = RollsubItem("Upload BW Limit : " + "speed" + " MB", "bash /opt/plexguide/roles/menu-ports/scripts/main.sh && python3 /opt/plexguide/menu/interface/start/start.py")
 command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item1)
-menu.append_item(submenu_item_1)
+menu.append_item(rollsub_item_1)
 menu.append_item(command_item1)
 
 # Finally, we call show to show the menu and allow the user to interact
