@@ -19,8 +19,6 @@ from subprocess import call
 # Pip Install Menu Fails to Exist
 rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive", shell=True)
 rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive", shell=True)
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tcrypt", shell=True)
-rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt", shell=True)
 
 # Import for Menu Interface
 from consolemenu import *
@@ -31,16 +29,14 @@ from consolemenu.items import *
 with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
     gdrive=myfile.read().replace('\n', '')
 
-with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
-    gcrypt=myfile.read().replace('\n', '')
+with open('/var/plexguide/rclone.tdrive', 'r') as myfile:
+    tdrive=myfile.read().replace('\n', '')
 
-with open('/var/plexguide/move.bw', 'r') as myfile:
-    bwlimit=myfile.read().replace('\n', '')
 ############## Traefik Detection
-if gdrive != '' and gcrypt == '':
-    configure = "[UnEncrypted]"
-elif gdrive != '' and gcrypt != '':
-    configure = "[Encrypted]"
+if gdrive != '':
+    configure = "[GDrive]"
+elif gdrive != '' and tdrive != '':
+    configure = "[GDrive /w TeamDrive]"
 else:
     configure = "[Not Configured]"
 
@@ -55,26 +51,23 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .set_right_margin(2)\
     .show_header_bottom_border(True)
 
-menu = ConsoleMenu("Welcome to PG Move!",
-                   prologue_text=("PG Move is a simple uploader. It is highly recommend that you keep the BW @ 9MB; equaling 750GB per day over a period of 24 horus! If uploading less than 750GB per day, user can increase the speeds! Making Changes? Redeploy PG Move!"))
+menu = ConsoleMenu("Welcome to PG Drives!",
+                   prologue_text=("The PG Drives option is only for READ ONLY Servers! When you deploy this, there is no movement of files! Your Google Drive (and TeamDrive if Configured) are deployed! This is great for a PLEX Only Server & etc!"))
 menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
 rollover_item4 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/pgmove/rclone.sh")
-rollover_item2 = RolloverItem("Upload BW Limit : " + bwlimit + " MB", "python3 /opt/plexguide/menu/interface/pgmove/speeds.py && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
-
-if configure == '[Encrypted]':
-    rollover_item3 = RolloverItem("Deploy PG Move  : Encrypted /w PG Drives", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
-elif configure == '[UnEncrypted]':
-    rollover_item3 = RolloverItem("Deploy PG Move  : Unencrypted /w PG Drives", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+if configure == '[GDrive]':
+    rollover_item3 = RolloverItem("Deploy Drives  : Google Drive", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+elif configure == '[GDrive /w TeamDrive]':
+    rollover_item3 = RolloverItem("Deploy Drives  : Google Drive /w TeamDrives", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
 else:
     # Future Wise, put Warning Script to Call Bash or Python Script
-    rollover_item3 = RolloverItem("Unable to Deploy: RClone Not Configured", "python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+    rollover_item3 = RolloverItem("Unable to Deploy: RClone Not Configured", "python3 /opt/plexguide/menu/interface/pgdrives/pgdrives.py")
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item4)
-menu.append_item(rollover_item2)
 menu.append_item(rollover_item3)
 
 # Finally, we call show to show the menu and allow the user to interact
