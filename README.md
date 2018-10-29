@@ -1,13 +1,12 @@
 <p align="center"><b>CLICKING the STAR in the UPPER RIGHT promotes the PROJECT on GITHUB and goes a long way!</b></p>
 
-<p align="center">
-  <a href="https://plexguide.com/wikis/" target="_blank"><img src="https://plexguide.com/wikipics/button4.png" width="200"/>
-  <a href="https://plexguide.com/" target="_blank"><img src="https://plexguide.com/wikipics/button5.png" width="200"/>
-  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/button1.png" width="200"/>
-  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki/PG-Intro-&-Quick-FAQ-101" target="_blank"><img src="https://plexguide.com/wikipics/button6.png" width="200"/>
-  <a href="https://plexguide.com/wikis/changelog/" target="_blank"><img src="https://plexguide.com/pics/menu15.png" width="200"/>
-  <a href="https://plexguide.com/dbtech-donate/monthly-developer-costs.1/donate" target="_blank"><img src="https://plexguide.com/wikipics/button2.png" width="200"/>
-</p>
+NOTICE: Site Currently Down, conducting site transfer
+
+sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install unzip && sudo apt-get install whiptail -y && sudo apt-get install dialog -y
+
+sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/roles/alias/templates/plexguide /bin/
+
+chmod 755 /bin/plexguide && chown 1000:1000 /bin/plexguide && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
 
 ----
 ## Welcome to PlexGuide.com!
