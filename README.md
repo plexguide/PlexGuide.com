@@ -1,12 +1,6 @@
 <p align="center"><b>CLICKING the STAR in the UPPER RIGHT promotes the PROJECT on GITHUB and goes a long way!</b></p>
 
-NOTICE: Site Currently Down, conducting site transfer
-
-sudo apt-get upgrade -y && sudo apt-get full-upgrade -y && sudo apt-get install git -y && sudo apt-get install unzip && sudo apt-get install whiptail -y && sudo apt-get install dialog -y
-
-sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/roles/alias/templates/plexguide /bin/
-
-chmod 755 /bin/plexguide && chown 1000:1000 /bin/plexguide && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
+[TO INSTALL PLEXGUIDE - CLICK HERE](https://plexguide.com/threads/plexguide-install-instructions.243/)
 
 ----
 ## Welcome to PlexGuide.com!
