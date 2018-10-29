@@ -33,7 +33,7 @@ with open('/var/plexguide/rclone.tdrive', 'r') as myfile:
     tdrive=myfile.read().replace('\n', '')
 
 ############## Traefik Detection
-if gdrive != '':
+if gdrive != '' and tdrive == "":
     configure = "[GDrive]"
 elif gdrive != '' and tdrive != '':
     configure = "[GDrive /w TeamDrive]"
