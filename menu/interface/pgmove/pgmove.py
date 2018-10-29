@@ -70,7 +70,7 @@ if configure == '[Encrypted]':
 elif configure == '[UnEncrypted]':
     command_item1 = CommandItem("Deploy PG Move - Unencrypted /w PG Drives", "ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted")
 else:
-    command_item1 = CommandItem("Cannot Deploy - Not Configured", "echo")
+    command_item1 = CommandItem("Unable to Deploy - RClone Not Configured", "echo")
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(command_item2)
