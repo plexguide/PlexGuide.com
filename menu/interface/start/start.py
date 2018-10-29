@@ -87,7 +87,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
         .show_header_bottom_border(True)
 
     menu = ConsoleMenu(edition + " - " + pgversion + " | Ansible: " + ansible + " | Server ID: " + serverid,
-                       prologue_text=("Welcome to PlexGuide.com! Thank You For Your Support & TeamWork!"))
+                       prologue_text=("Welcome to PlexGuide.com! Support the Project Today!"))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
 
