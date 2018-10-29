@@ -61,3 +61,6 @@
   include_role:
     name: menu-pgdrives
     tasks_from: "deploy_unionfs.yml"
+
+- pause:
+    prompt: "\nDeployment Complete! Press [ENTER]"
