@@ -41,10 +41,10 @@ with open('/var/plexguide/pg.number', 'r') as myfile:
     pgversion=myfile.read().replace('\n', '')
 
 ############## Ansible Version
-rc = call("ansible --version | cut -d' ' -f2 | head -n1 > /var/plexguide/ansible.version", shell=True)
+#rc = call("ansible --version | cut -d' ' -f2 | head -n1 > /var/plexguide/ansible.version", shell=True)
 
-with open('/var/plexguide/ansible.version', 'r') as myfile:
-    ansible=myfile.read().replace('\n', '')
+#with open('/var/plexguide/ansible.version', 'r') as myfile:
+#    ansible=myfile.read().replace('\n', '')
 
 ############## Port Check
 with open('/var/plexguide/server.ports', 'r') as myfile:
@@ -87,7 +87,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
         .show_header_bottom_border(True)
 
     menu = ConsoleMenu("Welcome to PlexGuide.com! Thanks for Being Part of the Community!",
-                       prologue_text=(edition + " - " + pgversion + " | Ansible: " + ansible + " | Server ID: " + serverid))
+                       prologue_text=(edition + " - " + pgversion + " | Server ID: " + serverid))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
 
