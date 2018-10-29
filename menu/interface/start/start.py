@@ -40,9 +40,6 @@ with open('/var/plexguide/server.id', 'r') as myfile:
 with open('/var/plexguide/pg.number', 'r') as myfile:
     pgversion=myfile.read().replace('\n', '')
 
-with open('/var/plexguide/server.domain', 'r') as myfile:
-    domain=myfile.read().replace('\n', '')
-
 ############## Ansible Version
 rc = call("ansible --version | cut -d' ' -f2 | head -n1 > /var/plexguide/ansible.version", shell=True)
 
@@ -89,8 +86,8 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = ConsoleMenu(edition + " - " + pgversion + " | Ansible: " + ansible, "Domain: " + domain + " | Server ID: " + serverid,
-                       prologue_text=("Welcome to PlexGuide.com! Thank you for being part of the Team, the Community & for Your Support!"))
+    menu = ConsoleMenu(edition + " - " + pgversion + " | Ansible: " + ansible + " | Server ID: " + serverid,
+                       prologue_text=("Welcome to PlexGuide.com! Thank You For Your Support & TeamWork!"))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
 
