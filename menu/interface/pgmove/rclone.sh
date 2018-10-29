@@ -17,3 +17,4 @@ rclone config
 mkdir -p /root/.config/rclone/
 chown -R 1000:1000 /root/.config/rclone/
 cp ~/.config/rclone/rclone.conf /root/.config/rclone/
+python3 /opt/plexguide/menu/interface/pgmove/pgmove.py

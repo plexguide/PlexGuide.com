@@ -61,7 +61,7 @@ menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
-rollover_item4 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/pgmove/rclone.sh && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+rollover_item4 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/pgmove/rclone.sh")
 rollover_item2 = RolloverItem("Upload BW Limit : " + bwlimit + " MB", "python3 /opt/plexguide/menu/interface/pgmove/speeds.py && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
 
 if configure == '[Encrypted]':
