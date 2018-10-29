@@ -62,7 +62,7 @@ menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
-command_item2 = CommandItem("Configure RClone: " + configure,"echo && rclone config && mkdir -p /root/.config/rclone/ && chown -R 1000:1000 /root/.config/rclone/ && cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1 && echo")
+rollover_item1 = RolloverItem("Configure RClone: " + configure,"echo && rclone config && mkdir -p /root/.config/rclone/ && chown -R 1000:1000 /root/.config/rclone/ && cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1 && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
 rollover_item2 = RolloverItem("Upload BW Limit : " + bwlimit + " MB", "python3 /opt/plexguide/menu/interface/pgmove/speeds.py && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
 
 if configure == '[Encrypted]':
@@ -74,7 +74,7 @@ else:
     rollover_item3 = RolloverItem("Unable to Deploy - RClone Not Configured", "python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
 
 # Once we're done creating them, we just add the items to the menu
-menu.append_item(command_item2)
+menu.append_item(rollover_item1)
 menu.append_item(rollover_item2)
 menu.append_item(rollover_item3)
 
