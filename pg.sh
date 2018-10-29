@@ -241,3 +241,8 @@ file="/var/plexguide/multi.unionfs"
     else
       echo "0" > /var/plexguide/project.keycount
     fi
+
+  file="/var/plexguide/move.bw"
+  if [ ! -e "$file" ]; then
+    echo "10" > /var/plexguide/move.bw
+  fi
