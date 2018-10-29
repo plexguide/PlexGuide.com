@@ -66,11 +66,11 @@ command_item2 = CommandItem("Configure RClone: " + configure,"echo && rclone con
 rollover_item2 = RolloverItem("Upload BW Limit : " + bwlimit + " MB", "python3 /opt/plexguide/menu/interface/pgmove/speeds.py && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
 
 if configure == '[Encrypted]':
-    command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+    command_item1 = CommandItem("Deploy PG Move - Encrypted /w PG Drives", "ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted")
 elif configure == '[UnEncrypted]':
-    command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+    command_item1 = CommandItem("Deploy PG Move - Unencrypted /w PG Drives", "ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted")
 else:
-    command_item1 = CommandItem("Deploy PG Move /w PG Drives", "bash /opt/plexguide/menu/interface/apps/main.sh")
+    command_item1 = CommandItem("Cannot Deploy - Not Configured", "echo")
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(command_item2)
