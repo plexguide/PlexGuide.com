@@ -59,9 +59,9 @@ item1 = MenuItem("Item 1", menu)
 # A CommandItem runs a console command
 rollover_item4 = RolloverItem("Configure RClone: " + configure, "bash /opt/plexguide/menu/interface/pgmove/rclone.sh")
 if configure == '[GDrive]':
-    rollover_item3 = RolloverItem("Deploy Drives  : Google Drive", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+    rollover_item3 = RolloverItem("Deploy Drives  : Google Drive", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives && python3 /opt/plexguide/menu/interface/pgdrives/pgdrives.py")
 elif configure == '[GDrive /w TeamDrive]':
-    rollover_item3 = RolloverItem("Deploy Drives  : Google Drive /w TeamDrives", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+    rollover_item3 = RolloverItem("Deploy Drives  : Google Drive /w TeamDrives", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives && python3 /opt/plexguide/menu/interface/pgdrives/pgdrives.py")
 else:
     # Future Wise, put Warning Script to Call Bash or Python Script
     rollover_item3 = RolloverItem("Unable to Deploy: RClone Not Configured", "python3 /opt/plexguide/menu/interface/pgdrives/pgdrives.py")
