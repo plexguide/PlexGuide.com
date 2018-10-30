@@ -20,6 +20,7 @@ from subprocess import call
 from consolemenu import *
 from consolemenu.format import *
 from consolemenu.items import *
+
 # Menu Start
 
     # Change some menu formatting
@@ -36,4 +37,22 @@ menu = ConsoleMenu("Welcome to PG Move!",
 menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
+# A CommandItem runs a console command
+rollover_item4 = RolloverItem("Configure RClone: ", "bash /opt/plexguide/menu/interface/pgmove/rclone.sh")
+rollover_item2 = RolloverItem("Upload BW Limit : MB", "python3 /opt/plexguide/menu/interface/pgmove/speeds.py && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+
+if configure == '[Encrypted]':
+    rollover_item3 = RolloverItem("Deploy PG Move  : Encrypted /w PG Drives", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+elif configure == '[UnEncrypted]':
+    rollover_item3 = RolloverItem("Deploy PG Move  : Unencrypted /w PG Drives", "ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml && ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+else:
+    # Future Wise, put Warning Script to Call Bash or Python Script
+    rollover_item3 = RolloverItem("Unable to Deploy: RClone Not Configured", "python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
+
+# Once we're done creating them, we just add the items to the menu
+menu.append_item(rollover_item4)
+menu.append_item(rollover_item2)
+menu.append_item(rollover_item3)
+
+# Finally, we call show to show the menu and allow the user to interact
 menu.start()
