@@ -13,6 +13,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+import time
 # Import for Bash Ending
 from subprocess import call
 
