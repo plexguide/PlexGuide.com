@@ -13,8 +13,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-# Import for Bash Ending
-from subprocess import call
+
 
 # Import for Menu Interface
 from consolemenu import *
