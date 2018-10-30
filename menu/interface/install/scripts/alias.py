@@ -48,4 +48,4 @@ menu.append_item(rollover_item2)
 menu.append_item(rollover_item3)
 
 # Finally, we call show to show the menu and allow the user to interact
-menu.join()
+menu.start()
