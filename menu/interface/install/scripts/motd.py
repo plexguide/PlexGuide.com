@@ -38,3 +38,6 @@ if starter != stored:
 
     # If Successful, Make them Equal to Prevent Future Execution!
     rc = call("cat /var/plexguide/pg.motd > /var/plexguide/pg.motd.stored", shell=True)
+
+    # Sleeps
+    time.sleep(20)
