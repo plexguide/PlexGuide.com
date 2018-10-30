@@ -50,4 +50,4 @@ menu.append_item(rollover_item3)
 # Finally, we call show to show the menu and allow the user to interact
 menu.start()
 
-sleep 3
+time.sleep(4)
