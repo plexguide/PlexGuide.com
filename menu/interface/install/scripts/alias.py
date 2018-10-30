@@ -13,7 +13,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
+# Needed for Sleep Equiv Bash Function
 import time
+
 # Import for Bash Ending
 from subprocess import call
 
