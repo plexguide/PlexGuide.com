@@ -68,8 +68,8 @@ echo "11" > /var/plexguide/pg.python
 # Generate Default YML
 file="/var/plexguide/new.install"
 if [ -e "$file" ]; then
-  bash /opt/plexguide/menu/interface/version/file.sh
   bash /opt/plexguide/menu/interface/install/scripts/python.sh
+  bash /opt/plexguide/menu/interface/version/file.sh
 fi
 bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
