@@ -136,7 +136,7 @@ fi
 #
 #
 ######################################################## START: Alias
-bash /opt/plexguide/menu/interface/install/scripts/alias.sh ### Good
+bash /opt/plexguide/menu/interface/install/scripts/alias.py ### Good
 ######################################################## END: Alias
 #
 #
