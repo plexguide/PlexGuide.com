@@ -33,8 +33,8 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .set_right_margin(2)\
     .show_header_bottom_border(True)
 
-menu = ConsoleMenu("Welcome to PG Move!",
-                   prologue_text=("PG Move is a simple uploader. It is highly recommend that you keep the BW @ 9MB; equaling 750GB per day over a period of 24 horus! If uploading less than 750GB per day, user can increase the speeds! Making Changes? Redeploy PG Move!"))
+menu = ConsoleMenu("Installing: PG Alias ",
+                   prologue_text=("Alias are custom commands such as plexguide, pgfork, pgedge that install on your box!"))
 menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
