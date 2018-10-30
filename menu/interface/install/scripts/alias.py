@@ -32,6 +32,9 @@ with open('/var/plexguide/pg.alias', 'r') as myfile:
 with open('/var/plexguide/pg.alias.stored', 'r') as myfile:
     stored=myfile.read().replace('\n', '')
 
+# If True, then Continue; not, do nothing else
+if starter == stored:
+
 # Menu Start
 
     # Change some menu formatting
