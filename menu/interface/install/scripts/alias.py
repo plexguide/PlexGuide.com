@@ -26,7 +26,7 @@ from consolemenu.items import *
 
     # Change some menu formatting
 menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
-    .set_prompt("SELECT>")\
+    .set_prompt("PLEASE-WAIT>")\
     .set_title_align('left')\
     .set_subtitle_align('left')\
     .set_left_margin(2)\
