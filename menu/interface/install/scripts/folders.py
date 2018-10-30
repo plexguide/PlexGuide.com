@@ -1,4 +1,4 @@
-pg.preinstall#!/usr/bin/env python3
+#!/usr/bin/env python3
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
