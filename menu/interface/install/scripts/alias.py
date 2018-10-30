@@ -41,7 +41,7 @@ item1 = MenuItem("Item 1", menu)
 # A CommandItem runs a console command
 rollover_item1 = RolloverItem("NOTE: PLEASE STANDBY!", "echo")
 # Once we're done creating them, we just add the items to the menu
-menu.append_item(rollover_item)
+menu.append_item(rollover_item1)
 
 # Finally, we call show to show the menu and allow the user to interact
 menu.start()
