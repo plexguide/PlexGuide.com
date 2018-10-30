@@ -62,9 +62,14 @@ echo ""
   fi
 fi
 
+# Ahead to Get Python Installed First
+echo "11" > /var/plexguide/pg.python
+
 # Generate Default YML
 file="/var/plexguide/new.install"
 if [ -e "$file" ]; then
+  bash /opt/plexguide/menu/interface/install/scripts/python.sh
+  clear
   bash /opt/plexguide/menu/interface/version/file.sh
 fi
 bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
@@ -75,7 +80,6 @@ echo "148" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
 echo "10" > /var/plexguide/pg.ansible
 echo "11" > /var/plexguide/pg.rclone
-echo "11" > /var/plexguide/pg.python
 echo "10" > /var/plexguide/pg.docker
 echo "10" > /var/plexguide/pg.id
 echo "20" > /var/plexguide/pg.dependency
@@ -98,6 +102,7 @@ file="/var/plexguide/update.failed"
 if [ -e "$file" ]; then
   exit
 fi
+
 ######################################################## END: Start
 #
 #
@@ -191,7 +196,7 @@ bash /opt/plexguide/menu/interface/install/scripts/gcloud.sh
 #
 #
 ######################################################## START: Python
-bash /opt/plexguide/menu/interface/install/scripts/python.sh &>/dev/null & ### Maybe Good?
+bash /opt/plexguide/menu/interface/install/scripts/python.sh
 ######################################################## END: Python
 #
 #

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & FlickerRate
+# Author:   Admin9705
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -17,18 +17,19 @@
 ######################################################## Declare Variables
 sname="PG Installer: Python"
 pg_python=$( cat /var/plexguide/pg.python )
-pg_python_stored=$( cat /var/plexguide/pg.python.stored )
+
+file="/var/plexguide/pg.python.stored"
+if [ -e "$file" ]; then
+  pg_python_stored=$( cat /var/plexguide/pg.python.stored )
+else
+  pg_python_stored="null"
+fi
+
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
 sudo bash /opt/plexguide/roles/log/log.sh
 ######################################################## START: Main Script
-if [ "$pg_python" == "$pg_python_stored" ]; then
-      echo "" 1>/dev/null 2>&1
-    else
-
-      # Python Installer - Start
-      # Original Authors: l3uddz & desimaniac - cloudbox.rocks                        #
-      #################################################################################
+if [ "$pg_python" != "$pg_python_stored" ]; then
 
       ## Disable IPv6
       grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
@@ -47,7 +48,7 @@ if [ "$pg_python" == "$pg_python_stored" ]; then
       python3-pip \
       python-dev \
       python-pip
-      pip3 install --upgrade --force-reinstall pip==9.0.3
+      pip3 install --upgrade --force-reinstall --disable-pip-version-check  pip==9.0.3 
       pip3 install --upgrade --force-reinstall setuptools
       pip3 install --upgrade --force-reinstall \
       pyOpenSSL \
@@ -57,7 +58,7 @@ if [ "$pg_python" == "$pg_python_stored" ]; then
       google_auth_oauthlib \
       oauth2client \
       lxml
-      pip install --upgrade --force-reinstall pip==9.0.3
+      pip install --upgrade --force-reinstall --disable-pip-version-check  pip==9.0.3
       pip install --upgrade --force-reinstall setuptools
       pip install --upgrade --force-reinstall \
       pyOpenSSL \
