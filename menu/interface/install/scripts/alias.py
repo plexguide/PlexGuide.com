@@ -13,7 +13,8 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
+# Import for Bash Ending
+from subprocess import call
 
 # Import for Menu Interface
 from consolemenu import *
@@ -47,3 +48,5 @@ menu.append_item(rollover_item2)
 menu.append_item(rollover_item3)
 
 # Finally, we call show to show the menu and allow the user to interact
+menu.start()
+menu.join()
