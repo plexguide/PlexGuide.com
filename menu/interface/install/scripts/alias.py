@@ -62,3 +62,6 @@ if starter != stored:
 
     # If Successful, Make them Equal to Prevent Future Execution!
     rc = call("cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored", shell=True)
+
+    # Sleeps
+    time.sleep(3)
