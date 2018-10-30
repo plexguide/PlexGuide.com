@@ -69,6 +69,7 @@ echo "11" > /var/plexguide/pg.python
 file="/var/plexguide/new.install"
 if [ -e "$file" ]; then
   bash /opt/plexguide/menu/interface/install/scripts/python.sh
+  bash /opt/plexguide/menu/interface/install/scripts/pgconsole.sh
   clear
   bash /opt/plexguide/menu/interface/version/file.sh
 fi
