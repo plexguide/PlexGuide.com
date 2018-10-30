@@ -64,7 +64,7 @@ if starter != stored:
     rc = call("cat /var/plexguide/pg.rclone > /var/plexguide/pg.rclone.stored", shell=True)
 
     # Required for RClone to Work
-    rc = call("python3 /opt/plexguide/menu/interface/install/scripts/rclone.sh", shell=True)
+    rc = call("bash /opt/plexguide/menu/interface/install/scripts/rclone.sh", shell=True)
 
     # Sleeps
     time.sleep(3)

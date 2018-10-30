@@ -164,7 +164,7 @@ bash /opt/plexguide/menu/interface/install/scripts/gcloud.sh
 bash /opt/plexguide/menu/interface/install/scripts/python.sh
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-bash /opt/plexguide/menu/interface/install/scripts/rclone.py
+python3 /opt/plexguide/menu/interface/install/scripts/rclone.py
 
 
 # Ensure the PG Common Functions Are Aligned
