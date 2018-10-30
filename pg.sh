@@ -145,6 +145,7 @@ if [ -e "$file" ]; then
 fi
 ######################################################## END: New Install
 python3 /opt/plexguide/menu/interface/install/scripts/alias.py
+python3 /opt/plexguide/menu/interface/install/scripts/motd.py 1>/dev/null 2>&1
 bash /opt/plexguide/menu/interface/install/scripts/id.sh
 python3 /opt/plexguide/menu/interface/install/scripts/dependency.py
 python3 /opt/plexguide/menu/interface/install/scripts/folders.py
