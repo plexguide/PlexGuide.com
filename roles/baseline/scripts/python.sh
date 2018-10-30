@@ -14,7 +14,7 @@ apt-get install -y --reinstall \
     python3-pip \
     python-dev \
     python-pip
-pip3 install --upgrade --force-reinstall pip==9.0.3
+pip3 install --upgrade --force-reinstall --disable-pip-version-check pip==9.0.3
 pip3 install --upgrade --force-reinstall setuptools
 pip3 install --upgrade --force-reinstall \
     pyOpenSSL \
@@ -23,7 +23,7 @@ pip3 install --upgrade --force-reinstall \
     google-api-python-client \
     google_auth_oauthlib \
     arrow
-pip install --upgrade --force-reinstall pip==9.0.3
+pip install --upgrade --force-reinstall --disable-pip-version-check pip==9.0.3
 pip install --upgrade --force-reinstall setuptools
 pip install --upgrade --force-reinstall \
     pyOpenSSL \

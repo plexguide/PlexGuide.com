@@ -48,7 +48,7 @@ if [ "$pg_python" != "$pg_python_stored" ]; then
       python3-pip \
       python-dev \
       python-pip
-      pip3 install --upgrade --force-reinstall pip==9.0.3
+      pip3 install --upgrade --force-reinstall --disable-pip-version-check  pip==9.0.3 
       pip3 install --upgrade --force-reinstall setuptools
       pip3 install --upgrade --force-reinstall \
       pyOpenSSL \
@@ -58,7 +58,7 @@ if [ "$pg_python" != "$pg_python_stored" ]; then
       google_auth_oauthlib \
       oauth2client \
       lxml
-      pip install --upgrade --force-reinstall pip==9.0.3
+      pip install --upgrade --force-reinstall --disable-pip-version-check  pip==9.0.3
       pip install --upgrade --force-reinstall setuptools
       pip install --upgrade --force-reinstall \
       pyOpenSSL \
