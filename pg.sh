@@ -144,84 +144,24 @@ if [ -e "$file" ]; then
   exit
 fi
 ######################################################## END: New Install
-#
-#
-######################################################## START: Alias
 python3 /opt/plexguide/menu/interface/install/scripts/alias.py
-######################################################## END: Alias
-#
-#
-######################################################## START: Server ID
-bash /opt/plexguide/menu/interface/install/scripts/id.sh ### Good
-######################################################## END: Server ID
-#
-#
-######################################################## START: Folders
-bash /opt/plexguide/menu/interface/install/scripts/dependency.sh ### Good
-######################################################## END: Folders
-#
-#
-######################################################## START: Folders
+bash /opt/plexguide/menu/interface/install/scripts/id.sh
+python3 /opt/plexguide/menu/interface/install/scripts/dependency.py
 python3 /opt/plexguide/menu/interface/install/scripts/folders.py
-######################################################## END: Folders
-#
-#
-######################################################## START: Docker
-bash /opt/plexguide/menu/interface/install/scripts/docker.sh ### Test Docker
-######################################################## END: Docker
-#
-#
-######################################################## START: DocStart
+bash /opt/plexguide/menu/interface/install/scripts/docker.sh
 bash /opt/plexguide/menu/interface/install/scripts/docstart.sh ### Good
-######################################################## END: DocStart
-#
-#
-######################################################## START: Portainer
+
 echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off" &>/dev/null &
-######################################################## END: Portainer
-#
-#
-######################################################## START: WatchTower
+
 bash /opt/plexguide/menu/interface/install/scripts/watchtower.sh
-######################################################## END: WatchTower
-#
-#
-######################################################## START: MOTD
 bash /opt/plexguide/menu/interface/install/scripts/motd.sh
-######################################################## END: MOTD
-#
-#
-######################################################## START: RClone
 bash /opt/plexguide/menu/interface/install/scripts/rclone.sh
-######################################################## END: RCone
-#
-#
-######################################################## START: Cleaner
 bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
-######################################################## END: Cleaner
-#
-#
-######################################################## START: G-Console
 bash /opt/plexguide/menu/interface/install/scripts/gcloud.sh
-######################################################## END: G-Console
-#
-#
-######################################################## START: Python
 bash /opt/plexguide/menu/interface/install/scripts/python.sh
-######################################################## END: Python
-#
-#
-######################################################## START: Reboot
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
-######################################################## END: Reboot
-#
-#
-######################################################## START: Edition
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-######################################################## END: Edition
-#
-#
-######################################################## START: Common Functions
+
 # Ensure the PG Common Functions Are Aligned
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 ######################################################## END: Common Functions
@@ -237,24 +177,18 @@ fi
 
 ### For MultiHD Edition
 file="/var/plexguide/multi.unionfs"
-  if [ -e "$file" ]; then
-    echo "" 1>/dev/null 2>&1
-  else
+  if [ ! -e "$file" ]; then
     touch /var/plexguide/multi.unionfs
   fi
 
 ### For PGBlitz - Ensure Not Deployed Start
   file="/var/plexguide/project.deployed"
-    if [ -e "$file" ]; then
-      echo "" 1>/dev/null 2>&1
-    else
+    if [ ! -e "$file" ]; then
       echo "no" > /var/plexguide/project.deployed
     fi
 
   file="/var/plexguide/project.keycount"
-    if [ -e "$file" ]; then
-      echo "" 1>/dev/null 2>&1
-    else
+    if [ ! -e "$file" ]; then
       echo "0" > /var/plexguide/project.keycount
     fi
 
