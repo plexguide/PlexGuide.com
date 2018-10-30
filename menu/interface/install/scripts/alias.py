@@ -39,15 +39,6 @@ menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
-rollover_item4 = RolloverItem("Configure RClone: ", "bash /opt/plexguide/menu/interface/pgmove/rclone.sh")
-rollover_item2 = RolloverItem("Upload BW Limit : MB", "python3 /opt/plexguide/menu/interface/pgmove/speeds.py && python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
-rollover_item3 = RolloverItem("Unable to Deploy: RClone Not Configured", "python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
-
-# Once we're done creating them, we just add the items to the menu
-menu.append_item(rollover_item4)
-menu.append_item(rollover_item2)
-menu.append_item(rollover_item3)
-
 # Finally, we call show to show the menu and allow the user to interact
 menu.start()
 
