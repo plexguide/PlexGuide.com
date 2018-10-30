@@ -69,6 +69,7 @@ echo "11" > /var/plexguide/pg.python
 file="/var/plexguide/new.install"
 if [ -e "$file" ]; then
   bash /opt/plexguide/menu/interface/version/file.sh
+  bash /opt/plexguide/menu/interface/install/scripts/python.sh
 fi
 bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
@@ -195,7 +196,7 @@ bash /opt/plexguide/menu/interface/install/scripts/gcloud.sh
 #
 #
 ######################################################## START: Python
-bash /opt/plexguide/menu/interface/install/scripts/python.sh &>/dev/null & ### Maybe Good?
+bash /opt/plexguide/menu/interface/install/scripts/python.sh
 ######################################################## END: Python
 #
 #
