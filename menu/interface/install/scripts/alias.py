@@ -22,6 +22,13 @@ from consolemenu import *
 from consolemenu.format import *
 from consolemenu.items import *
 
+# Call Variables
+with open('/var/plexguide/pg.alias', 'r') as myfile:
+    starter=myfile.read().replace('\n', '')
+
+with open('/var/plexguide/pg.alias.stored', 'r') as myfile:
+    stored=myfile.read().replace('\n', '')
+
 # Menu Start
 
     # Change some menu formatting
