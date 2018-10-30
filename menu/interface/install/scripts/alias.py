@@ -20,11 +20,6 @@ import time
 # Import for Bash Ending
 from subprocess import call
 
-# Import for Menu Interface
-from consolemenu import *
-from consolemenu.format import *
-from consolemenu.items import *
-
 # Install PlexGuide Console if Missing
 rc = call("pip list --format columns --disable-pip-version-check | grep plexguide-menu > /var/plexguide/apip.check", shell=True)
 
@@ -33,6 +28,11 @@ with open('/var/plexguide/apip.check', 'r') as myfile:
 
     if apip == '':
         rc = call("echo && echo 'Standby - Installing: PG Interface v0.0.3' && sleep 4 && echo && pip install git+git://github.com/Admin9705/plexguide-menu.git --disable-pip-version-check", shell=True)
+
+# Import for Menu Interface
+from consolemenu import *
+from consolemenu.format import *
+from consolemenu.items import *
 
 # If a Variable is Missing, this will ensure it's there
 rc = call("touch /var/plexguide/pg.alias.stored", shell=True)
