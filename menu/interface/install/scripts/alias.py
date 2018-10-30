@@ -58,7 +58,7 @@ if starter == stored:
     time.sleep(5)
 
     # Execute Ansible Function
-    ansible-playbook /opt/plexguide/menu/interface/alias/main.yml
+    rc = call("ansible-playbook /opt/plexguide/menu/interface/alias/main.yml", shell=True)
 
     # If Successful, Make them Equal to Prevent Future Execution!
     rc = call("cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored", shell=True)
