@@ -19,6 +19,13 @@ rm -r /opt/plexguide/menu/interface/version/version.sh
 sudo mkdir -p /opt/plexguide/menu/interface/version/
 sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
 
+# Ensure Server Path Exists
+mkdir -p /var/plexguide
+file="/var/plexguide/server.hd.path"
+if [ ! -e "$file" ]; then
+      echo "/mnt" > /var/plexguide/server.hd.path
+fi
+
 # Check Install
 file="/var/plexguide/ub.check"
 if [ ! -e "$file" ]; then
@@ -155,7 +162,7 @@ bash /opt/plexguide/menu/interface/install/scripts/dependency.sh ### Good
 #
 #
 ######################################################## START: Folders
-bash /opt/plexguide/menu/interface/install/scripts/folders.sh ### Good
+python3 /opt/plexguide/menu/interface/install/scripts/folders.py
 ######################################################## END: Folders
 #
 #
