@@ -23,7 +23,7 @@ from consolemenu.format import *
 from consolemenu.items import *
 
 # If a Variable is Missing, this will ensure it's there
-rc = call("file='/var/plexguide/pg.alias.stored' && if [ -e '$file' ]; then exit; fi", shell=True)
+rc = call("touch /var/plexguide/pg.alias.stored", shell=True)
 
 # Call Variables
 with open('/var/plexguide/pg.alias', 'r') as myfile:
