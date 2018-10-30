@@ -48,7 +48,7 @@ if starter != stored:
         .show_header_bottom_border(True)
 
     menu = ConsoleMenu("INSTALLING: PG Folders",
-                       prologue_text=("Installing Default Folders & Setting Permissions for You! PLEASE STANDBY!"))
+                       prologue_text=("Installing Default PG Folders & Setting Permissions! PLEASE STANDBY!"))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
     # Finally, we call show to show the menu and allow the user to interact
