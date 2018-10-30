@@ -162,7 +162,7 @@ bash /opt/plexguide/menu/interface/install/scripts/dependency.sh ### Good
 #
 #
 ######################################################## START: Folders
-bash /opt/plexguide/menu/interface/install/scripts/folders.sh ### Good
+python3 /opt/plexguide/menu/interface/install/scripts/folders.py
 ######################################################## END: Folders
 #
 #
