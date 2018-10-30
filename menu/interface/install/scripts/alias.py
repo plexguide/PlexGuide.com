@@ -34,7 +34,7 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .show_header_bottom_border(True)
 
 menu = ConsoleMenu("INSTALLING: PG Alias",
-                   prologue_text=("Alias are custom commands such as plexguide, pgfork, pgedge that install on your box!"))
+                   prologue_text=("Alias are custom commands such as plexguide, pgfork, pgedge that install on your box! PLEASE STANDBY!"))
 menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 # Finally, we call show to show the menu and allow the user to interact
