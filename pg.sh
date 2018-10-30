@@ -159,12 +159,13 @@ echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/pro
 
 bash /opt/plexguide/menu/interface/install/scripts/watchtower.sh
 bash /opt/plexguide/menu/interface/install/scripts/motd.sh
-bash /opt/plexguide/menu/interface/install/scripts/rclone.sh
 bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
 bash /opt/plexguide/menu/interface/install/scripts/gcloud.sh
 bash /opt/plexguide/menu/interface/install/scripts/python.sh
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
+bash /opt/plexguide/menu/interface/install/scripts/rclone.py
+
 
 # Ensure the PG Common Functions Are Aligned
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
