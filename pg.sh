@@ -77,6 +77,7 @@ bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
 
+bash /opt/plexguide/menu/interface/install/scripts/python.sh
 python3 /opt/plexguide/menu/interface/install/scripts/pgconsole.py
  # Force Common Things To Execute Such as Folders
 echo "148" > /var/plexguide/pg.preinstall
