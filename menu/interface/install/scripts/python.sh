@@ -57,6 +57,13 @@ if [ "$pg_python" != "$pg_python_stored" ]; then
       google_auth_oauthlib \
       oauth2client \
       lxml
+      pip install --upgrade --force-reinstall --disable-pip-version-check pip==18.1
+      pip install --upgrade --force-reinstall setuptools
+      pip install --upgrade --force-reinstall \
+      pyOpenSSL \
+      requests \
+      netaddr \
+	    lxml
           #ansible==${1-2.5.4}
       ## Copy pip to /usr/bin
       cp /usr/local/bin/pip /usr/bin/pip
