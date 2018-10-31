@@ -26,13 +26,13 @@ from consolemenu.format import *
 from consolemenu.items import *
 
 # If a Variable is Missing, this will ensure it's there
-rc = call("touch /var/plexguide/pg.dependency.stored", shell=True)
+rc = call("touch /var/plexguide/pg.gcloud.stored", shell=True)
 
 # Call Variables
-with open('/var/plexguide/pg.dependency', 'r') as myfile:
+with open('/var/plexguide/pg.gcloud', 'r') as myfile:
     starter=myfile.read().replace('\n', '')
 
-with open('/var/plexguide/pg.dependency.stored', 'r') as myfile:
+with open('/var/plexguide/pg.gcloud.stored', 'r') as myfile:
     stored=myfile.read().replace('\n', '')
 
 # (MENU START) If True, then Continue; If Not, Do Nothing!
@@ -64,7 +64,7 @@ if starter != stored:
     rc = call("sudo apt-get update && sudo apt-get install google-cloud-sdk -y", shell=True)
 
     # If Successful, Make them Equal to Prevent Future Execution!
-    rc = call("cat /var/plexguide/pg.dependency > /var/plexguide/pg.dependency.stored", shell=True)
+    rc = call("cat /var/plexguide/pg.gcloud > /var/plexguide/pg.gcloud.stored", shell=True)
 
     # Sleeps
     time.sleep(3)
