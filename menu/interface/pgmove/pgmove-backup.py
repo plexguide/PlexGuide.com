@@ -23,9 +23,9 @@ rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tcrypt' | he
 rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt", shell=True)
 
 # Import for Menu Interface
-from pgmenu import *
-from pgmenu.format import *
-from pgmenu.items import *
+from plexguide-menu import *
+from plexguide-menu.format import *
+from plexguide-menu.items import *
 
 # Call Variables
 with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
@@ -53,7 +53,7 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .set_right_margin(2)\
     .show_header_bottom_border(True)
 
-menu = pgmenu("EMPTY", formatter=menu_format)
+menu = plexguide-menu("EMPTY", formatter=menu_format)
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command

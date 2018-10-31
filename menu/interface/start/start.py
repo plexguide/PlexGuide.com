@@ -17,18 +17,18 @@
 from subprocess import call
 
 # Pip Install Menu Fails to Exist
-rc = call("pip list --format columns --disable-pip-version-check | grep pgmenu > /var/plexguide/apip.check", shell=True)
+rc = call("pip list --format columns --disable-pip-version-check | grep plexguide-menu > /var/plexguide/apip.check", shell=True)
 
 with open('/var/plexguide/apip.check', 'r') as myfile:
     apip=myfile.read().replace('\n', '')
 
     if apip == '':
-        rc = call("echo && echo 'Standby - Installing: PG Interface v0.0.3' && sleep 4 && echo && pip install git+git://github.com/Admin9705/pgmenu.git --disable-pip-version-check", shell=True)
+        rc = call("echo && echo 'Standby - Installing: PG Interface v0.0.3' && sleep 4 && echo && pip install git+git://github.com/Admin9705/plexguide-menu.git --disable-pip-version-check", shell=True)
 
 # Import for Menu Interface
-from pgmenu import *
-from pgmenu.format import *
-from pgmenu.items import *
+from plexguide-menu import *
+from plexguide-menu.format import *
+from plexguide-menu.items import *
 
 # Call Variables
 with open('/var/plexguide/pg.edition', 'r') as myfile:
@@ -86,7 +86,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = pgmenu("Welcome to PlexGuide.com! Thanks for Being Part of the Community!",
+    menu = plexguide-menu("Welcome to PlexGuide.com! Thanks for Being Part of the Community!",
                        prologue_text=(edition + " - " + pgversion + " | Server ID: " + serverid))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
