@@ -23,9 +23,9 @@ rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tcrypt' | he
 rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt", shell=True)
 
 # Import for Menu Interface
-from plexguide-menu import *
-from plexguide-menu.format import *
-from plexguide-menu.items import *
+from consolemenu import *
+from consolemenu.format import *
+from consolemenu.items import *
 
 # Call Variables
 with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
@@ -55,7 +55,7 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .set_right_margin(2)\
     .show_header_bottom_border(True)
 
-menu = plexguide-menu("Welcome to PG Move!",
+menu = ConsoleMenu("Welcome to PG Move!",
                    prologue_text=("PG Move is a simple uploader. It is highly recommend that you keep the BW @ 9MB; equaling 750GB per day over a period of 24 horus! If uploading less than 750GB per day, user can increase the speeds! Making Changes? Redeploy PG Move!"))
 menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)

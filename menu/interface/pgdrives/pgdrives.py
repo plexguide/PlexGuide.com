@@ -21,9 +21,9 @@ rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tdrive' | he
 rc = call("cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive", shell=True)
 
 # Import for Menu Interface
-from plexguide-menu import *
-from plexguide-menu.format import *
-from plexguide-menu.items import *
+from consolemenu import *
+from consolemenu.format import *
+from consolemenu.items import *
 
 # Call Variables
 with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
@@ -51,7 +51,7 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .set_right_margin(2)\
     .show_header_bottom_border(True)
 
-menu = plexguide-menu("Welcome to PG Drives!",
+menu = ConsoleMenu("Welcome to PG Drives!",
                    prologue_text=("The PG Drives option is only for READ ONLY Servers! When you deploy this, there is no movement of files! Your Google Drive (and TeamDrive if Configured) are deployed! This is great for a PLEX Only Server & etc!"))
 menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)

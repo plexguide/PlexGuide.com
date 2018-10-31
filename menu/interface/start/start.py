@@ -26,9 +26,9 @@ with open('/var/plexguide/apip.check', 'r') as myfile:
         rc = call("echo && echo 'Standby - Installing: PG Interface v0.0.3' && sleep 4 && echo && pip install git+git://github.com/Admin9705/plexguide-menu.git --disable-pip-version-check", shell=True)
 
 # Import for Menu Interface
-from plexguide-menu import *
-from plexguide-menu.format import *
-from plexguide-menu.items import *
+from consolemenu import *
+from consolemenu.format import *
+from consolemenu.items import *
 
 # Call Variables
 with open('/var/plexguide/pg.edition', 'r') as myfile:
@@ -86,7 +86,7 @@ with open('/var/plexguide/traefik.deployed', 'r') as myfile:
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = plexguide-menu("Welcome to PlexGuide.com! Thanks for Being Part of the Community!",
+    menu = ConsoleMenu("Welcome to PlexGuide.com! Thanks for Being Part of the Community!",
                        prologue_text=(edition + " - " + pgversion + " | Server ID: " + serverid))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
