@@ -15,9 +15,9 @@
 #################################################################################
 
 # Import for Menu Interface
-from plexguide-menu import *
-from plexguide-menu.format import *
-from plexguide-menu.items import *
+from pgmenu import *
+from pgmenu.format import *
+from pgmenu.items import *
 
 # Call Variables
 with open('/var/plexguide/pg.edition', 'r') as myfile:
@@ -33,7 +33,7 @@ def main():
         .set_right_margin(2)\
         .show_header_bottom_border(False)
 
-    menu = plexguide-menu("PG Data Transport System Interface", formatter=menu_format)
+    menu = pgmenu("PG Data Transport System Interface", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
     # A CommandItem runs a console command
