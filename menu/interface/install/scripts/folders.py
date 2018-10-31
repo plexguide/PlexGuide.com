@@ -21,9 +21,9 @@ import time
 from subprocess import call
 
 # Import for Menu Interface
-from consolemenu import *
-from consolemenu.format import *
-from consolemenu.items import *
+from plexguide-menu import *
+from plexguide-menu.format import *
+from plexguide-menu.items import *
 
 # If a Variable is Missing, this will ensure it's there
 rc = call("touch /var/plexguide/pg.preinstall.stored", shell=True)
@@ -47,7 +47,7 @@ if starter != stored:
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = ConsoleMenu("INSTALLING: PG Folders",
+    menu = plexguide-menu("INSTALLING: PG Folders",
                        prologue_text=("Installing Default PG Folders & Setting Permissions! PLEASE STANDBY!"))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
