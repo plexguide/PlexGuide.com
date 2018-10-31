@@ -26,13 +26,13 @@ from consolemenu.format import *
 from consolemenu.items import *
 
 # If a Variable is Missing, this will ensure it's there
-rc = call("touch /var/plexguide/pg.alias.stored", shell=True)
+rc = call("touch /var/plexguide/pg.dependency.stored", shell=True)
 
 # Call Variables
-with open('/var/plexguide/pg.alias', 'r') as myfile:
+with open('/var/plexguide/pg.dependency', 'r') as myfile:
     starter=myfile.read().replace('\n', '')
 
-with open('/var/plexguide/pg.alias.stored', 'r') as myfile:
+with open('/var/plexguide/pg.dependency.stored', 'r') as myfile:
     stored=myfile.read().replace('\n', '')
 
 # (MENU START) If True, then Continue; If Not, Do Nothing!
@@ -47,8 +47,8 @@ if starter != stored:
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = ConsoleMenu("INSTALLING: PG Alias",
-                       prologue_text=("Alias are custom commands such as plexguide, pgfork, pgedge that install on your box! PLEASE STANDBY!"))
+    menu = ConsoleMenu("INSTALLING: PG Dependencies",
+                       prologue_text=("Installing Ubuntu Dependencies for PG! PLEASE STANDBY!"))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
     # Finally, we call show to show the menu and allow the user to interact
@@ -58,10 +58,10 @@ if starter != stored:
     time.sleep(5)
 
     # Execute Ansible Function
-    rc = call("ansible-playbook /opt/plexguide/menu/interface/alias/main.yml", shell=True)
+    rc = call("ansible-playbook /opt/plexguide/pg.yml --tags dependency", shell=True)
 
     # If Successful, Make them Equal to Prevent Future Execution!
-    rc = call("cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored", shell=True)
+    rc = call("cat /var/plexguide/pg.dependency > /var/plexguide/pg.dependency.stored", shell=True)
 
     # Sleeps
     time.sleep(3)
