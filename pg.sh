@@ -137,10 +137,11 @@ if [ -e "$file" ]; then
   else
   echo off > /tmp/program_source
   bash /opt/plexguide/roles/versions/main.sh
-  dialog --title "--- NEW INSTALL ---" --msgbox "\nExiting PG to install the Selected Version!\n\nType 'plexguide' again to complete the process!" 0 0
   clear
   touch /var/plexguide/new.install
   bash /opt/plexguide/roles/ending/ending.sh
+  echo 
+  echo "Type 'plexguide' again to complete the process!"
   exit
 fi
 ######################################################## END: New Install
