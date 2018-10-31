@@ -58,7 +58,7 @@ if starter != stored:
     time.sleep(5)
 
     # Execute Ansible Function
-    rc = call("ansible-playbook /opt/plexguide/pg.yml --tags rclone", shell=True)
+    rc = call("ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall", shell=True)
 
     # If Successful, Make them Equal to Prevent Future Execution!
     rc = call("cat /var/plexguide/pg.rclone > /var/plexguide/pg.rclone.stored", shell=True)
