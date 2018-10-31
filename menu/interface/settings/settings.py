@@ -15,9 +15,9 @@
 #################################################################################
 
 # Import for Menu Interface
-from pgmenu import *
-from pgmenu.format import *
-from pgmenu.items import *
+from consolemenu import *
+from consolemenu.format import *
+from consolemenu.items import *
 
 # Call Variables
 with open('/var/plexguide/pg.edition', 'r') as myfile:
@@ -33,10 +33,10 @@ def main():
         .set_right_margin(2)\
         .show_header_bottom_border(False)
 
-    menu = PGMenu("Settings Interface Menu", formatter=menu_format)
+    menu = ConsoleMenu("Settings Interface Menu", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
-    # A CommandItem runs a pg command
+    # A CommandItem runs a console command
     command_item1 = CommandItem("Download Path  : Change the Processing Location", "bash /opt/plexguide/menu/interface/dlpath/main.sh")
     command_item2 = CommandItem("Processor      : Enhance Processing Power", "bash /opt/plexguide/roles/processor/scripts/processor-menu.sh")
     command_item3 = CommandItem("Kernal Modes   : Enhance Network Throughput", "bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh")

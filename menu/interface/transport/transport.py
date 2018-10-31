@@ -15,9 +15,9 @@
 #################################################################################
 
 # Import for Menu Interface
-from pgmenu import *
-from pgmenu.format import *
-from pgmenu.items import *
+from consolemenu import *
+from consolemenu.format import *
+from consolemenu.items import *
 
 # Call Variables
 with open('/var/plexguide/pg.edition', 'r') as myfile:
@@ -33,10 +33,10 @@ def main():
         .set_right_margin(2)\
         .show_header_bottom_border(False)
 
-    menu = PGMenu("PG Data Transport System Interface", formatter=menu_format)
+    menu = ConsoleMenu("PG Data Transport System Interface", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
-    # A CommandItem runs a pg command
+    # A CommandItem runs a console command
     command_item1 = CommandItem("PG Move   | Unencrypt & Encrypt | 750 GB Daily Upload | Simple ", "python3 /opt/plexguide/menu/interface/pgmove/pgmove.py")
     command_item2 = CommandItem("PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex", "bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh")
     command_item3 = CommandItem("PG Drives | Unencrypted         | Read Only Servers   | Simple ", "python3 /opt/plexguide/menu/interface/pgdrives/pgdrives.py")

@@ -76,7 +76,7 @@ echo "11" > /var/plexguide/pg.python
 file="/var/plexguide/new.install"
 if [ -e "$file" ]; then
   bash /opt/plexguide/menu/interface/install/scripts/python.sh
-  python3 /opt/plexguide/menu/interface/install/scripts/pgpg.py
+  python3 /opt/plexguide/menu/interface/install/scripts/pgconsole.py
   clear
   bash /opt/plexguide/menu/interface/version/file.sh
 fi
@@ -85,7 +85,7 @@ bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 mkdir -p /var/plexguide
 
 bash /opt/plexguide/menu/interface/install/scripts/python.sh
-python3 /opt/plexguide/menu/interface/install/scripts/pgpg.py
+python3 /opt/plexguide/menu/interface/install/scripts/pgconsole.py
  # Force Common Things To Execute Such as Folders
 echo "148" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute

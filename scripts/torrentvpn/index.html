@@ -91,7 +91,7 @@ When you first launch Portianer select "Local" as the Docker Endpoint to Manage.
 If you notice the <b><u>Minio</u></b> container reporting as "Unhealthy" in Portainer from the commandline on your Mediabox server run this:<br />
 <code>$ docker exec minio sed -i "s/404/403/g" /usr/bin/healthcheck.sh</code><br />
 OR <br>
-From the Minio pg in Portainer (Select /bin/sh) run just this: <code>sed -i "s/404/403/g" /usr/bin/healthcheck.sh</code>
+From the Minio console in Portainer (Select /bin/sh) run just this: <code>sed -i "s/404/403/g" /usr/bin/healthcheck.sh</code>
 <br /><br />
 <b><u>Watchtower</u></b><br />
 The Watchtower container will monitor the Portainer container, if there is an update to the Portaner base image<br />

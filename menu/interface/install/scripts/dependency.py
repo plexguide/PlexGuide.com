@@ -21,9 +21,9 @@ import time
 from subprocess import call
 
 # Import for Menu Interface
-from pgmenu import *
-from pgmenu.format import *
-from pgmenu.items import *
+from consolemenu import *
+from consolemenu.format import *
+from consolemenu.items import *
 
 # If a Variable is Missing, this will ensure it's there
 rc = call("touch /var/plexguide/pg.dependency.stored", shell=True)
@@ -47,7 +47,7 @@ if starter != stored:
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = PGMenu("INSTALLING: PG Dependencies",
+    menu = ConsoleMenu("INSTALLING: PG Dependencies",
                        prologue_text=("Installing Ubuntu Dependencies for PG! PLEASE STANDBY!"))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
