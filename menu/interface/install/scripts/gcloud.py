@@ -47,8 +47,8 @@ if starter != stored:
         .set_right_margin(2)\
         .show_header_bottom_border(True)
 
-    menu = ConsoleMenu("INSTALLING: PG Dependencies",
-                       prologue_text=("Installing Ubuntu Dependencies for PG! PLEASE STANDBY!"))
+    menu = ConsoleMenu("INSTALLING: Google Cloud SDK",
+                       prologue_text=("Assist with Installing Keys & Deploy Google VM's! PLEASE STANDBY!"))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
     # Finally, we call show to show the menu and allow the user to interact
