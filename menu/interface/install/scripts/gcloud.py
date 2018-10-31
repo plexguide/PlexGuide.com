@@ -58,10 +58,7 @@ if starter != stored:
     time.sleep(5)
 
     # Execute Script
-    rc = call("export CLOUD_SDK_REPO='cloud-sdk-$(lsb_release -c -s)'", shell=True)
-    rc = call("echo 'deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main' | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list", shell=True)
-    rc = call("curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add", shell=True)
-    rc = call("sudo apt-get update && sudo apt-get install google-cloud-sdk -y", shell=True)
+    rc = call("bash /opt/plexguide/menu/interface/install/scripts/gcloud.sh", shell=True)
 
     # If Successful, Make them Equal to Prevent Future Execution!
     rc = call("cat /var/plexguide/pg.gcloud > /var/plexguide/pg.gcloud.stored", shell=True)
