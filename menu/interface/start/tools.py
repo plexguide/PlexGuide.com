@@ -15,9 +15,9 @@
 #################################################################################
 
 # Import for Menu Interface
-from consolemenu import *
-from consolemenu.format import *
-from consolemenu.items import *
+from pgmenu import *
+from pgmenu.format import *
+from pgmenu.items import *
 
 # Call Variables
 with open('/var/plexguide/pg.edition', 'r') as myfile:
@@ -33,10 +33,10 @@ def main():
         .set_right_margin(2)\
         .show_header_bottom_border(False)
 
-    menu = ConsoleMenu("Tools Interface Menu", formatter=menu_format)
+    menu = PGMenu("Tools Interface Menu", formatter=menu_format)
     item1 = MenuItem("Item 1", menu)
 
-    # A CommandItem runs a console command
+    # A CommandItem runs a pg command
     if edition == 'PG Edition - HD Solo':
         command_item1 = CommandItem("No Backup System", 'echo corn')
     elif edition == 'PG Edition - HD Multi':

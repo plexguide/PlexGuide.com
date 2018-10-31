@@ -16,7 +16,7 @@
 
 # Import for Bash Ending
 from subprocess import call
-# Install PlexGuide Console if Missing
+# Install PlexGuide PG if Missing
 rc = call("pip list --format columns --disable-pip-version-check | grep plexguide-menu > /var/plexguide/apip.check", shell=True)
 
 with open('/var/plexguide/apip.check', 'r') as myfile:

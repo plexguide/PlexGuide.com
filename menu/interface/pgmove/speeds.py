@@ -17,9 +17,9 @@
 from subprocess import call
 
 # Import for Menu Interface
-from consolemenu import *
-from consolemenu.format import *
-from consolemenu.items import *
+from pgmenu import *
+from pgmenu.format import *
+from pgmenu.items import *
 
 # Call Variables
 with open('/var/plexguide/move.bw', 'r') as myfile:
@@ -36,12 +36,12 @@ menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAV
     .set_right_margin(2)\
     .show_header_bottom_border(True)
 
-menu = ConsoleMenu("PG Move Bandwidth Upload Limit - " + bwlimit + " MB",
+menu = PGMenu("PG Move Bandwidth Upload Limit - " + bwlimit + " MB",
                    prologue_text=("NOTE: 9MB is SAFE to AVOID the Upload Ban!"))
 menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
-# A CommandItem runs a console command
+# A CommandItem runs a pg command
 rollover_item1 = RolloverItem("1   MB", "echo '2' > /var/plexguide/move.bw")
 rollover_item2 = RolloverItem("2   MB", "echo '2' > /var/plexguide/move.bw")
 rollover_item3 = RolloverItem("5   MB", "echo '5' > /var/plexguide/move.bw")
