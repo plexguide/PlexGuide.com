@@ -90,7 +90,7 @@ python3 /opt/plexguide/menu/interface/install/scripts/pgconsole.py
 echo "148" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
 echo "10" > /var/plexguide/pg.ansible
-echo "11" > /var/plexguide/pg.rclone
+echo "12" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.docker
 echo "10" > /var/plexguide/pg.id
 echo "20" > /var/plexguide/pg.dependency
@@ -165,7 +165,6 @@ bash /opt/plexguide/menu/interface/install/scripts/python.sh
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
 python3 /opt/plexguide/menu/interface/install/scripts/rclone.py
-
 
 # Ensure the PG Common Functions Are Aligned
 cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
