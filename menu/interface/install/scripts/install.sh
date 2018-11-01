@@ -38,15 +38,21 @@ python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     netaddr
 python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==18.1
 python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pyOpenSSL \
-    requests \
-    netaddr \
-    ansible==${1-2.5.11}
+python -m pip install --disable-pip-version-check --upgrade --force-reinstall ansible==${1-2.5.11}
 
 ## Copy pip to /usr/bin
 cp /usr/local/bin/pip /usr/bin/pip
 cp /usr/local/bin/pip3 /usr/bin/pip3
+
+mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
+echo "[local]" > /etc/ansible/inventories/local
+echo "127.0.0.1 ansible_connection=local" >> /etc/ansible/inventories/local
+
+### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
+echo "[defaults]" > /etc/ansible/ansible.cfg
+echo "command_warnings = False" >> /etc/ansible/ansible.cfg
+echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
+echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
 
 apt-get install dialog -y
 git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
@@ -63,6 +69,8 @@ python3 /opt/plexguide/menu/interface/install/scripts/pgconsole.py
 
 ## Variables Need to Line Up with pg.sh (start)
 echo "11" > /var/plexguide/pg.python
+echo "10" > /var/plexguide/pg.ansible
+
 clear
 
 echo "Execute PlexGuide Anytime By Typing: plexguide"

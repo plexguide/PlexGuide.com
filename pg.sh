@@ -52,11 +52,11 @@ mkdir -p /var/plexguide
 
 # Ensure Variables Line Up With Installer If Changed
 echo "11" > /var/plexguide/pg.python
+echo "10" > /var/plexguide/pg.ansible
 
 # Force Common Things To Execute Such as Folders
 echo "148" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
-echo "10" > /var/plexguide/pg.ansible
 echo "12" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.docker
 echo "10" > /var/plexguide/pg.id
