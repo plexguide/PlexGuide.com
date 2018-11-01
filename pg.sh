@@ -122,7 +122,7 @@ bash /opt/plexguide/menu/interface/install/scripts/docstart.sh ### Good
 echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off" &>/dev/null &
 
 bash /opt/plexguide/menu/interface/install/scripts/watchtower.sh
-bash /opt/plexguide/menu/interface/install/scripts/motd.sh
+bash /opt/plexguide/menu/interface/install/scripts/motd.py
 bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
 python3 /opt/plexguide/menu/interface/install/scripts/gcloud.py
 bash /opt/plexguide/menu/interface/install/scripts/python.sh
