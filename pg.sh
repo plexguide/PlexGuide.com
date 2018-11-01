@@ -47,7 +47,6 @@ bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
 
-
 # Force Common Things To Execute Such as Folders
 echo "148" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
@@ -81,13 +80,11 @@ fi
 #
 #
 ######################################################## START: Ansible
-bash /opt/plexguide/menu/interface/install/scripts/ansible.sh ### Good
+#bash /opt/plexguide/menu/interface/install/scripts/ansible.sh ### Good
 ######################################################## END: Ansible
 #
 #
 ######################################################## START: New Install
-
-rm -rf /var/plexguide/new.install 1>/dev/null 2>&1
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
   file2="/var/plexguide/pg.number"
@@ -130,8 +127,6 @@ bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
 python3 /opt/plexguide/menu/interface/install/scripts/rclone.py
 
-# Ensure the PG Common Functions Are Aligned
-cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 ######################################################## END: Common Functions
 #
 #
