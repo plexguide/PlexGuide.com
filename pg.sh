@@ -50,6 +50,9 @@ bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
 
+# Ensure Variables Line Up With Installer If Changed
+echo "11" > /var/plexguide/pg.python
+
 # Force Common Things To Execute Such as Folders
 echo "148" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
@@ -62,7 +65,6 @@ echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
 echo "65" > /var/plexguide/pg.alias
-echo "11" > /var/plexguide/pg.python
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
