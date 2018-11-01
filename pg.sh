@@ -99,7 +99,7 @@ if [ -e "$file" ]; then
 
   else
   echo off > /tmp/program_source
-  bash /opt/plexguide/roles/versions/main.sh
+  bash /opt/plexguide/menu/interface/version/file.sh
   clear
   touch /var/plexguide/new.install
   bash /opt/plexguide/roles/ending/ending.sh
