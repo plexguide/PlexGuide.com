@@ -83,7 +83,7 @@ fi
 #
 #
 ######################################################## START: Ansible
-#bash /opt/plexguide/menu/interface/install/scripts/ansible.sh ### Good
+bash /opt/plexguide/menu/interface/install/scripts/ansible.sh ### Good
 ######################################################## END: Ansible
 #
 #
