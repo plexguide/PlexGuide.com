@@ -21,16 +21,6 @@ from consolemenu import *
 from consolemenu.format import *
 from consolemenu.items import *
 
-# Call Variables
-with open('/var/plexguide/rclone.gdrive', 'r') as myfile:
-    gdrive=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/rclone.gcrypt', 'r') as myfile:
-    gcrypt=myfile.read().replace('\n', '')
-
-with open('/var/plexguide/move.bw', 'r') as myfile:
-    bwlimit=myfile.read().replace('\n', '')
-
 # Menu Start
     # Change some menu formatting
 menu_format = MenuFormatBuilder().set_border_style_type(MenuBorderStyleType.HEAVY_BORDER)\
