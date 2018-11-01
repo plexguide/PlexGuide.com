@@ -37,6 +37,12 @@ if [ "$pg_python" != "$pg_python_stored" ]; then
       grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
       sysctl -p
 
+      add-apt-repository main
+      add-apt-repository universe
+      add-apt-repository restricted
+      add-apt-repository multiverse
+      apt-get update
+
       ## Install Dependencies
       apt-get install -y --reinstall
       git \
@@ -47,9 +53,9 @@ if [ "$pg_python" != "$pg_python_stored" ]; then
       python3-pip \
       python-dev \
       python-pip
-      pip3 install --upgrade --force-reinstall --disable-pip-version-check pip==18.1
-      pip3 install --upgrade --force-reinstall setuptools
-      pip3 install --upgrade --force-reinstall \
+      pip install --upgrade --force-reinstall --disable-pip-version-check pip==18.1
+      pip install --upgrade --force-reinstall setuptools
+      pip install --upgrade --force-reinstall \
       pyOpenSSL \
       requests \
       netaddr \
