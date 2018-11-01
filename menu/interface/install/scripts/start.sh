@@ -34,7 +34,6 @@ else
     yes | apt-get install software-properties-common
     yes | apt-get install sysstat nmon
     sed -i 's/false/true/g' /etc/default/sysstat
-    echo "INFO - Conducted a System Update" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
 ######################################################## END: Main Script
 #
