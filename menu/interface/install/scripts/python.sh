@@ -53,19 +53,15 @@ if [ "$pg_python" != "$pg_python_stored" ]; then
       python3-pip \
       python-dev \
       python-pip
-      python3 install --upgrade --force-reinstall --disable-pip-version-check pip==18.1
-      python3 install --upgrade --force-reinstall setuptools
-      python3 install --upgrade --force-reinstall \
-      pyOpenSSL \
-      requests \
-      netaddr \
-      google-api-python-client \
-      google_auth_oauthlib \
-      oauth2client \
-      lxml
-      python3 install --upgrade --force-reinstall --disable-pip-version-check pip==18.1
-      python3 install --upgrade --force-reinstall setuptools
-      python3 install --upgrade --force-reinstall \
+      python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==18.1
+      python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
+      python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+          pyOpenSSL \
+          requests \
+          netaddr
+      python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==18.1
+      python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
+      python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
       pyOpenSSL \
       requests \
       netaddr \
