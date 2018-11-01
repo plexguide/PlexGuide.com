@@ -58,7 +58,7 @@ if starter != stored:
     time.sleep(5)
 
     import os
-    os.system('python3 id2.py')
+    os.system('python3 /opt/plexguide/menu/interface/install/scripts/id2.py')
 
     # If Successful, Make them Equal to Prevent Future Execution!
     rc = call("cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored", shell=True)
