@@ -37,7 +37,7 @@ menu.formatter = menu_format
 item1 = MenuItem("Item 1", menu)
 
 # A CommandItem runs a console command
-rollover_item1 = RolloverItem("Yes", echo yes > /var/plexguide/pg.agreement)
+rollover_item1 = RolloverItem("Yes", "echo yes > /var/plexguide/pg.agreement")
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(rollover_item1)
