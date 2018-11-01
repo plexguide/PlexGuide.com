@@ -48,7 +48,7 @@ if starter != stored:
         .show_header_bottom_border(True)
 
     menu = ConsoleMenu("INSTALLING: Google Cloud SDK",
-                       prologue_text=("Assist with Installing Keys & Deploy Google VM's! PLEASE STANDBY!"))
+                       prologue_text=("Assists with Installing Keys & Deploy Google VM's! PLEASE STANDBY!"))
     menu.formatter = menu_format
     item1 = MenuItem("Item 1", menu)
     # Finally, we call show to show the menu and allow the user to interact
