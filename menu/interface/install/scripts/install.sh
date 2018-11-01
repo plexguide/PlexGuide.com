@@ -55,6 +55,10 @@ cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 chmod 755 /bin/plexguide
 chown 1000:1000 /bin/plexguide
 
+## Other Folders
+mkdir -p /opt/appdata/plexguide
+mkdir -p /var/plexguide
+
 python3 /opt/plexguide/menu/interface/install/scripts/pgconsole.py
 
 clear
