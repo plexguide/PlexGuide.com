@@ -17,4 +17,4 @@
 from subprocess import call
 
 # Installing PlexGuide Console
-rc = call("echo && echo 'Standby - Installing: PG Interface v0.0.3' && sleep 4 && echo && pip install git+git://github.com/Admin9705/plexguide-menu.git --disable-pip-version-check", shell=True)
+rc = call("echo && echo 'Standby - Installing: PG Interface v0.0.3' && sleep 4 && echo && pip install git+git://github.com/Admin9705/console-menu.git --disable-pip-version-check", shell=True)
