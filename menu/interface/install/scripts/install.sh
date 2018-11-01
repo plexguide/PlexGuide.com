@@ -38,7 +38,11 @@ python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
     netaddr
 python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==18.1
 python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall ansible==${1-2.5.11}
+python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+    pyOpenSSL \
+    requests \
+    netaddr \
+    ansible==${1-2.5.11}
 
 ## Copy pip to /usr/bin
 cp /usr/local/bin/pip /usr/bin/pip
