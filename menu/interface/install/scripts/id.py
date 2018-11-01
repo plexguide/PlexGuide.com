@@ -57,17 +57,8 @@ if starter != stored:
     # Sleep 5 Seconds
     time.sleep(5)
 
-    ############################################# QUES - STORE #### START
-    question = "\nSet Server ID to what? "
-    print (question)
-    answer = input()
-
-    f = open('/var/plexguide/server.id', 'w')
-    f.write(answer)
-    f.close()
-
-    print ("\nServer ID Set To: " + answer)
-    ############################################# QUES - STORE #### END
+    import os
+    os.system('python3 id2.py')
 
     # If Successful, Make them Equal to Prevent Future Execution!
     rc = call("cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored", shell=True)
