@@ -29,7 +29,8 @@ file="/var/plexguide/pg.agreement"
 if [ ! -e "$file" ]; then
   echo ""
   bash /opt/plexguide/roles/ending/ending.sh
-  echo "User Failed to Accept the Agreement"
+  echo "User Failed to Accept the Agreement."
+  echo "Type -- bash install.sh -- to start again"
   echo
   exit
 fi
