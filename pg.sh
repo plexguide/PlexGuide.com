@@ -30,6 +30,8 @@ if [ ! -e "$file" ]; then
   echo ""
   bash /opt/plexguide/roles/ending/ending.sh
   echo "User Failed to Accept the Agreement"
+  echo
+  exit
 fi
 
 # Ensure Server Path Exists
