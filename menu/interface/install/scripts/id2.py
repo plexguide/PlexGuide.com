@@ -14,6 +14,7 @@
 #
 #################################################################################
 from subprocess import call
+import time
 
 with open('/var/plexguide/pg.id', 'r') as myfile:
     starter=myfile.read().replace('\n', '')
@@ -35,3 +36,5 @@ if starter != stored:
     print ("\nServer ID Set To: " + answer)
 
     rc = call("cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored", shell=True)
+
+    time.sleep(3)
