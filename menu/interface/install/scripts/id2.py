@@ -21,8 +21,8 @@ with open('/var/plexguide/pg.id', 'r') as myfile:
 with open('/var/plexguide/pg.id.stored', 'r') as myfile:
     stored=myfile.read().replace('\n', '')
 
-    # (MENU START) If True, then Continue; If Not, Do Nothing!
-    if starter != stored:
+# (MENU START) If True, then Continue; If Not, Do Nothing!
+if starter != stored:
 
     question = "\nSet Server ID to what? "
     print (question)
