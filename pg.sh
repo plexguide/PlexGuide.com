@@ -116,7 +116,10 @@ python3 /opt/plexguide/menu/interface/install/scripts/alias.py
 ### No Menu
 python3 /opt/plexguide/menu/interface/install/scripts/motd.py
 
-bash /opt/plexguide/menu/interface/install/scripts/id.sh
+### Group Together
+python3 /opt/plexguide/menu/interface/install/scripts/id.py
+python3 /opt/plexguide/menu/interface/install/scripts/id2.py
+
 python3 /opt/plexguide/menu/interface/install/scripts/dependency.py
 python3 /opt/plexguide/menu/interface/install/scripts/folders.py
 bash /opt/plexguide/menu/interface/install/scripts/docker.sh
