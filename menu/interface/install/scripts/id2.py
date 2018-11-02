@@ -25,7 +25,7 @@ with open('/var/plexguide/pg.id.stored', 'r') as myfile:
 # (MENU START) If True, then Continue; If Not, Do Nothing!
 if starter != stored:
 
-    question = "\nSet Server ID to what? "
+    question = "\nSet Server ID to what? Then Press [ENTER] "
     print (question)
     answer = input()
 
@@ -33,7 +33,7 @@ if starter != stored:
     f.write(answer)
     f.close()
 
-    print ("\nServer ID Set To: " + answer)
+    print ("\nThe Server ID Set To: " + answer + ". Please Standby!")
 
     rc = call("cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored", shell=True)
 
