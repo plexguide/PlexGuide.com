@@ -33,7 +33,7 @@ if starter != stored:
     f.write(answer)
     f.close()
 
-    print ("\nThe Server ID Set To: " + answer + ". Please Standby!")
+    print ("\nThe Server ID Set To: " + answer + "!")
 
     rc = call("cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored", shell=True)
 
