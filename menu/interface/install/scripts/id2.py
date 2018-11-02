@@ -13,12 +13,25 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-question = "\nSet Server ID to what? "
-print (question)
-answer = input()
+from subprocess import call
 
-f = open('/var/plexguide/server.id', 'w')
-f.write(answer)
-f.close()
+with open('/var/plexguide/pg.id', 'r') as myfile:
+    starter=myfile.read().replace('\n', '')
 
-print ("\nServer ID Set To: " + answer)
+with open('/var/plexguide/pg.id.stored', 'r') as myfile:
+    stored=myfile.read().replace('\n', '')
+
+    # (MENU START) If True, then Continue; If Not, Do Nothing!
+    if starter != stored:
+
+    question = "\nSet Server ID to what? "
+    print (question)
+    answer = input()
+
+    f = open('/var/plexguide/server.id', 'w')
+    f.write(answer)
+    f.close()
+
+    print ("\nServer ID Set To: " + answer)
+
+    rc = call("cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored", shell=True)

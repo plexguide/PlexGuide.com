@@ -57,11 +57,11 @@ if starter != stored:
     # Sleep 5 Seconds
     time.sleep(5)
 
-    import os
-    os.system('python3 /opt/plexguide/menu/interface/install/scripts/id2.py')
+    #import os
+    #os.system('python3 /opt/plexguide/menu/interface/install/scripts/id2.py')
 
     # If Successful, Make them Equal to Prevent Future Execution!
-    rc = call("cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored", shell=True)
+    #rc = call("cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored", shell=True)
 
     # Sleeps
-    time.sleep(3)
+    #time.sleep(3)
