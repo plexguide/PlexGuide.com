@@ -50,15 +50,15 @@ if starter != stored:
     menu = ConsoleMenu("ESTABLISH: Server ID",
                        prologue_text=("Critical for naming your PG Server! Mostly used to identify for backing up & restoring reasons!"))
     menu.formatter = menu_format
-    item1 = MenuItem("Item 1", menu)
+    #item1 = MenuItem("Item 1", menu)
     # Finally, we call show to show the menu and allow the user to interact
     menu.start()
 
     # Sleep 5 Seconds
     time.sleep(5)
 
-    #import os
-    #os.system('python3 /opt/plexguide/menu/interface/install/scripts/id2.py')
+    import os
+    os.system('python3 /opt/plexguide/menu/interface/install/scripts/id2.py')
 
     # If Successful, Make them Equal to Prevent Future Execution!
     #rc = call("cat /var/plexguide/pg.id > /var/plexguide/pg.id.stored", shell=True)
