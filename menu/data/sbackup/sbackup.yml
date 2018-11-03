@@ -51,8 +51,8 @@
     - name: "Backing Up Program to GDrive - {{program_var.stdout}}"
       archive:
         path:
-        - "/opt/appdata/plexguide/{{program_var.stdout}}/*"
-        dest: "/opt/appdata/{{program_var.stdout}}.tar"
+        - "/opt/appdata/{{program_var.stdout}}/*"
+        dest: "/opt/appdata/plexguide/{{program_var.stdout}}.tar"
         format: tar
 
     ############ BACKUP OTHER - END
