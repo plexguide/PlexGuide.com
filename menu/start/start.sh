@@ -91,6 +91,7 @@ elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/settings/settings.sh
 elif [ "$typed" == "8" ]; then
   bash /opt/plexguide/roles/ending/ending.sh
+  exit
 else
   bash /opt/plexguide/menu/start/start.sh
   exit
