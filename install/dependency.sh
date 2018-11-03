@@ -25,8 +25,8 @@ tee <<-EOF
 ┃ ⌛ INSTALLING: Dependency Functions                                 ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃                                                                     ┃
-┃ Functional programs such as zip and unzip that ensure plexguide     ┃
-┃ works out of the box.                                               ┃
+┃ Functional programs install such as zip and unzip that ensure       ┃
+┃ plexguide works out of the box.                                     ┃
 ┃                                                                     ┃
 ┃ PLEASE STANDBY!                                                     ┃
 ┃                                                                     ┃
