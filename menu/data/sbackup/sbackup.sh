@@ -57,15 +57,14 @@ NOTE: You are backing up only one application at a time. Type the name,
 press [ENTER] and wait. Be aware that certain apps that generate tons
 of meta data can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 10min - 30min+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Filtered Running Applications:
+EOF
 cat /tmp/backup.build
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-
-# Standby
-#read -p 'TYPE the App to Backup & Press [ENTER] : ' typed < /dev/tty
+echo 
+read -p 'TYPE the App to Backup & Press [ENTER] : ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
