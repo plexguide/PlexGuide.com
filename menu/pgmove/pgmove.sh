@@ -115,8 +115,7 @@ tee <<-EOF
 EOF
   sleep 4
   fi
-elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/roles/ending/ending.sh
+elif [ "$typed" == "4" ]; then
   exit
 else
   bash /opt/plexguide/menu/pgmove/pgmove.sh
