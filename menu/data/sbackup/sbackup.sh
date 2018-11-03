@@ -61,6 +61,7 @@ cat /tmp/backup.build
 echo;
 echo;
 echo "TO EXIT - type >>> exit"
+echo;
 read -p 'Type the App to Backup & Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
