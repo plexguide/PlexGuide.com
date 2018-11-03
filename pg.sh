@@ -66,7 +66,7 @@ bash /opt/plexguide/menu/interface/install/scripts/start.sh
 #
 #
 ######################################################## START: Ansible
-bash /opt/plexguide/menu/interface/install/scripts/ansible.sh ### Good
+bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
 ######################################################## END: Ansible
 #
 #
