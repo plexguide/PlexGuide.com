@@ -37,10 +37,10 @@ gcrypt=$(cat /var/plexguide/rclone.gcrypt)
   message="Deploy PG Drives: GDrive"
 elif [ "$gdrive" != "" ] && [ "$gcrypt" != "" ]; then
   configure="GDrive /w GCrypt"
-  message="Deploy PG Drives: GDrive /w GCrypt"
+  message="Deploy PG Drives : GDrive /w GCrypt"
 else
   configure="Not Configured"
-  message="Unable to Deploy: RClone is Unconfigured"
+  message="Unable to Deploy : RClone is Unconfigured"
   fi
 
 # Menu Interface
@@ -57,7 +57,7 @@ wiki). A 10MB speed is the safe limit if your going to upload
 constantly for 24 hours!
 
 1 - Configure RClone : $configure
-2 - Configure BWLimit: $speed
+2 - Configure BWLimit: $speed MB
 3 - $message
 4 - Exit
 
