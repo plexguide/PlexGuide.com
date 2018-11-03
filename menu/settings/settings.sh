@@ -27,7 +27,6 @@ tee <<-EOF
 4 - WatchTower      : Auto-Update Application Manager
 5 - Change Time     : Change the Server Time
 6 - Exit
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
