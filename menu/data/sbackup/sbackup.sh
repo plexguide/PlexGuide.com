@@ -50,17 +50,17 @@ tee <<-EOF
 ↘️  LIST: Solo Backup >>> Active Folders - /opt/appdata/
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: Backing up only one application. Certain apps that generate tons
+☑️  Backing up only one application. Certain apps that generate tons
 of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+. Type the exact name (case senstive)!
 
 EOF
-
+echo "Apps to Backup:"
 cat /tmp/backup.build
 
 echo;
 echo;
-echo "TO EXIT - type >>> exit"
+echo "⚠️  TO EXIT - type >>> exit"
 echo;
 read -p 'Type the App to Backup & Press [ENTER]: ' typed < /dev/tty
 
