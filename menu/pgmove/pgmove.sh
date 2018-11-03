@@ -119,9 +119,9 @@ elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/roles/ending/ending.sh
   exit
 else
-  bash /opt/plexguide/menu/pgmove.sh/pgmove.sh
+  bash /opt/plexguide/menu/pgmove/pgmove.sh
   exit
 fi
 
-bash /opt/plexguide/menu/pgmove.sh/pgmove.sh
+bash /opt/plexguide/menu/pgmove/pgmove.sh
 exit
