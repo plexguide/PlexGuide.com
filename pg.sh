@@ -53,6 +53,7 @@ echo "65" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
+
 # Declare Variables Vital for Operations
 bash /opt/plexguide/menu/interface/install/scripts/declare.sh
 
@@ -61,12 +62,6 @@ bash /opt/plexguide/menu/interface/install/scripts/declare.sh
 #
 ######################################################## START: Start
 bash /opt/plexguide/menu/interface/install/scripts/start.sh
-### Users Agreement Handling
-file="/var/plexguide/update.failed"
-if [ -e "$file" ]; then
-  exit
-fi
-
 ######################################################## END: Start
 #
 #
