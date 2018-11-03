@@ -49,7 +49,7 @@ edition; there is no movement of files. You can configure gdrive and/or
 tdrive. This is great for a PLEX only server & etc. Making changes?
 Make sure to redeploy the PG Drives!
 
-1 - Configure RClone: [$configure]
+1 - Configure RClone: $configure
 2 - $message
 3 - Exit
 
