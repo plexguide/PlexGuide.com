@@ -34,7 +34,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/interface/apps/move.sh
+  bash /opt/plexguide/menu/pgdrives/pgdrives.sh
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
 elif [ "$typed" == "3" ]; then
