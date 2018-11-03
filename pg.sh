@@ -137,3 +137,13 @@ file="/var/plexguide/multi.unionfs"
   if [ ! -e "$file" ]; then
     echo "10" > /var/plexguide/move.bw
   fi
+
+  file="/var/plexguide/restore.id"
+  if [ ! -e "$file" ]; then
+    echo "[NOT-SET]" > /var/plexguide/restore.id
+  fi
+
+  file="/var/plexguide/server.id"
+  if [ ! -e "$file" ]; then
+    echo "[NOT-SET]" > /var/plexguide/server.id
+  fi

@@ -51,6 +51,10 @@ tee <<-EOF
 ✅️ PASS: ServerID Set
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+
+# Prevents From Repeating
+cat /var/plexguide/server.id > /var/plexguide/server.id.stored
+
 sleep 3
 fi
 
