@@ -115,7 +115,7 @@ fi
 bash /opt/plexguide/install/alias.sh
 
 ### No Menu
-python3 /opt/plexguide/menu/interface/install/scripts/motd.py
+bash /opt/plexguide/install/motd.sh &>/dev/null &
 
 ### Group Together
 python3 /opt/plexguide/menu/interface/install/scripts/id.py
@@ -129,10 +129,11 @@ bash /opt/plexguide/menu/interface/install/scripts/docstart.sh ### Good
 echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off" &>/dev/null &
 
 bash /opt/plexguide/menu/interface/install/scripts/watchtower.sh
-python3 /opt/plexguide/menu/interface/install/scripts/motd.py
+bash /opt/plexguide/install/motd.sh
 bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
 bash /opt/plexguide/install/gcloud.sh
 bash /opt/plexguide/install/python.sh
+
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
 bash /opt/plexguide/install/rclone.sh
