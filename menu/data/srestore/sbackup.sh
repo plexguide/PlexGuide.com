@@ -13,55 +13,40 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+# Recalls Important Variables
+mnt=$(cat /var/plexguide/server.hd.path)
+restoreid=$(cat /var/plexguide/restore.id)
 
 # Recalls List for Backup Operations
-ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /tmp/backup.list
-echo > /tmp/backup.build
-# Remove Items fromt the List
+rclone ls /mnt/gdrive/plexguide/backup/$restoreid | awk '{ print $2 }' | tail -n +2 > /tmp/restore.list
 
 ### Builds Backup List - END
-sed -i -e "/traefik/d" /tmp/backup.list
-sed -i -e "/watchtower/d" /tmp/backup.list
-sed -i -e "/word*/d" /tmp/backup.list
-sed -i -e "/x2go*/d" /tmp/backup.list
-sed -i -e "/speed*/d" /tmp/backup.list
-sed -i -e "/netdata/d" /tmp/backup.list
-sed -i -e "/pgtrak/d" /tmp/backup.list
-sed -i -e "/plexguide/d" /tmp/backup.list
-sed -i -e "/pgdupes/d" /tmp/backup.list
-sed -i -e "/portainer/d" /tmp/backup.list
-sed -i -e "/cloudplow/d" /tmp/backup.list
-sed -i -e "/phlex/d" /tmp/backup.list
-sed -i -e "/pgblitz/d" /tmp/backup.list
-sed -i -e "/cloudblitz/d" /tmp/backup.list
-### Builds Backup List - END
-
 # Build up list backup list for the main.yml execution
 
 while read p; do
-  echo -n $p >> /tmp/backup.build
-  echo -n " " >> /tmp/backup.build
-done </tmp/backup.list
+  echo -n $p >> /tmp/restore.build
+  echo -n " " >> /tmp/restore.build
+done </tmp/restore.list
 
 # Execute Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  LIST: Solo Backup >>> Active Folders - /opt/appdata/
+↘️  LIST: Solo Restore >>> Active Folders - /opt/appdata/
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-☑️  Backing up only one application. Certain apps that generate tons
+☑️  Restoring only one application. Certain apps that generated tons
 of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+. Type the exact name (case senstive)!
 
 EOF
-echo "✅️  Potential Apps to Backup: " && cat /tmp/backup.build
+echo "✅️  Potential Apps to Restore: " && cat /tmp/backup.build
 
 echo;
 echo;
 echo "⚠️  TO EXIT - type >>> exit"
 echo;
-read -p 'Type the App to Backup & Press [ENTER]: ' typed < /dev/tty
+read -p 'Type the App to Restore & Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
@@ -71,7 +56,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 3
-  bash /opt/plexguide/menu/data/sbackup/sbackup.sh
+  bash /opt/plexguide/menu/data/srestore/srestore.sh
   exit
 elif [ "$typed" == "exit" ]; then
   exit
@@ -79,7 +64,7 @@ else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PASS: Backing Up $typed
+✅️  PASS: Restoring - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
@@ -89,7 +74,7 @@ fi
 ########################### Next Phase
 echo $typed > /tmp/program_var
 docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" >> /tmp/docker.check
-ansible-playbook /opt/plexguide/menu/data/sbackup/sbackup.yml
+ansible-playbook /opt/plexguide/menu/data/srestore/srestore.yml
 
 tee <<-EOF
 
