@@ -14,6 +14,9 @@
 #
 #################################################################################
 
+# Temp
+touch /var/plexguide/restore.id
+
 # Touch Variables Incase They Do Not Exist
 touch /var/plexguide/pg.edition
 touch /var/plexguide/server.id
