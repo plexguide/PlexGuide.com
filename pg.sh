@@ -131,7 +131,7 @@ echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/pro
 bash /opt/plexguide/menu/interface/install/scripts/watchtower.sh
 python3 /opt/plexguide/menu/interface/install/scripts/motd.py
 bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
-python3 /opt/plexguide/menu/interface/install/scripts/gcloud.py
+bash /opt/plexguide/install/gcloud.sh
 bash /opt/plexguide/menu/interface/install/scripts/python.sh
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
