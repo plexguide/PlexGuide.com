@@ -13,9 +13,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-touch /var/plexguide/pg.preinstall.stored
-start=$( cat /var/plexguide/pg.preinstall )
-stored=$( cat /var/plexguide/pg.preinstall.stored )
+touch /var/plexguide/server.id.stored
+start=$( cat /var/plexguide/server.id )
+stored=$( cat /var/plexguide/server.id.stored )
 
 if [ "$start" != "$stored" ]; then
 
