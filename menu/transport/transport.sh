@@ -38,7 +38,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/interface/apps/drives.sh
+  bash /opt/plexguide/menu/pgdrives/pgdrives.sh
 elif [ "$typed" == "4" ]; then
   exit
 else
