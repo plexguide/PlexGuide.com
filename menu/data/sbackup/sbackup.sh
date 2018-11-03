@@ -61,7 +61,7 @@ cat /tmp/backup.build
 echo;
 echo;
 echo "To EXIT, type >>> exit"
-read -p '(Case Sensitive) Type the App to Backup & Press [ENTER]: ' typed < /dev/tty
+read -p 'Type the App to Backup & Press [ENTER] (Case Sensitive): ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
