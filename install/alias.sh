@@ -32,7 +32,6 @@ tee <<-EOF
 ┃                                                                     ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 EOF
-fi
 
 # Standby
 sleep 5
@@ -42,3 +41,5 @@ ansible-playbook /opt/plexguide/menu/interface/alias/main.yml
 
 # Prevents From Repeating
 cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored
+
+fi
