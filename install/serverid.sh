@@ -44,7 +44,6 @@ sleep 3
 bash /opt/plexguide/install/serverid.sh
 exit
 else
-echo "$typed" > /var/plexguide/server.id
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -53,6 +52,7 @@ tee <<-EOF
 EOF
 
 # Prevents From Repeating
+echo "$typed" > /var/plexguide/server.id
 cat /var/plexguide/server.id > /var/plexguide/server.id.stored
 
 sleep 3
