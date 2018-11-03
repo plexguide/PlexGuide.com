@@ -19,11 +19,20 @@ apt-get update
 apt-get upgrade
 apt-get full-upgrade
 
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎  Notice: Install PlexGuide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+You Agree by Installing PlexGuide, you are installing it within then
+accordance with the GNUv3 License! Please Standby...
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+sleep 5
 apt-get install dialog -y
 git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
 cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
-
-bash /opt/plexguide/install/yesno.sh
 
 # Install Dependencies
 apt-get install -y --reinstall \

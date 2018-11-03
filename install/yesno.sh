@@ -16,10 +16,10 @@
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  AGREEMENT: Install PlexGuide
+🌎  Notice: Install PlexGuide
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Do you Agree to install PlexGuide in accordance with the GNUv3 License?
-The license is located within the Project & Project GITHUB.
+You Agree by Installing PlexGuide, you are installing it within then
+accordance with the GNUv3 License?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
