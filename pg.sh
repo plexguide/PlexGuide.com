@@ -111,7 +111,8 @@ if [ -e "$file" ]; then
   exit
 fi
 ######################################################## END: New Install
-python3 /opt/plexguide/menu/interface/install/scripts/alias.py
+
+bash /opt/plexguide/install/alias.sh
 
 ### No Menu
 python3 /opt/plexguide/menu/interface/install/scripts/motd.py
