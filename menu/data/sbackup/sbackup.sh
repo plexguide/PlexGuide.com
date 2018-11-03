@@ -45,7 +45,7 @@ while read p; do
 done </tmp/backup.list
 
 echo flag 4
-cat
+
 # Execute Interface
 tee <<-EOF
 
