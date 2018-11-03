@@ -88,6 +88,7 @@ sleep 3
 fi
 ########################### Next Phase
 echo $typed > /tmp/program_var
+docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" >> /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/sbackup/sbackup.yml
 
 tee <<-EOF
