@@ -56,20 +56,9 @@ echo "3" > /var/plexguide/pg.gcloud
 
 # Declare Variables Vital for Operations
 bash /opt/plexguide/menu/interface/install/scripts/declare.sh
-
-######################################################## END: Key Variables
-#
-#
-######################################################## START: Start
-bash /opt/plexguide/menu/interface/install/scripts/start.sh
-######################################################## END: Start
-#
-#
-######################################################## START: Ansible
+bash /opt/plexguide/install/aptupdate.sh
 bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
-######################################################## END: Ansible
-#
-#
+
 ######################################################## START: New Install
 file="/var/plexguide/ask.yes"
 if [ -e "$file" ]; then
