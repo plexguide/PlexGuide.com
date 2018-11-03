@@ -60,7 +60,7 @@ cat /tmp/backup.build
 
 echo;
 echo;
-
+echo "To EXIT, type >>> exit"
 read -p '(Case Sensitive) Type the App to Backup & Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
@@ -70,12 +70,13 @@ tee <<-EOF
 ⛔️ WARNING! - The Server ID Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
-bash /opt/plexguide/menu/data/sbackup/sbackup.sh
-exit
+  sleep 3
+  bash /opt/plexguide/menu/data/sbackup/sbackup.sh
+  exit
+elif [ "$typed" == "exit" ]; then
+  exit
 else
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️ PASS: ServerID Set
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
