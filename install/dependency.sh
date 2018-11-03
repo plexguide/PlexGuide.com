@@ -21,16 +21,15 @@ if [ "$start" != "$stored" ]; then
 
 tee <<-EOF
 
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ ⌛ INSTALLING: Dependency Functions                                 ┃
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃                                                                     ┃
-┃ Functional programs install such as zip and unzip that ensures      ┃
-┃ plexguide works out of the box.                                     ┃
-┃                                                                     ┃
-┃ PLEASE STANDBY!                                                     ┃
-┃                                                                     ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⌛  INSTALLING: Dependency Functions                                 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Functional programs install such as zip and unzip that ensures
+plexguide works out of the box.
+
+PLEASE STANDBY!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Standby

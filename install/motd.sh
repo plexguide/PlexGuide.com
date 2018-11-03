@@ -21,16 +21,14 @@ if [ "$start" != "$stored" ]; then
 
 tee <<-EOF
 
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ ⌛ INSTALLING: MOTD                                                 ┃
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃                                                                     ┃
-┃ When utilizing your system, MOTD provides the startup that will be  ┃
-┃ seen when logged in.                                                ┃
-┃                                                                     ┃
-┃ PLEASE STANDBY!                                                     ┃
-┃                                                                     ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⌛  INSTALLING: MOTD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+When utilizing your system, MOTD provides the startup that will be
+seen when logged in.
+
+PLEASE STANDBY!                                                                                                                          
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
 
