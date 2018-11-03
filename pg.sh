@@ -143,7 +143,7 @@ file="/var/plexguide/multi.unionfs"
     echo "[NOT-SET]" > /var/plexguide/restore.id
   fi
 
-  file="/var/plexguide/server.id"
+  file="/var/plexguide/pg.serverid"
   if [ ! -e "$file" ]; then
-    echo "[NOT-SET]" > /var/plexguide/server.id
+    echo "[NOT-SET]" > /var/plexguide/pg.serverid
   fi

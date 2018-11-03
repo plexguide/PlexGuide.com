@@ -26,7 +26,7 @@
   register: program_var
 
 - name: "Server ID for Backup"
-  shell: "cat /var/plexguide/server.id"
+  shell: "cat /var/plexguide/pg.serverid"
   register: server_id
 
 - name: "Checking if Program is Running"
