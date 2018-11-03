@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+
+# Recalls List for Backup Operations
+ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /tmp/backup.list
+
+# Remove Items fromt the List
+
+### Builds Backup List - END
+sed -i -e "/traefik/d"
+sed -i -e "/watchtower/d"
+sed -i -e "/word*/d"
+sed -i -e "/x2go*/d"
+sed -i -e "/speed*/d"
+sed -i -e "/netdata/d"
+sed -i -e "/pgtrak/d"
+sed -i -e "/plexguide/d"
+sed -i -e "/pgdupes/d"
+sed -i -e "/portainer/d"
+sed -i -e "/cloudplow/d"
+sed -i -e "/phlex/d"
+sed -i -e "/pgblitz/d"
+sed -i -e "/cloudblitz/d"
+### Builds Backup List - END
+
+# Build up list backup list for the main.yml execution
+while read p; do
+  echo -n $p >> /tmp/backup.build
+  echo -n " " >> /tmp/backup.build
+done </tmp/backup.list
+
+cat
+# Execute Interface
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  RUNNING: Applications
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: You are backing up only one application at a time. Type the name,
+press [ENTER] and wait. Be aware that certain apps that generate tons
+of meta data can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
+alone can take 10min - 30min+
+
+Filtered Running Applications:
+$cat /tmp/backup.build
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+# Standby
+read -p 'TYPE the App to Backup & Press [ENTER] : ' typed < /dev/tty
+
+  if [ "$typed" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! - The Server ID Cannot Be Blank!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+exit
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️ PASS: ServerID Set
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+# Prevents From Repeating
+sleep 3
+fi
+
+fi
