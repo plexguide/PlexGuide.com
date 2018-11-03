@@ -25,9 +25,7 @@ tee <<-EOF
 2 - PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex
 3 - PG Drives | Unencrypted         | Read Only Servers   | Simple
 4 - Exit
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 # Standby

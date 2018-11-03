@@ -51,9 +51,7 @@ Make sure to redeploy the PG Drives!
 1 - Configure RClone: $configure
 2 - $message
 3 - Exit
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 # Standby

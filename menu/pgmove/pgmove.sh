@@ -60,9 +60,7 @@ constantly for 24 hours!
 2 - Configure BWLimit: $speed MB
 3 - $message
 4 - Exit
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 # Standby

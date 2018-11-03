@@ -28,9 +28,7 @@ tee <<-EOF
 5 - System & Network Auditor
 6 - TroubleShoot ~ PreInstaller & UnInstaller
 7 - Exit
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 # Standby
