@@ -24,8 +24,7 @@ serverid=$(cat /var/plexguide/pg.serverid)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🍕  The PG Data Handler
-    Server: $serverid | Recovery:
+🍕  PG Data Handling - Server: $serverid | Recovery:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: Current Server ID is well... your current server! The RECOVERY ID
