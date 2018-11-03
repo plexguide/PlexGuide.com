@@ -83,7 +83,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 3
-  bash /opt/plexguide/install/pgmove/pgmove.sh
+  bash /opt/plexguide/menu/pgmove/pgmove.sh
   exit
   else
   echo "$typed" > /var/plexguide/bw.limit
