@@ -14,11 +14,12 @@
 #
 #################################################################################
 
+echo flag1
 # Recalls List for Backup Operations
 ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /tmp/backup.list
 
 # Remove Items fromt the List
-
+echo flag2
 ### Builds Backup List - END
 sed -i -e "/traefik/d" /tmp/backup.list
 sed -i -e "/watchtower/d" /tmp/backup.list
@@ -36,12 +37,14 @@ sed -i -e "/pgblitz/d" /tmp/backup.list
 sed -i -e "/cloudblitz/d" /tmp/backup.list
 ### Builds Backup List - END
 
+echo flag3
 # Build up list backup list for the main.yml execution
 while read p; do
   echo -n $p >> /tmp/backup.build
   echo -n " " >> /tmp/backup.build
 done </tmp/backup.list
 
+echo flag 4
 cat
 # Execute Interface
 tee <<-EOF
