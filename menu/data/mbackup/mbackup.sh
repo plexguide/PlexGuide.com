@@ -47,49 +47,58 @@ done </tmp/backup.list
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  LIST: Solo Backup >>> Active Folders - /opt/appdata/
+↘️  LIST: Mass Backup >>> Active Folders - /opt/appdata/
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-☑️  Backing up only one application. Certain apps that generate tons
+☑️  Backing up all applications below. Certain apps that generate tons
 of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
-alone can take 45min+. Type the exact name (case senstive)!
+alone can take 45min+.
 
 EOF
-echo "✅️ Potential Apps to Backup: " && cat /tmp/backup.build
+echo "✅️ All Apps Being Backup'ed Up: " && cat /tmp/backup.build
 
 echo;
 echo;
-echo "⚠️  TO EXIT - type >>> exit"
+echo "⚠️  Type one of the responses >>> yes or no"
 echo;
-read -p 'Type the App to Backup & Press [ENTER]: ' typed < /dev/tty
+read -p 'Do You Want To Continue? (Case Sensitive): ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ WARNING! - The Server ID Cannot Be Blank!
+⛔️ WARNING! - You Must Type Yes or No!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 3
   bash /opt/plexguide/menu/data/sbackup/sbackup.sh
   exit
-elif [ "$typed" == "exit" ]; then
+elif [ "$typed" == "no" ]; then
   exit
-else
+elif [ "$typed" == "yes" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️ PASS: Backing Up $typed
+✅️ PASS: Starting the Mass Backup!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Prevents From Repeating
 sleep 3
-fi
 ########################### Next Phase
-echo $typed > /tmp/program_var
-docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" >> /tmp/docker.check
-ansible-playbook /opt/plexguide/menu/data/sbackup/sbackup.yml
+while read p; do
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ NOTICE: Backing Up - $typed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+  echo $typed > /tmp/program_var
+  ansible-playbook /opt/plexguide/menu/data/mbackup/mbackup.yml
+
+sleep 2
+done </tmp/backup.list
 
 tee <<-EOF
 
@@ -98,3 +107,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
+else
+  exit
+fi
