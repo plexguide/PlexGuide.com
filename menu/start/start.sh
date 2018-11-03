@@ -73,7 +73,7 @@ tee <<-EOF
 EOF
 
 # Standby
-read -p 'Type a Number | Press [ENTER] : ' typed < /dev/tty
+read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/transport/transport.sh
