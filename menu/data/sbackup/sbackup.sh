@@ -20,20 +20,20 @@ ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /tmp/backup.list
 # Remove Items fromt the List
 
 ### Builds Backup List - END
-sed -i -e "/traefik/d"
-sed -i -e "/watchtower/d"
-sed -i -e "/word*/d"
-sed -i -e "/x2go*/d"
-sed -i -e "/speed*/d"
-sed -i -e "/netdata/d"
-sed -i -e "/pgtrak/d"
-sed -i -e "/plexguide/d"
-sed -i -e "/pgdupes/d"
-sed -i -e "/portainer/d"
-sed -i -e "/cloudplow/d"
-sed -i -e "/phlex/d"
-sed -i -e "/pgblitz/d"
-sed -i -e "/cloudblitz/d"
+sed -i -e "/traefik/d" /tmp/backup.list
+sed -i -e "/watchtower/d" /tmp/backup.list
+sed -i -e "/word*/d" /tmp/backup.list
+sed -i -e "/x2go*/d" /tmp/backup.list
+sed -i -e "/speed*/d" /tmp/backup.list
+sed -i -e "/netdata/d" /tmp/backup.list
+sed -i -e "/pgtrak/d" /tmp/backup.list
+sed -i -e "/plexguide/d" /tmp/backup.list
+sed -i -e "/pgdupes/d" /tmp/backup.list
+sed -i -e "/portainer/d" /tmp/backup.list
+sed -i -e "/cloudplow/d" /tmp/backup.list
+sed -i -e "/phlex/d" /tmp/backup.list
+sed -i -e "/pgblitz/d" /tmp/backup.list
+sed -i -e "/cloudblitz/d" /tmp/backup.list
 ### Builds Backup List - END
 
 # Build up list backup list for the main.yml execution
