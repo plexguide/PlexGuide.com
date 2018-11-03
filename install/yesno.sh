@@ -38,3 +38,4 @@ tee <<-EOF
 User Failed to Select [y]!
 To start again, type >>> bash install.sh
 EOF
+fi
