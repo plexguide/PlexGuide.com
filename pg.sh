@@ -36,20 +36,20 @@ bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 mkdir -p /var/plexguide
 
 # Ensure Variables Line Up With Installer If Changed
-echo "11" > /var/plexguide/pg.python
-echo "10" > /var/plexguide/pg.ansible
+echo "12" > /var/plexguide/pg.python
+echo "11" > /var/plexguide/pg.ansible
 
 # Force Common Things To Execute Such as Folders
-echo "148" > /var/plexguide/pg.preinstall
+echo "149" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
-echo "12" > /var/plexguide/pg.rclone
+echo "13" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.docker
 echo "10" > /var/plexguide/pg.serverid
-echo "20" > /var/plexguide/pg.dependency
+echo "21" > /var/plexguide/pg.dependency
 echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
-echo "65" > /var/plexguide/pg.alias
+echo "66" > /var/plexguide/pg.alias
 echo "1" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
