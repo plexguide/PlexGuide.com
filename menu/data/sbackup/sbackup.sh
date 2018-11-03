@@ -53,6 +53,7 @@ tee <<-EOF
 NOTE: Backing up only one application. Type the name, press [ENTER] and
 wait. Certain apps that generate tons of metadata can take quite a
 while (i.e. Plex, Sonarr, Radarr). Plex alone can take 45min+.
+Type the exact name (case senstive)!
 
 EOF
 
@@ -60,8 +61,8 @@ cat /tmp/backup.build
 
 echo;
 echo;
-echo "To EXIT, type >>> exit"
-read -p 'Type the App to Backup & Press [ENTER] (Case Sensitive): ' typed < /dev/tty
+echo "TO EXIT - type >>> exit"
+read -p 'Type the App to Backup & Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
