@@ -22,7 +22,6 @@ touch /var/plexguide/rclone.tdrive
 gdrive=$(cat /var/plexguide/rclone.gdrive)
 tdrive=$(cat /var/plexguide/rclone.tdrive)
 
-
 cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive
 cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
 
@@ -61,7 +60,10 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-    bash /opt/plexguide/menu/interface/pgdrives/rclone.sh
+    rclone config
+    mkdir -p /root/.config/rclone/
+    chown -R 1000:1000 /root/.config/rclone/
+    cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 elif [ "$typed" == "2" ]; then
     if [ "$configure" == "GDrive" ]; then
     echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
