@@ -61,7 +61,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-
+    bash /opt/plexguide/menu/interface/pgdrives/rclone.sh
 elif [ "$typed" == "2" ]; then
     if [ "$configure" == "GDrive" ]; then
     echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
