@@ -123,5 +123,4 @@ else
   exit
 fi
 
-bash /opt/plexguide/menu/pgmove/pgmove.sh
 exit
