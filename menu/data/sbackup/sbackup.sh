@@ -51,16 +51,13 @@ echo flag 4
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  RUNNING: Applications
+↘️  LIST: Filter Running Applications
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: You are backing up only one application at a time. Type the name,
-press [ENTER] and wait. Be aware that certain apps that generate tons
-of meta data can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
-alone can take 10min - 30min+
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NOTE: Backing up only one application. Type the name, press [ENTER] and
+wait. Certain apps that generate tons of metadata can take quite a
+while (i.e. Plex, Sonarr, Radarr). Plex alone can take 45min+
 
-Filtered Running Applications:
 EOF
 
 cat /tmp/backup.build
