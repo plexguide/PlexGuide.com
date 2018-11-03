@@ -65,7 +65,8 @@ EOF
 
 cat /tmp/backup.build
 
-echo & echo
+echo;
+echo;
 
 read -p 'TYPE the App to Backup & Press [ENTER]: ' typed < /dev/tty
 
