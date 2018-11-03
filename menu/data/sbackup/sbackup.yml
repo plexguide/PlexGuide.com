@@ -35,7 +35,7 @@
 
     - name: "Checking if Program is Running"
       stat:
-      shell: "docker ps -a --format "{{.Names}}" | grep -c "\<{{program_var.stdout}}\>"
+      shell: "docker ps -a --format '{{.Names}}' | grep -c "\<{{program_var.stdout}}\>"
       register: running
 
     - debug: msg="{{program_var.stdout}} running? 1 - Yes | 0 - No >>> {{running.stdout}}"
