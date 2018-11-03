@@ -21,6 +21,7 @@ if [ "$start" != "$stored" ]; then
 
 # Execute Ansible Function
 ansible-playbook /opt/plexguide/pg.yml --tags motd
+touch /tmp/fart.txt
 
 # Prevents From Repeating
 cat /var/plexguide/pg.motd > /var/plexguide/pg.motd.stored
