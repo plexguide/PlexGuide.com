@@ -118,9 +118,7 @@ bash /opt/plexguide/install/alias.sh
 bash /opt/plexguide/install/motd.sh &>/dev/null &
 
 ### Group Together
-python3 /opt/plexguide/menu/interface/install/scripts/id.py
-python3 /opt/plexguide/menu/interface/install/scripts/id2.py
-
+bash /opt/plexguide/install/serverid.sh
 bash /opt/plexguide/install/dependency.sh
 bash /opt/plexguide/install/folders.sh
 bash /opt/plexguide/menu/interface/install/scripts/docker.sh
