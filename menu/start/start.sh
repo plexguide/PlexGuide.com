@@ -95,3 +95,6 @@ else
   bash /opt/plexguide/menu/start/start.sh
   exit
 fi
+
+bash /opt/plexguide/menu/start/start.sh
+exit
