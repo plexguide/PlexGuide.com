@@ -33,9 +33,10 @@ read -p "SELECT (y/n)? " -n 1 -r
 
 # Actions Based on Response
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  echo
   bash /opt/plexguide/roles/ending/ending.sh
 tee <<-EOF
 User Failed to Select [y]!
-To start again, type >>> bash install.sh
+To Start Again, Type >>> bash install.sh
 EOF
 fi
