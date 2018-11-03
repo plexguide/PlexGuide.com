@@ -56,7 +56,7 @@ tee <<-EOF
 
 NOTE: Backing up only one application. Type the name, press [ENTER] and
 wait. Certain apps that generate tons of metadata can take quite a
-while (i.e. Plex, Sonarr, Radarr). Plex alone can take 45min+
+while (i.e. Plex, Sonarr, Radarr). Plex alone can take 45min+.
 
 EOF
 
