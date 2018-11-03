@@ -19,6 +19,12 @@ apt-get update
 apt-get upgrade
 apt-get full-upgrade
 
+apt-get install dialog -y
+git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
+cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
+
+bash /opt/plexguide/install/yesno.sh
+
 # Install Dependencies
 apt-get install -y --reinstall \
     nano \
@@ -57,10 +63,6 @@ echo "[defaults]" > /etc/ansible/ansible.cfg
 echo "command_warnings = False" >> /etc/ansible/ansible.cfg
 echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
 echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
-
-apt-get install dialog -y
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
-cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
 chmod 755 /bin/plexguide
 chown 1000:1000 /bin/plexguide
