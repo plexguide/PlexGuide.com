@@ -47,7 +47,7 @@ done </tmp/backup.list
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  LIST: Active Folders - /opt/appdata/
+↘️  LIST: Solo Backup >>> Active Folders - /opt/appdata/
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: Backing up only one application. Type the name, press [ENTER] and
