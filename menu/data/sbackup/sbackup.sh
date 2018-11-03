@@ -61,9 +61,13 @@ alone can take 10min - 30min+
 
 Filtered Running Applications:
 EOF
+
 cat /tmp/backup.build
 
-echo 
+tee <<-EOF
+
+EOF
+
 read -p 'TYPE the App to Backup & Press [ENTER] : ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
