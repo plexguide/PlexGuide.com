@@ -122,7 +122,7 @@ python3 /opt/plexguide/menu/interface/install/scripts/id.py
 python3 /opt/plexguide/menu/interface/install/scripts/id2.py
 
 bash /opt/plexguide/install/dependency.sh
-python3 /opt/plexguide/menu/interface/install/scripts/folders.py
+bash /opt/plexguide/install/folders.sh
 bash /opt/plexguide/menu/interface/install/scripts/docker.sh
 bash /opt/plexguide/menu/interface/install/scripts/docstart.sh ### Good
 
