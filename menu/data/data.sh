@@ -27,8 +27,7 @@ tee <<-EOF
 🍕  PG Data Handling - Server: $serverid | Recovery:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: Current Server ID is well... your current server! The RECOVERY ID
-is the server you want to recover from! Makes sense right?
+NOTE: The [RECOVERY ID] is the server being recovered from!
 
 1 - SOLO: App Backup
 2 - SOLO: App Recovery
