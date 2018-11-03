@@ -71,6 +71,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
+bash /opt/plexguide/menu/data/sbackup/sbackup.sh
 exit
 else
 tee <<-EOF
