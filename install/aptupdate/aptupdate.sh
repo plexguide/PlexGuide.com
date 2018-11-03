@@ -13,9 +13,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-touch /var/plexguide/pg.gcloud.stored
-start=$( cat /var/plexguide/pg.gcloud )
-stored=$( cat /var/plexguide/pg.gcloud.stored )
+touch /var/plexguide/pg.preinstall.stored
+start=$( cat /var/plexguide/pg.preinstall )
+stored=$( cat /var/plexguide/pg.preinstall.stored )
 
 if [ "$start" != "$stored" ]; then
 
@@ -41,6 +41,6 @@ yes | apt-get install sysstat nmon
 sed -i 's/false/true/g' /etc/default/sysstat
 
 # Prevents From Repeating
-#cat /var/plexguide/pg.gcloud > /var/plexguide/pg.gcloud.stored
+#cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 
 fi
