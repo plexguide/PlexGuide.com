@@ -86,7 +86,7 @@ EOF
   bash /opt/plexguide/menu/pgmove/pgmove.sh
   exit
   else
-  echo "$typed" > /var/plexguide/bw.limit
+  echo "$typed" > /var/plexguide/move.bw
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
