@@ -39,6 +39,7 @@ sed -i -e "/cloudblitz/d" /tmp/backup.list
 
 echo flag3
 # Build up list backup list for the main.yml execution
+
 while read p; do
   echo -n $p >> /tmp/backup.build
   echo -n " " >> /tmp/backup.build
@@ -64,11 +65,9 @@ EOF
 
 cat /tmp/backup.build
 
-tee <<-EOF
+echo & echo
 
-EOF
-
-read -p 'TYPE the App to Backup & Press [ENTER] : ' typed < /dev/tty
+read -p 'TYPE the App to Backup & Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
