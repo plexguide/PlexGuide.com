@@ -88,9 +88,9 @@ EOF
   else
   echo "$typed" > /var/plexguide/bw.limit
 tee <<-EOF
-else
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️ PASS: ServerID Set
+✅️ PASSED: Bandwidth Limit Set!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 3
