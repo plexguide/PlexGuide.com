@@ -111,30 +111,30 @@ if [ -e "$file" ]; then
   exit
 fi
 ######################################################## END: New Install
-python3 /opt/plexguide/menu/interface/install/scripts/alias.py
+
+bash /opt/plexguide/install/alias.sh
 
 ### No Menu
-python3 /opt/plexguide/menu/interface/install/scripts/motd.py
+bash /opt/plexguide/install/motd.sh &>/dev/null &
 
 ### Group Together
-python3 /opt/plexguide/menu/interface/install/scripts/id.py
-python3 /opt/plexguide/menu/interface/install/scripts/id2.py
-
-python3 /opt/plexguide/menu/interface/install/scripts/dependency.py
-python3 /opt/plexguide/menu/interface/install/scripts/folders.py
+bash /opt/plexguide/install/serverid.sh
+bash /opt/plexguide/install/dependency.sh
+bash /opt/plexguide/install/folders.sh
 bash /opt/plexguide/menu/interface/install/scripts/docker.sh
 bash /opt/plexguide/menu/interface/install/scripts/docstart.sh ### Good
 
 echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off" &>/dev/null &
 
 bash /opt/plexguide/menu/interface/install/scripts/watchtower.sh
-python3 /opt/plexguide/menu/interface/install/scripts/motd.py
+bash /opt/plexguide/install/motd.sh
 bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
-python3 /opt/plexguide/menu/interface/install/scripts/gcloud.py
-bash /opt/plexguide/menu/interface/install/scripts/python.sh
+bash /opt/plexguide/install/gcloud.sh
+bash /opt/plexguide/install/python.sh
+
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-python3 /opt/plexguide/menu/interface/install/scripts/rclone.py
+bash /opt/plexguide/install/rclone.sh
 
 ######################################################## END: Common Functions
 #

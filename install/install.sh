@@ -69,8 +69,6 @@ chown 1000:1000 /bin/plexguide
 mkdir -p /opt/appdata/plexguide
 mkdir -p /var/plexguide
 
-python3 /opt/plexguide/menu/interface/install/scripts/pgconsole.py
-
 ## Variables Need to Line Up with pg.sh (start)
 echo "11" > /var/plexguide/pg.python
 echo "10" > /var/plexguide/pg.ansible
