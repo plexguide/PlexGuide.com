@@ -65,7 +65,7 @@ cat /tmp/backup.build
 echo;
 echo;
 
-read -p 'TYPE the App to Backup & Press [ENTER]: ' typed < /dev/tty
+read -p '(Case Sensitive) Type the App to Backup & Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
