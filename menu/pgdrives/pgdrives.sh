@@ -85,7 +85,6 @@ EOF
   sleep 4
   fi
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/roles/ending/ending.sh
   exit
 else
   bash /opt/plexguide/menu/pgdrives/pgdrives.sh
