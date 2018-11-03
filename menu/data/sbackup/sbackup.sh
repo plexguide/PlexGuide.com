@@ -59,13 +59,13 @@ of meta data can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 10min - 30min+
 
 Filtered Running Applications:
-$cat /tmp/backup.build
+cat /tmp/backup.build
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Standby
-read -p 'TYPE the App to Backup & Press [ENTER] : ' typed < /dev/tty
+#read -p 'TYPE the App to Backup & Press [ENTER] : ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
