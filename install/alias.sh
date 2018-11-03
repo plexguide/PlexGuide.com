@@ -21,16 +21,14 @@ if [ "$start" != "$stored" ]; then
 
 tee <<-EOF
 
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ ⌛ INSTALLING: Alias Commands                                       ┃
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃                                                                     ┃
-┃ Commands providing direct execution such as plexguide, pgupdate,    ┃
-┃ and pgfork.                                                         ┃
-┃                                                                     ┃
-┃ PLEASE STANDBY!                                                     ┃
-┃                                                                     ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⌛  INSTALLING: Alias Commands                                       
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Commands providing direct execution such as plexguide, pgupdate,
+and pgfork.
+
+PLEASE STANDBY!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Standby

@@ -21,16 +21,14 @@ if [ "$start" != "$stored" ]; then
 
 tee <<-EOF
 
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ ⌛ INSTALLING: GCloud SDK Kit                                       ┃
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃                                                                     ┃
-┃ Assist in generating virtual machines for PG GCE and enables the    ┃
-┃ use of keys for PG Blitz.                                           ┃
-┃                                                                     ┃
-┃ PLEASE STANDBY!                                                     ┃
-┃                                                                     ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⌛  INSTALLING: GCloud SDK Kit
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Assist in generating virtual machines for PG GCE and enables the    
+use of keys for PG Blitz.
+
+PLEASE STANDBY!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
 
