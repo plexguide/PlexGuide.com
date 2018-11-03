@@ -76,21 +76,22 @@ EOF
 read -p 'Type a Number | Press [ENTER] : ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-
+  bash /opt/plexguide/menu/transport/transport.sh
 elif [ "$typed" == "2" ]; then
-
+  bash /opt/plexguide/menu/interface/traefik/main.sh
 elif [ "$typed" == "3" ]; then
-
+  bash /opt/plexguide/roles/menu-ports/scripts/main.sh
 elif [ "$typed" == "4" ]; then
-
+  bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 elif [ "$typed" == "5" ]; then
-
+  bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 elif [ "$typed" == "6" ]; then
-
+  bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "7" ]; then
-
+  bash /opt/plexguide/menu/settings/settings.sh
 elif [ "$typed" == "8" ]; then
-
+  bash /opt/plexguide/roles/ending/ending.sh
 else
-
+  bash /opt/plexguide/menu/start/start.sh
+  exit
 fi
