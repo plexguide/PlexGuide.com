@@ -83,7 +83,7 @@ elif [ "$typed" == "2" ]; then
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   EOF
   sleep 3
-  bash /opt/plexguide/install/pgdrives/pgdrives.sh
+  bash /opt/plexguide/install/pgmove/pgmove.sh
   exit
   else
   echo "$typed" > /var/plexguide/bw.limit
