@@ -13,20 +13,20 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-touch /var/plexguide/pg.dependency.stored
-start=$( cat /var/plexguide/pg.dependency )
-stored=$( cat /var/plexguide/pg.dependency.stored )
+touch /var/plexguide/pg.preinstall.stored
+start=$( cat /var/plexguide/pg.preinstall )
+stored=$( cat /var/plexguide/pg.preinstall.stored )
 
 if [ "$start" != "$stored" ]; then
 
 tee <<-EOF
 
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ ⌛ INSTALLING: Dependency Functions                                 ┃
+┃ ⌛ INSTALLING: Folder Directory Structure                           ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃                                                                     ┃
-┃ Functional programs install such as zip and unzip that ensures      ┃
-┃ plexguide works out of the box.                                     ┃
+┃ Builds specific folders and ensures that the permissions and        ┃
+┃ ownership are set.                                                  ┃
 ┃                                                                     ┃
 ┃ PLEASE STANDBY!                                                     ┃
 ┃                                                                     ┃
@@ -37,9 +37,9 @@ EOF
 sleep 5
 
 # Execute Ansible Function
-ansible-playbook /opt/plexguide/pg.yml --tags dependency
+ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
 
 # Prevents From Repeating
-cat /var/plexguide/pg.dependency > /var/plexguide/pg.dependency.stored
+cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 
 fi
