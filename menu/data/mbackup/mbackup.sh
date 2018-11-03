@@ -59,9 +59,9 @@ echo "✅️ All Apps Being Backup'ed Up: " && cat /tmp/backup.build
 
 echo;
 echo;
-echo "⚠️  Type one of the responses >>> yes or no"
+echo "  Type one of the responses "
 echo;
-read -p 'Do You Want To Continue? (Case Sensitive): ' typed < /dev/tty
+read -p '⚠️ Continue? (Case Sensitive) Type >>> yes or no & Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
