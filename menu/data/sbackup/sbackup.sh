@@ -86,15 +86,14 @@ EOF
 # Prevents From Repeating
 sleep 3
 fi
-
-fi
 ########################### Next Phase
+echo $typed > /tmp/program_var
 ansible-playbook /opt/plexguide/menu/data/sbackup/sbackup.yml
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️ PASS: Process Complete
+🌇 PASS: Process Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
