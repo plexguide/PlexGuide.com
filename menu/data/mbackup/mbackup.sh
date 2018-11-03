@@ -90,11 +90,12 @@ while read p; do
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️ NOTICE: Backing Up - $typed
+⚠️ NOTICE: Backing Up - $p
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  echo $typed > /tmp/program_var
+  echo $p > /tmp/program_var
+  docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" >> /tmp/docker.check
   ansible-playbook /opt/plexguide/menu/data/mbackup/mbackup.yml
 
 sleep 2
