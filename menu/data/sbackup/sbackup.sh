@@ -55,9 +55,7 @@ of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+. Type the exact name (case senstive)!
 
 EOF
-echo "✅️ Potential Apps to Backup:"
-echo
-cat /tmp/backup.build
+echo "✅️ Potential Apps to Backup: " && cat /tmp/backup.build
 
 echo;
 echo;
