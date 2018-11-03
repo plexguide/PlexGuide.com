@@ -13,44 +13,24 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-touch /var/plexguide/pg.edition
-touch /var/plexguide/server.id
-touch /var/plexguide/pg.number
-
-edition=$( cat /var/plexguide/pg.edition )
-serverid=$( cat /var/plexguide/server.id )
-pgnumber=$( cat /var/plexguide/pg.number )
+touch /var/plexguide/server.id.stored
+start=$( cat /var/plexguide/server.id )
+stored=$( cat /var/plexguide/server.id.stored )
 
 if [ "$start" != "$stored" ]; then
 
 tee <<-EOF
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 $edition - $pgnumber - $serverid
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-1 - Mounts & Data Transports
-2 - Traefik & TLD Deployment [$traefik]
-3 - Server Port Guard        [$ports]
-4 - Application Guard        [$appguard]
-5 - Program Suite Installer
-6 - PG Tools & Services
-7 - Settings
-8 - Exit
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ ⌛ ESTABLISHING: Server ID                                          ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃                                                                     ┃
+┃ To establish the identification of the server and for identity of   ┃
+┃ of backin up the server.                                            ┃
+┃                                                                     ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 EOF
-
-
-
-
-
-
-
-
-
-
 
 # Standby
 read -p 'TYPE a Server ID Name & Press [ENTER] : ' typed < /dev/tty
