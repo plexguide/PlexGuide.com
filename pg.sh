@@ -19,21 +19,6 @@ rm -r /opt/plexguide/menu/interface/version/version.sh
 sudo mkdir -p /opt/plexguide/menu/interface/version/
 sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
 
-# Check to See if The User Agrees
-file="/var/plexguide/pg.agreement"
-if [ ! -e "$file" ]; then
-  python3 /opt/plexguide/menu/interface/install/scripts/yesno.py
-fi
-
-file="/var/plexguide/pg.agreement"
-if [ ! -e "$file" ]; then
-  echo ""
-  bash /opt/plexguide/roles/ending/ending.sh
-  echo "User Failed to Accept the Agreement."
-  echo "Type -- bash install.sh -- to start again"
-  echo
-  exit
-fi
 
 # Ensure Server Path Exists
 mkdir -p /var/plexguide
