@@ -135,7 +135,7 @@ python3 /opt/plexguide/menu/interface/install/scripts/gcloud.py
 bash /opt/plexguide/menu/interface/install/scripts/python.sh
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-python3 /opt/plexguide/menu/interface/install/scripts/rclone.py
+bash /opt/plexguide/install/rclone.sh
 
 ######################################################## END: Common Functions
 #
