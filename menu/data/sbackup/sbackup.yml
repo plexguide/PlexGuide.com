@@ -16,118 +16,60 @@
 #
 #################################################################################
 ---
-- script: /opt/plexguide/roles/b-sbackup/scripts/solo.sh
+- hosts: localhost
+  gather_facts: false
+  tasks:
 
-- name: Register HD Path
-  shell: "cat /var/plexguide/server.hd.path"
-  register: path
-  ignore_errors: True
+    - name: Register HD Path
+      shell: "cat /var/plexguide/server.hd.path"
+      register: path
+      ignore_errors: True
 
-- name: "Pulling Selected Program"
-  shell: "cat /tmp/program_var"
-  register: program_var
+    - name: "Pulling Selected Program"
+      shell: "cat /tmp/program_var"
+      register: program_var
 
-- name: "Server ID for Backup"
-  shell: "cat /var/plexguide/server.id"
-  register: server_id
+    - name: "Server ID for Backup"
+      shell: "cat /var/plexguide/server.id"
+      register: server_id
 
-- name: "Checking if Building List Exists"
-  stat:
-    path: "{{path.stdout}}/pgops/backup.build"
-  register: backlistcheck
+    - name: "Checking if Program is Running"
+      stat:
+      shell: "docker ps -a --format "{{.Names}}" | grep -c "\<{{program_var.stdout}}\>"
+      register: running
 
-- name: "Building List"
-  shell: "cat {{path.stdout}}/pgops/backup.build"
-  register: backlist
-  when: backlistcheck.stat.exists == True
+    - debug: msg="{{program_var.stdout}} running? 1 - Yes | 0 - No >>> {{running.stdout}}"
 
-- name: Prompt User for Program
-  pause:
-    prompt: "\n[Detected Programs]: {{backlist.stdout}}\n\nTYPE the name of a PROGRAM to Backup! (Case Senstive)"
-  register: selection
+    - debug: msg="Temp Message - For {{program_var.stdout}} - Server ID {{server_id.stdout}}"
 
-- name: Establishing Final Variable - Switch On
-  shell: "echo {{selection.user_input}} > /tmp/program_var"
+    - name: Stopping Docker Container - {{program_var.stdout}}
+      docker_container:
+        name: "{{program_var.stdout}}"
+        state: stopped
+      ignore_errors: True
+      when: running.stdout == "1"
 
-- script: /opt/plexguide/roles/b-sbackup/scripts/soloselect.sh
+    - name: "Backing Up Program to GDrive - {{program_var.stdout}}"
+      archive:
+        path:
+        - "/opt/appdata/plexguide/{{program_var.stdout}}/*"
+        dest: "/opt/appdata/{{program_var.stdout}}.tar"
+        format: tar
 
-- name: "Checking if Program is Running"
-  stat:
-    path: "{{path.stdout}}/pgops/{{program_var.stdout}}.running"
-  register: running
+    ############ BACKUP OTHER - END
+    - name: "Restart Docker Container - {{program_var.stdout}}"
+      docker_container:
+        name: "{{program_var.stdout}}"
+        state: started
+      ignore_errors: True
+      when: running.stdout == "1"
 
-- name: "Remove Static Path"
-  shell: "rm -r {{path.stdout}}/pgops/{{program_var.stdout}}.running"
-  when: running.stat.exists == True
+    - name: Uploading Backup to Google Drive
+      shell: "rclone copy /opt/appdata/plexguide/{{program_var.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
 
-- debug: msg="{{program_var.stdout}} running? {{running.stat.exists}}"
-
-- name: "Wait 1 Seconds"
-  wait_for:
-    timeout: 1
-
-- name: Establishing Final Variable
-  shell: "cat /tmp/program_var"
-  register: program_final
-
-- debug: msg="Temp Message - For {{program_final.stdout}} - Server ID {{server_id.stdout}}"
-
-- name: "Checking {{program_final.stdout}} location in APPDATA"
-  stat:
-    path: "/opt/appdata/{{program_final.stdout}}"
-  register: programappdata
-
-- name: "Checking if RClone Encrypted"
-  stat:
-    path: /var/plexguide/rclone-en.yes
-  register: encrypted
-
-- name: Stopping Docker Container - {{program_final.stdout}}
-  docker_container:
-    name: "{{program_final.stdout}}"
-    state: stopped
-  ignore_errors: True
-  when: running.stat.exists == True
-
-- debug: msg="Time Length can be Long or Short! Please Wait!"
-  when: programappdata.stat.exists == True
-
-- name: "Backing Up Program to GDrive - {{program_final.stdout}}"
-  archive:
-    path:
-    - "/opt/appdata/{{program_final.stdout}}/*"
-    dest: "{{path.stdout}}/pgops/{{program_final.stdout}}.tar"
-    format: tar
-
-############ BACKUP OTHER - END
-- name: "Restart Docker Container - {{program_final.stdout}}"
-  docker_container:
-    name: "{{program_final.stdout}}"
-    state: started
-  ignore_errors: True
-  when: running.stat.exists == True
-
-- name: Uploading Backup to Google Drive
-  shell: "rclone copy {{path.stdout}}/pgops/{{program_final.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
-  when: encrypted.stat.exists == False and programappdata.stat.exists == True
-
-- name: Uploading Backup to Google Drive (encrypted)
-  shell: "rclone copy /{{path.stdout}}/pgops/{{program_final.stdout}}.tar gcrypt:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
-  when: encrypted.stat.exists == True and programappdata.stat.exists == True
-
-- name: Remove TEMP Backup!
-  file:
-    path: "{{item}}"
-    state: absent
-  with_items:
-    - "{{path.stdout}}/pgops/{{program_final.stdout}}.tar"
-  when: programappdata.stat.exists == True
-
-- debug: msg="Program is now backed up to your Google Drive - {{program_final.stdout}}"
-  when: programappdata.stat.exists == True
-
-- debug: msg="The Program's Data DOES NOT EXIST Locally - Cannot Backup {{program_final.stdout}}"
-  when: programappdata.stat.exists == False
-
-- pause:
-    prompt: "\nProcess Complete! Press [ENTER] to Continue!"
+    - name: Remove TEMP Backup!
+      file:
+        path: "{{item}}"
+        state: absent
+      with_items:
+        - "/opt/appdata/plexguide/{{program_var.stdout}}.tar"
