@@ -61,13 +61,27 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
-  ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives --skip-tags encrypted
+
 elif [ "$typed" == "2" ]; then
-  echo '/mnt/tdrive=RO:/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
-  ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
-  ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives --skip-tags encrypted
+    if [ "$configure" == "GDrive" ]; then
+    echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
+    ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
+    ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives --skip-tags encrypted
+    elif [ "$configure" == "GDrive /w TDrive" ]; then
+    echo '/mnt/tdrive=RO:/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
+    ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
+    ansible-playbook /opt/plexguide/pg.yml --tags menu-pgdrives --skip-tags encrypted
+    else
+tee <<-EOF
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ ⛔️ WARNING! WARNING! WARNING!                                       ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ You Need to Configure: gdrive                                       ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+EOF
+sleep 4
+  if
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/roles/ending/ending.sh
   exit
