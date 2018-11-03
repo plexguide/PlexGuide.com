@@ -50,10 +50,9 @@ tee <<-EOF
 ↘️  LIST: Solo Backup >>> Active Folders - /opt/appdata/
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: Backing up only one application. Type the name, press [ENTER] and
-wait. Certain apps that generate tons of metadata can take quite a
-while (i.e. Plex, Sonarr, Radarr). Plex alone can take 45min+.
-Type the exact name (case senstive)!
+NOTE: Backing up only one application. Certain apps that generate tons
+of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
+alone can take 45min+. Type the exact name (case senstive)!
 
 EOF
 
