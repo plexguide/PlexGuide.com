@@ -34,16 +34,6 @@ apt-get install dialog -y
 git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
 cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  INSTALLING: Python Upgrades
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Assists for other required projects and modules!  Please Standby...
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-sleep 5
 # Install Dependencies
 apt-get install -y --reinstall \
     nano \
@@ -72,17 +62,6 @@ python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
 ## Copy pip to /usr/bin
 cp /usr/local/bin/pip /usr/bin/pip
 cp /usr/local/bin/pip3 /usr/bin/pip3
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  INSTALLING: Ansible
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Deploying Ansible onto your System!  Please Standby...
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-sleep 5
 
 mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
 echo "[local]" > /etc/ansible/inventories/local
