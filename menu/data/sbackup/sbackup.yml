@@ -34,7 +34,6 @@
       register: server_id
 
     - name: "Checking if Program is Running"
-      stat:
       shell: "cat /tmp/docker.check"
       register: running
 
