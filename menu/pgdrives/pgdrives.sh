@@ -81,14 +81,13 @@ tee <<-EOF
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 EOF
 sleep 4
-  if
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/roles/ending/ending.sh
   exit
 else
-  bash /opt/plexguide/menu/start/start.sh
+  bash /opt/plexguide/menu/pgdrives/pgdrives.sh
   exit
 fi
 
-bash /opt/plexguide/menu/start/start.sh
+bash /opt/plexguide/menu/pgdrives/pgdrives.sh
 exit
