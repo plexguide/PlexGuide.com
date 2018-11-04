@@ -82,7 +82,7 @@ Changed To: $typed
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-
+echo ""
   fi
 
 #################################################### TYPED CHECKERS - END
