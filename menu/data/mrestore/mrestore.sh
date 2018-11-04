@@ -91,7 +91,7 @@ tee <<-EOF
 ⚠️  NOTICE: Backing Up - "$p"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-
+sleep 2
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -118,7 +118,14 @@ echo $p > /tmp/program_var
 docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/mrestore/mrestore.yml
 
-sleep 2
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  PASS: $p - Process Complete - Moving On!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+sleep 4
 done </opt/appdata/plexguide/restore.list
 
 tee <<-EOF
