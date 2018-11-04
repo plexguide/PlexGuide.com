@@ -13,44 +13,43 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+# Recalls Important Variables
+#mnt=$(cat /var/plexguide/server.hd.path)
+restoreid=$(cat /var/plexguide/restore.id)
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  NOTE: Checking Server [$restoreid]'s backups
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
 
 # Recalls List for Backup Operations
-ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /tmp/backup.list
-echo > /tmp/backup.build
-# Remove Items fromt the List
+rclone ls gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdata/plexguide/restore.list
 
 ### Builds Backup List - END
-sed -i -e "/traefik/d" /tmp/backup.list
-sed -i -e "/watchtower/d" /tmp/backup.list
-sed -i -e "/word*/d" /tmp/backup.list
-sed -i -e "/x2go*/d" /tmp/backup.list
-sed -i -e "/speed*/d" /tmp/backup.list
-sed -i -e "/netdata/d" /tmp/backup.list
-sed -i -e "/pgtrak/d" /tmp/backup.list
-sed -i -e "/plexguide/d" /tmp/backup.list
-sed -i -e "/pgdupes/d" /tmp/backup.list
-sed -i -e "/portainer/d" /tmp/backup.list
-sed -i -e "/cloudplow/d" /tmp/backup.list
-sed -i -e "/phlex/d" /tmp/backup.list
-sed -i -e "/pgblitz/d" /tmp/backup.list
-sed -i -e "/cloudblitz/d" /tmp/backup.list
-### Builds Backup List - END
-
 # Build up list backup list for the main.yml execution
 
+#blank out restore.Build
+echo "" > /opt/appdata/plexguide/restore.build
+
 while read p; do
-  echo -n $p >> /tmp/backup.build
-  echo -n " " >> /tmp/backup.build
-done </tmp/backup.list
+  p=${p%.tar}
+  echo -n $p >> /opt/appdata/plexguide/restore.build
+  echo -n " " >> /opt/appdata/plexguide/restore.build
+done </opt/appdata/plexguide/restore.list
+
+# Just for the Restore Interace for display
+
 
 # Execute Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  LIST: Mass Backup >>> Active Folders - /opt/appdata/
+↘️  LIST: Solo Restore >>> Via RClone - gdrive:/plexguide/backup/
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-☑️  Backing up all applications below. Certain apps that generated tons
+☑️  Restoring all applications below. Certain apps that generated tons
 of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+.
 
@@ -65,7 +64,7 @@ read -p '⚠️  Continue? Type >>> yes or no | Press [ENTER]: ' typed < /dev/tt
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ WARNING! - You Must Type Yes or No!
+⛔️  WARNING! - You Must Type Yes or No!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 3
@@ -74,6 +73,7 @@ EOF
 elif [ "$typed" == "no" ]; then
   exit
 elif [ "$typed" == "yes" ]; then
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -81,8 +81,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-# Prevents From Repeating
-sleep 3
 ########################### Next Phase
 while read p; do
 tee <<-EOF
@@ -92,9 +90,31 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  echo $p > /tmp/program_var
-  docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" >> /tmp/docker.check
-  ansible-playbook /opt/plexguide/menu/data/mbackup/mbackup.yml
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  NOTE: Determing File Size - $p
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+size=$(rclone ls gdrive:/plexguide/backup/$restoreid | grep $typed | awk '{ print $1 }' )
+display=$(expr $size / 1000)
+echo $display > /var/plexguide/rclone.size
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  PASS: Restoring - $typed | File Size: $display MB
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+# Prevents From Repeating
+sleep 4
+fi
+########################### Next Phase
+echo $typed > /tmp/program_var
+docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" >> /tmp/docker.check
+ansible-playbook /opt/plexguide/menu/data/mrestore/mrestore.yml
 
 sleep 2
 done </tmp/backup.list
@@ -106,6 +126,3 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-else
-  exit
-fi
