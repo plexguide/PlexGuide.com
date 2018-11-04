@@ -58,7 +58,7 @@ elif [ "$typed" == "4" ]; then
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/
 elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/data/restore.id
+  bash /opt/plexguide/menu/data/restoreid.sh
 elif [ "$typed" == "7" ]; then
   exit
 else
