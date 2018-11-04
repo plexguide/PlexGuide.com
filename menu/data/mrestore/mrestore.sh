@@ -146,6 +146,5 @@ tee <<-EOF
 
 EOF
 read -n 1 -s -r -p "Press [ANY] Key to Continue "
-
-bash /opt/plexguide/menu/data/mrestore/mrestore.sh
+echo
 exit
