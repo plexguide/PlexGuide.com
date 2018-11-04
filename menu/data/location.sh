@@ -60,8 +60,6 @@ mkdir -p "$typed/pgcheck" &>/dev/null
   if [ "$rcheck" == "" ]; then
 tee <<-EOF
 
-ls -la $typed | grep "\<$pgcheck\>"
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! - This Server Does Not Exist! Exiting! (Case Senstive)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
