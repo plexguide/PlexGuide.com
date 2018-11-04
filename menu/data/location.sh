@@ -56,7 +56,7 @@ echo
 mkdir -p "$typed/pgcheck" &>/dev/null
 
   # Recalls for to check existance
-  rcheck=$(ls -la $typed | grep "\<$pgcheck\>")
+  rcheck=$(ls -la $typed | grep "\<pgcheck\>")
   if [ "$rcheck" == "" ]; then
 tee <<-EOF
 
