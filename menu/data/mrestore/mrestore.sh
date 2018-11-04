@@ -73,7 +73,7 @@ EOF
 elif [ "$typed" == "no" ]; then
   exit
 elif [ "$typed" == "yes" ]; then
-
+  a=a
 fi
 
 tee <<-EOF
