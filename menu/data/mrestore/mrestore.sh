@@ -31,7 +31,8 @@ rclone ls gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdat
 # Build up list backup list for the main.yml execution
 
 #blank out restore.Build
-echo "" > /opt/appdata/plexguide/restore.build
+touch /opt/appdata/plexguide/restore.build
+rm -rf /opt/appdata/plexguide/restore.build
 
 while read p; do
   p=${p%.tar}
@@ -54,7 +55,8 @@ of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+.
 
 EOF
-echo "✅️  All Apps Being Restored: " && cat /opt/appdata/plexguide/restore.build
+echo "✅️  All Apps Being Restored: "
+cat /opt/appdata/plexguide/restore.build
 
 echo;
 echo;
