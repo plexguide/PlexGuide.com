@@ -140,4 +140,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-sleep 4
+read -n 1 -s -r -p "Press [ANY] Key to Continue "
+
+bash /opt/plexguide/menu/data/mrestore/mrestore.sh
+exit

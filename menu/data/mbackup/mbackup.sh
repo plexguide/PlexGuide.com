@@ -108,5 +108,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-sleep 3
+read -n 1 -s -r -p "Press [ANY] Key to Continue "
+
 exit
