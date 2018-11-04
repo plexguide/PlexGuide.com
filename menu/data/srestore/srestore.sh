@@ -20,7 +20,7 @@ restoreid=$(cat /var/plexguide/restore.id)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-☑️   NOTE: Please Standby. Checking backups via RClone!
+☑️  NOTE: Please Standby. Checking backups via RClone!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
@@ -31,7 +31,7 @@ rclone ls gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdat
 # Build up list backup list for the main.yml execution
 
 #blank out restore.Build
-"" > /opt/appdata/plexguide/restore.build
+echo "" > /opt/appdata/plexguide/restore.build
 
 while read p; do
   p=${p%.tar}
