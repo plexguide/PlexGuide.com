@@ -37,6 +37,7 @@ read -n 1 -s -r -p "Press [ANY] Key to Continue "
 echo
   bash /opt/plexguide/menu/data/data.sh
 exit
+  fi
 }
 
 
