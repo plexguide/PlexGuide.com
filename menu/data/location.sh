@@ -81,11 +81,11 @@ You Typed : $typed2
 Changed To: $typed
 
 EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+
   fi
 fi
 #################################################### TYPED CHECKERS - END
-
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 
   mkdir "$typed/pgcheck" &>/dev/null
   # Recalls for to check existance
