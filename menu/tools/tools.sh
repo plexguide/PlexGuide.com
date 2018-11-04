@@ -36,7 +36,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/tools/tools.sh
+  bash /opt/plexguide/menu/data/data.sh
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice
 elif [ "$typed" == "3" ]; then
