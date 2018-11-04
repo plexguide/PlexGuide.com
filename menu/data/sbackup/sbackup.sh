@@ -100,7 +100,7 @@ EOF
 
 size=$(ls -la /opt/appdata | grep "\<$typed\>" | awk '{ print $5 }' )
 
-display=$(expr $size / 1000000)
+display=$(expr $size / 1000000 )
 
   if [ "$display" == "0" ]; then
     display=1
