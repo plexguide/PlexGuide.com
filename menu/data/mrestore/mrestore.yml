@@ -36,6 +36,10 @@
       shell: "cat /var/plexguide/rclone.size"
       register: program_size
 
+    - name: "Size Info"
+      shell: "cat /var/plexguide/restore.name"
+      register: simplename
+
     - name: "Server ID for Backup"
       shell: "cat /var/plexguide/server.id"
       register: server_id
@@ -49,7 +53,7 @@
     - name: Create Restore Folder
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
       with_items:
-        - "/opt/appdata/{{program_var.stdout}}"
+        - "/opt/appdata/{{simplename.stdout}}"
 
     - name: "Downloading from Google Drive - {{program_var.stdout}} - Size: {{program_size.stdout}} MB"
       shell: "rclone copy --tpslimit 6 \
@@ -67,7 +71,7 @@
     - name: Unzip Folders
       unarchive:
         src: "/opt/appdata/plexguide/{{program_var.stdout}}"
-        dest: "/opt/appdata/{{program_var.stdout}}"
+        dest: "/opt/appdata/{{simplename.stdout}}"
         keep_newer: no
         owner: 1000
         group: 1000
