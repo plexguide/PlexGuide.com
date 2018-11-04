@@ -52,7 +52,7 @@ sleep 3
 bash /opt/plexguide/install/serverid.sh
 exit
 else
-mkdir -p "$typed/pgcheck" &>/dev/null
+mkdir "$typed/pgcheck" &>/dev/null
 
   # Recalls for to check existance
   rcheck=$(ls -la $typed | grep "\<pgcheck\>")
