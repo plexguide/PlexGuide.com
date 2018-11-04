@@ -15,33 +15,33 @@
 #################################################################################
 
 # Recalls List for Backup Operations
-ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /tmp/backup.list
-echo > /tmp/backup.build
+ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /opt/appdata/plexguide/backup.list
+echo > /opt/appdata/plexguide/backup.build
 # Remove Items fromt the List
 
 ### Builds Backup List - END
-sed -i -e "/traefik/d" /tmp/backup.list
-sed -i -e "/watchtower/d" /tmp/backup.list
-sed -i -e "/word*/d" /tmp/backup.list
-sed -i -e "/x2go*/d" /tmp/backup.list
-sed -i -e "/speed*/d" /tmp/backup.list
-sed -i -e "/netdata/d" /tmp/backup.list
-sed -i -e "/pgtrak/d" /tmp/backup.list
-sed -i -e "/plexguide/d" /tmp/backup.list
-sed -i -e "/pgdupes/d" /tmp/backup.list
-sed -i -e "/portainer/d" /tmp/backup.list
-sed -i -e "/cloudplow/d" /tmp/backup.list
-sed -i -e "/phlex/d" /tmp/backup.list
-sed -i -e "/pgblitz/d" /tmp/backup.list
-sed -i -e "/cloudblitz/d" /tmp/backup.list
+sed -i -e "/traefik/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/watchtower/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/word*/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/x2go*/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/speed*/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/netdata/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/pgtrak/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/plexguide/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/pgdupes/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/portainer/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/cloudplow/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/phlex/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/pgblitz/d" /opt/appdata/plexguide/backup.list
+sed -i -e "/cloudblitz/d" /opt/appdata/plexguide/backup.list
 ### Builds Backup List - END
 
 # Build up list backup list for the main.yml execution
 
 while read p; do
-  echo -n $p >> /tmp/backup.build
-  echo -n " " >> /tmp/backup.build
-done </tmp/backup.list
+  echo -n $p >> /opt/appdata/plexguide/backup.build
+  echo -n " " >> /opt/appdata/plexguide/backup.build
+done </opt/appdata/plexguide/backup.list
 
 # Execute Interface
 tee <<-EOF
@@ -55,7 +55,7 @@ of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+. Type the exact name (case senstive)!
 
 EOF
-echo "✅️  Potential Apps to Backup: " && cat /tmp/backup.build
+echo "✅️  Potential Apps to Backup: " && cat /opt/appdata/plexguide/backup.build
 
 echo;
 echo;
