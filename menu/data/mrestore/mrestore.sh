@@ -74,6 +74,8 @@ elif [ "$typed" == "no" ]; then
   exit
 elif [ "$typed" == "yes" ]; then
 
+fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -110,7 +112,7 @@ EOF
 
 # Prevents From Repeating
 sleep 4
-fi
+
 ########################### Next Phase
 echo $typed > /tmp/program_var
 docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" >> /tmp/docker.check
