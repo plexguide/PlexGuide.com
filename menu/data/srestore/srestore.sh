@@ -46,7 +46,7 @@ done </opt/appdata/plexguide/restore.list
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  LIST: Solo Restore >>> Active Folders - /opt/appdata/
+↘️  LIST: Solo Restore >>> Via RClone - gdrive:/plexguide/backup/
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ☑️  Restoring only one application. Certain apps that generated tons
