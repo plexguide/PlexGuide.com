@@ -18,15 +18,22 @@ mnt=$(cat /var/plexguide/server.hd.path)
 restoreid=$(cat /var/plexguide/restore.id)
 
 # Recalls List for Backup Operations
-rclone ls /mnt/gdrive/plexguide/backup/$restoreid | awk '{ print $2 }' | tail -n +2 > /tmp/restore.list
+rclone ls gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdata/plexguide/restore.list
 
 ### Builds Backup List - END
 # Build up list backup list for the main.yml execution
 
+#blank out restore.Build
+"" > /opt/appdata/plexguide/restore.build
+
 while read p; do
-  echo -n $p >> /tmp/restore.build
-  echo -n " " >> /tmp/restore.build
-done </tmp/restore.list
+  p=${p%.tar}
+  echo -n $p >> /opt/appdata/plexguide/restore.build
+  echo -n " " >> /opt/appdata/plexguide/restore.build
+done </opt/appdata/plexguide/restore.list
+
+# Just for the Restore Interace for display
+
 
 # Execute Interface
 tee <<-EOF
@@ -40,7 +47,7 @@ of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+. Type the exact name (case senstive)!
 
 EOF
-echo "✅️  Potential Apps to Restore: " && cat /tmp/backup.build
+echo "✅️  Potential Apps to Restore: " && cat /tmp/restore.build
 
 echo;
 echo;
