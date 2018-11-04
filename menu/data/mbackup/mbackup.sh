@@ -15,7 +15,7 @@
 #################################################################################
 
 # Recalls List for Backup Operations
-ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /tmp/backup.list
+ls -la /opt/appdata | awk '{ print $9 }' | tail -n +4 > /tmp/backup.list
 echo > /tmp/backup.build
 # Remove Items fromt the List
 
