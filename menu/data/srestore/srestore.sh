@@ -20,7 +20,7 @@ restoreid=$(cat /var/plexguide/restore.id)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-☑️  NOTE: Please Standby. Checking backups via RClone!
+☑️  NOTE: Please Standby. Checking the $restoreid Backups
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
