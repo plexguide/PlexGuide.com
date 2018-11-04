@@ -41,11 +41,13 @@ tee <<-EOF
 ⛔️  WARNING! - Backup is Only for GDrive / GCE Editions
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: If you want to back up your files, they are located at the
-folllowing location: /opt/appdata
+NOTE: If backing up your files, they are located at the folllowing
+location: /opt/appdata
 
-Remember, your on your own because you can backup two a second drive,
-same drive different location, NAS... think you get the idea.
+You're on OWN because it's too complex for PG to standardize a backup.
+Example, you may have a second hard drive, may store it to the same
+drive, a NAS... (kind of hard to account for all the situations).
+Think you get the idea!
 
 EOF
 read -n 1 -s -r -p "Press [ANY] Key to Continue "
