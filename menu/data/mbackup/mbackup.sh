@@ -59,7 +59,7 @@ echo "✅️  All Apps Being Backup'ed Up: " && cat /opt/appdata/plexguide/backu
 echo;
 echo;
 read -p '⚠️  Continue? Type >>> yes or no | Press [ENTER]: ' typed < /dev/tty
-
+echo 
   if [ "$typed" == "" ]; then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -105,7 +105,7 @@ echo $display > /var/plexguide/rclone.size
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  NOTICE: Backing Up - $p | File Size: $display MB
+⚠️  NOTICE: Backing Up - $p | File Size: "$display"MB
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
