@@ -66,10 +66,14 @@
       ignore_errors: True
       when: running.stdout == "1"
 
+    - name: Register HD Path
+      shell: "cat /var/plexguide/restore.name"
+      register: restorename
+
     - name: Unzip Folders
       unarchive:
         src: "/opt/appdata/plexguide/{{program_var.stdout}}.tar"
-        dest: "/opt/appdata/{{program_var.stdout}}"
+        dest: "/opt/appdata/{{restorename.stdout}}"
         keep_newer: no
         owner: 1000
         group: 1000
