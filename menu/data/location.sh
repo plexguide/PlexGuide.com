@@ -54,6 +54,40 @@ exit
 else
 mkdir "$typed/pgcheck" &>/dev/null
 
+##################################################### TYPED CHECKERS - START
+  typed2=$typed
+  bonehead=no
+  ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
+  initial="$(echo $typed | head -c 1)"
+  if [ "$initial" != "/" ]; then
+    typed="/$typed"
+    bonehead=yes
+  fi
+  ##### If BONEHEAD added a / at the end, we fix for them
+  initial="${typed: -1}"
+  if [ "$initial" == "/" ]; then
+    typed=${typed::-1}
+    bonehead=yes
+  fi
+
+  ##### Notify User is a Bonehead
+  if [ "$bonehead" == "yes" ]; then
+tee <<-EOF
+
+---------------------------------------------------------------------------
+ALERT: We Fixed Your Typos (pay attention to the example next time)
+---------------------------------------------------------------------------
+
+You Typed : $typed2
+Changed To: $typed
+
+EOF
+##################################################### TYPED CHECKERS - END
+
+
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+
+
   # Recalls for to check existance
   rcheck=$(ls -la $typed | grep "\<pgcheck\>")
   if [ "$rcheck" == "" ]; then
