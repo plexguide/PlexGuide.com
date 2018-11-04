@@ -78,12 +78,22 @@ else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PASS: Restoring - $typed
+↘️  NOTE: Determing File Size - $typed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+size=$(rclone ls gdrive:/plexguide/backup/ | grep sabnzbd | awk '{ print $1 }')
+size=$(echo $(( 61000  / 1000 )))
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  PASS: Restoring - $typed | File Size: $size MB
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Prevents From Repeating
-sleep 3
+sleep 4
 fi
 ########################### Next Phase
 echo $typed > /tmp/program_var
