@@ -1,9 +1,8 @@
 #!/bin/bash
 cat /etc/issue > /tmp/sanity.check
 sanity=$(awk '$2 == "18.10" { print $2 }' /tmp/sanity.check)
-read sanity
 echo "Conducted Sanity Check"
-if [ "$sanity" -eq "18.10" ]; then
+if [ -n $sanity ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
