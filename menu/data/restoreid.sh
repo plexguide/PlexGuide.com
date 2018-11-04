@@ -28,6 +28,13 @@ EOF
 # Standby
 read -p 'TYPE the Restore ID Name & Press [ENTER]: ' typed < /dev/tty
 
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️  NOTICE: Checking - $typed's existance ! Please Standby
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
   if [ "$typed" == "" ]; then
 tee <<-EOF
 
@@ -54,7 +61,6 @@ EOF
   fi
 
 tee <<-EOF
-fii
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️ PASS: Server Exists! Storing the Name of the Server!
