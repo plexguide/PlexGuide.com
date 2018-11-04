@@ -56,7 +56,8 @@ elif [ "$typed" == "3" ]; then
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/data/mrestore/mrestore.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/
+  # Why Here? Located Here for When User Installs PG
+  bash /opt/plexguide/install/serverid.sh
 elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/data/restoreid.sh
 elif [ "$typed" == "7" ]; then
