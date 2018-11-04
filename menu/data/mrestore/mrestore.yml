@@ -51,7 +51,7 @@
       with_items:
         - "/opt/appdata/{{program_var.stdout}}"
 
-    - name: "Downloading from Google Drive - {{program_var.stdout}} - Size: {{program_size.stdout}}MB"
+    - name: "Downloading from Google Drive - {{program_var.stdout}} - Size: {{program_size.stdout}} MB"
       shell: "rclone copy --tpslimit 6 \
               --config /root/.config/rclone/rclone.conf \
               --drive-chunk-size=64M \
