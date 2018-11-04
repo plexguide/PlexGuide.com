@@ -14,8 +14,15 @@
 #
 #################################################################################
 # Recalls Important Variables
-mnt=$(cat /var/plexguide/server.hd.path)
+#mnt=$(cat /var/plexguide/server.hd.path)
 restoreid=$(cat /var/plexguide/restore.id)
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+☑️   NOTE: Please Standby. Checking backups via RClone!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
 
 # Recalls List for Backup Operations
 rclone ls gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdata/plexguide/restore.list
@@ -47,7 +54,7 @@ of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+. Type the exact name (case senstive)!
 
 EOF
-echo "✅️  Potential Apps to Restore: " && cat /tmp/restore.build
+echo "✅️  Potential Apps to Restore: " && cat /opt/appdata/plexguide/restore.build
 
 echo;
 echo;
