@@ -119,7 +119,7 @@ docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/mrestore/mrestore.yml
 
 sleep 2
-done </tmp/backup.list
+done </opt/appdata/plexguide/restore.list
 
 tee <<-EOF
 
