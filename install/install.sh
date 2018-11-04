@@ -8,7 +8,7 @@ tee <<-EOF
 PG will not work on Live Server or 18.10! We are not going to stop you,
 but it will fail miserably! QUIT ASKING ON THE FORUMS!!!!
 
-You must use 18.04 LTS! UB16 is no issue!
+You must use 18.04 LTS! UB16 has no issue!
 
 WAIT FOR 10 SECONDS!
 
