@@ -43,8 +43,6 @@
 
     - debug: msg="{{program_var.stdout}} running? 1 - Yes | 0 - No >>> {{running.stdout}}"
 
-    - debug: msg="Temp Message - For {{program_var.stdout}} - Server ID {{server_id.stdout}}"
-
     - name: Stopping Docker Container - {{program_var.stdout}}
       docker_container:
         name: "{{program_var.stdout}}"
