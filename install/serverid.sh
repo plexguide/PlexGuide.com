@@ -31,7 +31,7 @@ of backin up the server.
 EOF
 
 # Standby
-read -p 'TYPE a Server ID Name & Press [ENTER] : ' typed < /dev/tty
+read -p 'TYPE a Server ID Name & Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
