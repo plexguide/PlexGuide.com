@@ -115,7 +115,7 @@ sleep 4
 
 ########################### Next Phase
 echo $p > /tmp/program_var
-docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" >> /tmp/docker.check
+docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/mrestore/mrestore.yml
 
 sleep 2

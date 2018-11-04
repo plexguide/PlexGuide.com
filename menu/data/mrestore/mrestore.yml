@@ -46,8 +46,6 @@
 
     - debug: msg="{{program_var.stdout}} running? 1 - Yes | 0 - No >>> {{running.stdout}}"
 
-    - debug: msg="Temp Message - For {{program_var.stdout}} - Server ID {{server_id.stdout}}"
-
     - name: Create Restore Folder
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
       with_items:
