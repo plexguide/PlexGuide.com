@@ -109,6 +109,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
+sleep 2
+
   echo $p > /tmp/program_var
   docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" > /tmp/docker.check
   ansible-playbook /opt/plexguide/menu/data/mbackup/mbackup.yml
