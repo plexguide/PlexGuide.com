@@ -63,8 +63,8 @@ tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
 3 - Server Port Guard        [$ports]
 4 - Application Guard        [$appguard]
-5 - Program Suite Installer
-6 - PG Tools & Services
+5 - Programs Suite Installer
+6 - Tools & Services
 7 - Settings
 8 - Exit
 
