@@ -82,7 +82,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-size=$(rclone ls gdrive:/plexguide/backup/ | grep $typed | awk '{ print $1 }')
+size=$(rclone ls gdrive:/plexguide/backup/$restoreid | grep $typed | awk '{ print $1 }')
 size=$size+0
 size=$(echo $(($size/1000)))
 
