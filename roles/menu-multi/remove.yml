@@ -31,4 +31,4 @@
       register: choice
 
     - name: Remove File
-      shell: "rm -r /opt/appdata/plexguide/multi/{{choice.user_input}}"
+      shell: "rm -rf /opt/appdata/plexguide/multi/{{choice.user_input}}"

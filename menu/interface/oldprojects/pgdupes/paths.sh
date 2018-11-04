@@ -17,10 +17,10 @@
 #################################################################################
 dialog --title "--- NOTE ---" --msgbox "\nFirst time here and not read the Wiki? Visit:\n\nlibrary.plexguide.com" 0 0
 
-rm -r /tmp/plex.library
-rm -r /tmp/plex.library.json
-rm -r /var/plexguide/plex.library
-rm -r /var/plexguide/plex.library.json
+rm -rf /tmp/plex.library
+rm -rf /tmp/plex.library.json
+rm -rf /var/plexguide/plex.library
+rm -rf /var/plexguide/plex.library.json
 message=""
 #dialog --title "HD Selection" --msgbox "\nYou Selected: Yes, and I am Ready!\n\nThis you named and can access your HD! If you botch the name, visit SETTINGS and change ANYTIME!" 0 0
 
@@ -90,9 +90,9 @@ do
             cat /tmp/plex.library.json >> /var/plexguide/plex.library.json
             ;;
           B)
-            rm -r /tmp/plex.library
-            rm -r /var/plexguide/plex.library
-            rm -r /var/plexguide/plex.library.json
+            rm -rf /tmp/plex.library
+            rm -rf /var/plexguide/plex.library
+            rm -rf /var/plexguide/plex.library.json
             message=""
             ;;
           Z)

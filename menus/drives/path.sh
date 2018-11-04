@@ -56,7 +56,7 @@
     file="$path/plexguide"
     if [ -e "$file" ]
       then
-        rm -r "$path/plexguide"
+        rm -rf "$path/plexguide"
         dialog --title "PG Path Checker" --msgbox "\nPATH: $path\n\nThe PATH exists! We are going to CHMOD & CHOWN the path for you!" 0 0
 echo "SUCCESS - Path $path is valid! Setting CHOWN & CHMOD." > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 

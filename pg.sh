@@ -15,7 +15,7 @@
 #################################################################################
 
 ######################################################## START: Key Variables
-rm -r /opt/plexguide/menu/interface/version/version.sh
+rm -rf /opt/plexguide/menu/interface/version/version.sh
 sudo mkdir -p /opt/plexguide/menu/interface/version/
 sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
 

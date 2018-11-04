@@ -58,10 +58,10 @@ if [ "$menu" == "4" ]; then
 fi
 
 if [ "$menu" == "5" ]; then
-  rm -r /etc/docker
+  rm -rf /etc/docker
   apt-get purge docker-ce
   rm -rf /var/lib/docker
-  rm -r /var/plexguide/dep*
+  rm -rf /var/plexguide/dep*
   echo "0" > /var/plexguide/pg.preinstall.stored
   echo "0" > /var/plexguide/pg.ansible.stored
   echo "0" > /var/plexguide/pg.rclone.stored

@@ -81,7 +81,7 @@ done
   echo "-----------------------------------------------------------"
   echo ""
   sleep 2
-  rm -r /etc/docker
+  rm -rf /etc/docker
   apt-get purge docker-ce -y
   rm -rf /var/lib/docker
 
@@ -90,7 +90,7 @@ done
       case $yn in
           [Yy]* ) echo ""
                   echo "Deleting Your Data Forever - Please Wait!"
-                  rm -r /opt/appdata
+                  rm -rf /opt/appdata
                   sleep 3
                   echo "I'm here, I'm there, wait...I'm your DATA! Poof! I'm gone!"
                   sleep 3; break;;

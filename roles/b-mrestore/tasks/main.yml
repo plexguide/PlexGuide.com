@@ -52,7 +52,7 @@
   register: running
 
 - name: "Remove Static Path"
-  shell: "rm -r {{path.stdout}}/pgops/{{selection.stdout}}.running"
+  shell: "rm -rf {{path.stdout}}/pgops/{{selection.stdout}}.running"
   when: running.stat.exists == True
 
 - debug: msg="{{selection.stdout}} running? {{running.stat.exists}}"

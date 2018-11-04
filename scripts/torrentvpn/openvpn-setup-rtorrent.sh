@@ -10,7 +10,7 @@ mv /opt/plexguide/scripts/torrentvpn/openvpn /opt/appdata/vpn/config/
 
 # move original setup files to new loctaion
  bash /opt/plexguide/scripts/torrentvpn/move-ovpn-rtorrent.sh
- rm -R /opt/appdata/delugevpn
+ rm -rf /opt/appdata/delugevpn
 
  /sbin/modprobe iptable_mangle
 

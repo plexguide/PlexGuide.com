@@ -92,7 +92,7 @@
     path: /opt/appdata/vpn/deluge/config/openvpn/*.ovpn
     force: yes
 #    when: ovpn.stat.exists
-#  shell: rm -r  /opt/appdata/vpn/deluge/config/openvpn/*.ovpn
+#  shell: rm -rf  /opt/appdata/vpn/deluge/config/openvpn/*.ovpn
 
 
 ########## Remote Server selection

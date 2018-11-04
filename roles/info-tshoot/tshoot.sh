@@ -58,10 +58,10 @@ case $CHOICE in
     dialog --title "Action Confirmed" --msgbox "\nPLEASE EXIT and Restart PLEXGUIDE!" 0 0
     exit 0 ;;
   C)
-    rm -r /etc/docker
+    rm -rf /etc/docker
     apt-get purge docker-ce
     rm -rf /var/lib/docker
-    rm -r /var/plexguide/dep*
+    rm -rf /var/plexguide/dep*
     echo "0" > /var/plexguide/pg.preinstall.stored
     echo "0" > /var/plexguide/pg.ansible.stored
     echo "0" > /var/plexguide/pg.rclone.stored

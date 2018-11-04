@@ -40,7 +40,7 @@
   register: running
 
 - name: "Remove Static Path"
-  shell: "rm -r {{path.stdout}}/pgops/{{program_var.stdout}}.running"
+  shell: "rm -rf {{path.stdout}}/pgops/{{program_var.stdout}}.running"
   when: running.stat.exists == True
 
 - name: "Wait 1 Seconds"

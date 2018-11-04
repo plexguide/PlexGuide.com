@@ -30,7 +30,7 @@ fi
 
 file2="/var/plexguide/auth.lock"
 if [ -e "$file2" ]; then
-  rm -r /var/plexguide/auth.lock
+  rm -rf /var/plexguide/auth.lock
   bash /opt/plexguide/roles/menu-authenication/scripts/rebuild.sh
 fi
 
