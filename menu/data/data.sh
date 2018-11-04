@@ -41,26 +41,41 @@ exit
   fi
 }
 
+# For ZipLocations
+file="/var/plexguide/data.location"
+if [ ! -e "$file" ]; then
+  echo "/opt/appdata/plexguide" > /var/plexguide/data.location
+fi
+
+space=$(cat /var/plexguide/data.location)
+# To Get Used Space
+used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
+# To Get All Space
+capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
+# Percentage
+percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 
 # Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🍕  PG Data Handling - Server: $serverid | Recovery:
+🍕  PG Data Handling - Server: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+☑️   [Restore ID] server to recover from and [Change Backup Location]
+is where you backups will process (stats of current location below).
+Note a 100TB Plex Library can create 40GB of MetaData!
+
+🌵  Used Space: $used of $capacity | $percentage Used Capacity
+
 1 - SOLO: App Backup
 2 - SOLO: App Restore
-━━━━━━━━━━━━━━━━━━━━━━
 3 - MASS: App Backup
 4 - MASS: App Restore
-━━━━━━━━━━━━━━━━━━━━━━
-NOTE: Restore ID = The Old Server to Recover From
-
-5 - Change Current  ID: $serverid
-6 - Change Restore  ID: $restoreid
-━━━━━━━━━━━━━━━━━━━━━━
-7 - Exit
-
+5 - Change Current ID: $serverid
+6 - Change Restore ID: $restoreid
+7 - Change Backup Location: $space
+8 - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 # Standby
