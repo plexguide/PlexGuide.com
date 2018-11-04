@@ -39,7 +39,7 @@ sed -i -e "/cloudblitz/d" /opt/appdata/plexguide/backup.list
 # Build up list backup list for the main.yml execution
 
 while read p; do
-  echo -n $p >> /opt/appdata/plexguide/backup.build
+  echo -n $typed >> /opt/appdata/plexguide/backup.build
   echo -n " " >> /opt/appdata/plexguide/backup.build
 done </opt/appdata/plexguide/backup.list
 
@@ -89,11 +89,11 @@ fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  NOTE: Determing File Size - $p
+↘️  NOTE: Determing File Size - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-size=$(ls -la /opt/appdata | grep "\<$p\>" | awk '{ print $5 }' )
+size=$(ls -la /opt/appdata | grep "\<$typed\>" | awk '{ print $5 }' )
 
 display=$(expr $size / 1000000)
 
@@ -106,7 +106,7 @@ echo $display > /var/plexguide/rclone.size
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  NOTICE: Backing Up - $p | File Size: $display MB
+⚠️  NOTICE: Backing Up - $typed | File Size: $display MB
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
