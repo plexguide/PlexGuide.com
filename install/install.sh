@@ -4,15 +4,16 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎  WARNING! READ for Ubuntu 18 Server!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 PG will not work on Live Server or 18.10! We are not going to stop you,
-but it will fail miserably!
+but it will fail miserably! QUIT ASKING ON THE FORUMS!!!!
 
-You must use 18.04 LTS!
+You must use 18.04 LTS! UB16 is no issue!
 
-WAIT FOR 8 SECONDS!
+WAIT FOR 10 SECONDS!
 
 EOF
-sleep 8
+sleep 10
 
 # Disable IPv6
 if [ -f /etc/sysctl.d/99-sysctl.conf ]; then
