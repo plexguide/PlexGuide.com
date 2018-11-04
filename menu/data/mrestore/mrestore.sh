@@ -54,7 +54,7 @@ of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+.
 
 EOF
-echo "✅️  All Apps Being Backup'ed Up: " && cat /opt/appdata/plexguide/restore.build
+echo "✅️  All Apps Being Restored: " && cat /opt/appdata/plexguide/restore.build
 
 echo;
 echo;
@@ -68,7 +68,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 3
-  bash /opt/plexguide/menu/data/sbackup/sbackup.sh
+  bash /opt/plexguide/menu/data/mrestore/mrestore.sh
   exit
 elif [ "$typed" == "no" ]; then
   exit
@@ -79,7 +79,7 @@ fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PASS: Starting the Mass Backup Process - This Will Take Awhile!
+✅️  PASS: Starting the Mass Restore Process - This Will Take Awhile!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
@@ -88,7 +88,7 @@ while read "p"; do
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  NOTICE: Backing Up - "$p"
+⚠️  NOTICE: Restoring - "$p"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 2
