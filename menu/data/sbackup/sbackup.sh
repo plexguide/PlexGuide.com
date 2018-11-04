@@ -83,10 +83,35 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-# Prevents From Repeating
-sleep 3
 fi
+
 ########################### Next Phase
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  NOTE: Determing File Size - $p
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+size=$(ls -la /opt/appdata | grep "\<$p\>" | awk '{ print $5 }' )
+
+display=$(expr $size / 1000000)
+
+  if [ "$display" == "0" ]; then
+    display=1
+  fi
+
+echo $display > /var/plexguide/rclone.size
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️  NOTICE: Backing Up - $p | File Size: $display MB
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+sleep 2
+
 echo $typed > /tmp/program_var
 docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/sbackup/sbackup.yml
