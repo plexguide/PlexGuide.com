@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 cat /etc/issue > /tmp/sanity.check
 sanity=$(awk '$2 == "18.10" { print $2 }' /tmp/sanity.check)
 echo "Conducted Sanity Check"
