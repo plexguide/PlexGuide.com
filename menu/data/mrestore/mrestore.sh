@@ -99,14 +99,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-size=$(rclone ls gdrive:/plexguide/backup/$restoreid | grep $typed | awk '{ print $1 }' )
+size=$(rclone ls gdrive:/plexguide/backup/$restoreid | grep $p | awk '{ print $1 }' )
 display=$(expr $size / 1000)
 echo $display > /var/plexguide/rclone.size
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PASS: Restoring - $typed | File Size: $display MB
+✅️  PASS: Restoring - $p| File Size: $display MB
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
@@ -114,8 +114,8 @@ EOF
 sleep 4
 
 ########################### Next Phase
-echo $typed > /tmp/program_var
-docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" >> /tmp/docker.check
+echo $p > /tmp/program_var
+docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" >> /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/mrestore/mrestore.yml
 
 sleep 2
