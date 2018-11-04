@@ -16,7 +16,11 @@
 
 # Recalls List for Backup Operations
 ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /opt/appdata/plexguide/backup.list
-echo > /opt/appdata/plexguide/backup.build
+
+#blank out restore.Build
+touch /opt/appdata/plexguide/backup.build
+rm -rf /opt/appdata/plexguide/backup.build
+
 # Remove Items fromt the List
 
 ### Builds Backup List - END

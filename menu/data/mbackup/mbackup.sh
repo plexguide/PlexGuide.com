@@ -16,8 +16,10 @@
 
 # Recalls List for Backup Operations
 ls -la /opt/appdata | awk '{ print $9 }' | tail -n +4 > /opt/appdata/plexguide/backup.list
-echo > /opt/appdata/plexguide/backup.build
-# Remove Items fromt the List
+
+# blank out
+touch /opt/appdata/plexguide/backup.build
+rm -rf /opt/appdata/plexguide/backup.build
 
 ### Builds Backup List - END
 sed -i -e "/traefik/d" /opt/appdata/plexguide/backup.list

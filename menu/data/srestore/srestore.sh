@@ -17,6 +17,10 @@
 #mnt=$(cat /var/plexguide/server.hd.path)
 restoreid=$(cat /var/plexguide/restore.id)
 
+#blank out restore.Build
+touch /opt/appdata/plexguide/restore.build
+rm -rf /opt/appdata/plexguide/restore.build
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -29,9 +33,6 @@ rclone ls gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdat
 
 ### Builds Backup List - END
 # Build up list backup list for the main.yml execution
-
-#blank out restore.Build
-echo "" > /opt/appdata/plexguide/restore.build
 
 while read p; do
   p=${p%.tar}
