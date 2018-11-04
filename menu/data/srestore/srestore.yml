@@ -57,7 +57,7 @@
       shell: "rclone copy --tpslimit 6 \
               --config /root/.config/rclone/rclone.conf \
               --drive-chunk-size=64M \
-              gdrive:/plexguide/backup/{{restore_id.stdout}}/{{program_var.stdout}}.tar /opt/appdata/plexguide/"
+              gdrive:/plexguide/backup/{{restore_id.stdout}}/{{program_var.stdout}}.tar /opt/appdata/plexguide"
 
     - name: Stopping Docker Container - {{program_var.stdout}}
       docker_container:
@@ -66,14 +66,10 @@
       ignore_errors: True
       when: running.stdout == "1"
 
-    - name: Register HD Path
-      shell: "cat /var/plexguide/restore.name"
-      register: restorename
-
     - name: Unzip Folders
       unarchive:
         src: "/opt/appdata/plexguide/{{program_var.stdout}}.tar"
-        dest: "/opt/appdata/{{restorename.stdout}}"
+        dest: "/opt/appdata/{{program_var.stdout}}"
         keep_newer: no
         owner: 1000
         group: 1000
