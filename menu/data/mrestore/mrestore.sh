@@ -124,7 +124,6 @@ echo $p > /tmp/program_var
 ### For Folder Names for Restore
 q=${p%.tar}
 echo "$q" > /var/plexguide/restore.name
-mkdir -p /opt/appdata/$p
 docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/mrestore/mrestore.yml
 
