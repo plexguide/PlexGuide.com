@@ -101,6 +101,11 @@ EOF
 
 size=$(rclone ls gdrive:/plexguide/backup/$restoreid | grep $p | awk '{ print $1 }' )
 display=$(expr $size / 1000000)
+
+  if [ "$display" == "0" ]; then
+    display=1
+  fi
+
 echo $display > /var/plexguide/rclone.size
 
 tee <<-EOF
