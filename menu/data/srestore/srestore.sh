@@ -84,7 +84,7 @@ EOF
 
 size=$(rclone ls gdrive:/plexguide/backup/$restoreid | grep $typed | awk '{ print $1 }' )
 display=$(expr $size / 1000)
-
+echo $display > /var/plexguide/rclone.size
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
