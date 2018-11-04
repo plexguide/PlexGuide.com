@@ -84,7 +84,7 @@ EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 
   fi
-fi
+
 #################################################### TYPED CHECKERS - END
 
   mkdir "$typed/pgcheck" &>/dev/null
