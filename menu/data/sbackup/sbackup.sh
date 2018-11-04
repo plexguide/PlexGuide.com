@@ -111,7 +111,7 @@ tee <<-EOF
 EOF
 
 sleep 2
-
+mkdir -p /opt/appdata/$typed
 echo $typed > /tmp/program_var
 docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/sbackup/sbackup.yml
