@@ -15,8 +15,11 @@
 #################################################################################
 
 # Touch Variables Incase They Do Not Exist
-touch /var/plexguide/pg.serverid
-touch /var/plexguide/restore.id
+file="/var/plexguide/restore.id"
+if [ ! -e "$file" ]; then
+  echo "[NOT-SET]" > /var/plexguide/restore.id
+fi
+
 # Call Variables
 serverid=$(cat /var/plexguide/pg.serverid)
 restoreid=$(cat /var/plexguide/restore.id)
@@ -32,8 +35,10 @@ tee <<-EOF
 3 - MASS: App Backup
 4 - MASS: App Restore
 ━━━━━━━━━━━━━━━━━━━━━━
+NOTE: Restore ID = The Old Server to Recover From
+
 5 - Change Current  ID: $serverid
-6 - Change Recovery ID: $restoreid <<< Old Server Name
+6 - Change Restore  ID: $restoreid
 ━━━━━━━━━━━━━━━━━━━━━━
 7 - Exit
 

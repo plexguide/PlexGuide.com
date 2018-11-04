@@ -8,6 +8,9 @@ if [ -f /etc/sysctl.d/99-sysctl.conf ]; then
     sysctl -p
 fi
 
+# Upgrade
+apt-get update
+
 # Add APT repos
 add-apt-repository main
 add-apt-repository universe
@@ -81,8 +84,8 @@ mkdir -p /opt/appdata/plexguide
 mkdir -p /var/plexguide
 
 ## Variables Need to Line Up with pg.sh (start)
-echo "11" > /var/plexguide/pg.python
-echo "10" > /var/plexguide/pg.ansible
+echo "12" > /var/plexguide/pg.python
+echo "11" > /var/plexguide/pg.ansible
 
 clear
 
