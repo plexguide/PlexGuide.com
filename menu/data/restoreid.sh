@@ -67,7 +67,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 # Prevents From Repeating
-echo "$typed" > /var/plexguide/recover.id
+echo "$typed" > /var/plexguide/restore.id
+
 sleep 3
 
 tee <<-EOF
