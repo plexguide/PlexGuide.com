@@ -74,14 +74,16 @@ EOF
 elif [ "$typed" == "no" ]; then
   exit
 elif [ "$typed" == "yes" ]; then
+
+fi
 tee <<-EOF
+
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️  PASS: Starting the Mass Backup Process - This Will Take Awhile!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-# Prevents From Repeating
 sleep 3
 ########################### Next Phase
 while read p; do
@@ -93,7 +95,7 @@ tee <<-EOF
 EOF
 
   echo $p > /tmp/program_var
-  docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" >> /tmp/docker.check
+  docker ps -a --format "{{.Names}}" | grep -c "\<$p\>" > /tmp/docker.check
   ansible-playbook /opt/plexguide/menu/data/mbackup/mbackup.yml
 
 sleep 2
@@ -106,6 +108,5 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-else
-  exit
-fi
+sleep 3
+exit
