@@ -16,25 +16,25 @@
 
 # Touch Variables Incase They Do Not Exist
 touch /var/plexguide/pg.serverid
-
+touch /var/plexguide/restore.id
 # Call Variables
 serverid=$(cat /var/plexguide/pg.serverid)
-
+restoreid=$(cat /var/plexguide/restore.id)
 # Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🍕  PG Data Handling - Server: $serverid | Recovery:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-NOTE: The [RECOVERY ID] is the server being recovered from!
-
 1 - SOLO: App Backup
-2 - SOLO: App Recovery
+2 - SOLO: App Restore
+━━━━━━━━━━━━━━━━━━━━━━
 3 - MASS: App Backup
 4 - MASS: App Restore
+━━━━━━━━━━━━━━━━━━━━━━
 5 - Change Current  ID: $serverid
-6 - Change Recovery ID:
+6 - Change Recovery ID: $restoreid <<< Old Server Name
+━━━━━━━━━━━━━━━━━━━━━━
 7 - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
