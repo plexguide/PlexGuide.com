@@ -118,6 +118,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
+echo "$typed" > /var/plexguide/data.location
 read -n 1 -s -r -p "Press [ANY] Key to Continue "
 
 fi

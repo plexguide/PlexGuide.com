@@ -98,6 +98,8 @@ elif [ "$typed" == "5" ]; then
 elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/data/restoreid.sh
 elif [ "$typed" == "7" ]; then
+  bash /opt/plexguide/menu/data/location.sh
+elif [ "$typed" == "8" ]; then
   exit
 else
   bash /opt/plexguide/menu/data/data.sh
