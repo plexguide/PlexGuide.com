@@ -52,7 +52,6 @@ sleep 3
 bash /opt/plexguide/install/serverid.sh
 exit
 else
-mkdir "$typed/pgcheck" &>/dev/null
 
 ##################################################### TYPED CHECKERS - START
   typed2=$typed
@@ -74,9 +73,9 @@ mkdir "$typed/pgcheck" &>/dev/null
   if [ "$bonehead" == "yes" ]; then
 tee <<-EOF
 
----------------------------------------------------------------------------
-ALERT: We Fixed Your Typos (pay attention to the example next time)
----------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ ALERT! We fixed the typos for you! Yes, Your Welcome!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 You Typed : $typed2
 Changed To: $typed
@@ -88,7 +87,7 @@ fi
 
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 
-
+  mkdir "$typed/pgcheck" &>/dev/null
   # Recalls for to check existance
   rcheck=$(ls -la $typed | grep "\<pgcheck\>")
   if [ "$rcheck" == "" ]; then
