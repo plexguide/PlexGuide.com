@@ -45,7 +45,6 @@ done </opt/appdata/plexguide/backup.list
 
 # Execute Interface
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  LIST: Mass Backup >>> Active Folders - /opt/appdata/
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -63,7 +62,6 @@ read -p '⚠️  Continue? Type >>> yes or no | Press [ENTER]: ' typed < /dev/tt
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! - You Must Type Yes or No!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -88,7 +86,26 @@ while read p; do
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  NOTICE: Backing Up - $p
+↘️  NOTE: Determing File Size - $p
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+p=lidarr
+size=$(ls -la /opt/appdata | grep "\<$p\>" | awk '{ print $5 }' )
+
+
+display=$(expr $size / 1000)
+
+  if [ "$display" == "0" ]; then
+    display=1
+  fi
+
+echo $display > /var/plexguide/rclone.size
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️  NOTICE: Backing Up - $p | File Size: $display MB
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 

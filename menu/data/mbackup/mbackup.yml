@@ -25,6 +25,10 @@
       register: path
       ignore_errors: True
 
+    - name: "Size Info"
+      shell: "cat /var/plexguide/rclone.size"
+      register: program_size
+
     - name: "Pulling Selected Program"
       shell: "cat /tmp/program_var"
       register: program_var
@@ -63,7 +67,7 @@
       ignore_errors: True
       when: running.stdout == "1"
 
-    - name: Uploading Backup to Google Drive
+    - name: "Uploading {{program_var.stdout}}.tar to Google Drive - Size: {{program_size.stdout}}MB"
       shell: "rclone copy /opt/appdata/plexguide/{{program_var.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
 
     - name: Remove TEMP Backup!
