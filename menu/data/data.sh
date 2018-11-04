@@ -23,6 +23,23 @@ fi
 # Call Variables
 serverid=$(cat /var/plexguide/pg.serverid)
 restoreid=$(cat /var/plexguide/restore.id)
+
+# Simple Check
+function restorecheck {
+  if [ "$restoreid" == "[NOT-SET]" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - You Must Set Your Recovery ID First! Restarting Process!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -n 1 -s -r -p "Press [ANY] Key to Continue "
+echo
+  bash /opt/plexguide/menu/data/data.sh
+exit
+}
+
+
 # Menu Interface
 tee <<-EOF
 
@@ -50,10 +67,12 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/data/sbackup/sbackup.sh
 elif [ "$typed" == "2" ]; then
+  restorecheck
   bash /opt/plexguide/menu/data/srestore/srestore.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/data/mbackup/mbackup.sh
 elif [ "$typed" == "4" ]; then
+  restorecheck
   bash /opt/plexguide/menu/data/mrestore/mrestore.sh
 elif [ "$typed" == "5" ]; then
   # Why Here? Located Here for When User Installs PG
