@@ -82,8 +82,9 @@ You Typed : $typed2
 Changed To: $typed
 
 EOF
-##################################################### TYPED CHECKERS - END
-
+  fi
+fi
+#################################################### TYPED CHECKERS - END
 
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 
