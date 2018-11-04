@@ -1,4 +1,35 @@
 #!/bin/sh
+cat /etc/issue > /tmp/sanity.check
+sanity=$(awk '$2 == "18.10" { print $2 }' /tmp/sanity.check)
+echo "Conducted Sanity Check"
+if [ "$sanity" -eq "18.10" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎  WARNING! No-Go UB18.10!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+You must have failed to read the warnings on the install page! PG
+will not install on UB18.10 (quit asking on the forums)! The 18.10
+edition has too many qwirks and issues!
+
+How To Resolve: Use 18.04 LTS (it doesn't have to be desktop only).
+
+Thank You For Your Understanding,
+With Love ~ The PG Team!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -n 1 -s -r -p "Press [ANY] Key to Continue "
+echo
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎  Exited PG! Goodluck!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+exit
+fi
 
 # Disable IPv6
 if [ -f /etc/sysctl.d/99-sysctl.conf ]; then
