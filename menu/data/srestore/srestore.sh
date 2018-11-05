@@ -64,12 +64,6 @@ echo "⚠️  TO EXIT - type >>> exit"
 echo;
 read -p 'Type the App to Restore & Press [ENTER]: ' typed < /dev/tty
 
-typed=ombi
-checkers=$(cat /opt/appdata/plexguide/restore.list)
-checkers2=$(echo $checkers | grep "\<$typed\>")
-echo $checkers2
-echo $typed
-if [ "$checkers" != "$typed" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
