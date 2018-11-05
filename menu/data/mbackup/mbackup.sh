@@ -68,13 +68,23 @@ tee <<-EOF
 ⛔️ WARNING! - You Must Type Yes or No!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 3
-  bash /opt/plexguide/menu/data/sbackup/sbackup.sh
+  sleep 4
+  bash /opt/plexguide/menu/data/mbackup/mbackup.sh
   exit
 elif [ "$typed" == "no" ]; then
   exit
 elif [ "$typed" == "yes" ]; then
   a=a
+else
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! You Failed to type --- yes or no --- Restarting!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 5
+bash /opt/plexguide/menu/data/mbackup/mbackup.sh
+exit
 fi
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
