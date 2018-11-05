@@ -1,20 +1,4 @@
-#!/bin/bash
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  WARNING! READ for Ubuntu 18 Server Edition - 18.10!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-PG will not work on Live Server or 18.10! We are not going to stop you,
-but it will fail miserably! QUIT ASKING ON THE FORUMS!!!!
-
-You must use 18.04 LTS! UB16 has no issue!
-
-WAIT FOR 10 SECONDS!
-
-EOF
-sleep 10
-
+#!/bin/sh
 # Disable IPv6
 if [ -f /etc/sysctl.d/99-sysctl.conf ]; then
     grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' /etc/sysctl.d/99-sysctl.conf || echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.d/99-sysctl.conf
