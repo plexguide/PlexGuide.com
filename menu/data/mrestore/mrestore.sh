@@ -63,10 +63,10 @@ read -p '⚠️  Continue? Type >>> yes or no | Press [ENTER]: ' typed < /dev/tt
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - You Must Type Yes or No!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
   sleep 3
   bash /opt/plexguide/menu/data/mrestore/mrestore.sh

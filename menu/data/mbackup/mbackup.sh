@@ -79,10 +79,10 @@ elif [ "$typed" == "yes" ]; then
 else
 
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! You Failed to type --- yes or no --- Restarting!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
 sleep 5
 bash /opt/plexguide/menu/data/mbackup/mbackup.sh
