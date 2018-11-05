@@ -64,6 +64,20 @@ echo "⚠️  TO EXIT - type >>> exit"
 echo;
 read -p 'Type the App to Restore & Press [ENTER]: ' typed < /dev/tty
 
+checkers=$(cat /opt/appdata/plexguide/restore.build)
+checkers=$(echo $checkers | grep "\<$typed\>")
+if [ "$checkers" != "$typed" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Typed Something Not Listed! Restarting the Process!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+bash /opt/plexguide/menu/data/srestore/srestore.sh
+exit
+fi
+
   if [ "$typed" == "" ]; then
 tee <<-EOF
 
