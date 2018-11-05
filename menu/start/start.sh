@@ -52,12 +52,28 @@ else
   appguard="DEPLOYED"
 fi
 
+# For ZipLocations
+file="/var/plexguide/data.location"
+if [ ! -e "$file" ]; then
+  echo "/opt/appdata/plexguide" > /var/plexguide/data.location
+fi
+
+space=$(cat /var/plexguide/data.location)
+# To Get Used Space
+used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
+# To Get All Space
+capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
+# Percentage
+percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+
 # Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 $edition - $pgnumber - $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌵  Used Space: $used of $capacity | $percentage Used Capacity
 
 1 - Mounts & Data Transports
 2 - Traefik & TLD Deployment [$traefik]

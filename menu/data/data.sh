@@ -41,12 +41,6 @@ exit
   fi
 }
 
-# For ZipLocations
-file="/var/plexguide/data.location"
-if [ ! -e "$file" ]; then
-  echo "/opt/appdata/plexguide" > /var/plexguide/data.location
-fi
-
 space=$(cat /var/plexguide/data.location)
 # To Get Used Space
 used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
