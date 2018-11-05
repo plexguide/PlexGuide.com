@@ -73,7 +73,7 @@ tee <<-EOF
 🌎 $edition - $pgnumber - $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🌵  Used Space: $used of $capacity | $percentage Used Capacity
+🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 
 1 - Mounts & Data Transports
 2 - Traefik & TLD Deployment [$traefik]

@@ -60,7 +60,7 @@ tee <<-EOF
 is where you backups will process (stats of current location below).
 Note a 100TB Plex Library can create 40GB of MetaData!
 
-🌵  Used Space: $used of $capacity | $percentage Used Capacity
+🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 
 1 - SOLO: App Backup
 2 - SOLO: App Restore
