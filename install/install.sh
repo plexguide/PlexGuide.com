@@ -78,12 +78,14 @@ echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
 chmod 755 /bin/plexguide
 chown 1000:1000 /bin/plexguide
 
+## Other Folders
+mkdir -p /opt/appdata/plexguide
+mkdir -p /var/plexguide
+
+# Variables Need to Line Up with pg.sh (start)
+echo "12" > /var/plexguide/pg.python
+echo "11" > /var/plexguide/pg.ansible
+
+echo ""
 echo "Execute PlexGuide Anytime By Typing: plexguide"
 echo
-## Other Folders
-#mkdir -p /opt/appdata/plexguide
-#mkdir -p /var/plexguide
-
-## Variables Need to Line Up with pg.sh (start)
-#echo "12" > /var/plexguide/pg.python
-#echo "11" > /var/plexguide/pg.ansible
