@@ -65,7 +65,6 @@ read -p '⚠️  Continue? Type >>> yes or no | Press [ENTER]: ' typed < /dev/tt
 echo
   if [ "$typed" == "" ]; then
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! - You Must Type Yes or No!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -80,11 +79,9 @@ elif [ "$typed" == "yes" ]; then
 else
 
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! You Failed to type --- yes or no --- Restarting!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 sleep 5
 bash /opt/plexguide/menu/data/mbackup/mbackup.sh
