@@ -58,13 +58,13 @@ bash /opt/plexguide/menu/interface/install/scripts/declare.sh
 bash /opt/plexguide/install/aptupdate.sh
 
 ######################################################## START: New Install
-file=(cat "/var/plexguide/new.install")
+file="/var/plexguide/new.install"
 if [ -e "$file" ]; then
-file2=$(cat /var/plexguide/pg.number)
 
+  rm -r /optplexguide
+  file2=$("/var/plexguide/new.install")
   if [ ! -e "$file2" ]; then
     echo "Upgrade" > /var/plexguide/pg.number
-  fi
   else
   echo off > /tmp/program_source
   bash /opt/plexguide/menu/interface/version/file.sh
@@ -74,6 +74,7 @@ file2=$(cat /var/plexguide/pg.number)
   echo "Type 'plexguide' again to complete the process!"
   echo
   exit
+  fi
 fi
 ######################################################## END: New Install
 
