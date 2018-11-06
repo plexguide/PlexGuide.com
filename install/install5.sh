@@ -41,7 +41,6 @@ git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git
 cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
 # Continue to Upgrade
-apt-get upgrade -y
 apt-get full-upgrade -y
 apt-get install dialog -y
 
