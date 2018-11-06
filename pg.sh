@@ -61,12 +61,11 @@ bash /opt/plexguide/install/python.sh
 bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
 
 ######################################################## START: New Install
-file="/var/plexguide/ask.yes"
+file=$(cat "/var/plexguide/ask.yes")
 if [ -e "$file" ]; then
-  file2="/var/plexguide/pg.number"
-  if [ -e "$file2" ]; then
-    echo "" 1>/dev/null 2>&1
-  else
+file2=$(cat /var/plexguide/pg.number)
+
+  if [ ! -e "$file2" ]; then
     echo "Upgrade" > /var/plexguide/pg.number
   fi
 
