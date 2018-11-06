@@ -22,10 +22,6 @@ cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 # Silent Install Python & Ansible
 bash /opt/plexguide/install/background.sh &>/dev/null &
 
-# Continue to Upgrade
-apt-get upgrade -y
-apt-get full-upgrade -y
-
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -37,6 +33,10 @@ of the GNUv3 Project License! Please Standby...
 
 EOF
 sleep 6
+
+# Continue to Upgrade
+apt-get upgrade -y
+apt-get full-upgrade -y
 apt-get install dialog -y
 
 tee <<-EOF
