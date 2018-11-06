@@ -13,6 +13,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
+# Ahead to Get Python Installed First
+echo "11" > /var/plexguide/pg.python
 bash /opt/plexguide/install/python.sh
 ######################################################## START: Key Variables
 rm -rf /opt/plexguide/menu/interface/version/version.sh
@@ -27,8 +30,7 @@ if [ ! -e "$file" ]; then
       echo "/mnt" > /var/plexguide/server.hd.path
 fi
 
-# Ahead to Get Python Installed First
-#echo "11" > /var/plexguide/pg.python
+
 
 # Generate Default YML
 bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
