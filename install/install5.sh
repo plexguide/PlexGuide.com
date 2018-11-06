@@ -16,9 +16,11 @@ add-apt-repository multiverse
 
 # Upgrade
 apt-get update
+git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
+cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
 # Silent Install Python & Ansible
-#curl -s https://plexguide.com/background.sh | sudo -H sh &>/dev/null &
+bash /opt/plexguide/install/background.sh
 
 # Continue to Upgrade
 apt-get upgrade -y
@@ -34,10 +36,8 @@ of the GNUv3 Project License! Please Standby...
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-sleep 8
+sleep 6
 apt-get install dialog -y
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
-cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
 tee <<-EOF
 
