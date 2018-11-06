@@ -37,6 +37,8 @@ if [ -e "$file" ]; then
   rm -rf /opt/plexguide
 fi
 apt-get install git -y
+apt-get install zip -y
+apt-get install unzip -y
 git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
 cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 

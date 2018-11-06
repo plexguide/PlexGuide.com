@@ -15,6 +15,9 @@
 #################################################################################
 
 # Ahead to Get Python Installed First
+touch /var/plexguide/pg.edition
+bash /opt/plexguide/menu/interface/install/scripts/edition.sh
+
 echo "11" > /var/plexguide/pg.python
 bash /opt/plexguide/install/python.sh
 ######################################################## START: Key Variables
@@ -97,7 +100,6 @@ bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
 bash /opt/plexguide/install/gcloud.sh
 
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
-bash /opt/plexguide/menu/interface/install/scripts/edition.sh
 bash /opt/plexguide/install/rclone.sh
 
 ######################################################## END: Common Functions
