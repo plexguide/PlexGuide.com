@@ -27,7 +27,7 @@ sudo bash /opt/plexguide/roles/log/log.sh
 if [ "$pg_edition" == "$pg_edition_stored" ]; then
   echo "" 1>/dev/null 2>&1
 else
-  bash /opt/plexguide/roles/menu-install-editions/scripts/main.sh
+  bash /opt/plexguide/menu/editions/editions.sh
 fi
 ######################################################## END: Main Script
 #
