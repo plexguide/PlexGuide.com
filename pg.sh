@@ -13,7 +13,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
+echo "12" > /var/plexguide/pg.python
+echo "11" > /var/plexguide/pg.ansible
+bash /opt/plexguide/install/python.sh
+bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
 ######################################################## START: Key Variables
 rm -rf /opt/plexguide/menu/interface/version/version.sh
 sudo mkdir -p /opt/plexguide/menu/interface/version/
@@ -35,10 +38,6 @@ bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
 
-# Ensure Variables Line Up With Installer If Changed
-echo "12" > /var/plexguide/pg.python
-echo "11" > /var/plexguide/pg.ansible
-
 # Force Common Things To Execute Such as Folders
 echo "149" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
@@ -57,8 +56,6 @@ echo "3" > /var/plexguide/pg.gcloud
 # Declare Variables Vital for Operations
 bash /opt/plexguide/menu/interface/install/scripts/declare.sh
 bash /opt/plexguide/install/aptupdate.sh
-bash /opt/plexguide/install/python.sh
-bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
 
 ######################################################## START: New Install
 file=(cat "/var/plexguide/new.install")
