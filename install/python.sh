@@ -24,8 +24,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⌛  INSTALLING: Upgrading Python
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Python is a coding language that enables the use of powerful
-modules that is utlized by PlexGuide
+Python is a coding language that enables the use of powerful modules
+that is utlized by PlexGuide
 
 PLEASE STANDBY!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
