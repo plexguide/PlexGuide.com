@@ -47,12 +47,12 @@ echo "5" > /var/plexguide/pg.folders
 echo "13" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.docker
 echo "12" > /var/plexguide/server.id
-echo "21" > /var/plexguide/pg.dependency
+echo "22" > /var/plexguide/pg.dependency
 echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
-echo "66" > /var/plexguide/pg.alias
-echo "1" > /var/plexguide/pg.dep
+echo "67" > /var/plexguide/pg.alias
+echo "2" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
 
