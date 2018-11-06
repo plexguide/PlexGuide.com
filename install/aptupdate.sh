@@ -41,6 +41,6 @@ yes | apt-get install sysstat nmon
 sed -i 's/false/true/g' /etc/default/sysstat
 
 # Prevents From Repeating
-#cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
+cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
 
 fi
