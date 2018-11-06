@@ -67,7 +67,6 @@ if [ ! -e "$file" ]; then
   else
   echo off > /tmp/program_source
   bash /opt/plexguide/menu/interface/version/file.sh
-  clear
   touch /var/plexguide/new.install
 tee <<-EOF
 
