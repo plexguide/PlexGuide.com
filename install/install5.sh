@@ -18,7 +18,7 @@ add-apt-repository multiverse
 apt-get update
 
 # Silent Install Python & Ansible
-curl -s https://plexguide.com/background.sh | sudo -H sh &>/dev/null &
+#curl -s https://plexguide.com/background.sh | sudo -H sh &>/dev/null &
 
 # Continue to Upgrade
 apt-get upgrade
@@ -88,4 +88,4 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-exit
+echo
