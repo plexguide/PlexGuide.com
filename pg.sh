@@ -43,7 +43,7 @@ mkdir -p /var/plexguide
 # Force Common Things To Execute Such as Folders
 echo "149" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
-echo "5" > /var/plexguide/pg.Folders
+echo "5" > /var/plexguide/pg.folders
 echo "13" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.docker
 echo "12" > /var/plexguide/server.id
@@ -62,20 +62,20 @@ bash /opt/plexguide/install/aptupdate.sh
 
 ######################################################## START: New Install
 file="/var/plexguide/new.install"
-if [ -e "$file" ]; then
-
-  rm -r /optplexguide
-  file2=$("/var/plexguide/new.install")
-  if [ ! -e "$file2" ]; then
-    echo "Upgrade" > /var/plexguide/pg.number
+if [ ! -e "$file" ]; then
+  echo "Upgrade" > /var/plexguide/pg.number
   else
   echo off > /tmp/program_source
   bash /opt/plexguide/menu/interface/version/file.sh
   clear
   touch /var/plexguide/new.install
   bash /opt/plexguide/roles/ending/ending.sh
-  echo "Type 'plexguide' again to complete the process!"
-  echo
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Start AnyTime By Typing >>> plexguide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
   exit
   fi
 fi
