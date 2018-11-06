@@ -20,7 +20,7 @@ git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git
 cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
 # Silent Install Python & Ansible
-bash /opt/plexguide/install/background.sh &>/dev/null &
+nohup bash /opt/plexguide/install/background.sh &>/dev/null &
 
 tee <<-EOF
 
@@ -86,4 +86,4 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-echo & echo
+echo
