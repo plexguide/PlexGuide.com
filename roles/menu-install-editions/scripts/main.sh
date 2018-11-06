@@ -17,9 +17,10 @@
 #################################################################################
 echo "on" > /var/plexguide/pgeditions.menu
 menu=$(echo "on")
-
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/pgeditions.menu)
+bash /opt/plexguide/install/python.sh
+bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
 ansible-playbook /opt/plexguide/pg.yml --tags menu-install-editions
 menu=$(cat /var/plexguide/pgeditions.menu)
 
