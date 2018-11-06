@@ -70,7 +70,6 @@ echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
 
 # Variables Need to Line Up with pg.sh (start)
 echo "13" > /var/plexguide/pg.python
-echo "12" > /var/plexguide/pg.ansible
 touch /var/plexguide/background.1
 
 # Prevents From Repeating

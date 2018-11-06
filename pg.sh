@@ -14,9 +14,7 @@
 #
 #################################################################################
 echo "12" > /var/plexguide/pg.python
-echo "11" > /var/plexguide/pg.ansible
 bash /opt/plexguide/install/python.sh
-bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
 ######################################################## START: Key Variables
 rm -rf /opt/plexguide/menu/interface/version/version.sh
 sudo mkdir -p /opt/plexguide/menu/interface/version/
