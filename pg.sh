@@ -61,7 +61,7 @@ bash /opt/plexguide/install/python.sh
 bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
 
 ######################################################## START: New Install
-file=cat "/var/plexguide/new.install"
+file=(cat "/var/plexguide/new.install")
 if [ -e "$file" ]; then
 file2=$(cat /var/plexguide/pg.number)
 

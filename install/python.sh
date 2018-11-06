@@ -22,7 +22,7 @@ if [ "$start" != "$stored" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛  INSTALLING: Upgrading Python                                     
+⌛  INSTALLING: Upgrading Python
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Python is a coding language that enables the use of powerful
 modules that is utlized by PlexGuide
