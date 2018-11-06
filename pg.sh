@@ -43,6 +43,7 @@ mkdir -p /var/plexguide
 # Force Common Things To Execute Such as Folders
 echo "149" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
+echo "5" > /var/plexguide/pg.Folders
 echo "13" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.docker
 echo "12" > /var/plexguide/server.id
