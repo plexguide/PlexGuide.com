@@ -21,8 +21,8 @@ apt-get update
 #curl -s https://plexguide.com/background.sh | sudo -H sh &>/dev/null &
 
 # Continue to Upgrade
-apt-get upgrade
-apt-get full-upgrade
+apt-get upgrade -y
+apt-get full-upgrade -y
 
 tee <<-EOF
 
@@ -42,10 +42,7 @@ cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛  VERIFYING: PlexGuide Command Install
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Verifiying PlexGuide Installed @ /bin/plexguide - Please Standby!
+⌛  Verifiying PlexGuide Installed @ /bin/plexguide - Please Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
