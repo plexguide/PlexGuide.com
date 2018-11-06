@@ -13,7 +13,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-echo "12" > /var/plexguide/pg.python
 bash /opt/plexguide/install/python.sh
 ######################################################## START: Key Variables
 rm -rf /opt/plexguide/menu/interface/version/version.sh
