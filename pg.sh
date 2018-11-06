@@ -57,6 +57,7 @@ echo "3" > /var/plexguide/pg.gcloud
 # Declare Variables Vital for Operations
 bash /opt/plexguide/menu/interface/install/scripts/declare.sh
 bash /opt/plexguide/install/aptupdate.sh
+bash /opt/plexguide/install/python.sh
 bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
 
 ######################################################## START: New Install
@@ -99,7 +100,6 @@ bash /opt/plexguide/menu/interface/install/scripts/watchtower.sh
 bash /opt/plexguide/install/motd.sh
 bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
 bash /opt/plexguide/install/gcloud.sh
-bash /opt/plexguide/install/python.sh
 
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/menu/interface/install/scripts/edition.sh
