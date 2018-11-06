@@ -16,19 +16,8 @@ add-apt-repository multiverse
 
 # Upgrade
 apt-get update -y
-apt-get install screen -y
-
-# Delete If it Exist for Cloning
-file="/opt/plexguide"
-if [ -e "$file" ]; then
-  rm -rf /opt/plexguide
-fi
-
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
-cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
 # Silent Install Python & Ansible
-screen -s corn -d -m bash /opt/plexguide/install/background.sh
 
 tee <<-EOF
 
@@ -41,6 +30,15 @@ of the GNUv3 Project License! Please Standby...
 
 EOF
 sleep 6
+
+# Delete If it Exist for Cloning
+file="/opt/plexguide"
+if [ -e "$file" ]; then
+  rm -rf /opt/plexguide
+fi
+
+git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
+cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
 # Continue to Upgrade
 apt-get upgrade -y
