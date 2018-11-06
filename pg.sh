@@ -69,8 +69,8 @@ if [ ! -e "$file" ]; then
   bash /opt/plexguide/menu/interface/version/file.sh
   clear
   touch /var/plexguide/new.install
-  bash /opt/plexguide/roles/ending/ending.sh
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  Start AnyTime By Typing >>> plexguide
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
