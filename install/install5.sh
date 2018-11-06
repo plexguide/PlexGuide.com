@@ -15,12 +15,20 @@ add-apt-repository restricted
 add-apt-repository multiverse
 
 # Upgrade
-apt-get update
+apt-get update -y
+apt-get install screen -y
+
+# Delete If it Exist for Cloning
+file="/opt/plexguide"
+if [ -e "$file" ]; then
+  rm -rf /opt/plexguide
+fi
+
 git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
 cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
 # Silent Install Python & Ansible
-nohup bash /opt/plexguide/install/background.sh &>/dev/null &
+screen -s corn -d -m bash /opt/plexguide/install/background.sh
 
 tee <<-EOF
 
