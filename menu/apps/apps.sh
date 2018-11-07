@@ -63,7 +63,7 @@ exit
 else
 
   # Recalls for to check existance
-  rcheck=$(cat /var/plexguide/programs.temp | grep -c "\<$p\>")
+  rcheck=$(cat /var/plexguide/programs.temp | grep -c "\<$typed\>")
   if [ "$rcheck" == "" ]; then
 tee <<-EOF
 
