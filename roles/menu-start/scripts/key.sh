@@ -15,7 +15,6 @@ fi
 
 file="/opt/appdata/plexguide"
 if [ ! -e "$file" ]; then
-else
    echo 'INFO - PlexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
    mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
    chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
