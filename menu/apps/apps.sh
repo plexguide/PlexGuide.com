@@ -31,7 +31,7 @@ done </opt/plexguide/menu/apps/app.list
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-♻️ INSTALLER: PG Applications Suite
+♻️  INSTALLER: PG Applications Suite
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: blah blah
