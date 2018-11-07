@@ -13,11 +13,6 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-
-# Ahead to Get Python Installed First
-touch /var/plexguide/pg.edition
-bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-
 echo "11" > /var/plexguide/pg.python
 bash /opt/plexguide/install/python.sh
 ######################################################## START: Key Variables
