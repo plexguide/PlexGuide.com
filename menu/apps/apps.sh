@@ -62,7 +62,7 @@ else
 
   # Recalls for to check existance
   rcheck=$(cat /var/plexguide/programs.temp | grep -c "\<$typed\>")
-  if [ "$rcheck" == "1" ]; then
+  if [ "$rcheck" == "0" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
