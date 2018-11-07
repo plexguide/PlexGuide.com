@@ -6,10 +6,7 @@ bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh &>/dev/null &
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 file="/var/plexguide"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
+if [ ! -e "$file" ]; then
    mkdir -p /var/plexguide 1>/dev/null 2>&1
    chown 0755 /var/plexguide 1>/dev/null 2>&1
    chmod 1000:1000 /var/plexguide 1>/dev/null 2>&1
@@ -17,9 +14,7 @@ else
 fi
 
 file="/opt/appdata/plexguide"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
+if [ ! -e "$file" ]; then
 else
    echo 'INFO - PlexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
    mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
@@ -29,8 +24,7 @@ fi
 
 ## Create Dummy File on /mnt/gdrive/plexguide
 file="/mnt/unionfs/plexguide/pgchecker.bin"
-if [ -e "$file" ]
-then
+if [ -e "$file" ]; then
    echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 else
    mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
