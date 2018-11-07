@@ -89,7 +89,7 @@ bash /opt/plexguide/menu/interface/install/scripts/docstart.sh
 echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off" &>/dev/null &
 
 bash /opt/plexguide/install/motd.sh
-bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
+bash /opt/plexguide/install/cleaner.sh
 bash /opt/plexguide/install/gcloud.sh
 
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
@@ -122,11 +122,6 @@ file="/var/plexguide/multi.unionfs"
     if [ ! -e "$file" ]; then
       echo "0" > /var/plexguide/project.keycount
     fi
-
-  file="/var/plexguide/move.bw"
-  if [ ! -e "$file" ]; then
-    echo "10" > /var/plexguide/move.bw
-  fi
 
   file="/var/plexguide/pg.serverid"
   if [ ! -e "$file" ]; then
