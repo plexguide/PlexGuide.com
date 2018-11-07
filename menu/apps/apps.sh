@@ -39,6 +39,7 @@ EOF
 cat /var/plexguide/programs.temp
 echo && echo
 # Standby
+echo "⚠️  TO EXIT - type >>> exit"
 read -p '🌎  TYPE the App Name & Press [ENTER]: ' typed < /dev/tty
 
 tee <<-EOF
@@ -72,6 +73,9 @@ EOF
   sleep 4
   bash /opt/plexguide/menu/apps/apps.sh
   exit
+elif [ "$typed" == "exit" ]; then
+  exit
+else
   fi
 
 tee <<-EOF
