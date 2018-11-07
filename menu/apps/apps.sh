@@ -39,7 +39,7 @@ EOF
 cat /var/plexguide/programs.temp
 echo && echo
 # Standby
-read -p 'TYPE the App Name & Press [ENTER]: ' typed < /dev/tty
+read -p '⚠️  TYPE the App Name & Press [ENTER]: ' typed < /dev/tty
 
 tee <<-EOF
 
