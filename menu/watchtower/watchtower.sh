@@ -60,8 +60,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-sleep 5
-else
+    sleep 5
+    else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -72,4 +72,5 @@ EOF
 sleep 5
   bash /opt/plexguide/menu/watchtower/watchtower.sh
   exit
+  fi
 fi
