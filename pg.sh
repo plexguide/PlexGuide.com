@@ -63,8 +63,7 @@ bash /opt/plexguide/install/aptupdate.sh
 ######################################################## START: New Install
 file="/var/plexguide/new.install"
 if [ ! -e "$file" ]; then
-  echo "Upgrade" > /var/plexguide/pg.number
-  else
+  touch /var/plexguide/pg.number
   echo off > /tmp/program_source
   bash /opt/plexguide/menu/interface/version/file.sh
   touch /var/plexguide/new.install
