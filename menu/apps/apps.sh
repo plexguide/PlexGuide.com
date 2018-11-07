@@ -59,6 +59,8 @@ EOF
 sleep 3
 bash /opt/plexguide/install/serverid.sh
 exit
+elif [ "$typed" == "exit" ]; then
+  exit
 else
 
   # Recalls for to check existance
@@ -72,8 +74,6 @@ tee <<-EOF
 EOF
   sleep 4
   bash /opt/plexguide/menu/apps/apps.sh
-  exit
-elif [ "$typed" == "exit" ]; then
   exit
   fi
 
