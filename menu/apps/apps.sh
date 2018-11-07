@@ -70,6 +70,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 4
+  bash /opt/plexguide/menu/apps/apps.sh
   exit
   fi
 
