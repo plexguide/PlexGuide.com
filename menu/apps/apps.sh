@@ -35,10 +35,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: blah blah
-
 EOF
 cat /var/plexguide/programs.temp
-echo && echo 
+echo && echo
 # Standby
 read -p 'TYPE the App Name & Press [ENTER]: ' typed < /dev/tty
 
