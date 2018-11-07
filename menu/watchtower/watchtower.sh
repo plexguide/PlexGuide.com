@@ -61,7 +61,11 @@ tee <<-EOF
 
 EOF
     sleep 5
-    else
+    bash /opt/plexguide/menu/watchtower/watchtower.sh
+  elif [ "$wcheck" == "4" ]; then
+    exit
+  fi
+else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -72,5 +76,5 @@ EOF
 sleep 5
   bash /opt/plexguide/menu/watchtower/watchtower.sh
   exit
-  fi
+
 fi
