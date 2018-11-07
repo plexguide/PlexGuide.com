@@ -31,10 +31,11 @@ done </opt/plexguide/menu/apps/app.list
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-♻️  INSTALLER: PG Applications Suite
+♻️   INSTALLER: PG Applications Suite
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: blah blah
+⚠️ Visit http://newshosting.plexguide.com for NZB Server Hosting! PG
+Members save nearly 58%. A recommended top tier host by Admin9705!
 EOF
 cat /var/plexguide/programs.temp
 echo && echo
