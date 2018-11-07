@@ -63,6 +63,7 @@ tee <<-EOF
 
 EOF
     sleep 5
+    rm -rf /var/plexguide/watchtower.id
     bash /opt/plexguide/menu/watchtower/watchtower.sh
   elif [ "$wcheck" == "4" ]; then
     exit
