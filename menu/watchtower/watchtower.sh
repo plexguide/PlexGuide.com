@@ -16,6 +16,8 @@
 file="/var/plexguide/watchtower.id"
   if [ ! -e "$file" ]; then
     echo NOT-SET > /var/plexguide/watchtower.id
+  else
+    exit
   fi
 
 wcheck=$(cat /var/plexguide/watchtower.id)
