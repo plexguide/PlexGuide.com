@@ -34,8 +34,7 @@ tee <<-EOF
 ♻️   INSTALLER: PG Applications Suite
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️ Visit http://newshosting.plexguide.com for NZB Server Hosting! PG
-Members save nearly 58%. A recommended top tier host by Admin9705!
+🚀  Visit http://newshosting.plexguide.com - 58% NZB Hosting Discount!
 EOF
 cat /var/plexguide/programs.temp
 echo && echo
