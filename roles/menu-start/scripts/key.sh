@@ -96,6 +96,7 @@ if [ -e "$file" ]; then
 fi
 
 ## Selects an edition
+touch /var/plexguide/pg.edition
 edition=$( cat /var/plexguide/pg.edition )
 
 if [ "$edition" == "PG Edition - GDrive" ]; then
@@ -120,7 +121,7 @@ else
     if [ -e "$file" ]; then
       touch /var/plexguide/pg.edition
       bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-      bash /opt/plexguide/menu/start/start.sh
+      bash /opt/plexguide/pg.sh
     else
       bash /opt/plexguide/menu/start/start.sh
     fi
