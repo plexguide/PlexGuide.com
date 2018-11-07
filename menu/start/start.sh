@@ -98,7 +98,7 @@ elif [ "$typed" == "3" ]; then
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/interface/apps/main.sh
+  bash /opt/plexguide/menu/apps/apps.sh
 elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "7" ]; then
