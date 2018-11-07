@@ -37,10 +37,6 @@ else
    mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
    mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
    touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
-   rclone copy /tmp/pgchecker gdrive:/plexguide/ &>/dev/null &
-   rclone copy /tmp/pgchecker tdrive:/plexguide/ &>/dev/null &
-   rclone copy /tmp/pgchecker gcrypt:/plexguide/ &>/dev/null &
-   rclone copy /tmp/pgchecker tcrypt:/plexguide/ &>/dev/null &
    echo 'INFO - Deployed PGChecker.bin to GDrive - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
 
@@ -163,6 +159,10 @@ elif [ "$edition" == "PG Edition - GCE Feed" ]; then
 else
     file="/var/plexguide/pg.preinstall.stored"
     if [ -e "$file" ]; then
-    bash /opt/plexguide/roles/menu-install-editions/scripts/main.sh
+      touch /var/plexguide/pg.edition
+      bash /opt/plexguide/menu/interface/install/scripts/edition.sh
+      bash /opt/plexguide/menu/start/start.sh
+    else
+      bash /opt/plexguide/menu/start/start.sh
     fi
 fi
