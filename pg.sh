@@ -80,6 +80,7 @@ bash /opt/plexguide/install/motd.sh &>/dev/null &
 
 ### Group Together
 bash /opt/plexguide/install/serverid.sh
+bash /opt/plexguide/menu/watchtower/watchtower.sh
 bash /opt/plexguide/install/dependency.sh
 bash /opt/plexguide/install/folders.sh
 bash /opt/plexguide/menu/interface/install/scripts/docker.sh
@@ -87,7 +88,6 @@ bash /opt/plexguide/menu/interface/install/scripts/docstart.sh
 
 echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off" &>/dev/null &
 
-bash /opt/plexguide/menu/watchtower/watchtower.sh
 bash /opt/plexguide/install/motd.sh
 bash /opt/plexguide/menu/interface/install/scripts/cleaner.sh
 bash /opt/plexguide/install/gcloud.sh
