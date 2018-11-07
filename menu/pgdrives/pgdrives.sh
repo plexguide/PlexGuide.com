@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/bash
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
@@ -79,7 +79,7 @@ tee <<-EOF
 ⛔️ WARNING! WARNING! WARNING!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-You Need to Configure: gdrive                                         
+You Need to Configure: gdrive
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 4
