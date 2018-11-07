@@ -10,27 +10,13 @@ if [ ! -e "$file" ]; then
    mkdir -p /var/plexguide 1>/dev/null 2>&1
    chown 0755 /var/plexguide 1>/dev/null 2>&1
    chmod 1000:1000 /var/plexguide 1>/dev/null 2>&1
-   echo 'INFO - PLexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
 
 file="/opt/appdata/plexguide"
 if [ ! -e "$file" ]; then
-   echo 'INFO - PlexGuide Directory Was Created' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
    mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
    chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
    chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
-fi
-
-## Create Dummy File on /mnt/gdrive/plexguide
-file="/mnt/unionfs/plexguide/pgchecker.bin"
-if [ -e "$file" ]; then
-   echo 'PASSED - UnionFS is Properly Working - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-else
-   mkdir -p /mnt/tdrive/plexguide/ 1>/dev/null 2>&1
-   mkdir -p /mnt/gdrive/plexguide/ 1>/dev/null 2>&1
-   mkdir -p /tmp/pgchecker/ 1>/dev/null 2>&1
-   touch /tmp/pgchecker/pgchecker.bin 1>/dev/null 2>&1
-   echo 'INFO - Deployed PGChecker.bin to GDrive - PGChecker.Bin' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 fi
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
@@ -100,19 +86,15 @@ touch /var/plexguide/pg.edition
 edition=$( cat /var/plexguide/pg.edition )
 
 if [ "$edition" == "PG Edition - GDrive" ]; then
-    echo 'INFO - Deploying GDrive Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/menu/start/start.sh
     exit
 elif [ "$edition" == "PG Edition - HD Multi" ]; then
-    echo 'INFO - Deploying Multi HD Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/menu/start/start.sh
     exit
 elif [ "$edition" == "PG Edition - HD Solo" ]; then
-   echo 'INFO - Deploying HD Solo Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/menu/start/start.sh
     exit
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then
-   echo 'INFO - Deploying GCE Feeder Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
     bash /opt/plexguide/menu/interface/gce/gcechecker.sh
     bash /opt/plexguide/menu/start/start.sh
     exit
