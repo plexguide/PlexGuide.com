@@ -34,7 +34,7 @@ tee <<-EOF
 ♻️   INSTALLER: PG Applications Suite
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🚀 Visit http://newshosting.plexguide.com - 58% NZB Hosting Discount!
+🚀  Visit http://newshosting.plexguide.com - 58% NZB Hosting Discount!
 EOF
 cat /var/plexguide/programs.temp
 echo && echo
