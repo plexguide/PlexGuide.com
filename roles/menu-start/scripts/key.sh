@@ -66,7 +66,7 @@ if [ ! -e "$file" ]; then
 fi
 
 file="/var/plexguide/server.domain"
-if [ ! -e "$file" ]
+if [ ! -e "$file" ]; then
     echo "no.domain" >> /var/plexguide/server.domain
 fi
 
