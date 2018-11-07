@@ -122,6 +122,7 @@ else
       touch /var/plexguide/pg.edition
       bash /opt/plexguide/menu/interface/install/scripts/edition.sh
       bash /opt/plexguide/pg.sh
+      bash /opt/plexguide/menu/start/start.sh
     else
       bash /opt/plexguide/menu/start/start.sh
     fi
