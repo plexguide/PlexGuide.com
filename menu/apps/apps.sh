@@ -35,6 +35,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: blah blah
+
+
 EOF
 cat /var/plexguide/programs.temp
 
