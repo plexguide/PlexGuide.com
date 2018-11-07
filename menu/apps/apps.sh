@@ -75,7 +75,6 @@ EOF
   exit
 elif [ "$typed" == "exit" ]; then
   exit
-else
   fi
 
 tee <<-EOF
