@@ -42,59 +42,38 @@ fi
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 file="/var/plexguide/pgfork.project"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
+if [ ! -e "$file" ]; then
    echo "UPDATE ME" > /var/plexguide/pgfork.project
 fi
 
 file="/var/plexguide/pgfork.version"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
+if [ ! -e "$file" ]; then
    echo "changeme" > /var/plexguide/pgfork.version
 fi
 
 file="/var/plexguide/tld.program"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
+if [ ! -e "$file" ]; then
    touch /var/plexguide/tld.program
    echo "portainer" > /var/plexguide/tld.program
 fi
 
 file="/opt/appdata/plexguide/plextoken"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
+if [ ! -e "$file" ]; then
    touch /opt/appdata/plexguide/plextoken
 fi
 
 file="touch /var/plexguide/server.ht"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
+if [ ! -e "$file" ]; then
    touch /var/plexguide/server.ht
 fi
 
 file="/var/plexguide/server.email"
-if [ -e "$file" ]
-  then
-    echo "" &>/dev/null &
-  else
+if [ ! -e "$file" ]; then
     echo "changeme@bademail.com" >> /var/plexguide/server.email
 fi
 
 file="/var/plexguide/server.domain"
-if [ -e "$file" ]
-  then
-    echo "" &>/dev/null &
-  else
+if [ ! -e "$file" ]
     echo "no.domain" >> /var/plexguide/server.domain
 fi
 
@@ -102,19 +81,6 @@ hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
 echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 mkdir /var/plexguide/ 1>/dev/null 2>&1
-
-file="/usr/bin/dialog"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   clear
-   echo "Installing Dialog"
-   apt-get install dialog 1>/dev/null 2>&1
-   export NCURSES_NO_UTF8_ACS=1
-   echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
-   echo 'INFO - Installed Dialog' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-fi
 
 #clear warning messages
 for txtfile in certchecker nopassword pingchecker; do
