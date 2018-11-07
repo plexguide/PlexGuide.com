@@ -13,9 +13,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-touch /var/plexguide/pg.clearner.stored
-start=$( cat /var/plexguide/pg.clearner )
-stored=$( cat /var/plexguide/pg.clearner.stored )
+touch /var/plexguide/pg.cleaner.stored
+start=$( cat /var/plexguide/pg.cleaner )
+stored=$( cat /var/plexguide/pg.cleaner.stored )
 
 if [ "$start" != "$stored" ]; then
 
@@ -41,6 +41,6 @@ ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
 ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
 
 # Prevents From Repeating
-cat /var/plexguide/pg.clearner > /var/plexguide/pg.clearner.stored
+cat /var/plexguide/pg.cleaner > /var/plexguide/pg.cleaner.stored
 
 fi
