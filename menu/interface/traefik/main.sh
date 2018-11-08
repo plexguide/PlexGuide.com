@@ -417,7 +417,7 @@ OVH_ENDPOINT
  OVH_APPLICATION_SECRET
  OVH_CONSUMER_KEY
 EOF
-  elif ["$fprovider" == "gcloud"]; then
+  elif [ "$fprovider" == "gcloud" ]; then
 tee "INFO" > /tmp/traefik.queslist << EOF
 GCE_PROJECT
  GCE_SERVICE_ACCOUNT_FILE
