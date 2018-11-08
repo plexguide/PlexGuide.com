@@ -27,6 +27,15 @@ main /var/plexguide/traefik.domain NOT-SET domain
 main /var/plexguide/tld.program NOT-SET tld
 main /var/plexguide/traefik.deploy 'Not Deployed' deploy
 
+# Questions
+main2() {
+   local file=$1 val=$2 var=$3
+   echo "$val" "$var"
+   printf -v "$var" '%s' "$(<"$file")"
+}
+
+main2 /var/plexguide/traefik.provider NOT-SET provider
+
 # Menu Interface
 tee <<-EOF
 
