@@ -34,7 +34,7 @@ main2() {
    printf -v "$var" '%s' "$(<"$file")"
 }
 
-main2 /var/plexguide/traefik.provider NOT-SET provider
+main2 /var/plexguide/traefik.provider NOT-SET2 provider
 
 # Menu Interface
 tee <<-EOF
