@@ -64,7 +64,19 @@ elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/watchtower/watchtower.sh
 
 elif [ "$typed" == "5" ]; then
-  dpkg-reconfigure tzdata
+
+    a="NOT-SET"
+    if [ "$tld" == "$a" ] || [ "$provider" == "$a" ] || [ "$domain" == "$a" ] || [ "$email" == "$a" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! - Cannot Deploy! You Must Set All of the Variables First!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+    sleep 3
+    bash /opt/plexguide/menu/traefik/traefik.sh
+    exit; fi
+
 elif [ "$typed" == "6" ]; then
   exit
 else
