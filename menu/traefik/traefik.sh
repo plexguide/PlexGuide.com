@@ -48,8 +48,6 @@ echo $var
    printf -v "$var" '%s' "$(<"$file")"
 }
 
-main2 /var/plexguide/traefik.provider NOT-SET2 provider
-
 # Menu Interface
 tee <<-EOF
 
@@ -71,7 +69,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/interface/dlpath/main.sh
+  main2 /var/plexguide/traefik.provider NOT-SET2 provider
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/traefik/provider.sh
   bash /opt/plexguide/menu/traefik/traefik.sh
