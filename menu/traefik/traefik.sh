@@ -43,7 +43,7 @@ tee <<-EOF
 EOF
 read -p 'Type a Number | Press [ENTER]: ' var < /dev/tty
 
-echo $var
+echo $var > $file
 
    printf -v "$var" '%s' "$(<"$file")"
 }
@@ -105,5 +105,5 @@ else
   exit
 fi
 
-bash /opt/plexguide/menu/settings/settings.sh
+bash /opt/plexguide/menu/traefik/traefik.sh
 exit
