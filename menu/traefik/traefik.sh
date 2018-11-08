@@ -14,6 +14,18 @@
 #
 #################################################################################
 
+# Create Variables (If New) & Recall
+main() {
+   local file=$1 val=$2 var=$3
+   [[ -e $file ]] || printf '%s\n' "$val" > "$file"
+   printf -v "$var" '%s' "$(<"$file")"
+}
+
+main /var/plexguide/traefik.provider NOT-SET provider
+main /var/plexguide/server.email NOT-SET email
+main /var/plexguide/traefik.domain NOT-SET domain
+main /var/plexguide/tld.program NOT-SET program
+
 # Menu Interface
 tee <<-EOF
 
@@ -21,10 +33,10 @@ tee <<-EOF
 🚀 Traefik - Reverse Proxy Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Top Level Domain App: [FILL]
-2 - Domain Provider     : [FILL]
-3 - Domain Name         : [FILL]
-4 - EMail Address       : [FILL]
+1 - Top Level Domain App: [$tld]
+2 - Domain Provider     : [$provider]
+3 - Domain Name         : [$domain]
+4 - EMail Address       : [$email]
 5 - Deploy Traefik      : [FILL]
 6 - Exit
 
@@ -37,7 +49,9 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/interface/dlpath/main.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/roles/processor/scripts/processor-menu.sh
+  bash /opt/plexguide/menu/traefik/provider.sh
+  bash /opt/plexguide/menu/traefik/traefik.sh
+  exit
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
 elif [ "$typed" == "4" ]; then

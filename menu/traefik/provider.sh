@@ -33,6 +33,19 @@ EOF
 # Standby
 read -p 'Type a Provider Name | Press [ENTER]: ' typed < /dev/tty
 
+tcheck=$(cat /opt/plexguide/menu/traefik/plist.sh | grep "\<$typed\>")
+if [ "$tcheck" == "" ]; then
+  tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! - Type the Provider Name! Case Senstive! Restarting!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+bash /opt/plexguide/menu/traefik/provider.sh
+exit
+fi
+
 if [ "$typed" == "" ]; then
 tee <<-EOF
 
