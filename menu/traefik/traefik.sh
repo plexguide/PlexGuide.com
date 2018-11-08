@@ -18,14 +18,14 @@
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Settings Interface Menu
+🚀 Traefik - Reverse Proxy Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Download Path   : Change the Processing Location
-2 - Processor       : Enhance the CPU Processing Power
-3 - Keneral Modes   : Enhance Network Throughput
-4 - WatchTower      : Auto-Update Application Manager
-5 - Change Time     : Change the Server Time
+1 - Top Level Domain App: [FILL]
+2 - Domain Provider     : [FILL]
+3 - Domain Name         : [FILL]
+4 - EMail Address       : [FILL]
+5 - Deploy Traefik      : [FILL]
 6 - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
