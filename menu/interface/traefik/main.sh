@@ -154,7 +154,7 @@ break=on
 elif [ "$typed" == "3" ]; then
 
   typed=nullstart
-  prange="cloudflare digitalocean duckdns gandiv5 godaddy namecheap ovh vultr"
+  prange="cloudflare digitalocean duckdns gandiv5 godaddy namecheap ovh vultr gcloud"
   tcheck=""
   break=off
   while [ "$break" == "off" ]; do
@@ -172,6 +172,7 @@ godaddy
 namecheap
 ovh
 vultr
+gcloud
 
 EOF
     read -p 'Type a Provider Name (All LowerCase) | PRESS [ENTER]: ' typed
@@ -415,6 +416,11 @@ OVH_ENDPOINT
  OVH_APPLICATION_KEY
  OVH_APPLICATION_SECRET
  OVH_CONSUMER_KEY
+EOF
+  elif ["$fprovider" == "gcloud"]; then
+tee "INFO" > /tmp/traefik.queslist << EOF
+GCE_PROJECT
+ GCE_SERVICE_ACCOUNT_FILE
 EOF
   else
   echo "WARNING! This FAILED!"
