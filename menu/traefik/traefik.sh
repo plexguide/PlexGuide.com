@@ -31,6 +31,20 @@ main /var/plexguide/traefik.deploy 'Not Deployed' deploy
 main2() {
    local file=$1 val=$2 var=$3
    echo "$val" "$var"
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  ESTABLISHING: $var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ SERVER ID: To establish the identification this server!
+
+EOF
+read -p 'Type a Number | Press [ENTER]: ' var < /dev/tty
+
+echo $var
+
    printf -v "$var" '%s' "$(<"$file")"
 }
 
