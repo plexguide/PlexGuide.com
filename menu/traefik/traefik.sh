@@ -25,7 +25,7 @@ main /var/plexguide/traefik.provider NOT-SET provider
 main /var/plexguide/server.email NOT-SET email
 main /var/plexguide/traefik.domain NOT-SET domain
 main /var/plexguide/tld.program NOT-SET tld
-main /var/plexguide/traefik.deploy 'Not Deployed' tld
+main /var/plexguide/traefik.deploy 'Not Deployed' deploy
 
 # Menu Interface
 tee <<-EOF
@@ -38,7 +38,7 @@ tee <<-EOF
 2 - Domain Provider     : [$provider]
 3 - Domain Name         : [$domain]
 4 - EMail Address       : [$email]
-5 - Deploy Traefik      : [FILL]
+5 - Deploy Traefik      : [$deploy]
 6 - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
