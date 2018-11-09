@@ -98,6 +98,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
+sleep 4
 old=$(cat /var/plexguide/old.program)
 new=$(cat /var/plexguide/tld.program)
 
