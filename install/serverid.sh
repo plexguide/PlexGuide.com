@@ -28,7 +28,7 @@ tee <<-EOF
 ⚠️ SERVER ID: To establish the identification this server!
 
 ⛔️ WARNING: Only use one word! If you put spaces in between, it will
-cause you greif when you try to restore your server in the future!
+cause you grief when you try to restore your server in the future!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
