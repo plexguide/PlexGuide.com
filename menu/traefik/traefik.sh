@@ -30,7 +30,6 @@ main /var/plexguide/traefik.deploy 'Not Deployed' deploy
 # Questions
 main2() {
    local file=$1 val=$2 var=$3
-   echo "$val" "$var"
 
 tee <<-EOF
 
@@ -48,7 +47,6 @@ echo $typed > $file
 # Deploy
 deploy() {
    local file=$1 val=$2 var=$3
-   echo "$val" "$var"
 
 tee <<-EOF
 
