@@ -129,6 +129,16 @@ elif [ "$fprovider" == "ovh" ]; then
   deploy /var/plexguide/OVH_CONSUMER_KEY NOT-SET OVH_CONSUMER_KEY
 fi
 
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ZOOM ZOOM - Deploying Traefik! I Luv PlexGuide!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+ansible-playbook /opt/plexguide/menu/interface/traefik/common.yml
+ansible-playbook /opt/plexguide/menu/interface/traefik/$fprovider.yml
+
 elif [ "$typed" == "6" ]; then
   exit
 else
