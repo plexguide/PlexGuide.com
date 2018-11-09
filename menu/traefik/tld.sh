@@ -41,8 +41,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-PROGRAMS:
-$running 
+echo PROGRAMS:
+echo $running 
 tee <<-EOF
 
 ⚠️  WARNING: Remember... it's case sensitive!
