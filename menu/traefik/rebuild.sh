@@ -31,4 +31,3 @@ echo $new > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/c
 
 echo ""
 read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
-echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

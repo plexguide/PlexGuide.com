@@ -80,12 +80,40 @@ else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️ PASS: TLD Application Set
+✅️  PASS: TLD Application Set
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Prevents From Repeating
+cat /var/plexguide/tld.program > /var/plexguide/old.program
 echo "$typed" > /var/plexguide/tld.program
 
 sleep 3
 fi
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 🍖  NOM NOM - Rebuilding Your Old App & New App Containers!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+old=$(cat /var/plexguide/old.tld)
+new=$(cat /var/plexguide/tld.program)
+
+echo ""
+echo "Only the Old TLD & New TLD Containers Must Be Rebuilt!"
+read -n 1 -s -r -p "Press [Any] Key to Continue"
+echo ""
+
+if [ "$old" != "$new" ]; then
+	echo $old > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
+fi
+
+echo $new > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️ TLD Containers are Rebuilt!  Process Complete!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
