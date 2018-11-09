@@ -92,7 +92,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/transport/transport.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/traefik/treafik.sh
+  bash /opt/plexguide/menu/traefik/traefik.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/roles/menu-ports/scripts/main.sh
 elif [ "$typed" == "4" ]; then
