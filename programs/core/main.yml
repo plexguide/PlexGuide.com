@@ -24,6 +24,10 @@
       set_fact:
         label_override: false
 
+    - name: "Enable App Guard by default"
+      set_fact:
+        label_appguard: true
+
     - name: Set PGRole
       shell: "cat /tmp/program_selection"
       register: roletmp
@@ -127,6 +131,15 @@
     ############################## PRIMARY INFORMATION
     - name: Launch Container Primary Information
       include_tasks: "../containers/{{pgrole}}.yml"
+
+    - debug: msg="Apply App Guard (if configured) - set to {{label_appguard}}"
+
+    - name: "Set App Guard"
+      set_fact:
+        default_labels:
+          traefik.frontend.auth.basic.users: "{{authorization}}"
+      when:
+        - label_appguard == true
 
     - debug: msg="Override Labels - set to {{label_override}}"
 
