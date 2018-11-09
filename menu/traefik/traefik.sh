@@ -54,7 +54,7 @@ tee <<-EOF
 ↘️  STORING INFO - $fprovider
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🌎  REQUESTED INFORMATION >>> $var
+🌎 REQUESTED INFORMATION >>> $var
 
 EOF
 read -p 'Type Info | Press [ENTER]: ' typed < /dev/tty
