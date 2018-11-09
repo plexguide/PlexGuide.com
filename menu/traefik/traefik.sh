@@ -45,17 +45,6 @@ read -p 'Type Requested Info | Press [ENTER]: ' typed < /dev/tty
 echo $typed > $file
 }
 
-
-
-cloudflare
-digitalocean
-duckdns
-gandiv5
-godaddy
-namecheap
-ovh
-vultr
-
 # Menu Interface
 tee <<-EOF
 
