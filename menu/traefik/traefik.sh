@@ -38,10 +38,10 @@ tee <<-EOF
 ↘️  ESTABLISHING: $var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️ SERVER ID: To establish the identification this server!
+⚠️  NOTE: To store required information!
 
 EOF
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type Requested Info | Press [ENTER]: ' typed < /dev/tty
 echo $typed > $file
 }
 
@@ -66,7 +66,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  main2 /var/plexguide/traefik.provider NOT-SET provider
+  main2 /var/plexguide/traefik.domain NOT-SET domain
 elif [ "$typed" == "2" ]; then
   main2 /var/plexguide/traefik.provider NOT-SET provider
 elif [ "$typed" == "3" ]; then
