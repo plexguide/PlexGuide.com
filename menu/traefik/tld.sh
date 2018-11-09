@@ -98,7 +98,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-old=$(cat /var/plexguide/old.tld)
+old=$(cat /var/plexguide/old.program)
 new=$(cat /var/plexguide/tld.program)
 
 echo ""
