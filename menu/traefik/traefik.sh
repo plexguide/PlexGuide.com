@@ -23,7 +23,7 @@ main() {
 
 main /var/plexguide/traefik.provider NOT-SET provider
 main /var/plexguide/server.email NOT-SET email
-main /var/plexguide/traefik.domain NOT-SET domain
+main /var/plexguide/server.domain NOT-SET domain
 main /var/plexguide/tld.program NOT-SET tld
 main /var/plexguide/traefik.deploy 'Not Deployed' deploy
 
@@ -93,7 +93,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/traefik/provider.sh
 elif [ "$typed" == "3" ]; then
-  main2 /var/plexguide/traefik.domain NOT-SET domain
+  main2 /var/plexguide/server.domain NOT-SET domain
 elif [ "$typed" == "4" ]; then
   main2 /var/plexguide/server.email NOT-SET email
 
