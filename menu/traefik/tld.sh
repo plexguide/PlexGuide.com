@@ -42,7 +42,7 @@ tee <<-EOF
 
 EOF
 echo PROGRAMS:
-echo $running 
+echo $running
 tee <<-EOF
 
 ⚠️  WARNING: Remember... it's case sensitive!
@@ -51,7 +51,7 @@ tee <<-EOF
 EOF
 
 # Standby
-read -p 'Type a Provider Name | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type an Application Name | Press [ENTER]: ' typed < /dev/tty
 
 tcheck=$(cat /opt/plexguide/menu/traefik/plist.sh | grep "\<$typed\>")
 if [ "$tcheck" == "" ]; then
