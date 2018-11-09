@@ -16,8 +16,10 @@
 
 # Recalls List for Backup Operations
 ls -la /opt/appdata | awk '{ print $9 }' | tail -n +4 > /opt/appdata/plexguide/backup.list
-echo > /opt/appdata/plexguide/backup.build
-# Remove Items fromt the List
+
+# blank out
+touch /opt/appdata/plexguide/backup.build
+rm -rf /opt/appdata/plexguide/backup.build
 
 ### Builds Backup List - END
 sed -i -e "/traefik/d" /opt/appdata/plexguide/backup.list
@@ -45,6 +47,7 @@ done </opt/appdata/plexguide/backup.list
 
 # Execute Interface
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  LIST: Mass Backup >>> Active Folders - /opt/appdata/
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -66,13 +69,23 @@ tee <<-EOF
 ⛔️ WARNING! - You Must Type Yes or No!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 3
-  bash /opt/plexguide/menu/data/sbackup/sbackup.sh
+  sleep 4
+  bash /opt/plexguide/menu/data/mbackup/mbackup.sh
   exit
 elif [ "$typed" == "no" ]; then
   exit
 elif [ "$typed" == "yes" ]; then
   a=a
+else
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! You Failed to type --- yes or no --- Restarting!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 5
+bash /opt/plexguide/menu/data/mbackup/mbackup.sh
+exit
 fi
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

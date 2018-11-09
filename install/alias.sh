@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/bash
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
@@ -22,7 +22,7 @@ if [ "$start" != "$stored" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛  INSTALLING: Alias Commands                                       
+⌛  INSTALLING: Alias Commands
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Commands providing direct execution such as plexguide, pgupdate,
 and pgfork.

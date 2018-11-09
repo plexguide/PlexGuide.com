@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/bash
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
@@ -52,19 +52,35 @@ else
   appguard="DEPLOYED"
 fi
 
+# For ZipLocations
+file="/var/plexguide/data.location"
+if [ ! -e "$file" ]; then
+  echo "/opt/appdata/plexguide" > /var/plexguide/data.location
+fi
+
+space=$(cat /var/plexguide/data.location)
+# To Get Used Space
+used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
+# To Get All Space
+capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
+# Percentage
+percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+
 # Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 $edition - $pgnumber - $serverid
+🌎  $edition - $pgnumber - $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 
 1 - Mounts & Data Transports
 2 - Traefik & TLD Deployment [$traefik]
 3 - Server Port Guard        [$ports]
 4 - Application Guard        [$appguard]
-5 - Program Suite Installer
-6 - PG Tools & Services
+5 - Programs Suite Installer
+6 - Tools & Services
 7 - Settings
 8 - Exit
 
@@ -76,13 +92,13 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/transport/transport.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/interface/traefik/main.sh
+  bash /opt/plexguide/menu/traefik/traefik.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/roles/menu-ports/scripts/main.sh
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/interface/apps/main.sh
+  bash /opt/plexguide/menu/apps/apps.sh
 elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "7" ]; then

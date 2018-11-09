@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/bash
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
@@ -13,9 +13,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-touch /var/plexguide/pg.preinstall.stored
-start=$( cat /var/plexguide/pg.preinstall )
-stored=$( cat /var/plexguide/pg.preinstall.stored )
+touch /var/plexguide/pg.folders.stored
+start=$( cat /var/plexguide/pg.folders )
+stored=$( cat /var/plexguide/pg.folders.stored )
 
 if [ "$start" != "$stored" ]; then
 
@@ -38,6 +38,6 @@ sleep 5
 ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
 
 # Prevents From Repeating
-cat /var/plexguide/pg.preinstall > /var/plexguide/pg.preinstall.stored
+cat /var/plexguide/pg.folders > /var/plexguide/pg.folders.stored
 
 fi

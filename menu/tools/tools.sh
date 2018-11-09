@@ -13,7 +13,49 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+function gcheck {
 
+edition=$(cat /var/plexguide/pg.edition)
+if [ "$edition" == "PG Edition - GDrive" ] || [ "$edition" == "PG Edition - GCE Feed" ]; then
+gcheck=$(cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8)
+  if [ "$gcheck" != "[gdrive]" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Must Configure RClone First /w >>> gdrive
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: gdrive has to be configured in RClone.  Without it, PG is unable
+to send your backups to your Google Drive!
+
+EOF
+read -n 1 -s -r -p "Press [ANY] Key to Continue "
+echo
+bash /opt/plexguide/menu/tools/tools.sh
+exit
+  fi
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Backup is Only for GDrive / GCE Editions
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: If backing up your files, they are located at the folllowing
+location: /opt/appdata
+
+You're on OWN because it's too complex for PG to standardize a backup.
+Example, you may have a second hard drive, may store it to the same
+drive, a NAS... (kind of hard to account for all the situations).
+Think you get the idea!
+
+EOF
+read -n 1 -s -r -p "Press [ANY] Key to Continue "
+echo
+bash /opt/plexguide/menu/tools/tools.sh
+exit
+fi
+}
 # Menu Interface
 tee <<-EOF
 
@@ -36,9 +78,10 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
+  gcheck
   bash /opt/plexguide/menu/data/data.sh
 elif [ "$typed" == "2" ]; then
-  echo gce > /var/plexguide/type.choice
+  echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/interface/pgtrak/main.sh
 elif [ "$typed" == "4" ]; then

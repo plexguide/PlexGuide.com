@@ -24,6 +24,10 @@
       shell: "cat /var/plexguide/server.hd.path"
       register: path
 
+    - name: Register HD Path
+      shell: "cat /var/plexguide/data.location"
+      register: tarlocation
+
     - name: "Restore ID for Restore"
       shell: "cat /var/plexguide/restore.id"
       register: restore_id
@@ -35,6 +39,10 @@
     - name: "Size Info"
       shell: "cat /var/plexguide/rclone.size"
       register: program_size
+
+    - name: "Size Simplename"
+      shell: "cat /var/plexguide/restore.name"
+      register: simplename
 
     - name: "Server ID for Backup"
       shell: "cat /var/plexguide/server.id"
@@ -49,13 +57,13 @@
     - name: Create Restore Folder
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
       with_items:
-        - "/opt/appdata/{{program_var.stdout}}"
+        - "/opt/appdata/{{simplename.stdout}}"
 
     - name: "Downloading from Google Drive - {{program_var.stdout}} - Size: {{program_size.stdout}} MB"
       shell: "rclone copy --tpslimit 6 \
               --config /root/.config/rclone/rclone.conf \
               --drive-chunk-size=64M \
-              gdrive:/plexguide/backup/{{restore_id.stdout}}/{{program_var.stdout}} /opt/appdata/plexguide/"
+              gdrive:/plexguide/backup/{{restore_id.stdout}}/{{program_var.stdout}} {{tarlocation.stdout}}"
 
     - name: Stopping Docker Container - {{program_var.stdout}}
       docker_container:
@@ -66,8 +74,8 @@
 
     - name: Unzip Folders
       unarchive:
-        src: "/opt/appdata/plexguide/{{program_var.stdout}}"
-        dest: "/opt/appdata/{{program_var.stdout}}"
+        src: "{{tarlocation.stdout}}/{{program_var.stdout}}"
+        dest: "/opt/appdata/{{simplename.stdout}}"
         keep_newer: no
         owner: 1000
         group: 1000
@@ -85,4 +93,4 @@
         path: "{{item}}"
         state: absent
       with_items:
-        - "/opt/appdata/plexguide/{{program_var.stdout}}"
+        - "{{tarlocation.stdout}}/{{program_var.stdout}}"

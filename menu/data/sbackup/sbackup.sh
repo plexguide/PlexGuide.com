@@ -16,7 +16,11 @@
 
 # Recalls List for Backup Operations
 ls -la /opt/appdata | awk '{ print $9}' | tail -n +4 > /opt/appdata/plexguide/backup.list
-echo > /opt/appdata/plexguide/backup.build
+
+#blank out restore.Build
+touch /opt/appdata/plexguide/backup.build
+rm -rf /opt/appdata/plexguide/backup.build
+
 # Remove Items fromt the List
 
 ### Builds Backup List - END
@@ -39,7 +43,7 @@ sed -i -e "/cloudblitz/d" /opt/appdata/plexguide/backup.list
 # Build up list backup list for the main.yml execution
 
 while read p; do
-  echo -n $typed >> /opt/appdata/plexguide/backup.build
+  echo -n $p >> /opt/appdata/plexguide/backup.build
   echo -n " " >> /opt/appdata/plexguide/backup.build
 done </opt/appdata/plexguide/backup.list
 
@@ -55,7 +59,8 @@ of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+. Type the exact name (case senstive)!
 
 EOF
-echo "✅️  Potential Apps to Backup: " && cat /opt/appdata/plexguide/backup.build
+echo "✅️  Potential Apps to Backup: "
+cat /opt/appdata/plexguide/backup.build
 
 echo;
 echo;
@@ -95,7 +100,7 @@ EOF
 
 size=$(ls -la /opt/appdata | grep "\<$typed\>" | awk '{ print $5 }' )
 
-display=$(expr $size / 1000000)
+display=$(expr $size / 1000000 )
 
   if [ "$display" == "0" ]; then
     display=1

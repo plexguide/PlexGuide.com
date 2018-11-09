@@ -17,6 +17,10 @@
 #mnt=$(cat /var/plexguide/server.hd.path)
 restoreid=$(cat /var/plexguide/restore.id)
 
+#blank out restore.Build
+touch /opt/appdata/plexguide/restore.build
+rm -rf /opt/appdata/plexguide/restore.build
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -29,9 +33,6 @@ rclone ls gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdat
 
 ### Builds Backup List - END
 # Build up list backup list for the main.yml execution
-
-#blank out restore.Build
-echo "" > /opt/appdata/plexguide/restore.build
 
 while read p; do
   p=${p%.tar}
@@ -54,7 +55,8 @@ of metadata can take quite a while (i.e. Plex, Sonarr, Radarr). Plex
 alone can take 45min+. Type the exact name (case senstive)!
 
 EOF
-echo "✅️  Potential Apps to Restore: " && cat /opt/appdata/plexguide/restore.build
+echo "✅️  Potential Apps to Restore: "
+cat /opt/appdata/plexguide/restore.build
 
 echo;
 echo;
@@ -83,7 +85,7 @@ tee <<-EOF
 EOF
 
 size=$(rclone ls gdrive:/plexguide/backup/$restoreid | grep $typed | awk '{ print $1 }' )
-display=$(expr $size / 1000)
+display=$(expr $size / 1000000)
 echo $display > /var/plexguide/rclone.size
 
 if [ "$display" == "0" ]; then

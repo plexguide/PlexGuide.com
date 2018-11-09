@@ -16,6 +16,9 @@
 # Recalls Important Variables
 #mnt=$(cat /var/plexguide/server.hd.path)
 restoreid=$(cat /var/plexguide/restore.id)
+#blank out restore.Build
+touch /opt/appdata/plexguide/restore.build
+rm -rf /opt/appdata/plexguide/restore.build
 
 tee <<-EOF
 
@@ -29,10 +32,6 @@ rclone ls gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdat
 
 ### Builds Backup List - END
 # Build up list backup list for the main.yml execution
-
-#blank out restore.Build
-touch /opt/appdata/plexguide/restore.build
-rm -rf /opt/appdata/plexguide/restore.build
 
 while read p; do
   p=${p%.tar}
@@ -68,6 +67,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - You Must Type Yes or No!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
   sleep 3
   bash /opt/plexguide/menu/data/mrestore/mrestore.sh
@@ -76,8 +76,18 @@ elif [ "$typed" == "no" ]; then
   exit
 elif [ "$typed" == "yes" ]; then
   a=a
-fi
+else
 
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! You Failed to type --- yes or no --- Restarting!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 5
+bash /opt/plexguide/menu/data/mbackup/mbackup.sh
+exit
+fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -35,7 +35,6 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
       #apt-mark hold ansible
       #yes | apt-get update
       python -m pip install --disable-pip-version-check --upgrade --force-reinstall ansible==${1-2.5.11}
-
       ############# FOR ANSIBLE
       mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
       echo "[local]" > /etc/ansible/inventories/local

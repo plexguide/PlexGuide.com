@@ -41,7 +41,13 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/interface/watchtower/file.sh
+
+  file="/var/plexguide/watchtower.id"
+  if [ -e "$file" ]; then
+    rm -r /var/plexguide/watchtower.id
+  fi
+  bash /opt/plexguide/menu/watchtower/watchtower.sh
+
 elif [ "$typed" == "5" ]; then
   dpkg-reconfigure tzdata
 elif [ "$typed" == "6" ]; then

@@ -15,18 +15,19 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-docker ps --format '{{.Names}}' > /tmp/backup.list
-sed -i -e "/traefik/d" /tmp/backup.list
-sed -i -e "/watchtower/d" /tmp/backup.list
-sed -i -e "/word*/d" /tmp/backup.list
-sed -i -e "/x2go*/d" /tmp/backup.list
-sed -i -e "/plexguide/d" /tmp/backup.list
-sed -i -e "/cloudplow/d" /tmp/backup.list
-sed -i -e "/phlex/d" /tmp/backup.list
+old=$(cat /var/plexguide/old.tld) 1>/dev/null 2>&1
+new=$(cat /var/plexguide/tld.program) 1>/dev/null 2>&1
 
-rm -rf /tmp/backup.build 1>/dev/null 2>&1
-#### Commenting Out To Let User See
-while read p; do
-  echo -n $p >> /tmp/backup.build
-  echo -n " " >> /tmp/backup.build
-done </tmp/backup.list
+echo ""
+echo "Only the Old TLD & New TLD Containers Must Be Rebuilt!"
+read -n 1 -s -r -p "Press [Any] Key to Continue"
+echo ""
+
+if [ "old" != "" ]; then
+	echo $old > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
+fi
+
+echo $new > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
+
+echo ""
+read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"

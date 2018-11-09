@@ -15,64 +15,68 @@ add-apt-repository restricted
 add-apt-repository multiverse
 
 # Upgrade
-apt-get update
-apt-get upgrade
-apt-get full-upgrade
+apt-get update -y
+
+# Silent Install Python & Ansible
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎  INSTALLING: PlexGuide Notice
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-By Installing PlexGuide, you are agree to the terms and conditions of
-the Project GNUv3 License! Please Standby...
+By Installing PlexGuide, you are agreeing to the terms and conditions
+of the GNUv3 Project License! Please Standby...
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-sleep 5
-apt-get install dialog -y
+sleep 6
+
+# Delete If it Exist for Cloning
+file="/opt/plexguide"
+if [ -e "$file" ]; then
+  rm -rf /opt/plexguide
+fi
+apt-get install git -y
+apt-get install zip -y
+apt-get install unzip -y
 git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
 cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
-# Install Dependencies
-apt-get install -y --reinstall \
-    nano \
-    git \
-    build-essential \
-    libssl-dev \
-    libffi-dev \
-    python3-dev \
-    python3-pip \
-    python-dev \
-    python-pip
-python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==18.1
-python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
-python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pyOpenSSL \
-    requests \
-    netaddr
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==18.1
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pyOpenSSL \
-    requests \
-    netaddr \
-    ansible==${1-2.5.11}
+# Continue to Upgrade
+#apt-get full-upgrade -y
+apt-get install dialog -y
 
-## Copy pip to /usr/bin
-cp /usr/local/bin/pip /usr/bin/pip
-cp /usr/local/bin/pip3 /usr/bin/pip3
+tee <<-EOF
 
-mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
-echo "[local]" > /etc/ansible/inventories/local
-echo "127.0.0.1 ansible_connection=local" >> /etc/ansible/inventories/local
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⌛  Verifiying PlexGuide Installed @ /bin/plexguide - Please Standby!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
-echo "[defaults]" > /etc/ansible/ansible.cfg
-echo "command_warnings = False" >> /etc/ansible/ansible.cfg
-echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
-echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
+EOF
+sleep 4
 
+file="/bin/plexguide"
+if [ ! -e "$file" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! Installed Failed! PlexGuide Command Missing!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Please Reinstall PlexGuide by running the Command Again! We are doing
+this to ensure that your installation continues to work!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+exit
+fi
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  PASSED! The PlexGuide Command Installed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+
+sleep 4
 chmod 755 /bin/plexguide
 chown 1000:1000 /bin/plexguide
 
@@ -80,11 +84,9 @@ chown 1000:1000 /bin/plexguide
 mkdir -p /opt/appdata/plexguide
 mkdir -p /var/plexguide
 
-## Variables Need to Line Up with pg.sh (start)
-echo "11" > /var/plexguide/pg.python
-echo "10" > /var/plexguide/pg.ansible
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Start AnyTime By Typing >>> plexguide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-clear
-
-echo "Execute PlexGuide Anytime By Typing: plexguide"
-echo
+EOF

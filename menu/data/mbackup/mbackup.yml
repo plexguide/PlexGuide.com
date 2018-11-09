@@ -23,7 +23,10 @@
     - name: Register HD Path
       shell: "cat /var/plexguide/server.hd.path"
       register: path
-      ignore_errors: True
+
+    - name: Register HD Path
+      shell: "cat /var/plexguide/data.location"
+      register: tarlocation
 
     - name: "Size Info"
       shell: "cat /var/plexguide/rclone.size"
@@ -34,7 +37,7 @@
       register: program_var
 
     - name: "Server ID for Backup"
-      shell: "cat /var/plexguide/server.id"
+      shell: "cat /var/plexguide/pg.serverid"
       register: server_id
 
     - name: "Checking if Program is Running"
@@ -54,7 +57,7 @@
       archive:
         path:
         - "/opt/appdata/{{program_var.stdout}}/*"
-        dest: "/opt/appdata/plexguide/{{program_var.stdout}}.tar"
+        dest: "{{tarlocation.stdout}}/{{program_var.stdout}}.tar"
         format: tar
 
     ############ BACKUP OTHER - END
@@ -66,7 +69,7 @@
       when: running.stdout == "1"
 
     - name: "Uploading {{program_var.stdout}}.tar to Google Drive - Size: {{program_size.stdout}} MB"
-      shell: "rclone copy /opt/appdata/plexguide/{{program_var.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+      shell: "rclone copy {{tarlocation.stdout}}/{{program_var.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
 
     - name: Remove TEMP Backup!
       file:

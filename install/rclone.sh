@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/bash
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
@@ -24,7 +24,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⌛  INSTALLING: RClone 1.44
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Specifically required to mount google drive to your local server    
+Specifically required to mount google drive to your local server
 and acts a (fake) pseudo hard drive
 
 PLEASE STANDBY!

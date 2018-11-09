@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/sh
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
 # Author:   Admin9705
@@ -24,14 +24,18 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  ESTABLISHING: Server ID
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-To establish the identification of the server and for identity of
-of backin up the server.
+
+⚠️ SERVER ID: To establish the identification this server!
+
+⛔️ WARNING: Only use one word! If you put spaces in between, it will
+cause you greif when you try to restore your server in the future!
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
 
 # Standby
-read -p 'TYPE a Server ID Name & Press [ENTER] : ' typed < /dev/tty
+read -p 'TYPE a Server ID Name & Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
