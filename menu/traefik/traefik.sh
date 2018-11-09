@@ -61,6 +61,13 @@ read -p 'Type Info | Press [ENTER]: ' typed < /dev/tty
 echo $typed > $file
 }
 
+## Check for Traefik Running
+deployed=$(docker ps --format '{{.Names}}' | grep traefik)
+
+if [ "$deployed" == "traefik" ]; then
+  deployed="TREAFIK Deployed"; else
+  deployed="TRAEFIK NOT Deployed"; fi
+
 # Menu Interface
 tee <<-EOF
 
@@ -72,7 +79,7 @@ tee <<-EOF
 2 - Domain Provider     : [$provider]
 3 - Domain Name         : [$domain]
 4 - EMail Address       : [$email]
-5 - Deploy Traefik      : [$deploy]
+5 - Deploy Traefik      : [$deployed]
 6 - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
