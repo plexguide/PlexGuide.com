@@ -53,13 +53,13 @@ deploy() {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  ESTABLISHING: $var
+↘️  STORING INFO: $var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️  NOTE: To store required information!
+⚠️  NOTE: Everything must be lowercase!
 
 EOF
-read -p 'Type Requested Info | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type Requested Info for $var | Press [ENTER]: ' typed < /dev/tty
 echo $typed > $file
 }
 
