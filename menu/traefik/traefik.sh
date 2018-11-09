@@ -41,11 +41,8 @@ tee <<-EOF
 ⚠️ SERVER ID: To establish the identification this server!
 
 EOF
-read -p 'Type a Number | Press [ENTER]: ' var < /dev/tty
-
+read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 echo $var > $file
-
-   printf -v "$var" '%s' "$(<"$file")"
 }
 
 # Menu Interface
@@ -69,11 +66,9 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  main2 /var/plexguide/traefik.provider NOT-SET2 provider
+  main2 /var/plexguide/traefik.provider NOT-SET provider
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/traefik/provider.sh
-  bash /opt/plexguide/menu/traefik/traefik.sh
-  exit
+  main2 /var/plexguide/traefik.provider NOT-SET provider
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
 elif [ "$typed" == "4" ]; then
