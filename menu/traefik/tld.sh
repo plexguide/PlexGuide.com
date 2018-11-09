@@ -45,7 +45,7 @@ echo PROGRAMS:
 echo $running
 tee <<-EOF
 
-⚠️  WARNING: Remember... it's case sensitive!
+⚠️  NOTE: The App must be Actively Running!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -53,16 +53,16 @@ EOF
 # Standby
 read -p 'Type an Application Name | Press [ENTER]: ' typed < /dev/tty
 
-tcheck=$(cat /opt/plexguide/menu/traefik/plist.sh | grep "\<$typed\>")
+tcheck=$(echo $running | grep "\<$typed\>")
 if [ "$tcheck" == "" ]; then
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ WARNING! - Type the Provider Name! Case Senstive! Restarting!
+⛔️ WARNING! - Type an Application Name! Case Senstive! Restarting!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/traefik/provider.sh
+bash /opt/plexguide/menu/traefik/tld.sh
 exit
 fi
 
@@ -70,7 +70,7 @@ if [ "$typed" == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ WARNING! - The Server ID Cannot Be Blank!
+⛔️ WARNING! - The TLD Application Name Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
@@ -80,12 +80,12 @@ else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️ PASS: Provider Set
+✅️ PASS: TLD Application Set
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Prevents From Repeating
-echo "$typed" > /var/plexguide/traefik.provider
+echo "$typed" > /var/plexguide/tld.program
 
 sleep 3
 fi
