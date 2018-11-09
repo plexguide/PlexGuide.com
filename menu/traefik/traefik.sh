@@ -112,14 +112,12 @@ if [ "$fprovider" == "cloudflare" ]; then
   deploy /var/plexguide/CLOUDFLARE_API_KEY NOT-SET CLOUDFLARE_API_KEY
 fi
 
-
 else
 bash /opt/plexguide/menu/treafik/traefik.sh
 
 elif [ "$typed" == "6" ]; then
   exit
-  fi
-
 fi
+
 bash /opt/plexguide/menu/traefik/traefik.sh
 exit
