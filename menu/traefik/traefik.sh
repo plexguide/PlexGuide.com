@@ -136,8 +136,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-ansible-playbook /opt/plexguide/menu/interface/traefik/common.yml
-ansible-playbook /opt/plexguide/menu/interface/traefik/$fprovider.yml
+sleep 3
+ansible-playbook /opt/plexguide/menu/traefik/common.yml
+ansible-playbook /opt/plexguide/menu/traefik/$fprovider.yml
 
 tee <<-EOF
 
