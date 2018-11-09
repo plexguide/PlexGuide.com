@@ -106,14 +106,15 @@ EOF
     bash /opt/plexguide/menu/traefik/traefik.sh
     exit; fi
 
-elif [ "$typed" == "6" ]; then
 fprovider=$(cat /var/plexguide/traefik.provider)
 
-  if [ "$fprovider" == "cloudflare" ]; then
-    deploy /var/plexguide/CLOUDFLARE_EMAIL NOT-SET CLOUDFLARE_EMAIL
-    deploy /var/plexguide/CLOUDFLARE_API_KEY NOT-SET CLOUDFLARE_API_KEY
-  else
-  bash /opt/plexguide/menu/treafik/traefik.sh
+if [ "$fprovider" == "cloudflare" ]; then
+  deploy /var/plexguide/CLOUDFLARE_EMAIL NOT-SET CLOUDFLARE_EMAIL
+  deploy /var/plexguide/CLOUDFLARE_API_KEY NOT-SET CLOUDFLARE_API_KEY
+else
+bash /opt/plexguide/menu/treafik/traefik.sh
+
+elif [ "$typed" == "6" ]; then
   exit
   fi
 
