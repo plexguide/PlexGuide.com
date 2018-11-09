@@ -139,6 +139,15 @@ EOF
 ansible-playbook /opt/plexguide/menu/interface/traefik/common.yml
 ansible-playbook /opt/plexguide/menu/interface/traefik/$fprovider.yml
 
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️ WOOT WOOT - Traefik Deployed! Become a PG Sponsor Today!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+sleep 5
+
 elif [ "$typed" == "6" ]; then
   exit
 else
