@@ -16,9 +16,14 @@
 #
 #################################################################################
 ---
+- hosts: localhost
+  gather_facts: true
+  tasks:
+
   - name: Install Common Packages (Takes Awhile)
     apt: "name={{item}} state=present"
     with_items:
+      - rmlint
       - fuse
       - nano
       - fail2ban
@@ -77,13 +82,3 @@
   - name: Create Symbolic Link for Ansible-ToolBox
     shell: ln -s /opt/plexguide/roles /etc/ansible/
     ignore_errors: yes
-
-  #- name: Install ctop
-    #get_url:
-      #url:  https://github.com/bcicen/ctop/releases/download/v0.7/ctop-0.7-linux-amd64
-      #dest: /usr/local/bin/ctop
-      #mode: 0755
-      #owner: root
-      #group: root
-      #force: yes
-    #ignore_errors: yes

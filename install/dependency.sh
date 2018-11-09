@@ -35,7 +35,7 @@ EOF
 sleep 5
 
 # Execute Ansible Function
-ansible-playbook /opt/plexguide/pg.yml --tags dependency
+ansible-playbook /opt/plexguide/install/dependency.yml
 
 # Prevents From Repeating
 cat /var/plexguide/pg.dependency > /var/plexguide/pg.dependency.stored

@@ -42,7 +42,7 @@ echo "5" > /var/plexguide/pg.folders
 echo "13" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.docker
 echo "12" > /var/plexguide/server.id
-echo "22" > /var/plexguide/pg.dependency
+echo "23" > /var/plexguide/pg.dependency
 echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
