@@ -114,3 +114,4 @@ tee <<-EOF
 ✅️ TLD Containers are Rebuilt!  Process Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+sleep 4
