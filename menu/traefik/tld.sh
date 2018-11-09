@@ -101,11 +101,6 @@ EOF
 old=$(cat /var/plexguide/old.program)
 new=$(cat /var/plexguide/tld.program)
 
-echo ""
-echo "Only the Old TLD & New TLD Containers Must Be Rebuilt!"
-read -n 1 -s -r -p "Press [Any] Key to Continue"
-echo ""
-
 if [ "$old" != "$new" ]; then
 	echo $old > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
 fi
