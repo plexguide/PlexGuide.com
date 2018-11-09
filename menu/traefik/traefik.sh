@@ -32,14 +32,23 @@ main2() {
    local file=$1 val=$2 var=$3
    echo "$val" "$var"
 
-# Deployment
-main() {
-   local file=$1 val=$2 var=$3
-   [[ -e $file ]] || printf '%s\n' "$val" > "$file"
-   printf -v "$var" '%s' "$(<"$file")"
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  ESTABLISHING: $var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  NOTE: To store required information!
+
+EOF
+read -p 'Type Requested Info | Press [ENTER]: ' typed < /dev/tty
+echo $typed > $file
 }
 
-main /var/plexguide/traefik.provider NOT-SET provider
+# Deploy
+deploy() {
+   local file=$1 val=$2 var=$3
+   echo "$val" "$var"
 
 tee <<-EOF
 
@@ -97,10 +106,14 @@ EOF
     bash /opt/plexguide/menu/traefik/traefik.sh
     exit; fi
 
+fprovider=$(cat /var/plexguide/traefik.provider)
 elif [ "$typed" == "6" ]; then
-  exit
+
+  if [ "$fprovider" == "cloudflare" ]; then
+    deploy /var/plexguide/CLOUDFLARE_EMAIL NOT-SET CLOUDFLARE_EMAIL
+    deploy /var/plexguide/CLOUDFLARE_API_KEY NOT-SET CLOUDFLARE_API_KEY
 else
-  bash /opt/plexguide/menu/settings/settings.sh
+  bash /opt/plexguide/menu/treafik/traefik.sh
   exit
 fi
 
