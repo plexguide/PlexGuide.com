@@ -32,6 +32,15 @@ main2() {
    local file=$1 val=$2 var=$3
    echo "$val" "$var"
 
+# Deployment
+main() {
+   local file=$1 val=$2 var=$3
+   [[ -e $file ]] || printf '%s\n' "$val" > "$file"
+   printf -v "$var" '%s' "$(<"$file")"
+}
+
+main /var/plexguide/traefik.provider NOT-SET provider
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

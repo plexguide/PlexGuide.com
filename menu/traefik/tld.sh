@@ -74,7 +74,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/traefik/traefik.sh
+bash /opt/plexguide/menu/traefik/tld.sh
 exit
 else
 tee <<-EOF
