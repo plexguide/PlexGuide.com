@@ -42,7 +42,7 @@ tee <<-EOF
 
 EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-echo $var > $file
+echo $typed > $file
 }
 
 # Menu Interface
