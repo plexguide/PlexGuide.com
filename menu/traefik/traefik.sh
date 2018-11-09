@@ -72,12 +72,7 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   main2 /var/plexguide/traefik.domain NOT-SET domain
 elif [ "$typed" == "4" ]; then
-
-  file="/var/plexguide/watchtower.id"
-  if [ -e "$file" ]; then
-    rm -r /var/plexguide/watchtower.id
-  fi
-  bash /opt/plexguide/menu/watchtower/watchtower.sh
+  main2 /var/plexguide/server.email NOT-SET email
 
 elif [ "$typed" == "5" ]; then
 
