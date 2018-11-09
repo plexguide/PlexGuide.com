@@ -20,7 +20,7 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    - name: "Set Default Labels"
+    - name: "Enable Default Labels"
       set_fact:
         label_override: false
 
