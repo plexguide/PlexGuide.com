@@ -105,9 +105,28 @@ EOF
     exit; fi
 
 fprovider=$(cat /var/plexguide/traefik.provider)
-if [ "$fprovider" == "cloudflare" ]; then
+  if [ "$fprovider" == "cloudflare" ]; then
   deploy /var/plexguide/CLOUDFLARE_EMAIL NOT-SET CLOUDFLARE_EMAIL
   deploy /var/plexguide/CLOUDFLARE_API_KEY NOT-SET CLOUDFLARE_API_KEY
+elif [ "$fprovider" == "duckdns" ]; then
+  deploy /var/plexguide/DUCKDNS_TOKEN NOT-SET DUCKDNS_TOKEN
+elif [ "$fprovider" == "gandiv5" ]; then
+  deploy /var/plexguide/GANDIV5_API_KEY NOT-SET GANDIV5_API_KEY
+elif [ "$fprovider" == "vultr" ]; then
+  deploy /var/plexguide/VULTR_API_KEY NOT-SET VULTR_API_KEY
+elif [ "$fprovider" == "godaddy" ]; then
+  deploy /var/plexguide/GODADDY_API_KEY NOT-SET GODADDY_API_KEY
+  deploy /var/plexguide/GODADDY_API_SECRET NOT-SET GODADDY_API_SECRET
+elif [ "$fprovider" == "digitalocean" ]; then
+  deploy /var/plexguide/DO_AUTH_TOKEN NOT-SET DO_AUTH_TOKEN
+elif [ "$fprovider" == "namecheap" ]; then
+  deploy /var/plexguide/NAMECHEAP_API_USER NOT-SET NAMECHEAP_API_USER
+  deploy /var/plexguide/NAMECHEAP_API_KEY NOT-SET NAMECHEAP_API_KEY
+elif [ "$fprovider" == "ovh" ]; then
+  deploy /var/plexguide/OVH_ENDPOINT NOT-SET OVH_ENDPOINT
+  deploy /var/plexguide/OVH_APPLICATION_KEY NOT-SET OVH_APPLICATION_KEY
+  deploy /var/plexguide/OVH_APPLICATION_SECRET NOT-SET OVH_APPLICATION_SECRET
+  deploy /var/plexguide/OVH_CONSUMER_KEY NOT-SET OVH_CONSUMER_KEY
 fi
 
 elif [ "$typed" == "6" ]; then
