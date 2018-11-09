@@ -3,7 +3,7 @@
 # [Ansible Role]
 #
 # GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 & Deiteq & Bryde ツ
+# Author:   Admin9705 & Deiteq & Bryde ツ & Beats
 # URL:      https://plexguide.com
 #
 # PlexGuide Copyright (C) 2018 PlexGuide.com
@@ -20,6 +20,9 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: "Set Default Labels"
+      set_fact:
+        label_override: false
 
     - name: Set PGRole
       shell: "cat /tmp/program_selection"
@@ -125,6 +128,8 @@
     - name: Launch Container Primary Information
       include_tasks: "../containers/{{pgrole}}.yml"
 
+    - debug: msg="Override Labels - set to {{label_override}}"
+
     - name: "Set Default Labels"
       set_fact:
         default_labels:
@@ -134,6 +139,8 @@
           traefik.frontend.redirect.entryPoint: "https"
           traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+      when:
+        - label_override == false
 
     ############################## Check If Questions Exists
     - name: "Check If Questions Exist"
