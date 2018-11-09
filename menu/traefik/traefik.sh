@@ -70,7 +70,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then
   main2 /var/plexguide/traefik.provider NOT-SET provider
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+  main2 /var/plexguide/traefik.domain NOT-SET domain
 elif [ "$typed" == "4" ]; then
 
   file="/var/plexguide/watchtower.id"
