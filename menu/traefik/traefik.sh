@@ -134,6 +134,9 @@ elif [ "$fprovider" == "ovh" ]; then
   deploy /var/plexguide/OVH_APPLICATION_KEY NOT-SET OVH_APPLICATION_KEY
   deploy /var/plexguide/OVH_APPLICATION_SECRET NOT-SET OVH_APPLICATION_SECRET
   deploy /var/plexguide/OVH_CONSUMER_KEY NOT-SET OVH_CONSUMER_KEY
+elif [ "$fprovider" == "gcloud" ]; then
+  deploy /var/plexguide/GCE_PROJECT NOT-SET GCE_PROJECT
+  deploy /var/plexguide/GCE_SERVICE_ACCOUNT_FILE NOT-SET GCE_SERVICE_ACCOUNT_FILE
 fi
 
 tee <<-EOF

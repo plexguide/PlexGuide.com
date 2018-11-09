@@ -6,3 +6,4 @@ godaddy
 namecheap
 ovh
 vultr
+gcloud
