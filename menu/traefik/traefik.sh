@@ -66,7 +66,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  main2 /var/plexguide/traefik.domain NOT-SET domain
+  bash /opt/plexguide/menu/traefik/tld.sh
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/traefik/provider.sh
 elif [ "$typed" == "3" ]; then
