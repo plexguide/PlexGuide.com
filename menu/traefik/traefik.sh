@@ -45,6 +45,17 @@ read -p 'Type Requested Info | Press [ENTER]: ' typed < /dev/tty
 echo $typed > $file
 }
 
+
+
+cloudflare
+digitalocean
+duckdns
+gandiv5
+godaddy
+namecheap
+ovh
+vultr
+
 # Menu Interface
 tee <<-EOF
 
@@ -68,7 +79,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
   main2 /var/plexguide/traefik.domain NOT-SET domain
 elif [ "$typed" == "2" ]; then
-  main2 /var/plexguide/traefik.provider NOT-SET provider
+  bash /opt/plexguide/menu/traefik/provider.sh
 elif [ "$typed" == "3" ]; then
   main2 /var/plexguide/traefik.domain NOT-SET domain
 elif [ "$typed" == "4" ]; then
