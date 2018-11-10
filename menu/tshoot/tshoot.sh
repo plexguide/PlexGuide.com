@@ -61,7 +61,7 @@ EOF
 sleep 5
 
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/tshoot/tshoot.sh
+  bash /opt/plexguide/menu/tshoot/appremoval.sh
 elif [ "$typed" == "3" ]; then
 tee <<-EOF
 
