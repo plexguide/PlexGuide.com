@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Add APT repos
+apt-get install software-properties-common -y
 add-apt-repository main
 add-apt-repository universe
 add-apt-repository restricted
