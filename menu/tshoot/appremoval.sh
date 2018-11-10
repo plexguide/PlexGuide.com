@@ -30,6 +30,18 @@ while read p; do
 done </tmp/backup.list
 running=$(cat /tmp/backup.list)
 
+# If Blank, Exit
+if [ "$running" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! - No Apps are Running! Exiting!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+exit
+fi
+
 # Menu Interface
 tee <<-EOF
 
