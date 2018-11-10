@@ -28,8 +28,6 @@ if [ ! -e "$file" ]; then
       echo "/mnt" > /var/plexguide/server.hd.path
 fi
 
-
-
 # Generate Default YML
 bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 # Ensure Default Folder Is Created
