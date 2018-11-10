@@ -22,10 +22,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Pre-Installer: Force the Entire Process Again
-2 - UnInstaller  : A Specific PG Application (Not Ready)
-3 - UnInstaller  : Docker & Running Containers | Force Pre-Install
-4 - UnInstaller  : PlexGuide
-5 - Exit
+2 - UnInstaller  : Docker & Running Containers | Force Pre-Install
+3 - UnInstaller  : PlexGuide
+4 - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -61,8 +60,6 @@ EOF
 sleep 5
 
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/tshoot/appremoval.sh
-elif [ "$typed" == "3" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -92,7 +89,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 5
-elif [ "$typed" == "4" ]; then
+elif [ "$typed" == "3" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -102,7 +99,7 @@ EOF
 sleep 3
 
   echo "uninstall" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-elif [ "$typed" == "5" ]; then
+elif [ "$typed" == "4" ]; then
   exit
 else
   bash /opt/plexguide/menu/tshoot/tshoot.sh

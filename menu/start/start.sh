@@ -171,8 +171,8 @@ elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/traefik/traefik.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/apps/apps.sh
-elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/apps/apps.sh  
+elif [ "$typed" == "4" ]; then
+  bash /opt/plexguide/removal/removal.sh
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "6" ]; then
