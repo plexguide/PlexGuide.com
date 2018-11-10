@@ -45,7 +45,7 @@ variable /var/plexguide/pgfork.project "UPDATE-ME"
 
 file=""
 if [ ! -e "$file" ]; then
-   echo "UPDATE ME" > /var/plexguide/pgfork.project
+   echo "UPDATE ME2" > /var/plexguide/pgfork.project
 fi
 
 file="/var/plexguide/pgfork.version"
