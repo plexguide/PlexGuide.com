@@ -133,7 +133,7 @@ percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition - GDrive" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Multi" ]; then a=b
-elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b
+elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b; fi
 # Menu Interface
 tee <<-EOF
 
