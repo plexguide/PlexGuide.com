@@ -109,18 +109,13 @@ touch /var/plexguide/pg.edition
 edition=$( cat /var/plexguide/pg.edition )
 
 if [ "$edition" == "PG Edition - GDrive" ]; then
-    bash /opt/plexguide/menu/start/start.sh
-    exit
+  a=b
 elif [ "$edition" == "PG Edition - HD Multi" ]; then
-    bash /opt/plexguide/menu/start/start.sh
-    exit
+  a=b
 elif [ "$edition" == "PG Edition - HD Solo" ]; then
-    bash /opt/plexguide/menu/start/start.sh
-    exit
+  a=b
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then
     bash /opt/plexguide/menu/interface/gce/gcechecker.sh
-    bash /opt/plexguide/menu/start/start.sh
-    exit
 else
     file="/var/plexguide/pg.preinstall.stored"
     if [ -e "$file" ]; then
