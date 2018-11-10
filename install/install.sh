@@ -8,6 +8,7 @@ add-apt-repository multiverse
 
 # Upgrade
 apt-get update -y
+apt-get install software-properties-common -y
 
 # Disable IPv6
 if [ -f /etc/sysctl.d/99-sysctl.conf ]; then
