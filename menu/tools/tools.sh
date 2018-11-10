@@ -89,7 +89,7 @@ elif [ "$typed" == "4" ]; then
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/roles/menu-network/scripts/main.sh
 elif [ "$typed" == "6" ]; then
-  echo 'tshoot' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  bash /opt/plexguide/menu/tshoot/tshoot.sh
 elif [ "$typed" == "7" ]; then
   exit
 else
