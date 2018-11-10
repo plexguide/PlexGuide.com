@@ -31,7 +31,17 @@ while read p; do
 done </tmp/backup.list
 running=$(cat /tmp/backup.list)
 
+# If Blank, Exit
+if [ "$running" == "" ]; then
+tee <<-EOF
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! - No Apps are Running! Exiting!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+exit
+fi
 
 # Menu Interface
 tee <<-EOF
@@ -45,13 +55,15 @@ echo PROGRAMS:
 echo $running
 tee <<-EOF
 
-⚠️  NOTE: The App must be Actively Running!
+⚠️  NOTE: App Must Be Actively Running! To quit, type >>> exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Standby
 read -p 'Type an Application Name | Press [ENTER]: ' typed < /dev/tty
+
+if [ "$typed" == "exit" ]; then exit; fi
 
 tcheck=$(echo $running | grep "\<$typed\>")
 if [ "$tcheck" == "" ]; then

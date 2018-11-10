@@ -141,8 +141,8 @@ elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiHD Mount Dep
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"; fi
 tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
-3 - Install  : Apps 🤩
-4 - UnInstall: Apps ⛔
+3 - Install  : PG Apps
+4 - UnInstall: PG Apps 
 5 - Tools & Services
 6 - Settings
 7 - Exit
