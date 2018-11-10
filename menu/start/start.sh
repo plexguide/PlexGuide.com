@@ -145,7 +145,7 @@ tee <<-EOF
 
 EOF
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "1 - Mounts & Data Transports"
-elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiFS & Mount Deploypment"
+elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiHD Mount Deployment"
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"; fi
 tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
@@ -164,7 +164,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
 
     if [ "$edition" == "PG Edition - GDrive" ]; then bash /opt/plexguide/menu/transport/transport.sh
-    elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiFS & Mount Deploypment"
+    elif [ "$edition" == "PG Edition - HD Multi" ]; then ansible-playbook /opt/plexguide/menu/multihd/main.yml
     elif [ "$edition" == "PG Edition - HD Solo" ]; then
 tee <<-EOF
 

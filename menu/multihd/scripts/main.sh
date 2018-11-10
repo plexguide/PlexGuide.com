@@ -70,7 +70,7 @@ rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1
 
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/multi.menu)
-ansible-playbook /opt/plexguide/roles/menu-multi/main.yml
+ansible-playbook /opt/plexguide/menu/multihd/main.yml
 menu=$(cat /var/plexguide/multi.menu)
 
 if [ "$menu" == "addpath" ]; then
@@ -88,8 +88,8 @@ if [ "$menu" == "addpath" ]; then
       fi
     done
   echo $number > /var/plexguide/multi.filler
-  ansible-playbook /opt/plexguide/roles/menu-multi/pre.yml
-  bash /opt/plexguide/roles/menu-multi/scripts/ufbuilder.sh
+  ansible-playbook /opt/plexguide/menu/multihd/pre.yml
+  bash /opt/plexguide/menu/multihd/scripts/ufbuilder.sh
 fi
 
 if [ "$menu" == "removepath" ]; then
@@ -107,15 +107,15 @@ if [ "$menu" == "removepath" ]; then
       fi
     done
   echo $number > /var/plexguide/multi.filler
-  ansible-playbook /opt/plexguide/roles/menu-multi/remove.yml
-  bash /opt/plexguide/roles/menu-multi/scripts/ufbuilder.sh
+  ansible-playbook /opt/plexguide/menu/multihd/remove.yml
+  bash /opt/plexguide/menu/multihd/scripts/ufbuilder.sh
 
 fi
 
 if [ "$menu" == "unionfs" ]; then
   echo 'INFO - Selected: Deploy UnionFS' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/roles/menu-multi/service-remove.yml
-  ansible-playbook /opt/plexguide/roles/menu-multi/mergerfs.yml
+  ansible-playbook /opt/plexguide/menu/multihd/service-remove.yml
+  ansible-playbook /opt/plexguide/menu/multihd/mergerfs.yml
 fi
 
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
