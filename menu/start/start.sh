@@ -145,7 +145,7 @@ tee <<-EOF
 EOF
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "1 - Mounts & Data Transports"
 elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiFS & Mount Deploypment"
-elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"
+elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"; fi
 tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
 3 - Server Port Guard        [$ports]
