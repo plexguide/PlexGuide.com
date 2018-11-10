@@ -95,8 +95,8 @@ tee <<-EOF
 EOF
 sleep 3
 
-docker stop $typed
-docker rm $typed
+docker stop $typed 1>/dev/null 2>&1
+docker rm $typed 1>/dev/null 2>&1
 
 tee <<-EOF
 
