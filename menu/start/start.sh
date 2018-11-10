@@ -142,6 +142,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
+
 EOF
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "1 - Mounts & Data Transports"
 elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiFS & Mount Deploypment"
