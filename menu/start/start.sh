@@ -41,12 +41,7 @@ if [ ! -e "$file" ]; then
 fi
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
-variable /var/plexguide/pgfork.project "UPDATE-ME"
-
-file=""
-if [ ! -e "$file" ]; then
-   echo "UPDATE ME2" > /var/plexguide/pgfork.project
-fi
+variable /var/plexguide/pgfork.project "NOT-SET"
 
 file="/var/plexguide/pgfork.version"
 if [ ! -e "$file" ]; then
