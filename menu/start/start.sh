@@ -111,16 +111,6 @@ else
   traefik="DEPLOYED"
 fi
 
-# Declare Ports State
-ports=$(cat /var/plexguide/server.ports)
-if [ "$ports" == "" ]; then ports="OPEN"
-else ports="CLOSED"; fi
-
-# Declare AppGuard State
-appguard=$(cat /var/plexguide/server.ht)
-if [ "$appguard" == "" ]; then appguard="NOT DEPLOYED"
-else appguard="DEPLOYED"; fi
-
 # For ZipLocations
 file="/var/plexguide/data.location"
 if [ ! -e "$file" ]; then echo "/opt/appdata/plexguide" > /var/plexguide/data.location; fi
@@ -151,12 +141,11 @@ elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiHD Mount Dep
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"; fi
 tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
-3 - Server Port Guard        [$ports]
-4 - Application Guard        [$appguard]
-5 - Programs Suite Installer
-6 - Tools & Services
-7 - Settings
-8 - Exit
+3 - App Suite Installer
+4 - App Suite UnInstall
+5 - Tools & Services
+6 - Settings
+7 - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -181,16 +170,14 @@ sleep 3
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/traefik/traefik.sh
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/roles/menu-ports/scripts/main.sh
-elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
-elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/apps/apps.sh
-elif [ "$typed" == "6" ]; then
+elif [ "$typed" == "3" ]; then
+  bash /opt/plexguide/menu/apps/apps.sh  
+elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/tools/tools.sh
-elif [ "$typed" == "7" ]; then
+elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/settings/settings.sh
-elif [ "$typed" == "8" ]; then
+elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/roles/ending/ending.sh
   exit
 else

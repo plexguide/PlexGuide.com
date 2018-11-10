@@ -56,6 +56,17 @@ bash /opt/plexguide/menu/tools/tools.sh
 exit
 fi
 }
+
+# Declare Ports State
+ports=$(cat /var/plexguide/server.ports)
+if [ "$ports" == "" ]; then ports="OPEN"
+else ports="CLOSED"; fi
+
+# Declare AppGuard State
+appguard=$(cat /var/plexguide/server.ht)
+if [ "$appguard" == "" ]; then appguard="NOT DEPLOYED"
+else appguard="DEPLOYED"; fi
+
 # Menu Interface
 tee <<-EOF
 
@@ -65,11 +76,13 @@ tee <<-EOF
 
 1 - Backup & Restore
 2 - Deploy GCE Feeder Instance
-3 - PGTrak ~ Fill Up Sonarr & Radarr
-4 - Personal VPN Service Installer
-5 - System & Network Auditor
-6 - TroubleShoot ~ PreInstaller & UnInstaller
-7 - Exit
+3 - Server Port Guard [$ports]
+4 - Application Guard [$appguard]
+5 - PGTrak ~ Fill Up Sonarr & Radarr
+6 - Personal VPN Service Installer
+7 - System & Network Auditor
+8 - TroubleShoot ~ PreInstaller & UnInstaller
+9 - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -83,14 +96,18 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/interface/pgtrak/main.sh
+  bash /opt/plexguide/roles/menu-ports/scripts/main.sh
 elif [ "$typed" == "4" ]; then
-  echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/roles/menu-network/scripts/main.sh
+  bash /opt/plexguide/menu/interface/pgtrak/main.sh
 elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/tshoot/tshoot.sh
+  echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "7" ]; then
+  bash /opt/plexguide/roles/menu-network/scripts/main.sh
+elif [ "$typed" == "8" ]; then
+  bash /opt/plexguide/menu/tshoot/tshoot.sh
+elif [ "$typed" == "9" ]; then
   exit
 else
   bash /opt/plexguide/menu/tools/tools.sh
