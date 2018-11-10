@@ -73,7 +73,7 @@ if [ "$tcheck" == "" ]; then
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/traefik/tld.sh
+bash /opt/plexguide/menu/removal.sh
 exit
 fi
 
