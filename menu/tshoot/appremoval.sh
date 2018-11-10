@@ -70,7 +70,7 @@ EOF
   bash /opt/plexguide/menu/apps/apps.sh
   exit
   fi
-
+fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
