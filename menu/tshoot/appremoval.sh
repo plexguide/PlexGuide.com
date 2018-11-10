@@ -42,13 +42,15 @@ echo "Running Apps:"
 echo $running
 tee <<-EOF
 
-⚠️  NOTE: The App must be Actively Running!
+⚠️  NOTE: To quit, type >>> exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Standby
 read -p 'Type an Application Name | Press [ENTER]: ' typed < /dev/tty
+
+if [ "$typed" == "exit" ]; then exit; fi
 
 tcheck=$(echo $running | grep "\<$typed\>")
 if [ "$tcheck" == "" ]; then
