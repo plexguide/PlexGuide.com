@@ -73,7 +73,6 @@ if [ -e "$file" ]; then rm -rf /var/plexguide/update.failed
 ## Selects an edition
 touch /var/plexguide/pg.edition
 edition=$( cat /var/plexguide/pg.edition )
-
 if [ "$edition" == "PG Edition - GDrive" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Multi" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b
@@ -131,6 +130,10 @@ used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
 capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
 percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 
+edition=$( cat /var/plexguide/pg.edition )
+if [ "$edition" == "PG Edition - GDrive" ]; then a=b
+elif [ "$edition" == "PG Edition - HD Multi" ]; then a=b
+elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b
 # Menu Interface
 tee <<-EOF
 
@@ -139,8 +142,11 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
-
-1 - Mounts & Data Transports
+EOF
+if [ "$edition" == "PG Edition - GDrive" ]; then echo "1 - Mounts & Data Transports"
+elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiFS & Mount Deploypment"
+elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"
+tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
 3 - Server Port Guard        [$ports]
 4 - Application Guard        [$appguard]
