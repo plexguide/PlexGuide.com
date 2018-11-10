@@ -132,6 +132,7 @@ percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 
 edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition - GDrive" ]; then a=b
+elif [ "$edition" == "PG Edition - GDrive" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Multi" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b; fi
 # Menu Interface
@@ -145,6 +146,7 @@ tee <<-EOF
 
 EOF
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "1 - Mounts & Data Transports"
+elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "1 - Mounts & Data Transports"
 elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiHD Mount Deployment"
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"; fi
 tee <<-EOF
@@ -164,7 +166,8 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
 
     if [ "$edition" == "PG Edition - GDrive" ]; then bash /opt/plexguide/menu/transport/transport.sh
-  elif [ "$edition" == "PG Edition - HD Multi" ]; then bash /opt/plexguide/menu/multihd/scripts/main.sh
+    elif [ "$edition" == "PG Edition - GCE Feed" ]; then bash bash /opt/plexguide/menu/transport/transport.sh
+    elif [ "$edition" == "PG Edition - HD Multi" ]; then bash /opt/plexguide/menu/multihd/scripts/main.sh
     elif [ "$edition" == "PG Edition - HD Solo" ]; then
 tee <<-EOF
 
