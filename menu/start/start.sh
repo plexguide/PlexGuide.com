@@ -141,8 +141,8 @@ elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiHD Mount Dep
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"; fi
 tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
-3 - App Suite Installer
-4 - App Suite UnInstall
+3 - PG Apps: Install
+4 - PG Apps: UnInstall
 5 - Tools & Services
 6 - Settings
 7 - Exit
@@ -172,7 +172,7 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/apps/apps.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/removal/removal.sh
+  bash /opt/plexguide/menu/removal/removal.sh
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "6" ]; then
