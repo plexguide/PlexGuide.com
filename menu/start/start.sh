@@ -14,8 +14,6 @@
 #
 #################################################################################
 
-### Function
-
 # Create Variables (If New) & Recall
 variable () {
   file="$1"
@@ -118,32 +116,21 @@ fi
 
 # Declare Ports State
 ports=$(cat /var/plexguide/server.ports)
-if [ "$ports" == "" ]; then
-  ports="OPEN"
-else
-  ports="CLOSED"
-fi
+if [ "$ports" == "" ]; then ports="OPEN"
+else ports="CLOSED"; fi
 
 # Declare AppGuard State
 appguard=$(cat /var/plexguide/server.ht)
-if [ "$appguard" == "" ]; then
-  appguard="NOT DEPLOYED"
-else
-  appguard="DEPLOYED"
-fi
+if [ "$appguard" == "" ]; then appguard="NOT DEPLOYED"
+else appguard="DEPLOYED"; fi
 
 # For ZipLocations
 file="/var/plexguide/data.location"
-if [ ! -e "$file" ]; then
-  echo "/opt/appdata/plexguide" > /var/plexguide/data.location
-fi
+if [ ! -e "$file" ]; then echo "/opt/appdata/plexguide" > /var/plexguide/data.location; fi
 
 space=$(cat /var/plexguide/data.location)
-# To Get Used Space
 used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
-# To Get All Space
 capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
-# Percentage
 percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 
 # Menu Interface
