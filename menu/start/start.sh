@@ -42,37 +42,12 @@ fi
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 variable /var/plexguide/pgfork.project "NOT-SET"
-
-file="/var/plexguide/pgfork.version"
-if [ ! -e "$file" ]; then
-   echo "changeme" > /var/plexguide/pgfork.version
-fi
-
-file="/var/plexguide/tld.program"
-if [ ! -e "$file" ]; then
-   touch /var/plexguide/tld.program
-   echo "portainer" > /var/plexguide/tld.program
-fi
-
-file="/opt/appdata/plexguide/plextoken"
-if [ ! -e "$file" ]; then
-   touch /opt/appdata/plexguide/plextoken
-fi
-
-file="touch /var/plexguide/server.ht"
-if [ ! -e "$file" ]; then
-   touch /var/plexguide/server.ht
-fi
-
-file="/var/plexguide/server.email"
-if [ ! -e "$file" ]; then
-    echo "changeme@bademail.com" >> /var/plexguide/server.email
-fi
-
-file="/var/plexguide/server.domain"
-if [ ! -e "$file" ]; then
-    echo "no.domain" >> /var/plexguide/server.domain
-fi
+variable /var/plexguide/pgfork.version "NOT-SET"
+variable /var/plexguide/tld.program "NOT-SET"
+variable /opt/appdata/plexguide/plextoken "NOT-SET"
+variable /var/plexguide/server.ht "NOT-SET"
+variable /var/plexguide/server.email "NOT-SET"
+variable /var/plexguide/server.domain "NOT-SET"
 
 hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
@@ -103,12 +78,9 @@ fi
 touch /var/plexguide/pg.edition
 edition=$( cat /var/plexguide/pg.edition )
 
-if [ "$edition" == "PG Edition - GDrive" ]; then
-  a=b
-elif [ "$edition" == "PG Edition - HD Multi" ]; then
-  a=b
-elif [ "$edition" == "PG Edition - HD Solo" ]; then
-  a=b
+if [ "$edition" == "PG Edition - GDrive" ]; then a=b
+elif [ "$edition" == "PG Edition - HD Multi" ]; then a=b
+elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then
     bash /opt/plexguide/menu/interface/gce/gcechecker.sh
 else
