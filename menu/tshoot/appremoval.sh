@@ -13,71 +13,67 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+docker ps --format '{{.Names}}' > /tmp/backup.list
+sed -i -e "/traefik/d" /tmp/backup.list
+sed -i -e "/watchtower/d" /tmp/backup.list
+sed -i -e "/word*/d" /tmp/backup.list
+sed -i -e "/x2go*/d" /tmp/backup.list
+sed -i -e "/plexguide/d" /tmp/backup.list
+sed -i -e "/cloudplow/d" /tmp/backup.list
+sed -i -e "/phlex/d" /tmp/backup.list
 
-echo " " > /var/plexguide/programs.temp
-
+rm -rf /tmp/backup.build 1>/dev/null 2>&1
+#### Commenting Out To Let User See
 while read p; do
-  echo -n $p >> /var/plexguide/programs.temp
-  echo -n " " >> /var/plexguide/programs.temp
+  echo -n "$p" >> /tmp/backup.build
+  echo -n " " >> /tmp/backup.build
+done </tmp/backup.list
+running=$(cat /tmp/backup.list)
 
-  num=$[num+1]
-  if [ $num == 8 ]; then
-    num=0
-    echo " " >> /var/plexguide/programs.temp
-  fi
-
-done </opt/plexguide/menu/apps/app.list
-
+# Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-♻️  UNINSTALLER: PG Applications Suite
+🚀 PG - App Removal Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️  WARNING! Destroys Generated App Data! Exit & Backup if Needed!
 EOF
-cat /var/plexguide/programs.temp
-echo && echo
-# Standby
-echo "↘️   TO EXIT - type >>> exit" && echo
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-read -p '🌎  TYPE the App Name & Press [ENTER]: ' typed < /dev/tty
-
-  if [ "$typed" == "" ]; then
+echo "Running Apps:"
+echo $running
 tee <<-EOF
 
+⚠️  NOTE: The App must be Actively Running!
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - The App Cannot Be Blank!
+EOF
+
+# Standby
+read -p 'Type an Application Name | Press [ENTER]: ' typed < /dev/tty
+
+tcheck=$(echo $running | grep "\<$typed\>")
+if [ "$tcheck" == "" ]; then
+  tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! - Type an Application Name! Case Senstive! Restarting!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/install/serverid.sh
+bash /opt/plexguide/menu/traefik/tld.sh
 exit
-elif [ "$typed" == "exit" ]; then
-  exit
-else
-
-  # Recalls for to check existance
-  rcheck=$(cat /var/plexguide/programs.temp | grep -c "\<$typed\>")
-  if [ "$rcheck" == "0" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - App Does Not Exist! Restarting!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 4
-  bash /opt/plexguide/menu/apps/apps.sh
-  exit
-  fi
 fi
+
+if [ "$typed" == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  NOTICE: Checking - $typed's existance! Please Standby!
+⛔️ WARNING! - The Application Name Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2
+sleep 3
+bash /opt/plexguide/menu/traefik/tld.sh
+exit
+fi
 
 tee <<-EOF
 
