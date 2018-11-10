@@ -20,7 +20,6 @@
 variable () {
   file="$1"
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
-  $3=(cat $2)
 }
 
 ### GEN STARTED
