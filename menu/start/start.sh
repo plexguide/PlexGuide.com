@@ -67,10 +67,8 @@ cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&
 # run pg main
 bash /opt/plexguide/pg.sh
 file="/var/plexguide/update.failed"
-if [ -e "$file" ]; then
-  rm -rf /var/plexguide/update.failed
-  exit
-fi
+if [ -e "$file" ]; then rm -rf /var/plexguide/update.failed
+  exit; fi
 
 ## Selects an edition
 touch /var/plexguide/pg.edition
