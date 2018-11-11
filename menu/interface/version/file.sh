@@ -24,8 +24,14 @@ while read p; do
   echo $p >> /var/plexguide/ver.temp
 done </opt/plexguide/menu/interface/version/version.sh
 
-echo ""
-echo "Welcome to the PG Versioning Deployment System!"
+Menu Interface
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂  PG Update Interface Menu
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
 cat /var/plexguide/ver.temp
 echo ""
 echo "To QUIT, type >>> exit"
