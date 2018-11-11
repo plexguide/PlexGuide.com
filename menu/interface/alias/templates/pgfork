@@ -65,7 +65,10 @@ fi
 ### Execut YML
 ansible-playbook /opt/plexguide/menu/interface/pgfork/main.yml
 
-echo ""
-echo "---------------------------------------"
-echo "SYSTEM MESSAGE: PGFork Process Complete"
-echo "---------------------------------------"
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  SYSTEM MESSAGE: Installed User's Forked Version of PG! Standby!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 4
