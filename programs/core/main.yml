@@ -97,10 +97,6 @@
         path: "../containers/{{pgrole}}-ending.yml"
       register: "ending"
 
-      # Export External Port
-    - name: Export Internal Port
-      shell: "echo {{extport}} > /tmp/program_port"
-      ignore_errors: True
     ############################## TOP LEVEL DOMAIN (TLD) START
     - debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
 
@@ -189,6 +185,12 @@
         - "override.stat.exists == False"
 
     ############################## ENDING
+
+    # Export External Port for endbanner
+    - name: Export Internal Port
+      shell: "echo {{extport}} > /tmp/program_port"
+      ignore_errors: True
+
     - name: Launch Ending
       include_tasks: "ending.yml"
       when:

@@ -15,7 +15,7 @@
 #################################################################################
 
 program=$(cat /tmp/program_var)
-domain=$(cat /var/plexguide.com/server.domain)
+domain=$(cat /var/plexguide/server.domain)
 port=$(cat /tmp/program_port)
 ip=$(cat /var/plexguide/server.ip)
 
