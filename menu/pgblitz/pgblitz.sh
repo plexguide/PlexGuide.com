@@ -43,17 +43,19 @@ tee <<-EOF
 🌎  Welcome to PG Blitz
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: PG Blitz uses a series of Team Account to surpass the 750GB
-up limit. If you require less, utilize PG Move (due to simplicity)
+NOTE: PG Blitz utilizies Team Drives to surpass the 750GB daily
+upload limit. If you require less, utilize PG Move (due to simplicity)
 
 1 - Configure RClone : $configure
 2 - Key Management   : $keys Keys Exist
 3 - E-Mail Share Gen
-4 - Deploy PBlitz 
-━━━━━━━━━━━━━━━━━━━━
-5 - Download Path    : $path
-6 - Disable PG Blitz
+4 - Deploy PBlitz
+5 - Exit
 
+a - Download Path    : $path
+b - Disable PG Blitz
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Standby
@@ -77,7 +79,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 3
-  bash /opt/plexguide/menu/pgmove/pgmove.sh
+  bash /opt/plexguide/menu/pgblitz/pgblitz.sh
   exit
   else
   echo "$typed" > /var/plexguide/move.bw
@@ -107,12 +109,17 @@ tee <<-EOF
 EOF
   sleep 4
   fi
-elif [ "$typed" == "4" ]; then
+elif [ "$typed" == "5" ]; then
   exit
+elif [ "$typed" == "a" ]; then
+  bash /opt/plexguide/menu/interface/dlpath/main.sh
+elif [ "$typed" == "b" ]; then
+  sudo systemctl stop pgblitz 1>/dev/null 2>&1
+  sudo systemctl rm pgblitz 1>/dev/null 2>&1
 else
-  bash /opt/plexguide/menu/pgmove/pgmove.sh
+  bash /opt/plexguide/menu/pgblitz/pgblitz.sh
   exit
 fi
 
-bash /opt/plexguide/menu/pgmove/pgmove.sh
+bash /opt/plexguide/menu/pgblitz/pgblitz.sh
 exit
