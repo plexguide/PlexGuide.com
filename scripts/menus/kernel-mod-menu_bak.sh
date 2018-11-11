@@ -39,7 +39,7 @@ case $CHOICE in
         then
         ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Press [ANY] Key to Continue "
         bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
@@ -55,7 +55,7 @@ case $CHOICE in
       then
         ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Press [ANY] Key to Continue "
         bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
@@ -72,7 +72,7 @@ case $CHOICE in
         ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Press [ANY] Key to Continue "
         bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66
@@ -89,7 +89,7 @@ case $CHOICE in
         ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
         cat /etc/sysctl.conf
         echo ""
-        read -n 1 -s -r -p "Press any key to continue "
+        read -n 1 -s -r -p "Press [ANY] Key to Continue "
         bash /opt/plexguide/roles/processor/scripts/reboot.sh
       else
         whiptail --title "Unsupported Kernel" --msgbox "Your Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 9 66

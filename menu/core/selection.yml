@@ -1,0 +1,192 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Recall Menu Type
+      shell: "cat /var/plexguide/type.choice"
+      register: menutemp
+
+    - name: "Set Facts for Menu"
+      set_fact:
+        menu: "{{menutemp.stdout}}"
+
+################ Key Variable to Set Menu Length
+    - name: "Default Blank Variables"
+      set_fact:
+        info1: "\n\n1.  Exit Interface"
+        info2: ""
+        info3: ""
+        info4: ""
+        info5: ""
+        info6: ""
+        info7: ""
+        info8: ""
+        info9: ""
+
+    - name: Launch Container Primary Information
+      include_tasks: "../interface/{{menu}}/choice.yml"
+
+################ Blank Out Variable Recall
+    - name: Recall Menu Type
+      shell: "cat /var/plexguide/menu.number"
+      register: tempnumber
+
+    - name: "Blank Out Variable Recall"
+      set_fact:
+        numberselect: "{{tempnumber.stdout}}"
+
+################ Sets Choice Limitation
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2"
+      when: numberselect == "2"
+
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3"
+      when: numberselect == "3"
+
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3" or
+                 choice.user_input == "4"
+      when: numberselect == "4"
+
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3" or
+                 choice.user_input == "4" or
+                 choice.user_input == "5"
+      when: numberselect == "5"
+
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3" or
+                 choice.user_input == "4" or
+                 choice.user_input == "5" or
+                 choice.user_input == "6"
+      when: numberselect == "6"
+
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3" or
+                 choice.user_input == "4" or
+                 choice.user_input == "5" or
+                 choice.user_input == "6" or
+                 choice.user_input == "7"
+      when: numberselect == "7"
+
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3" or
+                 choice.user_input == "4" or
+                 choice.user_input == "5" or
+                 choice.user_input == "6" or
+                 choice.user_input == "7" or
+                 choice.user_input == "8"
+      when: numberselect == "8"
+
+    - name: "Choice Number {{numberselect}}"
+      set_fact:
+        choices: choice.user_input == "1" or
+                 choice.user_input == "2" or
+                 choice.user_input == "3" or
+                 choice.user_input == "4" or
+                 choice.user_input == "5" or
+                 choice.user_input == "6" or
+                 choice.user_input == "7" or
+                 choice.user_input == "8" or
+                 choice.user_input == "9"
+      when: numberselect == "9"
+################# Recalls Variables for Set Length
+    - name: PG Main Menu
+      pause:
+        prompt: "\n-------------------------------------------------------------
+                 {{head1}}
+                 {{head2}}
+                 \n-------------------------------------------------------------
+    {{info1}}
+    {{info2}}
+    {{info3}}
+    {{info4}}
+    {{info5}}
+    {{info6}}
+    {{info7}}
+    {{info8}}
+    {{info9}}
+    \n\nType a [NUMBER] Choice & Press [ENTER]"
+      register: choice
+      until: "{{choices}}"
+      retries: 99
+      delay: 1
+
+    - name: Set Choice
+      set_fact:
+        fchoice: "{{choice.user_input}}"
+
+    - name: Exiting Interface
+      shell: "echo break > /var/plexguide/final.choice"
+      when: fchoice == "1"
+
+    - name: Choice 2 Selected
+      shell: "echo 2 > /var/plexguide/final.choice"
+      when: fchoice == "2"
+
+    - name: Choice 3 Selected
+      shell: "echo 3 > /var/plexguide/final.choice"
+      when: fchoice == "3"
+
+    - name: Choice 4 Selected
+      shell: "echo 4 > /var/plexguide/final.choice"
+      when: fchoice == "4"
+
+    - name: Choice 5 Selected
+      shell: "echo 5 > /var/plexguide/final.choice"
+      when: fchoice == "5"
+
+    - name: Choice 6 Selected
+      shell: "echo 6 > /var/plexguide/final.choice"
+      when: fchoice == "6"
+
+    - name: Choice 7 Selected
+      shell: "echo 7 > /var/plexguide/final.choice"
+      when: fchoice == "7"
+
+    - name: Choice 8 Selected
+      shell: "echo 8 > /var/plexguide/final.choice"
+      when: fchoice == "8"
+
+    - name: Choice 9 Selected
+      shell: "echo 9 > /var/plexguide/final.choice"
+      when: fchoice == "9"

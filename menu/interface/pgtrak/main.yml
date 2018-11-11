@@ -1,0 +1,127 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Maintainer: Admin9705 & Deiteq
+# URL:        https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+# Original Script @ cloudbox.rocks
+#################################################################################
+---
+- hosts: localhost
+  gather_facts: true
+  tasks:
+
+  - name: Sonarr API
+    shell: "cat /var/plexguide/pgtrak.sapi"
+    register: sapi
+    ignore_errors: True
+
+  - name: Radarr API
+    shell: "cat /var/plexguide/pgtrak.rapi"
+    register: rapi
+    ignore_errors: True
+
+  - name: Sonarr Profile
+    shell: "cat /var/plexguide/pgtrak.sprofile"
+    register: sprofile
+    ignore_errors: True
+
+  - name: Radarr Profile
+    shell: "cat /var/plexguide/pgtrak.rprofile"
+    register: rprofile
+    ignore_errors: True
+
+  - name: Trakt.tv Client
+    shell: "cat /var/plexguide/pgtrak.client"
+    register: client
+    ignore_errors: True
+
+  - name: Trakt.tv Secret
+    shell: "cat /var/plexguide/pgtrak.secret"
+    register: secret
+    ignore_errors: True
+
+  - name: Radarr Path
+    shell: "cat /var/plexguide/pgtrak.rpath"
+    register: rpath
+    ignore_errors: True
+
+  - name: API Sonnar
+    shell: "cat /var/plexguide/pgtrak.spath"
+    register: spath
+    ignore_errors: True
+
+  - name: Check if pgtrak service exists
+    stat:
+      path: "/etc/systemd/system/pgtrak.service"
+    register: pgtrak_service
+
+  - name: Stop existing pgtrak service
+    systemd: state=stopped name=pgtrak
+    when: pgtrak_service.stat.exists
+
+  ######### OTHER
+  - name: Create pgtrak directories
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+    with_items:
+      - /opt/appdata/pgtrak
+
+  - name: Clone pgtrak
+    git:
+      repo: https://github.com/Admin9705/pgtrak
+      dest: /opt/appdata/pgtrak
+      version: ver4
+      force: yes
+
+  - name: Install pip requirements
+    pip:
+      requirements: /opt/appdata/pgtrak/requirements.txt
+      executable: pip3
+
+  - name: Import default config
+    template:
+      src: config.json.js2
+      dest: /opt/appdata/pgtrak/config.json
+      owner: "1000"
+      group: "1000"
+      mode: 0775
+      force: yes
+
+  - name: Set directory permissions
+    file: "path=/opt/appdata/pgtrak state=directory owner=1000 group=1000 recurse=yes"
+
+  - name: Move Executable
+    shell: "mv /opt/appdata/pgtrak/traktarr.py /opt/appdata/pgtrak/pgtrak.py"
+
+  - name: Set pgtrak.py as executable
+    file:
+      path: /opt/appdata/pgtrak/pgtrak.py
+      owner: 1000
+      group: 1000
+      mode: a+x
+
+  - name: "Create /usr/local/bin symlink"
+    file:
+      src: "/opt/appdata/pgtrak/pgtrak.py"
+      dest: "/bin/pgtrak"
+      state: link
+
+  - name: Import pgtrak service
+    template:
+      src: pgtrak.service.js2
+      dest: /etc/systemd/system/pgtrak.service
+      force: yes
+
+  - name: Load pgtrak service
+    systemd: state=stopped name=pgtrak daemon_reload=yes enabled=no

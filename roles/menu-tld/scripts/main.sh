@@ -21,13 +21,10 @@ sed -i -e "/watchtower/d" /tmp/backup.list
 sed -i -e "/word*/d" /tmp/backup.list
 sed -i -e "/x2go*/d" /tmp/backup.list
 sed -i -e "/plexguide/d" /tmp/backup.list
-sed -i -e "/portainer/d" /tmp/backup.list
 sed -i -e "/cloudplow/d" /tmp/backup.list
 sed -i -e "/phlex/d" /tmp/backup.list
-sed -i -e "/authclient/d" /tmp/backup.list
 
-
-rm -r /tmp/backup.build 1>/dev/null 2>&1
+rm -rf /tmp/backup.build 1>/dev/null 2>&1
 bash /opt/plexguide/roles/tld/scripts/list.sh
 #### Commenting Out To Let User See
 while read p; do

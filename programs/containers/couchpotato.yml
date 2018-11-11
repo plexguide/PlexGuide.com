@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# Version:  Ansible-1
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & Bryde ツ
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+############################################################# (KEY START)
+---
+- name: "Container Variables"
+  set_fact:
+    intport: "5050"
+    extport: "5050"
+    image: "linuxserver/couchpotato"
+    #cpu_shares: 128
+    expose: ""
+
+- name: "Set Default Labels"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+
+- name: "Set Default Volume - {{pgrole}}"
+  set_fact:
+    default_volumes:
+      - "/opt/appdata/{{pgrole}}/mp4_auxtomator:/config_mp4_automator"
+      - "/opt/appdata/{{pgrole}}:/config"
+      - "/mnt/unionfs/completed:/unionfs-downloads/shared"
+      - "/mnt/unionfs:/unionfs"
+      - "/mnt/unionfs/movies:/movies"
+      - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+      - "{{path.stdout}}/sab/complete:/complete"
+      - "{{path.stdout}}/nzbget/completed:/completed"
+      - "{{path.stdout}}/rutorrent:/downloads"
+      - "{{path.stdout}}/deluge/downloaded:/downloaded"
+      - "{{path.stdout}}/qbittorrent/downloads:/qbit-downloads"
+      - "/etc/localtime:/etc/localtime:ro"
+
+- name: "Establish Key Variables"
+  set_fact:
+    default_env:
+      PUID: 1000
+      PGID: 1000

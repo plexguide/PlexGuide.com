@@ -28,14 +28,9 @@ if [ "$menu" == "appguard" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 fi
 
-if [ "$menu" == "wckd" ]; then
-  echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  bash /opt/plexguide/roles/authclient/scripts/main.sh
-fi
-
 file2="/var/plexguide/auth.lock"
 if [ -e "$file2" ]; then
-  rm -r /var/plexguide/auth.lock
+  rm -rf /var/plexguide/auth.lock
   bash /opt/plexguide/roles/menu-authenication/scripts/rebuild.sh
 fi
 

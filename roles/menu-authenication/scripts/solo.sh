@@ -18,7 +18,7 @@
 ##################################################### Builds Backup List - END
 
 num=0
-rm -r /var/plexguide/programs.temp ## add Silencer
+rm -rf /var/plexguide/programs.temp ## add Silencer
 #### Build up list backup list for the main.yml execution
 while read p; do
   echo $p >> /var/plexguide/programs.temp

@@ -32,13 +32,11 @@ cat << "EOF"
 │        -== Team PlexGuide ==-       │
 │ ————————————————————————————————————│
 │ Star PG:      github.plexguide.com  │
-│ PG Discord:   discord.plexguide.com │
 │ Donate:       donate.plexguide.com  │
 │ ————————————————————————————————————│
 │ Restart Plexguide:        plexguide │
 │ Update Plexguide:         pgupdate  │
 │ Update to Edge Version:   pgedge    │
-│ Delete Dupes:             pgdupes   │
 │ Add Content:              pgtrak    │
 │ View the PG Logs:         pglog     │
 │ Download Your PG Fork:    pgfork    │
@@ -70,5 +68,5 @@ fi
 ### log message
 #dt=`date '+%d/%m/%Y %H:%M:%S'`
 #echo "$dt INFO - User Properly Exited PlexGuide." >> "/opt/appdata/plexguide/pg.log"
-bash /opt/plexguide/roles/install/scripts/yml-gen.sh &>/dev/null &
+bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh &>/dev/null &
 echo "INFO - Program Exited Properly" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

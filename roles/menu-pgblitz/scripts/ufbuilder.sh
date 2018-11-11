@@ -17,12 +17,9 @@
 #################################################################################
 downloadpath=$(cat /var/plexguide/server.hd.path)
 
-if [ -e /opt/appdata/pgblitz/vars/automated ]; then
-    ls -la /opt/appdata/pgblitz/keys/automation | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
-else
-    ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
-fi
-rm -r /tmp/pg.gdsa.build 1>/dev/null 2>&1
+ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
+
+rm -rf /tmp/pg.gdsa.build 1>/dev/null 2>&1
 
 echo -n "/mnt/tdrive=RO:" > /tmp/pg.gdsa.build
 echo -n "/mnt/gdrive=RO:" >> /tmp/pg.gdsa.build

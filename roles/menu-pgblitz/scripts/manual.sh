@@ -17,6 +17,7 @@
 #################################################################################
 echo "on" > /var/plexguide/manual.menu
 menu=$(echo "on")
+rm -f /opt/appdata/pgblitz/vars/automated
 
 while [ "$menu" != "break" ]; do
   ################################################################## CORE
@@ -66,47 +67,15 @@ if [ "$menu" == "rclone" ]; then
   cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 fi
 
-if [ "$menu" == "jsons" ]; then
+if [ "$menu" == "keys" ]; then
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
+  echo gcloud > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 
-      echo 'INFO - DEPLOYING CLOUDBLITZ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-      #### Deploy CloudBlitz
-      ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz --extra-vars "skipend="yes --skip-tags cron
-      #### Note How to Create Json files
-      echo ""
-      echo "Visit Port 7997 and Upload your JSON files | User: plex & Paswword: guide"
-      echo "NOTE: Keys Store @ for Processing: /opt/appdata/pgblitz/keys/unprocessed/"
-      echo ""
-      read -n 1 -s -r -p "When Finished, Press [ANY KEY] to Continue!"
-      echo ""
-      echo ""
-      echo "Please Wait! Destroying the BlitzCMD Container!"
-      docker stop cloudblitz 1>/dev/null 2>&1
-      docker rm cloudblitz 1>/dev/null 2>&1
-      echo ""
-      echo "WARNING: Make Sure to Use the E-Mail and Validation Processes!"
-      read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-      echo ""
 fi
 
 if [ "$menu" == "email" ]; then
   echo 'INFO - Selected: Transport Blitz Manual' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
 
   echo 'INFO - DEPLOYED PG Blitz E-Mail Generator' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   bash /opt/plexguide/roles/menu-pgblitz/scripts/emails.sh
@@ -118,49 +87,107 @@ if [ "$menu" == "email" ]; then
 
 fi
 
-if [ "$menu" == "process" ]; then
+  ################### OLD
+  if [ "$menu" == "process" ]; then
 
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
-
-### prior interger expected incase debugging required
-  gdsa=$(ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | tail -n +4 | wc -l)
-  if [ "$gdsa" -ne "0" ]; then
-    if [ "$encryption" == "on" ]; then
-      dialog --title "SET ENCRYPTION PASSWORD" \
-            --inputbox "Password: " 8 52 2>/opt/appdata/pgblitz/vars/password
-      dialog --title "SET ENCRYPTION SALT" \
-            --inputbox "Salt: " 8 52 2>/opt/appdata/pgblitz/vars/salt
+  ### prior interger expected incase debugging required
+    gdsa=$(ls -la /opt/appdata/pgblitz/keys/unprocessed | awk '{print $9}' | tail -n +4 | wc -l)
+    if [ "$gdsa" -ne "0" ]; then
+      if [ "$encryption" == "on" ]; then
+        dialog --title "SET ENCRYPTION PASSWORD" \
+              --inputbox "Password: " 8 52 2>/opt/appdata/pgblitz/vars/password
+        dialog --title "SET ENCRYPTION SALT" \
+              --inputbox "Salt: " 8 52 2>/opt/appdata/pgblitz/vars/salt
+      fi
+      bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
+    else
+      echo ""
+      echo "WARNING! No JSON files are detected for processing!"
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+      echo ""
     fi
-    bash /opt/plexguide/roles/menu-pgblitz/scripts/validator.sh
-  else
-    echo ""
-    echo "WARNING! No JSON files are detected for processing!"
-    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-    echo ""
-  fi
+  ################### OLD
 
 fi
 
 if [ "$menu" == "deploy" ]; then
 
-  rm -r /opt/appdata/pgblitz/vars/automated 1>/dev/null 2>&1
-
-  if [ "$unencrypted" == "off" ]; then
+  ############################################# GDRIVE VALDIATION CHECKS - START
   echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
+  echo "--------------------------------------------------------------------------"
+  echo "System Message: Conducting RClone GDrive Validation Check"
+  echo "--------------------------------------------------------------------------"
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdrive:/plexguide "
+  echo "--------------------------------------------------------------------------"
+  rclone mkdir gdrive:/plexguide
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existance of gdrive:/plexguide"
+  echo "--------------------------------------------------------------------------"
+  rcheck=$(rclone lsd gdrive: | grep -oP plexguide | head -n1)
+  sleep 2
+  if [ "$rcheck" != "plexguide" ];then
+    echo ""
+    echo "--------------------------------------------------------------------------"
+    echo "SYSTEM MESSAGE: RClone GDrive Validation Check Failed"
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    echo "gdrive is mandatory! It's required for backup/restore operations!"
+    echo "Make sure you configured gdrive correctly and redeploy again!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    echo no > /var/plexguide/project.deployed
+    exit
   fi
+  echo ""
+  ############################################# GDRIVE VALDIATION CHECKS - END
+
+  ############################################# GDSA VALIDATION CHECKS - START
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "System Message: Conducting RClone Validation Check"
+  echo "--------------------------------------------------------------------------"
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Creating Test Directory - gdsa01:/plexguide "
+  echo "--------------------------------------------------------------------------"
+  rclone mkdir gdsa01:/plexguide
+  sleep 2
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: Checking Existance of gdsa01:/plexguide"
+  echo "--------------------------------------------------------------------------"
+  rcheck=$(rclone lsd gdsa01: | grep -oP plexguide | head -n1)
+  sleep 2
+  if [ "$rcheck" != "plexguide" ];then
+    echo ""
+    echo "--------------------------------------------------------------------------"
+    echo "SYSTEM MESSAGE: RClone Validation Check Failed"
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    echo "Did you share the email addresses to your CORRECT TeamDrive?"
+    echo "Make your corrections and redeploy again!"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue"
+    bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+    echo no > /var/plexguide/project.deployed
+    exit
+  fi
+  echo ""
+  echo "--------------------------------------------------------------------------"
+  echo "SYSTEM MESSAGE: RCLONE Validation Check Passed"
+  echo "--------------------------------------------------------------------------"
+  echo ""
+  sleep 2
 
   #### BLANK OUT PATH - This Builds For UnionFS
-  rm -r /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
+  rm -rf /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
   touch /var/plexguide/unionfs.pgpath 1>/dev/null 2>&1
 
   ### Add GDSA Paths for UnionFS
@@ -178,33 +205,27 @@ if [ "$menu" == "deploy" ]; then
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
   fi
 
-  ansible-playbook /opt/plexguide/pg.yml --tags blitzui
+  echo "blitzui" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
   echo ""
-  echo "The PG Blitz TEAM"
   echo "--------------------------------------------------------------------------"
-  echo "PG Blitz: Admin9705   | Blitz Automations: Teresa (visit: http://wckd.app)"
-  echo "Inspired: FlickerRate | Blitz UI: Physk (visit: https://github.com/physk)"
-  echo "Contributers: Bryde"
+  echo "PG Blitz: Admin9705"
+  echo "Blitz UI: Physk (visit: https://github.com/physk)"
+  echo "Contributers: FlickerRate & Bryde"
   echo "--------------------------------------------------------------------------"
   echo ""
   echo "NOTE: BlitzUI deployed to blitzui.domain.com | domain.com:43242 | ipv4:43242"
   echo ""
   read -n 1 -s -r -p "PGBlitz & PGDrives Deployed! Press [ANY KEY] to Continue"
+
+  ### Variable to Noify System PGBlitz Deployed
+  echo yes > /var/plexguide/project.deployed
 fi
 
 if [ "$menu" == "path" ]; then
-  bash /opt/plexguide/scripts/baseinstall/harddrive.sh
+  bash /opt/plexguide/menu/interface/dlpath/main.sh
 fi
 
 if [ "$menu" == "bad" ]; then
-
-  if [ $unencrypted == "off" ]; then
-  echo ""
-  echo "WARNING - GDrive and/or TDrive is Not Configured!"
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue"
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  exit
-  fi
 
   echo 'INFO - Selected: PG Move - PG Drive' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
   dialog --infobox "Reprocessing BAD JSONs (Please Wait)" 3 40
@@ -220,10 +241,10 @@ if [ "$menu" == "baseline" ]; then
   sleep 2
   systemctl stop pgblitz 1>/dev/null 2>&1
   systemctl disable pgblitz 1>/dev/null 2>&1
-  rm -r /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
-  rm -r /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
-  rm -r /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
-  rm -r /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
+  rm -rf /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
+  rm -rf /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
+  rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+  rm -rf /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1
   dialog --title "NOTE" --msgbox "\nKeys Cleared!\n\nYou must reconfigure RClone and Repeat the Process Again!" 0 0
 fi
 

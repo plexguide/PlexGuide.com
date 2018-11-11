@@ -1,0 +1,197 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & Bryde ツ
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+############################## PRIMARY START
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Set PGRole
+      shell: "cat /tmp/program_selection"
+      register: roletmp
+      ignore_errors: True
+
+    - name: "Register TLD"
+      shell: "cat /var/plexguide/tld.program"
+      register: toplevel
+      ignore_errors: True
+
+    - name: "Set Facts from Recall"
+      set_fact:
+        pgrole: "{{roletmp.stdout}}"
+
+    - name: Register Domain
+      shell: "cat /var/plexguide/server.domain"
+      register: domain
+      ignore_errors: True
+
+    - name: Register IP
+      shell: "cat /var/plexguide/server.ip"
+      register: ipaddress
+      ignore_errors: True
+
+    - name: Register Ports
+      shell: "cat /var/plexguide/server.ports"
+      register: ports
+      ignore_errors: True
+
+    - name: Register HD Path
+      shell: "cat /var/plexguide/server.hd.path"
+      register: path
+      ignore_errors: True
+
+    - name: Register Auth Path
+      shell: "cat /var/plexguide/server.ht"
+      register: auth
+      ignore_errors: True
+
+    - name: Temp - Delete Bug Test"
+      set_fact:
+        authorization: "{{auth.stdout}}"
+
+    - name: Check Saved Image Path
+      stat:
+        path: "/var/plexguide/{{pgrole}}.image"
+      register: storedpath
+
+    - name: "Register Saved Image"
+      shell: "cat /var/plexguide/{{pgrole}}.image"
+      register: tempimage
+      when: storedpath.stat.exists
+
+    - name: Set to PLEX Local
+      set_fact:
+        image: "{{tempimage.stdout}}"
+      when: storedpath.stat.exists
+
+    - name: Logging Ansible Role Information
+      shell: "echo 'INFO - Ansible Role {{pgrole}} Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+
+    - name: Remove {{pgrole}} Container
+      docker_container:
+        name: "{{pgrole}}"
+        state: absent
+      ignore_errors: True
+
+    - name: Storing Role Name
+      shell: "echo '{{pgrole}}' > /tmp/program_var"
+      ignore_errors: True
+
+    - name: "Check If Ending Tasks Exists"
+      stat:
+        path: "../containers/{{pgrole}}-ending.yml"
+      register: "ending"
+
+    ############################## TOP LEVEL DOMAIN (TLD) START
+    - debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
+
+    - name: "If Fact Matches - Enable TLD"
+      set_fact:
+        tldset: "{{domain.stdout}}"
+      when: "toplevel.stdout == pgrole"
+
+    - debug: msg="TLDSET is now for {{toplevel.stdout}}"
+      when: "toplevel.stdout == pgrole"
+
+    - name: "If Fact Does Not Match - Disable TLD"
+      set_fact:
+        tldset: ""
+      when: "not toplevel.stdout == pgrole"
+
+    - debug: msg="TLD does not apply"
+      when: "not toplevel.stdout == pgrole"
+    ############################## Create Folder with Proper Permissions
+    - name: Create {{pgrole}} directories
+      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+      with_items:
+        - "/opt/appdata/{{pgrole}}"
+
+    ############################## PRIMARY INFORMATION
+    - name: Launch Container Primary Information
+      include_tasks: "../containers/{{pgrole}}.yml"
+
+    - name: "Set Default Labels"
+      set_fact:
+        default_labels:
+          traefik.frontend.auth.basic.users: "{{authorization}}"
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
+          traefik.frontend.redirect.entryPoint: "https"
+          traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
+          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+
+    ############################## Check If Questions Exists
+    - name: "Check If Questions Exist"
+      stat:
+        path: "/opt/plexguide/programs/questions/{{pgrole}}.yml"
+      register: "questions"
+
+    - debug: msg="Question Check - {{questions.stat.exists}} set to {{quescheck}}"
+
+    - name: Launch Questions
+      include_tasks: "../questions/{{pgrole}}.yml"
+      when:
+        - quescheck == "on"
+        - "questions.stat.exists == True"
+
+    ############################## Alternative Deployment - If OverRide is True
+    - name: "Check If OverRide Exists"
+      stat:
+        path: "/opt/plexguide/programs/containers/{{pgrole}}-override.yml"
+      register: "override"
+
+    - debug: msg="OverRide Check - {{override.stat.exists}}"
+
+    - name: Launch OverRide if Exists
+      include_tasks: "../containers/{{pgrole}}-override.yml"
+      when:
+        - "override.stat.exists == True"
+
+    ############################## Main Deployment - If OverRide Is False
+    - name: "Deploy {{pgrole}} Container"
+      docker_container:
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        #cpu_shares: "{{cpu_shares}}"
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+        volumes: "{{default_volumes}}"
+        env: "{{default_env}}"
+        expose: "{{expose}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
+        state: started
+        labels: "{{default_labels}}"
+      when:
+        - "override.stat.exists == False"
+
+    ############################## ENDING
+
+    # Export External Port for endbanner
+    - name: Export Internal Port
+      shell: "echo {{extport}} > /tmp/program_port"
+      ignore_errors: True
+
+    - name: Launch Ending
+      include_tasks: "ending.yml"
+      when:
+    #    - quescheck == "on"

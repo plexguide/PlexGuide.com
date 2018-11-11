@@ -33,7 +33,7 @@ if [ "$menu" == "traefik" ]; then
   else
     echo "" && read -n 1 -s -r -p "We Must Rebuild Your Containers! Press [ANY] Key!"
     bash /opt/plexguide/roles/traefik/scripts/rebuild.sh
-    echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press any key to continue!"
+    echo "" && read -n 1 -s -r -p "Containers Rebuilt! Press [ANY] Key to Continue!"
   fi
 fi
 
@@ -48,6 +48,11 @@ if [ "$menu" == "tld" ]; then
     sleep 0.5
     echo "" && read -n 1 -s -r -p "User Exited! - Press [Any] Key to Continue"
   fi
+fi
+
+if [ "$menu" == "cf" ]; then
+  echo 'INFO - Selected: CF Automatic Domain Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  bash /opt/plexguide/programs/core/cf/file.sh
 fi
 
 echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

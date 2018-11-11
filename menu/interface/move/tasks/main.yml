@@ -1,0 +1,96 @@
+#!/bin/bash
+#
+# [PG-Blitz]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & FlickerRate
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+################################################################ DISABLE PROGRAMS
+#
+#
+#
+################################################################ PGDRIVE START
+- name: Deploy GDrive
+  include_role:
+    name: menu-move
+    tasks_from: "deploy_gdrive.yml"
+
+- name: Deploy TDrive
+  include_role:
+    name: menu-move
+    tasks_from: "deploy_tdrive.yml"
+
+- name: Deploy UnionFS
+  include_role:
+    name: menu-move
+    tasks_from: "deploy_unionfs.yml"
+
+- name: Set to GDrive for Move
+  set_fact:
+    ver: "gdrive"
+################################################################ ENCRYPTED START
+- name: Deploy TDrive
+  include_role:
+    name: menu-move
+    tasks_from: "deploy_tdrive_en.yml"
+  tags:
+    - encrypted
+
+- name: Deploy GCrypt
+  include_role:
+    name: menu-move
+    tasks_from: "deploy_gcrypt.yml"
+  tags:
+    - encrypted
+
+- name: Deploy TCrypt
+  include_role:
+    name: menu-move
+    tasks_from: "deploy_tcrypt.yml"
+  tags:
+    - encrypted
+
+- name: Set to GCrypt if Encrypted Deploys
+  set_fact:
+    ver: "gcrypt"
+  tags:
+    - encrypted
+################################################################ ENCRYPTED END
+################################################################ PGMOVE START
+- name: Bandwidth Limit
+  shell: "cat /var/plexguide/move.bw"
+  register: bandwidth
+  ignore_errors: True
+  tags:
+    - move
+
+- name: Install MOVE Service
+  template:
+    src: move_script.js2
+    dest: /opt/appdata/plexguide/move.sh
+    force: yes
+  tags:
+    - move
+
+- name: Install MOVE Service
+  template:
+    src: move.js2
+    dest: /etc/systemd/system/move.service
+    force: yes
+
+- name: Daemon-Reload
+  systemd: state=stopped name=move daemon_reload=yes enabled=no
+
+- name: Start UnionFS
+  systemd: state=started name=move enabled=yes

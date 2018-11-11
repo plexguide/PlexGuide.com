@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Removing File Directories
+      file:
+        state: absent
+        path: "{{ item }}"
+      with_items:
+          - /var/plexguide
+          - /opt/appdata/plexguide
+          - {{path.stdout}}/nzbget
+          - {{path.stdout}}/sab
+          - {{path.stdout}}/rutorrent
+          - {{path.stdout}}/move
+          - {{path.stdout}}/gcrypt
+          - {{path.stdout}}/deluge
+          - {{path.stdout}}/torrentvpn
+          - {{path.stdout}}/qbittorrent
+      ignore_errors: yes

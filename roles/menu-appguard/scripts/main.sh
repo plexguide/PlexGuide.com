@@ -23,17 +23,13 @@ menu=$(cat /var/plexguide/appguard.menu)
 ansible-playbook /opt/plexguide/pg.yml --tags menu-appguard
 menu=$(cat /var/plexguide/appguard.menu)
 
-if [ "$menu" == "appguard" ]; then
-  echo 'INFO - Selected: AppGuard Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/pg.yml --roles menu-appguard
-fi
-
-if [ "$menu" == "wckd" ]; then
-  echo 'INFO - Selected: WCKD Authentication' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-  ansible-playbook /opt/plexguide/pg.yml --roles authclient
+file=/var/plexguide/auth.lock
+if [ -e "$file" ]; then
+bash /opt/plexguide/roles/menu-appguard/scripts/rebuild.sh
+rm -rf /var/plexguide/auth.lock
 fi
 
 echo 'INFO - Looping: PG Authentication Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 done
 
-echo 'INFO - Selected: Exiting AppGuard' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Selected: Exiting ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh

@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- name: Register Project
+  shell: "cat /var/plexguide/project.final"
+  register: project
+
+- name: Register Project
+  shell: "cat /var/plexguide/project.account"
+  register: account
+
+- name: Register Project
+  shell: "cat /var/plexguide/project.keycount"
+  register: count
+
+- name: "Key Menu Facts"
+  set_fact:
+    head1: "\nPlexGuide Settings Interface - Make a Selection"
+    head2: ""
+    info2: "\n2.  Log-In to Your Account    : {{account.stdout}}"
+    info3: "\n3.  Build a New Project"
+    info4: "\n4.  Establish Project ID      : [{{project.stdout}}]"
+    info5: "\n5.  Create/Remake Service Keys: {{count.stdout}} Keys Exist"

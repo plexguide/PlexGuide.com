@@ -27,22 +27,37 @@
       shell: "cat /var/plexguide/pgblitz.menustat"
       register: tedition
 
+    - name: Register Project
+      shell: "cat /var/plexguide/project.keycount"
+      register: count
+
+    - name: Deployed Check
+      shell: "cat /var/plexguide/project.deployed"
+      register: deployed
+
+    - name: "Not Deployed"
+      set_fact:
+        dstatus: "<<< Not Deployed"
+      when: deployed.stdout == "no"
+
+    - name: "Deployed"
+      set_fact:
+        dstatus: ""
+      when: not deployed.stdout == "no"
+
     - name: PG Main Menu
       pause:
         prompt: "\nWelcome to the PG Blitz Manual Edition: {{tedition.stdout}}!
                  \nMake a Selection!
     \n\n1.  EXIT Interface
     \n---------------------------------------------
-    \n2.  RClone   | Config & Establish
-    \n3.  JSONs    | Upload for PGBlitz
-    \n4.  E-Mails  | E-Mail Share Generator
-    \n5.  Process  | JSONs files for Validation
-    \n6.  Deploy   | Deploy PGBlitz & PGDrive
+    \n2.  RClone         | Config & Establish
+    \n3.  Key Management | {{count.stdout}} Keys Exist
+    \n4.  E-Mails        | E-Mail Share Generator
+    \n5.  Deploy         | Deploy PGBlitz & PGDrive {{dstatus}}
     \n---------------------------------------------
     \na.  DL Path  | Current - {{mountpoint.stdout}}
-    \nb.  T-Shoot  | Reprocess Bad JSONs
-    \nc.  T-Shoot  | Baseline PGBlitz (Fresh Start)
-    \nd.  T-Shoot  | Disable PGBlitz
+    \nb.  T-Shoot  | Disable PGBlitz
     \n\nType a [CHOICE] & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -50,11 +65,8 @@
              choice.user_input == "3" or
              choice.user_input == "4" or
              choice.user_input == "5" or
-             choice.user_input == "6" or
              choice.user_input == "a" or
-             choice.user_input == "b" or
-             choice.user_input == "c" or
-             choice.user_input == "d"
+             choice.user_input == "b"
       retries: 99
       delay: 1
 
@@ -70,8 +82,8 @@
       shell: "echo rclone > /var/plexguide/manual.menu"
       when: fchoice == "2"
 
-    - name: JSONS
-      shell: "echo jsons > /var/plexguide/manual.menu"
+    - name: Keys
+      shell: "echo keys > /var/plexguide/manual.menu"
       when: fchoice == "3"
 
     - name: EMail
@@ -79,25 +91,13 @@
       when: fchoice == "4"
 
     - name: Process
-      shell: "echo process > /var/plexguide/manual.menu"
-      when: fchoice == "5"
-
-    - name: PG Deploy
       shell: "echo deploy > /var/plexguide/manual.menu"
-      when: fchoice == "6"
+      when: fchoice == "5"
 
     - name: PG Path
       shell: "echo path > /var/plexguide/manual.menu"
       when: fchoice == "a"
 
-    - name: TShoot Bad
-      shell: "echo bad > /var/plexguide/manual.menu"
-      when: fchoice == "b"
-
-    - name: TShoot Baseline
-      shell: "echo baseline > /var/plexguide/manual.menu"
-      when: fchoice == "c"
-
     - name: TShoot Disable
       shell: "echo disable > /var/plexguide/manual.menu"
-      when: fchoice == "d"
+      when: fchoice == "b"

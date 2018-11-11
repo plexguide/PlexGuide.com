@@ -1,0 +1,119 @@
+#!/bin/bash
+#
+# Version:  Ansible-1
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & Bryde ツ
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+############################################################# (KEY START)
+---
+- name: rtorrent.rc creation
+  wait_for:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    state: present
+    msg: rtorrent.rc creation failed
+
+- name: php.ini creation
+  wait_for:
+    path: "/opt/appdata/{{pgrole}}/config/php/php.ini"
+    state: present
+    msg: php.ini creation failed
+
+- name: nginx.conf creation
+  wait_for:
+    path: "/opt/appdata/{{pgrole}}/config/nginx/nginx.conf"
+    state: present
+    msg: nginx.conf creation failed
+
+- name: plugins.ini creation
+  wait_for:
+    path: "/opt/appdata/{{pgrole}}/config/rutorrent/settings/plugins.ini"
+    state: present
+    msg: plugins.ini creation failed
+
+- name: "5 Second Hold"
+  wait_for:
+    timeout: 5
+
+- name: "Stopping {{pgrole}}"
+  docker_container:
+    name: "{{pgrole}}"
+    state: stopped
+
+- name: Upload Rate
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'upload_rate'
+    line: 'upload_rate = 100000'
+    state: present
+
+- name: Download Rate
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'download_rate'
+    line: 'upload_rate = 100000'
+    state: present
+
+- name: Low Disk - Set to 10GB
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'low_diskspace'
+    line: 'schedule = low_diskspace,5,60,close_low_diskspace=10000M'
+    state: present
+
+- name: MAX UP 1024
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'throttle.global_up.max_rate.set_kb'
+    line: 'throttle.max_uploads.set = 1024'
+    state: present
+
+- name: MAX DL 1024
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'throttle.global_down.max_rate.set_kb'
+    line: 'throttle.max_downloads.global.set = 1024'
+    state: present
+
+- name: No File Allocation
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'system.file_allocate.set'
+    line: 'system.file.allocate.set = 0'
+    state: present
+
+- name: DL Location
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+    regexp: 'directory.default.set'
+    line: 'directory.default.set = /downloads/incoming'
+    state: present
+
+- name: Set upload_max_filesize to 16M
+  lineinfile:
+    path: "/opt/appdata/{{pgrole}}/config/php/php.ini"
+    regexp: 'upload_max_filesize'
+    line: 'upload_max_filesize = 16M'
+    state: present
+
+- name: Force New Plugin
+  copy:
+    src: ../templates/rutorrent.ini
+    owner: 1000
+    group: 1000
+    dest: "/opt/appdata/{{pgrole}}/config/rutorrent/settings/plugins.ini"
+    mode: 0775
+    force: yes
+
+- name: Restart Docker Container
+  docker_container:
+    name: "{{pgrole}}"
+    state: started

@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# Version:  Ansible-1
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & Bryde ツ
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+############################################################# (KEY START)
+---
+- name: Check config file exists
+  stat:
+    path: "/opt/appdata/{{pgrole}}/.cloudcmd.json"
+  register: cloud_json
+
+- name: Install config.json
+  template:
+    src: ../templates/cloudcmd.json
+    dest: /opt/appdata/{{pgrole}}/.cloudcmd.json
+    force: yes
+  when: cloud_json.stat.exists == False
+
+############################################## Above Only for CloudCMD
+- name: "Container Variables"
+  set_fact:
+    intport: "8000"
+    extport: "7999"
+    image: "coderaiser/cloudcmd"
+    #cpu_shares: 128
+    expose: ""
+
+- name: "Set Default Labels"
+  set_fact:
+    default_labels:
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+      traefik.frontend.redirect.entryPoint: "https"
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+
+- name: "Set Default Volume - {{pgrole}}"
+  set_fact:
+    default_volumes:
+      - /:/SERVER
+      - /opt/appdata/{{pgrole}}:/root/
+
+- name: "Establish Key Variables"
+  set_fact:
+    default_env:
+      PUID: 1000
+      PGID: 1000
