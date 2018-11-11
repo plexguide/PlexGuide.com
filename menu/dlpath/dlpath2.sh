@@ -58,37 +58,15 @@ EOF
 read -p '↘️   Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-
-    if [ "$edition" == "PG Edition - GDrive" ]; then bash /opt/plexguide/menu/transport/transport.sh
-    elif [ "$edition" == "PG Edition - GCE Feed" ]; then bash /opt/plexguide/menu/transport/transport.sh
-    elif [ "$edition" == "PG Edition - HD Multi" ]; then bash /opt/plexguide/menu/multihd/scripts/main.sh
-    elif [ "$edition" == "PG Edition - HD Solo" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ WARNING! - Using Solo HD Edition! You Cannot Set Mounts! Restarting!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 3
+    exit
      fi
 
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/traefik/traefik.sh
-elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/apps/apps.sh
-elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/removal/removal.sh
-elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/tools/tools.sh
-elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/settings/settings.sh
-elif [ "$typed" == "7" ]; then
-  bash /opt/plexguide/roles/ending/ending.sh
-  exit
 else
-  bash /opt/plexguide/menu/start/start.sh
+  bash /opt/plexguide/menu/dlpath/dlpath.sh
   exit
 fi
 
-bash /opt/plexguide/menu/start/start.sh
+bash /opt/plexguide/menu/dlpath/dlpath.sh
 exit
