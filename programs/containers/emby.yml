@@ -40,6 +40,7 @@
       - /mnt/plexdrive/:/plexdrive
       - /mnt/unionfs:/unionfs
       - /mnt/encrypt:/encrypt
+      - /:/yourcomputer
 
 - name: "Establish Key Variables"
   set_fact:

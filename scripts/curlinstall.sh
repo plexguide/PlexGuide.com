@@ -74,7 +74,7 @@ else
 fi
 sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get full-upgrade -y
 sudo apt-get install dialog git unzip wget whiptail -y
-sudo rm -r /opt/plexguide
+sudo rm -rf /opt/plexguide
 sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide
 sudo bash /opt/plexg*/sc*/ins*
 clear

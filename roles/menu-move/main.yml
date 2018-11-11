@@ -63,3 +63,6 @@
     - name: Deploy PG Drive
       shell: "echo pgdrive > /var/plexguide/move.menu"
       when: fchoice == "4"
+
+    - pause:
+        prompt: "\nDeployment Complete! Press [ENTER]"

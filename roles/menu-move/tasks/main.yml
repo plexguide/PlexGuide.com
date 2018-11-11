@@ -94,3 +94,6 @@
 
 - name: Start UnionFS
   systemd: state=started name=move enabled=yes
+
+- pause:
+    prompt: "\nDeployment Complete! Press [ENTER]"

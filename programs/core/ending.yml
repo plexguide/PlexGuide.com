@@ -28,18 +28,7 @@
     when:
       - "ending.stat.exists == True"
 
-  - name: Logging Ansible Role Information
-    shell: "echo 'INFO - Ansible Role {{pgrole}} Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
-
   - name: CronJob Role
     include_tasks: "/opt/plexguide/menu/interface/pgcron/main.yml"
     when:
       - cron == "on"
-
-### Display Info
-  - debug: msg="Access - {{ipaddress.stdout}}:{{extport}} | {{domain.stdout}}:{{extport}} | {{pgrole}}.{{domain.stdout}}"
-
-  - pause:
-      prompt: "\nView the Access Information Above, then Press [ENTER]"
-    when:
-      - display == "on"

@@ -15,28 +15,47 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-[[ $(pwd) =~ plexguide ]] && cd ~
 # If PlexGuide is Missing, it will redownload it
-file="/opt/plexguide/menus/"
+file="/opt/plexguide/pg.sh"
 if [ ! -e "$file" ]; then
-	echo ""
-	echo "--------------------------------------------"
-	echo "SYSTEM MESSAGE: PlexGuide is Missing"
-	echo "--------------------------------------------"
-	echo ""
-	echo "NOTE: PlexGuide is Missing!"
-	echo "Downloading the Latest Edge Edition!"
-	echo ""
-	read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-	echo ""
-  rm -rf /opt/plexguide 1>/dev/null 2>&1
-	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git --branch Edge /opt/plexguide && sudo bash /opt/plexguide/script/install.sh && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""	exit 0
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  /opt/plexguide went missing!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+sleep 3
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 🍖  NOM NOM - Re-Downloading PlexGuide for BoneHead User!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+
+rm -rf /opt/plexguide
+git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
+cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  Repair Complete! Standby!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+sleep 3
 fi
 
 ### Execut YML
 ansible-playbook /opt/plexguide/menu/interface/pgfork/main.yml
 
-echo ""
-echo "---------------------------------------"
-echo "SYSTEM MESSAGE: PGFork Process Complete"
-echo "---------------------------------------"
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  SYSTEM MESSAGE: Installed User's Forked Version of PG! Standby!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 4
+bash /opt/plexguide/roles/ending/ending.sh

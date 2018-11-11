@@ -29,7 +29,7 @@ if [ "$menu" == "2" ]; then
   wget https://git.io/vpnsetup -O vpnsetup.sh 1>/dev/null 2>&1
   sudo sh vpnsetup.sh > /opt/appdata/plexguide/vpninfo.raw
   cat /opt/appdata/plexguide/vpninfo.raw | tail -n -12 | head -n +4 > /opt/appdata/plexguide/vpn.info
-  rm -r /opt/appdata/plexguide/vpninfo.raw
+  rm -rf /opt/appdata/plexguide/vpninfo.raw
   echo
   echo "-----------------------------------------------------"
   echo "SYSTEM MESSAGE: Please Copy Your Information"

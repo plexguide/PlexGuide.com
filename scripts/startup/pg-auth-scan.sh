@@ -21,7 +21,6 @@ if [[ ! -e /var/plexguide/basics.yes ]]; then
 ip=$(curl -s icanhazip.com)
 which curl &>/dev/null || exit 1
 
-
 sonarr () {
 curl -m 5 -s $ip:8989 -o html \
   && grep -iq api html \

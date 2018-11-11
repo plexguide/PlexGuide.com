@@ -15,35 +15,43 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-file="/usr/bin/dialog"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-   clear
-   echo "Installing Dialog"
-   apt-get install dialog 1>/dev/null 2>&1
-   export NCURSES_NO_UTF8_ACS=1
-   echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
-fi
-
 mkdir -p /opt/plexguide/roles/log
 mkdir -p /var/plexguide
+mkdir -p /opt/appdata/plexguide
 
-[[ $(pwd) =~ plexguide ]] && cd ~
 # If PlexGuide is Missing, it will redownload it
-file="/opt/plexguide/menus/"
-if [ -e "$file" ]
-then
-   clear 1>/dev/null 2>&1
-else
-	dialog --title "Emergency Mode" --msgbox "\nFor some reason, PLEXGUIDE is missing! Your DATA is not lost.  We are downloading the DEVELOPER Version to Help You!" 0 0
-	clear
-  rm -rf /opt/plexguide 1>/dev/null 2>&1
-	sudo git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git --branch Version-6 /opt/plexguide && sudo bash /opt/plexguide/script/install.sh && clear && echo "Execute PlexGuide Anytime By Typing: plexguide" && echo ""
-	exit 0
-fi
-bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh 1>/dev/null 2>&1
+file="/opt/plexguide/pg.sh"
+if [ ! -e "$file" ]; then
+tee <<-EOF
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  /opt/plexguide went missing!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+sleep 3
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 🍖  NOM NOM - Re-Downloading PlexGuide for BoneHead User!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+
+rm -rf /opt/plexguide
+git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
+cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  Repair Complete! Restaring Shortly!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+sleep 3
+fi
+
+bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh 1>/dev/null 2>&1
 bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh &>/dev/null &
-sudo bash /opt/plexguide/roles/menu-start/scripts/key.sh
+sudo bash /opt/plexguide/menu/start/start.sh

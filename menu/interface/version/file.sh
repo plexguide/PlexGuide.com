@@ -24,8 +24,14 @@ while read p; do
   echo $p >> /var/plexguide/ver.temp
 done </opt/plexguide/menu/interface/version/version.sh
 
-echo ""
-echo "Welcome to the PG Versioning Deployment System!"
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂  PG Update Interface Menu
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+
 cat /var/plexguide/ver.temp
 echo ""
 echo "To QUIT, type >>> exit"
@@ -36,39 +42,30 @@ storage=$(grep $typed /var/plexguide/ver.temp)
 
 if [ "$typed" == "exit" ]; then
   echo ""
-  echo "-------------------------------------------------"
-  echo "SYSTEM MESSAGE: Exiting Version Install Interface"
-  echo "-------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
   touch /var/plexguide/exited.upgrade
   exit
 fi
 
 if [ "$storage" != "" ]; then
-break=yes
-echo $storage > /var/plexguide/pg.number
-ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
-  echo ""
-  echo "-------------------------------------------------"
-  echo "SYSTEM MESSAGE: Installed Verison - $storage"
-  echo "-------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  exit
+  break=yes
+  echo $storage > /var/plexguide/pg.number
+  ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  SYSTEM MESSAGE: Installed Verison - $storage - Standby!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 4
 else
-  echo ""
-  echo "-------------------------------------------------"
-  echo "SYSTEM MESSAGE: Version $storage does not exist!"
-  echo "-------------------------------------------------"
-  echo ""
-  echo "NOTE: Try Again!"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  echo ""
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  SYSTEM MESSAGE: Version $storage does not exist! - Standby!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 4
   cat /var/plexguide/ver.temp
   echo ""
 fi
