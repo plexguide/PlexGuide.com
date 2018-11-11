@@ -62,7 +62,32 @@ read -p '↘️   Type a Number | Press [ENTER]: ' typed < /dev/tty
      fi
 
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/traefik/traefik.sh
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🍖   NOM NOM: Selected to Change the Processing Path
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌵  Current Processing Disk : $pgpath
+
+NOTE: Type the path as show in the examples below! PG will then attempt
+to see if your path exists!
+
+Examples:
+(1) /mnt/mymedia   (2) /secondhd/media   (3) /myhd/storage/media
+
+Do You Want To Continue to Change the Processing Disk?
+
+[1] No
+[2] Yes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+# Standby
+read -p '↘️   Type a Number | Press [ENTER]: ' typed < /dev/tty
+
+
 else
   bash /opt/plexguide/menu/dlpath/dlpath.sh
   exit
