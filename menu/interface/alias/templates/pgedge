@@ -55,7 +55,7 @@ ansible-playbook /opt/plexguide/pg.yml --tags pgedge
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  SYSTEM MESSAGE: Installed Verison - $storage - Standby!
+✅️  SYSTEM MESSAGE: Installed Verison - EDGE - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 4
