@@ -183,11 +183,15 @@ read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ WARNING! - Using Solo HD Edition! You Cannot Set Mounts! Restarting!
+⛔️ WARNING! - Mount Error!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-$path does not exist! You may have to create it, but PG is unable to
-see it. Try >>> cd $path and see what happens!
+$typed does not exist!
+
+You may have forgotten to create it, but PG is unable to see it!
+Try >>> cd $path and see what happens!
+
+Exiting! Nothing has changed!
 
 EOF
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
