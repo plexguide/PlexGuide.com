@@ -36,12 +36,6 @@ storage=$(grep $typed /var/plexguide/ver.temp)
 
 if [ "$typed" == "exit" ]; then
   echo ""
-  echo "-------------------------------------------------"
-  echo "SYSTEM MESSAGE: Exiting Version Install Interface"
-  echo "-------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
   touch /var/plexguide/exited.upgrade
   exit
 fi
@@ -54,18 +48,18 @@ if [ "$storage" != "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  SYSTEM MESSAGE: Installed Verison - $storage"
+✅️  SYSTEM MESSAGE: Installed Verison - $storage - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 5
+sleep 4
 else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  SYSTEM MESSAGE: Version $storage does not exist!"
+⛔️  SYSTEM MESSAGE: Version $storage does not exist! - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 5
+  sleep 4
   cat /var/plexguide/ver.temp
   echo ""
 fi
