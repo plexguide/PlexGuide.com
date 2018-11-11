@@ -22,9 +22,11 @@ ip=$(cat /var/plexguide/server.ip)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  APPLICATION: Access Information
+↘️ APPLICATION: Access Information | $program
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-$ip:$port - $domain:$port - $program.$domain
-
+▫ $ip:$port
+▫ $domain:$port
+▫ $program.$domain
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
