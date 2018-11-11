@@ -72,7 +72,9 @@ tee <<-EOF
 to see if your path exists!
 
 Examples:
-(1) /mnt/mymedia   (2) /secondhd/media   (3) /myhd/storage/media
+/mnt/mymedia
+/secondhd/media
+/myhd/storage/media
 
 STOP the Process by Typing >>> exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
