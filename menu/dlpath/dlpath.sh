@@ -40,10 +40,10 @@ tee <<-EOF
 🌵  Processing Disk : $pgpath
     Processing Space: $used of $capacity | $percentage Used Capacity
 
-☑️    PG does not format your second disk, nor mount it! We can
+☑️   PG does not format your second disk, nor mount it! We can
 only assist by changing the location path!
 
-☑️    Enables PG System to process items on a SECONDARY Drive rather
+☑️   Enables PG System to process items on a SECONDARY Drive rather
 than tax the PRIMARY DRIVE. Like Windows, you can have your items
 process on a (D): Drive instead of on a (C): Drive.
 
@@ -68,7 +68,7 @@ tee <<-EOF
 
 🌵  Current Processing Disk : $pgpath
 
-☑️    Type the path as show in the examples below! PG will then attempt
+☑️   Type the path as show in the examples below! PG will then attempt
 to see if your path exists!
 
 Examples:
