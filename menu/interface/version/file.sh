@@ -24,7 +24,6 @@ while read p; do
   echo $p >> /var/plexguide/ver.temp
 done </opt/plexguide/menu/interface/version/version.sh
 
-Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
