@@ -29,7 +29,7 @@ tee <<-EOF
 3 - Edition: Multi HD
 4 - Edition: GCE Feeder
 
-⚠️   WARNING: You Can Only Select this Once!
+⚠️   NOTE: Can Only Select this Once!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
