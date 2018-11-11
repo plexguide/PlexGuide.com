@@ -74,10 +74,7 @@ to see if your path exists!
 Examples:
 (1) /mnt/mymedia   (2) /secondhd/media   (3) /myhd/storage/media
 
-Do You Want To Continue to Change the Processing Disk?
-
-[1] No
-[2] Yes
+Stop the Process by Typing >>> exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
