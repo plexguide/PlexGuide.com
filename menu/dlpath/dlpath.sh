@@ -96,6 +96,7 @@ tee <<-EOF
 EOF
 sleep 3
 bash /opt/plexguide/menu/dlpath/dlpath.sh
+exit
   fi
 
 # Standby
@@ -112,6 +113,7 @@ tee <<-EOF
 EOF
 sleep 3
 bash /opt/plexguide/menu/dlpath/dlpath.sh
+exit
 fi
 
 bash /opt/plexguide/menu/dlpath/dlpath.sh
