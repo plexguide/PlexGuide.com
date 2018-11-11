@@ -30,7 +30,7 @@ tee <<-EOF
 3 - Edition: Multi HD
 4 - Edition: GCE Feeder
 
-★  Reference: http://editions.plexguide.com
+⚡  Reference: http://editions.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
