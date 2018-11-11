@@ -45,24 +45,11 @@ cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  Repair Complete! Starting in 3...
+✅️  Repair Complete! Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-sleep 1
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  Repair Complete! Starting in 2...
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-sleep 1
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  Repair Complete! Starting in 1...
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 1
+sleep 3
 echo
 fi
 
@@ -70,12 +57,6 @@ bash /opt/plexguide/menu/interface/version/file.sh
 
 file="/var/plexguide/exited.upgrade"
 if [ ! -e "$file" ]; then
-	echo ""
-	echo "---------------------------------------------------"
-	echo "SYSTEM MESSAGE: Success! PlexGuide Update Complete!"
-	echo "---------------------------------------------------"
-	echo ""
-	read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 	bash /opt/plexguide/roles/ending/ending.sh
 else
 	rm -rf /var/plexguide/exited.upgrade 1>/dev/null 2>&1

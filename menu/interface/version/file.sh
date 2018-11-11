@@ -47,28 +47,25 @@ if [ "$typed" == "exit" ]; then
 fi
 
 if [ "$storage" != "" ]; then
-break=yes
-echo $storage > /var/plexguide/pg.number
-ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
-  echo ""
-  echo "-------------------------------------------------"
-  echo "SYSTEM MESSAGE: Installed Verison - $storage"
-  echo "-------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  exit
+  break=yes
+  echo $storage > /var/plexguide/pg.number
+  ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  SYSTEM MESSAGE: Installed Verison - $storage"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 5
 else
-  echo ""
-  echo "-------------------------------------------------"
-  echo "SYSTEM MESSAGE: Version $storage does not exist!"
-  echo "-------------------------------------------------"
-  echo ""
-  echo "NOTE: Try Again!"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  echo ""
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  SYSTEM MESSAGE: Version $storage does not exist!"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 5
   cat /var/plexguide/ver.temp
   echo ""
 fi
