@@ -25,8 +25,6 @@ tee <<-EOF
 ↘️  APPLICATION: Access Information
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-$ip:$port
-$domain:$port
-$program.$domain
+$ip:$port - $domain:$port - $program.$domain
 
 EOF
