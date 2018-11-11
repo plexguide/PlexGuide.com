@@ -74,7 +74,7 @@ to see if your path exists!
 Examples:
 (1) /mnt/mymedia   (2) /secondhd/media   (3) /myhd/storage/media
 
-⚠️   Stop the Process by Typing >>> exit
+STOP the Process by Typing >>> exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
