@@ -182,7 +182,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 2
-
+  fi
 else
 # Repeats If User Fails to Answer Primary Question Correctly
 tee <<-EOF
