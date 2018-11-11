@@ -107,12 +107,11 @@ fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛑  BONEHEAD:  We Fixed the Path For You... (read next time)
+☠  BONEHEAD:  We Fixed the Path For You... (read next time)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 You Typed : $typed2
 Changed To: $typed
-
 EOF
 sleep 3
   else
