@@ -59,8 +59,6 @@ read -p '↘️   Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     exit
-     fi
-
 elif [ "$typed" == "2" ]; then
 tee <<-EOF
 
