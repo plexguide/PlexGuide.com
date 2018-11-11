@@ -50,7 +50,6 @@ tee <<-EOF
 
 EOF
 sleep 3
-echo
 fi
 
 bash /opt/plexguide/menu/interface/version/file.sh
