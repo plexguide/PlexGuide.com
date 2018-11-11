@@ -23,7 +23,7 @@ tee <<-EOF
 📂  PG Edition Selector
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️  WARNING: You Can Only Select this Once!
+⚠️   WARNING: You Can Only Select this Once!
 
 1 - Edition: GDrive
 2 - Edition: Solo  HD
