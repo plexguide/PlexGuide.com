@@ -20,8 +20,14 @@ variable () {
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
 }
 
+# For ZipLocations
+
 variable /var/plexguide/server.hd.path "/mnt"
 pgpath=$(cat /var/plexguide/server.hd.path)
+
+used=$(df -h $pgpath | tail -n +2 | awk '{print $3}')
+capacity=$(df -h $pgpath | tail -n +2 | awk '{print $2}')
+percentage=$(df -h $pgpath | tail -n +2 | awk '{print $5}')
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 
 # Menu Interface
