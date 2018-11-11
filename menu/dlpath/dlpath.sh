@@ -173,15 +173,27 @@ sleep 2
 bash /opt/plexguide/menu/dlpath/rebuild.sh
 
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️   WOOT WOOT: Process Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
-sleep 2
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+  else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ WARNING! - Using Solo HD Edition! You Cannot Set Mounts! Restarting!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+$path does not exist! You may have to create it, but PG is unable to
+see it. Try >>> cd $path and see what happens!
+
+EOF
+read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   fi
 else
-# Repeats If User Fails to Answer Primary Question Correctly
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -193,5 +205,4 @@ bash /opt/plexguide/menu/dlpath/dlpath.sh
 exit
 fi
 
-bash /opt/plexguide/menu/dlpath/dlpath.sh
 exit
