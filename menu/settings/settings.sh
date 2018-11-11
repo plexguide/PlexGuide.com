@@ -35,7 +35,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/interface/dlpath/main.sh
+  bash /opt/plexguide/menu/dlpath/dlpath.sh
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/roles/processor/scripts/processor-menu.sh
 elif [ "$typed" == "3" ]; then
