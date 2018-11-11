@@ -82,13 +82,36 @@ Do You Want To Continue to Change the Processing Disk?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
+# SubQuestion About Continuing
+  if [ "$typed" == "1" ]; then
+    exit
+  elif [ "$typed" == "2" ]; then
+    a=b
+  else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🍖   NOM NOM: Failed to Make a Valid Selection! Restarting the Process!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+bash /opt/plexguide/menu/dlpath/dlpath.sh
+  fi
+
 # Standby
 read -p '↘️   Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 
 else
-  bash /opt/plexguide/menu/dlpath/dlpath.sh
-  exit
+# Repeats If User Fails to Answer Primary Question Correctly
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🍖   NOM NOM: Failed to Make a Valid Selection! Restarting the Process!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+bash /opt/plexguide/menu/dlpath/dlpath.sh
 fi
 
 bash /opt/plexguide/menu/dlpath/dlpath.sh
