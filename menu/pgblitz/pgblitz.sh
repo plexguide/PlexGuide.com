@@ -66,48 +66,12 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
     chown -R 1000:1000 /root/.config/rclone/
     cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 elif [ "$typed" == "2" ]; then
-
-  # Standby
-  read -p 'TYPE a SERVER SPEED from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
-
-    if [ $typed -gt 1000 -o $typed -lt 1 ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- ⛔️ WARNING! Must be a Number between 1 - 1000 (Example: 20)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 3
-  bash /opt/plexguide/menu/pgblitz/pgblitz.sh
-  exit
-  else
-  echo "$typed" > /var/plexguide/move.bw
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PASSED: Bandwidth Limit Set!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 3
-  fi
+  echo gcloud > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "3" ]; then
-    if [ "$configure" == "GDrive" ]; then
-    echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
-    ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
-    ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted
-    elif [ "$configure" == "GDrive /w tdrive" ]; then
-    echo '/mnt/tdrive=RO:/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
-    ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
-    ansible-playbook /opt/plexguide/pg.yml --tags menu-move
-    else
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! WARNING! WARNING! You Need to Configure: gdrive
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 4
-  fi
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/emails.sh
+elif [ "$typed" == "4" ]; then
+  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  echo no > /var/plexguide/project.deployed
 elif [ "$typed" == "5" ]; then
   exit
 elif [ "$typed" == "a" ]; then
