@@ -101,3 +101,6 @@ bash /opt/plexguide/menu/endbanner/endbanner.sh
 read -n 1 -s -r -p "Press [ANY] Key to Continue "
 
 fi
+
+bash /opt/plexguide/menu/apps/apps.sh
+exit
