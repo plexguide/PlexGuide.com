@@ -133,7 +133,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-sleep 2
+sleep 3
 
 mkdir $typed/test 1>/dev/null 2>&1
 
@@ -146,7 +146,7 @@ tee <<-EOF
 ✅️   WOOT WOOT: Location Is Valid - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2
+sleep 3
 
 tee <<-EOF
 
@@ -154,7 +154,7 @@ tee <<-EOF
 ⌛  STANDBY: Setting Up Your Permissions
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2
+sleep 3
 
 chown 1000:1000 "$typed"
 chmod 0775 "$typed"
@@ -168,7 +168,7 @@ tee <<-EOF
 ⌛  STANDBY: Rebuilding the Systems Docker Containers!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2
+sleep 3
 
 bash /opt/plexguide/menu/dlpath/rebuild.sh
 

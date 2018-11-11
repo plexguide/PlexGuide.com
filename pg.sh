@@ -104,7 +104,7 @@ bash /opt/plexguide/install/rclone.sh
 file="/var/plexguide/path.check"
 if [ ! -e "$file" ]; then
   touch /var/plexguide/path.check
-  bash /opt/plexguide/menu/interface/dlpath/main.sh
+  bash /opt/plexguide/menu/dlpath/dlpath.sh
 fi
 #################### FILL IN Variables
 
