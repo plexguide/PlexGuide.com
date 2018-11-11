@@ -82,12 +82,15 @@ Do You Want To Continue to Change the Processing Disk?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
+# Standby
+read -p '↘️   Type a Number | Press [ENTER]: ' typed < /dev/tty
+
 # SubQuestion About Continuing
   if [ "$typed" == "1" ]; then
     exit
-  elif [ "$typed" == "2" ]; then
+elif [ "$typed" == "2" ]; then
     a=b
-  else
+else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -98,10 +101,6 @@ sleep 3
 bash /opt/plexguide/menu/dlpath/dlpath.sh
 exit
   fi
-
-# Standby
-read -p '↘️   Type a Number | Press [ENTER]: ' typed < /dev/tty
-
 
 else
 # Repeats If User Fails to Answer Primary Question Correctly
