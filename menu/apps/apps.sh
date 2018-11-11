@@ -97,13 +97,15 @@ else
   echo "$typed" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=on display=on"
 fi
 
+bash /opt/plexguide/menu/endbanner/endbanner.sh
+read -n 1 -s -r -p "Press [ANY] Key to Continue "
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌇  NOTICE: Process Complete!
+🌇  NOTICE: Process Complete! Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -n 1 -s -r -p "Press [ANY] Key to Continue "
-
+sleep 3
 fi

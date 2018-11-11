@@ -16,7 +16,7 @@
 
 program=$(cat /tmp/program_var)
 domain=$(cat /var/plexguide.com/server.domain)
-port=$(cat # program)
+port=$(cat /tmp/program_port)
 ip=$(cat /var/plexguide/server.ip)
 
 tee <<-EOF
