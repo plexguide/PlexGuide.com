@@ -31,10 +31,10 @@ tee <<-EOF
 🌎  PG Processing Disk Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🌵  Processing Space: $used of $capacity | $percentage Used Capacity
-    Processing Disk : $pgpath
+🌵  Processing Disk : $pgpath
+    Processing Space: $used of $capacity | $percentage Used Capacity
 
-⚠️  NOTE: PG does not format your second disk, nor mount it! We can
+NOTE: PG does not format your second disk, nor mount it! We can
 only assist by changing the location path!
 
 Purpose: Enables PG System to process items on a SECONDARY Drive rather
@@ -42,6 +42,7 @@ than tax the PRIMARY DRIVE. Like Windows, you can have your items
 process on a (D): Drive instead of on a (C): Drive.
 
 Do You Want To Change the Processing Disk?
+
 [1] No
 [2] Yes
 
