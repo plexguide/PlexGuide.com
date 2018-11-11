@@ -43,8 +43,8 @@ tee <<-EOF
 🌎  Welcome to PG Blitz
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: PG Blitz utilizies Team Drives to surpass the 750GB daily
-upload limit. If you require less, utilize PG Move (due to simplicity)
+NOTE: PGBlitz utilizies Team Drives to surpass the 750 GB Daily
+Upload Limit.
 
 1 - Configure RClone : $configure
 2 - Key Management   : $keys Keys Exist
