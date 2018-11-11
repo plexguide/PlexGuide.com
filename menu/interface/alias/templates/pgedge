@@ -55,12 +55,10 @@ ansible-playbook /opt/plexguide/pg.yml --tags pgedge
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  SYSTEM MESSAGE: Installed Verison - Edge - Standby!
+✅️  SYSTEM MESSAGE: Installed Verison - $storage - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 4
-else
-tee <<-EOF
 
 echo edge > /var/plexguide/pg.number
 bash /opt/plexguide/roles/ending/ending.sh
