@@ -49,7 +49,7 @@ variable /var/plexguide/server.domain "NOT-SET"
 
 #### Temp Fix - Fixes Bugged AppGuard
 serverht=$(cat /var/plexguide/server.ht)
-if [ "$serverht" == "NOT-SET" ];
+if [ "$serverht" == "NOT-SET" ]; then
 rm /var/plexguide/server.ht
 touch /var/plexguide/server.ht
 fi
