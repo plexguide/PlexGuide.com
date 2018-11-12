@@ -43,9 +43,16 @@ variable /var/plexguide/pgfork.project "NOT-SET"
 variable /var/plexguide/pgfork.version "NOT-SET"
 variable /var/plexguide/tld.program "NOT-SET"
 variable /opt/appdata/plexguide/plextoken "NOT-SET"
-variable /var/plexguide/server.ht "NOT-SET"
+variable /var/plexguide/server.ht ""
 variable /var/plexguide/server.email "NOT-SET"
 variable /var/plexguide/server.domain "NOT-SET"
+
+#### Temp Fix - Fixes Bugged AppGuard
+serverht=$(cat /var/plexguide/server.ht)
+if [ "$serverht" == "NOT-SET" ];
+rm /var/plexguide/server.ht
+touch /var/plexguide/server.ht
+fi
 
 hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
