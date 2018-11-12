@@ -1,26 +1,46 @@
-<p align="center"><b>CLICKING the STAR in the UPPER RIGHT promotes the PROJECT on GITHUB and goes a long way!</b></p>
+📂 [**Click Here**](https://goo.gl/7NR3Da) - Sign up for Google's Suite for Business - Unlimited Space
 
-[TO INSTALL PLEXGUIDE - CLICK HERE](https://plexguide.com/threads/plexguide-install-instructions.243/)
+📂 [**Click Here**](https://controlpanel.newshosting.com/signup/index.php?promo=partners&a_aid=5a65169240efd&a_bid=5ecfe99b) - NZB's with from NewsHost - PG Members Receive a 58% Discount
+
+<p align="center">
+  <a href="https://plexguide.com/forums" target="_blank"><img src="https://plexguide.com/wikipics/logo-forums.png" width="160"/>   
+  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/wikipics/logo-wiki.png" width="160"/>
+  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/logo-pg-install.png" width="160"/> 
+  <a href="https://plexguide.com/account/upgrades" target="_blank"><img src="https://plexguide.com/wikipics/logo-donate.png" width="160"/>
+</p>
+
+_**Table of Contents**_
+
+1. [General Intro](#1-general-intro)
+2. [YouTube Video - Intro](#2-youtube-video---intro)
+3. [Testimonials](#3-testimonials)
+4. [Conclusion](#4-conclusion)
 
 ----
-## Welcome to PlexGuide.com!
+# 1. General Intro
+<p align="center"><kbd><img src="https://plexguide.com/wikipics/cpuguy.gif"></kbd></p>
+<p align="center"><b>Manage PlexGuide - AnyTime, Anywhere!</b></p>
 
 **Mission Statement:** PlexGuide is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
 
-<p align="center"><kbd><img src="https://plexguide.com/wikipics/cpuguy.gif"></kbd></p>
+# 2. YouTube Video - Intro
 
-**Human Speak:** To make your life easy by automating as much as we can so you can spend less time coding and more time watching your shows!
+<p align="center">
+<a href="https://www.youtube.com/watch?v=fUF3TdIMAZE&feature=youtu.be"><img src="https://plexguide.com/wikipics/editions-youtube.png" width="400"/></p>
+<p align="center"><b>PG Introduction Video</b></p>
 
-[**The PlexGuide Wiki:**](https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki) There are a series of topics that you should read to assist you! EVERYONE has rights to edit and/or build new wiki pages.  What you know saves everyone time!
+# 3. Testimonials
+[**Dexxa:**](https://plexguide.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install plex and link plex to my gdrive, when i just knew how to install plex on its on, i tried many ways to mount gdrive to my plex and couldnt get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
 
-<p align="center"><b>Manage PlexGuide - AnyTime, Anywhere!</b></p>
-<p align="center"><kbd><img src="https://plexguide.com/wikipics/pgladies.png"></kbd></p>
+[**Cyb3rGh05t:**](https://plexguide.com/threads/thank-you-pg-team.942/) hi PlexGuide Team, just want to say thank you to the PlexGuide Team :) you did an amazing job:) Everything is really easy to setup an the interface is also very nice :) Thanks for all the hard work an all the support :) you guys rock :) .Keep up that good work. looking further for new features on PlexGuide :) thanks :)
 
-----
+# 4. Conclusion
 
-## Vision Statement
+Well always, welcome to the Site! Visit the forums @ [**https://plexguide.com/forums**](https://plexguide.com/forums).
 
-The PlexGuide Project is built by new coders for the newest of users! We strive to ensure that our community at all time is friendly, open, and always considerate of others regardless of experience levels.  Unlike most projects, we welcome the newest of coders because we all learn and rise together!  
+<p align="right">
+<a href="https://plexguide.com" target="_blank"><img src="https://plexguide.com/wikipics/logo.png" width="75"/>
+</p>
 
 SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-rate)
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/37129444/39414593-9faa5d18-4bf6-11e8-8b83-0ade87c72ee3.gif"></kbd></p>
@@ -42,8 +62,6 @@ SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-ra
 </p>
 
 ----
-
-[![N|Solid](https://camo.githubusercontent.com/348b82630f4f5be3c775c9caed3bb5765b0b3018/687474703a2f2f692e696d6775722e636f6d2f785370773438322e706e67)](https://plexguide.com/forums/pg-scripting.94/) [![N|Solid](https://camo.githubusercontent.com/653f9f8e115242dddb8f6282d17c8ef550844294/687474703a2f2f692e696d6775722e636f6d2f6d464f304f75582e706e67)](https://plexguide.com/forums/development.14/)
 
 ### History ###
 
