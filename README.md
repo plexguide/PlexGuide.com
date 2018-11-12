@@ -42,7 +42,7 @@ Well always, welcome to the Site! Visit the forums @ [**https://plexguide.com/fo
 <a href="https://plexguide.com" target="_blank"><img src="https://plexguide.com/wikipics/logo.png" width="75"/>
 </p>
 
-SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-rate)
+ST2 which is now PGBlitz Concept: [Flicker-Rate](https://github.com/flicker-rate)
 <p align="center"><kbd><img src="https://user-images.githubusercontent.com/37129444/39414593-9faa5d18-4bf6-11e8-8b83-0ade87c72ee3.gif"></kbd></p>
 
 ----
@@ -52,36 +52,6 @@ SuperTransfer Author Concept Below: [Flicker-Rate](https://github.com/flicker-ra
 [**Dexxa:**](https://plexguide.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install plex and link plex to my gdrive, when i just knew how to install plex on its on, i tried many ways to mount gdrive to my plex and couldnt get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
 
 [**Cyb3rGh05t:**](https://plexguide.com/threads/thank-you-pg-team.942/) hi PlexGuide Team, just want to say thank you to the PlexGuide Team :) you did an amazing job:) Everything is really easy to setup an the interface is also very nice :) Thanks for all the hard work an all the support :) you guys rock :) .Keep up that good work. looking further for new features on PlexGuide :) thanks :)
-
-----
-
-<p align="center">
-<kbd>
-  <img src="https://plexguide.com/wikipics/picdemo.png">
-</kbd>
-</p>
-
-----
-
-### History ###
-
-| TimeFrame  | Details
-|:----------:|------------------------------------------------------------------------------------------------|
-| Dec 2016   | PG Documentation Established - Vital Skill Learned from taking a Linux Class
-| Feb 2017   | PlexGuide.com was purchased to link documentation
-| Mar 2017   | Started utilizing Reddit For Assitance | Yelled @ for noob questions (old linux users are the worst)
-| May 2017   | Started learning about init.d and services to start services (which is important)
-| Jun 2017   | Ran first emulations to update documentation and started playing with docker
-| Sep 2017   | Deiteq Joins as a CoFounder | Jackalblood suggest to Program to create Unity (Nightmare Begins)
-| Oct 2017   | Slack First Used for Communication | The Creator joins the Team & started Traefik & Benchmarks
-| Nov 2017   | Discord First Used Pentagons and many others start beta testing project
-| Dec 2017   | Established the PG YouTube Channel and discovered Ansible thru my pal Desmonic
-| Jan 2018   | Forums Established (Data & Berry help out much) & DesignGears advances project / https solved
-| Feb 2018   | PG Update system built in for better updating
-| Mar 2018   | Flicker-Rate Advances Project; Overhauling Wiki, Created SuperSpeed, and Network Tuning
-| Apr 2018   | DesignGears & Admin9705 implemented PG's Traefik V2 for wildcard SSL
-| May 2018   | Support UB18 - Advance Cron Jobs, Backups, Multi-Image Select, and Multi HD Edition
-| Jun 2018   | PlexGuide Version 6 Released - New Writeup for better stability and readability!
 
 ----
 
