@@ -63,8 +63,6 @@ tee <<-EOF
    continue, but this will fail! Wipe the box and setup again with an
    NVME Drive!
 
-⚠️  NOTE: Setting Up the NVME Drive For You! Please Wait!
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
