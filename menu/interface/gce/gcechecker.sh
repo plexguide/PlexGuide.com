@@ -30,5 +30,8 @@ file2="/var/plexguide/gce.check"
       echo UUID=`blkid | grep nvme0n1 | cut -f2 -d'"'` /nvme1 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
       touch /var/plexguide/gce.check
-      rm -rf /var/plexguide/gce.failed 
+      rm -rf /var/plexguide/gce.failed 1>/dev/null 2>&1
+      rm -rf /var/plexguide/gce.false 1>/dev/null 2>&1
+    else
+      touch /var/plexguide/gce.false
   fi
