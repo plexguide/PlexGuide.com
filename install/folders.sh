@@ -35,7 +35,7 @@ EOF
 sleep 5
 
 # Execute Ansible Function
-ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
+ansible-playbook /opt/plexguide/menu/folders/main.yml
 
 # Prevents From Repeating
 cat /var/plexguide/pg.folders > /var/plexguide/pg.folders.stored
