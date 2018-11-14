@@ -13,6 +13,10 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+bash /opt/plexguide/menu/interface/gce/gcechecker.sh
+file1="/var/plexguide/gce.false"
+if [ ! -e "$file1" ]; then exit; fi
+
 touch /var/plexguide/pg.edition
 echeck=$(cat /var/plexguide/pg.edition)
 
@@ -27,9 +31,8 @@ tee <<-EOF
 1 - Edition: GDrive
 2 - Edition: Solo  HD
 3 - Edition: Multi HD
-4 - Edition: GCE Feeder
 
-⚠️   NOTE: Can Only Select this Once!
+⚠️  NOTE: Can Only Select this Once!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -48,10 +51,6 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
     echo "PG Edition - HD Multi" > /var/plexguide/pg.edition
     echo "drives" > /var/plexguide/pg.server.deploy
-    cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
-elif [ "$typed" == "4" ]; then
-    echo "PG Edition - GCE Feed" > /var/plexguide/pg.edition
-    echo "feeder" > /var/plexguide/pg.server.deploy
     cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
 else
 tee <<-EOF
