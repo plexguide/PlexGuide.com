@@ -138,14 +138,28 @@ tee <<-EOF
 🌎  $edition - $pgnumber - $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
-
+🌵  PG Disk Used Space:  $used of $capacity | $percentage Used Capacity
 EOF
+
+# Displays Second Drive If GCE
+if [ "$edition" == "PG Edition - GCE Feed" ]; then
+used_gce=$(df -h /mnt | tail -n +2 | awk '{print $3}')
+capacity_gce=$(df -h /mnt | tail -n +2 | awk '{print $2}')
+percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
+echo "GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
+fi
+
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "1 - Mounts & Data Transports"
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "1 - Mounts & Data Transports"
 elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "1 - MultiHD Mount Deployment"
-elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"; fi
+elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "1 - No Mounts for Solo HD"
+else
+  echo "1 - Mounts & Data Transports"
+  "PG Edition - GDrive" > /var/plexguide/pg.edition
+fi
+
 tee <<-EOF
+1 - Mounts & Data Transports"
 2 - Traefik & TLD Deployment [$traefik]
 3 - PG Apps: [Installer]
 4 - PG Apps: [UnInstall]
@@ -171,6 +185,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
+  else
+  bash /opt/plexguide/menu/transport/transport.sh
      fi
 
 elif [ "$typed" == "2" ]; then
