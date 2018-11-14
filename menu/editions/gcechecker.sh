@@ -26,8 +26,7 @@ tee <<-EOF
 📂  Google Cloud Feeder Edition SET!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚡  Google Cloud Instance Detected! Automatically Setting PG Google
-   Feeder Edition (GCE)
+⚡  Google Cloud Instance Detected!
 
 ⚠️  NOTE: Setting Up the NVME Drive For You! Please Wait!
 
@@ -52,6 +51,19 @@ EOF
       echo "PG Edition - GCE Feed" > /var/plexguide/pg.edition
       echo "feeder" > /var/plexguide/pg.server.deploy
       cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂  GCE Harddrive Deployed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡  Automatically Setting PG Google Feeder Edition (GCE)
+
+⚠️  Please Wait!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
 
 sleep 6
 elif [ ! -e "$file1" ] && [ ! -e "$file2" ] && [ "$gcheck" == ".internal" ]; then
