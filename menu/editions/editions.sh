@@ -13,7 +13,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-bash /opt/plexguide/menu/interface/gce/gcechecker.sh
+bash /opt/plexguide/menu/editions/gcechecker.sh
 file1="/var/plexguide/gce.false"
 if [ ! -e "$file1" ]; then exit; fi
 
