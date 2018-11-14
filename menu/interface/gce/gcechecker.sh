@@ -15,33 +15,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-deploy="no"
-drop=$(cat /var/plexguide/gce.check)
-
-### Set This Up Incase BoneHead didn't pick the NVME drives, but still requires the two drives setup
-#file="/dev/sdb"
-#  if [ -e "$file" ] && [ "$drop" != "yes" ]
-#    then
-#      deploy="yes"
-#  fi
-
-file="/dev/nvme0n1"
-  if [ -e "$file" ] && [ "$drop" != "yes" ]
-    then
-      deploy="yes"
-  fi
-
-if [ "$deploy" == "yes" ] && [ "$drop" != "yes" ]
-    then
-
-echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-
-      dialog --title "NOTICE" --msgbox "\nGCE FeederBox Deploying!" 7 35
-
-      echo "0" | dialog --gauge "Mount Deployment" 7 50 0
-      sleep 1
-
-      clear
+file1="/dev/nvme0n1"
+file2="/var/plexguide/gce.check"
+  if [ -e "$file" ] && [ ! -e "$file2" ]; then
       mkfs.ext4 -F /dev/nvme0n1 1>/dev/null 2>&1
       mount -o discard,defaults,nobarrier /dev/nvme0n1 /mnt
       chmod a+w /mnt 1>/dev/null 2>&1
@@ -53,13 +29,6 @@ echo 'INFO - Conducting GCE Mass Deployment' > /var/plexguide/pg.log && bash /op
       chmod a+w /nvme1 1>/dev/null 2>&1
       echo UUID=`blkid | grep nvme0n1 | cut -f2 -d'"'` /nvme1 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
-echo "yes" > /var/plexguide/gce.check
-    else
-      if [ "$drop" == "yes" ]
-      then
-        echo "corn" &>/dev/null &
-      else
-        echo 'FAILURE - GCE Deployment Failed: NVME HD was not selected!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-        dialog --title "NVME Setup Failure" --msgbox "\nYour SETUP is not CORRECT!\n\nWe have detected that your NVME Drives are not setup correctly (or didn't read the wiki!) but your entire SETUP is going to FAIL!\n\nVisit http://gce.plexguide.com!" 0 0
-      fi
-fi
+      touch /var/plexguide/gce.check
+      rm -rf /var/plexguide/gce.failed 
+  fi
