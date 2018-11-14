@@ -32,7 +32,7 @@ tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-
+      sleep 3
       mkfs.ext4 -F /dev/nvme0n1 1>/dev/null 2>&1
       mount -o discard,defaults,nobarrier /dev/nvme0n1 /mnt
       chmod a+w /mnt 1>/dev/null 2>&1
