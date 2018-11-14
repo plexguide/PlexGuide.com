@@ -44,7 +44,7 @@ echo "23" > /var/plexguide/pg.dependency
 echo "10" > /var/plexguide/pg.docstart
 echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
-echo "82" > /var/plexguide/pg.alias
+echo "83" > /var/plexguide/pg.alias
 echo "2" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
