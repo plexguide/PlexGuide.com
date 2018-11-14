@@ -160,7 +160,6 @@ else
 fi
 
 tee <<-EOF
-1 - Mounts & Data Transports"
 2 - Traefik & TLD Deployment [$traefik]
 3 - PG Apps: [Installer]
 4 - PG Apps: [UnInstall]
