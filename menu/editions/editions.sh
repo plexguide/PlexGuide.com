@@ -17,6 +17,13 @@ bash /opt/plexguide/menu/editions/gcechecker.sh
 file1="/var/plexguide/gce.false"
 if [ ! -e "$file1" ]; then exit; fi
 
+# Forces Exit if GCE
+touch /var/plexguide/pg.server.deploy
+fcheck=$(cat /var/plexguide/pg.server.deploy)
+if [ "$fcheck" == "feeder" ]; then exit; fi
+
+# Starting Process If Not GCE
+
 touch /var/plexguide/pg.edition
 echeck=$(cat /var/plexguide/pg.edition)
 
