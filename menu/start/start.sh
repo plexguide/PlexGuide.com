@@ -138,7 +138,7 @@ tee <<-EOF
 🌎  $edition - $pgnumber - $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🌵  PG Disk Used Space:  $used of $capacity | $percentage Used Capacity
+🌵 PG Disk Used Space:  $used of $capacity | $percentage Used Capacity
 EOF
 
 # Displays Second Drive If GCE
@@ -146,8 +146,8 @@ if [ "$edition" == "PG Edition - GCE Feed" ]; then
 used_gce=$(df -h /mnt | tail -n +2 | awk '{print $3}')
 capacity_gce=$(df -h /mnt | tail -n +2 | awk '{print $2}')
 percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
-echo "   GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
-echo 
+echo " GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
+echo
 fi
 
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "1 - Mounts & Data Transports"
