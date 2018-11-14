@@ -83,8 +83,7 @@ edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition - GDrive" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Multi" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b
-elif [ "$edition" == "PG Edition - GCE Feed" ]; then
-    bash /opt/plexguide/menu/interface/gce/gcechecker.sh
+elif [ "$edition" == "PG Edition - GCE Feed" ]; then a=b
 else
     file="/var/plexguide/pg.preinstall.stored"
     if [ -e "$file" ]; then
