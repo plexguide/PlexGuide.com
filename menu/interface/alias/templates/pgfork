@@ -15,6 +15,17 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+if [[ $EUID -ne 0 ]]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  You Must Execute as a SUDO USER (with sudo) or as ROOT!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+exit 1
+fi
+
 # If PlexGuide is Missing, it will redownload it
 file="/opt/plexguide/pg.sh"
 if [ ! -e "$file" ]; then
