@@ -25,9 +25,9 @@ tee <<-EOF
 ↘️  ESTABLISHING: Server ID
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️ SERVER ID: To establish the identification this server!
+⚠️  SERVER ID: To establish the identification this server!
 
-⛔️ WARNING: Only use one word! If you put spaces in between, it will
+⛔️  WARNING: Only use one word! If you put spaces in between, it will
 cause you grief when you try to restore your server in the future!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -41,7 +41,7 @@ read -p 'TYPE a Server ID Name & Press [ENTER]: ' typed < /dev/tty
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ WARNING! - The Server ID Cannot Be Blank!
+⛔️  WARNING! - The Server ID Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
@@ -51,7 +51,7 @@ else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️ PASS: ServerID Set
+✅️  PASS: ServerID Set
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
