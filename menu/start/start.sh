@@ -147,6 +147,7 @@ used_gce=$(df -h /mnt | tail -n +2 | awk '{print $3}')
 capacity_gce=$(df -h /mnt | tail -n +2 | awk '{print $2}')
 percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
 echo "   GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
+echo 
 fi
 
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "1 - Mounts & Data Transports"
