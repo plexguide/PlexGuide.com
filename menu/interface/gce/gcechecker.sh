@@ -17,7 +17,9 @@
 #################################################################################
 file1="/dev/nvme0n1"
 file2="/var/plexguide/gce.check"
-  if [ -e "$file" ] && [ ! -e "$file2" ]; then
+gcheck=$(dnsdomainname | tail -c 10)
+  if [ -e "$file1" ] && [ ! -e "$file2" ] && [ "$gcheck" == ".internal" ]; then
+    echo corn
       mkfs.ext4 -F /dev/nvme0n1 1>/dev/null 2>&1
       mount -o discard,defaults,nobarrier /dev/nvme0n1 /mnt
       chmod a+w /mnt 1>/dev/null 2>&1
