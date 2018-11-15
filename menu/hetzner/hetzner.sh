@@ -58,8 +58,20 @@ elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "3" ]; then
   read -p 'Type the Name of a NEW SERVER | Press [ENTER]: ' typed < /dev/tty
-  hcloud server create --name $typed --image ubuntu-18.04 --type cx11 > /var/plexguide/hetzner.pw
-  
+  mkdir -p /var/plexguide/hetzner
+  hcloud server create --name $typed --image ubuntu-18.04 --type cx11 > /var/plexguide/hetzner/hetzner.info
+  cat "/var/plexguide/hetzner/hetzner.info" | grep IPv4: | cut -d' ' -f2- > /var/plexguide/hetzner/$typed.ip
+  cat "/var/plexguide/hetzner/hetzner.info" | grep Root | cut -d' ' -f3- > /var/plexguide/hetzner/$typed.pw
+  ipv4=$(cat /var/plexguide/hetzner/$typed.ip)
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Deployed Server $typed - $ip
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 elif [ "$typed" == "5" ]; then
