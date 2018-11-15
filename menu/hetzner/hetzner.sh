@@ -21,7 +21,6 @@ tee <<-EOF
 🚀 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Generate SSH Key
 3 - Deploy a New Server
 4 - List Server(s)
 5 - Destory a Server
@@ -64,6 +63,7 @@ elif [ "$typed" == "3" ]; then
   cat "/var/plexguide/hetzner/hetzner.info" | grep IPv4: | cut -d' ' -f2- > /var/plexguide/hetzner/$typed.ip
   cat "/var/plexguide/hetzner/hetzner.info" | grep Root | cut -d' ' -f3- > /var/plexguide/hetzner/$typed.pw
   ipv4=$(cat /var/plexguide/hetzner/$typed.ip)
+  pw=$(cat /var/plexguide/hetzner/$typed.pw)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -73,9 +73,9 @@ tee <<-EOF
 EOF
 read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 echo
-echo "Waiting 30 Seconds"
-sleep 60
-ssh-copy-id root@$ipv4
+echo "Waiting 45 Seconds"
+sleep 45
+sshpass -f <(printf '%s\n' $pw) ssh root@159.69.14.153
 
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
