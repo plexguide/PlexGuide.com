@@ -46,10 +46,13 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ SSH Key is Already Deployed! Exiting Interface
+⛔️ SSH Key is Already Deployed! Exiting Interface!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
-      sleep 4
+      cat /opt/appdata/plexguide/hetzner_rsa
+      echo
+      sleep 5
       bash /opt/plexguide/menu/hetzner/hetzner.sh
       exit
     fi
