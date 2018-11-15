@@ -21,38 +21,49 @@ tee <<-EOF
 🚀 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-3 - Deploy a New Server
-4 - List Server(s)
+1 - Deploy a New Server
+2 - List Server(s)
 5 - Destory a Server
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then
-
-    file="/opt/appdata/plexguide/hetzner_rsa"
-    if [ ! -e "$file" ]; then
-      ssh-keygen -t rsa -b 4096 -C "my@pg.com" -f  bash /opt/plexguide/menu/hetzner/hetzner.sh
- -N ''
-      echo
-      cat /opt/appdata/plexguide/hetzner_rsa
-      echo
-      read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-    else
+if [ "$typed" == "1" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ SSH Key is Already Deployed! Exiting Interface!
+🚀 PG - Hetzner's Cloud OS Selector
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+1 - Ubuntu 18.04 (PlexGuide Works)
+2 - Ubuntu 16.04 (PlexGuide Works)
+3 - Debian 9
+4 - Centos 7
+5 - Fendora 28
+6 - Fendora 27
+Z - Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-      sleep 4
-      bash /opt/plexguide/menu/hetzner/hetzner.sh
-      exit
-    fi
+
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+
+  if [ "$typed" == "1" ]; then os="ubuntu-18.04";
+elif [ "$typed" == "2" ]; then os="ubuntu-16.04";
+elif [ "$typed" == "3" ]; then os="debian-9";
+elif [ "$typed" == "4" ]; then os="centos-7";
+elif [ "$typed" == "5" ]; then os="fendora-28";
+elif [ "$typed" == "6" ]; then os="fendora-27";
+elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then exit;
+  fi
+
+  mkdir -p /opt/appdata/hetzner/$typed
+  ssh-keygen -t rsa -b 4096 -C "$typed@plexguide.com" -f /opt/appdata/hetzner/$typed/$typed
+  hcloud ssh-key create --name $typed --public-key-from-file /opt/appdata/hetzner/$typed/$typed.pub
+  hcloud server create --name $typed --type cx11 --image ubuntu-18.04 --ssh-key $typed
 
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
