@@ -26,7 +26,7 @@ tee <<-EOF
 3 - Deploy a New Server
 4 - List Server(s)
 5 - Destory a Server
-6 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -62,6 +62,8 @@ elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/interface/pgtrak/main.sh
+elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
+  exit
 else
   bash /opt/plexguide/menu/tools/tools.sh
   exit
