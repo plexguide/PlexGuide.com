@@ -35,7 +35,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
     file="/opt/appdata/plexguide/hetzner_rsa"
     if [ ! -e "$file" ]; then
-      ssh-keygen -t rsa -b 4096 -C "my@pg.com" -f   bash /opt/plexguide/menu/hetzner/hetzner.sh
+      ssh-keygen -t rsa -b 4096 -C "my@pg.com" -f  bash /opt/plexguide/menu/hetzner/hetzner.sh
  -N ''
       echo
       cat /opt/appdata/plexguide/hetzner_rsa
@@ -64,6 +64,10 @@ elif [ "$typed" == "3" ]; then
   cat "/var/plexguide/hetzner/hetzner.info" | grep Root | cut -d' ' -f3- > /var/plexguide/hetzner/$typed.pw
   ipv4=$(cat /var/plexguide/hetzner/$typed.ip)
   pw=$(cat /var/plexguide/hetzner/$typed.pw)
+
+wait 20 sec
+ssh-keygen -f "/root/.ssh/known_hosts" -R "ipv4"
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -73,9 +77,8 @@ tee <<-EOF
 EOF
 read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 echo
-echo "Waiting 45 Seconds"
-sleep 45
-sshpass -f <(printf '%s\n' $pw) ssh root@$ipv4
+
+
 
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
