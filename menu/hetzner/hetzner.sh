@@ -34,8 +34,11 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  gcheck
-  bash /opt/plexguide/menu/data/data.sh
+  ssh-keygen -t rsa -b 4096 -C "my@pg.com" -f /opt/appdata/plexguide/hetzner_rsa -N ''
+  echo
+  cat /opt/appdata/plexguide/hetzner_rsa
+  echo
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "3" ]; then
