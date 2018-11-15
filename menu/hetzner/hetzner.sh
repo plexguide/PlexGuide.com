@@ -75,7 +75,7 @@ read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 echo
 echo "Waiting 45 Seconds"
 sleep 45
-sshpass -f <(printf '%s\n' $pw) ssh root@159.69.14.153
+sshpass -f <(printf '%s\n' $pw) ssh root@$ipv4
 
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
