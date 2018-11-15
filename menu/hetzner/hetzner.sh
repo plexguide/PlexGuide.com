@@ -21,8 +21,8 @@ tee <<-EOF
 🚀 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Deploy a New Server
-2 - List Server(s)
+3 - Deploy a New Server
+4 - List Server(s)
 5 - Destory a Server
 Z - Exit
 
@@ -60,10 +60,13 @@ elif [ "$typed" == "6" ]; then os="fendora-27";
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then exit;
   fi
 
-  mkdir -p /opt/appdata/hetzner/$typed
-  ssh-keygen -t rsa -b 4096 -C "$typed@plexguide.com" -f /opt/appdata/hetzner/$typed/$typed
-  hcloud ssh-key create --name $typed --public-key-from-file /opt/appdata/hetzner/$typed/$typed.pub
-  hcloud server create --name $typed --type cx11 --image ubuntu-18.04 --ssh-key $typed
+  echo
+  read -p 'Type a Number | Press [ENTER]: ' fill < /dev/tty
+
+  mkdir -p /opt/appdata/hetzner/$fill
+  ssh-keygen -t rsa -b 4096 -C "$fill@plexguide.com" -f /opt/appdata/hetzner/$fill/$fill
+  hcloud ssh-key create --name $fill --public-key-from-file /opt/appdata/hetzner/$fill/$fill.pub
+  hcloud server create --name $fill --type cx11 --image ubuntu-18.04 --ssh-key $fill
 
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
