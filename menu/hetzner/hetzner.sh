@@ -21,15 +21,11 @@ tee <<-EOF
 🚀 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-* SSH Key's
-  1 - Generate SSH Key
-  2 - Recall Key for Hetzner
-
-* Servers
-  3 - Deploy a New Server
-  4 - List Server(s)
-  5 - Destory a Server
-
+1 - Generate SSH Key
+2 - Recall SSH Key for Hetzner
+3 - Deploy a New Server
+4 - List Server(s)
+5 - Destory a Server
 6 - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
