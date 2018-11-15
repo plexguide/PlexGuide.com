@@ -63,6 +63,7 @@ elif [ "$typed" == "3" ]; then
   cat "/var/plexguide/hetzner/hetzner.info" | grep IPv4: | cut -d' ' -f2- > /var/plexguide/hetzner/$typed.ip
   cat "/var/plexguide/hetzner/hetzner.info" | grep Root | cut -d' ' -f3- > /var/plexguide/hetzner/$typed.pw
   ipv4=$(cat /var/plexguide/hetzner/$typed.ip)
+  ssh-keygen -t rsa -b 4096 -C "user@dunn.cloud"
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -71,6 +72,8 @@ tee <<-EOF
 
 EOF
 read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+ssh-copy-id root@$ipv4
+
 
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
