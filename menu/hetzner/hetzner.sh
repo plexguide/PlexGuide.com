@@ -74,7 +74,7 @@ EOF
 read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 echo
 echo "Waiting 30 Seconds"
-sleep 30
+sleep 60
 ssh-copy-id root@$ipv4
 
 elif [ "$typed" == "4" ]; then
