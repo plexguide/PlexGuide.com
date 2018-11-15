@@ -65,7 +65,7 @@ elif [ "$typed" == "5" ]; then
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
-  bash /opt/plexguide/menu/tools/tools.sh
+  bash /opt/plexguide/menu/hetzner/hetzner.sh
   exit
 fi
 
