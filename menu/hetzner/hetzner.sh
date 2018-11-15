@@ -36,7 +36,8 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
     file="/opt/appdata/plexguide/hetzner_rsa"
     if [ ! -e "$file" ]; then
-      ssh-keygen -t rsa -b 4096 -C "my@pg.com" -f /opt/appdata/plexguide/hetzner_rsa -N ''
+      ssh-keygen -t rsa -b 4096 -C "my@pg.com" -f   bash /opt/plexguide/menu/hetzner/hetzner.sh
+ -N ''
       echo
       cat /opt/appdata/plexguide/hetzner_rsa
       echo
