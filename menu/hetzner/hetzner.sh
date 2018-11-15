@@ -63,7 +63,6 @@ elif [ "$typed" == "3" ]; then
   cat "/var/plexguide/hetzner/hetzner.info" | grep IPv4: | cut -d' ' -f2- > /var/plexguide/hetzner/$typed.ip
   cat "/var/plexguide/hetzner/hetzner.info" | grep Root | cut -d' ' -f3- > /var/plexguide/hetzner/$typed.pw
   ipv4=$(cat /var/plexguide/hetzner/$typed.ip)
-  ssh-keygen -t rsa -b 4096 -C "user@dunn.cloud"
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
