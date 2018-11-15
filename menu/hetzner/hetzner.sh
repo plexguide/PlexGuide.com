@@ -34,11 +34,26 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  ssh-keygen -t rsa -b 4096 -C "my@pg.com" -f /opt/appdata/plexguide/hetzner_rsa -N ''
-  echo
-  cat /opt/appdata/plexguide/hetzner_rsa
-  echo
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+
+    file="/opt/appdata/plexguide/hetzner_rsa"
+    if [ ! -e "$file" ]; then
+      ssh-keygen -t rsa -b 4096 -C "my@pg.com" -f /opt/appdata/plexguide/hetzner_rsa -N ''
+      echo
+      cat /opt/appdata/plexguide/hetzner_rsa
+      echo
+      read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+    else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ SSH Key is Already Deployed! Exiting Interface
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+      sleep 4
+      bash /opt/plexguide/menu/hetzner/hetzner.sh
+      exit
+    fi
+
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "3" ]; then
@@ -51,7 +66,6 @@ else
   bash /opt/plexguide/menu/tools/tools.sh
   exit
 fi
-
 
 #⛔️  WARNING! - Must Configure RClone First /w >>> gdrive
 # read -n 1 -s -r -p "Press [ANY] Key to Continue "
