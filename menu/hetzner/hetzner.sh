@@ -72,8 +72,10 @@ tee <<-EOF
 
 EOF
 read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+echo
+echo "Waiting 30 Seconds"
+sleep 30
 ssh-copy-id root@$ipv4
-
 
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
