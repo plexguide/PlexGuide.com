@@ -36,7 +36,7 @@ _**Table of Contents**_
 
 # 4. Conclusion
 
-Well always, welcome to the Site! Visit the forums @ [**https://plexguide.com/forums**](https://plexguide.com/forums).
+Well anyways, welcome to the Site! Visit the forums @ [**https://plexguide.com/forums**](https://plexguide.com/forums).
 
 <p align="right">
 <a href="https://plexguide.com" target="_blank"><img src="https://plexguide.com/wikipics/logo.png" width="75"/>
