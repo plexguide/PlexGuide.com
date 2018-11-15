@@ -22,7 +22,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Generate SSH Key
-2 - Recall SSH Key for Hetzner
 3 - Deploy a New Server
 4 - List Server(s)
 5 - Destory a Server
@@ -58,7 +57,9 @@ EOF
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/roles/menu-ports/scripts/main.sh
+  read -p 'Type the Name of a NEW SERVER | Press [ENTER]: ' typed < /dev/tty
+  hcloud server create --name $typed --image ubuntu-18.04 --type cx11 > /var/plexguide/hetzner.pw
+  
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 elif [ "$typed" == "5" ]; then
