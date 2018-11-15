@@ -50,9 +50,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-      cat /opt/appdata/plexguide/hetzner_rsa
-      echo
-      sleep 5
+      sleep 4
       bash /opt/plexguide/menu/hetzner/hetzner.sh
       exit
     fi
