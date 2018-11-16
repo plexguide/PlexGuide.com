@@ -31,6 +31,7 @@ tee <<-EOF
 2 - Deploy a New Server  [deploy]
 3 - List Server Info
 4 - Destory a Server
+5 - Login to a Server
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -40,7 +41,8 @@ EOF
 
 if [ "$typed" == "1" ]; then
 ssh-keygen -t rsa -b 4096 -C "pg@plexguide.com" -f ~/.ssh/id_rsa
-
+bash /opt/plexguide/menu/hetzner/hetzner.sh
+exit
 elif [ "$typed" == "2" ]; then
 
 echo
@@ -113,6 +115,9 @@ hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " "
 echo
 read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 
+bash /opt/plexguide/menu/hetzner/hetzner.sh
+exit
+
 elif [ "$typed" == "4" ]; then
 tee <<-EOF
 
@@ -159,7 +164,21 @@ EOF
     exit
 fi
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/interface/pgtrak/main.sh
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG - Active Running Hetzner Servers!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Server Name
+━━━━━━━━━━━
+EOF
+  hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
+  echo
+  read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+
+  bash /opt/plexguide/menu/hetzner/hetzner.sh
+  exit
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
