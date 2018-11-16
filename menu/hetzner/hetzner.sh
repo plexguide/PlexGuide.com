@@ -13,7 +13,7 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-file="~/.ssh/id_rsa"
+file="~/.ssh/id_rsa.pub"
 if [ ! -e "$file" ]; then
   serverstatus="Generated"
 else
@@ -40,7 +40,7 @@ EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
-ssh-keygen -t rsa -b 4096 -C "pg@plexguide.com" -f ~/.ssh/id_rsa.pub
+ssh-keygen -t rsa -b 4096 -C "pg@plexguide.com" -f ~/.ssh/id_rsa
 bash /opt/plexguide/menu/hetzner/hetzner.sh
 exit
 elif [ "$typed" == "2" ]; then
