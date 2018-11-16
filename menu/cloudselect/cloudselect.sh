@@ -21,7 +21,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Google Instance - Installer (For PG GCE Edition)
-2 - Hetzner Cloud   - Installer
+2 - Hetzner Cloud   - Installer (NOT READY)
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
