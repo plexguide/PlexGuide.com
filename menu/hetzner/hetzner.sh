@@ -31,7 +31,6 @@ tee <<-EOF
 1 - Deploy a New Server  [deploy]
 2 - List Server Info
 3 - Destory a Server
-4 - Login to a Server
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -92,7 +91,8 @@ cat /opt/appdata/plexguide/server.info
 echo
 echo ""
 echo "Copy the Generated Password! It's a one time use password"
-echo "Hetzner will force you to change it!"
+echo "Hetzner will force you to change it! Exit PG and try to"
+echo "login to your new server!"
 echo ""
 echo "Wait 30 seconds before attempting to login in the server"
 echo
