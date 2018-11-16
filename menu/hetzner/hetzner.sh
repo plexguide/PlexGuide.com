@@ -125,7 +125,15 @@ echo
 
 
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG - Destory a Hetzner Cloud Server!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
+
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/interface/pgtrak/main.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
