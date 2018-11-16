@@ -161,11 +161,12 @@ fi
 
 tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
-3 - PG Apps: [Installer]
-4 - PG Apps: [UnInstall]
-5 - Tools & Services
-6 - Settings
-7 - Exit
+3 - Installer - PG Apps
+4 - UnInstall - PG Apps
+5 - PG GCE & Hetzner Cloud Installer
+6 - Tools & Services
+7 - Settings
+8 - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -195,11 +196,11 @@ elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/apps/apps.sh
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/removal/removal.sh
-elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/settings/settings.sh
+  bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "7" ]; then
+  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
+elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   bash /opt/plexguide/roles/ending/ending.sh
   exit
 else

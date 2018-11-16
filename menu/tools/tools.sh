@@ -75,14 +75,13 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Backup & Restore
-2 - Deploy GCE Feeder Instance
-3 - Server Port Guard [$ports]
-4 - Application Guard [$appguard]
-5 - PGTrak ~ Fill Up Sonarr & Radarr
-6 - Personal VPN Service Installer
-7 - System & Network Auditor
-8 - TroubleShoot ~ PreInstaller & UnInstaller
-9 - Exit
+2 - Server Port Guard [$ports]
+3 - Application Guard [$appguard]
+4 - PGTrak ~ Fill Up Sonarr & Radarr
+5 - Personal VPN Service Installer
+6 - System & Network Auditor
+7 - TroubleShoot ~ PreInstaller & UnInstaller
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -94,20 +93,18 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   gcheck
   bash /opt/plexguide/menu/data/data.sh
 elif [ "$typed" == "2" ]; then
-  echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/roles/menu-ports/scripts/main.sh
-elif [ "$typed" == "4" ]; then
+elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
-elif [ "$typed" == "5" ]; then
+elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/interface/pgtrak/main.sh
-elif [ "$typed" == "6" ]; then
+elif [ "$typed" == "5" ]; then
   echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-elif [ "$typed" == "7" ]; then
+elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/roles/menu-network/scripts/main.sh
-elif [ "$typed" == "8" ]; then
+elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/tshoot/tshoot.sh
-elif [ "$typed" == "9" ]; then
+elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
   bash /opt/plexguide/menu/tools/tools.sh
