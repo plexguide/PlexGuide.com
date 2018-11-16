@@ -35,8 +35,8 @@ EOF
 sleep 5
 
 # Execute Install
-wget https://github.com/hetznercloud/cli/releases/download/v1.9.1/hcloud-linux-amd64-v1.9.1.tar.gz /tmp
-tar -xvf /tmp/hcloud-linux-amd64-v1.9.1.tar.gz
+wget -P /tmp "https://github.com/hetznercloud/cli/releases/download/v1.9.1/hcloud-linux-amd64-v1.9.1.tar.gz"
+tar -xvf /tmp/hcloud-linux-amd64-v1.9.1.tar.gz /tmp
 mv /tmp/hcloud-linux-amd64-v1.9.1/bin/hcloud /bin/
 
 # Prevents From Repeating
