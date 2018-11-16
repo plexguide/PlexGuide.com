@@ -14,7 +14,7 @@
 #
 #################################################################################
 test=$(hcloud server list)
-if [ "test" == "" ]; then
+if [ "$test" == "" ]; then
 
 tee <<-EOF
 
@@ -32,13 +32,13 @@ EOF
 hcloud context add plexguide
 
   test=$(hcloud server list)
-  if [ "test" == "" ]; then
+  if [ "$test" == "" ]; then
   exit
   fi
 
 fi
 
-# Start Interface
+# Start Process
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
