@@ -136,7 +136,7 @@ Server Name
 EOF
 hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
 echo
-echo "To Quit, type >>> exit"
+echo "Quit? Type >>> exit"
 read -p 'Type a Server to Destroy | Press [ENTER]: ' destroy < /dev/tty
   if [ "$destroy" == "exit" ]; then a=b;
 else
