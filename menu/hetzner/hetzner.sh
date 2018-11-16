@@ -13,8 +13,9 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+#temp=$(whoami)
 file="~/.ssh/id_rsa.pub"
-if [ ! -e "$file" ]; then
+if [ -e "$file" ]; then
   serverstatus="Generated"
 else
   serverstatus="Not Generated"
