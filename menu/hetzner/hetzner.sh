@@ -138,10 +138,26 @@ hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " "
 echo
 echo "Quit? Type >>> exit"
 read -p 'Type a Server to Destroy | Press [ENTER]: ' destroy < /dev/tty
-  if [ "$destroy" == "exit" ]; then a=b;
-else
-  a=b
-fi
+  if [ "$destroy" == "exit" ]; then
+    bash /opt/plexguide/menu/hetzner/hetzner.sh
+    exit
+  else
+    check=$(hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
+    next=$(echo $check | grep -c "\<$destroy\>")
+    if [ "$next" == "0" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG - Server: $destory - Does Not Exist!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+    fi
+
+    bash /opt/plexguide/menu/hetzner/hetzner.sh
+    exit
+  fi
 
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/interface/pgtrak/main.sh
