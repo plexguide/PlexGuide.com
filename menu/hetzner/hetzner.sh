@@ -41,7 +41,6 @@ EOF
 if [ "$typed" == "1" ]; then
 ssh-keygen -t rsa -b 4096 -C "pg@plexguide.com" -f ~/.ssh/id_rsa
 
-
 elif [ "$typed" == "2" ]; then
 
 echo
@@ -78,22 +77,11 @@ elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then exit;
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Generating Your Private Keys
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-  #ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f /opt/appdata/hetzner/$name/$name
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG - Generating a Public Key for Hetzner
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  #hcloud ssh-key create --name $name --public-key-from-file /opt/appdata/hetzner/$name/$name.pub
-  hcloud ssh-key create --name $name --public-key-from-file ~/.ssh/id_rsa.pub
-
+  hcloud ssh-key create --name plexguide --public-key-from-file ~/.ssh/id_rsa.pub
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -101,7 +89,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  hcloud server create --name $name --type cx11 --image ubuntu-18.04 --ssh-key $name
+  hcloud server create --name $name --type cx11 --image ubuntu-18.04 --ssh-key plexguide
 echo
 echo "🚀 To SSH into Your Server, use PG or type ssh root@ipv4.address"
 echo
