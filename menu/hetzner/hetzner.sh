@@ -14,7 +14,7 @@
 #
 #################################################################################
 #temp=$(whoami)
-file="$HOME/.ssh/id_rsa.pub"
+file="/$HOME/.ssh/id_rsa.pub"
 if [ -e "$file" ]; then
   serverstatus="Generated"
 else
