@@ -161,11 +161,11 @@ fi
 
 tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
-3 - Installer - PG Apps
-4 - UnInstall - PG Apps
-5 - Cloud & GCE Service Installer
-6 - Tools & Services
-7 - Settings
+3 - Installer - Applciations
+4 - UnInstall - Applications
+5 - Cloud Service Installer & GCE
+6 - System Tools & Services
+7 - System Settings
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

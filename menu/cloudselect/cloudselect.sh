@@ -20,8 +20,8 @@ tee <<-EOF
 📂  PG Cloud Service Installer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Google Instance - Installer (For PG GCE Edition)
-2 - Hetzner Cloud   - Installer (NOT READY)
+1 - Google Cloud Instance   (For PG GCE Edition)
+2 - Hetzner Cloud Instance
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
