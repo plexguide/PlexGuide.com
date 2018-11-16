@@ -28,10 +28,11 @@ tee <<-EOF
 🚀 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Deploy a New Server  [deploy]
-2 - List Server Info
-3 - Destory a Server
-4 - Login to a Server
+1 - Generate Keys        [$serverstatus]
+2 - Deploy a New Server  [deploy]
+3 - List Server Info
+4 - Destory a Server
+5 - Login to a Server
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -40,6 +41,10 @@ EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
+ssh-keygen -t rsa -b 4096 -C "pg95@plexguide.com" -f $HOME/.ssh/id_rsa
+bash /opt/plexguide/menu/hetzner/hetzner.sh
+exit
+elif [ "$typed" == "2" ]; then
 
 echo
 read -p 'Type a Server Name | Press [ENTER]: ' name < /dev/tty
@@ -72,6 +77,17 @@ elif [ "$typed" == "6" ]; then os="fendora-27";
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then exit;
   fi
 
+  if [ "$serverstatus" != "Generated" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG - Generating a Public Key for Hetzner
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  hcloud ssh-key create --name plexguide200 --public-key-from-file $HOME/.ssh/id_rsa.pub
+  fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -79,8 +95,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  name=corn5
-  hcloud server create --name $name --type cx11 --image ubuntu-18.04
+  name=corn205
+  hcloud server create --name $name --type cx11 --image ubuntu-18.04 --ssh-key plexguide200
 echo
 echo "🚀 To SSH into Your Server, use PG or type ssh root@ipv4.address"
 echo "   Wait 30 seconds before attempting to login to the server"
@@ -90,7 +106,7 @@ read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 bash /opt/plexguide/menu/hetzner/hetzner.sh
 exit
 
-elif [ "$typed" == "2" ]; then
+elif [ "$typed" == "3" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -107,7 +123,7 @@ read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 bash /opt/plexguide/menu/hetzner/hetzner.sh
 exit
 
-elif [ "$typed" == "3" ]; then
+elif [ "$typed" == "4" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -152,7 +168,7 @@ EOF
     bash /opt/plexguide/menu/hetzner/hetzner.sh
     exit
 fi
-elif [ "$typed" == "4" ]; then
+elif [ "$typed" == "5" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
