@@ -189,12 +189,12 @@ EOF
     else
       sshin=catdog
       check=$(hcloud server list | grep "\<$sshin\>" | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
-      ipcheck=$(echo "$check" | awk '{ print $3 }')
+      ipcheck=$(echo $check | awk '{ print $3 }')
       if [ "$ipcheck" == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Server: "$sshin" - Does Not Exist!
+🚀 PG - Server: $sshin - Does Not Exist!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
