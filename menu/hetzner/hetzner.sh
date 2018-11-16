@@ -13,6 +13,30 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+test=$(hcloud server list)
+if [ "test" == "" ]; then
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - You Must Input an API from Hetzner First!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ Reference: http://hcloud.plexguide.com
+
+* Activate a Hetzner Cloud Account and Create a Project
+* Click Access (left hand side) and then click API Tokens
+* Create a Token and Save It (and paste below here)
+* Not Ready? Just [Press Enter to Exit]
+
+EOF
+hcloud context add plexguide
+
+  test=$(hcloud server list)
+  if [ "test" == "" ]; then
+  exit
+  fi
+
+fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
