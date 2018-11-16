@@ -180,6 +180,41 @@ EOF
   echo
   read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 
+  echo
+  echo "Quit? Type >>> exit"
+  read -p 'Type a Server Name to Login To | Press [ENTER]: ' destroy < /dev/tty
+    if [ "$sshin" == "exit" ]; then
+      bash /opt/plexguide/menu/hetzner/hetzner.sh
+      exit
+    else
+      sshin=catdog
+      check=$(hcloud server list | grep "\<$sshin\>" | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
+      ipcheck=$(echo $check | awk '{ print $3 }')
+      if [ "$ipcheck" == "" ]; then
+  tee <<-EOF
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🚀 PG - Server: $sshin - Does Not Exist!
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  EOF
+      read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+      bash /opt/plexguide/menu/hetzner/hetzner.sh
+      exit
+    fi
+    echo
+  tee <<-EOF
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🚀 PG - Server: $sshin - Attempting to Login
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  EOF
+      ssh root@$ipcheck
+      bash /opt/plexguide/menu/hetzner/hetzner.sh
+      exit
+  fi
+
   bash /opt/plexguide/menu/hetzner/hetzner.sh
   exit
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
