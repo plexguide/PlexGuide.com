@@ -101,6 +101,9 @@ echo "   Wait 30 seconds before attempting to login to the server"
 echo
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 
+bash /opt/plexguide/menu/hetzner/hetzner.sh
+exit
+
 elif [ "$typed" == "3" ]; then
 tee <<-EOF
 
