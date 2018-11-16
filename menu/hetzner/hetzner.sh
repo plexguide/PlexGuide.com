@@ -93,7 +93,7 @@ EOF
 echo
 echo "🚀 To SSH into Your Server, use PG or type ssh root@ipv4.address"
 echo
-read -p 'Press [ENTER] to Continue: ' fill < /dev/tty
+read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
