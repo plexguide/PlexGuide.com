@@ -72,7 +72,8 @@ tee <<-EOF
 
 EOF
   mkdir -p /opt/appdata/hetzner/$name
-  ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f /opt/appdata/hetzner/$name/$name
+  #ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f /opt/appdata/hetzner/$name/$name
+  ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com"
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -80,7 +81,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  hcloud ssh-key create --name $name --public-key-from-file /opt/appdata/hetzner/$name/$name.pub
+  #hcloud ssh-key create --name $name --public-key-from-file /opt/appdata/hetzner/$name/$name.pub
+  hcloud ssh-key create --name $name --public-key-from-file $name.pub
 
 tee <<-EOF
 
