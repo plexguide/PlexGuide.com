@@ -35,12 +35,19 @@ Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
+tee <<-EOF
 
-echo
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG - Create a Server Name
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: Use only one phrase with no spaces! Make it simple and do not
+name of it of a server that is currently running with the same name!
+
+EOF
 read -p 'Type a Server Name | Press [ENTER]: ' name < /dev/tty
 tee <<-EOF
 
@@ -88,13 +95,15 @@ tee <<-EOF
 
 EOF
 cat /opt/appdata/plexguide/server.info
-echo
-echo "[COPY] the Generated Password and IP Address! The password is one!"
-echo "time use and Hetzner will force you to change it! Exit PG and "
-echo "try to login to your new server!"
-echo ""
-echo "Wait 30 seconds before attempting to login!"
-echo
+tee <<-EOF
+[COPY] the Generated Password and IP Address! The password is one!
+time use and Hetzner will force you to change it! Exit PG and
+try to login to your new server!
+
+WARNING: If you fail to copy the password, you will have to destroy
+the server and create a new one again!
+
+EOF
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 
 bash /opt/plexguide/menu/hetzner/hetzner.sh
