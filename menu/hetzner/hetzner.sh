@@ -37,6 +37,8 @@ hcloud context add plexguide
   fi
 
 fi
+
+# Start Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
