@@ -33,6 +33,7 @@ hcloud context create plexguide
 
   test=$(hcloud server list)
   if [ "$test" == "" ]; then
+    hcloud context delete plexguide
   exit
   fi
 
