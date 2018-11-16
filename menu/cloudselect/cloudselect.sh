@@ -22,7 +22,7 @@ tee <<-EOF
 
 1 - Cloud Instance: Google   (For PG GCE Edition)
 2 - Cloud Instance: Hetzner
-Z - Exit
+Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF

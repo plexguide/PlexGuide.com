@@ -13,25 +13,17 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-#temp=$(whoami)
-file="/$HOME/.ssh/id_rsa.pub"
-if [ -e "$file" ]; then
-  serverstatus="Generated"
-else
-  serverstatus="Not Generated"
-fi
-
-# Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡  Reference: http://hcloud.plexguide.com
 
-1 - Deploy a New Server  [deploy]
+1 - Deploy a New Server
 2 - List Server Info
 3 - Destory a Server
-Z - Exit
+Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
