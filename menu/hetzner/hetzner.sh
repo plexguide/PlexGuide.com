@@ -61,7 +61,10 @@ tee <<-EOF
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
+
+read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then os="ubuntu-18.04";
 elif [ "$typed" == "2" ]; then os="ubuntu-16.04";
@@ -71,9 +74,6 @@ elif [ "$typed" == "5" ]; then os="fendora-28";
 elif [ "$typed" == "6" ]; then os="fendora-27";
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then exit;
   fi
-
-  echo
-  read -p 'Type a Number | Press [ENTER]: ' fill < /dev/tty
 
 tee <<-EOF
 
