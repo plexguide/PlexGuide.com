@@ -39,7 +39,7 @@ EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
-ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f ~/.ssh/id_rsa
+ssh-keygen -t rsa -b 4096 -C "pg@plexguide.com" -f ~/.ssh/id_rsa
 
 
 elif [ "$typed" == "2" ]; then
