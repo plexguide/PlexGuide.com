@@ -74,6 +74,7 @@ elif [ "$typed" == "6" ]; then os="fendora-27";
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then exit;
   fi
 
+  if [ "$serverstatus" != "Generated" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -82,6 +83,8 @@ tee <<-EOF
 
 EOF
   hcloud ssh-key create --name plexguide --public-key-from-file ~/.ssh/id_rsa.pub
+  fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
