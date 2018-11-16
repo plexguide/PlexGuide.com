@@ -21,9 +21,10 @@ tee <<-EOF
 🚀 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Deploy a New Server
-2 - List Server(s)
-3 - Destory a Server
+1 - Generate Keys [Not Deployed]
+2 - Deploy a New Server
+3 - List Server(s)
+4 - Destory a Server
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -31,7 +32,7 @@ EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
-if [ "$typed" == "1" ]; then
+if [ "$typed" == "2" ]; then
 
 echo
 read -p 'Type a Server Name | Press [ENTER]: ' name < /dev/tty
