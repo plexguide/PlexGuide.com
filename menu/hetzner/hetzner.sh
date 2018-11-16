@@ -95,6 +95,7 @@ EOF
   hcloud server create --name $name --type cx11 --image ubuntu-18.04 --ssh-key plexguide
 echo
 echo "🚀 To SSH into Your Server, use PG or type ssh root@ipv4.address"
+echo "   Wait 30 seconds before attempting to login to the server"
 echo
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 
