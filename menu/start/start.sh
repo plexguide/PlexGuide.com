@@ -166,7 +166,7 @@ tee <<-EOF
 5 - PG GCE & Hetzner Cloud Installer
 6 - Tools & Services
 7 - Settings
-8 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
