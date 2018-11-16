@@ -72,7 +72,7 @@ tee <<-EOF
 
 EOF
   #ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f /opt/appdata/hetzner/$name/$name
-  ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f ~/.ssh/$name
+  ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f ~/.ssh/id_rsa
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -81,7 +81,7 @@ tee <<-EOF
 
 EOF
   #hcloud ssh-key create --name $name --public-key-from-file /opt/appdata/hetzner/$name/$name.pub
-  hcloud ssh-key create --name $name --public-key-from-file ~/.ssh/$name.pub
+  hcloud ssh-key create --name $name --public-key-from-file ~/.ssh/id_rsa.pub
 
 tee <<-EOF
 
