@@ -27,9 +27,9 @@ tee <<-EOF
 🚀 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Generate Keys [$serverstatus]
-2 - Deploy a New Server
-3 - List Server(s)
+1 - Generate Keys        [$serverstatus]
+2 - Deploy a New Server  [deploy]
+3 - List Server Info
 4 - Destory a Server
 Z - Exit
 
