@@ -79,8 +79,17 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  name=corn5
-  hcloud server create --name $name --type cx11 --image ubuntu-18.04
+  name=corn60
+  hcloud server create --name $name --type cx11 --image ubuntu-18.04 > /opt/appdata/plexguide/server.info
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG - New Server Information
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+cat /opt/appdata/plexguide/server.info
 echo
 echo "🚀 To SSH into Your Server, use PG or type ssh root@ipv4.address"
 echo "   Wait 30 seconds before attempting to login to the server"
