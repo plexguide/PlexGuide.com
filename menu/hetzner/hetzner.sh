@@ -209,7 +209,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-      ssh-keygen -f "/root/.ssh/known_hosts" -R $ipcheck
+      #ssh-keygen -f "/root/.ssh/known_hosts" -R $ipcheck
       ssh root@$ipcheck
       bash /opt/plexguide/menu/hetzner/hetzner.sh
       exit
