@@ -163,7 +163,7 @@ tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
 3 - Installer - PG Apps
 4 - UnInstall - PG Apps
-5 - PG GCE & Hetzner Cloud Installer
+5 - Cloud & GCE Service Installer
 6 - Tools & Services
 7 - Settings
 Z - Exit
