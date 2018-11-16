@@ -79,7 +79,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  name=corn60
   hcloud server create --name $name --type cx11 --image ubuntu-18.04 > /opt/appdata/plexguide/server.info
 
 tee <<-EOF
