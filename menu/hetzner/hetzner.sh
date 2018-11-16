@@ -89,7 +89,6 @@ tee <<-EOF
 EOF
 cat /opt/appdata/plexguide/server.info
 echo
-echo ""
 echo "Copy the Generated Password! It's a one time use password"
 echo "Hetzner will force you to change it! Exit PG and try to"
 echo "login to your new server!"
