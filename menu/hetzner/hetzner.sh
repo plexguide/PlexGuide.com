@@ -82,7 +82,7 @@ tee <<-EOF
 
 EOF
   #hcloud ssh-key create --name $name --public-key-from-file /opt/appdata/hetzner/$name/$name.pub
-  hcloud ssh-key create --name $name --public-key-from-file ~/ssh/$name.pub
+  hcloud ssh-key create --name $name --public-key-from-file ~/.ssh/$name.pub
 
 tee <<-EOF
 
