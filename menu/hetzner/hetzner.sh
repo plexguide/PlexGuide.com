@@ -98,31 +98,18 @@ echo "🚀 To SSH into Your Server, use PG or type ssh root@ipv4.address"
 echo
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 
-elif [ "$typed" == "2" ]; then
-  echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "3" ]; then
-  read -p 'Type the Name of a NEW SERVER | Press [ENTER]: ' typed < /dev/tty
-  mkdir -p /var/plexguide/hetzner
-  hcloud server create --name $typed --image ubuntu-18.04 --type cx11 > /var/plexguide/hetzner/hetzner.info
-  cat "/var/plexguide/hetzner/hetzner.info" | grep IPv4: | cut -d' ' -f2- > /var/plexguide/hetzner/$typed.ip
-  cat "/var/plexguide/hetzner/hetzner.info" | grep Root | cut -d' ' -f3- > /var/plexguide/hetzner/$typed.pw
-  ipv4=$(cat /var/plexguide/hetzner/$typed.ip)
-  pw=$(cat /var/plexguide/hetzner/$typed.pw)
-
-wait 20 sec
-ssh-keygen -f "/root/.ssh/known_hosts" -R "ipv4"
-
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Deployed Server $typed - $ipv4
+🚀 PG - Destory a Hetzner Cloud Server!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+Server Name
+━━━━━━━━━━━
 EOF
-read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
 echo
-
-
+read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 
 elif [ "$typed" == "4" ]; then
 tee <<-EOF
@@ -156,7 +143,7 @@ EOF
     bash /opt/plexguide/menu/hetzner/hetzner.sh
     exit
   fi
-  echo 
+  echo
   hcloud server delete $destroy
 tee <<-EOF
 
