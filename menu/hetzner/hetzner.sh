@@ -29,7 +29,7 @@ tee <<-EOF
 * Not Ready? Just [Press Enter to Exit]
 
 EOF
-hcloud context add plexguide
+hcloud context create plexguide
 
   test=$(hcloud server list)
   if [ "$test" == "" ]; then
