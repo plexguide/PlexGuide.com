@@ -90,6 +90,10 @@ tee <<-EOF
 
 EOF
   hcloud server create --name $name --type cx11 --image ubuntu-18.04 --ssh-key $name
+echo
+echo "🚀 To SSH into Your Server, use PG or type ssh root@ipv4.address"
+echo
+read -p 'Press [ENTER] to Continue: ' fill < /dev/tty
 
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
