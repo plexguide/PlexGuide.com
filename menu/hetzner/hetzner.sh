@@ -13,6 +13,12 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+file="~/.ssh/id_rsa"
+if [ ! -e "$file" ]; then
+  serverstatus="Generated"
+else
+  serverstatus="Not Generated"
+fi
 
 # Menu Interface
 tee <<-EOF
@@ -21,7 +27,7 @@ tee <<-EOF
 🚀 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Generate Keys [Not Deployed]
+1 - Generate Keys [$serverstatus]
 2 - Deploy a New Server
 3 - List Server(s)
 4 - Destory a Server
@@ -32,7 +38,11 @@ EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
-if [ "$typed" == "2" ]; then
+if [ "$typed" == "1" ]; then
+ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f ~/.ssh/id_rsa
+
+
+elif [ "$typed" == "2" ]; then
 
 echo
 read -p 'Type a Server Name | Press [ENTER]: ' name < /dev/tty
@@ -73,7 +83,7 @@ tee <<-EOF
 
 EOF
   #ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f /opt/appdata/hetzner/$name/$name
-  ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f ~/.ssh/id_rsa
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
