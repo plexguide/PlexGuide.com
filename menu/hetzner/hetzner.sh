@@ -156,6 +156,7 @@ EOF
     bash /opt/plexguide/menu/hetzner/hetzner.sh
     exit
   fi
+  echo 
   hcloud server delete $destroy
 tee <<-EOF
 
