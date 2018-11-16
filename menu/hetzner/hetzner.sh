@@ -34,7 +34,7 @@ EOF
 if [ "$typed" == "1" ]; then
 
 echo
-read -p 'Type a Server Name | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type a Server Name | Press [ENTER]: ' name < /dev/tty
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -71,8 +71,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  mkdir -p /opt/appdata/hetzner/$fill
-  ssh-keygen -t rsa -b 4096 -C "$fill@plexguide.com" -f /opt/appdata/hetzner/$fill/$fill
+  mkdir -p /opt/appdata/hetzner/$name
+  ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f /opt/appdata/hetzner/$name/$name
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -80,7 +80,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  hcloud ssh-key create --name $fill --public-key-from-file /opt/appdata/hetzner/$fill/$fill.pub
+  hcloud ssh-key create --name $name --public-key-from-file /opt/appdata/hetzner/$name/$name.pub
 
 tee <<-EOF
 
@@ -89,7 +89,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  hcloud server create --name $fill --type cx11 --image ubuntu-18.04 --ssh-key $fill
+  hcloud server create --name $name --type cx11 --image ubuntu-18.04 --ssh-key $name
 
 elif [ "$typed" == "2" ]; then
   echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
