@@ -152,13 +152,22 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
-    fi
-
+    read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
     bash /opt/plexguide/menu/hetzner/hetzner.sh
     exit
   fi
+  hcloud server delete $destroy
+tee <<-EOF
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG - Server: $destory - Destroyed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+    read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+    bash /opt/plexguide/menu/hetzner/hetzner.sh
+    exit
+fi
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/interface/pgtrak/main.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
