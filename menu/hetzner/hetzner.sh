@@ -71,7 +71,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  mkdir -p /opt/appdata/hetzner/$name
   #ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f /opt/appdata/hetzner/$name/$name
   ssh-keygen -t rsa -b 4096 -C "$name@plexguide.com" -f ~/.ssh/$name
 tee <<-EOF
