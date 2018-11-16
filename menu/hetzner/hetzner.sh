@@ -90,8 +90,8 @@ tee <<-EOF
 EOF
 cat /opt/appdata/plexguide/server.info
 echo
-echo "🚀 To SSH into Your Server, use PG or type ssh root@ipv4.address"
-echo "   Wait 30 seconds before attempting to login to the server"
+echo "To SSH into Your Server, use PG or type ssh root@ipv4.address"
+echo "Wait 30 seconds before attempting to login in the server"
 echo
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 
