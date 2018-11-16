@@ -187,6 +187,7 @@ EOF
       bash /opt/plexguide/menu/hetzner/hetzner.sh
       exit
     else
+      sshin=$typed
       check=$(hcloud server list | grep "\<$sshin\>" | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
       ipcheck=$(echo $check | awk '{ print $3 }')
       if [ "$ipcheck" == "" ]; then
