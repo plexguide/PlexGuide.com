@@ -44,9 +44,6 @@ tee <<-EOF
 🚀 PG - Create a Server Name
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: Use only one phrase with no spaces! Make it simple and do not
-name of it of a server that is currently running with the same name!
-
 EOF
 read -p 'Type a Server Name | Press [ENTER]: ' name < /dev/tty
 tee <<-EOF
