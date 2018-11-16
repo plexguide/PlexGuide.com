@@ -89,11 +89,11 @@ tee <<-EOF
 EOF
 cat /opt/appdata/plexguide/server.info
 echo
-echo "Copy the Generated Password! It's a one time use password"
-echo "Hetzner will force you to change it! Exit PG and try to"
-echo "login to your new server!"
+echo "[COPY] the Generated Password and IP Address! The password is one!"
+echo "time use and Hetzner will force you to change it! Exit PG and "
+echo "try to login to your new server!"
 echo ""
-echo "Wait 30 seconds before attempting to login in the server"
+echo "Wait 30 seconds before attempting to login!"
 echo
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 
