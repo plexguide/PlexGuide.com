@@ -25,7 +25,7 @@ fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Hetzner's Cloud Generator
+🌎 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Deploy a New Server  [deploy]
@@ -41,7 +41,7 @@ if [ "$typed" == "1" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Create a Server Name
+↘️  PG - Create a Server Name
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -49,7 +49,7 @@ read -p 'Type a Server Name | Press [ENTER]: ' name < /dev/tty
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Hetzner's Cloud OS Selector
+↘️  PG - Hetzner's Cloud OS Selector
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Ubuntu 18.04 (PlexGuide Works)
@@ -87,18 +87,14 @@ EOF
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - New Server Information - [$name]
+↘️  PG - New Server Information - [$name]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
 cat /opt/appdata/plexguide/server.info
 tee <<-EOF
-[COPY] the Generated Password and IP Address! The password is one!
-time use and Hetzner will force you to change it! Exit PG and
-try to login to your new server!
 
-WARNING: If you fail to copy the password, you will have to destroy
-the server and create a new one again!
+⚠️  Copy the Password; this will be shown only once!
 
 EOF
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
@@ -110,7 +106,7 @@ elif [ "$typed" == "2" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Hetzner Server Cloud List
+↘️ PG - Hetzner Server Cloud List
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Server Name
@@ -127,7 +123,7 @@ elif [ "$typed" == "3" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Destory a Hetzner Cloud Server!
+↘️  PG - Destory a Hetzner Cloud Server!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Server Name
@@ -147,7 +143,7 @@ read -p 'Type a Server to Destroy | Press [ENTER]: ' destroy < /dev/tty
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Server: $destroy - Does Not Exist!
+⛔️  PG - Server: $destroy - Does Not Exist!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -160,65 +156,14 @@ EOF
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Server: $destroy - Destroyed!
+↘️  PG - Server: $destroy - Destroyed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
     read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
     bash /opt/plexguide/menu/hetzner/hetzner.sh
     exit
-fi
-elif [ "$typed" == "4" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Active Running Hetzner Servers!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Server Name
-━━━━━━━━━━━
-EOF
-  hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
-  echo
-  read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
-
-  echo
-  echo "Quit? Type >>> exit"
-  read -p 'Type a Server Name to Login To | Press [ENTER]: ' sshin < /dev/tty
-    if [ "$sshin" == "exit" ]; then
-      bash /opt/plexguide/menu/hetzner/hetzner.sh
-      exit
-    else
-      check=$(hcloud server list | grep "\<$sshin\>" | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
-      ipcheck=$(echo $check | awk '{ print $3 }')
-      if [ "$ipcheck" == "" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Server: $sshin - Does Not Exist!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-      read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
-      bash /opt/plexguide/menu/hetzner/hetzner.sh
-      exit
-    fi
-    echo
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Server: $sshin - Attempting to Login
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-      #ssh-keygen -f "/root/.ssh/known_hosts" -R $ipcheck
-      ssh root@$ipcheck
-      bash /opt/plexguide/menu/hetzner/hetzner.sh
-      exit
   fi
-
-  bash /opt/plexguide/menu/hetzner/hetzner.sh
-  exit
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
@@ -226,5 +171,7 @@ else
   exit
 fi
 
+#check=$(hcloud server list | grep "\<$sshin\>" | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
+#ipcheck=$(echo $check | awk '{ print $3 }')
 #⛔️  WARNING! - Must Configure RClone First /w >>> gdrive
 # read -n 1 -s -r -p "Press [ANY] Key to Continue "
