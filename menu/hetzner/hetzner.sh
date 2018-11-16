@@ -26,7 +26,7 @@ tee <<-EOF
 * Activate a Hetzner Cloud Account and Create a Project
 * Click Access (left hand side) and then click API Tokens
 * Create a Token and Save It (and paste below here)
-* Not Ready? Just [Press Enter to Exit]
+* Not Ready? Just Something & Press [ENTER]
 
 EOF
 hcloud context create plexguide
