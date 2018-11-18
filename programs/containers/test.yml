@@ -21,7 +21,7 @@
 
     - name: "guacd"
       docker_container:
-        name: "guacd_compose"
+        name: "guacd"
         image: "guacamole/guacd"
         pull: yes
         restart_policy: always
