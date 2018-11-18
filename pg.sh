@@ -48,7 +48,7 @@ echo "83" > /var/plexguide/pg.alias
 echo "2" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
-echo "10" > /var/plexguide/pg.hetzner
+echo "11" > /var/plexguide/pg.hetzner
 echo "1" > /var/plexguide/pg.amazonaws
 
 

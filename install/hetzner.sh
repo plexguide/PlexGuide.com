@@ -45,19 +45,14 @@ tar="hcloud-linux-amd64-v1.10.0.tar.gz"
 # Leave Alone
 tarminus="${tar::-7}"
 
-if [ ! -e "$file" ]; then
-wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tar"
-else
-  rm -rf /bin/hcloud
-  wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tar"
-fi
+if [ -e "$file" ]; then; rm -rf /bin/hcloud; fi
 
+wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tar"
 tar -xvf /$path/$tar
 echo $tarminus
 mv /$path/$tarminus/bin/hcloud /bin/
 rm -rf /$path/$tarminus 1>/dev/null 2>&1
 rm -rf /$path/$tar 1>/dev/null 2>&1
-
 
 # Prevents From Repeating
 cat /var/plexguide/pg.hetzner > /var/plexguide/pg.hetzner.stored
