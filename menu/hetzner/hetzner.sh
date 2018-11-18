@@ -50,6 +50,8 @@ tee <<-EOF
 1 - Deploy a New Server
 2 - List Server Info
 3 - Destory a Server
+━━━━━━━━━━━━━━━━━━━━
+A - Display Inital Server Passwords
 Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -187,6 +189,25 @@ EOF
     bash /opt/plexguide/menu/hetzner/hetzner.sh
     exit
   fi
+
+elif [ "$typed" == "A" ] || [ "$typed" == "a" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️ PG - Inital Server Passwords
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ Useful if never logged in! Listed by creation by this server (new > old)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+tail
+echo
+read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+
+tail -r /opt/appdata/plexguide/server.store
+exit
+
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
