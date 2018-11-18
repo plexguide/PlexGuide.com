@@ -131,7 +131,7 @@ $check | awk '{ print $3 }'
 serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
 initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" > /bin/pg-$name
-echo "echo '↘️ Server - $name | Initial Password $initialpw'" >> /bin/pg-$name
+echo "echo '↘️  Server - $name | Initial Password $initialpw'" >> /bin/pg-$name
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" >> /bin/pg-$name
 echo "" >> /bin/pg-$name
 echo "ssh root@$serverip" >> /bin/pg-$name
