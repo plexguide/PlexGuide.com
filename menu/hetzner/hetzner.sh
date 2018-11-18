@@ -131,7 +131,8 @@ tee <<-EOF
 
 Wait for one minute for the server to boot! Typing pg-$name will
 display your initial password! Also can manually by typing:
-ssh root@$serverip
+
+Command: ssh root@$serverip
 FIRST TIME LOGIN - Initial Password: $initialpw
 
 EOF
