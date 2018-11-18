@@ -48,9 +48,9 @@ tee <<-EOF
 ⚡ Reference: http://hcloud.plexguide.com
 
 1 - Deploy a New Server
-2 - List Server Info
-3 - Destory a Server
-A - Display Inital Server Passwords
+2 - Destory a Server
+A - List Server Info
+B - Display Inital Server Passwords
 Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -128,7 +128,7 @@ read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 bash /opt/plexguide/menu/hetzner/hetzner.sh
 exit
 
-elif [ "$typed" == "2" ]; then
+elif [ "$typed" == "A" ] || [ "$typed" == "a" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -191,7 +191,7 @@ EOF
     exit
   fi
 
-elif [ "$typed" == "A" ] || [ "$typed" == "a" ]; then
+elif [ "$typed" == "B" ] || [ "$typed" == "b" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
