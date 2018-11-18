@@ -58,7 +58,7 @@
         networks:
           - name: plexguide
             aliases:
-              - "GUACD"
+              - "guacamole"
         state: started
         links: guacd
         published_ports:
