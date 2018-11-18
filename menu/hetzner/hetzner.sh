@@ -113,6 +113,17 @@ tee <<-EOF
 EOF
 cat /opt/appdata/plexguide/server.info
 
+# Creates Command pg-whatevername
+$check | awk '{ print $3 }'
+serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" > /bin/pg-$name
+echo "↘️  Hetzner Server Login" > /bin/pg-$name
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" > /bin/pg-$name
+
+echo "ssh root@$serverip" >> /bin/pg-$name
+
+# Creates Log
 touch /opt/appdata/plexguide/server.store
 cat /opt/appdata/plexguide/server.info >> /opt/appdata/plexguide/server.store
 echo "Server Name: $name" >> /opt/appdata/plexguide/server.store
