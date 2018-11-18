@@ -48,8 +48,8 @@ else
 fi
 
 tar -xvf /$path/$tar
-mv /$path/$tar /bin
-rm -rf /$path/$tar 1>/dev/null 2>&1
+mv /$path/$tar/bin/hcloud /bin/
+#rm -rf /$path/$tar 1>/dev/null 2>&1
 
 # Prevents From Repeating
 cat /var/plexguide/pg.hetzner > /var/plexguide/pg.hetzner.stored
