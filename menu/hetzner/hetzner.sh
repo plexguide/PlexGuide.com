@@ -197,7 +197,7 @@ tee <<-EOF
 ↘️ PG - Inital Server Passwords
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️ Useful if never logged in! Listed by creation by this server (new > old)
+⚠️ Useful if NEVER logged in! List created by this Server (new > old)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -205,6 +205,7 @@ tail
 echo
 read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 
+touch /opt/appdata/plexguide/server.store
 tail -r /opt/appdata/plexguide/server.store
 exit
 
