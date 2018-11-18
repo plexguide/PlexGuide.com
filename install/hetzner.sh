@@ -45,7 +45,7 @@ tar="hcloud-linux-amd64-v1.10.0.tar.gz"
 # Leave Alone
 tarminus="${tar::-7}"
 
-if [ -e "$file" ]; then; rm -rf /bin/hcloud; fi
+if [ -e "$file" ]; then rm -rf /bin/hcloud; fi
 
 wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tar"
 tar -xvf /$path/$tar
