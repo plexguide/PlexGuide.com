@@ -204,12 +204,11 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-tail
-echo
-read -p 'Press [ENTER] to Continue! ' corn < /dev/tty
 
 touch /opt/appdata/plexguide/server.store
 tail -r /opt/appdata/plexguide/server.store
+
+read -p 'Press [ENTER] to Continue! ' corn < /dev/tty
 
 bash /opt/plexguide/menu/hetzner/hetzner.sh
 exit
