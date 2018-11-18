@@ -35,13 +35,21 @@ EOF
 sleep 5
 
 # Execute Install
-rm -rf /tmp/hcloud-linux-amd64-v1.9.1/bin/hcloud 1>/dev/null 2>&1
 file="/bin/hcloud"
+path="opt/appdata/plexguide"
+version="v1.10.0"
+tar="hcloud-linux-amd64-v1.10.0.tar.gz"
+
 if [ ! -e "$file" ]; then
-wget -P /tmp "https://github.com/hetznercloud/cli/releases/download/v1.10.0/hcloud-linux-amd64-v1.10.0.tar.gz"
+wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tar"
+else
+  rm -rf /bin/hcloud
+  wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tar"
 fi
-tar -xvf /tmp/hcloud-linux-amd64-v1.10.0.tar.gz
-mv /tmp/hcloud-linux-amd64-v1.10.0.tar.gz /bin/
+
+tar -xvf /$path/$tar
+mv /$path/$tar /bin
+rm -rf /$path/$tar 1>/dev/null 2>&1
 
 # Prevents From Repeating
 cat /var/plexguide/pg.hetzner > /var/plexguide/pg.hetzner.stored
