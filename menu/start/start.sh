@@ -201,7 +201,7 @@ elif [ "$typed" == "5" ]; then
 elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "7" ]; then
-  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
+  bash /opt/plexguide/menu/settings/settings.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   bash /opt/plexguide/roles/ending/ending.sh
   exit
