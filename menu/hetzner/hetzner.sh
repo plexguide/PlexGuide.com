@@ -119,22 +119,28 @@ cat /opt/appdata/plexguide/server.info >> /opt/appdata/plexguide/server.store
 echo "Server Name: $name" >> /opt/appdata/plexguide/server.store
 echo "" >> /opt/appdata/plexguide/server.store
 
+# Variable Info
+serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
+initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
+
 tee <<-EOF
 
-⚠️  If Forgetting Inital Password? Select > Display Inital Server Passwords
+⚠️  To Reach Your Server >>> EXIT PG >>> TYPE: pg-$name ⚠️
+
+NOTE: Wait for at least one minute for your server to boot up! When you type
+pg-$name; it will also display your initial password! You can also do it the
+manually by typing root@$serverip
 
 EOF
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
 
-# Creates Command pg-whatevername
-$check | awk '{ print $3 }'
-serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
-initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
+# Creates Command pg-whatevername 2
 echo "" >> /bin/pg-$name
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" > /bin/pg-$name
 echo "echo '↘️  Server - $name | Initial Password $initialpw'" >> /bin/pg-$name
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" >> /bin/pg-$name
-echo "" >> /bin/pg-$name 
+echo "NOTE: Donate or Sponsor PG Today! Helps with Costs & Mrs. Admin (1# Enemy)!" >> /bin/pg-$name
+echo "" >> /bin/pg-$name
 echo "ssh root@$serverip" >> /bin/pg-$name
 chmod 777 /bin/pg-$name
 chown 1000:1000 /bin/pg-$name
