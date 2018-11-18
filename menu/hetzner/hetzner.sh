@@ -120,7 +120,7 @@ echo "" >> /opt/appdata/plexguide/server.store
 
 tee <<-EOF
 
-⚠️  Copy the Password; this will be shown only once!
+⚠️  If Forgetting Inital Password? Select > Display Inital Server Passwords
 
 EOF
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
