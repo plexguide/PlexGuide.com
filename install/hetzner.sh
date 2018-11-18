@@ -51,7 +51,7 @@ if [ -e "$file" ]; then rm -rf /bin/hcloud; fi
 wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tarname"
 tar -xvf /opt/appdata/plexguide/$tarname
 echo $tarminus
-mv /$path/$tarminus/bin/hcloud /bin/
+mv /$path/"$tarminus"/bin/hcloud /bin/
 sleep 500
 #rm -rf /$path/$tarminus 1>/dev/null 2>&1
 #rm -rf /$path/$tar 1>/dev/null 2>&1
