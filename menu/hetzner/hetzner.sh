@@ -141,7 +141,7 @@ echo "" >> /bin/pg-$name
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" > /bin/pg-$name
 echo "echo '↘️  Server - $name | Initial Password $initialpw'" >> /bin/pg-$name
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" >> /bin/pg-$name
-echo "✅️ Donate @ donate.plexguide.com - Helps with Costs & Mrs. Admin - #1 Enemy!" >> /bin/pg-$name
+echo "echo ✅️ Donate @ donate.plexguide.com - Helps with Costs & Mrs. Admin - #1 Enemy!" >> /bin/pg-$name
 echo "" >> /bin/pg-$name
 echo "ssh root@$serverip" >> /bin/pg-$name
 chmod 777 /bin/pg-$name
