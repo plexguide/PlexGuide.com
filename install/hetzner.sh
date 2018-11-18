@@ -52,6 +52,7 @@ wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$
 tar -xvf /$path/$tar
 echo $tarminus
 mv /$path/$tarminus/bin/hcloud /bin/
+sleep 500
 rm -rf /$path/$tarminus 1>/dev/null 2>&1
 rm -rf /$path/$tar 1>/dev/null 2>&1
 
