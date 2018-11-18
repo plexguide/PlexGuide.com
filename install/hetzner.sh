@@ -31,27 +31,16 @@ PLEASE STANDBY!
 
 EOF
 
+version="v1.10.0"
 # Standby
 sleep 5
-
-# Leave Alone
-file="/bin/hcloud"
-path="opt/appdata/plexguide"
-
-# Change
-version="v1.10.0"
-tarname="hcloud-linux-amd64-v1.10.0.tar.gz"
-
-# Leave Alone
-minus="${tarname::-7}"
 
 if [ -e "$file" ]; then rm -rf /bin/hcloud; fi
 
 #mkdir -p /"$path"/"$tarminus"/
-wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tarname"
-tar -xvf /$path/$tarname
-echo $minus
-mv /$path/$minus/bin/hcloud /bin/
+wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/hcloud-linux-amd64-$version.tar.gz"
+tar -xvf /opt/appdata/plexguide/hcloud-linux-amd64-$version.tar.gz
+mv /opt/appdata/plexguide/hcloud-linux-amd64-$version/bin/hcloud /bin/
 sleep 500
 #rm -rf /$path/$tarminus 1>/dev/null 2>&1
 #rm -rf /$path/$tar 1>/dev/null 2>&1
