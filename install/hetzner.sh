@@ -47,6 +47,7 @@ tarminus="${tar::-7}"
 
 if [ -e "$file" ]; then rm -rf /bin/hcloud; fi
 
+mkdir -p /"$path"/"$tarminus"/
 wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tar"
 tar -xvf /$path/$tar
 echo $tarminus
