@@ -135,6 +135,8 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "↘️  Hetzner Server Login" > /bin/pg-$name
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" > /bin/pg-$name
 echo "ssh root@$serverip" >> /bin/pg-$name
+chmod 777 /bin/pg-$name
+chown 1000:1000 /bin/pg-$name
 
 bash /opt/plexguide/menu/hetzner/hetzner.sh
 exit
@@ -198,6 +200,7 @@ tee <<-EOF
 
 EOF
     read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+    rm -rf /bin/pg-$destroy
     bash /opt/plexguide/menu/hetzner/hetzner.sh
     exit
   fi
