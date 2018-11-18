@@ -127,9 +127,9 @@ tee <<-EOF
 
 ⚠️  To Reach Your Server >>> EXIT PG >>> TYPE: pg-$name ⚠️
 
-NOTE: Wait for at least one minute for your server to boot up! When you type
-pg-$name; it will also display your initial password! You can also do it the
-manually by typing root@$serverip
+✅️  Wait for one minute for the server to boot! Typing pg-$name will
+display your initial password! Also can manually by typing:
+root@$serverip (FIRST TIME - initial pw: $initialpw)
 
 EOF
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
