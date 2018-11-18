@@ -131,7 +131,7 @@ elif [ "$typed" == "2" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️ PG - Hetzner Server Cloud List
+↘️  PG - Hetzner Server Cloud List
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Server Name
@@ -194,10 +194,10 @@ elif [ "$typed" == "A" ] || [ "$typed" == "a" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️ PG - Inital Server Passwords
+↘️  PG - Inital Server Passwords
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️ Useful if NEVER logged in! List created by this Server (new > old)
+⚠️  Useful if NEVER logged in! List created by this Server (new > old)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
