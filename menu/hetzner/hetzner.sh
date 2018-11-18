@@ -200,7 +200,6 @@ tee <<-EOF
 
 ⚠️  Useful if NEVER logged in! List created by this Server (new > old)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 touch /opt/appdata/plexguide/server.store
