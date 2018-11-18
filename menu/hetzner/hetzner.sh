@@ -51,6 +51,7 @@ tee <<-EOF
 2 - List Server Info
 3 - Destory a Server
 ━━━━━━━━━━━━━━━━━━━━
+
 A - Display Inital Server Passwords
 Z - EXIT
 
@@ -114,8 +115,10 @@ tee <<-EOF
 EOF
 cat /opt/appdata/plexguide/server.info
 
-cat /opt/appdata/plexguide/server.info > /opt/appdata/plexguide/server.store
-echo "" > /opt/appdata/plexguide/server.store
+touch /opt/appdata/plexguide/server.store
+cat /opt/appdata/plexguide/server.info >> /opt/appdata/plexguide/server.store
+echo "Server Name: $name" >> /opt/appdata/plexguide/server.store
+echo "" >> /opt/appdata/plexguide/server.store
 
 tee <<-EOF
 
