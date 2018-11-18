@@ -44,27 +44,27 @@
         state: started
 
     - name: "guacamole"
-     docker_container:
-       name: "guacamole"
-       image: "guacamole/guacamole"
-       pull: yes
-       restart_policy: always
-       env:
-         GUACD_HOSTNAME: guacd
-         POSTGRES_DATABASE: guacamole_db
-         POSTGRES_HOSTNAME: postgres
-         POSTGRES_PASSWORD: password
-         POSTGRES_USER: guacamole_user
-         networks:
-           - name: plexguide
-           aliases:
-             - "GUACD"
-             state: started
-             links: guacd
-             published_ports:
-               - "8080:8082"
-               labels:
-                 traefik.port: "8080"
-                 traefik.backend: "guacamole"
-                 traefik.enable: "true"
-                 traefik.docker.network: "plexguide"
+      docker_container:
+        name: "guacamole"
+        image: "guacamole/guacamole"
+        pull: yes
+        restart_policy: always
+        env:
+          GUACD_HOSTNAME: guacd
+          POSTGRES_DATABASE: guacamole_db
+          POSTGRES_HOSTNAME: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: guacamole_user
+        networks:
+          - name: plexguide
+            aliases:
+              - "GUACD"
+        state: started
+        links: guacd
+        published_ports:
+          - "8080:8082"
+        labels:
+          traefik.port: "8080"
+          traefik.backend: "guacamole"
+          traefik.enable: "true"
+          traefik.docker.network: "plexguide"
