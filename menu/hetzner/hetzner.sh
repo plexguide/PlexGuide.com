@@ -203,10 +203,12 @@ tee <<-EOF
 EOF
 tail
 echo
-read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+read -p 'Press [ENTER] to Continue! ' corn < /dev/tty
 
 touch /opt/appdata/plexguide/server.store
 tail -r /opt/appdata/plexguide/server.store
+
+bash /opt/plexguide/menu/hetzner/hetzner.sh
 exit
 
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
