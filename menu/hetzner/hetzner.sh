@@ -145,7 +145,7 @@ read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 bash /opt/plexguide/menu/hetzner/hetzner.sh
 exit
 
-elif [ "$typed" == "3" ]; then
+elif [ "$typed" == "2" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
