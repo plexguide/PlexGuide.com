@@ -50,8 +50,6 @@ tee <<-EOF
 1 - Deploy a New Server
 2 - List Server Info
 3 - Destory a Server
-━━━━━━━━━━━━━━━━━━━━
-
 A - Display Inital Server Passwords
 Z - EXIT
 
