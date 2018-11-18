@@ -111,6 +111,10 @@ tee <<-EOF
 
 EOF
 cat /opt/appdata/plexguide/server.info
+
+cat /opt/appdata/plexguide/server.info > /opt/appdata/plexguide/server.store
+echo "" > /opt/appdata/plexguide/server.store
+
 tee <<-EOF
 
 ⚠️  Copy the Password; this will be shown only once!
