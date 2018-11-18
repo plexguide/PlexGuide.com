@@ -131,7 +131,8 @@ tee <<-EOF
 
 Wait for one minute for the server to boot! Typing pg-$name will
 display your initial password! Also can manually by typing:
-root@$serverip * FIRST TIME - initial pw: $initialpw
+ssh root@$serverip
+FIRST TIME LOGIN - Initial Password: $initialpw
 
 EOF
 read -p 'Press [ENTER] to Exit ' fill < /dev/tty
@@ -142,8 +143,7 @@ echo "echo ━━━━━━━━━━━━━━━━━━━━━━━
 echo "echo '↘️  Server - $name | Initial Password $initialpw'" >> /bin/pg-$name
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" >> /bin/pg-$name
 echo "echo '✅️ Donate @ donate.plexguide.com - Helps Costs & Mrs. Admin - #1 Enemy!'" >> /bin/pg-$name
-echo "" >> /bin/pg-$name
-echo "" >> /bin/pg-$name
+echo "echo ''" >> /bin/pg-$name
 echo "ssh root@$serverip" >> /bin/pg-$name
 chmod 777 /bin/pg-$name
 chown 1000:1000 /bin/pg-$name
