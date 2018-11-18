@@ -34,11 +34,16 @@ EOF
 # Standby
 sleep 5
 
-# Execute Install
+# Leave Alone
 file="/bin/hcloud"
 path="opt/appdata/plexguide"
+
+# Change
 version="v1.10.0"
 tar="hcloud-linux-amd64-v1.10.0.tar.gz"
+
+# Leave Alone
+tarminus="${tar::-7}"
 
 if [ ! -e "$file" ]; then
 wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tar"
@@ -48,7 +53,8 @@ else
 fi
 
 tar -xvf /$path/$tar
-mv /$path/$tar/bin/hcloud /bin/
+echo $tarminus
+mv /$path/$tarminus/bin/hcloud /bin/
 #rm -rf /$path/$tar 1>/dev/null 2>&1
 
 # Prevents From Repeating
