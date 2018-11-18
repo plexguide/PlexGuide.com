@@ -204,7 +204,7 @@ EOF
 
 touch /opt/appdata/plexguide/server.store
 tac -r /opt/appdata/plexguide/server.store
-
+echo "" & echo ""
 read -p 'Press [ENTER] to Continue! ' corn < /dev/tty
 
 bash /opt/plexguide/menu/hetzner/hetzner.sh
