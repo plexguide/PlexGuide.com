@@ -31,19 +31,18 @@ PLEASE STANDBY!
 
 EOF
 
-version="v1.10.0"
+
 # Standby
 sleep 5
 
 if [ -e "$file" ]; then rm -rf /bin/hcloud; fi
 
-#mkdir -p /"$path"/"$tarminus"/
-wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/hcloud-linux-amd64-$version.tar.gz"
-tar -xvf /opt/appdata/plexguide/hcloud-linux-amd64-$version.tar.gz
-mv /opt/appdata/plexguide/hcloud-linux-amd64-$version/bin/hcloud /bin/
-sleep 500
-#rm -rf /$path/$tarminus 1>/dev/null 2>&1
-#rm -rf /$path/$tar 1>/dev/null 2>&1
+version="v1.10.0"
+wget -P /opt/appdata/plexguide "https://github.com/hetznercloud/cli/releases/download/$version/hcloud-linux-amd64-$version.tar.gz"
+tar -xvf "/opt/appdata/plexguide/hcloud-linux-amd64-$version.tar.gz" -C /opt/appdata/plexguide
+mv "/opt/appdata/plexguide/hcloud-linux-amd64-$version/bin/hcloud" /bin/
+rm -rf /opt/appdata/plexguide/hcloud-linux-amd64-$version.tar.gz
+rm -rf /opt/appdata/plexguide/hcloud-linux-amd64-$version
 
 # Prevents From Repeating
 cat /var/plexguide/pg.hetzner > /var/plexguide/pg.hetzner.stored
