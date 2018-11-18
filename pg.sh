@@ -49,6 +49,8 @@ echo "2" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
 echo "10" > /var/plexguide/pg.hetzner
+echo "1" > /var/plexguide/pg.amazonaws
+
 
 # Declare Variables Vital for Operations
 bash /opt/plexguide/menu/interface/install/scripts/declare.sh
