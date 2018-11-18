@@ -40,16 +40,16 @@ path="opt/appdata/plexguide"
 
 # Change
 version="v1.10.0"
-tar="hcloud-linux-amd64-v1.10.0.tar.gz"
-tar -xvf /$path/$tar
+tarname="hcloud-linux-amd64-v1.10.0.tar.gz"
+tar -xvf /$path/$tarname
 # Leave Alone
 tarminus="${tar::-7}"
 
 if [ -e "$file" ]; then rm -rf /bin/hcloud; fi
 
 #mkdir -p /"$path"/"$tarminus"/
-wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tar"
-tar -xvf /$path/$tar
+wget -P /$path "https://github.com/hetznercloud/cli/releases/download/$version/$tarname"
+tar -xvf /opt/appdata/plexguide/$tarname
 echo $tarminus
 mv /$path/$tarminus/bin/hcloud /bin/
 sleep 500
