@@ -48,7 +48,7 @@ echo "83" > /var/plexguide/pg.alias
 echo "2" > /var/plexguide/pg.dep
 echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
-echo "3" > /var/plexguide/pg.hetzner
+echo "4" > /var/plexguide/pg.hetzner
 
 # Declare Variables Vital for Operations
 bash /opt/plexguide/menu/interface/install/scripts/declare.sh
@@ -90,7 +90,6 @@ if [ "$dstatus" != "portainer" ]; then
 echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off" &>/dev/null &
 fi
 
-bash /opt/plexguide/menu/watchtower/watchtower.sh
 bash /opt/plexguide/install/motd.sh
 bash /opt/plexguide/install/cleaner.sh
 bash /opt/plexguide/install/gcloud.sh
@@ -98,6 +97,7 @@ bash /opt/plexguide/install/hetzner.sh
 
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/install/rclone.sh
+bash /opt/plexguide/menu/watchtower/watchtower.sh
 
 ######################################################## END: Common Functions
 #

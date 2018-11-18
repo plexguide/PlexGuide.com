@@ -36,12 +36,12 @@ sleep 5
 
 # Execute Install
 rm -rf /tmp/hcloud-linux-amd64-v1.9.1/bin/hcloud 1>/dev/null 2>&1
-file="/var/plexguide/server.hd.path"
+file="/bin/hcloud"
 if [ ! -e "$file" ]; then
-wget -P /tmp "https://github.com/hetznercloud/cli/releases/download/v1.9.1/hcloud-linux-amd64-v1.9.1.tar.gz"
+wget -P /tmp "https://github.com/hetznercloud/cli/releases/download/v1.10.0/hcloud-linux-amd64-v1.10.0.tar.gz"
 fi
-tar -xvf /tmp/hcloud-linux-amd64-v1.9.1.tar.gz
-mv /tmp/hcloud-linux-amd64-v1.9.1/bin/hcloud /bin/
+tar -xvf /tmp/hcloud-linux-amd64-v1.10.0.tar.gz
+mv /tmp/hcloud-linux-amd64-v1.10.0.tar.gz /bin/
 
 # Prevents From Repeating
 cat /var/plexguide/pg.hetzner > /var/plexguide/pg.hetzner.stored
