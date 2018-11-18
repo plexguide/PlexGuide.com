@@ -23,7 +23,6 @@ tee <<-EOF
 
 1 - Cloud Instance: Google   (For PG GCE Edition)
 2 - Cloud Instance: Hetzner
-3 - Cloud Instance: Amazon AWS (NOT WORKING YET)
 Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -36,8 +35,9 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
     echo gce > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "2" ]; then
     bash /opt/plexguide/menu/hetzner/hetzner.sh
-  elif [ "$typed" == "2" ]; then
-      bash /opt/plexguide/menu/amazonaws/amazonaws.sh
+#elif [ "$typed" == "3" ]; then
+#    bash /opt/plexguide/menu/amazonaws/amazonaws.sh
+#3 - Cloud Instance: Amazon AWS (NOT WORKING YET)
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
     exit
 else
