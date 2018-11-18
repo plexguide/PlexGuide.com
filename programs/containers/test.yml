@@ -1,0 +1,70 @@
+#!/bin/bash
+#
+# Version:  Ansible-1
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+############################################################# (KEY START)
+---
+- hosts: localhost
+  gather_facts: true
+  tasks:
+
+    - name: "guacd"
+      docker_container:
+        name: "guacd_compose"
+        image: "guacamole/guacd"
+        pull: yes
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "guacd"
+        state: started
+
+    - name: "postgres"
+      docker_container:
+        name: "postgres"
+        image: "postgres"
+        pull: yes
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "postgres"
+        state: started
+
+      - name: "guacamole"
+        docker_container:
+          name: "guacamole"
+          image: "guacamole/guacamole"
+          pull: yes
+          restart_policy: always
+          env:
+            GUACD_HOSTNAME: guacd
+            POSTGRES_DATABASE: guacamole_db
+            POSTGRES_HOSTNAME: postgres
+            POSTGRES_PASSWORD: password
+            POSTGRES_USER: guacamole_user
+          networks:
+            - name: plexguide
+              aliases:
+                - "GUACD"
+          state: started
+          links: guacd
+          published_ports:
+            - "8080:8082"
+          labels:
+            traefik.port: "8080"
+            traefik.backend: "guacamole"
+            traefik.enable: "true"
+            traefik.docker.network: "plexguide"
