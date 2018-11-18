@@ -143,6 +143,7 @@ echo "echo '↘️  Server - $name | Initial Password $initialpw'" >> /bin/pg-$n
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" >> /bin/pg-$name
 echo "echo '✅️ Donate @ donate.plexguide.com - Helps Costs & Mrs. Admin - #1 Enemy!'" >> /bin/pg-$name
 echo "" >> /bin/pg-$name
+echo "" >> /bin/pg-$name
 echo "ssh root@$serverip" >> /bin/pg-$name
 chmod 777 /bin/pg-$name
 chown 1000:1000 /bin/pg-$name
