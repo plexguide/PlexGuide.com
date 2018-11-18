@@ -206,7 +206,7 @@ tee <<-EOF
 EOF
 
 touch /opt/appdata/plexguide/server.store
-tail -r /opt/appdata/plexguide/server.store
+tac -r /opt/appdata/plexguide/server.store
 
 read -p 'Press [ENTER] to Continue! ' corn < /dev/tty
 
