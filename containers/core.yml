@@ -82,3 +82,8 @@
 
   - debug: msg="TLD does not apply"
     when: "not toplevel.stdout == pgrole"
+
+# EXTERNAL PORT FOR END BANNER
+  - name: Export Internal Port
+    shell: "echo {{extport}} > /tmp/program_port"
+    ignore_errors: True
