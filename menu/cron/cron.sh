@@ -45,8 +45,8 @@ tee <<-EOF
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then exit; fi
-  if [ "$typed" == "2" ]; then break=1;
+  if [ "$typed" == "1" ]; then exit;
+elif [ "$typed" == "2" ]; then break=1;
 else badinput; fi
 }
 
