@@ -30,6 +30,9 @@
             aliases:
               - "guacd"
         state: started
+        volumes:
+          - "/opt/appdata/plexguide/init:/drive:rw"
+          - "/opt/appdata/plexguide/data:/record:rw"
 
     - name: "postgres"
       docker_container:
@@ -42,6 +45,9 @@
             aliases:
               - "postgres"
         state: started
+        volumes:
+          - "/opt/appdata/plexguide/init:/docker-entrypoint-initdb.d:ro"
+          - "/opt/appdata/plexguide/data:/var/lib/postgresql/data:rw"
 
     - name: "guacamole"
       docker_container:
