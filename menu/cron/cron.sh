@@ -13,6 +13,14 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
+
+
+break=0
+while break=0; do
+question1
+done
+
 badinput () {
 tee <<-EOF
 
@@ -41,13 +49,6 @@ EOF
   if [ "$typed" == "2" ]; then break=1;
 else badinput; fi
 }
-
-
-break=0
-while break=0; do
-question1
-done
-
 
 if [ "$typed" == "2" ]; then
 tee <<-EOF
