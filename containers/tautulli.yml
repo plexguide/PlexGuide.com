@@ -22,7 +22,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "sickchill"
+      pgrole: "tautulli"
       intport: "8181"
       extport: "8181"
       image: "linuxserver/tautulli"
