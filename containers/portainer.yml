@@ -18,49 +18,49 @@
   gather_facts: false
   tasks:
 # FACTS #######################################################################
-- name: "Set Known Facts"
-  set_fact:
-    pgrole: "portainer"
-    intport: "9000"
-    extport: "9000"
-    image: "portainer/portainer"
+  - name: "Set Known Facts"
+    set_fact:
+      pgrole: "portainer"
+      intport: "9000"
+      extport: "9000"
+      image: "portainer/portainer"
 
 # LABELS ######################################################################
-- name: "Setting PG Labels"
-  set_fact:
-    default_labels:
-      traefik.enable: "true"
-      traefik.port: "{{intport}}"
-      traefik.frontend.redirect.entryPoint: "https"
-      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+  - name: "Setting PG Labels"
+    set_fact:
+      default_labels:
+        traefik.enable: "true"
+        traefik.port: "{{intport}}"
+        traefik.frontend.redirect.entryPoint: "https"
+        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-- name: "Setting PG Volumes"
-  set_fact:
-    pg_volumes:
-      - "/opt/appdata/{{pgrole}}:/data"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/opt/appdata/{{pgrole}}:/data"
+  - name: "Setting PG Volumes"
+    set_fact:
+      pg_volumes:
+        - "/opt/appdata/{{pgrole}}:/data"
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "/opt/appdata/{{pgrole}}:/data"
 
-- name: "Setting PG ENV"
-  set_fact:
-    pg_env:
-      PUID: 1000
+  - name: "Setting PG ENV"
+    set_fact:
+      pg_env:
+        PUID: 1000
       PGID: 1000
 
 # MAIN DEPLOYMENT #############################################################
-- name: "Deploying Container - {{pgrole}}"
-  docker_container:
-    name: "{{pgrole}}"
-    image: "{{image}}"
-    pull: yes
-    published_ports:
-      - "{{ports.stdout}}{{extport}}:{{intport}}"
-    volumes: "{{pg_volumes}}"
-    env: "{{pg_env}}"
-    restart_policy: always
-    networks:
-      - name: plexguide
-        aliases:
-          - "{{pgrole}}"
-    state: started
-    labels: "{{pg_labels}}"
+  - name: "Deploying Container - {{pgrole}}"
+    docker_container:
+      name: "{{pgrole}}"
+      image: "{{image}}"
+      pull: yes
+      published_ports:
+        - "{{ports.stdout}}{{extport}}:{{intport}}"
+      volumes: "{{pg_volumes}}"
+      env: "{{pg_env}}"
+      restart_policy: always
+      networks:
+        - name: plexguide
+          aliases:
+            - "{{pgrole}}"
+      state: started
+      labels: "{{pg_labels}}"
