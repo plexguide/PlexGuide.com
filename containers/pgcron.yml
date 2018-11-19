@@ -29,7 +29,7 @@
 # CRON START ###################################################################
   - name: Schedule CronJob Question
     pause:
-      prompt: "\nSchedule Backups for {{pgrole}}?\n1- YES (Recommended)\n2- NO/Remove"
+      prompt: "\nSchedule Backups for {{pgrole.stdout}}?\n1- YES (Recommended)\n2- NO/Remove"
     register: askcron
     until: askcron.user_input > "0" and askcron.user_input < "3"
     retries: 99
@@ -96,16 +96,16 @@
     when: askcron.user_input == "1"
 
   - name: Build Cron Job File
-    shell: echo "ansible-playbook /opt/plexguide/pg.yml --tags b-cron" > /opt/appdata/plexguide/cron/{{pgrole}}
+    shell: echo "ansible-playbook /opt/plexguide/pg.yml --tags b-cron" > /opt/appdata/plexguide/cron/{{pgrole.stdout}}
     when: askcron.user_input == "1"
 
   - name: Build Cron Job Schedule
     cron:
-      name: "{{pgrole}}"
+      name: "{{pgrole.stdout}}"
       weekday: "{{trueperiod}}"
       minute: "{{rminute}}"
       hour: "{{hour.user_input}}"
-      job: "bash /opt/appdata/plexguide/cron/{{pgrole}}"
+      job: "bash /opt/appdata/plexguide/cron/{{pgrole.stdout}}"
       state: present
     when: askcron.user_input == "1"
 
