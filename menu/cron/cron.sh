@@ -46,7 +46,7 @@ EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then exit;
-elif [ "$typed" == "2" ]; then break=1;
+elif [ "$typed" == "2" ]; then break="on";
 else badinput; fi
 }
 
@@ -81,14 +81,13 @@ else badinput; fi
 
 # FUNCTIONS END ##############################################################
 
-break=0
-while break=0; do
+break=off
+while [ "$break" == "off" ]; do
 question1
-echo $break
 done
 
-break=0
-while break=0; do
+break=off
+while [ "$break" == "off" ]; do
 question2
 done
 
