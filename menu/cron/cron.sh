@@ -12,15 +12,14 @@
 #   including (via compiler) GPL-licensed code must also be made available
 #   under the GPL along with build & install instructions.
 #
-#################################################################################
+################################################################################
 
+# KEY VARIABLE RECALL
+program=$(cat /tmp/program_var)
 
+# FUNCTIONS START ##############################################################
 
-break=0
-while break=0; do
-question1
-done
-
+# BAD INPUT
 badinput () {
 tee <<-EOF
 
@@ -30,6 +29,7 @@ tee <<-EOF
 EOF
 }
 
+# FIRST QUESTION
 question1 () {
 tee <<-EOF
 
@@ -50,6 +50,47 @@ EOF
 else badinput; fi
 }
 
+# SECOND QUESTION
+question2 () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 PG Cron - How Often Do You Wish To Backup?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WEEKLEY
+1 - Sunday
+2 - Monday
+3 - Tuesday
+4 - Wednesday
+5 - Thursday
+6 - Friday
+7 - Saturday
+
+DAILY
+8 - Daily
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  if [[ "$typed" > "1" && "$typed" < "7" ]]; then echo $typed > /var/plexguide/cron.day && break=1;
+elif [ "$typed" == "8" ]; then echo "*/1" > /var/plexguide/cron.day && break=1;
+else badinput; fi
+}
+
+# FUNCTIONS END ##############################################################
+
+break=0
+while break=0; do
+question1
+done
+
+break=0
+while break=0; do
+question2
+done
+
 if [ "$typed" == "2" ]; then
 tee <<-EOF
 
@@ -57,14 +98,7 @@ tee <<-EOF
 ↘️  PG - How Often?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Daily
-2 - Weekly | Sunday
-3 - Weekly | Monday
-4 - Weekly | Tuesday
-5 - Weekly | Wednesday
-6 - Weekly | Thursday
-7 - Weekly | Friday
-8 - Weekly | Saturday
+
 
 EOF
 read -p 'Make a Selection | Press [ENTER]: ' name < /dev/tty
