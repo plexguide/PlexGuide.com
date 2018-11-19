@@ -92,11 +92,15 @@ echo "$typed" > /var/plexguide/restore.id
 sleep 3
 
 ansible-playbook /opt/plexguide/containers/$typed.yml
-ansible-playbook /opt/plexguide/containers/pgcron.yml
+
+# Cron Execution
+croncheck=$(cat /var/plexguide/programs.temp | grep -c "\<$typed\>")
+if [ "$croncheck" == "0" ]; then ansible-playbook /opt/plexguide/containers/pgcron.yml; fi
+
+# End Banner
 bash /opt/plexguide/menu/endbanner/endbanner.sh
 
 read -n 1 -s -r -p "Press [ANY] Key to Continue "
-
 fi
 
 bash /opt/plexguide/menu/appsv2/appsv2.sh
