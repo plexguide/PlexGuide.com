@@ -102,7 +102,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  hcloud server create --name $name --type cx11 --image ubuntu-18.04 > /opt/appdata/plexguide/server.info
+  hcloud server create --name $name --type cx11 --image $os > /opt/appdata/plexguide/server.info
 
 tee <<-EOF
 
