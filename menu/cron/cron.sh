@@ -84,6 +84,7 @@ else badinput; fi
 break=0
 while break=0; do
 question1
+echo $break
 done
 
 break=0
