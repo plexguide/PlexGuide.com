@@ -28,7 +28,7 @@ tee <<-EOF
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then exit fi;
+  if [ "$typed" == "1" ]; then exit; fi
 }
 
 question1
@@ -40,7 +40,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 question1
-fi 
+fi
 
 
 
