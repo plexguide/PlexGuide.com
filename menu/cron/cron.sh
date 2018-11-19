@@ -21,14 +21,8 @@ program=$(cat /tmp/program_var)
 
 # BAD INPUT
 badinput () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ ERROR - Bad Input! Please Watch Your Input! NARF!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-read -p 'READ | PRESS [ENTER]: ' typed < /dev/tty
+echo
+read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER]: ' typed < /dev/tty
 
 }
 
