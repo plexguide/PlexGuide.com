@@ -17,7 +17,9 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+
 # FACTS #######################################################################
+
   - name: "Set Known Facts"
     set_fact:
       pgrole: "portainer"
@@ -26,6 +28,7 @@
       image: "portainer/portainer"
 
 # LABELS ######################################################################
+
   - name: "Setting PG Labels"
     set_fact:
       pg_labels:
@@ -48,6 +51,7 @@
       PGID: 1000
 
 # MAIN DEPLOYMENT #############################################################
+
   - name: "Deploying Container - {{pgrole}}"
     docker_container:
       name: "{{pgrole}}"
