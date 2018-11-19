@@ -28,7 +28,7 @@
 # LABELS ######################################################################
   - name: "Setting PG Labels"
     set_fact:
-      default_labels:
+      pg_labels:
         traefik.enable: "true"
         traefik.port: "{{intport}}"
         traefik.frontend.redirect.entryPoint: "https"
