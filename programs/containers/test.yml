@@ -54,6 +54,9 @@
         name: "guacamole"
         image: "guacamole/guacamole"
         pull: yes
+        depends_on:
+          - guacd
+          - postgres
         restart_policy: always
         env:
           GUACD_HOSTNAME: guacd
