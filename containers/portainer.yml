@@ -27,6 +27,10 @@
       extport: "9000"
       image: "portainer/portainer"
 
+# CORE (MANDATORY) ############################################################
+  - name: CronJob Role
+    include_tasks: "/opt/plexguide/containers/core.yml"
+
 # LABELS ######################################################################
 
   - name: "Setting PG Labels"
