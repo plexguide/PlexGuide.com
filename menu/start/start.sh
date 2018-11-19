@@ -166,6 +166,7 @@ tee <<-EOF
 5 - Cloud Service Installer & GCE
 6 - System Tools & Services
 7 - System Settings
+8 - BETA Apps Installer
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -202,6 +203,8 @@ elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/settings/settings.sh
+elif [ "$typed" == "8" ]; then
+  bash /opt/plexguide/menu/appsv2/appsv2.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   bash /opt/plexguide/roles/ending/ending.sh
   exit
