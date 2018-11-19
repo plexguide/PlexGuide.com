@@ -22,10 +22,10 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "sickrage"
+      pgrole: "sickchill"
       intport: "8081"
-      extport: "8082"
-      image: "linuxserver/sickrage"
+      extport: "8089"
+      image: "sickchill/sickchill"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
