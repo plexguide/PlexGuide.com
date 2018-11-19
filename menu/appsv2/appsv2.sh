@@ -94,8 +94,8 @@ sleep 3
 ansible-playbook /opt/plexguide/containers/$typed.yml
 
 # Cron Execution
-croncheck=$(cat /var/plexguide/programs.temp | grep -c "\<$typed\>")
-if [ "$croncheck" != "0" ]; then ansible-playbook /opt/plexguide/containers/pgcron.yml; fi
+croncheck=$(cat /opt/plexguide/menu/appsv2/cron.list | grep -c "\<$typed\>")
+if [ "$croncheck" == "0" ]; then ansible-playbook /opt/plexguide/containers/pgcron.yml; fi
 
 # End Banner
 bash /opt/plexguide/menu/endbanner/endbanner.sh
