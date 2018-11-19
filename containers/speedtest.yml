@@ -23,9 +23,9 @@
   - name: "Set Known Facts"
     set_fact:
       pgrole: "portainer"
-      intport: "9000"
-      extport: "9000"
-      image: "portainer/portainer"
+      intport: "80"
+      extport: "8223"
+      image: "adolfintel/speedtest"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
@@ -44,9 +44,7 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/data"
         - "/var/run/docker.sock:/var/run/docker.sock"
-        - "/opt/appdata/{{pgrole}}:/data"
 
   - name: "Setting PG ENV"
     set_fact:
