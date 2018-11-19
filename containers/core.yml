@@ -65,20 +65,20 @@
 
 # TOP LEVEL DOMAIN INFO SET ####################################################
 
-    - debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
+  - debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
 
-    - name: "If Fact Matches - Enable TLD"
-      set_fact:
-        tldset: "{{domain.stdout}}"
-      when: "toplevel.stdout == pgrole"
+  - name: "If Fact Matches - Enable TLD"
+    set_fact:
+      tldset: "{{domain.stdout}}"
+    when: "toplevel.stdout == pgrole"
 
-    - debug: msg="TLDSET is now for {{toplevel.stdout}}"
-      when: "toplevel.stdout == pgrole"
+  - debug: msg="TLDSET is now for {{toplevel.stdout}}"
+    when: "toplevel.stdout == pgrole"
 
-    - name: "If Fact Does Not Match - Disable TLD"
-      set_fact:
-        tldset: ""
-      when: "not toplevel.stdout == pgrole"
+  - name: "If Fact Does Not Match - Disable TLD"
+    set_fact:
+      tldset: ""
+    when: "not toplevel.stdout == pgrole"
 
-    - debug: msg="TLD does not apply"
-      when: "not toplevel.stdout == pgrole"
+  - debug: msg="TLD does not apply"
+    when: "not toplevel.stdout == pgrole"
