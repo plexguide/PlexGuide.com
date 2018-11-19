@@ -22,7 +22,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "portainer"
+      pgrole: "speedtest"
       intport: "80"
       extport: "8223"
       image: "adolfintel/speedtest"
