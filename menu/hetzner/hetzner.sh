@@ -19,14 +19,14 @@ if [ "$test" == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - You Must Input an API from Hetzner First!
+⛔️  WARNING! - You Must Input an API Token from Hetzner First!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://hcloud.plexguide.com
 
 * Activate a Hetzner Cloud Account and Create a Project
 * Click Access (left hand side) and then click API Tokens
 * Create a Token and Save It (and paste below here)
-* Not Ready? Just Something & Press [ENTER]
+* Not Ready? Just type something & Press [ENTER]
 
 EOF
 hcloud context create plexguide
