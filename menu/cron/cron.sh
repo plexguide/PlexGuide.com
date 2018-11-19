@@ -24,9 +24,12 @@ badinput () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ ERROR - Bad Input!
+⛔️ ERROR - Bad Input! Please Watch Your Input! NARF!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
+read -p 'READ | PRESS [ENTER]: ' typed < /dev/tty
+
 }
 
 # FIRST QUESTION
