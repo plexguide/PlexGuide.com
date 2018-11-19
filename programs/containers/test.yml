@@ -25,7 +25,6 @@
         image: "guacamole/guacamole:latest"
         pull: yes
         restart_policy: always
-        networks:
         command: "'/bin/sh', '-c', 'test -e /init/initdb.sql && echo 'init file already exists' || /opt/guacamole/bin/initdb.sh --postgres > /init/initdb.sql"
         networks:
           - name: plexguide
