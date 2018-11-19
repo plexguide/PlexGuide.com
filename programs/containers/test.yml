@@ -62,7 +62,7 @@
         state: started
         links: guacd
         published_ports:
-          - "8080:8082"
+          - "8080:8080"
         labels:
           traefik.port: "8080"
           traefik.backend: "guacamole"
