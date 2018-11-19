@@ -19,25 +19,25 @@
   gather_facts: true
   tasks:
 
-    - name: "guacd"
+    - name: "init-guac-db"
       docker_container:
-        name: "guacd"
-        image: "guacamole/guacd"
+        name: "init-guac-db"
+        image: "guacamole/guacamole:latest"
         pull: yes
         restart_policy: always
         networks:
+        command: ""/bin/sh", "-c", "test -e /init/initdb.sql && echo 'init file already exists' || /opt/guacamole/bin/initdb.sh --postgres > /init/initdb.sql""
           - name: plexguide
             aliases:
               - "guacd"
         state: started
         volumes:
-          - "/opt/appdata/plexguide/init:/drive:rw"
-          - "/opt/appdata/plexguide/data:/record:rw"
+          - "dbinit:/init"
 
     - name: "postgres"
       docker_container:
         name: "postgres"
-        image: "postgres"
+        image: "postgres:lastest"
         pull: yes
         restart_policy: always
         networks:
@@ -45,9 +45,26 @@
             aliases:
               - "postgres"
         state: started
+        depends_on:
+          - "init-guac-db"
         volumes:
-          - "/opt/appdata/plexguide/init:/docker-entrypoint-initdb.d:ro"
-          - "/opt/appdata/plexguide/data:/var/lib/postgresql/data:rw"
+          - dbinit:/docker-entrypoint-initdb.d
+          - dbdata:/var/lib/postgresql/data
+        env:
+          POSTGRES_USER: guacuser
+          POSTGRES_PASSWORD: mypassword
+
+    - name: "guacd"
+      docker_container:
+        name: "postgres"
+        image: "guacamole/guacd:latest"
+        pull: yes
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "guacd"
+        state: started
 
     - name: "guacamole"
       docker_container:
@@ -60,10 +77,10 @@
         restart_policy: always
         env:
           GUACD_HOSTNAME: guacd
-          POSTGRES_DATABASE: guacamole_db
           POSTGRES_HOSTNAME: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_USER: guacamole_user
+          POSTGRES_DATABASE: guacuser
+          POSTGRES_USER: guacuser
+          POSTGRES_PASSWORD: mypassword
         networks:
           - name: plexguide
             aliases:
@@ -73,7 +90,7 @@
         published_ports:
           - "8080:8080"
         labels:
-          traefik.port: "8080"
-          traefik.backend: "guacamole"
           traefik.enable: "true"
-          traefik.docker.network: "plexguide"
+          traefik.frontend.redirect.entryPoint: "https"
+          traefik.frontend.rule: "Host:guacamole.mydomain.com; guac.mydomain.com; AddPrefix: /guacamole"
+          traefik.port: "8080"
