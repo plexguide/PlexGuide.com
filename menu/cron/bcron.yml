@@ -37,13 +37,15 @@
     shell: "cat /var/plexguide/pg.serverid"
     register: server_id
 
-  - set_fact:
-           r: "{{ 5 | random }}"
+  - name: "Generate Random Number"
+    set_fact:
+         sec: "{{ 5 | random }}"
+    run_once: yes
 
-  - debug: msg="Pause Set for {{ r }} seconds"
+  - debug: msg="Pause Set for {{ sec }} seconds"
 
   - pause:
-      seconds: r
+      seconds: "sec"
 
   - name: Stopping Docker Container - {{program_var.stdout}}
     docker_container:
