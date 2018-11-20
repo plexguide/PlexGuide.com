@@ -30,7 +30,7 @@
 
   - name: "Generate Random Number"
     set_fact:
-         program_var: "{{ sickrage }}"
+      program_var: sickrage
 
   - name: Register HD Path
     shell: "cat /var/plexguide/server.hd.path"
