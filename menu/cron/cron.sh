@@ -57,22 +57,22 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 WEEKLEY
-1 - Sunday
-2 - Monday
-3 - Tuesday
-4 - Wednesday
-5 - Thursday
-6 - Friday
-7 - Saturday
+0 - Sunday
+1 - Monday
+2 - Tuesday
+3 - Wednesday
+4 - Thursday
+5 - Friday
+6 - Saturday
 
 DAILY
-8 - Daily
+7 - Daily
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" -ge "1" && "$typed" -le "7" ]]; then echo $typed > /var/plexguide/cron/$program.cron.day && break=1;
+  if [[ "$typed" -ge "0" && "$typed" -le "7" ]]; then echo $typed > /var/plexguide/cron/$program.cron.day && break=1;
 elif [ "$typed" == "8" ]; then echo "*/1" > /var/plexguide/cron/$program.cron.day && break=1;
 else badinput; fi
 }
