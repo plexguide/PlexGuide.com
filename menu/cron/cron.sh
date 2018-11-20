@@ -16,8 +16,8 @@
 
 # KEY VARIABLE RECALL & EXECUTION
 program=$(cat /tmp/program_var)
-echo $program > "/tmp/$program"
 mkdir -p /var/plexguide/cron/
+mkdir -p /opt/appdata/plexguide/cron
 # FUNCTIONS START ##############################################################
 
 # BAD INPUT
@@ -104,6 +104,8 @@ else badinput; fi
 break=off && while [ "$break" == "off" ]; do question1; done
 break=off && while [ "$break" == "off" ]; do question2; done
 break=off && while [ "$break" == "off" ]; do question3; done
+
+bash /opt/plexguide/cron/cron.yml
 
 #serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
 #initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
