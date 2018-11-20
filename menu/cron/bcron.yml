@@ -37,8 +37,8 @@
     shell: "cat /var/plexguide/pg.serverid"
     register: server_id
 
-   - set_fact:
-            r: "{{ 5 | random }}"
+  - set_fact:
+           r: "{{ 5 | random }}"
 
   - debug: msg="Pause Set for {{ r }} seconds"
 
