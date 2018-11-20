@@ -26,7 +26,7 @@ while read p; do
     echo " " >> /var/plexguide/programs.temp
   fi
 
-done </opt/plexguide/menu/appsv2/appsv2.list
+done </opt/plexguide/menu/containers/_apps.list
 
 tee <<-EOF
 
