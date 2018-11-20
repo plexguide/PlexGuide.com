@@ -105,7 +105,7 @@ break=off && while [ "$break" == "off" ]; do question1; done
 break=off && while [ "$break" == "off" ]; do question2; done
 break=off && while [ "$break" == "off" ]; do question3; done
 
-ansible-playbook bash /opt/plexguide/cron/cron.yml
+ansible-playbook /opt/plexguide/menu/cron/cron.yml
 
 #serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
 #initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
