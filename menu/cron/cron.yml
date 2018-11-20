@@ -41,7 +41,7 @@
     cron:
       name: "{{pgrole.stdout}}"
       weekday: "{{cronday.stdout}}"
-      minute: "12"
+      minute: "15"
       hour: "{{cronhour.stdout}}"
       job: "ansible-playbook /opt/plexguide/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}'"
       state: present
