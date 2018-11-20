@@ -14,9 +14,10 @@
 #
 ################################################################################
 
-# KEY VARIABLE RECALL
+# KEY VARIABLE RECALL & EXECUTION
 program=$(cat /tmp/program_var)
-
+echo $program > "/tmp/$program"
+mkdir -p /var/plexguide/cron/
 # FUNCTIONS START ##############################################################
 
 # BAD INPUT
@@ -71,7 +72,7 @@ DAILY
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" -ge "1" && "$typed" -le "7" ]]; then echo $typed > /var/plexguide/cron.day && break=1;
+  if [[ "$typed" -ge "1" && "$typed" -le "7" ]]; then echo $typed > /var/plexguide/cron/$program.cron.day && break=1;
 elif [ "$typed" == "8" ]; then echo "*/1" > /var/plexguide/cron.day && break=1;
 else badinput; fi
 }
@@ -94,7 +95,7 @@ Type an HOUR from [0 to 23]
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then echo $typed > /var/plexguide/cron.hour && break=1;
+  if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then echo $typed > /var/plexguide/cron/$program.cron.hour && break=1;
 else badinput; fi
 }
 
