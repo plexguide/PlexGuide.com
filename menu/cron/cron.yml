@@ -46,7 +46,7 @@
       become_user: root
       name: "{{pgrole.stdout}}"
       weekday: "{{cronday.stdout}}"
-      minute: "{{cronhour.minute}}"
+      minute: "{{cronminute.stdout}}"
       hour: "{{cronhour.stdout}}"
       user: root
       job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/plexguide/menu/cron/bcron.sh"
