@@ -16,7 +16,7 @@
 pgrole=$(cat /tmp/program_var)
 path=$(cat /var/plexguide/server.hd.path)
 tarlocation=$(cat /var/plexguide/data.location)
-server_id=$(cat /var/plexguide/pg.serverid)
+serverid=$(cat /var/plexguide/pg.serverid)
 
 tar \
 --ignore-failed-read \
@@ -25,8 +25,7 @@ tar \
 -cvzf $tarlocation/$pgrole.tar /opt/appdata/$pgrole/
 
 chown -R 1000:1000 $tarlocation
-rclone copy $tarlocation/$pgrole.tar gdrive:/plexguide/backup/$server_id \
--v --checksum --drive-chunk-size=64M
+rclone copy $tarlocation/$pgrole.tar gdrive:/plexguide/backup/$serverid -v --checksum --drive-chunk-size=64M
 
 du -sh --apparent-size /opt/appdata/$pgrole | awk '{print $1}'
 rm -r $tarlocation/$pgrole.tar

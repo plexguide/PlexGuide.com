@@ -43,5 +43,5 @@
       weekday: "{{cronday.stdout}}"
       minute: "15"
       hour: "{{cronhour.stdout}}"
-      job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/plexguide/menu/cron/cron.sh"
+      job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/plexguide/menu/cron/bcron.sh"
       state: present
