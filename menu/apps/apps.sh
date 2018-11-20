@@ -91,7 +91,13 @@ EOF
 
 sleep 3
 
-echo $typed > /tmp/program_var
+#echo $typed > /tmp/program_var
+if [ "$typed" == "netdata" ] || [ "$typed" == "vpn" ] || [ "$typed" == "speedtest" ] || [ "$typed" == "alltube" ]; then
+  echo "$typed" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=off display=off"
+else
+  echo "$typed" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=off display=off"
+fi
+
 croncheck=$(cat /opt/plexguide/menu/appsv2/cron.list | grep -c "\<$typed\>")
 if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 
