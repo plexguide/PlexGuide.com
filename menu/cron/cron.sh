@@ -71,7 +71,7 @@ DAILY
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" > "1" && "$typed" < "7" ]]; then echo $typed > /var/plexguide/cron.day && break=1;
+  if [[ "$typed" >= "1" && "$typed" <= "7" ]]; then echo $typed > /var/plexguide/cron.day && break=1;
 elif [ "$typed" == "8" ]; then echo "*/1" > /var/plexguide/cron.day && break=1;
 else badinput; fi
 }
@@ -94,7 +94,7 @@ Type an HOUR from [0 to 23]
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" > "0" && "$typed" < "23" ]]; then echo $typed > /var/plexguide/cron.hour && break=1;
+  if [[ "$typed" >= "0" && "$typed" <= "23" ]]; then echo $typed > /var/plexguide/cron.hour && break=1;
 else badinput; fi
 }
 
@@ -103,42 +103,6 @@ else badinput; fi
 break=off && while [ "$break" == "off" ]; do question1; done
 break=off && while [ "$break" == "off" ]; do question2; done
 break=off && while [ "$break" == "off" ]; do question3; done
-
-if [ "$typed" == "2" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  PG - How Often?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-read -p 'Make a Selection | Press [ENTER]: ' name < /dev/tty
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  What Hour of the Day?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Type an HOUR from [0 to 23]
-
-0  = 00:00 | 12AM
-12 = 12:00 | 12PM
-18 = 18:00 | 6 PM
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-
-read -p 'Type an Hour | Press [ENTER]: ' typed < /dev/tty
-if [ "$typed" == "1" ] && [ "$typed" == "23" ]; then echo $typed > /somevar;
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - Deploying Your Server!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
 
 #serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
 #initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
