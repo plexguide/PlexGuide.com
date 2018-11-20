@@ -40,9 +40,9 @@
   - name: Build Cron Job Schedule
     cron:
       name: "{{pgrole.stdout}}"
-      weekday: "{{trueperiod}}"
+      weekday: "{{cronday.stdout}}"
       minute: "0"
-      hour: "{{hour.user_input}}"
+      hour: "{{cronhour.stdout}}"
       job: "bash /opt/appdata/plexguide/cron/{{pgrole.stdout}}"
       state: present
 
