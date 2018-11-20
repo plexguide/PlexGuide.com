@@ -28,6 +28,6 @@
 # CRON REMOVE ##################################################################
 
   - cron:
-      name: "{{pgrole}}"
+      name: "{{pgrole.stdout}}"
       state: absent
     ignore_errors: yes
