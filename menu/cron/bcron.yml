@@ -17,7 +17,6 @@
 #################################################################################
 ---
 - hosts: localhost
-  gather_facts: false
   tasks:
 
 #  - name: "Generate Random Number"
