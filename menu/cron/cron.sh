@@ -94,7 +94,7 @@ Type an HOUR from [0 to 23]
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" >= "0" && "$typed" <= "23" ]]; then echo $typed > /var/plexguide/cron.hour && break=1;
+  if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then echo $typed > /var/plexguide/cron.hour && break=1;
 else badinput; fi
 }
 
