@@ -39,7 +39,7 @@ tee <<-EOF
 
 1 - No
 2 - Yes
-3 - Change Backup Location: $space
+3 - Backup Location: $space
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
