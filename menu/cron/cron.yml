@@ -35,7 +35,7 @@
 
 # CRON START ###################################################################
   - name: Build Cron Job File
-    shell: echo "echo {{pgrole.stdout}} >> /tmp/program_var && ansible-playbook /opt/plexguide/menu/cron/bcron.yml" > /opt/appdata/plexguide/cron/{{pgrole.stdout}}
+    shell: echo "echo {{pgrole.stdout}} > /tmp/program_var && ansible-playbook /opt/plexguide/menu/cron/bcron.yml" > /opt/appdata/plexguide/cron/{{pgrole.stdout}}
 
   - name: Build Cron Job Schedule
     cron:
