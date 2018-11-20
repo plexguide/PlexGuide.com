@@ -43,8 +43,7 @@
 
   - debug: msg="Pause Set for {{ sec }} seconds"
 
-  - pause:
-      seconds: 5
+  - wait_for: timeout={{ sec }}
 
   - name: Stopping Docker Container - {{program_var.stdout}}
     docker_container:
