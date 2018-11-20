@@ -24,22 +24,18 @@
   - name: Set PGRole
     shell: "cat /tmp/program_var"
     register: pgrole
-    ignore_errors: True
 
   - name: Set PGRole
     shell: "cat /var/plexguide/cron/{{pgrole.stdout}}.cron.hour"
     register: cronhour
-    ignore_errors: True
 
   - name: Set PGRole
     shell: "cat /var/plexguide/cron/{{pgrole.stdout}}.cron.day"
     register: cronday
-    ignore_errors: True
 
 # CRON START ###################################################################
   - name: Build Cron Job File
     shell: echo "echo {{pgrole.stdout}} >> /tmp/program_var && ansible-playbook /opt/plexguide/cron/bcron.yml" > /opt/appdata/plexguide/cron/{{pgrole.stdout}}
-    when: askcron.user_input == "1"
 
   - name: Build Cron Job Schedule
     cron:
@@ -49,7 +45,6 @@
       hour: "{{hour.user_input}}"
       job: "bash /opt/appdata/plexguide/cron/{{pgrole.stdout}}"
       state: present
-    when: askcron.user_input == "1"
 
   #- name: Remove/No Cron
   #  include_role:
