@@ -43,7 +43,8 @@ tee <<-EOF
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then exit;
+  if [ "$typed" == "1" ]; then ansible-playbook /opt/plexguide/menu/cron/cron.yml
+ && exit;
 elif [ "$typed" == "2" ]; then break="on";
 else badinput; fi
 }
