@@ -26,15 +26,15 @@
     register: pgrole
 
   - name: Set PGRole
-    shell: "cat /var/plexguide/cron/{{pgrole.stdout}}.cron.hour"
+    shell: "cat /var/plexguide/cron/cron.hour"
     register: cronhour
 
   - name: Set PGRole
-    shell: "cat /var/plexguide/cron/{{pgrole.stdout}}.cron.minutes"
+    shell: "cat /var/plexguide/cron/cron.minute"
     register: cronminute
 
   - name: Set PGRole
-    shell: "cat /var/plexguide/cron/{{pgrole.stdout}}.cron.day"
+    shell: "cat /var/plexguide/cron/cron.day"
     register: cronday
 
 # CRON START ###################################################################
