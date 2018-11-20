@@ -22,7 +22,7 @@ program=$(cat /tmp/program_var)
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER]: ' typed < /dev/tty
+read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 
 }
 
