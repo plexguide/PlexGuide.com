@@ -91,6 +91,7 @@ EOF
 
 sleep 3
 
+echo $typed > /tmp/program_var
 croncheck=$(cat /opt/plexguide/menu/appsv2/cron.list | grep -c "\<$typed\>")
 if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 
