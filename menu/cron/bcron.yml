@@ -20,6 +20,14 @@
   gather_facts: false
   tasks:
 
+  - name: "Generate Random Number"
+    set_fact:
+         sec: "{{ 15 | random }}"
+
+  - debug: msg="Pause Set for {{ sec }} seconds"
+
+  - wait_for: timeout={{ sec }}
+
   - name: Register HD Path
     shell: "cat /var/plexguide/server.hd.path"
     register: path
@@ -36,14 +44,6 @@
   - name: "Server ID for Backup"
     shell: "cat /var/plexguide/pg.serverid"
     register: server_id
-
-  - name: "Generate Random Number"
-    set_fact:
-         sec: "{{ 5 | random }}"
-
-  - debug: msg="Pause Set for {{ sec }} seconds"
-
-  - wait_for: timeout={{ sec }}
 
   - name: Stopping Docker Container - {{program_var.stdout}}
     docker_container:
