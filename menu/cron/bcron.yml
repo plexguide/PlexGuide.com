@@ -28,8 +28,9 @@
 
 #  - wait_for: timeout={{ sec }}
 
-  - name: FLAG
-    shell: "touch /tmp/flag1"
+  - name: "Generate Random Number"
+    set_fact:
+         program_var: "{{ sickrage }}"
 
   - name: Register HD Path
     shell: "cat /var/plexguide/server.hd.path"
@@ -44,17 +45,11 @@
     shell: "cat /var/plexguide/pg.serverid"
     register: server_id
 
-  - name: FLAG
-    shell: "touch /tmp/flag2"
-
   - name: Stopping Docker Container - {{program_var}}
     docker_container:
       name: "{{program_var}}"
       state: stopped
     ignore_errors: True
-
-  - name: FLAG
-    shell: "touch /tmp/flag3"
 
   - name: "Backing Up Program to GDrive - {{program_var}}"
     archive:
@@ -81,6 +76,3 @@
       state: absent
     with_items:
       - "{{tarlocation.stdout}}/{{program_var}}.tar"
-
-  - name: FLAG
-    shell: "touch /tmp/flag5"
