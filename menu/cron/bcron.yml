@@ -39,7 +39,6 @@
 
    - set_fact:
             r: "{{ 5 | random }}"
-     run_once: yes
 
   - debug: msg="Pause Set for {{ r }} seconds"
 
