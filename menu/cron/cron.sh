@@ -29,6 +29,7 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 
 # FIRST QUESTION
 question1 () {
+space=$(cat /var/plexguide/data.location)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -38,6 +39,7 @@ tee <<-EOF
 
 1 - No
 2 - Yes
+3 - Change Backup Location: $space
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -45,6 +47,7 @@ EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
 elif [ "$typed" == "2" ]; then break="on";
+elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
 else badinput; fi
 }
 
