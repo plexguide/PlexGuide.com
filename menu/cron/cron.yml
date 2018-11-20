@@ -41,7 +41,7 @@
     cron:
       name: "{{pgrole.stdout}}"
       weekday: "{{cronday.stdout}}"
-      minute: "0"
+      minute: "6"
       hour: "{{cronhour.stdout}}"
       job: "bash /opt/appdata/plexguide/cron/{{pgrole.stdout}}"
       state: present
