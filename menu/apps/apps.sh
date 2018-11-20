@@ -91,11 +91,8 @@ echo "$typed" > /var/plexguide/restore.id
 
 sleep 3
 
-if [ "$typed" == "netdata" ] || [ "$typed" == "vpn" ] || [ "$typed" == "speedtest" ] || [ "$typed" == "alltube" ]; then
-  echo "$typed" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=off display=on"
-else
-  echo "$typed" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=on cron=on display=on"
-fi
+croncheck=$(cat /opt/plexguide/menu/appsv2/cron.list | grep -c "\<$typed\>")
+if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 
 bash /opt/plexguide/menu/endbanner/endbanner.sh
 read -n 1 -s -r -p "Press [ANY] Key to Continue "

@@ -104,8 +104,8 @@ else badinput; fi
 break=off && while [ "$break" == "off" ]; do question1; done
 break=off && while [ "$break" == "off" ]; do question2; done
 break=off && while [ "$break" == "off" ]; do question3; done
-echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
 
+echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
 ansible-playbook /opt/plexguide/menu/cron/cron.yml
 
 #serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
