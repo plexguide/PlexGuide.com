@@ -1,5 +1,13 @@
 ---
-- cron:
-    name: "{{pgrole}}"
-    state: absent
-  ignore_errors: yes
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+  - name: Set PGRole
+    shell: "cat /tmp/program_var"
+    register: pgrole
+
+  - cron:
+      name: "{{pgrole}}"
+      state: absent
+    ignore_errors: yes
