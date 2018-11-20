@@ -43,7 +43,6 @@
 
   - name: Build Cron Job Schedule
     cron:
-      become_user: root
       name: "{{pgrole.stdout}}"
       weekday: "{{cronday.stdout}}"
       minute: "{{cronminute.stdout}}"
@@ -51,3 +50,4 @@
       user: root
       job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/plexguide/menu/cron/bcron.sh"
       state: present
+    become_user: root
