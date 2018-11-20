@@ -44,7 +44,7 @@
   - debug: msg="Pause Set for {{ r }} seconds"
 
   - pause:
-      seconds: random
+      seconds: r
 
   - name: Stopping Docker Container - {{program_var.stdout}}
     docker_container:
