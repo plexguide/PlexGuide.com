@@ -73,7 +73,7 @@ EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" -ge "1" && "$typed" -le "7" ]]; then echo $typed > /var/plexguide/cron/$program.cron.day && break=1;
-elif [ "$typed" == "8" ]; then echo "*/1" > /var/plexguide/cron.day && break=1;
+elif [ "$typed" == "8" ]; then echo "*/1" > /var/plexguide/cron/$program.cron.day && break=1;
 else badinput; fi
 }
 
