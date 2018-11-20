@@ -28,6 +28,9 @@
 
 #  - wait_for: timeout={{ sec }}
 
+  - name: FLAG
+    shell: "touch /tmp/flag1"
+
   - name: Register HD Path
     shell: "cat /var/plexguide/server.hd.path"
     register: path
@@ -41,11 +44,17 @@
     shell: "cat /var/plexguide/pg.serverid"
     register: server_id
 
+  - name: FLAG
+    shell: "touch /tmp/flag2"
+
   - name: Stopping Docker Container - {{program_var}}
     docker_container:
       name: "{{program_var}}"
       state: stopped
     ignore_errors: True
+
+  - name: FLAG
+    shell: "touch /tmp/flag3"
 
   - name: "Backing Up Program to GDrive - {{program_var}}"
     archive:
@@ -54,6 +63,8 @@
       dest: "{{tarlocation.stdout}}/{{program_var}}.tar"
       format: tar
 
+  - name: FLAG
+    shell: "touch /tmp/flag4"
   ############ BACKUP OTHER - END
   - name: "Restart Docker Container - {{program_var}}"
     docker_container:
@@ -70,3 +81,6 @@
       state: absent
     with_items:
       - "{{tarlocation.stdout}}/{{program_var}}.tar"
+
+  - name: FLAG
+    shell: "touch /tmp/flag5"
