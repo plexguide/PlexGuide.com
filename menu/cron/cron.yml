@@ -43,7 +43,7 @@
       weekday: "{{cronday.stdout}}"
       minute: "9"
       hour: "{{cronhour.stdout}}"
-      job: "ansible-playbook /opt/plexguide/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}"
+      job: "ansible-playbook /opt/plexguide/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}'"
       state: present
 
   #- name: Remove/No Cron
