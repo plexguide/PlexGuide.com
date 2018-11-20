@@ -87,13 +87,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 # Prevents From Repeating
-echo "$typed" > /var/plexguide/restore.id
+#echo "$typed" > /var/plexguide/restore.id
 
 sleep 3
 
 ansible-playbook /opt/plexguide/containers/$typed.yml
 
 # Cron Execution
+echo $typed > /tmp/program_var
 croncheck=$(cat /opt/plexguide/menu/appsv2/cron.list | grep -c "\<$typed\>")
 if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 
