@@ -38,10 +38,10 @@
     register: server_id
 
    - set_fact:
-       random: "{{ 5 | random }}"
+            r: "{{ 5 | random }}"
      run_once: yes
 
-  - debug: msg="Pause Set for {{ random }} seconds"
+  - debug: msg="Pause Set for {{ r }} seconds"
 
   - pause:
       seconds: random
