@@ -18,11 +18,17 @@ path=$(cat /var/plexguide/server.hd.path)
 tarlocation=$(cat /var/plexguide/data.location)
 serverid=$(cat /var/plexguide/pg.serverid)
 
+doc=no
+rolecheck=$(docker ps | grep -c "\<$pgrole\>")
+if [ $rolecheck != 0 ]; then docker stop $pgrole && doc=yes; fi
+
 tar \
 --ignore-failed-read \
 --warning=no-file-changed \
 --warning=no-file-removed \
 -cvzf $tarlocation/$pgrole.tar /opt/appdata/$pgrole/
+
+if [ $doc == yes ]; then docker restart $pgrole; fi
 
 chown -R 1000:1000 $tarlocation
 rclone copy $tarlocation/$pgrole.tar gdrive:/plexguide/backup/$serverid -v --checksum --drive-chunk-size=64M
