@@ -30,6 +30,10 @@
     register: cronhour
 
   - name: Set PGRole
+    shell: "cat /var/plexguide/cron/{{pgrole.stdout}}.cron.minutes"
+    register: cronminute
+
+  - name: Set PGRole
     shell: "cat /var/plexguide/cron/{{pgrole.stdout}}.cron.day"
     register: cronday
 
@@ -39,9 +43,11 @@
 
   - name: Build Cron Job Schedule
     cron:
+      become_user: root
       name: "{{pgrole.stdout}}"
       weekday: "{{cronday.stdout}}"
-      minute: "15"
+      minute: "{{cronhour.minute}}"
       hour: "{{cronhour.stdout}}"
+      user: root
       job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/plexguide/menu/cron/bcron.sh"
       state: present
