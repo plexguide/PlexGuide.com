@@ -29,7 +29,7 @@
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/core.yml"
+    include_tasks: "/opt/plexguide/containers/_core.yml"
 
 # LABELS ######################################################################
 
