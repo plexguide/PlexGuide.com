@@ -20,13 +20,13 @@
   gather_facts: false
   tasks:
 
-  - name: "Generate Random Number"
-    set_fact:
-         sec: "{{ 15 | random }}"
+#  - name: "Generate Random Number"
+#    set_fact:
+#         sec: "{{ 15 | random }}"
 
-  - debug: msg="Pause Set for {{ sec }} seconds"
+#  - debug: msg="Pause Set for {{ sec }} seconds"
 
-  - wait_for: timeout={{ sec }}
+#  - wait_for: timeout={{ sec }}
 
   - name: Register HD Path
     shell: "cat /var/plexguide/server.hd.path"
