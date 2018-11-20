@@ -43,10 +43,5 @@
       weekday: "{{cronday.stdout}}"
       minute: "15"
       hour: "{{cronhour.stdout}}"
-      job: "ansible-playbook /opt/plexguide/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}'"
+      job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/plexguide/menu/cron/cron.sh"
       state: present
-
-  #- name: Remove/No Cron
-  #  include_role:
-  #    name: remove
-  #  when: askcron.user_input == "2"
