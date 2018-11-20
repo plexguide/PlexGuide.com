@@ -39,9 +39,8 @@ tee <<-EOF
 STATUS: APPNAME [NOT Deployed]
 
 1 - Deploy  : [Applicaton]
-2 - Image   : [test/test]
-3 - Cron    : [Not Set]
-4 - Appguard: [Not Applied]
+2 - Cron    : [Not Set]
+3 - Appguard: [Not Applied]
 Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
