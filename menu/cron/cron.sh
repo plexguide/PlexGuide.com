@@ -100,15 +100,9 @@ else badinput; fi
 
 # FUNCTIONS END ##############################################################
 
-break=off
-while [ "$break" == "off" ]; do
-question1
-done
-
-break=off
-while [ "$break" == "off" ]; do
-question2
-done
+break=off && while [ "$break" == "off" ]; do question1; done
+break=off && while [ "$break" == "off" ]; do question2; done
+break=off && while [ "$break" == "off" ]; do question3; done
 
 if [ "$typed" == "2" ]; then
 tee <<-EOF
