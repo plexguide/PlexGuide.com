@@ -56,12 +56,12 @@ EOF
     read -p '⛔️ [Type] a USERNAME! | PRESS [ENTER] ' user < /dev/tty
     read -p '⛔️ [Type] a PASSWORD! | PRESS [ENTER] ' pw < /dev/tty
     htpasswd -cbs /var/plexguide/server.ht $user $pw
-    tee <<-EOF
+tee <<-EOF
 
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    ✅️  AppGuard - Hashed UserName & Password
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  AppGuard - Hashed UserName & Password
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
     sleep 3
   else; then echo "" > /var/plexguide/server.ht; fi
     bash /opt/plexguide/menu/appguard/rebuild.sh
