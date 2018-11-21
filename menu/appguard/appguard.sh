@@ -63,9 +63,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
     sleep 3
-  else then echo "" > /var/plexguide/server.ht; fi
-    bash /opt/plexguide/menu/appguard/rebuild.sh
-  fi
+  else echo "" > /var/plexguide/server.ht; fi
+    bash /opt/plexguide/menu/appguard/rebuild.sh; fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput; fi
 }
