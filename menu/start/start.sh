@@ -161,9 +161,9 @@ fi
 
 tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
-3 - Installer - Applications
-4 - UnInstall - Applications
-5 - Cloud Service Installer & GCE
+3 - Apps Installer
+4 - Apps UnInstaller
+5 - Cloud Instances & GCE
 6 - Tools & Services
 7 - Settings
 8 - BETA Apps Installer
