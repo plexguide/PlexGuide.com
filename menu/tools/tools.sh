@@ -93,7 +93,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   gcheck
   bash /opt/plexguide/menu/data/data.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/roles/menu-ports/scripts/main.sh
+  bash /opt/plexguide/menu/portguard/portguard.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/roles/menu-appguard/scripts/main.sh
 elif [ "$typed" == "4" ]; then
