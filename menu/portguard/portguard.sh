@@ -53,8 +53,9 @@ EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
     if [ "$guard" == "CLOSED" ]; then echo "" > /var/plexguide/server.ports
-  else; then echo "127.0.0.1:" > /var/plexguide/server.ports; fi
+  else; then echo "127.0.0.1:" > /var/plexguide/server.ports
     bash /opt/plexguide/menu/portguard/rebuild.sh
+    fi
   fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput; fi
