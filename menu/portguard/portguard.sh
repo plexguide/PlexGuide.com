@@ -30,8 +30,11 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 # FIRST QUESTION
 question1 () {
 ports=$(cat /var/plexguide/server.ports)
-if [ "$ports" == "127.0.0.1:" ]; then guard=CLOSED && opp=Open;
-else guard=OPEN & opp=Close; fi
+if [ "$ports" == "127.0.0.1:" ]; then
+  guard="CLOSED" && opp="Open"
+else
+  guard="OPEN" && opp="Close"
+fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -41,7 +44,7 @@ tee <<-EOF
 
 Ports Are Currently: [$guard]
 
-1. [$open] Ports
+1. [$opp] Ports
 Z. EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
