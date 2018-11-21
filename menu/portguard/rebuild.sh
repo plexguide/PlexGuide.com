@@ -31,22 +31,22 @@ count=$(wc -l < /var/plexguide/container.running)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  PortGuard - Rebuilding All Containers
+⚠️  PortGuard - Rebuilding Containers!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-
+sleep 3
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  PortGuard - Rebuilding $app
+↘️  PortGuard - Rebuilding [$app]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-	sleep 2
+	sleep 3
 	ansible-playbook /opt/plexguide/containers/$app.yml
 done
 
@@ -54,7 +54,7 @@ echo ""
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PortGuard - Completed! All Containers were Rebuilt!
+✅️  PortGuard - All Containers Rebuilt!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
