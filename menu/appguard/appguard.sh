@@ -38,9 +38,9 @@ space=$(cat /var/plexguide/data.location)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Welcome to PortGuard!
+🌎 Welcome to AppGuard!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ Reference: http://portguard.plexguide.com
+⚡ Reference: http://appguard.plexguide.com
 
 Ports Are Currently: [$guard]
 
@@ -54,7 +54,7 @@ EOF
   if [ "$typed" == "1" ]; then
     if [ "$guard" == "CLOSED" ]; then echo "" > /var/plexguide/server.ports
   else; then echo "127.0.0.1:" > /var/plexguide/server.ports; fi
-    bash /opt/plexguide/menu/portguard/rebuild.sh
+    bash /opt/plexguide/menu/appguard/rebuild.sh
   fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput; fi
