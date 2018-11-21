@@ -27,14 +27,14 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 
 }
 
-ports=$(cat /var/plexguide/server.ports)
 
-if [ "$ports" == "127.0.0.1:" ]; then guard=CLOSED && opp=Open;
-else guard=OPEN & opp=Close; fi
+
 
 # FIRST QUESTION
 question1 () {
-space=$(cat /var/plexguide/data.location)
+  appguard=$(cat /var/plexguide/server.ht)
+  if [ "$appguard" == "" ]; then guard="DISABLED" && opp="Enable";
+else guard="ENABLED" && opp="Disable"; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -42,9 +42,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://appguard.plexguide.com
 
-Ports Are Currently: [$guard]
+Currently: [$guard]
 
-1. [$open] Ports
+1. $opp AppGuard
 Z. EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -52,8 +52,18 @@ EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
-    if [ "$guard" == "CLOSED" ]; then echo "" > /var/plexguide/server.ports
-  else; then echo "127.0.0.1:" > /var/plexguide/server.ports; fi
+    if [ "$guard" == "DISABLED" ]; then
+    read -p '⛔️ [Type] a USERNAME! | PRESS [ENTER] ' user < /dev/tty
+    read -p '⛔️ [Type] a PASSWORD! | PRESS [ENTER] ' pw < /dev/tty
+    htpasswd -cbs /var/plexguide/server.ht $user $pw
+    tee <<-EOF
+
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ✅️  AppGuard - Hashed UserName & Password
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    EOF
+    sleep 3
+  else; then echo "" > /var/plexguide/server.ht; fi
     bash /opt/plexguide/menu/appguard/rebuild.sh
   fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
@@ -63,10 +73,3 @@ else badinput; fi
 # FUNCTIONS END ##############################################################
 
 break=off && while [ "$break" == "off" ]; do question1; done
-
-#serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
-#initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
-#check=$(hcloud server list | grep "\<$sshin\>" | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
-#ipcheck=$(echo $check | awk '{ print $3 }')
-#⛔️  WARNING! - Must Configure RClone First /w >>> gdrive
-# read -n 1 -s -r -p "Press [ANY] Key to Continue "
