@@ -164,8 +164,8 @@ tee <<-EOF
 3 - Installer - Applications
 4 - UnInstall - Applications
 5 - Cloud Service Installer & GCE
-6 - System Tools & Services
-7 - System Settings
+6 - Tools & Services
+7 - Settings
 8 - BETA Apps Installer
 Z - Exit
 
