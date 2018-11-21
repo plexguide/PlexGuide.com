@@ -55,7 +55,6 @@ EOF
     if [ "$guard" == "CLOSED" ]; then echo "" > /var/plexguide/server.ports
   else echo "127.0.0.1:" > /var/plexguide/server.ports; fi
     bash /opt/plexguide/menu/portguard/rebuild.sh
-  fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput; fi
 }
