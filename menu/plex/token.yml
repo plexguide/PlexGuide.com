@@ -38,8 +38,8 @@
         X-Plex-Version: "1.0.0"
         X-Plex-Client-Identifier: "XXX"
         Content-Type: "application/x-www-form-urlencoded; charset=utf-8"
-      password: '{{user.stdout}}'
-      user: '{{pw.stdout}}'
+      password: '{{pw.stdout}}'
+      user: '{{user.stdout}}'
     register: plextoken
 
   - name: Set Token
