@@ -161,12 +161,10 @@ fi
 
 tee <<-EOF
 2 - Traefik & TLD Deployment [$traefik]
-3 - Apps Installer
-4 - Apps UnInstaller
-5 - Cloud Instances & GCE
-6 - Tools & Services
-7 - Settings
-8 - BETA Apps Installer
+3 - PG Apps
+4 - Cloud Instances & GCE
+5 - Tools & Services
+6 - Settings
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -194,17 +192,13 @@ sleep 3
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/traefik/traefik.sh
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/apps/apps.sh
-elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/removal/removal.sh
-elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
-elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/tools/tools.sh
-elif [ "$typed" == "7" ]; then
-  bash /opt/plexguide/menu/settings/settings.sh
-elif [ "$typed" == "8" ]; then
   bash /opt/plexguide/menu/appsv2/appsv2.sh
+elif [ "$typed" == "4" ]; then
+  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
+elif [ "$typed" == "5" ]; then
+  bash /opt/plexguide/menu/tools/tools.sh
+elif [ "$typed" == "6" ]; then
+  bash /opt/plexguide/menu/settings/settings.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   bash /opt/plexguide/roles/ending/ending.sh
   exit

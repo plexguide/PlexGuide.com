@@ -80,7 +80,8 @@ tee <<-EOF
 4 - PGTrak ~ Fill Up Sonarr & Radarr
 5 - Personal VPN Service Installer
 6 - System & Network Auditor
-7 - TroubleShoot ~ PreInstaller & UnInstaller
+7 - App UnInstaller
+8 - TroubleShoot ~ PreInstaller
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -103,6 +104,8 @@ elif [ "$typed" == "5" ]; then
 elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/roles/menu-network/scripts/main.sh
 elif [ "$typed" == "7" ]; then
+  bash /opt/plexguide/menu/removal/removal.sh
+elif [ "$typed" == "8" ]; then
   bash /opt/plexguide/menu/tshoot/tshoot.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
