@@ -23,6 +23,8 @@
   - name: "Set Known Facts"
     set_fact:
       pgrole: "plex"
+     intport: 32400
+     extport: 32400
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
