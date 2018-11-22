@@ -46,5 +46,8 @@
     set_fact:
       plexauth: "{{plextoken.json.user.authToken | regex_replace('\n', '') }}"
 
+  - name: Information
+    debug: msg="PlexToken: {{plextoken}} PlexAuth: {{plexauth}}"
+
   - name: Save Token
     shell: "echo {{plexauth}} > /var/plexguide/plex.token"
