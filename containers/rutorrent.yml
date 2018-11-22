@@ -22,7 +22,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "jackett"
+      pgrole: "rutorrent"
       intport: "80"
       extport: "8999"
       image: "linuxserver/rutorrent"
