@@ -24,7 +24,7 @@
     set_fact:
       pgrole: "jackett"
       intport: "9117"
-      extport: "8117"
+      extport: "9117"
       image: "linuxserver/jackett"
 
 # CORE (MANDATORY) ############################################################
