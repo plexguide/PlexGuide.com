@@ -93,7 +93,8 @@ EOF
 
 sleep 3
 
-ansible-playbook /opt/plexguide/containers/$typed.yml
+if [ $typed == "plex" ]; then bash /opt/plexguide/menu/plex/plex.sh;
+else ansible-playbook /opt/plexguide/containers/$typed.yml; fi
 
 # Cron Execution
 echo $typed > /tmp/program_var
