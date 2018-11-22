@@ -34,11 +34,9 @@ question1 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Plex - Version of Plex To Install?
+🌎 PG - Version of Plex To Install?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-NOTE: Failing to Authenticate as a Plex Pass User, will resort Plex
-turning into a Plex Public state!
+⚡ Reference: http://plex.plexguide.com
 
 1 - Plex Public
 2 - Plex Pass
@@ -57,12 +55,9 @@ question2 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 PG - PlexGuide Installer
+↘️  PG - Plex Network Setup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://plex.plexguide.com
-
-WARNING: It is important to select the correct one! Important for claiming
-the server!
 
 1 - Plex Server > Remote (Outside Network)
 2 - Plex Server > Local  (Within  Network)
@@ -83,11 +78,13 @@ question3 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Remote Plex Server - Claim the Plex Server
+🍖 NOM NOM - Claim Plex the Remote Plex Server!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 To Claim the Plex Server, visit https://claim.plex.tv and input the code
-below! You have 5 minutes to do so!
+below!
+
+⌛ You have 5 minutes to accomplish this task! Hurry!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
