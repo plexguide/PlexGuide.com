@@ -22,10 +22,10 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "jackett"
-      intport: "9117"
-      extport: "8117"
-      image: "linuxserver/jackett"
+      pgrole: "nowshowing"
+      intport: "6878"
+      extport: "6878"
+      image: "ninthwalker/nowshowing:v2"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
@@ -46,10 +46,6 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/config"
-        - "/mnt/unionfs:/unionfs"
-        - "{{path.stdout}}/deluge/temp:/temp"
-        - "{{path.stdout}}/deluge/downloaded:/downloaded"
-        - "{{path.stdout}}/deluge/torrent:/torrent"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
