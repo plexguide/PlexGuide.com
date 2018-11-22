@@ -20,7 +20,13 @@
 badinput () {
 echo
 read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
+question1
+}
 
+badinput2 () {
+echo
+read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
+question2
 }
 
 # FIRST QUESTION
@@ -91,40 +97,40 @@ NOTE: If the taken is bad, repeat this process again!
 
 EOF
 sleep 4
+question3
 elif [ "$typed" == "2" ]; then question1;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
-else badinput; fi
+else badinput2; fi
 }
 
 question3 () {
+echo "$pw" > /var/plexguide/plex.pw
+echo "$user" > /var/plexguide/plex.user
+ansible-playbook /opt/plexguide/menu/plex/token.yml
 token=$(cat /var/plexguide/plex.token)
-if [ "$token" != "" ]; then
-tee <<-EOF
+  if [ "$token" != "" ]; then
+  tee <<-EOF
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️   PG - PlexToken Generation Succeeded!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 4
-else
-tee <<-EOF
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ✅️   PG - PlexToken Generation Succeeded!
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  EOF
+  sleep 4
+  else
+  tee <<-EOF
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  PG - PlexToken Generation Failed!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ⛔️  PG - PlexToken Generation Failed!
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: Process will repeat until you succeed or exit!
+  NOTE: Process will repeat until you succeed or exit!
 
-EOF
-read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
-question1
-fi
+  EOF
+  read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
+  question1
+  fi
 }
 
 # FUNCTIONS END ##############################################################
 
 question1
-echo "$pw" > /var/plexguide/plex.pw
-echo "$user" > /var/plexguide/plex.user
-ansible-playbook /opt/plexguide/menu/plex/token.yml
-question3
