@@ -66,7 +66,7 @@
 # MAIN DEPLOYMENT #############################################################
   - name: "Copy scripts into directory - {{pgrole}}"
     copy:
-      src: /templates/deluge_extract.sh
+      src: ./templates/deluge_extract.sh
       dest: /opt/appdata/{{pgrole}}/scripts
       directory_mode: yes
       force: yes
@@ -84,7 +84,7 @@
 
   - name: "Copy scripts into directory - {{pgrole}}"
     copy:
-      src: /templates/deluge/plugins
+      src: ./templates/deluge/plugins
       dest: /opt/appdata/{{pgrole}}
       directory_mode: yes
       force: yes
