@@ -132,6 +132,36 @@
     set_fact:
       customConnections: "none"
     when: customConnections is undefined
+  ######################################### FOR BOTH
+  - name: "Set Default Labels"
+    set_fact:
+      default_labels:
+        traefik.enable: "true"
+        traefik.port: "{{intport}}"
+        traefik.frontend.redirect.entryPoint: "https"
+        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+
+  - name: "Set Default Volume - {{pgrole}}"
+    set_fact:
+      default_volumes:
+        - "/tmp:/tmp"
+        - "/opt/appdata/plex/database:/config"
+        - "/opt/transcodes:/transcode"
+        - "/dev/shm:/ram_transcode"
+        - "/mnt/plexdrive:/plexdrive"
+        - "/mnt/encrypt:/encrypt"
+        - "/mnt/unionfs:/unionfs"
+        - "/:/yourcomputer"
+        - "/mnt/gdrive:/gdrive"
+        - "/mnt/tdrive:/tdrive"
+        - "/etc/localtime:/etc/localtime:ro"
+
+  - name: "Establish Key Variables"
+    set_fact:
+      default_env:
+        UID: "1000"
+        GID: "1000"
+
   ######################################### DEPLOY PLEX REMOTE (ANSWER 2)
   - name: Deploy Plex Container (Remote Edition)
     docker_container:
