@@ -28,6 +28,10 @@
     shell: "cat /var/plexguide/plex.pw"
     register: pw
 
+  - name: Blank Out Token
+    shell: "echo '' > /var/plexguide/plex.token"
+    ignore_errors: yes
+
   - name: Token Generation
     uri:
       url: https://plex.tv/users/sign_in.json
