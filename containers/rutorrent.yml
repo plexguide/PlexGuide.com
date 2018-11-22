@@ -38,7 +38,7 @@
 
   - name: "Copy scripts into directory - {{pgrole}}"
     copy:
-      src: ./templates/{{pgrole}}/plugins
+      src: /opt/plexguide/containers/templates/{{pgrole}}/plugins
       dest: /opt/appdata/{{pgrole}}
       directory_mode: yes
       force: yes
@@ -188,7 +188,7 @@
 
   - name: Force New Plugin
     copy:
-      src: ../templates/rutorrent.ini
+      src: /opt/plexguide/containers/templates/rutorrent.ini
       owner: 1000
       group: 1000
       dest: "/opt/appdata/{{pgrole}}/config/rutorrent/settings/plugins.ini"
