@@ -149,9 +149,9 @@ percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
 echo "   GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
 fi
 
-if [ "$edition" == "PG Edition - GDrive" ]; then echo && echo "1 - Mounts & Data Transports"
-elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo && echo "1 - Mounts & Data Transports"
-elif [ "$edition" == "PG Edition - HD Multi" ]; then echo && echo "1 - MultiHD Mount Deployment"
+if [ "$edition" == "PG Edition - GDrive" ]; then echo && echo "1 - Mounts & Data"
+elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo && echo "1 - Mounts & Data"
+elif [ "$edition" == "PG Edition - HD Multi" ]; then echo && echo "1 - MultiHD & Mounts"
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo && echo "1 - No Mounts for Solo HD"
 else
   echo "1 - Mounts & Data Transports"
