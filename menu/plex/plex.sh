@@ -53,8 +53,8 @@ Z - EXIT
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then claim="yes" && question2;
-elif [ "$typed" == "2" ]; then claim="no" && question2;
+  if [ "$typed" == "1" ]; then claim="yes" && question3;
+elif [ "$typed" == "2" ]; then claim="no" && question3;
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput; fi
 }
