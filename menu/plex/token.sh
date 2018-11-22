@@ -76,6 +76,7 @@ Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+read -p 'Make a Selection | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
 tee <<-EOF
