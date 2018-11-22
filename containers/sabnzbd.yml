@@ -22,7 +22,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "jackett"
+      pgrole: "sabnzbd"
       intport: "8080"
       extport: "8080"
       image: "linuxserver/sabnzbd"
