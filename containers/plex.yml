@@ -18,6 +18,15 @@
   gather_facts: false
   tasks:
 
+# FACTS #######################################################################
+
+  - name: "Set Known Facts"
+    set_fact:
+      pgrole: "lidarr"
+      intport: "8686"
+      extport: "8686"
+      image: "linuxserver/lidarr"
+
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
@@ -127,7 +136,7 @@
   - name: Deploy Plex Container (Remote Edition)
     docker_container:
       name: plex
-      image: "plexinc/pms-docker:{{plextype}}"
+      image: "plexinc/pms-docker:{{servertype}}"
       pull: yes
       published_ports:
         - "32400:32400/tcp"
@@ -165,7 +174,7 @@
   - name: Deploy Plex Container (Local Edition)
     docker_container:
       name: plex
-      image: "plexinc/pms-docker:latest"
+      image: "plexinc/pms-docker:{{servertype}}"
       pull: yes
       published_ports:
         - "32400:32400/tcp"
@@ -194,10 +203,10 @@
     when: servertype == "2"
 
   ######################################## ENDING PHASE
-  - debug: msg="Final Notes - Remote Plex | IP Address {{ipaddress.stdout}} | Plex Type {{plextype}} | Token {{claim.stdout}}"
+  - debug: msg="Final Notes - Remote Plex | IP Address {{ipaddress.stdout}} | Plex Type {{servertype}} | Token {{claim.stdout}}"
     when: servertype == "1"
 
-  - debug: msg="Final Notes - Local Plex | IP Address {{ipaddress.stdout}} | Plex Type {{plextype}}"
+  - debug: msg="Final Notes - Local Plex | IP Address {{ipaddress.stdout}} | Plex Type {{servertype}}"
     when: servertype == "2"
 
   - pause:
