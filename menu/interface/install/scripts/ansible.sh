@@ -46,6 +46,9 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
       echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
       echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
 
+      ### Disabling cows for people that have cowsay installed
+      echo "nocows = 1" >> /etc/ansible/ansible.cfg
+
       cat /var/plexguide/pg.ansible > /var/plexguide/pg.ansible.stored
   fi
 ######################################################## END: Main Script
