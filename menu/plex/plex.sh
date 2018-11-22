@@ -99,6 +99,8 @@ EOF
 
   read -p 'Plex Server Claim Number | Press [ENTER]: ' typed < /dev/tty
   echo $typed > /var/plexguide/plex.claim && break=on;
+else
+  break="on"
 fi
 }
 
