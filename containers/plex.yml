@@ -18,6 +18,10 @@
   gather_facts: false
   tasks:
 
+# CORE (MANDATORY) ############################################################
+  - name: CronJob Role
+    include_tasks: "/opt/plexguide/containers/_core.yml"
+
 # FACTS #######################################################################
 
   - name: "Plex Server Network Type"
@@ -27,6 +31,10 @@
   - name: Register Domain
     shell: "cat /var/plexguide/plex.claim"
     register: claim
+
+# CORE (MANDATORY) ############################################################
+  - name: CronJob Role
+    include_tasks: "/opt/plexguide/containers/_core.yml"
 
   - name: Check Preferences.xml exists
     stat:
