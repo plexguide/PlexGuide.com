@@ -109,23 +109,23 @@ echo "$user" > /var/plexguide/plex.user
 ansible-playbook /opt/plexguide/menu/plex/token.yml
 token=$(cat /var/plexguide/plex.token)
   if [ "$token" != "" ]; then
-  tee <<-EOF
+tee <<-EOF
 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ✅️   PG - PlexToken Generation Succeeded!
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  EOF
-  sleep 4
-  else
-  tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️   PG - PlexToken Generation Succeeded!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 4
+else
+tee <<-EOF
 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ⛔️  PG - PlexToken Generation Failed!
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  PG - PlexToken Generation Failed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  NOTE: Process will repeat until you succeed or exit!
+NOTE: Process will repeat until you succeed or exit!
 
-  EOF
+EOF
   read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
   question1
   fi
