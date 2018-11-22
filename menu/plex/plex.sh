@@ -14,10 +14,6 @@
 #
 ################################################################################
 
-# KEY VARIABLE RECALL & EXECUTION
-program=$(cat /tmp/program_var)
-mkdir -p /var/plexguide/cron/
-mkdir -p /opt/appdata/plexguide/cron
 # FUNCTIONS START ##############################################################
 
 # BAD INPUT
@@ -58,7 +54,6 @@ else badinput; fi
 
 # SECOND QUESTION
 question2 () {
-space=$(cat /var/plexguide/data.location)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -77,10 +72,10 @@ Z - EXIT
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then question3;
-elif [ "$typed" == "2" ]; then a="b";
+  if [ "$typed" == "1" ]; then 'echo "remote" > /var/plexguide/plex.server' && question3;
+elif [ "$typed" == "2" ]; then 'echo "local" > /var/plexguide/plex.server';
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
-else badinput; fi
+else badinput2; fi
 }
 
 # THIRD QUESTION
