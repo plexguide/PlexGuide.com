@@ -53,8 +53,8 @@ Z - EXIT
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then question2;
-elif [ "$typed" == "2" ]; then question2;
+  if [ "$typed" == "1" ]; then claim="yes" && question2;
+elif [ "$typed" == "2" ]; then claim="no" && question2;
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput; fi
 }
@@ -77,45 +77,32 @@ turning into a Plex Public state!
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then question2;
-elif [ "$typed" == "2" ]; then question2;
+  if [ "$typed" == "1" ]; then question3;
+elif [ "$typed" == "2" ]; then question3;
 else badinput2; fi
 }
 
 # THIRD QUESTION
 question3 () {
+if [ "$claim" == "on" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 PG Cron - What Hour of the Day?
+🌎 Remote Plex Server - Claim the Plex Server
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Type an HOUR from [0 to 23]
-
-0  = 00:00 | 12AM
-12 = 12:00 | 12PM
-18 = 18:00 | 6 PM
+To Claim the Plex Server, visit https://claim.plex.tv and input the code
+below! You have 5 minutes to do so!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then echo $typed > /var/plexguide/cron/cron.hour && break=1;
-else badinput; fi
+  read -p 'Plex Server Claim Number | Press [ENTER]: ' typed < /dev/tty
+  then echo $typed > /var/plexguide/plex.claim && break=on;
+fi
 }
 
 # FUNCTIONS END ##############################################################
 
 break=off && while [ "$break" == "off" ]; do question1; done
-break=off && while [ "$break" == "off" ]; do question2; done
-break=off && while [ "$break" == "off" ]; do question3; done
-
-echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
 ansible-playbook /opt/plexguide/menu/cron/cron.yml
-
-#serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
-#initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
-#check=$(hcloud server list | grep "\<$sshin\>" | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
-#ipcheck=$(echo $check | awk '{ print $3 }')
-#⛔️  WARNING! - Must Configure RClone First /w >>> gdrive
-# read -n 1 -s -r -p "Press [ANY] Key to Continue "
