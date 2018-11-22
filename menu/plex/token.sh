@@ -70,11 +70,11 @@ tee <<-EOF
 User Name: $user
 User Pass: $pw
 
-⚠️ Information Correct?
+⚠️  Information Correct?
 
-1 - Yes
-2 - No
-Z - EXIT
+1 - YES
+2 - NO
+Z - Exit Interface
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -118,7 +118,7 @@ NOTE: Process will repeat until you succeed or exit!
 EOF
 read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
 question1
-fi 
+fi
 }
 
 # FUNCTIONS END ##############################################################
