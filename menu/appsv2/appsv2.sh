@@ -16,6 +16,8 @@
 num=0
 echo " " > /var/plexguide/programs.temp
 
+bash /opt/plexguide/containers/_appsgen.sh
+
 while read p; do
   echo -n $p >> /var/plexguide/programs.temp
   echo -n " " >> /var/plexguide/programs.temp
@@ -26,7 +28,7 @@ while read p; do
     echo " " >> /var/plexguide/programs.temp
   fi
 
-done </opt/plexguide/containers/_apps.list
+done </var/plexguide/app.list
 
 tee <<-EOF
 
