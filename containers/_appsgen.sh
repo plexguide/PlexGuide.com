@@ -23,3 +23,4 @@ sed -i -e "/traefik/d" /var/plexguide/app.list
 sed -i -e "/_appsgen.sh/d" /var/plexguide/app.list
 sed -i -e "/_c*/d" /var/plexguide/app.list
 sed -i -e "/_a*/d" /var/plexguide/app.list
+sed -i -e "/templates/d" /var/plexguide/app.list
