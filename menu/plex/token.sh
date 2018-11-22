@@ -107,7 +107,6 @@ tee <<-EOF
 EOF
 sleep 4
 else
-  if [ "$typed" == "1" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -119,7 +118,7 @@ NOTE: Process will repeat until you succeed or exit!
 EOF
 read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
 question1
-fi
+fi 
 }
 
 # FUNCTIONS END ##############################################################
