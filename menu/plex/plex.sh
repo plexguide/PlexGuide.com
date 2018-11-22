@@ -72,8 +72,8 @@ Z - EXIT
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then 'echo "remote" > /var/plexguide/plex.server' && question3;
-elif [ "$typed" == "2" ]; then 'echo "local" > /var/plexguide/plex.server';
+  if [ "$typed" == "1" ]; then echo remote > /var/plexguide/plex.server && question3;
+elif [ "$typed" == "2" ]; then echo local > /var/plexguide/plex.server;
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput2; fi
 }
