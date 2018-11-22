@@ -99,4 +99,4 @@ EOF
 # FUNCTIONS END ##############################################################
 
 question1
-ansible-playbook /opt/plexguide/menu/cron/cron.yml
+ansible-playbook /opt/plexguide/menu/containers/plex.yml
