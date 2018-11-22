@@ -1,0 +1,50 @@
+#!/bin/bash
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+################################################################################
+---
+# Reference: https://github.com/Arcanemagus/plex-api/wiki/Plex.tv
+
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+  - name: Recall User
+    shell: "cat /var/plexguide/plex.user"
+    register: user
+
+  - name: Recall PW
+    shell: "cat /var/plexguide/plex.pw"
+    register: pw
+
+  - name: Token Generation
+    uri:
+      url: https://plex.tv/users/sign_in.json
+      method: POST
+      status_code: 201
+      headers:
+        X-Plex-Version: "1.0.0"
+        X-Plex-Product: "plex"
+        X-Plex-Client-Identifier: "XXX"
+        Content-Type: "application/x-www-form-urlencoded; charset=utf-8"
+      password: '{{user.stdout}}'
+      user: '{{pw.stdout}}'
+    register: plextoken
+
+  - name: Set Token
+    set_fact:
+      plexauth: "{{ plextoken.json.user.authToken | regex_replace('\n', '') }}"
+
+  - name: Save Token
+    shell: "echo {{plexauth}} > /var/plexguide/plex.token"
