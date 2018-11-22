@@ -160,10 +160,10 @@ else
 fi
 
 tee <<-EOF
-2 - Traefik & TLD Deployment [$traefik]
+2 - Traefik [$traefik]
 3 - PG Apps
-4 - Cloud Instances & GCE
-5 - Tools & Services
+4 - Instances & GCE
+5 - Tools
 6 - Settings
 Z - Exit
 
