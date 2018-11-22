@@ -57,11 +57,11 @@
     ignore_errors: True
 
 # FOLDER #######################################################################
-
-  - name: Deploy AppData Folder
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+  - name: Create Folders
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
     with_items:
       - "/opt/appdata/{{pgrole}}"
+      - "{{path.stdout}}/{{pgrole}}"
 
 # TOP LEVEL DOMAIN INFO SET ####################################################
 
