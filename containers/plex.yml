@@ -22,10 +22,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "lidarr"
-      intport: "8686"
-      extport: "8686"
-      image: "linuxserver/lidarr"
+      pgrole: "plex"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
