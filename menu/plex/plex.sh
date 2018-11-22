@@ -98,7 +98,7 @@ below! You have 5 minutes to do so!
 EOF
 
   read -p 'Plex Server Claim Number | Press [ENTER]: ' typed < /dev/tty
-  then echo $typed > /var/plexguide/plex.claim && break=on;
+  echo $typed > /var/plexguide/plex.claim && break=on;
 fi
 }
 
