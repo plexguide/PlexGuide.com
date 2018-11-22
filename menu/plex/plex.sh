@@ -47,8 +47,8 @@ turning into a Plex Public state!
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then question2;
-elif [ "$typed" == "2" ]; then question2;
+  if [ "$typed" == "1" ]; then echo public > /var/plexguide/plex.extension && question2;
+elif [ "$typed" == "2" ]; then echo plexpass > /var/plexguide/plex.extension && question2;
 else badinput; fi
 }
 

@@ -37,9 +37,13 @@
     shell: "cat /var/plexguide/plex.server"
     register: servertype
 
-  - name: Register Domain
+  - name: Register Claim Number
     shell: "cat /var/plexguide/plex.claim"
     register: claim
+
+  - name: Register Extension Type
+    shell: "cat /var/plexguide/plex.extension"
+    register: extension
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
@@ -141,7 +145,7 @@
         traefik.frontend.redirect.entryPoint: "https"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-  - name: "Set Default Volume - {{pgrole}}"
+  - name: "Set Default Volume - {{extension.stdout}}"
     set_fact:
       default_volumes:
         - "/tmp:/tmp"
@@ -166,7 +170,7 @@
   - name: Deploy Plex Container (Remote Edition)
     docker_container:
       name: plex
-      image: "plexinc/pms-docker:{{servertype}}"
+      image: "plexinc/pms-docker:{{extension.stdout}}"
       pull: yes
       published_ports:
         - "32400:32400/tcp"
@@ -204,7 +208,7 @@
   - name: Deploy Plex Container (Local Edition)
     docker_container:
       name: plex
-      image: "plexinc/pms-docker:{{servertype}}"
+      image: "plexinc/pms-docker:{{extension.stdout}}"
       pull: yes
       published_ports:
         - "32400:32400/tcp"
@@ -233,10 +237,10 @@
     when: servertype.stdout == "local"
 
   ######################################## ENDING PHASE
-  - debug: msg="Final Notes - Remote Plex | IP Address {{ipaddress.stdout}} | Plex Type {{servertype}} | Token {{claim.stdout}}"
+  - debug: msg="Final Notes - Remote Plex | IP Address {{ipaddress.stdout}} | Plex Type {{servertype.stdout}} | Token {{claim.stdout}}"
     when: servertype.stdout == "remote"
 
-  - debug: msg="Final Notes - Local Plex | IP Address {{ipaddress.stdout}} | Plex Type {{servertype}}"
+  - debug: msg="Final Notes - Local Plex | IP Address {{ipaddress.stdout}} | Plex Type {{servertype.stdout}}"
     when: servertype.stdout == "local"
 
   - pause:
