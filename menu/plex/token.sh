@@ -29,7 +29,7 @@ question1 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 PG - PlexToken Generator 
+🌎 PG - PlexToken Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://plextoken.plexguide.com
 
@@ -118,7 +118,7 @@ NOTE: Process will repeat until you succeed or exit!
 
 EOF
 read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
-question 1
+question1
 }
 
 # FUNCTIONS END ##############################################################
