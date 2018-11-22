@@ -24,11 +24,7 @@ mkdir -p /opt/appdata/plexguide/cron
 badinput () {
 echo
 read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
-
 }
-
-
-
 
 # FIRST QUESTION
 question1 () {
@@ -53,8 +49,9 @@ EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
     if [ "$guard" == "DISABLED" ]; then
-    read -p '⛔️ [Type] a USERNAME! | PRESS [ENTER] ' user < /dev/tty
-    read -p '⛔️ [Type] a PASSWORD! | PRESS [ENTER] ' pw < /dev/tty
+    echo ""
+    read -p '↘️ [Type] a USERNAME! | PRESS [ENTER] ' user < /dev/tty
+    read -p '↘️ [Type] a PASSWORD! | PRESS [ENTER] ' pw < /dev/tty
     htpasswd -cbs /var/plexguide/server.ht $user $pw
 tee <<-EOF
 
