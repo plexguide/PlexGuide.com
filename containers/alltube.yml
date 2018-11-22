@@ -22,10 +22,10 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "alltube"
-      intport: "80"
-      extport: "1234"
-      image: "rudloff/alltube"
+      pgrole: "jackett"
+      intport: "9117"
+      extport: "8117"
+      image: "linuxserver/jackett"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
@@ -45,8 +45,12 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/var/www/html/config"
-
+        - "/opt/appdata/{{pgrole}}:/config"
+        - "/mnt/unionfs:/unionfs"
+        - "{{path.stdout}}/deluge/temp:/temp"
+        - "{{path.stdout}}/deluge/downloaded:/downloaded"
+        - "{{path.stdout}}/deluge/torrent:/torrent"
+        - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
     set_fact:
