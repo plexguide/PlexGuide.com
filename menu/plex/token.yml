@@ -34,8 +34,8 @@
       method: POST
       status_code: 201
       headers:
+        X-Plex-Product: "plexguide"
         X-Plex-Version: "1.0.0"
-        X-Plex-Product: "plex"
         X-Plex-Client-Identifier: "XXX"
         Content-Type: "application/x-www-form-urlencoded; charset=utf-8"
       password: '{{user.stdout}}'
@@ -44,7 +44,7 @@
 
   - name: Set Token
     set_fact:
-      plexauth: "{{ plextoken.json.user.authToken | regex_replace('\n', '') }}"
+      plexauth: "{{plextoken.json.user.authToken | regex_replace('\n', '') }}"
 
   - name: Save Token
     shell: "echo {{plexauth}} > /var/plexguide/plex.token"
