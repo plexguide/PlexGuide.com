@@ -58,14 +58,12 @@
       name: "{{pgrole}}"
       image: "{{image}}"
       pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
+      volumes: "{{default_volumes}}"
+      env: "{{default_env}}"
       restart_policy: always
       networks:
         - name: plexguide
           aliases:
             - "{{pgrole}}"
       state: started
-      labels: "{{pg_labels}}"
+      labels: "{{default_labels}}"
