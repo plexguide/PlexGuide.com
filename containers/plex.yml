@@ -40,6 +40,7 @@
   - name: Register Claim Number
     shell: "cat /var/plexguide/plex.claim"
     register: claim
+    when: servertype.stdout == "remote"
 
   - name: Register Extension Type
     shell: "cat /var/plexguide/plex.extension"
@@ -226,7 +227,6 @@
       env:
         PLEX_UID: "1000"
         PLEX_GID: "1000"
-        PLEX_CLAIM: "{{claim.stdout}}"
         ADVERTISE_IP: "{{customConnections}}"
       network_mode: "host"
       volumes: "{{default_volumes}}"
