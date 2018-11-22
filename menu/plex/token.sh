@@ -119,6 +119,7 @@ NOTE: Process will repeat until you succeed or exit!
 EOF
 read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
 question1
+fi
 }
 
 # FUNCTIONS END ##############################################################
