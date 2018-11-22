@@ -33,7 +33,31 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 question2
 }
 # FIRST QUESTION
+
 question1 () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Plex - Version of Plex To Install?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: Failing to Authenticate as a Plex Pass User, will resort Plex
+turning into a Plex Public state!
+
+1 - Plex Public
+2 - Plex Pass
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  if [ "$typed" == "1" ]; then question2;
+elif [ "$typed" == "2" ]; then question2;
+else badinput; fi
+}
+
+# SECOND QUESTION
+question2 () {
 space=$(cat /var/plexguide/data.location)
 tee <<-EOF
 
@@ -53,38 +77,14 @@ Z - EXIT
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then claim="yes" && question3;
-elif [ "$typed" == "2" ]; then claim="no" && question3;
+  if [ "$typed" == "1" ]; then question3;
+elif [ "$typed" == "2" ]; then a="b";
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput; fi
 }
 
-# SECOND QUESTION
-question2 () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Plex - Version of Plex To Install?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-NOTE: Failing to Authenticate as a Plex Pass User, will resort Plex
-turning into a Plex Public state!
-
-1 - Plex Public
-2 - Plex Pass
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then question3;
-elif [ "$typed" == "2" ]; then question3;
-else badinput2; fi
-}
-
 # THIRD QUESTION
 question3 () {
-if [ "$claim" == "on" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -99,12 +99,9 @@ EOF
 
   read -p 'Plex Server Claim Number | Press [ENTER]: ' typed < /dev/tty
   echo $typed > /var/plexguide/plex.claim && break=on;
-else
-  break="on"
-fi
 }
 
 # FUNCTIONS END ##############################################################
 
-break=off && while [ "$break" == "off" ]; do question1; done
+question1
 ansible-playbook /opt/plexguide/menu/cron/cron.yml
