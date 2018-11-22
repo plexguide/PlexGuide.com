@@ -27,6 +27,11 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 
 }
 
+badinput2 () {
+echo
+read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
+question2
+}
 # FIRST QUESTION
 question1 () {
 space=$(cat /var/plexguide/data.location)
@@ -74,7 +79,7 @@ EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then question2;
 elif [ "$typed" == "2" ]; then question2;
-else badinput; fi
+else badinput2; fi
 }
 
 # THIRD QUESTION
