@@ -102,21 +102,21 @@
   - name: "Get Plex Custom URL"
     shell: "echo https://plex.{{domain.stdout}}:443,http://plex.{{domain.stdout}}:80"
     register: plex_url
-    when: servertype == "remote"
+    when: servertype.stdout == "remote"
 
   - debug: msg="Your plex_url is {{ plex_url.stdout }}"
-    when: servertype == "remote"
+    when: servertype.stdout == "remote"
 
   - set_fact:
         plex_advert_ip: "http://{{ipaddress.stdout}}:32400"
-    when: servertype == "remote"
+    when: servertype.stdout == "remote"
 
   - set_fact:
         plex_advert_ip: "{{plex_url.stdout}}"
-    when: servertype == "remote"
+    when: servertype.stdout == "remote"
 
   - debug: msg="plex_advert_ip is {{plex_advert_ip}}"
-    when: servertype == "remote"
+    when: servertype.stdout == "remote"
 
   - name: Check /dev/dri exists
     stat:
@@ -198,7 +198,7 @@
       restart_policy: always
       state: started
       labels: "{{default_labels}}"
-    when: servertype == "remote"
+    when: servertype.stdout == "remote"
 
   ######################################### DEPLOY PLEX LOCAL (ANSWER 3)
   - name: Deploy Plex Container (Local Edition)
@@ -230,14 +230,14 @@
       restart_policy: always
       state: started
       labels: "{{default_labels}}"
-    when: servertype == "local"
+    when: servertype.stdout == "local"
 
   ######################################## ENDING PHASE
   - debug: msg="Final Notes - Remote Plex | IP Address {{ipaddress.stdout}} | Plex Type {{servertype}} | Token {{claim.stdout}}"
-    when: servertype == "remote"
+    when: servertype.stdout == "remote"
 
   - debug: msg="Final Notes - Local Plex | IP Address {{ipaddress.stdout}} | Plex Type {{servertype}}"
-    when: servertype == "local"
+    when: servertype.stdout == "local"
 
   - pause:
       prompt: "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -255,7 +255,7 @@
             \n\n4. If enabled and fails, refresh or test using a second device!
             \n\nNOTE: Failing to follow directions will result in INDIRECT connections!
                \nPress [ENTER] after you CONFIRM"
-    when: servertype == "remote"
+    when: servertype.stdout == "remote"
 
   - pause:
       prompt: "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -272,4 +272,4 @@
                \n   c. Firewall: Turn them all off for TESTING purposes (turn on later)
             \n\nNOTE: If Remote Access Continues to Fail, check with PLEX Forums!
                \nPress [ENTER] after you CONFIRM"
-    when: servertype == "local"
+    when: servertype.stdout == "local"
