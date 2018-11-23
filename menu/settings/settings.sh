@@ -39,7 +39,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/roles/processor/scripts/processor-menu.sh
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+  bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
 elif [ "$typed" == "4" ]; then
 
   file="/var/plexguide/watchtower.id"

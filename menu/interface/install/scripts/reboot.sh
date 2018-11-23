@@ -19,5 +19,5 @@ test2=$(echo /var/plexguide/pg.preinstall.stored)
 if [ "$test1" == "$test2" ]; then
       echo "" 1>/dev/null 2>&1
     else
-      bash /opt/plexguide/scripts/containers/reboot.sh &>/dev/null &
+      bash /opt/plexguide/menu/scripts/containers/reboot.sh &>/dev/null &
 fi

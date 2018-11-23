@@ -64,9 +64,9 @@ for txtfile in certchecker nopassword pingchecker; do
   echo -n '' > /var/plexguide/$txtfile; done
 
 # security scan
-bash /opt/plexguide/scripts/startup/pg-auth-scan.sh &
+bash /opt/plexguide/menu/scripts/startup/pg-auth-scan.sh &
 # traefik cert validation
-bash /opt/plexguide/scripts/startup/certchecker.sh &
+bash /opt/plexguide/menu/scripts/startup/certchecker.sh &
 
 # copying rclone config to user incase bonehead is not root
 cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1

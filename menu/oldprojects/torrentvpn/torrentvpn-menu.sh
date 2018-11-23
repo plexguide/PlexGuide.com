@@ -10,7 +10,7 @@ STD='\033[0;0;39m'
 
 
 # create and move openvpn setup files to vpn directory
-#bash /opt/plexguide/scripts/torrentvpn/openvpn-setup.sh
+#bash /opt/plexguide/menu/scripts/torrentvpn/openvpn-setup.sh
 
 
 # ----------------------------------
@@ -48,7 +48,7 @@ Choices are: CA Montreal, CA Toronto, Netherlands, Switzerland,
              Sweden, France, Romania or Israel.
 
 Default is set to Netherlands
-  (To change edit /opt/plexguide/scripts/torrentvpn/move-ovpn-deluge.sh
+  (To change edit /opt/plexguide/menu/scripts/torrentvpn/move-ovpn-deluge.sh
       or -rtorrent.sh before install otherwise choose another in
       /opt/appdata/vpn/config/openvpn and replace Netherlands.ovpn
       in /opt/appdata/vpn/deluge or /rtorrent depending on install)
@@ -104,8 +104,8 @@ read_options(){
 #    read -p "What Remote server do you want to use? : " vpn_remote_choice
 #    echo "VPN_REMOTE=$vpn_remote_choice.privateinternetaccess.com" >> /opt/appdata/vpn/.vpn-env
 #    echo
-    cat /opt/appdata/vpn/.vpn-env >> /opt/plexguide/scripts/docker/.env
-    bash /opt/plexguide/scripts/torrentvpn/basic-env.sh
+    cat /opt/appdata/vpn/.vpn-env >> /opt/plexguide/menu/scripts/docker/.env
+    bash /opt/plexguide/menu/scripts/torrentvpn/basic-env.sh
     cat /opt/appdata/.env >> /opt/appdata/vpn/.vpn-env
 
 
@@ -126,7 +126,7 @@ read_options(){
       if [ -e "$file" ]
       then
       #  docker rm -f rtorrentvpn
-        bash /opt/plexguide/scripts/torrentvpn/deluge.sh
+        bash /opt/plexguide/menu/scripts/torrentvpn/deluge.sh
 
         clear
       else
@@ -141,7 +141,7 @@ read_options(){
     if [ -e "$file" ]
     then
     #  docker rm -f delugevpn
-      bash /opt/plexguide/scripts/torrentvpn/rtorrent.sh
+      bash /opt/plexguide/menu/scripts/torrentvpn/rtorrent.sh
       clear
       echo
     else
@@ -155,31 +155,31 @@ read_options(){
 #    echo ymlprogram jackettvpn > /opt/plexguide/tmp.txt
 #    echo ymldisplay JackettVPN >> /opt/plexguide/tmp.txt
 #    echo ymlport 9117 >> /opt/plexguide/tmp.txt
-#    bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#    bash /opt/plexguide/menu/scripts/docker-no/program-installer.sh
 #    ;;
 #    5)
-#    bash /opt/plexguide/scripts/torrentvpn/deluge.sh
+#    bash /opt/plexguide/menu/scripts/torrentvpn/deluge.sh
 #      docker rm -f delugevpn
 #     echo ymlprogram nginx-delugevpn > /opt/plexguide/tmp.txt
 #     echo ymldisplay NGINX DelugeVPN >> /opt/plexguide/tmp.txt
 #     echo ymlport 8112 >> /opt/plexguide/tmp.txt
-#     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#     bash /opt/plexguide/menu/scripts/docker-no/program-installer.sh
 #      ;;
 
 #    6)
-#    bash /opt/plexguide/scripts/torrentvpn/rtorrent.sh
+#    bash /opt/plexguide/menu/scripts/torrentvpn/rtorrent.sh
 #      docker rm -f rtorrentvpn
 #     echo ymlprogram nginx-rtorrentvpn > /opt/plexguide/tmp.txt
 #     echo ymldisplay NGINX rTorrentVPN >> /opt/plexguide/tmp.txt
 #     echo ymlport 3000 >> /opt/plexguide/tmp.txt
-#     bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#     bash /opt/plexguide/menu/scripts/docker-no/program-installer.sh
 #      ;;
 #    7)
 #      docker rm -f jackettvpn
 #       echo ymlprogram nginx-jackettvpn > /opt/plexguide/tmp.txt
 #       echo ymldisplay NGINX JackettVPN >> /opt/plexguide/tmp.txt
 #       echo ymlport 9117 >> /opt/plexguide/tmp.txt
-#       bash /opt/plexguide/scripts/docker-no/program-installer.sh
+#       bash /opt/plexguide/menu/scripts/docker-no/program-installer.sh
 #        ;;
     4)
       exit 0;;

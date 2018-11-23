@@ -64,7 +64,7 @@ case $CHOICE in
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       dialog --title "Unsupported Kernel" --msgbox "\nYour Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 0 0
-      bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+      bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
     fi ;;
   B)
     echo 'INFO - Selected: Klaver + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -80,7 +80,7 @@ case $CHOICE in
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       dialog --title "Unsupported Kernel" --msgbox "\nYour Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 0 0
-      bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+      bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
     fi ;;
   C)
     echo 'INFO - Selected: TJ007 + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -97,7 +97,7 @@ case $CHOICE in
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       dialog --title "Unsupported Kernel" --msgbox "\nYour Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 0 0
-      bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+      bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
     fi ;;
   D)
     echo 'INFO - Selected: Seedboxer + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -114,7 +114,7 @@ case $CHOICE in
     else
       echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
       dialog --title "Unsupported Kernel" --msgbox "\nYour Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 0 0
-      bash /opt/plexguide/scripts/menus/kernel-mod-menu.sh
+      bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
     fi ;;
   E)
     echo 'INFO - Selected: Install Latest Generic Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
@@ -145,5 +145,5 @@ case $CHOICE in
 esac
 ## repeat menu when exiting
 echo 'INFO - Looping: Kernal Mod Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-bash /opt/plexguide/scripts/menus/kernel-mod-menu-new.sh
+bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu-new.sh
 exit
