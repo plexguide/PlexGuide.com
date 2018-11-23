@@ -103,7 +103,6 @@ if [ "$typed" == "plex" ]; then ptoken=$(cat /var/plexguide/plex.token);
    ptoken=$(cat /var/plexguide/plex.token)
    if [ "$ptoken" == "" ]; then
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - Failed to Generate a Valid Plex Token! Exiting Deployment!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
