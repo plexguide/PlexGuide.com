@@ -5,8 +5,21 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+
+# BAD INPUT
+badinput () {
+echo
+read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
+question1
+}
+
+# FUNCTION - ONE
+question1 () {
+
+# Recall Program
 image=$(cat /tmp/program_var)
 
+# Checks Image List
 file="/opt/plexguide/containers/image/$image"
 if [ ! -e "$file" ]; then exit; fi
 
@@ -26,4 +39,12 @@ while read p; do
 done </opt/plexguide/containers/image/$image
 echo ""
 read -p '🚀  Type Number | PRESS [ENTER]: ' typed < /dev/tty
-cat /tmp/display$typed
+#cat /tmp/display$typed
+
+  if [[ "$typed" -ge "1" && "$typed" -le "$count" ]]; then echo GOOD;
+else badinput; fi
+}
+
+# END OF FUNCTIONS ############################################################
+
+question1
