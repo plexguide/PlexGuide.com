@@ -32,15 +32,13 @@ question2
 
 question1 () {
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 PG - Version of Plex To Install?
+🌎 Plex - Version of Plex To Install?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ Reference: http://plex.plexguide.com
-
+NOTE: Failing to Authenticate as a Plex Pass User, will resort Plex
+turning into a Plex Public state!
 1 - Plex Public
 2 - Plex Pass
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
@@ -53,24 +51,38 @@ else badinput; fi
 # SECOND QUESTION
 question2 () {
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  PG - Plex Network Setup
+🌎 PG - PlexGuide Installer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://plex.plexguide.com
-
+WARNING: It is important to select the correct one! Important for claiming
+the server!
 1 - Plex Server > Remote (Outside Network)
 2 - Plex Server > Local  (Within  Network)
 Z - EXIT
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then echo remote > /var/plexguide/plex.server;
+  if [ "$typed" == "1" ]; then echo remote > /var/plexguide/plex.server && question3;
 elif [ "$typed" == "2" ]; then echo local > /var/plexguide/plex.server;
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput2; fi
+}
+
+# THIRD QUESTION
+question3 () {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Remote Plex Server - Claim the Plex Server
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+To Claim the Plex Server, visit https://claim.plex.tv and input the code
+below! You have 5 minutes to do so!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+  read -p 'Plex Server Claim Number | Press [ENTER]: ' typed < /dev/tty
+  echo $typed > /var/plexguide/plex.claim && break=on;
 }
 
 # FUNCTIONS END ##############################################################

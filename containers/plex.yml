@@ -230,7 +230,6 @@
       env:
         PLEX_UID: "1000"
         PLEX_GID: "1000"
-        PLEX_CLAIM: "{{claim.stdout}}"
         ADVERTISE_IP: "{{customConnections}}"
       network_mode: "host"
       volumes: "{{default_volumes}}"
