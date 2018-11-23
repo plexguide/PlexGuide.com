@@ -100,9 +100,9 @@ if [ $typed == "plex" ]; then
 
  ptoken=$(cat /var/plexguide/plex.token)
  if [ $ptoken == "" ]; then
- bash /opt/plexguide/menu/plex/token.sh
- ptoken=$(cat /var/plexguide/plex.token)
-  if [ $ptoken == "" ]; then
+   bash /opt/plexguide/menu/plex/token.sh
+   ptoken=$(cat /var/plexguide/plex.token)
+   if [ $ptoken == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -110,10 +110,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
-exit
+    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    exit
   fi
- fi
+    fi
  
 bash /opt/plexguide/menu/plex/plex.sh
 else ansible-playbook /opt/plexguide/containers/$typed.yml; fi
