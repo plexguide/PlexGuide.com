@@ -13,6 +13,27 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
+
+# FUNCTIONS START ##############################################################
+
+# FIRST FUNCTION
+nzbt () {
+if [ "$typed" == "nzbthrottle" ]; then ptoken=$(cat /var/plexguide/plex.token);
+ if [ "$ptoken" == "" ]; then
+   bash /opt/plexguide/menu/plex/token.sh
+   ptoken=$(cat /var/plexguide/plex.token)
+   if [ "$ptoken" == "" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Failed to Generate a Valid Plex Token! Exiting Deployment!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    exit; fi; fi; fi
+}
+# FUNCTIONS END ################################################################
+
 num=0
 echo " " > /var/plexguide/programs.temp
 
@@ -99,25 +120,14 @@ sleep 3
 if [ "$typed" == "plex" ]; bash /opt/plexguide/menu/plex/plex.sh
 else ansible-playbook /opt/plexguide/containers/$typed.yml; fi
 
-# For NZBThrottle
-if [ "$typed" == "nzbthrottle" ]; then ptoken=$(cat /var/plexguide/plex.token);
- if [ "$ptoken" == "" ]; then
-   bash /opt/plexguide/menu/plex/token.sh
-   ptoken=$(cat /var/plexguide/plex.token)
-   if [ "$ptoken" == "" ]; then
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - Failed to Generate a Valid Plex Token! Exiting Deployment!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Execute NZB Checks
+nzbt
 
-EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
-    exit
-  else ansible-playbook /opt/plexguide/menu/plex/token.yml; fi; fi
-  bash /opt/plexguide/menu/plex/plex.sh; fi
-
-# Cron Execution
+# Store Used Program
 echo $typed > /tmp/program_var
+# Execute Main Program
+ansible-playbook /opt/plexguide/containers/$typed.yml
+# Cron Execution
 croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$typed\>")
 if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 
