@@ -56,6 +56,17 @@
     shell: "echo '{{pgrole}}' > /tmp/program_var"
     ignore_errors: True
 
+# IMAGE CHECKS #################################################################
+  - name: "Check If OverRide Exists"
+    stat:
+      path: "/opt/plexguide/containers/{{pgrole}}.yml"
+    register: "questions"
+
+  - name: Launch OverRide if Exists
+    include_tasks: "/opt/plexguide/containers/{{pgrole}}.yml"
+    when:
+      - "override.stat.exists == True"
+
 # FOLDER #######################################################################
   - name: Create Folders
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
