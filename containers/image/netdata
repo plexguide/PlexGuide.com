@@ -1,0 +1,62 @@
+#!/bin/bash
+#
+# [Ansible Role]
+#
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#################################################################################
+---
+- pause:
+    prompt: "\nType Image # for Sonarr\n1- linuxserver/sonarr (Recommended)\n2- aront/sonarr (MP4 Converter)"
+  register: result
+  until: result.user_input > "0" and result.user_input < "3"
+  retries: 5
+  delay: 1
+
+- name: Set linuxserver/sonarr
+  set_fact:
+    image: "linuxserver/sonarr"
+    extra: ""
+  when: result.user_input == "1"
+
+- name: Image Save
+  shell: "echo linuxserver/sonarr > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "2"
+
+- name: Aront/Sonarr
+  set_fact:
+    image: "aront/sonarr"
+    extra: ""
+  when: result.user_input == "2"
+
+- name: Image Save
+  shell: "echo aront/sonarr > /var/plexguide/{{pgrole}}.image"
+  register: pgversion
+  when: result.user_input == "2"
+
+- name: Create Folders
+  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  with_items:
+    - /opt/appdata/{{pgrole}}/mp4_automator
+  when: result.user_input == "2"
+
+- name: Install autoProcess.ini
+  template:
+    src: ../templates/sonarr.ini
+    dest: /opt/appdata/{{pgrole}}/mp4_automator/autoProcess.ini
+    force: yes
+    mode: 0775
+    owner: 1000
+    group: 1000
+  when: result.user_input == "2"
