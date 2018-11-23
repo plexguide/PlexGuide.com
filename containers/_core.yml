@@ -63,7 +63,7 @@
     register: "questions"
 
   - name: Launch OverRide if Exists
-    include_tasks: "/opt/plexguide/containers/{{pgrole}}.yml"
+    include_tasks: "/opt/plexguide/containers/images/{{pgrole}}.yml"
     when:
       - "override.stat.exists == True"
 
