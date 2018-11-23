@@ -66,22 +66,13 @@ EOF
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  NOTICE: Checking - $typed's existance! Please Standby!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-
-sleep 2
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️  PASS: $typed - Now Installing!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 # Prevents From Repeating
 #echo "$typed" > /var/plexguide/restore.id
 
-sleep 3
+sleep 2
 
 #echo $typed > /tmp/program_var
 if [ "$typed" == "netdata" ] || [ "$typed" == "vpn" ] || [ "$typed" == "speedtest" ] || [ "$typed" == "alltube" ]; then
