@@ -93,7 +93,7 @@ tee <<-EOF
 🍖 NOM NOM - Got It! Generating the Plex Token!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: If the taken is bad, repeat this process again!
+NOTE: If the token is bad, this process will repeat again!
 
 EOF
 sleep 4
@@ -112,7 +112,7 @@ token=$(cat /var/plexguide/plex.token)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️   PG - PlexToken Generation Succeeded!
+✅️  PG - PlexToken Generation Succeeded!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 4
