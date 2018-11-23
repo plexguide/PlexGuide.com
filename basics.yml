@@ -1,6 +1,0 @@
----
-- hosts: localhost
-
-  roles:
-  - { role: menu-transport, tags: ['menu-transport'] }
-  - { role: menu-plexaddons, tags: ['menu-plexaddons'] }
