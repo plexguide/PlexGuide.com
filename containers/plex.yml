@@ -52,6 +52,10 @@
 
   - name: Token Generation
     include_tasks: "/opt/plexguide/menu/plex/token.yml"
+
+  - name: Token Pull
+    shell: "cat /var/plexguide/plex.extension"
+    register: claim   
   ######################################### FOR BOTH
   - name: "Set Default Labels"
     set_fact:
@@ -229,6 +233,7 @@
       env:
         PLEX_UID: "1000"
         PLEX_GID: "1000"
+        PLEX_CLAIM: "{{claim.stdout}}"
         ADVERTISE_IP: "{{customConnections}}"
       network_mode: "host"
       volumes: "{{default_volumes}}"
