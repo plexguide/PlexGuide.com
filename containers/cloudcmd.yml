@@ -27,6 +27,10 @@
       extport: "7999"
       image: "coderaiser/cloudcmd"
 
+# CORE (MANDATORY) ############################################################
+  - name: CronJob Role
+    include_tasks: "/opt/plexguide/containers/_core.yml"
+
 # FILE MOVES & CHECKS #########################################################
   - name: Check config file exists
     stat:
@@ -39,10 +43,6 @@
       dest: /opt/appdata/{{pgrole}}/.cloudcmd.json
       force: yes
     when: cloud_json.stat.exists == False
-
-# CORE (MANDATORY) ############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
 
 # LABELS ######################################################################
 
