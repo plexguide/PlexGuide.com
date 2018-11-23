@@ -64,10 +64,20 @@
       - "{{path.stdout}}/{{pgrole}}"
 
 # OVERWRITE IMAGES #############################################################
-  - name: Check JSON exists
+  - name: Check if Image Variable Exists
     stat:
       path: "/var/plexguide/image/{{pgrole}}"
-    register: jsonfile
+    register: imagecheck
+
+  - name: "If Fact Does Not Match - Disable TLD"
+      shell: "cat /var/plexguide/pgtrak.spath"
+      register: imagetemp
+      when: imagecheck.stat.exists
+
+  - name: "If Fact Does Not Match - Disable TLD"
+    set_fact:
+      image: "{{imagetemp.stdout}}"
+      when: imagecheck.stat.exists
 
 # TOP LEVEL DOMAIN INFO SET ####################################################
 
