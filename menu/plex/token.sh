@@ -50,7 +50,7 @@ read -p 'Make a Selection | Press [ENTER]: ' typed < /dev/tty
 echo
 
   if [ "$typed" == "1" ]; then
-    read -p 'Enter the PLEX User Name | Press [ENTER]: ' user < /dev/tty
+    read -p 'Enter the PLEX User Name     | Press [ENTER]: ' user < /dev/tty
     read -p 'Enter the PLEX User Password | Press [ENTER]: ' pw < /dev/tty
 
 tee <<-EOF

@@ -16,6 +16,9 @@
 num=0
 echo " " > /var/plexguide/programs.temp
 
+# Ensure Variable Exist for Plex Token Detection
+touch /var/plexguide/plex.token
+
 bash /opt/plexguide/containers/_appsgen.sh
 
 while read p; do
@@ -93,7 +96,26 @@ EOF
 
 sleep 3
 
-if [ $typed == "plex" ]; then bash /opt/plexguide/menu/plex/plex.sh;
+if [ $typed == "plex" ]; then
+
+ ptoken=$(cat /var/plexguide/plex.token)
+ if [ $ptoken == "" ]; then
+ bash /opt/plexguide/menu/plex/token.sh
+ ptoken=$(cat /var/plexguide/plex.token)
+  if [ $ptoken == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Failed to Generate a Valid Plex Token! Exiting Deployment!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+exit
+  fi
+ fi
+ 
+bash /opt/plexguide/menu/plex/plex.sh
 else ansible-playbook /opt/plexguide/containers/$typed.yml; fi
 
 # Cron Execution
