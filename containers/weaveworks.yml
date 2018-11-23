@@ -67,7 +67,7 @@
       command:
         - probe.docker: true
       published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
+        - "127.0.0.1:4645:443"
       volumes: "{{pg_volumes}}"
       env: "{{pg_env}}"
       restart_policy: always
