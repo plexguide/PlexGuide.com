@@ -44,15 +44,15 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     cat /opt/plexguide/menu/interface/apps/app.list > /tmp/watchtower.set
-    ansible-playbook /opt/plexguide/programs/containers/watchtower.yml
+    ansible-playbook /opt/plexguide/containers/watchtower.yml
 elif [ "$typed" == "2" ]; then
   cat /opt/plexguide/menu/apps/app.list > /tmp/watchtower.set
   sed -i -e "/plex/d" /tmp/watchtower.set 1>/dev/null 2>&1
   sed -i -e "/emby/d" /tmp/watchtower.set 1>/dev/null 2>&1
-  ansible-playbook /opt/plexguide/programs/containers/watchtower.yml
+  ansible-playbook /opt/plexguide/containers/watchtower.yml
 elif [ "$typed" == "3" ]; then
   echo null > /tmp/watchtower.set
-  ansible-playbook /opt/plexguide/programs/containers/watchtower.yml
+  ansible-playbook /opt/plexguide/containers/watchtower.yml
 elif [ "$typed" == "4" ]; then
     if [ "$wcheck" == "NOT-SET" ]; then
 tee <<-EOF
