@@ -76,12 +76,12 @@
       published_ports:
         - "{{ports.stdout}}{{extport}}:{{intport}}"
         - "{{ports.stdout}}{{extport2}}:{{intport2}}"
-      pg_volumes: "{{default_volumes}}"
-      pg_env: "{{default_env}}"
+      volumes: "{{pg_volumes}}"
+      env: "{{pg_env}}"
       restart_policy: always
       networks:
         - name: plexguide
           aliases:
             - "{{pgrole}}"
       state: started
-      pg_labels: "{{default_labels}}"
+      labels: "{{pg_labels}}"
