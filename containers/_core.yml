@@ -63,6 +63,12 @@
       - "/opt/appdata/{{pgrole}}/scripts"
       - "{{path.stdout}}/{{pgrole}}"
 
+# OVERWRITE IMAGES #############################################################
+  - name: Check JSON exists
+    stat:
+      path: "/var/plexguide/image/{{pgrole}}"
+    register: jsonfile
+
 # TOP LEVEL DOMAIN INFO SET ####################################################
 
   - debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
