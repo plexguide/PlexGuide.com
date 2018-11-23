@@ -39,9 +39,10 @@ while read p; do
 done </opt/plexguide/containers/image/$image
 echo ""
 read -p '🚀  Type Number | PRESS [ENTER]: ' typed < /dev/tty
-#cat /tmp/display$typed
 
-  if [[ "$typed" -ge "1" && "$typed" -lt "$count" ]]; then echo GOOD;
+  if [[ "$typed" -ge "1" && "$typed" -lt "$count" ]]; then
+  mkdir -p /var/plexguide/image
+  cat "/tmp/display$typed" > "/var/plexguide/image/$typed"
 else badinput; fi
 }
 
