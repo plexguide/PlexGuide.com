@@ -1,18 +1,11 @@
 #!/bin/bash
 #
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705 - Deiteq
-# URL:      https://plexguide.com
-#
-# PlexGuide Copyright (C) 2018 PlexGuide.com
-# Licensed under GNU General Public License v3.0 GPL-3 (in short)
-#
-#   You may copy, distribute and modify the software as long as you track
-#   changes/dates in source files. Any modifications to our software
-#   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions.
-#
-#################################################################################
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705 - Deiteq
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+
 echo "11" > /var/plexguide/pg.python
 bash /opt/plexguide/install/python.sh
 ######################################################## START: Key Variables
@@ -20,13 +13,10 @@ rm -rf /opt/plexguide/menu/interface/version/version.sh
 sudo mkdir -p /opt/plexguide/menu/interface/version/
 sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
 
-
-# Ensure Server Path Exists
+# ENSURE SERVER PATH EXISTS
 mkdir -p /var/plexguide
 file="/var/plexguide/server.hd.path"
-if [ ! -e "$file" ]; then
-      echo "/mnt" > /var/plexguide/server.hd.path
-fi
+if [ ! -e "$file" ]; then echo "/mnt" > /var/plexguide/server.hd.path; fi
 
 # Generate Default YML
 bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
@@ -51,7 +41,6 @@ echo "3" > /var/plexguide/pg.gcloud
 echo "12" > /var/plexguide/pg.hetzner
 echo "1" > /var/plexguide/pg.amazonaws
 
-
 # Declare Variables Vital for Operations
 bash /opt/plexguide/menu/interface/install/scripts/declare.sh
 bash /opt/plexguide/install/aptupdate.sh
@@ -59,10 +48,8 @@ bash /opt/plexguide/install/aptupdate.sh
 ######################################################## START: New Install
 file="/var/plexguide/new.install"
 if [ ! -e "$file" ]; then
-  touch /var/plexguide/pg.number
-  echo off > /tmp/program_source
-  bash /opt/plexguide/menu/interface/version/file.sh
-  touch /var/plexguide/new.install
+  touch /var/plexguide/pg.number && echo off > /tmp/program_source
+  bash /opt/plexguide/menu/interface/version/file.sh && touch /var/plexguide/new.install
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -70,9 +57,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  exit
-fi
-######################################################## END: New Install
+exit; fi
+# END: NEW INSTALL ############################################################
 
 bash /opt/plexguide/install/alias.sh
 
@@ -100,36 +86,19 @@ bash /opt/plexguide/install/hetzner.sh
 bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
 bash /opt/plexguide/install/rclone.sh
 bash /opt/plexguide/menu/watchtower/watchtower.sh
+# END: COMMON FUNCTIONS ########################################################
 
-######################################################## END: Common Functions
-#
-#
-################################ ONE TIME PATH CHECK
+# ONE TIME PATH CHECK
 file="/var/plexguide/path.check"
-if [ ! -e "$file" ]; then
-  touch /var/plexguide/path.check
-  bash /opt/plexguide/menu/dlpath/dlpath.sh
-fi
-#################### FILL IN Variables
+if [ ! -e "$file" ]; then touch /var/plexguide/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
 
-### For MultiHD Edition
+# FOR MULTI-HD EDITION
 file="/var/plexguide/multi.unionfs"
-  if [ ! -e "$file" ]; then
-    touch /var/plexguide/multi.unionfs
-  fi
-
-### For PGBlitz - Ensure Not Deployed Start
-  file="/var/plexguide/project.deployed"
-    if [ ! -e "$file" ]; then
-      echo "no" > /var/plexguide/project.deployed
-    fi
-
-  file="/var/plexguide/project.keycount"
-    if [ ! -e "$file" ]; then
-      echo "0" > /var/plexguide/project.keycount
-    fi
-
-  file="/var/plexguide/pg.serverid"
-  if [ ! -e "$file" ]; then
-    echo "[NOT-SET]" > /var/plexguide/pg.serverid
-  fi
+  if [ ! -e "$file" ]; then touch /var/plexguide/multi.unionfs; fi
+# FOR PG-BLITZ
+file="/var/plexguide/project.deployed"
+  if [ ! -e "$file" ]; then echo "no" > /var/plexguide/project.deployed; fi
+file="/var/plexguide/project.keycount"
+  if [ ! -e "$file" ]; then echo "0" > /var/plexguide/project.keycount; fi
+file="/var/plexguide/pg.serverid"
+  if [ ! -e "$file" ]; then echo "[NOT-SET]" > /var/plexguide/pg.serverid; fi
