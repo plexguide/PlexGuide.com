@@ -41,7 +41,7 @@ echo ""
 read -p '🚀  Type Number | PRESS [ENTER]: ' typed < /dev/tty
 #cat /tmp/display$typed
 
-  if [[ "$typed" -ge "1" && "$typed" -le "$count" ]]; then echo GOOD;
+  if [[ "$typed" -ge "1" && "$typed" -lt "$count" ]]; then echo GOOD;
 else badinput; fi
 }
 
