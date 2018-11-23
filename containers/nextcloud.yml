@@ -22,10 +22,10 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "jackett"
+      pgrole: "nextcloud"
       intport: "443"
       extport: "127.0.0.1:4645"
-      image: "linuxserver/jackett"
+      image: "linuxserver/nextcloud"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role

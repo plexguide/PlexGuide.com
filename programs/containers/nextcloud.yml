@@ -23,13 +23,7 @@
     #cpu_shares: 128
     expose: ""
 
-- name: Create required directories
-  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  with_items:
-    - /opt/appdata/nextcloud
-    - /opt/appdata/nextcloud/conf
-    - /opt/appdata/nextcloud/data
-    - /opt/appdata/nextcloud/mariadb
+
 
 - name: "Set Default Volume - {{pgrole}}"
   set_fact:
