@@ -50,6 +50,8 @@
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
+  - name: Token Generation
+    include_tasks: "/opt/plexguide/menu/plex/token.yml"
   ######################################### FOR BOTH
   - name: "Set Default Labels"
     set_fact:
