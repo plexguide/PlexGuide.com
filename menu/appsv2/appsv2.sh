@@ -121,7 +121,9 @@ if [ "$typed" == "plex" ]; then bash /opt/plexguide/menu/plex/plex.sh;
 else ansible-playbook /opt/plexguide/containers/$typed.yml; fi
 
 # Execute NZB Checks
-nzbt
+echo flag1
+if [ "$typed" == "nzbthrottle" ]; then echo flag2 && nzbt; fi
+echo flag3
 
 # Store Used Program
 echo $typed > /tmp/program_var
