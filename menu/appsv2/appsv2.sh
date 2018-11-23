@@ -96,13 +96,12 @@ EOF
 
 sleep 3
 
-if [ $typed == "plex" ]; then
-
- ptoken=$(cat /var/plexguide/plex.token)
- if [ $ptoken == "" ]; then
+typed=plex
+if [ "$typed" == "plex" ]; then ptoken=$(cat /var/plexguide/plex.token);
+ if [ "$ptoken" == "" ]; then
    bash /opt/plexguide/menu/plex/token.sh
    ptoken=$(cat /var/plexguide/plex.token)
-   if [ $ptoken == "" ]; then
+   if [ "$ptoken" == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -114,7 +113,7 @@ EOF
     exit
   fi
     fi
- 
+
 bash /opt/plexguide/menu/plex/plex.sh
 else ansible-playbook /opt/plexguide/containers/$typed.yml; fi
 
