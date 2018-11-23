@@ -14,7 +14,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "jackett"
+      pgrole: "dockergc"
       intport: "1"
       extport: "1"
       image: "clockworksoul/docker-gc-cron"
