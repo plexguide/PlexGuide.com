@@ -14,7 +14,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "rutorrent"
+      pgrole: "qbittorrent"
       intport: "8080"
       extport: "8080"
       image: "linuxserver/qbittorrent"
