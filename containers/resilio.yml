@@ -72,7 +72,6 @@
       name: "{{pgrole}}"
       image: "{{image}}"
       pull: yes
-      #cpu_shares: "{{cpu_shares}}"
       published_ports:
         - "{{ports.stdout}}{{extport}}:{{intport}}"
         - "{{ports.stdout}}{{extport2}}:{{intport2}}"
