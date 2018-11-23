@@ -73,26 +73,6 @@ elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput2; fi
 }
 
-# THIRD QUESTION
-question3 () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🍖 NOM NOM - Claim Plex the Remote Plex Server!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-To Claim the Plex Server, visit https://claim.plex.tv and input the code
-below!
-
-⌛ You have 5 minutes to accomplish this task! Hurry!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-
-  read -p 'Plex Server Claim Number | Press [ENTER]: ' typed < /dev/tty
-  echo $typed > /var/plexguide/plex.claim && break=on;
-}
-
 # FUNCTIONS END ##############################################################
 
 question1
