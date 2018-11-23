@@ -16,7 +16,7 @@
     set_fact:
       pgrole: "sabnzbd"
       intport: "8080"
-      extport: "8700"
+      extport: "8080"
       image: "linuxserver/sabnzbd"
 
 # CORE (MANDATORY) ############################################################
