@@ -17,7 +17,7 @@
       pgrole: "qBittorrent"
       intport: "8080"
       extport: "8080"
-      image: "linuxserver/qBittorrent"
+      image: "linuxserver/qbittorrent"
 
 # CORE (MANDATORY) #############################################################
   - name: CronJob Role
