@@ -7,7 +7,10 @@
 ################################################################################
 image=$(cat /tmp/program_var)
 
-image=netdata
+image=no
+file="/opt/plexguide/containers/image/$image"
+if [ ! -e "$file" ]; then exit; fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
