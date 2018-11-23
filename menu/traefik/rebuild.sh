@@ -15,19 +15,18 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-old=$(cat /var/plexguide/old.tld) 1>/dev/null 2>&1
-new=$(cat /var/plexguide/tld.program) 1>/dev/null 2>&1
+touch /var/plexguide/old.tld
+
+old=$(cat /var/plexguide/old.tld)
+new=$(cat /var/plexguide/tld.program)
 
 echo ""
 echo "Only the Old TLD & New TLD Containers Must Be Rebuilt!"
 read -n 1 -s -r -p "Press [Any] Key to Continue"
 echo ""
 
-if [ "old" != "" ]; then
-	echo $old > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
-fi
-
-echo $new > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
+if [ "old" != "" ]; then ansible-playbook /opt/plexguide/containers/$typed.yml; fi
+ansible-playbook /opt/plexguide/containers/$new.yml
 
 echo ""
 read -n 1 -s -r -p "Containers - Rebuilt! Press [Any] Key to Continue"
