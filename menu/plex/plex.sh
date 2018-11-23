@@ -76,5 +76,5 @@ else badinput2; fi
 # FUNCTIONS END ##############################################################
 
 question1
-ansilbe-playbook /opt/plexguide/menu/plex/token.yml
+ansible-playbook /opt/plexguide/menu/plex/token.yml
 ansible-playbook /opt/plexguide/containers/plex.yml
