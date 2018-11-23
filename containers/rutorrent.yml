@@ -198,4 +198,4 @@
         name: "{{pgrole}}"
         state: started
 
-    when: not rcheck.stat.exists
+    when: not rccheck.stat.exists
