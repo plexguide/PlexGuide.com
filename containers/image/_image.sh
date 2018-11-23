@@ -7,14 +7,13 @@
 ################################################################################
 image=$(cat /tmp/program_var)
 
-image=no
 file="/opt/plexguide/containers/image/$image"
 if [ ! -e "$file" ]; then exit; fi
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  PG - Multi Image Selector
+🌵  PG - Multi Image Selector
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -26,5 +25,5 @@ while read p; do
   count=$[count+1]
 done </opt/plexguide/containers/image/$image
 echo ""
-read -p '🚀 Number Select | PRESS [ENTER]: ' typed < /dev/tty
+read -p '🚀  Type Number | PRESS [ENTER]: ' typed < /dev/tty
 cat /tmp/display$typed
