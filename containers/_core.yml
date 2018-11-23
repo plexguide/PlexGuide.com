@@ -69,15 +69,15 @@
       path: "/var/plexguide/image/{{pgrole}}"
     register: imagecheck
 
-  - name: "If Fact Does Not Match - Disable TLD"
+  - name: "Transfer Image Variable"
       shell: "cat /var/plexguide/image/{{pgrole}}"
       register: imagetemp
-      when: imagecheck.stat.exists
+    when: imagecheck.stat.exists
 
   - name: "If Fact Does Not Match - Disable TLD"
     set_fact:
       image: "{{imagetemp.stdout}}"
-      when: imagecheck.stat.exists
+    when: imagecheck.stat.exists
 
 # TOP LEVEL DOMAIN INFO SET ####################################################
 
