@@ -96,8 +96,11 @@ EOF
 
 sleep 3
 
-typed=plex
-if [ "$typed" == "plex" ]; then ptoken=$(cat /var/plexguide/plex.token);
+if [ "$typed" == "plex" ]; bash /opt/plexguide/menu/plex/plex.sh
+else ansible-playbook /opt/plexguide/containers/$typed.yml; fi
+
+# For NZBThrottle
+if [ "$typed" == "nzbthrottle" ]; then ptoken=$(cat /var/plexguide/plex.token);
  if [ "$ptoken" == "" ]; then
    bash /opt/plexguide/menu/plex/token.sh
    ptoken=$(cat /var/plexguide/plex.token)
@@ -110,11 +113,8 @@ tee <<-EOF
 EOF
     read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
     exit
-  fi
-    fi
-
-bash /opt/plexguide/menu/plex/plex.sh
-else ansible-playbook /opt/plexguide/containers/$typed.yml; fi
+  else ansible-playbook /opt/plexguide/menu/plex/token.yml; fi; fi
+  bash /opt/plexguide/menu/plex/plex.sh; fi
 
 # Cron Execution
 echo $typed > /tmp/program_var
