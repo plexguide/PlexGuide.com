@@ -22,6 +22,6 @@ while read p; do
   echo "$p" > /tmp/display$count
   count=$[count+1]
 done </opt/plexguide/containers/image/$image
-
-read -p '🚀 Make Selection | PRESS [ENTER]: ' typed < /dev/tty
+echo ""
+read -p '🚀 ZOOM ZOOM - Make Selection | PRESS [ENTER]: ' typed < /dev/tty
 cat /tmp/display$typed
