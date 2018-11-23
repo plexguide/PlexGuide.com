@@ -15,6 +15,7 @@ sed -i -e "/x2go*/d" /var/plexguide/container.running
 sed -i -e "/bitwarden/d" /var/plexguide/container.running
 sed -i -e "/ombi/d" /var/plexguide/container.running
 sed -i -e "/portainer/d" /var/plexguide/container.running
+sed -i -e "/dockergc/d" /var/plexguide/container.running
 
 count=$(wc -l < /var/plexguide/container.running)
 ((count++))
