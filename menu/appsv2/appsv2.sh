@@ -117,7 +117,7 @@ EOF
 
 sleep 3
 
-if [ "$typed" == "plex" ]; bash /opt/plexguide/menu/plex/plex.sh
+if [ "$typed" == "plex" ]; then bash /opt/plexguide/menu/plex/plex.sh;
 else ansible-playbook /opt/plexguide/containers/$typed.yml; fi
 
 # Execute NZB Checks
