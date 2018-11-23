@@ -70,8 +70,8 @@
     register: imagecheck
 
   - name: "Transfer Image Variable"
-      shell: "cat /var/plexguide/image/{{pgrole}}"
-      register: imagetemp
+    shell: "cat /var/plexguide/image/{{pgrole}}"
+    register: imagetemp
     when: imagecheck.stat.exists
 
   - name: "If Fact Does Not Match - Disable TLD"
