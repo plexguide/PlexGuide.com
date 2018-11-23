@@ -19,9 +19,9 @@ EOF
 count=1
 while read p; do
   echo -n "$count - $p"
-  echo -n "$p" > /tmp/display$count
+  echo "$p" > /tmp/display$count
   num=$[num+1]
 done </opt/plexguide/containers/image/$image
 
 read -p '🚀 Make Selection | PRESS [ENTER]: ' typed < /dev/tty
-echo /tmp/display$typed
+cat /tmp/display$typed
