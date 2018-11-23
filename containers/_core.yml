@@ -70,7 +70,7 @@
     register: imagecheck
 
   - name: "If Fact Does Not Match - Disable TLD"
-      shell: "cat /var/plexguide/pgtrak.spath"
+      shell: "cat /var/plexguide/image/{{pgrole}}"
       register: imagetemp
       when: imagecheck.stat.exists
 
