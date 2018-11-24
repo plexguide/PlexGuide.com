@@ -5,9 +5,8 @@ echo "                                                       Al Gore ~ SouthPark
 }
 
 quote2 () {
-echo "Stan, don’t you know the first law of physics? Anything that’s fun costs
-at least eight dollars" > /var/plexguide/startup.quote
-echo "                                                       Cartman ~ SouthPark" > /var/plexguide/startup.source
+echo "There are no stupid answers, just stupid people" > /var/plexguide/startup.quote
+echo "                                                   Mr Garrison ~ SouthPark" > /var/plexguide/startup.source
 }
 
 
