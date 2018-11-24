@@ -6,8 +6,10 @@
 # GNU:        General Public License v3.0
 ################################################################################
 
-badinput2 () {
+quote1 () {
 echo
 read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 question2
 }
+
+# END FUNCTIONS ################################################################
