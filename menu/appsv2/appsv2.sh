@@ -49,17 +49,17 @@ done </var/plexguide/app.list
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-♻️   INSTALLER: PG Applications Suite
+♻️  INSTALLER: PG Applications Suite
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🚀  Visit http://newshosting.plexguide.com - 58% NZB Hosting Discount!
+🚀 Visit http://newshosting.plexguide.com - 58% NZB Hosting Discount!
 EOF
 cat /var/plexguide/programs.temp
 echo && echo
 # Standby
-echo "Exit? TYPE > exit"
+echo "Finished? Type > exit"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-read -p '🌎  TYPE the App Name & Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 TYPE App Name | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
