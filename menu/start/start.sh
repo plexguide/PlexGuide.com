@@ -170,7 +170,7 @@ Z - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 # Standby
-read -p '↘️ Type Number | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
 
