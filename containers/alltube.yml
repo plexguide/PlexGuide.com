@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)                                 
+# Title:      PlexGuide (Reference Title File)
 # Author(s):  Admin9705
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
@@ -14,14 +14,24 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "jackett"
-      intport: "9117"
-      extport: "8117"
-      image: "linuxserver/jackett"
+      pgrole: "alltube"
+      intport: "80"
+      extport: "1234"
+      image: "rudloff/alltube"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
+
+# FOR ALLTUBE #################################################################
+  - name: Install autoProcess.ini
+    template:
+      src: /opt/plexguide/containers/templates/alltube.js2
+      dest: /opt/appdata/{{pgrole}}/config.json
+      force: yes
+      mode: 0775
+      owner: 1000
+      group: 1000
 
 # LABELS ######################################################################
 
@@ -37,12 +47,8 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/config"
-        - "/mnt/unionfs:/unionfs"
-        - "{{path.stdout}}/deluge/temp:/temp"
-        - "{{path.stdout}}/deluge/downloaded:/downloaded"
-        - "{{path.stdout}}/deluge/torrent:/torrent"
-        - "/etc/localtime:/etc/localtime:ro"
+        - /opt/appdata/{{pgrole}}:/var/www/html/config
+
 
   - name: "Setting PG ENV"
     set_fact:
