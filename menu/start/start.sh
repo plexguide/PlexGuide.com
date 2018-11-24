@@ -141,9 +141,13 @@ percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
 echo "   GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
 fi
 
-quote="Manbearpig is in there and we all have to kill him while we all have the
-chance, I'm cereal!"
-source="                                                       Al Gore ~ SouthPark"
+#quote="Manbearpig is in there and we all have to kill him while we all have the
+#chance, I'm cereal!"
+#source="                                                       Al Gore ~ SouthPark"
+bash /opt/plexguide/menu/start/start.sh
+
+quote=$(cat /var/plexguide/startup.quote)
+source=$(cat /var/plexguide/startup.source)
 
 if [ "$edition" == "PG Edition - GDrive" ]; then echo && echo "1 - Mounts & Data"
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo && echo "1 - Mounts & Data"
