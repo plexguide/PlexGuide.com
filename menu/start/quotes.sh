@@ -15,8 +15,5 @@ college." > /var/plexguide/startup.quote
 echo "                                                          Chef ~ SouthPark" > /var/plexguide/startup.source
 }
 # END FUNCTIONS ################################################################
-highestquote=4
-# add 1 to the highest
-
-num=$( echo $(($RANDOM % $highestquote)) )
+num=$( echo $(($RANDOM % 4)) )
 quote$num
