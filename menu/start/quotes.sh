@@ -18,5 +18,5 @@ echo "                                                          Chef ~ SouthPark
 highestquote=3
 
 num=$( echo $(($RANDOM % $highestquote)) )
-num=num+1
+num=$num+1
 quote$num
