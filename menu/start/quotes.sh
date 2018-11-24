@@ -23,14 +23,11 @@ echo "                                       Peggy Bundy ~ Married With Children
 quote5 () {
 echo "Well, because I just realized that everything I've been doing up to now,
 the bathing, the tooth brushing, changing of the socks, being nice to people,
-trying to succeed…it's all for nothing. All those things are designed to 
+trying to succeed…it's all for nothing. All those things are designed to
 attract. Why should I be attractive? I'm married...with children." > /var/plexguide/startup.quote
 echo "                                         Al Bundy ~ Married With Children" > /var/plexguide/startup.source
 }
 
-
-
-
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 5)) )
+num=$( echo $(($RANDOM % 6)) )
 quote$num
