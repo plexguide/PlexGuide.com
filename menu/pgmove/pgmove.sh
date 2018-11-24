@@ -59,7 +59,7 @@ constantly for 24 hours!
 1 - Configure RClone : $configure
 2 - Configure BWLimit: $speed MB
 3 - $message
-4 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -115,7 +115,7 @@ tee <<-EOF
 EOF
   sleep 4
   fi
-elif [ "$typed" == "4" ]; then
+elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
   exit
 else
   bash /opt/plexguide/menu/pgmove/pgmove.sh
