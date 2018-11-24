@@ -1,3 +1,8 @@
+quote0 () {
+echo "Welcome to PlexGuide! Started in December of 2016!" > /var/plexguide/startup.quote
+echo "                                                                 Admin9705" > /var/plexguide/startup.source
+}
+
 quote1 () {
 echo "Manbearpig is in there and we all have to kill him while we all have the
 chance, I'm cereal!" > /var/plexguide/startup.quote
@@ -192,6 +197,17 @@ and look comfortable." > /var/plexguide/startup.quote
 echo "                                                           Lane Olinghouse" > /var/plexguide/startup.source
 }
 
+quote36 () {
+echo "Donate Today! My biggest adversary is Mrs. Admin for all the time
+spent on the project!" > /var/plexguide/startup.quote
+echo "                                                                 Admin9705" > /var/plexguide/startup.source
+}
+
+quote37 () {
+echo "ClownFused has been and currently the first Sponsor of the project!
+Thank you all to those for your support!" > /var/plexguide/startup.quote
+echo "                                                                 Admin9705" > /var/plexguide/startup.source
+}
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 36)) )
+num=$( echo $(($RANDOM % 38)) )
 quote$num
