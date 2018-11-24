@@ -21,12 +21,17 @@ echo "                                       Peggy Bundy ~ Married With Children
 }
 
 quote5 () {
-echo "Dad had one great dream, a dream that had been handed down from generation,
-to generation of male Bundys: to build their own room and live separately,
-from their wives. Sadly, they all failed." > /var/plexguide/startup.quote
+echo "Dad had one great dream, a dream that had been handed down from
+generation,to generation of male Bundys: to build their own room and live
+separately, from their wives. Sadly, they all failed." > /var/plexguide/startup.quote
 echo "                                          Al Bundy ~ Married With Children" > /var/plexguide/startup.source
 }
 
+quote6 () {
+echo "Look, Al doesn’t like me blowing smoke in his eggs. What am I supposed to
+do? Stop smoking?" > /var/plexguide/startup.quote
+echo "                                       Peggy Bundy ~ Married With Children" > /var/plexguide/startup.source
+}
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 6)) )
+num=$( echo $(($RANDOM % 7)) )
 quote$num
