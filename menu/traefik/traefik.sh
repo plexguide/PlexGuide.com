@@ -167,7 +167,7 @@ EOF
 
 sleep 5
 
-elif [[ "$typed" == "Z" || "$typed" == "z" ]; then
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
 bash /opt/plexguide/menu/treafik/traefik.sh
