@@ -149,8 +149,9 @@ percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
 echo "   GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
 fi
 
-quote="Manbearpig is in there and we all have to kill him while we all have the\n
+quote="Manbearpig is in there and we all have to kill him while we all have the
 chance, I'm cereal!"
+source="                                                       Al Gore ~ SouthPark"
 
 if [ "$edition" == "PG Edition - GDrive" ]; then echo && echo "1 - Mounts & Data"
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo && echo "1 - Mounts & Data"
@@ -170,9 +171,9 @@ tee <<-EOF
 6 - Settings
 Z - Exit
 
-""$quote"
+"$quote"
 
-                                                       Al Gore ~ SouthPark
+$source
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 # Standby
