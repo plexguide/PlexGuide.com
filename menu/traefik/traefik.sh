@@ -80,7 +80,7 @@ tee <<-EOF
 3 - Domain Name         : [$domain]
 4 - EMail Address       : [$email]
 5 - Deploy Traefik      : [$deployed]
-6 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -167,7 +167,7 @@ EOF
 
 sleep 5
 
-elif [ "$typed" == "6" ]; then
+elif [[ "$typed" == "Z" || "$typed" == "z" ]; then
   exit
 else
 bash /opt/plexguide/menu/treafik/traefik.sh
