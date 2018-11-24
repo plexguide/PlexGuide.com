@@ -50,7 +50,7 @@ Make sure to redeploy the PG Drives!
 
 1 - Configure RClone: $configure
 2 - $message
-3 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -84,7 +84,7 @@ You Need to Configure: gdrive
 EOF
   sleep 4
   fi
-elif [ "$typed" == "3" ]; then
+elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
   exit
 else
   bash /opt/plexguide/menu/pgdrives/pgdrives.sh
