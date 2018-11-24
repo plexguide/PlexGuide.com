@@ -6,9 +6,10 @@ echo "                                                       Al Gore ~ SouthPark
 
 quote2 () {
 echo "There are no stupid answers, just stupid people" > /var/plexguide/startup.quote
-echo "                                                   Mr Garrison ~ SouthPark" > /var/plexguide/startup.source
+echo "                                                  Mr. Garrison ~ SouthPark" > /var/plexguide/startup.source
 }
 
 
 # END FUNCTIONS ################################################################
+num=$( echo $(($RANDOM % 2)) )
 quote2
