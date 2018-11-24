@@ -135,7 +135,7 @@ elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌇 $edition | Version: $pgnumber | ID: $serverid
+🌎 $edition | Version: $pgnumber | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🌵 PG Disk Used Space:  $used of $capacity | $percentage Used Capacity
@@ -170,7 +170,7 @@ Z - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 # Standby
-read -p '🌎 Type Number | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
 
