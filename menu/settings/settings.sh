@@ -26,7 +26,7 @@ tee <<-EOF
 3 - Keneral Modes   : Enhance Network Throughput
 4 - WatchTower      : Auto-Update Application Manager
 5 - Change Time     : Change the Server Time
-6 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -50,7 +50,7 @@ elif [ "$typed" == "4" ]; then
 
 elif [ "$typed" == "5" ]; then
   dpkg-reconfigure tzdata
-elif [ "$typed" == "6" ]; then
+elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
   exit
 else
   bash /opt/plexguide/menu/settings/settings.sh
