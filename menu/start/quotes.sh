@@ -32,6 +32,59 @@ echo "Look, Al doesn’t like me blowing smoke in his eggs. What am I supposed t
 do? Stop smoking?" > /var/plexguide/startup.quote
 echo "                                       Peggy Bundy ~ Married With Children" > /var/plexguide/startup.source
 }
+
+quote7 () {
+echo "I don't care what your doing; it's just the idiotic way that your doing it" > /var/plexguide/startup.quote
+echo "                                                 Vincent ~ Final Fantasy 7" > /var/plexguide/startup.source
+}
+
+quote8 () {
+echo "Now, we fight like men! And ladies! And ladies who dress like men!" > /var/plexguide/startup.quote
+echo "                                               Gilgamesh ~ Final Fantasy 5" > /var/plexguide/startup.source
+}
+
+quote9 () {
+echo "Now, we fight like men! And ladies! And ladies who dress like men!" > /var/plexguide/startup.quote
+echo "                             Gilgamesh ~ Final Fantasy 5 (ROM Translation)" > /var/plexguide/startup.source
+}
+
+quote10 () {
+echo "Tomorrow is gonna be just like today, and I know that because today is
+just like yesterday!" > /var/plexguide/startup.quote
+echo "                                          Dubanowski ~ SuperStore (Cloud9)" > /var/plexguide/startup.source
+}
+
+quote11 () {
+echo "You don’t win friends with salad!" > /var/plexguide/startup.quote
+echo "                                        Homer, Bart & Marge ~ The Simpsons" > /var/plexguide/startup.source
+}
+
+quote12 () {
+echo "It takes two to lie: one to lie and one to listen." > /var/plexguide/startup.quote
+echo "                                                      Homer ~ The Simpsons" > /var/plexguide/startup.source
+}
+
+quote13 () {
+echo "Loneliness and cheeseburgers are a dangerous mix." > /var/plexguide/startup.quote
+echo "                                             Comic Book Guy ~ The Simpsons" > /var/plexguide/startup.source
+}
+
+quote14 () {
+echo "Hello, 911? It's Quagmire. Yeah, it's caught in the window this time." > /var/plexguide/startup.quote
+echo "                                                Glen Quagmire ~ Family Guy" > /var/plexguide/startup.source
+}
+
+quote15 () {
+echo "My favorite exercise is a cross between a lunge and a crunch...
+I call it lunch.." > /var/plexguide/startup.quote
+echo "                                                  Anonymous ~ The Internet" > /var/plexguide/startup.source
+}
+
+quote16 () {
+echo "McLovin? What kind of stupid name is that, Fogell? What, are you trying
+to be an Irish R&B singer?" > /var/plexguide/startup.quote
+echo "                                                    Evan ~ Movie: SuperBad" > /var/plexguide/startup.source
+}
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 7)) )
+num=$( echo $(($RANDOM % 17)) )
 quote$num
