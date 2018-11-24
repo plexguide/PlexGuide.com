@@ -95,7 +95,7 @@ echo "                                                           Evan ~ SuperBad
 quote17 () {
 echo "Hello, 911 Emergency? There’s a handsome guy in my bathroom! Hey, wait
 a second. Cancel that – it’s only me!" > /var/plexguide/startup.quote
-echo "                                                              Johnny Bravo" > /var/plexguide/startup.source
+echo "                                            Johnny Bravo ~ Cartoon Network" > /var/plexguide/startup.source
 }
 
 quote18 () {
@@ -204,14 +204,37 @@ echo "                                                                 Admin9705
 }
 
 quote37 () {
-echo "ClownFused has been and currently the first Sponsor of the project!
-Thank you to everyone for your support!" > /var/plexguide/startup.quote
+echo "Thank you to Sponsors & Donors of the Project! Your assistance
+continous to provide support to what we do!" > /var/plexguide/startup.quote
 echo "                                                                 Admin9705" > /var/plexguide/startup.source
 }
 
 quote38 () {
-echo "Have a funny quote? PM Admin9705 and we'll add it!" > /var/plexguide/startup.quote
+echo "Have a funny quote? PM Admin9705 and we will add it!" > /var/plexguide/startup.quote
 echo "                                                            System Message" > /var/plexguide/startup.source
+}
+
+quote39 () {
+echo "Greater good?’ I am your wife! I’m the greatest good you’re ever gonna
+get!" > /var/plexguide/startup.quote
+echo "                                                   Honey ~ The Incredibles" > /var/plexguide/startup.source
+}
+
+quote40 () {
+echo "We get the warhead and we hold the world ransom for…. One million
+dollars!" > /var/plexguide/startup.quote
+echo "                    Dr. Evil ~ Austin Powers: International Man of Mystery" > /var/plexguide/startup.source
+}
+
+quote41 () {
+echo "Excuse me. I believe you have my stapler." > /var/plexguide/startup.quote
+echo "                                             Milton Waddams ~ Office Space" > /var/plexguide/startup.source
+}
+
+quote42 () {
+echo "I learned a long time ago that worrying is like a rocking chair. It
+gives you something to do but it doesn’t get you anywhere" > /var/plexguide/startup.quote
+echo "                                Van Wilder ~ National Lampoon’s Van Wilder" > /var/plexguide/startup.source
 }
 # END FUNCTIONS ################################################################
 num=$( echo $(($RANDOM % 39)) )
