@@ -8,8 +8,8 @@
 
 quote1 () {
 ##########################################################################
-echo "\n
-Manbearpig is in there and we all have to kill him while we all have the
+echo \n
+"Manbearpig is in there and we all have to kill him while we all have the
 chance, I'm cereal!
 \n" > /var/plexguide/startup.quote
 echo "\n
