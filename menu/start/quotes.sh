@@ -34,7 +34,8 @@ echo "                                       Peggy Bundy ~ Married With Children
 }
 
 quote7 () {
-echo "I don't care what your doing; it's just the idiotic way that your doing it" > /var/plexguide/startup.quote
+echo "I don't care what your doing; it's just the idiotic way that your doing
+it!" > /var/plexguide/startup.quote
 echo "                                                 Vincent ~ Final Fantasy 7" > /var/plexguide/startup.source
 }
 
@@ -76,15 +77,33 @@ echo "                                                Glen Quagmire ~ Family Guy
 
 quote15 () {
 echo "My favorite exercise is a cross between a lunge and a crunch...
-I call it lunch.." > /var/plexguide/startup.quote
+I call it lunch." > /var/plexguide/startup.quote
 echo "                                                  Anonymous ~ The Internet" > /var/plexguide/startup.source
 }
 
 quote16 () {
 echo "McLovin? What kind of stupid name is that, Fogell? What, are you trying
 to be an Irish R&B singer?" > /var/plexguide/startup.quote
-echo "                                                    Evan ~ Movie: SuperBad" > /var/plexguide/startup.source
+echo "                                                           Evan ~ SuperBad" > /var/plexguide/startup.source
 }
+
+quote17 () {
+echo "Hello, 911 Emergency? There’s a handsome guy in my bathroom! Hey, wait
+a second. Cancel that – it’s only me!" > /var/plexguide/startup.quote
+echo "                                               Johnny Bravo ~ Johnny Bravo" > /var/plexguide/startup.source
+}
+
+quote18 () {
+echo "Happy-happy, joy-joy! Happy-happy, joy-joy!" > /var/plexguide/startup.quote
+echo "                                            Stimpy ~ The Ren & Stimpy Show" > /var/plexguide/startup.source
+}
+
+quote19 () {
+echo "Presenting the Cheese-A-Phone. We can communicate with various cheeses,
+regardless of foreign tongue. Go ahead, Ren, say something in Limburger" > /var/plexguide/startup.quote
+echo "                                            Stimpy ~ The Ren & Stimpy Show" > /var/plexguide/startup.source
+}
+
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 17)) )
+num=$( echo $(($RANDOM % 20)) )
 quote$num
