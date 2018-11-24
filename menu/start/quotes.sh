@@ -205,7 +205,7 @@ echo "                                                                 Admin9705
 
 quote37 () {
 echo "Thank you to Sponsors & Donors of the Project! Your assistance
-continous to provide support to what we do!" > /var/plexguide/startup.quote
+provides continous support in what we do!" > /var/plexguide/startup.quote
 echo "                                                                 Admin9705" > /var/plexguide/startup.source
 }
 
@@ -242,6 +242,15 @@ echo "It’s not a man purse. It’s called a satchel. Indiana Jones wears one."
 echo "                                                Alan Garner ~ The Hangover" > /var/plexguide/startup.source
 }
 
+quote44 () {
+echo "As If!" > /var/plexguide/startup.quote
+echo "                                                  Cher Horowitz ~ Clueless" > /var/plexguide/startup.source
+}
+
+quote45 () {
+echo "Tina, you fat lard! Come get some Dinner!" > /var/plexguide/startup.quote
+echo "                                                         Napoleon Dynamite" > /var/plexguide/startup.source
+}
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 39)) )
+num=$( echo $(($RANDOM % 46)) )
 quote$num
