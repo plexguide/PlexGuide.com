@@ -39,7 +39,7 @@ while read p; do
   echo -n " " >> /var/plexguide/programs.temp
 
   num=$[num+1]
-  if [ $num == 8 ]; then
+  if [ $num == 7 ]; then
     num=0
     echo " " >> /var/plexguide/programs.temp
   fi
