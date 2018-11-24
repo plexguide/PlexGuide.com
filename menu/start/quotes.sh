@@ -52,7 +52,7 @@ echo "                             Gilgamesh ~ Final Fantasy 5 (ROM Translation)
 quote10 () {
 echo "Tomorrow is gonna be just like today, and I know that because today is
 just like yesterday!" > /var/plexguide/startup.quote
-echo "                                          Dubanowski ~ SuperStore (Cloud9)" > /var/plexguide/startup.source
+echo "                                               Amy Dubanowski ~ SuperStore" > /var/plexguide/startup.source
 }
 
 quote11 () {
