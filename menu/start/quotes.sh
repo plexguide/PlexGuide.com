@@ -208,6 +208,11 @@ echo "ClownFused has been and currently the first Sponsor of the project!
 Thank you all to those for your support!" > /var/plexguide/startup.quote
 echo "                                                                 Admin9705" > /var/plexguide/startup.source
 }
+
+quote38 () {
+echo "Have a funny quote? PM Admin9705 and we'll add it!" > /var/plexguide/startup.quote
+echo "                                                            System Message" > /var/plexguide/startup.source
+}
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 38)) )
+num=$( echo $(($RANDOM % 39)) )
 quote$num
