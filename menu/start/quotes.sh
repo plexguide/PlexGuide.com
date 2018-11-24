@@ -10,8 +10,9 @@ echo "                                                  Mr. Garrison ~ SouthPark
 }
 
 quote3 () {
-echo "There are no stupid answers, just stupid people" > /var/plexguide/startup.quote
-echo "                                                  Mr. Garrison ~ SouthPark" > /var/plexguide/startup.source
+echo "Don't do drugs kids. There is a time and place for everything. It's called
+college." > /var/plexguide/startup.quote
+echo "                                                          Chef ~ SouthPark" > /var/plexguide/startup.source
 }
 # END FUNCTIONS ################################################################
 highestquote=3
