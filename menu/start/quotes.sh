@@ -22,7 +22,7 @@ echo "                                       Peggy Bundy ~ Married With Children
 
 quote5 () {
 echo "Dad had one great dream, a dream that had been handed down from
-generation,to generation of male Bundys: to build their own room and live
+generation, to generation of male Bundys: to build their own room and live
 separately, from their wives. Sadly, they all failed." > /var/plexguide/startup.quote
 echo "                                          Al Bundy ~ Married With Children" > /var/plexguide/startup.source
 }
