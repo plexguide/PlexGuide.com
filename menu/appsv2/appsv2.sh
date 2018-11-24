@@ -57,7 +57,7 @@ EOF
 cat /var/plexguide/programs.temp
 echo && echo
 # Standby
-echo "↘️   TO EXIT - type >>> exit" && echo
+echo "Exit? TYPE > exit"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 read -p '🌎  TYPE the App Name & Press [ENTER]: ' typed < /dev/tty
 
