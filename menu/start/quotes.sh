@@ -205,7 +205,7 @@ echo "                                                                 Admin9705
 
 quote37 () {
 echo "ClownFused has been and currently the first Sponsor of the project!
-Thank you all to those for your support!" > /var/plexguide/startup.quote
+Thank you to everyone for your support!" > /var/plexguide/startup.quote
 echo "                                                                 Admin9705" > /var/plexguide/startup.source
 }
 
