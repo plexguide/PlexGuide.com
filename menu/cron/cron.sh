@@ -33,7 +33,7 @@ space=$(cat /var/plexguide/data.location)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 PG Cron - Schedule Cron Jobs (Backups) for $program?
+⌛ PG Cron - Schedule Cron Jobs (Backups) | $program?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://cron.plexguide.com
 
@@ -44,7 +44,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌎 Type Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
 elif [ "$typed" == "2" ]; then break="on";
 elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
@@ -56,7 +56,7 @@ question2 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 PG Cron - How Often Do You Wish To Backup?
+⌛ PG Cron - Backup How Often?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 WEEKLEY
@@ -74,7 +74,7 @@ DAILY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌎 Type Number | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" -ge "0" && "$typed" -le "7" ]]; then echo $typed > /var/plexguide/cron/cron.day && break=1;
 elif [ "$typed" == "8" ]; then echo "*/1" > /var/plexguide/cron/$program.cron.day && break=1;
 else badinput; fi
@@ -85,7 +85,7 @@ question3 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 PG Cron - What Hour of the Day?
+⌛ PG Cron - Hour of the Day?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Type an HOUR from [0 to 23]
@@ -97,7 +97,7 @@ Type an HOUR from [0 to 23]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌎 Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then echo $typed > /var/plexguide/cron/cron.hour && break=1;
 else badinput; fi
 }
