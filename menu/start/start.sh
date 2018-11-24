@@ -144,7 +144,7 @@ fi
 #quote="Manbearpig is in there and we all have to kill him while we all have the
 #chance, I'm cereal!"
 #source="                                                       Al Gore ~ SouthPark"
-bash /opt/plexguide/menu/start/start.sh
+bash /opt/plexguide/menu/start/quotes.sh
 
 quote=$(cat /var/plexguide/startup.quote)
 source=$(cat /var/plexguide/startup.source)
