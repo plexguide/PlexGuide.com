@@ -61,7 +61,7 @@ Note a 100TB Plex Library can create 40GB of MetaData!
 5 - Change Current ID: $serverid
 6 - Change Restore ID: $restoreid
 7 - Change Backup Location: $space
-8 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -86,7 +86,7 @@ elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/data/restoreid.sh
 elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/data/location.sh
-elif [ "$typed" == "8" ]; then
+elif [ "$typed" == "Z" || "$typed" == "z" ]; then
   exit
 else
   bash /opt/plexguide/menu/data/data.sh

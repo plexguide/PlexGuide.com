@@ -24,7 +24,7 @@ tee <<-EOF
 1 - PG Move   | Unencrypt & Encrypt | 750 GB Daily Upload | Simple
 2 - PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex
 3 - PG Drives | Unencrypted         | Read Only Servers   | Simple
-4 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -38,7 +38,7 @@ elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgdrives/pgdrives.sh
-elif [ "$typed" == "4" ]; then
+elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
   exit
 else
   bash /opt/plexguide/menu/transport/transport.sh
