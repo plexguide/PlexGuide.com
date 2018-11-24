@@ -110,8 +110,12 @@ bash /opt/plexguide/containers/image/_image.sh
 # Execute Main Program
 ansible-playbook /opt/plexguide/containers/$typed.yml
 # Cron Execution
-croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$typed\>")
-if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
+edition=$( cat /var/plexguide/pg.edition )
+if [ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]; then a=b
+else 
+  croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$typed\>")
+  if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
+fi
 
 # End Banner
 bash /opt/plexguide/menu/endbanner/endbanner.sh
