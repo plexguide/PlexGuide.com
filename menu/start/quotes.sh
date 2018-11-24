@@ -83,7 +83,7 @@ echo "                                                  Anonymous ~ The Internet
 
 quote16 () {
 echo "McLovin? What kind of stupid name is that, Fogell? What, are you trying
-to be an Irish R&B singer?" > /var/plexguide/startup.quote
+to be; an Irish R&B singer?" > /var/plexguide/startup.quote
 echo "                                                           Evan ~ SuperBad" > /var/plexguide/startup.source
 }
 
