@@ -90,7 +90,7 @@ echo "                                                           Evan ~ SuperBad
 quote17 () {
 echo "Hello, 911 Emergency? There’s a handsome guy in my bathroom! Hey, wait
 a second. Cancel that – it’s only me!" > /var/plexguide/startup.quote
-echo "                                               Johnny Bravo ~ Johnny Bravo" > /var/plexguide/startup.source
+echo "                                                              Johnny Bravo" > /var/plexguide/startup.source
 }
 
 quote18 () {
@@ -104,6 +104,94 @@ regardless of foreign tongue. Go ahead, Ren, say something in Limburger" > /var/
 echo "                                            Stimpy ~ The Ren & Stimpy Show" > /var/plexguide/startup.source
 }
 
+quote20 () {
+echo "The only thing i'm pimping is Sweet Lady Propane, and I'm tricking her
+out all over this town!" > /var/plexguide/startup.quote
+echo "                                              Hank Hill ~ King of the Hill" > /var/plexguide/startup.source
+}
+
+quote21 () {
+echo "Why would anyone smoke weed when they could just mow a lawn?" > /var/plexguide/startup.quote
+echo "                                              Hank Hill ~ King of the Hill" > /var/plexguide/startup.source
+}
+
+quote22 () {
+echo "An ‘F’ in English? Bobby, you speak English!" > /var/plexguide/startup.quote
+echo "                                              Hank Hill ~ King of the Hill" > /var/plexguide/startup.source
+}
+
+quote23 () {
+echo "I am the Great Cornholio, I need T.P. for my bunghole" > /var/plexguide/startup.quote
+echo "                                                Beavis ~ Beavis & Butthead" > /var/plexguide/startup.source
+}
+
+quote24 () {
+echo "Hey Butt-head, I dreamed I was at school last night. Do you think that
+counts for attendance?" > /var/plexguide/startup.quote
+echo "                                                Beavis ~ Beavis & Butthead" > /var/plexguide/startup.source
+}
+
+quote25 () {
+echo "Man I tell what, I felt like a one-legged cat try’in to burry turd’s
+on a frozen pond out there." > /var/plexguide/startup.quote
+echo "                                                   Tom ~ Beavis & Butthead" > /var/plexguide/startup.source
+}
+
+quote26 () {
+echo "Did you know when you eat rump roast you’re eating a cow’s butt?" > /var/plexguide/startup.quote
+echo "                                                Beavis ~ Beavis & Butthead" > /var/plexguide/startup.source
+}
+
+quote27 () {
+echo "Did you know when you eat rump roast you’re eating a cow’s butt?" > /var/plexguide/startup.quote
+echo "                                                Beavis ~ Beavis & Butthead" > /var/plexguide/startup.source
+}
+
+quote28 () {
+echo "I am Al Gore, and I used to be the next president of the United States
+of America!" > /var/plexguide/startup.quote
+echo "                                     Al Gore ~ Speech @ Bocconi University" > /var/plexguide/startup.source
+}
+
+quote29 () {
+echo "During my service in the United States Congress I took the initiative
+in creating the Internet." > /var/plexguide/startup.quote
+echo "                                         Al Gore ~ 1999 Interview with CNN" > /var/plexguide/startup.source
+}
+
+quote30 () {
+echo "If a book about failures doesn’t sell, is it a success?" > /var/plexguide/startup.quote
+echo "                                                            Jerry Seinfeld" > /var/plexguide/startup.source
+}
+
+quote31 () {
+echo "If you think nobody cares about you, try missing a couple of payments!" > /var/plexguide/startup.quote
+echo "                                                             Steven Wright" > /var/plexguide/startup.source
+}
+
+quote32 () {
+echo "I’m addicted to placebos!" > /var/plexguide/startup.quote
+echo "                                                             Steven Wright" > /var/plexguide/startup.source
+}
+
+quote33 () {
+echo "If we’re not meant to have midnight snacks, why is there a light in
+the fridge." > /var/plexguide/startup.quote
+echo "                                                  Anonymous ~ The Internet" > /var/plexguide/startup.source
+}
+
+quote34 () {
+echo "I could tell that my parents hated me. My bath toys were a toaster and
+a radio!" > /var/plexguide/startup.quote
+echo "                                                        Rodney Dangerfield" > /var/plexguide/startup.source
+}
+
+quote35 () {
+echo "The quickest way for a parent to get a child’s attention is to sit down
+and look comfortable." > /var/plexguide/startup.quote
+echo "                                                           Lane Olinghouse" > /var/plexguide/startup.source
+}
+
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 20)) )
+num=$( echo $(($RANDOM % 36)) )
 quote$num
