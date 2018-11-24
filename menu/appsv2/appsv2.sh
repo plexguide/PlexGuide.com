@@ -111,8 +111,8 @@ bash /opt/plexguide/containers/image/_image.sh
 ansible-playbook /opt/plexguide/containers/$typed.yml
 # Cron Execution
 edition=$( cat /var/plexguide/pg.edition )
-if [ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]; then a=b
-else 
+if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]]; then a=b
+else
   croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$typed\>")
   if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 fi
