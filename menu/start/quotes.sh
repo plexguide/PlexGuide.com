@@ -9,7 +9,13 @@ echo "There are no stupid answers, just stupid people" > /var/plexguide/startup.
 echo "                                                  Mr. Garrison ~ SouthPark" > /var/plexguide/startup.source
 }
 
-
+quote3 () {
+echo "There are no stupid answers, just stupid people" > /var/plexguide/startup.quote
+echo "                                                  Mr. Garrison ~ SouthPark" > /var/plexguide/startup.source
+}
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 3)) )
+highestquote=3
+
+num=$( echo $(($RANDOM % $highestquote)) )
+num=num+1
 quote$num
