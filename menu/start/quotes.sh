@@ -236,6 +236,12 @@ echo "I learned a long time ago that worrying is like a rocking chair. It
 gives you something to do but it doesn’t get you anywhere" > /var/plexguide/startup.quote
 echo "                                Van Wilder ~ National Lampoon’s Van Wilder" > /var/plexguide/startup.source
 }
+
+quote43 () {
+echo "It’s not a man purse. It’s called a satchel. Indiana Jones wears one." > /var/plexguide/startup.quote
+echo "                                                Alan Garner ~ The Hangover" > /var/plexguide/startup.source
+}
+
 # END FUNCTIONS ################################################################
 num=$( echo $(($RANDOM % 39)) )
 quote$num
