@@ -57,7 +57,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-sleep 3
+sleep 2.5
 fi
 
 bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh 1>/dev/null 2>&1
@@ -69,7 +69,7 @@ tee <<-EOF
 ✅️  SYSTEM MESSAGE: Installed Verison - EDGE - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 4
+sleep 2.5
 
 echo edge > /var/plexguide/pg.number
 bash /opt/plexguide/roles/ending/ending.sh
