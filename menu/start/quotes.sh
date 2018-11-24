@@ -11,5 +11,5 @@ echo "                                                  Mr. Garrison ~ SouthPark
 
 
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 2)) )
+num=$( echo $(($RANDOM % 3)) )
 quote$num
