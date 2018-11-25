@@ -92,6 +92,3 @@ else
   bash /opt/plexguide/menu/data/data.sh
   exit
 fi
-
-bash /opt/plexguide/menu/data/data.sh
-exit
