@@ -86,7 +86,7 @@ elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/data/restoreid.sh
 elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/data/location.sh
-elif [ "$typed" == "Z" || "$typed" == "z" ]; then
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
   bash /opt/plexguide/menu/data/data.sh
