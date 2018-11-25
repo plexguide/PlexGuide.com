@@ -22,7 +22,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "jackett"
+      pgrole: "blitzui"
       intport: "80"
       extport: "43242"
       image: "physk/pgblitz-ui"
