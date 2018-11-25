@@ -75,7 +75,7 @@ bash /opt/plexguide/menu/interface/install/scripts/docstart.sh
 # Ensure Docker is Turned On!
 dstatus=$(docker ps --format '{{.Names}}' | grep "portainer")
 if [ "$dstatus" != "portainer" ]; then
-echo "portainer" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off" &>/dev/null &
+ansible-playbook /opt/plexguide/containers/portainer.yml &>/dev/null &
 fi
 
 bash /opt/plexguide/install/motd.sh
