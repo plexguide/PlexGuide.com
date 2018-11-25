@@ -1,5 +1,5 @@
 ✅  [CURRENT]
-7.1.0
+7.1.1
 
 💍  [BETA]
 edge
