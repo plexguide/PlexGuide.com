@@ -1,5 +1,5 @@
 ✅  [CURRENT]
-7.1.3
+7.1.4
 
 💍  [BETA] - Beta is to only to test new stuff!
 7.2.beta
