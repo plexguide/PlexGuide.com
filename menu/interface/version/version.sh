@@ -1,8 +1,8 @@
-✅  [Current Versions]
+✅  [CURRENT]
 7.1.0
 
-💍  [Beta Versions]
+💍  [BETA]
 edge
 
-💊  [Depreciated Versions]
+💊  [DEPRECIATED]
 7.014

@@ -38,7 +38,7 @@ echo "To QUIT, type >>> exit"
 break=no
 while [ "$break" == "no" ]; do
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-read -p '↘️ Type [PG Version] | PRESS ENTER: ' typed
+read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed
 storage=$(grep $typed /var/plexguide/ver.temp)
 
 if [ "$typed" == "exit" ]; then
