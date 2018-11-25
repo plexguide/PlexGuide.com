@@ -115,11 +115,10 @@ old=$(cat /var/plexguide/old.program)
 new=$(cat /var/plexguide/tld.program)
 
 if [ "$old" != "$new" ]; then
-	echo $old > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
+  ansible-playbook /opt/plexguide/containers/$old.yml
 fi
 
-echo $new > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
-
+ansible-playbook /opt/plexguide/containers/$new.yml
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
