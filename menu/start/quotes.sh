@@ -251,6 +251,46 @@ quote45 () {
 echo "Tina, you fat lard! Come get some Dinner!" > /var/plexguide/startup.quote
 echo "                                                         Napoleon Dynamite" > /var/plexguide/startup.source
 }
+
+quote46 () {
+echo "Oh my God, they killed Kenny!" > /var/plexguide/startup.quote
+echo "                                                    Stan Marsh ~ SouthPark" > /var/plexguide/startup.source
+}
+
+quote47 () {
+echo "I've got a new recipeeeeeee!" > /var/plexguide/startup.quote
+echo "                                         Ignis Scientia - Final Fantasy XV" > /var/plexguide/startup.source
+}
+
+quote48 () {
+echo "I've got a new recipeeeeeee!" > /var/plexguide/startup.quote
+echo "                                         Ignis Scientia - Final Fantasy XV" > /var/plexguide/startup.source
+}
+
+quote49 () {
+echo "What is a man? A miserable little pile of secrets." > /var/plexguide/startup.quote
+echo "                              Dracula, Castlevania ~ Symphony of the Night" > /var/plexguide/startup.source
+}
+
+quote50 () {
+echo "It's time to kick ass and chew bubble gun... and I'm all out of gum." > /var/plexguide/startup.quote
+echo "                                                Duke Nukem ~ Duke Nukem 3D" > /var/plexguide/startup.source
+}
+
+quote51 () {
+echo "Thank You Mario! But our Princess is another castle!" > /var/plexguide/startup.quote
+echo "                                                     Toad(s) ~ NES Mario I" > /var/plexguide/startup.source
+}
+
+quote51 () {
+echo "Get over here!" > /var/plexguide/startup.quote
+echo "                                                  Scorpion ~ Mortal Kombat" > /var/plexguide/startup.source
+}
+
+quote52 () {
+echo "There are two ways this can go down; and in both of them... you die!" > /var/plexguide/startup.quote
+echo "                                                                Duke Nukem" > /var/plexguide/startup.source
+}
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 46)) )
+num=$( echo $(($RANDOM % 53)) )
 quote$num

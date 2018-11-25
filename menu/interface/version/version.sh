@@ -1,9 +1,7 @@
 7.1.0
 7.014
+edge
 
----- Note: older version; new versions require running installer updates above
+---- Note: older versions; upgrading may require running NEW INSTALLER
 7.011
 7.006
-
----- Below Are Betas
-edge
