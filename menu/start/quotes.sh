@@ -291,6 +291,19 @@ quote52 () {
 echo "There are two ways this can go down; and in both of them... you die!" > /var/plexguide/startup.quote
 echo "                                                                Duke Nukem" > /var/plexguide/startup.source
 }
+
+quote53 () {
+echo "Lead me, follow me, or get the hell out of my way." > /var/plexguide/startup.quote
+echo "                                        GEN George S. Patton Jr. ~ US Army" > /var/plexguide/startup.source
+}
+
+quote54 () {
+echo "If you find yourself in a fair fight, you didn't plan your mission properly." > /var/plexguide/startup.quote
+echo "                                             COL David Hackworth ~ US Army" > /var/plexguide/startup.source
+}
+
+
+
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 53)) )
+num=$( echo $(($RANDOM % 55)) )
 quote$num
