@@ -43,7 +43,7 @@
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
   - name: Token Pull
-    shell: "cat /var/plexguide/plex.extension"
+    shell: "cat /var/plexguide/plex.claim"
     register: claim
   ######################################### FOR BOTH
   - name: "Set Default Labels"
