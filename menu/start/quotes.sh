@@ -28,7 +28,7 @@ echo "                                       Peggy Bundy ~ Married With Children
 quote5 () {
 echo "Dad had one great dream, a dream that had been handed down from
 generation to generation of male Bundys: to build their own room and live
-separately, from their wives. Sadly, they all failed." > /var/plexguide/startup.quote
+separately from their wives. Sadly, they all failed." > /var/plexguide/startup.quote
 echo "                                          Al Bundy ~ Married With Children" > /var/plexguide/startup.source
 }
 
@@ -298,7 +298,8 @@ echo "                                        GEN George S. Patton Jr. ~ US Army
 }
 
 quote54 () {
-echo "If you find yourself in a fair fight, you didn't plan your mission properly." > /var/plexguide/startup.quote
+echo "If you find yourself in a fair fight, you didn't plan your mission
+properly." > /var/plexguide/startup.quote
 echo "                                             COL David Hackworth ~ US Army" > /var/plexguide/startup.source
 }
 
