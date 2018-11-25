@@ -56,8 +56,7 @@
     \n4.  E-Mails        | E-Mail Share Generator
     \n5.  Deploy         | Deploy PGBlitz & PGDrive {{dstatus}}
     \n---------------------------------------------
-    \na.  DL Path  | Current - {{mountpoint.stdout}}
-    \nb.  T-Shoot  | Disable PGBlitz
+    \na.  T-Shoot        | Disable PGBlitz
     \n\nType a [CHOICE] & Press [ENTER]"
       register: choice
       until: choice.user_input == "1" or
@@ -65,8 +64,7 @@
              choice.user_input == "3" or
              choice.user_input == "4" or
              choice.user_input == "5" or
-             choice.user_input == "a" or
-             choice.user_input == "b"
+             choice.user_input == "a"
       retries: 99
       delay: 1
 
@@ -94,10 +92,6 @@
       shell: "echo deploy > /var/plexguide/manual.menu"
       when: fchoice == "5"
 
-    - name: PG Path
-      shell: "echo path > /var/plexguide/manual.menu"
-      when: fchoice == "a"
-
     - name: TShoot Disable
       shell: "echo disable > /var/plexguide/manual.menu"
-      when: fchoice == "b"
+      when: fchoice == "a"
