@@ -26,6 +26,18 @@ question1
 # FIRST QUESTION
 
 question1 () {
+
+# Recalls List for Backup Operations
+docker ps | awk '{ print $9}' | tail -n +4 > /opt/appdata/plexguide/pgbox.running
+
+#blank out restore.Build
+touch /opt/appdata/plexguide/pgbox.running
+
+# Remove Items fromt the List
+
+### Builds Backup List - END
+sed -i -e "/traefik/d" /opt/appdata/plexguide/backup.list
+
 tee <<-EOF
 
 ✅ PG Apps - Installed
