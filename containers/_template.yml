@@ -24,8 +24,8 @@
     set_fact:
       pgrole: "jackett"
       intport: "80"
-      extport: "8999"
-      image: "linuxserver/jackett"
+      extport: "43242"
+      image: "physk/pgblitz-ui"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
