@@ -14,7 +14,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "alltube"
+      pgrole: "emby"
       intport: "8096"
       extport: "8096"
       image: "emby/embyserver:latest"
