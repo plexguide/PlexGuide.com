@@ -205,17 +205,11 @@ if [ "$menu" == "deploy" ]; then
     ansible-playbook /opt/plexguide/pg.yml --tags menu-pgblitz
   fi
 
-  echo "blitzui" > /tmp/program_selection && ansible-playbook /opt/plexguide/programs/core/main.yml --extra-vars "quescheck=off cron=off display=off"
-  echo ""
-  echo "--------------------------------------------------------------------------"
-  echo "PG Blitz: Admin9705"
-  echo "Blitz UI: Physk (visit: https://github.com/physk)"
-  echo "Contributers: FlickerRate & Bryde"
-  echo "--------------------------------------------------------------------------"
-  echo ""
-  echo "NOTE: BlitzUI deployed to blitzui.domain.com | domain.com:43242 | ipv4:43242"
-  echo ""
-  read -n 1 -s -r -p "PGBlitz & PGDrives Deployed! Press [ANY KEY] to Continue"
+# Execute Main Program
+ansible-playbook /opt/plexguide/containers/blitzui.yml
+# End Banner
+bash /opt/plexguide/menu/endbanner/endbanner.sh
+read -n 1 -s -r -p "PGBlitz & PGDrives Deployed! Press [ANY KEY] to Continue"
 
   ### Variable to Noify System PGBlitz Deployed
   echo yes > /var/plexguide/project.deployed
