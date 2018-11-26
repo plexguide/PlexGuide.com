@@ -44,7 +44,7 @@
       dest: /opt/appdata
       owner: "1000"
       group: "1000"
-      mode: 0775
+      mode: a+x
       force: yes
 
   - name: Import default config
@@ -56,3 +56,26 @@
       mode: 0775
       force: yes
     when: not config.stat.exists
+
+  - name: remove service
+    vars:
+      service_vars:
+        - {name: pgpatrol.service}
+    tasks:
+      - name: Checking Existing Service Name
+        stat:
+          path: "/etc/systemd/system/{{ item.name }}"
+        with_items: "{{ service_vars }}"
+        register: check_service_name
+
+  - name: Install Service
+    template:
+      src: unionfs.js2
+      dest: /opt/appdata/pgpatrol/system/pgpatrol.service
+      force: yes
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=pgpatrol daemon_reload=yes enabled=no
+
+  - name: Start UnionFS
+    systemd: state=started name=pgpatrol enabled=yes
