@@ -12,6 +12,11 @@
   tasks:
 
 # FACTS ######################################################################
+  - name: Install pip requirements
+    pip:
+      requirements: /opt/appdata/pgpatrol/requirements.txt
+      executable: pip3
+
   - name: "Set Known Facts"
     set_fact:
       pgrole: "pgpatrol"
