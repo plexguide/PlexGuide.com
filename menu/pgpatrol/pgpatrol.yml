@@ -57,16 +57,8 @@
       force: yes
     when: not config.stat.exists
 
-  - name: remove service
-    vars:
-      service_vars:
-        - {name: pgpatrol.service}
-    tasks:
-      - name: Checking Existing Service Name
-        stat:
-          path: "/etc/systemd/system/{{ item.name }}"
-        with_items: "{{ service_vars }}"
-        register: check_service_name
+  - name: Remove Services
+    include_tasks: "/opt/appdata/pgpatrol/menu/service-remove.yml"
 
   - name: Install Service
     template:
