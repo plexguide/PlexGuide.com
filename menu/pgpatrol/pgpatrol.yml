@@ -39,9 +39,9 @@
     register: config
 
   - name: Move Token If It Existed
-    shell: "mv /opt/appdata/pgpatrol/settings.ini /opt/appdata/plexguide/pgpatrol/"
+    shell: "mv /opt/appdata/pgpatrol/settings.ini.default /opt/appdata/pgpatrol/settings.ini"
     register: plextoken
-    when: config.stat.exists
+    when: not config.stat.exists
 
   - name: Transfer Files
     copy:
@@ -51,8 +51,3 @@
       group: "1000"
       mode: 0775
       force: yes
-
-  - name: Restore Token If It Existed
-    shell: "rm -r /opt/appdata/pgpatrol/settings.ini && mv /opt/appdata/plexguide/settings.ini /opt/appdata/pgpatrol/settings.ini"
-    register: plextoken
-    when: config.stat.exists
