@@ -79,7 +79,7 @@
 
   - name: Install pip requirements
     pip:
-      requirements: /opt/appdata/menu/pgpatrol/requirements.txt
+      requirements: /opt/plexguide/menu/pgpatrol/requirements.txt
       executable: pip3
 
   - name: Check Service's Existance
