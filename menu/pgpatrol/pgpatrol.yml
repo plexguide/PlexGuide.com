@@ -27,7 +27,7 @@
   - name: Create Basic Directories
     file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
     with_items:
-        - "/opt/appdata/pgpatrol/settings.ini"
+        - "/opt/appdata/pgpatrol/"
 
   - name: Token Role
     include_tasks: "/opt/plexguide/menu/plex/token.yml"
@@ -39,7 +39,7 @@
 
   - name: Set INI's Location
     template:
-      src: settings.ini.default
+      src: /opt/appdata/menu/pgpatrol/settings.ini.default
       dest: /opt/appdata/pgpatrol/settings.ini
       owner: "{{user}}"
       group: "{{user}}"
