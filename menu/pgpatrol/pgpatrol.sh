@@ -55,10 +55,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://pgpatrol.plexguide.com
 
-1 - Instantly Kick Video Transcodes?              | [$video]
-2 - Allowed Multiple IPs for Same User Name?      | [$ips]
-3 - Kick Paused Transcode after how many Minutes? | [$minutes]
-4 - Deploy PGPatrol [Not Deployed]
+1 - Instantly Kick Video Transcodes?   [$video]
+2 - UserName | Multiple IPs?           [$ips]
+3 - Minutes  | Kick Paused Transcode?  [$minutes]
+4 - Deploy PGPatrol                    [Not Deployed]
 Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
