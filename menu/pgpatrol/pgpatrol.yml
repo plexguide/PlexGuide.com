@@ -15,6 +15,7 @@
   - name: "Set Known Facts"
     set_fact:
       pgrole: "pgpatrol"
+      extport: "0"
 
   - name: Server ID
     shell: "cat /var/plexguide/pg.serverid"
