@@ -22,7 +22,7 @@
     register: serverid
 
   - name: Token Recall
-    shell: "cat var/plexguide/plex.token"
+    shell: "cat /var/plexguide/plex.token"
     register: plextoken
 
   - name: CronJob Role
