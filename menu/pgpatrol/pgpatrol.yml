@@ -40,8 +40,8 @@
 
   - name: Set INI's Location
     template:
-      src: /opt/appdata/menu/pgpatrol/settings.ini.default
-      dest: /opt/appdata/pgpatrol/settings.ini
+      src: /opt/appdata/menu/pgpatrol/
+      dest: /opt/appdata/pgpatrol/
       owner: "{{user}}"
       group: "{{user}}"
       mode: 0775
