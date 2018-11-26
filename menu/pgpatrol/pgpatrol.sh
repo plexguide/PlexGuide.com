@@ -100,8 +100,8 @@ tee <<-EOF
 
 EOF
   read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
-    if [ "$typed" == "1" ]; then echo "False" > /var/plexguide/pgpatrol/video.transcodes && question1
-    elif [ "$typed" == "2" ]; then echo "True" > /var/plexguide/pgpatrol/video.transcodes && question;
+    if [ "$typed" == "1" ]; then echo "False" > /var/plexguide/pgpatrol/video.transcodes && question1;
+  elif [ "$typed" == "2" ]; then echo "True" > /var/plexguide/pgpatrol/video.transcodes && question1;
     else badinput; fi
 
 elif [ "$typed" == "2" ]; then break="on";
