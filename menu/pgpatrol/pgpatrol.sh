@@ -86,7 +86,24 @@ Z - EXIT
 EOF
 
   read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
+
+  if [ "$typed" == "1" ]; then 
+tee <<-EOF
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🚀 Instantly Kick Video Transcodes?
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ⚡ Reference: http://pgpatrol.plexguide.com
+
+  1 - False
+  2 - True
+
+EOF
+  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
+    if [ "$typed" == "1" ]; then echo "False" > /var/plexguide/pgpatrol/video.transcodes;
+    elif [ "$typed" == "2" ]; then echo "True" > /var/plexguide/pgpatrol/video.transcodes;
+    else badinput; fi
+
 elif [ "$typed" == "2" ]; then break="on";
 elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
 elif [ "$typed" == "4" ]; then ansible-playbook /opt/plexguide/menu/pgpatrol/pgpatrol.yml;
