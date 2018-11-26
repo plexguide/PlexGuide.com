@@ -8,13 +8,15 @@
 
 # KEY VARIABLE RECALL & EXECUTION
 mkdir -p /var/plexguide/pgpatrol
-touch /var/plexguide/pgpatrol/video.number
-touch /var/plexguide/pgpatrol/multiple.ips
-touch /var/plexguide/pgpatrol/kick.minutes
 
 # FUNCTIONS START ##############################################################
 
 # FIRST FUNCTION
+variable () {
+  file="$1"
+  if [ ! -e "$file" ]; then echo "$2" > $1; fi
+}
+
 token () {
  touch /var/plexguide/plex.token
  ptoken=$(cat /var/plexguide/plex.token)
@@ -46,10 +48,6 @@ video=$(cat /var/plexguide/pgpatrol/video.transcodes)
 ips=$(cat /var/plexguide/pgpatrol/multiple.ips)
 minutes=$(cat /var/plexguide/pgpatrol/kick.minutes)
 
-if [ "$video" == "" ]; then echo "False" > /var/plexguide/pgpatrol/video.transcodes; fi
-if [ "$ips" == "" ]; then echo "2" > /var/plexguide/pgpatrol/multiple.ips; fi
-if [ "$minutes" == "" ]; then echo "10" > /var/plexguide/pgpatrol/kick.minutes; fi
-
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -76,6 +74,8 @@ else badinput; fi
 }
 
 # FUNCTIONS END ##############################################################
-
 token
+variable /var/plexguide/pgpatrol/video.transcodes "False"
+variable /var/plexguide/pgpatrol/multiple.ips "2"
+variable /var/plexguide/pgpatrol/kick.minutes "10"
 question1
