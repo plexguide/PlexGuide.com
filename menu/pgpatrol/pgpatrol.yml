@@ -74,10 +74,10 @@
       state: absent
     when: pgp.stat.exists
 
-  - name: Install Service
+  - name: PG Patrol Service
     template:
-      src: unionfs.js2
-      dest: /opt/appdata/pgpatrol/system/pgpatrol.service
+      src: /opt/appdata/pgpatrol/system/pgpatrol.service
+      dest: /etc/systemd/system/pgpatrol.service
       force: yes
 
   - name: Daemon-Reload
