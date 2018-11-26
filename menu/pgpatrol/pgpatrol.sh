@@ -116,6 +116,6 @@ plexcheck
 token
 variable /var/plexguide/pgpatrol/video.transcodes "False"
 variable /var/plexguide/pgpatrol/multiple.ips "2"
-variable /var/plexguide/pgpatrol/kick.minutes "10"
+variable /var/plexguide/pgpatrol/kick.minutes "1"
 deploycheck
 question1
