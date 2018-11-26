@@ -41,7 +41,7 @@
   - name: Transfer Files
     copy:
       src: /opt/plexguide/menu/pgpatrol
-      dest: /opt/appdata/pgpatrol
+      dest: /opt/appdata
       owner: "1000"
       group: "1000"
       mode: 0775
