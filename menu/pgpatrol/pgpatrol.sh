@@ -18,7 +18,7 @@ variable () {
 }
 
 plexcheck () {
-  pcheck=$(cat docker ps | grep "\<plex\>")
+  pcheck=$(docker ps | grep "\<plex\>")
   if [ "$pcheck" == "" ]; then
 
 tee <<-EOF
