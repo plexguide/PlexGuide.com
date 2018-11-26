@@ -91,7 +91,7 @@
   - name: PG Patrol Service
     template:
       src: /opt/appdata/pgtrakt/system/pgtrakt.service
-      dest: /etc/systemd/system/pgtrakt.service
+      dest: /etc/systemd/systemd/pgtrakt.service
       force: yes
 
   - name: Daemon-Reload
