@@ -136,7 +136,7 @@ def check_streams():
 
 
 if __name__ == "__main__":
-    log.info("""Program Started
+    log.info("""PG Patrol Started
 """)
     log.info("Initializing")
     log.info("Validating server %r with token %r", config.SERVER_URL, config.SERVER_TOKEN)
@@ -145,7 +145,7 @@ if __name__ == "__main__":
         log.error("Could not validate server token, are you sure its correct...")
         exit(1)
     else:
-        log.info("Server token was validated, proceeding to uphold the law!")
+        log.info("Server token was validated, PG Patrol Started")
 
     while True:
         log.debug("Checking streams in %d seconds", config.CHECK_INTERVAL)
