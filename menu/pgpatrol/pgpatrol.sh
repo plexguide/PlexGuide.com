@@ -71,7 +71,7 @@ EOF
 elif [ "$typed" == "2" ]; then break="on";
 elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
 elif [ "$typed" == "4" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit; fi
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
 else badinput; fi
 }
 
