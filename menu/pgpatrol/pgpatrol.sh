@@ -70,7 +70,7 @@ EOF
   if [ "$typed" == "1" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
 elif [ "$typed" == "2" ]; then break="on";
 elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
-elif [ "$typed" == "4" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
+elif [ "$typed" == "4" ]; then ansible-playbook /opt/plexguide/menu/pgpatrol/pgpatrol.yml;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
 else badinput; fi
 }
