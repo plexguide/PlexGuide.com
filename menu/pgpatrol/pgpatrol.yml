@@ -39,7 +39,7 @@
   #  register: config
 
   - name: Transfer Files
-    synchronize:
+    copy:
       src: /opt/plexguide/menu/pgpatrol
       dest: /opt/appdata/pgpatrol
       owner: "1000"
