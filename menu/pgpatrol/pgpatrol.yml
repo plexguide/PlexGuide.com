@@ -45,6 +45,11 @@
     shell: "cat /var/plexguide/pgpatrol/kick.minutes"
     register: kickminutes
 
+  - name: Install pip requirements
+    pip:
+      requirements: /opt/plexguide/menu/pgpatrol/requirements.txt
+      executable: pip3
+
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
@@ -76,11 +81,6 @@
       mode: 0775
       force: yes
     #when: not config.stat.exists
-
-  - name: Install pip requirements
-    pip:
-      requirements: /opt/plexguide/menu/pgpatrol/requirements.txt
-      executable: pip3
 
   - name: Check Service's Existance
     stat:
