@@ -17,6 +17,11 @@ variable () {
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
 }
 
+plexcheck () {
+  file="$1"
+  if [ ! -e "$file" ]; then echo "$2" > $1; fi
+}
+
 token () {
  touch /var/plexguide/plex.token
  ptoken=$(cat /var/plexguide/plex.token)
@@ -74,6 +79,7 @@ else badinput; fi
 }
 
 # FUNCTIONS END ##############################################################
+plexcheck
 token
 variable /var/plexguide/pgpatrol/video.transcodes "False"
 variable /var/plexguide/pgpatrol/multiple.ips "2"
