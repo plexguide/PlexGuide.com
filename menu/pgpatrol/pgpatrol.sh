@@ -92,7 +92,7 @@ Set a Number from 1 - 99
 
 EOF
   read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
-    if [[ "$typed" -ge "1" ** "$typed" -le "99" ]]; then echo "$typed" > /var/plexguide/pgpatrol/multiple.ips && question1;
+    if [[ "$typed" -ge "1" && "$typed" -le "99" ]]; then echo "$typed" > /var/plexguide/pgpatrol/multiple.ips && question1;
     else badinput; fi
 }
 
@@ -108,7 +108,7 @@ Set a Number from 5 - 999 Mintues
 
 EOF
   read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
-    if [[ "$typed" -ge "5" ** "$typed" -le "999" ]]; then echo "$typed" > /var/plexguide/pgpatrol/kick.minutes && question1;
+    if [[ "$typed" -ge "5" && "$typed" -le "999" ]]; then echo "$typed" > /var/plexguide/pgpatrol/kick.minutes && question1;
     else badinput; fi
 }
 
