@@ -16,6 +16,7 @@ touch /var/plexguide/pgpatrol/kick.minutes
 
 # FIRST FUNCTION
 token () {
+ touch /var/plexguide/plex.token
  ptoken=$(cat /var/plexguide/plex.token)
  if [ "$ptoken" == "" ]; then
    bash /opt/plexguide/menu/plex/token.sh
