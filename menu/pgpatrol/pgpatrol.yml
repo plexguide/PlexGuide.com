@@ -73,12 +73,6 @@
       state: stopped
     when: pgp.stat.exists
 
-  - name: Stop service
-    service:
-      name: pgpatrol
-      state: absent
-    when: pgp.stat.exists
-
   - name: PG Patrol Service
     template:
       src: /opt/appdata/pgpatrol/system/pgpatrol.service
