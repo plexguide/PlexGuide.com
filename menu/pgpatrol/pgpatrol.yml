@@ -58,7 +58,7 @@
     when: not config.stat.exists
 
   - name: Remove Services
-    include_tasks: "/opt/appdata/pgpatrol/menu/service-remove.yml"
+    include_tasks: "/opt/plexguide/menu/service-remove.yml"
 
   - name: Install Service
     template:
