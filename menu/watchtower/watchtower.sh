@@ -49,10 +49,8 @@ while read p; do
 done </var/plexguide/app.list
 
   if [ "$typed" == "1" ]; then
-    cat /var/plexguide/app.list > /tmp/watchtower.set
     ansible-playbook /opt/plexguide/containers/watchtower.yml
 elif [ "$typed" == "2" ]; then
-  cat /var/plexguide/app.list > /tmp/watchtower.set
   sed -i -e "/plex/d" /tmp/watchtower.set 1>/dev/null 2>&1
   sed -i -e "/emby/d" /tmp/watchtower.set 1>/dev/null 2>&1
   ansible-playbook /opt/plexguide/containers/watchtower.yml
