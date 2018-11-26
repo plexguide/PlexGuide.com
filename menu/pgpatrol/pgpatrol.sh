@@ -17,6 +17,12 @@ variable () {
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
 }
 
+deploycheck () {
+  dcheck=$(systemctl status pgpatrol | grep "\(running\)\>" | grep "\<since\>")
+  if [ "$dcheck" == "" ]; then dstatus="Deployed";
+else dstatus="NOT Deployed"; fi
+}
+
 plexcheck () {
   pcheck=$(docker ps | grep "\<plex\>")
   if [ "$pcheck" == "" ]; then
@@ -73,7 +79,7 @@ tee <<-EOF
 1 - Instantly Kick Video Transcodes?   [$video]
 2 - UserName | Multiple IPs?           [$ips]
 3 - Minutes  | Kick Paused Transcode?  [$minutes]
-4 - Deploy PGPatrol                    [Not Deployed]
+4 - Deploy PGPatrol                    [$dstatus]
 Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -94,4 +100,5 @@ token
 variable /var/plexguide/pgpatrol/video.transcodes "False"
 variable /var/plexguide/pgpatrol/multiple.ips "2"
 variable /var/plexguide/pgpatrol/kick.minutes "10"
+deploycheck
 question1
