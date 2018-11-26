@@ -33,12 +33,12 @@
     with_items:
         - "/opt/appdata/pgpatrol/"
 
-  - name: Check INI's Existance
-    stat:
-      path: "/opt/appdata/pgpatrol/settings.ini"
-    register: config
+  #- name: Check INI's Existance
+  #  stat:
+  #    path: "/opt/appdata/pgpatrol/settings.ini"
+  #  register: config
 
-  - name: Set INI's Location
+  - name: Transfer Files
     template:
       src: /opt/appdata/menu/pgpatrol/*
       dest: /opt/appdata/pgpatrol/
