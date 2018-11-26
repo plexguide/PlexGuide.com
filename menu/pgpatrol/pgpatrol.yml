@@ -46,4 +46,4 @@
       group: "1000"
       mode: 0775
       force: yes
-    when: config.stat.exists
+    #when: config.stat.exists
