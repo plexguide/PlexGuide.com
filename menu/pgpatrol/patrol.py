@@ -137,21 +137,6 @@ def check_streams():
 
 if __name__ == "__main__":
     log.info("""
-       _                         _             _
- _ __ | | _____  __  _ __   __ _| |_ _ __ ___ | |
-| '_ \| |/ _ \ \/ / | '_ \ / _` | __| '__/ _ \| |
-| |_) | |  __/>  <  | |_) | (_| | |_| | | (_) | |
-| .__/|_|\___/_/\_\ | .__/ \__,_|\__|_|  \___/|_|
-|_|                 |_|
-
-#########################################################################
-# Author:   l3uddz                                                      #
-# URL:      https://github.com/l3uddz/plex_patrol                       #
-# --                                                                    #
-# Part of the Cloudbox project: https://cloudbox.rocks                  #
-#########################################################################
-# GNU General Public License v3.0                                       #
-#########################################################################
 """)
     log.info("Initializing")
     log.info("Validating server %r with token %r", config.SERVER_URL, config.SERVER_TOKEN)

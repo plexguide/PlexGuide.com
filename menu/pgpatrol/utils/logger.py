@@ -7,7 +7,7 @@ from utils import config
 log_formatter = logging.Formatter(
     '%(asctime)s - %(levelname)-10s - %(name)-40s -  %(funcName)-25s- %(message)s')
 
-rootLogger = logging.getLogger('plex_patrol')
+rootLogger = logging.getLogger('pgpatrol')
 
 # Console logging
 console_handler = logging.StreamHandler()
