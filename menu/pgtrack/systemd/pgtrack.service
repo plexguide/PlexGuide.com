@@ -1,0 +1,17 @@
+# /etc/systemd/system/pgtrakt.service
+
+[Unit]
+Description=pgtrakt
+After=network-online.target
+
+[Service]
+User=seed
+Group=seed
+Type=simple
+WorkingDirectory=/opt/appdata/pgtrak
+ExecStart=/usr/bin/python3 /opt/appdata/pgtrakt/pgtrakt.py run
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

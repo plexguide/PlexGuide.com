@@ -1,0 +1,106 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# YML Author: Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+# Origin:     https://github.com/l3uddz/plex_patrol
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+# FACTS ######################################################################
+  - name: "Set Known Facts"
+    set_fact:
+      pgrole: "pgtrakt"
+      extport: "0"
+
+  - name: Server ID
+    shell: "cat /var/plexguide/pg.serverid"
+    register: serverid
+
+  - name: Token Recall
+    shell: "cat /var/plexguide/plex.token"
+    register: plextoken
+
+  - name: Recall User
+    shell: "cat /var/plexguide/plex.user"
+    register: user
+
+  - name: Register IP
+    shell: "cat /var/plexguide/server.ip"
+    register: ipaddress
+
+  - name: Video Transcodes Info
+    shell: "cat /var/plexguide/pgtrakt/multiple.ips"
+    register: multipleips
+
+  - name: Multiple IPs Info
+    shell: "cat /var/plexguide/pgtrakt/video.transcodes"
+    register: videotranscodes
+
+  - name: Paused Info
+    shell: "cat /var/plexguide/pgtrakt/kick.minutes"
+    register: kickminutes
+
+  - name: Install pip requirements
+    pip:
+      requirements: /opt/plexguide/menu/pgtrakt/requirements.txt
+      executable: pip3
+
+  - name: CronJob Role
+    include_tasks: "/opt/plexguide/containers/_core.yml"
+
+  - name: Create Basic Directories
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+        - "/opt/appdata/pgtrakt/"
+
+  #- name: Check INI's Existance
+  #  stat:
+  #    path: "/opt/appdata/pgtrakt/settings.ini"
+  #  register: config
+
+  - name: Transfer Files
+    copy:
+      src: /opt/plexguide/menu/pgtrakt
+      dest: /opt/appdata
+      owner: "1000"
+      group: "1000"
+      mode: a+x
+      force: yes
+
+  - name: Import default config
+    template:
+      src: /opt/appdata/pgtrakt/settings.ini.default
+      dest: /opt/appdata/pgtrakt/settings.ini
+      owner: "1000"
+      group: "1000"
+      mode: 0775
+      force: yes
+    #when: not config.stat.exists
+
+  - name: Check Service's Existance
+    stat:
+      path: "/etc/systemd/system/pgtrakt.service"
+    register: pgp
+
+  - name: Stop service
+    service:
+      name: pgtrakt
+      state: stopped
+    when: pgp.stat.exists
+
+  - name: PG Patrol Service
+    template:
+      src: /opt/appdata/pgtrakt/system/pgtrakt.service
+      dest: /etc/systemd/system/pgtrakt.service
+      force: yes
+
+  - name: Daemon-Reload
+    systemd: state=stopped name=pgtrakt daemon_reload=yes enabled=no
+
+  - name: Start PGTrakt
+    systemd: state=started name=pgtrakt enabled=yes
