@@ -114,7 +114,7 @@ sleep 4
 old=$(cat /var/plexguide/old.program)
 new=$(cat /var/plexguide/tld.program)
 
-if [ "$old" != "$new" && "$old" != "NOT-SET" ]; then ansible-playbook /opt/plexguide/containers/$old.yml; fi
+if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then ansible-playbook /opt/plexguide/containers/$old.yml; fi
 
 ansible-playbook /opt/plexguide/containers/$new.yml
 tee <<-EOF
