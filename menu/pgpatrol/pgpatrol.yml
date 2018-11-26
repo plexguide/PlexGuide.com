@@ -12,11 +12,6 @@
   tasks:
 
 # FACTS ######################################################################
-  - name: Install pip requirements
-    pip:
-      requirements: /opt/appdata/pgpatrol/requirements.txt
-      executable: pip3
-
   - name: "Set Known Facts"
     set_fact:
       pgrole: "pgpatrol"
@@ -61,6 +56,11 @@
       mode: 0775
       force: yes
     when: not config.stat.exists
+
+  - name: Install pip requirements
+    pip:
+      requirements: /opt/appdata/pgpatrol/requirements.txt
+      executable: pip3
 
   - name: Check Service's Existance
     stat:
