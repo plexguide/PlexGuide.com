@@ -40,19 +40,19 @@
 
   - name: Transfer Files
     copy:
-      src: /opt/appdata/pgpatrol/settings.ini.default
-      dest: /opt/appdata/pgpatrol/settings.ini
-      owner: "1000"
-      group: "1000"
-      mode: 0775
-      force: yes
-    when: not config.stat.exists
-
-  - name: Transfer Files
-    copy:
       src: /opt/plexguide/menu/pgpatrol
       dest: /opt/appdata
       owner: "1000"
       group: "1000"
       mode: 0775
       force: yes
+
+- name: Import default config
+  template:
+    src: /opt/appdata/pgpatrol/settings.ini.default
+    dest: /opt/appdata/pgpatrol/settings.ini
+    owner: "1000"
+    group: "1000"
+    mode: 0775
+    force: yes
+  when: not config.stat.exists
