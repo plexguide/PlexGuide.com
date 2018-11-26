@@ -25,6 +25,18 @@
     shell: "cat /var/plexguide/plex.token"
     register: plextoken
 
+  - name: Video Transcodes Info
+    shell: "cat /var/plexguide/pgpatrol/multiple.ips"
+    register: multipleips
+
+  - name: Multiple IPs Info
+    shell: "cat /var/plexguide/pgpatrol/video.transcodes"
+    register: videotranscodes
+
+  - name: Paused Info
+    shell: "cat /var/plexguide/pgpatrol/kick.minutes"
+    register: kickminutes
+
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
@@ -33,10 +45,10 @@
     with_items:
         - "/opt/appdata/pgpatrol/"
 
-  - name: Check INI's Existance
-    stat:
-      path: "/opt/appdata/pgpatrol/settings.ini"
-    register: config
+  #- name: Check INI's Existance
+  #  stat:
+  #    path: "/opt/appdata/pgpatrol/settings.ini"
+  #  register: config
 
   - name: Transfer Files
     copy:
@@ -55,7 +67,7 @@
       group: "1000"
       mode: 0775
       force: yes
-    when: not config.stat.exists
+    #when: not config.stat.exists
 
   - name: Install pip requirements
     pip:
