@@ -29,7 +29,7 @@ tee <<-EOF
 
 EOF
     read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
-  fi
+    exit; fi
 }
 
 token () {
