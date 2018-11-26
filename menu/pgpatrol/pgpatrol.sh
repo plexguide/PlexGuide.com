@@ -80,6 +80,38 @@ EOF
     else badinput; fi
 }
 
+selection2 () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Limit Amount of Different IPs a User Can Make?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ Reference: http://pgpatrol.plexguide.com
+
+Set a Number from 1 - 99
+
+EOF
+  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
+    if [[ "$typed" -ge "1" ** "$typed" -le "99" ]]; then echo "$typed" > /var/plexguide/pgpatrol/multiple.ips && question1;
+    else badinput; fi
+}
+
+selection3 () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Limit How Long a User Can Pause For!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ Reference: http://pgpatrol.plexguide.com
+
+Set a Number from 5 - 999 Mintues
+
+EOF
+  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
+    if [[ "$typed" -ge "5" ** "$typed" -le "999" ]]; then echo "$typed" > /var/plexguide/pgpatrol/kick.minutes && question1;
+    else badinput; fi
+}
+
 # FIRST QUESTION
 question1 () {
 
@@ -106,9 +138,9 @@ EOF
   read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then selection1;
-elif [ "$typed" == "2" ]; then break="on";
-elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
-elif [ "$typed" == "4" ]; then ansible-playbook /opt/plexguide/menu/pgpatrol/pgpatrol.yml;
+elif [ "$typed" == "2" ]; then selection2;
+elif [ "$typed" == "3" ]; then selection3;
+elif [ "$typed" == "4" ]; then ansible-playbook /opt/plexguide/menu/pgpatrol/pgpatrol.yml && question1;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
 else badinput; fi
 }
