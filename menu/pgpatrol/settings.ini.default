@@ -2,11 +2,11 @@
 # show debug messages
 DEBUG = false
 # plex server url (e.g. http://ip:32400 or https://plex.reverse-proxy.com)
-SERVER_URL = http://your-plex.com:32400
+SERVER_URL = https://{{domain.stdout}}:32400
 # plex token for server
-SERVER_TOKEN = your_server_token
+SERVER_TOKEN = {{plexauth}}
 # name of server (does not matter, its used in the logs)
-SERVER_NAME = Your_Server_Name
+SERVER_NAME = {{serverid.stdout}}
 # how often to check the active streams in seconds
 CHECK_INTERVAL = 90
 # instantly kick video transcodes?
@@ -24,7 +24,7 @@ KICK_PAUSED_TRANSCODES = true
 # delay kick paused direct plays?
 KICK_PAUSED_DIRECTPLAY = false
 # when the KICK_PAUSED* options above are true, the user has this many minutes to resume, otherwise kick
-KICK_PAUSED_GRACE_MINS = 5
+KICK_PAUSED_GRACE_MINS = 10
 # messages to be displayed for different kick types
 KICK_PAUSED_MESSAGE = You are not allowed to pause a stream for that long... cya!
 KICK_TRANSCODE_MESSAGE = You are not allowed to transcode streams, use a better client!

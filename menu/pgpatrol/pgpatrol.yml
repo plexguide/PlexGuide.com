@@ -16,6 +16,10 @@
     set_fact:
       pgrole: "pgpatrol"
 
+  - name: Server ID
+    shell: "cat /var/plexguide/pg.serverid"
+    register: serverid
+
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
