@@ -21,6 +21,7 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 
 # FIRST QUESTION
 question1 () {
+
 mkdir -p /var/plexguide/pgpatrol
 touch /var/plexguide/pgpatrol/video.number
 touch /var/plexguide/pgpatrol/multiple.ips
@@ -29,9 +30,9 @@ video=$(cat /var/plexguide/pgpatrol/video.transcodes)
 ips=$(cat /var/plexguide/pgpatrol/multiple.ips)
 minutes=$(cat /var/plexguide/pgpatrol/kick.minutes)
 
-if [ "$video" == "" ]; then echo "False" > /var/plexguide/pgpatrol/video.transcodes
-if [ "$ips" == "" ]; then echo "2" > /var/plexguide/pgpatrol/multiple.ips
-if [ "$minutes" == "" ]; then echo "10" > /var/plexguide/pgpatrol/kick.minutes
+if [ "$video" == "" ]; then echo "False" > /var/plexguide/pgpatrol/video.transcodes; fi
+if [ "$ips" == "" ]; then echo "2" > /var/plexguide/pgpatrol/multiple.ips; fi
+if [ "$minutes" == "" ]; then echo "10" > /var/plexguide/pgpatrol/kick.minutes; fi
 
 tee <<-EOF
 
@@ -54,8 +55,8 @@ EOF
 elif [ "$typed" == "2" ]; then break="on";
 elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
 elif [ "$typed" == "4" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
-else badinput; fi
+else [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit; fi
+
 }
 
 # SECOND QUESTION
