@@ -7,10 +7,29 @@
 ################################################################################
 
 # KEY VARIABLE RECALL & EXECUTION
-program=$(cat /tmp/program_var)
-mkdir -p /var/plexguide/cron/
-mkdir -p /opt/appdata/plexguide/cron
+mkdir -p /var/plexguide/pgpatrol
+touch /var/plexguide/pgpatrol/video.number
+touch /var/plexguide/pgpatrol/multiple.ips
+touch /var/plexguide/pgpatrol/kick.minutes
+
 # FUNCTIONS START ##############################################################
+
+# FIRST FUNCTION
+token () {
+ ptoken=$(cat /var/plexguide/plex.token)
+ if [ "$ptoken" == "" ]; then
+   bash /opt/plexguide/menu/plex/token.sh
+   ptoken=$(cat /var/plexguide/plex.token)
+   if [ "$ptoken" == "" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Failed to Generate a Valid Plex Token! Exiting Deployment!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    exit; fi; fi
+}
 
 # BAD INPUT
 badinput () {
@@ -22,10 +41,6 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 # FIRST QUESTION
 question1 () {
 
-mkdir -p /var/plexguide/pgpatrol
-touch /var/plexguide/pgpatrol/video.number
-touch /var/plexguide/pgpatrol/multiple.ips
-touch /var/plexguide/pgpatrol/kick.minutes
 video=$(cat /var/plexguide/pgpatrol/video.transcodes)
 ips=$(cat /var/plexguide/pgpatrol/multiple.ips)
 minutes=$(cat /var/plexguide/pgpatrol/kick.minutes)
@@ -112,11 +127,5 @@ else badinput; fi
 
 # FUNCTIONS END ##############################################################
 
+token
 question1
-
-#serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
-#initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
-#check=$(hcloud server list | grep "\<$sshin\>" | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
-#ipcheck=$(echo $check | awk '{ print $3 }')
-#⛔️  WARNING! - Must Configure RClone First /w >>> gdrive
-# read -n 1 -s -r -p "Press [ANY] Key to Continue "
