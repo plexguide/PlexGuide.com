@@ -21,17 +21,30 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 
 # FIRST QUESTION
 question1 () {
-space=$(cat /var/plexguide/data.location)
+mkdir -p /var/plexguide/pgpatrol
+touch /var/plexguide/pgpatrol/video.number
+touch /var/plexguide/pgpatrol/multiple.ips
+touch /var/plexguide/pgpatrol/kick.minutes
+video=$(cat /var/plexguide/pgpatrol/video.number)
+ips=$(cat /var/plexguide/pgpatrol/multiple.ips)
+minutes=$(cat /var/plexguide/pgpatrol/kick.minutes)
+
+if [ "$video" == "" ]; then echo "False" > /var/plexguide/pgpatrol/video.number
+if [ "$ips" == "" ]; then echo "2" > /var/plexguide/pgpatrol/multiple.ips
+if [ "$minutes" == "" ]; then echo "10" > /var/plexguide/pgpatrol/kick.minutes
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛ PG Cron - Schedule Cron Jobs (Backups) | $program?
+⌛ PG Patrol Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ Reference: http://cron.plexguide.com
+⚡ Reference: http://pgpatrol.plexguide.com
 
-1 - No
-2 - Yes
-3 - Backup Location: $space
+1 - Instantly Kick Video Transcodes?              | [$video]
+2 - Allowed Multiple IPs for Same User Name?      | [$ips]
+3 - Kick Paused Transcode after how many Minutes? | [$minutes]
+4 - Deploy PGPatrol [Not Deployed]
+Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -40,6 +53,8 @@ EOF
   if [ "$typed" == "1" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
 elif [ "$typed" == "2" ]; then break="on";
 elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
+elif [ "$typed" == "4" ]; then bash /opt/plexguide/menu/data/location.sh && question1;
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
 else badinput; fi
 }
 
@@ -96,12 +111,7 @@ else badinput; fi
 
 # FUNCTIONS END ##############################################################
 
-break=off && while [ "$break" == "off" ]; do question1; done
-break=off && while [ "$break" == "off" ]; do question2; done
-break=off && while [ "$break" == "off" ]; do question3; done
-
-echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
-ansible-playbook /opt/plexguide/menu/cron/cron.yml
+question1
 
 #serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
 #initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
