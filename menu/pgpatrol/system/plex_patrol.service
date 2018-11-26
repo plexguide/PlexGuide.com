@@ -1,0 +1,17 @@
+# /etc/systemd/system/plex_patrol.service
+
+[Unit]
+Description=Plex Patrol
+After=network-online.target
+
+[Service]
+User=YOUR_USER
+Group=YOUR_USER
+Type=simple
+WorkingDirectory=/opt/plex_patrol/
+ExecStart=/opt/plex_patrol/patrol.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,43 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# YML Author: Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+# Origin:     https://github.com/l3uddz/plex_patrol
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+# FACTS ######################################################################
+  - name: "Set Known Facts"
+    set_fact:
+      pgrole: "pgpatrol"
+
+  - name: CronJob Role
+    include_tasks: "/opt/plexguide/containers/_core.yml"
+
+  - name: Create Basic Directories
+    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    with_items:
+        - "/opt/appdata/pgpatrol/settings.ini"
+
+  - name: Token Role
+    include_tasks: "/opt/plexguide/menu/plex/token.yml"
+
+  - name: Check INI's Existance
+    stat:
+      path: "/opt/appdata/pgpatrol/settings.ini"
+    register: config
+
+  - name: Set INI's Location
+    template:
+      src: settings.ini.default
+      dest: /opt/appdata/pgpatrol/settings.ini
+      owner: "{{user}}"
+      group: "{{user}}"
+      mode: 0775
+      force: yes
+    when: config.stat.exists
