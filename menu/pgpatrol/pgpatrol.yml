@@ -57,7 +57,7 @@
       force: yes
     when: not config.stat.exists
 
-  - name: Check INI's Existance
+  - name: Check Service's Existance
     stat:
       path: "/etc/systemd/system/pgpatrol.service"
     register: pgp
