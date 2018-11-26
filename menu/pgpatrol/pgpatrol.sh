@@ -25,11 +25,11 @@ mkdir -p /var/plexguide/pgpatrol
 touch /var/plexguide/pgpatrol/video.number
 touch /var/plexguide/pgpatrol/multiple.ips
 touch /var/plexguide/pgpatrol/kick.minutes
-video=$(cat /var/plexguide/pgpatrol/video.number)
+video=$(cat /var/plexguide/pgpatrol/video.transcodes)
 ips=$(cat /var/plexguide/pgpatrol/multiple.ips)
 minutes=$(cat /var/plexguide/pgpatrol/kick.minutes)
 
-if [ "$video" == "" ]; then echo "False" > /var/plexguide/pgpatrol/video.number
+if [ "$video" == "" ]; then echo "False" > /var/plexguide/pgpatrol/video.transcodes
 if [ "$ips" == "" ]; then echo "2" > /var/plexguide/pgpatrol/multiple.ips
 if [ "$minutes" == "" ]; then echo "10" > /var/plexguide/pgpatrol/kick.minutes
 
