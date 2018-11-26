@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+# FACTS #######################################################################
+
+  - name: "Set Known Facts"
+    set_fact:
+      pgrole: "sonarr"
+
+# LABELS ######################################################################
+  - name: Install {{pgrole}}
+    pip: "name=git+https://github.com/Diaoul/subliminal.git@develop"
