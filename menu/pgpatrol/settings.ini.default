@@ -10,7 +10,7 @@ SERVER_NAME = {{serverid.stdout}}
 # how often to check the active streams in seconds
 CHECK_INTERVAL = 90
 # instantly kick video transcodes? true or false
-KICK_VIDEO_TRANSCODES = {{multipleips.stdout}}
+KICK_VIDEO_TRANSCODES = 2
 # instantly kick audio transcodes
 KICK_AUDIO_TRANSCODES = false
 # instantly kick any players from this , seperated list?
