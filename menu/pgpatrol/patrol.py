@@ -136,7 +136,7 @@ def check_streams():
 
 
 if __name__ == "__main__":
-    log.info("""PGPatrol Started! (Based of l3uddz's Plex_Patrol)
+    log.info("""Program Started
 """)
     log.info("Initializing")
     log.info("Validating server %r with token %r", config.SERVER_URL, config.SERVER_TOKEN)
