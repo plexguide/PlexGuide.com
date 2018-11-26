@@ -83,5 +83,5 @@
   - name: Daemon-Reload
     systemd: state=stopped name=pgpatrol daemon_reload=yes enabled=no
 
-  - name: Start UnionFS
+  - name: Start PGPatrol
     systemd: state=started name=pgpatrol enabled=yes
