@@ -4,7 +4,7 @@ DEBUG = false
 # plex server url (e.g. http://ip:32400 or https://plex.reverse-proxy.com)
 SERVER_URL = https://{{domain.stdout}}:32400
 # plex token for server
-SERVER_TOKEN = {{plexauth}}
+SERVER_TOKEN = {{plextoken.stdout}}
 # name of server (does not matter, its used in the logs)
 SERVER_NAME = {{serverid.stdout}}
 # how often to check the active streams in seconds
