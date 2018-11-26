@@ -58,11 +58,6 @@
     with_items:
         - "/opt/appdata/pgtrakt/"
 
-  #- name: Check INI's Existance
-  #  stat:
-  #    path: "/opt/appdata/pgtrakt/settings.ini"
-  #  register: config
-
   - name: Transfer Files
     copy:
       src: /opt/plexguide/menu/pgtrakt
@@ -74,8 +69,8 @@
 
   - name: Import default config
     template:
-      src: /opt/appdata/pgtrakt/settings.ini.default
-      dest: /opt/appdata/pgtrakt/settings.ini
+      src: /opt/appdata/pgtrakt/config.json.sample
+      dest: /opt/appdata/pgtrakt/config.json
       owner: "1000"
       group: "1000"
       mode: 0775
