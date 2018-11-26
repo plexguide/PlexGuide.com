@@ -59,7 +59,7 @@ EOF
 badinput () {
 echo
 read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
-
+question1
 }
 
 # FIRST QUESTION
