@@ -40,7 +40,7 @@
 
   - name: Transfer Files
     template:
-      src: /opt/appdata/menu/pgpatrol/*
+      src: /opt/plexguide/menu/pgpatrol/*
       dest: /opt/appdata/pgpatrol/
       owner: "1000"
       group: "1000"
