@@ -28,7 +28,7 @@
         name: "watchtower"
         image: "v2tec/watchtower"
         pull: yes
-        command: "{{programs.stdout}} --cleanup --interval 600"
+        command: "airsonic alltube bazarr bitwarden blitzui booksonic cloudcmd couchpotato ddclient deezloaderremix deluge dockergc duplicati emby headphones heimdall htpcmanager jackett jirafeau lazylibrarian lidarr medusa monitorr muximux mylar netdata nextcloud nowshowing nzbget nzbhydra2 ombi4k ombihdr ombi organizrv2 organizr plex portainer pyload qbittorrent radarr4k radarrhdr radarr resilio rutorrent sabnzbd sharesite sickchill sickrage sonarr4k sonarrbeta sonarrhdr sonarr synclounge syncthing tautulli thelounge ubooquity --cleanup --interval 600"
         #cpu_shares: 64
         state: started
         volumes:
