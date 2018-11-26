@@ -18,8 +18,17 @@ variable () {
 }
 
 plexcheck () {
-  file="$1"
-  if [ ! -e "$file" ]; then echo "$2" > $1; fi
+  pcheck=$(cat docker ps | grep "\<plex\>")
+  if [ $pcheck == "" ]; then
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Plex is Not Installed or Running! Exiting!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+  fi
 }
 
 token () {
