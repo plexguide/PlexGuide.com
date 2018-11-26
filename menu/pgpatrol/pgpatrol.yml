@@ -104,3 +104,5 @@
 
   - name: Start PGPatrol
     systemd: state=started name=pgpatrol enabled=yes
+
+  - debug: msg=" videotranscodes {{ videotranscodes.stdout }} | multipleips {{ multipleips.stdout }} | kickminutes {{ kickminutes.stdout }}"
