@@ -42,6 +42,9 @@ EOF
 # Standby
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
+rm -r /tmp/watchtower.set 1>/dev/null 2>&1
+touch /tmp/watchtower.set
+
 bash /opt/plexguide/containers/_appsgen.sh
 while read p; do
   echo -n $p >> /tmp/watchtower.set
