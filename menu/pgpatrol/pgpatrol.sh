@@ -19,8 +19,8 @@ variable () {
 
 deploycheck () {
   dcheck=$(systemctl status pgpatrol | grep "\(running\)\>" | grep "\<since\>")
-  if [ "$dcheck" != "" ]; then dstatus="✅  DEPLOYED";
-else dstatus="⚠️  NOT DEPLOYED"; fi
+  if [ "$dcheck" != "" ]; then dstatus="✅ DEPLOYED";
+else dstatus="⚠️ NOT DEPLOYED"; fi
 }
 
 plexcheck () {
