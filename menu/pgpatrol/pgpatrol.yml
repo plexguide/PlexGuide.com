@@ -42,8 +42,8 @@
     template:
       src: /opt/appdata/menu/pgpatrol/
       dest: /opt/appdata/pgpatrol/
-      owner: "{{user}}"
-      group: "{{user}}"
+      owner: "1000"
+      group: "1000"
       mode: 0775
       force: yes
     when: config.stat.exists
