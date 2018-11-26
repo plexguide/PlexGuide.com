@@ -43,7 +43,6 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 bash /opt/plexguide/containers/_appsgen.sh
-
 while read p; do
   echo -n $p >> /tmp/watchtower.set
   echo -n " " >> /tmp/watchtower.set
