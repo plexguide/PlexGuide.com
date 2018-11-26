@@ -17,13 +17,13 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    
+
 # FACTS #######################################################################
 
   - name: "Set Known Facts"
     set_fact:
       pgrole: "cadvisor"
-      intport: "80"
+      intport: "8080"
       extport: "8750"
       image: "google/cadvisor:latest"
 
