@@ -33,10 +33,15 @@
     with_items:
         - "/opt/appdata/pgpatrol/"
 
-  #- name: Check INI's Existance
-  #  stat:
-  #    path: "/opt/appdata/pgpatrol/settings.ini"
-  #  register: config
+  - name: Check INI's Existance
+    stat:
+      path: "/opt/appdata/pgpatrol/settings.ini"
+    register: config
+
+  - name: Move Token If It Existed
+    shell: "mv /opt/appdata/pgpatrol/settings.ini /opt/appdata/plexguide/pgpatrol/"
+    register: plextoken
+    when: config.stat.exists
 
   - name: Transfer Files
     copy:
@@ -46,4 +51,8 @@
       group: "1000"
       mode: 0775
       force: yes
-    #when: config.stat.exists
+
+  - name: Restore Token If It Existed
+    shell: "rm -r /opt/appdata/pgpatrol/settings.ini && mv /opt/appdata/plexguide/settings.ini /opt/appdata/pgpatrol/settings.ini"
+    register: plextoken
+    when: config.stat.exists
