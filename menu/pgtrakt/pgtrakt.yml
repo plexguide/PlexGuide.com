@@ -103,13 +103,6 @@
       group: "1000"
       mode: 0775
       force: yes
-    #when: not config.stat.exists
-  - name: Set pgtrak.py as executable
-    file:
-      path: /opt/appdata/pgtrakt/pgtratk.py
-      owner: 1000
-      group: 1000
-      mode: a+x
 
   - name: "Create /usr/local/bin symlink"
     file:
