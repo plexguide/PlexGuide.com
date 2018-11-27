@@ -46,7 +46,7 @@ def app(config, logfile):
 
     # Load logger
     from misc.log import logger
-    log = logger.get_logger('traktarr')
+    log = logger.get_logger('pgtrack')
 
     # Load notifications
     from notifications import Notifications
