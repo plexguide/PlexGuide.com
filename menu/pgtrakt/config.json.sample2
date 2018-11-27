@@ -34,7 +34,6 @@
       "blacklisted_genres": [
         "animation",
         "game-show",
-        "anime",
         "news",
         "special-interest"
       ],
@@ -48,7 +47,8 @@
         "fox sports",
         "yahoo!"
       ],
-      "disabled_for": [],
+      "blacklisted_tvdb_ids": [],
+      "disabled_for": []
     },
     "movies": {
       "allowed_countries": [
@@ -65,12 +65,12 @@
       ],
       "blacklist_title_keywords": [
         "untitled",
-        "barbie",
         "ufc"
       ],
-      "blacklisted_min_runtime": 35,
+      "blacklisted_min_runtime": 30,
       "blacklisted_min_year": 1970,
       "blacklisted_max_year": 2020,
+      "blacklisted_tmdb_ids": [],
       "allowed_countries": [
         "us",
         "gb",
@@ -82,13 +82,13 @@
   "radarr": {
     "api_key": "{{rapi.stdout}}",
     "profile": "{{rprofile.stdout}}",
-    "url": "http://0.0.0.0:7878/",
+    "url": "http://0.0.0.0:7878",
     "root_folder": "{{rpath.stdout}}"
   },
   "sonarr": {
     "api_key": "{{sapi.stdout}}",
     "profile": "{{sprofile.stdout}}",
-    "url": "http://0.0.0.0:8989/",
+    "url": "http://0.0.0.0:8989",
     "root_folder": "{{spath.stdout}}",
     "tags": {}
   },
