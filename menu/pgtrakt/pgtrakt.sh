@@ -440,7 +440,7 @@ elif [ "$typed" == "6" ]; then
 # keys for sonarr and radarr need to be added
 ansible-playbook /opt/plexguide/menu/pgtrakt/pgtrakt.yml && question1;
 
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
 else badinput; fi
 }
 
