@@ -499,7 +499,7 @@ read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
   question1
   else
 
-if [ $sonarr = "" ]; then
+if [ "$sonarr" = "" ]; then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - PGTrakt will only work for movies! Sonarr Not Running!
@@ -510,7 +510,7 @@ read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
 echo
 fi
 
-if [ $radarr = "" ]; then
+if [ "$radarr" = "" ]; then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - PGTrakt will only work for shows! Radarr Not Running!
@@ -538,7 +538,7 @@ info=${info#*<ApiKey>} 1>/dev/null 2>&1
 info2=$( echo ${info:0:32} ) 1>/dev/null 2>&1
 echo "$info2" > /var/plexguide/pgtrak.sapi
 fi
-fi 
+fi
 # keys for sonarr and radarr need to be added
 ansible-playbook /opt/plexguide/menu/pgtrakt/pgtrakt.yml && question1;
 
