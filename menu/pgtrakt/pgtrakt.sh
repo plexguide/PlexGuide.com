@@ -77,7 +77,7 @@ Go Back? Type > EXIT
 EOF
 read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "exit" ]; question1;
+  if [ "$typed" == "exit" ]; then question1;
 else
 tee <<-EOF
 
@@ -120,7 +120,7 @@ Go Back? Type > exit
 EOF
 read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "exit" ]; question1;
+  if [ "$typed" == "exit" ]; then question1;
 else
 tee <<-EOF
 
@@ -158,7 +158,7 @@ Go Back? Type > EXIT
 EOF
 read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "exit" ]; question1;
+  if [ "$typed" == "exit" ]; then question1;
 else
 tee <<-EOF
 
@@ -248,7 +248,7 @@ Go Back? Type > EXIT
 EOF
 read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "exit" ]; question1;
+  if [ "$typed" == "exit" ]; then question1;
 else
 tee <<-EOF
 
@@ -436,7 +436,7 @@ elif [ "$typed" == "3" ]; then rpath;
 elif [ "$typed" == "4" ]; then squality;
 elif [ "$typed" == "5" ]; then rquality;
 elif [ "$typed" == "6" ]; then pgdeploy;
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; question1;
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput; fi
 }
 
