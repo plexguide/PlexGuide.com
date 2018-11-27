@@ -38,6 +38,166 @@ EOF
     question1; fi
 }
 
+sonarrcheck () {
+  pcheck=$(docker ps | grep "\<sonarr\>")
+  if [ "$pcheck" == "" ]; then
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Sonarr is not Installed/Running! Cannot Proceed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    question1; fi
+}
+
+radarrcheck () {
+  pcheck=$(docker ps | grep "\<radarr\>")
+  if [ "$pcheck" == "" ]; then
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Sonarr is not Installed/Running! Cannot Proceed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    question1; fi
+}
+
+squality () {
+sonarrcheck
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 Sonarr Profile
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: Type a profile that exists! Check Sonarr's Profiles incase! This is
+case senstive! If you mess this up, it will put invalid profiles that do
+not exist within Sonarr!
+
+Examples:
+/mnt/unionfs/tv
+/media/tv
+/secondhd/tv
+
+Go Back? Type > EXIT
+EOF
+read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed < /dev/tty
+
+  if [ "$typed" == "exit" ]; then exit;
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SYSTEM MESSAGE: Sonarr Path Completed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Quality Set Is: $typed
+EOF
+
+echo "$typed" > /var/plexguide/pgtrak.sprofile
+read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+echo ""
+question1
+fi
+
+}
+
+rpath () {
+radarrcheck
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 Radarr Path
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: In order for this to work, you must set the PATH to where Radarr is
+actively scanning your movies.
+
+Go Back? Type > EXIT
+EOF
+read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
+
+  if [ "$typed" == "exit" ]; then exit;
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 SYSTEM MESSAGE: Checking Path $typed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 1.5
+
+##################################################### TYPED CHECKERS - START
+  typed2=$typed
+  bonehead=no
+  ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
+  initial="$(echo $typed | head -c 1)"
+  if [ "$initial" != "/" ]; then
+    typed="/$typed"
+  fi
+  ##### If BONEHEAD added a / at the end, we fix for them
+  initial="${typed: -1}"
+  if [ "$initial" == "/" ]; then
+    typed=${typed::-1}
+  fi
+
+##################################################### TYPED CHECKERS - START
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 SYSTEM MESSAGE: Checking if Location is Valid
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 1.5
+
+mkdir $typed/test 1>/dev/null 2>&1
+
+file="$typed/test"
+  if [ -e "$file" ]; then
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SYSTEM MESSAGE: Radarr Path Completed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+
+### Removes /mnt if /mnt/unionfs exists
+check=$(echo $typed | head -c 12)
+if [ "$check" == "/mnt/unionfs" ]; then
+typed=${typed:4}
+fi
+
+echo "$typed" > /var/plexguide/pgtrak.rpath
+read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+echo ""
+question1
+  else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔ ALERT: Path $typed DOES NOT Exist! No Changes Made!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Note: Exiting the Process! You must ensure that linux is able to READ
+your location.
+
+Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
+
+EOF
+read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+echo "" && question1
+  fi
+fi
+
+}
+
+
 radarrcheck () {
   pcheck=$(docker ps | grep "\<radarr\>")
   if [ "$pcheck" == "" ]; then
@@ -347,9 +507,9 @@ EOF
   if [ "$typed" == "1" ]; then selection1;
 elif [ "$typed" == "2" ]; then spath;
 elif [ "$typed" == "3" ]; then rpath;
-elif [ "$typed" == "4" ]; then selection4;
-elif [ "$typed" == "5" ]; then selection5;
-elif [ "$typed" == "6" ]; then selection6;
+elif [ "$typed" == "4" ]; then squality;
+elif [ "$typed" == "5" ]; then rquality;
+elif [ "$typed" == "6" ]; then pgdeploy;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
 else badinput; fi
 }
