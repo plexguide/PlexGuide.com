@@ -94,10 +94,9 @@ if [ "$check" == "/mnt/unionfs" ]; then
 typed=${typed:4}
 fi
 
-echo $typed
+echo "$typed" > /var/plexguide/pgtrak.spath
 read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
 echo ""
-echo "$typed" > /var/plexguide/pgtrak.spath
 question1
   else
 tee <<-EOF
@@ -352,8 +351,8 @@ EOF
   read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then selection1;
-elif [ "$typed" == "2" ]; then spath && question1;
-elif [ "$typed" == "3" ]; then rpath && question1;
+elif [ "$typed" == "2" ]; then spath;
+elif [ "$typed" == "3" ]; then rpath;
 elif [ "$typed" == "4" ]; then selection4;
 elif [ "$typed" == "5" ]; then selection5;
 elif [ "$typed" == "6" ]; then selection6;
