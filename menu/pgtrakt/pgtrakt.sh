@@ -38,21 +38,6 @@ EOF
     question1; fi
 }
 
-sonarrcheck () {
-  pcheck=$(docker ps | grep "\<sonarr\>")
-  if [ "$pcheck" == "" ]; then
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - Sonarr is not Installed/Running! Cannot Proceed!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
-    question1; fi
-}
-
 radarrcheck () {
   pcheck=$(docker ps | grep "\<radarr\>")
   if [ "$pcheck" == "" ]; then
@@ -60,7 +45,7 @@ radarrcheck () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - Sonarr is not Installed/Running! Cannot Proceed!
+⛔️  WARNING! - Radarr is not Installed/Running! Cannot Proceed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -79,10 +64,13 @@ NOTE: Type a profile that exists! Check Sonarr's Profiles incase! This is
 case senstive! If you mess this up, it will put invalid profiles that do
 not exist within Sonarr!
 
-Examples:
-/mnt/unionfs/tv
-/media/tv
-/secondhd/tv
+Default Profiles for Sonarr (case senstive):
+Any
+SD
+HD-720p
+HD-1080p
+Ultra-HD
+HD - 720p/1080p
 
 Go Back? Type > EXIT
 EOF
@@ -196,7 +184,6 @@ echo "" && question1
 fi
 
 }
-
 
 radarrcheck () {
   pcheck=$(docker ps | grep "\<radarr\>")
