@@ -483,6 +483,61 @@ elif [ "$typed" == "4" ]; then squality;
 elif [ "$typed" == "5" ]; then rquality;
 elif [ "$typed" == "6" ]; then
 
+  sonarr=$(docker ps | grep "sonarr")
+  radarr=$(docker ps | grep "radarr")
+
+if [ "$radarr" == "" ] && [ "$sonarr" == "" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Sonarr or Radarr must be Running!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+
+read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+  echo
+  else
+
+if [ $sonarr = "" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - PGTrakt will only work for movies! Sonarr Not Running!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+echo
+fi
+
+if [ $radarr = "" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - PGTrakt will only work for shows! Radarr Not Running!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+echo
+fi
+
+file="/opt/appdata/radarr/config.xml"
+if [ -e "$file" ]
+then
+info=$( cat /opt/appdata/radarr/config.xml )
+info=${info#*<ApiKey>} 1>/dev/null 2>&1
+info1=$( echo ${info:0:32} ) 1>/dev/null 2>&1
+echo "$info1" > /var/plexguide/pgtrak.rapi
+fi
+
+file="/opt/appdata/sonarr/config.xml"
+if [ -e "$file" ]
+then
+info=$( cat /opt/appdata/sonarr/config.xml )
+info=${info#*<ApiKey>} 1>/dev/null 2>&1
+info2=$( echo ${info:0:32} ) 1>/dev/null 2>&1
+echo "$info2" > /var/plexguide/pgtrak.sapi
+fi
+
 # keys for sonarr and radarr need to be added
 ansible-playbook /opt/plexguide/menu/pgtrakt/pgtrakt.yml && question1;
 
