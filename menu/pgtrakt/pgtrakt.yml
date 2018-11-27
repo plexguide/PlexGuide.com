@@ -112,7 +112,7 @@
 
   - name: Check Service's Existance
     stat:
-      path: "/etc/systemd/system/pgtrakt.service"
+      path: "/etc/systemd/systemd/pgtrakt.service"
     register: pgp
 
   - name: Stop service
