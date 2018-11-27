@@ -94,6 +94,7 @@ if [ "$check" == "/mnt/unionfs" ]; then
 typed=${typed:4}
 fi
 
+echo $typed
 read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
 echo ""
 echo "$typed" > /var/plexguide/pgtrak.spath
