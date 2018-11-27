@@ -435,7 +435,11 @@ elif [ "$typed" == "2" ]; then spath;
 elif [ "$typed" == "3" ]; then rpath;
 elif [ "$typed" == "4" ]; then squality;
 elif [ "$typed" == "5" ]; then rquality;
-elif [ "$typed" == "6" ]; then pgdeploy;
+elif [ "$typed" == "6" ]; then
+
+# keys for sonarr and radarr need to be added
+then ansible-playbook /opt/plexguide/menu/pgtrakt/pgtrak.yml && question1;
+
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput; fi
 }
