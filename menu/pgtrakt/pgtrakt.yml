@@ -121,10 +121,10 @@
       state: stopped
     when: pgp.stat.exists
 
-  - name: PG Patrol Service
+  - name: PGTrakt Service
     template:
       src: /opt/appdata/pgtrakt/systemd/pgtrakt.service
-      dest: /etc/systemd/systemd/pgtrakt.service
+      dest: /etc/systemd/system/pgtrakt.service
       force: yes
 
   - name: Daemon-Reload
