@@ -468,7 +468,7 @@ NOTE: Changes Made? Must Redeploy PGTrak when Complete!
 3 - Raddar Path     [$rpath]
 4 - Sonarr Profile  [$sprofile]
 5 - Radarr Profile  [$rprofile]
-6 - Deploy PGTrak   [$deployed]
+6 - Deploy PGTrak   [$dcheck]
 Z - EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
