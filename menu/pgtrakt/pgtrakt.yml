@@ -33,17 +33,45 @@
     shell: "cat /var/plexguide/server.ip"
     register: ipaddress
 
-  - name: Video Transcodes Info
-    shell: "cat /var/plexguide/pgtrakt/multiple.ips"
-    register: multipleips
+  - name: Sonarr API
+    shell: "cat /var/plexguide/pgtrak.sapi"
+    register: sapi
+    ignore_errors: True
 
-  - name: Multiple IPs Info
-    shell: "cat /var/plexguide/pgtrakt/video.transcodes"
-    register: videotranscodes
+  - name: Radarr API
+    shell: "cat /var/plexguide/pgtrak.rapi"
+    register: rapi
+    ignore_errors: True
 
-  - name: Paused Info
-    shell: "cat /var/plexguide/pgtrakt/kick.minutes"
-    register: kickminutes
+  - name: Sonarr Profile
+    shell: "cat /var/plexguide/pgtrak.sprofile"
+    register: sprofile
+    ignore_errors: True
+
+  - name: Radarr Profile
+    shell: "cat /var/plexguide/pgtrak.rprofile"
+    register: rprofile
+    ignore_errors: True
+
+  - name: Trakt.tv Client
+    shell: "cat /var/plexguide/pgtrak.client"
+    register: client
+    ignore_errors: True
+
+  - name: Trakt.tv Secret
+    shell: "cat /var/plexguide/pgtrak.secret"
+    register: secret
+    ignore_errors: True
+
+  - name: Radarr Path
+    shell: "cat /var/plexguide/pgtrak.rpath"
+    register: rpath
+    ignore_errors: True
+
+  - name: API Sonnar
+    shell: "cat /var/plexguide/pgtrak.spath"
+    register: spath
+    ignore_errors: True
 
   - name: Install pip requirements
     pip:
@@ -76,6 +104,18 @@
       mode: 0775
       force: yes
     #when: not config.stat.exists
+  - name: Set pgtrak.py as executable
+    file:
+      path: /opt/appdata/pgtrakt/pgtratk.py
+      owner: 1000
+      group: 1000
+      mode: a+x
+
+  - name: "Create /usr/local/bin symlink"
+    file:
+      src: "/opt/appdata/pgtrakt/pgtrakt.py"
+      dest: "/bin/pgtrak"
+      state: link
 
   - name: Check Service's Existance
     stat:
