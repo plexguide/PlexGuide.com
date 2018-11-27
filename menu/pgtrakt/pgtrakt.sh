@@ -496,6 +496,7 @@ EOF
 
 read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
   echo
+  question1
   else
 
 if [ $sonarr = "" ]; then
