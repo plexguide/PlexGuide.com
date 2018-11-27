@@ -538,7 +538,7 @@ info=${info#*<ApiKey>} 1>/dev/null 2>&1
 info2=$( echo ${info:0:32} ) 1>/dev/null 2>&1
 echo "$info2" > /var/plexguide/pgtrak.sapi
 fi
-
+fi 
 # keys for sonarr and radarr need to be added
 ansible-playbook /opt/plexguide/menu/pgtrakt/pgtrakt.yml && question1;
 
