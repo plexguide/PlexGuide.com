@@ -139,6 +139,53 @@ fi
 
 }
 
+api () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 Trakt API-Key
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: In order for this to work, you must retrieve your API Key! Prior to
+continuing, please follow the current steps.
+
+- Visit - https://trakt.tv/oauth/applications
+- Click - New Applications
+- Name  - Whatever You Like
+- Redirect UI - https://google.com
+- Permissions - Click /checkin and /scrobble
+- Click - Save App
+- Copy the Client ID & Secret for the Next Step!
+
+Go Back? Type > exit
+EOF
+read -p '↘️ Type API Client | Press [ENTER]: ' typed < /dev/tty
+echo $typed > /var/plexguide/pgtrak.client
+read -p '↘️ Type API Client | Press [ENTER]: ' typed < /dev/tty
+echo $typed > /var/plexguide/pgtrak.secret
+
+  if [ "$typed" == "exit" ]; then question1;
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SYSTEM MESSAGE: PGTrak API Notice
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: The API Client and Secret is set! Ensure to setup your <paths> and
+<profiles> prior to deploying PGTrak.
+
+INFO: Messed up? Rerun this API Interface to update the information!
+
+EOF
+
+echo "$typed" > /var/plexguide/pgtrak.sprofile
+read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+question1
+fi
+
+}
+
 spath () {
 sonarrcheck
 tee <<-EOF
@@ -430,7 +477,7 @@ EOF
 
   read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then selection1;
+  if [ "$typed" == "1" ]; then api;
 elif [ "$typed" == "2" ]; then spath;
 elif [ "$typed" == "3" ]; then rpath;
 elif [ "$typed" == "4" ]; then squality;
