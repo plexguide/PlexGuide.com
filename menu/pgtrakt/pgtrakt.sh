@@ -142,11 +142,6 @@ tee <<-EOF
 NOTE: In order for this to work, you must set the PATH to where Radarr is
 actively scanning your movies.
 
-Examples:
-/mnt/unionfs/movies
-/media/movies
-/secondhd/movies
-
 Go Back? Type > EXIT
 EOF
 read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
@@ -203,9 +198,9 @@ if [ "$check" == "/mnt/unionfs" ]; then
 typed=${typed:4}
 fi
 
+echo "$typed" > /var/plexguide/pgtrak.rpath
 read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
 echo ""
-echo "$typed" > /var/plexguide/pgtrak.rpath
 question1
   else
 tee <<-EOF
