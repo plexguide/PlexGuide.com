@@ -96,6 +96,49 @@ fi
 
 }
 
+rquality () {
+radarrcheck
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 Radarr Profile
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: Type a profile that exists! Check Raddar's Profiles incase! This is
+case senstive! If you mess this up, it will put invalid profiles that do
+not exist within Radarr!
+
+Default Profiles for Radarr (case senstive):
+Any
+SD
+HD-720p
+HD-1080p
+Ultra-HD
+HD - 720p/1080p
+
+Go Back? Type > EXIT
+EOF
+read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
+
+  if [ "$typed" == "exit" ]; then exit;
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SYSTEM MESSAGE: Radarr Path Completed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Quality Set Is: $typed
+
+EOF
+
+echo "$typed" > /var/plexguide/pgtrak.rprofile
+read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+question1
+fi
+
+}
+
 rpath () {
 radarrcheck
 tee <<-EOF
