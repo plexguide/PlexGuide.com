@@ -179,7 +179,6 @@ INFO: Messed up? Rerun this API Interface to update the information!
 
 EOF
 
-echo "$typed" > /var/plexguide/pgtrak.sprofile
 read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
 question1
 fi
