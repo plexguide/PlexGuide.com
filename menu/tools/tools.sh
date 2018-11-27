@@ -78,7 +78,7 @@ tee <<-EOF
 2 - Server Port Guard [$ports]
 3 - Application Guard [$appguard]
 4 - PGPatrol
-5 - PGTrak
+5 - PGTrakt
 6 - Personal VPN Service Installer
 7 - System & Network Auditor
 8 - App UnInstaller
@@ -101,7 +101,7 @@ elif [ "$typed" == "3" ]; then
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/interface/pgtrak/main.sh
+  bash /opt/plexguide/menu/pgtrakt/pgtrakt.sh
 elif [ "$typed" == "6" ]; then
   echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "7" ]; then
