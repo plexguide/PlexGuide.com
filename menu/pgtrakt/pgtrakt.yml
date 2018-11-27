@@ -114,7 +114,7 @@
   - name: "Create /usr/local/bin symlink"
     file:
       src: "/opt/appdata/pgtrakt/pgtrakt.py"
-      dest: "/bin/pgtrak"
+      dest: "/bin/pgtrakt"
       state: link
 
   - name: Check Service's Existance
