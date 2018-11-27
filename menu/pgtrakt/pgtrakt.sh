@@ -73,7 +73,7 @@ HD-1080p
 Ultra-HD
 HD - 720p/1080p
 
-Go Back? Type > EXIT
+Go Back? Type > exit
 EOF
 read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed < /dev/tty
 
@@ -154,7 +154,7 @@ Examples:
 /media/tv
 /secondhd/tv
 
-Go Back? Type > EXIT
+Go Back? Type > exit
 EOF
 read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed < /dev/tty
 
@@ -244,7 +244,7 @@ tee <<-EOF
 NOTE: In order for this to work, you must set the PATH to where Radarr is
 actively scanning your movies.
 
-Go Back? Type > EXIT
+Go Back? Type > exit
 EOF
 read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
 
