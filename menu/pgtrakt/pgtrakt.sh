@@ -38,6 +38,21 @@ EOF
     question1; fi
 }
 
+radarrcheck () {
+  pcheck=$(docker ps | grep "\<radarr\>")
+  if [ "$pcheck" == "" ]; then
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - Sonarr is not Installed/Running! Cannot Proceed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    question1; fi
+}
+
 spath () {
 sonarrcheck
 tee <<-EOF
@@ -133,6 +148,7 @@ fi
 }
 
 rpath () {
+radarrcheck
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
