@@ -123,7 +123,7 @@
 
   - name: PG Patrol Service
     template:
-      src: /opt/appdata/pgtrakt/system/pgtrakt.service
+      src: /opt/appdata/pgtrakt/systemd/pgtrakt.service
       dest: /etc/systemd/systemd/pgtrakt.service
       force: yes
 
