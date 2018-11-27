@@ -116,7 +116,7 @@ HD-1080p
 Ultra-HD
 HD - 720p/1080p
 
-Go Back? Type > EXIT
+Go Back? Type > exit
 EOF
 read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
 
@@ -137,111 +137,6 @@ read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
 question1
 fi
 
-}
-
-rpath () {
-radarrcheck
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📁 Radarr Path
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-NOTE: In order for this to work, you must set the PATH to where Radarr is
-actively scanning your movies.
-
-Go Back? Type > EXIT
-EOF
-read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
-
-  if [ "$typed" == "exit" ]; then exit;
-else
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 SYSTEM MESSAGE: Checking Path $typed
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 1.5
-
-##################################################### TYPED CHECKERS - START
-  typed2=$typed
-  bonehead=no
-  ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
-  initial="$(echo $typed | head -c 1)"
-  if [ "$initial" != "/" ]; then
-    typed="/$typed"
-  fi
-  ##### If BONEHEAD added a / at the end, we fix for them
-  initial="${typed: -1}"
-  if [ "$initial" == "/" ]; then
-    typed=${typed::-1}
-  fi
-
-##################################################### TYPED CHECKERS - START
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 SYSTEM MESSAGE: Checking if Location is Valid
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 1.5
-
-mkdir $typed/test 1>/dev/null 2>&1
-
-file="$typed/test"
-  if [ -e "$file" ]; then
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ SYSTEM MESSAGE: Radarr Path Completed!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-
-### Removes /mnt if /mnt/unionfs exists
-check=$(echo $typed | head -c 12)
-if [ "$check" == "/mnt/unionfs" ]; then
-typed=${typed:4}
-fi
-
-echo "$typed" > /var/plexguide/pgtrak.rpath
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
-echo ""
-question1
-  else
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔ ALERT: Path $typed DOES NOT Exist! No Changes Made!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Note: Exiting the Process! You must ensure that linux is able to READ
-your location.
-
-Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
-
-EOF
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
-echo "" && question1
-  fi
-fi
-
-}
-
-radarrcheck () {
-  pcheck=$(docker ps | grep "\<radarr\>")
-  if [ "$pcheck" == "" ]; then
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - Sonarr is not Installed/Running! Cannot Proceed!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
-    question1; fi
 }
 
 spath () {
