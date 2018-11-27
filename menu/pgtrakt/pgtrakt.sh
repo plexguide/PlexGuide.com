@@ -59,30 +59,13 @@ sleep 1.5
   initial="$(echo $typed | head -c 1)"
   if [ "$initial" != "/" ]; then
     typed="/$typed"
-    bonehead=yes
   fi
   ##### If BONEHEAD added a / at the end, we fix for them
   initial="${typed: -1}"
   if [ "$initial" == "/" ]; then
     typed=${typed::-1}
-    bonehead=yes
   fi
 
-  ##### Notify User is a Bonehead
-  if [ "$bonehead" == "yes" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔ ALERT: Fixed Your Typos!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-You Typed : $typed2
-Changed To: $typed
-
-EOF
-
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
-  fi
 ##################################################### TYPED CHECKERS - START
 tee <<-EOF
 
