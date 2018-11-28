@@ -25,8 +25,8 @@ install:
   - sh: sudo bash /opt/plexguide/install/alias.sh
   ###### others
   - sh: sudo bash /opt/plexguide/install/motd.sh
-  - sh: bash /opt/plexguide/install/gcloud.sh
-  - sh: bash /opt/plexguide/install/hetzner.sh
+  - sh: sudo bash /opt/plexguide/install/gcloud.sh
+  - sh: sudo bash /opt/plexguide/install/hetzner.sh
   
   ###### Install Containers - ABC Order
 
