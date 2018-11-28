@@ -31,7 +31,7 @@ install:
   ###### Install Containers - ABC Order
 
   ## new format checked (check NETDATA)
-  - sh: sudo ansible-playbook /opt/plexguide/containers/netdata.yml
+  - sh: sudo bash /opt/plexguide/roles/appveyor/containers.sh
  
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
