@@ -24,57 +24,9 @@ install:
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alias
   ###### Install Containers - ABC Order
 
-  - sh: sudo echo sonarr > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
-  - sh: sudo echo nowshowing > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
-  - sh: sudo echo portainer > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
-  - sh: sudo echo pyload > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
-  #- sh: sudo echo qbittorent > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
-  - sh: sudo echo rutorrent > /tmp/program_selection && sudo ansible-playbook /opt/plexguide/programs/core/main.yml
-
   ## new format checked (check NETDATA)
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags airsonic
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alltube
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bazarr
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags booksonic
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags calibre
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudblitz
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudcmd
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags cloudst2
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags emby
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags headphones
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags heimdall
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags htpcmanager
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jackett
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags lazylibrarian
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags netdata #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbget
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ombi4k #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags organizr #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags organizrv2 #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags plex
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags radarr #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags radarr4k #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sabnzbd
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags tautulli
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags duplicati
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags syncthing
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags bitwarden
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags resilio
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags deluge #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags jdownloader2 #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags lidarr #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags medusa #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags monitorr #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags muximux #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags mylar #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags nzbhydra2 #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags sickrage #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags speedtest #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags synclounge #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags thelounge #
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags ubooquity #
-
+  - sh: sudo ansible-playbook /opt/plexguide/containers/netdata.yml
+ 
   #### OUTPUTS
   - sh: sudo ansible --version | head -n1
   - sh: sudo rclone --version | head -n1
