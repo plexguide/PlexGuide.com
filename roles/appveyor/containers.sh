@@ -19,4 +19,4 @@ bash /opt/plexguide/containers/_appsgen.sh
 
 while read p; do
   sudo ansible-playbook /opt/plexguide/containers/$p.yml
-  fi
+done
