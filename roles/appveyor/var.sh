@@ -23,3 +23,21 @@ echo "" > /var/plexguide/server.ht
 echo "portainer" > /var/plexguide/tld.program
 echo "1" > /var/plexguide/pg.ansible.stored
 echo "2" > /var/plexguide/pg.ansible
+
+# Force Common Things To Execute Such as Folders
+echo "149" > /var/plexguide/pg.preinstall
+# Changing Number Results in Forcing Portions of PreInstaller to Execute
+echo "6" > /var/plexguide/pg.folders
+echo "13" > /var/plexguide/pg.rclone
+echo "10" > /var/plexguide/pg.docker
+echo "12" > /var/plexguide/server.id
+echo "23" > /var/plexguide/pg.dependency
+echo "10" > /var/plexguide/pg.docstart
+echo "2" > /var/plexguide/pg.watchtower
+echo "1" > /var/plexguide/pg.motd
+echo "85" > /var/plexguide/pg.alias
+echo "2" > /var/plexguide/pg.dep
+echo "1" > /var/plexguide/pg.cleaner
+echo "3" > /var/plexguide/pg.gcloud
+echo "12" > /var/plexguide/pg.hetzner
+echo "1" > /var/plexguide/pg.amazonaws
