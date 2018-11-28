@@ -28,8 +28,7 @@ EOF
 sleep 5
 
 # Execute Ansible Function
-ansible-playbook /opt/plexguide/menu/motd/tasks/main.yml
-
+ansible-playbook /opt/plexguide/menu/motd/motd.yml
 
 # Prevents From Repeating
 cat /var/plexguide/pg.motd > /var/plexguide/pg.motd.stored
