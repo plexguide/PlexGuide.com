@@ -303,8 +303,77 @@ properly." > /var/plexguide/startup.quote
 echo "                                             COL David Hackworth ~ US Army" > /var/plexguide/startup.source
 }
 
+quote55 () {
+echo "Yeah, I'm gonna need you to come in on Saturday. Oh, oh, and I almost
+forgot. Ah, I'm also gonna need you to go ahead and come in on Sunday, too." > /var/plexguide/startup.quote
+echo "                                              Bill Lumbergh ~ Office Space" > /var/plexguide/startup.source
+}
 
+quote56 () {
+echo "Didn't you get the memo?" > /var/plexguide/startup.quote
+echo "                                              Bill Lumbergh ~ Office Space" > /var/plexguide/startup.source
+}
 
+quote57 () {
+echo "No one in this country can pronounce my name right. I mean it's not
+that hard. I mean, 'Ni-i-na-najaad', Niinanajaad." > /var/plexguide/startup.quote
+echo "                                                      Samir ~ Office Space" > /var/plexguide/startup.source
+}
+
+quote58 () {
+echo "I could set this building on fire." > /var/plexguide/startup.quote
+echo "                                                     Milton ~ Office Space" > /var/plexguide/startup.source
+}
+
+quote59 () {
+echo "PC Load Letter? What the f*ck does that mean?
+." > /var/plexguide/startup.quote
+echo "                                             Michael Bolton ~ Office Space" > /var/plexguide/startup.source
+}
+
+quote60 () {
+echo "When you come in on Monday and you're not feeling real well, does
+anyone ever say to you 'Sounds like someone has a case of the Mondays?'" > /var/plexguide/startup.quote
+echo "                                              Peter Gibbons ~ Office Space" > /var/plexguide/startup.source
+}
+
+quote61 () {
+echo "The thing is Bob it's not that I'm lazy, it's that I just don't care." > /var/plexguide/startup.quote
+echo "                                              Peter Gibbons ~ Office Space" > /var/plexguide/startup.source
+}
+
+quote62 () {
+echo "Hello Peter what's happening. I'm gonna need you to go ahead and come
+in tomorrow. So if you could be here at around....9 that'd be great." > /var/plexguide/startup.quote
+echo "                                              Bill Lumbergh ~ Office Space" > /var/plexguide/startup.source
+}
+
+quote63 () {
+echo "Why does it say paper jam when there is no paper jam? I swear to God
+one of these days I am just kicking this piece of sh*t out the window!" > /var/plexguide/startup.quote
+echo "                                                      Samir ~ Office Space" > /var/plexguide/startup.source
+}
+
+quote64 () {
+echo "I can't believe you like money too. We should hang out." > /var/plexguide/startup.quote
+echo "                                                      Frito ~ Office Space" > /var/plexguide/startup.source
+}
+
+quote64 () {
+echo "I can't believe you like money too. We should hang out." > /var/plexguide/startup.quote
+echo "                                                         Frito ~ Idiocracy" > /var/plexguide/startup.source
+}
+
+quote65 () {
+echo "One! Don't you feel dumb. Two! Look at you. Three! Don't you ever make
+jokes about me behind my back or else I'll stomp you into the ground." > /var/plexguide/startup.quote
+echo "                                                               Major Payne" > /var/plexguide/startup.source
+}
+
+quote66 () {
+echo "Heh, heh, heh" > /var/plexguide/startup.quote
+echo "                                                               Major Payne" > /var/plexguide/startup.source
+}
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 55)) )
+num=$( echo $(($RANDOM % 67)) )
 quote$num
