@@ -203,7 +203,7 @@ elif [ "$typed" == "5" ]; then
 elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/settings/settings.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
-  bash /opt/plexguide/roles/ending/ending.sh
+  bash /opt/plexguide/menu/ending/ending.sh
   exit
 else
   bash /opt/plexguide/menu/start/start.sh

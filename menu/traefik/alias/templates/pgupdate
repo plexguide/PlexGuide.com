@@ -41,9 +41,9 @@ bash /opt/plexguide/menu/interface/version/file.sh
 
 file="/var/plexguide/exited.upgrade"
 if [ ! -e "$file" ]; then
-	bash /opt/plexguide/roles/ending/ending.sh
+	bash /opt/plexguide/menu/ending/ending.sh
 else
 	rm -rf /var/plexguide/exited.upgrade 1>/dev/null 2>&1
 	echo ""
-	bash /opt/plexguide/roles/ending/ending.sh
+	bash /opt/plexguide/menu/ending/ending.sh
 fi

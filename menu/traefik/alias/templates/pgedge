@@ -36,5 +36,5 @@ echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/
 echo ""
 read -n 1 -s -r -p "Press [ANY] Key to Continue"
 echo edge > /var/plexguide/pg.number
-bash /opt/plexguide/roles/ending/ending.sh
+bash /opt/plexguide/menu/ending/ending.sh
 exit

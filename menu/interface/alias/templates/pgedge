@@ -72,5 +72,5 @@ EOF
 sleep 2.5
 
 echo edge > /var/plexguide/pg.number
-bash /opt/plexguide/roles/ending/ending.sh
+bash /opt/plexguide/menu/ending/ending.sh
 exit
