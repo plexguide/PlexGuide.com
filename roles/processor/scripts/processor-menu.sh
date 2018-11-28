@@ -75,7 +75,7 @@ case $CHOICE in
     read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine" ;;
   Z)
     echo 'INFO - Selected: Exit Kernal mode menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-    bash /opt/plexguide/roles/ending/ending.sh
+    bash /opt/plexguide/menu/ending/ending.sh
     exit 0 ;;
 esac
 ## repeat menu when exiting

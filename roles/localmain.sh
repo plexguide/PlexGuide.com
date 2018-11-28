@@ -134,11 +134,11 @@ echo 'INFO - Selected: Settings for Drive(s) Edition' > /var/plexguide/pg.log &&
         H)
 echo 'INFO - Selected: PG Program Upgrade Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
             bash /opt/plexguide/menu/scripts/upgrade/main.sh
-            bash /opt/plexguide/roles/ending/ending.sh
+            bash /opt/plexguide/menu/ending/ending.sh
             exit 0 ;;
         Z)
 echo 'INFO - Selected: Exit PlexGuide' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
-            bash /opt/plexguide/roles/ending/ending.sh
+            bash /opt/plexguide/menu/ending/ending.sh
             exit 0 ;;
 esac
 

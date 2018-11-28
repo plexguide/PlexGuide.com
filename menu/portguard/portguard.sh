@@ -59,10 +59,3 @@ else badinput; fi
 # FUNCTIONS END ##############################################################
 
 break=off && while [ "$break" == "off" ]; do question1; done
-
-#serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
-#initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
-#check=$(hcloud server list | grep "\<$sshin\>" | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
-#ipcheck=$(echo $check | awk '{ print $3 }')
-#⛔️  WARNING! - Must Configure RClone First /w >>> gdrive
-# read -n 1 -s -r -p "Press [ANY] Key to Continue "

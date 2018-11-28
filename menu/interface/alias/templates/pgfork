@@ -69,4 +69,4 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 4
-bash /opt/plexguide/roles/ending/ending.sh
+bash /opt/plexguide/menu/ending/ending.sh

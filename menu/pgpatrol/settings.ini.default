@@ -10,7 +10,7 @@ SERVER_NAME = {{serverid.stdout}}
 # how often to check the active streams in seconds
 CHECK_INTERVAL = 90
 # instantly kick video transcodes? true or false
-KICK_VIDEO_TRANSCODES = {{multipleips.stdout}}
+KICK_VIDEO_TRANSCODES = {{videotranscodes.stdout}}
 # instantly kick audio transcodes
 KICK_AUDIO_TRANSCODES = false
 # instantly kick any players from this , seperated list?
@@ -18,7 +18,7 @@ KICK_CLIENT_PLAYERS = Doom, Buggy
 # instantly kick streams from users with multiple ips
 KICK_MULTIPLE_IP = true
 # how many streams from unique ips before kicking extra user streams if above is true
-KICK_MULTIPLE_IP_MAX = {{videotranscodes.stdout}}
+KICK_MULTIPLE_IP_MAX = {{multipleips.stdout}}
 # delay kick paused transcodes? (direct streams count too)
 KICK_PAUSED_TRANSCODES = true
 # delay kick paused direct plays?

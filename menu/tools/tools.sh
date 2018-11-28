@@ -77,11 +77,12 @@ tee <<-EOF
 1 - Backup & Restore
 2 - Server Port Guard [$ports]
 3 - Application Guard [$appguard]
-4 - PGTrak ~ Fill Up Sonarr & Radarr
-5 - Personal VPN Service Installer
-6 - System & Network Auditor
-7 - App UnInstaller
-8 - TroubleShoot ~ PreInstaller
+4 - PGPatrol
+5 - PGTrakt
+6 - Personal VPN Service Installer
+7 - System & Network Auditor
+8 - App UnInstaller
+9 - TroubleShoot ~ PreInstaller
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -98,14 +99,16 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/appguard/appguard.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/interface/pgtrak/main.sh
+  bash /opt/plexguide/menu/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "5" ]; then
-  echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  bash /opt/plexguide/menu/pgtrakt/pgtrakt.sh
 elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/roles/menu-network/scripts/main.sh
+  echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "7" ]; then
-  bash /opt/plexguide/menu/removal/removal.sh
+  bash /opt/plexguide/roles/menu-network/scripts/main.sh
 elif [ "$typed" == "8" ]; then
+  bash /opt/plexguide/menu/removal/removal.sh
+elif [ "$typed" == "9" ]; then
   bash /opt/plexguide/menu/tshoot/tshoot.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
