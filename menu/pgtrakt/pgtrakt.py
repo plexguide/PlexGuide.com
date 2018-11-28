@@ -882,10 +882,6 @@ def exit_handler(signum, frame):
 if __name__ == "__main__":
 
     print("")
-
-    f = Figlet(font='graffiti')
-    print(f.renderText('traktarr'))
-
     print("""PGTrakt Started
 
 """)
