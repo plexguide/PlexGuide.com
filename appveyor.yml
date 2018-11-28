@@ -13,15 +13,21 @@ install:
   - sh: sudo bash /opt/plexguide/roles/appveyor/var.sh
 
   ###### ANSIBLE INSTALL
-  - sh: sudo bash /opt/plexguide/menu/interface/install/scripts/ansible.sh
+  - sh: sudo bash /opt/plexguide/install/python.sh
+  - sh: sudo bash /opt/plexguide/install/dependency.sh
   ###### DOCKER INSTALL
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags docker
+  - sh: sudo bash /opt/plexguide/install/docker.sh
   ###### FOLDER INSTALL
-  - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags folders
+  - sh: sudo bash /opt/plexguide/install/folders.sh
   ###### RCLONE INSTALL
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
   ###### alias
   - sh: sudo ansible-playbook /opt/plexguide/pg.yml --tags alias
+  ###### others
+  - sh: sudo bash /opt/plexguide/install/motd.sh
+  - sh: bash /opt/plexguide/install/gcloud.sh
+  - sh: bash /opt/plexguide/install/hetzner.sh
+  
   ###### Install Containers - ABC Order
 
   ## new format checked (check NETDATA)
