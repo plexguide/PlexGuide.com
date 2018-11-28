@@ -1,7 +1,7 @@
 {
   "core": {
     "debug": false
-  {
+    },
     "automatic": {
       "movies": {
         "anticipated": 3,
