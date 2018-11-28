@@ -326,8 +326,7 @@ echo "                                                     Milton ~ Office Space
 }
 
 quote59 () {
-echo "PC Load Letter? What the f*ck does that mean?
-." > /var/plexguide/startup.quote
+echo "PC Load Letter? What the f*ck does that mean?." > /var/plexguide/startup.quote
 echo "                                             Michael Bolton ~ Office Space" > /var/plexguide/startup.source
 }
 
