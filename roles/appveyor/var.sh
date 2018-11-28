@@ -27,6 +27,7 @@ echo "2" > /var/plexguide/pg.ansible
 # Force Common Things To Execute Such as Folders
 echo "149" > /var/plexguide/pg.preinstall
 # Changing Number Results in Forcing Portions of PreInstaller to Execute
+echo "90" > /var/plexguide/pg.python
 echo "6" > /var/plexguide/pg.folders
 echo "13" > /var/plexguide/pg.rclone
 echo "10" > /var/plexguide/pg.docker
