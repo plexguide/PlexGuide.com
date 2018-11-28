@@ -1,7 +1,4 @@
 {
-  "core": {
-    "debug": false
-  },
   "automatic": {
     "movies": {
       "anticipated": 3,
@@ -29,7 +26,7 @@
       ],
       "allowed_languages": [],
       "blacklisted_min_runtime": 15,
-      "blacklisted_min_year": 2010,
+      "blacklisted_min_year": 1980,
       "blacklisted_max_year": 2019,
       "blacklisted_genres": [
         "animation",
@@ -76,8 +73,11 @@
         "gb",
         "ca"
       ],
-      "disabled_for": [],
+      "disabled_for": []
     }
+  },
+  "core": {
+    "debug": false
   },
   "radarr": {
     "api_key": "{{rapi.stdout}}",
