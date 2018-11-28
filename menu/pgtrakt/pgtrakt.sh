@@ -161,7 +161,8 @@ Go Back? Type > exit
 EOF
 read -p '↘️ Type API Client | Press [ENTER]: ' typed < /dev/tty
 echo $typed > /var/plexguide/pgtrak.client
-read -p '↘️ Type API Client | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Type API #!/bin/sh
+ | Press [ENTER]: ' typed < /dev/tty
 echo $typed > /var/plexguide/pgtrak.secret
 
   if [ "$typed" == "exit" ]; then question1;
