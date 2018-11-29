@@ -33,18 +33,9 @@ rm -r /var/plexguide/programs.temp
 docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 bash /opt/plexguide/containers/_appsgen.sh
 
-
 while read p; do
   sed -i -e "/$p/d" /var/plexguide/pgbox.running
-  echo -n $p >> /var/plexguide/pgbox.list
-  echo -n " " >> /var/plexguide/pgbox.list
-  num=$[num+1]
-  if [ $num == 7 ]; then
-    num=0
-    echo " " >> /var/plexguide/programs.temp
-  fi
 done </var/plexguide/pgbox.running
-
 
 while read p; do
   echo -n $p >> /var/plexguide/programs.temp
@@ -56,21 +47,15 @@ while read p; do
   fi
 done </var/plexguide/app.list
 
-applist=$(cat /var/plexguide/pgbox.list)
 running=$(cat /var/plexguide/programs.temp)
 
 tee <<-EOF
 
-✅ PG Apps - Installed
+📂 PG Apps - Not Installed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://pgbox.plexguide.com
 
 $running
-
-📂 PG Apps - Not Installed
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$applist
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
