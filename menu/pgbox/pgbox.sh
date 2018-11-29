@@ -124,6 +124,10 @@ sed -i -e "/$typed/d" /var/plexguide/app.list
 question1
 }
 
+final () {
+  exit
+}
+
 question2 () {
 
 while read p; do
@@ -159,6 +163,7 @@ bash /opt/plexguide/menu/endbanner/endbanner.sh
 sleep 2
 done </var/plexguide/pgbox.buildup
 
+final
 }
 
 # FUNCTIONS END ##############################################################
