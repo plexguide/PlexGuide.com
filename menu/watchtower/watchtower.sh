@@ -34,7 +34,7 @@ tee <<-EOF
 1 - Containers: Auto-Update All
 2 - Containers: Auto-Update All Except | Plex & Emby
 3 - Containers: Never Update
-4 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -50,7 +50,6 @@ while read p; do
   echo -n $p >> /tmp/watchtower.set
   echo -n " " >> /tmp/watchtower.set
 done </var/plexguide/app.list
-
   if [ "$typed" == "1" ]; then
     ansible-playbook /opt/plexguide/containers/watchtower.yml
 elif [ "$typed" == "2" ]; then
@@ -60,8 +59,7 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   echo null > /tmp/watchtower.set
   ansible-playbook /opt/plexguide/containers/watchtower.yml
-elif [ "$typed" == "4" ]; then
-    if [ "$wcheck" == "NOT-SET" ]; then
+elif [[ "$typed" == "4" && "$wcheck" != "NOT-SET" ]]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -72,9 +70,6 @@ EOF
     sleep 5
     rm -rf /var/plexguide/watchtower.id
     bash /opt/plexguide/menu/watchtower/watchtower.sh
-  elif [ "$wcheck" == "4" ]; then
-    exit
-  fi
 else
 tee <<-EOF
 
@@ -86,5 +81,4 @@ EOF
 sleep 5
   bash /opt/plexguide/menu/watchtower/watchtower.sh
   exit
-
 fi
