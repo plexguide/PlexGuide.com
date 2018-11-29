@@ -29,15 +29,13 @@ question1 () {
 
 rm -r /var/plexguide/pgbox.running
 rm -r /var/plexguide/programs.temp
-# Recalls List for Backup Operations
-docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 
-# Recall Apps Listed
+docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 bash /opt/plexguide/containers/_appsgen.sh
+
 
 while read p; do
   sed -i -e "/$p/d" /var/plexguide/pgbox.running
-
   num=$[num+1]
   if [ $num == 7 ]; then
     num=0
@@ -45,10 +43,10 @@ while read p; do
   fi
 done </var/plexguide/programs.temp
 
+
 while read p; do
   echo -n $p >> /var/plexguide/programs.temp
   echo -n " " >> /var/plexguide/programs.temp
-
   num=$[num+1]
   if [ $num == 7 ]; then
     num=0
