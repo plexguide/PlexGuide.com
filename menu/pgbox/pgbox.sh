@@ -34,7 +34,7 @@ docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 bash /opt/plexguide/containers/_appsgen.sh
 
 while read p; do
-  sed -i -e "/$p/d" /var/plexguide/pgbox.temp
+  sed -i -e "/$p/d" /var/plexguide/programs.temp
 done </var/plexguide/pgbox.running
 
 while read p; do
