@@ -30,24 +30,24 @@ question1 () {
 rm -r /var/plexguide/pgbox.running
 rm -r /var/plexguide/programs.temp
 
-docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 bash /opt/plexguide/containers/_appsgen.sh
+docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 
 while read p; do
-  sed -i -e "/$p/d" /var/plexguide/programs.temp
+  sed -i -e "/$p/d" /var/plexguide/app.list
 done </var/plexguide/pgbox.running
 
 while read p; do
-  echo -n $p >> /var/plexguide/programs.app
-  echo -n " " >> /var/plexguide/programs.app
+  echo -n $p >> /var/plexguide/program.temp
+  echo -n " " >> /var/plexguide/program.app
   num=$[num+1]
   if [ $num == 7 ]; then
     num=0
     echo " " >> /var/plexguide/programs.app
   fi
-done </var/plexguide/programs.temp
+done </var/plexguide/app.list
 
-running=$(cat /var/plexguide/programs.app)
+running=$(cat /var/plexguide/program.temp)
 
 tee <<-EOF
 
