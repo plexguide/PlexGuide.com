@@ -130,12 +130,11 @@ while read p; do
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-$typed - Now Installing!
+$p - Now Installing!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-
-sleep 1.5
+sleep 2.5
 
 if [ "$p" == "plex" ]; then bash /opt/plexguide/menu/plex/plex.sh;
 elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
