@@ -78,7 +78,7 @@ while read p; do
 done </var/plexguide/app.list
 
 notrun=$(cat /var/plexguide/program.temp)
-buildup=$(cat /var/plexguide/pgbox.buildup)
+buildup=$(cat /var/plexguide/pgbox.output)
 
 tee <<-EOF
 📂 Potential Apps to Install
@@ -103,6 +103,13 @@ if [ "$current" == "" ]; then badinput && question1; fi
 
 echo -n $typed >> /var/plexguide/pgbox.buildup
 echo -n " " >> /var/plexguide/pgbox.buildup
+num
+num=$[num+1]
+if [ $num == 7 ]; then
+  num=0
+  echo " " >> /var/plexguide/pgbox.output
+fi
+done </var/plexguide/pgbox.buildup
 
 sed -i -e "/$typed/d" /var/plexguide/app.list
 
