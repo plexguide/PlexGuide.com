@@ -30,11 +30,11 @@ question1
 }
 
 initial () {
-  rm -rf /var/plexguide/pgbox.running 1>/dev/null 2>&1
+  rm -rf /var/plexguide/pgbox.output 1>/dev/null 2>&1
   rm -rf /var/plexguide/pgbox.buildup 1>/dev/null 2>&1
   rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
   rm -rf /var/plexguide/app.list 1>/dev/null 2>&1
-  touch /var/plexguide/pgbox.running
+  touch /var/plexguide/pgbox.output
   touch /var/plexguide/program.temp
   touch /var/plexguide/app.list
   touch /var/plexguide/pgbox.buildup
