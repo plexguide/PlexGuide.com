@@ -83,6 +83,7 @@ buildup=$(cat /var/plexguide/pgbox.output)
 if [ "$buildup" == "" ]; then buildup="NONE"; fi
 
 tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Potential Apps to Install
 
 $notrun
@@ -105,8 +106,9 @@ if [ "$current" == "" ]; then badinput && question1; fi
 
 echo "typed" >> /var/plexguide/pgbox.buildup
 num=0
-touch /var/plexguide/pgbox.output
-rm -rf /var/plexguide/pgbox.output
+
+touch /var/plexguide/pgbox.output && rm -rf /var/plexguide/pgbox.output
+
 while read p; do
 echo -n $typed >> /var/plexguide/pgbox.output
 echo -n " " >> /var/plexguide/pgbox.output
