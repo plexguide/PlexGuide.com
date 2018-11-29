@@ -125,6 +125,7 @@ question1
 }
 
 final () {
+  read -p '⛔️ Process Complete! | PRESS [ENTER] ' typed < /dev/tty
   exit
 }
 
