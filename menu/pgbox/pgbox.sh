@@ -23,16 +23,30 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 question1
 }
 
+initial () {
+  rm -r /var/plexguide/pgbox.running
+  rm -r /var/plexguide/program.temp
+
+  bash /opt/plexguide/containers/_appsgen.sh
+  docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
+
+  while read p; do
+    sed -i -e "/$p/d" /var/plexguide/app.list
+  done </var/plexguide/pgbox.running
+
+  while read p; do
+    echo -n $p >> /var/plexguide/program.temp
+    echo -n " " >> /var/plexguide/program.temp
+    num=$[num+1]
+    if [ $num == 7 ]; then
+      num=0
+      echo " " >> /var/plexguide/program.temp
+    fi
+  done </var/plexguide/app.list
+}
 # FIRST QUESTION
 
 question1 () {
-
-rm -r /var/plexguide/pgbox.running
-rm -r /var/plexguide/program.temp
-
-bash /opt/plexguide/containers/_appsgen.sh
-docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
-
 while read p; do
   sed -i -e "/$p/d" /var/plexguide/app.list
 done </var/plexguide/pgbox.running
@@ -50,32 +64,29 @@ done </var/plexguide/app.list
 running=$(cat /var/plexguide/program.temp)
 
 tee <<-EOF
-
-📂 PG Apps - Not Installed
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ Reference: http://pgbox.plexguide.com
-
+📂 Potential Apps to Install
 $running
 
+📂 Apps To Install
+$running
+
+Quit? Type > exit | Ready to Mass Install? Type > deploy
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p 'Make a Selection | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type App to Add for Mass Install | Press [ENTER]: ' typed < /dev/tty
 echo
 
-  if [ "$typed" == "1" ]; then
-    read -p 'Enter the PLEX User Name | Press [ENTER]: ' user < /dev/tty
-    read -p 'Enter the PLEX User Pass | Press [ENTER]: ' pw < /dev/tty
+current=$(cat /var/plexguide/pgbox.running | grep "\<$typed\>")
+if [ "$current" != "" ]; then exists && question1; fi
 
-tee <<-EOF
+current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
+if [ "$current" != "" ]; then badinput && question1; fi
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🍖  NOM NOM - Saved Your Information!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 3
-question2
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
-else badinput; fi
+$typed > /var/plexguide/pgbox.buildup
+echo $typed > /var/plexguide/pgbox.running
+sed -i -e "/$typed/d" /var/plexguide/app.list
+
+question1
 }
 
 question2 () {
@@ -146,4 +157,5 @@ EOF
 
 # FUNCTIONS END ##############################################################
 
+initial
 question1
