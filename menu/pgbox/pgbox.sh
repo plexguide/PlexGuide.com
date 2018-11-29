@@ -169,8 +169,5 @@ final
 }
 
 # FUNCTIONS END ##############################################################
-read -p '⛔️ To Continue | PRESS [ENTER] ' typed < /dev/tty
-
-
 initial
 question1
