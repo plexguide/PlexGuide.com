@@ -112,14 +112,14 @@ if [ "$num" == 7 ]; then
 fi
 done </var/plexguide/pgbox.buildup
 
-sed -i -e "/$typed/d" /var/plexguide/app.list
+sed -i -e "/<$typed>/d" /var/plexguide/app.list
 
 question1
 }
 
 final () {
   read -p '✅ Process Complete! | PRESS [ENTER] ' typed < /dev/tty
-  echo 
+  echo
   exit
 }
 
