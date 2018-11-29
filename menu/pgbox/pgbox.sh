@@ -81,10 +81,10 @@ $notrun
 
 $buildup
 
-Quit? Type > exit | Ready to Mass Install? Type > deploy
+💬 Quitting? TYPE > exit | 💪 Mass Install? TYPE > deploy
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p '🌍 Type App Name for Mass Install | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 TYPE App Name | Press [ENTER]: ' typed < /dev/tty
 echo
 
 if [ "$typed" == "deploy" ]; then question2; fi
