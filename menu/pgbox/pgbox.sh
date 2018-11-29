@@ -130,27 +130,27 @@ while read p; do
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-typed - Now Installing!
+$typed - Now Installing!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 
 sleep 1.5
 
-if [ "$typed" == "plex" ]; then bash /opt/plexguide/menu/plex/plex.sh;
-elif [ "$typed" == "nzbthrottle" ]; then nzbt; fi
+if [ "$p" == "plex" ]; then bash /opt/plexguide/menu/plex/plex.sh;
+elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 
 # Store Used Program
-echo $typed > /tmp/program_var
+echo $p > /tmp/program_var
 # Image Selector
 bash /opt/plexguide/containers/image/_image.sh
 # Execute Main Program
-ansible-playbook /opt/plexguide/containers/$typed.yml
+ansible-playbook /opt/plexguide/containers/$p.yml
 # Cron Execution
 edition=$( cat /var/plexguide/pg.edition )
 if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else
-  croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$typed\>")
+  croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$p\>")
   if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 fi
 
