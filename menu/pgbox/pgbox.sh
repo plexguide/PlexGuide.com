@@ -127,7 +127,8 @@ question2 () {
 # Image Selector
 image=off
 while read p; do
-
+  
+echo $p > /tmp/program_var
   if [ "$image" == "off" ]; then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
