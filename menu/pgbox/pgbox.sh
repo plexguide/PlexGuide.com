@@ -83,6 +83,7 @@ buildup=$(cat /var/plexguide/pgbox.output)
 if [ "$buildup" == "" ]; then buildup="NONE"; fi
 
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Potential Apps to Install
 
