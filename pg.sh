@@ -79,8 +79,8 @@ if [ "$dstatus" != "portainer" ]; then
 ansible-playbook /opt/plexguide/containers/portainer.yml &>/dev/null &
 fi
 
-cp /opt/appdata/containers/_template.yml /opt/mycontainers/ &>/dev/null &
-cp /opt/mycontainers/* /opt/appdata/containers/ &>/dev/null &
+cp /opt/plexguide/containers/_template.yml /opt/mycontainers/ &>/dev/null &
+cp /opt/mycontainers/* /opt/plexguide/containers/ &>/dev/null &
 
 bash /opt/plexguide/install/motd.sh
 bash /opt/plexguide/install/cleaner.sh
