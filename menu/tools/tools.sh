@@ -81,8 +81,7 @@ tee <<-EOF
 5 - PGTrakt
 6 - Personal VPN Service Installer
 7 - System & Network Auditor
-8 - App UnInstaller
-9 - TroubleShoot ~ PreInstaller
+8 - TroubleShoot ~ PreInstaller
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -107,8 +106,6 @@ elif [ "$typed" == "6" ]; then
 elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/roles/menu-network/scripts/main.sh
 elif [ "$typed" == "8" ]; then
-  bash /opt/plexguide/menu/removal/removal.sh
-elif [ "$typed" == "9" ]; then
   bash /opt/plexguide/menu/tshoot/tshoot.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit

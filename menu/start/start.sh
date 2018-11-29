@@ -141,9 +141,6 @@ percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
 echo "   GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
 fi
 
-#quote="Manbearpig is in there and we all have to kill him while we all have the
-#chance, I'm cereal!"
-#source="                                                       Al Gore ~ SouthPark"
 bash /opt/plexguide/menu/start/quotes.sh
 
 quote=$(cat /var/plexguide/startup.quote)
@@ -162,9 +159,10 @@ fi
 tee <<-EOF
 2 - Traefik [$traefik]
 3 - PG Box: Multi-App Installer
-4 - Instances & GCE
-5 - Tools
-6 - Settings
+4 - PG Box: App UnInstaller
+5 - Instances & GCE
+6 - Tools
+7 - Settings
 Z - Exit
 
 "$quote"
@@ -196,11 +194,13 @@ elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/traefik/traefik.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgbox/pgbox.sh
-elif [ "$typed" == "4" ]; then
+elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/cloudselect/cloudselect.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/tools/tools.sh
+  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
 elif [ "$typed" == "6" ]; then
+  bash /opt/plexguide/menu/tools/tools.sh
+elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/settings/settings.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   bash /opt/plexguide/menu/ending/ending.sh
