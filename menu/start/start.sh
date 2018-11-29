@@ -194,8 +194,8 @@ elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/traefik/traefik.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgbox/pgbox.sh
-elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
+elif [ "$typed" == "4" ]; then
+  bash /opt/plexguide/menu/removal/removal.sh
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/cloudselect/cloudselect.sh
 elif [ "$typed" == "6" ]; then
