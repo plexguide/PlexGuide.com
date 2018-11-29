@@ -158,8 +158,8 @@ fi
 
 tee <<-EOF
 2 - Traefik [$traefik]
-3 - PG Box: Multi-App Installer
-4 - PG Box: App UnInstaller
+3 - PG Box: App Installer
+4 - PG Box: App Removal
 5 - Instances & GCE
 6 - Tools
 7 - Settings
