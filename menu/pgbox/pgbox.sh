@@ -74,22 +74,23 @@ notrun=$(cat /var/plexguide/program.temp)
 buildup=$(cat /var/plexguide/pgbox.output)
 
 if [ "$buildup" == "" ]; then buildup="NONE"; fi
-
 tee <<-EOF
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Welcome to the PGBox: Mass App Installer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Potential Apps to Install
 
 $notrun
 
-📂 Apps To Install
+💾 Apps Queued for Installation
 
 $buildup
 
 Quit? Type > exit | Ready to Mass Install? Type > deploy
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p 'Type App to Add for Mass Install | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Type App Name for Mass Install | Press [ENTER]: ' typed < /dev/tty
 echo
 
 if [ "$typed" == "deploy" ]; then question2; fi
@@ -168,5 +169,8 @@ final
 }
 
 # FUNCTIONS END ##############################################################
+read -p '⛔️ To Continue | PRESS [ENTER] ' typed < /dev/tty
+
+
 initial
 question1
