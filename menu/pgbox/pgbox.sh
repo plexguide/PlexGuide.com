@@ -66,6 +66,7 @@ done </var/plexguide/pgbox.running
 ### here
 rm -r /var/plexguide/program.temp
 touch /var/plexguide/program.temp
+n=0
 while read p; do
   echo -n $p >> /var/plexguide/program.temp
   echo -n " " >> /var/plexguide/program.temp
