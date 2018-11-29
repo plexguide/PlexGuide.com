@@ -23,12 +23,6 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 question1
 }
 
-variables() {
-   local file=$1 val=$2 var=$3
-   [[ -e $file ]] || printf '%s\n' "$val" > "$file"
-   printf -v "$var" '%s' "$(<"$file")"
-}
-
 initial () {
   rm -r /var/plexguide/pgbox.running 1>/dev/null 2>&1
   rm -r /var/plexguide/program.temp 1>/dev/null 2>&1
