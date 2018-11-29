@@ -23,6 +23,12 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 question1
 }
 
+exists () {
+echo
+read -p '⛔️ ERROR - APP ALREADY INSTALLED! | PRESS [ENTER] ' typed < /dev/tty
+question1
+}
+
 initial () {
   rm -rf /var/plexguide/pgbox.running 1>/dev/null 2>&1
   rm -rf /var/plexguide/pgbox.buildup 1>/dev/null 2>&1
@@ -90,7 +96,7 @@ current=$(cat /var/plexguide/pgbox.running | grep "\<$typed\>")
 if [ "$current" != "" ]; then exists && question1; fi
 
 current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
-if [ "$current" != "" ]; then badinput && question1; fi
+if [ "$current" == "" ]; then badinput && question1; fi
 
 $typed > /var/plexguide/pgbox.buildup
 echo $typed > /var/plexguide/pgbox.running
