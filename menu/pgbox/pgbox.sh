@@ -69,7 +69,7 @@ if [ "$buildup" == "" ]; then buildup="NONE"; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Welcome to the PGBox ~ The Massive App Installer
+🚀 PGBox ~ Multi-App Installer            ⚡ Reference: pgbox.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Potential Apps to Install
 
@@ -127,7 +127,7 @@ question2 () {
 # Image Selector
 image=off
 while read p; do
-  
+
 echo $p > /tmp/program_var
   if [ "$image" == "off" ]; then
 tee <<-EOF
