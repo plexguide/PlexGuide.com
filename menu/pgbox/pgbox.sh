@@ -95,6 +95,5 @@ question1
 }
 
 # FUNCTIONS END ##############################################################
-variables
 initial
 question1
