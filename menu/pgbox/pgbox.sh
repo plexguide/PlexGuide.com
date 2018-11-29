@@ -102,7 +102,7 @@ current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
 if [ "$current" == "" ]; then badinput && question1; fi
 
 $typed > /var/plexguide/pgbox.buildup
-echo $typed > /var/plexguide/pgbox.running
+echo $typed >> /var/plexguide/pgbox.buildup
 sed -i -e "/$typed/d" /var/plexguide/app.list
 
 question1
