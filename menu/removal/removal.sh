@@ -46,15 +46,14 @@ fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG - App Removal Interface
+🚀 PGBox - App Removal Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+⚠️ - Also removes data! Backup if required first!
 EOF
 echo "Running Apps:"
 echo $running
 tee <<-EOF
-
-⚠️  NOTE: To quit, type >>> exit
+NOTE: To quit, type >>> exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
