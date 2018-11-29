@@ -71,7 +71,7 @@ while read p; do
   echo -n $p >> /var/plexguide/program.temp
   echo -n " " >> /var/plexguide/program.temp
   num=$[num+1]
-  if [ $num == 7 ]; then
+  if [ "$num" == 7 ]; then
     num=0
     echo " " >> /var/plexguide/program.temp
   fi
@@ -79,6 +79,8 @@ done </var/plexguide/app.list
 
 notrun=$(cat /var/plexguide/program.temp)
 buildup=$(cat /var/plexguide/pgbox.output)
+
+if [ "$buildup" == "" ]; then buildup="NONE"; fi
 
 tee <<-EOF
 📂 Potential Apps to Install
@@ -108,7 +110,7 @@ rm -rf /var/plexguide/pgbox.output
 while read p; do
 echo -n $typed >> /var/plexguide/pgbox.output
 echo -n " " >> /var/plexguide/pgbox.output
-if [ $num == 7 ]; then
+if [ "$num" == 7 ]; then
   num=0
   echo " " >> /var/plexguide/pgbox.output
 fi
