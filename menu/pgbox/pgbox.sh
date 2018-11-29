@@ -38,16 +38,16 @@ while read p; do
 done </var/plexguide/pgbox.running
 
 while read p; do
-  echo -n $p >> /var/plexguide/programs.temp
-  echo -n " " >> /var/plexguide/programs.temp
+  echo -n $p >> /var/plexguide/programs.app
+  echo -n " " >> /var/plexguide/programs.app
   num=$[num+1]
   if [ $num == 7 ]; then
     num=0
-    echo " " >> /var/plexguide/programs.temp
+    echo " " >> /var/plexguide/programs.app
   fi
-done </var/plexguide/app.list
+done </var/plexguide/programs.temp
 
-running=$(cat /var/plexguide/programs.temp)
+running=$(cat /var/plexguide/programs.app)
 
 tee <<-EOF
 
