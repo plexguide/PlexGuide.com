@@ -19,6 +19,6 @@ sed -i -e "/_a*/d" /var/plexguide/app.list
 sed -i -e "/_t*/d" /var/plexguide/app.list
 sed -i -e "/templates/d" /var/plexguide/app.list
 sed -i -e "/retry/d" /var/plexguide/app.list
-sed -i -e "/test/d" /var/plexguide/app.list
+sed -i "/^test\b/Id" /var/plexguide/app.list
 sed -i -e "/nzbthrottle/d" /var/plexguide/app.list
 sed -i -e "/watchtower/d" /var/plexguide/app.list
