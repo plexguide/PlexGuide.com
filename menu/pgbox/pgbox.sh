@@ -92,6 +92,10 @@ EOF
 read -p 'Type App to Add for Mass Install | Press [ENTER]: ' typed < /dev/tty
 echo
 
+if [ "$typed" == "deploy" ]; then question2; fi
+
+if [ "$typed" == "exit" ]; then exit; fi
+
 current=$(cat /var/plexguide/pgbox.buildup | grep "\<$typed\>")
 if [ "$current" != "" ]; then queued && question1; fi
 
@@ -100,8 +104,6 @@ if [ "$current" != "" ]; then exists && question1; fi
 
 current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
 if [ "$current" == "" ]; then badinput && question1; fi
-
-if [ "$typed" == "deploy" ]; then question2; fi
 
 echo "$typed" >> /var/plexguide/pgbox.buildup
 num=0
