@@ -24,10 +24,10 @@ question1
 }
 
 initial () {
-  rm -r /var/plexguide/pgbox.running 1>/dev/null 2>&1
-  rm -r /var/plexguide/pgbox.buildup 1>/dev/null 2>&1
-  rm -r /var/plexguide/program.temp 1>/dev/null 2>&1
-  rm -r /var/plexguide/app.list 1>/dev/null 2>&1
+  rm -rf /var/plexguide/pgbox.running 1>/dev/null 2>&1
+  rm -rf /var/plexguide/pgbox.buildup 1>/dev/null 2>&1
+  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
+  rm -rf /var/plexguide/app.list 1>/dev/null 2>&1
   touch /var/plexguide/pgbox.running
   touch /var/plexguide/program.temp
   touch /var/plexguide/app.list
@@ -36,19 +36,19 @@ initial () {
   bash /opt/plexguide/containers/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 
-  while read p; do
-    sed -i -e "/$p/d" /var/plexguide/app.list
-  done </var/plexguide/pgbox.running
+  #while read p; do
+  #  sed -i -e "/$p/d" /var/plexguide/app.list
+  #done </var/plexguide/pgbox.running
 
-  while read p; do
-    echo -n $p >> /var/plexguide/program.temp
-    echo -n " " >> /var/plexguide/program.temp
-    num=$[num+1]
-    if [ $num == 7 ]; then
-      num=0
-      echo " " >> /var/plexguide/program.temp
-    fi
-  done </var/plexguide/app.list
+  #while read p; do
+  #  echo -n $p >> /var/plexguide/program.temp
+  #  echo -n " " >> /var/plexguide/program.temp
+  #  num=$[num+1]
+  #  if [ $num == 7 ]; then
+  #    num=0
+  #    echo " " >> /var/plexguide/program.temp
+  #  fi
+  #done </var/plexguide/app.list
 }
 # FIRST QUESTION
 
@@ -57,6 +57,9 @@ while read p; do
   sed -i -e "/$p/d" /var/plexguide/app.list
 done </var/plexguide/pgbox.running
 
+### here
+rm -r /var/plexguide.temp
+touch /var/plexguide/
 while read p; do
   echo -n $p >> /var/plexguide/program.temp
   echo -n " " >> /var/plexguide/program.temp
