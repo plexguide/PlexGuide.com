@@ -42,7 +42,6 @@ echo "12" > /var/plexguide/pg.hetzner
 echo "1" > /var/plexguide/pg.amazonaws
 echo "7.2" > /var/plexguide/pg.verionid
 
-
 # Declare Variables Vital for Operations
 bash /opt/plexguide/menu/interface/install/scripts/declare.sh
 bash /opt/plexguide/install/aptupdate.sh
