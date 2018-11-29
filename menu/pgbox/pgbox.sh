@@ -102,6 +102,8 @@ current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
 if [ "$current" == "" ]; then badinput && question1; fi
 
 num=0
+touch /var/plexguide/pgbox.output
+rm -rf /var/plexguide/pgbox.output
 while read p; do
 echo -n $typed >> /var/plexguide/pgbox.buildup
 echo -n " " >> /var/plexguide/pgbox.buildup
