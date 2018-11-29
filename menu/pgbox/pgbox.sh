@@ -101,6 +101,8 @@ if [ "$current" != "" ]; then exists && question1; fi
 current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
 if [ "$current" == "" ]; then badinput && question1; fi
 
+if [ "$typed" == "deploy" ]; then question2; fi
+
 echo "$typed" >> /var/plexguide/pgbox.buildup
 num=0
 
@@ -118,6 +120,10 @@ done </var/plexguide/pgbox.buildup
 sed -i -e "/$typed/d" /var/plexguide/app.list
 
 question1
+}
+
+question2 () {
+
 }
 
 # FUNCTIONS END ##############################################################
