@@ -54,8 +54,8 @@ EOF
 echo "Running Apps:"
 echo $running
 tee <<-EOF
-NOTE: To quit, type >>> exit
 
+NOTE: To quit, type >>> exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
