@@ -51,7 +51,7 @@ tee <<-EOF
 ⚠️  - Removes Data Also! Backup Data if Required!
 
 EOF
-echo "Running Apps:"
+echo "💾 Running Apps:"
 echo $running
 tee <<-EOF
 
