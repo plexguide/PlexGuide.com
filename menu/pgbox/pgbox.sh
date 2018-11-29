@@ -95,7 +95,7 @@ EOF
 read -p 'Type App to Add for Mass Install | Press [ENTER]: ' typed < /dev/tty
 echo
 
-current=$(cat /var/plexguide/pgbox.running | grep "\<$typed\>")
+current=$(cat /var/plexguide/pgbox.buildup | grep "\<$typed\>")
 if [ "$current" != "" ]; then exists && question1; fi
 
 current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
