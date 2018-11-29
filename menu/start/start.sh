@@ -161,10 +161,11 @@ fi
 
 tee <<-EOF
 2 - Traefik [$traefik]
-3 - PG Apps
-4 - Instances & GCE
-5 - Tools
-6 - Settings
+3 - PG App : Solo App Install
+4 - PG Box : Mass App Install
+5 - Instances & GCE
+6 - Tools
+7 - Settings
 Z - Exit
 
 "$quote"
@@ -197,10 +198,12 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/appsv2/appsv2.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
+  bash /opt/plexguide/menu/pgbox/pgbox.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/tools/tools.sh
+  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
 elif [ "$typed" == "6" ]; then
+  bash /opt/plexguide/menu/tools/tools.sh
+elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/settings/settings.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   bash /opt/plexguide/menu/ending/ending.sh
