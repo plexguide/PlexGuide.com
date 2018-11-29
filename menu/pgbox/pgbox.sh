@@ -1,17 +1,9 @@
 #!/bin/bash
 #
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705
-# URL:      https://plexguide.com
-#
-# PlexGuide Copyright (C) 2018 PlexGuide.com
-# Licensed under GNU General Public License v3.0 GPL-3 (in short)
-#
-#   You may copy, distribute and modify the software as long as you track
-#   changes/dates in source files. Any modifications to our software
-#   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions.
-#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
 ################################################################################
 
 # FUNCTIONS START ##############################################################
@@ -19,19 +11,19 @@
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - Bad Input! | PRESS [ENTER] ' typed < /dev/tty
+read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed < /dev/tty
 question1
 }
 
 queued () {
 echo
-read -p '⛔️ ERROR - APP Already Queued! | PRESS [ENTER] ' typed < /dev/tty
+read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed < /dev/tty
 question1
 }
 
 exists () {
 echo
-read -p '⛔️ ERROR - APP Already Installed! | PRESS [ENTER] ' typed < /dev/tty
+read -p '⛔️ ERROR - APP Already Installed! | Press [ENTER] ' typed < /dev/tty
 question1
 }
 
@@ -132,6 +124,25 @@ final () {
 
 question2 () {
 
+# Image Selector
+image=off
+while read p; do
+
+  if [ "$image" =="off" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PGBox - Multi Image Selector
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: Selecting Images First Prior to Install
+EOF
+sleep 3
+image=on
+  fi
+
+bash /opt/plexguide/containers/image/_image.sh
+done </var/plexguide/pgbox.buildup
+
 while read p; do
 tee <<-EOF
 
@@ -147,8 +158,6 @@ elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 
 # Store Used Program
 echo $p > /tmp/program_var
-# Image Selector
-bash /opt/plexguide/containers/image/_image.sh
 # Execute Main Program
 ansible-playbook /opt/plexguide/containers/$p.yml
 # Cron Execution
