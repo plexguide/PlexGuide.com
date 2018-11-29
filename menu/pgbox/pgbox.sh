@@ -28,13 +28,13 @@ question1
 question1 () {
 
 # Recalls List for Backup Operations
-docker ps | awk '{print $NF}' | tail -n +2 > /opt/appdata/plexguide/pgbox.running
+docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 
 # Recall Apps Listed
 bash /opt/plexguide/containers/_appsgen.sh
 
 while read p; do
-  sed -i -e "/$p/d" /opt/appdata/plexguide/pgbox.running
+  sed -i -e "/$p/d" /var/plexguide/pgbox.running
 done </var/plexguide/programs.temp
 
 while read p; do
@@ -49,13 +49,8 @@ while read p; do
 
 done </var/plexguide/app.list
 
-#blank out restore.Build
-touch /opt/appdata/plexguide/pgbox.running
-
-# Remove Items fromt the List
-
-### Builds Backup List - END
-sed -i -e "/traefik/d" /opt/appdata/plexguide/backup.list
+applist=$(cat /var/plexguide/app.list)
+running=$(cat /var/plexguide/programs.temp)
 
 tee <<-EOF
 
