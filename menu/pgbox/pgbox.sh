@@ -95,7 +95,7 @@ echo
 current=$(cat /var/plexguide/pgbox.buildup | grep "\<$typed\>")
 if [ "$current" != "" ]; then queued && question1; fi
 
-current=$(cat /var/plexguide/pgbox.buildup | grep "\<$typed\>")
+current=$(cat /var/plexguide/app.list | grep "\<$typed\>")
 if [ "$current" != "" ]; then exists && question1; fi
 
 current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
