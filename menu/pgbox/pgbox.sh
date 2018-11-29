@@ -23,9 +23,17 @@ read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
 question1
 }
 
+variables() {
+   local file=$1 val=$2 var=$3
+   [[ -e $file ]] || printf '%s\n' "$val" > "$file"
+   printf -v "$var" '%s' "$(<"$file")"
+}
+
 initial () {
-  rm -r /var/plexguide/pgbox.running
-  rm -r /var/plexguide/program.temp
+  rm -r /var/plexguide/pgbox.running 1>/dev/null 2>&1
+  rm -r /var/plexguide/program.temp 1>/dev/null 2>&1
+  touch /var/plexguide/pgbox.running
+  touch /var/plexguide/program.temp
 
   bash /opt/plexguide/containers/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
@@ -61,14 +69,15 @@ while read p; do
   fi
 done </var/plexguide/app.list
 
-running=$(cat /var/plexguide/program.temp)
+notrun=$(cat /var/plexguide/program.temp)
+buildup=$(cat /var/plexguide/pgbox.buildup)
 
 tee <<-EOF
 📂 Potential Apps to Install
-$running
+$notrun
 
 📂 Apps To Install
-$running
+$buildup
 
 Quit? Type > exit | Ready to Mass Install? Type > deploy
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -89,73 +98,8 @@ sed -i -e "/$typed/d" /var/plexguide/app.list
 question1
 }
 
-question2 () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📂  PG - User Name & PassWord Confirmation
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ Reference: http://plextoken.plexguide.com
-
-User Name: $user
-User Pass: $pw
-
-⚠️  Information Correct?
-
-1 - YES
-2 - NO
-Z - Exit Interface
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-read -p 'Make a Selection | Press [ENTER]: ' typed < /dev/tty
-
-  if [ "$typed" == "1" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🍖 NOM NOM - Got It! Generating the Plex Token!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-NOTE: If the token is bad, this process will repeat again!
-
-EOF
-sleep 4
-question3
-elif [ "$typed" == "2" ]; then question1;
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
-else badinput2; fi
-}
-
-question3 () {
-echo "$pw" > /var/plexguide/plex.pw
-echo "$user" > /var/plexguide/plex.user
-ansible-playbook /opt/plexguide/menu/plex/token.yml
-token=$(cat /var/plexguide/plex.token)
-  if [ "$token" != "" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PG - PlexToken Generation Succeeded!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 4
-else
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  PG - PlexToken Generation Failed!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-NOTE: Process will repeat until you succeed or exit!
-
-EOF
-  read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
-  question1
-  fi
-}
-
 # FUNCTIONS END ##############################################################
-
+main /var/plexguide/traefik.provider "" $buildup
+variables
 initial
 question1
