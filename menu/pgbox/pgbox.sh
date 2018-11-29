@@ -101,9 +101,10 @@ if [ "$current" != "" ]; then exists && question1; fi
 current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
 if [ "$current" == "" ]; then badinput && question1; fi
 
+num=0
+while read p; do
 echo -n $typed >> /var/plexguide/pgbox.buildup
 echo -n " " >> /var/plexguide/pgbox.buildup
-num
 num=$[num+1]
 if [ $num == 7 ]; then
   num=0
