@@ -84,7 +84,7 @@ $buildup
 💬 Quitting? TYPE > exit | 💪 Mass Install? TYPE > deploy
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p '🌍 TYPE App Name | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 TYPE App Name to Add Queue | Press [ENTER]: ' typed < /dev/tty
 echo
 
 if [ "$typed" == "deploy" ]; then question2; fi
