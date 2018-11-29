@@ -45,7 +45,7 @@ initial () {
 
 question1 () {
 while read p; do
-  sed -i "/^$p\b/Id" /var/plexguide/app.list
+  sed -i "/^$p\b/Id" /var/plexguide/pgbox.buildup
   #sed -i -e "/$p/d" /var/plexguide/app.list
 done </var/plexguide/pgbox.running
 
