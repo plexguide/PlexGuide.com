@@ -82,9 +82,11 @@ buildup=$(cat /var/plexguide/pgbox.buildup)
 
 tee <<-EOF
 📂 Potential Apps to Install
+
 $notrun
 
 📂 Apps To Install
+
 $buildup
 
 Quit? Type > exit | Ready to Mass Install? Type > deploy
