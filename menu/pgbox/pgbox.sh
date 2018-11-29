@@ -19,15 +19,22 @@
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
+read -p '⛔️ ERROR - Bad Input! | PRESS [ENTER] ' typed < /dev/tty
+question1
+}
+
+queued () {
+echo
+read -p '⛔️ ERROR - APP Already Queued! | PRESS [ENTER] ' typed < /dev/tty
 question1
 }
 
 exists () {
 echo
-read -p '⛔️ ERROR - APP ALREADY INSTALLED! | PRESS [ENTER] ' typed < /dev/tty
+read -p '⛔️ ERROR - APP Already Installed! | PRESS [ENTER] ' typed < /dev/tty
 question1
 }
+
 
 initial () {
   rm -rf /var/plexguide/pgbox.output 1>/dev/null 2>&1
@@ -41,20 +48,6 @@ initial () {
 
   bash /opt/plexguide/containers/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
-
-  #while read p; do
-  #  sed -i -e "/$p/d" /var/plexguide/app.list
-  #done </var/plexguide/pgbox.running
-
-  #while read p; do
-  #  echo -n $p >> /var/plexguide/program.temp
-  #  echo -n " " >> /var/plexguide/program.temp
-  #  num=$[num+1]
-  #  if [ $num == 7 ]; then
-  #    num=0
-  #    echo " " >> /var/plexguide/program.temp
-  #  fi
-  #done </var/plexguide/app.list
 }
 # FIRST QUESTION
 
@@ -98,6 +91,9 @@ Quit? Type > exit | Ready to Mass Install? Type > deploy
 EOF
 read -p 'Type App to Add for Mass Install | Press [ENTER]: ' typed < /dev/tty
 echo
+
+current=$(cat /var/plexguide/pgbox.buildup | grep "\<$typed\>")
+if [ "$current" != "" ]; then queued && question1; fi
 
 current=$(cat /var/plexguide/pgbox.buildup | grep "\<$typed\>")
 if [ "$current" != "" ]; then exists && question1; fi
