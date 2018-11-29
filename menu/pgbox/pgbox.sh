@@ -25,11 +25,13 @@ question1
 
 initial () {
   rm -r /var/plexguide/pgbox.running 1>/dev/null 2>&1
+  rm -r /var/plexguide/pgbox.buildup 1>/dev/null 2>&1
   rm -r /var/plexguide/program.temp 1>/dev/null 2>&1
   rm -r /var/plexguide/app.list 1>/dev/null 2>&1
   touch /var/plexguide/pgbox.running
   touch /var/plexguide/program.temp
   touch /var/plexguide/app.list
+  touch /var/plexguide/pgbox.buildup
 
   bash /opt/plexguide/containers/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
