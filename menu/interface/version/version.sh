@@ -4,6 +4,7 @@
 
 💍  [BETA] - Beta is to only to test new stuff!
 7.2.beta
+7.2.beta0
 edge
 
 💊  [DEPRECIATED]

@@ -92,12 +92,12 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
+  bash /opt/plexguide/menu/pgbox/pgbox.sh
+elif [ "$typed" == "2" ]; then
   gcheck
   bash /opt/plexguide/menu/data/data.sh
-elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/portguard/portguard.sh
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/appguard/appguard.sh
+  bash /opt/plexguide/menu/portguard/portguard.sh
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "5" ]; then
