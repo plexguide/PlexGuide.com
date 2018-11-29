@@ -111,7 +111,7 @@ num=0
 touch /var/plexguide/pgbox.output && rm -rf /var/plexguide/pgbox.output
 
 while read p; do
-echo -n $typed >> /var/plexguide/pgbox.output
+echo -n $p >> /var/plexguide/pgbox.output
 echo -n " " >> /var/plexguide/pgbox.output
 if [ "$num" == 7 ]; then
   num=0
