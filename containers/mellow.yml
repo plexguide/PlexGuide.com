@@ -14,7 +14,7 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "voidp"
+      pgrole: "mellow"
       intport: "5060"
       extport: "5060"
       image: "voidp/mellow"
