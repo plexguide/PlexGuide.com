@@ -24,7 +24,12 @@ question1
 exists () {
 echo
 read -p '⛔️ ERROR - APP Already Installed! | Press [ENTER] ' typed < /dev/tty
-question1
+echo
+read -p '⚠️  Do You Want To ReInstall ~ y or n | Press [ENTER] ' typed < /dev/tty
+
+if [ "$typed" == "y" ]; then a=b;
+elif [ "$typed" == "n" ]; then question1;
+else exists; fi
 }
 
 
