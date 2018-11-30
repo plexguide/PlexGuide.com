@@ -43,8 +43,8 @@
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/config"
         - "/etc/localtime:/etc/localtime:ro"
-        - "/mnt/beats/music:/music"
-        - "/mnt/unionfs/music:/config"
+        - "/mnt/beats/music:/downloads"
+        - "/mnt/unionfs/music:/music"
 
   - name: "Setting PG ENV"
     set_fact:
