@@ -39,7 +39,6 @@ cat << "EOF"
 │ Update to Edge Version:   pgedge    │
 │ View the PG Logs:         pglog     │
 │ Download Your PG Fork:    pgfork    │
-│ Add Content:              pgtrak    │
 │                                     │ 
 │ Visit: newshosting.plexguide.com    │
 └─────────────────────────────────────┘
