@@ -14,7 +14,7 @@
     shell: "docker ps | awk '{print $NF}' | grep -c -w traefik"
     register: ntraefik
 
-- debug: msg="Traefik {{ntraefik.stdout}}"
+  - debug: msg="Traefik {{ntraefik.stdout}}"
 
 # FACTS #######################################################################
 
