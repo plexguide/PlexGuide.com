@@ -43,6 +43,7 @@
     set_fact:
       pg_labels:
         traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+        traefik.frontend.redirect.entryPoint: "https"
         traefik.enable: "true"
         traefik.port: "443"
         traefik.protocol: "https"
