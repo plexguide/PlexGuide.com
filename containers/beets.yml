@@ -17,7 +17,7 @@
       pgrole: "beets"
       intport: "8337"
       extport: "8337"
-      image: "linuxserver/{{pgrole}}"
+      image: "linuxserver/beets"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
