@@ -23,12 +23,12 @@ question1
 
 exists () {
 echo
-read -p '⛔️ ERROR - APP Already Installed! | Press [ENTER] ' typed < /dev/tty
+read -p '⛔️ ERROR - APP Already Installed! | Press [ENTER] ' foo < /dev/tty
 echo
-read -p '⚠️  Do You Want To ReInstall ~ y or n | Press [ENTER] ' typed < /dev/tty
+read -p '⚠️  Do You Want To ReInstall ~ y or n | Press [ENTER] ' foo < /dev/tty
 
-if [ "$typed" == "y" ]; then a=b;
-elif [ "$typed" == "n" ]; then question1;
+if [ "$foo" == "y" ]; then part1;
+elif [ "$foo" == "n" ]; then question1;
 else exists; fi
 }
 
@@ -106,6 +106,10 @@ if [ "$current" != "" ]; then exists && question1; fi
 current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
 if [ "$current" == "" ]; then badinput && question1; fi
 
+part1
+}
+
+part1 () {
 echo "$typed" >> /var/plexguide/pgbox.buildup
 num=0
 
