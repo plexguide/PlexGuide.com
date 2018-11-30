@@ -23,7 +23,7 @@
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
-  - name: Create {{pgrole}} directories
+  - name: "Create {{pgrole}} directories"
     file: "path={{item}} state=directory mode=0775 owner={{user}} group={{user}}"
     with_items:
       - /mnt/beats/music
@@ -63,7 +63,7 @@
 
     - name: "Deploying Container - {{pgrole}}"
       docker_container:
-        name: "{{pgrole}}"
+        name: "beets"
         image: "{{image}}"
         pull: yes
         published_ports:
@@ -93,7 +93,7 @@
 
     - name: Container Stop
       docker_container:
-        name: {{pgrole}}
+        name: "{{pgrole}}"
         state: stopped
 
     - name: File Length Limit
@@ -105,7 +105,7 @@
 
     - name: Contair Start
       docker_container:
-        name: {{pgrole}}
+        name: "{{pgrole}}"
         state: started
 
     when: not confcheck.stat.exists
