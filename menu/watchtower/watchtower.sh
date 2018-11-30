@@ -64,7 +64,7 @@ elif [ "$typed" == "3" ]; then
   echo "SET" > /var/plexguide/watchtower.id
 elif [[ "$typed" == "4" && "$wcheck" != "NOT-SET" ]]; then
   exit
-else
+elif [[ "$typed" == "4" && "$wcheck" == "NOT-SET" ]]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
