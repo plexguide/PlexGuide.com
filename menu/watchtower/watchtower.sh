@@ -52,13 +52,16 @@ while read p; do
 done </var/plexguide/app.list
   if [ "$typed" == "1" ]; then
     ansible-playbook /opt/plexguide/containers/watchtower.yml
+    echo "SET" > /var/plexguide/watchtower.id
 elif [ "$typed" == "2" ]; then
   sed -i -e "/plex/d" /tmp/watchtower.set 1>/dev/null 2>&1
   sed -i -e "/emby/d" /tmp/watchtower.set 1>/dev/null 2>&1
   ansible-playbook /opt/plexguide/containers/watchtower.yml
+  echo "SET" > /var/plexguide/watchtower.id
 elif [ "$typed" == "3" ]; then
   echo null > /tmp/watchtower.set
   ansible-playbook /opt/plexguide/containers/watchtower.yml
+  echo "SET" > /var/plexguide/watchtower.id
 elif [[ "$typed" == "4" && "$wcheck" != "NOT-SET" ]]; then
   exit
 else
