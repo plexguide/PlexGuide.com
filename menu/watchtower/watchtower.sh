@@ -60,6 +60,8 @@ elif [ "$typed" == "3" ]; then
   echo null > /tmp/watchtower.set
   ansible-playbook /opt/plexguide/containers/watchtower.yml
 elif [[ "$typed" == "4" && "$wcheck" != "NOT-SET" ]]; then
+  exit
+else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -67,18 +69,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    sleep 5
-    rm -rf /var/plexguide/watchtower.id
-    bash /opt/plexguide/menu/watchtower/watchtower.sh
-else
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - Invalid Selection! Make a Proper Choice!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-sleep 5
+sleep 4
   bash /opt/plexguide/menu/watchtower/watchtower.sh
   exit
 fi
