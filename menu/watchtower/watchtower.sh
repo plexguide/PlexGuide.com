@@ -15,7 +15,7 @@
 #################################################################################
 file="/var/plexguide/watchtower.id"
   if [ ! -e "$file" ]; then
-    echo NOT-SET > /var/plexguide/watchtower.id
+    echo "Checked" > /var/plexguide/watchtower.id
   else
     exit
   fi
@@ -62,17 +62,6 @@ elif [ "$typed" == "3" ]; then
   echo null > /tmp/watchtower.set
   ansible-playbook /opt/plexguide/containers/watchtower.yml
   echo "SET" > /var/plexguide/watchtower.id
-elif [[ "$typed" == "4" && "$wcheck" != "NOT-SET" ]]; then
-  exit
-elif [[ "$typed" == "4" && "$wcheck" == "NOT-SET" ]]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - Must Make a Selection (On New PG Installs)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-sleep 4
-  bash /opt/plexguide/menu/watchtower/watchtower.sh
-  exit
+elif [[ "$typed" == "Z" && "$typed" != "z" ]]; then
+exit
 fi
