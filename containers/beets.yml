@@ -81,7 +81,7 @@
     - name: Automatic Import
       cron:
         name: "{{pgrole}} Import"
-        user: "1000"
+        user: "root"
         special_time: hourly
         job: "docker exec -u abc -it {{pgrole}} /bin/bash -c 'beet import -q /downloads'"
         state: present
