@@ -83,7 +83,7 @@
         name: "{{pgrole}} Import"
         user: "root"
         special_time: hourly
-        job: "docker exec -u abc -it {{pgrole}} /bin/bash -c 'beet import -q /downloads'"
+        job: "s'"
         state: present
 
     - name: YAML Creation Hold
