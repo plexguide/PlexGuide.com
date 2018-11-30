@@ -10,29 +10,15 @@
   gather_facts: false
   tasks:
 
-  - name: Traefik Check
-    shell: "docker ps | awk '{print $NF}' | grep -c -w traefik"
-    register: ntraefik
-
-  - debug: msg="Traefik {{ntraefik.stdout}}"
-
 # FACTS #######################################################################
 
   - name: "Set Known Facts"
     set_fact:
       pgrole: "heimdall"
-      intport: "443"
-      extport: "127.0.0.1:1111"
-      image: "linuxserver/heimdall"
-    when: ntraefik == "1"
-
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "heimdall"
-      intport: "1111"
+      intport: "80"
       extport: "1111"
       image: "linuxserver/heimdall"
-    when: ntraefik != "1"
+
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
@@ -43,21 +29,10 @@
     set_fact:
       pg_labels:
         traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+        traefik.enable: "true"
+        traefik.port: "{{intport}}"
         traefik.frontend.redirect.entryPoint: "https"
-        traefik.enable: "true"
-        traefik.port: "443"
-        traefik.protocol: "https"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-    when: ntraefik == "1"
-
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.frontend.auth.basic.users: "{{auth.stdout}}"
-        traefik.enable: "true"
-        traefik.port: "1111"
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-    when: ntraefik != "1"
 
   - name: "Setting PG Volumes"
     set_fact:
@@ -79,7 +54,7 @@
       image: "{{image}}"
       pull: yes
       published_ports:
-        - "{{extport}}:{{intport}}"
+        - "{{ports.stdout}}{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
       env: "{{pg_env}}"
       restart_policy: always
