@@ -15,7 +15,7 @@
   - name: "Set Known Facts"
     set_fact:
       pgrole: "heimdall"
-      intport: "80"
+      intport: "443"
       extport: "1111"
       image: "linuxserver/heimdall"
 
