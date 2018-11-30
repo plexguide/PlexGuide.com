@@ -31,7 +31,7 @@
         traefik.frontend.auth.basic.users: "{{auth.stdout}}"
         traefik.enable: "true"
         traefik.port: "443"
-        traefik.frontend.redirect.entryPoint: "https"
+        traefik.protocol: "https"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
