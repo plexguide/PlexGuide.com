@@ -24,7 +24,7 @@
       intport: "443"
       extport: "127.0.0.1:1111"
       image: "linuxserver/heimdall"
-    when: ntraefik == "1"
+    when: {{ntraefik.stoudt}} == "1"
 
   - name: "Set Known Facts"
     set_fact:
