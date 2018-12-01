@@ -25,8 +25,9 @@ bandwidth () {
 # Standby
 read -p 'TYPE a SERVER SPEED from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
 
-if [ $typed -gt 1000 -o $typed -lt 1 ]; then badinput && bandwith;
-else echo "$typed" > /var/plexguide/move.bw
+if [[ $typed -gt 1 && $typed -lt 1000 ]]; then echo "$typed" > /var/plexguide/move.bw;
+else badinput && bandwith; fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
