@@ -27,7 +27,7 @@ EOF
 sleep 5
 
 # Execute Ansible Function
-ansible-playbook /opt/plexguide/pg.yml --tags rcloneinstall
+ansible-playbook /opt/plexguide/menu/pg.yml --tags rcloneinstall
 
 # Required for RClone
 tee "/etc/fuse.conf" > /dev/null <<EOF

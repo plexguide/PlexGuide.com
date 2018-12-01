@@ -27,8 +27,6 @@ exit 1
 fi
 
 [[ $(pwd) =~ plexguide ]] && cd ~
-# If PlexGuide is Missing, it will redownload it
-# If PlexGuide is Missing, it will redownload it
 file="/opt/plexguide/pg.sh"
 if [ ! -e "$file" ]; then
 tee <<-EOF
@@ -60,8 +58,7 @@ EOF
 sleep 2.5
 fi
 
-bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh 1>/dev/null 2>&1
-ansible-playbook /opt/plexguide/pg.yml --tags pgedge
+ansible-playbook /opt/plexguide/menu/alias/pgedge.yml
 
 tee <<-EOF
 
