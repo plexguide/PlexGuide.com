@@ -8,7 +8,7 @@
 pgedition () {
   file="/var/plexguide/path.check"
   if [ ! -e "$file" ]; then touch /var/plexguide/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
-  
+
   # FOR MULTI-HD EDITION
   file="/var/plexguide/multi.unionfs"
     if [ ! -e "$file" ]; then touch /var/plexguide/multi.unionfs; fi
@@ -86,7 +86,7 @@ bash /opt/plexguide/install/serverid.sh
 bash /opt/plexguide/install/dependency.sh
 bash /opt/plexguide/install/folders.sh
 bash /opt/plexguide/install/docker.sh
-bash /opt/plexguide/menu/interface/install/scripts/docstart.sh
+bash /opt/plexguide/install/docstart.sh
 
 # Ensure Docker is Turned On!
 dstatus=$(docker ps --format '{{.Names}}' | grep "portainer")
