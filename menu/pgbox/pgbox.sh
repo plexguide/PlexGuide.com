@@ -155,7 +155,6 @@ image=on
 bash /opt/plexguide/containers/image/_image.sh
 done </var/plexguide/pgbox.buildup
 
-
 # Cron Execution
 edition=$( cat /var/plexguide/pg.edition )
 if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]]; then a=b
@@ -165,8 +164,6 @@ else
 
   if [ "$croncount" -ge "2" ]; then cronexe; fi
 fi
-
-
 
 while read p; do
 tee <<-EOF
@@ -185,7 +182,10 @@ elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 echo $p > /tmp/program_var
 # Execute Main Program
 ansible-playbook /opt/plexguide/containers/$p.yml
-if [ "$croncount" -eq "1" ]; then cronexe; fi
+
+if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]]; then a=b
+else if [ "$croncount" -eq "1" ]; then cronexe; fi; fi
+
 # End Banner
 bash /opt/plexguide/menu/endbanner/endbanner.sh
 
