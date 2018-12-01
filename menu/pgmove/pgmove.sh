@@ -80,17 +80,21 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
     echo ""
     rclone config
     rclonestage
+    question1
 elif [ "$typed" == "2" ]; then
     bandwidth
+    question1
 elif [ "$typed" == "3" ]; then
     if [ "$configure" == "GDrive" ]; then
     echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
     ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
     ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted
+    question
     elif [ "$configure" == "GDrive /w GCrypt" ]; then
     echo '/mnt/gcrypt=RO:/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
     ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
     ansible-playbook /opt/plexguide/pg.yml --tags menu-move
+    quesiton1
     else
 tee <<-EOF
 
@@ -103,12 +107,9 @@ EOF
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
   exit
 else
-  bash /opt/plexguide/menu/pgmove/pgmove.sh
-  exit
+  badinput
+  question1
 fi
-
-bash /opt/plexguide/menu/pgmove/pgmove.sh
-exit
 }
 
 question1
