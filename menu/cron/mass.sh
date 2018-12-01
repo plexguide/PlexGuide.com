@@ -12,7 +12,7 @@ mkdir -p /opt/appdata/plexguide/cron
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
 
-weekleyrandom () {
+weekrandom () {
   while read p; do
   echo $(($RANDOM % 23)) > /var/plexguide/cron/cron.hour
   echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
@@ -55,7 +55,7 @@ EOF
   if [ "$typed" == "1" ]; then exit;
 elif [ "$typed" == "2" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
 elif [ "$typed" == "3" ]; then dailyrandom && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
-elif [ "$typed" == "4" ]; then weeklyrandom && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
+elif [ "$typed" == "4" ]; then week && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
 else badinput1; fi
 }
 
