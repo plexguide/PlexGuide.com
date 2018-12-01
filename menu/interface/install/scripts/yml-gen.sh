@@ -20,7 +20,6 @@ rm -rf /opt/plexguide/pg.yml 1>/dev/null 2>&1
 
 echo "---" > /opt/plexguide/pg.yml
 echo "- hosts: localhost" >> /opt/plexguide/pg.yml
-cat /opt/plexguide/roles/global_vars.sh >> /opt/plexguide/pg.yml
 echo "" >> /opt/plexguide/pg.yml
 echo "  roles:" >> /opt/plexguide/pg.yml
 
