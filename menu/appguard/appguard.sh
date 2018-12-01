@@ -54,3 +54,5 @@ else badinput1; fi
 }
 
 # FUNCTIONS END ##############################################################
+
+break=off && while [ "$break" == "off" ]; do question1; done
