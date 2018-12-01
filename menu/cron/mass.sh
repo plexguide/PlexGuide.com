@@ -18,7 +18,7 @@ weekleyrandom () {
   echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
   echo $(($RANDOM % 6))> /var/plexguide/cron/$p.cron.day
   ansible-playbook /opt/plexguide/menu/cron/cron.yml
-  done /var/plexguide/pgbox.buildup
+  done </var/plexguide/pgbox.buildup
   exit
 }
 
@@ -28,7 +28,7 @@ dailyrandom () {
   echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
   echo "*/1" > /var/plexguide/cron/$program.cron.day
   ansible-playbook /opt/plexguide/menu/cron/cron.yml
-  done /var/plexguide/pgbox.buildup
+  done </var/plexguide/pgbox.buildup
   exit
 }
 
