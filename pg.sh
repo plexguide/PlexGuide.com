@@ -5,6 +5,21 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+pgedition () {
+  file="/var/plexguide/path.check"
+  if [ ! -e "$file" ]; then touch /var/plexguide/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
+  
+  # FOR MULTI-HD EDITION
+  file="/var/plexguide/multi.unionfs"
+    if [ ! -e "$file" ]; then touch /var/plexguide/multi.unionfs; fi
+  # FOR PG-BLITZ
+  file="/var/plexguide/project.deployed"
+    if [ ! -e "$file" ]; then echo "no" > /var/plexguide/project.deployed; fi
+  file="/var/plexguide/project.keycount"
+    if [ ! -e "$file" ]; then echo "0" > /var/plexguide/project.keycount; fi
+  file="/var/plexguide/pg.serverid"
+    if [ ! -e "$file" ]; then echo "[NOT-SET]" > /var/plexguide/pg.serverid; fi
+}
 
 echo "11" > /var/plexguide/pg.python
 bash /opt/plexguide/install/python.sh
@@ -97,16 +112,4 @@ bash /opt/plexguide/menu/watchtower/watchtower.sh
 # END: COMMON FUNCTIONS ########################################################
 
 # ONE TIME PATH CHECK
-file="/var/plexguide/path.check"
-if [ ! -e "$file" ]; then touch /var/plexguide/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
-
-# FOR MULTI-HD EDITION
-file="/var/plexguide/multi.unionfs"
-  if [ ! -e "$file" ]; then touch /var/plexguide/multi.unionfs; fi
-# FOR PG-BLITZ
-file="/var/plexguide/project.deployed"
-  if [ ! -e "$file" ]; then echo "no" > /var/plexguide/project.deployed; fi
-file="/var/plexguide/project.keycount"
-  if [ ! -e "$file" ]; then echo "0" > /var/plexguide/project.keycount; fi
-file="/var/plexguide/pg.serverid"
-  if [ ! -e "$file" ]; then echo "[NOT-SET]" > /var/plexguide/pg.serverid; fi
+pgedition
