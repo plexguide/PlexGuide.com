@@ -164,7 +164,7 @@ done </var/plexguide/pgbox.buildup
 edition=$( cat /var/plexguide/pg.edition )
 if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else
-  croncount=(sed -n '$=' /var/plexguide/pgbox.buildup)
+  croncount=$(sed -n '$=' /var/plexguide/pgbox.buildup)
   echo "false" > /var/plexguide/cron.count
   if [ "$croncount" -ge "2" ]; then bash /opt/plexguide/menu/cron/mass.sh; fi
 fi
