@@ -39,6 +39,7 @@ fi
 
 question1 () {
 variable /var/plexguide/move.bw "10"
+speed=$(cat /var/plexguide/move.bw)
 
 cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt
 cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
