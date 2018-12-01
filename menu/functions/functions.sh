@@ -17,3 +17,8 @@ echo
 read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed < /dev/tty
 question1
 }
+
+variable () {
+  file="$1"
+  if [ ! -e "$file" ]; then echo "$2" > $1; fi
+}

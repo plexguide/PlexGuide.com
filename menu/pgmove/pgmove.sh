@@ -7,6 +7,7 @@
 ################################################################################
 
 # FUNCTIONS START ##############################################################
+
 rclonestage () {
 mkdir -p /root/.config/rclone/
 chown -R 1000:1000 /root/.config/rclone/
@@ -18,14 +19,25 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
-question1 () {
+bandwidth () {
 
-file="/var/plexguide/move.bw"
-  if [ -e "$file" ]; then
-    speed=$(cat /var/plexguide/move.bw)
-  else
-    echo "10" > /var/plexguide/move.bw
-  fi
+# Standby
+read -p 'TYPE a SERVER SPEED from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
+
+if [ $typed -gt 1000 -o $typed -lt 1 ]; then badinput && bandwith;
+else echo "$typed" > /var/plexguide/move.bw
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  PASSED: Bandwidth Limit Set!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+fi
+}
+
+question1 () {
+variable /var/plexguide/move.bw "10"
 
 cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt
 cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
@@ -34,16 +46,9 @@ cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cu
 gdrive=$(cat /var/plexguide/rclone.gdrive)
 gcrypt=$(cat /var/plexguide/rclone.gcrypt)
 
-  if [ "$gdrive" != "" ] && [ "$gcrypt" == "" ]; then
-  configure="GDrive"
-  message="Deploy PG Drives: GDrive"
-elif [ "$gdrive" != "" ] && [ "$gcrypt" != "" ]; then
-  configure="GDrive /w GCrypt"
-  message="Deploy PG Drives : GDrive /w GCrypt"
-else
-  configure="Not Configured"
-  message="Unable to Deploy : RClone is Unconfigured"
-  fi
+  if [ "$gdrive" != "" ] && [ "$gcrypt" == "" ]; then configure="GDrive" && message="Deploy PG Drives: GDrive";
+elif [ "$gdrive" != "" ] && [ "$gcrypt" != "" ]; then configure="GDrive /w GCrypt" && message="Deploy PG Drives : GDrive /w GCrypt";
+else configure="Not Configured" && message="Unable to Deploy : RClone is Unconfigured"; fi
 
 # Menu Interface
 tee <<-EOF
@@ -73,30 +78,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
     rclone config
     rclonestage
 elif [ "$typed" == "2" ]; then
-
-  # Standby
-  read -p 'TYPE a SERVER SPEED from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
-
-    if [ $typed -gt 1000 -o $typed -lt 1 ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- ⛔️ WARNING! Must be a Number between 1 - 1000 (Example: 20)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 3
-  bash /opt/plexguide/menu/pgmove/pgmove.sh
-  exit
-  else
-  echo "$typed" > /var/plexguide/move.bw
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PASSED: Bandwidth Limit Set!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 3
-  fi
+    bandwidth
 elif [ "$typed" == "3" ]; then
     if [ "$configure" == "GDrive" ]; then
     echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
