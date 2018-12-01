@@ -166,9 +166,9 @@ if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD So
 else
   croncount=(sed -n '$=' /var/plexguide/pgbox.buildup)
   echo "false" > /var/plexguide/cron.count
-
-  if [ "$croncount" -ge "2" ]; then cronexe; fi
+  if [ "$croncount" -ge "2" ]; then bash /opt/plexguide/menu/cron/mass.sh; fi
 fi
+
 
 while read p; do
 tee <<-EOF

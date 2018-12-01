@@ -7,26 +7,29 @@
 #################################################################################
 
 # KEY VARIABLE RECALL & EXECUTION
-program=$(cat /tmp/program_var)
 mkdir -p /var/plexguide/cron/
 mkdir -p /opt/appdata/plexguide/cron
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
 
 weekleyrandom () {
+  while read p; do
   echo $(($RANDOM % 23)) > /var/plexguide/cron/cron.hour
   echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
-  echo $(($RANDOM % 6))> /var/plexguide/cron/$program.cron.day
-
+  echo $(($RANDOM % 6))> /var/plexguide/cron/$p.cron.day
   ansible-playbook /opt/plexguide/menu/cron/cron.yml
+  done /var/plexguide/pgbox.buildup
+  exit
 }
 
 dailyrandom () {
+  while read p; do
   echo $(($RANDOM % 23)) > /var/plexguide/cron/cron.hour
   echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
   echo "*/1" > /var/plexguide/cron/$program.cron.day
-
   ansible-playbook /opt/plexguide/menu/cron/cron.yml
+  done /var/plexguide/pgbox.buildup
+  exit
 }
 
 # FIRST QUESTION
@@ -55,3 +58,5 @@ elif [ "$typed" == "3" ]; then dailyrandom && ansible-playbook /opt/plexguide/me
 elif [ "$typed" == "4" ]; then weeklyrandom && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
 else badinput1; fi
 }
+
+question1
