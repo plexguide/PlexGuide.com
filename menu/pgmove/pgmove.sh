@@ -56,14 +56,12 @@ else configure="Not Configured" && message="Unable to Deploy : RClone is Unconfi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  Welcome to PG Move
+🚀  Welcome to PG Move                     📓 Reference: move.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Basic Information
 
-NOTE: PG Move utilizes only GDrive (no teamdrives)! PG Move will allow
-you to move up to 750GB per day! If you need more, please switch to
-teamdrive. You can configure and add gcrypt for encryptions (follow the
-wiki). A 10MB speed is the safe limit if your going to upload
-constantly for 24 hours!
+Utilizes Google Drive Only! Limitation is a 750GB daily upload limit.
+10MB BWLimit is the Safe Limit. Follow reference for more info.
 
 1 - Configure RClone : $configure
 2 - Configure BWLimit: $speed MB
@@ -74,7 +72,7 @@ Z - Exit
 EOF
 
 # Standby
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     echo ""
