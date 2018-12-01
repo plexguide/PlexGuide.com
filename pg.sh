@@ -21,6 +21,11 @@ pgedition () {
     if [ ! -e "$file" ]; then echo "[NOT-SET]" > /var/plexguide/pg.serverid; fi
 }
 
+ospgversion=$(cat /etc/*-release | grep Debian | grep 9)
+
+if [ "$ospgversion" != "" ]; then echo "debian"> /var/plexguide/os.version;
+else echo "ubuntu"> /var/plexguide/os.version; fi
+
 echo "11" > /var/plexguide/pg.python
 bash /opt/plexguide/install/python.sh
 ######################################################## START: Key Variables
