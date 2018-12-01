@@ -80,12 +80,11 @@ ansible-playbook /opt/plexguide/containers/portainer.yml &>/dev/null &
 fi
 
 mkdir -p /opt/mycontainers
+yes | cp -rf /opt/mycontainers/* /opt/plexguide/containers
 file="/opt/mycontainers/_template.yml"
 if [ ! -e "$file" ]; then
 yes | cp -rf /opt/plexguide/containers/_template.yml /opt/mycontainers
 fi
-yes | cp -rf /opt/mycontainers/* /opt/plexguide/containers
-
 
 bash /opt/plexguide/install/motd.sh
 bash /opt/plexguide/install/cleaner.sh
