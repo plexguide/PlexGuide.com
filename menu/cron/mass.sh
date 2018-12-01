@@ -34,6 +34,15 @@ dailyrandom () {
   exit
 }
 
+manualuser () {
+  while read p; do
+  echo "$p" > /tmp/program_var
+  bash /opt/plexguide/menu/cron/cron.sh
+  done </var/plexguide/pgbox.buildup
+  exit
+}
+
+
 # FIRST QUESTION
 question1 () {
 space=$(cat /var/plexguide/data.location)
@@ -55,7 +64,7 @@ EOF
 
   read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then exit;
-elif [ "$typed" == "2" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
+elif [ "$typed" == "2" ]; then manualuser && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
 elif [ "$typed" == "3" ]; then dailyrandom && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
 elif [ "$typed" == "4" ]; then weekrandom && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
 else badinput1; fi
