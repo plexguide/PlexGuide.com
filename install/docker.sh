@@ -27,7 +27,7 @@ EOF
 sleep 5
 
 # Execute Ansible Function
-ansible-playbook /opt/plexguide/pg.yml --tags docker
+ansible-playbook /opt/plexguide/menu/pg.yml --tags docker
 
 # If Docker FAILED, Emergency Install
 file="/usr/bin/docker" 1>/dev/null 2>&1
