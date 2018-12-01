@@ -145,17 +145,6 @@ image=off
 while read p; do
 
 echo $p > /tmp/program_var
-  if [ "$image" == "off" ]; then
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PGBox - Multi Image Selector
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-NOTE: Selecting Images First Prior to Install
-EOF
-sleep 3
-image=on
-  fi
 
 bash /opt/plexguide/containers/image/_image.sh
 done </var/plexguide/pgbox.buildup
