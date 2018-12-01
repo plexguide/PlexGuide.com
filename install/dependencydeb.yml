@@ -19,8 +19,8 @@
       - wget
       - lsb-release
       - figlet
-      - update-motd
-      - update-notifier-common
+      #- update-motd
+      #- update-notifier-common
       - unionfs-fuse
       - software-properties-common
       - unrar
@@ -35,7 +35,7 @@
       - htop
       - openssh-server
       - dirmngr
-      - npm
+      #- npm
       - zip
       - apt-transport-https
       - ca-certificates
