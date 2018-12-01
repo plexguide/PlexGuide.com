@@ -7,13 +7,14 @@
 ################################################################################
 
 # FUNCTIONS START ##############################################################
+source /opt/plexguide/menu/functions/functions.sh
 
 # BAD INPUT
-badinput () {
-echo
-read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed < /dev/tty
-question1
-}
+#badinput () {
+#echo
+#read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed < /dev/tty
+#question1
+#}
 
 queued () {
 echo
@@ -104,7 +105,7 @@ current=$(cat /var/plexguide/pgbox.running | grep "\<$typed\>")
 if [ "$current" != "" ]; then exists && question1; fi
 
 current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
-if [ "$current" == "" ]; then badinput && question1; fi
+if [ "$current" == "" ]; then badinput1 && question1; fi
 
 part1
 }
