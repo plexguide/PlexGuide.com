@@ -31,6 +31,11 @@ croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$p\>")
 if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 }
 
+cronmass () {
+croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$p\>")
+if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
+}
+
 initial () {
   rm -rf /var/plexguide/pgbox.output 1>/dev/null 2>&1
   rm -rf /var/plexguide/pgbox.buildup 1>/dev/null 2>&1
