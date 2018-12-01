@@ -1,20 +1,10 @@
 #!/bin/bash
 #
-# [PlexGuide Ansible Role]
-#
-# Maintainer & Modded By: Admin9705 & Deiteq
-# URL:                    https://plexguide.com
-#
-# Licensed under GNU General Public License v3.0 GPL-3 (in short)
-#
-#   You may copy, distribute and modify the software as long as you track
-#   changes/dates in source files. Any modifications to our software
-#   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions.
-#
-#################################################################################
-# Original Ansible Role: l3uddz, Desimaniac - cloudbox.rocks
-#################################################################################
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705 - Deiteq
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
 ---
 - name: "Establish Facts"
   set_fact:
@@ -55,7 +45,7 @@
 - name: Add official gpg signing key
   apt_key:
     id: 0EBFCD88
-    url: https://download.docker.com/linux/ubuntu/gpg
+    url: https://download.docker.com/linux/debian/gpg
   when: switch == "on"
 
 - name: "Stop All Containers"
@@ -67,7 +57,7 @@
 
 - name: Official Repo
   apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} edge"
+    repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} edge"
   register: apt_docker_repositories
   when: switch == "on"
 
@@ -84,7 +74,7 @@
 
 - name: Install docker-ce
   apt:
-    name: docker-ce=18.06.0~ce~3-0~ubuntu
+    name: docker-ce=17.05.0~ce-0~debian-stretch
     state: present
     update_cache: yes
     force: yes
