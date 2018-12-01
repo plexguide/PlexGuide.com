@@ -26,6 +26,10 @@ elif [ "$foo" == "n" ]; then question1;
 else exists; fi
 }
 
+cronexe () {
+croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$p\>")
+if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
+}
 
 initial () {
   rm -rf /var/plexguide/pgbox.output 1>/dev/null 2>&1
@@ -151,6 +155,19 @@ image=on
 bash /opt/plexguide/containers/image/_image.sh
 done </var/plexguide/pgbox.buildup
 
+
+# Cron Execution
+edition=$( cat /var/plexguide/pg.edition )
+if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]]; then a=b
+else
+  croncount=(sed -n '$=' /var/plexguide/pgbox.buildup)
+  echo "false" > /var/plexguide/cron.count
+
+  if [ "$croncount" -ge "2" ]; then cronexe; fi
+fi
+
+
+
 while read p; do
 tee <<-EOF
 
@@ -168,14 +185,7 @@ elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 echo $p > /tmp/program_var
 # Execute Main Program
 ansible-playbook /opt/plexguide/containers/$p.yml
-# Cron Execution
-edition=$( cat /var/plexguide/pg.edition )
-if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]]; then a=b
-else
-  croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$p\>")
-  if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
-fi
-
+if [ "$croncount" -eq "1" ]; then cronexe; fi
 # End Banner
 bash /opt/plexguide/menu/endbanner/endbanner.sh
 
