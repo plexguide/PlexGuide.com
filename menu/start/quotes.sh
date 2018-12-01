@@ -392,8 +392,8 @@ echo "                                                    Fry ~ British Comedian
 }
 
 quote70 () {
-echo "Last night, I dreamt I ate a ten pound marshmallow. When I woke up,
-the pillow was gone." > /var/plexguide/startup.quote
+echo "Last night, I dreamt I ate a ten pound marshmallow. When I woke up, the
+pillow was gone." > /var/plexguide/startup.quote
 echo "                                                 Cooper ~ British Comedian" > /var/plexguide/startup.source
 }
 
