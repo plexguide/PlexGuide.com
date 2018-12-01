@@ -45,7 +45,6 @@ manualuser () {
 
 # FIRST QUESTION
 question1 () {
-space=$(cat /var/plexguide/data.location)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -57,7 +56,6 @@ tee <<-EOF
 2 - Yes [Manual - Select for Each App]
 3 - Yes [Daily  - Select Random Times]
 4 - Yes [Weekly - Select Random Times & Days]
-5 - Backup Location: $space
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
