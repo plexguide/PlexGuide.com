@@ -6,19 +6,9 @@
 # GNU:        General Public License v3.0
 ################################################################################
 
-# FUNCTIONS START ##############################################################
-rclonestage () {
-mkdir -p /root/.config/rclone/
-chown -R 1000:1000 /root/.config/rclone/
-cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-}
-
-defaultvars () {
-  touch /var/plexguide/rclone.gdrive
-  touch /var/plexguide/rclone.gcrypt
-}
-
-question1 () {
+# Touch Variables Incase They Do Not Exist
+touch /var/plexguide/rclone.gdrive
+touch /var/plexguide/rclone.gcrypt
 
 file="/var/plexguide/move.bw"
   if [ -e "$file" ]; then
@@ -71,7 +61,9 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     rclone config
-    rclonestage
+    mkdir -p /root/.config/rclone/
+    chown -R 1000:1000 /root/.config/rclone/
+    cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 elif [ "$typed" == "2" ]; then
 
   # Standby
@@ -124,6 +116,3 @@ fi
 
 bash /opt/plexguide/menu/pgmove/pgmove.sh
 exit
-}
-
-question1
