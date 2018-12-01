@@ -60,8 +60,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Basic Information
 
-Utilizes Google Drive Only! Limitation is a 750GB daily upload limit.
-10MB BWLimit is the Safe Limit. Follow reference for more info.
+Utilizes Google Drive only and limitation is a 750GB daily upload limit.
+10MB BWLimit is the safe limit. Follow reference above for more info.
 
 1 - Configure RClone : $configure
 2 - Configure BWLimit: $speed MB
