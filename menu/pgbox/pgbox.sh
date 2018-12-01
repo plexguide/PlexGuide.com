@@ -9,13 +9,6 @@
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
 
-# BAD INPUT
-#badinput () {
-#echo
-#read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed < /dev/tty
-#question1
-#}
-
 queued () {
 echo
 read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed < /dev/tty
