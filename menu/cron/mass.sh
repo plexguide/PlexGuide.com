@@ -14,9 +14,10 @@ source /opt/plexguide/menu/functions/functions.sh
 
 weekrandom () {
   while read p; do
+  echo "$p" > /tmp/program_var
   echo $(($RANDOM % 23)) > /var/plexguide/cron/cron.hour
   echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
-  echo $(($RANDOM % 6))> /var/plexguide/cron/$p.cron.day
+  echo $(($RANDOM % 6))> /var/plexguide/cron/cron.day
   ansible-playbook /opt/plexguide/menu/cron/cron.yml
   done </var/plexguide/pgbox.buildup
   exit
@@ -24,9 +25,10 @@ weekrandom () {
 
 dailyrandom () {
   while read p; do
+  echo "$p" > /tmp/program_var
   echo $(($RANDOM % 23)) > /var/plexguide/cron/cron.hour
   echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
-  echo "*/1" > /var/plexguide/cron/$program.cron.day
+  echo "*/1" > /var/plexguide/cron/cron.day
   ansible-playbook /opt/plexguide/menu/cron/cron.yml
   done </var/plexguide/pgbox.buildup
   exit
