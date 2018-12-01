@@ -55,7 +55,7 @@ EOF
   if [ "$typed" == "1" ]; then exit;
 elif [ "$typed" == "2" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
 elif [ "$typed" == "3" ]; then dailyrandom && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
-elif [ "$typed" == "4" ]; then week && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
+elif [ "$typed" == "4" ]; then weekrandom && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
 else badinput1; fi
 }
 
