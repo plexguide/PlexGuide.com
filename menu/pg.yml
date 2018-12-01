@@ -6,3 +6,4 @@
   roles:
   - { role: rcloneinstall, tags: ['rcloneinstall'] }
   - { role: docker, tags: ['docker'] }
+  - { role: dockerdeb, tags: ['dockerdeb'] }
