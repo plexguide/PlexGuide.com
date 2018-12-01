@@ -77,6 +77,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
+    echo ""
     rclone config
     rclonestage
 elif [ "$typed" == "2" ]; then
