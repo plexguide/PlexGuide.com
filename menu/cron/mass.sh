@@ -27,13 +27,15 @@ space=$(cat /var/plexguide/data.location)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛ PG Cron - Schedule Cron Jobs (Backups) | $program?
+⌛ PG Cron - Schedule Cron Jobs (Backups) | Mass Program Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://cron.plexguide.com
 
-1 - No
-2 - Yes
-3 - Backup Location: $space
+1 - No  [Skip   - All Cron Jobs]
+2 - Yes [Manual - Select for Each App]
+3 - Yes [Daily  - Select Random Times]
+4 - Yes [Weekly - Select Random Times & Days]
+5 - Backup Location: $space
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
