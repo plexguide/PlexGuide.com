@@ -11,12 +11,7 @@ program=$(cat /tmp/program_var)
 mkdir -p /var/plexguide/cron/
 mkdir -p /opt/appdata/plexguide/cron
 # FUNCTIONS START ##############################################################
-
-# BAD INPUT
-badinput () {
-echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
-}
+source /opt/plexguide/menu/functions/functions.sh
 
 # FIRST QUESTION
 question1 () {
@@ -55,9 +50,7 @@ EOF
   else echo "" > /var/plexguide/server.ht; fi
     bash /opt/plexguide/menu/appguard/rebuild.sh
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
-else badinput; fi
+else badinput1; fi
 }
 
 # FUNCTIONS END ##############################################################
-
-break=off && while [ "$break" == "off" ]; do question1; done
