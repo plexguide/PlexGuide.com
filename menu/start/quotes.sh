@@ -373,6 +373,30 @@ quote66 () {
 echo "Heh, heh, heh" > /var/plexguide/startup.quote
 echo "                                                               Major Payne" > /var/plexguide/startup.source
 }
+
+quote67 () {
+echo "You know, somebody actually complimented me on my driving today. They
+left a little note on the windscreen, it said ~ Parking Fine." > /var/plexguide/startup.quote
+echo "                                                 Cooper ~ British Comedian" > /var/plexguide/startup.source
+}
+
+quote68 () {
+echo "I used to be indecisive but now I am not quite sure." > /var/plexguide/startup.quote
+echo "                                                 Cooper ~ British Comedian" > /var/plexguide/startup.source
+}
+
+quote69 () {
+echo "An original idea. That can't be too hard. The library must be full of
+them." > /var/plexguide/startup.quote
+echo "                                                    Fry ~ British Comedian" > /var/plexguide/startup.source
+}
+
+quote70 () {
+echo "Last night, I dreamt I ate a ten pound marshmallow. When I woke up,
+the pillow was gone." > /var/plexguide/startup.quote
+echo "                                                 Cooper ~ British Comedian" > /var/plexguide/startup.source
+}
+
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 67)) )
+num=$( echo $(($RANDOM % 71)) )
 quote$num
