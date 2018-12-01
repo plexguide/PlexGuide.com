@@ -26,7 +26,7 @@ EOF
 # Standby
 sleep 5
 
-ospgversion=$(cat var/plexguide/os.version)
+ospgversion=$(cat /var/plexguide/os.version)
 if [ "$ospgversion" == "debian" ]; then
   ansible-playbook /opt/plexguide/install/dependencydeb.yml;
 else
