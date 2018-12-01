@@ -7,6 +7,7 @@
 ################################################################################
 
 # FUNCTIONS START ##############################################################
+source /opt/plexguide/menu/functions/functions.sh
 
 rclonestage () {
 mkdir -p /root/.config/rclone/
