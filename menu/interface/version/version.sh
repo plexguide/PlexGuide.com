@@ -1,9 +1,9 @@
 ✅  [CURRENT]
 7.2.4
 7.2.3
-7.2.2
 
 💍  [BETA] - Beta is to only to test new stuff!
+7.3beta1
 edge
 
 💊  [DEPRECIATED]
