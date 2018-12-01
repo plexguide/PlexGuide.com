@@ -106,7 +106,7 @@ bash /opt/plexguide/install/cleaner.sh
 bash /opt/plexguide/install/gcloud.sh
 bash /opt/plexguide/install/hetzner.sh
 
-bash /opt/plexguide/menu/install/reboot.sh
+bash /opt/plexguide/install/reboot.sh
 bash /opt/plexguide/install/rclone.sh
 bash /opt/plexguide/menu/watchtower/watchtower.sh
 # END: COMMON FUNCTIONS ########################################################
