@@ -8,6 +8,7 @@
 
 # BAD INPUT
 badinput1 () {
+echo
 read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed < /dev/tty
 question1
 }
