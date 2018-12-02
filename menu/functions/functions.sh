@@ -31,7 +31,7 @@ readrcloneconfig () {
   file="/opt/plexguide/rclone.conf"; if [ ! -e "$file" ]; then
     file="/root/.config/rclone/rclone.conf"; if [ -e "$file" ]; then
       cp /root/.config/rclone/rclone.conf /opt/plexguide/rclone.conf; fi; fi
-  touch /opt/plexguide/rclone.conf
+  touch /opt/appdata/plexguide/rclone.conf
   chown -R 1000:1000 /opt/plexguide/rclone.conf
   mkdir -p /var/plexguide/rclone/
   cat /opt/appdata/plexguide/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gcrypt.status
