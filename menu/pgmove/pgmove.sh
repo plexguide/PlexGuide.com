@@ -10,9 +10,9 @@
 source /opt/plexguide/menu/functions/functions.sh
 
 rclonestage () {
-mkdir -p /root/.config/rclone/
-chown -R 1000:1000 /root/.config/rclone/
-cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
+  mkdir -p /root/.config/rclone/
+  chown -R 1000:1000 /root/.config/rclone/
+  cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
 }
 
 defaultvars () {
@@ -20,11 +20,16 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
+bwrecall () {
+  variable /var/plexguide/move.bw "10"
+  speed=$(cat /var/plexguide/move.bw)
+}
+
 bandwidth () {
-echo ""
-read -p 'TYPE a SERVER SPEED from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
-if [[ "$typed" -ge "1" && "$typed" -le "1000" ]]; then echo "$typed" > /var/plexguide/move.bw && bwpassed;
-else badinput && bandwidth; fi
+  echo ""
+  read -p 'TYPE a SERVER SPEED from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
+  if [[ "$typed" -ge "1" && "$typed" -le "1000" ]]; then echo "$typed" > /var/plexguide/move.bw && bwpassed;
+  else badinput && bandwidth; fi
 }
 
 bwpassed () {
@@ -35,11 +40,11 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
+bwrecall && question1
 }
 
 question1 () {
-variable /var/plexguide/move.bw "10"
-speed=$(cat /var/plexguide/move.bw)
+bwrecall
 
 cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt
 cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
@@ -83,9 +88,10 @@ elif [ "$typed" == "2" ]; then
     bandwidth
     question1
 elif [ "$typed" == "3" ]; then
+    removemounts
     if [ "$configure" == "GDrive" ]; then
     echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
-    ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
+
     ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted
     question
     elif [ "$configure" == "GDrive /w GCrypt" ]; then

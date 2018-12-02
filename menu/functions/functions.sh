@@ -22,3 +22,7 @@ variable () {
   file="$1"
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
 }
+
+removemounts () {
+  ansible-playbook /opt/plexguide/menu/remove/mounts.yml
+}
