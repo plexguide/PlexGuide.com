@@ -47,9 +47,9 @@ question1 () {
 bwrecall
 readrcloneconfig
 
-  if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="Deploy PG Drives : GDrive";
-elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="Deploy PG Drives : GDrive /w Encryption";
-else message="Cannot Deploy PG Move! Configure RClone First!" fi
+if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="Deploy PG Drives : GDrive" && dstatus="1";
+elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="Deploy PG Drives : GDrive /w Encryption" && dstatus="2";
+else message="Cannot Deploy PG Move! Configure RClone First!"; fi
 
 # Menu Interface
 tee <<-EOF

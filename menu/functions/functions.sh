@@ -40,6 +40,7 @@ readrcloneconfig () {
   if [ "$gccheck" != "" ]; then echo "good" > /var/plexguide/rclone/gcrypt.status && gcstatus="good";
   else echo "bad" > /var/plexguide/rclone/gcrypt.status && gcstatus="bad"; fi
 }
+
 rcloneconfig () {
 rclone config --config /opt/appdata/plexguide/rclone.conf
 }
