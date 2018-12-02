@@ -14,38 +14,32 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
-bwrecall () {
-  variable /var/plexguide/move.bw "10"
-  speed=$(cat /var/plexguide/move.bw)
-}
-
-bandwidth () {
-  echo ""
-  read -p 'TYPE a SERVER SPEED from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" -ge "1" && "$typed" -le "1000" ]]; then echo "$typed" > /var/plexguide/move.bw && bwpassed;
-  else badinput && bandwidth; fi
-}
-
-bwpassed () {
+badmenu () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PASSED: Bandwidth Limit Set!
+🚀 Welcome to PG Blitz                  📓 Reference: pgblitz.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Basic Information
+
+Utilizes Team Drives and the deployment is semi-complicated. If uploading
+less than 750GB per day, utilize PG Move! Good luck!
+
+NOTE: GDrive Must Be Configured (to allow backups of your apps)
+
+1 - Configure RClone
+Z - Exit
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
-bwrecall && question1
 }
 
-question1 () {
-bwrecall
-readrcloneconfig
+goodmenu () {
+  if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="3 - Deploy PG Blitz: TDrive" && message2="Z - Exit" dstatus="1";
+  elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="4 - Deploy PG Blitz: TDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
+  else message="Z - Exit" message2="" && dstatus="0"; fi
 
-if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="3 - Deploy PG Blitz: TDrive" && message2="Z - Exit" dstatus="1";
-elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="4 - Deploy PG Blitz: TDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
-else message="Z - Exit" message2="" && dstatus="0"; fi
-
-# Menu Interface
+  # Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -64,6 +58,24 @@ $message2
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+}
+
+bwpassed () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  PASSED: Bandwidth Limit Set!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 3
+bwrecall && question1
+}
+
+question1 () {
+bwrecall
+readrcloneconfig
+
+if [ "$gdstatus" == "bad" ]; then badmenu; else goodmenu; fi
 
 # Standby
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
