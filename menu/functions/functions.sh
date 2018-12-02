@@ -32,6 +32,8 @@ readrcloneconfig () {
   echo stage1
     file="/root/.config/rclone/rclone.conf"; if [ -e "$file" ]; then
       echo stage2
+      chmod 775 /root/.config/rclone/rclone.conf
+      chown -R 1000:1000 /root/.config/rclone/rclone.conf
       cp /root/.config/rclone/rclone.conf /opt/plexguide/rclone.conf; fi; fi
   touch /opt/appdata/plexguide/rclone.conf
   chmod 775 /opt/appdata/plexguide/rclone.conf
