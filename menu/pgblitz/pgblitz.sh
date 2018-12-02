@@ -29,7 +29,7 @@ EOF
 Z - Exit
 
 if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
-elif [[ "$typed" == "Z" | "$typed" == "z" ]]; then exit;
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
 else badinput && keymenu; fi
 }
 
