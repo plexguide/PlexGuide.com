@@ -33,5 +33,5 @@
   - name: Daemon-Reload
     systemd: state=stopped name=move daemon_reload=yes enabled=no
 
-  - name: Start UnionFS
+  - name: Start Move
     systemd: state=started name=move enabled=yes
