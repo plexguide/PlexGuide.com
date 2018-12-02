@@ -5,7 +5,6 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-
 [Unit]
 Description=UnionFS Daemon
 
@@ -14,7 +13,7 @@ Type=simple
 User=0
 Group=0
 ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty,direct_io,auto_cache,sync_read /mnt/move=RW:/mnt/gdrive=RO:/mnt/tdrive=RO:/mnt/gcrypt=RO /mnt/unionfs
+ExecStart=/usr/bin/unionfs -o cow,allow_other,nonempty,direct_io,auto_cache,sync_read /mnt/move=RW:{{unionfs_path.stdout}} /mnt/unionfs
 ExecStop=/bin/fusermount -uz /mnt/unionfs
 TimeoutStopSec=20
 KillMode=process
