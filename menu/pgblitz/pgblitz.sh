@@ -32,7 +32,7 @@ EOF
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput && keymenu; fi
 }
 
