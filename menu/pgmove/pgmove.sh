@@ -9,12 +9,6 @@
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
 
-rclonestage () {
-  mkdir -p /root/.config/rclone/
-  chown -R 1000:1000 /root/.config/rclone/
-  cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-}
-
 defaultvars () {
   touch /var/plexguide/rclone.gdrive
   touch /var/plexguide/rclone.gcrypt
@@ -49,7 +43,7 @@ readrcloneconfig
 
 if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="Deploy PG Drives : GDrive" && dstatus="1";
 elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="Deploy PG Drives : GDrive /w Encryption" && dstatus="2";
-else message="Cannot Deploy PG Move! Configure RClone First!"; fi
+else message="Cannot Deploy PG Move! Configure RClone First!" && dstatus="0"; fi
 
 # Menu Interface
 tee <<-EOF
@@ -76,27 +70,16 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
 elif [ "$typed" == "2" ]; then bandwidth && question1;
 elif [ "$typed" == "3" ]; then removemounts;
-    if [ "$configure" == "GDrive" ]; then
+    if [ "$dstatus" == "1" ]; then
     echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
     ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted
     question
-    elif [ "$configure" == "GDrive /w GCrypt" ]; then
+  elif [ "$dstatus" == "2" ]; then
     echo '/mnt/gcrypt=RO:/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
-    ansible-playbook /opt/plexguide/roles/menu-move/remove-service.yml
     ansible-playbook /opt/plexguide/pg.yml --tags menu-move
     quesiton1
-    else
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! WARNING! WARNING! You Need to Configure: gdrive
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 4
-  question1
-  fi
-elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
-  exit
+  else question1; fi
+elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else
   badinput
   question1
