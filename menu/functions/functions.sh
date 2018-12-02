@@ -1,4 +1,4 @@
-#!/bin/bash
+gc#!/bin/bash
 #
 # Title:      PlexGuide (Reference Title File)
 # Author(s):  Admin9705
@@ -33,8 +33,13 @@ readrcloneconfig () {
   mkdir -p /var/plexguide/rclone/
 
   gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 2 gdrive| grep token)
-  if [ "$gdcheck" != "" ]; then echo "good" > /var/plexguide/rclone/gdrive.status && gdstatus="good"; fi
+  if [ "$gdcheck" != "" ]; then echo "good" > /var/plexguide/rclone/gdrive.status && gdstatus="good";
+  then echo "bad" > /var/plexguide/rclone/gdrive.status && gdstatus="bad"; fi
 
+  gccheck=$(cat /opt/appdata/plexguide/rclone.conf | grep "remote = gdrive:/encrypt")
+  if [ "$gcheck" != "" ]; then echo "good" > /var/plexguide/rclone/gcrypt.status && gcstatus="good";
+  then echo "bad" > /var/plexguide/rclone/gcrypt.status && gcstatus="bad"; fi
+  
   #cat /opt/appdata/plexguide/rclone.conf | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gdrive.status
   #cat /opt/appdata/plexguide/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gcrypt.status
   #cat /opt/appdata/plexguide/rclone.conf | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone/tdrive.status
