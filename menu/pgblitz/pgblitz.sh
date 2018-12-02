@@ -40,7 +40,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  gcloud services enable drive.googleapis.com --project $type
+  gcloud services enable drive.googleapis.com --project $typed2
   $typed2 > /var/plexguide/project.final
 echo
 read -p '🌍 Process Complete | Press [ENTER]: ' typed2 < /dev/tty
