@@ -15,7 +15,7 @@ defaultvars () {
 }
 
 deploykeys2 () {
-
+a=b
 }
 
 deploykeys () {
