@@ -89,7 +89,7 @@ if [ "$tdstatus" == "semi" ]; then
 message="NOTE: TDrive is Setup, but user failed to configure as a Team Drive! Must
 reconfigure TDrive again and say 'Yes' and select a Team Drive!"
 badtdrive
-elif [ "$tdstatus" == "bad"]; then
+elif [ "$tdstatus" == "bad" ]; then
 message="NOTE: TDrive is not setup! Required for PGBlitz's upload configuration!"
 badtdrive
 fi
