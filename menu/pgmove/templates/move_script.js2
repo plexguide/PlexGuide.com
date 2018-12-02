@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
 
 if pidof -o %PPID -x "$0"; then
    exit 1

@@ -18,7 +18,7 @@
 ---
 - name: Install GCrypt Service
   template:
-    src: gcrypt.js2
+    src: gcrypt.service
     dest: /etc/systemd/system/gcrypt.service
     force: yes
   ignore_errors: yes
