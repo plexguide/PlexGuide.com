@@ -45,13 +45,7 @@ bwrecall && question1
 
 question1 () {
 bwrecall
-
-cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt
-cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
-
-# Declare Ports State
-gdrive=$(cat /var/plexguide/rclone.gdrive)
-gcrypt=$(cat /var/plexguide/rclone.gcrypt)
+readrcloneconfig
 
   if [ "$gdrive" != "" ] && [ "$gcrypt" == "" ]; then configure="GDrive" && message="Deploy PG Drives: GDrive";
 elif [ "$gdrive" != "" ] && [ "$gcrypt" != "" ]; then configure="GDrive /w GCrypt" && message="Deploy PG Drives : GDrive /w GCrypt";
