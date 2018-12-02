@@ -39,7 +39,7 @@ if [ "$typed" == "1" ]; then
   gcloud auth login
   echo "[NOT SET]" > /var/plexguide/project.final
   keymenu
-if [ "$typed" == "2" ]; then
+elif [ "$typed" == "2" ]; then
   date=`date +%m%d`
   rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
   projectid="pg-$date-$rand"
