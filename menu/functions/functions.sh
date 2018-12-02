@@ -31,8 +31,8 @@ readrcloneconfig () {
   touch /root/.config/rclone/rclone.conf
   cat /root/.config/rclone/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt
   cat /root/.config/rclone/rclone.conf | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
-  cat /root/.config/rclone/rclone.conf | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
-  cat /root/.config/rclone/rclone.conf | grep 'tcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
+  cat /root/.config/rclone/rclone.conf | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive
+  cat /root/.config/rclone/rclone.conf | grep 'tcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tcrypt
   gdrive=$(cat /var/plexguide/rclone.gdrive)
   gcrypt=$(cat /var/plexguide/rclone.gcrypt)
   tdrive=$(cat /var/plexguide/rclone.tdrive)
