@@ -15,7 +15,7 @@ tee <<-EOF
 
 1 - Download Path   : Change the Processing Location
 2 - Processor       : Enhance the CPU Processing Power
-3 - Keneral Modes   : Enhance Network Throughput
+3 - Kernel Modes   : Enhance Network Throughput
 4 - WatchTower      : Auto-Update Application Manager
 5 - Change Time     : Change the Server Time
 Z - Exit
