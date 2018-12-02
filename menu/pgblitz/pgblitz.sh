@@ -14,8 +14,24 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
-keymenu () {
+projectid () {
+gcloud projects list > /var/plexguide/projects.list
+cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
+projectlist=$(cat /var/plexguide/project.cut)
+tee <<-EOF
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Projects Interface Menu              📓 Reference: project.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+$projectlist
+
+EOF
+
+read -p '🌍 Type EXACT Project Name to Utlize | Press [ENTER]: ' typed < /dev/tty
+}
+
+keymenu () {
 gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
 account=$(cat /var/plexguide/project.account)
 
@@ -54,22 +70,9 @@ EOF
   read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
     keymenu
 elif [ "$typed" == "3" ]; then
-  gcloud projects list > /var/plexguide/projects.list
-  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
-  projectlist=$(cat /var/plexguide/project.cut)
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Projects Interface Menu              📓 Reference: project.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$projectlist
-
-EOF
-
-read -p '🌍 Type EXACT Project Name to Utlize | Press [ENTER]: ' typed < /dev/tty
+projectid
 list=$(cat /var/plexguide/project.cut | grep $typed)
-
+if [ "list" == "" ]; then badinput && projectid; fi
   keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput && keymenu; fi
