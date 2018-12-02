@@ -135,7 +135,7 @@ your teamdrives! If you forget, you will be wondering why stuff does not
 work!
 
 EOF
-read -p '🌍 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 }
 
 deploykeys2 () {
@@ -143,7 +143,7 @@ deploykeys2 () {
   if [ "$choicedel" != "" ]; then
   echo "Deleting All Previous Keys!"
   echo ""
-  
+
     while read p; do
     gcloud iam service-accounts delete $p --quiet
     done </var/plexguide/gdsa.cut

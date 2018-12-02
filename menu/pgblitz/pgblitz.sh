@@ -107,6 +107,7 @@ goodmenu () {
   elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="4 - Deploy PG Blitz: TDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
   else message="Z - Exit" message2="" && dstatus="0"; fi
 
+keys=$(cat /var/plexguide/project.keycount)
   # Menu Interface
 tee <<-EOF
 
