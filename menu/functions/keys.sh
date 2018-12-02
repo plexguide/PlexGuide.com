@@ -31,6 +31,19 @@ NOTE: # of Keys Generated Sets Your Daily Upload Limit!
 EOF
   read -p '🌍 Type Number? | Press [ENTER]: ' typed < /dev/tty
 
+  echo ""
+  echo "NOTE: Please Wait"
+  echo ""
+  if [ "$typed" == "1" ]; then echo "Creating 2 Keys - Daily Upload Limit Set to 1.5TB" && keys=2;
+elif [ "$typed" == "2" ]; then echo "Creating 4 Keys - Daily Upload Limit Set to 3.0TB" && keys=4;
+elif [ "$typed" == "3" ]; then echo "Creating 6 Keys - Daily Upload Limit Set to 4.5TB" && keys=6;
+elif [ "$typed" == "4" ]; then echo "Creating 8 Keys - Daily Upload Limit Set to 6.0TB" && keys=8;
+elif [ "$typed" == "5" ]; then echo "Creating 10 Keys - Daily Upload Limit Set to 7.5TB" && keys=10;
+elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set to 15.0TB" && keys=20;
+  fi
+  sleep 2
+  echo ""
+
   if [[ "$typed" -le "0" && "$typed" -ge 7 ]]; then deploykeys3; fi
 
   num=$keys
