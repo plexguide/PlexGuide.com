@@ -41,23 +41,24 @@ question1 () {
 bwrecall
 readrcloneconfig
 
-if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="3 - Deploy PG Drives : GDrive" && message2="Z - Exit" dstatus="1";
-elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="3 - Deploy PG Drives : GDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
+if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="3 - Deploy PG Blitz : TeamDrives" && message2="Z - Exit" dstatus="1";
+elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="3 - Deploy PG Blitz : TeamDrives /w Encryption" && message2="Z - Exit" && dstatus="2";
 else message="Z - Exit" message2="" && dstatus="0"; fi
 
 # Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Welcome to PG Move                     📓 Reference: move.plexguide.com
+🚀 Welcome to PG Blitz                  📓 Reference: pgblitz.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Basic Information
 
-Utilizes Google Drive only and limitation is a 750GB daily upload limit.
-10MB Throttle is the safe limit. Follow reference above for more info.
+Utilizes Team Drives and the deployment is semi-complicated. If uploading
+less than 750GB per day, utilize PG Move! Good luck!
 
 1 - Configure RClone
-2 - Configure Throttle: $speed MB
+2 - Key Management [$keys Keys Exist]
+3 - EMail Share Generator
 $message
 $message2
 
