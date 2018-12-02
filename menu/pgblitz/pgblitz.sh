@@ -14,6 +14,25 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
+keymenu () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Blitz Key Generation              📓 Reference: pgblitz.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+1 - Log-In to Your Account
+2 - Build a New Project
+3 - Establish Project ID
+4 - Create/Remake Service Keys
+Z - Exit
+
+if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
+elif [[ "$typed" == "Z" | "$typed" == "z" ]]; then exit;
+else badinput && keymenu; fi
+}
+
 badmenu () {
 tee <<-EOF
 
@@ -100,7 +119,7 @@ if [[ "$tdstatus" == "good" && "$gdstatus" == "good" ]]; then goodmenu; fi
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
-elif [ "$typed" == "2" ]; then bandwidth && question1;
+elif [ "$typed" == "2" ]; then keymenu && question1;
 elif [ "$typed" == "3" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
     echo "gdrive" > /var/plexguide/rclone/deploy.version
