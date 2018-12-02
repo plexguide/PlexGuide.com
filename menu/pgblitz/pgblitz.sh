@@ -34,6 +34,26 @@ Z - Exit
 EOF
 }
 
+badtdrive () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Welcome to PG Blitz                  📓 Reference: pgblitz.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Basic Information
+
+Utilizes Team Drives and the deployment is semi-complicated. If uploading
+less than 750GB per day, utilize PG Move! Good luck!
+
+$message
+
+1 - Configure RClone
+Z - Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+}
+
 goodmenu () {
   if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="3 - Deploy PG Blitz: TDrive" && message2="Z - Exit" dstatus="1";
   elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="4 - Deploy PG Blitz: TDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
@@ -63,7 +83,18 @@ EOF
 question1 () {
 readrcloneconfig
 
-if [ "$gdstatus" == "bad" ]; then badmenu; else goodmenu; fi
+if [ "$gdstatus" == "bad" ]; then badmenu; fi
+
+if [ "$tdstatus" == "semi" ]; then
+message="NOTE: TDrive is Setup, but user failed to configure as a Team Drive! Must
+reconfigure TDrive again and say 'Yes' and select a Team Drive"
+badtdrive
+elif [ "$tdstatus" == "bad"]; then
+message="NOTE: TDrive is not setup! Required for PGBlitz's upload configuration!"
+badtdrive
+fi
+
+if [[ "$tdstatus" == "good" && "$gdstatus" == "good" ]]; then goodmenu; fi
 
 # Standby
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
