@@ -28,7 +28,7 @@ removemounts () {
 }
 
 readrcloneconfig () {
-  touch /root/.config/rclone/rclone.conf
+  #touch /root/.config/rclone/rclone.conf
   mkdir -p /var/plexguide/rclone/
   cat /root/.config/rclone/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gcrypt.status
   cat /root/.config/rclone/rclone.conf | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gdrive.status
