@@ -1,4 +1,4 @@
-gc#!/bin/bash
+#!/bin/bash
 #
 # Title:      PlexGuide (Reference Title File)
 # Author(s):  Admin9705
