@@ -34,7 +34,7 @@ readrcloneconfig () {
       echo stage2
       chmod 775 /root/.config/rclone/rclone.conf
       chown -R 1000:1000 /root/.config/rclone/rclone.conf
-      sudo /root/.config/rclone/rclone.conf /opt/appdata/plexguide/rclone.conf; fi; fi
+      sudo /root/.config/rclone/rclone.conf /opt/appdata/plexguide/ fi; fi
   touch /opt/appdata/plexguide/rclone.conf
   chmod 775 /opt/appdata/plexguide/rclone.conf
   chown -R 1000:1000 /opt/appdata/plexguide/rclone.conf
