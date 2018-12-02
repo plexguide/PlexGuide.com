@@ -153,6 +153,7 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then keymenu && question1;
 elif [ "$typed" == "3" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
+    ufsbuilder
     echo "tdrive" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
     ansible-playbook /opt/plexguide/menu/pgmove/tdrive.yml
@@ -160,6 +161,7 @@ elif [ "$typed" == "3" ]; then removemounts;
     ansible-playbook /opt/plexguide/menu/pgmove/pgblitz.yml
     question1
   elif [ "$dstatus" == "2" ]; then
+    ufsbuilder
     echo "tcrypt" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
     ansible-playbook /opt/plexguide/menu/pgmove/tdrive.yml
@@ -175,4 +177,8 @@ else
 fi
 }
 
+gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+variable /var/plexguide/project.final "[NOT-SET]"
+variable /var/plexguide/project.keycount "0"
+variable /var/plexguide/project.deployed "no"
 question1

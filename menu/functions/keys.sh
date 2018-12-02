@@ -226,3 +226,31 @@ echo
 read -p '🌍 Process Complete | Press [ENTER] ' typed2 < /dev/tty
 
 }
+ufsbuilder () {
+  downloadpath=$(cat /var/plexguide/server.hd.path)
+  ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
+  rm -rf /tmp/pg.gdsa.build 1>/dev/null 2>&1
+  #echo -n "/mnt/tdrive=RO:" > /tmp/pg.gdsa.build
+  #echo -n "/mnt/gdrive=RO:" >> /tmp/pg.gdsa.build
+  ##### Encryption Portion ### Start
+  #tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
+  #gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
+
+  #if [ "$tcrypt" == "[tcrypt]" ]  && [ "$gcrypt" == "[gcrypt]" ]; then
+  #    encryption="on"
+  #  else
+      encryption="off"
+  #fi
+
+  #if [ "$encryption" == "on" ]; then
+  #  echo -n "/mnt/gcrypt=RO:" >> /tmp/pg.gdsa.build
+  #fi
+  ##### Encryption Portion ### END
+
+  while read p; do
+  mkdir -p $downloadpath/pgblitz/$p
+  echo -n "$downloadpath/pgblitz/$p=RO:" >> /tmp/pg.gdsa.build
+  done </tmp/pg.gdsa.ufs
+
+  builder=$(cat /tmp/pg.gdsa.build)
+  }
