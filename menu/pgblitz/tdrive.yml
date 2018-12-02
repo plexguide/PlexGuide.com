@@ -12,7 +12,7 @@
 
   - name: Install TDRIVE Service
     template:
-      src: /opt/plexguide/menu/pgmove/templates/tdrive.service
+      src: /opt/plexguide/menu/pgblitz/templates/tdrive.service
       dest: /etc/systemd/system/tdrive.service
       force: yes
     ignore_errors: yes

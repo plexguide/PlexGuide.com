@@ -155,19 +155,19 @@ elif [ "$typed" == "3" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
     ufsbuilder
     echo "tdrive" > /var/plexguide/rclone/deploy.version
-    ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/tdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/unionfs.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/pgblitz.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/gdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/tdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/unionfs.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
     question1
   elif [ "$dstatus" == "2" ]; then
     ufsbuilder
     echo "tcrypt" > /var/plexguide/rclone/deploy.version
-    ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/tdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/tcrypt.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/unionfs.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/pgblitz.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/gdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/tdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/tcrypt.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/unionfs.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
     question1
   else question1; fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;

@@ -12,7 +12,7 @@
 
   - name: Install UNIONFS Service
     template:
-      src: /opt/plexguide/menu/pgmove/templates/unionfs.service
+      src: /opt/plexguide/menu/pgblitz/templates/unionfs.service
       dest: /etc/systemd/system/unionfs.service
       force: yes
 
