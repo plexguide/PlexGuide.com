@@ -15,13 +15,15 @@ defaultvars () {
 }
 
 keymenu () {
+account=$(cat /var/plexguide/project.account)
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Blitz Key Generation             📓 Reference: pgblitz.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Log-In to Your Account
+1 - Log-In to Your Account      [$account]
 2 - Build a New Project
 3 - Establish Project ID
 4 - Create/Remake Service Keys
