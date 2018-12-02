@@ -48,7 +48,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 SYSTEM MESSAGE: Prior Service Accounts Deleted
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
   sleep 2
 else
@@ -57,7 +56,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 SYSTEM MESSAGE: No Prior Service Keys!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
   sleep 2
 fi
@@ -82,7 +80,7 @@ Keys listed above are the ones in current use! Proceeding onward will
 delete the current keys and will generate new ones!
 
 EOF
-read -p '🌍 Build New Service Keys? | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
 
 if [[ "$typed" == "N" || "$typed" == "n" ]]; then keymenu;
 elif [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2;
