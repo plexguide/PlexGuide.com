@@ -15,6 +15,8 @@ defaultvars () {
 }
 
 keymenu () {
+
+gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
 account=$(cat /var/plexguide/project.account)
 
 tee <<-EOF
