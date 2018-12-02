@@ -28,8 +28,10 @@ removemounts () {
 }
 
 readrcloneconfig () {
-  file="/opt/plexguide/rclone.conf"; if [ ! -e "$file" ]; then
+  file="/opt/appdata/plexguide/rclone.conf"; if [ ! -e "$file" ]; then
+  echo stage1
     file="/root/.config/rclone/rclone.conf"; if [ -e "$file" ]; then
+      echo stage2
       cp /root/.config/rclone/rclone.conf /opt/plexguide/rclone.conf; fi; fi
   touch /opt/appdata/plexguide/rclone.conf
   chown -R 1000:1000 /opt/plexguide/rclone.conf
