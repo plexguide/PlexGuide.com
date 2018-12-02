@@ -76,7 +76,7 @@ elif [ "$typed" == "3" ]; then removemounts;
     question
   elif [ "$dstatus" == "2" ]; then
     echo '/mnt/gcrypt=RO:/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
-    ansible-playbook /opt/plexguide/menu/pgmove/pgmove.yml--tags menu-move
+    ansible-playbook /opt/plexguide/menu/pgmove/pgmove.yml --tags menu-move
     quesiton1
   else question1; fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
