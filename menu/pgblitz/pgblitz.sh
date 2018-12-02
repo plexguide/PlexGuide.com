@@ -28,7 +28,6 @@ $projectlist
 
 EOF
 
-read -p '🌍 Type EXACT Project Name to Utlize | Press [ENTER]: ' typed < /dev/tty
 }
 
 keymenu () {
@@ -71,6 +70,7 @@ EOF
     keymenu
 elif [ "$typed" == "3" ]; then
 projectid
+read -p '🌍 Type EXACT Project Name to Utilize | Press [ENTER]: ' typed < /dev/tty
 list=$(cat /var/plexguide/project.cut | grep $typed)
 if [ "$list" == "" ]; then badinput && projectid; fi
   keymenu
