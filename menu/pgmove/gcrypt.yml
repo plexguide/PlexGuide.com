@@ -15,8 +15,6 @@
       src: /opt/plexguide/menu/pgmove/templates/gcrypt.service
       dest: /etc/systemd/system/gcrypt.service
       force: yes
-    ignore_errors: yes
 
   - name: Start GCrypt SERVICE
     systemd: state=started name=gcrypt daemon_reload=yes enabled=yes
-    ignore_errors: yes
