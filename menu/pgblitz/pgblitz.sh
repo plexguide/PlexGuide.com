@@ -21,7 +21,7 @@ projectlist=$(cat /var/plexguide/project.cut)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Projects Interface Menu              📓 Reference: project.plexguide.com
+🚀 Projects Interface Menu            📓 Reference: project.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 $projectlist
@@ -32,11 +32,25 @@ read -p '🌍 Type EXACT Project Name to Utilize | Press [ENTER]: ' typed2 < /de
   list=$(cat /var/plexguide/project.cut | grep $typed2)
   if [ "$list" == "" ]; then
   badinput && projectid; fi
+  gcloud config set project $typed2
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Enabling Your API                  📓 Reference: project.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  gcloud services enable drive.googleapis.com --project $type
+  $typed2 > /var/plexguide/project.final
+echo
+read -p '🌍 Process Complete | Press [ENTER]: ' typed2 < /dev/tty
+
 }
 
 keymenu () {
 gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
 account=$(cat /var/plexguide/project.account)
+finalprojectid=$(cat /var/plexguide/project.final)
 
 tee <<-EOF
 
@@ -46,7 +60,7 @@ tee <<-EOF
 
 1 - Log-In to Your Account      $account
 2 - Build a New Project
-3 - Establish Project ID
+3 - Establish Project ID        $finalprojectid
 4 - Create/Remake Service Keys
 Z - Exit
 
@@ -66,7 +80,7 @@ elif [ "$typed" == "2" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 ID: $projectid ~ Created            📓 Reference: project.plexguide.com
+🚀 ID: $projectid ~ Created
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -82,7 +96,7 @@ badmenu () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Welcome to PG Blitz                  📓 Reference: pgblitz.plexguide.com
+🚀 Welcome to PG Blitz                 📓 Reference: pgblitz.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Basic Information
 
