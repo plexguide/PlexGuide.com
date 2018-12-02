@@ -41,8 +41,8 @@ question1 () {
 bwrecall
 readrcloneconfig
 
-if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="\ 3 - Deploy PG Drives : GDrive" && dstatus="1";
-elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="\ 3 - Deploy PG Drives : GDrive /w Encryption" && dstatus="2";
+if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="3 - Deploy PG Drives : GDrive" && dstatus="1";
+elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="3 - Deploy PG Drives : GDrive /w Encryption" && dstatus="2";
 else message="" && dstatus="0"; fi
 
 # Menu Interface
@@ -57,7 +57,8 @@ Utilizes Google Drive only and limitation is a 750GB daily upload limit.
 10MB Throttle is the safe limit. Follow reference above for more info.
 
 1 - Configure RClone
-2 - Configure Throttle: $speed MB$message
+2 - Configure Throttle: $speed MB
+$message
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
