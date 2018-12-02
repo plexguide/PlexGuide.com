@@ -49,7 +49,7 @@ else message="Cannot Deploy PG Move! Configure RClone First!" && dstatus="0"; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀  Welcome to PG Move                     📓 Reference: move.plexguide.com
+🚀 Welcome to PG Move                     📓 Reference: move.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Basic Information
 
