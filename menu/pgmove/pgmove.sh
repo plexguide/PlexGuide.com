@@ -71,13 +71,13 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then bandwidth && question1;
 elif [ "$typed" == "3" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
-    echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
+    echo "gdrive" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
     ansible-playbook /opt/plexguide/menu/pgmove/unionfs.yml
     ansible-playbook /opt/plexguide/menu/pgmove/move.yml
     question1
   elif [ "$dstatus" == "2" ]; then
-    echo '/mnt/gcrypt=RO:/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
+    echo "gcrypt" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
     ansible-playbook /opt/plexguide/menu/pgmove/gcrypt.yml
     ansible-playbook /opt/plexguide/menu/pgmove/unionfs.yml
