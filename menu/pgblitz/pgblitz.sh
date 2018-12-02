@@ -39,6 +39,22 @@ if [ "$typed" == "1" ]; then
   gcloud auth login
   echo "[NOT SET]" > /var/plexguide/project.final
   keymenu
+if [ "$typed" == "2" ]; then
+  date=`date +%m%d`
+  rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
+  projectid="pg-$date-$rand"
+  gcloud projects create $projectid
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Project ID: $projectid ~ Created
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
+  keymenu
+
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput && keymenu; fi
 }
