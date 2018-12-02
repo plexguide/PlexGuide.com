@@ -33,7 +33,7 @@ readrcloneconfig () {
   mkdir -p /var/plexguide/rclone/
 
   gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 2 gdrive| grep token)
-  if [ "$gdcheck" != "" ]; then "good" > /var/plexguide/rclone/gdrive.status && gdstatus=good; fi
+  if [ "$gdcheck" != "" ]; then echo "good" > /var/plexguide/rclone/gdrive.status && gdstatus="good"; fi
 
   #cat /opt/appdata/plexguide/rclone.conf | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gdrive.status
   #cat /opt/appdata/plexguide/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gcrypt.status
