@@ -91,7 +91,6 @@ elif [ "$typed" == "3" ]; then
     removemounts
     if [ "$configure" == "GDrive" ]; then
     echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
-
     ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted
     question
     elif [ "$configure" == "GDrive /w GCrypt" ]; then
