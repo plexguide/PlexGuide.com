@@ -151,7 +151,8 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
 elif [ "$typed" == "2" ]; then keymenu && question1;
-elif [ "$typed" == "3" ]; then removemounts;
+elif [ "$typed" == "3" ]; then keymenu && question1;
+elif [ "$typed" == "4" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
     ufsbuilder
     echo "tdrive" > /var/plexguide/rclone/deploy.version
