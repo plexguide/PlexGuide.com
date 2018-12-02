@@ -36,14 +36,14 @@ read -p '🌍 Type EXACT Project Name to Utilize | Press [ENTER]: ' typed2 < /de
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Enabling Your API                  📓 Reference: project.plexguide.com
+🚀 Standby - Enabling Your API
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
   gcloud services enable drive.googleapis.com --project $typed2
-  $typed2 > /var/plexguide/project.final
+  echo $typed2 > /var/plexguide/project.final
 echo
-read -p '🌍 Process Complete | Press [ENTER]: ' typed2 < /dev/tty
+read -p '🌍 Process Complete | Press [ENTER] ' typed2 < /dev/tty
 
 }
 
