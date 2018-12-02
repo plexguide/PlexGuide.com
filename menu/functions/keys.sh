@@ -143,9 +143,11 @@ deploykeys2 () {
   if [ "$choicedel" != "" ]; then
   echo "Deleting All Previous Keys!"
   echo ""
+  
     while read p; do
     gcloud iam service-accounts delete $p --quiet
     done </var/plexguide/gdsa.cut
+
   rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
 tee <<-EOF
 
@@ -176,8 +178,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-currentkeys=$(gcloud iam service-accounts list --filter="GDSA")
 gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
+cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+cat /var/plexguide/gdsa.cut
 tee <<-EOF
 
 Keys listed above are the ones in current use! Proceeding onward will
@@ -189,7 +192,6 @@ read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
 if [[ "$typed" == "N" || "$typed" == "n" ]]; then keymenu;
 elif [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2;
 else badinput && deploykeys; fi
-
 }
 
 projectid () {
