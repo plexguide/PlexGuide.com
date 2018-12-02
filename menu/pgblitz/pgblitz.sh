@@ -60,19 +60,7 @@ $message2
 EOF
 }
 
-bwpassed () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PASSED: Bandwidth Limit Set!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 3
-bwrecall && question1
-}
-
 question1 () {
-bwrecall
 readrcloneconfig
 
 if [ "$gdstatus" == "bad" ]; then badmenu; else goodmenu; fi

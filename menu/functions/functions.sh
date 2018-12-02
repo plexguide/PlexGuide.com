@@ -32,13 +32,20 @@ readrcloneconfig () {
   chown -R 1000:1000 /opt/appdata/plexguide/rclone.conf
   mkdir -p /var/plexguide/rclone/
 
-  gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 2 gdrive| grep token)
+  gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 2 gdrive | grep token)
   if [ "$gdcheck" != "" ]; then echo "good" > /var/plexguide/rclone/gdrive.status && gdstatus="good";
   else echo "bad" > /var/plexguide/rclone/gdrive.status && gdstatus="bad"; fi
 
   gccheck=$(cat /opt/appdata/plexguide/rclone.conf | grep "remote = gdrive:/encrypt")
   if [ "$gccheck" != "" ]; then echo "good" > /var/plexguide/rclone/gcrypt.status && gcstatus="good";
   else echo "bad" > /var/plexguide/rclone/gcrypt.status && gcstatus="bad"; fi
+
+  tdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 2 tdrive | grep token)
+  if [ "$tdcheck" != "" ]; then
+  echo "good" > /var/plexguide/rclone/tdrive.status && tdstatus="good"
+  tdcheck2=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 3 tdrive | grep team_drive)
+    if [ "$tdcheck2" == "" ]; then echo "semi" > /var/plexguide/rclone/tdrive.status && tdstatus="semi"; fi
+  else echo "bad" > /var/plexguide/rclone/tdrive.status && tdstatus="bad"; fi
 }
 
 rcloneconfig () {
