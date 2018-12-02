@@ -8,74 +8,7 @@
 
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
-
-defaultvars () {
-  touch /var/plexguide/rclone.gdrive
-  touch /var/plexguide/rclone.gcrypt
-}
-
-deploykeys2 () {
-a=b
-}
-
-deploykeys () {
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 ID: PG Key Generation Information
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-currentkeys=$(gcloud iam service-accounts list --filter="GDSA")
-gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
-cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
-tee <<-EOF
-
-Keys listed above are the ones in current use! Proceeding onward will
-delete the current keys and will generate new ones!
-
-EOF
-read -p '🌍 Build New Service Keys? | Press [ENTER]: ' typed < /dev/tty
-
-if [[ "$typed" == "N" || "$typed" == "n" ]]; then keymenu;
-elif [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2;
-else badinput && deploykeys; fi
-
-}
-
-projectid () {
-gcloud projects list > /var/plexguide/projects.list
-cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
-projectlist=$(cat /var/plexguide/project.cut)
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Projects Interface Menu            📓 Reference: project.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-$projectlist
-
-EOF
-
-read -p '🌍 Type EXACT Project Name to Utilize | Press [ENTER]: ' typed2 < /dev/tty
-  list=$(cat /var/plexguide/project.cut | grep $typed2)
-  if [ "$list" == "" ]; then
-  badinput && projectid; fi
-  gcloud config set project $typed2
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Standby - Enabling Your API
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-  gcloud services enable drive.googleapis.com --project $typed2
-  echo $typed2 > /var/plexguide/project.final
-echo
-read -p '🌍 Process Complete | Press [ENTER] ' typed2 < /dev/tty
-
-}
+source /opt/plexguide/menu/functions/keys.sh
 
 keymenu () {
 gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
