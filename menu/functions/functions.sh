@@ -29,12 +29,13 @@ removemounts () {
 
 readrcloneconfig () {
   touch /root/.config/rclone/rclone.conf
-  cat /root/.config/rclone/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gcrypt
-  cat /root/.config/rclone/rclone.conf | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
-  cat /root/.config/rclone/rclone.conf | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive
-  cat /root/.config/rclone/rclone.conf | grep 'tcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tcrypt
-  gdrive=$(cat /var/plexguide/rclone.gdrive)
-  gcrypt=$(cat /var/plexguide/rclone.gcrypt)
-  tdrive=$(cat /var/plexguide/rclone.tdrive)
-  tcrypt=$(cat /var/plexguide/rclone.tcrypt)
+  mkdir -p /var/plexguide/rclone/
+  cat /root/.config/rclone/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gcrypt.status
+  cat /root/.config/rclone/rclone.conf | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gdrive.status
+  cat /root/.config/rclone/rclone.conf | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone/tdrive.status
+  cat /root/.config/rclone/rclone.conf | grep 'tcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/tcrypt.status
+  gdrive=$(cat /var/plexguide/rclone/gdrive.status)
+  gcrypt=$(cat /var/plexguide/rclone/gdrive.status)
+  tdrive=$(cat /var/plexguide/rclone/tdrive.status)
+  tcrypt=$(cat /var/plexguide/rclone/tcrypt.status)
 }
