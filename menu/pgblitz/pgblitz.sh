@@ -25,7 +25,7 @@ tee <<-EOF
 Utilizes Team Drives and the deployment is semi-complicated. If uploading
 less than 750GB per day, utilize PG Move! Good luck!
 
-NOTE: GDrive Must Be Configured (to allow backups of your apps)
+NOTE: GDrive Must Be Configured (to allow backups of your apps )
 
 1 - Configure RClone
 Z - Exit
