@@ -75,8 +75,7 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     echo ""
-
-    rclonestage
+    readrcloneconfig
     question1
 elif [ "$typed" == "2" ]; then
     bandwidth
