@@ -60,7 +60,7 @@ echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
 echo "12" > /var/plexguide/pg.hetzner
 echo "1" > /var/plexguide/pg.amazonaws
-echo "7.2" > /var/plexguide/pg.verionid
+echo "7.3" > /var/plexguide/pg.verionid
 
 # Declare Variables Vital for Operations
 bash /opt/plexguide/install/declare.sh
