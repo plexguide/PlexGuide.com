@@ -31,7 +31,10 @@ EOF
 
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
-if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
+if [ "$typed" == "1" ]; then
+  gcloud auth login
+  echo "[NOT SET]" > /var/plexguide/project.final
+  keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput && keymenu; fi
 }
