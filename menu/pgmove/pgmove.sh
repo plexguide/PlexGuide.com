@@ -60,10 +60,10 @@ tee <<-EOF
 📂 Basic Information
 
 Utilizes Google Drive only and limitation is a 750GB daily upload limit.
-10MB BWLimit is the safe limit. Follow reference above for more info.
+10MB Throttle is the safe limit. Follow reference above for more info.
 
-1 - Configure RClone : $configure
-2 - Configure BWLimit: $speed MB
+1 - Configure RClone  : $configure
+2 - Configure Throttle: $speed MB
 3 - $message
 Z - Exit
 
@@ -75,7 +75,7 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     echo ""
-    rclone config --config /opt/appdata/plexguide/rclone.conf
+
     rclonestage
     question1
 elif [ "$typed" == "2" ]; then

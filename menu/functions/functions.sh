@@ -28,7 +28,11 @@ removemounts () {
 }
 
 readrcloneconfig () {
-  #touch /root/.config/rclone/rclone.conf
+  file="/opt/plexguide/rclone.conf"; if [ ! -e "$file" ]; then
+    file="/opt/plexguide/rclone.conf"; if [ -e "$file" ]; then
+      cp /root/.config/rclone/rclone.conf /opt/plexguide/rclone.conf; fi; fi
+  touch /opt/plexguide/rclone.conf
+  chown -R 1000:1000 /opt/plexguide/rclone.conf
   mkdir -p /var/plexguide/rclone/
   cat /opt/appdata/plexguide/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gcrypt.status
   cat /opt/appdata/plexguide/rclone.conf | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gdrive.status
@@ -38,4 +42,9 @@ readrcloneconfig () {
   gcrypt=$(cat /var/plexguide/rclone/gdrive.status)
   tdrive=$(cat /var/plexguide/rclone/tdrive.status)
   tcrypt=$(cat /var/plexguide/rclone/tcrypt.status)
+}
+
+rcloneconfig () {
+
+rclone config --config /opt/appdata/plexguide/rclone.conf
 }
