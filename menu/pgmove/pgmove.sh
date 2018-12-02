@@ -73,15 +73,9 @@ EOF
 # Standby
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then
-    echo ""
-    readrcloneconfig
-    question1
-elif [ "$typed" == "2" ]; then
-    bandwidth
-    question1
-elif [ "$typed" == "3" ]; then
-    removemounts
+  if [ "$typed" == "1" ]; then readrcloneconfig && rcloneconfig && question1;
+elif [ "$typed" == "2" ]; then bandwidth && question1;
+elif [ "$typed" == "3" ]; then removemounts;
     if [ "$configure" == "GDrive" ]; then
     echo '/mnt/gdrive=RO:' > /var/plexguide/unionfs.pgpath
     ansible-playbook /opt/plexguide/pg.yml --tags menu-move --skip-tags encrypted
