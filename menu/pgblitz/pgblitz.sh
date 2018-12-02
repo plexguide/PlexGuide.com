@@ -54,7 +54,6 @@ EOF
   read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
     keymenu
 elif [ "$typed" == "3" ]; then
-  echo
   gcloud projects list > /var/plexguide/projects.list
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
   projectlist=$(cat /var/plexguide/project.cut)
@@ -64,13 +63,11 @@ tee <<-EOF
 🚀 Projects Interface Menu              📓 Reference: project.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Type the EXACT name of the project to utilize!
-
 $projectlist
 
 EOF
 
-read -p '🌍 Type Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Type EXACT Project Name to Utlize | Press [ENTER]: ' typed < /dev/tty
 list=$(cat /var/plexguide/project.cut | grep $typed)
 
   keymenu
