@@ -130,6 +130,19 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
 
   echo $keys > /var/plexguide/project.keycount
   echo "no" > /var/plexguide/project.deployed
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 SYSTEM MESSAGE: Key Generation Complete!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: Do not forget to use the email generator and share the emails to
+your teamdrives! If you forget, you will be wondering why stuff does not
+work!
+
+EOF
+read -p '🌍 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
 }
 
 deploykeys2 () {
