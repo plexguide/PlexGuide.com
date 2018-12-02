@@ -14,6 +14,35 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
+deploykeys2 () {
+
+}
+
+deploykeys () {
+  currentkeys=$(gcloud iam service-accounts list --filter="GDSA")
+  gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
+  cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ID: PG Key Generation Information
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+$currentkeys
+
+Keys listed above are the ones in current use! Proceeding onward will
+delete the current keys and will generate new ones!
+
+EOF
+
+read -p '🌍 Build New Service Keys? | Press [ENTER]: ' typed < /dev/tty
+
+if [[ "$typed" == "N" || "$typed" == "n" ]]; then keymenu;
+elif [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2;
+else badinput && deploykeys; fi
+
+}
+
 projectid () {
 gcloud projects list > /var/plexguide/projects.list
 cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
@@ -60,7 +89,7 @@ tee <<-EOF
 
 1 - Log-In to Your Account      $account
 2 - Build a New Project
-3 - Establish Project ID        $finalprojectid
+3 - Establish Project ID        [$finalprojectid]
 4 - Create/Remake Service Keys
 Z - Exit
 
@@ -87,8 +116,15 @@ EOF
   read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
     keymenu
 elif [ "$typed" == "3" ]; then
+
 projectid
 keymenu
+
+elif [ "$typed" == "4" ]; then
+
+deploykeys
+keymenu
+
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1; else badinput && keymenu; fi
 }
 
