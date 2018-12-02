@@ -96,10 +96,6 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
   rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
 
   ## purpose of the rewrite is to save gdrive and tdrive info and toss old GDSAs
-  file="/opt/appdata/plexguide/rclone.conf"
-    if [ -e "$file" ]; then
-      touch /opt/appdata/plexguide/rclone.conf
-    else
       cat /opt/appdata/plexguide/rclone.conf | grep -w tdrive -A 9 > /opt/appdata/plexguide/tdrive.info
       cat /opt/appdata/plexguide/rclone.conf | grep -w gdrive -A 8 > /opt/appdata/plexguide/gdrive.info
       rm -rf /opt/appdata/plexguide/rclone.conf
@@ -107,7 +103,6 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
       echo "" >> /opt/appdata/plexguide/rclone.conf
       cat /opt/appdata/plexguide/gdrive.info >> /opt/appdata/plexguide/rclone.conf
       cat /opt/appdata/plexguide/tdrive.info >> /opt/appdata/plexguide/rclone.conf
-    fi
 
     while [ "$count" != "$keys" ]; do
     ((count++))
@@ -132,7 +127,6 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
   echo "no" > /var/plexguide/project.deployed
 
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 SYSTEM MESSAGE: Key Generation Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
