@@ -44,17 +44,36 @@ elif [ "$typed" == "2" ]; then
   rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
   projectid="pg-$date-$rand"
   gcloud projects create $projectid
-
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Project ID: $projectid ~ Created
+🚀 ID: $projectid ~ Created            📓 Reference: project.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
-  keymenu
+  read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
+    keymenu
+elif [ "$typed" == "3" ]; then
+  echo
+  gcloud projects list > /var/plexguide/projects.list
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
+  projectlist=$(cat /var/plexguide/project.cut)
+tee <<-EOF
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Projects Interface Menu              📓 Reference: project.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Type the EXACT name of the project to utilize!
+
+$projectlist
+
+EOF
+
+read -p '🌍 Type Info | Press [ENTER]: ' typed < /dev/tty
+list=$(cat /var/plexguide/project.cut | grep $typed)
+
+  keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput && keymenu; fi
 }
