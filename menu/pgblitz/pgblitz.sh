@@ -19,22 +19,23 @@ a=b
 }
 
 deploykeys () {
-  currentkeys=$(gcloud iam service-accounts list --filter="GDSA")
-  gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
-  cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 ID: PG Key Generation Information
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-$currentkeys
+EOF
+currentkeys=$(gcloud iam service-accounts list --filter="GDSA")
+gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
+cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+tee <<-EOF
 
 Keys listed above are the ones in current use! Proceeding onward will
 delete the current keys and will generate new ones!
 
 EOF
-
 read -p '🌍 Build New Service Keys? | Press [ENTER]: ' typed < /dev/tty
 
 if [[ "$typed" == "N" || "$typed" == "n" ]]; then keymenu;
