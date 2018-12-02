@@ -75,7 +75,7 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     echo ""
-    rclone config
+    rclone config --config /opt/appdata/plexguide/rclone.conf
     rclonestage
     question1
 elif [ "$typed" == "2" ]; then
