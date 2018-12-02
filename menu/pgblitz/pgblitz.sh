@@ -70,9 +70,10 @@ EOF
     keymenu
 elif [ "$typed" == "3" ]; then
 projectid
-read -p '🌍 Type EXACT Project Name to Utilize | Press [ENTER]: ' typed < /dev/tty
-list=$(cat /var/plexguide/project.cut | grep $typed)
-if [ "$list" == "" ]; then badinput && projectid; fi
+read -p '🌍 Type EXACT Project Name to Utilize | Press [ENTER]: ' typed2 < /dev/tty
+list=$(cat /var/plexguide/project.cut | grep $typed2)
+if [ "$list" == "" ]; then
+  badinput && projectid fi
   keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput && keymenu; fi
