@@ -28,17 +28,7 @@ removemounts () {
 }
 
 readrcloneconfig () {
-  file="/opt/appdata/plexguide/rclone.conf"; if [ ! -e "$file" ]; then
-  echo stage1
-    file="/root/.config/rclone/rclone.conf"; if [ -e "$file" ]; then
-      echo stage2
-      chmod 775 /root/.config/rclone/rclone.conf
-      chown -R 1000:1000 /root/.config/rclone/rclone.conf
-      sudo /root/.config/rclone/rclone.conf /opt/appdata/plexguide/
-    fi
-  fi
   touch /opt/appdata/plexguide/rclone.conf
-  chmod 775 /opt/appdata/plexguide/rclone.conf
   chown -R 1000:1000 /opt/appdata/plexguide/rclone.conf
   mkdir -p /var/plexguide/rclone/
   cat /opt/appdata/plexguide/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gcrypt.status
