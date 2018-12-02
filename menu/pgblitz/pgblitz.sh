@@ -143,7 +143,8 @@ message="NOTE: TDrive is not setup! Required for PGBlitz's upload configuration!
 badtdrive
 fi
 
-if [[ "$tdstatus" == "good" && "$gdstatus" == "good" ]]; then goodmenu; fi
+# Reminder you'll need one for gcrypt and tcrypt
+if [[ "$tdstatus" == "good" && "$gdstatus" == "good" ]]; then dstatus=1 && goodmenu; fi
 
 # Standby
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
@@ -152,17 +153,19 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then keymenu && question1;
 elif [ "$typed" == "3" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
-    echo "gdrive" > /var/plexguide/rclone/deploy.version
+    echo "tdrive" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgmove/tdrive.yml
     ansible-playbook /opt/plexguide/menu/pgmove/unionfs.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/move.yml
+    ansible-playbook /opt/plexguide/menu/pgmove/pgblitz.yml
     question1
   elif [ "$dstatus" == "2" ]; then
-    echo "gcrypt" > /var/plexguide/rclone/deploy.version
+    echo "tcrypt" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/gcrypt.yml
+    ansible-playbook /opt/plexguide/menu/pgmove/tdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgmove/tcrypt.yml
     ansible-playbook /opt/plexguide/menu/pgmove/unionfs.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/move.yml
+    ansible-playbook /opt/plexguide/menu/pgmove/pgblitz.yml
     question1
   else question1; fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
