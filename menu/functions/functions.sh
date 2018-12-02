@@ -31,12 +31,12 @@ readrcloneconfig () {
   touch /opt/appdata/plexguide/rclone.conf
   chown -R 1000:1000 /opt/appdata/plexguide/rclone.conf
   mkdir -p /var/plexguide/rclone/
-  cat /opt/appdata/plexguide/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gcrypt.status
   cat /opt/appdata/plexguide/rclone.conf | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gdrive.status
+  cat /opt/appdata/plexguide/rclone.conf | grep 'gcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/gcrypt.status
   cat /opt/appdata/plexguide/rclone.conf | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone/tdrive.status
   cat /opt/appdata/plexguide/rclone.conf | grep 'tcrypt' | head -n1 | cut -b1-8 > /var/plexguide/rclone/tcrypt.status
   gdrive=$(cat /var/plexguide/rclone/gdrive.status)
-  gcrypt=$(cat /var/plexguide/rclone/gdrive.status)
+  gcrypt=$(cat /var/plexguide/rclone/gcrypt.status)
   tdrive=$(cat /var/plexguide/rclone/tdrive.status)
   tcrypt=$(cat /var/plexguide/rclone/tcrypt.status)
 }
