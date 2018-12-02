@@ -15,7 +15,7 @@ do
 ## Sync, Sleep 2 Minutes, Repeat. BWLIMIT 9 Prevents Google 750GB Google Upload Ban
 rclone move --config /opt/appdata/plexguide/rclone.conf --bwlimit {{bandwidth.stdout}}M \
   --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
-  --exclude=".unionfs-fuse/**" --checkers=16 --max-size 99G --log-file=/opt/appdata/plexguide/rclone
+  --exclude=".unionfs-fuse/**" --checkers=16 --max-size 99G --log-file=/opt/appdata/plexguide/rclone \
   --log-level INFO --stats 5s /mnt/move {{ver.stdout}}:/
 sleep 30
 # Remove empty directories (MrWednesday)
