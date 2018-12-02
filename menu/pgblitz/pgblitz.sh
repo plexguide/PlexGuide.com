@@ -20,13 +20,16 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Blitz Key Generation              📓 Reference: pgblitz.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
 
 1 - Log-In to Your Account
 2 - Build a New Project
 3 - Establish Project ID
 4 - Create/Remake Service Keys
 Z - Exit
+
+EOF
+
+read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
