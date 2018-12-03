@@ -12,7 +12,7 @@ serverid=$(cat /var/plexguide/pg.serverid)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Messasge: Backing Up to GDrive - Server ID
+🚀 System Messasge: Backing Up to GDrive - $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -26,4 +26,28 @@ tee <<-EOF
 
 EOF
 read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+}
+
+keyrestore () {
+
+serverid=$(cat /var/plexguide/pg.serverid)
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Messasge: Restoring Keys - $serverid
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+rclone copy gdrive:/plexguide/backup/keys/$serverid/conf /opt/appdata/plexguide/rclone.conf  -v --checksum --drive-chunk-size=64M
+rclone copy gdrive:/plexguide/backup/keys/$serverid/keys /opt/appdata/pgblitz/keys/processed/  -v --checksum --drive-chunk-size=64M
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Messasge: Backup Complete!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+
 }
