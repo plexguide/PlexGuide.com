@@ -24,10 +24,10 @@ PLEASE STANDBY!
 EOF
 
 # Standby
-sleep 5
+sleep 4
 
 # Execute Ansible Function
-ansible-playbook /opt/plexguide/menu/interface/alias/main.yml
+ansible-playbook /opt/plexguide/menu/alias/alias.yml
 
 # Prevents From Repeating
 cat /var/plexguide/pg.alias > /var/plexguide/pg.alias.stored

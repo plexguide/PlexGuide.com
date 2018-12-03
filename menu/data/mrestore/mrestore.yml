@@ -51,7 +51,7 @@
 
     - name: "Downloading from Google Drive - {{program_var.stdout}} - Size: {{program_size.stdout}} MB"
       shell: "rclone copy --tpslimit 6 \
-              --config /root/.config/rclone/rclone.conf \
+              --config /opt/appdata/plexguide/rclone.conf \
               --drive-chunk-size=64M \
               gdrive:/plexguide/backup/{{restore_id.stdout}}/{{program_var.stdout}} {{tarlocation.stdout}}"
 

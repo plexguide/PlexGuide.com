@@ -25,10 +25,10 @@ while [ "$menu" != "break" ]; do
   echo 'INFO - @Unencrypted PG Blitz Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
 
   #### RECALL VARIABLES START
-  tdrive=$(grep "tdrive" /root/.config/rclone/rclone.conf)
-  gdrive=$(grep "gdrive" /root/.config/rclone/rclone.conf)
-  tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
-  gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
+  tdrive=$(grep "tdrive" /opt/appdata/plexguide/rclone.conf)
+  gdrive=$(grep "gdrive" /opt/appdata/plexguide/rclone.conf)
+  tcrypt=$(grep "tcrypt" /opt/appdata/plexguide/rclone.conf)
+  gcrypt=$(grep "gcrypt" /opt/appdata/plexguide/rclone.conf)
   #### RECALL VARIABLES END
 
   ##### Unencrypted Portion ### Start
@@ -235,7 +235,7 @@ if [ "$menu" == "baseline" ]; then
   sleep 2
   systemctl stop pgblitz 1>/dev/null 2>&1
   systemctl disable pgblitz 1>/dev/null 2>&1
-  rm -rf /root/.config/rclone/rclone.conf 1>/dev/null 2>&1
+  rm -rf /opt/appdata/plexguide/rclone.conf 1>/dev/null 2>&1
   rm -rf /opt/appdata/pgblitz/keys/unprocessed/* 1>/dev/null 2>&1
   rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
   rm -rf /opt/appdata/pgblitz/keys/badjson/* 1>/dev/null 2>&1

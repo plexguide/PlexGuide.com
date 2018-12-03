@@ -26,8 +26,11 @@ EOF
 # Standby
 sleep 5
 
-# Execute Ansible Function
-ansible-playbook /opt/plexguide/install/dependency.yml
+ospgversion=$(cat /var/plexguide/os.version)
+if [ "$ospgversion" == "debian" ]; then
+  ansible-playbook /opt/plexguide/install/dependencydeb.yml;
+else
+  ansible-playbook /opt/plexguide/install/dependency.yml; fi
 
 # Prevents From Repeating
 cat /var/plexguide/pg.dependency > /var/plexguide/pg.dependency.stored

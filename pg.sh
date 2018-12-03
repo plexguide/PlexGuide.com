@@ -8,7 +8,7 @@
 pgedition () {
   file="/var/plexguide/path.check"
   if [ ! -e "$file" ]; then touch /var/plexguide/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
-  
+
   # FOR MULTI-HD EDITION
   file="/var/plexguide/multi.unionfs"
     if [ ! -e "$file" ]; then touch /var/plexguide/multi.unionfs; fi
@@ -20,6 +20,11 @@ pgedition () {
   file="/var/plexguide/pg.serverid"
     if [ ! -e "$file" ]; then echo "[NOT-SET]" > /var/plexguide/pg.serverid; fi
 }
+
+
+ospgversion=$(cat /etc/*-release | grep Debian | grep 9)
+if [ "$ospgversion" != "" ]; then echo "debian"> /var/plexguide/os.version;
+else echo "ubuntu"> /var/plexguide/os.version; fi
 
 echo "11" > /var/plexguide/pg.python
 bash /opt/plexguide/install/python.sh
@@ -34,7 +39,7 @@ file="/var/plexguide/server.hd.path"
 if [ ! -e "$file" ]; then echo "/mnt" > /var/plexguide/server.hd.path; fi
 
 # Generate Default YML
-bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
+bash /opt/plexguide/install/yml-gen.sh
 # Ensure Default Folder Is Created
 mkdir -p /var/plexguide
 
@@ -55,10 +60,10 @@ echo "1" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
 echo "12" > /var/plexguide/pg.hetzner
 echo "1" > /var/plexguide/pg.amazonaws
-echo "7.2" > /var/plexguide/pg.verionid
+echo "7.3" > /var/plexguide/pg.verionid
 
 # Declare Variables Vital for Operations
-bash /opt/plexguide/menu/interface/install/scripts/declare.sh
+bash /opt/plexguide/install/declare.sh
 bash /opt/plexguide/install/aptupdate.sh
 
 ######################################################## START: New Install
@@ -86,7 +91,7 @@ bash /opt/plexguide/install/serverid.sh
 bash /opt/plexguide/install/dependency.sh
 bash /opt/plexguide/install/folders.sh
 bash /opt/plexguide/install/docker.sh
-bash /opt/plexguide/menu/interface/install/scripts/docstart.sh
+bash /opt/plexguide/install/docstart.sh
 
 # Ensure Docker is Turned On!
 dstatus=$(docker ps --format '{{.Names}}' | grep "portainer")
@@ -106,7 +111,7 @@ bash /opt/plexguide/install/cleaner.sh
 bash /opt/plexguide/install/gcloud.sh
 bash /opt/plexguide/install/hetzner.sh
 
-bash /opt/plexguide/menu/interface/install/scripts/reboot.sh
+bash /opt/plexguide/install/reboot.sh
 bash /opt/plexguide/install/rclone.sh
 bash /opt/plexguide/menu/watchtower/watchtower.sh
 # END: COMMON FUNCTIONS ########################################################

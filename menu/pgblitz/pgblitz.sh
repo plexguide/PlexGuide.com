@@ -6,75 +6,187 @@
 # GNU:        General Public License v3.0
 ################################################################################
 
-# Touch Variables Incase They Do Not Exist
-touch /var/plexguide/rclone.gdrive
-touch /var/plexguide/rclone.tdrive
+# FUNCTIONS START ##############################################################
+source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/keys.sh
 
-cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive
-cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
+keymenu () {
+gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+account=$(cat /var/plexguide/project.account)
+finalprojectid=$(cat /var/plexguide/project.final)
 
-# Declare Ports State
-gdrive=$(cat /var/plexguide/rclone.gdrive)
-tdrive=$(cat /var/plexguide/rclone.tdrive)
-
-  if [ "$gdrive" != "" ] && [ "$tdrive" == "" ]; then
-  configure="GDrive"
-  message="Deploy PG Drives: GDrive"
-elif [ "$gdrive" != "" ] && [ "$tdrive" != "" ]; then
-  configure="GDrive /w tdrive"
-  message="Deploy PG Drives : GDrive /w tdrive"
-else
-  configure="Not Configured"
-  message="Unable to Deploy : RClone is Unconfigured"
-  fi
-
-# Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  Welcome to PG Blitz
+🚀 PG Blitz Key Generation             📓 Reference: pgblitz.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: Team Drives are utilized to surpass the 750 GB Daily Upload Limit
+1 - Log-In to Your Account      $account
+2 - Build a New Project
+3 - Establish Project ID        [$finalprojectid]
+4 - Create/Remake Service Keys
+Z - Exit
 
-1 - Configure RClone : $configure
-2 - Key Management   : $keys Keys Exist
-3 - E-Mail Share Gen
-4 - Deploy PBlitz
-5 - Exit
+EOF
 
-a - Download Path    : $path
-b - Disable PG Blitz
+read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
+
+if [ "$typed" == "1" ]; then
+  gcloud auth login
+  echo "[NOT SET]" > /var/plexguide/project.final
+  keymenu
+elif [ "$typed" == "2" ]; then
+  date=`date +%m%d`
+  rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
+  projectid="pg-$date-$rand"
+  gcloud projects create $projectid
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ID: $projectid ~ Created
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
+    keymenu
+elif [ "$typed" == "3" ]; then
+
+projectid
+keymenu
+
+elif [ "$typed" == "4" ]; then
+
+deploykeys
+keymenu
+
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1; else badinput && keymenu; fi
+}
+
+badmenu () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Welcome to PG Blitz                 📓 Reference: pgblitz.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Basic Information
+
+Utilizes Team Drives and the deployment is semi-complicated. If uploading
+less than 750GB per day, utilize PG Move! Good luck!
+
+NOTE: GDrive Must Be Configured (to backup your applications)
+
+1 - Configure RClone
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+}
 
-# Standby
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+badtdrive () {
+tee <<-EOF
 
-  if [ "$typed" == "1" ]; then
-    rclone config
-    mkdir -p /root/.config/rclone/
-    chown -R 1000:1000 /root/.config/rclone/
-    cp ~/.config/rclone/rclone.conf /root/.config/rclone/ 1>/dev/null 2>&1
-elif [ "$typed" == "2" ]; then
-  echo gcloud > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/emails.sh
-elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
-  echo no > /var/plexguide/project.deployed
-elif [ "$typed" == "5" ]; then
-  exit
-elif [ "$typed" == "a" ]; then
-  bash /opt/plexguide/menu/interface/dlpath/main.sh
-elif [ "$typed" == "b" ]; then
-  sudo systemctl stop pgblitz 1>/dev/null 2>&1
-  sudo systemctl rm pgblitz 1>/dev/null 2>&1
-else
-  bash /opt/plexguide/menu/pgblitz/pgblitz.sh
-  exit
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Welcome to PG Blitz                 📓 Reference: pgblitz.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Basic Information
+
+Utilizes Team Drives and the deployment is semi-complicated. If uploading
+less than 750GB per day, utilize PG Move! Good luck!
+
+$message
+
+1 - Configure RClone
+Z - Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+}
+
+goodmenu () {
+  if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="4 - Deploy PG Blitz: TDrive" && message2="Z - Exit" dstatus="1";
+  elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="4 - Deploy PG Blitz: TDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
+  else message="Z - Exit" message2="" && dstatus="0"; fi
+
+keys=$(cat /var/plexguide/project.keycount)
+  # Menu Interface
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Welcome to PG Blitz                  📓 Reference: pgblitz.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Basic Information
+
+Utilizes Team Drives and the deployment is semi-complicated. If uploading
+less than 750GB per day, utilize PG Move! Good luck!
+
+1 - Configure RClone
+2 - Key Management [$keys Keys Exist]
+3 - EMail Share Generator
+$message
+$message2
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+}
+
+question1 () {
+readrcloneconfig
+
+if [ "$gdstatus" == "bad" ]; then badmenu; fi
+
+if [ "$tdstatus" == "semi" ]; then
+message="NOTE: TDrive is Setup, but user failed to configure as a Team Drive! Must
+reconfigure TDrive again and say 'Yes' and select a Team Drive!"
+badtdrive
+elif [ "$tdstatus" == "bad" ]; then
+message="NOTE: TDrive is not setup! Required for PGBlitz's upload configuration!"
+badtdrive
 fi
 
-bash /opt/plexguide/menu/pgblitz/pgblitz.sh
-exit
+# Reminder you'll need one for gcrypt and tcrypt
+if [[ "$tdstatus" == "good" && "$gdstatus" == "good" ]]; then dstatus=1 && goodmenu; fi
+
+# Standby
+read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
+
+  if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
+elif [ "$typed" == "2" ]; then keymenu && question1;
+elif [ "$typed" == "3" ]; then
+bash /opt/plexguide/menu/pgblitz/emails.sh && echo
+read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
+elif [ "$typed" == "4" ]; then
+    rchecker
+    removemounts
+    if [ "$dstatus" == "1" ]; then
+    ufsbuilder
+    echo "tdrive" > /var/plexguide/rclone/deploy.version
+    ansible-playbook /opt/plexguide/menu/pgblitz/gdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/tdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/unionfs.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
+    pgbdeploy
+    question1
+  elif [ "$dstatus" == "2" ]; then
+    rchecker
+    ufsbuilder
+    echo "tcrypt" > /var/plexguide/rclone/deploy.version
+    ansible-playbook /opt/plexguide/menu/pgblitz/gdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/tdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/tcrypt.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/unionfs.yml
+    ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
+    pgbdeploy
+    question1
+  else question1; fi
+elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
+else
+  badinput
+  question1
+fi
+}
+
+gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+variable /var/plexguide/project.final "[NOT-SET]"
+variable /var/plexguide/project.keycount "0"
+variable /var/plexguide/project.deployed "no"
+question1

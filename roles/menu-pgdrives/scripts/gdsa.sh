@@ -18,8 +18,8 @@
 downloadpath=$(cat /var/plexguide/server.hd.path)
 tempbuild=$(cat /var/plexguide/json.tempbuild)
 path=/opt/appdata/pgblitz/keys
-rpath=/root/.config/rclone/rclone.conf
-tdrive=$( cat /root/.config/rclone/rclone.conf | grep team_drive | head -n1 )
+rpath=/opt/appdata/plexguide/rclone.conf
+tdrive=$( cat /opt/appdata/plexguide/rclone.conf | grep team_drive | head -n1 )
 tdrive="${tdrive:13}"
 ENCRYPTED="no"
 

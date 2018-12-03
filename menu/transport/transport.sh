@@ -15,7 +15,6 @@ tee <<-EOF
 
 1 - PG Move   | Unencrypt & Encrypt | 750 GB Daily Upload | Simple
 2 - PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex
-3 - PG Drives | Unencrypted         | Read Only Servers   | Simple
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -27,7 +26,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/pgmove/pgmove.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/roles/menu-pgblitz/scripts/manual.sh
+  bash /opt/plexguide/menu/pgblitz/pgblitz.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgdrives/pgdrives.sh
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
