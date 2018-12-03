@@ -158,7 +158,6 @@ elif [ "$typed" == "3" ]; then
 bash /opt/plexguide/menu/pgblitz/emails.sh && echo
 read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "4" ]; then
-elif [ "$typed" == "4" ]; then
     rchecker
     removemounts
     #if [ "$dstatus" == "1" ]; then
