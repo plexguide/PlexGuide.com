@@ -104,8 +104,8 @@ EOF
 }
 
 goodmenu () {
-  if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="4 - Deploy PG Blitz: TDrive" && message2="Z - Exit" dstatus="1";
-  elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="4 - Deploy PG Blitz: TDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
+  #if [[ "$gdstatus" == "good" && "$tdstatus" == "bad" ]]; then message="4 - Deploy PG Blitz: TDrive" && message2="Z - Exit" dstatus="1";
+  if [[ "$gdstatus" == "good" && "$tdstatus" == "good" ]]; then message="4 - Deploy PG Blitz: TDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
   else message="Z - Exit" message2="" && dstatus="0"; fi
 
 keys=$(cat /var/plexguide/project.keycount)
