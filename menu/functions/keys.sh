@@ -246,6 +246,8 @@ ufsbuilder () {
   #  echo -n "/mnt/gcrypt=RO:" >> /tmp/pg.gdsa.build
   #fi
   ##### Encryption Portion ### END
+  file="/var/plexguide/unionfs.pgpath"
+  if [ -e "$file" ]; then rm -r /var/plexguide/unionfs.pgpath && touch /var/plexguide/unionfs.pgpath; fi
 
   while read p; do
   mkdir -p $downloadpath/pgblitz/$p
