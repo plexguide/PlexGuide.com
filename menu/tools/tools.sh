@@ -104,7 +104,7 @@ elif [ "$typed" == "5" ]; then
 elif [ "$typed" == "6" ]; then
   echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "7" ]; then
-  bash /opt/plexguide/roles/menu-network/scripts/main.sh
+  bash /opt/plexguide/menu/network/network.sh
 elif [ "$typed" == "8" ]; then
   bash /opt/plexguide/menu/tshoot/tshoot.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
