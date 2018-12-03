@@ -67,7 +67,11 @@ EOF
 # Standby
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
+  if [ "$typed" == "1" ]; then
+  echo &&
+  readrcloneconfig
+  rcloneconfig
+  question1
 elif [ "$typed" == "2" ]; then bandwidth && question1;
 elif [ "$typed" == "3" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
