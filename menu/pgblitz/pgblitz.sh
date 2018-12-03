@@ -9,6 +9,7 @@
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/keys.sh
+source /opt/plexguide/menu/functions/keydata.sh
 
 keymenu () {
 gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
@@ -124,7 +125,9 @@ less than 750GB per day, utilize PG Move! Good luck!
 3 - EMail Share Generator
 $message
 $message2
-
+━━━━━━━━━━━━━━━ (NOT READY BELOW)
+A - Key Restore
+B - Key Backup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 }
