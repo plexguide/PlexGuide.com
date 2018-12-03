@@ -103,7 +103,7 @@ EOF
 }
 
 goodmenu () {
-  if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="3 - Deploy PG Blitz: TDrive" && message2="Z - Exit" dstatus="1";
+  if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="4 - Deploy PG Blitz: TDrive" && message2="Z - Exit" dstatus="1";
   elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="4 - Deploy PG Blitz: TDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
   else message="Z - Exit" message2="" && dstatus="0"; fi
 
@@ -151,7 +151,7 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
 elif [ "$typed" == "2" ]; then keymenu && question1;
-elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/pgblitz/email.sh;
+elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/pgblitz/emails.sh;
 elif [ "$typed" == "4" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
     ufsbuilder
