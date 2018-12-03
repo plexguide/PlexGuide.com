@@ -157,7 +157,7 @@ read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "4" ]; then
     rchecker
     removemounts
-    if [ "$dstatus" == "1" ]; then
+    #if [ "$dstatus" == "1" ]; then
     ufsbuilder
     echo "tdrive" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgblitz/gdrive.yml
@@ -166,18 +166,18 @@ elif [ "$typed" == "4" ]; then
     ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
     pgbdeploy
     question1
-  elif [ "$dstatus" == "2" ]; then
-    rchecker
-    ufsbuilder
-    echo "tcrypt" > /var/plexguide/rclone/deploy.version
-    ansible-playbook /opt/plexguide/menu/pgblitz/gdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgblitz/tdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgblitz/tcrypt.yml
-    ansible-playbook /opt/plexguide/menu/pgblitz/unionfs.yml
-    ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
-    pgbdeploy
-    question1
-  else question1; fi
+  #elif [ "$dstatus" == "2" ]; then
+    #rchecker
+    #ufsbuilder
+    #echo "tcrypt" > /var/plexguide/rclone/deploy.version
+    #ansible-playbook /opt/plexguide/menu/pgblitz/gdrive.yml
+    #ansible-playbook /opt/plexguide/menu/pgblitz/tdrive.yml
+    #ansible-playbook /opt/plexguide/menu/pgblitz/tcrypt.yml
+    #ansible-playbook /opt/plexguide/menu/pgblitz/unionfs.yml
+    #ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
+    #pgbdeploy
+    #question1
+  #else question1; fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else
   badinput
