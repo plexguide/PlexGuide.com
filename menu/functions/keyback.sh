@@ -5,6 +5,8 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+
+### NOTE TO DELETE KEYS THAT EXIST WHEN BACKING UP
 keybackup () {
 
 serverid=$(cat /var/plexguide/pg.serverid)
