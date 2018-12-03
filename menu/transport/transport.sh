@@ -15,7 +15,6 @@ tee <<-EOF
 
 1 - PG Move   | Unencrypt & Encrypt | 750 GB Daily Upload | Simple
 2 - PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex
-3 - PG Drives | Unencrypted         | Read Only Servers   | Simple
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
