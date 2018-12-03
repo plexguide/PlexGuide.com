@@ -154,7 +154,9 @@ elif [ "$typed" == "2" ]; then keymenu && question1;
 elif [ "$typed" == "3" ]; then
 bash /opt/plexguide/menu/pgblitz/emails.sh && echo
 read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
-elif [ "$typed" == "4" ]; then removemounts;
+elif [ "$typed" == "4" ]; then
+    rchecker
+    removemounts
     if [ "$dstatus" == "1" ]; then
     ufsbuilder
     echo "tdrive" > /var/plexguide/rclone/deploy.version
@@ -164,6 +166,7 @@ elif [ "$typed" == "4" ]; then removemounts;
     ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
     question1
   elif [ "$dstatus" == "2" ]; then
+    rchecker
     ufsbuilder
     echo "tcrypt" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgblitz/gdrive.yml
