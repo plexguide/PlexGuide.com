@@ -233,8 +233,8 @@ ufsbuilder () {
   #echo -n "/mnt/tdrive=RO:" > /tmp/pg.gdsa.build
   #echo -n "/mnt/gdrive=RO:" >> /tmp/pg.gdsa.build
   ##### Encryption Portion ### Start
-  #tcrypt=$(grep "tcrypt" /root/.config/rclone/rclone.conf)
-  #gcrypt=$(grep "gcrypt" /root/.config/rclone/rclone.conf)
+  #tcrypt=$(grep "tcrypt" /opt/appdata/plexguide/rclone.conf)
+  #gcrypt=$(grep "gcrypt" /opt/appdata/plexguide/rclone.conf)
 
   #if [ "$tcrypt" == "[tcrypt]" ]  && [ "$gcrypt" == "[gcrypt]" ]; then
   #    encryption="on"

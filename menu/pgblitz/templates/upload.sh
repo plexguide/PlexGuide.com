@@ -96,7 +96,7 @@ echo $FILEDIR > /tmp/gdsa.filedir
 echo $JSONFILE > /tmp/gdsa.jsonfile
 
 rclone moveto --tpslimit 6 --checkers=20 \
-      --config /root/.config/rclone/rclone.conf \
+      --config /opt/appdata/plexguide/rclone.conf \
       --transfers=8 \
       --log-file=$LOGFILE --log-level INFO --stats 2s \
       --drive-chunk-size=32M \

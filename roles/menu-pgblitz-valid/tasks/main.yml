@@ -18,7 +18,7 @@
 ---
   - name: Check DRIVES Service
     stat:
-      path: "/root/.config/rclone/rclone.conf"
+      path: "/opt/appdata/plexguide/rclone.conf"
     register: rclone
 
   - fail:
@@ -26,7 +26,7 @@
     when: rclone.stat.exists == False
 
   - name: GDrive Check
-    shell: grep "gdrive" /root/.config/rclone/rclone.conf
+    shell: grep "gdrive" /opt/appdata/plexguide/rclone.conf
     register: gdrive
     ignore_errors: True
 
@@ -35,7 +35,7 @@
     when: not gdrive.stdout == "[gdrive]"
 
   - name: TDrive Check
-    shell: grep "tdrive" /root/.config/rclone/rclone.conf
+    shell: grep "tdrive" /opt/appdata/plexguide/rclone.conf
     register: tdrive
     ignore_errors: True
 

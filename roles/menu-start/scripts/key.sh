@@ -71,7 +71,7 @@ bash /opt/plexguide/menu/scripts/startup/pg-auth-scan.sh &
 bash /opt/plexguide/menu/scripts/startup/certchecker.sh &
 
 # copying rclone config to user incase bonehead is not root
-cp /root/.config/rclone/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
+cp /opt/appdata/plexguide/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
 # run pg main
 bash /opt/plexguide/pg.sh

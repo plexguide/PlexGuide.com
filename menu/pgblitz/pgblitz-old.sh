@@ -10,8 +10,8 @@
 touch /var/plexguide/rclone.gdrive
 touch /var/plexguide/rclone.tdrive
 
-cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive
-cat /root/.config/rclone/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
+cat /opt/appdata/plexguide/rclone.conf 2>/dev/null | grep 'tdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.tdrive
+cat /opt/appdata/plexguide/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8 > /var/plexguide/rclone.gdrive
 
 # Declare Ports State
 gdrive=$(cat /var/plexguide/rclone.gdrive)
