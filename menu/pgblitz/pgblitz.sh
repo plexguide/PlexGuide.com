@@ -126,8 +126,8 @@ less than 750GB per day, utilize PG Move! Good luck!
 $message
 $message2
 ━━━━━━━━━━━━━━━ (NOT READY BELOW)
-A - Key Restore
-B - Key Backup
+A - Key Backup
+B - Key Restore
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 }
