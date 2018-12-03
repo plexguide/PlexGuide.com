@@ -51,3 +51,5 @@ else
   badinput1
 fi
 }
+
+question1
