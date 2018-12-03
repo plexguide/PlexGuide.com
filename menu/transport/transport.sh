@@ -5,20 +5,29 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /opt/plexguide/menu/functions/menu.sh
+
+$part1="PG Data Transport Systems 2"
+$part2="
+#1 - PG Move   | Unencrypt & Encrypt | 750 GB Daily Upload | Simple
+#2 - PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex
+#Z - Exit"
+
+menu2 $part1 $part2 
 
 # Menu Interface
-tee <<-EOF
+#tee <<-EOF
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📂  PG Data Transport Systems
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#📂  PG Data Transport Systems
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - PG Move   | Unencrypt & Encrypt | 750 GB Daily Upload | Simple
-2 - PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex
-Z - Exit
+#1 - PG Move   | Unencrypt & Encrypt | 750 GB Daily Upload | Simple
+#2 - PG Blitz  | Unencrypted         | 15  TB Daily Upload | Complex
+#Z - Exit
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#EOF
 
 # Standby
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
