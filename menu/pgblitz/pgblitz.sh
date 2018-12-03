@@ -86,7 +86,7 @@ badtdrive () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Welcome to PG Blitz                  📓 Reference: pgblitz.plexguide.com
+🚀 Welcome to PG Blitz                 📓 Reference: pgblitz.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Basic Information
 
@@ -164,6 +164,7 @@ elif [ "$typed" == "4" ]; then
     ansible-playbook /opt/plexguide/menu/pgblitz/tdrive.yml
     ansible-playbook /opt/plexguide/menu/pgblitz/unionfs.yml
     ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
+    pgbdeploy
     question1
   elif [ "$dstatus" == "2" ]; then
     rchecker
@@ -174,6 +175,7 @@ elif [ "$typed" == "4" ]; then
     ansible-playbook /opt/plexguide/menu/pgblitz/tcrypt.yml
     ansible-playbook /opt/plexguide/menu/pgblitz/unionfs.yml
     ansible-playbook /opt/plexguide/menu/pgblitz/pgblitz.yml
+    pgbdeploy
     question1
   else question1; fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
