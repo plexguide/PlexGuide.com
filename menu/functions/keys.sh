@@ -249,8 +249,7 @@ ufsbuilder () {
 
   while read p; do
   mkdir -p $downloadpath/pgblitz/$p
-  echo -n "$downloadpath/pgblitz/$p=RO:" >> /tmp/pg.gdsa.build
+  echo -n "$downloadpath/pgblitz/$p=RO:" >> /var/plexguide/unionfs.pgpath
   done </tmp/pg.gdsa.ufs
-  builder=$(cat /tmp/pg.gdsa.build)
-  echo -n "/mnt/gdrive=RO:/mnt/tdrive=RO:" >> /var/plexguide/unionfs.pgpath
+  builder=$(cat /var/plexguide/unionfs.pgpath)
   }
