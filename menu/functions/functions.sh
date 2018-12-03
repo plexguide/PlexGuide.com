@@ -29,7 +29,6 @@ removemounts () {
 
 readrcloneconfig () {
   touch /opt/appdata/plexguide/rclone.conf
-  chown -R 1000:1000 /opt/appdata/plexguide/rclone.conf
   mkdir -p /var/plexguide/rclone/
 
   gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 8 gdrive | grep token)

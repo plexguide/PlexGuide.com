@@ -23,7 +23,6 @@ PLEASE STANDBY!
 
 EOF
 
-
 # Standby
 sleep 5
 
