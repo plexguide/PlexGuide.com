@@ -9,7 +9,7 @@
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/keys.sh
-source /opt/plexguide/menu/functions/keydata.sh
+source /opt/plexguide/menu/functions/keyback.sh
 
 keymenu () {
 gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
@@ -181,6 +181,9 @@ elif [ "$typed" == "4" ]; then
     pgbdeploy
     question1
   else question1; fi
+  elif [[ "$typed" == "a" || "$typed" == "A" ]]; then
+    keybackup
+    question1
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else
   badinput
