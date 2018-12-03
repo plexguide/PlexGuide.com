@@ -1,8 +1,8 @@
 ✅  [CURRENT]
 7.2.4
-7.3.0
 
 💍  [BETA] - Beta is to only to test new stuff!
+7.3.0
 7.3
 
 💊  [DEPRECIATED]
