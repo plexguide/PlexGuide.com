@@ -256,7 +256,6 @@ ufsbuilder () {
   builder=$(cat /var/plexguide/unionfs.pgpath)
   }
 
-}
 rchecker () {
 tee <<-EOF
 
