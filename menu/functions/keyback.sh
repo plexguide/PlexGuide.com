@@ -39,7 +39,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-rclone copy gdrive:/plexguide/backup/keys/$serverid/conf /opt/appdata/plexguide/rclone.conf  -v --checksum --drive-chunk-size=64M
+rclone copy gdrive:/plexguide/backup/keys/$serverid/conf /opt/appdata/plexguide/  -v --checksum --drive-chunk-size=64M
 rclone copy gdrive:/plexguide/backup/keys/$serverid/keys /opt/appdata/pgblitz/keys/processed/  -v --checksum --drive-chunk-size=64M
 
 tee <<-EOF
