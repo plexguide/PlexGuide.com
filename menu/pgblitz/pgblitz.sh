@@ -151,7 +151,9 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
 elif [ "$typed" == "2" ]; then keymenu && question1;
-elif [ "$typed" == "3" ]; then bash /opt/plexguide/menu/pgblitz/emails.sh;
+elif [ "$typed" == "3" ]; then
+bash /opt/plexguide/menu/pgblitz/emails.sh && echo
+read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "4" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
     ufsbuilder
