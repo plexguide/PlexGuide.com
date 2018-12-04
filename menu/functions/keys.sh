@@ -13,7 +13,7 @@ defaultvars () {
 deletekeys2 () {
   choicedel=$(cat /var/plexguide/gdsa.cut)
   if [ "$choicedel" != "" ]; then
-  echo "Deleting All Previous Keys!"
+  echo "Deleting All Previous Service Accounts & Keys!"
   echo ""
 
     while read p; do
@@ -24,7 +24,7 @@ deletekeys2 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 SYSTEM MESSAGE: Prior Service Accounts Deleted
+🚀 SYSTEM MESSAGE: Prior Service Accounts & Keys Deleted
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 2
@@ -32,7 +32,7 @@ else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 SYSTEM MESSAGE: No Prior Service Keys!
+🚀 SYSTEM MESSAGE: No Prior Service Accounts or Keys!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 2
@@ -53,11 +53,11 @@ cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gd
 cat /var/plexguide/gdsa.cut
 tee <<-EOF
 
-Keys listed above are the ones in current use! Proceeding onward will
-delete the current keys and will generate new ones!
+Items listed are current service accounts that are created! Proceeding onward
+will destroy all service accounts and keys
 
 EOF
-read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
 
 if [[ "$typed" == "Y" || "$typed" == "y" ]]; then deletekeys2
 elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1

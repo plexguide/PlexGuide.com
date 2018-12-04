@@ -27,8 +27,8 @@ tee <<-EOF
 3 - Establish Project ID        [$finalprojectid]
 4 - Make Service Keys
 Z - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-A - Destory All Keys Created
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+A - Destory All Service Ever Created
 
 EOF
 
