@@ -55,8 +55,8 @@ cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gd
 cat /var/plexguide/gdsa.cut
 tee <<-EOF
 
-Items listed are current service accounts that are created! Proceeding onward
-will destroy all service accounts and keys
+Items listed are all service accounts that have been created! Proceeding
+onward will destroy all service accounts and current keys!
 
 EOF
 read -p '🌍 Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
