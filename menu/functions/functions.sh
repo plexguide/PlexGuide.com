@@ -48,5 +48,10 @@ readrcloneconfig () {
 }
 
 rcloneconfig () {
-rclone config --config /opt/appdata/plexguide/rclone.conf
+  rclone config --config /opt/appdata/plexguide/rclone.conf
+}
+
+keysprocessed () {
+  mkdir -p /opt/appdata/pgblitz/keys/processed 
+  ls -1 /opt/appdata/pgblitz/keys/processed | wc -l > /var/plexguide/pg.serverid
 }

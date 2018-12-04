@@ -176,7 +176,7 @@ else
   question1
 fi
 }
-
+keysprocessed
 gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
 variable /var/plexguide/project.final "[NOT-SET]"
 variable /var/plexguide/project.keycount "0"
