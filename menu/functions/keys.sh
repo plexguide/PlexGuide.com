@@ -29,7 +29,11 @@ delete the current keys and will generate new ones!
 EOF
 read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
 
-elif [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2;
+if [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2
+elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1;
+else badinput
+  deletekeys
+fi
 }
 
 gdsabuild () {
