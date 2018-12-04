@@ -61,7 +61,10 @@ EOF
 cat /tmp/service.keys
 
 echo
+echo "Quit? Type > exit"
 read -p '🌍 Type Name | Press [ENTER]: ' typed < /dev/tty
+
+if [ "$typed" == "exit" ]; then question1; fi
 
 grepcheck=$(cat /tmp/service.keys | grep $typed)
 if [ "$grepcheck" == "" ]; then
@@ -90,8 +93,11 @@ rclone copy --config /opt/appdata/plexguide/rclone.conf gdrive:/plexguide/backup
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Messasge: Backup Complete!
+🚀 System Message: Key Restoration Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: When conducting a restore, no need to share out emails and etc! Just
+redeploy PGBlitz!
 
 EOF
 read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
