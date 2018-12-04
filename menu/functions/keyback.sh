@@ -57,11 +57,12 @@ tee <<-EOF
 🚀 Type the Name of the Backup to Restore
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+NOTE: Quit? Type > exit
+
 EOF
 cat /tmp/service.keys
 
 echo
-echo "Quitting? Type > exit"
 read -p '🌍 Type Name | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "exit" ]; then question1; fi
