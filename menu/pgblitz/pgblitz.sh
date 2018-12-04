@@ -122,7 +122,6 @@ question1 () {
 readrcloneconfig
 
 if [ "$gdstatus" == "bad" ]; then badmenu; fi
-
 if [ "$tdstatus" == "bad" ]; then
 message="NOTE1: tdrive is not setup! Required for PGBlitz's upload configuration!"
 badmenu
