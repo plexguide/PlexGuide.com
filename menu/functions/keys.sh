@@ -60,8 +60,9 @@ EOF
 fi
 }
 
-elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1;
-else badinput
+if; then [[ "$typed" == "N" || "$typed" == "n" ]]; then question1
+else
+  badinput
   deletekeys
 fi
 }
