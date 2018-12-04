@@ -37,8 +37,7 @@ tee <<-EOF
 EOF
   sleep 2
   fi
-  question1
-fi
+question1
 }
 
 deletekeys () {
@@ -64,7 +63,7 @@ if [[ "$typed" == "Y" || "$typed" == "y" ]]; then deletekeys2
 elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1
 else
   badinput
-  deletekeys 
+  deletekeys
 fi
 
 gdsabuild () {
