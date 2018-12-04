@@ -58,7 +58,6 @@ projectid
 keymenu
 
 elif [ "$typed" == "4" ]; then
-
 deploykeys
 keymenu
 

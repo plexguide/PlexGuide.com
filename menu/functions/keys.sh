@@ -29,7 +29,37 @@ delete the current keys and will generate new ones!
 EOF
 read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
 
-if [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2
+if [[ "$typed" == "Y" || "$typed" == "y" ]]; then
+  choicedel=$(cat /var/plexguide/gdsa.cut)
+  if [ "$choicedel" != "" ]; then
+  echo "Deleting All Previous Keys!"
+  echo ""
+
+    while read p; do
+    gcloud iam service-accounts delete $p --quiet
+    done </var/plexguide/gdsa.cut
+
+  rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 SYSTEM MESSAGE: Prior Service Accounts Deleted
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 2
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 SYSTEM MESSAGE: No Prior Service Keys!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 2
+  fi
+  question1
+fi
+}
+
 elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1;
 else badinput
   deletekeys
@@ -165,33 +195,6 @@ read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 }
 
 deploykeys2 () {
-  choicedel=$(cat /var/plexguide/gdsa.cut)
-  if [ "$choicedel" != "" ]; then
-  echo "Deleting All Previous Keys!"
-  echo ""
-
-    while read p; do
-    gcloud iam service-accounts delete $p --quiet
-    done </var/plexguide/gdsa.cut
-
-  rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 SYSTEM MESSAGE: Prior Service Accounts Deleted
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 2
-else
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 SYSTEM MESSAGE: No Prior Service Keys!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 2
-fi
-
 deploykeys3
 }
 
