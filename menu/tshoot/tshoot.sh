@@ -91,7 +91,7 @@ EOF
 sleep 3
 
   echo "uninstall" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-elif [ "$typed" == "4" ]; then
+elif [[ "$typed" == "Z" | "$typed" == "z" ]]; then
   exit
 else
   bash /opt/plexguide/menu/tshoot/tshoot.sh
