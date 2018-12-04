@@ -137,7 +137,11 @@ if [[ "$tdstatus" == "good" && "$gdstatus" == "good" ]]; then dstatus=1 && goodm
 # Standby
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then echo && readrcloneconfig && rcloneconfig && question1;
+  if [ "$typed" == "1" ]; then
+  echo
+  readrcloneconfig
+  rcloneconfig
+  question1
 elif [ "$typed" == "2" ]; then keymenu && question1;
 elif [ "$typed" == "3" ]; then
 bash /opt/plexguide/menu/pgblitz/emails.sh && echo
