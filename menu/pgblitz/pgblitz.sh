@@ -51,7 +51,7 @@ tee <<-EOF
 
 EOF
   read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
-    keymenu
+  keymenu
 elif [ "$typed" == "3" ]; then
   projectid
   keymenu
@@ -60,7 +60,9 @@ elif [ "$typed" == "4" ]; then
   keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   question1
-elif [[ "$typed" == "A" || "$typed" == "a" ]]; then exit;
+elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
+  deletekeys
+  keymenu
 else
   badinput
   keymenu; fi
