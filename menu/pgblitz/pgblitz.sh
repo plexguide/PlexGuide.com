@@ -78,13 +78,12 @@ tee <<-EOF
 Utilizes Team Drives for Data Storage and Excceds Daily 750GB Cap
 
 $message
-
-NOTE2: Key Restore - Configure RClone only with the GDrive with your
-backup keys from prior and then select - [Key Restore]
+NOTE2: For Key Restore, only setup the 'gdrive' with your prior keys
 
 1 - Configure RClone
 Z - Exit
 A - Key Restore
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 }
@@ -114,6 +113,7 @@ $message
 $message2
 A - Key Restore
 B - Key Backup
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 }
