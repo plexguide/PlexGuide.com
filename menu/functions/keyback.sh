@@ -33,6 +33,7 @@ read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 keyrestore () {
 
 serverid=$(cat /var/plexguide/pg.serverid)
+mkdir -p /opt/appdata/pgblitz/processed
 
 tee <<-EOF
 
