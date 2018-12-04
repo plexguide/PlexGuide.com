@@ -283,7 +283,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir gdsa01:/plexguide
+  rclone mkdir --config /opt/appdata/plexguide/rclone.conf gdsa01:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -291,7 +291,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd gdsa01: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf gdsa01: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
