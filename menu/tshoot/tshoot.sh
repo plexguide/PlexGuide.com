@@ -16,7 +16,7 @@ tee <<-EOF
 1 - Pre-Installer: Force the Entire Process Again
 2 - UnInstaller  : Docker & Running Containers | Force Pre-Install
 3 - UnInstaller  : PlexGuide
-4 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -91,7 +91,7 @@ EOF
 sleep 3
 
   echo "uninstall" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-elif [[ "$typed" == "Z" | "$typed" == "z" ]]; then
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
   bash /opt/plexguide/menu/tshoot/tshoot.sh
