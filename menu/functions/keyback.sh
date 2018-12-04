@@ -102,5 +102,5 @@ redeploy PGBlitz!
 
 EOF
 read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
-
+question1
 }
