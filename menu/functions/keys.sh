@@ -13,8 +13,9 @@ defaultvars () {
 deletekeys2 () {
   choicedel=$(cat /var/plexguide/gdsa.cut)
   if [ "$choicedel" != "" ]; then
-  echo "Deleting All Previous Service Accounts & Keys!"
-  echo ""
+    echo ""
+    echo "Deleting All Previous Service Accounts & Keys!"
+    echo ""
 
     while read p; do
     gcloud iam service-accounts delete $p --quiet
@@ -28,6 +29,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 2
+  keymenu
 else
 tee <<-EOF
 
