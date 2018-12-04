@@ -181,7 +181,6 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
     fi
     done
 
-  echo $keys > /var/plexguide/project.keycount
   echo "no" > /var/plexguide/project.deployed
 
 tee <<-EOF
