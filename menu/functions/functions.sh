@@ -52,6 +52,6 @@ rcloneconfig () {
 }
 
 keysprocessed () {
-  mkdir -p /opt/appdata/pgblitz/keys/processed 
-  ls -1 /opt/appdata/pgblitz/keys/processed | wc -l > /var/plexguide/pg.serverid
+  mkdir -p /opt/appdata/pgblitz/keys/processed
+  ls -1 /opt/appdata/pgblitz/keys/processed | wc -l > /var/plexguide/project.keycount
 }
