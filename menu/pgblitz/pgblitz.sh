@@ -25,7 +25,7 @@ tee <<-EOF
 1 - Log-In to Your Account      $account
 2 - Build a New Project
 3 - Establish Project ID        [$finalprojectid]
-4 - Create/Remake Service Keys
+4 - Make Service Keys
 Z - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 A - Destory All Keys Created
@@ -123,11 +123,11 @@ readrcloneconfig
 if [ "$gdstatus" == "bad" ]; then badmenu; fi
 
 if [ "$tdstatus" == "semi" ]; then
-message="NOTE: TDrive is Setup, but user failed to configure as a Team Drive! Must
+message="NOTE: tdrive is Setup, but user failed to configure as a Team Drive! Must
 reconfigure TDrive again and say 'Yes' and select a Team Drive!"
 badmenu
 elif [ "$tdstatus" == "bad" ]; then
-message="NOTE: TDrive is not setup! Required for PGBlitz's upload configuration!"
+message="NOTE: tdrive is not setup! Required for PGBlitz's upload configuration!"
 badmenu
 fi
 
@@ -177,6 +177,7 @@ elif [[ "$typed" == "b" || "$typed" == "B" ]]; then
     keyrestore
     question1
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
+elif [[ "$typed" == "a" || "$typed" == "A" ]]; then exit;
 else
   badinput
   question1

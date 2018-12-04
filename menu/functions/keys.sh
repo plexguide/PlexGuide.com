@@ -10,26 +10,7 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
-deletekeys () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 ID: PG Key Gen Information
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
-cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
-cat /var/plexguide/gdsa.cut
-tee <<-EOF
-
-Keys listed above are the ones in current use! Proceeding onward will
-delete the current keys and will generate new ones!
-
-EOF
-read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
-
-if [[ "$typed" == "Y" || "$typed" == "y" ]]; then
+deletekeys2 () {
   choicedel=$(cat /var/plexguide/gdsa.cut)
   if [ "$choicedel" != "" ]; then
   echo "Deleting All Previous Keys!"
@@ -60,12 +41,31 @@ EOF
 fi
 }
 
-if [[ "$typed" == "N" || "$typed" == "n" ]]; then question1
+deletekeys () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ID: PG Key Gen Information
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
+cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+cat /var/plexguide/gdsa.cut
+tee <<-EOF
+
+Keys listed above are the ones in current use! Proceeding onward will
+delete the current keys and will generate new ones!
+
+EOF
+read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
+
+if [[ "$typed" == "Y" || "$typed" == "y" ]]; then deletekeys2
+elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1
 else
   badinput
-  deletekeys
+  deletekeys 
 fi
-}
 
 gdsabuild () {
   downloadpath=$(cat /var/plexguide/server.hd.path)
