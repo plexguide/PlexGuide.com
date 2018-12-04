@@ -36,9 +36,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 Standby! Conducting Key Backup Check!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 rclone lsd --config /opt/appdata/plexguide/rclone.conf gdrive:/plexguide/backup/keys/ | awk '{ print $5 }' > /tmp/service.keys
+checkcheck=$(cat /tmp/service.keys)
 
 if [ "$checkcheck" == "" ];then
 tee <<-EOF
@@ -46,9 +46,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 Either You Failed to Configure RClone with GDrive or No Backups Exist!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
-  read -p '🌍 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  question1
 fi
 
 tee <<-EOF
@@ -60,6 +60,7 @@ tee <<-EOF
 EOF
 cat /tmp/service.keys
 
+echo
 read -p '🌍 Type Name | Press [ENTER]: ' typed < /dev/tty
 
 grepcheck=$(cat /tmp/service.keys | grep $typed)
