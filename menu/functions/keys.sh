@@ -65,6 +65,7 @@ else
   badinput
   deletekeys
 fi
+}
 
 gdsabuild () {
   downloadpath=$(cat /var/plexguide/server.hd.path)
@@ -309,6 +310,7 @@ EOF
     question1
   fi
 }
+
 
 pgbdeploy () {
 tee <<-EOF
