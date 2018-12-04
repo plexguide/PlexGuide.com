@@ -41,10 +41,7 @@ readrcloneconfig () {
 
   tdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep tdrive)
   if [ "$tdcheck" != "" ]; then
-  echo "good" > /var/plexguide/rclone/tdrive.status && tdstatus="good"
-  tdcheck2=$(cat /opt/appdata/plexguide/rclone.conf | grep tdrive)
-    if [ "$tdcheck2" == "" ]; then echo "semi" > /var/plexguide/rclone/tdrive.status && tdstatus="semi"; fi
-  else echo "bad" > /var/plexguide/rclone/tdrive.status && tdstatus="bad"; fi
+  echo "good" > /var/plexguide/rclone/tdrive.status && tdstatus="good"; fi
 }
 
 rcloneconfig () {
