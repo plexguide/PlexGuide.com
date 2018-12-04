@@ -61,7 +61,7 @@ EOF
 cat /tmp/service.keys
 
 echo
-echo "Quit? Type > exit"
+echo "Quitting? Type > exit"
 read -p '🌍 Type Name | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "exit" ]; then question1; fi
