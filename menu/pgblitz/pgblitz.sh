@@ -27,8 +27,7 @@ tee <<-EOF
 3 - Establish Project ID        [$finalprojectid]
 4 - Make Service Keys
 Z - Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-A - Destory All Service Ever Created
+A - Destory all Service Accounts Created
 
 EOF
 
@@ -76,16 +75,15 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂 Basic Information
 
-Utilizes Team Drives and the deployment is semi-complicated. If uploading
-less than 750GB per day, utilize PG Move! Good luck!
+Utilizes Team Drives for Data Storage and Excceds Daily 750GB Cap
 
 $message
 
-NOTE: To recover your keys, configure only gdrive and then restore
+NOTE2: Key Restore - Configure RClone only with the GDrive with your
+backup keys from prior and then select - [Key Restore]
 
 1 - Configure RClone
 Z - Exit
-━━━━━━━━━━━━━━━ (NOT READY BELOW)
 A - Key Restore
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -114,7 +112,6 @@ less than 750GB per day, utilize PG Move! Good luck!
 3 - EMail Share Generator
 $message
 $message2
-━━━━━━━━━━━━━━━ (NOT READY BELOW)
 A - Key Restore
 B - Key Backup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -126,12 +123,8 @@ readrcloneconfig
 
 if [ "$gdstatus" == "bad" ]; then badmenu; fi
 
-if [ "$tdstatus" == "semi" ]; then
-message="NOTE: tdrive is Setup, but user failed to configure as a Team Drive! Must
-reconfigure TDrive again and say 'Yes' and select a Team Drive!"
-badmenu
-elif [ "$tdstatus" == "bad" ]; then
-message="NOTE: tdrive is not setup! Required for PGBlitz's upload configuration!"
+if [ "$tdstatus" == "bad" ]; then
+message="NOTE1: tdrive is not setup! Required for PGBlitz's upload configuration!"
 badmenu
 fi
 
@@ -139,7 +132,7 @@ fi
 if [[ "$tdstatus" == "good" && "$gdstatus" == "good" ]]; then dstatus=1 && goodmenu; fi
 
 # Standby
-read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Type Choice | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
   echo
