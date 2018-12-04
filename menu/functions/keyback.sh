@@ -72,8 +72,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p '🌍 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
-keybackup; fi
+  read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+keyrestore; fi
 
 serverid="$typed"
 mkdir -p /opt/appdata/pgblitz/processed
