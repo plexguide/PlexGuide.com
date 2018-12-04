@@ -10,6 +10,28 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
+deletekeys () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ID: PG Key Gen Information
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
+cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+cat /var/plexguide/gdsa.cut
+tee <<-EOF
+
+Keys listed above are the ones in current use! Proceeding onward will
+delete the current keys and will generate new ones!
+
+EOF
+read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
+
+elif [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2;
+}
+
 gdsabuild () {
   downloadpath=$(cat /var/plexguide/server.hd.path)
   tempbuild=$(cat /var/plexguide/json.tempbuild)
@@ -65,7 +87,7 @@ tee <<-EOF
 3 - Create 6 Keys:  Daily Limit - 4.5  TB  <--- Realistic
 4 - Create 8 Keys:  Daily Limit - 6.0  TB
 5 - Create 10 Keys: Daily Limit - 7.5  TB
-6 - Create 10 Keys: Daily Limit - 7.5  TB
+6 - Create 20 Keys: Daily Limit - 15   TB
 
 NOTE: # of Keys Generated Sets Your Daily Upload Limit!
 
@@ -170,28 +192,9 @@ deploykeys3
 }
 
 deploykeys () {
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 ID: PG Key Generation Information
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
-cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
-cat /var/plexguide/gdsa.cut
-tee <<-EOF
-
-Keys listed above are the ones in current use! Proceeding onward will
-delete the current keys and will generate new ones!
-
-EOF
-read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
-
-if [[ "$typed" == "N" || "$typed" == "n" ]]; then keymenu;
-elif [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2;
-else badinput && deploykeys; fi
+  gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
+  cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+deploykeys2
 }
 
 projectid () {
