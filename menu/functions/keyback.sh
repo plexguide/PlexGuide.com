@@ -31,8 +31,50 @@ read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 }
 
 keyrestore () {
+tee <<-EOF
 
-serverid=$(cat /var/plexguide/pg.serverid)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Standby! Conducting Key Backup Check!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+rclone lsd --config /opt/appdata/plexguide/rclone.conf gdrive:/plexguide/backup/keys/ | awk '{ print $5 }' > /tmp/service.keys
+
+if [ "$checkcheck" == "" ];then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Either You Failed to Configure RClone with GDrive or No Backups Exist!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '🌍 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+fi
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Type the Name of the Backup to Restore
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+cat /tmp/service.keys
+
+read -p '🌍 Type Name | Press [ENTER]: ' typed < /dev/tty
+
+grepcheck=$(cat /tmp/service.keys | grep $typed)
+if [ "$grepcheck" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Failed to Type Name of a Backup on the list! Restarting process!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '🌍 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+keybackup; fi
+
+serverid="$typed"
 mkdir -p /opt/appdata/pgblitz/processed
 
 tee <<-EOF
