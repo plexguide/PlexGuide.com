@@ -60,6 +60,7 @@ elif [ "$typed" == "4" ]; then
   keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   question1
+elif [[ "$typed" == "A" || "$typed" == "a" ]]; then exit;
 else
   badinput
   keymenu; fi
@@ -177,10 +178,6 @@ elif [[ "$typed" == "b" || "$typed" == "B" ]]; then
     keyrestore
     question1
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
-elif [[ "$typed" == "a" || "$typed" == "A" ]]; then exit;
-else
-  badinput
-  question1
 fi
 }
 keysprocessed
