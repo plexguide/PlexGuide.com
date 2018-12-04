@@ -53,15 +53,16 @@ EOF
   read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
     keymenu
 elif [ "$typed" == "3" ]; then
-
-projectid
-keymenu
-
+  projectid
+  keymenu
 elif [ "$typed" == "4" ]; then
-deploykeys
-keymenu
-
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1; else badinput && keymenu; fi
+  deploykeys
+  keymenu
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
+  question1
+else
+  badinput
+  keymenu; fi
 }
 
 badmenu () {
