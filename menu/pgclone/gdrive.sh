@@ -5,6 +5,8 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /opt/plexguide/menu/functions/functions.sh
+
 testphase () {
   echo "" > /opt/appdata/plexguide/test.conf
   echo "[gdrive]" >> /opt/appdata/plexguide/test.conf
@@ -12,6 +14,7 @@ testphase () {
   echo "client_secret = $secret" >> /opt/appdata/plexguide/test.conf
   echo "type = drive" >> /opt/appdata/plexguide/test.conf
   echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/plexguide/test.conf
+  if [ "$type" == "tdrive" ]; then echo "team_drive = $teamdrive" >> /opt/appdata/plexguide/test.conf
   echo ""
 tee <<-EOF
 
@@ -72,28 +75,77 @@ EOF
 
 question1 () {
   touch /opt/appdata/plexguide/rclone.conf
+  account=$(cat /var/plexguide/project.account)
+  project=$(cat /var/plexguide/pgclone.project)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Welcome to PGClone ~ GDrive
+🌎 Welcome to PGClone                     reference:pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: PGClone modifies only the gdrive & tdrive for you (95% case use).
-Adding encryption requires utilizing option #3 for gcrypt and/or tcrypt.
-
-1 - Configure: gdrive [not connected]
-2 - Configure: tdrive [not connected]
-3 - Configure: rclone file
+1 - Login to Google Account: [$account]
+2 - Establish a Project    : [$project]
+3 - Configure: gdrive [not connected]
+4 - Configure: tdrive [not connected]
+5 - Encryption Setup
 Z - Exit
+A - Build a New project
+B - Delete a Project
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+
+elif [ "$typed" == "1" ]; then
+  type=gdrive
+  inputphase
+  question1
+elif [ "$typed" == "2" ]; then
+  type=tdrive
+  inputphase
+  question1
+elif [ "$typed" == "3" ]; then
+  rclone config --config /opt/appdata/plexguide/rclone.conf
+  question1
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
+  exit
+else
+  badinput
+  keymenu; fi
 
 #menu later
 inputphase
 }
 
 inputphase () {
+  if [ "$type" == "tdrive" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: TeamDrive Identifer
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTES:
+1. Type > td.plexguide.com
+2. Select the TeamDrive
+3. Within the URL, look for .../02CGnO4COUqr2Uk9PVF
+4. Ending of the URL is your TeamDrive
+
+Quitting? Type > exit
+EOF
+  read -p 'Type Identifer | PRESS [ENTER] ' public < /dev/tty
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Client Key
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTES:
+1. Type > td.plexguide.com
+2. Select the TeamDrive
+3. Within the URL, look for .../02CGnO4COUqr2Uk9PVF
+4. Ending of the URL is your TeamDrive
+
+Quitting? Type > exit
+EOF
+
   read -p 'Client | PRESS [ENTER] ' public < /dev/tty
   read -p 'Secret | PRESS [ENTER] ' secret < /dev/tty
 
@@ -117,4 +169,6 @@ EOF
   testphase
 }
 
+variable /var/plexguide/project.account "NOT-SET"
+variable /var/plexguide/pgclone.project "NOT-SET"
 question1
