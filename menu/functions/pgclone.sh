@@ -7,10 +7,33 @@
 ################################################################################
 
 # BAD INPUT
+transportmode () {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Select a Data Transport Mode          reference:transport.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1 - PG Move : Unencrypt | Simple  ~ Uploads 750GB  Per Day
+2 - PG Move : Encrypted | Simple  ~ Uploads 750GB  Per Day
+3 - PG Blitz: Unencrypt | Complex ~ Exceeds 750GB+ Per Day
+Z - Exit
+
+EOF
+read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
+
+  if [ "$typed" == "1" ]; then echo "umove" > /var/plexguide/pgclone.transport;
+elif [ "$typed" == "2" ]; then echo "emove" > /var/plexguide/pgclone.transport;
+elif [ "$typed" == "3" ]; then echo "ublitz" > /var/plexguide/pgclone.transport;
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
+else badinput;
+  transportmode; fi
+
+}
+
 changeproject () {
   read -p '🌍 Set/Change Project ID? (y/n)| Press [ENTER] ' typed < /dev/tty
-  if [[ "$typed" = "n" || "$typed" == "N" ]]; then question1
-elif [[ "$typed" = "y" || "$typed" == "Y" ]]; then a=b
+  if [[ "$typed" == "n" || "$typed" == "N" ]]; then question1
+elif [[ "$typed" == "y" || "$typed" == "Y" ]]; then a=b
 else badinput
   echo ""
   changeproject; fi

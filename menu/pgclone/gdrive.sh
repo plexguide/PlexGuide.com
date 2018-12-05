@@ -13,7 +13,7 @@ question1 () {
   touch /opt/appdata/plexguide/rclone.conf
   account=$(cat /var/plexguide/project.account)
   project=$(cat /var/plexguide/pgclone.project)
-  project=$(cat /var/plexguide/pgclone.tr)
+  project=$(cat /var/plexguide/pgclone.transport)
   gstatus=$(cat /var/plexguide/gdrive.pgclone)
   tstatus=$(cat /var/plexguide/tdrive.pgclone)
 
