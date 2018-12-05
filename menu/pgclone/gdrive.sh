@@ -117,10 +117,6 @@ mountsmenu
 }
 
 inputphase () {
-secret=$(cat /var/plexguide/pgclone.secret)
-public=$(cat /var/plexguide/pgclone.public)
-teamdrive=$(cat /var/plexguide/pgclone.teamdrive)
-
 deploychecks
 
 tee <<-EOF
