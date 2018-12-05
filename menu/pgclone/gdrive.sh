@@ -23,16 +23,15 @@ question1 () {
 #elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
 #elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
 
-if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then menufix=1; fi
+if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then menufix=1; else menufix=2; fi
 
 if [ "$menufix" == "1" ]; then
 display1="5 - Deploy ~ $transport"
-a=9999999
-else
+a=9999999; fi
+if [ "$menufix" == "2" ]; then
 display1="5 - Key Management      : [keysdeployed]
 6 - Deploy ~ $transport"
-a=6
-fi
+a=6; fi
 
 tee <<-EOF
 
