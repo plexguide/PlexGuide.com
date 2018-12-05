@@ -73,10 +73,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PG is Deploying /w the Following Values:
 
-CLIENT ID: $public
-
-CLIENT SECRET: $secret
-
+ID:        $public
+SECRET:    $secret
 TEAMDRIVE: $teamdrive
 
 EOF
