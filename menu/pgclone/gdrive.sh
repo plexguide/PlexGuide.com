@@ -72,39 +72,33 @@ inputphase () {
   if [ "$type" == "tdrive" ]; then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: TeamDrive Identifer
+🚀 System Message: Team Drive Identifier       reference: td.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTES:
-1. Type > td.plexguide.com
-2. Select the TeamDrive
-3. Within the URL, look for .../02CGnO4COUqr2Uk9PVF
-4. Ending of the URL is your TeamDrive
+Format Example: 0BCGnO4COZqr2Uk9PVA ~ visit reference info for assistance
 
-Quitting? Type > exit
+Quit? Type > exit
 EOF
-  read -p 'Type Identifer | PRESS [ENTER] ' public < /dev/tty
+  read -p '🌍 Type Identifer | PRESS [ENTER] ' public < /dev/tty
 fi
+
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: Client Key
+🚀 System Message: Google OAuth Keys        reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTES:
-1. Type > td.plexguide.com
-2. Select the TeamDrive
-3. Within the URL, look for .../02CGnO4COUqr2Uk9PVF
-4. Ending of the URL is your TeamDrive
+NOTE: Visit reference for Google OAuth Keys!
 
 Quitting? Type > exit
 EOF
 
-  read -p 'Client | PRESS [ENTER] ' public < /dev/tty
-  read -p 'Secret | PRESS [ENTER] ' secret < /dev/tty
+  read -p '🌍 Client ID  | PRESS [ENTER] ' public < /dev/tty
+  read -p '🌍 Secret Key | PRESS [ENTER] ' public < /dev/tty
 
 tee <<-EOF
 
-Copy & Paste Url into the Browser & Login with the CORRECT Account!
+Copy & Paste Url into Browser | Use Correct Google Account!
 
 https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
 
