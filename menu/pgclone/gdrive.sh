@@ -16,6 +16,7 @@ question1 () {
   project=$(cat /var/plexguide/pgclone.transport)
   gstatus=$(cat /var/plexguide/gdrive.pgclone)
   tstatus=$(cat /var/plexguide/tdrive.pgclone)
+  transportdisplay
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

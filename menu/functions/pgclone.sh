@@ -8,13 +8,11 @@
 
 # BAD INPUT
 transportdisplay () {
-
 temp=$(cat /var/plexguide/pgclone.transport)
   if [ "$temp" == "umove" ]; then transport="PG Move ~ Unencrpted"
 elif [ "$temp" == "emove" ]; then transport="PG Move ~ Encrypted"
 elif [ "$temp" == "ublitz" ]; then transport="PG Blitz ~ Unencrypted"
 else transport="NOT-SET"; fi
-
 }
 
 transportmode () {
