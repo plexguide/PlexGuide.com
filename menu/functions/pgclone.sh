@@ -29,11 +29,11 @@ if [ "$typed" == "1" ]; then
   type=gdrive
   inputphase
   mountsmenu
-if [ "$typed" == "2" ]; then
+elif [ "$typed" == "2" ]; then
   type=tdrive
   inputphase
   mountsmenu
-  
+
 elif [ "$typed" == "4" ]; then question1;
 else badinput
   projectmenu; fi
