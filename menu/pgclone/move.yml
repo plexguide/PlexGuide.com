@@ -20,13 +20,13 @@
 
   - name: Install MOVE Service
     template:
-      src: /opt/plexguide/menu/pgmove/templates/move_script.sh
+      src: /opt/plexguide/menu/pgclonetemplates/move_script.sh
       dest: /opt/appdata/plexguide/move.sh
       force: yes
 
   - name: Install MOVE Service
     template:
-      src: /opt/plexguide/menu/pgmove/templates/move.service
+      src: /opt/plexguide/menu/pgclonetemplates/move.service
       dest: /etc/systemd/system/move.service
       force: yes
 

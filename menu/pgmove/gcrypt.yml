@@ -12,7 +12,7 @@
 
   - name: Install GCrypt Service
     template:
-      src: /opt/plexguide/menu/pgmove/templates/gcrypt.service
+      src: /opt/plexguide/menu/pgclonetemplates/gcrypt.service
       dest: /etc/systemd/system/gcrypt.service
       force: yes
 
