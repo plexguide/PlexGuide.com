@@ -12,7 +12,7 @@ testphase () {
   echo "client_secret = $secret" >> /opt/appdata/plexguide/test.conf
   echo "type = drive" >> /opt/appdata/plexguide/test.conf
   echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/plexguide/test.conf
-
+  echo ""
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -64,6 +64,7 @@ EOF
 fi
 
 echo "Active" > /var/plexguide/gdrive.pgclone
+echo ""
 read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 question1
 
@@ -113,7 +114,7 @@ EOF
   rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
   rczone=$(date +"%:z")
   final=$(echo "${rcdate}T${rctime}${rczone}")
-  #%7N
+
   testphase
 }
 
