@@ -69,6 +69,30 @@ deploychecks
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Deployment               reference: oauth.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PG is Deploying /w the Following Values:
+
+CLIENT ID: $public
+
+CLIENT SECRET: $secret
+
+TEAMDRIVE: $teamdrive
+
+EOF
+
+read -p '🌍 Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
+
+if [[ "$typed" == "Y" || "$typed" == "y" ]]; then a=b
+elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1
+else
+  badinput
+  inputphase
+fi
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 System Message: Google Authentication    reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
