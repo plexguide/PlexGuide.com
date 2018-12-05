@@ -74,12 +74,12 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 System Message: Team Drive Identifier       reference: td.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+Quitting? Type > exit
 Format Example: 0BCGnO4COZqr2Uk9PVA ~ visit reference info for assistance
 
-Quit? Type > exit
 EOF
-  read -p '🌍 Type Identifer | PRESS [ENTER] ' public < /dev/tty
+  read -p '🌍 Type Identifer | PRESS [ENTER] ' teamdrive < /dev/tty
+  if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
 fi
 
 tee <<-EOF
