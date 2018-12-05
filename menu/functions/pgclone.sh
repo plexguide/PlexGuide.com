@@ -18,7 +18,7 @@ tee <<-EOF
 1 - Configure - gdrive  : [$gstatus]
 2 - Configure - tdrive  : [$tstatus]
 3 - Encryption Setup
-4 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -34,7 +34,7 @@ elif [ "$typed" == "2" ]; then
   inputphase
   mountsmenu
 
-elif [ "$typed" == "4" ]; then question1;
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
   projectmenu; fi
 }
