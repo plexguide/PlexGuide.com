@@ -122,8 +122,8 @@ tee <<-EOF
 
 1 - Login to Google Account: [$account]
 2 - Establish a Project    : [$project]
-3 - Configure: gdrive [not connected]
-4 - Configure: tdrive [not connected]
+3 - Configure: gdrive [$gstatus]
+4 - Configure: tdrive [$tstatus]
 5 - Encryption Setup
 Z - Exit
 A - Build a New project
