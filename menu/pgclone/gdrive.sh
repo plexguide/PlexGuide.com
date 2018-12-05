@@ -16,6 +16,7 @@ tee <<-EOF
 EOF
 
   read -p '🌍 Type Project Name | Press [ENTER]: ' typed < /dev/tty
+  echo ""
   list=$(cat /var/plexguide/project.cut | grep $typed)
 
   if [ "$typed" != "$list" ]; then
@@ -125,8 +126,6 @@ read -p '🌍 Type Selection | Press [ENTER] ' typed < /dev/tty
   question1
 elif [ "$typed" == "2" ]; then
   projectid=$(cat /var/plexguide/pgclone.project)
-  gcloud projects list && gcloud projects list > /var/plexguide/projects.list
-  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
 
 tee <<-EOF
 
@@ -143,13 +142,15 @@ EOF
   echo
   projectidset
   gcloud config set project $typed
-tee <<-EOF
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 System Message: Enabling Compute API ~ Project $typed
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  gcloud services enable compute.googleapis.com
+#tee <<-EOF
+
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#🌎 System Message: Enabling Compute API ~ Project $typed
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#EOF
+#  gcloud services enable compute.googleapis.com
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -165,6 +166,8 @@ tee <<-EOF
 
 EOF
   read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  $typed > /var/plexguide/pgclone.project
+  question1
 elif [ "$typed" == "3" ]; then
   type=gdrive
   inputphase
