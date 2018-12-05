@@ -8,6 +8,13 @@
 
 mountsmenu () {
 projectid=$(cat /var/plexguide/pgclone.project)
+secret=$(cat /var/plexguide/pgclone.secret)
+public=$(cat /var/plexguide/pgclone.public)
+teamdrive=$(cat /var/plexguide/pgclone.teamdrive)
+
+if [ "$secret" == "" ]; then dsecret="NOT SET"; else dsecret="SET"; fi
+if [ "$public" == "" ]; then dpublic="NOT SET"; else dpublic="SET"; fi
+if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive="SET"; fi
 
 tee <<-EOF
 
@@ -15,9 +22,9 @@ tee <<-EOF
 🌎 PG Clone - Mounts                       reference:pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Set Client ID     : [NOT-SET]
-2 - Set Public ID     : [NOT-SET]
-3 - Set TeamDrive     : [NOT-SET]
+1 - Set Client ID     : [$dpublic]
+2 - Set Secret ID     : [$dsecret]
+3 - Set TeamDrive     : [$dteamdrive]
 4 - Configure - gdrive: [$gstatus]
 5 - Configure - tdrive: [$tstatus]
 6 - Encryption Setup
