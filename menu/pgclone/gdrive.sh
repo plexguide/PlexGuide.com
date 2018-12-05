@@ -5,30 +5,6 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-inputphase () {
-  read -p 'Client | PRESS [ENTER] ' public < /dev/tty
-  read -p 'Secret | PRESS [ENTER] ' secret < /dev/tty
-
-tee <<-EOF
-
-Copy & Paste Url into the Browser & Login with the CORRECT Account!
-
-https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
-
-EOF
-  read -p 'Token | PRESS [ENTER] ' token < /dev/tty
-  curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/
-}
-
-timepull () {
-  accesstoken=$(cat /tmp/corn.txt | grep access_token | awk '{print $2}')
-  refreshtoken=$(cat /tmp/corn.txt | grep refresh_token | awk '{print $2}')
-  rcdate=$(date +'%Y-%m-%d')
-  rctime=$(date +"%H:%M:%S%7N" --date="$givenDate 60 minutes")
-  rczone=$(date +"%:z")
-  final=$(echo "${rcdate}T${rctime}${rczone}")
-}
-
 testphase () {
   echo "" > /opt/appdata/plexguide/test.conf
   echo "[gdrive]" >> /opt/appdata/plexguide/test.conf
@@ -112,8 +88,30 @@ Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+}
 
+inputphase () {
+  read -p 'Client | PRESS [ENTER] ' public < /dev/tty
+  read -p 'Secret | PRESS [ENTER] ' secret < /dev/tty
 
+tee <<-EOF
+
+Copy & Paste Url into the Browser & Login with the CORRECT Account!
+
+https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
+
+EOF
+  read -p 'Token | PRESS [ENTER] ' token < /dev/tty
+  curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/plexguide/pgclone.info
+
+  accesstoken=$(cat /opt/appdata/plexguide/pgclone.info | grep access_token | awk '{print $2}')
+  refreshtoken=$(cat /opt/appdata/plexguide/pgclone.info | grep refresh_token | awk '{print $2}')
+  rcdate=$(date +'%Y-%m-%d')
+  rctime=$(date +"%H:%M:%S%7N" --date="$givenDate 60 minutes")
+  rczone=$(date +"%:z")
+  final=$(echo "${rcdate}T${rctime}${rczone}")
+
+  testphase
 }
 
 question1
