@@ -79,7 +79,7 @@ Quitting? Type > exit
 Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
 
 EOF
-  read -p '🌍 Type Identifer | PRESS [ENTER] ' teamdrive < /dev/tty
+  read -p '🌍 Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
   if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
 fi
 
@@ -93,9 +93,9 @@ NOTE: Visit reference for Google OAuth Keys!
 
 EOF
 
-  read -p '🌍 Client ID  | PRESS [ENTER]: ' public < /dev/tty
+  read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
   if [ "$public" = "exit" ]; then mountsmenu; fi
-  read -p '🌍 Secret Key | PRESS [ENTER]: ' secret < /dev/tty
+  read -p '🌍 Secret Key | Press [Enter]: ' secret < /dev/tty
   if [ "$secret" = "exit" ]; then mountsmenu; fi
 
 tee <<-EOF
