@@ -48,6 +48,24 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   projectmenu
   question1
+elif [ "$typed" == "4" ]; then
+  type=gdrive
+  inputphase
+  question1
+elif [ "$typed" == "5" ]; then
+  type=tdrive
+  inputphase
+  question1
+elif [ "$typed" == "6" ]; then keymenu && question1;
+elif [ "$typed" == "7" ]; then
+  rclone config --config /opt/appdata/plexguide/rclone.conf
+  question1
+elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
+  date=`date +%m%d`
+  rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
+  projectid="pg-$date-$rand"
+  gcloud projects create $projectid
+  sleep 1
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
