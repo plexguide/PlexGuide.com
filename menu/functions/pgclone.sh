@@ -28,7 +28,7 @@ EOF
 
 read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
 
-elif [ "$typed" == "1" ]; then
+if [ "$typed" == "1" ]; then
   publickeyinput
   mountsmenu
 elif [ "$typed" == "2" ]; then
