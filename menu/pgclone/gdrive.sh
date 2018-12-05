@@ -87,10 +87,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 System Message: Google OAuth Keys        reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+Quitting? Type > exit
 NOTE: Visit reference for Google OAuth Keys!
 
-Quitting? Type > exit
 EOF
 
   read -p '🌍 Client ID  | PRESS [ENTER] ' public < /dev/tty
