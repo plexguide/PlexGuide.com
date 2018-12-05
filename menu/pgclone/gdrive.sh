@@ -7,6 +7,15 @@
 ################################################################################
 source /opt/plexguide/menu/functions/functions.sh
 
+changeproject () {
+  read -p '🌍 Set/Change Project ID? (y/n)| Press [ENTER] ' typed < /dev/tty
+  if [[ "$typed" = "n" || "$typed" == "N" ]]; then question1
+elif [[ "$typed" = "y" || "$typed" == "Y" ]]; then a=b
+else badinput
+  echo ""
+  changeproject; fi
+}
+
 projectidset () {
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -14,7 +23,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
+  echo ""
   read -p '🌍 Type Project Name | Press [ENTER]: ' typed < /dev/tty
   echo ""
   list=$(cat /var/plexguide/project.cut | grep $typed)
@@ -132,13 +142,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 GCloud Project Interface               reference:pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Current Project ID: $projectid
+Project ID: $projectid
 
+Established Projects
 EOF
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
   echo
-  read -p '🌍 Set/Change Project ID? | Press [ENTER] ' typed < /dev/tty
+  changeproject
   echo
   projectidset
   gcloud config set project $typed
@@ -156,6 +167,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 System Message: Enabling Drive API ~ Project $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
 gcloud services enable drive.googleapis.com --project $typed
 tee <<-EOF
