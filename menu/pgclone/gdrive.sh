@@ -51,14 +51,9 @@ elif [ "$typed" == "4" ]; then
   mountsmenu
   question1
 elif [ "$typed" == "5" ]; then
-
   question1
 elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
-  date=`date +%m%d`
-  rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
-  projectid="pg-$date-$rand"
-  gcloud projects create $projectid
-  sleep 1
+  inputphase
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
@@ -66,54 +61,6 @@ else
   keymenu; fi
 #menu later
 inputphase
-}
-
-teamdriveinput () {
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: Team Drive Identifier       reference: td.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? Type > exit
-Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
-
-EOF
-  read -p '🌍 Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
-  if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
-echo "$teamdrive" > /var/plexguide/pgclone.teamdrive
-
-}
-
-publickeyinput () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: Google OAuth Keys        reference: oauth.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? Type > exit
-NOTE: Visit reference for Google OAuth Keys!
-
-EOF
-
-read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
-if [ "$public" = "exit" ]; then mountsmenu; fi
-echo "$public" > /var/plexguide/public.secret
-mountsmenu
-}
-
-secretkeyinput () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: Google OAuth Keys        reference: oauth.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? Type > exit
-NOTE: Visit reference for Google OAuth Keys!
-
-EOF
-read -p '🌍 Client ID  | Press [Enter]: ' secret < /dev/tty
-if [ "$secret" = "exit" ]; then mountsmenu; fi
-echo "$secret" > /var/plexguide/pgclone.secret
-mountsmenu
 }
 
 inputphase () {
@@ -155,3 +102,9 @@ variable /var/plexguide/gdrive.pgclone "Not Active"
 variable /var/plexguide/tdrive.pgclone "Not Active"
 
 question1
+
+#date=`date +%m%d`
+#rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
+#projectid="pg-$date-$rand"
+#gcloud projects create $projectid
+#sleep 1
