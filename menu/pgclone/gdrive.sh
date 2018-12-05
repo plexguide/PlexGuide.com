@@ -8,10 +8,8 @@
 testphase () {
   echo "" > /opt/appdata/plexguide/test.conf
   echo "[gdrive]" >> /opt/appdata/plexguide/test.conf
-  echo "client_id = " >> /opt/appdata/plexguide/test.conf
-  echo -n "$public" >> /opt/appdata/plexguide/test.conf
-  echo "client_secret =" >> /opt/appdata/plexguide/test.conf
-  echo -n "$secret" >> /opt/appdata/plexguide/test.conf
+  echo "client_id = $public" >> /opt/appdata/plexguide/test.conf
+  echo "client_secret = $secret" >> /opt/appdata/plexguide/test.conf
   echo "type = drive" >> /opt/appdata/plexguide/test.conf
   echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/plexguide/test.conf
 
