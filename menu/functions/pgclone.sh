@@ -242,7 +242,7 @@ deploychecks () {
 secret=$(cat /var/plexguide/pgclone.secret)
 public=$(cat /var/plexguide/pgclone.public)
 teamdrive=$(cat /var/plexguide/pgclone.teamdrive)
-  
+
 if [ "$secret" == "" ]; then
 tee <<-EOF
 
@@ -264,4 +264,52 @@ tee <<-EOF
 EOF
 read -p '🌍 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 mountsmenu; fi
+}
+
+teamdriveinput () {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Team Drive Identifier       reference: td.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > exit
+Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
+
+EOF
+  read -p '🌍 Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
+  if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
+echo "$teamdrive" > /var/plexguide/pgclone.teamdrive
+
+}
+
+publickeyinput () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Google OAuth Keys        reference: oauth.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > exit
+NOTE: Visit reference for Google OAuth Keys!
+
+EOF
+
+read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
+if [ "$public" = "exit" ]; then mountsmenu; fi
+echo "$public" > /var/plexguide/public.secret
+mountsmenu
+}
+
+secretkeyinput () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Google OAuth Keys        reference: oauth.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > exit
+NOTE: Visit reference for Google OAuth Keys!
+
+EOF
+read -p '🌍 Client ID  | Press [Enter]: ' secret < /dev/tty
+if [ "$secret" = "exit" ]; then mountsmenu; fi
+echo "$secret" > /var/plexguide/pgclone.secret
+mountsmenu
 }
