@@ -7,6 +7,86 @@
 ################################################################################
 
 # BAD INPUT
+projectmenu () {
+projectid=$(cat /var/plexguide/pgclone.project)
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 GCloud Project Interface               reference:pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Project ID: $projectid
+
+1 - Establish
+2 - Create
+3 - Destroy (NOT READY)
+4 - Exit
+
+EOF
+
+read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
+
+if [ "$typed" == "1" ]; then projectestablish;
+elif [ "$typed" == "2" ]; then projectcreate;
+elif [ "$typed" == "4" ]; then question1;
+else badinput
+  projectmenu; fi
+}
+
+projectestablish () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 GCloud Project Interface               reference:pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Project ID: $projectid
+
+Established Projects
+EOF
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
+  echo
+  changeproject
+  echo
+  projectidset
+  gcloud config set project $typed
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 System Message: Enabling Drive API ~ Project $typed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+gcloud services enable drive.googleapis.com --project $typed
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 System Message: Project Established ~ $typed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  $typed > /var/plexguide/pgclone.project
+  question1
+elif [ "$typed" == "4" ]; then
+  type=gdrive
+  inputphase
+  question1
+elif [ "$typed" == "5" ]; then
+  type=tdrive
+  inputphase
+  question1
+elif [ "$typed" == "6" ]; then keymenu && question1;
+elif [ "$typed" == "7" ]; then
+  rclone config --config /opt/appdata/plexguide/rclone.conf
+  question1
+elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
+  date=`date +%m%d`
+  rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
+  projectid="pg-$date-$rand"
+  gcloud projects create $projectid
+  sleep 1
+}
 
 transportdisplay () {
 temp=$(cat /var/plexguide/pgclone.transport)

@@ -26,15 +26,13 @@ tee <<-EOF
 
 1 - Data Transport Mode : [$transport]
 2 - Google Account Login: [$account]
-3 - Establish a Project : [$project]
+3 - Project Options     : [$project]
 4 - Configure - gdrive  : [$gstatus]
 5 - Configure - tdrive  : [$tstatus]
 6 - Key Management      : [keysdeployed]
 7 - Encryption Setup
 Z - Exit
 A - Deploy ~ $transport
-B - Build a New project
-C - Delete a Project
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -48,68 +46,8 @@ elif [ "$typed" == "2" ]; then
   echo "NOT SET" > /var/plexguide/pgclone.project
   question1
 elif [ "$typed" == "3" ]; then
-  projectid=$(cat /var/plexguide/pgclone.project)
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 GCloud Project Interface               reference:pgclone.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Project ID: $projectid
-
-Established Projects
-EOF
-  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
-  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
-  echo
-  changeproject
-  echo
-  projectidset
-  gcloud config set project $typed
-
-#tee <<-EOF
-
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-#🌎 System Message: Enabling Compute API ~ Project $typed
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-#EOF
-#  gcloud services enable compute.googleapis.com
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 System Message: Enabling Drive API ~ Project $typed
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-gcloud services enable drive.googleapis.com --project $typed
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 System Message: Project Established ~ $typed
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-  read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-  $typed > /var/plexguide/pgclone.project
+  projectmenu
   question1
-elif [ "$typed" == "4" ]; then
-  type=gdrive
-  inputphase
-  question1
-elif [ "$typed" == "5" ]; then
-  type=tdrive
-  inputphase
-  question1
-elif [ "$typed" == "6" ]; then keymenu && question1;
-elif [ "$typed" == "7" ]; then
-  rclone config --config /opt/appdata/plexguide/rclone.conf
-  question1
-elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
-  date=`date +%m%d`
-  rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
-  projectid="pg-$date-$rand"
-  gcloud projects create $projectid
-  sleep 1
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
