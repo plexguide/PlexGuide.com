@@ -27,9 +27,12 @@ if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w 
 
 if [ "$menufix" == "1" ]; then
 display1="5 - Deploy ~ $transport"
+a=9999999
 else
 display1="5 - Key Management      : [keysdeployed]
-6 - Deploy ~ $transport" ; fi
+6 - Deploy ~ $transport"
+a=6
+fi
 
 tee <<-EOF
 
@@ -63,7 +66,7 @@ elif [ "$typed" == "4" ]; then
   question1
 elif [ "$typed" == "5" ]; then
   question1
-elif [ "$typed" == "6" ]; then
+elif [ "$typed" == "$a" ]; then
   question1
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
