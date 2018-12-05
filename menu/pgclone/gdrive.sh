@@ -89,14 +89,13 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 NOTE: Visit reference for Google OAuth Keys!
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
 
-  read -p '🌍 Client ID  | PRESS [ENTER] ' public < /dev/tty
+  read -p '🌍 Client ID  | PRESS [ENTER]: ' public < /dev/tty
   if [ "$public" = "exit" ]; then mountsmenu; fi
-  read -p '🌍 Secret Key | PRESS [ENTER] ' secret < /dev/tty
+  read -p '🌍 Secret Key | PRESS [ENTER]: ' secret < /dev/tty
   if [ "$secret" = "exit" ]; then mountsmenu; fi
 
 tee <<-EOF
@@ -109,9 +108,10 @@ Quitting? Type > exit
 NOTE: Copy & Paste Url into Browser | Use Correct Google Account!
 
 https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p 'Token | PRESS [ENTER] ' token < /dev/tty
+  read -p '🌍 Token | PRESS [ENTER]: ' token < /dev/tty
   if [ "$token" = "exit" ]; then mountsmenu; fi
   curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/plexguide/pgclone.info
 
