@@ -10,9 +10,9 @@
 
 transportdisplay () {
 temp=$(cat /var/plexguide/pgclone.transport)
-  if [ "$temp" == "umove" ]; then transport="PG Move ~ Unencrpted"
-elif [ "$temp" == "emove" ]; then transport="PG Move ~ Encrypted"
-elif [ "$temp" == "ublitz" ]; then transport="PG Blitz ~ Unencrypted"
+  if [ "$temp" == "umove" ]; then transport="PG Move ~ /w No Encryption"
+elif [ "$temp" == "emove" ]; then transport="PG Move ~ /w Encryption"
+elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
 else transport="NOT-SET"; fi
 }
 
