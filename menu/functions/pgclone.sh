@@ -17,6 +17,7 @@ else transport="NOT-SET"; fi
 
 transportmode () {
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 Select a Data Transport Mode          reference:transport.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -29,11 +30,12 @@ Z - Exit
 EOF
 read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then echo "umove" > /var/plexguide/pgclone.transport;
-elif [ "$typed" == "2" ]; then echo "emove" > /var/plexguide/pgclone.transport;
-elif [ "$typed" == "3" ]; then echo "ublitz" > /var/plexguide/pgclone.transport;
+  if [ "$typed" == "1" ]; then echo "umove" > /var/plexguide/pgclone.transport && echo;
+elif [ "$typed" == "2" ]; then echo "emove" > /var/plexguide/pgclone.transport && echo;
+elif [ "$typed" == "3" ]; then echo "ublitz" > /var/plexguide/pgclone.transport && echo;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
-else badinput;
+else
+  badinput
   transportmode; fi
 }
 
