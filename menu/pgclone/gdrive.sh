@@ -71,11 +71,12 @@ inputphase
 inputphase () {
   if [ "$type" == "tdrive" ]; then
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 System Message: Team Drive Identifier       reference: td.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
-Format Example: 0BCGnO4COZqr2Uk9PVA ~ visit reference info for assistance
+Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
 
 EOF
   read -p '🌍 Type Identifer | PRESS [ENTER] ' teamdrive < /dev/tty
