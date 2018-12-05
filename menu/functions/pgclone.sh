@@ -27,7 +27,6 @@ elif [ "$typed" == "3" ]; then echo "ublitz" > /var/plexguide/pgclone.transport;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput;
   transportmode; fi
-
 }
 
 changeproject () {
