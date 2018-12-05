@@ -19,6 +19,19 @@ question1 () {
   tstatus=$(cat /var/plexguide/tdrive.pgclone)
   transportdisplay
 
+  if [ "$temp" == "umove" ]; then transport="PG Move /w No Encryption"
+elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
+elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
+
+if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then menufix=1; fi
+
+if [ "$menufix" == "1" ];then
+display1=
+"6 - Deploy ~ $transport"
+else
+"5 - Key Management      : [keysdeployed]
+6 - Deploy ~ $transport" ; fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -29,8 +42,7 @@ tee <<-EOF
 2 - Google Account Login: [$account]
 3 - Project Options     : [$project]
 4 - Mount Management    : [good/bad]
-5 - Key Management      : [keysdeployed]
-6 - Deploy ~ $transport
+$display1
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
