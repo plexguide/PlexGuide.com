@@ -7,6 +7,30 @@
 ################################################################################
 source /opt/plexguide/menu/functions/functions.sh
 
+projectidset () {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Type the Project Name to Utilize
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+fi
+
+  read -p '🌍 Type Project Name | Press [ENTER]: ' typed < /dev/tty
+  list=$(cat /var/plexguide/project.cut | grep $typed)
+
+  if [ "$typed" != "$list" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Error! Type the Exact Name
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  projectidset
+  fi 
+}
+
 testphase () {
   echo "" > /opt/appdata/plexguide/test.conf
   echo "[gdrive]" >> /opt/appdata/plexguide/test.conf
@@ -95,23 +119,52 @@ B - Delete a Project
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-elif [ "$typed" == "1" ]; then
+  if [ "$typed" == "1" ]; then
+  gcloud auth login
+  echo "NOT SET" > /var/plexguide/pgclone.project
+  question1
+elif [ "$typed" == "2" ]; then
+  projectid=$(cat /var/plexguide/pgclone.project)
+  gcloud projects list && gcloud projects list > /var/plexguide/projects.list
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 GCloud Project Interface               reference:pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Current Project ID: $projectid
+
+EOF
+cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
+cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
+echo
+read -p '🌍 Set/Change Project ID? | Press [ENTER] ' typed < /dev/tty
+echo
+projectidset
+
+elif [ "$typed" == "3" ]; then
   type=gdrive
   inputphase
   question1
-elif [ "$typed" == "2" ]; then
+elif [ "$typed" == "4" ]; then
   type=tdrive
   inputphase
   question1
-elif [ "$typed" == "3" ]; then
+elif [ "$typed" == "5" ]; then
   rclone config --config /opt/appdata/plexguide/rclone.conf
   question1
+elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
+  date=`date +%m%d`
+  rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
+  projectid="pg-$date-$rand"
+  gcloud projects create $projectid
+  sleep 1
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
   badinput
   keymenu; fi
-
 #menu later
 inputphase
 }
