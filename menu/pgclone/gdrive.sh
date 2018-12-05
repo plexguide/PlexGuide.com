@@ -90,6 +90,8 @@ tee <<-EOF
 Quitting? Type > exit
 NOTE: Visit reference for Google OAuth Keys!
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
 
   read -p '🌍 Client ID  | PRESS [ENTER] ' public < /dev/tty
