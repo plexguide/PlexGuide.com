@@ -237,3 +237,31 @@ question1
 
 EOF
 }
+
+deploychecks () {
+secret=$(cat /var/plexguide/pgclone.secret)
+public=$(cat /var/plexguide/pgclone.public)
+teamdrive=$(cat /var/plexguide/pgclone.teamdrive)
+  
+if [ "$secret" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Error! Secret Value Is Blank! Unable to Deploy!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p '🌍 Acknowledge Info | Press [Enter] ' typed < /dev/tty
+mountsmenu; fi
+
+if [ "$public" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Error! Public Value Is Blank! Unable to Deploy!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p '🌍 Acknowledge Info | Press [Enter] ' typed < /dev/tty
+mountsmenu; fi
+}

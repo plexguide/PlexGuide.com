@@ -117,11 +117,12 @@ mountsmenu
 }
 
 inputphase () {
-then mountsmenu; fi
-  read -p '🌍 Secret Key | Press [Enter]: ' secret < /dev/tty
-  if [ "$secret" = "exit" ]; then mountsmenu; fi
+secret=$(cat /var/plexguide/pgclone.secret)
+public=$(cat /var/plexguide/pgclone.public)
+teamdrive=$(cat /var/plexguide/pgclone.teamdrive)
 
-tee <<-EOF
+deploychecks
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
