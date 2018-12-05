@@ -112,6 +112,7 @@ question1 () {
   touch /opt/appdata/plexguide/rclone.conf
   account=$(cat /var/plexguide/project.account)
   project=$(cat /var/plexguide/pgclone.project)
+  gstatus=$(cat /var/plexguide/gdrive.pgclone)
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 Welcome to PGClone                     reference:pgclone.plexguide.com
@@ -261,4 +262,6 @@ EOF
 
 variable /var/plexguide/project.account "NOT-SET"
 variable /var/plexguide/pgclone.project "NOT-SET"
+variable /var/plexguide/gdrive.pgclone "Not Active"
+
 question1
