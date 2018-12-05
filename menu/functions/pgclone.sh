@@ -15,9 +15,12 @@ tee <<-EOF
 🌎 PG Clone - Mounts                       reference:pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Configure - gdrive  : [$gstatus]
-2 - Configure - tdrive  : [$tstatus]
-3 - Encryption Setup
+1 - Set Client ID     : [NOT-SET]
+2 - Set Public ID     : [NOT-SET]
+3 - Set TeamDrive     : [NOT-SET]
+4 - Configure - gdrive: [$gstatus]
+5 - Configure - tdrive: [$tstatus]
+6 - Encryption Setup
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -25,18 +28,74 @@ EOF
 
 read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
 
-if [ "$typed" == "1" ]; then
+elif [ "$typed" == "1" ]; then
+  publickeyinput
+  mountsmenu
+elif [ "$typed" == "2" ]; then
+  secretkeyinput
+  mountsmenu
+elif [ "$typed" == "3" ]; then
+  teamdriveinput
+  mountsmenu
+elif [ "$typed" == "4" ]; then
   type=gdrive
   inputphase
   mountsmenu
-elif [ "$typed" == "2" ]; then
+elif [ "$typed" == "5" ]; then
   type=tdrive
   inputphase
   mountsmenu
-
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
   projectmenu; fi
+}
+
+teamdriveinput () {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Team Drive Identifier                       reference: td.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > exit
+Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
+
+EOF
+  read -p '🌍 Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
+  if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
+echo "$teamdrive" > /var/plexguide/pgclone.teamdrive
+
+}
+
+publickeyinput () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Google OAuth Keys - Client ID             reference: oauth.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > exit
+NOTE: Visit reference for Google OAuth Keys!
+
+EOF
+
+read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
+if [ "$public" = "exit" ]; then mountsmenu; fi
+echo "$public" > /var/plexguide/public.secret
+mountsmenu
+}
+
+secretkeyinput () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Google OAuth Keys - Secret Key           reference: oauth.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > exit
+NOTE: Visit reference for Google OAuth Keys!
+
+EOF
+read -p '🌍 Secret Key  | Press [Enter]: ' secret < /dev/tty
+if [ "$secret" = "exit" ]; then mountsmenu; fi
+echo "$secret" > /var/plexguide/pgclone.secret
+mountsmenu
 }
 
 projectmenu () {
@@ -264,52 +323,4 @@ tee <<-EOF
 EOF
 read -p '🌍 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 question1; fi
-}
-
-teamdriveinput () {
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Team Drive Identifier                       reference: td.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? Type > exit
-Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
-
-EOF
-  read -p '🌍 Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
-  if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
-echo "$teamdrive" > /var/plexguide/pgclone.teamdrive
-
-}
-
-publickeyinput () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Google OAuth Keys - Client ID             reference: oauth.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? Type > exit
-NOTE: Visit reference for Google OAuth Keys!
-
-EOF
-
-read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
-if [ "$public" = "exit" ]; then mountsmenu; fi
-echo "$public" > /var/plexguide/public.secret
-mountsmenu
-}
-
-secretkeyinput () {
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Google OAuth Keys - Secret Key           reference: oauth.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? Type > exit
-NOTE: Visit reference for Google OAuth Keys!
-
-EOF
-read -p '🌍 Secret Key  | Press [Enter]: ' secret < /dev/tty
-if [ "$secret" = "exit" ]; then mountsmenu; fi
-echo "$secret" > /var/plexguide/pgclone.secret
-mountsmenu
 }
