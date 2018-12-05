@@ -113,6 +113,8 @@ question1 () {
   account=$(cat /var/plexguide/project.account)
   project=$(cat /var/plexguide/pgclone.project)
   gstatus=$(cat /var/plexguide/gdrive.pgclone)
+  tstatus=$(cat /var/plexguide/tdrive.pgclone)
+
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 Welcome to PGClone                     reference:pgclone.plexguide.com
@@ -260,8 +262,11 @@ EOF
   testphase
 }
 
+# Reminder for gdrive/tdrive / check rclone to set if active, below just placeholder
+
 variable /var/plexguide/project.account "NOT-SET"
 variable /var/plexguide/pgclone.project "NOT-SET"
 variable /var/plexguide/gdrive.pgclone "Not Active"
+variable /var/plexguide/tdrive.pgclone "Not Active"
 
 question1
