@@ -6,7 +6,39 @@
 # GNU:        General Public License v3.0
 ################################################################################
 
-# BAD INPUT
+mountsmenu () {
+projectid=$(cat /var/plexguide/pgclone.project)
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 PG Clone - Mounts                       reference:pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Project ID: $projectid
+
+1 - Configure - gdrive  : [$gstatus]
+2 - Configure - tdrive  : [$tstatus]
+3 - Encryption Setup
+4 - Exit
+
+EOF
+
+read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
+
+if [ "$typed" == "1" ]; then
+  type=gdrive
+  inputphase
+  mountsmenu
+if [ "$typed" == "2" ]; then
+  type=tdrive
+  inputphase
+  mountsmenu
+  
+elif [ "$typed" == "4" ]; then question1;
+else badinput
+  projectmenu; fi
+}
+
 projectmenu () {
 projectid=$(cat /var/plexguide/pgclone.project)
 

@@ -28,10 +28,8 @@ tee <<-EOF
 1 - Data Transport Mode : [$transport]
 2 - Google Account Login: [$account]
 3 - Project Options     : [$project]
-4 - Configure - gdrive  : [$gstatus]
-5 - Configure - tdrive  : [$tstatus]
-6 - Key Management      : [keysdeployed]
-7 - Encryption Setup
+4 - Mount Management    : [good/bad]
+5 - Key Management      : [keysdeployed]
 Z - Exit
 A - Deploy ~ $transport
 
@@ -50,16 +48,10 @@ elif [ "$typed" == "3" ]; then
   projectmenu
   question1
 elif [ "$typed" == "4" ]; then
-  type=gdrive
-  inputphase
+  mountsmenu
   question1
 elif [ "$typed" == "5" ]; then
-  type=tdrive
-  inputphase
-  question1
-elif [ "$typed" == "6" ]; then keymenu && question1;
-elif [ "$typed" == "7" ]; then
-  rclone config --config /opt/appdata/plexguide/rclone.conf
+
   question1
 elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
   date=`date +%m%d`
