@@ -5,6 +5,55 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+inputphase () {
+deploychecks
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Deployment               reference: oauth.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PG is Deploying /w the Following Values:
+
+ID:        $public
+SECRET:    $secret
+TEAMDRIVE: $teamdrive
+
+EOF
+
+read -p '🌍 Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
+
+if [[ "$typed" == "Y" || "$typed" == "y" ]]; then a=b
+elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1
+else
+  badinput
+  inputphase
+fi
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Google Authentication    reference: oauth.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > exit
+NOTE: Copy & Paste Url into Browser | Use Correct Google Account!
+
+https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
+
+EOF
+  read -p '🌍 Token | PRESS [ENTER]: ' token < /dev/tty
+  if [ "$token" = "exit" ]; then mountsmenu; fi
+  curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/plexguide/pgclone.info
+
+  accesstoken=$(cat /opt/appdata/plexguide/pgclone.info | grep access_token | awk '{print $2}')
+  refreshtoken=$(cat /opt/appdata/plexguide/pgclone.info | grep refresh_token | awk '{print $2}')
+  rcdate=$(date +'%Y-%m-%d')
+  rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
+  rczone=$(date +"%:z")
+  final=$(echo "${rcdate}T${rctime}${rczone}")
+
+  testphase
+}
 
 mountsmenu () {
 projectid=$(cat /var/plexguide/pgclone.project)
@@ -28,6 +77,7 @@ tee <<-EOF
 4 - Configure - gdrive: [$gstatus]
 5 - Configure - tdrive: [$tstatus]
 6 - Encryption Setup
+7 - Deploy PG Clone   : [good/bad]
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -50,6 +100,9 @@ elif [ "$typed" == "4" ]; then
   mountsmenu
 elif [ "$typed" == "5" ]; then
   type=tdrive
+  inputphase
+  mountsmenu
+elif [ "$typed" == "7" ]; then
   inputphase
   mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
