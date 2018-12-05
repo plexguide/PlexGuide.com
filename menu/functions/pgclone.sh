@@ -173,11 +173,12 @@ EOF
 
 testphase () {
   echo "" > /opt/appdata/plexguide/test.conf
-  echo "[gdrive]" >> /opt/appdata/plexguide/test.conf
+  echo "[$type]" >> /opt/appdata/plexguide/test.conf
   echo "client_id = $public" >> /opt/appdata/plexguide/test.conf
   echo "client_secret = $secret" >> /opt/appdata/plexguide/test.conf
   echo "type = drive" >> /opt/appdata/plexguide/test.conf
   echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/plexguide/test.conf
+  echo "" >> /opt/appdata/plexguide/test.conf
   if [ "$type" == "tdrive" ]; then echo "team_drive = $teamdrive" >> /opt/appdata/plexguide/test.conf; fi
   echo ""
 tee <<-EOF
