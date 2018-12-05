@@ -38,7 +38,10 @@ B - Delete a Project
 EOF
 read -p '🌍 Type Selection | Press [ENTER] ' typed < /dev/tty
 
-  if [ "$typed" == "2" ]; then
+  if [ "$typed" == "1" ]; then
+  transportmode
+  question1
+elif [ "$typed" == "2" ]; then
   gcloud auth login
   echo "NOT SET" > /var/plexguide/pgclone.project
   question1
