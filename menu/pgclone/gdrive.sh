@@ -111,7 +111,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: PGClone modifies only the gdrive & tdrive for you (95% case use).
-Adding encryption requires using option #3 for gcrypt and/or tcrypt.
+Adding encryption requires utilizing option #3 for gcrypt and/or tcrypt.
 
 1 - Configure: gdrive [not connected]
 2 - Configure: tdrive [not connected]
