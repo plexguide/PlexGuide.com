@@ -23,13 +23,13 @@ tee <<-EOF
 🌎 Welcome to PGClone                     reference:pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Data Transport Mode    : [$transport]
-2 - Login to Google Account: [$account]
-3 - Establish a Project    : [$project]
-4 - Configure - gdrive     : [$gstatus]
-5 - Configure - tdrive     : [$tstatus]
+1 - Data Transport Mode : [$transport]
+2 - Google Account Login: [$account]
+3 - Establish a Project : [$project]
+4 - Configure - gdrive  : [$gstatus]
+5 - Configure - tdrive  : [$tstatus]
 6 - Encryption Setup
-7 - Deploy [NAME]
+7 - Deploy ~ $transport
 Z - Exit
 A - Build a New project
 B - Delete a Project
