@@ -323,3 +323,35 @@ tee <<-EOF
 EOF
     read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 }
+
+keymenu () {
+gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+account=$(cat /var/plexguide/project.account)
+finalprojectid=$(cat /var/plexguide/project.final)
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Blitz Key Generation             📓 Reference: pgblitz.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1 - Make Service Keys
+Z - Exit
+A - Destory all Service Accounts Created
+
+EOF
+
+read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
+
+elif [ "$typed" == "1" ]; then
+  deploykeys
+  keymenu
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
+  question1
+elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
+  deletekeys
+  keymenu
+else
+  badinput
+  keymenu; fi
+}

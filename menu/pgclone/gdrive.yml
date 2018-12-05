@@ -12,7 +12,7 @@
 
   - name: Install GDRIVE Service
     template:
-      src: /opt/plexguide/menu/pgblitz/templates/gdrive.service
+      src: /opt/plexguide/menu/pgclone/templates/gdrive.service
       dest: /etc/systemd/system/gdrive.service
       force: yes
     ignore_errors: yes

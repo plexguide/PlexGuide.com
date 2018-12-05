@@ -7,6 +7,7 @@
 ################################################################################
 
 # BAD INPUT
+
 transportdisplay () {
 temp=$(cat /var/plexguide/pgclone.transport)
   if [ "$temp" == "umove" ]; then transport="PG Move ~ Unencrpted"

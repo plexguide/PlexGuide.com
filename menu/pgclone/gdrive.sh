@@ -29,12 +29,12 @@ tee <<-EOF
 3 - Establish a Project : [$project]
 4 - Configure - gdrive  : [$gstatus]
 5 - Configure - tdrive  : [$tstatus]
-6 - Deploy ~ $transport
+6 - Key Management      : [keysdeployed]
+7 - Encryption Setup
 Z - Exit
-A - Build a New project
-B - Delete a Project
-C - Share E-Mail Address
-D - Encryption Setup
+A - Deploy ~ $transport
+B - Build a New project
+C - Delete a Project
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -100,7 +100,8 @@ elif [ "$typed" == "5" ]; then
   type=tdrive
   inputphase
   question1
-elif [ "$typed" == "6" ]; then
+elif [ "$typed" == "6" ]; then keymenu && question1;
+elif [ "$typed" == "7" ]; then
   rclone config --config /opt/appdata/plexguide/rclone.conf
   question1
 elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
