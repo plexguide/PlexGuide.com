@@ -79,9 +79,8 @@ Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
 EOF
   read -p '🌍 Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
   if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
-fi
+echo "$teamdrive" > /var/plexguide/pgclone.teamdrive
 
-EOF
 }
 
 publickeyinput () {
@@ -97,7 +96,8 @@ EOF
 
 read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
 if [ "$public" = "exit" ]; then mountsmenu; fi
-
+echo "$public" > /var/plexguide/public.secret
+mountsmenu
 }
 
 secretkeyinput () {
@@ -110,9 +110,10 @@ Quitting? Type > exit
 NOTE: Visit reference for Google OAuth Keys!
 
 EOF
-read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
-if [ "$public" = "exit" ]; then mountsmenu; fi
-
+read -p '🌍 Client ID  | Press [Enter]: ' secret < /dev/tty
+if [ "$secret" = "exit" ]; then mountsmenu; fi
+echo "$secret" > /var/plexguide/pgclone.secret
+mountsmenu
 }
 
 inputphase () {
@@ -150,8 +151,8 @@ EOF
 variable /var/plexguide/project.account "NOT-SET"
 variable /var/plexguide/pgclone.project "NOT-SET"
 variable /var/plexguide/pgclone.teamdrive ""
-variable /var/plexguide/pgclone.gdrive ""
-variable /var/plexguide/pgclone.tdrive ""
+variable /var/plexguide/pgclone.public ""
+variable /var/plexguide/pgclone.secret ""
 variable /var/plexguide/pgclone.transport "NOT-SET"
 variable /var/plexguide/gdrive.pgclone "Not Active"
 variable /var/plexguide/tdrive.pgclone "Not Active"
