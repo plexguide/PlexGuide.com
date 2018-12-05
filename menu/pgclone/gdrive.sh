@@ -68,10 +68,8 @@ else
 inputphase
 }
 
-inputphase () {
-  if [ "$type" == "tdrive" ]; then
+teamdriveinput () {
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 System Message: Team Drive Identifier       reference: td.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -83,6 +81,10 @@ EOF
   if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
 fi
 
+EOF
+}
+
+publickeyinput () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -93,8 +95,28 @@ NOTE: Visit reference for Google OAuth Keys!
 
 EOF
 
-  read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
-  if [ "$public" = "exit" ]; then mountsmenu; fi
+read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
+if [ "$public" = "exit" ]; then mountsmenu; fi
+
+}
+
+secretkeyinput () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Google OAuth Keys        reference: oauth.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > exit
+NOTE: Visit reference for Google OAuth Keys!
+
+EOF
+read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
+if [ "$public" = "exit" ]; then mountsmenu; fi
+
+}
+
+inputphase () {
+then mountsmenu; fi
   read -p '🌍 Secret Key | Press [Enter]: ' secret < /dev/tty
   if [ "$secret" = "exit" ]; then mountsmenu; fi
 
@@ -127,6 +149,9 @@ EOF
 # Reminder for gdrive/tdrive / check rclone to set if active, below just placeholder
 variable /var/plexguide/project.account "NOT-SET"
 variable /var/plexguide/pgclone.project "NOT-SET"
+variable /var/plexguide/pgclone.teamdrive ""
+variable /var/plexguide/pgclone.gdrive ""
+variable /var/plexguide/pgclone.tdrive ""
 variable /var/plexguide/pgclone.transport "NOT-SET"
 variable /var/plexguide/gdrive.pgclone "Not Active"
 variable /var/plexguide/tdrive.pgclone "Not Active"
