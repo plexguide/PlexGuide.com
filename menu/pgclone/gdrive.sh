@@ -174,7 +174,6 @@ EOF
 }
 
 # Reminder for gdrive/tdrive / check rclone to set if active, below just placeholder
-
 variable /var/plexguide/project.account "NOT-SET"
 variable /var/plexguide/pgclone.project "NOT-SET"
 variable /var/plexguide/pgclone.transport "NOT-SET"
