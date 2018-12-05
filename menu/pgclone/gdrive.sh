@@ -22,13 +22,13 @@ fi
   if [ "$typed" != "$list" ]; then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: Error! Type the Exact Name
+🚀 System Message: Error! Type the Exact Project Name Listed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
   read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   projectidset
-  fi 
+  fi
 }
 
 testphase () {
@@ -136,12 +136,29 @@ tee <<-EOF
 Current Project ID: $projectid
 
 EOF
-cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
-cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
-echo
-read -p '🌍 Set/Change Project ID? | Press [ENTER] ' typed < /dev/tty
-echo
-projectidset
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
+  echo
+  read -p '🌍 Set/Change Project ID? | Press [ENTER] ' typed < /dev/tty
+  echo
+  projectidset
+  gcloud config set project $typed
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 System Message: Enabling Compute API ~ Project $typed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+gcloud services enable compute.googleapis.com
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 System Message: Enabling Drive API ~ Project $typed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+gcloud services enable drive.googleapis.com --project $typed
 
 elif [ "$typed" == "3" ]; then
   type=gdrive
