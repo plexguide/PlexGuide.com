@@ -85,7 +85,7 @@ EOF
 
 read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
 if [ "$public" = "exit" ]; then mountsmenu; fi
-echo "$public" > /var/plexguide/public.secret
+echo "$public" > /var/plexguide/pgclone.public
 mountsmenu
 }
 
