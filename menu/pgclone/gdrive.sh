@@ -14,7 +14,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-fi
 
   read -p '🌍 Type Project Name | Press [ENTER]: ' typed < /dev/tty
   list=$(cat /var/plexguide/project.cut | grep $typed)
@@ -38,7 +37,7 @@ testphase () {
   echo "client_secret = $secret" >> /opt/appdata/plexguide/test.conf
   echo "type = drive" >> /opt/appdata/plexguide/test.conf
   echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/plexguide/test.conf
-  if [ "$type" == "tdrive" ]; then echo "team_drive = $teamdrive" >> /opt/appdata/plexguide/test.conf
+  if [ "$type" == "tdrive" ]; then echo "team_drive = $teamdrive" >> /opt/appdata/plexguide/test.conf; fi
   echo ""
 tee <<-EOF
 
@@ -208,6 +207,7 @@ NOTES:
 Quitting? Type > exit
 EOF
   read -p 'Type Identifer | PRESS [ENTER] ' public < /dev/tty
+fi
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 System Message: Client Key
