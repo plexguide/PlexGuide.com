@@ -5,16 +5,6 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-
-timepull () {
-  accesstoken=$(cat /tmp/corn.txt | grep access_token | awk '{print $2}')
-  refreshtoken=$(cat /tmp/corn.txt | grep refresh_token | awk '{print $2}')
-  rcdate=$(date +'%Y-%m-%d')
-  rctime=$(date +"%H:%M:%S%7N" --date="$givenDate 60 minutes")
-  rczone=$(date +"%:z")
-  final=$(echo "${rcdate}T${rctime}${rczone}")
-}
-
 inputphase () {
   read -p 'Client | PRESS [ENTER] ' public < /dev/tty
   read -p 'Secret | PRESS [ENTER] ' secret < /dev/tty
@@ -27,8 +17,16 @@ https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:iet
 
 EOF
   read -p 'Token | PRESS [ENTER] ' token < /dev/tty
-
   curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/
+}
+
+timepull () {
+  accesstoken=$(cat /tmp/corn.txt | grep access_token | awk '{print $2}')
+  refreshtoken=$(cat /tmp/corn.txt | grep refresh_token | awk '{print $2}')
+  rcdate=$(date +'%Y-%m-%d')
+  rctime=$(date +"%H:%M:%S%7N" --date="$givenDate 60 minutes")
+  rczone=$(date +"%:z")
+  final=$(echo "${rcdate}T${rctime}${rczone}")
 }
 
 testphase () {
@@ -96,12 +94,6 @@ question1
 EOF
 }
 
-gdriveconfig () {
-  variable /var/plexguide/move.bw "10"
-  speed=$(cat /var/plexguide/move.bw)
-}
-
-
 question1 () {
   touch /opt/appdata/plexguide/rclone.conf
 tee <<-EOF
@@ -120,6 +112,8 @@ Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+
+
 }
 
 question1
