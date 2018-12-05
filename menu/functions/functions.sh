@@ -31,7 +31,7 @@ readrcloneconfig () {
   touch /opt/appdata/plexguide/rclone.conf
   mkdir -p /var/plexguide/rclone/
 
-  gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 8 gdrive | grep token)
+  gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep gdrive)
   if [ "$gdcheck" != "" ]; then echo "good" > /var/plexguide/rclone/gdrive.status && gdstatus="good";
   else echo "bad" > /var/plexguide/rclone/gdrive.status && gdstatus="bad"; fi
 
@@ -39,14 +39,17 @@ readrcloneconfig () {
   if [ "$gccheck" != "" ]; then echo "good" > /var/plexguide/rclone/gcrypt.status && gcstatus="good";
   else echo "bad" > /var/plexguide/rclone/gcrypt.status && gcstatus="bad"; fi
 
-  tdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 8 tdrive | grep token)
-  if [ "$tdcheck" != "" ]; then
-  echo "good" > /var/plexguide/rclone/tdrive.status && tdstatus="good"
-  tdcheck2=$(cat /opt/appdata/plexguide/rclone.conf | grep -A 8 tdrive | grep team_drive)
-    if [ "$tdcheck2" == "" ]; then echo "semi" > /var/plexguide/rclone/tdrive.status && tdstatus="semi"; fi
+  tdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep tdrive)
+  if [ "$tdcheck" != "" ]; then echo "good" > /var/plexguide/rclone/tdrive.status && tdstatus="good"
   else echo "bad" > /var/plexguide/rclone/tdrive.status && tdstatus="bad"; fi
+
 }
 
 rcloneconfig () {
-rclone config --config /opt/appdata/plexguide/rclone.conf
+  rclone config --config /opt/appdata/plexguide/rclone.conf
+}
+
+keysprocessed () {
+  mkdir -p /opt/appdata/pgblitz/keys/processed
+  ls -1 /opt/appdata/pgblitz/keys/processed | wc -l > /var/plexguide/project.keycount
 }

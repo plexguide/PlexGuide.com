@@ -10,6 +10,65 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
+deletekeys2 () {
+  choicedel=$(cat /var/plexguide/gdsa.cut)
+  if [ "$choicedel" != "" ]; then
+    echo ""
+    echo "Deleting All Previous Service Accounts & Keys!"
+    echo ""
+
+    while read p; do
+    gcloud iam service-accounts delete $p --quiet
+    done </var/plexguide/gdsa.cut
+
+  rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 SYSTEM MESSAGE: Prior Service Accounts & Keys Deleted
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 2
+  keymenu
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 SYSTEM MESSAGE: No Prior Service Accounts or Keys!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 2
+  fi
+question1
+}
+
+deletekeys () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 ID: PG Key Gen Information
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
+cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+cat /var/plexguide/gdsa.cut
+tee <<-EOF
+
+Items listed are all service accounts that have been created! Proceeding
+onward will destroy all service accounts and current keys!
+
+EOF
+read -p '🌍 Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
+
+if [[ "$typed" == "Y" || "$typed" == "y" ]]; then deletekeys2
+elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1
+else
+  badinput
+  deletekeys
+fi
+}
+
 gdsabuild () {
   downloadpath=$(cat /var/plexguide/server.hd.path)
   tempbuild=$(cat /var/plexguide/json.tempbuild)
@@ -65,7 +124,7 @@ tee <<-EOF
 3 - Create 6 Keys:  Daily Limit - 4.5  TB  <--- Realistic
 4 - Create 8 Keys:  Daily Limit - 6.0  TB
 5 - Create 10 Keys: Daily Limit - 7.5  TB
-6 - Create 10 Keys: Daily Limit - 7.5  TB
+6 - Create 20 Keys: Daily Limit - 15   TB
 
 NOTE: # of Keys Generated Sets Your Daily Upload Limit!
 
@@ -122,7 +181,6 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
     fi
     done
 
-  echo $keys > /var/plexguide/project.keycount
   echo "no" > /var/plexguide/project.deployed
 
 tee <<-EOF
@@ -139,59 +197,13 @@ read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 }
 
 deploykeys2 () {
-  choicedel=$(cat /var/plexguide/gdsa.cut)
-  if [ "$choicedel" != "" ]; then
-  echo "Deleting All Previous Keys!"
-  echo ""
-
-    while read p; do
-    gcloud iam service-accounts delete $p --quiet
-    done </var/plexguide/gdsa.cut
-
-  rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 SYSTEM MESSAGE: Prior Service Accounts Deleted
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 2
-else
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 SYSTEM MESSAGE: No Prior Service Keys!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  sleep 2
-fi
-
 deploykeys3
 }
 
 deploykeys () {
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 ID: PG Key Generation Information
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
-cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
-cat /var/plexguide/gdsa.cut
-tee <<-EOF
-
-Keys listed above are the ones in current use! Proceeding onward will
-delete the current keys and will generate new ones!
-
-EOF
-read -p '🌍 Build New Service Keys? y or n | Press [ENTER]: ' typed < /dev/tty
-
-if [[ "$typed" == "N" || "$typed" == "n" ]]; then keymenu;
-elif [[ "$typed" == "Y" || "$typed" == "y" ]]; then deploykeys2;
-else badinput && deploykeys; fi
+  gcloud iam service-accounts list --filter="GDSA" > /var/plexguide/gdsa.list
+  cat /var/plexguide/gdsa.list | awk '{print $2}' | tail -n +2 > /var/plexguide/gdsa.cut
+deploykeys2
 }
 
 projectid () {
@@ -271,7 +283,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir gdsa01:/plexguide
+  rclone mkdir --config /opt/appdata/plexguide/rclone.conf gdsa01:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -279,7 +291,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd gdsa01: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf gdsa01: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
@@ -299,6 +311,7 @@ EOF
     question1
   fi
 }
+
 
 pgbdeploy () {
 tee <<-EOF
