@@ -146,8 +146,8 @@ bash /opt/plexguide/menu/start/quotes.sh
 quote=$(cat /var/plexguide/startup.quote)
 source=$(cat /var/plexguide/startup.source)
 
-if [ "$edition" == "PG Edition - GDrive" ]; then echo && echo "1 - Mounts & Data"
-elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo && echo "1 - Mounts & Data"
+if [ "$edition" == "PG Edition - GDrive" ]; then echo && echo "1 - PG Clone"
+elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo && echo "1 - PG Clone"
 elif [ "$edition" == "PG Edition - HD Multi" ]; then echo && echo "1 - MultiHD & Mounts"
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo && echo "1 - No Mounts for Solo HD"
 else
@@ -175,8 +175,8 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
 
-    if [ "$edition" == "PG Edition - GDrive" ]; then bash /opt/plexguide/menu/transport/transport.sh
-    elif [ "$edition" == "PG Edition - GCE Feed" ]; then bash /opt/plexguide/menu/transport/transport.sh
+    if [ "$edition" == "PG Edition - GDrive" ]; then bash /opt/plexguide/menu/pgclone/gdrive.sh
+    elif [ "$edition" == "PG Edition - GCE Feed" ]; then bash /opt/plexguide/menu/pgclone/gdrive.sh
     elif [ "$edition" == "PG Edition - HD Multi" ]; then bash /opt/plexguide/menu/multihd/scripts/main.sh
     elif [ "$edition" == "PG Edition - HD Solo" ]; then
 tee <<-EOF
