@@ -343,7 +343,7 @@ EOF
 
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
-elif [ "$typed" == "1" ]; then
+if [ "$typed" == "1" ]; then
   deploykeys
   keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
