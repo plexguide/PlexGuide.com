@@ -6,8 +6,9 @@
 # GNU:        General Public License v3.0
 ################################################################################
 source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/keys.sh
+source /opt/plexguide/menu/functions/keyback.sh
 source /opt/plexguide/menu/functions/pgclone.sh
-
 ################################################################################
 question1 () {
   touch /opt/appdata/plexguide/rclone.conf
@@ -28,11 +29,12 @@ tee <<-EOF
 3 - Establish a Project : [$project]
 4 - Configure - gdrive  : [$gstatus]
 5 - Configure - tdrive  : [$tstatus]
-6 - Encryption Setup
-7 - Deploy ~ $transport
+6 - Deploy ~ $transport
 Z - Exit
 A - Build a New project
 B - Delete a Project
+C - Share E-Mail Address
+D - Encryption Setup
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
