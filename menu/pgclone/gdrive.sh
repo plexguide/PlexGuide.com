@@ -8,8 +8,6 @@
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/pgclone.sh
 
-
-
 ################################################################################
 question1 () {
   touch /opt/appdata/plexguide/rclone.conf
@@ -39,11 +37,11 @@ B - Delete a Project
 EOF
 read -p '🌍 Type Selection | Press [ENTER] ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then
+  if [ "$typed" == "2" ]; then
   gcloud auth login
   echo "NOT SET" > /var/plexguide/pgclone.project
   question1
-elif [ "$typed" == "2" ]; then
+elif [ "$typed" == "3" ]; then
   projectid=$(cat /var/plexguide/pgclone.project)
 
 tee <<-EOF
@@ -88,15 +86,15 @@ EOF
   read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   $typed > /var/plexguide/pgclone.project
   question1
-elif [ "$typed" == "3" ]; then
+elif [ "$typed" == "4" ]; then
   type=gdrive
   inputphase
   question1
-elif [ "$typed" == "4" ]; then
+elif [ "$typed" == "5" ]; then
   type=tdrive
   inputphase
   question1
-elif [ "$typed" == "5" ]; then
+elif [ "$typed" == "6" ]; then
   rclone config --config /opt/appdata/plexguide/rclone.conf
   question1
 elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
