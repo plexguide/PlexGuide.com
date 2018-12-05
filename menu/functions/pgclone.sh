@@ -252,7 +252,7 @@ tee <<-EOF
 
 EOF
 read -p '🌍 Acknowledge Info | Press [Enter] ' typed < /dev/tty
-mountsmenu; fi
+keymenu; fi
 
 if [ "$public" == "" ]; then
 tee <<-EOF
@@ -263,7 +263,7 @@ tee <<-EOF
 
 EOF
 read -p '🌍 Acknowledge Info | Press [Enter] ' typed < /dev/tty
-mountsmenu; fi
+keymenu; fi
 }
 
 teamdriveinput () {
