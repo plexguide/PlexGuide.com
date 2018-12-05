@@ -26,9 +26,9 @@ question1 () {
 if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then menufix=1; fi
 
 if [ "$menufix" == "1" ]; then
-display1="6 - Deploy ~ $transport"
+display1="5 - Deploy ~ $transport"
 else
-display="5 - Key Management      : [keysdeployed]
+display1="5 - Key Management      : [keysdeployed]
 6 - Deploy ~ $transport" ; fi
 
 tee <<-EOF
