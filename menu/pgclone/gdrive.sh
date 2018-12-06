@@ -47,7 +47,7 @@ $display1
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p '↘️ Type Selection | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$menufix" == "2" ]; then
     if [ "$typed" == "3" ]; then

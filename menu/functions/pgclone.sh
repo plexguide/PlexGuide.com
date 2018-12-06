@@ -13,10 +13,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💬 10MB is a safe limit. If exceeding 10MB and uploading straight for
-24 hours, an upload ban will be triggered. 
+24 hours, an upload ban will be triggered.
 
 EOF
-  read -p '↘️ Type a Speed from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type a Speed from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" -ge "1" && "$typed" -le "1000" ]]; then echo "$typed" > /var/plexguide/move.bw && question1;
   else badinput && bandwidth; fi
 }
@@ -33,7 +33,7 @@ NOTE: $type already exists! To proceed, we must delete the prior
 configuration for you.
 
 EOF
-  read -p '↘️ Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
 
   if [[ "$typed" == "Y" || "$typed" == "y" ]]; then a=b
 elif [[ "$typed" == "N" || "$typed" == "n" ]]; then mountsmenu
@@ -71,14 +71,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 System Message: PG Clone - $type      📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PG is Deploying /w the Following Values:
+💬 PG is Deploying /w the Following Values:
 
 ID:        $public
 SECRET:    $secret
 $display
 EOF
 
-read -p '↘️ Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️  Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
 
 if [[ "$typed" == "Y" || "$typed" == "y" ]]; then a=b
 elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1
@@ -98,7 +98,7 @@ NOTE: Copy & Paste Url into Browser | Use Correct Google Account!
 https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
 
 EOF
-  read -p '↘️ Token | PRESS [ENTER]: ' token < /dev/tty
+  read -p '↘️  Token | PRESS [ENTER]: ' token < /dev/tty
   if [ "$token" = "exit" ]; then mountsmenu; fi
   curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/plexguide/pgclone.info
 
@@ -143,12 +143,12 @@ tee <<-EOF
 🌎 PG Clone - OAuth & Mounts           📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-OAuth
+💾 OAuth
 
 [1] Client ID: $dpublic
 [2] Secret ID: $dsecret
 
-RClone Configuration
+📁 RClone Configuration
 
 [3] gdrive   : $gstatus$display2
 [Z] Exit
@@ -156,7 +156,7 @@ RClone Configuration
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-read -p '↘️ Set Choice | Press [ENTER] ' typed < /dev/tty
+read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
 
 if [ "$transport" == "PG Move /w No Encryption" ]; then
   if [ "$typed" == "5" ]; then
@@ -204,13 +204,13 @@ else badinput
 teamdriveinput () {
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Team Drive Identifier                    📓 Reference:  td.plexguide.com
+🚀 Team Drive Identifier                    📓 Reference: td.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
 
 EOF
-  read -p '↘️ Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
+  read -p '↘️  Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
   if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
 echo "$teamdrive" > /var/plexguide/pgclone.teamdrive
 
@@ -220,14 +220,14 @@ publickeyinput () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Google OAuth Keys - Client ID         📓 Reference:  oauth.plexguide.com
+🚀 Google OAuth Keys - Client ID         📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 NOTE: Visit reference for Google OAuth Keys!
 
 EOF
 
-read -p '↘️ Client ID  | Press [Enter]: ' public < /dev/tty
+read -p '↘️  Client ID  | Press [Enter]: ' public < /dev/tty
 if [ "$public" = "exit" ]; then mountsmenu; fi
 echo "$public" > /var/plexguide/pgclone.public
 mountsmenu
@@ -237,13 +237,13 @@ secretkeyinput () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Google OAuth Keys - Secret Key        📓 Reference:  oauth.plexguide.com
+🚀 Google OAuth Keys - Secret Key        📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 NOTE: Visit reference for Google OAuth Keys!
 
 EOF
-read -p '↘️ Secret Key  | Press [Enter]: ' secret < /dev/tty
+read -p '↘️  Secret Key  | Press [Enter]: ' secret < /dev/tty
 if [ "$secret" = "exit" ]; then mountsmenu; fi
 echo "$secret" > /var/plexguide/pgclone.secret
 mountsmenu
@@ -255,7 +255,7 @@ projectid=$(cat /var/plexguide/pgclone.project)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 GCloud Project Interface             📓 Reference: pgclone.plexguide.com
+🌎 GCloud Project Interface            📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Project ID: $projectid
 
@@ -267,7 +267,7 @@ Z - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
+read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then projectestablish;
 elif [ "$typed" == "2" ]; then projectcreate;
@@ -286,7 +286,7 @@ tee <<-EOF
 🚀 ID: $projectid ~ Created
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️  Confirm Info | Press [ENTER]: ' typed < /dev/tty
 keymenu
 }
 
@@ -324,7 +324,7 @@ tee <<-EOF
 
 EOF
   echo $typed > /var/plexguide/pgclone.project
-  read -p '↘️ Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   question1
 ]
 }
@@ -379,7 +379,7 @@ tee <<-EOF
 EOF
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
   echo ""
-  read -p '↘️ Type Project Name | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Project Name | Press [ENTER]: ' typed < /dev/tty
   echo ""
   list=$(cat /var/plexguide/project.cut | grep $typed)
 
@@ -390,7 +390,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p ' ↘️ Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  read -p ' ↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   projectidset
   fi
 }
@@ -443,7 +443,7 @@ TIPS:
 
 EOF
     echo "Not Active" > /var/plexguide/gdrive.pgclone
-    read -p '↘️ Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+    read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
 else
 tee <<-EOF
@@ -455,7 +455,7 @@ EOF
 
 fi
 
-read -p '↘️ Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 echo "Active" > /var/plexguide/$type.pgclone
 cat /opt/appdata/plexguide/test.conf >> /opt/appdata/plexguide/rclone.conf
 mountsmenu
@@ -476,7 +476,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '↘️ Acknowledge Info | Press [Enter] ' typed < /dev/tty
+read -p '↘️  Acknowledge Info | Press [Enter] ' typed < /dev/tty
 question1; fi
 
 if [ "$public" == "" ]; then
@@ -487,6 +487,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '↘️ Acknowledge Info | Press [Enter] ' typed < /dev/tty
+read -p '↘️  Acknowledge Info | Press [Enter] ' typed < /dev/tty
 question1; fi
 }
