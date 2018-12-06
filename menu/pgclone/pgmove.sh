@@ -39,11 +39,7 @@ bwrecall && question1
 
 question1 () {
 bwrecall
-readrcloneconfig
 
-if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="3 - Deploy PG Drives : GDrive" && message2="Z - Exit" dstatus="1";
-elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="3 - Deploy PG Drives : GDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
-else message="Z - Exit" message2="" && dstatus="0"; fi
 
 # Menu Interface
 tee <<-EOF

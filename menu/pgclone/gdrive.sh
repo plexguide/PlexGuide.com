@@ -45,13 +45,13 @@ else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Welcome to PG Clone                     reference:pgclone.plexguide.com
+🌎 Welcome to PG Clone                  📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Data Transport Mode : [$transport]
 2 - Google Account Login: $display5
 3 - Project Options     : [$project]
-4 - Mount Management    : [good/bad]
+4 - Mount Management
 $display1
 Z - Exit
 
