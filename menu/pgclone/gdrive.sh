@@ -41,7 +41,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [1] Data Transport Mode: $transport
-[2] OAuth & Mount Management
+[2] OAuth & Mounts
 $display1
 [Z] Exit
 
