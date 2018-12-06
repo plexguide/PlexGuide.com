@@ -350,9 +350,9 @@ tee <<-EOF
 4 - EMail Generator (Share TDrive)
 Z - Exit
 
-A - Destory all Service Accounts Created
-B - Backup  Keys
-C - Restore Keys
+A - Backup  Keys
+B - Restore Keys
+C - Destory all Service Accounts Created
 
 EOF
 
@@ -375,13 +375,13 @@ elif [ "$typed" == "4" ]; then
   keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   question1
-elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
+elif [[ "$typed" == "C" || "$typed" == "c" ]]; then
   deletekeys
   keymenu
-elif [[ "$typed" == "B" || "$typed" == "b" ]]; then
+elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
   keybackup
   keymenu
-elif [[ "$typed" == "C" || "$typed" == "c" ]]; then
+elif [[ "$typed" == "B" || "$typed" == "b" ]]; then
   keyrestore
   keymenu
 else
