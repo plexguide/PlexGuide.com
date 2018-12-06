@@ -26,7 +26,8 @@ question1 () {
 if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then menufix=1; else menufix=2; fi
 
 if [ "$menufix" == "1" ]; then
-display1="5 - Throttle Limit
+bwdisplay=$(cat /var/plexguide/move.bw)
+display1="5 - Throttle Limit      : $bwdisplay MB
 6 - Deploy ~ $transport"
 a=9999999; fi
 if [ "$menufix" == "2" ]; then
