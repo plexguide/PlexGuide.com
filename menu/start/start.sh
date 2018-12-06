@@ -146,18 +146,18 @@ bash /opt/plexguide/menu/start/quotes.sh
 quote=$(cat /var/plexguide/startup.quote)
 source=$(cat /var/plexguide/startup.source)
 
-if [ "$edition" == "PG Edition - GDrive" ]; then echo && echo "1 - PG Clone"
-elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo && echo "1 - PG Clone"
-elif [ "$edition" == "PG Edition - HD Multi" ]; then echo && echo "1 - MultiHD & Mounts"
-elif [ "$edition" == "PG Edition - HD Solo" ]; then echo && echo "1 - No Mounts for Solo HD"
+echo "1 - Traefik [$traefik]"
+if [ "$edition" == "PG Edition - GDrive" ]; then echo && echo "2 - PG Clone: Mount Transport"
+elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo && echo "2 - PG Clone: Mount Transport"
+elif [ "$edition" == "PG Edition - HD Multi" ]; then echo && echo "2 - MultiHD & Mounts"
+elif [ "$edition" == "PG Edition - HD Solo" ]; then echo && echo "2 - No Mounts for Solo HD"
 else
-  echo "1 - Mounts & Data Transports"
+  echo "2 - Mounts & Data Transports"
   echo
   "PG Edition - GDrive" > /var/plexguide/pg.edition
 fi
 
 tee <<-EOF
-2 - Traefik [$traefik]
 3 - PG Box: App Installer
 4 - PG Box: App Removal
 5 - Instances & GCE
@@ -173,7 +173,7 @@ EOF
 # Standby
 read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then
+  if [ "$typed" == "2" ]; then
 
     if [ "$edition" == "PG Edition - GDrive" ]; then bash /opt/plexguide/menu/pgclone/gdrive.sh
     elif [ "$edition" == "PG Edition - GCE Feed" ]; then bash /opt/plexguide/menu/pgclone/gdrive.sh
@@ -190,7 +190,7 @@ sleep 3
   bash /opt/plexguide/menu/transport/transport.sh
      fi
 
-elif [ "$typed" == "2" ]; then
+elif [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/traefik/traefik.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgbox/pgbox.sh
