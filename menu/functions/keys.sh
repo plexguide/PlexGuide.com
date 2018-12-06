@@ -240,6 +240,7 @@ echo
 read -p '🌍 Process Complete | Press [ENTER] ' typed2 < /dev/tty
 
 }
+
 ufsbuilder () {
   downloadpath=$(cat /var/plexguide/server.hd.path)
   ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
@@ -268,7 +269,7 @@ ufsbuilder () {
   echo -n "$downloadpath/pgblitz/$p=RO:" >> /var/plexguide/unionfs.pgpath
   done </tmp/pg.gdsa.ufs
   builder=$(cat /var/plexguide/unionfs.pgpath)
-  }
+}
 
 rchecker () {
 tee <<-EOF
@@ -361,10 +362,10 @@ if [ "$typed" == "1" ]; then
   gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
   account=$(cat /var/plexguide/project.account)
   keymenu
-if [ "$typed" == "2" ]; then
+elif [ "$typed" == "2" ]; then
   projectmenu
   keymenu
-if [ "$typed" == "3" ]; then
+elif [ "$typed" == "3" ]; then
   deploykeys
   keymenu
 elif [ "$typed" == "4" ]; then
