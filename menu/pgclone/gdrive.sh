@@ -16,22 +16,19 @@ question1 () {
   gstatus=$(cat /var/plexguide/gdrive.pgclone)
   tstatus=$(cat /var/plexguide/tdrive.pgclone)
   transportdisplay
-#  if [ "$temp" == "umove" ]; then transport="PG Move /w No Encryption"
-#elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
-#elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
 
 if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then menufix=1; else menufix=2; fi
 
 if [ "$menufix" == "1" ]; then
 bwdisplay=$(cat /var/plexguide/move.bw)
-display1="3 - Throttle Limit      : $bwdisplay MB
-4 - Deploy ~ $transport"
+display1="[3] Throttle Limit      : $bwdisplay MB
+[4] Deploy ~ $transport"
 a=9999999; fi
 if [ "$menufix" == "2" ]; then
 mkdir -p /opt/appdata/pgblitz/keys/processed/
 keynum=$(ls /opt/appdata/pgblitz/keys/processed/ | wc -l)
-display1="3 - Key Management      : [$keynum Keys Deployed]
-4 - Deploy ~ $transport"
+display1="[3] Key Management      : [$keynum Keys Deployed]
+[4] Deploy ~ $transport"
 a=4; fi
 
 
