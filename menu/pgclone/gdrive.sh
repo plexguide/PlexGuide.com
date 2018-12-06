@@ -66,6 +66,7 @@ elif [ "$typed" == "4" ]; then
 elif [ "$typed" == "5" ]; then
   if [ "$menufix" == "1" ]; then
     if [ "$transport" == "PG Move /w No Encryption" ]; then
+      echo "gdrive" > /var/plexguide/rclone/deploy.version
       removemounts
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/unionfs.yml
