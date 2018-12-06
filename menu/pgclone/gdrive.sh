@@ -89,7 +89,9 @@ elif [ "$typed" == "4" ]; then
   question1
 elif [ "$typed" == "5" ]; then
   if [ "$menufix" == "1" ]; then
-
+    bandwidth
+    question1
+  fi
 elif [ "$typed" == "6" ]; then
   if [ "$menufix" == "1" ]; then
     if [ "$transport" == "PG Move /w No Encryption" ]; then
