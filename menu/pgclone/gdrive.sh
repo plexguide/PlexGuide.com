@@ -26,7 +26,8 @@ question1 () {
 if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then menufix=1; else menufix=2; fi
 
 if [ "$menufix" == "1" ]; then
-display1="5 - Deploy ~ $transport"
+display1="5 - Throttle Limit
+6 - Deploy ~ $transport"
 a=9999999; fi
 if [ "$menufix" == "2" ]; then
 mkdir -p /opt/appdata/pgblitz/keys/processed/
@@ -87,6 +88,9 @@ elif [ "$typed" == "4" ]; then
   mountsmenu
   question1
 elif [ "$typed" == "5" ]; then
+  if [ "$menufix" == "1" ]; then
+
+elif [ "$typed" == "6" ]; then
   if [ "$menufix" == "1" ]; then
     if [ "$transport" == "PG Move /w No Encryption" ]; then
       echo "gdrive" > /var/plexguide/rclone/deploy.version
