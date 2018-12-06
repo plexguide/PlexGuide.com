@@ -196,7 +196,7 @@ elif [ "$typed" == "4" ]; then
 #  mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
-  projectmenu; fi
+  question1; fi
 }
 
 teamdriveinput () {
