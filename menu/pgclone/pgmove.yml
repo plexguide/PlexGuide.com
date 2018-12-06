@@ -14,7 +14,7 @@
     shell: "cat /var/plexguide/move.bw"
     register: bandwidth
 
-  - name: Bandwidth Limit
+  - name: Deploy Version
     shell: "cat /var/plexguide/rclone/deploy.version"
     register: ver
 
