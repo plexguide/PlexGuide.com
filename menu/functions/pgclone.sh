@@ -46,7 +46,7 @@ deploychecks
 if [[ "$transport" == "PG Move /w No Encryption" || "PG Move /w Encryption" ]]; then
   display=""
 else
-  display3="TEAMDRIVE: $teamdrive
+  display="TEAMDRIVE: $teamdrive
   ";fi
 
 tee <<-EOF
