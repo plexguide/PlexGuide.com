@@ -42,7 +42,7 @@ tee <<-EOF
 [1] Data Transport Mode : [$transport]
 [2] Mount Management
 $display1
-[Z] - Exit
+[Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
