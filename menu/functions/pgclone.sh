@@ -342,7 +342,7 @@ transportmode () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Select a Transport Mode           📓 Reference: transport.plexguide.com
+🌟 Select Transport Mode             📓 Reference: transport.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [1] PG Move  /w No Encryption | Upload 750GB Daily ~ Simple
