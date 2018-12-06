@@ -129,13 +129,13 @@ fi
 
 if [ "$transport" == "PG Move /w Encryption" ]; then
 display2="
-4 - Set GCrypt"
+[4] gcrypt"
 fi
 
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
 display2="
-[4] Config: tdrive  [$tstatus]
-[5] Set: TeamDrive  [$dteamdrive]
+[4] tdrive   : [$tstatus]
+[5] TeamDrive: [$dteamdrive]
 "
 fi
 
@@ -152,7 +152,7 @@ OAuth
 
 RClone Configuration
 
-[3] gdrive: $gstatus$display2
+[3] gdrive   : $gstatus$display2
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
