@@ -77,15 +77,15 @@ elif [ "$typed" == "3" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
     echo "gdrive" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgclone/unionfs.yml
-    ansible-playbook /opt/plexguide/menu/pgclone/move.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
     question1
   elif [ "$dstatus" == "2" ]; then
     echo "gcrypt" > /var/plexguide/rclone/deploy.version
     ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
     ansible-playbook /opt/plexguide/menu/pgclone/gcrypt.yml
-    ansible-playbook /opt/plexguide/menu/pgclone/unionfs.yml
-    ansible-playbook /opt/plexguide/menu/pgclone/move.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
     question1
   else question1; fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
