@@ -2,7 +2,7 @@
 7.3.8
 
 💍  [BETA] - Avoid Using Edge! For Testing & No Support!
-7.4.1
+7.4.2
 7.4edge
 7.3edge
 
