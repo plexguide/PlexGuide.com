@@ -348,7 +348,7 @@ tee <<-EOF
 [1] PG Move  /w No Encryption | Upload 750GB Daily ~ Simple
 [2] PG Move  /w Encryption    | Upload 750GB Daily ~ Simple
 [3] PG Blitz /w No Encryption | Exceed 750GB Daily ~ Complex
-[4] Exit
+[Z] Exit
 
 EOF
 read -p '↘️ Set Choice | Press [ENTER] ' typed < /dev/tty
