@@ -39,13 +39,13 @@ a=4; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Welcome to PG Clone                  📓 Reference: pgclone.plexguide.com
+💪 Welcome to PG Clone                 📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Data Transport Mode : [$transport]
-2 - Mount Management
+[1] Data Transport Mode : [$transport]
+[2] Mount Management
 $display1
-Z - Exit
+[Z] - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -119,14 +119,8 @@ variable /var/plexguide/pgclone.teamdrive ""
 variable /var/plexguide/pgclone.public ""
 variable /var/plexguide/pgclone.secret ""
 variable /var/plexguide/pgclone.transport "PG Move /w No Encryption"
-variable /var/plexguide/gdrive.pgclone "Not Active"
-variable /var/plexguide/tdrive.pgclone "Not Active"
+variable /var/plexguide/gdrive.pgclone "NOT-SET"
+variable /var/plexguide/tdrive.pgclone "NOT-SET"
 variable /var/plexguide/move.bw  "10"
 
 question1
-
-#date=`date +%m%d`
-#rand=$(echo $((1 + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM + RANDOM )))
-#projectid="pg-$date-$rand"
-#gcloud projects create $projectid
-#sleep 1
