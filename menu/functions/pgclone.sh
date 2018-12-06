@@ -11,13 +11,13 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 System Message: BW Limit Notice        📓 Reference: move.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 NOTE: 10MB is a safe limit. If exceeding 10MB and uploading straight for
 24 hours, an upload ban will be triggered. Change limits if uploading
 less than 750GB per day!
 
 EOF
-  echo ""
-  read -p 'TYPE a SERVER SPEED from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️ Type a Speed from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" -ge "1" && "$typed" -le "1000" ]]; then echo "$typed" > /var/plexguide/move.bw && question1;
   else badinput && bandwidth; fi
 }
