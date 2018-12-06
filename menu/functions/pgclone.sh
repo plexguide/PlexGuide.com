@@ -5,6 +5,41 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+statusmount () {
+  cat /opt/appdata/plexguide/rclone.conf | grep "$type"
+  if [ "$mcheck5" != "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Warning!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NOTE: $mcheck5 already exists! To proceed, we must delete the prior
+configuration for you.
+
+EOF
+  read -p '🌍 Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
+
+  if [[ "$typed" == "Y" || "$typed" == "y" ]]; then a=b
+elif [[ "$typed" == "N" || "$typed" == "n" ]]; then mountsmenu
+  else
+    badinput
+    statusmount
+  fi
+
+  rclone --config /opt/appdata/plexguide/rclone.conf config delete $mcheck5
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: $mcheck5 deleted!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+fi
+read -p '🌍 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+
+}
+
 inputphase () {
 deploychecks
 
