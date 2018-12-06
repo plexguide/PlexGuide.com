@@ -109,9 +109,9 @@ if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive="SET"; fi
 #5 - Configure - tdrive: [$tstatus]
 #6 - Encryption Setup
 
-#if [ "$transport" == "PG Move /w No Encryption" ]; then
-#display2="5 - Deploy PG Clone   : [good/bad]"
-#fi
+if [ "$transport" == "PG Move /w No Encryption" ]; then
+display2=""
+fi
 
 if [ "$transport" == "PG Move /w Encryption" ]; then
 display2="5 - Set GCrypt"
