@@ -93,7 +93,6 @@ elif [ "$typed" == "5" ]; then
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
-      pgbdeploy
       question1
     fi
     if [ "$transport" == "PG Move /w Encryption" ]; then
@@ -103,7 +102,6 @@ elif [ "$typed" == "5" ]; then
       ansible-playbook /opt/plexguide/menu/pgclone/gcrypt.yml
       ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
-      pgbdeploy
       question1
     fi
   else
