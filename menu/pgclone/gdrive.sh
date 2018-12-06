@@ -12,13 +12,11 @@ source /opt/plexguide/menu/functions/pgclone.sh
 ################################################################################
 question1 () {
   touch /opt/appdata/plexguide/rclone.conf
-  account=$(cat /var/plexguide/project.account)
   project=$(cat /var/plexguide/pgclone.project)
   transport=$(cat /var/plexguide/pgclone.transport)
   gstatus=$(cat /var/plexguide/gdrive.pgclone)
   tstatus=$(cat /var/plexguide/tdrive.pgclone)
   transportdisplay
-
 #  if [ "$temp" == "umove" ]; then transport="PG Move /w No Encryption"
 #elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
 #elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
@@ -80,7 +78,8 @@ read -p '🌍 Type Selection | Press [ENTER]: ' typed < /dev/tty
   question1
 elif [ "$typed" == "2" ]; then
   gcloud auth login
-  echo "NOT SET" > /var/plexguide/pgclone.project
+  gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+  account=$(cat /var/plexguide/project.account)
   question1
 elif [ "$typed" == "3" ]; then
   projectmenu
