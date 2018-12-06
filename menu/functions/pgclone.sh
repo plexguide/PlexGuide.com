@@ -408,7 +408,7 @@ fi
 read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 echo "Active" > /var/plexguide/$type.pgclone
 cat /opt/appdata/plexguide/test.conf >> /opt/appdata/plexguide/rclone.conf
-question1
+mountsmenu
 
 EOF
 }
