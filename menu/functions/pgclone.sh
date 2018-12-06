@@ -12,9 +12,8 @@ tee <<-EOF
 🚀 System Message: BW Limit Notice        📓 Reference: move.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: 10MB is a safe limit. If exceeding 10MB and uploading straight for
-24 hours, an upload ban will be triggered. Change limits if uploading
-less than 750GB per day!
+💬 10MB is a safe limit. If exceeding 10MB and uploading straight for
+24 hours, an upload ban will be triggered. 
 
 EOF
   read -p '↘️ Type a Speed from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
