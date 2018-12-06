@@ -64,9 +64,9 @@ read -p '🌍 Type Selection | Press [ENTER] ' typed < /dev/tty
     elif [ "$typed" == "6" ]; then
       removemounts
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/gcrypt.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
       pgbdeploy
       question1
     fi
