@@ -109,18 +109,18 @@ if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive="SET"; fi
 #5 - Configure - tdrive: [$tstatus]
 #6 - Encryption Setup
 
-if [ "$transport" == "PG Move /w No Encryption" ]; then
-display2="5 - Deploy PG Clone   : [good/bad]"
-fi
+#if [ "$transport" == "PG Move /w No Encryption" ]; then
+#display2="5 - Deploy PG Clone   : [good/bad]"
+#fi
 
 if [ "$transport" == "PG Move /w Encryption" ]; then
-display2="5 - Set GCrypt
-6 - Deploy PG Clone   : [good/bad]"
+display2="5 - Set GCrypt"
+#6 - Deploy PG Clone   : [good/bad]
 fi
 
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
-display2="5 - Configure - tdrive: [$tstatus]
-6 - Deploy PG Clone   : [good/bad]"
+display2="5 - Configure - tdrive: [$tstatus]"
+#6 - Deploy PG Clone   : [good/bad]
 fi
 
 tee <<-EOF
@@ -150,11 +150,11 @@ if [ "$transport" == "PG Move /w No Encryption" ]; then
 fi
 
 if [ "$transport" == "PG Move /w Encryption" ]; then
-  if [ "$typed" == "6" ]; then
-  type=gdrive
-  inputphase
-  mountsmenu
-  fi
+  #if [ "$typed" == "6" ]; then
+  #type=gdrive
+  #inputphase
+  #mountsmenu
+  #fi
   if [ "$typed" == "5" ]; then
   rclone config --config /opt/appdata/plexguide/rclone.conf
   mountsmenu
@@ -168,11 +168,11 @@ if [ "$transport" == "PG Blitz /w No Encryption" ]; then
   inputphase
   mountsmenu
   fi
-  if [ "$typed" == "6" ]; then
-  type=tdrive
-  inputphase
-  mountsmenu
-  fi
+  #if [ "$typed" == "6" ]; then
+  #type=tdrive
+  #inputphase
+  #mountsmenu
+  #fi
 fi
 
 if [ "$typed" == "1" ]; then
