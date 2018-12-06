@@ -163,7 +163,7 @@ if [ "$transport" == "PG Move /w No Encryption" ]; then
 fi
 
 if [ "$transport" == "PG Move /w Encryption" ]; then
-  if [ "$typed" == "5" ]; then
+  if [ "$typed" == "4" ]; then
   rclone config --config /opt/appdata/plexguide/rclone.conf
   mountsmenu
   fi
