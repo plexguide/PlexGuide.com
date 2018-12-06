@@ -129,11 +129,12 @@ fi
 
 if [ "$transport" == "PG Move /w Encryption" ]; then
 display2="
-5 - Set GCrypt"
+4 - Set GCrypt"
 fi
 
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
 display2="
+4 - Set TeamDrive     : [$dteamdrive]
 5 - Configure - tdrive: [$tstatus]"
 fi
 
@@ -145,8 +146,7 @@ tee <<-EOF
 
 1 - Set Client ID     : [$dpublic]
 2 - Set Secret ID     : [$dsecret]
-3 - Set TeamDrive     : [$dteamdrive]
-4 - Configure - gdrive: [$gstatus]$display2
+3 - Configure - gdrive: [$gstatus]$display2
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -155,7 +155,7 @@ EOF
 read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
 
 if [ "$transport" == "PG Move /w No Encryption" ]; then
-  if [ "$typed" == "5" ]; then
+  if [ "$typed" == "4" ]; then
   type=gdrive
   inputphase
   mountsmenu
@@ -185,12 +185,12 @@ elif [ "$typed" == "2" ]; then
   secretkeyinput
   mountsmenu
 elif [ "$typed" == "3" ]; then
-  teamdriveinput
-  mountsmenu
-elif [ "$typed" == "4" ]; then
   type=gdrive
   statusmount
   inputphase
+  mountsmenu
+elif [ "$typed" == "4" ]; then
+  teamdriveinput
   mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
