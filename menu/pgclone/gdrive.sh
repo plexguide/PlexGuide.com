@@ -69,7 +69,7 @@ elif [ "$typed" == "5" ]; then
       echo "gdrive" > /var/plexguide/rclone/deploy.version
       removemounts
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/unionfs.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
       pgbdeploy
       question1
@@ -78,7 +78,7 @@ elif [ "$typed" == "5" ]; then
       removemounts
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/gcrypt.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/unionfs.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
       pgbdeploy
       question1
