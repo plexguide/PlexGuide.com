@@ -5,6 +5,13 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+bandwidth () {
+  echo ""
+  read -p 'TYPE a SERVER SPEED from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
+  if [[ "$typed" -ge "1" && "$typed" -le "1000" ]]; then echo "$typed" > /var/plexguide/move.bw && bwpassed;
+  else badinput && bandwidth; fi
+}
+
 statusmount () {
   mcheck5=$(cat /opt/appdata/plexguide/rclone.conf | grep "$type")
   if [ "$mcheck5" != "" ]; then
