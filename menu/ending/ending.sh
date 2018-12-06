@@ -26,10 +26,9 @@ cat << "EOF"
 │ ————————————————————————————————————│
 │ Restart Plexguide:        plexguide │
 │ Update Plexguide:         pgupdate  │
-│ Update to Edge Version:   pgedge    │
 │ View the PG Logs:         pglog     │
 │ Download Your PG Fork:    pgfork    │
-│                                     │
+│ ————————————————————————————————————│
 │ Visit: newshosting.plexguide.com    │
 └─────────────────────────────────────┘
 
