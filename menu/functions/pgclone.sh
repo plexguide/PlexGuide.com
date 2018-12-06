@@ -135,8 +135,7 @@ fi
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
 display2="
 [4] tdrive   : $tstatus
-[5] TeamDrive: $dteamdrive
-"
+[5] TeamDrive: $dteamdrive"
 fi
 
 tee <<-EOF
