@@ -9,7 +9,7 @@ bandwidth () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: BW Limit Notice        📓 Reference:  move.plexguide.com
+🚀 System Message: BW Limit Notice        📓 Reference: move.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 NOTE: 10MB is a safe limit. If exceeding 10MB and uploading straight for
 24 hours, an upload ban will be triggered. Change limits if uploading
@@ -28,13 +28,13 @@ statusmount () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: Warning!
+⚠️ System Message: Warning!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 NOTE: $type already exists! To proceed, we must delete the prior
 configuration for you.
 
 EOF
-  read -p '🌍 Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️ Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
 
   if [[ "$typed" == "Y" || "$typed" == "y" ]]; then a=b
 elif [[ "$typed" == "N" || "$typed" == "n" ]]; then mountsmenu
@@ -52,7 +52,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌍 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
 fi
 
 }
@@ -70,7 +70,7 @@ else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: PG Clone - $type       reference: oauth.plexguide.com
+🚀 System Message: PG Clone - $type      📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PG is Deploying /w the Following Values:
 
@@ -79,7 +79,7 @@ SECRET:    $secret
 $display
 EOF
 
-read -p '🌍 Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
 
 if [[ "$typed" == "Y" || "$typed" == "y" ]]; then a=b
 elif [[ "$typed" == "N" || "$typed" == "n" ]]; then question1
@@ -91,7 +91,7 @@ fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: Google Auth           📓 Reference:  oauth.plexguide.com
+🚀 System Message: Google Auth           📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 NOTE: Copy & Paste Url into Browser | Use Correct Google Account!
@@ -99,7 +99,7 @@ NOTE: Copy & Paste Url into Browser | Use Correct Google Account!
 https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
 
 EOF
-  read -p '🌍 Token | PRESS [ENTER]: ' token < /dev/tty
+  read -p '↘️ Token | PRESS [ENTER]: ' token < /dev/tty
   if [ "$token" = "exit" ]; then mountsmenu; fi
   curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/plexguide/pgclone.info
 
@@ -157,7 +157,7 @@ RClone Configuration
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
+read -p '↘️ Set Choice | Press [ENTER] ' typed < /dev/tty
 
 if [ "$transport" == "PG Move /w No Encryption" ]; then
   if [ "$typed" == "5" ]; then
@@ -211,7 +211,7 @@ Quitting? Type > exit
 Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
 
 EOF
-  read -p '🌍 Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
+  read -p '↘️ Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
   if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
 echo "$teamdrive" > /var/plexguide/pgclone.teamdrive
 
@@ -228,7 +228,7 @@ NOTE: Visit reference for Google OAuth Keys!
 
 EOF
 
-read -p '🌍 Client ID  | Press [Enter]: ' public < /dev/tty
+read -p '↘️ Client ID  | Press [Enter]: ' public < /dev/tty
 if [ "$public" = "exit" ]; then mountsmenu; fi
 echo "$public" > /var/plexguide/pgclone.public
 mountsmenu
@@ -244,7 +244,7 @@ Quitting? Type > exit
 NOTE: Visit reference for Google OAuth Keys!
 
 EOF
-read -p '🌍 Secret Key  | Press [Enter]: ' secret < /dev/tty
+read -p '↘️ Secret Key  | Press [Enter]: ' secret < /dev/tty
 if [ "$secret" = "exit" ]; then mountsmenu; fi
 echo "$secret" > /var/plexguide/pgclone.secret
 mountsmenu
@@ -325,7 +325,7 @@ tee <<-EOF
 
 EOF
   echo $typed > /var/plexguide/pgclone.project
-  read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  read -p '↘️ Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   question1
 ]
 }
@@ -351,7 +351,7 @@ tee <<-EOF
 [4] Exit
 
 EOF
-read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
+read -p '↘️ Set Choice | Press [ENTER] ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then echo "umove" > /var/plexguide/pgclone.transport && echo;
 elif [ "$typed" == "2" ]; then echo "emove" > /var/plexguide/pgclone.transport && echo;
@@ -363,7 +363,7 @@ else
 }
 
 changeproject () {
-  read -p '🌍 Set/Change Project ID? (y/n)| Press [ENTER] ' typed < /dev/tty
+  read -p '💬 Set/Change Project ID? (y/n)| Press [ENTER] ' typed < /dev/tty
   if [[ "$typed" == "n" || "$typed" == "N" ]]; then question1
 elif [[ "$typed" == "y" || "$typed" == "Y" ]]; then a=b
 else badinput
@@ -380,7 +380,7 @@ tee <<-EOF
 EOF
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
   echo ""
-  read -p '🌍 Type Project Name | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️ Type Project Name | Press [ENTER]: ' typed < /dev/tty
   echo ""
   list=$(cat /var/plexguide/project.cut | grep $typed)
 
@@ -391,7 +391,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  read -p ' ↘️ Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   projectidset
   fi
 }
@@ -444,7 +444,7 @@ TIPS:
 
 EOF
     echo "Not Active" > /var/plexguide/gdrive.pgclone
-    read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+    read -p '↘️ Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
 else
 tee <<-EOF
@@ -456,7 +456,7 @@ EOF
 
 fi
 
-read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+read -p '↘️ Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 echo "Active" > /var/plexguide/$type.pgclone
 cat /opt/appdata/plexguide/test.conf >> /opt/appdata/plexguide/rclone.conf
 mountsmenu
@@ -477,7 +477,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌍 Acknowledge Info | Press [Enter] ' typed < /dev/tty
+read -p '↘️ Acknowledge Info | Press [Enter] ' typed < /dev/tty
 question1; fi
 
 if [ "$public" == "" ]; then
@@ -488,6 +488,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌍 Acknowledge Info | Press [Enter] ' typed < /dev/tty
+read -p '↘️ Acknowledge Info | Press [Enter] ' typed < /dev/tty
 question1; fi
 }
