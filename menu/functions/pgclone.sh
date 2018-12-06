@@ -112,6 +112,11 @@ if [ "$transport" == "PG Move /w No Encryption" ]; then
 display2="5 - Deploy PG Clone   : [good/bad]"
 fi
 
+if [ "$transport" == "PG Move /w Encryption" ]; then
+display2="5 - Deploy PG Clone   : [good/bad]
+6 - Set GCrypt Encryption"
+fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -134,6 +139,18 @@ if [ "$transport" == "PG Move /w No Encryption" ]; then
   if [ "$typed" == "5" ]; then
   type=gdrive
   inputphase
+  mountsmenu
+  fi
+fi
+
+if [ "$transport" == "PG Move /w Encryption" ]; then
+  if [ "$typed" == "5" ]; then
+  type=gdrive
+  inputphase
+  mountsmenu
+  fi
+  if [ "$typed" == "6" ]; then
+  rclone config --config /opt/appdata/plexguide/rclone.conf
   mountsmenu
   fi
 fi
