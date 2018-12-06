@@ -55,7 +55,7 @@ Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p '🌍 Type Selection | Press [ENTER] ' typed < /dev/tty
+read -p '🌍 Type Selection | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$menufix" == "2" ]; then
     if [ "$typed" == "5" ]; then
@@ -124,7 +124,7 @@ variable /var/plexguide/pgclone.project "NOT-SET"
 variable /var/plexguide/pgclone.teamdrive ""
 variable /var/plexguide/pgclone.public ""
 variable /var/plexguide/pgclone.secret ""
-variable /var/plexguide/pgclone.transport "NOT-SET"
+variable /var/plexguide/pgclone.transport "PG Move /w No Encryption"
 variable /var/plexguide/gdrive.pgclone "Not Active"
 variable /var/plexguide/tdrive.pgclone "Not Active"
 
