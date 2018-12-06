@@ -117,6 +117,11 @@ display2="5 - Set GCrypt
 6 - Deploy PG Clone   : [good/bad]"
 fi
 
+if [ "$transport" == "PG Blitz /w No Encryption" ]; then
+display2="5 - Configure - tdrive: [$tstatus]
+6 - Deploy PG Clone   : [good/bad]"
+fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -126,7 +131,7 @@ tee <<-EOF
 1 - Set Client ID     : [$dpublic]
 2 - Set Secret ID     : [$dsecret]
 3 - Set TeamDrive     : [$dteamdrive]
-4 - Configure - gdrive: [$gstatus]
+4 - Configure - gdrive: [$status]
 $display2
 Z - Exit
 
@@ -155,6 +160,20 @@ if [ "$transport" == "PG Move /w Encryption" ]; then
   fi
 fi
 
+if [ "$transport" == "PG Blitz /w No Encryption" ]; then
+  if [ "$typed" == "5" ]; then
+  type=tdrive
+  statusmount
+  inputphase
+  mountsmenu
+  fi
+  if [ "$typed" == "6" ]; then
+  type=tdrive
+  inputphase
+  mountsmenu
+  fi
+fi
+
 if [ "$typed" == "1" ]; then
   publickeyinput
   mountsmenu
@@ -169,10 +188,6 @@ elif [ "$typed" == "4" ]; then
   statusmount
   inputphase
   mountsmenu
-  ##type=tdrive
-  #statusmount
-  #inputphase
-  #mountsmenu
 
 #elif [ "$typed" == "7" ]; then
 #  inputphase
