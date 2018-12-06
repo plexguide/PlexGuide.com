@@ -53,7 +53,7 @@ read -p '🌍 Type Selection | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$menufix" == "2" ]; then
     if [ "$typed" == "3" ]; then
-      keymenu
+      keysmenu
       question1
     elif [ "$typed" == "4" ]; then
       removemounts
