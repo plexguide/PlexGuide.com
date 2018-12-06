@@ -347,11 +347,12 @@ tee <<-EOF
 1 - Google Account Login: $display5
 2 - Project Options     : [$project]
 3 - Create Service Keys
-4 - EMail Generator (Share Accounts)
-5 - Backup  Keys (Not Ready)
-6 - Restore Keys (Not Ready)
+4 - EMail Generator (Share TDrive)
 Z - Exit
+
 A - Destory all Service Accounts Created
+B - Backup  Keys
+C - Restore Keys
 
 EOF
 
@@ -376,6 +377,12 @@ elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   question1
 elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
   deletekeys
+  keymenu
+elif [[ "$typed" == "B" || "$typed" == "b" ]]; then
+  keybackup
+  keymenu
+elif [[ "$typed" == "C" || "$typed" == "c" ]]; then
+  keyrestore
   keymenu
 else
   badinput
