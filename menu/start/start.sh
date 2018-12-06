@@ -153,7 +153,7 @@ elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "2 - MultiHD & Mounts"
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "2 - No Mounts for Solo HD"
 else
   echo "2 - Mounts & Data Transports"
-  "PG Edition - GDrive" > /var/plexguide/pg.edition
+  echo "PG Edition - GDrive" > /var/plexguide/pg.edition
 fi
 
 tee <<-EOF

@@ -282,6 +282,7 @@ Project ID: $projectid
 
 Established Projects
 EOF
+  gcloud projects list > /var/plexguide/projects.list
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
   echo
