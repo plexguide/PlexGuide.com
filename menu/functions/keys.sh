@@ -344,19 +344,19 @@ tee <<-EOF
 🚀 PG Blitz Key Generation             📓 Reference: pgblitz.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Google Account Login: $display5
-2 - Project Options     : [$project]
-3 - Create Service Keys
-4 - EMail Generator (Share TDrive)
-Z - Exit
+[1] Google Account Login: $display5
+[2] Project Options     : [$project]
+[3] Create Service Keys
+[4] EMail Generator
+[5] Exit
 
-A - Backup  Keys
-B - Restore Keys
-C - Destory all Service Accounts Created
+[A] Backup  Keys
+[B] Restore Keys
+[C] Destory All Prior Service Accounts
 
 EOF
 
-read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Type Choice | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
   gcloud auth login
