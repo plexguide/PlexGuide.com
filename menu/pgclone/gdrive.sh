@@ -29,7 +29,9 @@ if [ "$menufix" == "1" ]; then
 display1="5 - Deploy ~ $transport"
 a=9999999; fi
 if [ "$menufix" == "2" ]; then
-display1="5 - Key Management      : [keysdeployed]
+mkdir -p /opt/appdata/pgblitz/keys/processed/
+keynum=$(ls /opt/appdata/pgblitz/keys/processed/ | wc -l)
+display1="5 - Key Management      : [$keynum Keys Deployed]
 6 - Deploy ~ $transport"
 a=6; fi
 
