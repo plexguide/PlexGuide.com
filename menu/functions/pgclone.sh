@@ -106,9 +106,6 @@ if [ "$secret" == "" ]; then dsecret="NOT SET"; else dsecret="SET"; fi
 if [ "$public" == "" ]; then dpublic="NOT SET"; else dpublic="SET"; fi
 if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive="SET"; fi
 
-#5 - Configure - tdrive: [$tstatus]
-#6 - Encryption Setup
-
 if [ "$transport" == "PG Move /w No Encryption" ]; then
 display2=""
 fi
@@ -116,13 +113,11 @@ fi
 if [ "$transport" == "PG Move /w Encryption" ]; then
 display2="
 5 - Set GCrypt"
-#6 - Deploy PG Clone   : [good/bad]
 fi
 
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
 display2="
 5 - Configure - tdrive: [$tstatus]"
-#6 - Deploy PG Clone   : [good/bad]
 fi
 
 tee <<-EOF
@@ -293,8 +288,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   $typed > /var/plexguide/pgclone.project
+  read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   question1
 ]
 }
