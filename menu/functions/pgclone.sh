@@ -244,7 +244,6 @@ Project ID: $projectid
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
