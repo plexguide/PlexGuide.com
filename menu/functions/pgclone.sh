@@ -146,7 +146,7 @@ tee <<-EOF
 
 OAuth
 
-[1] Client ID: $dpublic
+[1] Client ID: $dpublic 
 [2] Secret ID: $dsecret
 
 RClone Configuration
