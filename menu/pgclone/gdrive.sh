@@ -66,26 +66,20 @@ elif [ "$typed" == "4" ]; then
 elif [ "$typed" == "5" ]; then
   if [ "$menufix" == "1" ]; then
     if [ "$transport" == "PG Move /w No Encryption" ]; then
-      rchecker
       removemounts
-      ufsbuilder
-      echo "tdrive" > /var/plexguide/rclone/deploy.version
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/unionfs.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
       pgbdeploy
       question1
     fi
     if [ "$transport" == "PG Move /w Encryption" ]; then
-      rchecker
       removemounts
-      ufsbuilder
-      echo "tdrive" > /var/plexguide/rclone/deploy.version
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/gcrypt.yml
       ansible-playbook /opt/plexguide/menu/pgclone/unionfs.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
       pgbdeploy
       question1
     fi
