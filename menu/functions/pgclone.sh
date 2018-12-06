@@ -6,7 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 statusmount () {
-  cat /opt/appdata/plexguide/rclone.conf | grep "$type"
+  mcheck5=$(cat /opt/appdata/plexguide/rclone.conf | grep "$type")
   if [ "$mcheck5" != "" ]; then
 tee <<-EOF
 
