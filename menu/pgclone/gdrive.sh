@@ -115,7 +115,7 @@ elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
   badinput
-  keymenu; fi
+  question1; fi
 #menu later
 inputphase
 }
