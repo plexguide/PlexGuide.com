@@ -33,6 +33,11 @@ display1="5 - Key Management      : [keysdeployed]
 6 - Deploy ~ $transport"
 a=6; fi
 
+if [ "$account" == "NOT-SET" ]; then
+  display5="[NOT-SET]"
+else
+  display5="$account"; fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -40,7 +45,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Data Transport Mode : [$transport]
-2 - Google Account Login: [$account]
+2 - Google Account Login: $display5
 3 - Project Options     : [$project]
 4 - Mount Management    : [good/bad]
 $display1

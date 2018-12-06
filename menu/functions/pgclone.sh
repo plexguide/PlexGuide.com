@@ -151,11 +151,6 @@ if [ "$transport" == "PG Move /w No Encryption" ]; then
 fi
 
 if [ "$transport" == "PG Move /w Encryption" ]; then
-  #if [ "$typed" == "6" ]; then
-  #type=gdrive
-  #inputphase
-  #mountsmenu
-  #fi
   if [ "$typed" == "5" ]; then
   rclone config --config /opt/appdata/plexguide/rclone.conf
   mountsmenu
@@ -169,11 +164,6 @@ if [ "$transport" == "PG Blitz /w No Encryption" ]; then
   inputphase
   mountsmenu
   fi
-  #if [ "$typed" == "6" ]; then
-  #type=tdrive
-  #inputphase
-  #mountsmenu
-  #fi
 fi
 
 if [ "$typed" == "1" ]; then
@@ -190,10 +180,6 @@ elif [ "$typed" == "4" ]; then
   statusmount
   inputphase
   mountsmenu
-
-#elif [ "$typed" == "7" ]; then
-#  inputphase
-#  mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
   question1; fi
