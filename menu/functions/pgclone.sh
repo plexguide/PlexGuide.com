@@ -114,12 +114,14 @@ display2=""
 fi
 
 if [ "$transport" == "PG Move /w Encryption" ]; then
-display2="5 - Set GCrypt"
+display2="
+5 - Set GCrypt"
 #6 - Deploy PG Clone   : [good/bad]
 fi
 
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
-display2="5 - Configure - tdrive: [$tstatus]"
+display2="
+5 - Configure - tdrive: [$tstatus]"
 #6 - Deploy PG Clone   : [good/bad]
 fi
 
@@ -132,8 +134,7 @@ tee <<-EOF
 1 - Set Client ID     : [$dpublic]
 2 - Set Secret ID     : [$dsecret]
 3 - Set TeamDrive     : [$dteamdrive]
-4 - Configure - gdrive: [$gstatus]
-$display2
+4 - Configure - gdrive: [$gstatus]$display2
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
