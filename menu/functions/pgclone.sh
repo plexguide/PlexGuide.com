@@ -43,7 +43,7 @@ fi
 inputphase () {
 deploychecks
 
-if [[ "$transport" == "PG Move /w No Encryption" || "PG Move /w Encryption" ]]; then
+if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then
   display=""
 else
   display="TEAMDRIVE: $teamdrive
