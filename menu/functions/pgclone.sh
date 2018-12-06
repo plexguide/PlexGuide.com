@@ -100,6 +100,13 @@ if [ "$secret" == "" ]; then dsecret="NOT SET"; else dsecret="SET"; fi
 if [ "$public" == "" ]; then dpublic="NOT SET"; else dpublic="SET"; fi
 if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive="SET"; fi
 
+#5 - Configure - tdrive: [$tstatus]
+#6 - Encryption Setup
+
+if [ "$transport" == "PG Move /w No Encryption" ]; then
+display2="5 - Deploy PG Clone   : [good/bad]"
+fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -110,15 +117,20 @@ tee <<-EOF
 2 - Set Secret ID     : [$dsecret]
 3 - Set TeamDrive     : [$dteamdrive]
 4 - Configure - gdrive: [$gstatus]
-5 - Configure - tdrive: [$tstatus]
-6 - Encryption Setup
-7 - Deploy PG Clone   : [good/bad]
+$display2
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
+
+if [ "$transport" == "PG Move /w No Encryption" ]; then
+  if [ "$typed" == "5" ]; then
+  inputphase
+  mountsmenu
+  fi
+fi
 
 if [ "$typed" == "1" ]; then
   publickeyinput
@@ -134,14 +146,14 @@ elif [ "$typed" == "4" ]; then
   statusmount
   inputphase
   mountsmenu
-elif [ "$typed" == "5" ]; then
-  type=tdrive
-  statusmount
-  inputphase
-  mountsmenu
-elif [ "$typed" == "7" ]; then
-  inputphase
-  mountsmenu
+  ##type=tdrive
+  #statusmount
+  #inputphase
+  #mountsmenu
+
+#elif [ "$typed" == "7" ]; then
+#  inputphase
+#  mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
   projectmenu; fi
