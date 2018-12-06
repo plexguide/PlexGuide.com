@@ -75,6 +75,7 @@ elif [ "$typed" == "5" ]; then
       question1
     fi
     if [ "$transport" == "PG Move /w Encryption" ]; then
+      echo "gcrypt" > /var/plexguide/rclone/deploy.version
       removemounts
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/gcrypt.yml
