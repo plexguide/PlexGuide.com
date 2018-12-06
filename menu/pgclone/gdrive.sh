@@ -133,6 +133,7 @@ variable /var/plexguide/pgclone.secret ""
 variable /var/plexguide/pgclone.transport "PG Move /w No Encryption"
 variable /var/plexguide/gdrive.pgclone "Not Active"
 variable /var/plexguide/tdrive.pgclone "Not Active"
+variable /var/plexguide/move.bw  "10"
 
 question1
 
