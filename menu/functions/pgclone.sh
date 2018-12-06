@@ -134,20 +134,27 @@ fi
 
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
 display2="
-4 - Set TeamDrive     : [$dteamdrive]
-5 - Configure - tdrive: [$tstatus]"
+[4] Config: tdrive  [$tstatus]
+[5] Set: TeamDrive  [$dteamdrive]
+"
 fi
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 PG Clone - Mounts                    📓 Reference: pgclone.plexguide.com
+🌎 PG Clone - Mounts                   📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Set Client ID     : [$dpublic]
-2 - Set Secret ID     : [$dsecret]
-3 - Configure - gdrive: [$gstatus]$display2
-Z - Exit
+OAuth
+
+[1] Client ID       [$dpublic]
+[2] Secret ID       [$dsecret]
+
+RClone Configuration
+
+[3] Config: gdrive  [$gstatus]$display2
+
+[Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -155,7 +162,7 @@ EOF
 read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
 
 if [ "$transport" == "PG Move /w No Encryption" ]; then
-  if [ "$typed" == "4" ]; then
+  if [ "$typed" == "5" ]; then
   type=gdrive
   inputphase
   mountsmenu
@@ -170,7 +177,7 @@ if [ "$transport" == "PG Move /w Encryption" ]; then
 fi
 
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
-  if [ "$typed" == "5" ]; then
+  if [ "$typed" == "4" ]; then
   type=tdrive
   statusmount
   inputphase
