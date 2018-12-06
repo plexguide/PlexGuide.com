@@ -288,7 +288,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  $typed > /var/plexguide/pgclone.project
+  echo $typed > /var/plexguide/pgclone.project
   read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   question1
 ]
