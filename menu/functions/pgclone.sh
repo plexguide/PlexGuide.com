@@ -241,7 +241,7 @@ Project ID: $projectid
 1 - Establish
 2 - Create
 3 - Destroy (NOT READY)
-4 - Exit
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -251,7 +251,7 @@ read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then projectestablish;
 elif [ "$typed" == "2" ]; then projectcreate;
-elif [ "$typed" == "4" ]; then question1;
+elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then question1;
 else badinput
   projectmenu; fi
 }
