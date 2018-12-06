@@ -21,13 +21,13 @@ if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w 
 
 if [ "$menufix" == "1" ]; then
 bwdisplay=$(cat /var/plexguide/move.bw)
-display1="[3] Throttle Limit      : $bwdisplay MB
+display1="[3] Throttle Limit: $bwdisplay MB
 [4] Deploy ~ $transport"
 a=9999999; fi
 if [ "$menufix" == "2" ]; then
 mkdir -p /opt/appdata/pgblitz/keys/processed/
 keynum=$(ls /opt/appdata/pgblitz/keys/processed/ | wc -l)
-display1="[3] Key Management      : [$keynum Keys Deployed]
+display1="[3] Key Management: $keynum Keys Deployed
 [4] Deploy ~ $transport"
 a=4; fi
 
@@ -39,7 +39,7 @@ tee <<-EOF
 💪 Welcome to PG Clone                 📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[1] Data Transport Mode : [$transport]
+[1] Data Transport Mode: $transport
 [2] Mount Management
 $display1
 [Z] Exit
