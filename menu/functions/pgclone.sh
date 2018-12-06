@@ -131,10 +131,12 @@ elif [ "$typed" == "3" ]; then
   mountsmenu
 elif [ "$typed" == "4" ]; then
   type=gdrive
+  statusmount
   inputphase
   mountsmenu
 elif [ "$typed" == "5" ]; then
   type=tdrive
+  statusmount
   inputphase
   mountsmenu
 elif [ "$typed" == "7" ]; then
