@@ -68,7 +68,6 @@ elif [ "$typed" == "5" ]; then
     if [ "$transport" == "PG Move /w No Encryption" ]; then
       removemounts
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/unionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
       pgbdeploy
