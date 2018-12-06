@@ -127,6 +127,7 @@ read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
 
 if [ "$transport" == "PG Move /w No Encryption" ]; then
   if [ "$typed" == "5" ]; then
+  type=gdrive
   inputphase
   mountsmenu
   fi
