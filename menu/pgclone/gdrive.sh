@@ -12,7 +12,6 @@ source /opt/plexguide/menu/functions/pgclone.sh
 ################################################################################
 question1 () {
   touch /opt/appdata/plexguide/rclone.conf
-  project=$(cat /var/plexguide/pgclone.project)
   transport=$(cat /var/plexguide/pgclone.transport)
   gstatus=$(cat /var/plexguide/gdrive.pgclone)
   tstatus=$(cat /var/plexguide/tdrive.pgclone)
@@ -35,10 +34,7 @@ display1="5 - Key Management      : [$keynum Keys Deployed]
 6 - Deploy ~ $transport"
 a=6; fi
 
-if [ "$account" == "NOT-SET" ]; then
-  display5="[NOT-SET]"
-else
-  display5="$account"; fi
+
 
 tee <<-EOF
 
@@ -47,9 +43,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Data Transport Mode : [$transport]
-2 - Google Account Login: $display5
-3 - Project Options     : [$project]
-4 - Mount Management
+2 - Mount Management
 $display1
 Z - Exit
 
@@ -58,10 +52,10 @@ EOF
 read -p '🌍 Type Selection | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$menufix" == "2" ]; then
-    if [ "$typed" == "5" ]; then
+    if [ "$typed" == "3" ]; then
       keymenu
       question1
-    elif [ "$typed" == "6" ]; then
+    elif [ "$typed" == "4" ]; then
       removemounts
       ufsbuilder
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
@@ -77,22 +71,14 @@ read -p '🌍 Type Selection | Press [ENTER]: ' typed < /dev/tty
   transportmode
   question1
 elif [ "$typed" == "2" ]; then
-  gcloud auth login
-  gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
-  account=$(cat /var/plexguide/project.account)
-  question1
-elif [ "$typed" == "3" ]; then
-  projectmenu
-  question1
-elif [ "$typed" == "4" ]; then
   mountsmenu
   question1
-elif [ "$typed" == "5" ]; then
+elif [ "$typed" == "3" ]; then
   if [ "$menufix" == "1" ]; then
     bandwidth
     question1
   fi
-elif [ "$typed" == "6" ]; then
+elif [ "$typed" == "4" ]; then
   if [ "$menufix" == "1" ]; then
     if [ "$transport" == "PG Move /w No Encryption" ]; then
       mkdir -p /var/plexguide/rclone/

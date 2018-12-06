@@ -330,6 +330,12 @@ keymenu () {
 gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
 account=$(cat /var/plexguide/project.account)
 finalprojectid=$(cat /var/plexguide/project.final)
+project=$(cat /var/plexguide/pgclone.project)
+
+if [ "$account" == "NOT-SET" ]; then
+  display5="[NOT-SET]"
+else
+  display5="$account"; fi
 
 tee <<-EOF
 
@@ -337,10 +343,12 @@ tee <<-EOF
 🚀 PG Blitz Key Generation             📓 Reference: pgblitz.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Make Service Keys
-2 - EMail Generator (Share Accounts)
-3 - Backup  Keys (Not Ready)
-4 - Restore Keys (Not Ready)
+1 - Google Account Login: $display5
+2 - Project Options     : [$project]
+3 - Create Service Keys
+4 - EMail Generator (Share Accounts)
+5 - Backup  Keys (Not Ready)
+6 - Restore Keys (Not Ready)
 Z - Exit
 A - Destory all Service Accounts Created
 
@@ -349,9 +357,17 @@ EOF
 read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
+  gcloud auth login
+  gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+  account=$(cat /var/plexguide/project.account)
+  keymenu
+if [ "$typed" == "2" ]; then
+  projectmenu
+  keymenu
+if [ "$typed" == "3" ]; then
   deploykeys
   keymenu
-elif [ "$typed" == "2" ]; then
+elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/pgclone/emails.sh && echo
   read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
   keymenu
