@@ -26,7 +26,7 @@ elif [[ "$typed" == "N" || "$typed" == "n" ]]; then mountsmenu
     statusmount
   fi
 
-  rclone --config /opt/appdata/plexguide/rclone.conf config delete $mcheck5
+  rclone delete $mcheck5 --config /opt/appdata/plexguide/rclone.conf config
 
 tee <<-EOF
 
