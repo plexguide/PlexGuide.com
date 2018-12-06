@@ -43,17 +43,23 @@ fi
 inputphase () {
 deploychecks
 
+if [[ "$transport" == "PG Move /w No Encryption" || "PG Move /w Encryption" ]]; then
+  display="
+  "
+else
+  display3="TEAMDRIVE: $teamdrive
+  ";fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: Deployment - $type       reference: oauth.plexguide.com
+🚀 System Message: PG Clone - $type       reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PG is Deploying /w the Following Values:
 
 ID:        $public
 SECRET:    $secret
-TEAMDRIVE: $teamdrive
-
+$display
 EOF
 
 read -p '🌍 Proceed? y or n | Press [ENTER]: ' typed < /dev/tty
