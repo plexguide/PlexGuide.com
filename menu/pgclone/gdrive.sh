@@ -50,6 +50,21 @@ Z - Exit
 EOF
 read -p '🌍 Type Selection | Press [ENTER] ' typed < /dev/tty
 
+  if [ "$menufix" == "2" ]; then
+    if [ "$typed" == "5" ]; then
+      keymenu
+      question1
+    elif [ "$typed" == "6" ]; then
+      removemounts
+      ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/gcrypt.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
+      pgbdeploy
+      question1
+    fi
+  fi
+
   if [ "$typed" == "1" ]; then
   transportmode
   question1
