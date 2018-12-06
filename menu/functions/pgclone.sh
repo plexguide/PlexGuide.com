@@ -146,7 +146,7 @@ tee <<-EOF
 
 OAuth
 
-[1] Client ID: $dpublic 
+[1] Client ID: $dpublic
 [2] Secret ID: $dsecret
 
 RClone Configuration
@@ -342,13 +342,13 @@ transportmode () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Select a Data Transport Mode       📓 Reference: transport.plexguide.com
+🌎 Select a Transport Mode           📓 Reference: transport.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - PG Move : Unencrypt | Simple  ~ Uploads 750GB  Per Day
-2 - PG Move : Encrypted | Simple  ~ Uploads 750GB  Per Day
-3 - PG Blitz: Unencrypt | Complex ~ Exceeds 750GB+ Per Day
-Z - Exit
+[1] PG Move  /w No Encryption | Upload 750GB Daily ~ Simple
+[2] PG Move  /w Encryption    | Upload 750GB Daily ~ Simple
+[3] PG Blitz /w No Encryption | Exceed 750GB Daily ~ Complex
+[4] Exit
 
 EOF
 read -p '🌍 Set Choice | Press [ENTER] ' typed < /dev/tty
