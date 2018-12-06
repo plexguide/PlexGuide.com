@@ -63,6 +63,7 @@ read -p '🌍 Type Selection | Press [ENTER] ' typed < /dev/tty
       question1
     elif [ "$typed" == "6" ]; then
       removemounts
+      ufsbuilder
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
