@@ -132,7 +132,7 @@ tee <<-EOF
 1 - Set Client ID     : [$dpublic]
 2 - Set Secret ID     : [$dsecret]
 3 - Set TeamDrive     : [$dteamdrive]
-4 - Configure - gdrive: [$status]
+4 - Configure - gdrive: [$gstatus]
 $display2
 Z - Exit
 
