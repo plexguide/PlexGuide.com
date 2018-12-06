@@ -22,7 +22,7 @@ if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w 
 if [ "$menufix" == "1" ]; then
 bwdisplay=$(cat /var/plexguide/move.bw)
 display1="[3] Throttle Limit:      $bwdisplay MB
-[4] Deploy ~ $transport"
+[4] Deploy:              $transport"
 a=9999999; fi
 if [ "$menufix" == "2" ]; then
 mkdir -p /opt/appdata/pgblitz/keys/processed/
