@@ -147,13 +147,12 @@ tee <<-EOF
 
 OAuth
 
-[1] Client ID       [$dpublic]
-[2] Secret ID       [$dsecret]
+[1] Client ID:  $dpublic
+[2] Secret ID:  $dsecret
 
 RClone Configuration
 
 [3] Config: gdrive  [$gstatus]$display2
-
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
