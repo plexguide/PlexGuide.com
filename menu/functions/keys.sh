@@ -338,6 +338,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1 - Make Service Keys
+2 - EMail Generator (Share Accounts)
+3 - Backup  Keys (Not Ready)
+4 - Restore Keys (Not Ready)
 Z - Exit
 A - Destory all Service Accounts Created
 
@@ -347,6 +350,10 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
   deploykeys
+  keymenu
+if [ "$typed" == "2" ]; then
+  bash /opt/plexguide/menu/pgclone/emails.sh && echo
+  read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
   keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   question1
