@@ -351,7 +351,7 @@ read -p '🌍 Type Number | Press [ENTER]: ' typed < /dev/tty
 if [ "$typed" == "1" ]; then
   deploykeys
   keymenu
-if [ "$typed" == "2" ]; then
+elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgclone/emails.sh && echo
   read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
   keymenu
