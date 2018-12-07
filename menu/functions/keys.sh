@@ -119,17 +119,17 @@ tee <<-EOF
 🚀 SYSTEM MESSAGE: Key Number Selection!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Create 2 Keys:  Daily Limit - 1.5  TB
-2 - Create 4 Keys:  Daily Limit - 3.0  TB
-3 - Create 6 Keys:  Daily Limit - 4.5  TB  <--- Realistic
-4 - Create 8 Keys:  Daily Limit - 6.0  TB
-5 - Create 10 Keys: Daily Limit - 7.5  TB
-6 - Create 20 Keys: Daily Limit - 15   TB
+[1] Create 2 Keys:  Daily Limit - 1.5  TB
+[2] Create 4 Keys:  Daily Limit - 3.0  TB
+[3] Create 6 Keys:  Daily Limit - 4.5  TB  <--- Realistic
+[4] Create 8 Keys:  Daily Limit - 6.0  TB
+[5] Create 10 Keys: Daily Limit - 7.5  TB
+[6] Create 20 Keys: Daily Limit - 15   TB
 
-NOTE: # of Keys Generated Sets Your Daily Upload Limit!
+💬 # of Keys Generated Sets Your Daily Upload Limit!
 
 EOF
-  read -p '🌍 Type Number? | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Choice | Press [ENTER]: ' typed < /dev/tty
 
   echo ""
   echo "NOTE: Please Wait"
@@ -190,12 +190,10 @@ tee <<-EOF
 🚀 SYSTEM MESSAGE: Key Generation Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: Do not forget to use the email generator and share the emails to
-your teamdrives! If you forget, you will be wondering why stuff does not
-work!
+💬 Use the E-Mail Generator Next! Do Not Forget!
 
 EOF
-read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 }
 
 deploykeys2 () {
@@ -222,7 +220,7 @@ $projectlist
 
 EOF
 
-read -p '🌍 Type EXACT Project Name to Utilize | Press [ENTER]: ' typed2 < /dev/tty
+read -p '↘️  Type EXACT Project Name to Utilize | Press [ENTER]: ' typed2 < /dev/tty
   list=$(cat /var/plexguide/project.cut | grep $typed2)
   if [ "$list" == "" ]; then
   badinput && projectid; fi
@@ -310,7 +308,7 @@ TIPS:
 
 EOF
     echo no > /var/plexguide/project.deployed
-    read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+    read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
   fi
 }
@@ -324,7 +322,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+    read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 }
 
 keymenu () {
@@ -356,7 +354,7 @@ tee <<-EOF
 
 EOF
 
-read -p '↘️ Type Choice | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️  Type Choice | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
   gcloud auth login
@@ -371,7 +369,7 @@ elif [ "$typed" == "3" ]; then
   keymenu
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/pgclone/emails.sh && echo
-  read -p '🌍 Confirm Info | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Confirm Info | Press [ENTER]: ' typed < /dev/tty
   keymenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   question1
