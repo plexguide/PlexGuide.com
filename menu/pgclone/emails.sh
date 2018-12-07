@@ -19,7 +19,7 @@ source /opt/plexguide/menu/functions/keyback.sh
 source /opt/plexguide/menu/functions/pgclone.sh
 ################################################################################
 mkdir -p /opt/appdata/pgblitz/keys/processed
-path=/opt/appdata/pgblitz/keys/processed2
+path=/opt/appdata/pgblitz/keys/processed
 
 #updated to cleaner method by PhysK
 cat $path/* | grep client_email | awk '{print $2}' | sed 's/"//g' | sed 's/,//g' > /tmp/pgblitz.emails.list
