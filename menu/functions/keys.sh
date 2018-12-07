@@ -423,7 +423,6 @@ EOF
 keymenu () {
 gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
 account=$(cat /var/plexguide/project.account)
-finalprojectid=$(cat /var/plexguide/project.final)
 project=$(cat /var/plexguide/pgclone.project)
 
 if [ "$account" == "NOT-SET" ]; then
