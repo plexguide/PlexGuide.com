@@ -175,9 +175,21 @@ fi
 
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
   if [ "$typed" == "4" ]; then
+
+  tmcheck=$(cat /var/plexguide/pgclone.teamdrive)
+  if [ "tmcheck" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔ Warning! TeamDrive is blank! Must be Set Prior!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  mountsmenu; fi
+
   type=tdrive
   statusmount
-  teamdriveinput
   inputphase
   mountsmenu
   fi
@@ -193,6 +205,9 @@ elif [ "$typed" == "3" ]; then
   type=gdrive
   statusmount
   inputphase
+  mountsmenu
+elif [ "$typed" == "5" ]; then
+  teamdriveinput
   mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
