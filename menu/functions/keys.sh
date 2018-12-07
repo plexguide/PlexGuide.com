@@ -357,9 +357,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 TIPS:
-1. Did you share the email address to the correct team drive?
-2. Does the user login of the GDSA keys match the shared team drive?
-3. Make your corrections and redeploy again!
+1. Did you set your tdrive correctly along with your teamdrive?
 
 EOF
 rchecker=fail
