@@ -14,19 +14,19 @@
     shell: "cat /var/plexguide/move.bw"
     register: bandwidth
 
-  - name: Bandwidth Limit
+  - name: Deploy Version
     shell: "cat /var/plexguide/rclone/deploy.version"
     register: ver
 
   - name: Install MOVE Service
     template:
-      src: /opt/plexguide/menu/pgmove/templates/move_script.sh
+      src: /opt/plexguide/menu/pgclone/templates/move_script.sh
       dest: /opt/appdata/plexguide/move.sh
       force: yes
 
   - name: Install MOVE Service
     template:
-      src: /opt/plexguide/menu/pgmove/templates/move.service
+      src: /opt/plexguide/menu/pgclone/templates/move.service
       dest: /etc/systemd/system/move.service
       force: yes
 

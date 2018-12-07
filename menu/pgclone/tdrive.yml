@@ -10,14 +10,13 @@
   gather_facts: false
   tasks:
 
-  - name: Install UNIONFS Service
+  - name: Install TDRIVE Service
     template:
-      src: /opt/plexguide/menu/pgmove/templates/unionfs.service
-      dest: /etc/systemd/system/unionfs.service
+      src: /opt/plexguide/menu/pgclone/templates/tdrive.service
+      dest: /etc/systemd/system/tdrive.service
       force: yes
+    ignore_errors: yes
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
-
-  - name: Start UnionFS
-    systemd: state=started name=unionfs enabled=yes
+  - name: Start TDRIVE SERVICE
+    systemd: state=started name=tdrive daemon_reload=yes enabled=yes
+    ignore_errors: yes

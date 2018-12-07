@@ -10,11 +10,14 @@
   gather_facts: false
   tasks:
 
-  - name: Install GCrypt Service
+  - name: Install UNIONFS Service
     template:
-      src: /opt/plexguide/menu/pgblitz/templates/gcrypt.service
-      dest: /etc/systemd/system/gcrypt.service
+      src: /opt/plexguide/menu/pgclone/templates/munionfs.service
+      dest: /etc/systemd/system/unionfs.service
       force: yes
 
-  - name: Start GCrypt SERVICE
-    systemd: state=started name=gcrypt daemon_reload=yes enabled=yes
+  - name: Daemon-Reload
+    systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
+
+  - name: Start UnionFS
+    systemd: state=started name=unionfs enabled=yes

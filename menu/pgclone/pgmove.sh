@@ -39,11 +39,7 @@ bwrecall && question1
 
 question1 () {
 bwrecall
-readrcloneconfig
 
-if [[ "$gdstatus" == "good" && "$gcstatus" == "bad" ]]; then message="3 - Deploy PG Drives : GDrive" && message2="Z - Exit" dstatus="1";
-elif [[ "$gdstatus" == "good" && "$gcstatus" == "good" ]]; then message="3 - Deploy PG Drives : GDrive /w Encryption" && message2="Z - Exit" && dstatus="2";
-else message="Z - Exit" message2="" && dstatus="0"; fi
 
 # Menu Interface
 tee <<-EOF
@@ -76,16 +72,16 @@ elif [ "$typed" == "2" ]; then bandwidth && question1;
 elif [ "$typed" == "3" ]; then removemounts;
     if [ "$dstatus" == "1" ]; then
     echo "gdrive" > /var/plexguide/rclone/deploy.version
-    ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/unionfs.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/move.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
     question1
   elif [ "$dstatus" == "2" ]; then
     echo "gcrypt" > /var/plexguide/rclone/deploy.version
-    ansible-playbook /opt/plexguide/menu/pgmove/gdrive.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/gcrypt.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/unionfs.yml
-    ansible-playbook /opt/plexguide/menu/pgmove/move.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/gcrypt.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
+    ansible-playbook /opt/plexguide/menu/pgclone/pgmove.yml
     question1
   else question1; fi
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;

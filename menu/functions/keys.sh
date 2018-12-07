@@ -10,18 +10,73 @@ defaultvars () {
   touch /var/plexguide/rclone.gcrypt
 }
 
+tdrivecheck () {
+type=tdrive
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Conducting Validation Checks - $type
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 1
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Creating Test Directory - $type:/plexguide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 1
+  rclone mkdir --config /opt/appdata/plexguide/rclone.conf $type:/plexguide
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Checking Existance of $type:/plexguide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf $type: | grep -oP plexguide | head -n1)
+
+  if [ "$rcheck" != "plexguide" ];then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔  System Message: Validation Checks Failed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TIPS:
+1. Did you copy your username and password correctly?
+2. When you created the credentials, did you select "Other"?
+3. Did you enable your API?
+
+EOF
+    echo "Not Active" > /var/plexguide/gdrive.pgclone
+    read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+    question1
+else
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Validation Checks Passed - $type
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+
+fi
+read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+EOF
+}
+
 deletekeys2 () {
-  choicedel=$(cat /var/plexguide/gdsa.cut)
-  if [ "$choicedel" != "" ]; then
-    echo ""
-    echo "Deleting All Previous Service Accounts & Keys!"
-    echo ""
+choicedel=$(cat /var/plexguide/gdsa.cut)
+if [ "$choicedel" != "" ]; then
+  echo ""
+  echo "Deleting All Previous Service Accounts & Keys!"
+  echo ""
 
-    while read p; do
-    gcloud iam service-accounts delete $p --quiet
-    done </var/plexguide/gdsa.cut
+  while read p; do
+  gcloud iam service-accounts delete $p --quiet
+  done </var/plexguide/gdsa.cut
 
-  rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -119,17 +174,17 @@ tee <<-EOF
 🚀 SYSTEM MESSAGE: Key Number Selection!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Create 2 Keys:  Daily Limit - 1.5  TB
-2 - Create 4 Keys:  Daily Limit - 3.0  TB
-3 - Create 6 Keys:  Daily Limit - 4.5  TB  <--- Realistic
-4 - Create 8 Keys:  Daily Limit - 6.0  TB
-5 - Create 10 Keys: Daily Limit - 7.5  TB
-6 - Create 20 Keys: Daily Limit - 15   TB
+[1] Create 2 Keys:  Daily Limit - 1.5  TB
+[2] Create 4 Keys:  Daily Limit - 3.0  TB
+[3] Create 6 Keys:  Daily Limit - 4.5  TB  <--- Realistic
+[4] Create 8 Keys:  Daily Limit - 6.0  TB
+[5] Create 10 Keys: Daily Limit - 7.5  TB
+[6] Create 20 Keys: Daily Limit - 15   TB
 
-NOTE: # of Keys Generated Sets Your Daily Upload Limit!
-
+💬 # of Keys Generated Sets Your Daily Upload Limit!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  read -p '🌍 Type Number? | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Choice | Press [ENTER]: ' typed < /dev/tty
 
   echo ""
   echo "NOTE: Please Wait"
@@ -148,18 +203,20 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
 
   num=$keys
   count=0
-  project=$(cat /var/plexguide/project.final)
+  project=$(cat /var/plexguide/pgclone.project)
 
   ##wipe previous keys stuck there
   mkdir -p /opt/appdata/pgblitz/keys/processed/
   rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
 
   ## purpose of the rewrite is to save gdrive and tdrive info and toss old GDSAs
-      cat /opt/appdata/plexguide/rclone.conf | grep -w tdrive -A 4 > /opt/appdata/plexguide/tdrive.info
-      cat /opt/appdata/plexguide/rclone.conf | grep -w gdrive -A 3 > /opt/appdata/plexguide/gdrive.info
+      cat /opt/appdata/plexguide/rclone.conf | grep -w "\[tdrive\]" -A 5 > /opt/appdata/plexguide/tdrive.info
+      cat /opt/appdata/plexguide/rclone.conf | grep -w "\[gdrive\]" -A 4 > /opt/appdata/plexguide/gdrive.info
       echo "#### rclone rewrite generated by plexguide.com" > /opt/appdata/plexguide/rclone.conf
       echo "" >> /opt/appdata/plexguide/rclone.conf
+      echo "" >> /opt/appdata/plexguide/rclone.conf
       cat /opt/appdata/plexguide/gdrive.info >> /opt/appdata/plexguide/rclone.conf
+      echo "" >> /opt/appdata/plexguide/rclone.conf
       cat /opt/appdata/plexguide/tdrive.info >> /opt/appdata/plexguide/rclone.conf
 
     while [ "$count" != "$keys" ]; do
@@ -188,12 +245,10 @@ tee <<-EOF
 🚀 SYSTEM MESSAGE: Key Generation Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: Do not forget to use the email generator and share the emails to
-your teamdrives! If you forget, you will be wondering why stuff does not
-work!
+💬 Use the E-Mail Generator Next! Do Not Forget!
 
 EOF
-read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 }
 
 deploykeys2 () {
@@ -220,7 +275,7 @@ $projectlist
 
 EOF
 
-read -p '🌍 Type EXACT Project Name to Utilize | Press [ENTER]: ' typed2 < /dev/tty
+read -p '↘️  Type EXACT Project Name to Utilize | Press [ENTER]: ' typed2 < /dev/tty
   list=$(cat /var/plexguide/project.cut | grep $typed2)
   if [ "$list" == "" ]; then
   badinput && projectid; fi
@@ -238,6 +293,7 @@ echo
 read -p '🌍 Process Complete | Press [ENTER] ' typed2 < /dev/tty
 
 }
+
 ufsbuilder () {
   downloadpath=$(cat /var/plexguide/server.hd.path)
   ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
@@ -266,9 +322,9 @@ ufsbuilder () {
   echo -n "$downloadpath/pgblitz/$p=RO:" >> /var/plexguide/unionfs.pgpath
   done </tmp/pg.gdsa.ufs
   builder=$(cat /var/plexguide/unionfs.pgpath)
-  }
+}
 
-rchecker () {
+blitzchecker () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -279,7 +335,7 @@ EOF
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Messasge: Creating Test Directory - gdsa01:/plexguides
+🚀 System Messasge: Creating Test Directory - gdsa01:/plexguide
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
@@ -301,16 +357,56 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 TIPS:
-1. Did you share the email address to the correct team drive?
-2. Does the user login of the GDSA keys match the shared team drive?
-3. Make your corrections and redeploy again!
+1. Did you share out your emails to your teamdrives?
 
 EOF
-    echo no > /var/plexguide/project.deployed
-    read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+    read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
   fi
 }
+
+rchecker () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Messasge: Conducting RClone Validation Checks
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 1
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Messasge: Creating Test Directory - tdrive:/plexguide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 1
+  rclone mkdir --config /opt/appdata/plexguide/rclone.conf tdrive:/plexguide
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Messasge: Checking Existance of tdrive:/plexguide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf tdrive: | grep -oP plexguide | head -n1)
+
+  if [ "$rcheck" != "plexguide" ];then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Messasge: RClone Validation Check Failed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TIPS:
+1. Did you set your tdrive correctly along with your teamdrive?
+
+EOF
+rchecker=fail
+    read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+    question1
+  fi
+}
+
 
 
 pgbdeploy () {
@@ -321,5 +417,70 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+    read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
+}
+
+keymenu () {
+gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+account=$(cat /var/plexguide/project.account)
+finalprojectid=$(cat /var/plexguide/project.final)
+project=$(cat /var/plexguide/pgclone.project)
+
+if [ "$account" == "NOT-SET" ]; then
+  display5="[NOT-SET]"
+else
+  display5="$account"; fi
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Blitz Key Generation             📓 Reference: pgblitz.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[1] Google Account Login: $display5
+[2] Project Options     : [$project]
+[3] Create Service Keys
+[4] EMail Generator
+[Z] Exit
+
+[A] Backup  Keys
+[B] Restore Keys
+[C] Destory All Prior Service Accounts
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+
+read -p '↘️  Type Choice | Press [ENTER]: ' typed < /dev/tty
+
+if [ "$typed" == "1" ]; then
+  gcloud auth login
+  gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+  account=$(cat /var/plexguide/project.account)
+  keymenu
+elif [ "$typed" == "2" ]; then
+  projectmenu
+  keymenu
+elif [ "$typed" == "3" ]; then
+  rchecker
+  if [ $rchecker=fail ]; then
+  deploykeys
+  keymenu; fi
+elif [ "$typed" == "4" ]; then
+  bash /opt/plexguide/menu/pgclone/emails.sh && echo
+  read -p '↘️  Confirm Info | Press [ENTER]: ' typed < /dev/tty
+  keymenu
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
+  question1
+elif [[ "$typed" == "C" || "$typed" == "c" ]]; then
+  deletekeys
+  keymenu
+elif [[ "$typed" == "A" || "$typed" == "a" ]]; then
+  keybackup
+  keymenu
+elif [[ "$typed" == "B" || "$typed" == "b" ]]; then
+  keyrestore
+  keymenu
+else
+  badinput
+  keymenu; fi
 }

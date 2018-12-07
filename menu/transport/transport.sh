@@ -24,7 +24,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/pgmove/pgmove.sh
+  bash /opt/plexguide/menu/pgclonepgmove.sh
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgblitz/pgblitz.sh
 elif [ "$typed" == "3" ]; then
