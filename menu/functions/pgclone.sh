@@ -104,7 +104,9 @@ done </var/plexguide/teamdrive.id
 
 read -p '↘️  Type Number | PRESS [ENTER]: ' typed < /dev/tty
 if [[ "$typed" -ge "1" && "$typed" -le "$A" ]]; then a=b
-else tokenscript; fi
+else
+  badinput 
+  tokenscript; fi
 
 }
 
