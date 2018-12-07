@@ -18,6 +18,7 @@ source /opt/plexguide/menu/functions/keys.sh
 source /opt/plexguide/menu/functions/keyback.sh
 source /opt/plexguide/menu/functions/pgclone.sh
 ################################################################################
+mkdir -p /opt/appdata/pgblitz/keys/processed
 path=/opt/appdata/pgblitz/keys/processed2
 
 #updated to cleaner method by PhysK
@@ -34,7 +35,7 @@ tee <<-EOF
 
 EOF
 read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-projectmenu
+keymenu
 fi
 
 echo
