@@ -358,6 +358,7 @@ tee <<-EOF
 
 TIPS:
 1. Did you share out your emails to your teamdrives?
+
 EOF
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
@@ -398,6 +399,7 @@ tee <<-EOF
 
 TIPS:
 1. Did you set your tdrive correctly along with your teamdrive?
+
 EOF
 rchecker=fail
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
