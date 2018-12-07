@@ -362,6 +362,7 @@ TIPS:
 3. Make your corrections and redeploy again!
 
 EOF
+rchecker=fail
     echo no > /var/plexguide/project.deployed
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
@@ -421,6 +422,8 @@ elif [ "$typed" == "2" ]; then
   projectmenu
   keymenu
 elif [ "$typed" == "3" ]; then
+  rchecker
+  if [ $rchecker=fail ]; then
   deploykeys
   keymenu
 elif [ "$typed" == "4" ]; then
