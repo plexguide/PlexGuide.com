@@ -56,6 +56,58 @@ fi
 
 }
 
+tmgen() {
+
+secret=$(cat /var/plexguide/pgclone.secret)
+public=$(cat /var/plexguide/pgclone.public)
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Google Auth - Team Drives           📓 Reference: oauth.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > exit
+NOTE: Copy & Paste Url into Browser | Use Correct Google Account!
+
+https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
+
+EOF
+  read -p '↘️  Token | PRESS [ENTER]: ' token < /dev/tty
+  if [ "$token" = "exit" ]; then mountsmenu; fi
+  curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /var/plexguide/pgtokentm.output
+  cat /var/plexguide/pgtokentm.output | grep access_token | awk '{ print $2 }' | cut -c2- | rev | cut -c3- | rev > /var/plexguide/pgtokentm2.output
+  primet=$(cat /var/plexguide/pgtokentm2.output)
+  curl -H "GData-Version: 3.0" -H "Authorization: Bearer $primet" https://www.googleapis.com/drive/v3/teamdrives > /var/plexguide/teamdrive.output
+  tokenscript
+
+  name=$(sed -n ${typed}p /var/plexguide/teamdrive.name)
+  echo "$name"
+  read -p '↘️  Pause | PRESS [ENTER]: ' temp < /dev/tty
+
+}
+
+tokenscript () {
+  cat /var/plexguide/teamdrive.output | grep "id" | awk '{ print $2 }' | cut -c2- | rev | cut -c3- | rev > /var/plexguide/teamdrive.id
+  cat /var/plexguide/teamdrive.output | grep "name" | awk '{ print $2 }' | cut -c2- | rev | cut -c2- | rev > /var/plexguide/teamdrive.name
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 Listed Team Drives
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  A=0
+  while read p; do
+  ((A++))
+  name=$(sed -n ${A}p /var/plexguide/teamdrive.name)
+  echo "[$A] $p - $name"
+done </var/plexguide/teamdrive.id
+
+read -p '↘️  Type Number | PRESS [ENTER]: ' typed < /dev/tty
+if [[ "$typed" -ge "1" && "$typed" -ge "$A" ]]; then a=b
+else tokenscript; fi
+
+}
+
 inputphase () {
 deploychecks
 
@@ -207,7 +259,7 @@ elif [ "$typed" == "3" ]; then
   inputphase
   mountsmenu
 elif [ "$typed" == "5" ]; then
-  teamdriveinput
+  tmgen
   mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
