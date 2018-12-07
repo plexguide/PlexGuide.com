@@ -307,11 +307,9 @@ projectestablish () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 GCloud Project Interface             📓 Reference: pgclone.plexguide.com
+🌎 Established Projects               📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Project ID: $projectid
-
-[Established Projects]
 
 EOF
   gcloud projects list > /var/plexguide/projects.list
