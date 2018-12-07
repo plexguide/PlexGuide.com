@@ -13,10 +13,30 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-path=/opt/appdata/pgblitz/keys/processed
+source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/keys.sh
+source /opt/plexguide/menu/functions/keyback.sh
+source /opt/plexguide/menu/functions/pgclone.sh
+################################################################################
+path=/opt/appdata/pgblitz/keys/processed2
 
 #updated to cleaner method by PhysK
 cat $path/* | grep client_email | awk '{print $2}' | sed 's/"//g' | sed 's/,//g' > /tmp/pgblitz.emails.list
+touch /tmp/pgblitz.emails.list
+
+emailcheck=$(cat /tmp/pgblitz.emails.list)
+if [ "$emailcheck" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔ Warning! You Need to Generate Keys before Executing This!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+projectmenu
+fi
+
 echo
 echo "Welcome to the PG Blitz - EMail Share Generator"
 echo ""

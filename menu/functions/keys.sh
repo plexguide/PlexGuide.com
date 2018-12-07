@@ -407,8 +407,6 @@ rchecker=fail
   fi
 }
 
-
-
 pgbdeploy () {
 tee <<-EOF
 

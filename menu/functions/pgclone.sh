@@ -53,7 +53,6 @@ tee <<-EOF
 EOF
 read -p '↘️ Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
 fi
-
 }
 
 inputphase () {
@@ -307,7 +306,7 @@ projectestablish () {
 
   gcloud projects list > /var/plexguide/projects.list
   projectcheck=(cat /var/plexguide/projects.list)
-  if [ "projectcheck" == "" ]; then
+  if [ "$pprojectcheck" == "" ]; then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔  System Message: Error! There are no projects! Make one first!
