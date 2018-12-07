@@ -127,6 +127,7 @@ tee <<-EOF
 [6] Create 20 Keys: Daily Limit - 15   TB
 
 💬 # of Keys Generated Sets Your Daily Upload Limit!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
   read -p '↘️  Type Choice | Press [ENTER]: ' typed < /dev/tty
@@ -351,6 +352,7 @@ tee <<-EOF
 [A] Backup  Keys
 [B] Restore Keys
 [C] Destory All Prior Service Accounts
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
 
