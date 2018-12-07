@@ -1,10 +1,10 @@
 ✅  [CURRENT]
-7.2.4
-7.3.2
+7.3.8
 
-💍  [BETA] - Beta is to only to test new stuff!
-7.3
+💍  [BETA] - Avoid Using Edge! For Testing & No Support!
+7.4.5
+7.4edge
 
 💊  [DEPRECIATED]
+7.2.4
 7.1.10
-7.014
