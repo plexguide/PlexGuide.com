@@ -304,6 +304,21 @@ keymenu
 }
 
 projectestablish () {
+
+  gcloud projects list > /var/plexguide/projects.list
+  projectcheck=(cat /var/plexguide/projects.list)
+  if [ "projectcheck" == "" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔  System Message: Error! There are no projects! Make one first!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p ' ↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  projectmenu
+fi
+
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -312,7 +327,6 @@ tee <<-EOF
 Project ID: $projectid
 
 EOF
-  gcloud projects list > /var/plexguide/projects.list
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
   echo
