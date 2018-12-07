@@ -89,6 +89,7 @@ tokenscript () {
   cat /var/plexguide/teamdrive.output | grep "name" | awk '{ print $2 }' | cut -c2- | rev | cut -c2- | rev > /var/plexguide/teamdrive.name
 
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 Listed Team Drives
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -102,7 +103,7 @@ EOF
 done </var/plexguide/teamdrive.id
 
 read -p '↘️  Type Number | PRESS [ENTER]: ' typed < /dev/tty
-if [[ "$typed" -ge "1" && "$typed" -ge "$A" ]]; then a=b
+if [[ "$typed" -ge "1" && "$typed" -le "$A" ]]; then a=b
 else tokenscript; fi
 
 }
