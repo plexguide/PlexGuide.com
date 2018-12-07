@@ -338,8 +338,8 @@ tee <<-EOF
 EOF
   echo $typed > /var/plexguide/pgclone.project
   read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-  question1
-]
+  projectmenu
+
 }
 
 transportdisplay () {
