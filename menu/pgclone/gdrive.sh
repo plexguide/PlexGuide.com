@@ -73,6 +73,7 @@ read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
       keymenu
       question1
     elif [ "$typed" == "4" ]; then
+      blitzchecker
       removemounts
       ufsbuilder
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
