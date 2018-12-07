@@ -311,7 +311,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Project ID: $projectid
 
-Established Projects
+[Established Projects]
+
 EOF
   gcloud projects list > /var/plexguide/projects.list
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
