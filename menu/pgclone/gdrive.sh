@@ -17,6 +17,25 @@ question1 () {
   tstatus=$(cat /var/plexguide/tdrive.pgclone)
   transportdisplay
 
+if [ "$transport" == "PG Move /w No Encryption" == "NOT-SET" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💪 Welcome to PG Clone                 📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[1] Data Transport Mode: $transport
+[Z] Exit
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
+
+  if [ "$typed" == "1" ]; then
+  transportmode
+  question1
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit; fi
+fi 
+
 if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then menufix=1; else menufix=2; fi
 
 if [ "$menufix" == "1" ]; then
