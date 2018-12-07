@@ -177,7 +177,7 @@ if [ "$transport" == "PG Blitz /w No Encryption" ]; then
   if [ "$typed" == "4" ]; then
 
   tmcheck=$(cat /var/plexguide/pgclone.teamdrive)
-  if [ "tmcheck" == "" ]; then
+  if [ "$tmcheck" == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
