@@ -193,7 +193,7 @@ elif [ "$typed" == "3" ]; then
   statusmount
   inputphase
   mountsmenu
-elif [ "$typed" == "4" ]; then
+elif [ "$typed" == "5" ]; then
   teamdriveinput
   mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
