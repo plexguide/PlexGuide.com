@@ -425,7 +425,7 @@ elif [ "$typed" == "3" ]; then
   rchecker
   if [ $rchecker=fail ]; then
   deploykeys
-  keymenu
+  keymenu; fi
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/pgclone/emails.sh && echo
   read -p '↘️  Confirm Info | Press [ENTER]: ' typed < /dev/tty
