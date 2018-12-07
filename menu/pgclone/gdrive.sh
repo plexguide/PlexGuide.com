@@ -80,6 +80,7 @@ read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
       ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
+      ansible-playbook /opt/plexguide/containers/blitzui.yml
       pgbdeploy
       question1
     fi
