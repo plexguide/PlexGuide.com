@@ -203,7 +203,7 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
 
   num=$keys
   count=0
-  project=$(cat /var/plexguide/project.final)
+  project=$(cat /var/plexguide/pgclone.project)
 
   ##wipe previous keys stuck there
   mkdir -p /opt/appdata/pgblitz/keys/processed/
@@ -358,7 +358,6 @@ tee <<-EOF
 
 TIPS:
 1. Did you set your tdrive correctly along with your teamdrive?
-
 EOF
 rchecker=fail
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
