@@ -128,7 +128,6 @@ tee <<-EOF
 
 💬 # of Keys Generated Sets Your Daily Upload Limit!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
   read -p '↘️  Type Choice | Press [ENTER]: ' typed < /dev/tty
 
@@ -353,7 +352,6 @@ tee <<-EOF
 [B] Restore Keys
 [C] Destory All Prior Service Accounts
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 read -p '↘️  Type Choice | Press [ENTER]: ' typed < /dev/tty
