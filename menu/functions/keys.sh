@@ -346,7 +346,7 @@ tee <<-EOF
 [2] Project Options     : [$project]
 [3] Create Service Keys
 [4] EMail Generator
-[5] Exit
+[Z] Exit
 
 [A] Backup  Keys
 [B] Restore Keys
