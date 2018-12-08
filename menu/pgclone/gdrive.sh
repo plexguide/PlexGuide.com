@@ -100,6 +100,7 @@ elif [ "$typed" == "4" ]; then
     if [ "$transport" == "PG Move /w No Encryption" ]; then
       mkdir -p /var/plexguide/rclone/
       echo "gdrive" > /var/plexguide/rclone/deploy.version
+      deploygdrivecheck
       removemounts
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/munionfs.yml
