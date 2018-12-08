@@ -112,7 +112,7 @@ EOF
 fi
 }
 
-deploygtdrivecheck () {
+deploytdrivecheck () {
 type=tdrive
 tee <<-EOF
 
