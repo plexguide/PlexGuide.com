@@ -70,19 +70,34 @@ read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
     if [ "$typed" == "3" ]; then
       keymenu
       question1
-    elif [ "$typed" == "4" ]; then
-      deploygdrivecheck
-      deploytdrivecheck
-      deploygdsa01check
-      removemounts
-      ufsbuilder
-      ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
-      ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
-      ansible-playbook /opt/plexguide/containers/blitzui.yml
-      pgbdeploy
-      question1
+        elif [ "$typed" == "4" ]; then
+        if [ "$transport" == "PG Blitz /w No Encryption" ]; then
+          deploygdrivecheck
+          deploytdrivecheck
+          deploygdsa01check
+          removemounts
+          ufsbuilder
+          ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
+          ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
+          ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
+          ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
+          ansible-playbook /opt/plexguide/containers/blitzui.yml
+          pgbdeploy
+          question1
+        else
+          deploygdrivecheck
+          deploytdrivecheck
+          deploygdsa01check
+          removemounts
+          ufsbuilder
+          ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
+          ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
+          ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
+          ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
+          ansible-playbook /opt/plexguide/containers/blitzui.yml
+          pgbdeploy
+          question1
+        fi
     fi
   fi
 

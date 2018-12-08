@@ -483,6 +483,7 @@ tee <<-EOF
 [1] PG Move  /w No Encryption | Upload 750GB Daily ~ Simple
 [2] PG Move  /w Encryption    | Upload 750GB Daily ~ Simple
 [3] PG Blitz /w No Encryption | Exceed 750GB Daily ~ Complex
+[4] PG Blitz /w Encryption    | NOT READY - WILL BREAK UR SYSTEM
 [Z] Exit
 
 EOF
@@ -491,6 +492,7 @@ read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
   if [ "$typed" == "1" ]; then echo "umove" > /var/plexguide/pgclone.transport && echo;
 elif [ "$typed" == "2" ]; then echo "emove" > /var/plexguide/pgclone.transport && echo;
 elif [ "$typed" == "3" ]; then echo "ublitz" > /var/plexguide/pgclone.transport && echo;
+elif [ "$typed" == "4" ]; then echo "eblitz" > /var/plexguide/pgclone.transport && echo;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else
   badinput
