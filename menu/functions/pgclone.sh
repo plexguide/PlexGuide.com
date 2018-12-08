@@ -486,7 +486,7 @@ tee <<-EOF
 [Z] Exit
 
 EOF
-read -p '↘️ Set Choice | Press [ENTER] ' typed < /dev/tty
+read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then echo "umove" > /var/plexguide/pgclone.transport && echo;
 elif [ "$typed" == "2" ]; then echo "emove" > /var/plexguide/pgclone.transport && echo;
