@@ -55,6 +55,9 @@
               --drive-chunk-size=64M \
               gdrive:/plexguide/backup/{{restore_id.stdout}}/{{program_var.stdout}} {{tarlocation.stdout}}"
 
+    - name: "Dummy File"
+      shell: "touch /opt/appdata/{{simplename.stdout}}/dummyfile.txt"
+
     - name: "Remove Previous Files"
       shell: "rm -r /opt/appdata/{{simplename.stdout}}/*"
 
