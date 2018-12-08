@@ -407,6 +407,75 @@ fi
 
 }
 
+blitzpasswords () {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Primary Password                   📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > Exit
+
+Please set a Primary Password for Encryption! Do not forget it! If you do,
+you will be locked out from all your data!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -p ' ↘️  Type a Password (Primary) | Press [ENTER] ' bpassword < /dev/tty
+
+if [ "$bpassword" == "" ]; then
+  badinput
+  blitzpasswords
+elif [ "$bpassword" == "exit" ]; then mountsmenu; fi
+blitzsalt
+}
+
+blitzsalt () {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 SALT (Secondary Password)          📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > Exit
+
+Please set a Secondary Password (SALT) for Encryption! Do not forget it!
+If you do, you will be locked out from all your data!  SALT randomizes
+your data to further protect you! It is not recommended to use the same
+password, but may.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -p ' ↘️  Type a Password (SALT) | Press [ENTER] ' bsalt < /dev/tty
+
+if [ "$bsalt" == "" ]; then
+  badinput
+  blitzsalt
+elif [ "$bsalt" == "exit" ]; then mountsmenu; fi
+blitzpfinal
+
+}
+
+blitzpfinal () {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Set Passwords?                     📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > Exit
+
+Are you happy with the following info? Type y or n!
+
+Primary  : $bpassword
+Secondary: $bsalt
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+read -p '↘️  Confirm Info | Press [ENTER]: ' typed < /dev/tty
+
+if [ "$typed" == "n" ]; then mountsmenu;
+elif [ "$bsalt" == "y" ]; then
+echo $bpassword >> /var/plexguide/pgclone.password
+echo $bsalt >> /var/plexguide/pgclone.salt
+mountsmenu;
+else
+  badinput
+  blitzpfinal; fi
+}
+
 publickeyinput () {
 tee <<-EOF
 
