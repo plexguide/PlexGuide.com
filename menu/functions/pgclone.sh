@@ -381,10 +381,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Project ID: $projectid
 
-1 - Establish
-2 - Create
-3 - Destroy (NOT READY)
-Z - Exit
+[1] Establish
+[2] Create
+[3] Destroy (NOT READY)
+[Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -513,7 +513,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
   echo ""
   read -p '↘️  Type Project Name | Press [ENTER]: ' typed < /dev/tty
   echo ""
