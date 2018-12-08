@@ -48,7 +48,7 @@ tee <<-EOF
 
 [1] Data Transport Mode: $transport
 [2] OAuth & Mounts
-[3] Key Management:      $keys
+[3] Key Management:      $keynum Keys Deployed
 [4] Deploy:              $transport
 [Z] Exit
 
