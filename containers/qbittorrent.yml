@@ -16,7 +16,7 @@
     set_fact:
       pgrole: "qbittorrent"
       intport: "8080"
-      extport: "8080"
+      extport: "8081"
       image: "linuxserver/qbittorrent"
 
 # CORE (MANDATORY) #############################################################
