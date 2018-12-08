@@ -417,7 +417,7 @@ Quitting? Type > Exit
 
 Please set a Primary Password for Encryption! Do not forget it! If you do,
 you will be locked out from all your data!
-3
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 read -p ' ↘️  Type Prime PW | Press [ENTER] ' bpassword < /dev/tty
@@ -470,10 +470,10 @@ Secondary: $bsalt
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-read -p '↘️  Confirm Info | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️  Type y or n | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "n" ]; then mountsmenu;
-elif [ "$bsalt" == "y" ]; then
+elif [ "$typed" == "y" ]; then
 echo $bpassword >> /var/plexguide/pgclone.password
 echo $bsalt >> /var/plexguide/pgclone.salt
 mountsmenu;
