@@ -417,9 +417,10 @@ Quitting? Type > Exit
 
 Please set a Primary Password for Encryption! Do not forget it! If you do,
 you will be locked out from all your data!
+3
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p ' ↘️  Type a Password (Primary) | Press [ENTER] ' bpassword < /dev/tty
+read -p ' ↘️  Type Prime PW | Press [ENTER] ' bpassword < /dev/tty
 
 if [ "$bpassword" == "" ]; then
   badinput
@@ -440,9 +441,10 @@ Please set a Secondary Password (SALT) for Encryption! Do not forget it!
 If you do, you will be locked out from all your data!  SALT randomizes
 your data to further protect you! It is not recommended to use the same
 password, but may.
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p ' ↘️  Type a Password (SALT) | Press [ENTER] ' bsalt < /dev/tty
+read -p ' ↘️  Type SALT PW | Press [ENTER] ' bsalt < /dev/tty
 
 if [ "$bsalt" == "" ]; then
   badinput
@@ -464,6 +466,7 @@ Are you happy with the following info? Type y or n!
 
 Primary  : $bpassword
 Secondary: $bsalt
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
