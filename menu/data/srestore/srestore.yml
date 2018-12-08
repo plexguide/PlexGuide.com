@@ -68,6 +68,9 @@
       ignore_errors: True
       when: running.stdout == "1"
 
+    - name: "Remove Previous Files"
+      shell: "rm -r /opt/appdata/{{tarlocation.stdout}}/*"
+
     - name: "Restore Files"
       shell: "tar -C /opt/appdata/{{tarlocation.stdout}} -xvf {{tarlocation.stdout}}/{{program_var.stdout}}.tar"
 
