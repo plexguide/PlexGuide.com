@@ -61,7 +61,6 @@ tee <<-EOF
 EOF
 
 fi
-read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 }
 
 deploygdrivecheck () {
@@ -113,7 +112,6 @@ tee <<-EOF
 EOF
 
 fi
-read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 }
 
 # FOR FINAL DEPLOYMENT END #####################################################
