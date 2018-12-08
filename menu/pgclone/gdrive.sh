@@ -39,7 +39,7 @@ read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
   elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit; fi
 fi
 
-if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Blitz /w Encryption" ]]; then
+if [[ "$transport" == "PG Blitz /w No Encryption" || "$transport" == "PG Blitz /w Encryption" ]]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -100,7 +100,7 @@ else
   question1; fi
 fi
 
-if [[ "$transport" == "PG Blitz /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then
+if [[ "$transport" == "PG Moive /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
