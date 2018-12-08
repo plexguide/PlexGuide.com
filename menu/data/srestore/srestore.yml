@@ -68,14 +68,21 @@
       ignore_errors: True
       when: running.stdout == "1"
 
-    - name: Unzip Folders
-      unarchive:
-        src: "{{tarlocation.stdout}}/{{program_var.stdout}}.tar"
-        dest: "/opt/appdata/{{program_var.stdout}}"
-        keep_newer: no
-        owner: 1000
-        group: 1000
-        mode: 0775
+    #- name: Unzip Folders
+    #  unarchive:
+    #    src: "{{tarlocation.stdout}}/{{program_var.stdout}}.tar"
+    #    dest: "/opt/appdata/{{program_var.stdout}}"
+    #    keep_newer: no
+    #    owner: 1000
+    #    group: 1000
+    #    mode: 0775
+
+    - name: "Restore Files"
+      shell: |
+        mv {{tarlocation.stdout}}/{{program_var.stdout}}.tar /opt/appdata/{{program_var.stdout}} || :
+        tar -xf '{{program_var.stdout}}' -C /opt/appdata .
+      with_fileglob:
+      - "{{tarlocation.stdout}}/{{program_var.stdout}}.tar"
 
     - name: "Restart Docker Container - {{program_var.stdout}}"
       docker_container:
