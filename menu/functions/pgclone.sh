@@ -185,6 +185,9 @@ if [ "$secret" == "" ]; then dsecret="NOT SET"; else dsecret="SET"; fi
 if [ "$public" == "" ]; then dpublic="NOT SET"; else dpublic="SET"; fi
 if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive=$teamdrive; fi
 
+gstatus=$(cat /var/plexguide/gstatus.pgclone)
+tstatus=$(cat /var/plexguide/tdrive.pgclone)
+
 ###### START
 if [ "$transport" == "PG Move /w No Encryption" ]; then
 tee <<-EOF
@@ -576,7 +579,7 @@ TIPS:
 3. Did you enable your API?
 
 EOF
-    echo "⚠️ Not Active" > /var/plexguide/$type.pgclone
+    echo "⚠️ Not Activated" > /var/plexguide/$type.pgclone
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
 else
