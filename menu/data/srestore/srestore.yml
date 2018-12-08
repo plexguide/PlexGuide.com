@@ -40,6 +40,10 @@
       shell: "cat /var/plexguide/rclone.size"
       register: program_size
 
+    - name: "Size Simplename"
+      shell: "cat /var/plexguide/restore.name"
+      register: simplename
+
     - name: "Server ID for Backup"
       shell: "cat /var/plexguide/server.id"
       register: server_id
@@ -47,7 +51,6 @@
     - name: "Checking if Program is Running"
       shell: "cat /tmp/docker.check"
       register: running
-
     - debug: msg="{{program_var.stdout}} running? 1 - Yes | 0 - No >>> {{running.stdout}}"
 
     - name: Create Restore Folder
