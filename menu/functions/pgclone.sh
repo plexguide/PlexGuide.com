@@ -79,8 +79,15 @@ EOF
   tokenscript
 
   name=$(sed -n ${typed}p /var/plexguide/teamdrive.name)
-  echo "$name"
-  read -p '↘️  Pause | PRESS [ENTER]: ' temp < /dev/tty
+echo "$name" > /var/plexguide/pgclone.teamdrive
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+😂 What a Lame TeamDrive Name: $name
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '↘️  Acknowledge Info | PRESS [ENTER]: ' temp < /dev/tty
 
 }
 
@@ -102,12 +109,12 @@ EOF
   echo "[$A] $p - $name"
 done </var/plexguide/teamdrive.id
 
+echo ""
 read -p '↘️  Type Number | PRESS [ENTER]: ' typed < /dev/tty
 if [[ "$typed" -ge "1" && "$typed" -le "$A" ]]; then a=b
 else
-  badinput 
+  badinput
   tokenscript; fi
-
 }
 
 inputphase () {
@@ -266,21 +273,6 @@ elif [ "$typed" == "5" ]; then
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
   mountsmenu; fi
-}
-
-teamdriveinput () {
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Team Drive Identifier                    📓 Reference: td.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? Type > exit
-Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
-
-EOF
-  read -p '↘️  Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
-  if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
-echo "$teamdrive" > /var/plexguide/pgclone.teamdrive
-
 }
 
 publickeyinput () {
