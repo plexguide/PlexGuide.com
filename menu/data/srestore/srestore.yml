@@ -87,6 +87,16 @@
       ignore_errors: True
       when: running.stdout == "1"
 
+    - name: Recursive Owner
+      shell: "chown -R 1000:1000 /opt/appdata/{{tarlocation.stdout}}"
+      args:
+        warn: no
+
+    - name: Recursive Permissions
+      shell: "chmod -R ugo+X /opt/appdata/{{tarlocation.stdout}}"
+      args:
+        warn: no
+
     - name: Remove TEMP Backup!
       file:
         path: "{{item}}"
