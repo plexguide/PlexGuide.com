@@ -71,6 +71,9 @@
       ignore_errors: True
       when: running.stdout == "1"
 
+    - name: "Dummy File"
+      shell: "touch /opt/appdata/{{simplename.stdout}}/dummyfile.txt"
+
     - name: "Remove Previous Files"
       shell: "rm -r /opt/appdata/{{simplename.stdout}}/*"
 
