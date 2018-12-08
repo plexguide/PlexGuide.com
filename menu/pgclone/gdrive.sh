@@ -138,8 +138,8 @@ variable /var/plexguide/pgclone.teamdrive ""
 variable /var/plexguide/pgclone.public ""
 variable /var/plexguide/pgclone.secret ""
 variable /var/plexguide/pgclone.transport "PG Move /w No Encryption"
-variable /var/plexguide/gdrive.pgclone "⚠️ Not Activated"
-variable /var/plexguide/tdrive.pgclone "⚠️ Not Activated"
+variable /var/plexguide/gdrive.pgclone "⚠️  Not Activated"
+variable /var/plexguide/tdrive.pgclone "⚠️  Not Activated"
 variable /var/plexguide/move.bw  "10"
 
 question1

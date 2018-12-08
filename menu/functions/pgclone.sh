@@ -579,7 +579,7 @@ TIPS:
 3. Did you enable your API?
 
 EOF
-    echo "⚠️ Not Activated" > /var/plexguide/$type.pgclone
+    echo "⚠️  Not Activated" > /var/plexguide/$type.pgclone
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
 else
