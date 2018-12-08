@@ -49,7 +49,7 @@
       with_items:
         - "/opt/appdata/{{simplename.stdout}}"
 
-    - name: "Downloading from Google Drive - {{program_var.stdout}} - Size: {{program_size.stdout}} MB"
+    - name: "Downloading from Google YesDrive - {{program_var.stdout}} - Size: {{program_size.stdout}} MB"
       shell: "rclone copy --tpslimit 6 \
               --config /opt/appdata/plexguide/rclone.conf \
               --drive-chunk-size=64M \
@@ -59,7 +59,7 @@
       shell: "rm -r /opt/appdata/{{program_var.stdout}}/*"
 
     - name: "Restore Files"
-      shell: "tar -C /opt/appdata/{{program_var.stdout}} -xvf {{tarlocation.stdout}}/{{program_var.stdout}}"
+      shell: "tar -C /opt/appdata/{{simplename.stdout}} -xvf {{tarlocation.stdout}}/{{program_var.stdout}}"
 
     - name: "Restart Docker Container - {{program_var.stdout}}"
       docker_container:
@@ -69,12 +69,12 @@
       when: running.stdout == "1"
 
     - name: Recursive Owner
-      shell: "chown -R 1000:1000 /opt/appdata/{{tarlocation.stdout}}"
+      shell: "chown -R 1000:1000 /opt/appdata/{{simplename.stdout}}"
       args:
         warn: no
 
     - name: Recursive Permissions
-      shell: "chmod -R ugo+X /opt/appdata/{{tarlocation.stdout}}"
+      shell: "chmod -R ugo+X /opt/appdata/{{simplename.stdout}}"
       args:
         warn: no
 
