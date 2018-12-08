@@ -88,7 +88,6 @@ tee <<-EOF
 
 EOF
   read -p '↘️  Acknowledge Info | PRESS [ENTER] ' temp < /dev/tty
-
 }
 
 tokenscript () {
@@ -181,7 +180,7 @@ teamdrive=$(cat /var/plexguide/pgclone.teamdrive)
 
 if [ "$secret" == "" ]; then dsecret="NOT SET"; else dsecret="SET"; fi
 if [ "$public" == "" ]; then dpublic="NOT SET"; else dpublic="SET"; fi
-if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive="SET"; fi
+if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive=$teamdrive; fi
 
 if [ "$transport" == "PG Move /w No Encryption" ]; then
 display2=""
