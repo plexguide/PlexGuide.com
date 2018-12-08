@@ -113,7 +113,7 @@ fi
 }
 
 deploygtdrivecheck () {
-type=gdrive
+type=tdrive
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
