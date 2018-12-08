@@ -109,9 +109,9 @@ EOF
 
 sleep 2
 echo $typed > /tmp/program_var
-
+echo $p > /tmp/program_var
 ### For Folder Names for Restore
-q=${typed%.tar}
+q=${p%.tar}
 echo "$q" > /var/plexguide/restore.name
 
 docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" > /tmp/docker.check
