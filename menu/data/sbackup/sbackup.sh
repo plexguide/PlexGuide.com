@@ -109,7 +109,7 @@ EOF
 
 sleep 2
 echo $typed > /tmp/program_var
-echo $p > /tmp/program_var
+p=$(cat /tmp/program_var)
 ### For Folder Names for Restore
 q=${p%.tar}
 echo "$q" > /var/plexguide/restore.name
