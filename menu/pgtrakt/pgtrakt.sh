@@ -347,7 +347,7 @@ typed=${typed:4}
 fi
 
 echo "$typed" > /var/plexguide/pgtrak.rpath
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo ""
 question1
   else
@@ -362,7 +362,7 @@ your location.
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo "" && question1
   fi
 fi
@@ -494,7 +494,7 @@ tee <<-EOF
 
 EOF
 
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   echo
   question1
   else
@@ -507,7 +507,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo
 fi
 
@@ -519,7 +519,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo
 fi
 

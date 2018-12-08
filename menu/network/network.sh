@@ -14,10 +14,10 @@ tee <<-EOF
 📂  PG System & Network Auditor
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - System & Network Benchmark - Basic
-2 - System & Network Benchmark - Advanced
-3 - Simple SpeedTest
-Z - Exit
+[1] System & Network Benchmark - Basic
+[2] System & Network Benchmark - Advanced
+[3] Simple SpeedTest
+[4] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -28,7 +28,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 if [ "$typed" == "1" ]; then
   sudo wget -qO- bench.sh | bash
   echo ""
-  read -p '🌍 Process Complete | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍 Process Complete | Press [ENTER] ' typed < /dev/tty
   question1
 elif [ "$typed" == "2" ]; then
   echo ""
@@ -36,14 +36,14 @@ elif [ "$typed" == "2" ]; then
   echo ""
   ./bench.sh -a
   echo ""
-  read -p '🌍 Process Complete | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍 Process Complete | Press [ENTER] ' typed < /dev/tty
   question1
 elif [ "$typed" == "3" ]; then
   pip install speedtest-cli
   echo ""
   speedtest-cli
   echo ""
-  read -p '🌍 Process Complete | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍 Process Complete | Press [ENTER] ' typed < /dev/tty
   question1
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
   exit

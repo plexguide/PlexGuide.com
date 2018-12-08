@@ -87,7 +87,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p '↘️  Acknowledge Info | PRESS [ENTER]: ' temp < /dev/tty
+  read -p '↘️  Acknowledge Info | PRESS [ENTER] ' temp < /dev/tty
 
 }
 
