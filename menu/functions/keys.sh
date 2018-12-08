@@ -62,7 +62,6 @@ EOF
 
 fi
 read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
-EOF
 }
 
 # FOR FINAL DEPLOYMENT END #####################################################
