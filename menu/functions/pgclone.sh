@@ -184,29 +184,8 @@ if [ "$secret" == "" ]; then dsecret="NOT SET"; else dsecret="SET"; fi
 if [ "$public" == "" ]; then dpublic="NOT SET"; else dpublic="SET"; fi
 if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive=$teamdrive; fi
 
+###### START
 if [ "$transport" == "PG Move /w No Encryption" ]; then
-display2=""
-fi
-
-if [ "$transport" == "PG Move /w Encryption" ]; then
-display2="
-[4] gcrypt"
-fi
-
-if [ "$transport" == "PG Blitz /w No Encryption" ]; then
-display2="
-[4] tdrive   : $tstatus"
-fi
-
-if [ "$transport" == "PG Blitz /w No Encryption" ]; then
-display2p2="
-
-💡 Team Drive Label
-
-[3] TD Label : $dteamdrive
-"
-fi
-
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -216,11 +195,100 @@ tee <<-EOF
 💾 OAuth
 
 [1] Client ID: $dpublic
-[2] Secret ID: ${dsecret}${display2p2}
+[2] Secret ID: ${dsecret} - ${display2p2}
 
 📁 RClone Configuration
 
-[3] gdrive   : $gstatus$display2
+[3] gdrive   : $gstatus
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+  read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
+
+  if [ "$typed" == "1" ]; then
+    publickeyinput
+    mountsmenu
+  elif [ "$typed" == "2" ]; then
+    secretkeyinput
+    mountsmenu
+  elif [ "$typed" == "3" ]; then
+    type=gdrive
+    statusmount
+    inputphase
+    mountsmenu
+  elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
+  else badinput
+    mountsmenu; fi
+fi
+########## END
+
+########## START
+if [ "$transport" == "PG Move /w Encryption" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 PG Clone - OAuth & Mounts           📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💾 OAuth
+
+[1] Client ID: $dpublic
+[2] Secret ID: ${dsecret} - ${display2p2}
+
+📁 RClone Configuration
+
+[3] gdrive   : $gstatus
+[4] gcrypt
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+  read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
+
+  if [ "$typed" == "1" ]; then
+    publickeyinput
+    mountsmenu
+  elif [ "$typed" == "2" ]; then
+    secretkeyinput
+    mountsmenu
+  elif [ "$typed" == "3" ]; then
+    type=gdrive
+    statusmount
+    inputphase
+    mountsmenu
+  elif [ "$typed" == "4" ]; then
+    rclone config --config /opt/appdata/plexguide/rclone.conf
+    mountsmenu
+  elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
+  else badinput
+    mountsmenu; fi
+fi
+###### END
+
+###### START
+if [ "$transport" == "PG Blitz /w No Encryption" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 PG Clone - OAuth & Mounts           📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💾 OAuth
+
+[1] Client ID: $dpublic
+[2] Secret ID: ${dsecret} - ${display2p2}
+
+💡 Team Drive Label
+
+[3] TD Label : $dteamdrive
+
+📁 RClone Configuration
+
+[4] gdrive   : $gstatus
+[5] tdrive   : $tstatus
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -228,24 +296,21 @@ EOF
 
 read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
 
-if [ "$transport" == "PG Move /w No Encryption" ]; then
-  if [ "$typed" == "5" ]; then
+if [ "$typed" == "1" ]; then
+  publickeyinput
+  mountsmenu
+elif [ "$typed" == "2" ]; then
+  secretkeyinput
+  mountsmenu
+elif [ "$typed" == "3" ]; then
+  tmgen
+  mountsmenu
+elif [ "$typed" == "4" ]; then
   type=gdrive
+  statusmount
   inputphase
   mountsmenu
-  fi
-fi
-
-if [ "$transport" == "PG Move /w Encryption" ]; then
-  if [ "$typed" == "4" ]; then
-  rclone config --config /opt/appdata/plexguide/rclone.conf
-  mountsmenu
-  fi
-fi
-
-if [ "$transport" == "PG Blitz /w No Encryption" ]; then
-  if [ "$typed" == "4" ]; then
-
+elif [ "$typed" == "5" ]; then
   tmcheck=$(cat /var/plexguide/pgclone.teamdrive)
   if [ "$tmcheck" == "" ]; then
 tee <<-EOF
@@ -257,31 +322,16 @@ tee <<-EOF
 EOF
   read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   mountsmenu; fi
-
   type=tdrive
   statusmount
   inputphase
   mountsmenu
-  fi
-fi
-
-if [ "$typed" == "1" ]; then
-  publickeyinput
-  mountsmenu
-elif [ "$typed" == "2" ]; then
-  secretkeyinput
-  mountsmenu
-elif [ "$typed" == "3" ]; then
-  type=gdrive
-  statusmount
-  inputphase
-  mountsmenu
-elif [ "$typed" == "5" ]; then
-  tmgen
-  mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
   mountsmenu; fi
+fi
+#################### END
+
 }
 
 publickeyinput () {
