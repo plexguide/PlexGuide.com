@@ -79,7 +79,9 @@ EOF
   tokenscript
 
   name=$(sed -n ${typed}p /var/plexguide/teamdrive.name)
+  id=$(sed -n ${typed}p /var/plexguide/teamdrive.id)
 echo "$name" > /var/plexguide/pgclone.teamdrive
+echo "$id" > /var/plexguide/pgclone.teamid
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -194,7 +196,15 @@ fi
 if [ "$transport" == "PG Blitz /w No Encryption" ]; then
 display2="
 [4] tdrive   : $tstatus
-[5] TeamDrive: $dteamdrive"
+fi
+
+if [ "$transport" == "PG Blitz /w No Encryption" ]; then
+display2p2="
+
+💡 Team Drive Label
+
+[3] TD Label : $dteamdrive
+"
 fi
 
 tee <<-EOF
@@ -206,7 +216,7 @@ tee <<-EOF
 💾 OAuth
 
 [1] Client ID: $dpublic
-[2] Secret ID: $dsecret
+[2] Secret ID: $dsecret$displayp2
 
 📁 RClone Configuration
 
