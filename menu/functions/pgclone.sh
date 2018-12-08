@@ -345,17 +345,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💾 OAuth
-
 [1] Client ID: $dpublic
 [2] Secret ID: ${dsecret}
 
 💡 Team Drive Label
-
 [3] TD Label : $dteamdrive
 [4] Passwords: NOTHING YET
 
 📁 RClone Configuration
-
 [5] gdrive   : $gstatus
 [6] tdrive   : $tstatus
 [7] tcrypt   : NOTHING YET
