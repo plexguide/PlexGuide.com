@@ -61,6 +61,7 @@ secret=$(cat /var/plexguide/pgclone.secret)
 public=$(cat /var/plexguide/pgclone.public)
 
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 Google Auth - Team Drives           📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -534,7 +535,9 @@ testphase () {
   echo "type = drive" >> /opt/appdata/plexguide/test.conf
   echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/plexguide/test.conf
   echo "" >> /opt/appdata/plexguide/test.conf
-  if [ "$type" == "tdrive" ]; then echo "team_drive = $teamdrive" >> /opt/appdata/plexguide/test.conf; fi
+  if [ "$type" == "tdrive" ]; then
+  teamid=$(cat /var/plexguide/pgclone.teamid)
+  echo "team_drive = $teamid" >> /opt/appdata/plexguide/test.conf; fi
   echo ""
 tee <<-EOF
 
