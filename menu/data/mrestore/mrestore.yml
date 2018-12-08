@@ -56,10 +56,10 @@
               gdrive:/plexguide/backup/{{restore_id.stdout}}/{{program_var.stdout}} {{tarlocation.stdout}}"
 
     - name: "Remove Previous Files"
-      shell: "rm -r {{tarlocation.stdout}}/*"
+      shell: "rm -r /opt/appdata/{{program_var.stdout}}/*"
 
     - name: "Restore Files"
-      shell: "tar -C /opt/appdata/{{tarlocation.stdout}} -xvf {{tarlocation.stdout}}/{{program_var.stdout}}"
+      shell: "tar -C /opt/appdata/{{program_var.stdout}} -xvf {{tarlocation.stdout}}/{{program_var.stdout}}"
 
     - name: "Restart Docker Container - {{program_var.stdout}}"
       docker_container:
