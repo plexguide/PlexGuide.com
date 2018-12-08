@@ -416,8 +416,9 @@ projectestablish () {
 
   gcloud projects list > /var/plexguide/projects.list
   projectcheck=(cat /var/plexguide/projects.list)
-  if [ "$pprojectcheck" == "" ]; then
+  if [ "$projectcheck" == "" ]; then
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔  System Message: Error! There are no projects! Make one first!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
