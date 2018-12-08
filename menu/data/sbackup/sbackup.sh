@@ -109,10 +109,8 @@ EOF
 
 sleep 2
 echo $typed > /tmp/program_var
-p=$(cat /tmp/program_var)
+echo $typed > /var/plexguide/restore.name
 ### For Folder Names for Restore
-q=${p%.tar}
-echo "$q" > /var/plexguide/restore.name
 
 docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/sbackup/sbackup.yml
