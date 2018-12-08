@@ -195,7 +195,7 @@ tee <<-EOF
 💾 OAuth
 
 [1] Client ID: $dpublic
-[2] Secret ID: ${dsecret} - ${display2p2}
+[2] Secret ID: ${dsecret}
 
 📁 RClone Configuration
 
@@ -235,7 +235,7 @@ tee <<-EOF
 💾 OAuth
 
 [1] Client ID: $dpublic
-[2] Secret ID: ${dsecret} - ${display2p2}
+[2] Secret ID: ${dsecret}
 
 📁 RClone Configuration
 
@@ -279,7 +279,7 @@ tee <<-EOF
 💾 OAuth
 
 [1] Client ID: $dpublic
-[2] Secret ID: ${dsecret} - ${display2p2}
+[2] Secret ID: ${dsecret}
 
 💡 Team Drive Label
 
