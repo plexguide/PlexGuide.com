@@ -69,10 +69,10 @@
       when: running.stdout == "1"
 
     - name: "Remove Previous Files"
-      shell: "rm -r /opt/appdata/{{tarlocation.stdout}}/*"
+      shell: "rm -r /opt/appdata/{{simplename.stdout}}/*"
 
     - name: "Restore Files"
-      shell: "tar -C /opt/appdata/{{tarlocation.stdout}} -xvf {{tarlocation.stdout}}/{{program_var.stdout}}.tar"
+      shell: "tar -C /opt/appdata/{{simplename.stdout}} -xvf {{tarlocation.stdout}}/{{program_var.stdout}}"
 
     - name: "Restart Docker Container - {{program_var.stdout}}"
       docker_container:
@@ -82,12 +82,12 @@
       when: running.stdout == "1"
 
     - name: Recursive Owner
-      shell: "chown -R 1000:1000 /opt/appdata/{{tarlocation.stdout}}"
+      shell: "chown -R 1000:1000 /opt/appdata/{{simplename.stdout}}"
       args:
         warn: no
 
     - name: Recursive Permissions
-      shell: "chmod -R ugo+X /opt/appdata/{{tarlocation.stdout}}"
+      shell: "chmod -R ugo+X /opt/appdata/{{simplename.stdout}}"
       args:
         warn: no
 
