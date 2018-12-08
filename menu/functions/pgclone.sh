@@ -576,7 +576,7 @@ TIPS:
 3. Did you enable your API?
 
 EOF
-    echo "Not Active" > /var/plexguide/gdrive.pgclone
+    echo "⚠️ Not Active" > /var/plexguide/$type.pgclone
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
 else
@@ -590,7 +590,7 @@ EOF
 fi
 
 read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
-echo "Active" > /var/plexguide/$type.pgclone
+echo "✅ Activated" > /var/plexguide/$type.pgclone
 cat /opt/appdata/plexguide/test.conf >> /opt/appdata/plexguide/rclone.conf
 mountsmenu
 
