@@ -78,11 +78,7 @@
     #    mode: 0775
 
     - name: "Restore Files"
-      shell: |
-        mv {{tarlocation.stdout}}/{{program_var.stdout}}.tar /opt/appdata/{{program_var.stdout}} || :
-        tar -xf '{{program_var.stdout}}' -C /opt/appdata .
-      with_fileglob:
-      - "{{tarlocation.stdout}}/{{program_var.stdout}}.tar"
+      shell: "tar -xf '{{program_var.stdout}}' -C /opt/appdata/{{program_var.stdout}"
 
     - name: "Restart Docker Container - {{program_var.stdout}}"
       docker_container:
