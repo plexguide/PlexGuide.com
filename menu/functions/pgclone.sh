@@ -336,6 +336,78 @@ else badinput
 fi
 #################### END
 
+##### START
+if [ "$transport" == "PG Blitz /w Encryption" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 PG Clone - OAuth & Mounts          📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💾 OAuth
+
+[1] Client ID: $dpublic
+[2] Secret ID: ${dsecret}
+
+💡 Team Drive Label
+
+[3] TD Label : $dteamdrive
+[4] Passwords: NOTHING YET
+
+📁 RClone Configuration
+
+[5] gdrive   : $gstatus
+[6] tdrive   : $tstatus
+[7] tcrypt   : NOTHING YET
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
+
+if [ "$typed" == "1" ]; then
+  publickeyinput
+  mountsmenu
+elif [ "$typed" == "2" ]; then
+  secretkeyinput
+  mountsmenu
+elif [ "$typed" == "3" ]; then
+  tmgen
+  mountsmenu
+elif [ "$typed" == "4" ]; then
+  blitzpasswords
+  mountsmenu
+elif [ "$typed" == "5" ]; then
+  type=gdrive
+  statusmount
+  inputphase
+  mountsmenu
+elif [ "$typed" == "6" ]; then
+  tmcheck=$(cat /var/plexguide/pgclone.teamdrive)
+  if [ "$tmcheck" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔ Warning! TeamDrive is blank! Must be Set Prior!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  mountsmenu; fi
+  type=tdrive
+  statusmount
+  inputphase
+  mountsmenu
+elif [ "$typed" == "7" ]; then
+  rclone config --config /opt/appdata/plexguide/rclone.conf
+  mountsmenu
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
+else badinput
+  mountsmenu; fi
+fi
+#################### END
+
 }
 
 publickeyinput () {
