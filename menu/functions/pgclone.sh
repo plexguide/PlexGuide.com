@@ -513,6 +513,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
   echo ""
   read -p '↘️  Type Project Name | Press [ENTER]: ' typed < /dev/tty
