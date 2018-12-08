@@ -185,7 +185,7 @@ if [ "$secret" == "" ]; then dsecret="NOT SET"; else dsecret="SET"; fi
 if [ "$public" == "" ]; then dpublic="NOT SET"; else dpublic="SET"; fi
 if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive=$teamdrive; fi
 
-gstatus=$(cat /var/plexguide/gstatus.pgclone)
+gstatus=$(cat /var/plexguide/gdrive.pgclone)
 tstatus=$(cat /var/plexguide/tdrive.pgclone)
 
 ###### START
