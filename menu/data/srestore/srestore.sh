@@ -104,6 +104,7 @@ sleep 4
 fi
 ########################### Next Phase
 echo $typed > /tmp/program_var
+echo $typed > /var/plexguide/restore.name
 docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/srestore/srestore.yml
 
