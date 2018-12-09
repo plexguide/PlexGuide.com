@@ -749,13 +749,40 @@ EOF
 
 fi
 
+# If Transport is Set for Encryption
+encheck=$(cat /var/plexguide/pgclone.transport)
+if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then cryptgen; fi
+
 read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 echo "✅ Activated" > /var/plexguide/$type.pgclone
 cat /opt/appdata/plexguide/test.conf >> /opt/appdata/plexguide/rclone.conf
+
 mountsmenu
 
 EOF
 }
+
+cryptgen () {
+
+  if [ "$encheck" == "eblitz" ]; then entype="tcrypt";
+else entype="gcrypt"; fi
+
+  PASSWORD=`cat /var/plexguide/pgclone.password`
+  SALT=`cat /var/plexguide/pgclone.salt`
+  ENC_PASSWORD=`rclone obscure "$PASSWORD"`
+  ENC_SALT=`rclone obscure "$SALT"`
+
+  echo "" > /opt/appdata/plexguide/test.conf
+  echo "[$entype]" >> /opt/appdata/plexguide/test.conf
+  echo "type = crypt" >> /opt/appdata/plexguide/test.conf
+  echo "remote = $tempbuild:/encrypt" >> /opt/appdata/plexguide/test.conf
+  echo "filename_encryption = standard" >> /opt/appdata/plexguide/test.conf
+  echo "directory_name_encryption = true" >> /opt/appdata/plexguide/test.conf
+  echo "password = $ENC_PASSWORD" >> /opt/appdata/plexguide/test.conf
+  echo "password2 = $ENC_SALT" >> /opt/appdata/plexguide/test.conf; fi
+
+}
+
 
 deploychecks () {
 secret=$(cat /var/plexguide/pgclone.secret)
