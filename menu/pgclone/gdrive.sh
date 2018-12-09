@@ -87,6 +87,8 @@ elif [ "$typed" == "4" ]; then
       ufsbuilder
       ansible-playbook /opt/plexguide/menu/pgclone/gdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/gcrypt.yml
+      ansible-playbook /opt/plexguide/menu/pgclone/tcrypt.yml
       ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
       ansible-playbook /opt/plexguide/containers/blitzui.yml
