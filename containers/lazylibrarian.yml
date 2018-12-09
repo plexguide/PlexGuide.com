@@ -90,6 +90,13 @@
       line: 'audio_dir = /abooks'
       state: present
 
+  - name: Set Complete Download Locations
+    lineinfile:
+      path: "/opt/appdata/lazylibrarian/config.ini"
+      regexp: 'download_dir ='
+      line: 'download_dir = /data/completed/ebooks,/complete/ebooks,/completed/ebooks,/downloads/ebooks,/downloaded/ebooks,/qbit-downloads/ebooks,/data/completed/abooks,/complete/abooks,/completed/abooks,/downloads/abooks,/downloaded/abooks,/qbit-downloads/abooks'
+      state: present
+      
   - name: Restart Container
     docker_container:
       name: lazylibrarian
