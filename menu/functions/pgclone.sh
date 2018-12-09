@@ -422,7 +422,6 @@ tee <<-EOF
 EOF
   read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   mountsmenu; fi
-fi
 }
 
 blitzpasswords () {
