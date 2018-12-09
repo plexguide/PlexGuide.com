@@ -205,12 +205,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💾 OAuth
-
 [1] Client ID: $dpublic
 [2] Secret ID: ${dsecret}
 
 📁 RClone Configuration
-
 [3] gdrive   : $gstatus
 [Z] Exit
 
@@ -245,14 +243,11 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💾 OAuth
-
 [1] Client ID: $dpublic
 [2] Secret ID: ${dsecret}
 
 📁 RClone Configuration
-
-[3] gdrive   : $gstatus
-[4] gcrypt
+[3] gdrive /w gcrypt: $gstatus
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -289,16 +284,13 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💾 OAuth
-
 [1] Client ID: $dpublic
 [2] Secret ID: ${dsecret}
 
 💡 Team Drive Label
-
 [3] TD Label : $dteamdrive
 
 📁 RClone Configuration
-
 [4] gdrive   : $gstatus
 [5] tdrive   : $tstatus
 [Z] Exit
@@ -361,9 +353,8 @@ tee <<-EOF
 [4] Passwords: NOTHING YET
 
 📁 RClone Configuration
-[5] gdrive   : $gstatus
-[6] tdrive   : $tstatus
-[7] tcrypt   : NOTHING YET
+[5] gdrive /w gcrypt: $gstatus
+[6] tdrive /w tcrypt: $tstatus
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -403,9 +394,6 @@ EOF
   type=tdrive
   statusmount
   inputphase
-  mountsmenu
-elif [ "$typed" == "7" ]; then
-  rclone config --config /opt/appdata/plexguide/rclone.conf
   mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
