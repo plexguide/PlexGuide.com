@@ -130,6 +130,12 @@ else
 inputphase () {
 deploychecks
 
+# Sets Display Status if Passwords are not set for the encryhpted edition
+check5=$(cat /var/plexguide/pgclone.password)
+check6=$(cat /var/plexguide/pgclone.salt)
+if [[ "$check5" == "" || "$check6" == "" ]]; then $passdisplay="⚠️  Not Activated"
+else $passdisplay="✅ Activated"; fi
+
 if [[ "$transport" == "PG Move /w No Encryption" || "$transport" == "PG Move /w Encryption" ]]; then
   display=""
 else
@@ -249,8 +255,11 @@ tee <<-EOF
 [1] Client ID: $dpublic
 [2] Secret ID: ${dsecret}
 
+💡 Required Tasks
+[3] Passwords: $passdisplay
+
 📁 RClone Configuration
-[3] gdrive   : $gstatus
+[4] gdrive   : $gstatus
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -264,13 +273,14 @@ EOF
   elif [ "$typed" == "2" ]; then
     secretkeyinput
     mountsmenu
-  elif [ "$typed" == "3" ]; then
+  elif [ "$typed" == "4" ]; then
+    blitzpasswords
+    mountsmenu
+  elif [ "$typed" == "4" ]; then
+    encpasswdcheck
     type=gdrive
     statusmount
     inputphase
-    mountsmenu
-  elif [ "$typed" == "4" ]; then
-    rclone config --config /opt/appdata/plexguide/rclone.conf
     mountsmenu
   elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
   else badinput
@@ -290,7 +300,7 @@ tee <<-EOF
 [1] Client ID: $dpublic
 [2] Secret ID: ${dsecret}
 
-💡 Team Drive Label
+💡 Required Tasks
 [3] TD Label : $dteamdrive
 
 📁 RClone Configuration
@@ -351,9 +361,9 @@ tee <<-EOF
 [1] Client ID: $dpublic
 [2] Secret ID: ${dsecret}
 
-💡 Team Drive Label
+💡 Required Tasks
 [3] TD Label : $dteamdrive
-[4] Passwords: NOTHING YET
+[4] Passwords: $passdisplay
 
 📁 RClone Configuration
 [5] gdrive   : $gstatus
