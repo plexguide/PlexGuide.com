@@ -144,8 +144,11 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬 PG is Deploying /w the Following Values:
 
-ID:        $public
-SECRET:    $secret
+🌅 ID
+$public
+
+💎 SECRET
+$secret
 $display
 EOF
 
