@@ -191,9 +191,8 @@ mountsmenu () {
 # Sets Display Status if Passwords are not set for the encryhpted edition
 check5=$(cat /var/plexguide/pgclone.password)
 check6=$(cat /var/plexguide/pgclone.salt)
-if [[ "$check5" == "" || "$check6" == "" ]]; then $passdisplay="⚠️  Not Activated"
-else $passdisplay="✅ Activated"; fi
-
+if [[ "$check5" == "" || "$check6" == "" ]]; then passdisplay="⚠️  Not Activated"
+else passdisplay="✅ Activated"; fi
 
 projectid=$(cat /var/plexguide/pgclone.project)
 secret=$(cat /var/plexguide/pgclone.secret)
