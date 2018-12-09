@@ -699,6 +699,32 @@ testphase () {
   teamid=$(cat /var/plexguide/pgclone.teamid)
   echo "team_drive = $teamid" >> /opt/appdata/plexguide/test.conf; fi
   echo ""
+
+## Adds Encryption to the Test Phase if Move or Blitz Encrypted is On
+encheck=$(cat /var/plexguide/pgclone.transport)
+if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
+
+  if [ "$encheck" == "eblitz" ]; then entype="tcrypt";
+  else entype="gcrypt"; fi
+
+  PASSWORD=`cat /var/plexguide/pgclone.password`
+  SALT=`cat /var/plexguide/pgclone.salt`
+  ENC_PASSWORD=`rclone obscure "$PASSWORD"`
+  ENC_SALT=`rclone obscure "$SALT"`
+  echo "" >> /opt/appdata/plexguide/test.conf
+  echo "[$entype]" >> /opt/appdata/plexguide/test.conf
+  echo "type = crypt" >> /opt/appdata/plexguide/test.conf
+  echo "remote = $tempbuild:/encrypt" >> /opt/appdata/plexguide/test.conf
+  echo "filename_encryption = standard" >> /opt/appdata/plexguide/test.conf
+  echo "directory_name_encryption = true" >> /opt/appdata/plexguide/test.conf
+  echo "password = $ENC_PASSWORD" >> /opt/appdata/plexguide/test.conf
+  echo "password2 = $ENC_SALT" >> /opt/appdata/plexguide/test.conf;
+
+fi
+testphase2
+}
+
+testphase2 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -735,6 +761,9 @@ TIPS:
 2. When you created the credentials, did you select "Other"?
 3. Did you enable your API?
 
+FOR ENCRYPTION
+1. Did You Set a Username and Password?
+
 EOF
     echo "⚠️  Not Activated" > /var/plexguide/$type.pgclone
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
@@ -749,40 +778,17 @@ EOF
 
 fi
 
-# If Transport is Set for Encryption
-encheck=$(cat /var/plexguide/pgclone.transport)
-if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then cryptgen; fi
-
 read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 echo "✅ Activated" > /var/plexguide/$type.pgclone
+
+## Copy the Test File to the Real RClone Conf
 cat /opt/appdata/plexguide/test.conf >> /opt/appdata/plexguide/rclone.conf
 
+## Back to the Main Mount Menu
 mountsmenu
 
 EOF
 }
-
-cryptgen () {
-
-  if [ "$encheck" == "eblitz" ]; then entype="tcrypt";
-else entype="gcrypt"; fi
-
-  PASSWORD=`cat /var/plexguide/pgclone.password`
-  SALT=`cat /var/plexguide/pgclone.salt`
-  ENC_PASSWORD=`rclone obscure "$PASSWORD"`
-  ENC_SALT=`rclone obscure "$SALT"`
-
-  echo "" > /opt/appdata/plexguide/test.conf
-  echo "[$entype]" >> /opt/appdata/plexguide/test.conf
-  echo "type = crypt" >> /opt/appdata/plexguide/test.conf
-  echo "remote = $tempbuild:/encrypt" >> /opt/appdata/plexguide/test.conf
-  echo "filename_encryption = standard" >> /opt/appdata/plexguide/test.conf
-  echo "directory_name_encryption = true" >> /opt/appdata/plexguide/test.conf
-  echo "password = $ENC_PASSWORD" >> /opt/appdata/plexguide/test.conf
-  echo "password2 = $ENC_SALT" >> /opt/appdata/plexguide/test.conf; fi
-
-}
-
 
 deploychecks () {
 secret=$(cat /var/plexguide/pgclone.secret)
