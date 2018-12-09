@@ -664,7 +664,7 @@ tee <<-EOF
 [1] PG Move  /w No Encryption | Upload 750GB Daily ~ Simple
 [2] PG Move  /w Encryption    | Upload 750GB Daily ~ Simple
 [3] PG Blitz /w No Encryption | Exceed 750GB Daily ~ Complex
-[4] PG Blitz /w Encryption    | NOT READY - WILL BREAK UR SYSTEM
+[4] PG Blitz /w Encryption    | Exceed 750GB Daily ~ Complex
 [Z] Exit
 
 EOF
