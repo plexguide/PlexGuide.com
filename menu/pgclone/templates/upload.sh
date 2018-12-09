@@ -51,7 +51,6 @@ log "[Upload] $FILE Moved"
 rm -f $FILE.lck
 
 #if using encrypted add -E to the end of $GDSA
-
 encheck=$(cat /var/plexguide/pgclone.transport)
 if [ "$encheck" == "eblitz" ]; then
     REMOTE=${GDSA}C
