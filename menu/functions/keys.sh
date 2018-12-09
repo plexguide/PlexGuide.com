@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Title:      PlexGuide (Reference Title File)
-# Author(s):  Admin9705
+# Author(s):  Admin9705 ~ Physik - FlickerRate
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
@@ -366,7 +366,6 @@ gdsabuild () {
   echo "password = $ENC_PASSWORD" >> $rpath
   echo "password2 = $ENC_SALT" >> $rpath; fi
 }
-
 
 deploykeys3 () {
 tee <<-EOF
