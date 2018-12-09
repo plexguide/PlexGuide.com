@@ -713,7 +713,7 @@ encheck=$(cat /var/plexguide/pgclone.transport)
 if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
 
   if [ "$type" == "gdrive" ]; then entype="gcrypt";
-  else entype="gcrypt"; fi
+  else entype="tcrypt"; fi
 
   PASSWORD=`cat /var/plexguide/pgclone.password`
   SALT=`cat /var/plexguide/pgclone.salt`
