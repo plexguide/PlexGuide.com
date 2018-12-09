@@ -714,7 +714,7 @@ if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
   echo "" >> /opt/appdata/plexguide/test.conf
   echo "[$entype]" >> /opt/appdata/plexguide/test.conf
   echo "type = crypt" >> /opt/appdata/plexguide/test.conf
-  echo "remote = $tempbuild:/encrypt" >> /opt/appdata/plexguide/test.conf
+  echo "remote = $entype:/encrypt" >> /opt/appdata/plexguide/test.conf
   echo "filename_encryption = standard" >> /opt/appdata/plexguide/test.conf
   echo "directory_name_encryption = true" >> /opt/appdata/plexguide/test.conf
   echo "password = $ENC_PASSWORD" >> /opt/appdata/plexguide/test.conf
