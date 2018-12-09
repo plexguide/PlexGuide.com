@@ -527,7 +527,7 @@ echo "$public" > /var/plexguide/pgclone.public
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Password & SALT Set                📓 Reference: pgclone.plexguide.com
+🌎 Client ID Set                      📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -548,6 +548,15 @@ EOF
 read -p '↘️  Secret Key  | Press [Enter]: ' secret < /dev/tty
 if [ "$secret" = "exit" ]; then mountsmenu; fi
 echo "$secret" > /var/plexguide/pgclone.secret
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Secret ID Set                       📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p '↘️  Acknowledge Info  | Press [Enter]: ' public < /dev/tty
+
 mountsmenu
 }
 
