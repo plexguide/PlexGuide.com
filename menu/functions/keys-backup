@@ -334,11 +334,11 @@ gdsabuild () {
 
 
   if [ -f "/opt/appdata/pgblitz/vars/encrypted" ]; then
-      ENCRYPTED="yes"
-      PASSWORD=`cat /var/plexguide/pgclone.password`
-      SALT=`cat /var/plexguide/pgclone.salt`
-      ENC_PASSWORD=`rclone obscure "$PASSWORD"`
-      ENC_SALT=`rclone obscure "$SALT"`; fi
+    ENCRYPTED="yes"
+    PASSWORD=`cat /var/plexguide/pgclone.password`
+    SALT=`cat /var/plexguide/pgclone.salt`
+    ENC_PASSWORD=`rclone obscure "$PASSWORD"`
+    ENC_SALT=`rclone obscure "$SALT"`; fi
 
   ##puts a blank space
   echo "" >> $rpath
@@ -355,14 +355,14 @@ gdsabuild () {
   echo "team_drive = $tdrive" >> $rpath
 
   if [ "$ENCRYPTED" == "yes" ]; then
-      echo "" >> $rpath
-      echo "[${tempbuild}C]" >> $rpath
-      echo "type = crypt" >> $rpath
-      echo "remote = $tempbuild:/encrypt" >> $rpath
-      echo "filename_encryption = standard" >> $rpath
-      echo "directory_name_encryption = true" >> $rpath
-      echo "password = $ENC_PASSWORD" >> $rpath
-      echo "password2 = $ENC_SALT" >> $rpath; fi
+    echo "" >> $rpath
+    echo "[${tempbuild}C]" >> $rpath
+    echo "type = crypt" >> $rpath
+    echo "remote = $tempbuild:/encrypt" >> $rpath
+    echo "filename_encryption = standard" >> $rpath
+    echo "directory_name_encryption = true" >> $rpath
+    echo "password = $ENC_PASSWORD" >> $rpath
+    echo "password2 = $ENC_SALT" >> $rpath; fi
 }
 
 
