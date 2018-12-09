@@ -84,7 +84,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-size=$(rclone ls gdrive:/plexguide/backup/$restoreid | grep $typed | awk '{ print $1 }' )
+size=$(rclone --config /opt/appdata/plexguide/rclone.conf ls gdrive:/plexguide/backup/$restoreid | grep $typed | awk '{ print $1 }' )
 display=$(expr $size / 1000000)
 echo $display > /var/plexguide/rclone.size
 
@@ -104,6 +104,7 @@ sleep 4
 fi
 ########################### Next Phase
 echo $typed > /tmp/program_var
+echo $typed > /var/plexguide/restore.name
 docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/srestore/srestore.yml
 

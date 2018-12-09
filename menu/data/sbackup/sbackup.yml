@@ -60,7 +60,7 @@
       when: running.stdout == "1"
 
     - name: "Uploading {{program_var.stdout}}.tar to Google Drive - Size: {{program_size.stdout}} MB"
-      shell: "rclone copy {{tarlocation.stdout}}/{{program_var.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
+      shell: "rclone --config /opt/appdata/plexguide/rclone.conf copy {{tarlocation.stdout}}/{{program_var.stdout}}.tar gdrive:/plexguide/backup/{{server_id.stdout}} -v --checksum --drive-chunk-size=64M"
 
     - name: Remove TEMP Backup!
       file:

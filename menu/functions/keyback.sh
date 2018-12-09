@@ -14,7 +14,7 @@ serverid=$(cat /var/plexguide/pg.serverid)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Messasge: Backing Up to GDrive - $serverid
+🚀 System Message: Backing Up to GDrive - $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: Standby, takes a minute!
@@ -26,7 +26,7 @@ rclone copy --config /opt/appdata/plexguide/rclone.conf /opt/appdata/pgblitz/key
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Messasge: Backup Complete!
+🚀 System Message: Backup Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -37,7 +37,7 @@ keyrestore () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Standby! Conducting Key Backup Check!
+🚀 Standby! Conducting Key Restore Check!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 rclone lsd --config /opt/appdata/plexguide/rclone.conf gdrive:/plexguide/backup/keys/ | awk '{ print $5 }' > /tmp/service.keys
@@ -51,7 +51,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -p '🌍 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-  question1
+  keymenu
 fi
 
 tee <<-EOF
@@ -68,7 +68,7 @@ cat /tmp/service.keys
 echo
 read -p '🌍 Type Name | Press [ENTER]: ' typed < /dev/tty
 
-if [ "$typed" == "exit" ]; then question1; fi
+if [ "$typed" == "exit" ]; then keymenu; fi
 
 grepcheck=$(cat /tmp/service.keys | grep $typed)
 if [ "$grepcheck" == "" ]; then
@@ -88,7 +88,7 @@ mkdir -p /opt/appdata/pgblitz/processed
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Messasge: Restoring Keys - $serverid
+🚀 System Message: Restoring Keys - $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
@@ -105,5 +105,5 @@ redeploy PGBlitz!
 
 EOF
 read -p '🌍 Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
-question1
+keymenu
 }

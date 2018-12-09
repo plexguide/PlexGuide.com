@@ -79,7 +79,6 @@ tee <<-EOF
 ✅️  PASS: Backing Up $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-
 fi
 
 ########################### Next Phase
@@ -109,6 +108,8 @@ EOF
 
 sleep 2
 echo $typed > /tmp/program_var
+### For Folder Names for Restore
+
 docker ps -a --format "{{.Names}}" | grep -c "\<$typed\>" > /tmp/docker.check
 ansible-playbook /opt/plexguide/menu/data/sbackup/sbackup.yml
 

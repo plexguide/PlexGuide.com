@@ -90,7 +90,7 @@ Quality Set Is: $typed
 EOF
 
 echo "$typed" > /var/plexguide/pgtrak.sprofile
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 question1
 fi
 
@@ -133,7 +133,7 @@ Quality Set Is: $typed
 EOF
 
 echo "$typed" > /var/plexguide/pgtrak.rprofile
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 question1
 fi
 
@@ -179,7 +179,7 @@ INFO: Messed up? Rerun this API Interface to update the information!
 
 EOF
 
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 question1
 fi
 
@@ -257,7 +257,7 @@ typed=${typed:4}
 fi
 
 echo "$typed" > /var/plexguide/pgtrak.spath
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo ""
 question1
   else
@@ -272,7 +272,7 @@ your location.
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo "" && question1
   fi
 fi
@@ -347,7 +347,7 @@ typed=${typed:4}
 fi
 
 echo "$typed" > /var/plexguide/pgtrak.rpath
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo ""
 question1
   else
@@ -362,7 +362,7 @@ your location.
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo "" && question1
   fi
 fi
@@ -494,7 +494,7 @@ tee <<-EOF
 
 EOF
 
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   echo
   question1
   else
@@ -507,7 +507,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo
 fi
 
@@ -519,7 +519,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 echo
 fi
 

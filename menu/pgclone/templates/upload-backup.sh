@@ -1,11 +1,30 @@
 {% raw %}
 #!/bin/bash
+##
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & FlickerRate & Bryde ツ & PhysK
+# URL:      https://plexguide.com
 #
-# Title:      PlexGuide (Reference Title File)
-# Author(s):  Admin9705 & PhysK
-# URL:        https://plexguide.com - http://github.plexguide.com
-# GNU:        General Public License v3.0
-################################################################################
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+#
+# PLEASE NOTE: The authors of this script will offer no support,
+#              If it has been modified!!
+#################################################################################
+#  _____   _____ ____  _ _ _              ___   __
+# |  __ \ / ____|  _ \| (_) |            |__ \ /_ |
+# | |__) | |  __| |_) | |_| |_ ____ __   __ ) | | |
+# |  ___/| | |_ |  _ <| | | __|_  / \ \ / // /  | |
+# | |    | |__| | |_) | | | |_ / /   \ V // /_ _| |
+# |_|     \_____|____/|_|_|\__/___|   \_/|____(_)_|
+#
+#################################################################################
 
 # Logging Function
 function log()
@@ -51,8 +70,7 @@ log "[Upload] $FILE Moved"
 rm -f $FILE.lck
 
 #if using encrypted add -E to the end of $GDSA
-encheck=$(cat /var/plexguide/pgclone.transport)
-if [ "$encheck" == "eblitz" ]; then
+if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
     REMOTE=${GDSA}C
 else
     REMOTE=$GDSA

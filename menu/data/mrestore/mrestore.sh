@@ -21,7 +21,7 @@ tee <<-EOF
 EOF
 
 # Recalls List for Backup Operations
-rclone ls gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdata/plexguide/restore.list
+rclone ls --config /opt/appdata/plexguide/rclone.conf gdrive:/plexguide/backup/$restoreid | awk '{ print $2 }' > /opt/appdata/plexguide/restore.list
 
 ### Builds Backup List - END
 # Build up list backup list for the main.yml execution

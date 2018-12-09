@@ -44,6 +44,14 @@ elif [[ "$typed" == "N" || "$typed" == "n" ]]; then mountsmenu
 
   rclone config delete $type --config /opt/appdata/plexguide/rclone.conf
 
+  encheck=$(cat /var/plexguide/pgclone.transport)
+  if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
+    if [ "$type" == "gdrive" ]; then
+    rclone config delete gcrypt --config /opt/appdata/plexguide/rclone.conf; fi
+    if [ "$type" == "tdrive" ]; then
+    rclone config delete tcrypt --config /opt/appdata/plexguide/rclone.conf; fi
+  fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -51,9 +59,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '↘️ Acknowledge Info | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 fi
-
 }
 
 tmgen() {
@@ -62,6 +69,7 @@ secret=$(cat /var/plexguide/pgclone.secret)
 public=$(cat /var/plexguide/pgclone.public)
 
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 Google Auth - Team Drives           📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -80,9 +88,17 @@ EOF
   tokenscript
 
   name=$(sed -n ${typed}p /var/plexguide/teamdrive.name)
-  echo "$name"
-  read -p '↘️  Pause | PRESS [ENTER]: ' temp < /dev/tty
+  id=$(sed -n ${typed}p /var/plexguide/teamdrive.id)
+echo "$name" > /var/plexguide/pgclone.teamdrive
+echo "$id" > /var/plexguide/pgclone.teamid
+tee <<-EOF
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+😂 What a Lame TeamDrive Name: $name
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '↘️  Acknowledge Info | PRESS [ENTER] ' temp < /dev/tty
 }
 
 tokenscript () {
@@ -90,6 +106,7 @@ tokenscript () {
   cat /var/plexguide/teamdrive.output | grep "name" | awk '{ print $2 }' | cut -c2- | rev | cut -c2- | rev > /var/plexguide/teamdrive.name
 
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 Listed Team Drives
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -102,10 +119,12 @@ EOF
   echo "[$A] $p - $name"
 done </var/plexguide/teamdrive.id
 
+echo ""
 read -p '↘️  Type Number | PRESS [ENTER]: ' typed < /dev/tty
-if [[ "$typed" -ge "1" && "$typed" -ge "$A" ]]; then a=b
-else tokenscript; fi
-
+if [[ "$typed" -ge "1" && "$typed" -le "$A" ]]; then a=b
+else
+  badinput
+  tokenscript; fi
 }
 
 inputphase () {
@@ -121,12 +140,15 @@ else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: PG Clone - $type      📓 Reference: oauth.plexguide.com
+🚀 System Message: PG Clone - $type     📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬 PG is Deploying /w the Following Values:
 
-ID:        $public
-SECRET:    $secret
+🌅 ID
+$public
+
+💎 SECRET
+$secret
 $display
 EOF
 
@@ -142,7 +164,7 @@ fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 System Message: Google Auth           📓 Reference: oauth.plexguide.com
+🚀 System Message: Google Auth          📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 NOTE: Copy & Paste Url into Browser | Use Correct Google Account!
@@ -165,6 +187,13 @@ EOF
 }
 
 mountsmenu () {
+
+# Sets Display Status if Passwords are not set for the encryhpted edition
+check5=$(cat /var/plexguide/pgclone.password)
+check6=$(cat /var/plexguide/pgclone.salt)
+if [[ "$check5" == "" || "$check6" == "" ]]; then passdisplay="⚠️  Not Activated"
+else passdisplay="✅ Activated"; fi
+
 projectid=$(cat /var/plexguide/pgclone.project)
 secret=$(cat /var/plexguide/pgclone.secret)
 public=$(cat /var/plexguide/pgclone.public)
@@ -172,37 +201,112 @@ teamdrive=$(cat /var/plexguide/pgclone.teamdrive)
 
 if [ "$secret" == "" ]; then dsecret="NOT SET"; else dsecret="SET"; fi
 if [ "$public" == "" ]; then dpublic="NOT SET"; else dpublic="SET"; fi
-if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive="SET"; fi
+if [ "$teamdrive" == "" ]; then dteamdrive="NOT SET"; else dteamdrive=$teamdrive; fi
 
+gstatus=$(cat /var/plexguide/gdrive.pgclone)
+tstatus=$(cat /var/plexguide/tdrive.pgclone)
+
+###### START
 if [ "$transport" == "PG Move /w No Encryption" ]; then
-display2=""
-fi
-
-if [ "$transport" == "PG Move /w Encryption" ]; then
-display2="
-[4] gcrypt"
-fi
-
-if [ "$transport" == "PG Blitz /w No Encryption" ]; then
-display2="
-[4] tdrive   : $tstatus
-[5] TeamDrive: $dteamdrive"
-fi
-
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 PG Clone - OAuth & Mounts           📓 Reference: pgclone.plexguide.com
+🌎 PG Clone - OAuth & Mounts          📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💾 OAuth
-
 [1] Client ID: $dpublic
-[2] Secret ID: $dsecret
+[2] Secret ID: ${dsecret}
 
 📁 RClone Configuration
+[3] gdrive   : $gstatus
+[Z] Exit
 
-[3] gdrive   : $gstatus$display2
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+  read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
+
+  if [ "$typed" == "1" ]; then
+    publickeyinput
+    mountsmenu
+  elif [ "$typed" == "2" ]; then
+    secretkeyinput
+    mountsmenu
+  elif [ "$typed" == "3" ]; then
+    type=gdrive
+    statusmount
+    inputphase
+    mountsmenu
+  elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
+  else badinput
+    mountsmenu; fi
+fi
+########## END
+
+########## START
+if [ "$transport" == "PG Move /w Encryption" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 PG Clone - OAuth & Mounts          📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💾 OAuth
+[1] Client ID: $dpublic
+[2] Secret ID: ${dsecret}
+
+💡 Required Tasks
+[3] Passwords: $passdisplay
+
+📁 RClone Configuration
+[4] gdrive   : $gstatus
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+  read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
+
+  if [ "$typed" == "1" ]; then
+    publickeyinput
+    mountsmenu
+  elif [ "$typed" == "2" ]; then
+    secretkeyinput
+    mountsmenu
+  elif [ "$typed" == "3" ]; then
+    blitzpasswords
+    mountsmenu
+  elif [ "$typed" == "4" ]; then
+    encpasswdcheck
+    type=gdrive
+    statusmount
+    inputphase
+    mountsmenu
+  elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
+  else badinput
+    mountsmenu; fi
+fi
+###### END
+
+###### START
+if [ "$transport" == "PG Blitz /w No Encryption" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 PG Clone - OAuth & Mounts          📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💾 OAuth
+[1] Client ID: $dpublic
+[2] Secret ID: ${dsecret}
+
+💡 Required Tasks
+[3] TD Label : $dteamdrive
+
+📁 RClone Configuration
+[4] gdrive   : $gstatus
+[5] tdrive   : $tstatus
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -210,24 +314,21 @@ EOF
 
 read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
 
-if [ "$transport" == "PG Move /w No Encryption" ]; then
-  if [ "$typed" == "5" ]; then
+if [ "$typed" == "1" ]; then
+  publickeyinput
+  mountsmenu
+elif [ "$typed" == "2" ]; then
+  secretkeyinput
+  mountsmenu
+elif [ "$typed" == "3" ]; then
+  tmgen
+  mountsmenu
+elif [ "$typed" == "4" ]; then
   type=gdrive
+  statusmount
   inputphase
   mountsmenu
-  fi
-fi
-
-if [ "$transport" == "PG Move /w Encryption" ]; then
-  if [ "$typed" == "4" ]; then
-  rclone config --config /opt/appdata/plexguide/rclone.conf
-  mountsmenu
-  fi
-fi
-
-if [ "$transport" == "PG Blitz /w No Encryption" ]; then
-  if [ "$typed" == "4" ]; then
-
+elif [ "$typed" == "5" ]; then
   tmcheck=$(cat /var/plexguide/pgclone.teamdrive)
   if [ "$tmcheck" == "" ]; then
 tee <<-EOF
@@ -239,13 +340,41 @@ tee <<-EOF
 EOF
   read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
   mountsmenu; fi
-
   type=tdrive
   statusmount
   inputphase
   mountsmenu
-  fi
+elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
+else badinput
+  mountsmenu; fi
 fi
+#################### END
+
+##### START
+if [ "$transport" == "PG Blitz /w Encryption" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 PG Clone - OAuth & Mounts          📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💾 OAuth
+[1] Client ID: $dpublic
+[2] Secret ID: ${dsecret}
+
+💡 Required Tasks
+[3] TD Label : $dteamdrive
+[4] Passwords: $passdisplay
+
+📁 RClone Configuration
+[5] gdrive   : $gstatus
+[6] tdrive   : $tstatus
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
   publickeyinput
@@ -254,38 +383,138 @@ elif [ "$typed" == "2" ]; then
   secretkeyinput
   mountsmenu
 elif [ "$typed" == "3" ]; then
+  tmgen
+  mountsmenu
+elif [ "$typed" == "4" ]; then
+  blitzpasswords
+  mountsmenu
+elif [ "$typed" == "5" ]; then
+  encpasswdcheck
   type=gdrive
   statusmount
   inputphase
   mountsmenu
-elif [ "$typed" == "5" ]; then
-  tmgen
+elif [ "$typed" == "6" ]; then
+  encpasswdcheck
+  tmcheck=$(cat /var/plexguide/pgclone.teamdrive)
+  if [ "$tmcheck" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔ Warning! TeamDrive is blank! Must be Set Prior!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  mountsmenu; fi
+  type=tdrive
+  statusmount
+  inputphase
   mountsmenu
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else badinput
   mountsmenu; fi
+fi
+#################### END
+
 }
 
-teamdriveinput () {
+encpasswdcheck () {
+check5=$(cat /var/plexguide/pgclone.password)
+check6=$(cat /var/plexguide/pgclone.salt)
+
+if [[ "$check5" == "" || "$check6" == "" ]]; then
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Team Drive Identifier                    📓 Reference: td.plexguide.com
+⛔ Warning! You Need to Setup Your Passwords for the Encrypted Edition
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? Type > exit
-Example: 0BCGnO4COZqr2Uk9PVA ~ Visit Reference Above for More Info
 
 EOF
-  read -p '↘️  Type Identifer | Press [Enter]: ' teamdrive < /dev/tty
-  if [ "$teamdrive" = "exit" ]; then mountsmenu; fi
-echo "$teamdrive" > /var/plexguide/pgclone.teamdrive
+  read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  mountsmenu; fi
+}
 
+blitzpasswords () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Primary Password                   📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > Exit
+
+Please set a Primary Password for Encryption! Do not forget it! If you do,
+you will be locked out from all your data!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -p ' ↘️  Type Prime PW | Press [ENTER]: ' bpassword < /dev/tty
+
+if [ "$bpassword" == "" ]; then
+  badinput
+  blitzpasswords
+elif [ "$bpassword" == "exit" ]; then mountsmenu; fi
+blitzsalt
+}
+
+blitzsalt () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 SALT (Secondary Password)          📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > Exit
+
+Please set a Secondary Password (SALT) for Encryption! Do not forget it!
+If you do, you will be locked out from all your data!  SALT randomizes
+your data to further protect you! It is not recommended to use the same
+password, but may.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -p ' ↘️  Type SALT PW | Press [ENTER]: ' bsalt < /dev/tty
+
+if [ "$bsalt" == "" ]; then
+  badinput
+  blitzsalt
+elif [ "$bsalt" == "exit" ]; then mountsmenu; fi
+blitzpfinal
+
+}
+
+blitzpfinal () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Set Passwords?                     📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Quitting? Type > Exit
+
+Are you happy with the following info? Type y or n!
+
+Primary  : $bpassword
+Secondary: $bsalt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+read -p '↘️  Type y or n | Press [ENTER]: ' typed < /dev/tty
+
+if [ "$typed" == "n" ]; then mountsmenu;
+elif [ "$typed" == "y" ]; then
+echo $bpassword >> /var/plexguide/pgclone.password
+echo $bsalt >> /var/plexguide/pgclone.salt
+mountsmenu;
+else
+  badinput
+  blitzpfinal; fi
 }
 
 publickeyinput () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Google OAuth Keys - Client ID         📓 Reference: oauth.plexguide.com
+🚀 Google OAuth Keys - Client ID        📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 NOTE: Visit reference for Google OAuth Keys!
@@ -295,6 +524,14 @@ EOF
 read -p '↘️  Client ID  | Press [Enter]: ' public < /dev/tty
 if [ "$public" = "exit" ]; then mountsmenu; fi
 echo "$public" > /var/plexguide/pgclone.public
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Password & SALT Set                📓 Reference: pgclone.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+read -p '↘️  Acknowledge Info  | Press [Enter]: ' public < /dev/tty
 mountsmenu
 }
 
@@ -302,7 +539,7 @@ secretkeyinput () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Google OAuth Keys - Secret Key        📓 Reference: oauth.plexguide.com
+🚀 Google OAuth Keys - Secret Key       📓 Reference: oauth.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 NOTE: Visit reference for Google OAuth Keys!
@@ -320,14 +557,14 @@ projectid=$(cat /var/plexguide/pgclone.project)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 GCloud Project Interface            📓 Reference: pgclone.plexguide.com
+🌎 GCloud Project Interface           📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Project ID: $projectid
 
-1 - Establish
-2 - Create
-3 - Destroy (NOT READY)
-Z - Exit
+[1] Establish
+[2] Create
+[3] Destroy (NOT READY)
+[Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -356,16 +593,30 @@ keymenu
 }
 
 projectestablish () {
+
+  gcloud projects list > /var/plexguide/projects.list
+  projectcheck=(cat /var/plexguide/projects.list)
+  if [ "$projectcheck" == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 GCloud Project Interface             📓 Reference: pgclone.plexguide.com
+⛔  System Message: Error! There are no projects! Make one first!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p ' ↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  projectmenu
+fi
+
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 Established Projects               📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Project ID: $projectid
 
-Established Projects
 EOF
-  gcloud projects list > /var/plexguide/projects.list
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
   echo
@@ -390,8 +641,8 @@ tee <<-EOF
 EOF
   echo $typed > /var/plexguide/pgclone.project
   read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-  question1
-]
+  projectmenu
+
 }
 
 transportdisplay () {
@@ -399,6 +650,7 @@ temp=$(cat /var/plexguide/pgclone.transport)
   if [ "$temp" == "umove" ]; then transport="PG Move /w No Encryption"
 elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
 elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
+elif [ "$temp" == "eblitz" ]; then transport="PG Blitz /w Encryption"
 else transport="NOT-SET"; fi
 }
 
@@ -406,20 +658,22 @@ transportmode () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌟 Select Transport Mode             📓 Reference: transport.plexguide.com
+🌟 Select Transport Mode            📓 Reference: transport.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [1] PG Move  /w No Encryption | Upload 750GB Daily ~ Simple
 [2] PG Move  /w Encryption    | Upload 750GB Daily ~ Simple
 [3] PG Blitz /w No Encryption | Exceed 750GB Daily ~ Complex
+[4] PG Blitz /w Encryption    | Exceed 750GB Daily ~ Complex
 [Z] Exit
 
 EOF
-read -p '↘️ Set Choice | Press [ENTER] ' typed < /dev/tty
+read -p '↘️  Set Choice | Press [ENTER] ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then echo "umove" > /var/plexguide/pgclone.transport && echo;
 elif [ "$typed" == "2" ]; then echo "emove" > /var/plexguide/pgclone.transport && echo;
 elif [ "$typed" == "3" ]; then echo "ublitz" > /var/plexguide/pgclone.transport && echo;
+elif [ "$typed" == "4" ]; then echo "eblitz" > /var/plexguide/pgclone.transport && echo;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then question1;
 else
   badinput
@@ -443,6 +697,7 @@ tee <<-EOF
 
 EOF
   cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
+  cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
   echo ""
   read -p '↘️  Type Project Name | Press [ENTER]: ' typed < /dev/tty
   echo ""
@@ -468,8 +723,36 @@ testphase () {
   echo "type = drive" >> /opt/appdata/plexguide/test.conf
   echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/plexguide/test.conf
   echo "" >> /opt/appdata/plexguide/test.conf
-  if [ "$type" == "tdrive" ]; then echo "team_drive = $teamdrive" >> /opt/appdata/plexguide/test.conf; fi
+  if [ "$type" == "tdrive" ]; then
+  teamid=$(cat /var/plexguide/pgclone.teamid)
+  echo "team_drive = $teamid" >> /opt/appdata/plexguide/test.conf; fi
   echo ""
+
+## Adds Encryption to the Test Phase if Move or Blitz Encrypted is On
+encheck=$(cat /var/plexguide/pgclone.transport)
+if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
+
+  if [ "$type" == "gdrive" ]; then entype="gcrypt";
+  else entype="tcrypt"; fi
+
+  PASSWORD=`cat /var/plexguide/pgclone.password`
+  SALT=`cat /var/plexguide/pgclone.salt`
+  ENC_PASSWORD=`rclone obscure "$PASSWORD"`
+  ENC_SALT=`rclone obscure "$SALT"`
+  echo "" >> /opt/appdata/plexguide/test.conf
+  echo "[$entype]" >> /opt/appdata/plexguide/test.conf
+  echo "type = crypt" >> /opt/appdata/plexguide/test.conf
+  echo "remote = $type:/encrypt" >> /opt/appdata/plexguide/test.conf
+  echo "filename_encryption = standard" >> /opt/appdata/plexguide/test.conf
+  echo "directory_name_encryption = true" >> /opt/appdata/plexguide/test.conf
+  echo "password = $ENC_PASSWORD" >> /opt/appdata/plexguide/test.conf
+  echo "password2 = $ENC_SALT" >> /opt/appdata/plexguide/test.conf;
+
+fi
+testphase2
+}
+
+testphase2 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -506,8 +789,11 @@ TIPS:
 2. When you created the credentials, did you select "Other"?
 3. Did you enable your API?
 
+FOR ENCRYPTION (IF SELECTED)
+1. Did You Set a Password?
+
 EOF
-    echo "Not Active" > /var/plexguide/gdrive.pgclone
+    echo "⚠️  Not Activated" > /var/plexguide/$type.pgclone
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     question1
 else
@@ -521,8 +807,12 @@ EOF
 fi
 
 read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
-echo "Active" > /var/plexguide/$type.pgclone
+echo "✅ Activated" > /var/plexguide/$type.pgclone
+
+## Copy the Test File to the Real RClone Conf
 cat /opt/appdata/plexguide/test.conf >> /opt/appdata/plexguide/rclone.conf
+
+## Back to the Main Mount Menu
 mountsmenu
 
 EOF
