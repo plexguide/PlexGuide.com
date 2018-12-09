@@ -22,7 +22,7 @@ echo "---------------------------------------------------"
 echo ""
 echo "Please StandBy:"
 
-printid=$(rclone lsd gdrive:/plexguide/backup.old | awk '{ print $5 }')
+printid=$(rclone --config /opt/appdata/plexguide/rclone.conf lsd gdrive:/plexguide/backup.old | awk '{ print $5 }')
 echo ""
 echo "---------------------------------------------------"
 echo "SYSTEM MESSAGE: Prior PlexGuide Server IDs"
