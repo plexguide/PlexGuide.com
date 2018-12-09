@@ -453,6 +453,7 @@ rpath=$(cat /var/plexguide/pgtrak.rpath)
 spath=$(cat /var/plexguide/pgtrak.spath)
 rprofile=$(cat /var/plexguide/pgtrak.rprofile)
 sprofile=$(cat /var/plexguide/pgtrak.sprofile)
+deploycheck
 
 tee <<-EOF
 
