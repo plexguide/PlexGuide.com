@@ -325,12 +325,6 @@ fi
 }
 
 gdsabuild () {
-
-  ## what sets if encrypted is on or not
-  encheck=$(cat /var/plexguide/pgclone.transport)
-  bencrypted=no
-  if [ "$encheck" == "PG Blitz /w Encryption" ]; then bencrypted=yes; fi
-
   downloadpath=$(cat /var/plexguide/server.hd.path)
   tempbuild=$(cat /var/plexguide/json.tempbuild)
   path=/opt/appdata/pgblitz/keys
@@ -338,15 +332,19 @@ gdsabuild () {
   tdrive=$( cat /opt/appdata/plexguide/rclone.conf | grep team_drive | head -n1 )
   tdrive="${tdrive:13}"
 
-  if [ "$bencrypted" == "yes" ]; then
-  PASSWORD=`cat /opt/appdata/pgblitz/vars/password`
-  SALT=`cat /opt/appdata/pgblitz/vars/salt`
-  ENC_PASSWORD=`rclone obscure "$PASSWORD"`
-  ENC_SALT=`rclone obscure "$SALT"`; fi
+
+  if [ -f "/opt/appdata/pgblitz/vars/encrypted" ]; then
+      ENCRYPTED="yes"
+      PASSWORD=`cat /var/plexguide/pgclone.password`
+      SALT=`cat /var/plexguide/pgclone.salt`
+      ENC_PASSWORD=`rclone obscure "$PASSWORD"`
+      ENC_SALT=`rclone obscure "$SALT"`; fi
+
+  ##puts a blank space
+  echo "" >> $rpath
 
   ####tempbuild is need in order to call the correct gdsa
   mkdir -p $downloadpath/pgblitz/$tempbuild
-  echo "" >> $rpath
   echo "[$tempbuild]" >> $rpath
   echo "type = drive" >> $rpath
   echo "client_id =" >> $rpath
@@ -356,15 +354,15 @@ gdsabuild () {
   echo "service_account_file = /opt/appdata/pgblitz/keys/processed/$tempbuild" >> $rpath
   echo "team_drive = $tdrive" >> $rpath
 
-  if [ "$bencrypted" == "yes" ]; then
-  echo "" >> $rpath
-  echo "[${tempbuild}C]" >> $rpath
-  echo "type = crypt" >> $rpath
-  echo "remote = $tempbuild:/encrypt" >> $rpath
-  echo "filename_encryption = standard" >> $rpath
-  echo "directory_name_encryption = true" >> $rpath
-  echo "password = $ENC_PASSWORD" >> $rpath
-  echo "password2 = $ENC_SALT" >> $rpath; fi
+  if [ "$ENCRYPTED" == "yes" ]; then
+      echo "" >> $rpath
+      echo "[${tempbuild}C]" >> $rpath
+      echo "type = crypt" >> $rpath
+      echo "remote = $tempbuild:/encrypt" >> $rpath
+      echo "filename_encryption = standard" >> $rpath
+      echo "directory_name_encryption = true" >> $rpath
+      echo "password = $ENC_PASSWORD" >> $rpath
+      echo "password2 = $ENC_SALT" >> $rpath; fi
 }
 
 
