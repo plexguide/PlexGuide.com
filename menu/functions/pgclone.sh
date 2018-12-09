@@ -274,7 +274,7 @@ EOF
   elif [ "$typed" == "2" ]; then
     secretkeyinput
     mountsmenu
-  elif [ "$typed" == "4" ]; then
+  elif [ "$typed" == "3" ]; then
     blitzpasswords
     mountsmenu
   elif [ "$typed" == "4" ]; then
