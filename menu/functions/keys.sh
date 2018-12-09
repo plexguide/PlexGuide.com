@@ -339,8 +339,8 @@ gdsabuild () {
   tdrive="${tdrive:13}"
 
   if [ "$bencrypted" == "yes" ]; then
-  PASSWORD=`cat /var/plexguide/password`
-  SALT=`cat /opt/appdata/pgblitz/vars/salt`
+  PASSWORD=`cat /var/plexguide/pgclone.password`
+  SALT=`cat /var/plexguide/pgclone.salt`
   ENC_PASSWORD=`rclone obscure "$PASSWORD"`
   ENC_SALT=`rclone obscure "$SALT"`; fi
 
