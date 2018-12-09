@@ -378,11 +378,13 @@ elif [ "$typed" == "4" ]; then
   blitzpasswords
   mountsmenu
 elif [ "$typed" == "5" ]; then
+  encpasswdcheck
   type=gdrive
   statusmount
   inputphase
   mountsmenu
 elif [ "$typed" == "6" ]; then
+  encpasswdcheck
   tmcheck=$(cat /var/plexguide/pgclone.teamdrive)
   if [ "$tmcheck" == "" ]; then
 tee <<-EOF
@@ -406,6 +408,23 @@ fi
 
 }
 
+encpasswdcheck () {
+check5=$(cat /var/plexguide/pgclone.password)
+check6=$(cat /var/plexguide/pgclone.salt)
+
+if [[ "$check5" == "" || "$check6" == "" ]]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔ Warning! You Need to Setup Your Passwords for the Encrypted Edition
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+  read -p '↘️  Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  mountsmenu; fi
+fi
+}
+
 blitzpasswords () {
 tee <<-EOF
 
@@ -419,7 +438,7 @@ you will be locked out from all your data!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p ' ↘️  Type Prime PW | Press [ENTER] ' bpassword < /dev/tty
+read -p ' ↘️  Type Prime PW | Press [ENTER]: ' bpassword < /dev/tty
 
 if [ "$bpassword" == "" ]; then
   badinput
@@ -443,7 +462,7 @@ password, but may.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p ' ↘️  Type SALT PW | Press [ENTER] ' bsalt < /dev/tty
+read -p ' ↘️  Type SALT PW | Press [ENTER]: ' bsalt < /dev/tty
 
 if [ "$bsalt" == "" ]; then
   badinput
