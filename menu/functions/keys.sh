@@ -329,7 +329,7 @@ gdsabuild () {
   ## what sets if encrypted is on or not
   encheck=$(cat /var/plexguide/pgclone.transport)
   bencrypted=no
-  if [ "$encheck" == "PG Blitz /w Encryption" ]; then bencrypted=yes; fi
+  if [ "$encheck" == "eblitz" ]; then bencrypted=yes; fi
 
   downloadpath=$(cat /var/plexguide/server.hd.path)
   tempbuild=$(cat /var/plexguide/json.tempbuild)
