@@ -250,7 +250,7 @@ tee <<-EOF
 [2] Secret ID: ${dsecret}
 
 📁 RClone Configuration
-[3] gdrive /w gcrypt: $gstatus
+[3] gdrive   : $gstatus
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -356,8 +356,8 @@ tee <<-EOF
 [4] Passwords: NOTHING YET
 
 📁 RClone Configuration
-[5] gdrive /w gcrypt: $gstatus
-[6] tdrive /w tcrypt: $tstatus
+[5] gdrive   : $gstatus
+[6] tdrive   : $tstatus
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
