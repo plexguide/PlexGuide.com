@@ -44,6 +44,14 @@ elif [[ "$typed" == "N" || "$typed" == "n" ]]; then mountsmenu
 
   rclone config delete $type --config /opt/appdata/plexguide/rclone.conf
 
+  encheck=$(cat /var/plexguide/pgclone.transport)
+  if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
+    if [ "$type" == "gdrive" ]; then
+    rclone config delete gcrypt --config /opt/appdata/plexguide/rclone.conf; fi
+    if [ "$type" == "tdrive" ]; then
+    rclone config delete tcrypt --config /opt/appdata/plexguide/rclone.conf; fi
+  fi
+  
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
