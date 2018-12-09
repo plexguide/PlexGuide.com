@@ -712,7 +712,7 @@ testphase () {
 encheck=$(cat /var/plexguide/pgclone.transport)
 if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
 
-  if [ "$encheck" == "eblitz" ]; then entype="tcrypt";
+  if [ "$type" == "gdrive" ]; then entype="gcrypt";
   else entype="gcrypt"; fi
 
   PASSWORD=`cat /var/plexguide/pgclone.password`
