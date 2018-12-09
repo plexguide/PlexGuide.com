@@ -761,8 +761,8 @@ TIPS:
 2. When you created the credentials, did you select "Other"?
 3. Did you enable your API?
 
-FOR ENCRYPTION
-1. Did You Set a Username and Password?
+FOR ENCRYPTION (IF SELECTED)
+1. Did You Set a Password?
 
 EOF
     echo "⚠️  Not Activated" > /var/plexguide/$type.pgclone
