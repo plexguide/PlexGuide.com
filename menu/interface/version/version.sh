@@ -1,6 +1,5 @@
 ✅  [CURRENT]
 7.4.8
-7.4.11
 7.4.12
 
 💍  [BETA] - Avoid Using Edge! For Testing & No Support!
