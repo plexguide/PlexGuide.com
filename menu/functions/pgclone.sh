@@ -502,8 +502,8 @@ read -p '↘️  Type y or n | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "n" ]; then mountsmenu;
 elif [ "$typed" == "y" ]; then
-echo $bpassword >> /var/plexguide/pgclone.password
-echo $bsalt >> /var/plexguide/pgclone.salt
+echo $bpassword > /var/plexguide/pgclone.password
+echo $bsalt > /var/plexguide/pgclone.salt
 mountsmenu;
 else
   badinput
