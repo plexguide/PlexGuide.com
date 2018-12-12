@@ -78,7 +78,7 @@
 
   - name: pgscan Service
     template:
-      src: /opt/appdata/pgscan/systemd/pgscan.service
+      src: /opt/appdata/pgscan/system/pgscan.service
       dest: /etc/systemd/system/pgscan.service
       force: yes
 
