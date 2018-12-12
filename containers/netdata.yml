@@ -17,7 +17,7 @@
       pgrole: "netdata"
       intport: "19999"
       extport: "19999"
-      image: "netdata/netdata"
+      image: "titpetric/netdata"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
@@ -54,6 +54,8 @@
       name: "{{pgrole}}"
       image: "{{image}}"
       pull: yes
+      capabilities:
+        - SYS_PTRACE
       published_ports:
         - "{{ports.stdout}}{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
