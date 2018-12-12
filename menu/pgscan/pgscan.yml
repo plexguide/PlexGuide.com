@@ -17,61 +17,9 @@
       pgrole: "pgscan"
       extport: "0"
 
-  - name: Server ID
-    shell: "cat /var/plexguide/pg.serverid"
-    register: serverid
-
   - name: Token Recall
     shell: "cat /var/plexguide/plex.token"
     register: plextoken
-
-  - name: Recall User
-    shell: "cat /var/plexguide/plex.user"
-    register: user
-
-  - name: Register IP
-    shell: "cat /var/plexguide/server.ip"
-    register: ipaddress
-
-  - name: Sonarr API
-    shell: "cat /var/plexguide/pgscan.sapi"
-    register: sapi
-    ignore_errors: True
-
-  - name: Radarr API
-    shell: "cat /var/plexguide/pgscan.rapi"
-    register: rapi
-    ignore_errors: True
-
-  - name: Sonarr Profile
-    shell: "cat /var/plexguide/pgscan.sprofile"
-    register: sprofile
-    ignore_errors: True
-
-  - name: Radarr Profile
-    shell: "cat /var/plexguide/pgscan.rprofile"
-    register: rprofile
-    ignore_errors: True
-
-  - name: Trakt.tv Client
-    shell: "cat /var/plexguide/pgscan.client"
-    register: client
-    ignore_errors: True
-
-  - name: Trakt.tv Secret
-    shell: "cat /var/plexguide/pgscan.secret"
-    register: secret
-    ignore_errors: True
-
-  - name: Radarr Path
-    shell: "cat /var/plexguide/pgscan.rpath"
-    register: rpath
-    ignore_errors: True
-
-  - name: API Sonnar
-    shell: "cat /var/plexguide/pgscan.spath"
-    register: spath
-    ignore_errors: True
 
   - name: Install pip requirements
     pip:
