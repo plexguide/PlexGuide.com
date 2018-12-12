@@ -34,42 +34,42 @@
     register: ipaddress
 
   - name: Sonarr API
-    shell: "cat /var/plexguide/pgtrak.sapi"
+    shell: "cat /var/plexguide/pgscan.sapi"
     register: sapi
     ignore_errors: True
 
   - name: Radarr API
-    shell: "cat /var/plexguide/pgtrak.rapi"
+    shell: "cat /var/plexguide/pgscan.rapi"
     register: rapi
     ignore_errors: True
 
   - name: Sonarr Profile
-    shell: "cat /var/plexguide/pgtrak.sprofile"
+    shell: "cat /var/plexguide/pgscan.sprofile"
     register: sprofile
     ignore_errors: True
 
   - name: Radarr Profile
-    shell: "cat /var/plexguide/pgtrak.rprofile"
+    shell: "cat /var/plexguide/pgscan.rprofile"
     register: rprofile
     ignore_errors: True
 
   - name: Trakt.tv Client
-    shell: "cat /var/plexguide/pgtrak.client"
+    shell: "cat /var/plexguide/pgscan.client"
     register: client
     ignore_errors: True
 
   - name: Trakt.tv Secret
-    shell: "cat /var/plexguide/pgtrak.secret"
+    shell: "cat /var/plexguide/pgscan.secret"
     register: secret
     ignore_errors: True
 
   - name: Radarr Path
-    shell: "cat /var/plexguide/pgtrak.rpath"
+    shell: "cat /var/plexguide/pgscan.rpath"
     register: rpath
     ignore_errors: True
 
   - name: API Sonnar
-    shell: "cat /var/plexguide/pgtrak.spath"
+    shell: "cat /var/plexguide/pgscan.spath"
     register: spath
     ignore_errors: True
 
@@ -97,14 +97,14 @@
 
   - name: Import default config
     template:
-      src: /opt/appdata/pgscan/config/default.config.sample
-      dest: /opt/appdata/pgscan/default.config
+      src: /opt/appdata/pgscan/config/default.config
+      dest: /opt/appdata/pgscan/config.json
       owner: "1000"
       group: "1000"
       mode: 0775
       force: yes
 
-  - name: Set pgtrak.py as executable
+  - name: Set pgscan.py as executable
     file:
       path: /opt/appdata/pgscan/pgscan.py
       owner: 1000
@@ -136,6 +136,14 @@
 
   - name: Daemon-Reload
     systemd: state=stopped name=pgscan daemon_reload=yes enabled=no
+
+  - name: Section Updates
+    command: "/opt/appdata/pgscan/scan.py sections"
+    tags: plex_autoscan_update_sections
+
+  - name: Mapping Configs
+    command: "/opt/appdata/pgscan/scan.py update_sections"
+    tags: plex_autoscan_update_sections
 
   - name: Start pgscan
     systemd: state=started name=pgscan enabled=yes
