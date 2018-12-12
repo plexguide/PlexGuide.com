@@ -21,7 +21,6 @@ NZBGET_POSTPROCESS_SUCCESS = 93
 NZBGET_POSTPROCESS_ERROR = 94
 NZBGET_POSTPROCESS_NONE = 95
 
-
 ############################################################
 # EXTENSION STUFF
 ############################################################
