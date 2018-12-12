@@ -288,12 +288,11 @@
       - "https://raw.githubusercontent.com/clinton-hall/GetScripts/master/DeleteSamples.py"
     ignore_errors: yes
 
-  - name: Install config.json
+  - name: Install nzbgetpp
     template:
       src: /opt/plexguide/containers/templates/nzbgetpp
       dest: /opt/appdata/{{pgrole}}/scripts/nzbgetpp/
       force: yes
-    when: cloud_json.stat.exists == False
 
   #- name: Download unzip.py script
   #  git:
