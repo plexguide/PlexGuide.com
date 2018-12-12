@@ -4,7 +4,7 @@
 # YML Author: Admin9705
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
-# Origin:     https://github.com/l3uddz/plex_patrol
+# Origin:     https://github.com/l3uddz/plexautoscan
 ################################################################################
 ---
 - hosts: localhost
