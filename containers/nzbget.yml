@@ -288,34 +288,34 @@
       - "https://raw.githubusercontent.com/clinton-hall/GetScripts/master/DeleteSamples.py"
     ignore_errors: yes
 
-    - name: Download unzip.py script
-      git:
-        repo: "https://github.com/Prinz23/nzbgetpp"
-        dest: "/opt/appdata/nzbget/scripts/nzbgetpp/"
-        force: yes
-      become: yes
-      become_user: "{{user}}"
-      register: unzip2
-      ignore_errors: yes
+  - name: Download unzip.py script
+    git:
+      repo: "https://github.com/Prinz23/nzbgetpp"
+      dest: "/opt/appdata/nzbget/scripts/nzbgetpp/"
+      force: yes
+    become: yes
+    become_user: "{{user}}"
+    register: unzip2
+    ignore_errors: yes
 
-    - name: Add unrar path to rarfile.py
-      lineinfile:
-        path: "/opt/appdata/nzbget/scripts/nzbgetpp/rarfile/rarfile.py"
-        regexp: '^UNRAR_TOOL\s?=.*'
-        line: 'UNRAR_TOOL = "/app/unrar"'
-        state: present
-      when: unzip2 is success
+  - name: Add unrar path to rarfile.py
+    lineinfile:
+      path: "/opt/appdata/nzbget/scripts/nzbgetpp/rarfile/rarfile.py"
+      regexp: '^UNRAR_TOOL\s?=.*'
+      line: 'UNRAR_TOOL = "/app/unrar"'
+      state: present
+    when: unzip2 is success
 
-    - name: Import hash.py
-      copy:
-        src: "/opt/plexguide/containers/templates/hash.py"
-        dest: "/opt/appdata/nzbget/scripts/nzbget/hash.py"
-        owner: "1000"
-        group: "1000"
-        mode: 0775
-        force: yes
+  - name: Import hash.py
+    copy:
+      src: "/opt/plexguide/containers/templates/hash.py"
+      dest: "/opt/appdata/nzbget/scripts/nzbget/hash.py"
+      owner: "1000"
+      group: "1000"
+      mode: 0775
+      force: yes
 
-    - name: Restart Container
-      docker_container:
-        name: nzbget
-        state: started
+  - name: Restart Container
+    docker_container:
+      name: nzbget
+      state: started
