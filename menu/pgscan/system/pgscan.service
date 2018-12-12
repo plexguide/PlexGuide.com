@@ -1,4 +1,4 @@
-# /etc/systemd/system/plex_autoscan.service
+# /etc/systemd/system/pgscan.service
 
 [Unit]
 Description=Plex Autoscan
@@ -8,8 +8,8 @@ After=network-online.target
 User=YOUR_USER
 Group=YOUR_USER
 Type=simple
-WorkingDirectory=/opt/plex_autoscan/
-ExecStart=/opt/plex_autoscan/scan.py server --loglevel=INFO
+WorkingDirectory=/opt/appdata/pgscan/
+ExecStart=/opt/appdata/pgscan/scan.py server --loglevel=INFO
 Restart=always
 RestartSec=10
 
