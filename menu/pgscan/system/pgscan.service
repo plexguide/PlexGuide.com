@@ -2,11 +2,11 @@
 
 [Unit]
 Description=Plex Autoscan
-After=network-online.target
+After=network-online.target unionfs.service
 
 [Service]
-User=YOUR_USER
-Group=YOUR_USER
+User=1000
+Group=1000
 Type=simple
 WorkingDirectory=/opt/appdata/pgscan/
 ExecStart=/opt/appdata/pgscan/scan.py server --loglevel=INFO
