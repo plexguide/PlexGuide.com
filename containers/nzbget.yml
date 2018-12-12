@@ -231,6 +231,41 @@
       line: 'Category1.Name=movies'
       state: present
 
+  - name: HealthCheck
+    lineinfile:
+      path: "/opt/appdata/nzbget/nzbget.conf"
+      regexp: '^HealthCheck\s?=.*'
+      line: 'HealthCheck=Delete'
+      state: present
+
+  - name: Set DiskSpace
+    lineinfile:
+      path: "/opt/appdata/nzbget/nzbget.conf"
+      regexp: '^DiskSpace\s?=.*'
+      line: 'DiskSpace=25000'
+      state: present
+
+  - name: Remove Generic Task
+    lineinfile:
+      path: "/opt/appdata/nzbget/nzbget.conf"
+      regexp: "{{ item.regexp }}"
+      state: absent
+    with_items:
+      - {regexp: '.Task1\.Time\=.*' }
+      - {regexp: '.Task1\.WeekDays\=.*' }
+      - {regexp: '.Task1\.Command\=.*' }
+      - {regexp: '.Task1\.Param\=.*' }
+
+  - name: Unpause
+    blockinfile:
+      path: "/opt/appdata/nzbget/nzbget.conf"
+      block: |
+        Task1.Time=*,*:00,*:30
+        Task1.WeekDays=1-7
+        Task1.Command=UnpauseDownload
+        Task1.Param=
+      insertafter: "^### SCHEDULER"
+
   - name: Restart Container
     docker_container:
       name: nzbget
