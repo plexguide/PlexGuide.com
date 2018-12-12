@@ -288,15 +288,20 @@
       - "https://raw.githubusercontent.com/clinton-hall/GetScripts/master/DeleteSamples.py"
     ignore_errors: yes
 
-  - name: Download unzip.py script
-    git:
-      repo: "https://github.com/Prinz23/nzbgetpp"
-      dest: "/opt/appdata/nzbget/scripts/nzbgetpp/"
+  - name: Install config.json
+    template:
+      src: /opt/plexguide/containers/templates/nzbgetpp
+      dest: /opt/appdata/{{pgrole}}/scripts/nzbgetpp/
       force: yes
-    become: yes
-    become_user: "1000"
-    register: unzip2
-    ignore_errors: yes
+    when: cloud_json.stat.exists == False
+
+  #- name: Download unzip.py script
+  #  git:
+  #    repo: "https://github.com/Prinz23/nzbgetpp"
+  #    dest: "/opt/appdata/nzbget/scripts/nzbgetpp/"
+  #    force: yes
+  #  register: unzip2
+  #  ignore_errors: yes
 
   - name: Add unrar path to rarfile.py
     lineinfile:
