@@ -24,7 +24,9 @@
   - name: Install pip requirements
     pip:
       requirements: /opt/plexguide/menu/pgscan/requirements.txt
-      executable: pip3
+      executable: pip2
+
+
 
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
