@@ -78,7 +78,7 @@ tee <<-EOF
 2 - Server Port Guard [$ports]
 3 - Application Guard [$appguard]
 4 - PG Patrol
-5 - PG Scan
+5 - PG Scan (NOT READY)
 6 - PG Trakt
 7 - Personal VPN Service Installer
 8 - System & Network Auditor
