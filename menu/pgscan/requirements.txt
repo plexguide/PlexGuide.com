@@ -1,0 +1,6 @@
+Flask ~= 0.12.2
+psutil ~= 5.4.0
+requests ~= 2.20.0
+peewee ~= 2.10.1
+backoff ~= 1.5.0
+sqlitedict ~= 1.5.0
