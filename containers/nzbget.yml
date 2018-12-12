@@ -293,7 +293,7 @@
     lineinfile:
       path: "/opt/appdata/nzbget/nzbget.conf"
       regexp: '^UNRAR_TOOL\s?=.*'
-      line: 'UNRAR_TOOL = "/scripts/nzbgetpp/rarfile/rarfile.py"'
+      line: 'UNRAR_TOOL = "/scripts/nzbgetpp/rarfile"'
       state: present
 
   - name: Restart Container
