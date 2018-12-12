@@ -296,15 +296,6 @@
       line: 'UNRAR_TOOL = "/scripts/nzbgetpp/rarfile/rarfile.py"'
       state: present
 
-  - name: Import hash.py
-    copy:
-      src: "/opt/plexguide/containers/templates/hash.py"
-      dest: "/opt/appdata/nzbget/scripts/hash.py"
-      owner: "1000"
-      group: "1000"
-      mode: 0775
-      force: yes
-
   - name: Restart Container
     docker_container:
       name: nzbget
