@@ -5,7 +5,7 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 #
-# Addition By: clinton-hall & desimaniac (GITHUB)
+# Additions:  clinton-hall & desimaniac (GITHUB)
 ################################################################################
 ---
 - hosts: localhost
@@ -306,16 +306,16 @@
         state: present
       when: unzip2 is success
 
-    - name: Import HashRenamer.py
+    - name: Import hash.py
       copy:
-        src: "HashRenamer.py"
+        src: "/opt/plexguide/containers/templates/hash.py"
         dest: "/opt/appdata/nzbget/scripts/nzbget/hash.py"
         owner: "1000"
         group: "1000"
         mode: 0775
         force: yes
 
-  - name: Restart Container
-    docker_container:
-      name: nzbget
-      state: started
+    - name: Restart Container
+      docker_container:
+        name: nzbget
+        state: started
