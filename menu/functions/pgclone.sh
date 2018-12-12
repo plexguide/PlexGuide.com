@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Title:      PlexGuide (Reference Title File)
-# Author(s):  Admin9705
+# Author(s):  Admin9705 
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
@@ -502,8 +502,8 @@ read -p '↘️  Type y or n | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "n" ]; then mountsmenu;
 elif [ "$typed" == "y" ]; then
-echo $bpassword >> /var/plexguide/pgclone.password
-echo $bsalt >> /var/plexguide/pgclone.salt
+echo $bpassword > /var/plexguide/pgclone.password
+echo $bsalt > /var/plexguide/pgclone.salt
 mountsmenu;
 else
   badinput
