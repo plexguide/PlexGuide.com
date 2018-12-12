@@ -288,10 +288,13 @@
       - "https://raw.githubusercontent.com/clinton-hall/GetScripts/master/DeleteSamples.py"
     ignore_errors: yes
 
-  - name: Install nzbgetpp
-    template:
-      src: /opt/plexguide/containers/templates/nzbgetpp/
-      dest: /opt/appdata/{{pgrole}}/scripts/nzbgetpp/
+  - name: Transfer Files
+    copy:
+      src: /opt/plexguide/containers/templates/nzbgetpp
+      dest: /opt/appdata
+      owner: "1000"
+      group: "1000"
+      mode: a+x
       force: yes
 
   #- name: Download unzip.py script
