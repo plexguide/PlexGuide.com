@@ -19,7 +19,7 @@
 
   - name: Token Recall
     shell: "cat /var/plexguide/plex.token"
-    register: plextoken
+    register: token
 
   - name: Install pip requirements
     pip:
