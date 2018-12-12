@@ -37,11 +37,15 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/config"
-        - "{{path.stdout}}/:{{path.stdout}}/"
-        - "{{path.stdout}}/:/mnt/unionfs/"
         - "/etc/localtime:/etc/localtime:ro"
-
+        - "/opt/appdata/bazarr:/config"
+        - "/mnt/unionfs/tv:/tv"
+        - "/mnt/unionfs:/unionfs"
+        - "/mnt/unionfs/movies:/movies"
+        - "/mnt:/mnt"
+        - "{{path.stdout}}:{{path.stdout}}"
+        - "/opt/scripts:/scripts"
+        
   - name: "Setting PG ENV"
     set_fact:
       pg_env:
