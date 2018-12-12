@@ -274,7 +274,7 @@
   - name: Transfer Files1
     copy:
       src: /opt/plexguide/containers/templates/nzbget/scripts
-      dest: "/opt/appdata/"
+      dest: "/opt/appdata/nzbget"
       owner: "1000"
       group: "1000"
       mode: a+x
