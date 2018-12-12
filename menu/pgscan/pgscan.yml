@@ -76,12 +76,6 @@
       state: stopped
     when: pgp.stat.exists
 
-  - name: Import pgscan service
-    template:
-      src: plex_autoscan.service.js2
-      dest: /etc/systemd/system/pgscan.service
-      force: yes
-
   - name: pgscan Service
     template:
       src: /opt/appdata/pgscan/systemd/pgscan.service
