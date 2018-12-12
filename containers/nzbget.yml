@@ -43,6 +43,7 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/nzbget:/config"
+        - "/opt/appdata/nzbget:/config"
         - "{{path.stdout}}/{{pgrole}}/completed:/completed"
         - "{{path.stdout}}/{{pgrole}}/incomplete:/incomplete"
         - "{{path.stdout}}/{{pgrole}}/nzb:/nzb"
@@ -293,7 +294,7 @@
     lineinfile:
       path: "/opt/appdata/nzbget/nzbget.conf"
       regexp: '^UNRAR_TOOL\s?=.*'
-      line: 'UNRAR_TOOL = "/app/unrar"'
+      line: 'UNRAR_TOOL = "/scripts/nzbgetpp/rarfile"'
       state: present
 
   - name: Restart Container
