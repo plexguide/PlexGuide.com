@@ -23,11 +23,6 @@
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
-  - name: Create nzbget script directories
-    file: "path={{item}} state=directory mode=0775 owner={{user}} group={{user}}"
-    with_items:
-      - /opt/scripts/{{pgrole}}/nzbgetpp
-
 # LABELS ######################################################################
 
   - name: "Setting PG Labels"
@@ -49,7 +44,7 @@
         - "{{path.stdout}}/{{pgrole}}/log:/log"
         - "{{path.stdout}}/{{pgrole}}/tmp:/tmp"
         - "{{path.stdout}}/{{pgrole}}/queue:/queue"
-        - "/opt/appdata/{{pgrole}}/scripts:/scripts"
+        - "{{path.stdout}}/{{pgrole}}/scripts:/scripts"
         - "/mnt/unionfs:/unionfs"
         - "/etc/localtime:/etc/localtime:ro"
 
