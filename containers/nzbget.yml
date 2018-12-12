@@ -88,9 +88,9 @@
       path: "/opt/appdata/nzbget/nzbget.conf"
       state: present
 
-  - name: "Wait 10 Seconds"
+  - name: "Wait 5 Seconds"
     wait_for:
-      timeout: 10
+      timeout: 5
 
   - name: Customize nzbget.conf
     docker_container:
@@ -294,7 +294,7 @@
       dest: "/opt/appdata/nzbget/scripts/nzbgetpp/"
       force: yes
     become: yes
-    become_user: "{{user}}"
+    become_user: "1000"
     register: unzip2
     ignore_errors: yes
 
