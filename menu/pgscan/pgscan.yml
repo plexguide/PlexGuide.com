@@ -54,7 +54,7 @@
 
   - name: Set pgscan.py as executable
     file:
-      path: /opt/appdata/pgscan/pgscan.py
+      path: /opt/appdata/pgscan/scan.py
       owner: 1000
       group: 1000
       mode: a+x
