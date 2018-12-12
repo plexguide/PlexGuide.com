@@ -17,7 +17,7 @@ tee <<-EOF
 [1] System & Network Benchmark - Basic
 [2] System & Network Benchmark - Advanced
 [3] Simple SpeedTest
-[4] Exit
+[Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
