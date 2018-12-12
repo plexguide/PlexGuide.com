@@ -290,7 +290,7 @@
 
   - name: Install nzbgetpp
     template:
-      src: /opt/plexguide/containers/templates/nzbgetpp
+      src: /opt/plexguide/containers/templates/nzbgetpp/
       dest: /opt/appdata/{{pgrole}}/scripts/nzbgetpp/
       force: yes
 
