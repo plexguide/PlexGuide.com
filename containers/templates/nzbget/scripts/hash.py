@@ -8,7 +8,7 @@
 # Original Author: clinton-hall
 # https://github.com/clinton-hall/GetScripts/blob/master/SafeRename.py
 #
-# Modified By: desimaniac (No Acknowledge of Source Above)
+# Modified By: desimaniac (No Acknowledgement of Source Above)
 ################################################################################
 import os
 import re
