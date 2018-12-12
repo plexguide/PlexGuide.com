@@ -61,7 +61,7 @@
 
   - name: "Create /usr/local/bin symlink"
     file:
-      src: "/opt/appdata/pgscan/pgscan.py"
+      src: "/opt/appdata/pgscan/scan.py"
       dest: "/bin/pgscan"
       state: link
 
@@ -75,6 +75,12 @@
       name: pgscan
       state: stopped
     when: pgp.stat.exists
+
+  - name: Import pgscan service
+    template:
+      src: plex_autoscan.service.js2
+      dest: /etc/systemd/system/pgscan.service
+      force: yes
 
   - name: pgscan Service
     template:
