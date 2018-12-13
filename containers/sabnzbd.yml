@@ -124,7 +124,7 @@
       lineinfile:
         path: "/opt/appdata/sabnzbd/sabnzbd.ini"
         insertafter: '^rss_filenames\s?=.*'
-        regexp: '^password\s?=.*'
+        regexp: 'password ='
         line: "password = guide"
         state: present
 
