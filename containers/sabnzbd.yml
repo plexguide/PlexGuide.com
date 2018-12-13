@@ -29,6 +29,11 @@
   - name: "SAB Permissions Set"
     shell: "chmod -R 775 {{path.stdout}}/sab/"
 
+  - name: "Ini Check"
+    stat:
+      path: /opt/appdata/sabnzbd/sabnzbd.ini
+    register: inicheck
+
 # LABELS ######################################################################
 
   - name: "Setting PG Labels"
@@ -81,11 +86,6 @@
     wait_for:
       path: "/opt/appdata/sabnzbd/sabnzbd.ini"
       state: present
-
-  - name: "Ini Check"
-    stat:
-      path: /opt/appdata/sabnzbd/sabnzbd.ini
-    register: inicheck
 
   - name: "First Time Check"
     block:
