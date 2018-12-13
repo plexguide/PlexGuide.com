@@ -176,4 +176,4 @@
         name: sabnzbd
         state: started
 
-  when: not inicheck.stat.exists
+      when: not inicheckf.stat.exists
