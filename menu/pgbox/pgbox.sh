@@ -17,8 +17,7 @@ question1
 
 exists () {
 echo
-read -p '⛔️ ERROR - APP Already Installed! | Press [ENTER] ' foo < /dev/tty
-echo
+echo "⛔️ ERROR - APP Already Installed!"
 read -p '⚠️  Do You Want To ReInstall ~ y or n | Press [ENTER] ' foo < /dev/tty
 
 if [ "$foo" == "y" ]; then part1;
