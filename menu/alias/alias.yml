@@ -10,9 +10,6 @@
   gather_facts: false
   tasks:
 
-    - name: Logging Ansible Role Information
-      shell: "echo 'INFO - Ansible Role - Alias Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
-
     - name: Install Status Move
       template:
         src: smove
@@ -90,13 +87,6 @@
         force: yes
         mode: 0775
 
-    - name: Install Status SuperTransfer2
-      template:
-        src: sst2
-        dest: /bin/sst2
-        force: yes
-        mode: 0775
-
   ####### Encrypted Services
 
     - name: Install Status GCrypt
@@ -142,15 +132,6 @@
       template:
         src: pgupdate
         dest: /bin/pgupdate
-        force: yes
-        mode: 0775
-
-  ###### Install PGDEV
-
-    - name: PGDev
-      template:
-        src: pgdev
-        dest: /bin/pgdev
         force: yes
         mode: 0775
 
@@ -267,6 +248,3 @@
         dest: /bin/tpgblitz
         force: yes
         mode: 0775
-
-    - name: Logging Ansible Role Information
-      shell: "echo 'INFO - Ansible Role Alias Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
