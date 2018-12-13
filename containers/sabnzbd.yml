@@ -140,13 +140,6 @@
         regexp: "host_whitelist ="
         replace: "host_whitelist = sabnzbd.{{domain.stdout}},"
 
-    - name: Remove url_base
-      lineinfile:
-        path: "/opt/sabnzbd/app/sabnzbd.ini"
-        regexp: '^url_base\s?=.*'
-        line: 'url_base = ""'
-        state: present
-
     - replace:
         path: /opt/appdata/sabnzbd/sabnzbd.ini
         regexp: "download_dir = Downloads/incomplete"
