@@ -120,13 +120,10 @@
         line: "username = plex"
         state: present
 
-    - name: Password
-      lineinfile:
-        path: "/opt/appdata/sabnzbd/sabnzbd.ini"
-        insertafter: '^rss_filenames\s?=.*'
-        regexp: 'password ='
-        line: "password = guide"
-        state: present
+    - replace:
+        path: /opt/appdata/sabnzbd/sabnzbd.ini
+        regexp: "password ="
+        replace: "password = guide"
 
     - replace:
         path: /opt/appdata/sabnzbd/sabnzbd.ini
