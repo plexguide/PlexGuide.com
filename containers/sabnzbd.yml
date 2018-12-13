@@ -105,24 +105,19 @@
         regexp: "complete_dir = Downloads/complete"
         replace: "complete_dir = /complete"
 
-    - name: Auth
-      lineinfile:
-        path: "/opt/appdata/sabnzbd/sabnzbd.ini"
-        regexp: '^html_login\s?=.*'
-        line: 'html_login = 1'
-        state: present
-
-    - name: Username
-      lineinfile:
-        path: "/opt/appdata/sabnzbd/sabnzbd.ini"
-        insertafter: '^warn_dupl_jobs\s?=.*'
-        regexp: '^username\s?=.*'
-        line: "username = plex"
-        state: present
+    - replace:
+        path: /opt/appdata/sabnzbd/sabnzbd.ini
+        regexp: 'html_login = ""'
+        replace: "html_login = 1"
 
     - replace:
         path: /opt/appdata/sabnzbd/sabnzbd.ini
-        regexp: "password ="
+        regexp: 'username = ""'
+        replace: "username = plex"
+
+    - replace:
+        path: /opt/appdata/sabnzbd/sabnzbd.ini
+        regexp: 'password = ""'
         replace: "password = guide"
 
     - replace:
