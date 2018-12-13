@@ -102,6 +102,49 @@
 
     - replace:
         path: /opt/appdata/sabnzbd/sabnzbd.ini
+        regexp: "complete_dir = Downloads/complete"
+        replace: "complete_dir = /complete"
+
+    - name: Auth
+      lineinfile:
+        path: "/opt/appdata/sabnzbd/sabnzbd.ini"
+        regexp: '^html_login\s?=.*'
+        line: 'html_login = 1'
+        state: present
+
+    - name: Username
+      lineinfile:
+        path: "/opt/appdata/sabnzbd/sabnzbd.ini"
+        insertafter: '^warn_dupl_jobs\s?=.*'
+        regexp: '^username\s?=.*'
+        line: "username = plex"
+        state: present
+
+    - name: Password
+      lineinfile:
+        path: "/opt/appdata/sabnzbd/sabnzbd.ini"
+        insertafter: '^rss_filenames\s?=.*'
+        regexp: '^password\s?=.*'
+        line: "password = guide"
+        state: present
+
+    - replace:
+        path: /opt/appdata/sabnzbd/sabnzbd.ini
+        regexp: "complete_dir = Downloads/complete"
+        replace: "complete_dir = /complete"
+
+    - replace:
+        path: /opt/appdata/sabnzbd/sabnzbd.ini
+        regexp: "complete_dir = Downloads/complete"
+        replace: "complete_dir = /complete"
+
+    - replace:
+        path: /opt/appdata/sabnzbd/sabnzbd.ini
+        regexp: "complete_dir = Downloads/complete"
+        replace: "complete_dir = /complete"
+
+    - replace:
+        path: /opt/appdata/sabnzbd/sabnzbd.ini
         regexp: "host_whitelist ="
         replace: "host_whitelist = sabnzbd.{{domain.stdout}},"
 
