@@ -44,7 +44,7 @@
       ignore_errors: True
       when: running.stdout == "1"
 
-    - name: "Archiving '/opt' to '{{local.destination}}/opt/'"
+    - name: "Backing Up Program Locally"
       shell: |
         tar \
           --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
