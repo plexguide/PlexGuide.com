@@ -1,1 +1,4 @@
-/opt
+app/log/*
+app/MediaCover/*
+Library/Application Support/Plex Media Server/Cache/PhotoTranscoder/*
+Library/Application Support/Plex Media Server/Cache/Transcode/*
