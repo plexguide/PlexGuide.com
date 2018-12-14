@@ -183,7 +183,7 @@ bash /opt/plexguide/menu/endbanner/endbanner.sh >> /tmp/output.info
 
 sleep 2
 done </var/plexguide/pgbox.buildup
-
+echo "" >> /tmp/output.info
 cat /tmp/output.info
 final
 }
