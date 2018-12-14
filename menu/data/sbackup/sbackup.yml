@@ -44,12 +44,23 @@
       ignore_errors: True
       when: running.stdout == "1"
 
-    - name: "Backing Up Program to GDrive - {{program_var.stdout}}"
-      archive:
-        path:
-        - "/opt/appdata/{{program_var.stdout}}/*"
-        dest: "{{tarlocation.stdout}}/{{program_var.stdout}}.tar"
-        format: tar
+    - name: "Backing Up Program Locally"
+      shell: |
+        tar \
+          --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
+          --exclude-from=/opt/plexguide/menu/data/exclude.list \
+          -cvf '{{tarlocation.stdout}}/{{program_var.stdout}}.tar' '/opt/appdata/{{program_var.stdout}}'
+      args:
+        warn: no
+        executable: /bin/bash
+
+  #  - name: "Backing Up Program to GDrive - {{program_var.stdout}}"
+  #    archive:
+  #      path:
+  #      - "/opt/appdata/{{program_var.stdout}}/*"
+  #      dest: "{{tarlocation.stdout}}/{{program_var.stdout}}.tar"
+  #      format: tar
+  #      exclude_path:
 
     ############ BACKUP OTHER - END
     - name: "Restart Docker Container - {{program_var.stdout}}"
