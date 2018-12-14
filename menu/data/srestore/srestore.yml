@@ -78,7 +78,7 @@
       shell: "rm -r /opt/appdata/{{simplename.stdout}}/*"
 
     - name: "Restore Files"
-      shell: "tar -C /opt/appdata/{{simplename.stdout}} -xvf {{tarlocation.stdout}}/{{program_var.stdout}}.tar"
+      shell: "tar -C /opt/appdata/{{program_var.stdout}} -xvf {{tarlocation.stdout}}/{{program_var.stdout}}.tar"
 
     - name: "Restart Docker Container - {{program_var.stdout}}"
       docker_container:
