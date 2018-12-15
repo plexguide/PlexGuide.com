@@ -109,6 +109,7 @@ buildup () {
   vaultbackup
 }
 ################################################ FOR BACKUP - END
+
 serverprime () {
   servers=$(tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2)
 
@@ -429,8 +430,8 @@ EOF
     primaryinterface
   elif [ "$typed" == "2" ]; then
     serverprime
-    vaultrestore
-    primaryinterface
+    #vaultrestore
+    #primaryinterface
   elif [ "$typed" == "3" ]; then
     echo "0" > /var/plexguide/server.id.stored
     bash /opt/plexguide/install/serverid.sh
