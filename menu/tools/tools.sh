@@ -25,8 +25,8 @@ tee <<-EOF
 ⛔️  WARNING! - Must Configure RClone First /w >>> gdrive
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-NOTE: gdrive has to be configured in RClone.  Without it, PG is unable
-to send your backups to your Google Drive!
+NOTE: You must deploy PG Move or PG Blitz in order to use the backup
+function. GDrive configuration is required to move data!
 
 EOF
 read -n 1 -s -r -p "Press [ANY] Key to Continue "
