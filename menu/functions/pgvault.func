@@ -182,7 +182,7 @@ buildup2 () {
   done </var/plexguide/pgvault.buildup
 
   mathprime
-  vaultbackup
+  vaultrestore
 }
 ################################################ FOR RESTORE - START
 
