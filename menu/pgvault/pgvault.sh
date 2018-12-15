@@ -8,7 +8,7 @@
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/pgvault.func
 
-initial
+#initial
 #apprecall
 
 # Touch Variables Incase They Do Not Exist
