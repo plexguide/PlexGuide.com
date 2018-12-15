@@ -32,7 +32,7 @@ tee <<-EOF
 EOF
 
 rclone --config /opt/appdata/plexguide/rclone.conf --stats-one-line \
---stats 5s --stats-file-name-length 20 \
+--stats 2s --progress \
 copy gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
 ${tarlocation}/${program_var}.tar \
 -v --checksum --drive-chunk-size=64M --transfers=8
