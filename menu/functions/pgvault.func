@@ -49,6 +49,7 @@ pgboxrecall () {
 math101 () {
   ### List Out Apps In Readable Order (One's Not Installed)
   num=0
+  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
   while read p; do
     echo -n $p >> /var/plexguide/program.temp
     echo -n " " >> /var/plexguide/program.temp
