@@ -15,13 +15,12 @@ running=$(cat /tmp/docker.check)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  Determining Initial File Size - $typed
+↘️  Determining Initial File Size - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 size=$(du -sh --apparent-size /opt/appdata/$program_var | /usr/bin/awk '{print $1}')
 sleep 2
 echo "Initial File Size: $size"
-echo ""
 sleep 2
 
 ##### Stop Docker Container if Running
