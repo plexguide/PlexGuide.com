@@ -42,7 +42,7 @@ apprecall () {
   while read p; do
     sed -i "$p.yml" /var/plexguide/pgvault.apprecall
     basename "$p" .yml >> /var/plexguide/pgvault.apprecall
-  done </opt/plexguide/menu/pgvault/pgvault.apprecall
+  done </var/plexguide/pgvault.apprecall
 
 }
 
