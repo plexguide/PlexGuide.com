@@ -315,6 +315,7 @@ restore_process () {
 initial2
 srecall=$(cat /tmp/server.select)
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  Determining Initial File Size - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -334,7 +335,7 @@ EOF
 
 rclone --config /opt/appdata/plexguide/rclone.conf --stats-one-line \
 --stats 1s --progress \
-copy gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
+copy gdrive:/plexguide/backup/${srecall}/${program_var}.tar \
 ${tarlocation} \
 -v --checksum --drive-chunk-size=64M --transfers=8
 
