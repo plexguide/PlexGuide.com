@@ -27,7 +27,7 @@ sleep 2
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  Sending Zipped Data to Google Drive - $program_var
+↘️  Downloading Data From Google Drive - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
@@ -54,6 +54,8 @@ tee <<-EOF
 ↘️  UnZipping & Restoring Data - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+
+mkdir -p /opt/appdata/${program_var}
 
 tar \
   --ignore-failed-read --warning=no-file-removed --warning=no-file-changed \
