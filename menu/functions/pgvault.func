@@ -149,7 +149,7 @@ read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
 
   if [ "$server" == "exit" ]; then exit; fi
 
-  current2=$(cat /tmp/server.select | grep "\<$server\>")
+  current2=$(cat /tmp/server.list | grep "\<$server\>")
   if [ "$current2" != "" ]; then
   badserver
   serverprime; fi
