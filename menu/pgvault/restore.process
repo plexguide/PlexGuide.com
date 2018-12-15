@@ -34,7 +34,7 @@ EOF
 rclone --config /opt/appdata/plexguide/rclone.conf --stats-one-line \
 --stats 1s --progress \
 copy gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
-${tarlocation}/${program_var} \
+${tarlocation} \
 -v --checksum --drive-chunk-size=64M --transfers=8
 
 ##### Stop Docker Container if Running
