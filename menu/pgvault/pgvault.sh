@@ -15,9 +15,7 @@ source /opt/plexguide/menu/functions/pgvault.func
 question1 () {
 
 ### Remove Running Apps
-while read p; do
-  sed -i "/^$p\b/Id" /var/plexguide/app.list
-done </var/plexguide/pgvault.running
+
 
 ### Blank Out Temp List
 rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
@@ -91,45 +89,6 @@ done </var/plexguide/pgvault.buildup
 sed -i "/^$typed\b/Id" /var/plexguide/app.list
 
 question1
-}
-
-final () {
-  read -p '✅ Process Complete! | PRESS [ENTER] ' typed < /dev/tty
-  echo
-  exit
-}
-
-question2 () {
-
-# Image Selector
-image=off
-while read p; do
-
-echo $p > /tmp/program_var
-
-bash /opt/plexguide/containers/image/_image.sh
-done </var/plexguide/pgvault.buildup
-
-while read p; do
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PG Vault - Backing Up: $p
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-
-sleep 2.5
-
-# Store Used Program
-echo $p > /tmp/program_var
-# Execute Main Program
-ansible-playbook /opt/plexguide/menu/pgvault/backup.yml
-
-sleep 2
-done </var/plexguide/pgvault.buildup
-echo "" >> /tmp/output.info
-cat /tmp/output.info
-final
 }
 
 # FUNCTIONS END ##############################################################
