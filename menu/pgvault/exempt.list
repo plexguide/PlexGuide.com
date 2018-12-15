@@ -6,3 +6,5 @@ netdata.yml
 _core.yml
 blitzui.yml
 _appsgen.sh
+speedtest.yml
+dockergc.yml
