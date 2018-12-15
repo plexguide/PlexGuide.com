@@ -32,7 +32,7 @@ tee <<-EOF
 EOF
 
 rclone --config /opt/appdata/plexguide/rclone.conf --stats-one-line \
---stats 2s --progress \
+--stats 1s --progress \
 copy gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
 ${tarlocation}/${program_var}.tar \
 -v --checksum --drive-chunk-size=64M --transfers=8
@@ -56,8 +56,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-mkdir -p /opt/appdata/${program_var}
-chown
+mkdir -p "/opt/appdata/${program_var}"
+chown -R 1000:1000 "/opt/appdata/${program_var}"
+chmod -R 775 "/opt/appdata/${program_var}"
 
 tar \
   --ignore-failed-read --warning=no-file-removed --warning=no-file-changed \
