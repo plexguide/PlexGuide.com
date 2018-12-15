@@ -61,7 +61,6 @@ rm -rf "/opt/appdata/${program_var}/*"
 chown -R 1000:1000 "/opt/appdata/${program_var}"
 chmod -R 775 "/opt/appdata/${program_var}"
 
-
 tar cPvf ${tarlocation}/${program_var}.tar /opt/appdata/${program_var}
 
 ##### Restart Docker Application if was Running Prior
