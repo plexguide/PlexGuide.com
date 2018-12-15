@@ -9,12 +9,12 @@ initial () {
   rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
   rm -rf /var/plexguide/pgvault.buildup 1>/dev/null 2>&1
   rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
-  rm -rf /var/plexguide/app.list 1>/dev/null 2>&1
   touch /var/plexguide/pgvault.output
   touch /var/plexguide/program.temp
-  touch /var/plexguide/app.list
   touch /var/plexguide/pgvault.buildup
   touch /var/plexguide/pgvault.output && rm -rf /var/plexguide/pgvault.output
+  echo /var/plexguide/pgvault.apprecall > /var/plexguide/app.list
+
 }
 
 final () {
@@ -34,21 +34,23 @@ rclonelist () {
   ls -l  /mnt/gdrive/plexguide/backup | grep "^d" | awk '{print $9}' > pgvault.serverlist
 }
 
+pgboxrecall () {
+  ls -p /opt/plexguide/containers | grep -v / > /var/plexguide/pgvault.apprecall
+  while read p; do
+    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+  done </opt/plexguide/menu/pgvault/exempt.list
+
+  while read p; do
+    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+    basename "$p" .yml >> /var/plexguide/pgvault.apprecall
+  done </var/plexguide/pgvault.apprecall
+}
+
 apprecall () {
   tree -d -L 1 /opt/appdata | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
   while read p; do
     sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
   done </opt/plexguide/menu/pgvault/exempt.list
-
-  #ls -p /opt/plexguide/containers | grep -v / > /var/plexguide/pgvault.apprecall
-  #while read p; do
-  #  sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
-  #done </opt/plexguide/menu/pgvault/exempt.list
-
-  #while read p; do
-  #  sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
-  #  basename "$p" .yml >> /var/plexguide/pgvault.apprecall
-  #done </var/plexguide/pgvault.apprecall
 
   ### Blank Out Temp List
   rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
