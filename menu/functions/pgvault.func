@@ -160,7 +160,6 @@ read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
     basename "$p" .tar >> /var/plexguide/pgvault.apprecall
   done </var/plexguide/pgvault.restoreapps
 
-  cat /var/plexguide/pgvault.restoreapps > /var/plexguide/pgvault.apprecall
   ### Blank Out Temp List
   rm -r /var/plexguide/program.temp 1>/dev/null 2>&1
   touch /var/plexguide/program.temp
