@@ -109,7 +109,7 @@ buildup () {
   vaultbackup
 }
 ################################################ FOR BACKUP - END
-apprecall2 () {
+serverprime () {
   servers=$(tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2)
 
 tee <<-EOF
@@ -127,14 +127,14 @@ read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
 EOF
   echo $server > /tmp/server.select
 
-  tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
-  while read p; do
-    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
-  done </opt/plexguide/menu/pgvault/exempt.list
+  #tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
+  #while read p; do
+  #  sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+  #done </opt/plexguide/menu/pgvault/exempt.list
 
   ### Blank Out Temp List
-  rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
-  mathprime
+  #rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
+  #mathprime
 }
 
 buildup2 () {
@@ -428,7 +428,7 @@ EOF
     vaultbackup
     primaryinterface
   elif [ "$typed" == "2" ]; then
-    apprecall2
+    serverprime
     vaultrestore
     primaryinterface
   elif [ "$typed" == "3" ]; then
