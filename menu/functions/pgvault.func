@@ -133,7 +133,7 @@ serverprime () {
   done </tmp/server.list
 
 servers=$(cat /var/plexguide/program.temp)
-currentserver=$(cat /var/plexguide/program.temp)
+server_id=$(cat /var/plexguide/pg.serverid)
 
 tee <<-EOF
 
@@ -141,7 +141,7 @@ tee <<-EOF
 🚀 PG Vault ~ Server Recall            📓 Reference: pgvault.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📂 Prior & Current [${currentserdver}] Server(s) Detected:
+📂 Current [${server_id}] & Prior Servers Detected:
 
 $servers
 
@@ -318,7 +318,7 @@ tee <<-EOF
 ↘️  Determining Initial File Size - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-size=$(du -sh --apparent-size /mnt/gdrive/plexguide/backup/${server_id}/${program_var}.tar | /usr/bin/awk '{print $1}')
+size=$(du -sh --apparent-size /mnt/gdrive/plexguide/backup/${server}/${program_var}.tar | /usr/bin/awk '{print $1}')
 sleep 2
 echo "Initial File Size: $size"
 sleep 2
