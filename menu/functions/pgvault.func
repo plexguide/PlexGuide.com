@@ -460,6 +460,7 @@ buildup2
 }
 ##################################################### START Primary Interface
 primaryinterface () {
+  initial
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -470,10 +471,9 @@ tee <<-EOF
 
 [1] Data Backup
 [2] Data Restore
-[3] Change Current ID: $serverid
-[4] Change Restore ID: $restoreid
-[5] Change Backup Location: $space
-[6] Exit
+[3] Current Server ID  : $serverid
+[4] Processing Location: $space
+[5] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -491,9 +491,6 @@ EOF
     bash /opt/plexguide/install/serverid.sh
     primayinterface
   elif [ "$typed" == "4" ]; then
-    bash /opt/plexguide/menu/data/restoreid.sh
-    primaryinterface
-  elif [ "$typed" == "5" ]; then
     bash /opt/plexguide/menu/data/location.sh
     primaryinterface
   elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
