@@ -430,7 +430,7 @@ cat /var/plexguide/pgvault.apprecall >> /tmp/appcheck.5
 current1=$(cat /tmp/appcheck.5 | grep "\<$typed\>")
 if [ "$current1" == "" ]; then badinput && vaultrestore; fi
 
-buildup
+buildup2
 }
 ##################################################### START Primary Interface
 primaryinterface () {
