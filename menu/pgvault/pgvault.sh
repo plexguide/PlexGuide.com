@@ -17,10 +17,6 @@ if [ ! -e "$file" ]; then
   echo "[NOT-SET]" > /var/plexguide/restore.id
 fi
 
-# Call Variables
-serverid=$(cat /var/plexguide/pg.serverid)
-restoreid=$(cat /var/plexguide/restore.id)
-
 # Simple Check
 function restorecheck {
   if [ "$restoreid" == "[NOT-SET]" ]; then
@@ -33,18 +29,12 @@ tee <<-EOF
 EOF
 read -n 1 -s -r -p "Press [ANY] Key to Continue "
 echo
-  bash /opt/plexguide/menu/data/data.sh
+  bash /opt/plexguide/menu/pgvault/pgvault.sh
 exit
   fi
 }
 
-space=$(cat /var/plexguide/data.location)
-# To Get Used Space
-used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
-# To Get All Space
-capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
-# Percentage
-percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+
 
 # Menu Interface
 tee <<-EOF
@@ -67,30 +57,22 @@ EOF
 # Standby
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/data/sbackup/sbackup.sh
-elif [ "$typed" == "2" ]; then
-  restorecheck
-  bash /opt/plexguide/menu/data/srestore/srestore.sh
+  if [ "$typed" == "1" ]; then vaultbackup; fi
+elif [ "$typed" == "2" ]; then vaultrestore; fi
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/data/mbackup/mbackup.sh
-elif [ "$typed" == "4" ]; then
-  restorecheck
-  bash /opt/plexguide/menu/data/mrestore/mrestore.sh
-elif [ "$typed" == "5" ]; then
   # Why Here? Located Here for When User Installs PG
   echo "0" > /var/plexguide/server.id.stored
   bash /opt/plexguide/install/serverid.sh
-elif [ "$typed" == "6" ]; then
+elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/data/restoreid.sh
-elif [ "$typed" == "7" ]; then
+elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/data/location.sh
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
-  bash /opt/plexguide/menu/data/data.sh
+  bash /opt/plexguide/menu/pgvault/pgvault.sh
   exit
 fi
 
-bash /opt/plexguide/menu/data/data.sh
+bash /opt/plexguide/menu/pgvault/pgvault.sh
 exit

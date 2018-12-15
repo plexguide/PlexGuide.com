@@ -16,6 +16,16 @@ initial () {
   touch /var/plexguide/app.list
   touch /var/plexguide/pgvault.buildup
   touch /var/plexguide/pgvault.output
+  space=$(cat /var/plexguide/data.location)
+  # To Get Used Space
+  used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
+  # To Get All Space
+  capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
+  # Percentage
+  percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+  # Call Variables
+  serverid=$(cat /var/plexguide/pg.serverid)
+  restoreid=$(cat /var/plexguide/restore.id)
 }
 
 initial2 () {
