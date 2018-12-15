@@ -56,12 +56,8 @@ tee <<-EOF
 EOF
 
 tar \
-  cPvf /opt/appdata/plexguide/pgrloe.tar /tmp
-
-tar \
-  --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
-  --exclude-from=/opt/plexguide/menu/data/exclude.list \
-  -cvf ${tarlocation}/${program_var}.tar /opt/appdata/${program_var}
+  --ignore-failed-read --warning=no-file-removed --warning=no-file-changed \
+  cPvf /opt/appdata/plexguide/${program_var} /opt/appdata/${program_var}
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
