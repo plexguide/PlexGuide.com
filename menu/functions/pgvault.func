@@ -282,15 +282,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Vault ~ Data Storage             📓 Reference: pgvault.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📂 Potential Data to Backup
+💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
 
+📂 Potential Data to Backup
 $notrun
 
 💾 Apps Queued for Backup
-
 $buildup
 
-💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 read -p '🌍 TYPE App Name for Backup Queue | Press [ENTER]: ' typed < /dev/tty
