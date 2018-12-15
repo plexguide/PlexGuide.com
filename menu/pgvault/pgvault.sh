@@ -9,7 +9,7 @@ source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/pgvault.func
 
 initial
-apprecall
+#apprecall
 
 # Touch Variables Incase They Do Not Exist
 file="/var/plexguide/restore.id"
@@ -33,8 +33,6 @@ echo
 exit
   fi
 }
-
-
 
 # Menu Interface
 tee <<-EOF
