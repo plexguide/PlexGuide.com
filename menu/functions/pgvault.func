@@ -124,8 +124,8 @@ tee <<-EOF
 $servers
 
 💬 Quitting? TYPE > exit
-read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
 EOF
+read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
   echo $server > /tmp/server.select
 
   #tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
