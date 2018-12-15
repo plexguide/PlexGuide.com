@@ -373,7 +373,7 @@ sleep 2
 docker restart $program_var 1>/dev/null 2>&1; fi
 
 ##### Remove File Incase
-rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
+#rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
 }
 ##################################################### END - PG Vault Restore
 #
