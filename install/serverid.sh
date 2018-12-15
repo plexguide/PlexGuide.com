@@ -16,11 +16,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  ESTABLISHING: Server ID
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 ⚠️  SERVER ID: To establish the identification this server!
 
-⛔️  WARNING: Only use one word! If you put spaces in between, it will
-cause you grief when you try to restore your server in the future!
+⛔️  WARNING: Use one word and make it all lowercase! Keep the name simple!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
