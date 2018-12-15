@@ -67,6 +67,7 @@ apprecall () {
     fi
   done </var/plexguide/pgvault.apprecall
 
+  cat /var/plexguide/pgvault.apprecall > /var/plexguide/app.list
 }
 
 buildup () {
