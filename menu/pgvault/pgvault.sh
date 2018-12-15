@@ -50,23 +50,17 @@ percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🍕  PG Data Handling - Server: $serverid
+🍕 PG Vault - Server: $serverid           reference: pgvault.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-☑️   [Restore ID] server to recover from and [Change Backup Location]
-is where you backups will process (stats of current location below).
-Note a 100TB Plex Library can create 40GB of MetaData!
 
 🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 
-1 - SOLO: App Backup
-2 - SOLO: App Restore
-3 - MASS: App Backup
-4 - MASS: App Restore
-5 - Change Current ID: $serverid
-6 - Change Restore ID: $restoreid
-7 - Change Backup Location: $space
-Z - Exit
+[1] Data Restore
+[2] Data Backup
+[3] Change Current ID: $serverid
+[4] Change Restore ID: $restoreid
+[5] Change Backup Location: $space
+[6] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
