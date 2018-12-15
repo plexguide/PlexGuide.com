@@ -8,8 +8,8 @@
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/pgvault.func
 
-#initial
-#apprecall
+initial
+apprecall
 
 # Touch Variables Incase They Do Not Exist
 file="/var/plexguide/restore.id"
@@ -43,8 +43,8 @@ tee <<-EOF
 
 🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 
-[1] Data Restore
-[2] Data Backup
+[1] Data Backup
+[2] Data Restore
 [3] Change Current ID: $serverid
 [4] Change Restore ID: $restoreid
 [5] Change Backup Location: $space
