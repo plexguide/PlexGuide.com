@@ -12,16 +12,16 @@ program_var=$(cat /tmp/program_var)
 server_id=$(cat /var/plexguide/pg.serverid)
 running=$(cat /tmp/docker.check)
 
-tee <<-EOF
+#tee <<-EOF
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  Determining Initial File Size - $program_var
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-size=$(du -sh --apparent-size /opt/appdata/$program_var | /usr/bin/awk '{print $1}')
-sleep 2
-echo "Initial File Size: $size"
-sleep 2
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#↘️  Determining Initial File Size - $program_var
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#EOF
+#size=$(du -sh --apparent-size /opt/appdata/$program_var | /usr/bin/awk '{print $1}')
+#sleep 2
+#echo "Initial File Size: $size"
+#sleep 2
 
 ##### Stop Docker Container if Running
 if [ "$running" == "1" ]; then
