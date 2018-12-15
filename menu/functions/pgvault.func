@@ -138,7 +138,7 @@ tee <<-EOF
 🚀 PG Vault ~ Server Recall            📓 Reference: pgvault.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📂 Current & Prior Detected Servers:
+📂 Prior & Current () Servers Detected:
 
 $servers
 
@@ -373,7 +373,7 @@ sleep 2
 docker restart $program_var 1>/dev/null 2>&1; fi
 
 ##### Remove File Incase
-#rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
+rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
 }
 ##################################################### END - PG Vault Restore
 #
@@ -473,7 +473,7 @@ tee <<-EOF
 [2] Data Restore
 [3] Current Server ID  : $serverid
 [4] Processing Location: $space
-[5] Exit
+[Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
