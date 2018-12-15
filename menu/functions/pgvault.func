@@ -254,7 +254,7 @@ initial2
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
   --exclude-from=/opt/plexguide/menu/pgvault/exclude.list \
-  -cvf ${program_var}.tar /opt/appdata/plexguide/${program_var}
+  -cvf ${program_var}.tar /opt/appdata/${program_var}
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
