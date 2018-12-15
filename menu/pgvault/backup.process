@@ -45,7 +45,7 @@ EOF
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
   --exclude-from=/opt/plexguide/menu/data/exclude.list \
-  -cvf ${program_var}.tar /opt/appdata/plexguide/${program_var}
+  -cvf ${program_var}.tar ${tarlocation}/${program_var}
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
