@@ -14,18 +14,14 @@ if [ "$start" != "$stored" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  ESTABLISHING: Server ID
+↘️  ESTABLISHING ~ Server's Identification
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  SERVER ID: To establish the identification this server!
-
 ⛔️  WARNING: Use one word and make it all lowercase! Keep the name simple!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
 
 # Standby
-read -p 'TYPE a Server ID Name & Press [ENTER]: ' typed < /dev/tty
+read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF
