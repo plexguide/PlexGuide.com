@@ -315,3 +315,48 @@ buildup
 ##################################################### END - Backup Interface
 #
 ##################################################### START - Restore Interface
+
+##################################################### START Primary Interface
+primaryinterface () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🍕 PG Vault - Server: $serverid           reference: pgvault.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
+
+[1] Data Backup
+[2] Data Restore
+[3] Change Current ID: $serverid
+[4] Change Restore ID: $restoreid
+[5] Change Backup Location: $space
+[6] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+
+    if [ "$typed" == "1" ]; then vaultbackup;
+    primaryinterface
+  elif [ "$typed" == "2" ]; then vaultrestore;
+    primaryinterface
+  elif [ "$typed" == "3" ]; then
+    echo "0" > /var/plexguide/server.id.stored
+    bash /opt/plexguide/install/serverid.sh
+    primayinterface
+  elif [ "$typed" == "4" ]; then
+    bash /opt/plexguide/menu/data/restoreid.sh
+    primaryinterface
+  elif [ "$typed" == "5" ]; then
+    bash /opt/plexguide/menu/data/location.sh
+    primaryinterface
+  elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
+    exit
+  else
+    badinput
+    primaryinterface
+    exit
+  fi
+}
+##################################################### END Primary Interface
