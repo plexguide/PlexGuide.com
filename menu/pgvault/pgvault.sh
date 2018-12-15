@@ -38,17 +38,15 @@ read -p '🌍 TYPE App Name for Backup Queue | Press [ENTER]: ' typed < /dev/tty
 echo
 
 if [ "$typed" == "deploy" ]; then question2; fi
-
 if [ "$typed" == "exit" ]; then exit; fi
 
-current=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")
-if [ "$current" != "" ]; then queued && question1; fi
+current2=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")
+if [ "$current2" != "" ]; then queued && question1; fi
 
-current=$(cat /var/plexguide/pgvault.running | grep "\<$typed\>")
-if [ "$current" != "" ]; then exists && question1; fi
-
-current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
-if [ "$current" == "" ]; then badinput1 && question1; fi
+cat /var/plexguide/pgvault.buildup > /tmp/appcheck.5
+cat /var/plexguide/pgvault.apprecall >> /tmp/appcheck.5
+current1=$(cat /tmp/appcheck.5 | grep "\<$typed\>")
+if [ "$current1" == "" ]; then badinput1 && question1; fi
 
 buildup
 }
