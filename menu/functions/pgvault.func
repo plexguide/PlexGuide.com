@@ -456,8 +456,8 @@ EOF
     primaryinterface
   elif [ "$typed" == "2" ]; then
     serverprime
-    #vaultrestore
-    #primaryinterface
+    vaultrestore
+    primaryinterface
   elif [ "$typed" == "3" ]; then
     echo "0" > /var/plexguide/server.id.stored
     bash /opt/plexguide/install/serverid.sh
