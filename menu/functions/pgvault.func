@@ -286,7 +286,28 @@ rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
 #
 ##################################################### START - PG Vault Restore
 restore_start () {
-initial2
+
+while read p; do
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PG Vault - Backing Up: $p
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+sleep 2.5
+
+# Store Used Program
+echo $p > /tmp/program_var
+# Execute Main Program
+restore_process
+
+sleep 2
+done </var/plexguide/pgvault.buildup
+final
+}
+
+restore_process () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
