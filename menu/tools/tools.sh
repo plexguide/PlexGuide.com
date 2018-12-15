@@ -74,16 +74,16 @@ tee <<-EOF
 🚀 PG Tools Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[1] PG Vault
-[2] Server Port Guard [$ports]
-[3] Application Guard [$appguard]
-[4] PG Patrol
-[5] PG Scan (NOT READY)
-[6] PG Trakt
-[7] Personal VPN Service Installer
-[8] System & Network Auditor
-[9] TroubleShoot ~ PreInstaller
-[Z] Exit
+[1]  PG Vault
+[2]  Server Port Guard [$ports]
+[3]  Application Guard [$appguard]
+[4]  PG Patrol
+[5]  PG Scan (NOT READY)
+[6]  PG Trakt
+[7]  Personal VPN Service Installer
+[8]  System & Network Auditor
+[9]  TroubleShoot ~ PreInstaller
+[Z]  Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
