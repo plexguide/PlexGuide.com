@@ -10,11 +10,12 @@ initial () {
   rm -rf /var/plexguide/pgvault.buildup 1>/dev/null 2>&1
   rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
   rm -rf /var/plexguide/app.list 1>/dev/null 2>&1
+  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
   touch /var/plexguide/pgvault.output
   touch /var/plexguide/program.temp
   touch /var/plexguide/app.list
   touch /var/plexguide/pgvault.buildup
-  touch /var/plexguide/pgvault.output && rm -rf /var/plexguide/pgvault.output
+  touch /var/plexguide/pgvault.output
 }
 
 final () {
@@ -112,7 +113,5 @@ bash /opt/plexguide/menu/pgvault/backup.process
 
 sleep 2
 done </var/plexguide/pgvault.buildup
-echo "" >> /tmp/output.info
-cat /tmp/output.info
 final
 }
