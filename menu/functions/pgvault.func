@@ -277,6 +277,8 @@ tee <<-EOF
 EOF
 
 initial2
+rclone --config /opt/appdata/plexguide/rclone.conf mkdir:gdrive/plexguide/backup/${server_id} 1>/dev/null 2>&1
+
 rclone --config /opt/appdata/plexguide/rclone.conf \
 --stats-one-line --stats 1s --progress \
 moveto ${tarlocation}/${program_var}.tar \
