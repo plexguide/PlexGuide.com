@@ -5,3 +5,75 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+initial () {
+  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
+  rm -rf /var/plexguide/pgvault.buildup 1>/dev/null 2>&1
+  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
+  rm -rf /var/plexguide/app.list 1>/dev/null 2>&1
+  touch /var/plexguide/pgvault.output
+  touch /var/plexguide/program.temp
+  touch /var/plexguide/app.list
+  touch /var/plexguide/pgvault.buildup
+}
+
+final () {
+  read -p '✅ Process Complete! | PRESS [ENTER] ' typed < /dev/tty
+  echo
+  exit
+}
+
+queued () {
+  echo
+  read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed < /dev/tty
+  question1
+}
+
+#not used yet
+rclonelist () {
+  ls -l  /mnt/gdrive/plexguide/backup | grep "^d" | awk '{print $9}' > pgvault.serverlist
+}
+
+apprecall () {
+  ls -p /opt/plexguide/containers | grep -v / > /var/plexguide/pgvault.apprecall
+  while read p; do
+    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+  done </opt/plexguide/menu/pgvault/exempt.list
+
+  while read p; do
+    sed -i "$p.yml" /var/plexguide/pgvault.apprecall
+    basename "$p" .yml >> /var/plexguide/pgvault.apprecall
+  done </opt/plexguide/menu/pgvault/pgvault.apprecall
+
+}
+
+backupexe () {
+# Image Selector
+image=off
+while read p; do
+
+echo $p > /tmp/program_var
+
+bash /opt/plexguide/containers/image/_image.sh
+done </var/plexguide/pgvault.buildup
+
+while read p; do
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PG Vault - Backing Up: $p
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+sleep 2.5
+
+# Store Used Program
+echo $p > /tmp/program_var
+# Execute Main Program
+ansible-playbook /opt/plexguide/menu/pgvault/backup.yml
+
+sleep 2
+done </var/plexguide/pgvault.buildup
+echo "" >> /tmp/output.info
+cat /tmp/output.info
+final
+}

@@ -10,42 +10,6 @@
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/pgvault.func
 
-queued () {
-echo
-read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed < /dev/tty
-question1
-}
-
-#rclonelist () {
-#  ls -l  /mnt/gdrive/plexguide/backup | grep "^d" | awk '{print $9}' > pgvault.serverlist
-#}
-
-apprecall () {
-  ls -l  /mnt/gdrive/plexguide/backup | grep "^d" | awk '{print $9}' > pgvault.serverlist
-}
-ls -p /opt/plexguide/containers | grep -v /
-exists () {
-echo "⛔️ ERROR - APP Already Installed!"
-read -p '⚠️  Do You Want To ReInstall ~ y or n | Press [ENTER] ' foo < /dev/tty
-
-if [ "$foo" == "y" ]; then part1;
-elif [ "$foo" == "n" ]; then question1;
-else exists; fi
-}
-
-initial () {
-  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
-  rm -rf /var/plexguide/pgvault.buildup 1>/dev/null 2>&1
-  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
-  rm -rf /var/plexguide/app.list 1>/dev/null 2>&1
-  touch /var/plexguide/pgvault.output
-  touch /var/plexguide/program.temp
-  touch /var/plexguide/app.list
-  touch /var/plexguide/pgvault.buildup
-
-  bash /opt/plexguide/containers/_appsgen.sh
-  docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgvault.running
-}
 # FIRST QUESTION
 
 question1 () {
