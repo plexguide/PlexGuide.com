@@ -9,12 +9,12 @@ initial () {
   rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
   rm -rf /var/plexguide/pgvault.buildup 1>/dev/null 2>&1
   rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
+  rm -rf /var/plexguide/app.list 1>/dev/null 2>&1
   touch /var/plexguide/pgvault.output
   touch /var/plexguide/program.temp
+  touch /var/plexguide/app.list
   touch /var/plexguide/pgvault.buildup
   touch /var/plexguide/pgvault.output && rm -rf /var/plexguide/pgvault.output
-  cat /var/plexguide/pgvault.apprecall > /var/plexguide/app.list
-
 }
 
 final () {
