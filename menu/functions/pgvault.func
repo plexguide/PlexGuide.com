@@ -156,6 +156,10 @@ read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
 
   ls -l  /mnt/gdrive/plexguide/backup/$server | awk '{print $9}' | tail -n +2 > /var/plexguide/pgvault.restoreapps
 
+  ### Blank Out Temp List
+  rm -r /var/plexguide/pgvault.apprecall 1>/dev/null 2>&1
+  touch /var/plexguide/pgvault.apprecall
+
   while read p; do
     basename "$p" .tar >> /var/plexguide/pgvault.apprecall
   done </var/plexguide/pgvault.restoreapps
