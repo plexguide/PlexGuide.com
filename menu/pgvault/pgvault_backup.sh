@@ -8,7 +8,7 @@
 
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
-source /opt/plexguide/menu/functions/pgvault.func
+source /opt/plexguide/menu/functions/pgvault_backup.func
 
 # FIRST QUESTION
 
@@ -37,7 +37,7 @@ EOF
 read -p '🌍 TYPE App Name for Backup Queue | Press [ENTER]: ' typed < /dev/tty
 echo
 
-if [ "$typed" == "deploy" ]; then question2; fi
+if [ "$typed" == "deploy" ]; then backup_start; fi
 if [ "$typed" == "exit" ]; then exit; fi
 
 current2=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")

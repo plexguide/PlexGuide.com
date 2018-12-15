@@ -92,13 +92,11 @@ math101
 question1
 }
 
-backupexe () {
+backup_start () {
 # Image Selector
 image=off
 while read p; do
-
 echo $p > /tmp/program_var
-
 bash /opt/plexguide/containers/image/_image.sh
 done </var/plexguide/pgvault.buildup
 
@@ -115,7 +113,7 @@ sleep 2.5
 # Store Used Program
 echo $p > /tmp/program_var
 # Execute Main Program
-ansible-playbook /opt/plexguide/menu/pgvault/backup.yml
+bash /opt/plexguide/menu/pgvault/backup.process
 
 sleep 2
 done </var/plexguide/pgvault.buildup
