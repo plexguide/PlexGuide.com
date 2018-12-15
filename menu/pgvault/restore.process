@@ -57,6 +57,7 @@ tee <<-EOF
 EOF
 
 mkdir -p "/opt/appdata/${program_var}"
+rm -rf "/opt/appdata/${program_var}/*"
 chown -R 1000:1000 "/opt/appdata/${program_var}"
 chmod -R 775 "/opt/appdata/${program_var}"
 
