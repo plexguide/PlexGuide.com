@@ -16,7 +16,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  ESTABLISHING ~ Server's Identification
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING: Use one word and make it all lowercase! Keep the name simple!
+⚠️  WARNING: Use > One Word - All LowerCase & Keep it Simple!
 
 EOF
 
