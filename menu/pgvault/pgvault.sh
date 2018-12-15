@@ -14,17 +14,6 @@ source /opt/plexguide/menu/functions/pgvault.func
 
 question1 () {
 ### List Out Apps In Readable Order (One's Not Installed)
-num=0
-while read p; do
-  echo -n $p >> /var/plexguide/program.temp
-  echo -n " " >> /var/plexguide/program.temp
-  num=$[num+1]
-  if [ "$num" == 7 ]; then
-    num=0
-    echo " " >> /var/plexguide/program.temp
-  fi
-done </var/plexguide/app.list
-
 notrun=$(cat /var/plexguide/program.temp)
 buildup=$(cat /var/plexguide/pgvault.output)
 

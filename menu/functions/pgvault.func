@@ -46,15 +46,7 @@ pgboxrecall () {
   done </var/plexguide/pgvault.apprecall
 }
 
-apprecall () {
-  tree -d -L 1 /opt/appdata | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
-  while read p; do
-    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
-  done </opt/plexguide/menu/pgvault/exempt.list
-
-  ### Blank Out Temp List
-  rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
-
+math () {
   ### List Out Apps In Readable Order (One's Not Installed)
   num=0
   while read p; do
@@ -66,8 +58,18 @@ apprecall () {
       echo " " >> /var/plexguide/program.temp
     fi
   done </var/plexguide/pgvault.apprecall
+}
 
-  cat /var/plexguide/pgvault.apprecall > /var/plexguide/app.list
+apprecall () {
+  tree -d -L 1 /opt/appdata | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
+  while read p; do
+    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+  done </opt/plexguide/menu/pgvault/exempt.list
+
+  ### Blank Out Temp List
+  rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
+
+math101
 }
 
 buildup () {
@@ -85,6 +87,7 @@ if [ "$num" == 7 ]; then
 fi
 done </var/plexguide/pgvault.buildup
 
+math101
 question1
 }
 
