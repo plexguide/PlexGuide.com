@@ -32,7 +32,7 @@ while read p; do
   fi
 done </var/plexguide/app.list
 
-notrun=$(cat /var/plexguide/pgvault.apprecall)
+notrun=$(cat /var/plexguide/program.temp)
 buildup=$(cat /var/plexguide/pgvault.output)
 
 if [ "$buildup" == "" ]; then buildup="NONE"; fi
