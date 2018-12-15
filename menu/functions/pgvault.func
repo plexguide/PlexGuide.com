@@ -157,7 +157,8 @@ read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
   badserver
   serverprime; fi
 
-  ls -l  /mnt/gdrive/plexguide/backup/$server | awk '{print $9}' | tail -n +2 > /var/plexguide/pgvault.restoreapps
+  tempserver=$server
+  ls -l  /mnt/gdrive/plexguide/backup/$tempserver | awk '{print $9}' | tail -n +2 > /var/plexguide/pgvault.restoreapps
 
   ### Blank Out Temp List
   rm -r /var/plexguide/pgvault.apprecall 1>/dev/null 2>&1
@@ -312,13 +313,13 @@ final
 
 restore_process () {
 initial2
+srecall=$(cat /tmp/server.select)
 tee <<-EOF
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  Determining Initial File Size - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-size=$(du -sh --apparent-size /mnt/gdrive/plexguide/backup/${server}/${program_var}.tar | /usr/bin/awk '{print $1}')
+size=$(du -sh --apparent-size /mnt/gdrive/plexguide/backup/${srecall}/${program_var}.tar | /usr/bin/awk '{print $1}')
 sleep 2
 echo "Initial File Size: $size"
 sleep 2
