@@ -132,13 +132,15 @@ serverprime () {
   done </tmp/server.list
 
 servers=$(cat /var/plexguide/program.temp)
+currentserver=$(cat /var/plexguide/program.temp)
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Vault ~ Server Recall            📓 Reference: pgvault.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📂 Prior & Current () Servers Detected:
+📂 Prior & Current [${currentserdver}] Server(s) Detected:
 
 $servers
 
@@ -471,7 +473,7 @@ tee <<-EOF
 
 [1] Data Backup
 [2] Data Restore
-[3] Current Server ID  : $serverid
+[3] Current Server ID  : $server_id
 [4] Processing Location: $space
 [Z] Exit
 
