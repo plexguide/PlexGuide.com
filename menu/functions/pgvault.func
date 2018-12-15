@@ -428,6 +428,7 @@ EOF
     vaultbackup
     primaryinterface
   elif [ "$typed" == "2" ]; then
+    apprecall2
     vaultrestore
     primaryinterface
   elif [ "$typed" == "3" ]; then
