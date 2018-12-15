@@ -334,9 +334,11 @@ tee <<-EOF
 EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
-    if [ "$typed" == "1" ]; then vaultbackup;
+    if [ "$typed" == "1" ]; then
+    vaultbackup
     primaryinterface
-  elif [ "$typed" == "2" ]; then vaultrestore;
+  elif [ "$typed" == "2" ]; then
+    vaultrestore
     primaryinterface
   elif [ "$typed" == "3" ]; then
     echo "0" > /var/plexguide/server.id.stored
