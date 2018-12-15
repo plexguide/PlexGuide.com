@@ -32,7 +32,7 @@ while read p; do
   fi
 done </var/plexguide/app.list
 
-notrun=$(cat /var/plexguide/program.temp)
+notrun=$(cat /var/plexguide/pgvault.apprecall)
 buildup=$(cat /var/plexguide/pgvault.output)
 
 if [ "$buildup" == "" ]; then buildup="NONE"; fi
@@ -68,29 +68,10 @@ if [ "$current" != "" ]; then exists && question1; fi
 current=$(cat /var/plexguide/program.temp | grep "\<$typed\>")
 if [ "$current" == "" ]; then badinput1 && question1; fi
 
-part1
-}
-
-part1 () {
-echo "$typed" >> /var/plexguide/pgvault.buildup
-num=0
-
-touch /var/plexguide/pgvault.output && rm -rf /var/plexguide/pgvault.output
-
-while read p; do
-echo -n $p >> /var/plexguide/pgvault.output
-echo -n " " >> /var/plexguide/pgvault.output
-if [ "$num" == 7 ]; then
-  num=0
-  echo " " >> /var/plexguide/pgvault.output
-fi
-done </var/plexguide/pgvault.buildup
-
-sed -i "/^$typed\b/Id" /var/plexguide/app.list
-
-question1
+buildup
 }
 
 # FUNCTIONS END ##############################################################
 initial
+apprecall
 question1
