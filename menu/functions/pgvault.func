@@ -78,8 +78,8 @@ echo "$typed" >> /var/plexguide/pgvault.buildup
 sed -i "/^$typed\b/Id" /var/plexguide/pgvault.apprecall
 
 num=0
+rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
 while read p; do
-
 echo -n $p >> /var/plexguide/pgvault.output
 echo -n " " >> /var/plexguide/pgvault.output
 if [ "$num" == 7 ]; then
