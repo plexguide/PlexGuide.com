@@ -94,12 +94,6 @@ question1
 
 backup_start () {
 # Image Selector
-image=off
-while read p; do
-echo $p > /tmp/program_var
-bash /opt/plexguide/containers/image/_image.sh
-done </var/plexguide/pgvault.buildup
-
 while read p; do
 tee <<-EOF
 

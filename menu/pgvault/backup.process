@@ -12,14 +12,25 @@ program_var=$(cat /tmp/program_var)
 server_id=$(cat /var/plexguide/pg.serverid)
 running=$(cat /tmp/docker.check)
 
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Determining Initial File Size - $typed
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+size=$(du -sh --apparent-size /opt/appdata/$program_var | /usr/bin/awk '{print $1}')
+sleep 2
+echo "Initial File Size: $size"
+echo ""
+sleep 2
+
 ##### Stop Docker Container if Running
 if [ "$running" == "1" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  Stopping Docker Container - $program_var
+↘️  Stopping Docker Container - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 sleep 1
 docker stop $program_var 1>/dev/null 2>&1; fi
@@ -28,9 +39,8 @@ docker stop $program_var 1>/dev/null 2>&1; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  Zipping Data Locally - $program_var
+↘️  Zipping Data Locally - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 tar \
@@ -43,9 +53,8 @@ if [ "$running" == "1" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  Restarting Docker Application - $program_var
+↘️  Restarting Docker Application - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 sleep 2
 docker restart $program_var 1>/dev/null 2>&1; fi
@@ -54,12 +63,14 @@ docker restart $program_var 1>/dev/null 2>&1; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  Sending Zipped Data to Google Drive - $program_var
+↘️  Sending Zipped Data to Google Drive - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 rclone --config /opt/appdata/plexguide/rclone.conf \
 move ${tarlocation}/${program_var}.tar \
 gdrive:/plexguide/backup/${server_id} \
 -v --checksum --drive-chunk-size=64M
+
+##### Remove File Incase
+rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
