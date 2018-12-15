@@ -23,9 +23,7 @@ initial () {
   capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
   # Percentage
   percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
-  # Call Variables
-  serverid=$(cat /var/plexguide/pg.serverid)
-  restoreid=$(cat /var/plexguide/restore.id)
+
 }
 
 initial2 () {
@@ -201,6 +199,7 @@ gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
 rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
 
 question1
+}
 ######################################################## END - PG Vault Backup
 #
 ##################################################### START - PG Vault Restore
@@ -272,6 +271,7 @@ docker restart $program_var 1>/dev/null 2>&1; fi
 rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
 
 question1
+}
 ##################################################### END - PG Vault Restore
 #
 ##################################################### START - Backup Interface
