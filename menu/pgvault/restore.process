@@ -62,7 +62,7 @@ chown -R 1000:1000 "/opt/appdata/${program_var}"
 chmod -R 775 "/opt/appdata/${program_var}"
 
 tar cPvf ${tarlocation}/${program_var}.tar /opt/appdata/${program_var}
-
+exit 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
 tee <<-EOF
