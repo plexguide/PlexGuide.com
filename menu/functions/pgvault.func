@@ -305,7 +305,7 @@ if [ "$current2" != "" ]; then queued && question1; fi
 cat /var/plexguide/pgvault.buildup > /tmp/appcheck.5
 cat /var/plexguide/pgvault.apprecall >> /tmp/appcheck.5
 current1=$(cat /tmp/appcheck.5 | grep "\<$typed\>")
-if [ "$current1" == "" ]; then badinput1 && vaultbackup; fi
+if [ "$current1" == "" ]; then badinput && vaultbackup; fi
 
 buildup
 }
