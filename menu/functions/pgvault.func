@@ -23,7 +23,6 @@ initial () {
   capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
   # Percentage
   percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
-
 }
 
 initial2 () {
@@ -65,7 +64,7 @@ pgboxrecall () {
   done </var/plexguide/pgvault.apprecall
 }
 
-math101 () {
+mathprime () {
   ### List Out Apps In Readable Order (One's Not Installed)
   num=0
   rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
@@ -88,32 +87,31 @@ apprecall () {
 
   ### Blank Out Temp List
   rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
-
-math101
+  mathprime
 }
 
 buildup () {
-echo "$typed" >> /var/plexguide/pgvault.buildup
-sed -i "/^$typed\b/Id" /var/plexguide/pgvault.apprecall
+  echo "$typed" >> /var/plexguide/pgvault.buildup
+  sed -i "/^$typed\b/Id" /var/plexguide/pgvault.apprecall
 
-num=0
-rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
-while read p; do
-echo -n $p >> /var/plexguide/pgvault.output
-echo -n " " >> /var/plexguide/pgvault.output
-if [ "$num" == 7 ]; then
   num=0
-  echo " " >> /var/plexguide/pgvault.output
-fi
-done </var/plexguide/pgvault.buildup
+  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
+  while read p; do
+  echo -n $p >> /var/plexguide/pgvault.output
+  echo -n " " >> /var/plexguide/pgvault.output
+  if [ "$num" == 7 ]; then
+    num=0
+    echo " " >> /var/plexguide/pgvault.output
+  fi
+  done </var/plexguide/pgvault.buildup
 
-math101
-question1
+  mathprime
+  question1
 }
 
 backup_start () {
-# Image Selector
-while read p; do
+  # Image Selector
+  while read p; do
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -121,19 +119,19 @@ PG Vault - Backing Up: $p
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-sleep 2.5
+  sleep 2.5
 
-# Store Used Program
-echo $p > /tmp/program_var
-# Execute Main Program
-bash /opt/plexguide/menu/pgvault/backup.process
+  # Store Used Program
+  echo $p > /tmp/program_var
+  # Execute Main Program
+  bash /opt/plexguide/menu/pgvault/backup.process
 
-sleep 2
-done </var/plexguide/pgvault.buildup
-final
+  sleep 2
+  done </var/plexguide/pgvault.buildup
+  final
 }
-
 ######################################################## START - PG Vault Backup
+backup_start () {
 initial2
 #tee <<-EOF
 
@@ -203,6 +201,7 @@ question1
 ######################################################## END - PG Vault Backup
 #
 ##################################################### START - PG Vault Restore
+restore_start () {
 initial2
 tee <<-EOF
 
