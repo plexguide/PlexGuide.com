@@ -41,10 +41,10 @@ final () {
   exit
 }
 
-queued () {
+queuedbackup () {
   echo
   read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed < /dev/tty
-  question1
+  vaultbackup
 }
 
 #not used yet
@@ -301,7 +301,7 @@ if [ "$typed" == "deploy" ]; then backup_start; fi
 if [ "$typed" == "exit" ]; then exit; fi
 
 current2=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")
-if [ "$current2" != "" ]; then queued && question1; fi
+if [ "$current2" != "" ]; then backupqueued && question1; fi
 
 cat /var/plexguide/pgvault.buildup > /tmp/appcheck.5
 cat /var/plexguide/pgvault.apprecall >> /tmp/appcheck.5
