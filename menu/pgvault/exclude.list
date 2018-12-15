@@ -1,2 +1,4 @@
 database/Library Library/Application Support/Plex Media Server/Cache/PhotoTranscoder
 database/Library Library/Application Support/Plex Media Server/Cache/Transcode
+/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder
+/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Cache/Transcode
