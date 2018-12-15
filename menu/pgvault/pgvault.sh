@@ -13,10 +13,6 @@ source /opt/plexguide/menu/functions/pgvault.func
 # FIRST QUESTION
 
 question1 () {
-
-### Remove Running Apps
-
-
 ### Blank Out Temp List
 rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
 
