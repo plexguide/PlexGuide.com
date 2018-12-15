@@ -133,7 +133,6 @@ EOF
 }
 
 backup_process () {
-
 initial2
 #tee <<-EOF
 
@@ -165,6 +164,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
+initial2
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
   --exclude-from=/opt/plexguide/menu/pgvault/exclude.list \
@@ -189,6 +189,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
+initial2
 rclone --config /opt/appdata/plexguide/rclone.conf \
 --stats-one-line --stats 1s --progress \
 moveto ${tarlocation}/${program_var}.tar \
