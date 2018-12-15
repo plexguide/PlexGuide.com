@@ -13,9 +13,6 @@ source /opt/plexguide/menu/functions/pgvault.func
 # FIRST QUESTION
 
 question1 () {
-### Blank Out Temp List
-rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
-
 ### List Out Apps In Readable Order (One's Not Installed)
 num=0
 while read p; do
