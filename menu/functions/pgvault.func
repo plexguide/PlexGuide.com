@@ -37,6 +37,8 @@ initial2 () {
 final () {
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   read -p '✅ Process Complete! | PRESS [ENTER] ' typed < /dev/tty
+  bash /opt/plexguide/menu/pgvault/pgvault.sh
+  exit
 }
 
 queued () {
