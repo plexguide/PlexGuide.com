@@ -46,6 +46,11 @@ queued () {
   read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed < /dev/tty
 }
 
+badserver () {
+  echo
+  read -p '⛔️ ERROR - Type an Exact Server Name | Press [ENTER] ' typed < /dev/tty
+}
+
 #not used yet
 rclonelist () {
   ls -l  /mnt/gdrive/plexguide/backup | grep "^d" | awk '{print $9}' > pgvault.serverlist
@@ -120,7 +125,7 @@ serverprime () {
     echo -n $p >> /var/plexguide/program.temp
     echo -n " " >> /var/plexguide/program.temp
     num=$[num+1]
-    if [ "$num" == 8 ]; then
+    if [ "$num" == 7 ]; then
       num=0
       echo " " >> /var/plexguide/program.temp
     fi
@@ -130,7 +135,7 @@ servers=$(cat /var/plexguide/program.temp)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Vault ~ Server Recall             📓 Reference: pgvault.plexguide.com
+🚀 PG Vault ~ Server Recall            📓 Reference: pgvault.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📂 Current & Prior Detected Servers:
@@ -141,6 +146,13 @@ $servers
 EOF
 read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
   echo $server > /tmp/server.select
+
+  if [ "$server" == "exit" ]; then exit; fi
+
+  current2=$(cat /tmp/server.select | grep "\<$server\>")
+  if [ "$current2" != "" ]; then
+  badserver
+  serverprime; fi
 
   #tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
   #while read p; do
