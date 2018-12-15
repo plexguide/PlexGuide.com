@@ -292,8 +292,6 @@ $notrun
 $buildup
 
 💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 read -p '🌍 TYPE App Name for Backup Queue | Press [ENTER]: ' typed < /dev/tty
 echo
