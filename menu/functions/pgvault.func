@@ -462,7 +462,7 @@ buildup2
 }
 ##################################################### START Primary Interface
 primaryinterface () {
-  initial
+  initial2
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -474,7 +474,7 @@ tee <<-EOF
 [1] Data Backup
 [2] Data Restore
 [3] Current Server ID  : $server_id
-[4] Processing Location: $space
+[4] Processing Location: $tarlocation
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
