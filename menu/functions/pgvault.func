@@ -13,7 +13,7 @@ initial () {
   touch /var/plexguide/program.temp
   touch /var/plexguide/pgvault.buildup
   touch /var/plexguide/pgvault.output && rm -rf /var/plexguide/pgvault.output
-  echo /var/plexguide/pgvault.apprecall > /var/plexguide/app.list
+  cat /var/plexguide/pgvault.apprecall > /var/plexguide/app.list
 
 }
 
