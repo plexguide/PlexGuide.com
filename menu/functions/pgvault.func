@@ -46,7 +46,7 @@ pgboxrecall () {
   done </var/plexguide/pgvault.apprecall
 }
 
-math () {
+math101 () {
   ### List Out Apps In Readable Order (One's Not Installed)
   num=0
   while read p; do
