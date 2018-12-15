@@ -64,10 +64,11 @@ apprecall () {
 
 buildup () {
 echo "$typed" >> /var/plexguide/pgvault.buildup
+sed -i "/^$typed\b/Id" /var/plexguide/pgvault.apprecall
 
 num=0
-
 while read p; do
+
 echo -n $p >> /var/plexguide/pgvault.output
 echo -n " " >> /var/plexguide/pgvault.output
 if [ "$num" == 7 ]; then
@@ -75,8 +76,6 @@ if [ "$num" == 7 ]; then
   echo " " >> /var/plexguide/pgvault.output
 fi
 done </var/plexguide/pgvault.buildup
-
-sed -i "/^$typed\b/Id" /var/plexguide/pgvault.apprecall
 
 question1
 }
