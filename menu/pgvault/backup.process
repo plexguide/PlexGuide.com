@@ -60,6 +60,6 @@ tee <<-EOF
 EOF
 
 rclone --config /opt/appdata/plexguide/rclone.conf \
-move ${tar_location}/${program_var}.tar \
+move ${tarlocation}/${program_var}.tar \
 gdrive:/plexguide/backup/${server_id} \
 -v --checksum --drive-chunk-size=64M
