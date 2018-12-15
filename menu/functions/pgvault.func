@@ -285,13 +285,13 @@ rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
 ######################################################## END - PG Vault Backup
 #
 ##################################################### START - PG Vault Restore
-backup_start () {
+restore_start () {
 
 while read p; do
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PG Vault - Backing Up: $p
+PG Vault - Restoring: $p
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
