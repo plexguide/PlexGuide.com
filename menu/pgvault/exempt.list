@@ -1,1 +1,8 @@
+_template.yml
+alltube.yml
+_cron.list
+watchtower.yml
 netdata.yml
+_core.yml
+blitzui.yml
+_appsgen.sh
