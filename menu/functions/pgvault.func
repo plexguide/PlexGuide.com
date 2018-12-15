@@ -1,0 +1,308 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+initial () {
+  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
+  rm -rf /var/plexguide/pgvault.buildup 1>/dev/null 2>&1
+  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
+  rm -rf /var/plexguide/app.list 1>/dev/null 2>&1
+  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
+  touch /var/plexguide/pgvault.output
+  touch /var/plexguide/program.temp
+  touch /var/plexguide/app.list
+  touch /var/plexguide/pgvault.buildup
+  touch /var/plexguide/pgvault.output
+}
+
+initial2 () {
+  path=$(cat /var/plexguide/server.hd.path)
+  tarlocation=$(cat /var/plexguide/data.location)
+  program_size=$(cat /var/plexguide/rclone.size)
+  program_var=$(cat /tmp/program_var)
+  server_id=$(cat /var/plexguide/pg.serverid)
+  running=$(cat /tmp/docker.check)
+}
+
+final () {
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  read -p '✅ Process Complete! | PRESS [ENTER] ' typed < /dev/tty
+  echo
+  exit
+}
+
+queued () {
+  echo
+  read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed < /dev/tty
+  question1
+}
+
+#not used yet
+rclonelist () {
+  ls -l  /mnt/gdrive/plexguide/backup | grep "^d" | awk '{print $9}' > pgvault.serverlist
+}
+
+pgboxrecall () {
+  ls -p /opt/plexguide/containers | grep -v / > /var/plexguide/pgvault.apprecall
+  while read p; do
+    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+  done </opt/plexguide/menu/pgvault/exempt.list
+
+  while read p; do
+    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+    basename "$p" .yml >> /var/plexguide/pgvault.apprecall
+  done </var/plexguide/pgvault.apprecall
+}
+
+math101 () {
+  ### List Out Apps In Readable Order (One's Not Installed)
+  num=0
+  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
+  while read p; do
+    echo -n $p >> /var/plexguide/program.temp
+    echo -n " " >> /var/plexguide/program.temp
+    num=$[num+1]
+    if [ "$num" == 7 ]; then
+      num=0
+      echo " " >> /var/plexguide/program.temp
+    fi
+  done </var/plexguide/pgvault.apprecall
+}
+
+apprecall () {
+  tree -d -L 1 /opt/appdata | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
+  while read p; do
+    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+  done </opt/plexguide/menu/pgvault/exempt.list
+
+  ### Blank Out Temp List
+  rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
+
+math101
+}
+
+buildup () {
+echo "$typed" >> /var/plexguide/pgvault.buildup
+sed -i "/^$typed\b/Id" /var/plexguide/pgvault.apprecall
+
+num=0
+rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
+while read p; do
+echo -n $p >> /var/plexguide/pgvault.output
+echo -n " " >> /var/plexguide/pgvault.output
+if [ "$num" == 7 ]; then
+  num=0
+  echo " " >> /var/plexguide/pgvault.output
+fi
+done </var/plexguide/pgvault.buildup
+
+math101
+question1
+}
+
+backup_start () {
+# Image Selector
+while read p; do
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PG Vault - Backing Up: $p
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+sleep 2.5
+
+# Store Used Program
+echo $p > /tmp/program_var
+# Execute Main Program
+bash /opt/plexguide/menu/pgvault/backup.process
+
+sleep 2
+done </var/plexguide/pgvault.buildup
+final
+}
+
+######################################################## START - PG Vault Backup
+initial2
+#tee <<-EOF
+
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#↘️  Determining Initial File Size - $program_var
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#EOF
+#size=$(du -sh --apparent-size /opt/appdata/$program_var | /usr/bin/awk '{print $1}')
+#sleep 2
+#echo "Initial File Size: $size"
+#sleep 2
+
+##### Stop Docker Container if Running
+if [ "$running" == "1" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Stopping Docker Container - $program_var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 1
+docker stop $program_var 1>/dev/null 2>&1; fi
+
+###### Start the Backup Process - Backup Locally First
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Zipping Data Locally - $program_var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+tar \
+  --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
+  --exclude-from=/opt/plexguide/menu/data/exclude.list \
+  -cvf ${program_var}.tar /opt/appdata/${program_var}
+
+##### Restart Docker Application if was Running Prior
+if [ "$running" == "1" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Restarting Docker Application - $program_var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 2
+docker restart $program_var 1>/dev/null 2>&1; fi
+
+###### Backing Up Files to GDrive
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Sending Zipped Data to Google Drive - $program_var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+rclone --config /opt/appdata/plexguide/rclone.conf \
+--stats-one-line --stats 1s --progress \
+moveto ${tarlocation}/${program_var}.tar \
+gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
+-v --checksum --drive-chunk-size=64M --transfers=8
+
+##### Remove File Incase
+rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
+
+question1
+######################################################## END - PG Vault Backup
+#
+##################################################### START - PG Vault Restore
+initial2
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Determining Initial File Size - $program_var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+size=$(du -sh --apparent-size /mnt/gdrive/plexguide/backup/${server_id}/${program_var}.tar | /usr/bin/awk '{print $1}')
+sleep 2
+echo "Initial File Size: $size"
+sleep 2
+
+###### Backing Up Files to GDrive
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Downloading Data From Google Drive - $program_var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+rclone --config /opt/appdata/plexguide/rclone.conf --stats-one-line \
+--stats 1s --progress \
+copy gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
+${tarlocation} \
+-v --checksum --drive-chunk-size=64M --transfers=8
+
+##### Stop Docker Container if Running
+if [ "$running" == "1" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Stopping Docker Container - $program_var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 1
+docker stop $program_var 1>/dev/null 2>&1; fi
+
+###### Start the Backup Process - Backup Locally First
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  UnZipping & Restoring Data - $program_var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+mkdir -p "/opt/appdata/${program_var}"
+rm -rf "/opt/appdata/${program_var}/*"
+chown -R 1000:1000 "/opt/appdata/${program_var}"
+chmod -R 775 "/opt/appdata/${program_var}"
+tar -C / -xvf ${tarlocation}/${program_var}.tar
+chown -R 1000:1000 "/opt/appdata/${program_var}"
+chmod -R 775 "/opt/appdata/${program_var}"
+exit
+##### Restart Docker Application if was Running Prior
+if [ "$running" == "1" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Restarting Docker Application - $program_var
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 2
+docker restart $program_var 1>/dev/null 2>&1; fi
+
+##### Remove File Incase
+rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
+
+question1
+##################################################### END - PG Vault Restore
+#
+##################################################### START - Backup Interface
+vaultbackup () {
+### List Out Apps In Readable Order (One's Not Installed)
+notrun=$(cat /var/plexguide/program.temp)
+buildup=$(cat /var/plexguide/pgvault.output)
+
+if [ "$buildup" == "" ]; then buildup="NONE"; fi
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Vault ~ Data Storage             📓 Reference: pgvault.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 Potential Data to Backup
+
+$notrun
+
+💾 Apps Queued for Backup
+
+$buildup
+
+💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -p '🌍 TYPE App Name for Backup Queue | Press [ENTER]: ' typed < /dev/tty
+echo
+
+if [ "$typed" == "deploy" ]; then backup_start; fi
+if [ "$typed" == "exit" ]; then exit; fi
+
+current2=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")
+if [ "$current2" != "" ]; then queued && question1; fi
+
+cat /var/plexguide/pgvault.buildup > /tmp/appcheck.5
+cat /var/plexguide/pgvault.apprecall >> /tmp/appcheck.5
+current1=$(cat /tmp/appcheck.5 | grep "\<$typed\>")
+if [ "$current1" == "" ]; then badinput1 && question1; fi
+
+buildup
+}
+##################################################### END - Backup Interface
+#
+##################################################### START - Restore Interface

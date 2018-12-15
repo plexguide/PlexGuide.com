@@ -8,7 +8,7 @@
 
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
-source /opt/plexguide/menu/functions/pgvault_backup.func
+source /opt/plexguide/menu/functions/pgvault.func
 
 # FIRST QUESTION
 

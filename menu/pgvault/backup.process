@@ -5,12 +5,7 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-path=$(cat /var/plexguide/server.hd.path)
-tarlocation=$(cat /var/plexguide/data.location)
-program_size=$(cat /var/plexguide/rclone.size)
-program_var=$(cat /tmp/program_var)
-server_id=$(cat /var/plexguide/pg.serverid)
-running=$(cat /tmp/docker.check)
+
 
 #tee <<-EOF
 
