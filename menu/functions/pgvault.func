@@ -154,15 +154,14 @@ read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
   badserver
   serverprime; fi
 
-  ### Blank Out Temp List
-  rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
-  mathprime
+  ls -l  /mnt/gdrive/plexguide/backup/$server | awk '{print $9}' | tail -n +2 > /var/plexguide/pgvault.restoreappps
 
-  tree -d -L 1 /mnt/gdrive/plexguide/backup/$server | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
   while read p; do
     sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
-  done </opt/plexguide/menu/pgvault/exempt.list
+    basename "$p" .tar >> /var/plexguide/pgvault.apprecall
+  done </var/plexguide/pgvault.restoreapps
 
+  cat /var/plexguide/pgvault.restoreapps > /var/plexguide/pgvault.apprecall
   ### Blank Out Temp List
   rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
   mathprime
