@@ -63,7 +63,6 @@ chmod -R 775 "/opt/appdata/${program_var}"
 tar -C / -xvf ${tarlocation}/${program_var}.tar
 chown -R 1000:1000 "/opt/appdata/${program_var}"
 chmod -R 775 "/opt/appdata/${program_var}"
-#tar -C /opt/appdata/${program_var} -xvf ${tarlocation}/${program_var}.tar
 exit
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
