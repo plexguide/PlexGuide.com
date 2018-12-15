@@ -282,13 +282,16 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Vault ~ Data Storage             📓 Reference: pgvault.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
 
 📂 Potential Data to Backup
+
 $notrun
 
 💾 Apps Queued for Backup
+
 $buildup
+
+💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
