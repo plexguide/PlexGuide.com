@@ -32,8 +32,8 @@ tee <<-EOF
 EOF
 
 rclone --config /opt/appdata/plexguide/rclone.conf \
-moveto ${tarlocation}/${program_var}.tar \
-gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
+moveto gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
+${tarlocation}/${program_var}.tar \
 -v --checksum --drive-chunk-size=64M --transfers=8
 
 ##### Stop Docker Container if Running
@@ -54,6 +54,9 @@ tee <<-EOF
 ↘️  UnZipping & Restoring Data - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
+
+tar \
+  cPvf /opt/appdata/plexguide/pgrloe.tar /tmp
 
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
