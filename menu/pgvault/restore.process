@@ -61,8 +61,7 @@ rm -rf "/opt/appdata/${program_var}/*"
 chown -R 1000:1000 "/opt/appdata/${program_var}"
 chmod -R 775 "/opt/appdata/${program_var}"
 
-tar \
-  "cPvf /opt/appdata/plexguide/${program_var} /opt/appdata/${program_var}"
+tar cPvf /opt/appdata/plexguide/${program_var}.tar /opt/appdata/${program_var}
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
