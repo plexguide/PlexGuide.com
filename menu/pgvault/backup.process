@@ -45,7 +45,7 @@ EOF
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
   --exclude-from=/opt/plexguide/menu/data/exclude.list \
-  -cvf ${program_var}.tar /opt/appdata/${program_var}
+  -cvf ${program_var}.tar /opt/appdata/plexguide/${program_var}
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
@@ -67,6 +67,7 @@ tee <<-EOF
 EOF
 
 rclone --config /opt/appdata/plexguide/rclone.conf \
+--stats-one-line --stats 1s --progress \
 moveto ${tarlocation}/${program_var}.tar \
 gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
 -v --checksum --drive-chunk-size=64M --transfers=8
