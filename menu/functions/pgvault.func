@@ -75,7 +75,7 @@ math101
 
 buildup () {
 echo "$typed" >> /var/plexguide/pgvault.buildup
-sed -i "/^$typed\b/Id" /var/plexguide/app.list
+sed -i "/^$typed\b/Id" /var/plexguide/pgvault.apprecall
 
 num=0
 while read p; do
