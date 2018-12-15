@@ -16,6 +16,7 @@ initial () {
   touch /var/plexguide/app.list
   touch /var/plexguide/pgvault.buildup
   touch /var/plexguide/pgvault.output
+  touch /var/plexguide/rclone.size
   space=$(cat /var/plexguide/data.location)
   # To Get Used Space
   used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
