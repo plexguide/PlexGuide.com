@@ -109,8 +109,9 @@ buildup () {
   vaultbackup
 }
 
+
+######################################################## START - PG Vault Backup
 backup_start () {
-  # Image Selector
   while read p; do
 tee <<-EOF
 
@@ -124,14 +125,15 @@ EOF
   # Store Used Program
   echo $p > /tmp/program_var
   # Execute Main Program
-  bash /opt/plexguide/menu/pgvault/backup.process
+  backup_process
 
   sleep 2
   done </var/plexguide/pgvault.buildup
   final
 }
-######################################################## START - PG Vault Backup
-backup_start () {
+
+backup_process () {
+
 initial2
 #tee <<-EOF
 
@@ -195,9 +197,6 @@ gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
 
 ##### Remove File Incase
 rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
-
-final
-primayinterface
 }
 ######################################################## END - PG Vault Backup
 #
@@ -269,8 +268,6 @@ docker restart $program_var 1>/dev/null 2>&1; fi
 
 ##### Remove File Incase
 rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
-
-question1
 }
 ##################################################### END - PG Vault Restore
 #
