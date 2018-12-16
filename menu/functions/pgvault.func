@@ -5,6 +5,12 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+runningcheck () {
+  initial2
+  runcheck5=$(docker ps | grep ${program_var})
+  if [ "$runcheck5" != "" ]; then running=1; else running=0; fi
+}
+
 initial () {
   rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
   rm -rf /var/plexguide/pgvault.buildup 1>/dev/null 2>&1
@@ -114,7 +120,6 @@ buildup () {
   vaultbackup
 }
 ################################################ FOR BACKUP - END
-
 serverprime () {
   tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2 > /tmp/server.list
 
@@ -232,6 +237,7 @@ initial2
 #sleep 2
 
 ##### Stop Docker Container if Running
+runningcheck
 if [ "$running" == "1" ]; then
 tee <<-EOF
 
@@ -265,6 +271,7 @@ tar \
 #-cfv ${program_var}.tar /opt/appdata/${program_var}
 
 ##### Restart Docker Application if was Running Prior
+runningcheck
 if [ "$running" == "1" ]; then
 tee <<-EOF
 
@@ -348,6 +355,7 @@ ${tarlocation} \
 -v --checksum --drive-chunk-size=64M --transfers=8
 
 ##### Stop Docker Container if Running
+runningcheck
 if [ "$running" == "1" ]; then
 tee <<-EOF
 
@@ -375,6 +383,7 @@ chown -R 1000:1000 "/opt/appdata/${program_var}"
 chmod -R 775 "/opt/appdata/${program_var}"
 
 ##### Restart Docker Application if was Running Prior
+runningcheck
 if [ "$running" == "1" ]; then
 tee <<-EOF
 
