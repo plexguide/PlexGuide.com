@@ -30,8 +30,6 @@ echo -n " " >> /tmp/backup.final
   fi
 done </tmp/backup.list
 
-running=$(cat /tmp/backup.final)
-
 # If Blank, Exit
 if [ "$running" == "" ]; then
 tee <<-EOF
@@ -56,7 +54,7 @@ tee <<-EOF
 EOF
 echo "💾 Current Running Apps"
 
-echo $running
+cat /tmp/backup.final
 tee <<-EOF
 
 NOTE: To quit, type >>> exit
