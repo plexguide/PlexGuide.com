@@ -257,7 +257,12 @@ server_id=$(cat /var/plexguide/pg.serverid)
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
   --exclude-from=/opt/plexguide/menu/pgvault/exclude.list \
-  -cfv ${program_var}.tar /opt/appdata/${program_var}
+  -C /opt/appdata/${program_var} -cvf /opt/appdata/plexguide/${program_var}.tar ./
+
+#tar \
+#--warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
+#--exclude-from=/opt/plexguide/menu/pgvault/exclude.list \
+#-cfv ${program_var}.tar /opt/appdata/${program_var}
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
@@ -365,7 +370,7 @@ mkdir -p "/opt/appdata/${program_var}"
 rm -rf "/opt/appdata/${program_var}/*"
 chown -R 1000:1000 "/opt/appdata/${program_var}"
 chmod -R 775 "/opt/appdata/${program_var}"
-tar -C / -xvf ${tarlocation}/${program_var}.tar
+tar -C /opt/appdata/${program_var} -xvf ${tarlocation}/${program_var}.tar
 chown -R 1000:1000 "/opt/appdata/${program_var}"
 chmod -R 775 "/opt/appdata/${program_var}"
 
