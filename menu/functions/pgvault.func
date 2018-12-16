@@ -271,7 +271,6 @@ tar \
 #-cfv ${program_var}.tar /opt/appdata/${program_var}
 
 ##### Restart Docker Application if was Running Prior
-runningcheck
 if [ "$running" == "1" ]; then
 tee <<-EOF
 
@@ -383,7 +382,6 @@ chown -R 1000:1000 "/opt/appdata/${program_var}"
 chmod -R 775 "/opt/appdata/${program_var}"
 
 ##### Restart Docker Application if was Running Prior
-runningcheck
 if [ "$running" == "1" ]; then
 tee <<-EOF
 
