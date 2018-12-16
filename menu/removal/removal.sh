@@ -21,7 +21,7 @@ sed -i -e "/phlex/d" /tmp/backup.list
 #### Commenting Out To Let User See
 num=0
 while read p; do
-((num++))
+let "num++"
 echo -n $p >> /tmp/backup.final
 echo -n " " >> /tmp/backup.final
   if [ "$num" == 7 ]; then
