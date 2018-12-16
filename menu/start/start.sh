@@ -157,8 +157,8 @@ else
 fi
 
 tee <<-EOF
-[3] PG Box: App Installer
-[4] PG Box: App Removal
+[3] PG Box  : Applications
+[4] PG Vault: Backup & Restore
 [5] Instances & GCE
 [6] Tools
 [7] Settings
