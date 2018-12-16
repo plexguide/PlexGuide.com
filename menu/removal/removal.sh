@@ -5,6 +5,10 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+rm -rf /tmp/backup.build 1>/dev/null 2>&1
+rm -rf /tmp/backup.list 1>/dev/null 2>&1
+rm -rf /tmp/backup.final 1>/dev/null 2>&1
+
 docker ps --format '{{.Names}}' > /tmp/backup.list
 sed -i -e "/traefik/d" /tmp/backup.list
 sed -i -e "/watchtower/d" /tmp/backup.list
@@ -14,9 +18,6 @@ sed -i -e "/plexguide/d" /tmp/backup.list
 sed -i -e "/cloudplow/d" /tmp/backup.list
 sed -i -e "/phlex/d" /tmp/backup.list
 
-rm -rf /tmp/backup.build 1>/dev/null 2>&1
-rm -rf /tmp/backup.list 1>/dev/null 2>&1
-rm -rf /tmp/backup.final 1>/dev/null 2>&1
 #### Commenting Out To Let User See
 while read p; do
   echo -n "$p" >> /tmp/backup.build
