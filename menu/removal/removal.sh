@@ -50,9 +50,9 @@ tee <<-EOF
 🚀 PGBox - App Removal Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️  Backup Data if Required! Removes Local App Data! 
+⚠️  Backup Data if Required! Removes Local App Data!
 
-echo "💾 Current Running Apps"
+💾 Current Running Apps
 
 $running
 
