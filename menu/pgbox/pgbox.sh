@@ -88,10 +88,9 @@ $notrun
 
 $buildup
 
-💬 Quitting? TYPE > exit | 💪 Mass Install? TYPE > deploy
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
 EOF
-read -p '🌍 TYPE App Name to Add Queue | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 echo
 
 if [ "$typed" == "deploy" ]; then question2; fi
