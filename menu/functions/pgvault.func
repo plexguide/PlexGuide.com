@@ -250,11 +250,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-initial2
+path=$(cat /var/plexguide/server.hd.path)
+tarlocation=$(cat /var/plexguide/data.location)
+server_id=$(cat /var/plexguide/pg.serverid)
+
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
   --exclude-from=/opt/plexguide/menu/pgvault/exclude.list \
-  -cvf ${program_var}.tar /opt/appdata/plexguide/
+  -cvf ${program_var}.tar ${tarlocation}
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
@@ -274,10 +277,6 @@ tee <<-EOF
 ↘️  Sending Zipped Data to Google Drive - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-
-path=$(cat /var/plexguide/server.hd.path)
-tarlocation=$(cat /var/plexguide/data.location)
-server_id=$(cat /var/plexguide/pg.serverid)
 
 rclone --config /opt/appdata/plexguide/rclone.conf mkdir gdrive:/plexguide/backup/${server_id} 1>/dev/null 2>&1
 
