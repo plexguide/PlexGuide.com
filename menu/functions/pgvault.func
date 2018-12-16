@@ -32,7 +32,6 @@ initial2 () {
   program_size=$(cat /var/plexguide/rclone.size)
   program_var=$(cat /tmp/program_var)
   server_id=$(cat /var/plexguide/pg.serverid)
-  running=$(cat /tmp/docker.check)
 }
 
 final () {
