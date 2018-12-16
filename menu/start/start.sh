@@ -146,9 +146,9 @@ bash /opt/plexguide/menu/start/quotes.sh
 quote=$(cat /var/plexguide/startup.quote)
 source=$(cat /var/plexguide/startup.source)
 echo
-echo "[1] Traefik :  [$traefik]"
-if [ "$edition" == "PG Edition - GDrive" ]; then echo "[2] PG Clone:  Mount Transport"
-elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "[2] PG Clone:  Mount Transport"
+echo "[1] Traefik [$traefik]"
+if [ "$edition" == "PG Edition - GDrive" ]; then echo "[2] PG Clone: Mount Transport"
+elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "[2] PG Clone: Mount Transport"
 elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "[2] MultiHD & Mounts"
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "[2] No Mounts for Solo HD"
 else
@@ -157,9 +157,9 @@ else
 fi
 
 tee <<-EOF
-[3] PG Box  :  Applications
-[4] PG Vault:  Backup & Restore
-[5] PG Cloud:  Instances & GCE
+[3] PG Box: App Installer
+[4] PG Box: App Removal
+[5] Instances & GCE
 [6] Tools
 [7] Settings
 [Z] Exit

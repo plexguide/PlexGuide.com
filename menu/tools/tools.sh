@@ -74,9 +74,9 @@ tee <<-EOF
 🚀 PG Tools Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[1] PG Vault
-[2] Server Port Guard [$ports]
-[3] Application Guard [$appguard]
+[1] PG Vault      [Backup & Restore]
+[2] PG Port Guard [$ports]
+[3] PG App  Guard [$appguard]
 [4] PG Patrol
 [5] PG Scan (NOT READY)
 [6] PG Trakt
