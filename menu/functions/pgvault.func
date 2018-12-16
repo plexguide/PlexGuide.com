@@ -509,7 +509,7 @@ EOF
   elif [ "$typed" == "3" ]; then
     echo "0" > /var/plexguide/server.id.stored
     bash /opt/plexguide/install/serverid.sh
-    primayinterface
+    primaryinterface
   elif [ "$typed" == "4" ]; then
     bash /opt/plexguide/menu/data/location.sh
     primaryinterface
