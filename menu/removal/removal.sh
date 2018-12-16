@@ -30,6 +30,7 @@ echo -n " " >> /tmp/backup.final
   fi
 done </tmp/backup.list
 
+running=$(cat /tmp/backup.final))
 # If Blank, Exit
 if [ "$running" == "" ]; then
 tee <<-EOF
