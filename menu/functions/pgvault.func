@@ -484,7 +484,7 @@ primaryinterface () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📁 PG Vault - Server: $serverid        📓 Reference: pgvault.plexguide.com
+📁 PG Vault - Main Interface           📓 Reference: pgvault.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
