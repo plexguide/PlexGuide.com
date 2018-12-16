@@ -19,19 +19,16 @@ sed -i -e "/cloudplow/d" /tmp/backup.list
 sed -i -e "/phlex/d" /tmp/backup.list
 
 #### Commenting Out To Let User See
+num=0
 while read p; do
-  echo -n "$p" >> /tmp/backup.build
-  echo -n " " >> /tmp/backup.build
-done </tmp/backup.list
-
-while read p; do
+((num++))
 echo -n $p >> /tmp/backup.final
 echo -n " " >> /tmp/backup.final
-if [ "$num" == 7 ]; then
-  num=0
-  echo " " >> /tmp/backup.final
-fi
-done </tmp/backup.build
+  if [ "$num" == 7 ]; then
+    num=0
+    echo " " >> /tmp/backup.final
+  fi
+done </tmp/backup.list
 
 running=$(cat /tmp/backup.final)
 
