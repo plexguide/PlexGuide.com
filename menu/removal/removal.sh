@@ -15,12 +15,24 @@ sed -i -e "/cloudplow/d" /tmp/backup.list
 sed -i -e "/phlex/d" /tmp/backup.list
 
 rm -rf /tmp/backup.build 1>/dev/null 2>&1
+rm -rf /tmp/backup.list 1>/dev/null 2>&1
+rm -rf /tmp/backup.final 1>/dev/null 2>&1
 #### Commenting Out To Let User See
 while read p; do
   echo -n "$p" >> /tmp/backup.build
   echo -n " " >> /tmp/backup.build
 done </tmp/backup.list
-running=$(cat /tmp/backup.list)
+
+while read p; do
+echo -n $p >> /tmp/backup.final
+echo -n " " >> /tmp/backup.final
+if [ "$num" == 7 ]; then
+  num=0
+  echo " " >> /tmp/backup.final
+fi
+done </tmp/backup.build
+
+running=$(cat /tmp/backup.final)
 
 # If Blank, Exit
 if [ "$running" == "" ]; then
@@ -40,7 +52,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PGBox - App Removal Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  - Removes Data Also! Backup Data if Required!
+⚠️  Removes Data Also! Backup Data if Required!
 
 EOF
 echo "💾 Current Running Apps"
