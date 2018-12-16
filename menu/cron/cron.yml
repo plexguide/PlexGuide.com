@@ -38,6 +38,6 @@
       minute: "{{cronminute.stdout}}"
       hour: "{{cronhour.stdout}}"
       user: root
-      job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/plexguide/menu/cron/bcron.sh"
+      job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/plexguide/menu/pgvault/pgcron"
       state: present
     become_user: root
