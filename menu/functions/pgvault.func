@@ -283,7 +283,7 @@ rclone --config /opt/appdata/plexguide/rclone.conf mkdir gdrive:/plexguide/backu
 rclone --config /opt/appdata/plexguide/rclone.conf \
 --stats-one-line --stats 1s --progress \
 moveto ${tarlocation}/${program_var}.tar \
-gdrive:/plexguide/backup/${server_id} \
+gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
 -v --checksum --drive-chunk-size=64M --transfers=8
 
 ##### Remove File Incase
