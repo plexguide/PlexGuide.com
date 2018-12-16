@@ -50,19 +50,15 @@ tee <<-EOF
 🚀 PGBox - App Removal Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️  Removes Data Also! Backup Data if Required!
+⚠️  Backup Data if Required! Removes Local App Data! 
 
-EOF
 echo "💾 Current Running Apps"
 
-cat /tmp/backup.final
-tee <<-EOF
+$running
 
-NOTE: To quit, type >>> exit
+💬 Quitting? TYPE > exit
 EOF
-
-# Standby
-read -p 'Type an Application Name | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "exit" ]; then exit; fi
 
