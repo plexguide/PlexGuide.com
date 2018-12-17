@@ -14,11 +14,10 @@
 
   - name: "Set Known Facts"
     set_fact:
-      pgrole: "flood"
-      intport: "3000"
-      extport: "3000"
-      image: "robertbaker/flood"
-
+      pgrole: "rtorrent"
+      intport: "5000"
+      extport: "5000"
+      image: "robertbaker/rtorrent"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
@@ -32,15 +31,17 @@
         traefik.frontend.auth.basic.users: "{{auth.stdout}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-        traefik.frontend.redirect.entryPoint: "https"
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}/data:/data"
-        - "/opt/appdata/rtorrent/socket/rtorrent.sock:/rtorrent.sock"
+        - "{{path.stdout}}/{{pgrole}}:/downloads"
+        - "/opt/appdata/{{pgrole}}/session:/session"
+        - "/opt/appdata/{{pgrole}}/watch:/watch"
+        - "/opt/appdata/{{pgrole}}/config:/config"
+        - "/opt/appdata/{{pgrole}}/socket:/socket"
         - "/mnt/unionfs:/unionfs"
+        - "{{path.stdout}}/{{pgrole}}:/data"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
@@ -48,8 +49,14 @@
       pg_env:
         PUID: 1000
         PGID: 1000
+        RTORRENT_SOCK: true
 
 # MAIN DEPLOYMENT #############################################################
+  - name: RCCHECK
+    stat:
+      path: "/opt/appdata/{{pgrole}}/config/.rtorrent.rc"
+    register: rccheck
+
   - name: "Deploying Container - {{pgrole}}"
     docker_container:
       name: "{{pgrole}}"
@@ -66,3 +73,39 @@
             - "{{pgrole}}"
       state: started
       labels: "{{pg_labels}}"
+
+  # ENDING TASK FOR RTORRENT ####################################################
+  - name: "First Time Check"
+    block:
+
+    - name: rtorrent.rc creation
+      wait_for:
+        path: "/opt/appdata/{{pgrole}}/config/.rtorrent.rc"
+        state: present
+        msg: rtorrent.rc creation failed
+
+    - name: "Stopping {{pgrole}}"
+      docker_container:
+        name: "{{pgrole}}"
+        state: stopped
+
+    - name: No File Allocation
+      lineinfile:
+        path: "/opt/appdata/{{pgrole}}/config/.rtorrent.rc"
+        regexp: 'system.file_allocate.set'
+        line: 'system.file.allocate.set = 0'
+        state: present
+
+    - name: DL Location
+      lineinfile:
+        path: "/opt/appdata/{{pgrole}}/config/.rtorrent.rc"
+        regexp: 'directory.default.set'
+        line: 'directory.default.set = /downloads/incoming'
+        state: present
+
+    - name: Restart Docker Container
+      docker_container:
+        name: "{{pgrole}}"
+        state: started
+
+    when: not rccheck.stat.exists
