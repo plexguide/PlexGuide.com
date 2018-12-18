@@ -63,7 +63,6 @@
         - "/opt/appdata/nzbget/scripts:/scripts"
         - "/mnt/unionfs:/unionfs"
         - "/etc/localtime:/etc/localtime:ro"
-        - "/mnt:/mnt"
 
   - name: "Setting PG ENV"
     set_fact:
