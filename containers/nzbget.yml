@@ -74,7 +74,7 @@
   - name: "Setting PG ENV"
     set_fact:
       pg_en2:
-        VERSION: "{{suitarr.version}}"
+        VERSION: "stable"
         FALLBACK: "yes"
         BACKUP: "no"
         PUID: "{{uid}}"
