@@ -34,10 +34,6 @@
       path: /opt/appdata/sabnzbd/sabnzbd.ini
     register: inicheck
 
-  - name: "Touch File"
-    shell: "touch /opt/appdata/sabnzbd/sabnzbd.ini"
-    become_user: "1000"
-
 # LABELS ######################################################################
 
   - name: "Setting PG Labels"
@@ -52,8 +48,10 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/sabnzbd/sabnzbd.ini:/config/sabnzbd.ini:rw"
-        - "{{path.stdout}}/sab/:/config"
+        - "/opt/appdata/sabnzbd/:/config/"
+        - "{{path.stdout}}/sab/downloads:/config/Downloads"
+        - "{{path.stdout}}/sab/logs:/config/logs"
+        - "{{path.stdout}}/sab/admin:/config/admin"
         - "/mnt/unionfs:/unionfs"
         - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
