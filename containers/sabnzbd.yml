@@ -48,9 +48,8 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/config"
-        - "{{path.stdout}}/sab/downloads:/downloads"
-        - "{{path.stdout}}/sab/incomplete:/incomplete-downloads"
+        - "{{path.stdout}}/sab/sabnzbd.ini:/config/sabnzbd.ini"
+        - "{{path.stdout}}/sab/:/config"
         - "/mnt/unionfs:/unionfs"
         - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
