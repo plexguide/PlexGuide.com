@@ -42,16 +42,18 @@
   - name: "Hotio Check"
     shell: "cat /var/plexguide/image/{{pgrole}} | grep hotio"
     register: hotiocheck
+    args:
+      warn: no
 
   - name: "Hotio Detected"
     set_fact:
       houtput: "/app"
-    when: "not hotiocheck.stdout == ''"
+    when: 'not hotiocheck.stdout == ""'
 
   - name: "Hotio Not Detected"
     set_fact:
       houtput: ""
-    when: "hotiocheck.stdout == ''"
+    when: 'hotiocheck.stdout == ""'
 
 # LABELS ######################################################################
 
