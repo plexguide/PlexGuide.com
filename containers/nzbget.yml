@@ -79,7 +79,7 @@
         - "{{path.stdout}}/{{pgrole}}/queue:/queue"
         - "/etc/localtime:/etc/localtime:ro"
         - "/mnt/unionfs:/unionfs"
-        - "/mnt:mnt"
+        - "/mnt:/mnt"
 
   - name: "Setting PG ENV"
     set_fact:
