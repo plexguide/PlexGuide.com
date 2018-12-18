@@ -36,6 +36,7 @@
 
   - name: "Touch File"
     shell: "touch /opt/appdata/sabnzbd/sabnzbd.ini"
+    become_user: "1000"
 
 # LABELS ######################################################################
 
