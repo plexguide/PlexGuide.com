@@ -29,10 +29,10 @@
       - "/opt/appdata/nzbget/scripts/nzbgetpp/rarfile/"
 
   - name: "Chown NZB Owners"
-    shell: "chown -R 1000:1000 {{path.stdout}}/sab/"
+    shell: "chown -R 1000:1000 {{path.stdout}}/nzbget/"
 
-  - name: "SAB Permissions Set"
-    shell: "chmod -R 775 {{path.stdout}}/sab/"
+  - name: "NZB Permissions Set"
+    shell: "chmod -R 775 {{path.stdout}}/nzbget/"
 
   - name: "NZBGET Check"
     stat:
