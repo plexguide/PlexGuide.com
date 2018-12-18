@@ -34,27 +34,10 @@
   - name: "SAB Permissions Set"
     shell: "chmod -R 775 {{path.stdout}}/sab/"
 
-  - name: "Conf Check"
+  - name: "Ini Check"
     stat:
       path: /opt/appdata/nzbget/nzbget.conf
     register: confcheck
-
-  - name: "H-Check"
-    shell: "cat /var/plexguide/image/{{pgrole}} | grep hotio"
-    register: hotiocheck
-    args:
-      warn: no
-    ignore_errors: True
-
-  - name: "H-Detected"
-    set_fact:
-      houtput: "/app"
-    when: 'not hotiocheck.stdout == ""'
-
-  - name: "H-Not-Detected"
-    set_fact:
-      houtput: ""
-    when: 'hotiocheck.stdout == ""'
 
 # LABELS ######################################################################
 
@@ -71,15 +54,11 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/config"
-        - "{{path.stdout}}/{{pgrole}}/completed:/completed"
-        - "{{path.stdout}}/{{pgrole}}/incomplete:/incomplete"
-        - "{{path.stdout}}/{{pgrole}}/nzb:/nzb"
-        - "{{path.stdout}}/{{pgrole}}/log:/log"
-        - "{{path.stdout}}/{{pgrole}}/tmp:/tmp"
-        - "{{path.stdout}}/{{pgrole}}/queue:/queue"
-        - "/etc/localtime:/etc/localtime:ro"
+        - "{{path.stdout}}/{{pgrole}}/app:/completed"
+        - "/opt/appdata/{{pgrole}}/scripts:/scripts"
         - "/mnt/unionfs:/unionfs"
         - "/mnt:/mnt"
+        - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
     set_fact:
@@ -144,55 +123,6 @@
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^MainDir\s?='
         line: 'MainDir=/config'
-        state: present
-
-    - name: Change InterDir directory
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^InterDir\s?='
-        line: 'InterDir=/incomplete'
-        state: present
-
-    - name: Change DestDir directory
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^DestDir\s?='
-        line: 'DestDir=/completed'
-        state: present
-
-    - name: Change NZBDir directory
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^NzbDir\s?='
-        line: 'NzbDir=/nzb'
-        state: present
-
-    - name: Change QueueDir
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^QueueDir\s?='
-        line: 'QueueDir=/queue'
-        state: present
-
-    - name: Change TempDir
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^TempDir\s?='
-        line: 'TempDir=/tmp'
-        state: present
-
-    - name: ScriptDir
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^ScriptDir\s?='
-        line: 'ScriptDir=/scripts'
-        state: present
-
-    - name: LogFile
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^LogFile\s?='
-        line: 'LogFile=/log/nzbget.log'
         state: present
 
     - name: DirectUnpack Set to On
