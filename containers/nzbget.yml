@@ -67,7 +67,7 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/config{{houtput.stdout}}"
+        - "/opt/appdata/{{pgrole}}:/config{{houtput}}"
         - "{{path.stdout}}/{{pgrole}}/completed:/completed"
         - "{{path.stdout}}/{{pgrole}}/incomplete:/incomplete"
         - "{{path.stdout}}/{{pgrole}}/nzb:/nzb"
