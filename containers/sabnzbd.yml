@@ -93,6 +93,9 @@
         name: sabnzbd
         state: stopped
 
+    - name: "SAB Permissions Set"
+      shell: "rm -rf /opt/appdata/sabnzbd/Downloads"
+
     - replace:
         path: /opt/appdata/sabnzbd/sabnzbd.ini
         regexp: "complete_dir = Downloads/complete"
