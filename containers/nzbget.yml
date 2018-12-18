@@ -95,212 +95,212 @@
   - name: "First Time Check"
     block:
 
-      - name: Please Wait - Pending .conf generation from NZBGET
-        wait_for:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          state: present
+    - name: Please Wait - Pending .conf generation from NZBGET
+      wait_for:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        state: present
 
-      - name: Customize nzbget.conf
-        docker_container:
-          name: nzbget
-          state: stopped
+    - name: Customize nzbget.conf
+      docker_container:
+        name: nzbget
+        state: stopped
 
-      - name: Default User
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^ControlUsername\s?='
-          line: 'ControlUsername=plex'
-          state: present
+    - name: Default User
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^ControlUsername\s?='
+        line: 'ControlUsername=plex'
+        state: present
 
-      - name: Default Password
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: ControlPassword=tegbzn6789
-          line: 'ControlPassword=guide'
-          state: present
+    - name: Default Password
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: ControlPassword=tegbzn6789
+        line: 'ControlPassword=guide'
+        state: present
 
-      - name: Change MainDir directory
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^MainDir\s?='
-          line: 'MainDir=/config'
-          state: present
+    - name: Change MainDir directory
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^MainDir\s?='
+        line: 'MainDir=/config'
+        state: present
 
-      - name: Change InterDir directory
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^InterDir\s?='
-          line: 'InterDir=/incomplete'
-          state: present
+    - name: Change InterDir directory
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^InterDir\s?='
+        line: 'InterDir=/incomplete'
+        state: present
 
-      - name: Change DestDir directory
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^DestDir\s?='
-          line: 'DestDir=/completed'
-          state: present
+    - name: Change DestDir directory
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^DestDir\s?='
+        line: 'DestDir=/completed'
+        state: present
 
-      - name: Change NZBDir directory
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^NzbDir\s?='
-          line: 'NzbDir=/nzb'
-          state: present
+    - name: Change NZBDir directory
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^NzbDir\s?='
+        line: 'NzbDir=/nzb'
+        state: present
 
-      - name: Change QueueDir
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^QueueDir\s?='
-          line: 'QueueDir=/queue'
-          state: present
+    - name: Change QueueDir
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^QueueDir\s?='
+        line: 'QueueDir=/queue'
+        state: present
 
-      - name: Change TempDir
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^TempDir\s?='
-          line: 'TempDir=/tmp'
-          state: present
+    - name: Change TempDir
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^TempDir\s?='
+        line: 'TempDir=/tmp'
+        state: present
 
-      - name: ScriptDir
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^ScriptDir\s?='
-          line: 'ScriptDir=/scripts'
-          state: present
+    - name: ScriptDir
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^ScriptDir\s?='
+        line: 'ScriptDir=/scripts'
+        state: present
 
-      - name: LogFile
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^LogFile\s?='
-          line: 'LogFile=/log/nzbget.log'
-          state: present
+    - name: LogFile
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^LogFile\s?='
+        line: 'LogFile=/log/nzbget.log'
+        state: present
 
-      - name: DirectUnpack Set to On
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^DirectUnpack\s?='
-          line: 'DirectUnpack=yes'
-          state: present
+    - name: DirectUnpack Set to On
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^DirectUnpack\s?='
+        line: 'DirectUnpack=yes'
+        state: present
 
-      - name: Lowercase & Set Movie Category
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^Category1.Name\s?='
-          line: 'Category1.Name=movies'
-          state: present
+    - name: Lowercase & Set Movie Category
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^Category1.Name\s?='
+        line: 'Category1.Name=movies'
+        state: present
 
-      - name: Set Location of Movies
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^Category1.Name\s?='
-          line: 'Category1.DestDir=/completed/movies'
-          state: present
+    - name: Set Location of Movies
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^Category1.Name\s?='
+        line: 'Category1.DestDir=/completed/movies'
+        state: present
 
-      - name: Lowercase & Set TV Category
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^Category2.Name\s?='
-          line: 'Category2.Name=tv'
-          state: present
+    - name: Lowercase & Set TV Category
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^Category2.Name\s?='
+        line: 'Category2.Name=tv'
+        state: present
 
-      - name: Set Location of TV
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^Category1.Name\s?='
-          line: 'Category2.DestDir=/completed/tv'
-          state: present
+    - name: Set Location of TV
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^Category1.Name\s?='
+        line: 'Category2.DestDir=/completed/tv'
+        state: present
 
-      - name: Lowercase & Set Music Category
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^Category3.Name\s?='
-          line: 'Category3.Name=music'
-          state: present
+    - name: Lowercase & Set Music Category
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^Category3.Name\s?='
+        line: 'Category3.Name=music'
+        state: present
 
-      - name: Set Location of Music
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^Category1.Name\s?='
-          line: 'Category3.DestDir=/completed/music'
-          state: present
+    - name: Set Location of Music
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^Category1.Name\s?='
+        line: 'Category3.DestDir=/completed/music'
+        state: present
 
-      - name: Lowercase & Set EBook Category
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^Category4.Name\s?='
-          line: 'Category4.Name=ebooks'
-          state: present
+    - name: Lowercase & Set EBook Category
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^Category4.Name\s?='
+        line: 'Category4.Name=ebooks'
+        state: present
 
-      - name: Set Location of EBooks
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^Category1.Name\s?='
-          line: 'Category4.DestDir=/completed/ebooks'
-          state: present
+    - name: Set Location of EBooks
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^Category1.Name\s?='
+        line: 'Category4.DestDir=/completed/ebooks'
+        state: present
 
-      - name: Fix Lowercase & Set Movie Category
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: 'Category1.Name='
-          line: 'Category1.Name=movies'
-          state: present
+    - name: Fix Lowercase & Set Movie Category
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: 'Category1.Name='
+        line: 'Category1.Name=movies'
+        state: present
 
-      - name: HealthCheck
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^HealthCheck\s?=.*'
-          line: 'HealthCheck=Delete'
-          state: present
+    - name: HealthCheck
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^HealthCheck\s?=.*'
+        line: 'HealthCheck=Delete'
+        state: present
 
-      - name: Set DiskSpace
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: '^DiskSpace\s?=.*'
-          line: 'DiskSpace=25000'
-          state: present
+    - name: Set DiskSpace
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^DiskSpace\s?=.*'
+        line: 'DiskSpace=25000'
+        state: present
 
-      - name: Remove Generic Task
-        lineinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          regexp: "{{ item.regexp }}"
-          state: absent
-        with_items:
-          - {regexp: '.Task1\.Time\=.*' }
-          - {regexp: '.Task1\.WeekDays\=.*' }
-          - {regexp: '.Task1\.Command\=.*' }
-          - {regexp: '.Task1\.Param\=.*' }
+    - name: Remove Generic Task
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: "{{ item.regexp }}"
+        state: absent
+      with_items:
+        - {regexp: '.Task1\.Time\=.*' }
+        - {regexp: '.Task1\.WeekDays\=.*' }
+        - {regexp: '.Task1\.Command\=.*' }
+        - {regexp: '.Task1\.Param\=.*' }
 
-      - name: Unpause
-        blockinfile:
-          path: "/opt/appdata/nzbget/nzbget.conf"
-          block: |
-            Task1.Time=*,*:00,*:30
-            Task1.WeekDays=1-7
-            Task1.Command=UnpauseDownload
-            Task1.Param=
-          insertafter: "^### SCHEDULER"
+    - name: Unpause
+      blockinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        block: |
+          Task1.Time=*,*:00,*:30
+          Task1.WeekDays=1-7
+          Task1.Command=UnpauseDownload
+          Task1.Param=
+        insertafter: "^### SCHEDULER"
 
-      - name: Transfer Files1
-        copy:
-          src: /opt/plexguide/containers/templates/nzbget/scripts
-          dest: "/opt/appdata/nzbget"
-          owner: "1000"
-          group: "1000"
-          mode: a+x
-          force: yes
+    - name: Transfer Files1
+      copy:
+        src: /opt/plexguide/containers/templates/nzbget/scripts
+        dest: "/opt/appdata/nzbget"
+        owner: "1000"
+        group: "1000"
+        mode: a+x
+        force: yes
 
-      - name: Transfer Files2
-        copy:
-          src: /opt/plexguide/containers/templates/nzbgetpp
-          dest: "/opt/appdata/nzbget/scripts/"
-          owner: "1000"
-          group: "1000"
-          mode: a+x
-          force: yes
+    - name: Transfer Files2
+      copy:
+        src: /opt/plexguide/containers/templates/nzbgetpp
+        dest: "/opt/appdata/nzbget/scripts/"
+        owner: "1000"
+        group: "1000"
+        mode: a+x
+        force: yes
 
-      - name: Restart Container
-        docker_container:
-          name: nzbget
-          state: started
+    - name: Restart Container
+      docker_container:
+        name: nzbget
+        state: started
 
-      when: not confcheck.stat.exists
+    when: not confcheck.stat.exists
