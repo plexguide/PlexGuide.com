@@ -44,6 +44,7 @@
     register: hotiocheck
     args:
       warn: no
+    ignore_errors: True
 
   - name: "Hotio Detected"
     set_fact:
