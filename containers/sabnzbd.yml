@@ -34,6 +34,9 @@
       path: /opt/appdata/sabnzbd/sabnzbd.ini
     register: inicheck
 
+  - name: "Touch File"
+    shell: "touch /opt/appdata/sabnzbd/sabnzbd.ini"
+
 # LABELS ######################################################################
 
   - name: "Setting PG Labels"
