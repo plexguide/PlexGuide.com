@@ -39,23 +39,6 @@
       path: /opt/appdata/nzbget/nzbget.conf
     register: confcheck
 
-  - name: "Hotio Check"
-    shell: "cat /var/plexguide/image/{{pgrole}} | grep hotio"
-    register: hotiocheck
-    args:
-      warn: no
-    ignore_errors: True
-
-  - name: "Hotio Detected"
-    set_fact:
-      houtput: "/app"
-    when: 'not hotiocheck.stdout == ""'
-
-  - name: "Hotio Not Detected"
-    set_fact:
-      houtput: ""
-    when: 'hotiocheck.stdout == ""'
-
 # LABELS ######################################################################
 
   - name: "Setting PG Labels"
@@ -70,7 +53,7 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/config{{houtput}}"
+        - "/opt/appdata/{{pgrole}}:/config"
         - "{{path.stdout}}/{{pgrole}}/completed:/completed"
         - "{{path.stdout}}/{{pgrole}}/incomplete:/incomplete"
         - "{{path.stdout}}/{{pgrole}}/nzb:/nzb"
