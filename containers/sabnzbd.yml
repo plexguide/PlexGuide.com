@@ -54,6 +54,7 @@
         - "{{path.stdout}}/sab/nzb:/nzb"
         - "{{path.stdout}}/sab/admin:/admin"
         - "/mnt/unionfs:/unionfs"
+        - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
