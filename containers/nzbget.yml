@@ -34,24 +34,24 @@
   - name: "SAB Permissions Set"
     shell: "chmod -R 775 {{path.stdout}}/sab/"
 
-  - name: "Ini Check"
+  - name: "Conf Check"
     stat:
       path: /opt/appdata/nzbget/nzbget.conf
     register: confcheck
 
-  - name: "Hotio Check"
+  - name: "H-Check"
     shell: "cat /var/plexguide/image/{{pgrole}} | grep hotio"
     register: hotiocheck
     args:
       warn: no
     ignore_errors: True
 
-  - name: "Hotio Detected"
+  - name: "H-Detected"
     set_fact:
       houtput: "/app"
     when: 'not hotiocheck.stdout == ""'
 
-  - name: "Hotio Not Detected"
+  - name: "H-Not-Detected"
     set_fact:
       houtput: ""
     when: 'hotiocheck.stdout == ""'
@@ -77,9 +77,9 @@
         - "{{path.stdout}}/{{pgrole}}/log:/log"
         - "{{path.stdout}}/{{pgrole}}/tmp:/tmp"
         - "{{path.stdout}}/{{pgrole}}/queue:/queue"
-        - "/opt/appdata/{{pgrole}}/scripts:/scripts"
-        - "/mnt/unionfs:/unionfs"
         - "/etc/localtime:/etc/localtime:ro"
+        - "/mnt/unionfs:/unionfs"
+        - "/mnt:mnt"
 
   - name: "Setting PG ENV"
     set_fact:
