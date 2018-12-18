@@ -91,7 +91,9 @@
       published_ports:
         - "{{ports.stdout}}{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}" "{{pg_en2}}"
+      env:
+        - "{{pg_env}}"
+        - "{{pg_en2}}"
       restart_policy: always
       networks:
         - name: plexguide
