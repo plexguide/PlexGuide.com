@@ -49,10 +49,8 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/config"
-        - "{{path.stdout}}/sab/complete:/complete"
-        - "{{path.stdout}}/sab/incomplete:/incomplete"
-        - "{{path.stdout}}/sab/nzb:/nzb"
-        - "{{path.stdout}}/sab/admin:/admin"
+        - "{{path.stdout}}/sab/downloads:/downloads"
+        - "{{path.stdout}}/sab/incomplete:/incomplete-downloads"
         - "/mnt/unionfs:/unionfs"
         - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
