@@ -70,10 +70,6 @@
         PUID: 1000
         PGID: 1000
         LC_ALL: "C"
-
-  - name: "Setting PG EN2"
-    set_fact:
-      pg_en2:
         VERSION: "stable"
         FALLBACK: "yes"
         BACKUP: "no"
@@ -89,7 +85,7 @@
       published_ports:
         - "{{ports.stdout}}{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}-{{pg_en2}}"
+      env: "{{pg_env}}"
       restart_policy: always
       networks:
         - name: plexguide
