@@ -114,60 +114,11 @@
         line: 'ControlPassword=guide'
         state: present
 
-    - name: Change MainDir directory
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^MainDir\s?='
-        line: 'MainDir=/config'
-        state: present
-
-    - name: Change InterDir directory
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^InterDir\s?='
-        line: 'InterDir=/incomplete'
-        state: present
-
-    - name: Change DestDir directory
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^DestDir\s?='
-        line: 'DestDir=/completed'
-        state: present
-
-    - name: Change NZBDir directory
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^NzbDir\s?='
-        line: 'NzbDir=/nzb'
-        state: present
-
-    - name: Change QueueDir
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^QueueDir\s?='
-        line: 'QueueDir=/queue'
-        state: present
-
-    - name: Change TempDir
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^TempDir\s?='
-        line: 'TempDir=/tmp'
-        state: present
-
     - name: ScriptDir
       lineinfile:
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^ScriptDir\s?='
         line: 'ScriptDir=/scripts'
-        state: present
-
-    - name: LogFile
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^LogFile\s?='
-        line: 'LogFile=/log/nzbget.log'
         state: present
 
     - name: DirectUnpack Set to On
