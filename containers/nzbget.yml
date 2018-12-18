@@ -28,6 +28,17 @@
     with_items:
       - "/opt/appdata/nzbget/scripts/nzbgetpp/rarfile/"
 
+  - name: "Chown NZB Owners"
+    shell: "chown -R 1000:1000 {{path.stdout}}/sab/"
+
+  - name: "SAB Permissions Set"
+    shell: "chmod -R 775 {{path.stdout}}/sab/"
+
+  - name: "Ini Check"
+    stat:
+      path: /opt/appdata/nzbget/nzbget.conf
+    register: confcheck
+
 # LABELS ######################################################################
 
   - name: "Setting PG Labels"
@@ -42,7 +53,6 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/nzbget:/config"
         - "/opt/appdata/nzbget:/config"
         - "{{path.stdout}}/{{pgrole}}/completed:/completed"
         - "{{path.stdout}}/{{pgrole}}/incomplete:/incomplete"
@@ -81,28 +91,27 @@
       labels: "{{pg_labels}}"
 
 # ENDING FOR NZBGET #############
-
-  - name: Please Wait - Pending .conf generation from NZBGET
-    wait_for:
-      path: "/opt/appdata/nzbget/nzbget.conf"
-      state: present
-
   - name: "First Time Check"
     block:
+
+      - name: Please Wait - Pending .conf generation from NZBGET
+        wait_for:
+          path: "/opt/appdata/nzbget/nzbget.conf"
+          state: present
 
       - name: Customize nzbget.conf
         docker_container:
           name: nzbget
           state: stopped
 
-      - name: Remove User
+      - name: Default User
         lineinfile:
           path: "/opt/appdata/nzbget/nzbget.conf"
           regexp: '^ControlUsername\s?='
           line: 'ControlUsername=plex'
           state: present
 
-      - name: Remove Password
+      - name: Default Password
         lineinfile:
           path: "/opt/appdata/nzbget/nzbget.conf"
           regexp: ControlPassword=tegbzn6789
@@ -293,4 +302,4 @@
           name: nzbget
           state: started
 
-      when: not inicheck.stat.exists
+      when: not confcheck.stat.exists
