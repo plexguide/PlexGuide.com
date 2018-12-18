@@ -50,8 +50,6 @@
       pg_volumes:
         - "/opt/appdata/sabnzbd/:/config/"
         - "{{path.stdout}}/sab/downloads:/config/Downloads"
-        - "{{path.stdout}}/sab/logs:/config/logs"
-        - "{{path.stdout}}/sab/admin:/config/admin"
         - "/mnt/unionfs:/unionfs"
         - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
