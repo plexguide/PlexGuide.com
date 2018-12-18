@@ -102,11 +102,6 @@
 
     - replace:
         path: /opt/appdata/sabnzbd/sabnzbd.ini
-        regexp: "complete_dir = Downloads/complete"
-        replace: "complete_dir = /complete"
-
-    - replace:
-        path: /opt/appdata/sabnzbd/sabnzbd.ini
         regexp: 'html_login = ""'
         replace: "html_login = 1"
 
@@ -122,38 +117,8 @@
 
     - replace:
         path: /opt/appdata/sabnzbd/sabnzbd.ini
-        regexp: "complete_dir = Downloads/complete"
-        replace: "complete_dir = /complete"
-
-    - replace:
-        path: /opt/appdata/sabnzbd/sabnzbd.ini
-        regexp: "complete_dir = Downloads/complete"
-        replace: "complete_dir = /complete"
-
-    - replace:
-        path: /opt/appdata/sabnzbd/sabnzbd.ini
-        regexp: "complete_dir = Downloads/complete"
-        replace: "complete_dir = /complete"
-
-    - replace:
-        path: /opt/appdata/sabnzbd/sabnzbd.ini
         regexp: "host_whitelist ="
         replace: "host_whitelist = sabnzbd.{{domain.stdout}},"
-
-    - replace:
-        path: /opt/appdata/sabnzbd/sabnzbd.ini
-        regexp: "download_dir = Downloads/incomplete"
-        replace: "download_dir = /incomplete"
-
-    - replace:
-        path: /opt/appdata/sabnzbd/sabnzbd.ini
-        regexp: nzb_backup_dir = ""
-        replace: "nzb_backup_dir = /nzb"
-
-    - replace:
-        path: /opt/appdata/sabnzbd/sabnzbd.ini
-        regexp: "admin_dir = admin"
-        replace: "admin_dir = /admin"
 
     - replace:
         path: /opt/appdata/sabnzbd/sabnzbd.ini
