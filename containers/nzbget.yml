@@ -71,6 +71,16 @@
         PGID: 1000
         LC_ALL: "C"
 
+  - name: "Setting PG ENV"
+    set_fact:
+      pg_en2:
+        VERSION: "{{suitarr.version}}"
+        FALLBACK: "yes"
+        BACKUP: "no"
+        PUID: "{{uid}}"
+        PGID: "{{gid}}"
+        UMASK: 002
+
 # MAIN DEPLOYMENT #############################################################
 
   - name: "Deploying Container - {{pgrole}}"
@@ -81,7 +91,7 @@
       published_ports:
         - "{{ports.stdout}}{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
+      env: "{{pg_env}}" "{{pg_en2}}"
       restart_policy: always
       networks:
         - name: plexguide
