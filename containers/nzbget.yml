@@ -56,7 +56,6 @@
         - "/opt/appdata/nzbget:/config"
         - "{{path.stdout}}/{{pgrole}}/downloads:/downloads"
         - "/opt/appdata/nzbget/scripts:/scripts"
-        - "/opt/appdata/nzbget:/downloads"
         - "/mnt/unionfs:/unionfs"
         - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
