@@ -53,7 +53,7 @@
         - "/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator"
         - "/opt/appdata/{{pgrole}}:/config"
         - "/mnt/unionfs:/unionfs"
-        - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
+        # - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
         - "{{path.stdout}}/sab/complete:/complete"
         - "{{path.stdout}}/nzbget/downloads/completed/:/completed"
         - "{{path.stdout}}/rutorrent:/downloads"
