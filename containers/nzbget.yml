@@ -62,6 +62,7 @@
         - "{{path.stdout}}/{{pgrole}}/queue:/queue"
         - "/opt/appdata/nzbget/scripts:/scripts"
         - "/mnt/unionfs:/unionfs"
+        - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
