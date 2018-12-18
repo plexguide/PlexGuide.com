@@ -71,14 +71,12 @@
         PGID: 1000
         LC_ALL: "C"
 
-  - name: "Setting PG ENV"
+  - name: "Setting PG EN2"
     set_fact:
       pg_en2:
         VERSION: "stable"
         FALLBACK: "yes"
         BACKUP: "no"
-        PUID: "{{uid}}"
-        PGID: "{{gid}}"
         UMASK: 002
 
 # MAIN DEPLOYMENT #############################################################
