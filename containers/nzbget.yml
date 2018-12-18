@@ -54,12 +54,7 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/nzbget:/config"
-        - "{{path.stdout}}/{{pgrole}}/completed:/completed"
-        - "{{path.stdout}}/{{pgrole}}/incomplete:/incomplete"
-        - "{{path.stdout}}/{{pgrole}}/nzb:/nzb"
-        - "{{path.stdout}}/{{pgrole}}/log:/log"
-        - "{{path.stdout}}/{{pgrole}}/tmp:/tmp"
-        - "{{path.stdout}}/{{pgrole}}/queue:/queue"
+        - "{{path.stdout}}/{{pgrole}}/:/app"
         - "/opt/appdata/nzbget/scripts:/scripts"
         - "/mnt/unionfs:/unionfs"
         - "/mnt:/mnt"
