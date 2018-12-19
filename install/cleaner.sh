@@ -25,7 +25,7 @@ PLEASE STANDBY!
 EOF
 
 # Standby
-sleep 5
+sleep 3
 
 # Execute Ansible Function
 ansible-playbook /opt/plexguide/menu/pg.yml --tags autodelete &>/dev/null &
