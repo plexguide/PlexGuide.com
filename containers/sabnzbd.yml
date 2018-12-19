@@ -177,4 +177,10 @@
         name: sabnzbd
         state: started
 
+    - name: "Chown NZB Owners"
+      shell: "chown -R 1000:1000 {{path.stdout}}/sab/"
+
+    - name: "SAB Permissions Set"
+      shell: "chmod -R 775 {{path.stdout}}/sab/"
+
     when: not inicheck.stat.exists
