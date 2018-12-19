@@ -55,7 +55,6 @@
         - "/mnt/unionfs:/unionfs"
         - "/mnt/:/mnt"        
         - "{{path.stdout}}/sab/downloads:/config/Downloads"
-        - "{{path.stdout}}/sab/complete:/complete"
         - "{{path.stdout}}/nzbget/downloads/completed/:/completed"
         - "{{path.stdout}}/rutorrent:/downloads"
         - "{{path.stdout}}/deluge/downloaded:/downloaded"
