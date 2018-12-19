@@ -98,11 +98,6 @@
 
     - replace:
         path: /opt/appdata/sabnzbd/sabnzbd.ini
-        regexp: "complete_dir = Downloads/complete"
-        replace: "complete_dir = /complete"
-
-    - replace:
-        path: /opt/appdata/sabnzbd/sabnzbd.ini
         regexp: 'html_login = ""'
         replace: "html_login = 1"
 
