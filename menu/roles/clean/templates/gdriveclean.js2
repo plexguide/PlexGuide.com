@@ -4,7 +4,10 @@
 if [ -d "/mnt/move/.unionfs-fuse" ]; then
     find /mnt/move/.unionfs-fuse -type f -name '*_HIDDEN~' | while read line; do
     oldPath=${line#/mnt/move/.unionfs-fuse}
-    if [ -e /opt/appdata/pgblitz/vars/encrypted ]; then
+
+    cat /
+
+    if [[ "$transport" == "PG Blitz /w Encryption" || "$transport" == "PG Move /w Encryption" ]]; then
         newPath=gcrypt:${oldPath%_HIDDEN~}
         newPathT=tcrypt:${oldPath%_HIDDEN~}
     else
