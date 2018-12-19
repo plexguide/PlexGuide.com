@@ -1,14 +1,21 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705 - Deiteq
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
 ---
 - cron:
     name: Build a Cron Job - NZBGET
     special_time: 'hourly'
-    job: "bash /opt/plexguide/roles/autodelete/scripts/nzbget.sh"
+    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/nzbget.sh"
     state: present
   ignore_errors: yes
 
 - cron:
     name: Build a Cron Job - SABNZBD
     special_time: 'hourly'
-    job: "bash /opt/plexguide/roles/autodelete/scripts/sabnzbd.sh"
+    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/sabnzbd.sh"
     state: present
   ignore_errors: yes
