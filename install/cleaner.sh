@@ -28,9 +28,9 @@ EOF
 sleep 5
 
 # Execute Ansible Function
-ansible-playbook /opt/plexguide/pg.yml --tags autodelete &>/dev/null &
-ansible-playbook /opt/plexguide/pg.yml --tags clean &>/dev/null &
-ansible-playbook /opt/plexguide/pg.yml --tags clean-encrypt &>/dev/null &
+ansible-playbook /opt/plexguide/menu/pg.yml --tags autodelete &>/dev/null &
+ansible-playbook /opt/plexguide/menu/pg.yml --tags clean &>/dev/null &
+ansible-playbook /opt/plexguide/menu/pg.yml --tags clean-encrypt &>/dev/null &
 
 # Prevents From Repeating
 cat /var/plexguide/pg.cleaner > /var/plexguide/pg.cleaner.stored
