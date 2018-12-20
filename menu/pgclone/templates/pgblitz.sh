@@ -6,8 +6,7 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-
-
+source /opt/plexguide/menu/functions/pgblitz.sh
 # Logging Function
 function log()
 {
@@ -139,6 +138,7 @@ do
         log "Finished looking for files, sleeping 5 secs"
     else
         log "Nothing to upload, sleeping 5 secs"
+
     fi
     sleep 5
 done
