@@ -18,7 +18,7 @@ file="/var/plexguide/blitz.last"
     GDSAUSE=$(cat "/var/plexguide/blitz.last")
     GDSAUSE=${GDSAUSE:5}
     if [ ${GDSAUSE} -ge ${GDSACOUNT} ]; then
-        GDSAUSE="0"
+        GDSAUSE="gdsa01"
         GDSAAMOUNT=0
     else
         GDSAUSE=`expr $GDSAUSE + 1`
