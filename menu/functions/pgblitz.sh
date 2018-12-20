@@ -78,7 +78,7 @@ for i in `find $downloadpath/pgblitz/* -maxdepth 1 -mindepth 1 -type d`; do
     if [ ! -e "$file" ]; then echo 0 > /var/plexguide/blitz.badkey; fi
 
     badcount=$(cat /var/plexguide/blitz.badkey)
-    ((badcount++))
+    ((badcount++)) 
       if [ "$badcount" -ge "2" ]; then
         badcount="0"
         log "Bad Key Threshold Reach 3 of 3! Switching GDSA Keys!"
