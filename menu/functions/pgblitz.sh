@@ -40,7 +40,6 @@ stasks () {
   sleep 10
 
   #### Generates the GDSA List from the Processed Keys
-
   GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep gdsa`)
   GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
 
@@ -68,9 +67,10 @@ stasks () {
 }
 
 finder () {
-find /mnt/pgblitz/* -maxdepth 1 -type f > /var/plexguide/leftover
+downloadpath=$(cat /var/plexguide/server.hd.path)
+find $downloadpath/pgblitz/* -maxdepth 1 -type f > /var/plexguide/leftover
 
-for i in `find /mnt/pgblitz/* -maxdepth 1 -mindepth 1 -type d`; do
+for i in `find $downloadpath/pgblitz/* -maxdepth 1 -mindepth 1 -type d`; do
     log "Found Stuck Folders/Files ~ ${i}"
     log "Moving ${i} back to /mnt/move for processing"
     mv ${i} /mnt/move
