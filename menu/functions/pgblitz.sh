@@ -86,6 +86,8 @@ for i in `find $downloadpath/pgblitz/* -maxdepth 1 -mindepth 1 -type d`; do
         GDSAAMOUNT=0
         echo 0 > /var/plexguide/blitz.badkey
       else
+        GDSAUSE=0
+        GDSAAMOUNT=0
         log "Bad Key Count $badcount of 3 Reached! Switching GDSA Keys @ 3!"
         echo $badcount > /var/plexguide/blitz.badkey
       fi
