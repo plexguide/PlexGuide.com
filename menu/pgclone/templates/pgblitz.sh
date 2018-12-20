@@ -13,6 +13,8 @@ stasks
 
 file="var/plexguide/blitz.last"
 if [ -e "$file" ]; then
+  GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep gdsa`)
+  GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
   if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
       GDSAUSE=0
       GDSAAMOUNT=0; fi
