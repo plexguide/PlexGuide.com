@@ -83,7 +83,7 @@ do
         log "Finished looking for files, sleeping 5 secs"
     else
         log "Nothing to upload, sleeping 5 secs"
-
+        log "Running Blitz Finder for files not uploaded"
     fi
     sleep 5
 done
