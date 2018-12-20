@@ -29,6 +29,9 @@ fi; fi
 # Run Loop
 while [ 1 ]
 do
+
+  blitzdef=$(cat /var/plexguide/blitz.last)
+  if [ "$blitzdef" == "" ]; then GDSAUSE=0 && echo gdsa01 > /var/plexguide/blitz.last; fi
     #Find files to transfer
     IFS=$'\n'
     files=(`find ${downloadpath}/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name '*.fuse_hidden*' ! -name "*.lck" ! -name "*.version" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*' ! -path '*.inProgress/*'`)
