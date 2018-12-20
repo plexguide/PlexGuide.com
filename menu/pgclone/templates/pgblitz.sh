@@ -11,12 +11,13 @@ source /opt/plexguide/menu/functions/pgblitz.sh
 starter
 stasks
 
-file="var/plexguide/blitz.last"
+file="/var/plexguide/blitz.last"
 if [ -e "$file" ]; then
   path=/opt/appdata/pgblitz/keys
-  GDSAUCE=$(cat /var/plexguide/blitz.last)
   GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep gdsa`)
-  GDSACOUNT=`expr ${#GDSAARRAY[@]}`
+  GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
+  GDSAUCE=$(cat /var/plexguide/blitz.last)
+  #GDSACOUNT=`expr ${#GDSAARRAY[@]}`
   if [ ${GDSAUSE} -ge ${GDSACOUNT} ]; then
       GDSAUSE=0
       GDSAAMOUNT=0; fi
