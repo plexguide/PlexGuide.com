@@ -66,7 +66,7 @@ do
                             # Record next GDSA in case of crash/reboot
                             echo "$GDSAUSE" > /opt/appdata/pgblitz/vars/lastGDSA
                         fi
-                        log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024/1024" | bc -l`"
+                        log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024" | bc -l`"
                         # Record GDSA transfered in case of crash/reboot
                         echo "$GDSAAMOUNT" > /opt/appdata/pgblitz/vars/gdsaAmount
                     else
