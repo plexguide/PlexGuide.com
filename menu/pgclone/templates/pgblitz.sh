@@ -66,7 +66,7 @@ do
                             # Record next GDSA in case of crash/reboot
                             echo "$GDSAUSE" > /opt/appdata/pgblitz/vars/lastGDSA
                         fi
-                        log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024` GB of 750GB" | bc -l`"
+                        log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024" | bc -l`"
                         # Record GDSA transfered in case of crash/reboot
                         echo "$GDSAAMOUNT" > /opt/appdata/pgblitz/vars/gdsaAmount
                     else
@@ -84,7 +84,7 @@ do
     else
         log "Nothing to upload, sleeping 5 secs"
         log "Running Blitz Finder for files not uploaded"
-        log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024` GB of 750GB" | bc -l`"
+        log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024" | bc -l`"
         finder
     fi
     sleep 5
