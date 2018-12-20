@@ -12,18 +12,17 @@ starter
 stasks
 
 file="/var/plexguide/blitz.last"
-if [ -e "$file" ]; then
-  path=/opt/appdata/pgblitz/keys
-  GDSAARRAY=(`ls -la $path/processed | awk '{print $9}' | grep gdsa`)
-  GDSACOUNT=`expr ${#GDSAARRAY[@]} - 1`
-  GDSAUCE=$(cat /var/plexguide/blitz.last)
-  #GDSACOUNT=`expr ${#GDSAARRAY[@]}`
-  if [ ${GDSAUSE} -ge ${GDSACOUNT} ]; then
-      GDSAUSE=0
-      GDSAAMOUNT=0; fi
-  GDSAUSE=`expr $GDSAUSE + 1`
-  GDSAAMOUNT=0
-fi
+  if [ -e "$file" ]; then
+    GDSAARRAY=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa`)
+    GDSACOUNT=`expr ${#GDSAARRAY[@]}`
+    GDSAUCE=${GDSAUCE:5}
+    if [ ${GDSAUSE} -ge ${GDSACOUNT} ]; then
+        GDSAUSE=`expr $GDSAUSE + 1`
+        GDSAAMOUNT=0
+    else
+        GDSAUSE=`expr $GDSAUSE + 1`
+        GDSAAMOUNT=0
+fi; fi
 
 # Run Loop
 while [ 1 ]
