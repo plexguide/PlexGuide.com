@@ -55,7 +55,7 @@ echo "2" > /var/plexguide/pg.watchtower
 echo "1" > /var/plexguide/pg.motd
 echo "87" > /var/plexguide/pg.alias
 echo "2" > /var/plexguide/pg.dep
-echo "1" > /var/plexguide/pg.cleaner
+echo "2" > /var/plexguide/pg.cleaner
 echo "3" > /var/plexguide/pg.gcloud
 echo "12" > /var/plexguide/pg.hetzner
 echo "1" > /var/plexguide/pg.amazonaws
