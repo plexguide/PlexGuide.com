@@ -94,8 +94,8 @@ do
         log "Nothing to upload, sleeping 5 secs"
         log "Running Blitz Finder for files not uploaded"
         log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024" | bc` MB of 750000 MB"
-        echo "${GDSAARRAY[$GDSAUSE]}" > /var/plexguide/blitz.last
     fi
     sleep 5
+    echo "${GDSAARRAY[$GDSAUSE]}" > /var/plexguide/blitz.last
 done
 {% endraw %}
