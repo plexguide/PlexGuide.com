@@ -15,13 +15,13 @@ file="/var/plexguide/blitz.last"
   if [ -e "$file" ]; then
     GDSAARRAY=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa`)
     GDSACOUNT=`expr ${#GDSAARRAY[@]}`
-    GDSAUSE2=$(cat "/var/plexguide/blitz.last")
-    GDSAUSE2=${GDSAUSE2:5}
-    if [ ${GDSAUSE2} -ge ${GDSACOUNT} ]; then
+    GDSAUSE=$(cat "/var/plexguide/blitz.last")
+    GDSAUSE=${GDSAUSE:5}
+    if [ ${GDSAUSE} -ge ${GDSACOUNT} ]; then
         GDSAUSE="0"
         GDSAAMOUNT=0
     else
-        GDSAUSE=`expr $GDSAUSE2 + 1`
+        GDSAUSE=`expr $GDSAUSE + 1`
         GDSAAMOUNT=0
 fi; fi
 
@@ -101,7 +101,7 @@ do
         log "Nothing to upload, sleeping 5 secs"
         log "Running Blitz Finder for files not uploaded"
         log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024" | bc` MB of 750000 MB"
-        finder 
+        finder
     fi
     sleep 5
     echo "${GDSAARRAY[$GDSAUSE]}" > /var/plexguide/blitz.last
