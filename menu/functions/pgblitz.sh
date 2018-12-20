@@ -79,7 +79,7 @@ for i in `find $downloadpath/pgblitz/* -maxdepth 1 -mindepth 1 -type d`; do
 
     badcount=$(cat /var/plexguide/blitz.badkey)
     ((badcount++))
-      if [ "$badcount" -ge "2" ]; then
+      if [ "$badcount" -ge "3" ]; then
         badcount="0"
         log "Bad Key Threshold Reach 3 of 3! Switching GDSA Keys!"
         GDSAUSE=`expr $GDSAUSE + 1`
