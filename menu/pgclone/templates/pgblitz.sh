@@ -13,7 +13,7 @@ stasks
 
 file="var/plexguide/blitz.last"
 if [ -e "$file" ]; then
-  GDSAUCE=$(cat var/plexguide/blitz.last)
+  GDSAUCE=$(cat /var/plexguide/blitz.last)
   GDSAUSE=`expr $GDSAUSE + 1`
   GDSAAMOUNT=0
 fi
