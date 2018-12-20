@@ -73,6 +73,22 @@ find $downloadpath/pgblitz/* -maxdepth 1 -type f > /var/plexguide/leftover
 for i in `find $downloadpath/pgblitz/* -maxdepth 1 -mindepth 1 -type d`; do
     log "Found Stuck Folders/Files ~ ${i}"
     log "Moving ${i} back to /mnt/move for processing"
+
+    file="/var/plexguide/blitz.badkey"
+    if [ ! -e "$file" ]; then echo 0 > /var/plexguide/blitz.badkey; fi
+
+    badcount=$(cat /var/plexguide/blitz.badkey)
+    let "badcount++"
+      if [ "$badcount" -ge "2" ]; then
+        badcount="0"
+        log "Bad Key Threshold Reach 3 of 3! Switching GDSA Keys!"
+        GDSAUSE=`expr $GDSAUSE2 + 1`
+        GDSAAMOUNT=0
+        echo 0 > /var/plexguide/blitz.badkey
+      else
+        log "Bad Key Count $badcount of 3 Reached! Switching GDSA Keys @ 3!"
+        badcount > /var/plexguide/blitz.badkey
+      fi
     mv ${i} /mnt/move
 done
 
