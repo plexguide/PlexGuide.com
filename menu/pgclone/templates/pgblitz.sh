@@ -15,8 +15,8 @@ file="/var/plexguide/blitz.last"
   if [ -e "$file" ]; then
     GDSAARRAY=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa`)
     GDSACOUNT=`expr ${#GDSAARRAY[@]}`
-    GDSAUCE2="/var/plexguide/blitz.last"
-    GDSAUCE2=${GDSAUCE2:5}
+    GDSAUSE2=$(cat "/var/plexguide/blitz.last")
+    GDSAUSE2=${GDSAUSE2:5}
     if [ ${GDSAUSE2} -ge ${GDSACOUNT} ]; then
         GDSAUSE=`expr $GDSAUSE2 + 1`
         GDSAAMOUNT=0
