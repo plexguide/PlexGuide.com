@@ -49,6 +49,7 @@
       pg_env:
          UID: 1000
          GID: 1000
+         DOMAIN: "{{pgrole}}.{{domain.stdout}}"
 
 # MAIN DEPLOYMENT #############################################################
 
