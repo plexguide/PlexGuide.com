@@ -2,7 +2,7 @@
 7.5.4
 
 💍  [BETA] - Avoid Using Edge! For Testing & No Support!
-7.5.9
+7.5.10
 7.5edge
 
 💊  [DEPRECIATED]
