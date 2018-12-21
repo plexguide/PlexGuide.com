@@ -23,10 +23,10 @@
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
-  - name: Create Extra Folders
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-    with_items:
-      - "/opt/appdata/nzbget/scripts/nzbgetpp/rarfile/"
+  #- name: Create Extra Folders
+  #  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+  #  with_items:
+  #    - "/opt/appdata/nzbget/scripts/nzbgetpp/rarfile/"
 
   - name: "Chown NZB Owners"
     shell: "chown -R 1000:1000 {{path.stdout}}/nzbget/"
@@ -235,14 +235,14 @@
         mode: a+x
         force: yes
 
-    - name: Transfer Files2
-      copy:
-        src: /opt/plexguide/containers/templates/nzbgetpp
-        dest: "/opt/appdata/nzbget/scripts/"
-        owner: "1000"
-        group: "1000"
-        mode: a+x
-        force: yes
+    #- name: Transfer Files2
+    #  copy:
+    #    src: /opt/plexguide/containers/templates/nzbgetpp
+    #    dest: "/opt/appdata/nzbget/scripts/"
+    #    owner: "1000"
+    #    group: "1000"
+    #    mode: a+x
+    #    force: yes
 
     - name: Restart Container
       docker_container:
