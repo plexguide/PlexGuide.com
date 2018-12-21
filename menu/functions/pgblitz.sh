@@ -68,9 +68,9 @@ stasks () {
 
 finder () {
 downloadpath=$(cat /var/plexguide/server.hd.path)
-find $downloadpath/pgblitz/* -mmin +30 -maxdepth 1 -type f > /var/plexguide/leftover
+find $downloadpath/pgblitz/* -mmin +5 -maxdepth 1 -type f > /var/plexguide/leftover
 
-for i in `find $downloadpath/pgblitz/* -maxdepth 1 -mindepth 1 -type d`; do
+for i in `find $downloadpath/pgblitz/* -maxdepth 1 -mmin +5 -mindepth 1 -type d`; do
     log "Found Stuck Folders/Files ~ ${i}"
     log "Moving ${i} back to /mnt/move for processing"
 
