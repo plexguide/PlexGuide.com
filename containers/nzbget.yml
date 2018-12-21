@@ -139,7 +139,7 @@
       lineinfile:
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^Category1.Name\s?='
-        line: 'Category1.DestDir=/downloads/completed/movies'
+        line: 'Category1.DestDir=/completed/movies'
         state: present
 
     - name: Lowercase & Set TV Category
@@ -153,7 +153,7 @@
       lineinfile:
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^Category1.Name\s?='
-        line: 'Category2.DestDir=/downloads/completed/tv'
+        line: 'Category2.DestDir=/completed/tv'
         state: present
 
     - name: Lowercase & Set Music Category
@@ -167,7 +167,7 @@
       lineinfile:
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^Category1.Name\s?='
-        line: 'Category3.DestDir=/downloads/completed/music'
+        line: 'Category3.DestDir=/completed/music'
         state: present
 
     - name: Lowercase & Set EBook Category
@@ -181,7 +181,7 @@
       lineinfile:
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^Category1.Name\s?='
-        line: 'Category4.DestDir=/downloads/completed/ebooks'
+        line: 'Category4.DestDir=/completed/ebooks'
         state: present
 
     - name: Fix Lowercase & Set Movie Category
