@@ -126,21 +126,14 @@
       lineinfile:
         path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
         regexp: 'download_rate'
-        line: 'upload_rate = 100000'
+        line: 'download_rate = 100000'
         state: present
 
-    - name: Upload Rate
-      lineinfile:
-        path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
-        regexp: 'upload_rate'
-        line: 'upload_rate = 100000'
-        state: present
-
-    - name: Low Disk - Set to 10GB
+    - name: Low Disk - Set to 20GB
       lineinfile:
         path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
         regexp: 'low_diskspace'
-        line: 'schedule = low_diskspace,5,60,close_low_diskspace=10000M'
+        line: 'schedule = low_diskspace,5,60,close_low_diskspace=20000M'
         state: present
 
     - name: MAX UP 1024
