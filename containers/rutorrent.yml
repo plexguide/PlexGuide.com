@@ -86,13 +86,12 @@
         - "51413:51413"
       volumes: "{{pg_volumes}}"
       env: "{{pg_env}}"
-      restart_policy: always
+      restart_policy: unless-stopped
       networks:
         - name: plexguide
           aliases:
             - "{{pgrole}}"
       state: started
-      restart_policy: unless-stopped
       purge_networks: yes
       stop_timeout: "240"
       labels: "{{pg_labels}}"
@@ -170,13 +169,6 @@
         path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
         regexp: 'directory.default.set'
         line: 'directory.default.set = /downloads/incoming'
-        state: present
-
-    - name: Set upload_max_filesize to 16M
-      lineinfile:
-        path: "/opt/appdata/{{pgrole}}/config/php/php.ini"
-        regexp: 'upload_max_filesize'
-        line: 'upload_max_filesize = 16M'
         state: present
 
     - name: Force New Plugin
