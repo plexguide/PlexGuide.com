@@ -57,10 +57,11 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/{{pgrole}}/config:/config"
-        - "/mnt/unionfs:/unionfs"
-        - "{{path.stdout}}/{{pgrole}}:/downloads"
-        - /opt/appdata/{{pgrole}}:/scripts
+        - "/opt/appdata/{{pgrole}}:/scripts"
         - "/etc/localtime:/etc/localtime:ro"
+        - "/mnt/unionfs:/unionfs"
+        - "/mnt:/mnt"
+        - "{{path.stdout}}/{{pgrole}}:/downloads"
 
   - name: "Setting PG ENV"
     set_fact:
@@ -81,6 +82,8 @@
       pull: yes
       published_ports:
         - "{{ports.stdout}}{{extport}}:{{intport}}"
+        - "6881:6881/udp"
+        - "51413:51413"
       volumes: "{{pg_volumes}}"
       env: "{{pg_env}}"
       restart_policy: always
@@ -89,6 +92,9 @@
           aliases:
             - "{{pgrole}}"
       state: started
+      restart_policy: unless-stopped
+      purge_networks: yes
+      stop_timeout: "240"
       labels: "{{pg_labels}}"
 
   # ENDING TASK FOR RUTORRENT ####################################################
@@ -101,12 +107,6 @@
         state: present
         msg: rtorrent.rc creation failed
 
-    - name: php.ini creation
-      wait_for:
-        path: "/opt/appdata/{{pgrole}}/config/php/php.ini"
-        state: present
-        msg: php.ini creation failed
-
     - name: nginx.conf creation
       wait_for:
         path: "/opt/appdata/{{pgrole}}/config/nginx/nginx.conf"
@@ -116,7 +116,7 @@
     - name: plugins.ini creation
       wait_for:
         path: "/opt/appdata/{{pgrole}}/config/rutorrent/settings/plugins.ini"
-        state: present
+        state: prest
         msg: plugins.ini creation failed
 
     - name: "5 Second Hold"
@@ -139,6 +139,13 @@
       lineinfile:
         path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
         regexp: 'download_rate'
+        line: 'upload_rate = 100000'
+        state: present
+
+    - name: Upload Rate
+      lineinfile:
+        path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+        regexp: 'upload_rate'
         line: 'upload_rate = 100000'
         state: present
 
