@@ -38,14 +38,14 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/config"
-        - /mnt/unionfs:/unionfs
-        - "{{path.stdout}}/sab/complete:/complete"
-        - "{{path.stdout}}/nzbget/completed:/completed"
+        - "/mnt/unionfs:/unionfs"
+        - "/mnt/:/mnt"
+        - "{{path.stdout}}/sab/downloads:/config/Downloads"
+        - "{{path.stdout}}/nzbget/downloads/completed:/completed"
         - "{{path.stdout}}/rutorrent:/downloads"
         - "{{path.stdout}}/deluge/downloaded:/downloaded"
-        - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
         - "{{path.stdout}}/qbittorrent/downloads:/qbit-downloads"
-        - /etc/localtime:/etc/localtime:ro
+        - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
     set_fact:
