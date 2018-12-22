@@ -107,21 +107,9 @@
         state: present
         msg: rtorrent.rc creation failed
 
-    - name: nginx.conf creation
+    - name: "7 Second Hold"
       wait_for:
-        path: "/opt/appdata/{{pgrole}}/config/nginx/nginx.conf"
-        state: present
-        msg: nginx.conf creation failed
-
-    - name: plugins.ini creation
-      wait_for:
-        path: "/opt/appdata/{{pgrole}}/config/rutorrent/settings/plugins.ini"
-        state: prest
-        msg: plugins.ini creation failed
-
-    - name: "5 Second Hold"
-      wait_for:
-        timeout: 5
+        timeout: 7
 
     - name: "Stopping {{pgrole}}"
       docker_container:
