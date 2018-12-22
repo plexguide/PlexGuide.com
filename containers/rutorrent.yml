@@ -136,11 +136,18 @@
         line: 'schedule = low_diskspace,5,60,close_low_diskspace=20000M'
         state: present
 
-    - name: MAX UP 1024
+    - name: Global Upload to Unlmited
       lineinfile:
         path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
         regexp: 'throttle.global_up.max_rate.set_kb'
-        line: 'throttle.max_uploads.set = 1024'
+        line: 'throttle.global_up.max_rate.set_kb = 0'
+        state: present
+
+    - name: Set Encryption
+      lineinfile:
+        path: "/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc"
+        regexp: 'encryption = allow_incoming,try_outgoing,enable_retry'
+        line: 'encryption = allow_incoming,try_outgoing,enable_retry,prefer_plaintext'
         state: present
 
     - name: MAX DL 1024
