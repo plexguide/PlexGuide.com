@@ -23,6 +23,7 @@ rolestored () {
   cat /var/plexguide/pg.$1 > /var/plexguide/pg.$1.stored
 }
 
+############################################################ INSTALLER FUNCTIONS
 alias () {
   ansible-playbook /opt/plexguide/menu/$1/${1}.yml
 }
