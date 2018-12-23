@@ -5,27 +5,32 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/install.sh
+starter
+
+
 pgedition () {
-  file="/var/plexguide/path.check"
-  if [ ! -e "$file" ]; then touch /var/plexguide/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
+  file="${abc}/path.check"
+  if [ ! -e "$file" ]; then touch ${abc}/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
 
   # FOR MULTI-HD EDITION
-  file="/var/plexguide/multi.unionfs"
-    if [ ! -e "$file" ]; then touch /var/plexguide/multi.unionfs; fi
+  file="${abc}/multi.unionfs"
+    if [ ! -e "$file" ]; then touch ${abc}/multi.unionfs; fi
   # FOR PG-BLITZ
-  file="/var/plexguide/project.deployed"
-    if [ ! -e "$file" ]; then echo "no" > /var/plexguide/project.deployed; fi
-  file="/var/plexguide/project.keycount"
-    if [ ! -e "$file" ]; then echo "0" > /var/plexguide/project.keycount; fi
-  file="/var/plexguide/pg.serverid"
-    if [ ! -e "$file" ]; then echo "[NOT-SET]" > /var/plexguide/pg.serverid; fi
+  file="${abc}/project.deployed"
+    if [ ! -e "$file" ]; then echo "no" > ${abc}/project.deployed; fi
+  file="${abc}/project.keycount"
+    if [ ! -e "$file" ]; then echo "0" > ${abc}/project.keycount; fi
+  file="${abc}/pg.serverid"
+    if [ ! -e "$file" ]; then echo "[NOT-SET]" > ${abc}/pg.serverid; fi
 }
 
 ospgversion=$(cat /etc/*-release | grep Debian | grep 9)
-if [ "$ospgversion" != "" ]; then echo "debian"> /var/plexguide/os.version;
-else echo "ubuntu"> /var/plexguide/os.version; fi
+if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
+else echo "ubuntu"> ${abc}/os.version; fi
 
-echo "11" > /var/plexguide/pg.python
+echo "11" > ${abc}/pg.python
 bash /opt/plexguide/install/python.sh
 ######################################################## START: Key Variables
 rm -rf /opt/plexguide/menu/interface/version/version.sh
@@ -33,43 +38,41 @@ sudo mkdir -p /opt/plexguide/menu/interface/version/
 sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
 
 # ENSURE SERVER PATH EXISTS
-mkdir -p /var/plexguide
-file="/var/plexguide/server.hd.path"
-if [ ! -e "$file" ]; then echo "/mnt" > /var/plexguide/server.hd.path; fi
+mkdir -p ${abc}
+file="${abc}/server.hd.path"
+if [ ! -e "$file" ]; then echo "/mnt" > ${abc}/server.hd.path; fi
 
 # Generate Default YML
 bash /opt/plexguide/install/yml-gen.sh
 # Ensure Default Folder Is Created
-mkdir -p /var/plexguide
+mkdir -p ${abc}
 
-# Force Common Things To Execute Such as Folders
-echo "149" > /var/plexguide/pg.preinstall
-# Changing Number Results in Forcing Portions of PreInstaller to Execute
-echo "9" > /var/plexguide/pg.folders
-echo "13" > /var/plexguide/pg.rclone
-echo "10" > /var/plexguide/pg.docker
-echo "12" > /var/plexguide/server.id
-echo "23" > /var/plexguide/pg.dependency
-echo "10" > /var/plexguide/pg.docstart
-echo "2" > /var/plexguide/pg.watchtower
-echo "1" > /var/plexguide/pg.motd
-echo "87" > /var/plexguide/pg.alias
-echo "2" > /var/plexguide/pg.dep
-echo "2" > /var/plexguide/pg.cleaner
-echo "3" > /var/plexguide/pg.gcloud
-echo "12" > /var/plexguide/pg.hetzner
-echo "1" > /var/plexguide/pg.amazonaws
-echo "7.3" > /var/plexguide/pg.verionid
+echo "149" > ${abc}/pg.preinstall
+echo "9" > ${abc}/pg.folders
+echo "13" > ${abc}/pg.rclone
+echo "10" > ${abc}/pg.docker
+echo "12" > ${abc}/server.id
+echo "23" > ${abc}/pg.dependency
+echo "10" > ${abc}/pg.docstart
+echo "2" > ${abc}/pg.watchtower
+echo "1" > ${abc}/pg.motd
+echo "87" > ${abc}/pg.alias
+echo "2" > ${abc}/pg.dep
+echo "2" > ${abc}/pg.cleaner
+echo "3" > ${abc}/pg.gcloud
+echo "12" > ${abc}/pg.hetzner
+echo "1" > ${abc}/pg.amazonaws
+echo "7.3" > ${abc}/pg.verionid
 
 # Declare Variables Vital for Operations
 bash /opt/plexguide/install/declare.sh
 bash /opt/plexguide/install/aptupdate.sh
 
 ######################################################## START: New Install
-file="/var/plexguide/new.install"
+file="${abc}/new.install"
 if [ ! -e "$file" ]; then
-  touch /var/plexguide/pg.number && echo off > /tmp/program_source
-  bash /opt/plexguide/menu/interface/version/file.sh && touch /var/plexguide/new.install
+  touch ${abc}/pg.number && echo off > /tmp/program_source
+  bash /opt/plexguide/menu/interface/version/file.sh && touch ${abc}/new.install
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
