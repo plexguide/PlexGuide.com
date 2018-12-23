@@ -7,7 +7,6 @@
 ################################################################################
 starter () {
   abc="/var/plexguide"
-
 }
 
 core () {
@@ -26,6 +25,13 @@ rolestored () {
 
 alias () {
   ansible-playbook /opt/plexguide/menu/$1/${1}.yml
+}
+
+aptupdate () {
+  yes | apt-get update
+  yes | apt-get install software-properties-common
+  yes | apt-get install sysstat nmon
+  sed -i 's/false/true/g' /etc/default/sysstat
 }
 
 cleaner () {
