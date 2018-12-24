@@ -5,36 +5,47 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+touch /var/plexguide/server.id.stored
+start=$( cat /var/plexguide/server.id )
+stored=$( cat /var/plexguide/server.id.stored )
+
+if [ "$start" != "$stored" ]; then
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  Notice: Install PlexGuide
+↘️  ESTABLISHING ~ Server's Identification
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-You Agree by Installing PlexGuide, you are installing it within then
-accordance with the GNUv3 License?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️  WARNING: Use > One Word - All LowerCase & Keep it Simple!
 
 EOF
 
-# Ask User
-read -p "SELECT (y/n)? " -n 1 -r
+# Standby
+read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
 
-# Actions Based on Response
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-  echo
+  if [ "$typed" == "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  User Failed to Select [y] - Start Again? Type >>> bash install.sh
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-exit
-fi
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  Select Yes: Installing PlexGuide Shortly!
+⛔️  WARNING! - The Server ID Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
+bash /opt/plexguide/install/serverid.sh
+exit
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  PASS: ServerID Set
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+# Prevents From Repeating
+echo "$typed" > /var/plexguide/pg.serverid
+cat /var/plexguide/server.id > /var/plexguide/server.id.stored
+
+sleep 3
+fi
+
+fi
