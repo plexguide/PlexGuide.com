@@ -204,7 +204,7 @@ dockerinstall () {
 watchtower () {
 
   file="/var/plexguide/watchtower.wcheck"
-  if [ -e "$file" ]; then
+  if [ ! -e "$file" ]; then
   echo "4" > /var/plexguide/watchtower.wcheck
   fi
 
