@@ -21,8 +21,10 @@ updateprime() {
   variable /var/plexguide/pgfork.version "changeme"
   variable /var/plexguide/tld.program "portainer"
   variable /opt/appdata/plexguide/plextoken ""
-  variable /var/plexguide/server.ht "changeme"
-
+  variable /var/plexguide/server.ht ""
+  variable /var/plexguide/server.email "changeme@badmail.com"
+  variable /var/plexguide/server.domain "no.domain"
+  hostname -I | awk '{print $1}' > /var/plexguide/server.ip
   file="${abc}/server.hd.path"
   if [ ! -e "$file" ]; then echo "/mnt" > ${abc}/server.hd.path; fi
 
@@ -76,6 +78,7 @@ pginstall () {
   customcontainers
 
   pgedition
+  pgdeploy
 }
 
 core () {
@@ -168,6 +171,34 @@ newinstall () {
 
   EOF
   exit; fi
+}
+
+pgdeploy () {
+  touch /var/plexguide/pg.edition
+  edition=$( cat /var/plexguide/pg.edition )
+
+  if [ "$edition" == "PG Edition - GDrive" ]; then
+      bash /opt/plexguide/menu/start/start.sh
+      exit
+  elif [ "$edition" == "PG Edition - HD Multi" ]; then
+      bash /opt/plexguide/menu/start/start.sh
+      exit
+  elif [ "$edition" == "PG Edition - HD Solo" ]; then
+      bash /opt/plexguide/menu/start/start.sh
+      exit
+  elif [ "$edition" == "PG Edition - GCE Feed" ]; then
+      bash /opt/plexguide/menu/start/start.sh
+      exit
+  else
+      file="/var/plexguide/pg.preinstall.stored"
+      if [ -e "$file" ]; then
+        touch /var/plexguide/pg.edition
+        bash /opt/plexguide/menu/interface/install/scripts/edition.sh
+        bash /opt/plexguide/menu/start/start.sh
+      else
+        bash /opt/plexguide/menu/start/start.sh
+      fi
+  fi
 }
 
 pgedition () {
