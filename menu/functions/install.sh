@@ -15,7 +15,7 @@ updateprime() {
   echo "13" > ${abc}/pg.rcloneprime
   echo "10" > ${abc}/pg.dockerinstall
   echo "12" > ${abc}/server.id
-  echo "23" > ${abc}/pg.dependency
+  echo "24" > ${abc}/pg.dependency
   echo "10" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.motd
