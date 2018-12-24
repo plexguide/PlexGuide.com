@@ -11,6 +11,11 @@ updateprime() {
   abc="/var/plexguide"
   mkdir -p ${abc}
 
+  file="${abc}/server.hd.path"
+  if [ ! -e "$file" ]; then echo "/mnt" > ${abc}/server.hd.path; fi
+
+  newinstall
+
   ospgversion=$(cat /etc/*-release | grep Debian | grep 9)
   if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
   else echo "ubuntu" > ${abc}/os.version; fi
@@ -135,6 +140,22 @@ gcloud () {
 
 motd () {
   ansible-playbook /opt/plexguide/menu/motd/motd.yml
+}
+
+newinstall () {
+  rm -rf /var/plexguide/pg.exit 1>/dev/null 2>&1
+  file="${abc}/new.install"
+  if [ ! -e "$file" ]; then
+    touch ${abc}/pg.number && echo off > /tmp/program_source
+    bash /opt/plexguide/menu/interface/version/file.sh && touch ${abc}/new.install
+  tee <<-EOF
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ↘️  Start AnyTime By Typing >>> plexguide
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  EOF
+  exit; fi
 }
 
 pgedition () {
