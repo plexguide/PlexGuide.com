@@ -201,7 +201,12 @@ dockerinstall () {
 }
 
 watchtower () {
-  touch /var/plexguide/watchtower.wcheck
+
+  file="/var/plexguide/watchtower.wcheck"
+  if [ -e "$file" ]; then
+  echo "4" > /var/plexguide/watchtower.wcheck
+  fi
+
   wcheck="/var/plexguide/watchtower.wcheck"
     if [[ "$wcheck" -ge "1" && "$wcheck" -le "3" ]]; then
     wexit="1"
