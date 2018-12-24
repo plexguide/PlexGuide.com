@@ -208,7 +208,8 @@ watchtower () {
   fi
 
   wcheck="/var/plexguide/watchtower.wcheck"
-    if [[ "$wcheck" -ge "1" && "$wcheck" -le "3" ]]; then wexit="1";
+    if [[ "$wcheck" -ge "1" && "$wcheck" -le "3" ]]; then
+    wexit="1"
     else wexit=0; fi
 tee <<-EOF
 
