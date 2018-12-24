@@ -63,19 +63,19 @@ pginstall () {
   updateprime
   core pythonstart
   core aptupdate
-  core alias
-  core folders
+  core alias &>/dev/null &
+  core folders &>/dev/null &
   core dependency
-  core docstart
   core dockerinstall
+  core docstart
   portainer
-  core motd
+  core motd &>/dev/null &
   core hetzner &>/dev/null &
-  core gcloud &>/dev/null &
+  core gcloud
   core rcloneprime
   core cleaner &>/dev/null &
   core watchtower
-  customcontainers
+  customcontainers &>/dev/null &
 
   pgedition
   pgdeploy
