@@ -71,7 +71,7 @@ bash /opt/plexguide/install/alias.sh
 bash /opt/plexguide/install/motd.sh &>/dev/null &
 
 ### Group Together
-bash /opt/plexguide/install/serverid.sh
+bash /opt/plexguide/menu/serverid/serverid.sh
 bash /opt/plexguide/install/dependency.sh
 bash /opt/plexguide/install/folders.sh
 bash /opt/plexguide/install/docker.sh
