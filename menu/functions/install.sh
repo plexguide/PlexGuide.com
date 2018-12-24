@@ -48,7 +48,7 @@ if [ "$start" != "$stored" ]; then
 ############################################################ INSTALLER FUNCTIONS
 alias () {
   corestart
-  ansible-playbook /opt/plexguide/menu/${role}/${role}.yml
+  ansible-playbook /opt/plexguide/menu/${1}/${1}.yml
   corefinish
 }
 
