@@ -82,12 +82,12 @@ pginstall () {
 }
 
 core () {
-    touch /var/plexguide/pg.${1}.stored
-    start=$(cat /var/plexguide/pg.${1})
-    stored=$(cat /var/plexguide/pg.${1}.stored)
+    touch /var/plexguide/pg."${1}".stored
+    start=$(cat /var/plexguide/pg."${1}")
+    stored=$(cat /var/plexguide/pg."${1}".stored)
     if [ "$start" != "$stored" ]; then
       $1
-      cat /var/plexguide/pg.${1} > /var/plexguide/pg.${1}.stored;
+      cat /var/plexguide/pg."${1}" > /var/plexguide/pg."${1}".stored;
     fi
 }
 
@@ -218,10 +218,10 @@ pgedition () {
 }
 
 portainer () {
-dstatus=$(docker ps --format '{{.Names}}' | grep "portainer")
-if [ "$dstatus" != "portainer" ]; then
-ansible-playbook /opt/plexguide/containers/portainer.yml &>/dev/null &
-fi
+  dstatus=$(docker ps --format '{{.Names}}' | grep "portainer")
+  if [ "$dstatus" != "portainer" ]; then
+  ansible-playbook /opt/plexguide/containers/portainer.yml &>/dev/null &
+  fi
 }
 
 pythonstart () {
