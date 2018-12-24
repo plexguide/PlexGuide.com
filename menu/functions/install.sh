@@ -223,8 +223,8 @@ Z - Exit
 EOF
 
   # Standby
-  read -p 'Type a Number | Press [ENTER]: ' wcheck < /dev/tty
-  if [ "$wcheck" == "1" ]; then
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  if [ "$typed" == "1" ]; then
     watchtowergen
     ansible-playbook /opt/plexguide/containers/watchtower.yml
     echo "1" > /var/plexguide/watchtower.wcheck
