@@ -37,7 +37,7 @@ pginstall () {
   core motd
   core hetzner
   core gcloud
-  core rclone
+  core rcloneprime
 }
 
 core () {
@@ -132,7 +132,7 @@ pythonstart () {
   touch /var/plexguide/background.1
 }
 
-rclone () {
+rcloneprime () {
   ansible-playbook /opt/plexguide/menu/pg.yml --tags rcloneinstall
 
 tee "/etc/fuse.conf" > /dev/null <<EOF
