@@ -81,7 +81,7 @@ else
     if [ -e "$file" ]; then
       touch /var/plexguide/pg.edition
       bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-      bash /opt/plexguide/pg.sh
+      #bash /opt/plexguide/pg.sh
     fi
 fi
 
