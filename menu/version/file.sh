@@ -11,7 +11,7 @@ placeholder=0
 while [ "$placeholder" == "0" ]; do
   file="/opt/pgstage/place.holder"
   if [ -e "$file" ]; then
-  echo placeholder="1"; fi
+  placeholder="1"; fi
 done
 
 ## Builds Version List for Display
