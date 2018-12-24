@@ -250,5 +250,8 @@ EOF
     echo "SET" > /var/plexguide/watchtower.id
   elif [[ "$typed" == "Z" && "$typed" != "z" ]]; then
   exit
+  else
+  badinput
+  watchtower
   fi
 }
