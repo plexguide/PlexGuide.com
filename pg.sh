@@ -48,6 +48,10 @@ bash /opt/plexguide/install/yml-gen.sh
 
 # Declare Variables Vital for Operations
 bash /opt/plexguide/install/declare.sh
+
+rm -rf /var/plexguide/pg.exit 1>/dev/null 2>&1
+
+
 bash /opt/plexguide/install/aptupdate.sh
 
 ######################################################## START: New Install
