@@ -14,10 +14,6 @@ while [ "$placeholder" == "0" ]; do
   placeholder="1"; fi
 done
 
-## Builds Version List for Display
-while read p; do
-  echo $p >> /var/plexguide/ver.temp
-done </opt/plexguide/menu/interface/version/version.sh
 latest=$(cat /opt/pgstage/versions.sh | head -n1)
 
 tee <<-EOF
@@ -29,12 +25,12 @@ tee <<-EOF
 ✅  Latest Version: $latest
     Prior Versions? Visit > versions.plexguide.com
 
-💬 Quitting? TYPE > exit
+💬  Quitting? TYPE > exit
 EOF
 
 break=no
 while [ "$break" == "no" ]; do
-read -p '🌍 TYPE a PG Version | PRESS ENTER: ' typed
+read -p '🌍  TYPE a PG Version | PRESS ENTER: ' typed
 storage=$(grep $typed /opt/pgstage/versions.sh)
 
 if [ "$typed" == "exit" ]; then
