@@ -20,9 +20,17 @@ tee <<-EOF
 📂  PG Update Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+
+
+✅  Latest Version: $latest
+
+💍  [EDGE] - Not recommended (for testing)
+7.6edge
+
 EOF
 
-cat /var/plexguide/ver.temp
+cat /opt/plexguide/version.sh
+#cat /var/plexguide/ver.temp
 echo ""
 echo "To QUIT, type >>> exit"
 break=no
