@@ -1,45 +1,6 @@
 #!/bin/bash
-export NCURSES_NO_UTF8_ACS=1
 
-### GEN STARTED
-bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh &>/dev/null &
 
-###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
-file="/var/plexguide"
-if [ ! -e "$file" ]; then
-   mkdir -p /var/plexguide 1>/dev/null 2>&1
-   chown 0755 /var/plexguide 1>/dev/null 2>&1
-   chmod 1000:1000 /var/plexguide 1>/dev/null 2>&1
-fi
-
-file="/opt/appdata/plexguide"
-if [ ! -e "$file" ]; then
-   mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
-   chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
-   chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
-fi
-
-###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
-file="/var/plexguide/pgfork.project"
-if [ ! -e "$file" ]; then
-   echo "UPDATE ME" > /var/plexguide/pgfork.project
-fi
-
-file="/var/plexguide/pgfork.version"
-if [ ! -e "$file" ]; then
-   echo "changeme" > /var/plexguide/pgfork.version
-fi
-
-file="/var/plexguide/tld.program"
-if [ ! -e "$file" ]; then
-   touch /var/plexguide/tld.program
-   echo "portainer" > /var/plexguide/tld.program
-fi
-
-file="/opt/appdata/plexguide/plextoken"
-if [ ! -e "$file" ]; then
-   touch /opt/appdata/plexguide/plextoken
-fi
 
 file="touch /var/plexguide/server.ht"
 if [ ! -e "$file" ]; then

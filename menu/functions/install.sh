@@ -10,6 +10,18 @@ source /opt/plexguide/menu/functions/functions.sh
 updateprime() {
   abc="/var/plexguide"
   mkdir -p ${abc}
+  chown 0755 ${abc}
+  chmod 1000:1000 ${abc}
+
+  mkdir -p /opt/appdata/plexguide
+  chown 0755 /opt/appdata/plexguide
+  chmod 1000:1000 /opt/appdata/plexguide
+
+  variable /var/plexguide/pgfork.project "UPDATE ME"
+  variable /var/plexguide/pgfork.version "changeme"
+  variable /var/plexguide/tld.program "portainer"
+  variable /opt/appdata/plexguide/plextoken ""
+  variable /var/plexguide/server.ht "changeme"
 
   file="${abc}/server.hd.path"
   if [ ! -e "$file" ]; then echo "/mnt" > ${abc}/server.hd.path; fi
