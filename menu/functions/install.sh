@@ -13,7 +13,7 @@ updateprime() {
   echo "149" > ${abc}/pg.preinstall
   echo "9" > ${abc}/pg.folders
   echo "13" > ${abc}/pg.rcloneprime
-  echo "10" > ${abc}/pg.docker
+  echo "10" > ${abc}/pg.dockerinstall
   echo "12" > ${abc}/server.id
   echo "23" > ${abc}/pg.dependency
   echo "10" > ${abc}/pg.docstart
@@ -34,10 +34,12 @@ pginstall () {
   core aptupdate
   core alias
   core folders
+  core dockerinstall
   core motd
   core hetzner
   core gcloud
   core rcloneprime
+  core cleaner
 }
 
 core () {
@@ -143,4 +145,39 @@ tee "/etc/fuse.conf" > /dev/null <<EOF
 # Allow non-root users to specify the allow_other or allow_root mount options.
 user_allow_other
 EOF
+}
+
+dockerinstall () {
+  ospgversion=$(cat /var/plexguide/os.version)
+  if [ "$ospgversion" == "debian" ]; then
+    ansible-playbook /opt/plexguide/menu/pg.yml --tags dockerdeb
+  else
+    ansible-playbook /opt/plexguide/menu/pg.yml --tags docker
+    # If Docker FAILED, Emergency Install
+    file="/usr/bin/docker"
+    if [ ! -e "$file" ]; then
+        clear
+        echo "Installing Docker the Old School Way - (Please Be Patient)"
+        sleep 2
+        clear
+        curl -fsSL get.docker.com -o get-docker.sh
+        sh get-docker.sh
+        echo ""
+        echo "Starting Docker (Please Be Patient)"
+        sleep 2
+        systemctl start docker
+        sleep 2
+    fi
+
+    ##### Checking Again, if fails again; warns user
+    file="/usr/bin/docker"
+    if [ -e "$file" ]
+      then
+      echo "INFO - SUCCESS: Docker Installed!"
+      sleep 5
+    else
+      echo "INFO - FAILED: Docker Failed to Install! Exiting PlexGuide!"
+        exit
+      fi
+  fi
 }
