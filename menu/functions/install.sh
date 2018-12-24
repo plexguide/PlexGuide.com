@@ -65,9 +65,9 @@ cleaner () {
 }
 
 folders () {
-  corestart
+  corestart $1
   ansible-playbook /opt/plexguide/menu/folders/main.yml
-  corefinish
+  corefinish $1
 }
 
 hetzner () {
