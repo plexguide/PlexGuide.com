@@ -1,10 +1,9 @@
+WARNING: No More Updates Provided! Must rerun the v2 Installer. Please
+read the post on the front page in regards to 7.6
+
 ✅  [CURRENT]
 7.5.13
 7.5.4
-
-💍  [BETA] - Avoid Using Edge! For Testing & No Support!
-7.6edge
-7.5edge
 
 💊  [DEPRECIATED]
 7.5.3
