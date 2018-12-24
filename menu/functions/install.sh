@@ -35,12 +35,14 @@ pginstall () {
   core alias
   core folders
   core dependency
+  core docstart
   core dockerinstall
   core motd
   core hetzner
   core gcloud
   core rcloneprime
   core cleaner
+
 }
 
 core () {
@@ -77,6 +79,10 @@ dependency () {
     ansible-playbook /opt/plexguide/menu/dependency/dependencydeb.yml;
   else
     ansible-playbook /opt/plexguide/menu/dependency/dependency.yml; fi
+}
+
+docstart () {
+   ansible-playbook /opt/plexguide/pg.yml --tags docstart
 }
 
 folders () {
