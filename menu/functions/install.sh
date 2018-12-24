@@ -37,6 +37,7 @@ pginstall () {
   core motd
   core hetzner
   core gcloud
+  core rclone
 }
 
 core () {
