@@ -82,7 +82,7 @@ dependency () {
 }
 
 docstart () {
-   ansible-playbook /opt/plexguide/pg.yml --tags docstart
+   ansible-playbook /opt/plexguide/menu/pg.yml --tags docstart
 }
 
 folders () {
