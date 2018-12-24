@@ -23,13 +23,13 @@ latest=$(cat /opt/pgstage/versions.sh | head -n1)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📂  PG Update Interface Menu    📓 Reference: http://update.plexguide.com
+📂  PG Update Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅  Latest Version: $latest
-    Prior versions listing? Visit versions.plexguide.com
+    Prior Versions? Visit > versions.plexguide.com
 
-💬 Quitting? TYPE > exit"
+💬 Quitting? TYPE > exit
 EOF
 
 break=no
