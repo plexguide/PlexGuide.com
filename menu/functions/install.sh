@@ -38,7 +38,7 @@ updateprime() {
   sudo mkdir -p /opt/plexguide/menu/interface/version/
 
   #sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
-  git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage
+  git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage &>/dev/null &
 
   echo "50" > ${abc}/pg.pythonstart
   echo "10" > ${abc}/pg.aptupdate
