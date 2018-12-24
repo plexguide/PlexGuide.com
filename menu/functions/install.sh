@@ -202,13 +202,8 @@ watchtower () {
   file="/var/plexguide/watchtower.id"
     if [ ! -e "$file" ]; then
       echo "Checked" > /var/plexguide/watchtower.id
-    else
-      exit
-    fi
-
+    else exit; fi
     wcheck=$(cat /var/plexguide/watchtower.id)
-
-# Menu Interface
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
