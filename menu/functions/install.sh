@@ -217,7 +217,7 @@ tee <<-EOF
 📂  PG WatchTower Edition          📓 Reference: watchtower.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 WatchTower updates your containers soon as possible!
+💬  WatchTower updates your containers soon as possible!
 
 1 - Containers: Auto-Update All
 2 - Containers: Auto-Update All Except | Plex & Emby
