@@ -16,12 +16,12 @@ core () {
     role=$(echo $1)
 
 if [ "$start" != "$stored" ]; then
-  $role
+  $1
   rolestored; fi
 }
 
 rolestored () {
-  cat /var/plexguide/pg.{$role} > /var/plexguide/pg.{$role}.stored
+  cat /var/plexguide/pg.{$1} > /var/plexguide/pg.{$1}.stored
 }
 
 ############################################################ INSTALLER FUNCTIONS
