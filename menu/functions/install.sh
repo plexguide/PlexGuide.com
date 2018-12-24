@@ -8,6 +8,8 @@
 updateprime() {
   abc="/var/plexguide"
   mkdir -p ${abc}
+  echo "50" > ${abc}/pg.pythonstart
+  echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
   echo "9" > ${abc}/pg.folders
   echo "13" > ${abc}/pg.rclone
