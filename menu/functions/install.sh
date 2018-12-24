@@ -51,10 +51,10 @@ pginstall () {
   core dockerinstall
   portainer
   core motd
-  core hetzner
-  core gcloud
+  core hetzner &>/dev/null &
+  core gcloud &>/dev/null &
   core rcloneprime
-  core cleaner
+  core cleaner &>/dev/null &
   core watchtower
   customcontainers
 
