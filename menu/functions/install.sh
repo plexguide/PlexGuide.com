@@ -47,7 +47,9 @@ if [ "$start" != "$stored" ]; then
 
 ############################################################ INSTALLER FUNCTIONS
 alias () {
+  corestart
   ansible-playbook /opt/plexguide/menu/${role}/${role}.yml
+  corefinish
 }
 
 aptupdate () {
@@ -64,7 +66,9 @@ cleaner () {
 }
 
 folders () {
+  corestart
   ansible-playbook /opt/plexguide/menu/folders/main.yml
+  corefinish
 }
 
 hetzner () {
