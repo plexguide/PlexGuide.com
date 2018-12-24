@@ -34,6 +34,7 @@ pginstall () {
   core aptupdate
   core alias
   core folders
+  core dependency
   core dockerinstall
   core motd
   core hetzner
@@ -68,6 +69,14 @@ cleaner () {
   ansible-playbook /opt/plexguide/menu/pg.yml --tags autodelete &>/dev/null &
   ansible-playbook /opt/plexguide/menu/pg.yml --tags clean &>/dev/null &
   ansible-playbook /opt/plexguide/menu/pg.yml --tags clean-encrypt &>/dev/null &
+}
+
+dependency () {
+  ospgversion=$(cat /var/plexguide/os.version)
+  if [ "$ospgversion" == "debian" ]; then
+    ansible-playbook /opt/plexguide/menu/dependency/dependencydeb.yml;
+  else
+    ansible-playbook /opt/plexguide/menu/dependency/dependency.yml; fi
 }
 
 folders () {
