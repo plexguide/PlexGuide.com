@@ -33,10 +33,9 @@ pginstall () {
 }
 
 corestart () {
-    touch /var/plexguide/pg.$1.stored
-    start=$(cat /var/plexguide/pg.$1)
-    stored=$(cat /var/plexguide/pg.$1.stored)
-    role=$(echo $1)
+    touch /var/plexguide/pg.${1}.stored
+    start=$(cat /var/plexguide/pg.${1})
+    stored=$(cat /var/plexguide/pg.${1}.stored)
 }
 
 corefinish () {
