@@ -37,7 +37,7 @@ EOF
 break=no
 while [ "$break" == "no" ]; do
 read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed
-storage=$(grep $typed /var/plexguide/ver.temp)
+storage=$(grep $typed /opt/pgstage/versions.sh)
 
 if [ "$typed" == "exit" ]; then
   echo ""
@@ -48,15 +48,15 @@ fi
 if [ "$storage" != "" ]; then
   break=yes
   echo $storage > /var/plexguide/pg.number
-  ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
+  ansible-playbook /opt/plexguide/menu/version/choice.yml
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  SYSTEM MESSAGE: Installed Verison - $storage - Standby!
+✅️  SYSTEM MESSAGE: Installing Verison - $storage - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 4
+sleep 2
 else
 tee <<-EOF
 
@@ -64,7 +64,7 @@ tee <<-EOF
 ⛔️  SYSTEM MESSAGE: Version $storage does not exist! - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 4
+  sleep 2
   cat /var/plexguide/ver.temp
   echo ""
 fi
