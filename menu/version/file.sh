@@ -29,14 +29,12 @@ tee <<-EOF
 ✅  Latest Version: $latest
     Prior versions listing? Visit versions.plexguide.com
 
-💍  Testing Only - 7.6edge
-
 💬 Quitting? TYPE > exit"
 EOF
 
 break=no
 while [ "$break" == "no" ]; do
-read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed
+read -p '🌍 TYPE a PG Version | PRESS ENTER: ' typed
 storage=$(grep $typed /opt/pgstage/versions.sh)
 
 if [ "$typed" == "exit" ]; then
