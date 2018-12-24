@@ -87,8 +87,6 @@ customcontainers () {
 mkdir -p /opt/mycontainers
 touch /opt/appdata/plexguide/rclone.conf
 rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/plexguide/containers
-chmod 775 /opt/plexguide/mycontainers
-chown 1000:1000 /opt/plexguide/mycontainers
 
 file="/opt/mycontainers/_template.yml"
 if [ ! -e "$file" ]; then
