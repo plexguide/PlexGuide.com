@@ -214,10 +214,10 @@ watchtower () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📂  PG WatchTower Edition
+📂  PG WatchTower Edition          📓 Reference: watchtower.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️  NOTE: WatchTower updates your containers soon as possible!
+💬 WatchTower updates your containers soon as possible!
 
 1 - Containers: Auto-Update All
 2 - Containers: Auto-Update All Except | Plex & Emby
@@ -248,7 +248,7 @@ EOF
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️  Unable to Exit! You Must set a WatchTower Preference Once!
+⚠️  WatchTower Preference Must be Set Once!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
     sleep 3
