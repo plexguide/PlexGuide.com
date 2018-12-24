@@ -18,6 +18,7 @@ done
 while read p; do
   echo $p >> /var/plexguide/ver.temp
 done </opt/plexguide/menu/interface/version/version.sh
+latest=$(cat /opt/pgstage/versions.sh | head -n1)
 
 tee <<-EOF
 

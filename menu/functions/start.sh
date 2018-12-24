@@ -22,9 +22,8 @@ fi
 }
 
 versioncheck() {
-  sudo rm -rf /opt/plexguide/menu/interface/version/version.sh
-  sudo mkdir -p /opt/plexguide/menu/interface/version/
-  rm -rf /opt/pgstage/place.holder 1>/dev/null 2>&1
+  sudo rm -rf /opt/pgstage
+  sudo mkdir -p /opt/pgstage
   git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage &>/dev/null &
   #sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
 }
@@ -67,7 +66,7 @@ EOF
 }
 
 exitcheck() {
-bash /opt/plexguide/menu/interface/version/file.sh
+bash /opt/plexguide/menu/version/file.sh
 file="/var/plexguide/exited.upgrade"
 if [ ! -e "$file" ]; then
 	bash /opt/plexguide/menu/ending/ending.sh
