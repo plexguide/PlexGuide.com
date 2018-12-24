@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705 - Deiteq
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Register Project
+      shell: "cat /var/plexguide/pg.number"
+      register: serverid
+
+    - name: "Installing Version {{serverid.stdout}}"
+      git:
+        repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
+        dest: "/opt/plexguide"
+        version: "{{serverid.stdout}}"
+        force: yes
+      when: not serverid.stdout == "edge"
+      ignore_errors: True
+
+    - name: "Stops First Time Run"
+      shell: "touch /var/plexguide/ask.yes"
+      register: program
