@@ -38,7 +38,7 @@ core () {
     stored=$(cat /var/plexguide/pg.${1}.stored)
     if [ "$start" != "$stored" ]; then
       $1
-      cat /var/plexguide/pg.{$1} > /var/plexguide/pg.{$1}.stored;
+      cat /var/plexguide/pg.${1} > /var/plexguide/pg.${1}.stored;
     fi
 }
 
