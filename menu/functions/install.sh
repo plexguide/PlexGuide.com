@@ -208,8 +208,7 @@ watchtower () {
   fi
 
   wcheck="/var/plexguide/watchtower.wcheck"
-    if [[ "$wcheck" -ge "1" && "$wcheck" -le "3" ]]; then
-    wexit="1"
+    if [[ "$wcheck" -ge "1" && "$wcheck" -le "3" ]]; then wexit="1";
     else wexit=0; fi
 tee <<-EOF
 
@@ -244,7 +243,7 @@ EOF
     ansible-playbook /opt/plexguide/containers/watchtower.yml
     echo "3" > /var/plexguide/watchtower.wcheck
   elif [[ "$typed" == "Z" || "$typed" != "z" ]]; then
-    if [ "$wcheck" == "0" ]; then
+    if [ "$wexit" == "0" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
