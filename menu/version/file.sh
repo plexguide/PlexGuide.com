@@ -37,12 +37,10 @@ storage=$(grep $typed /opt/pgstage/versions.sh)
 parttwo
 }
 
-partwo() {
+parttwo() {
 if [ "$typed" == "exit" ]; then
   echo ""; touch /var/plexguide/exited.upgrade; exit
 fi
-
-
 
 if [ "$storage" != "" ]; then
   break=yes
