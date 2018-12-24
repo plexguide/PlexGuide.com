@@ -12,7 +12,7 @@ starter () {
 core () {
     touch /var/plexguide/pg.$1.stored
     start=$(cat /var/plexguide/pg.$1)
-    stored=$(cat /varplexguide/pg.$1.stored)
+    stored=$(cat /var/plexguide/pg.$1.stored)
     role=$(echo $1)
 
 if [ "$start" != "$stored" ]; then
