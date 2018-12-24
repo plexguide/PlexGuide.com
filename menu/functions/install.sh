@@ -34,10 +34,8 @@ updateprime() {
   if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
   else echo "ubuntu" > ${abc}/os.version; fi
 
-  rm -rf /opt/plexguide/menu/interface/version/version.sh
-  sudo mkdir -p /opt/plexguide/menu/interface/version/
-
-  #sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
+  rm -rf /opt/pgstage
+  sudo mkdir -p /opt/pgstate
   git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage &>/dev/null &
 
   echo "50" > ${abc}/pg.pythonstart
@@ -165,7 +163,8 @@ newinstall () {
   file="${abc}/new.install"
   if [ ! -e "$file" ]; then
     touch ${abc}/pg.number && echo off > /tmp/program_source
-    bash /opt/plexguide/menu/interface/version/file.sh && touch ${abc}/new.install
+    bash /opt/plexguide/menu/version/version.sh
+    touch ${abc}/new.install
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
