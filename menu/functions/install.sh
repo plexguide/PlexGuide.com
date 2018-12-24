@@ -13,19 +13,20 @@ core () {
     touch /var/plexguide/pg.$1.stored
     start=$(cat /var/plexguide/pg.$1)
     stored=$(cat /varplexguide/pg.$1.stored)
+    role=$(echo $1)
 
 if [ "$start" != "$stored" ]; then
-  $1
+  $role
   rolestored; fi
 }
 
 rolestored () {
-  cat /var/plexguide/pg.$1 > /var/plexguide/pg.$1.stored
+  cat /var/plexguide/pg.{$role} > /var/plexguide/pg.{$role}.stored
 }
 
 ############################################################ INSTALLER FUNCTIONS
 alias () {
-  ansible-playbook /opt/plexguide/menu/$1/${1}.yml
+  ansible-playbook /opt/plexguide/menu/${role}/${role}.yml
 }
 
 aptupdate () {
