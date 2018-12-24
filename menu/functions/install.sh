@@ -10,6 +10,15 @@ source /opt/plexguide/menu/functions/functions.sh
 updateprime() {
   abc="/var/plexguide"
   mkdir -p ${abc}
+
+  ospgversion=$(cat /etc/*-release | grep Debian | grep 9)
+  if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
+  else echo "ubuntu" > ${abc}/os.version; fi
+
+  rm -rf /opt/plexguide/menu/interface/version/version.sh
+  sudo mkdir -p /opt/plexguide/menu/interface/version/
+  sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
+
   echo "50" > ${abc}/pg.pythonstart
   echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
@@ -40,6 +49,7 @@ pginstall () {
   core dependency
   core docstart
   core dockerinstall
+  portainer # reinstalls portainer over and over :D
   core motd
   core hetzner
   core gcloud
@@ -47,6 +57,7 @@ pginstall () {
   core cleaner
   core watchtower
 
+  pgedition
 }
 
 core () {
@@ -69,6 +80,19 @@ aptupdate () {
   yes | apt-get install software-properties-common
   yes | apt-get install sysstat nmon
   sed -i 's/false/true/g' /etc/default/sysstat
+}
+
+customcontainers () {
+mkdir -p /opt/mycontainers
+touch /opt/appdata/plexguide/rclone.conf
+rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/* /opt/plexguide/containers
+chmod 775 /opt/plexguide/mycontainers
+chown 1000:1000 /opt/plexguide/mycontainers
+
+file="/opt/mycontainers/_template.yml"
+if [ ! -e "$file" ]; then
+yes | cp -rf /opt/plexguide/containers/_template.yml /opt/mycontainers
+fi
 }
 
 cleaner () {
@@ -112,6 +136,29 @@ gcloud () {
 
 motd () {
   ansible-playbook /opt/plexguide/menu/motd/motd.yml
+}
+
+pgedition () {
+  file="${abc}/path.check"
+  if [ ! -e "$file" ]; then touch ${abc}/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
+
+  # FOR MULTI-HD EDITION
+  file="${abc}/multi.unionfs"
+    if [ ! -e "$file" ]; then touch ${abc}/multi.unionfs; fi
+  # FOR PG-BLITZ
+  file="${abc}/project.deployed"
+    if [ ! -e "$file" ]; then echo "no" > ${abc}/project.deployed; fi
+  file="${abc}/project.keycount"
+    if [ ! -e "$file" ]; then echo "0" > ${abc}/project.keycount; fi
+  file="${abc}/pg.serverid"
+    if [ ! -e "$file" ]; then echo "[NOT-SET]" > ${abc}/pg.serverid; fi
+}
+
+portainer () {
+dstatus=$(docker ps --format '{{.Names}}' | grep "portainer")
+if [ "$dstatus" != "portainer" ]; then
+ansible-playbook /opt/plexguide/containers/portainer.yml &>/dev/null &
+fi
 }
 
 pythonstart () {
