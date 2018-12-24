@@ -64,7 +64,6 @@ bash /opt/plexguide/menu/scripts/startup/certchecker.sh &
 cp /opt/appdata/plexguide/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
 # run pg main
-bash /opt/plexguide/pg.sh
 file="/var/plexguide/update.failed"
 if [ -e "$file" ]; then rm -rf /var/plexguide/update.failed
   exit; fi
@@ -81,7 +80,7 @@ else
     if [ -e "$file" ]; then
       touch /var/plexguide/pg.edition
       bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-      #bash /opt/plexguide/pg.sh
+      #bash-/opt/plexguide/pg.sh
     fi
 fi
 
