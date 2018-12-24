@@ -28,7 +28,7 @@ tee <<-EOF
 
 ✅  Latest Version: $latest
 
-💬 Quitting? TYPE > exit
+💬 Quitting? TYPE > exit | ⏩  Prior Versions? Visit versions.plexguide.com
 EOF
 
 break=no
