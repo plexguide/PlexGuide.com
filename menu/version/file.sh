@@ -5,10 +5,15 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-rm -rf /var/plexguide/ver.temp 1>/dev/null 2>&1
-touch /var/plexguide/ver.temp
 
-sleep 1
+# wait for place.holder to show up
+placeholder=0
+while [ "$placeholder" == "0" ]; do
+  file="/opt/pgstage/place.holder"
+  if [ -e "$file" ]; then
+  echo placeholder="1"; fi
+done
+
 ## Builds Version List for Display
 while read p; do
   echo $p >> /var/plexguide/ver.temp
@@ -17,10 +22,9 @@ done </opt/plexguide/menu/interface/version/version.sh
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📂  PG Update Interface Menu
+📂  PG Update Interface Menu    📓 Reference: http://update.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
+💬  Visit http://versions.plexguide.com the list of prior PG Versions
 
 ✅  Latest Version: $latest
 
