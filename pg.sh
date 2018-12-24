@@ -45,24 +45,6 @@ if [ ! -e "$file" ]; then echo "/mnt" > ${abc}/server.hd.path; fi
 # Generate Default YML
 bash /opt/plexguide/install/yml-gen.sh
 # Ensure Default Folder Is Created
-mkdir -p ${abc}
-
-echo "149" > ${abc}/pg.preinstall
-echo "9" > ${abc}/pg.folders
-echo "13" > ${abc}/pg.rclone
-echo "10" > ${abc}/pg.docker
-echo "12" > ${abc}/server.id
-echo "23" > ${abc}/pg.dependency
-echo "10" > ${abc}/pg.docstart
-echo "2" > ${abc}/pg.watchtower
-echo "1" > ${abc}/pg.motd
-echo "87" > ${abc}/pg.alias
-echo "2" > ${abc}/pg.dep
-echo "2" > ${abc}/pg.cleaner
-echo "3" > ${abc}/pg.gcloud
-echo "12" > ${abc}/pg.hetzner
-echo "1" > ${abc}/pg.amazonaws
-echo "7.3" > ${abc}/pg.verionid
 
 # Declare Variables Vital for Operations
 bash /opt/plexguide/install/declare.sh

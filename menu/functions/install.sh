@@ -26,20 +26,23 @@ updateprime() {
   echo "7.3" > ${abc}/pg.verionid
 }
 
-core () {
-    updateprime
+pginstall () {
+  updateprime
+  alias alias
+  folders folders
+}
+
+corestart () {
     touch /var/plexguide/pg.$1.stored
     start=$(cat /var/plexguide/pg.$1)
     stored=$(cat /var/plexguide/pg.$1.stored)
     role=$(echo $1)
-
-if [ "$start" != "$stored" ]; then
-  $1
-  rolestored; fi
 }
 
-rolestored () {
-  cat /var/plexguide/pg.{$1} > /var/plexguide/pg.{$1}.stored
+corefinish () {
+if [ "$start" != "$stored" ]; then
+  $1
+  cat /var/plexguide/pg.{$1} > /var/plexguide/pg.{$1}.stored; fi
 }
 
 ############################################################ INSTALLER FUNCTIONS
