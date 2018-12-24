@@ -1,68 +1,18 @@
 #!/bin/bash
 #
-# [Ansible Role]
-#
-# GitHub:     https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Maintainer: Admin9705 & Deiteq
-# URL:        https://plexguide.com
-#
-# PlexGuide Copyright (C) 2018 PlexGuide.com
-# Licensed under GNU General Public License v3.0 GPL-3 (in short)
-#
-#   You may copy, distribute and modify the software as long as you track
-#   changes/dates in source files. Any modifications to our software
-#   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions.
-#
-#################################################################################
-if [[ $EUID -ne 0 ]]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  You Must Execute as a SUDO USER (with sudo) or as ROOT!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-exit 1
-fi
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/start.sh
 
 mkdir -p /opt/plexguide/roles/log
 mkdir -p /var/plexguide
 mkdir -p /opt/appdata/plexguide
 
-# If PlexGuide is Missing, it will redownload it
-file="/opt/plexguide/pg.sh"
-if [ ! -e "$file" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  /opt/plexguide went missing!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-sleep 3
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- 🍖  NOM NOM - Re-Downloading PlexGuide for BoneHead User!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 3
-
-rm -rf /opt/plexguide
-git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
-cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  Repair Complete! Restaring Shortly!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-sleep 3
-fi
-
-bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh 1>/dev/null 2>&1
-bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh &>/dev/null &
-sudo bash /opt/plexguide/menu/start/start.sh
+sudocheck
+versioncheck
+missingpull
+pgdeploy

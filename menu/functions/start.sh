@@ -27,6 +27,12 @@ versioncheck() {
   sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
 }
 
+downloadpg() {
+  rm -rf /opt/plexguide
+  git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
+  cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
+}
+
 missingpull() {
 file="/opt/plexguide/menu/functions/install.sh"
 if [ ! -e "$file" ]; then
@@ -46,7 +52,9 @@ tee <<-EOF
 EOF
 sleep 2
   versioncheck
+  downloadpg
 tee <<-EOF
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️  Repair Complete! Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
