@@ -5,6 +5,8 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /opt/plexguide/menu/functions/functions.sh
+
 updateprime() {
   abc="/var/plexguide"
   mkdir -p ${abc}
