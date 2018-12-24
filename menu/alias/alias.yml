@@ -228,13 +228,6 @@
         force: yes
         mode: 0775
 
-    - name: Install PGEdge
-      template:
-        src: pgedge
-        dest: /bin/pgedge
-        force: yes
-        mode: 0775
-
     - name: Install Status PGBlitz
       template:
         src: spgblitz

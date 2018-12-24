@@ -7,6 +7,7 @@
 ################################################################################
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/start.sh
+source /opt/plexguide/menu/functions/install.sh
 
 mkdir -p /opt/plexguide/roles/log
 mkdir -p /var/plexguide
@@ -15,4 +16,5 @@ mkdir -p /opt/appdata/plexguide
 sudocheck
 versioncheck
 missingpull
+pginstall
 pgdeploy
