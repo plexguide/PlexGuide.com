@@ -25,19 +25,15 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂  PG Update Interface Menu    📓 Reference: http://update.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💬  Visit http://versions.plexguide.com the list of prior PG Versions
 
 ✅  Latest Version: $latest
+    Prior versions listing? Visit versions.plexguide.com
 
-💍  [EDGE] - Not recommended (for testing)
-7.6edge
+💍  Testing Only - 7.6edge
 
+💬 Quitting? TYPE > exit"
 EOF
 
-cat /opt/plexguide/version.sh
-#cat /var/plexguide/ver.temp
-echo ""
-echo "To QUIT, type >>> exit"
 break=no
 while [ "$break" == "no" ]; do
 read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed
