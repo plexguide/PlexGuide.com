@@ -5,7 +5,8 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-
+source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/install.sh
 # Menu Interface
 tee <<-EOF
 
@@ -33,13 +34,7 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
 elif [ "$typed" == "4" ]; then
-
-  file="/var/plexguide/watchtower.id"
-  if [ -e "$file" ]; then
-    rm -r /var/plexguide/watchtower.id
-  fi
-  bash /opt/plexguide/menu/watchtower/watchtower.sh
-
+  watchtower
 elif [ "$typed" == "5" ]; then
   dpkg-reconfigure tzdata
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
