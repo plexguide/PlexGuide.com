@@ -28,8 +28,13 @@ updateprime() {
 
 pginstall () {
   updateprime
+  core pythonstart
+  core aptupdate
   core alias
   core folders
+  core motd
+  core hetzner
+  core gcloud
 }
 
 core () {
