@@ -28,27 +28,23 @@ updateprime() {
 
 pginstall () {
   updateprime
-  alias alias
-  folders folders
+  core alias
+  core folders
 }
 
-corestart () {
+core () {
     touch /var/plexguide/pg.${1}.stored
     start=$(cat /var/plexguide/pg.${1})
     stored=$(cat /var/plexguide/pg.${1}.stored)
-}
-
-corefinish () {
-if [ "$start" != "$stored" ]; then
-  $1
-  cat /var/plexguide/pg.{$1} > /var/plexguide/pg.{$1}.stored; fi
+    if [ "$start" != "$stored" ]; then
+      $1
+      cat /var/plexguide/pg.{$1} > /var/plexguide/pg.{$1}.stored;
+    fi
 }
 
 ############################################################ INSTALLER FUNCTIONS
 alias () {
-  corestart $1
-  ansible-playbook /opt/plexguide/menu/${1}/${1}.yml
-  corefinish $1
+  ansible-playbook /opt/plexguide/menu/alias/alias.yml
 }
 
 aptupdate () {
@@ -65,9 +61,7 @@ cleaner () {
 }
 
 folders () {
-  corestart $1
   ansible-playbook /opt/plexguide/menu/folders/main.yml
-  corefinish $1
 }
 
 hetzner () {
