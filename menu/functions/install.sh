@@ -163,13 +163,13 @@ newinstall () {
   if [ ! -e "$file" ]; then
     touch ${abc}/pg.number && echo off > /tmp/program_source
     bash /opt/plexguide/menu/interface/version/file.sh && touch ${abc}/new.install
-  tee <<-EOF
+tee <<-EOF
 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  ↘️  Start AnyTime By Typing >>> plexguide
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  Start AnyTime By Typing >>> plexguide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  EOF
+EOF
   exit; fi
 }
 
