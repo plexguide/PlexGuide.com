@@ -6,6 +6,8 @@
 # GNU:        General Public License v3.0
 ################################################################################
 
+mainstart() {
+
 # wait for place.holder to show up
 placeholder=0
 while [ "$placeholder" == "0" ]; do
@@ -29,15 +31,18 @@ tee <<-EOF
 EOF
 
 break=no
-while [ "$break" == "no" ]; do
 read -p '🌍  TYPE a PG Version | PRESS ENTER: ' typed
 storage=$(grep $typed /opt/pgstage/versions.sh)
 
+parttwo
+}
+
+partwo() {
 if [ "$typed" == "exit" ]; then
-  echo ""
-  touch /var/plexguide/exited.upgrade
-  exit
+  echo ""; touch /var/plexguide/exited.upgrade; exit
 fi
+
+
 
 if [ "$storage" != "" ]; then
   break=yes
@@ -47,20 +52,21 @@ if [ "$storage" != "" ]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  SYSTEM MESSAGE: Installing Verison - $storage - Standby!
+✅️  SYSTEM MESSAGE: Installing Verison - $typed - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 2
+exit
 else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  SYSTEM MESSAGE: Version $storage does not exist! - Standby!
+⛔️  SYSTEM MESSAGE: Version $typed does not exist! - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 2
-  cat /var/plexguide/ver.temp
-  echo ""
+  mainstart
 fi
+}
 
-done
+mainstart
