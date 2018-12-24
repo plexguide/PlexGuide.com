@@ -12,7 +12,7 @@ updateprime() {
   echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
   echo "9" > ${abc}/pg.folders
-  echo "13" > ${abc}/pg.rclone
+  echo "13" > ${abc}/pg.rcloneprime
   echo "10" > ${abc}/pg.docker
   echo "12" > ${abc}/server.id
   echo "23" > ${abc}/pg.dependency
