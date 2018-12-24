@@ -7,7 +7,6 @@
 ################################################################################
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/install.sh
-starter
 
 ######################################################## START: Key Variables
 # ENSURE SERVER PATH EXISTS
@@ -41,17 +40,9 @@ exit; fi
 bash /opt/plexguide/install/motd.sh &>/dev/null &
 
 # Ensure Docker is Turned On!
-dstatus=$(docker ps --format '{{.Names}}' | grep "portainer")
-if [ "$dstatus" != "portainer" ]; then
-ansible-playbook /opt/plexguide/containers/portainer.yml &>/dev/null &
-fi
 
-mkdir -p /opt/mycontainers
-yes | cp -rf /opt/mycontainers/* /opt/plexguide/containers
-file="/opt/mycontainers/_template.yml"
-if [ ! -e "$file" ]; then
-yes | cp -rf /opt/plexguide/containers/_template.yml /opt/mycontainers
-fi
+
+
 
 bash /opt/plexguide/install/reboot.sh
 # END: COMMON FUNCTIONS ########################################################
