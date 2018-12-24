@@ -49,13 +49,14 @@ pginstall () {
   core dependency
   core docstart
   core dockerinstall
-  portainer # reinstalls portainer over and over :D
+  portainer
   core motd
   core hetzner
   core gcloud
   core rcloneprime
   core cleaner
   core watchtower
+  customcontainers
 
   pgedition
 }
