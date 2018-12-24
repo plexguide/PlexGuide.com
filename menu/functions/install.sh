@@ -243,7 +243,7 @@ EOF
     echo null > /tmp/watchtower.set
     ansible-playbook /opt/plexguide/containers/watchtower.yml
     echo "3" > /var/plexguide/watchtower.wcheck
-  elif [[ "$typed" == "Z" || "$typed" != "z" ]]; then
+  elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
     if [ "$wexit" == "0" ]; then
 tee <<-EOF
 
