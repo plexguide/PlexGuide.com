@@ -35,7 +35,7 @@ updateprime() {
   else echo "ubuntu" > ${abc}/os.version; fi
 
   rm -rf /opt/pgstage/
-  sudo mkdir -p /opt/pgstate
+  sudo mkdir -p /opt/pgstage
   git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage &>/dev/null &
 
   echo "50" > ${abc}/pg.pythonstart
