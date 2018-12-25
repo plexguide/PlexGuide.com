@@ -319,8 +319,7 @@ tee <<-EOF
 ↘️  ESTABLISHING ~ Server's Identification
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬  Use > One Word > LowerCase > & Simple
-
+💬  Use One Word & Keep it Simple
 EOF
   read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
 
