@@ -7,13 +7,13 @@
 ################################################################################
 mainstart() {
 
-latest=$(cat /opt/pgstage/versions.sh | head -n1)
-
-file=/opt/pgstage/place.holder
+file="/opt/pgstage/place.holder"
 if [ ! -e "$file" ]; then
 	mainstart
   exit
 fi
+
+latest=$(cat "/opt/pgstage/versions.sh" | head -n1)
 
 tee <<-EOF
 
