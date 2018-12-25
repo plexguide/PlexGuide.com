@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Cloning PlexGuide
+      git:
+        repo: "https://github.com/Admin9705/PlexGuide-Installer"
+        dest: /opt/pgstage
+        version: "master"
+        force: yes
