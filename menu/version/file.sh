@@ -26,9 +26,10 @@ tee <<-EOF
 
 ✅  Latest Version : $latest
     Current Verison: $pgnumber
-    Prior Versions? Visit > versions.plexguide.com
 
-💬  Quitting? TYPE > exit
+💬  Prior Versions?  Visit > versions.plexguide.com
+    Quitting? TYPE > exit
+		
 EOF
 
 break=no
