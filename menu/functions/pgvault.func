@@ -37,7 +37,7 @@ initial2 () {
   tarlocation=$(cat /var/plexguide/data.location)
   program_size=$(cat /var/plexguide/rclone.size)
   program_var=$(cat /tmp/program_var)
-  server_id=$(cat /var/plexguide/pg.serverid)
+  server_id=$(cat /var/plexguide/server.id)
 }
 
 final () {
@@ -137,7 +137,7 @@ serverprime () {
   done </tmp/server.list
 
 servers=$(cat /var/plexguide/program.temp)
-server_id=$(cat /var/plexguide/pg.serverid)
+server_id=$(cat /var/plexguide/server.id)
 
 tee <<-EOF
 
@@ -258,7 +258,7 @@ EOF
 
 path=$(cat /var/plexguide/server.hd.path)
 tarlocation=$(cat /var/plexguide/data.location)
-server_id=$(cat /var/plexguide/pg.serverid)
+server_id=$(cat /var/plexguide/server.id)
 
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
