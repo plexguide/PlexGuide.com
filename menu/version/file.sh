@@ -6,7 +6,8 @@
 # GNU:        General Public License v3.0
 ################################################################################
 mainstart() {
-
+echo ""
+echo "💬  Pulling Update Files - Please Wait"
 file="/opt/pgstage/place.holder"
 waitvar=0
 while [ "$waitvar" == "0" ]; do
