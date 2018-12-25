@@ -25,9 +25,6 @@ pro4() {
 rebootpro() {
   bash /opt/plexguide/menu/processor/scripts/reboot.sh
 }
-exit() {
-  exit
-}
 
 question1 () {
 tee <<-EOF
@@ -57,7 +54,9 @@ case $typed in
     4 )
         pro4 ;;
     z )
-        exit 0 ;;
+        exit ;;
+    Z )
+        exit ;;
     * )
         question1 ;;
 esac
