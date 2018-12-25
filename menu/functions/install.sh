@@ -64,7 +64,7 @@ pginstall () {
   updateprime
   core pythonstart
   core aptupdate
-  bash /opt/plexguide/menu/serverid/serverid.sh
+  bash /opt/plexguide/menu/rm -rf/rm -rf.sh
   core alias &>/dev/null &
   core folders &>/dev/null &
   core dependency
@@ -212,7 +212,7 @@ pgedition () {
   file="${abc}/project.keycount"
     if [ ! -e "$file" ]; then echo "0" > ${abc}/project.keycount; fi
   file="${abc}/server.id"
-    if [ ! -e "$file" ]; then echo "[NOT-SET]" > ${abc}/serverid; fi
+    if [ ! -e "$file" ]; then echo "[NOT-SET]" > ${abc}/rm -rf; fi
 }
 
 portainer () {
@@ -310,7 +310,7 @@ dockerinstall () {
   fi
 }
 
-serverid () {
+rm -rf () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -330,12 +330,12 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 2.5
-  serverid
+  rm -rf
 else
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PASS: ServerID Set
+✅️  PASS: rm -rf Set
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   echo "$typed" > /var/plexguide/server.id
