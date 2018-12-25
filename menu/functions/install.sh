@@ -34,10 +34,9 @@ updateprime() {
   if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
   else echo "ubuntu" > ${abc}/os.version; fi
 
-  rm -r /opt/pgstage
-  mkdir -p /opt/pgstage
-  echo 1
-  ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml
+  #rm -r /opt/pgstage
+  #mkdir -p /opt/pgstage
+  #ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml
   #git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage #&>/dev/null &
 
   echo "50" > ${abc}/pg.pythonstart
