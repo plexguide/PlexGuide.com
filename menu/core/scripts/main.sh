@@ -17,7 +17,7 @@
 #################################################################################
 echo "dummy" > /var/plexguide/final.choice
 
-#### Note How to Make It Select a Type - echo "removal" > /var/plexguide/type.choice 
+#### Note How to Make It Select a Type - echo "removal" > /var/plexguide/type.choice
 program=$(cat /var/plexguide/type.choice)
 
 menu=$(echo "on")
@@ -44,7 +44,4 @@ echo ""
 sleep .5
 fi
 
-echo 'INFO - Looping: Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 done
-
-echo 'INFO - Selected: Exiting ' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh

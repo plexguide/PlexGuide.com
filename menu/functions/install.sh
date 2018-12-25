@@ -307,7 +307,6 @@ dockerinstall () {
     file="/usr/bin/docker"
     if [ -e "$file" ]
       then
-      echo "INFO - SUCCESS: Docker Installed!"
       sleep 5
     else
       echo "INFO - FAILED: Docker Failed to Install! Exiting PlexGuide!"

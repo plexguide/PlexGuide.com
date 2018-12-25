@@ -231,6 +231,3 @@
         - "{{path.stdout}}/torrentvpn/.torrent"
         - "{{path.stdout}}/torrentvpn/.watched"
       ignore_errors: yes
-
-    - name: Logging Ansible Role Information
-      shell: "echo 'INFO - Ansible Role Folders Completed' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh"
