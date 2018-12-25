@@ -22,8 +22,8 @@ fi
 }
 
 versioncheck() {
-  sudo rm -rf /opt/pgstage
-  sudo mkdir -p /opt/pgstage
+  rm -rf /opt/pgstage/
+  mkdir -p /opt/pgstage/
   git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage &>/dev/null &
   #sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
 }
