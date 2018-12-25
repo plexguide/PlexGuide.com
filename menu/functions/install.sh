@@ -66,7 +66,6 @@ pginstall () {
   updateprime
   core pythonstart
   core aptupdate
-  bash /opt/plexguide/menu/version/file.sh
   core alias &>/dev/null &
   core folders &>/dev/null &
   core dependency
