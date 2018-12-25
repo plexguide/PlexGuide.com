@@ -62,5 +62,4 @@ rebootpro() {
   bash /opt/plexguide/menu/processor/scripts/reboot.sh
 }
 
-
 question1
