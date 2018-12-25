@@ -21,12 +21,6 @@ exit 1
 fi
 }
 
-versioncheck() {
-  #ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml &>/dev/null &
-  #git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage #&>/dev/null &
-  #sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
-}
-
 downloadpg() {
   rm -rf /opt/plexguide
   git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
@@ -51,7 +45,6 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 2
-  versioncheck
   downloadpg
 tee <<-EOF
 

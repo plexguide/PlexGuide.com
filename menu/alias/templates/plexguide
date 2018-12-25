@@ -14,7 +14,6 @@ mkdir -p /var/plexguide
 mkdir -p /opt/appdata/plexguide
 
 sudocheck
-versioncheck
 missingpull
 pginstall
 pgdeploy

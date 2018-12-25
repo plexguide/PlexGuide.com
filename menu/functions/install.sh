@@ -50,7 +50,7 @@ updateprime() {
   echo "10" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.motd
-  echo "89" > ${abc}/pg.alias
+  echo "90" > ${abc}/pg.alias
   echo "2" > ${abc}/pg.dep
   echo "2" > ${abc}/pg.cleaner
   echo "3" > ${abc}/pg.gcloud
