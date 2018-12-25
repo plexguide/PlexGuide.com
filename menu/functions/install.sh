@@ -77,6 +77,7 @@ pginstall () {
   core gcloud
   core rcloneprime
   core cleaner &>/dev/null &
+  core serverid
   core watchtower
   customcontainers &>/dev/null &
 
