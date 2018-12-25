@@ -24,7 +24,7 @@ tee <<-EOF
 📂  PG Update Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✅  Latest Version: $latest
+✅  Latest Version : $latest
     Current Verison: $pgnumber
     Prior Versions? Visit > versions.plexguide.com
 
