@@ -12,9 +12,6 @@ variable () {
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
 }
 
-### GEN STARTED
-bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh &>/dev/null &
-
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 file="/var/plexguide"
 if [ ! -e "$file" ]; then
@@ -49,19 +46,6 @@ fi
 hostname -I | awk '{print $1}' > /var/plexguide/server.ip
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
 echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
-mkdir /var/plexguide/ 1>/dev/null 2>&1
-
-#clear warning messages
-for txtfile in certchecker nopassword pingchecker; do
-  echo -n '' > /var/plexguide/$txtfile; done
-
-# security scan
-bash /opt/plexguide/menu/scripts/startup/pg-auth-scan.sh &
-# traefik cert validation
-bash /opt/plexguide/menu/scripts/startup/certchecker.sh &
-
-# copying rclone config to user incase bonehead is not root
-cp /opt/appdata/plexguide/rclone.conf ~/.config/rclone/rclone.conf 1>/dev/null 2>&1
 
 # run pg main
 file="/var/plexguide/update.failed"
@@ -208,5 +192,5 @@ else
   exit
 fi
 
-bash /opt/plexguide/menu/start/start.sh
-exit
+#bash /opt/plexguide/menu/start/start.sh
+#exit
