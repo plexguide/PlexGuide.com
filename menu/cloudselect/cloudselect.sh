@@ -9,9 +9,8 @@
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📂  PG Cloud Service Installer
+📂  PG Cloud Service Installer         ⚡  Reference: cloud.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ Reference: http://cloud.plexguide.com
 
 1 - Cloud Instance: Google   (For PG GCE Edition)
 2 - Cloud Instance: Hetzner
