@@ -12,6 +12,8 @@ tee <<-EOF
 🌎 Processer Policy Interface       ⚡ Reference: processor.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+💬  Works only on Dedicated Servers! (No VPS, ESXI, VMs, and etc)
+
 1. Performance Mode
 2. OnDemand Mode
 3. Conservative Mode
@@ -37,7 +39,7 @@ case $typed in
         echo ""
         cpufreq-info
         echo ""
-        read -p '🌍 Done? | Press [ENTER] ' typed < /dev/tty
+        read -p '🌍  Done? | Press [ENTER] ' typed < /dev/tty
         ;;
     z )
         exit ;;
