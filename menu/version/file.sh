@@ -25,7 +25,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅  Latest Version: $latest
-     Current Verison: $
+    Current Verison: $pgnumber
     Prior Versions? Visit > versions.plexguide.com
 
 💬  Quitting? TYPE > exit
