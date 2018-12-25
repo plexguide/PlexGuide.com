@@ -13,6 +13,7 @@ placeholder=0
 while [ "$placeholder" == "0" ]; do
   file="/opt/pgstage/place.holder"
   if [ -e "$file" ]; then
+  echo hold
   placeholder="1"; fi
 done
 
