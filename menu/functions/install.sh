@@ -44,7 +44,7 @@ updateprime() {
   echo "9" > ${abc}/pg.folders
   echo "13" > ${abc}/pg.rcloneprime
   echo "10" > ${abc}/pg.dockerinstall
-  echo "12" > ${abc}/server.id
+  echo "15" > ${abc}/pg.server
   echo "24" > ${abc}/pg.dependency
   echo "10" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.watchtower
@@ -64,6 +64,7 @@ pginstall () {
   updateprime
   core pythonstart
   core aptupdate
+  bash /opt/plexguide/menu/serverid/serverid.sh
   core alias &>/dev/null &
   core folders &>/dev/null &
   core dependency
@@ -210,8 +211,8 @@ pgedition () {
     if [ ! -e "$file" ]; then echo "no" > ${abc}/project.deployed; fi
   file="${abc}/project.keycount"
     if [ ! -e "$file" ]; then echo "0" > ${abc}/project.keycount; fi
-  file="${abc}/pg.serverid"
-    if [ ! -e "$file" ]; then echo "[NOT-SET]" > ${abc}/pg.serverid; fi
+  file="${abc}/server.id"
+    if [ ! -e "$file" ]; then echo "[NOT-SET]" > ${abc}/serverid; fi
 }
 
 portainer () {
@@ -306,6 +307,40 @@ dockerinstall () {
       echo "INFO - FAILED: Docker Failed to Install! Exiting PlexGuide!"
         exit
       fi
+  fi
+}
+
+serverid () {
+  tee <<-EOF
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ↘️  ESTABLISHING ~ Server's Identification
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ⚠️  WARNING: Use > One Word - All LowerCase & Keep it Simple!
+
+  EOF
+
+  # Standby
+  read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
+
+    if [ "$typed" == "" ]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  WARNING! - The Server ID Cannot Be Blank!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 2.5
+  serverid
+else
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  PASS: ServerID Set
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  echo "$typed" > /var/plexguide/server.id
+  sleep 2
   fi
 }
 
