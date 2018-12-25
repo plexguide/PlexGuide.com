@@ -6,7 +6,14 @@
 # GNU:        General Public License v3.0
 ################################################################################
 mainstart() {
+
 latest=$(cat /opt/pgstage/versions.sh | head -n1)
+
+file=/opt/pgstage/place.holder
+if [ ! -e "$file" ]; then
+	mainstart
+  exit
+fi
 
 tee <<-EOF
 
