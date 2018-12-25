@@ -25,7 +25,8 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
-        pro1 ;;
+        ansible-playbook /opt/plexguide/menu/processor/processor.yml  --tags performance
+        rebootpro ;;
     2 )
         pro2 ;;
     3 )
@@ -41,10 +42,6 @@ case $typed in
 esac
 }
 
-pro1() {
-  ansible-playbook /opt/plexguide/menu/processor/processor.yml  --tags performance
-  rebootpro
-}
 pro2() {
   ansible-playbook /opt/plexguide/roles/menu/processor.yml  --tags ondemand
   rebootpro
