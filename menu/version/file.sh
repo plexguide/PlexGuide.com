@@ -8,14 +8,6 @@
 
 mainstart() {
 
-# wait for place.holder to show up
-placeholder=0
-while [ "$placeholder" == "0" ]; do
-  file="/opt/pgstage/place.holder"
-  if [ -e "$file" ]; then
-  echo hold
-  placeholder="1"; fi
-done
 
 latest=$(cat /opt/pgstage/versions.sh | head -n1)
 
