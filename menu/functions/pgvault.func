@@ -97,7 +97,7 @@ apprecall () {
   done </opt/plexguide/menu/pgvault/exempt.list
 
   ### Blank Out Temp List
-  rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
+  rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
   mathprime
 }
 
@@ -165,7 +165,7 @@ read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
   ls -l  /mnt/gdrive/plexguide/backup/$tempserver | awk '{print $9}' | tail -n +2 > /var/plexguide/pgvault.restoreapps
 
   ### Blank Out Temp List
-  rm -r /var/plexguide/pgvault.apprecall 1>/dev/null 2>&1
+  rm -rf /var/plexguide/pgvault.apprecall 1>/dev/null 2>&1
   touch /var/plexguide/pgvault.apprecall
 
   while read p; do
@@ -173,7 +173,7 @@ read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
   done </var/plexguide/pgvault.restoreapps
 
   ### Blank Out Temp List
-  rm -r /var/plexguide/program.temp 1>/dev/null 2>&1
+  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
   touch /var/plexguide/program.temp
   mathprime
 }

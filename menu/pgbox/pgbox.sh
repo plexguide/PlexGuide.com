@@ -57,7 +57,7 @@ while read p; do
 done </var/plexguide/pgbox.running
 
 ### Blank Out Temp List
-rm -r /var/plexguide/program.temp && touch /var/plexguide/program.temp
+rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
 
 ### List Out Apps In Readable Order (One's Not Installed)
 num=0

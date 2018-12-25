@@ -100,7 +100,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 # Prevents From Repeating
-rm -r $typed/pgcheck
+rm -rf $typed/pgcheck
 sleep 3
 
 tee <<-EOF
