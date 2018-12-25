@@ -10,12 +10,12 @@ source /opt/plexguide/menu/functions/functions.sh
 updateprime() {
   abc="/var/plexguide"
   mkdir -p ${abc}
-  chown 0755 ${abc}
-  chmod ${abc} 1000:1000
+  chmod 0755 ${abc}
+  chown 1000:1000 ${abc}
 
   mkdir -p /opt/appdata/plexguide
-  chown 0755 /opt/appdata/plexguide
-  chmod /opt/appdata/plexguide 1000:1000
+  chmod 0755 /opt/appdata/plexguide
+  chown 1000:1000 /opt/appdata/plexguide
 
   variable /var/plexguide/pgfork.project "UPDATE ME"
   variable /var/plexguide/pgfork.version "changeme"
