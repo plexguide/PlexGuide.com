@@ -57,7 +57,7 @@ case $typed in
     4 )
         pro4 ;;
     z )
-        exit ;;
+        exit 0 ;;
     * )
         question1 ;;
 esac
