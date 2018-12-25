@@ -28,7 +28,8 @@ updateprime() {
   file="${abc}/server.hd.path"
   if [ ! -e "$file" ]; then echo "/mnt" > ${abc}/server.hd.path; fi
 
-  newinstall
+  file="${abc}/new.install"
+  if [ ! -e "$file" ]; then newinstall; fi
 
   ospgversion=$(cat /etc/*-release | grep Debian | grep 9)
   if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
@@ -166,7 +167,6 @@ newinstall () {
   if [ ! -e "$file" ]; then
     touch ${abc}/pg.number && echo off > /tmp/program_source
     bash /opt/plexguide/menu/version/file.sh
-
     file="${abc}/new.install"
     if [ ! -e "$file" ]; then exit; fi
  fi
