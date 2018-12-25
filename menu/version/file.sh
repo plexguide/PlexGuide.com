@@ -8,10 +8,10 @@
 mainstart() {
 
 file="/opt/pgstage/place.holder"
-if [ ! -e "$file" ]; then
-	mainstart
-  sleep .5
-fi
+waitvar=0
+while [ "$waitvar" == "0" ]; do
+	if [ -e "$file" ]; then waitvar=1; fi
+done
 
 latest=$(cat "/opt/pgstage/versions.sh" | head -n1)
 
