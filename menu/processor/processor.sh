@@ -9,7 +9,7 @@ question1 () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Processer Policy Interface       ⚡ Reference: processor.plexguide.com
+🌎  Processer Policy Interface      ⚡ Reference: processor.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💬  Works only on Dedicated Servers! (No VPS, ESXI, VMs, and etc)
