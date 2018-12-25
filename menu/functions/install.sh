@@ -164,15 +164,10 @@ newinstall () {
   if [ ! -e "$file" ]; then
     touch ${abc}/pg.number && echo off > /tmp/program_source
     bash /opt/plexguide/menu/version/file.sh
-    touch ${abc}/new.install
-tee <<-EOF
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-↘️  Start AnyTime By Typing >>> plexguide
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-  exit; fi
+    file="${abc}/new.install"
+    if [ ! -e "$file" ]; then exit; fi
+ fi
 }
 
 pgdeploy () {
