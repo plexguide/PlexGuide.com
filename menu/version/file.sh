@@ -10,7 +10,7 @@ mainstart() {
 file="/opt/pgstage/place.holder"
 if [ ! -e "$file" ]; then
 	mainstart
-  exit
+  sleep .5
 fi
 
 latest=$(cat "/opt/pgstage/versions.sh" | head -n1)
