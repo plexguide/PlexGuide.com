@@ -96,7 +96,7 @@ touch /var/plexguide/server.ports
 
 # Call Variables
 edition=$(cat /var/plexguide/pg.edition)
-serverid=$(cat /var/plexguide/serverid)
+serverid=$(cat /var/plexguide/server.id)
 pgnumber=$(cat /var/plexguide/pg.number)
 
 # Declare Traefik Deployed Docker STate
