@@ -81,6 +81,7 @@ pginstall () {
   core gcloud
   core rcloneprime
   core cleaner &>/dev/null &
+  bash /opt/plexguide/menu/editions/editions.sh
   core serverid
   core watchtower
   customcontainers &>/dev/null &
