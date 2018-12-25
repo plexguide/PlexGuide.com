@@ -11,10 +11,10 @@ sname="YML Generation"
 
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
-sudo bash /opt/plexguide/roles/log/log.sh
+sudo bash /opt/plexguide/menu/log/log.sh
 ######################################################## START: Main Script
 ls -la /opt/plexguide/roles | awk '{ print $9 }' | tail -n +4 > /var/plexguide/yml.list
-echo "INFO - YML List Generated @ /var/plexguide/yml.list" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - YML List Generated @ /var/plexguide/yml.list" > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 
 rm -rf /opt/plexguide/pg.yml 1>/dev/null 2>&1
 
@@ -31,4 +31,4 @@ done </var/plexguide/yml.list
 #
 ######################################################## END: PG Log
 sudo echo "INFO - END of Script: $sname" > /var/plexguide/pg.log
-sudo bash /opt/plexguide/roles/log/log.sh
+sudo bash /opt/plexguide/menu/log/log.sh

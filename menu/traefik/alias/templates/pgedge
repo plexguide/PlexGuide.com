@@ -32,7 +32,7 @@ fi
 bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh 1>/dev/null 2>&1
 ansible-playbook /opt/plexguide/pg.yml --tags pgedge
 
-echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - Selected: Upgrade to PG EDGE" > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 echo ""
 read -n 1 -s -r -p "Press [ANY] Key to Continue"
 echo edge > /var/plexguide/pg.number

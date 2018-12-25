@@ -44,11 +44,11 @@ break=0
     if [ "$check" == "$number" ]; then
         break=0
         let "number++"
-        echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+        echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       else
         break=1
     fi
   done
 echo $number > /var/plexguide/multi.filler
 
-echo "INFO - PGBlitz: UnionFS Builder Added the Following: $builder " > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - PGBlitz: UnionFS Builder Added the Following: $builder " > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh

@@ -36,7 +36,7 @@
       ignore_errors: True
 
     - name: Logging Ansible Role Information
-      shell: "echo 'INFO - Ansible Role Folders Started' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+      shell: "echo 'INFO - Ansible Role Folders Started' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh"
 
    ########### PlexDrive
     - name: PlexDrive Check
@@ -233,4 +233,4 @@
       ignore_errors: yes
 
     - name: Logging Ansible Role Information
-      shell: "echo 'INFO - Ansible Role Folders Completed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh"
+      shell: "echo 'INFO - Ansible Role Folders Completed' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh"

@@ -47,4 +47,4 @@ echo "NOTE 1: Make sure you SHARE with the CORRECT TEAM DRIVE!"
 echo "NOTE 2: Save Time & Copy & Paste the E-Mails Into the G-Drive Share!"
 echo
 cat /tmp/pgblitz.emails.list
-echo "INFO - PGBlitz: Displayed to User the E-Mails" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo "INFO - PGBlitz: Displayed to User the E-Mails" > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh

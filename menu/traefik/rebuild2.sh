@@ -37,4 +37,4 @@ for ((i=1; i<$count+1; i++)); do
 	ansible-playbook /opt/plexguide/containers/$app.yml; done
 
 echo ""
-echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh

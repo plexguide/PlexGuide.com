@@ -6,7 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Main Kernel Profiles - Kernel-mod-menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - @Main Kernel Profiles - Kernel-mod-menu' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 
 HEIGHT=13
 WIDTH=44
@@ -42,98 +42,98 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
 
 case $CHOICE in
   A)
-    echo 'INFO - Selected: Enable BBR TCP Congestion Control' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Enable BBR TCP Congestion Control' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     # check if bbr is available
     skip_tags='tj,klaver,seedboxer'
     if [[ $(grep 'CONFIG_TCP_CONG_BBR=' /boot/config-$(uname -r)) || $(cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr) ]]; then
-      echo 'INFO - Installing: BBR TCP Congestion Control' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Installing: BBR TCP Congestion Control' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
       read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
-      echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       dialog --title "Unsupported Kernel" --msgbox "\nYour Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 0 0
       bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
     fi ;;
   B)
-    echo 'INFO - Selected: Klaver + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Klaver + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     clear
     # check if bbr is available
     skip_tags='tj,seedboxer'
     if [[ $(grep 'CONFIG_TCP_CONG_BBR' /boot/config-$(uname -r)) || $(cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr) ]]; then
-      echo 'INFO - Installing: Klaver + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Installing: Klaver + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
       read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
-      echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       dialog --title "Unsupported Kernel" --msgbox "\nYour Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 0 0
       bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
     fi ;;
   C)
-    echo 'INFO - Selected: TJ007 + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: TJ007 + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     clear
     # check if bbr is avail
     skip_tags='klaver,seedboxer'
     if [[ $(grep 'CONFIG_TCP_CONG_BBR' /boot/config-$(uname -r)) || $(cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr) ]]; then
-      echo 'INFO - Installing: TJ007 + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Installing: TJ007 + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
       echo ""
       read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
-      echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       dialog --title "Unsupported Kernel" --msgbox "\nYour Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 0 0
       bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
     fi ;;
   D)
-    echo 'INFO - Selected: Seedboxer + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Seedboxer + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     clear
     # check if bbr is available
     skip_tags='klaver,tj'
     if [[ $(grep 'CONFIG_TCP_CONG_BBR' /boot/config-$(uname -r)) || $(cat /proc/sys/net/ipv4/tcp_available_congestion_control | grep bbr) ]]; then
-      echo 'INFO - Installing: Seedboxer + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Installing: Seedboxer + BBR' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       ansible-playbook /opt/plexguide/pg.yml --tags network_tuning --skip-tags $skip_tags
       cat /etc/sysctl.conf
       echo ""
       read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
-      echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Canceling: Unsupported Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       dialog --title "Unsupported Kernel" --msgbox "\nYour Kernel, $(uname -r) does not support BBR. Please Update Your Kernel." 0 0
       bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu.sh
     fi ;;
   E)
-    echo 'INFO - Selected: Install Latest Generic Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Install Latest Generic Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     clear
     if (dialog --title "Kernel Upgrade" --yesno "Are You Sure You Want To Upgrade Your Kernel? (warning: this may break drivers)" 0 0) then
-      echo 'INFO - Installing: Latest Generic Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Installing: Latest Generic Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       sudo apt update -y && sudo apt sudo apt install --install-recommends linux-generic-hwe-16.04
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
-      echo 'INFO - Canceling: Xanmod Kernel Upgrade' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Canceling: Xanmod Kernel Upgrade' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       dialog --title "Kernel Upgrade" --msgbox "Canceling Kernel Upgrade." 0 0
     fi ;;
   F)
-    echo 'INFO - Selected: Install Xanmod Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Install Xanmod Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     clear
     if (dialog --title "Kernel Upgrade" --yesno "Are You Sure You Want To Upgrade Your Kernel? (warning: this may break drivers)" 0 0); then
-      echo 'INFO - Installing: Xanmod Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Installing: Xanmod Kernel' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - http://deb.xanmod.org/gpg.key | sudo apt-key add -
       sudo apt update && sudo apt install linux-xanmod-4.15
       bash /opt/plexguide/roles/processor/scripts/reboot.sh
     else
-      echo 'INFO - Canceling: Xanmod Kernel Upgrade' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+      echo 'INFO - Canceling: Xanmod Kernel Upgrade' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
       dialog --title "Kernel Upgrade" --msgbox "Canceling Kernel Upgrade." 0 0
     fi ;;
   Z)
-    echo 'INFO - Selected: Exit Kernal mode menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Exit Kernal mode menu' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     exit 0 ;;
 esac
 ## repeat menu when exiting
-echo 'INFO - Looping: Kernal Mod Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Looping: Kernal Mod Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 bash /opt/plexguide/menu/scripts/menus/kernel-mod-menu-new.sh
 exit

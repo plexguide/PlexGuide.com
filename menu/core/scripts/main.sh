@@ -44,7 +44,7 @@ echo ""
 sleep .5
 fi
 
-echo 'INFO - Looping: Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Looping: Menu Interface' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 done
 
-echo 'INFO - Selected: Exiting ' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Selected: Exiting ' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh

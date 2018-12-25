@@ -16,7 +16,7 @@
 #
 #################################################################################
 export NCURSES_NO_UTF8_ACS=1
-echo 'INFO - @Main Processor Profiles - processor-menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - @Main Processor Profiles - processor-menu' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 
 edition=$( cat /var/plexguide/pg.edition ) 1>/dev/null 2>&1
 version=$( cat /var/plexguide/pg.server.deploy ) 1>/dev/null 2>&1
@@ -41,44 +41,44 @@ CHOICE=$(dialog --backtitle "$BACKTITLE" \
                 2>&1 >/dev/tty)
 
 #if (dialog --title "Virutal Machine Question" --yesno "Are You Utilizing A Virtual Machine or VPS?" 0 0) then
-#  echo 'INFO - Selected: Processor Profile - Is VPS' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+#  echo 'INFO - Selected: Processor Profile - Is VPS' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 #  dialog --title "Virutal Machine - Yes" --msgbox "We are unable to adjust your CPU performance while utilizing a VM or VPS. Trust me, it does not work if you try!" 0 0
 #  exit
 #else
-#  echo 'INFO - Selected: Processor Profile - Is Dedicated' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+#  echo 'INFO - Selected: Processor Profile - Is Dedicated' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 #  dialog --title "Virutal Machine - No" --msgbox "We recommend that you select performance mode. By default, your utilizing ondemand mode. Mode does not kick in until you REBOOT!" 0 0
 #fi
 
 case $CHOICE in
   A)
-    echo 'INFO - Selected: Processor Profile - Performance Mode' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Processor Profile - Performance Mode' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     clear && ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags performance
     echo ""
     read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
     bash /opt/plexguide/roles/processor/scripts/reboot.sh ;;
   B)
-    echo 'INFO - Selected: Processor Profile - Ondemand Mode' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Processor Profile - Ondemand Mode' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     clear && ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags ondemand
     echo ""
     read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
     bash /opt/plexguide/roles/processor/scripts/reboot.sh ;;
   C)
-    echo 'INFO - Selected: Processor Profile - Conservative Mode' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Processor Profile - Conservative Mode' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     clear && ansible-playbook /opt/plexguide/roles/processor/processor.yml  --tags conservative
     echo ""
     read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine"
     bash /opt/plexguide/roles/processor/scripts/reboot.sh ;;
   D)
-    echo 'INFO - Selected: Processor Profile - View Processor Policy' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Processor Profile - View Processor Policy' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     clear && cpufreq-info
     echo ""
     read -n 1 -s -r -p "Press [ANY] Key to Continue - will reboot the machine" ;;
   Z)
-    echo 'INFO - Selected: Exit Kernal mode menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+    echo 'INFO - Selected: Exit Kernal mode menu' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     bash /opt/plexguide/menu/ending/ending.sh
     exit 0 ;;
 esac
 ## repeat menu when exiting
-echo 'INFO - Looping: Kernal Mod Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Looping: Kernal Mod Interface Menu' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 bash /opt/plexguide/roles/processor/scripts/processor-menu-new.sh
 exit

@@ -12,7 +12,7 @@ pg_ansible=$( cat /var/plexguide/pg.ansible )
 pg_ansible_stored=$( cat /var/plexguide/pg.ansible.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /var/plexguide/pg.log
-sudo bash /opt/plexguide/roles/log/log.sh
+sudo bash /opt/plexguide/menu/log/log.sh
 ######################################################## START: Main Script
 if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
       echo "" 1>/dev/null 2>&1
@@ -48,4 +48,4 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
 #
 ######################################################## END: PG Log
 sudo echo "INFO - END of Script: $sname" > /var/plexguide/pg.log
-sudo bash /opt/plexguide/roles/log/log.sh
+sudo bash /opt/plexguide/menu/log/log.sh

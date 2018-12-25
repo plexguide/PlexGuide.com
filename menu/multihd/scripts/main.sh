@@ -36,9 +36,9 @@ file="/var/plexguide/multi.build"
 file="/usr/bin/mergerfs"
   if [ -e "$file" ]
     then
-echo 'INFO - MergerFS is Already Installed' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - MergerFS is Already Installed' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
     else
-echo 'INFO - Installing MERGER FS' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Installing MERGER FS' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 echo ""
 echo "---------------------------------------------------"
 echo "PLEASE STANDBY"
@@ -64,7 +64,7 @@ ansible-playbook /opt/plexguide/menu/multihd/main.yml
 menu=$(cat /var/plexguide/multi.menu)
 
 if [ "$menu" == "addpath" ]; then
-  echo 'INFO - Selected: Add Mounts to List Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo 'INFO - Selected: Add Mounts to List Interface' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
   number=1
   break=0
     until [ "$break" == "1" ]; do
@@ -72,7 +72,7 @@ if [ "$menu" == "addpath" ]; then
       if [ "$check" == "$number" ]; then
           break=0
           let "number++"
-          echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
         else
           break=1
       fi
@@ -83,7 +83,7 @@ if [ "$menu" == "addpath" ]; then
 fi
 
 if [ "$menu" == "removepath" ]; then
-  echo 'INFO - Selected: Remove Path Option for Multi-HD' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo 'INFO - Selected: Remove Path Option for Multi-HD' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
   number=1
   break=0
     until [ "$break" == "1" ]; do
@@ -91,7 +91,7 @@ if [ "$menu" == "removepath" ]; then
       if [ "$check" == "$number" ]; then
           break=0
           let "number++"
-          echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+          echo "INFO - PGBlitz: GDSA$number Exists - Skipping" > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
         else
           break=1
       fi
@@ -103,12 +103,12 @@ if [ "$menu" == "removepath" ]; then
 fi
 
 if [ "$menu" == "unionfs" ]; then
-  echo 'INFO - Selected: Deploy UnionFS' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+  echo 'INFO - Selected: Deploy UnionFS' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
   ansible-playbook /opt/plexguide/menu/multihd/service-remove.yml
   ansible-playbook /opt/plexguide/menu/multihd/mergerfs.yml
 fi
 
-echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Looping: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
 done
 
-echo 'INFO - Exiting: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/roles/log/log.sh
+echo 'INFO - Exiting: Transport System Select Interface' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
