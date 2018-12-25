@@ -28,11 +28,15 @@ case $typed in
         ansible-playbook /opt/plexguide/menu/processor/processor.yml  --tags performance
         rebootpro ;;
     2 )
-        pro2 ;;
+        ansible-playbook /opt/plexguide/roles/menu/processor.yml  --tags ondemand
+        rebootpro
     3 )
-        pro3 ;;
+        ansible-playbook /opt/plexguide/roles/menu/processor.yml  --tags conservative
+        rebootpro ;;
     4 )
-        pro4 ;;
+        echo ""
+        cpufreq-info
+        echo "" ;;
     z )
         exit ;;
     Z )
@@ -42,19 +46,6 @@ case $typed in
 esac
 }
 
-pro2() {
-  ansible-playbook /opt/plexguide/roles/menu/processor.yml  --tags ondemand
-  rebootpro
-}
-pro3() {
-  ansible-playbook /opt/plexguide/roles/menu/processor.yml  --tags conservative
-  rebootpro
-}
-pro4() {
-  echo ""
-  cpufreq-info
-  echo ""
-}
 rebootpro() {
   bash /opt/plexguide/menu/processor/scripts/reboot.sh
 }
