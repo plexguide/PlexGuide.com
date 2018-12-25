@@ -36,6 +36,7 @@ updateprime() {
 
   rm -r /opt/pgstage
   mkdir -p /opt/pgstage
+  echo 1
   ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml
   #git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage #&>/dev/null &
 
