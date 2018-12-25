@@ -34,9 +34,9 @@ updateprime() {
   if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
   else echo "ubuntu" > ${abc}/os.version; fi
 
-  rm -rf /opt/pgstage
+  rm -r /opt/pgstage
   mkdir -p /opt/pgstage
-  git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage &>/dev/null &
+  git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage #&>/dev/null &
 
   echo "50" > ${abc}/pg.pythonstart
   echo "10" > ${abc}/pg.aptupdate
