@@ -10,6 +10,7 @@ mainstart() {
 file="/opt/pgstage/place.holder"
 waitvar=0
 while [ "$waitvar" == "0" ]; do
+	sleep .5
 	if [ -e "$file" ]; then waitvar=1; fi
 done
 
