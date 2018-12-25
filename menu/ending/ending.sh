@@ -33,30 +33,3 @@ cat << "EOF"
 └─────────────────────────────────────┘
 
 EOF
-
-# warn users if they don't have a password set
-touch /var/plexguide/nopassword
-if [[ $(cat /var/plexguide/nopassword) != '' ]]; then
-  echo -e "\033[1;31m       -== SECURITY WARNING ==- \033[0m"
-  cat /var/plexguide/nopassword
-  echo
-fi
-
- #warn users if their DNS settings don't work
-
-#touch /var/plexguide/pingchecker
-#if [[ $(cat /var/plexguide/pingchecker) != '' ]]; then
-#  echo -e "\033[1;33m       -== UNREACHABLE HOST ==- \033[0m"
-#  cat /var/plexguide/pingchecker
-#  echo
-#elif [[ $(cat /var/plexguide/certchecker) != '' ]]; then
-#  echo -e "\033[1;33m       -== INVALID SSL CERT ==- \033[0m"
-#  cat /var/plexguide/certchecker
-#  echo 'feature still in testing. may be false positive.'
-#fi
-
-### log message
-#dt=`date '+%d/%m/%Y %H:%M:%S'`
-#echo "$dt INFO - User Properly Exited PlexGuide." >> "/opt/appdata/plexguide/pg.log"
-bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh &>/dev/null &
-echo "INFO - Program Exited Properly" > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
