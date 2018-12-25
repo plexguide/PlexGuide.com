@@ -36,7 +36,9 @@ case $typed in
     4 )
         echo ""
         cpufreq-info
-        echo "" ;;
+        echo ""
+        read -p '🌍 Done? | Press [ENTER] ' typed < /dev/tty
+        ;;
     z )
         exit ;;
     Z )
