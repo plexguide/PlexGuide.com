@@ -24,6 +24,9 @@ updateprime() {
   variable /var/plexguide/server.ht ""
   variable /var/plexguide/server.email "changeme@badmail.com"
   variable /var/plexguide/server.domain "no.domain"
+  variable /var/plexguide/pg.number "New-Install"
+  pgnumber=$(cat /var/plexguide/pg.number)
+
   hostname -I | awk '{print $1}' > /var/plexguide/server.ip
   file="${abc}/server.hd.path"
   if [ ! -e "$file" ]; then echo "/mnt" > ${abc}/server.hd.path; fi

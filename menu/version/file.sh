@@ -15,6 +15,7 @@ while [ "$waitvar" == "0" ]; do
 	if [ -e "$file" ]; then waitvar=1; fi
 done
 
+pgnumber=$(cat "/var/plexguide/pg.number")
 latest=$(cat "/opt/pgstage/versions.sh" | head -n1)
 
 tee <<-EOF
@@ -24,6 +25,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅  Latest Version: $latest
+     Current Verison: $
     Prior Versions? Visit > versions.plexguide.com
 
 💬  Quitting? TYPE > exit

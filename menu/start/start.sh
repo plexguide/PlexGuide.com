@@ -88,7 +88,7 @@ fi
 
 # Touch Variables Incase They Do Not Exist
 touch /var/plexguide/pg.edition
-touch /var/plexguide/pg.serverid
+touch /var/plexguide/server.id
 touch /var/plexguide/pg.number
 touch /var/plexguide/traefik.deployed
 touch /var/plexguide/server.ht
@@ -96,7 +96,7 @@ touch /var/plexguide/server.ports
 
 # Call Variables
 edition=$(cat /var/plexguide/pg.edition)
-serverid=$(cat /var/plexguide/pg.serverid)
+serverid=$(cat /var/plexguide/serverid)
 pgnumber=$(cat /var/plexguide/pg.number)
 
 # Declare Traefik Deployed Docker STate
