@@ -29,7 +29,7 @@ case $typed in
         rebootpro ;;
     2 )
         ansible-playbook /opt/plexguide/roles/menu/processor.yml  --tags ondemand
-        rebootpro
+        rebootpro ;;
     3 )
         ansible-playbook /opt/plexguide/roles/menu/processor.yml  --tags conservative
         rebootpro ;;
