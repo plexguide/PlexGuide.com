@@ -5,10 +5,7 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-
 mainstart() {
-
-
 latest=$(cat /opt/pgstage/versions.sh | head -n1)
 
 tee <<-EOF
