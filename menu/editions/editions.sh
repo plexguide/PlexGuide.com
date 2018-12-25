@@ -15,6 +15,8 @@ fcheck=$(cat /var/plexguide/pg.server.deploy)
 if [ "$fcheck" == "feeder" ]; then exit; fi
 
 # Starting Process If Not GCE
+if [[ "$fcheck" == "PG Edition - GDrive" || "$fcheck" == "PG Edition - HD Solo" || "$fcheck" == "PG Edition - HD Multi" ]]; then
+exit; fi 
 
 touch /var/plexguide/pg.edition
 echeck=$(cat /var/plexguide/pg.edition)
