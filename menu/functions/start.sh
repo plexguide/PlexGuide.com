@@ -22,9 +22,7 @@ fi
 }
 
 versioncheck() {
-  rm -r /opt/pgstage
-  mkdir -p /opt/pgstage
-  ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml &>/dev/null &
+  #ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml &>/dev/null &
   #git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage #&>/dev/null &
   #sudo wget --force-directories -O /opt/plexguide/menu/interface/version/version.sh https://raw.githubusercontent.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/Edge/menu/interface/version/version.sh &>/dev/null &
 }
