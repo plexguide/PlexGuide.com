@@ -5,6 +5,7 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+if [ "$program" == "plex" ]; then extra="/web"; else extra=""; fi
 
 program=$(cat /tmp/program_var)
 domain=$(cat /var/plexguide/server.domain)
@@ -17,6 +18,6 @@ tee <<-EOF
 💎 APPLICATION: Access Information | $program
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ▫ $ip:$port
-▫ $domain:$port
-▫ $program.$domain
+▫ $domain:${port}${extra}
+▫ $program.$domaina
 EOF
