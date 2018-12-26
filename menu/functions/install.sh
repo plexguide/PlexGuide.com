@@ -23,7 +23,7 @@ updateprime() {
   variable /opt/appdata/plexguide/plextoken ""
   variable /var/plexguide/server.ht ""
   variable /var/plexguide/server.email "changeme@badmail.com"
-  variable /var/plexguide/server.domain "no.domain"
+  variable /var/plexguide/server.domain "NOT-SET"
   variable /var/plexguide/pg.number "New-Install"
   pgnumber=$(cat /var/plexguide/pg.number)
 
