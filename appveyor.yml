@@ -6,28 +6,13 @@ install:
   - sh: sudo mkdir -p /var/plexguide
   - sh: sudo mkdir -p /opt/appdata/plexguide
   - sh: sudo mv /home/appveyor/projects/plexguide-com-the-awesome-plex-server/* /opt/plexguide/
-  - sh: cd /opt/plexguide
-  - sh: sudo bash /opt/plexguide/menu/interface/install/scripts/yml-gen.sh
 
   ###### EXECUTE SET VARIABLES
-  - sh: sudo bash /opt/plexguide/roles/appveyor/var.sh
+  - sh: sudo bash /opt/plexguide/rmenu/appveyor/var.sh
 
   ###### ANSIBLE INSTALL
   - sh: sudo bash /opt/plexguide/install/python.sh
-  - sh: sudo bash /opt/plexguide/install/dependency.sh
-  ###### DOCKER INSTALL
-  - sh: sudo bash /opt/plexguide/install/docker.sh
-  ###### FOLDER INSTALL
-  - sh: sudo bash /opt/plexguide/install/folders.sh
-  ###### RCLONE INSTALL
-  - sh: sudo bash /opt/plexguide/install/rclone.sh
-  ###### alias
-  - sh: sudo bash /opt/plexguide/install/alias.sh
-  ###### others
-  - sh: sudo bash /opt/plexguide/install/motd.sh
-  - sh: sudo bash /opt/plexguide/install/gcloud.sh
-  - sh: sudo bash /opt/plexguide/install/hetzner.sh
-  
+
   ###### Install Containers - ABC Order
 
   ## new format checked (check NETDATA)
