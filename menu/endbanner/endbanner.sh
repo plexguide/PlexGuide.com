@@ -24,4 +24,5 @@ if [ "$domain" != "NOT-SET" ]; then
 tee <<-EOF
 ▫ $domain:${port}${extra}
 ▫ $program.$domain${extra}
-EOF; fi
+EOF
+fi
