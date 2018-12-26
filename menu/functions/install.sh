@@ -71,7 +71,7 @@ pginstall () {
   bash /opt/plexguide/menu/editions/editions.sh
   core pythonstart
   core aptupdate
-  core alias &>/dev/null &
+  core alias
   core folders
   core dependency
   core dockerinstall
