@@ -18,6 +18,10 @@ tee <<-EOF
 💎 APPLICATION: Access Information | $program
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ▫ $ip:${port}${extra}
+EOF
+
+if [ "$domain" != "NOT-SET" ]; then
+tee <<-EOF
 ▫ $domain:${port}${extra}
 ▫ $program.$domain${extra}
-EOF
+EOF; fi
