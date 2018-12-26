@@ -46,7 +46,7 @@ updateprime() {
   echo "50" > ${abc}/pg.pythonstart
   echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
-  echo "9" > ${abc}/pg.folders
+  echo "15" > ${abc}/pg.folders
   echo "13" > ${abc}/pg.rcloneprime
   echo "10" > ${abc}/pg.dockerinstall
   echo "15" > ${abc}/pg.server
@@ -72,7 +72,7 @@ pginstall () {
   core pythonstart
   core aptupdate
   core alias &>/dev/null &
-  core folders &>/dev/null &
+  core folders
   core dependency
   core dockerinstall
   core docstart
