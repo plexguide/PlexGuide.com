@@ -132,7 +132,7 @@ echo
 echo "[1] Traefik : [$traefik]"
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "[2] PG Clone: Mount Transport"
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "[2] PG Clone: Mount Transport"
-elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "[2] MultiHD & Mounts"
+elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "[2] MultiHD : MultiFS Combined Mounts"
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "[2] No Mounts for Solo HD"
 else
   echo "[2] Mounts & Data Transports"
