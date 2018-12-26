@@ -8,7 +8,7 @@ install:
   - sh: sudo mv /home/appveyor/projects/plexguide-com-the-awesome-plex-server/* /opt/plexguide/
 
   ###### EXECUTE SET VARIABLES
-  - sh: sudo bash /opt/plexguide/rmenu/appveyor/var.sh
+  # - sh: sudo bash /opt/plexguide/rmenu/appveyor/var.sh
 
   ###### ANSIBLE INSTALL
   - sh: sudo bash /opt/plexguide/menu/alias/templates/plexguide
