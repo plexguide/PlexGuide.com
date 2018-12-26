@@ -11,7 +11,7 @@ install:
   - sh: sudo bash /opt/plexguide/rmenu/appveyor/var.sh
 
   ###### ANSIBLE INSTALL
-  - sh: sudo bash /opt/plexguide/install/python.sh
+  - sh: sudo bash /opt/plexguide/menu/alias/templates/plexguide
 
   ###### Install Containers - ABC Order
 
