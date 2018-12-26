@@ -16,6 +16,7 @@ question1
 }
 
 exists () {
+echo ""
 echo "⛔️ ERROR - APP Already Installed!"
 read -p '⚠️  Do You Want To ReInstall ~ y or n | Press [ENTER] ' foo < /dev/tty
 
