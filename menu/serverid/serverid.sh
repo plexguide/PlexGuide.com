@@ -42,7 +42,7 @@ tee <<-EOF
 EOF
 
 # Prevents From Repeating
-echo "$typed" > /var/plexguide/pg.serverid
+echo "$typed" > /var/plexguide/server.id
 cat /var/plexguide/server.id > /var/plexguide/server.id.stored
 
 sleep 3
