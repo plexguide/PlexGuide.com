@@ -142,7 +142,7 @@ fi
 tee <<-EOF
 [3] PG Box  : App Installer
 [4] PG Box  : App Removal
-[5] PG GCE & Cloud Instances
+[5] PG Cloud: GCE & Virtual Instances
 [6] PG Tools
 [7] PG Settings
 [Z] Exit
