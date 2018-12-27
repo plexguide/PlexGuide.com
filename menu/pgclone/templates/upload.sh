@@ -22,9 +22,9 @@ GDSA=$2
 log "[Upload] Upload started for $FILE using $GDSA"
 
 STARTTIME=`date +%s`
-FILESTER=`echo $FILE | sed 's/\'$downloadpath'\/move//g'`
+FILESTER=`echo $FILE | sed 's|\'$downloadpath'\/move||g'`
 FILEBASE=`basename $FILE`
-FILEDIR=`dirname $FILE | sed 's/\'$downloadpath'\/move//g'`
+FILEDIR=`dirname $FILE | sed 's|\'$downloadpath'\/move||g'`
 
 JSONFILE=/opt/appdata/pgblitz/json/$FILEBASE.json
 
