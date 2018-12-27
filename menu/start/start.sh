@@ -130,7 +130,7 @@ if [ "$edition" != "PG Edition - GCE Feed" ]; then
   capacity_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $2}')
   percentage_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $5}')
 
-  if [[ "$used_gce" != "$used_gce2" || "$capacity_gce" != "$capacity_gce2" ]]; then
+  if [[ "$used_gce" != "$used_gce2" && "$capacity_gce" != "$capacity_gce2" ]]; then
   echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"; fi
 
 fi
