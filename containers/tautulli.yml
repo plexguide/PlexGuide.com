@@ -32,7 +32,6 @@
   - name: "Setting PG Labels"
     set_fact:
       pg_labels:
-        traefik.frontend.auth.basic.users: "{{auth.stdout}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
         traefik.frontend.redirect.entryPoint: "https"
