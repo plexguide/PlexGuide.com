@@ -23,6 +23,10 @@
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
+  - name: "Tautulli Check"
+    stat:
+      path: /opt/appdata/tautulli/config.ini
+    register: confcheck
 # LABELS ######################################################################
 
   - name: "Setting PG Labels"
@@ -65,3 +69,39 @@
             - "{{pgrole}}"
       state: started
       labels: "{{pg_labels}}"
+
+# AFTER ########################################################################
+
+  - name: "First Time Check"
+    block:
+
+    - name: Please Wait - Pending .ini generation
+      wait_for:
+        path: "/opt/appdata/tatulli/config.ini"
+        state: present
+
+    - name: Stop Container
+      docker_container:
+        name: tautulli
+        state: stopped
+
+    - name: Default User
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: '^http_username\s?='
+        line: 'http_username = plex'
+        state: present
+
+    - name: Default Password
+      lineinfile:
+        path: "/opt/appdata/nzbget/nzbget.conf"
+        regexp: 'http_password = ""'
+        line: 'http_password = guide'
+        state: present
+
+    - name: Restart Container
+      docker_container:
+        name: tautulli
+        state: started
+
+    when: not confcheck.stat.exists
