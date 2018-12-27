@@ -32,7 +32,7 @@ starter () {
 
 stasks () {
   #copy any files that failed to upload back to /mnt/move
-  for i in `find /mnt/pgblitz/ -maxdepth 1 -mindepth 1 -type d`; do
+  for i in `find $downloadpath/pgblitz/ -maxdepth 1 -mindepth 1 -type d`; do
       cp -r ${i}/* $downloadpath/move
       rm -fr ${i}/*
   done
