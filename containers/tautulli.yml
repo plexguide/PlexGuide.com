@@ -75,7 +75,7 @@
   - name: "First Time Check"
     block:
 
-    - name: Please Wait - Pending .ini generation
+    - name: Please Wait - Pending config.ini generation
       wait_for:
         path: "/opt/appdata/tatulli/config.ini"
         state: present
