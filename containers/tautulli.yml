@@ -87,14 +87,14 @@
 
     - name: Default User
       lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
+        path: "/opt/appdata/tautulli/config.ini"
         regexp: '^http_username\s?='
         line: 'http_username = plex'
         state: present
 
     - name: Default Password
       lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
+        path: "/opt/appdata/tautulli/config.ini"
         regexp: 'http_password = ""'
         line: 'http_password = guide'
         state: present
