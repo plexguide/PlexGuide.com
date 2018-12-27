@@ -108,7 +108,7 @@ log "[Upload] Upload complete for $FILE, Cleaning up"
 #cleanup
 rm -f $LOGFILE
 rm -f /opt/appdata/pgblitz/pid/$FILEBASE.trans
-find "/mnt/move/" -mindepth 1 -type d -empty -delete
+find "$downloadpath/move/" -mindepth 1 -type d -empty -delete
 find "/mnt/pgblitz/" -mindepth 2 -type d -empty -delete
 sleep 60
 rm -f $JSONFILE
