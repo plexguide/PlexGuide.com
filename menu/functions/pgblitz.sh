@@ -90,7 +90,7 @@ for i in `find $downloadpath/pgblitz/* -maxdepth 1 -mindepth 1 -mmin +30 -type d
         log "Bad Key Count $badcount of 3 Reached! Switching GDSA Keys @ 3!"
         echo $badcount > /var/plexguide/blitz.badkey
       fi
-    mv ${i} /mnt/move
+    mv ${i} "$downloadpath/move"
 done
 
 }
