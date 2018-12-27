@@ -185,15 +185,15 @@
     - name: Create Basic Directories
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
       with_items:
-        - /opt/appdata/plexguide
-        - /var/plexguide
-        - /mnt/move
+        - "/opt/appdata/plexguide"
+        - "/var/plexguide"
+        - "/mnt/move"
+        - "/var/plexguide/logs"
         - "{{path.stdout}}/pgops"
         - /opt/appdata/pgblitz/keys/unprocessed
         - /opt/appdata/pgblitz/keys/processed
         - /opt/appdata/pgblitz/keys/badjson
         - "{{path.stdout}}/pgblitz"
-        - /var/plexguide/logs
         - "{{path.stdout}}/qbittorrent/downloads"
         - "{{path.stdout}}/qbittorrent/downloads/incomplete"
         - "{{path.stdout}}/deluge"
@@ -225,9 +225,4 @@
         - "{{path.stdout}}/sab/incomplete"
         - "{{path.stdout}}/sab/nzb"
         - "{{path.stdout}}/sab/complete/ebooks"
-        - "{{path.stdout}}/torrentvpn"
-        - "{{path.stdout}}/torrentvpn/temp"
-        - "{{path.stdout}}/torrentvpn/downloaded"
-        - "{{path.stdout}}/torrentvpn/.torrent"
-        - "{{path.stdout}}/torrentvpn/.watched"
       ignore_errors: yes
