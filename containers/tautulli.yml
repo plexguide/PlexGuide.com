@@ -77,7 +77,7 @@
 
     - name: Please Wait - Pending config.ini generation
       wait_for:
-        path: "/opt/appdata/tatulli/config.ini"
+        path: "/opt/appdata/tautulli/config.ini"
         state: present
 
     - name: Stop Container
