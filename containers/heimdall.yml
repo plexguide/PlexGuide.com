@@ -54,7 +54,7 @@
       image: "{{image}}"
       pull: yes
       published_ports:
-        - "127.0.0.1{{extport}}:{{intport}}"
+        - "127.0.0.1:{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
       env: "{{pg_env}}"
       restart_policy: always
