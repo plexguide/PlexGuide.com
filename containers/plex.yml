@@ -15,8 +15,6 @@
   - name: "Set Known Facts"
     set_fact:
       pgrole: "plex"
-      intport: "32400"
-      extport: "32400"
       expose: "32400"
 
 # CORE (MANDATORY) ############################################################
@@ -47,7 +45,7 @@
     set_fact:
       default_labels:
         traefik.enable: "true"
-        traefik.port: "{{intport}}"
+        traefik.basic.port: "32400"
         #traefik.frontend.redirect.entryPoint: "https"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
