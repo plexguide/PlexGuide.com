@@ -54,8 +54,8 @@
       name: "{{pgrole}}"
       image: "{{image}}"
       pull: yes
-      expose:
-        - "1111"
+      published_ports:
+        - "{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
       env: "{{pg_env}}"
       restart_policy: always
