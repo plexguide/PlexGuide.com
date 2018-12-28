@@ -53,9 +53,10 @@
       name: "{{pgrole}}"
       image: "{{image}}"
       pull: yes
-      expose: 443
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
+      expose:
+        - "80"
+      #published_ports:
+      #  - "{{ports.stdout}}{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
       env: "{{pg_env}}"
       restart_policy: always
