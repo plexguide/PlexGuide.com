@@ -15,8 +15,8 @@
   - name: "Set Known Facts"
     set_fact:
       pgrole: "heimdall"
-      intport: "443"
-      extport: "1111"
+      #intport: "443"
+      #extport: "1111"
       image: "linuxserver/heimdall"
 
 # CORE (MANDATORY) ############################################################
@@ -54,7 +54,7 @@
       image: "{{image}}"
       pull: yes
       expose:
-        - "80"
+        - "1111"
       #published_ports:
       #  - "{{ports.stdout}}{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
