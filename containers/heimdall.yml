@@ -32,7 +32,7 @@
         traefik.enable: "true"
         traefik.basic.port: "443"
         traefik.frontend.redirect.entryPoint: "https"
-        #traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
     set_fact:
