@@ -30,7 +30,7 @@
       pg_labels:
         traefik.frontend.auth.basic.users: "{{auth.stdout}}"
         traefik.enable: "true"
-        traefik.basic.port: "80"
+        traefik.basic.port: "443"
         traefik.frontend.redirect.entryPoint: "https"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
@@ -53,9 +53,9 @@
       name: "{{pgrole}}"
       image: "{{image}}"
       pull: yes
-      expose: 80
-      #published_ports:7
-      #  - "{{ports.stdout}}{{extport}}:{{intport}}"
+      expose: 443
+      published_ports:
+        - "{{ports.stdout}}{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
       env: "{{pg_env}}"
       restart_policy: always
