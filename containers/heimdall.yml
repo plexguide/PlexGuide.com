@@ -53,8 +53,8 @@
       name: "{{pgrole}}"
       image: "{{image}}"
       pull: yes
-      #expose:
-      #  - "443"
+      expose:
+        - "443"
       #published_ports:
       #  - "{{ports.stdout}}{{extport}}:{{intport}}"
       volumes: "{{pg_volumes}}"
