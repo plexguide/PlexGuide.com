@@ -21,7 +21,8 @@ tee <<-EOF
 
 1. Set Web Client ID & Secret
 2. Authorize User(s)
-3. Deploy PG Shiled
+3. App Exemption from PG Shield
+4. Deploy PG Shiled
 Z. EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -39,8 +40,11 @@ case $typed in
         phase1 ;;
     2 )
         email
-        phase1;;
+        phase1 ;;
     3 )
+        appexempt
+        phase1 ;;
+    4 )
         touch /var/plexguide/pgshield.compiled
         rm -r /var/plexguide/pgshield.compiled
         while read p; do
@@ -48,7 +52,7 @@ case $typed in
         done </var/plexguide/pgshield.emails
 
         ansible-playbook /opt/plexguide/menu/pgshield/pgshield.yml
-        phase1;;
+        phase1 ;;
     z )
         exit ;;
     Z )
@@ -56,6 +60,46 @@ case $typed in
     * )
         question1 ;;
 esac
+}
+
+appexempt() {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎  PG Shield - App Exemption        ⚡ Reference: pgshield.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Application: Exempt
+2. Application: Protect Again
+3. Application: Protect All Apps
+Z. EXIT
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+phase3
+}
+
+phase3() {
+read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+
+case $typed in
+    1 )
+        webid
+        appexempt ;;
+    2 )
+        email
+        appexempt ;;
+    3 )
+        x
+        appexempt;;
+    z )
+        question1 ;;
+    Z )
+        question1 ;;
+    * )
+        appexempt ;;
+esac
+
 }
 
 webid() {
