@@ -6,8 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 question1 () {
-
-  touch /var/plexguide/pgshield.emails
+touch /var/plexguide/pgshield.emails
 
 tee <<-EOF
 
@@ -114,7 +113,7 @@ case $typed in
     4 )
         test=(cat /var/plexguide/pgshield.emails | grep "@")
         if [[ "$test" == "" ]]; then email; fi
-        docker stop oauth 
+        docker stop oauth
         rm -r /var/plexguide/pgshield.emails
         touch /var/plexguide/pgshield.emails
         echo
