@@ -99,8 +99,7 @@
 # FOR AUTHENTICATION
   - name: "OAuth Check"
     shell: |
-    abc=$(docker ps | grep oauth)
-    if [[ $abc == "" ]]; then echo null; else echo good; fi
+    if [[ $(docker ps | grep oauth) == "" ]]; then echo null; else echo good; fi
     register: oauth
 
   - name: "OAuth Exe"
