@@ -113,7 +113,7 @@ case $typed in
         rm -rf /var/plexguide/auth/*
         echo ""
         echo "NOTE: Does Not Take Effect Until PG Shield is Redeployed!"
-        read -p 'Removed User | Press [ENTER] ' typed < /dev/tty; email
+        read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty; email
         appexempt;;
     z )
         question1 ;;
