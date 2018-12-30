@@ -177,6 +177,9 @@ read -p '🌍 Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt
 
 phase21(){
 
+  emptycheck=$(cat /var/plexguide/pgshield.ex15)
+  if [[ "$emptycheck" == "" ]]; then echo;
+  read -p 'No Apps Are Exempt! Exiting | Press [ENTER]'; fi 
   ### Blank Out Temp List
   rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
 
