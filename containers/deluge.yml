@@ -45,8 +45,6 @@
         - "/mnt/unionfs:/unionfs"
         - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
         - "{{path.stdout}}/downloads/{{pgrole}}/:/downloads/{{pgrole}}"
-        - "{{path.stdout}}/torrent:/torrent"
-        - "{{path.stdout}}/watch:/watch"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"

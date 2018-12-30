@@ -57,7 +57,6 @@
         - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
         - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
 
-
   - name: "Setting PG ENV"
     set_fact:
       pg_env:
