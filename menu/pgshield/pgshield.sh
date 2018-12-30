@@ -159,7 +159,7 @@ $notrun
 
 💬 Quitting? TYPE > exit
 EOF
-  read -p '🌍  Type APP to Exempt | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍 Type APP to Exempt | Press [ENTER]: ' typed < /dev/tty
 
 grep -w "$typed" /var/plexguide/program.temp > /var/plexguide/check55.sh
 usercheck=$(cat /var/plexguide/check55.sh)
@@ -169,8 +169,8 @@ read -p 'App Does Not Exist! | Press [ENTER] ' note < /dev/tty; appexempt; fi
 
 touch /var/plexguide/auth/$typed
 echo
-echo "NOTE: Does Not Apply until you redeploy PG Shild or App Solo"
-read -p '🌍  Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt
+echo "NOTE: No Effect until PG Shield or the App Solo is Redeployed!"
+read -p '🌍 Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt
 }
 
 webid() {
