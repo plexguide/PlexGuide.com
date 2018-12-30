@@ -9,6 +9,7 @@ source /opt/plexguide/menu/functions/functions.sh
 
 question1 () {
 touch /var/plexguide/pgshield.emails
+mkdir -p /var/plexguide/auth/
 
 tee <<-EOF
 
