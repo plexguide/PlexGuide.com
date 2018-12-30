@@ -111,7 +111,7 @@ case $typed in
         cat /var/plexguide/pgshield.emails
         email ;;
     4 )
-        test=(cat /var/plexguide/pgshield.emails | grep "@")
+        test=$(cat /var/plexguide/pgshield.emails | grep "@")
         if [[ "$test" == "" ]]; then email; fi
         docker stop oauth
         rm -r /var/plexguide/pgshield.emails
