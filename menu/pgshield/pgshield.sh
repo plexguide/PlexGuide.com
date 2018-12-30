@@ -121,6 +121,7 @@ case $typed in
         read -p 'Removed User | Press [ENTER] ' typed < /dev/tty; email
         email ;;
     3 )
+        echo 
         echo "Current Authorized E-Mail Addresses"
         echo ""
         cat /var/plexguide/pgshield.emails
