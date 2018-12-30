@@ -22,9 +22,9 @@ GDSA=$2
 log "[Upload] Upload started for $FILE using $GDSA"
 
 STARTTIME=`date +%s`
-FILESTER=`echo $FILE | sed 's/\'$downloadpath'\/move//g'`
+FILESTER=`echo $FILE | sed 's|\'$downloadpath'\/move||g'`
 FILEBASE=`basename $FILE`
-FILEDIR=`dirname $FILE | sed 's/\'$downloadpath'\/move//g'`
+FILEDIR=`dirname $FILE | sed 's|\'$downloadpath'\/move||g'`
 
 JSONFILE=/opt/appdata/pgblitz/json/$FILEBASE.json
 
@@ -108,7 +108,7 @@ log "[Upload] Upload complete for $FILE, Cleaning up"
 #cleanup
 rm -f $LOGFILE
 rm -f /opt/appdata/pgblitz/pid/$FILEBASE.trans
-find "/mnt/move/" -mindepth 1 -type d -empty -delete
+find "$downloadpath/move/" -mindepth 1 -type d -empty -delete
 find "/mnt/pgblitz/" -mindepth 2 -type d -empty -delete
 sleep 60
 rm -f $JSONFILE
