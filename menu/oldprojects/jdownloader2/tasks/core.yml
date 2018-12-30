@@ -54,7 +54,7 @@
   set_fact:
     default_labels:
       traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
+
       traefik.frontend.rule: "Host:download.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
       traefik.port: "{{intport}}"
 

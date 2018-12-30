@@ -30,7 +30,7 @@
       pg_labels:
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-        traefik.frontend.redirect.entryPoint: "https"
+  
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
@@ -38,15 +38,8 @@
       pg_volumes:
         - "/opt/appdata/{{pgrole}}/mp4_auxtomator:/config_mp4_automator"
         - "/opt/appdata/{{pgrole}}:/config"
-        - "/mnt/unionfs/completed:/unionfs-downloads/shared"
-        - "/mnt/unionfs:/unionfs"
         - "/mnt/unionfs/movies:/movies"
-        - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
-        - "{{path.stdout}}/sab/complete:/complete"
-        - "{{path.stdout}}/nzbget/completed:/completed"
-        - "{{path.stdout}}/rutorrent:/downloads"
-        - "{{path.stdout}}/deluge/downloaded:/downloaded"
-        - "{{path.stdout}}/qbittorrent/downloads:/qbit-downloads"
+        - "{{path.stdout}}/downloads:/downloads"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
