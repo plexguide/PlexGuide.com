@@ -37,16 +37,16 @@ else ports="CLOSED"; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  PG Shield                        ⚡ Reference: pgshield.plexguide.com
+🌎  PG Defense                       ⚡ Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬  PG Shield requires Google Web Auth Keys! Visit the link above!
 
-[1] PG Port Guard [$ports]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[2] Set Web Client ID & Secret
-[3] Authorize User(s)
-[4] Exempt PG Apps
-[5] Deploy PG Shield
+[1] Set Web Client ID & Secret
+[2] Authorize User(s)
+[3] Exempt PG Apps
+[4] Deploy PG Shield
+
+[A] PG Port Guard [$ports]
 [Z] EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -59,16 +59,16 @@ phase1 () {
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
-    2 )
+    1 )
         webid
         phase1 ;;
-    3 )
+    2 )
         email
         phase1 ;;
-    4 )
+    3 )
         appexempt
         phase1 ;;
-    5 )
+    4 )
         touch /var/plexguide/pgshield.compiled
         rm -r /var/plexguide/pgshield.compiled
         while read p; do
@@ -76,6 +76,12 @@ case $typed in
         done </var/plexguide/pgshield.emails
 
         ansible-playbook /opt/plexguide/menu/pgshield/pgshield.yml
+        phase1 ;;
+    A )
+        bash /opt/plexguide/menu/portguard/portguard.sh
+        phase1 ;;
+    a )
+        bash /opt/plexguide/menu/portguard/portguard.sh
         phase1 ;;
     z )
         exit ;;
