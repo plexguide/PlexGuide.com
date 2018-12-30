@@ -37,17 +37,17 @@ else ports="CLOSED"; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  PG Shield                       ⚡ Reference: pgshield.plexguide.com
+🌎  PG Shield                        ⚡ Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬  PG Shield requires Google Web Auth Keys! Visit the link above!
 
 [1] PG Port Guard [$ports]
-
-💬  PG Shield requires Google Web Auth Keys! Visit the link above!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [2] Set Web Client ID & Secret
 [3] Authorize User(s)
 [4] Exempt PG Apps
 [5] Deploy PG Shield
-Z. EXIT
+[Z] EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
