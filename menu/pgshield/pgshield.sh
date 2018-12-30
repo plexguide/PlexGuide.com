@@ -100,7 +100,7 @@ case $typed in
         read -p 'User Email to Add | Press [ENTER]: ' typed < /dev/tty
 
         emailcheck=$(echo $typed | grep "@")
-        if [[ "$emailcheck" != "" ]]; then
+        if [[ "$emailcheck" == "" ]]; then
           read -p 'Invalid E-Mail! | Press [ENTER] ' note < /dev/tty; email; fi
 
         usercheck=$(cat /var/plexguide/pgshield.emails | grep $typed )
