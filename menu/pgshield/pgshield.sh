@@ -170,7 +170,7 @@ read -p 'App Does Not Exist! | Press [ENTER] ' note < /dev/tty; appexempt; fi
 touch /var/plexguide/auth/$typed
 echo
 echo "NOTE: Does Not Apply until you redeploy PG Shild or App Solo"
-read -p '🌍  Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt; fi
+read -p '🌍  Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt
 }
 
 webid() {
