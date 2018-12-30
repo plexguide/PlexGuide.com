@@ -82,6 +82,7 @@ esac
 
 appexempt() {
 bash /opt/plexguide/containers/_appsgen.sh
+ls -l /var/plexguide/auth | awk '{ print $9 }' > /var/plexguide/pgshield.ex15
 
 tee <<-EOF
 
@@ -126,9 +127,9 @@ esac
 }
 
 phase31(){
-  #while read p; do
-  #  sed -i "/^$p\b/Id" /var/plexguide/app.list
-  #done </var/plexguide/pgbox.running
+  while read p; do
+    sed -i "/^$p\b/Id" /var/plexguide/app.list
+  done </var/plexguide/pgshield.ex15
 
   ### Blank Out Temp List
   rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
