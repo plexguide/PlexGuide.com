@@ -141,10 +141,12 @@ quote=$(cat /var/plexguide/startup.quote)
 source=$(cat /var/plexguide/startup.source)
 echo
 echo "[1] Traefik : [$traefik]"
-if [ "$edition" == "PG Edition - GDrive" ]; then echo "[2] PG Clone: Mount Transport"
-elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "[2] PG Clone: Mount Transport"
-elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "[2] MultiHD : MultiFS Combined Mounts"
-elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "[2] No Mounts for Solo HD"
+echo "[2] PG Def  : PG Shield & Port Guard"
+
+if [ "$edition" == "PG Edition - GDrive" ]; then echo "[3] PG Clone: Mount Transport"
+elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "[3] PG Clone: Mount Transport"
+elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "[3] MultiHD : MultiFS Combined Mounts"
+elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "[3] No Mounts for Solo HD"
 else
   echo "[2] Mounts & Data Transports"
   echo "PG Edition - GDrive" > /var/plexguide/pg.edition
@@ -166,7 +168,7 @@ EOF
 # Standby
 read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "2" ]; then
+  if [ "$typed" == "3" ]; then
 
     if [ "$edition" == "PG Edition - GDrive" ]; then bash /opt/plexguide/menu/pgclone/gdrive.sh
     elif [ "$edition" == "PG Edition - GCE Feed" ]; then bash /opt/plexguide/menu/pgclone/gdrive.sh
@@ -185,15 +187,17 @@ sleep 3
 
 elif [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/traefik/traefik.sh
-elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/pgbox/pgbox.sh
+elif [ "$typed" == "2" ]; then
+  bash /opt/plexguide/menu/pgshield/pgshield.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/removal/removal.sh
+  bash /opt/plexguide/menu/pgbox/pgbox.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
+  bash /opt/plexguide/menu/removal/removal.sh
 elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/tools/tools.sh
+  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
 elif [ "$typed" == "7" ]; then
+  bash /opt/plexguide/menu/tools/tools.sh
+elif [ "$typed" == "8" ]; then
   bash /opt/plexguide/menu/settings/settings.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   bash /opt/plexguide/menu/ending/ending.sh

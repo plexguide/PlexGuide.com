@@ -21,7 +21,7 @@ tee <<-EOF
 
 1. Set Web Client ID & Secret
 2. Authorize User(s)
-3. App Exemption from PG Shield
+3. Exempt PG Apps
 4. Deploy PG Shiled
 Z. EXIT
 
