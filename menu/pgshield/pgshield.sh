@@ -98,7 +98,7 @@ case $typed in
     1 )
         echo
         read -p 'User Email to Add | Press [ENTER]: ' typed < /dev/tty
-        echo "$typed," >> /var/plexguide/pgshield.emails
+        echo "$typed" >> /var/plexguide/pgshield.emails
         email ;;
     2 )
         echo
