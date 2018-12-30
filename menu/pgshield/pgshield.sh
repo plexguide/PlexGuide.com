@@ -106,7 +106,7 @@ case $typed in
         testremove=$(cat /var/plexguide/pgshield.emails | grep $typed )
         if [[ "$testremove" == "" ]]; then echo;
         read -p 'User Does Not Exist | Press [ENTER] ' typed < /dev/tty; email; fi
-        sed 's/${typed},//g' /var/plexguide/pgshield.emails > /var/plexguide/shield.tmp
+        sed 's/$typed,//g' /var/plexguide/pgshield.emails > /var/plexguide/shield.tmp
         cat /var/plexguide/shield.tmp > /var/plexguide/pgshield.emails
         rm -rf /var/plexguide/shield.tmp
         email ;;
