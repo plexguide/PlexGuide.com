@@ -119,9 +119,9 @@
         gauth: ""
       when: authcheck.stat.exists
 
-    when: "oauth.stdout == good"
+    when: "oauth.stdout" == "good"
 
   - name: "OAuth Exe"
     set_fact:
       gauth: ""
-    when: "oauth.stdout == 'null"
+    when: "oauth.stdout" == "null"
