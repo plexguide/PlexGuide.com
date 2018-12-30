@@ -46,17 +46,17 @@
       pg_labels:
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-  
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
+        - "/etc/localtime:/etc/localtime:ro"
         - "/opt/appdata/{{pgrole}}:/config"
+        - "/opt/appdata/{{pgrole}}/scripts:/scripts"
         - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
         - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
-        - "/opt/appdata/{{pgrole}}/scripts:/scripts"
-        - "/etc/localtime:/etc/localtime:ro"
+
 
   - name: "Setting PG ENV"
     set_fact:

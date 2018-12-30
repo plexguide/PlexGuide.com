@@ -21,7 +21,7 @@
       extport2: "58846"
       intport3: "58946"
       extport3: "58946"
-      image: "binhex/arch-deluge"
+      image: "linuxserver/deluge"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
@@ -43,10 +43,10 @@
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/config"
         - "/mnt/unionfs:/unionfs"
-        - "{{path.stdout}}/deluge/temp:/temp"
-        - "{{path.stdout}}/deluge/downloaded:/downloaded"
-        - "{{path.stdout}}/deluge/torrent:/torrent"
-        - "{{path.stdout}}/deluge/torrent:/watch"
+        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+        - "{{path.stdout}}/downloads/{{pgrole}}/:/downloads/{{pgrole}}"
+        - "{{path.stdout}}/torrent:/torrent"
+        - "{{path.stdout}}/watch:/watch"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"

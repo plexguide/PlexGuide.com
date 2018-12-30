@@ -39,9 +39,7 @@
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/config"
         - "/mnt/unionfs:/unionfs"
-        - "{{path.stdout}}/deluge/temp:/temp"
-        - "{{path.stdout}}/deluge/downloaded:/downloaded"
-        - "{{path.stdout}}/deluge/torrent:/torrent"
+        - "{{path.stdout}}/downloads:/downloads"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
