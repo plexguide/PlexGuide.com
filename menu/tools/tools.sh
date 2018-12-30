@@ -57,16 +57,6 @@ exit
 fi
 }
 
-# Declare Ports State
-ports=$(cat /var/plexguide/server.ports)
-if [ "$ports" == "" ]; then ports="OPEN"
-else ports="CLOSED"; fi
-
-# Declare AppGuard State
-appguard=$(cat /var/plexguide/server.ht)
-if [ "$appguard" == "" ]; then appguard="NOT DEPLOYED"
-else appguard="DEPLOYED"; fi
-
 # Menu Interface
 tee <<-EOF
 
@@ -75,14 +65,12 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [1] PG Vault      [Backup & Restore]
-[2] PG Port Guard [$ports]
-[3] PG App  Guard [$appguard]
-[4] PG Patrol
-[5] PG Scan (NOT READY)
-[6] PG Trakt
-[7] Personal VPN Service Installer
-[8] System & Network Auditor
-[9] TroubleShoot ~ PreInstaller
+[2] PG Patrol
+[3] PG Scan (NOT READY)
+[4] PG Trakt
+[5] Personal VPN Service Installer
+[6] System & Network Auditor
+[7] TroubleShoot ~ PreInstaller
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -95,20 +83,16 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   gcheck
   bash /opt/plexguide/menu/pgvault/pgvault.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/portguard/portguard.sh
-elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/appguard/appguard.sh
-elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/pgpatrol/pgpatrol.sh
-elif [ "$typed" == "5" ]; then
+elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgscan/pgscan.sh
-elif [ "$typed" == "6" ]; then
+elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/pgtrakt/pgtrakt.sh
-elif [ "$typed" == "7" ]; then
+elif [ "$typed" == "5" ]; then
   echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-elif [ "$typed" == "8" ]; then
+elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/network/network.sh
-elif [ "$typed" == "9" ]; then
+elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/tshoot/tshoot.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit

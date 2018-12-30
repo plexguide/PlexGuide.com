@@ -29,6 +29,11 @@ exit; fi
 touch /var/plexguide/pgshield.emails
 mkdir -p /var/plexguide/auth/
 
+# Declare Ports State
+ports=$(cat /var/plexguide/server.ports)
+if [ "$ports" == "" ]; then ports="OPEN"
+else ports="CLOSED"; fi
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
