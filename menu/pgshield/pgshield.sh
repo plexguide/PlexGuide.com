@@ -106,7 +106,7 @@ case $typed in
         usercheck=$(cat /var/plexguide/pgshield.emails | grep $typed )
         if [[ "$usercheck" != "" ]]; then
           read -p 'User Already Exists! | Press [ENTER] ' note < /dev/tty; email; fi
-          read -p 'User Added - "${typed}"  | Press [ENTER] ' note < /dev/tty;
+          read -p 'User Added | Press [ENTER] ' note < /dev/tty;
         echo "$typed" >> /var/plexguide/pgshield.emails
         email ;;
     2 )
@@ -118,12 +118,14 @@ case $typed in
         sed -i -e "/$typed/d" /var/plexguide/pgshield.emails
         echo ""
         echo "NOTE: Does Not Take Effect Until PG Shield is Redeployed!"
-        read -p 'Removed User - $typed | Press [ENTER] ' typed < /dev/tty; email
+        read -p 'Removed User | Press [ENTER] ' typed < /dev/tty; email
         email ;;
     3 )
         echo "Current Stored E-Mail Address"
         echo ""
         cat /var/plexguide/pgshield.emails
+        echo
+        read -p 'Removed User | Press [ENTER] ' typed < /dev/tty; email
         email ;;
     4 )
         test=$(cat /var/plexguide/pgshield.emails | grep "@")
