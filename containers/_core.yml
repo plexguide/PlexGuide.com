@@ -97,11 +97,15 @@
     ignore_errors: True
 
 # FOR AUTHENTICATION
-  - name: "OAuth Check"
-    shell: |
-    if [[ $(docker ps | grep oauth) == "" ]]; then echo null; else echo good; fi
-    args:
-     executable: /bin/bash
+  - name: "Script Execute Part I"
+    shell: "bash /opt/plexguide/menu/pgshield/drop.sh"
+
+  - name: "Script Execute Part II"
+    pause:
+      minutes: 1
+
+  - name: "Transfer Image Variable"
+    shell: "cat /var/plexguide/auth.var"
     register: oauth
 
   - name: "OAuth Exe"
