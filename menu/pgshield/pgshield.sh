@@ -83,7 +83,7 @@ tee <<-EOF
 1. E-Mail: Add User
 2. E-Mail: Remove User
 3. E-Mail: View Current Users
-4. E-Mail: Delete All Users
+4. E-Mail: Remove All Users (Stops PG Shield)
 Z. EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -112,8 +112,14 @@ case $typed in
         cat /var/plexguide/pgshield.emails
         email ;;
     4 )
+        test=(cat /var/plexguide/pgshield.emails | grep "@")
+        if [[ "$test" == "" ]]; then email; fi
+        docker stop oauth 
         rm -r /var/plexguide/pgshield.emails
         touch /var/plexguide/pgshield.emails
+        echo
+        docker stop oauth
+        read -p 'All Prior Users Removed! | Press [ENTER]: ' typed < /dev/tty
         email ;;
     z )
         question1 ;;
