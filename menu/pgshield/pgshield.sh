@@ -127,9 +127,9 @@ esac
 }
 
 phase31(){
+  touch /var/plexguide/app.list
   while read p; do
-    sed -i -e "/$p/d" /opt/appdata/plexguide/app.list
-
+    sed -i -e "/$p/d" /var/plexguide/app.list
   done </var/plexguide/pgshield.ex15
 
   ### Blank Out Temp List
