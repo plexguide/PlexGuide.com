@@ -44,6 +44,8 @@
           traefik.port: "4181"
           traefik.backend: "oauth"
           traefik.frontend.rule: "Host:oauth.{{domain.stdout}}"
+          traefik.frontend.auth.forward.address: "http://oauth:4181"
+
 
     - name: "Setting PG Volumes"
       set_fact:
