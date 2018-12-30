@@ -108,7 +108,7 @@ case $typed in
         phase31
         appexempt ;;
     2 )
-        email
+        phase21
         appexempt ;;
     3 )
         rm -rf /var/plexguide/auth/*
@@ -164,6 +164,51 @@ EOF
   read -p '🌍 Type APP to Exempt | Press [ENTER]: ' typed < /dev/tty
 
 grep -w "$typed" /var/plexguide/program.temp > /var/plexguide/check55.sh
+usercheck=$(cat /var/plexguide/check55.sh)
+
+if [[ "$usercheck" == "" ]]; then echo;
+read -p 'App Does Not Exist! | Press [ENTER] ' note < /dev/tty; appexempt; fi
+
+touch /var/plexguide/auth/$typed
+echo
+echo "NOTE: No Effect until PG Shield or the App Solo is Redeployed!"
+read -p '🌍 Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt
+}
+
+phase21(){
+
+  ### Blank Out Temp List
+  rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
+
+  ### List Out Apps In Readable Order (One's Not Installed)
+  num=0
+  while read p; do
+    echo -n $p >> /var/plexguide/program.temp
+    echo -n " " >> /var/plexguide/program.temp
+    num=$[num+1]
+    if [ "$num" == 7 ]; then
+      num=0
+      echo " " >> /var/plexguide/program.temp
+    fi
+  done </var/plexguide/pgshield.ex15
+
+  notrun=$(cat /var/plexguide/program.temp)
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Shield - App Protect Restore   📓 Reference: pgshield.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📂 Potential Apps to Restore
+
+$notrun
+
+💬 Quitting? TYPE > exit
+EOF
+  read -p '🌍 Type APP to Restore | Press [ENTER]: ' typed < /dev/tty
+
+grep -w "$typed" /var/plexguide/pgshield.ex15 > /var/plexguide/check55.sh
 usercheck=$(cat /var/plexguide/check55.sh)
 
 if [[ "$usercheck" == "" ]]; then echo;
