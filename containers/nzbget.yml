@@ -46,18 +46,16 @@
       pg_labels:
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-        traefik.frontend.redirect.entryPoint: "https"
+  
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/nzbget:/config"
-        - "{{path.stdout}}/{{pgrole}}/downloads/completed:/completed"
-        - "{{path.stdout}}/{{pgrole}}/downloads:/downloads"
-        - "/opt/appdata/nzbget/scripts:/scripts"
-        - "/mnt/unionfs:/unionfs"
-        - "/mnt:/mnt"
+        - "/opt/appdata/{{pgrole}}:/config"
+        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+        - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
+        - "/opt/appdata/{{pgrole}}/scripts:/scripts"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"

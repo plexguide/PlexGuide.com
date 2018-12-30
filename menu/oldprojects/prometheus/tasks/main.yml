@@ -143,7 +143,7 @@
            labels:
              org.label-schema.group: "monitoring"
              traefik.enable: "true"
-             traefik.frontend.redirect.entryPoint: "https"
+       
              traefik.frontend.rule: "Host:grafana.{{domain.stdout}},{{tldset}}"
              traefik.port: "3000"
 

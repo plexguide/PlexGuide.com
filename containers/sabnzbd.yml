@@ -24,10 +24,10 @@
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
   - name: "Chown NZB Owners"
-    shell: "chown -R 1000:1000 {{path.stdout}}/sab/"
+    shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}/"
 
   - name: "SAB Permissions Set"
-    shell: "chmod -R 775 {{path.stdout}}/sab/"
+    shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}/"
 
   - name: "Ini Check"
     stat:

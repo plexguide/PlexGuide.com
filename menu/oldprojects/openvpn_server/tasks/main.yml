@@ -189,6 +189,6 @@
           - openvpn_server
 #    labels:
 #      traefik.enable: "true"
-#      traefik.frontend.redirect.entryPoint: "https"
+#
 #      traefik.frontend.rule: "Host:openvpn.{{domain.stdout}}"
 #      traefik.port: "8118"

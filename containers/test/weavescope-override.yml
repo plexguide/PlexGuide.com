@@ -29,7 +29,7 @@
     labels:
       works.weave.role: system
       traefik.enable: "true"
-      traefik.frontend.redirect.entryPoint: "https"
+
       traefik.frontend.rule: "Host:weavescope.{{domain.stdout}},next.{{domain.stdout}}"
       traefik.port: "443"
       traefik.protocol: "https"
