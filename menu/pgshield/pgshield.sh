@@ -81,7 +81,7 @@ tee <<-EOF
 
 1. E-Mail: Add User
 2. E-Mail: Remove User
-3. E-Mail: View Current Users
+3. E-Mail: View Authorization List
 4. E-Mail: Remove All Users (Stops PG Shield)
 Z. EXIT
 
@@ -103,7 +103,12 @@ case $typed in
     2 )
         echo
         read -p 'User Email to Remove | Press [ENTER]: ' typed < /dev/tty
-        echo "$typed," >> /var/plexguide/pgshield.emails
+        testremove=$(cat /var/plexguide/pgshield.emails | grep $typed )
+        if [[ "$testremove" == "" ]]; then echo;
+        read -p 'User Does Not Exist | Press [ENTER] ' typed < /dev/tty; email; fi
+        sed 's/gforce75@gmail.com,//g' /var/plexguide/pgshield.emails > /var/plexguide/shield.tmp
+        cat /var/plexguide/shield.tmp > /var/plexguide/pgshield.emails
+        rm -rf /var/plexguide/shield.tmp
         email ;;
     3 )
         echo "Current Stored E-Mail Address"
