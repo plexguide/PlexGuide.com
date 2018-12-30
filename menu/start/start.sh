@@ -153,11 +153,11 @@ else
 fi
 
 tee <<-EOF
-[3] PG Box  : App Installer
-[4] PG Box  : App Removal
-[5] PG Cloud: GCE & Virtual Instances
-[6] PG Tools
-[7] PG Settings
+[4] PG Box  : App Installer
+[5] PG Box  : App Removal
+[6] PG Cloud: GCE & Virtual Instances
+[7] PG Tools
+[8] PG Settings
 [Z] Exit
 
 "$quote"
