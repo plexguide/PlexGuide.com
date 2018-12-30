@@ -63,6 +63,8 @@ esac
 }
 
 appexempt() {
+bash /opt/plexguide/containers/_appsgen.sh
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -84,7 +86,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
-        webid
+        phase31
         appexempt ;;
     2 )
         email
@@ -99,6 +101,44 @@ case $typed in
     * )
         appexempt ;;
 esac
+
+}
+
+phase31(){
+  #while read p; do
+  #  sed -i "/^$p\b/Id" /var/plexguide/app.list
+  #done </var/plexguide/pgbox.running
+
+  ### Blank Out Temp List
+  rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
+
+  ### List Out Apps In Readable Order (One's Not Installed)
+  num=0
+  while read p; do
+    echo -n $p >> /var/plexguide/program.temp
+    echo -n " " >> /var/plexguide/program.temp
+    num=$[num+1]
+    if [ "$num" == 7 ]; then
+      num=0
+      echo " " >> /var/plexguide/program.temp
+    fi
+  done </var/plexguide/app.list
+
+  notrun=$(cat /var/plexguide/program.temp)
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Sheild - App Exemption       📓 Reference: pgshield.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📂 Potential Apps to Exempt
+
+$notrun
+
+💬 Quitting? TYPE > exit
+EOF
+  read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 
 }
 
