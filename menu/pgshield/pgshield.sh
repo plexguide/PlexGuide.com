@@ -13,7 +13,7 @@ domaincheck=$(cat /var/plexguide/server.domain)
 touch /var/plexguide/server.domain
 touch /tmp/portainer.check
 rm -r /tmp/portainer.check
-wget -q "https://portainer.${domaincheck}.com" -O /tmp/portainer.check
+wget -q "https://portainer.${domaincheck}" -O /tmp/portainer.check
 domaincheck=$(cat /tmp/portainer.check)
 if [ "$domaincheck" == "" ]; then
 echo
