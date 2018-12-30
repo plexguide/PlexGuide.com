@@ -119,7 +119,7 @@ case $typed in
         sed -i -e "/$typed/d" /var/plexguide/pgshield.emails
         echo ""
         echo "NOTE: Does Not Take Effect Until PG Shield is Redeployed!"
-        read -p 'Removed User - $typed | Press [ENTER] ' typed < /dev/tty; email; fi
+        read -p 'Removed User - $typed | Press [ENTER] ' typed < /dev/tty; email
         email ;;
     3 )
         echo "Current Stored E-Mail Address"
