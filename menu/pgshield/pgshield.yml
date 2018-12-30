@@ -57,6 +57,7 @@
           COOKIE_DOMAINS: "{{domain.stdout}}"
           COOKIE_SECURE: true
           AUTH_HOST: "oauth.{{domain.stdout}}"
+          WHITELIST: "{email.stdout}"
   # MAIN DEPLOYMENT #############################################################
 
     - name: "Deploying Container - {{pgrole}}"
