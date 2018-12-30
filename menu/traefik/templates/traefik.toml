@@ -37,7 +37,7 @@ defaultEntryPoints = ["http", "https"]
 [entryPoints]
   [entryPoints.http]
   address = ":80"
-  entryPoints.http.redirect]
+  [entryPoints.http.redirect]
     entryPoint = "https"
   [entryPoints.https]
   address = ":443"
