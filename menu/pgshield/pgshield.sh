@@ -6,6 +6,9 @@
 # GNU:        General Public License v3.0
 ################################################################################
 question1 () {
+
+  touch /var/plexguide/pgshield.emails
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -80,6 +83,7 @@ tee <<-EOF
 1. E-Mail: Add User
 2. E-Mail: Remove User
 3. E-Mail: View Current Users
+4. E-Mail: Delete All Users
 Z. EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -106,6 +110,10 @@ case $typed in
         echo "Current Stored E-Mail Address"
         echo ""
         cat /var/plexguide/pgshield.emails
+        email ;;
+    4 )
+        rm -r /var/plexguide/pgshield.emails
+        touch /var/plexguide/pgshield.emails
         email ;;
     z )
         question1 ;;
