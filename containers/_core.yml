@@ -104,10 +104,6 @@
     pause:
       seconds: 1
 
-  - name: "Transfer Image Variable"
-    shell: "cat /var/plexguide/auth.var"
-    register: oauth
-
   - name: "OAuth Exe"
     block:
 
@@ -126,9 +122,9 @@
         gauth: ""
       when: authcheck.stat.exists
 
-    when: "oauth.stdout == good"
+    when: "oauth.stdout == 'good'"
 
   - name: "OAuth Exe"
     set_fact:
       gauth: ""
-    when: "not oauth.stdout == null"
+    when: "not oauth.stdout == 'null'"
