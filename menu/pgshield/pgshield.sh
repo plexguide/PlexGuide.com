@@ -76,6 +76,7 @@ case $typed in
         done </var/plexguide/pgshield.emails
 
         ansible-playbook /opt/plexguide/menu/pgshield/pgshield.yml
+        bash /opt/plexguide/menu/pgshield/rebuild.sh
         question1 ;;
     A )
         bash /opt/plexguide/menu/portguard/portguard.sh
