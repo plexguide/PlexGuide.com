@@ -37,10 +37,11 @@ tee <<-EOF
 
 💬  PG Shield requires Google Web Auth Keys! Visit the link above!
 
-1. Set Web Client ID & Secret
-2. Authorize User(s)
-3. Exempt PG Apps
-4. Deploy PG Shield
+1. Configure Port Guard
+2. Set Web Client ID & Secret
+3. Authorize User(s)
+4. Exempt PG Apps
+5. Deploy PG Shield
 Z. EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -53,16 +54,16 @@ phase1 () {
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
-    1 )
+    2 )
         webid
         phase1 ;;
-    2 )
+    3 )
         email
         phase1 ;;
-    3 )
+    4 )
         appexempt
         phase1 ;;
-    4 )
+    5 )
         touch /var/plexguide/pgshield.compiled
         rm -r /var/plexguide/pgshield.compiled
         while read p; do
