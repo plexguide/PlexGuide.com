@@ -111,6 +111,9 @@ case $typed in
         phase21
         appexempt ;;
     3 )
+        emptycheck=$(cat /var/plexguide/pgshield.ex15)
+        if [[ "$emptycheck" == "" ]]; then echo;
+        read -p 'No Apps Are Exempt! Exiting | Press [ENTER]'; appexempt; fi
         rm -rf /var/plexguide/auth/*
         echo ""
         echo "NOTE: Does Not Take Effect Until PG Shield is Redeployed!"
@@ -179,7 +182,7 @@ phase21(){
 
   emptycheck=$(cat /var/plexguide/pgshield.ex15)
   if [[ "$emptycheck" == "" ]]; then echo;
-  read -p 'No Apps Are Exempt! Exiting | Press [ENTER]'; fi 
+  read -p 'No Apps Are Exempt! Exiting | Press [ENTER]'; appexempt; fi
   ### Blank Out Temp List
   rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
 
