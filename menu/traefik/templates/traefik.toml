@@ -1,3 +1,4 @@
+
 #!/bin/bash
 #
 # [PlexGuide Menu]
@@ -36,7 +37,8 @@ defaultEntryPoints = ["http", "https"]
 [entryPoints]
   [entryPoints.http]
   address = ":80"
-
+  #[entryPoints.http.redirect]
+  #  entryPoint = "https"
   [entryPoints.https]
   address = ":443"
     [entryPoints.https.tls]
@@ -45,29 +47,25 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.monitor]
   address = ":8081"
 
-    [entryPoints.https.auth.forward]
-    address = "http://oauth:4181"
-    authResponseHeaders = ["X-Forwarded-User"]
-
 [retry]
 
 [acme]
 acmeLogging = true
-email = "user@dunn.cloud"
+email = "{{email.stdout}}"
 storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
   [acme.dnsChallenge]
-    provider = "godaddy"
+    provider = "{{provider.stdout}}"
     delayBeforeCheck = 30
 
 [[acme.domains]]
-  main = "ffplex.com"
+  main = "{{domain.stdout}}"
 [[acme.domains]]
-  main = "*.ffplex.com"
+  main = "*.{{domain.stdout}}"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "ffplex.com"
+domain = "{{domain.stdout}}"
 watch = true
 exposedbydefault = false
 network = "plexguide"
