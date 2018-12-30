@@ -150,7 +150,7 @@ phase31(){
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Sheild - App Exemption       📓 Reference: pgshield.plexguide.com
+🚀 PG Shield - App Exemption         📓 Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📂 Potential Apps to Exempt
@@ -159,7 +159,7 @@ $notrun
 
 💬 Quitting? TYPE > exit
 EOF
-  read -p '🌍 Type APP to Exempt | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍  Type APP to Exempt | Press [ENTER]: ' typed < /dev/tty
 
 grep -w "$typed" /var/plexguide/program.temp > /var/plexguide/check55.sh
 usercheck=$(cat /var/plexguide/check55.sh)
@@ -167,6 +167,10 @@ usercheck=$(cat /var/plexguide/check55.sh)
 if [[ "$usercheck" == "" ]]; then echo;
 read -p 'App Does Not Exist! | Press [ENTER] ' note < /dev/tty; appexempt; fi
 
+touch /var/plexguide/auth/$typed
+echo
+echo "NOTE: Does Not Apply until you redeploy PG Shild or App Solo"
+read -p '🌍  Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt; fi
 }
 
 webid() {
