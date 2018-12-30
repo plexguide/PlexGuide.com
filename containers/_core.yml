@@ -124,4 +124,4 @@
   - name: "OAuth Exe"
     set_fact:
       gauth: ""
-    when: oauth.stdout == 'null'
+    when: not oauth.stdout == 'good'
