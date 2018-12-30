@@ -159,7 +159,14 @@ $notrun
 
 💬 Quitting? TYPE > exit
 EOF
-  read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍 Type APP to Exempt | Press [ENTER]: ' typed < /dev/tty
+
+grep -w "$typed" /var/plexguide/program.temp > /var/plexguide/check55.sh
+usercheck=$(cat /var/plexguide/check55.sh)
+
+if [[ "$usercheck" == "" ]]; then echo;
+read -p 'App Does Not Exist! | Press [ENTER] ' note < /dev/tty; phase3; fi
+
 
 }
 
