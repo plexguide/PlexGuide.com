@@ -254,11 +254,11 @@ NOTE: Visit reference for Google Web Auth Keys
 EOF
 
 read -p '↘️  Web Client ID     | Press [Enter]: ' public < /dev/tty
-if [ "$public" = "exit" ]; then exit; fi
+if [ "$public" = "exit" ]; then question1; fi
 echo "$public" > /var/plexguide/shield.clientid
 
 read -p '↘️  Web Client Secret | Press [Enter]: ' secret < /dev/tty
-if [ "$secret" = "exit" ]; then exit; fi
+if [ "$secret" = "exit" ]; then question1; fi
 echo "$secret" > /var/plexguide/shield.clientsecret
 
 read -p '🌎 Client ID & Secret Set |  Press [ENTER] ' public < /dev/tty
