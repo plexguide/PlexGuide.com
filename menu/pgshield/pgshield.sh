@@ -17,7 +17,7 @@ tee <<-EOF
 💬  PG Shield requires Google Web Auth Keys! Visit the link above!
 
 1. Set Web Client ID & Secret
-2.
+2. Authorize User(s)
 3. Deploy PG Shiled
 Z. EXIT
 
@@ -118,7 +118,7 @@ case $typed in
         touch /var/plexguide/pgshield.emails
         echo
         docker stop oauth
-        read -p 'All Prior Users Removed! | Press [ENTER]: ' typed < /dev/tty
+        read -p 'All Prior Users Removed! | Press [ENTER] ' typed < /dev/tty
         email ;;
     z )
         question1 ;;
