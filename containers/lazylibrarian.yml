@@ -41,7 +41,7 @@
         - "/mnt/unionfs/ebooks:/books"
         - "/mnt/unionfs/abooks:/abooks"
         - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
-        - "{{path.stdout}}/sab/complete:/complete"
+        - "{{path.stdout}}/sab/downloads:/config/Downloads"
         - "{{path.stdout}}/nzbget/completed:/completed"
         - "{{path.stdout}}/rutorrent:/downloads"
         - "{{path.stdout}}/deluge/downloaded:/downloaded"
