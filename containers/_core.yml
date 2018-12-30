@@ -119,7 +119,7 @@
         gauth: ""
       when: authcheck.stat.exists
 
-    when: oauth.stdou' == 'good'
+    when: oauth.stdout == 'good'
 
   - name: "OAuth Exe"
     set_fact:
