@@ -99,6 +99,9 @@
 # FOR AUTHENTICATION
   - name: "Script Execute Part I"
     shell: "bash /opt/plexguide/menu/pgshield/drop.sh"
+
+  - name: "Script Execute Part II"
+    shell: "cat /var/plexguide/auth.var"
     register: oauth
 
   - name: "OAuth Exe"
@@ -126,4 +129,4 @@
       gauth: ""
     when: not oauth.stdout == 'good'
 
-  - debug: msg="OAuth - {{oauth.stdout}} "
+  - debug: msg="OAuth - {{oauth.stdout}}"
