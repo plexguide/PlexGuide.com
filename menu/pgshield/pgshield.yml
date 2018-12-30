@@ -1,0 +1,74 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+  - hosts: localhost
+    gather_facts: false
+    tasks:
+
+  # FACTS #######################################################################
+
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "oauth"
+        intport: "4181"
+        extport: "4181"
+        image: "thomseddon/traefik-forward-auth"
+
+  # CORE (MANDATORY) ############################################################
+    - name: CronJob Role
+      include_tasks: "/opt/plexguide/containers/_core.yml"
+
+    - name: Register Auth Path
+      shell: "cat /var/plexguide/shield.clientid"
+      register: clientid 
+
+    - name: Register Auth Path
+      shell: "cat /var/plexguide/shield.clientsecret"
+      register: auth
+
+  # LABELS ######################################################################
+
+    - name: "Setting PG Labels"
+      set_fact:
+        pg_labels:
+          traefik.enable: "true"
+          traefik.port: "4181"
+          traefik.backend: "oauth"
+          traefik.frontend.rule: "Host:oauth.{{domain.stdout}}"
+
+    - name: "Setting PG Volumes"
+      set_fact:
+        pg_volumes:
+          - "/etc/localtime:/etc/localtime:ro"
+
+    - name: "Setting PG ENV"
+      set_fact:
+        pg_env:
+          PUID: "1000"
+          PGID: "1000"
+          CLIENT_ID: "{{clientid.stdout}}"
+          CLIENT_SECRET: "{{clientsecret.stdout}}"
+          SECRET: plexguide
+          COOKIE_DOMAINS: {{domain.stdout}}
+          COOKIE_SECURE: true
+          AUTH_HOST: oauth.{{domain.stdout}}
+  # MAIN DEPLOYMENT #############################################################
+
+    - name: "Deploying Container - {{pgrole}}"
+      docker_container:
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: "yes"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "plexguide"
+        state: started
+        labels: "{{pg_labels}}"
