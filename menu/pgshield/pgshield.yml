@@ -31,6 +31,10 @@
       shell: "cat /var/plexguide/shield.clientsecret"
       register: clientsecret
 
+    - name: Register WhiteListed E-Mails
+      shell: "cat /var/plexguide/pgshield.emails"
+      register: whitelisted
+
   # LABELS ######################################################################
 
     - name: "Setting PG Labels"
@@ -57,7 +61,7 @@
           COOKIE_DOMAINS: "{{domain.stdout}}"
           COOKIE_SECURE: true
           AUTH_HOST: "oauth.{{domain.stdout}}"
-          WHITELIST: "{email.stdout}"
+          WHITELIST: "{whitelisted.stdout}"
   # MAIN DEPLOYMENT #############################################################
 
     - name: "Deploying Container - {{pgrole}}"

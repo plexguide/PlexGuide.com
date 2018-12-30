@@ -103,6 +103,8 @@ case $typed in
         echo "$typed," >> /var/plexguide/pgshield.emails
         email ;;
     3 )
+        echo "Current Stored E-Mail Address"
+        echo ""
         cat /var/plexguide/pgshield.emails
         email ;;
     z )
