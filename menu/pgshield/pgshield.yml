@@ -32,7 +32,7 @@
       register: clientsecret
 
     - name: Register WhiteListed E-Mails
-      shell: "cat /var/plexguide/pgshield.emails"
+      shell: "cat /var/plexguide/pgshield.compiled"
       register: whitelisted
 
   # LABELS ######################################################################
