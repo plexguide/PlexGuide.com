@@ -62,14 +62,7 @@ read -p '↘️  Web Client Secret | Press [Enter]: ' secret < /dev/tty
 if [ "$secret" = "exit" ]; then exit; fi
 echo "$secret" > /var/plexguide/shield.clientsecret
 
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Client ID & Secret Set             📓 Reference: pgclone.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-read -p '↘️  Acknowledge Info  | Press [Enter]: ' public < /dev/tty
+read -p '🌎 Client ID & Secret Set |  Press [Enter]: ' public < /dev/tty
 question1
 }
 

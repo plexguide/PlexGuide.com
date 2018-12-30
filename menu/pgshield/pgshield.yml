@@ -25,7 +25,7 @@
 
     - name: Register Auth Path
       shell: "cat /var/plexguide/shield.clientid"
-      register: clientid 
+      register: clientid
 
     - name: Register Auth Path
       shell: "cat /var/plexguide/shield.clientsecret"
@@ -54,9 +54,9 @@
           CLIENT_ID: "{{clientid.stdout}}"
           CLIENT_SECRET: "{{clientsecret.stdout}}"
           SECRET: plexguide
-          COOKIE_DOMAINS: {{domain.stdout}}
+          COOKIE_DOMAINS: "{{domain.stdout}}"
           COOKIE_SECURE: true
-          AUTH_HOST: oauth.{{domain.stdout}}
+          AUTH_HOST: "oauth.{{domain.stdout}}"
   # MAIN DEPLOYMENT #############################################################
 
     - name: "Deploying Container - {{pgrole}}"
