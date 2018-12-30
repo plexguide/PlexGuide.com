@@ -98,7 +98,7 @@ case $typed in
     1 )
         echo
         read -p 'User Email to Add | Press [ENTER]: ' typed < /dev/tty
-        echo -n "$typed," >> /var/plexguide/pgshield.emails
+        echo "$typed," >> /var/plexguide/pgshield.emails
         email ;;
     2 )
         echo
@@ -106,9 +106,7 @@ case $typed in
         testremove=$(cat /var/plexguide/pgshield.emails | grep $typed )
         if [[ "$testremove" == "" ]]; then echo;
         read -p 'User Does Not Exist | Press [ENTER] ' typed < /dev/tty; email; fi
-        sed 's/$typed,//g' /var/plexguide/pgshield.emails > /var/plexguide/shield.tmp
-        cat /var/plexguide/shield.tmp > /var/plexguide/pgshield.emails
-        rm -rf /var/plexguide/shield.tmp
+        sed -i -e "/$typed/d" /var/plexguide/pgshield.emails
         email ;;
     3 )
         echo "Current Stored E-Mail Address"
