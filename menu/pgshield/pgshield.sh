@@ -58,7 +58,7 @@ read -p '↘️  Web Client ID     | Press [Enter]: ' public < /dev/tty
 if [ "$public" = "exit" ]; then exit; fi
 echo "$public" > /var/plexguide/shield.clientid
 
-read -p '↘️  Web Client Secret  | Press [Enter]: ' secret < /dev/tty
+read -p '↘️  Web Client Secret | Press [Enter]: ' secret < /dev/tty
 if [ "$secret" = "exit" ]; then exit; fi
 echo "$secret" > /var/plexguide/shield.clientsecret
 
