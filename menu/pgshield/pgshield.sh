@@ -15,7 +15,8 @@ tee <<-EOF
 💬  PG Shield requires Google Web Auth Keys! Visit the link above!
 
 1. Set Web Client ID & Secret
-2. Deploy PG Shiled
+2.
+3. Deploy PG Shiled
 Z. EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -32,6 +33,9 @@ case $typed in
         webid
         phase1 ;;
     2 )
+        email
+        phase1;;
+    3 )
         ansible-playbook /opt/plexguide/menu/pgshield/pgshield.yml
         phase1;;
     z )
@@ -64,6 +68,50 @@ echo "$secret" > /var/plexguide/shield.clientsecret
 
 read -p '🌎 Client ID & Secret Set |  Press [ENTER] ' public < /dev/tty
 question1
+}
+
+email() {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎  PG Shield - Trusted Users        ⚡ Reference: pgshield.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. E-Mail: Add User
+2. E-Mail: Remove User
+3. E-Mail: View Current Users
+Z. EXIT
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+phase2
+}
+
+phase2 () {
+
+read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+
+case $typed in
+    1 )
+        echo
+        read -p 'User Email to Add | Press [ENTER]: ' typed < /dev/tty
+        echo "$typed," >> /var/plexguide/pgshield.emails
+        email ;;
+    2 )
+        echo
+        read -p 'User Email to Remove | Press [ENTER]: ' typed < /dev/tty
+        echo "$typed," >> /var/plexguide/pgshield.emails
+        email ;;
+    3 )
+        cat /var/plexguide/pgshield.emails
+        email ;;
+    z )
+        question1 ;;
+    Z )
+        question1 ;;
+    * )
+        email ;;
+esac
 }
 
 question1
