@@ -76,13 +76,13 @@ case $typed in
         done </var/plexguide/pgshield.emails
 
         ansible-playbook /opt/plexguide/menu/pgshield/pgshield.yml
-        phase1 ;;
+        question1 ;;
     A )
         bash /opt/plexguide/menu/portguard/portguard.sh
-        phase1 ;;
+        question1 ;;
     a )
         bash /opt/plexguide/menu/portguard/portguard.sh
-        phase1 ;;
+        question1 ;;
     z )
         exit ;;
     Z )
