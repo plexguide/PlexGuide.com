@@ -8,6 +8,24 @@
 source /opt/plexguide/menu/functions/functions.sh
 
 question1 () {
+
+domaincheck=$(cat /var/plexguide/server.domain)
+touch /var/plexguide/server.domain
+touch /tmp/portainer.check
+rm -r /tmp/portainer.check
+wget -q "https://portainer.${domaincheck}.com" -O /tmp/portainer.check
+domaincheck=$(cat /tmp/portainer.check)
+if [ "$domaincheck" == "" ]; then
+echo
+echo "💬  Unable to reach your Subdomain for Portainer!"
+echo ""
+echo "1. Forget to enable Traefik?"
+echo "2. Valdiate if Subdomain is Working?"
+echo "3. Validate Portainer is Deployed?"
+echo ""
+read -p 'Confirm Info | Press [ENTER]: ' typed < /dev/tty
+exit; fi
+
 touch /var/plexguide/pgshield.emails
 mkdir -p /var/plexguide/auth/
 
