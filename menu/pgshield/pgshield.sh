@@ -112,7 +112,7 @@ case $typed in
         echo
         read -p 'User Email to Remove | Press [ENTER]: ' typed < /dev/tty
         testremove=$(cat /var/plexguide/pgshield.emails | grep $typed )
-        if [[ "$testremove" == "" ]]; then echo;
+        if [[ "$testremove" == "" ]]; then
         read -p 'User Does Not Exist | Press [ENTER] ' typed < /dev/tty; email; fi
         sed -i -e "/$typed/d" /var/plexguide/pgshield.emails
         email ;;
