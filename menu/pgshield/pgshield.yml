@@ -29,7 +29,7 @@
 
     - name: Register Auth Path
       shell: "cat /var/plexguide/shield.clientsecret"
-      register: auth
+      register: clientsecret
 
   # LABELS ######################################################################
 
