@@ -91,7 +91,7 @@ tee <<-EOF
 
 1. Application: Exempt
 2. Application: Protect Again
-3. Application: Protect All Apps
+3. Application: Protect All Apps (Reset)
 Z. EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -110,7 +110,10 @@ case $typed in
         email
         appexempt ;;
     3 )
-        x
+        rm -rf /var/plexguide/auth/*
+        echo ""
+        echo "NOTE: Does Not Take Effect Until PG Shield is Redeployed!"
+        read -p 'Removed User | Press [ENTER] ' typed < /dev/tty; email
         appexempt;;
     z )
         question1 ;;
