@@ -95,3 +95,14 @@
   - name: Export Internal Port
     shell: "echo {{extport}} > /tmp/program_port"
     ignore_errors: True
+
+# FOR AUTHENTICATION
+  - name: Check if Anti Auth Variable Exists
+    stat:
+      path: "/var/plexguide/auth/{{pgrole}}"
+    register: authcheck
+
+  - name: "Transfer Image Variable"
+    shell: "echo http://oauth:4181"
+    register: gauth
+    when: not authcheck.stat.exists
