@@ -102,7 +102,12 @@
       path: "/var/plexguide/auth/{{pgrole}}"
     register: authcheck
 
-  - name: "Transfer Image Variable"
-    shell: "echo http://oauth:4181"
-    register: gauth
+  - name: "Auth Check 1"
+    set_fact:
+      gauth: "http://oauth:4181"
     when: not authcheck.stat.exists
+
+  - name: "Auth Check 2"
+    set_fact:
+      gauth: ""
+    when: authcheck.stat.exists
