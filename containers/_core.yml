@@ -100,6 +100,8 @@
   - name: "OAuth Check"
     shell: |
     if [[ $(docker ps | grep oauth) == "" ]]; then echo null; else echo good; fi
+    args:
+     executable: /bin/bash
     register: oauth
 
   - name: "OAuth Exe"
