@@ -62,7 +62,7 @@ read -p '↘️  Web Client Secret | Press [Enter]: ' secret < /dev/tty
 if [ "$secret" = "exit" ]; then exit; fi
 echo "$secret" > /var/plexguide/shield.clientsecret
 
-read -p '🌎 Client ID & Secret Set |  Press [Enter]: ' public < /dev/tty
+read -p '🌎 Client ID & Secret Set |  Press [ENTER] ' public < /dev/tty
 question1
 }
 
