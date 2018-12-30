@@ -5,6 +5,8 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /opt/plexguide/menu/functions/functions.sh
+
 question1 () {
 touch /var/plexguide/pgshield.emails
 
@@ -38,6 +40,8 @@ case $typed in
         email
         phase1;;
     3 )
+        touch /var/plexguide/pgshield.compiled
+        rm -r /var/plexguide/pgshield.compiled
         while read p; do
           echo -n "$p," >> /var/plexguide/pgshield.compiled
         done </var/plexguide/pgshield.emails
