@@ -54,21 +54,9 @@ NOTE: Visit reference for Google Web Auth Keys
 
 EOF
 
-read -p '↘️  Web Client ID  | Press [Enter]: ' public < /dev/tty
+read -p '↘️  Web Client ID     | Press [Enter]: ' public < /dev/tty
 if [ "$public" = "exit" ]; then exit; fi
 echo "$public" > /var/plexguide/shield.clientid
-
-tee <<-EOF
-
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Google Web Keys - Client ID       📓 Reference: pgshield.plexguide.com
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? Type > exit
-NOTE: Visit reference for Google Web Auth Keys!
-
-EOF
 
 read -p '↘️  Web Client Secret  | Press [Enter]: ' secret < /dev/tty
 if [ "$secret" = "exit" ]; then exit; fi
