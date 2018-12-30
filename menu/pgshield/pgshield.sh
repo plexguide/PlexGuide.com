@@ -167,6 +167,8 @@ $notrun
 EOF
   read -p '🌍 Type APP to Exempt | Press [ENTER]: ' typed < /dev/tty
 
+if [[ "$typed" == "exit" ]]; then appexempt; fi
+
 grep -w "$typed" /var/plexguide/program.temp > /var/plexguide/check55.sh
 usercheck=$(cat /var/plexguide/check55.sh)
 
@@ -214,6 +216,8 @@ $notrun
 💬 Quitting? TYPE > exit
 EOF
   read -p '🌍 Type APP to Restore | Press [ENTER]: ' typed < /dev/tty
+
+  if [[ "$typed" == "exit" ]]; then appexempt; fi
 
 grep -w "$typed" /var/plexguide/pgshield.ex15 > /var/plexguide/check55.sh
 usercheck=$(cat /var/plexguide/check55.sh)
