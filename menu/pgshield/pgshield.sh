@@ -38,6 +38,10 @@ case $typed in
         email
         phase1;;
     3 )
+        while read p; do
+          echo -n "$p," >> /var/plexguide/pgshield.compiled
+        done </var/plexguide/pgshield.emails
+
         ansible-playbook /opt/plexguide/menu/pgshield/pgshield.yml
         phase1;;
     z )
@@ -121,7 +125,7 @@ case $typed in
         read -p 'Removed User | Press [ENTER] ' typed < /dev/tty; email
         email ;;
     3 )
-        echo 
+        echo
         echo "Current Authorized E-Mail Addresses"
         echo ""
         cat /var/plexguide/pgshield.emails
