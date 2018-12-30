@@ -125,7 +125,7 @@ case $typed in
         echo ""
         cat /var/plexguide/pgshield.emails
         echo
-        read -p 'Removed User | Press [ENTER] ' typed < /dev/tty; email
+        read -p 'Finished? | Press [ENTER] ' typed < /dev/tty; email
         email ;;
     4 )
         test=$(cat /var/plexguide/pgshield.emails | grep "@")
