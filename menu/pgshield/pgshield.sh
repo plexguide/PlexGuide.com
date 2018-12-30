@@ -214,7 +214,7 @@ usercheck=$(cat /var/plexguide/check55.sh)
 if [[ "$usercheck" == "" ]]; then echo;
 read -p 'App Does Not Exist! | Press [ENTER] ' note < /dev/tty; appexempt; fi
 
-touch /var/plexguide/auth/$typed
+rm -rf /var/plexguide/auth/$typed
 echo
 echo "NOTE: No Effect until PG Shield or the App Solo is Redeployed!"
 read -p '🌍 Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt
