@@ -105,9 +105,8 @@ case $typed in
 
         usercheck=$(cat /var/plexguide/pgshield.emails | grep $typed )
         if [[ "$usercheck" != "" ]]; then
-          read -p 'User Already Exists! | Press [ENTER] ' note < /dev/tty; email
-        else
-          read -p 'User Added - $typed  | Press [ENTER] ' note < /dev/tty; email; fi
+          read -p 'User Already Exists! | Press [ENTER] ' note < /dev/tty; email; fi
+          read -p 'User Added - "$typed  | Press [ENTER] ' note < /dev/tty;
         echo "$typed" >> /var/plexguide/pgshield.emails
         email ;;
     2 )
