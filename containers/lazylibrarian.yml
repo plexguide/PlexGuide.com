@@ -40,12 +40,7 @@
         - "/opt/appdata/{{pgrole}}:/config"
         - "/mnt/unionfs/ebooks:/books"
         - "/mnt/unionfs/abooks:/abooks"
-        - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
-        - "{{path.stdout}}/sab/downloads:/config/Downloads"
-        - "{{path.stdout}}/nzbget/completed:/completed"
-        - "{{path.stdout}}/rutorrent:/downloads"
-        - "{{path.stdout}}/deluge/downloaded:/downloaded"
-        - "{{path.stdout}}/qbittorrent/downloads:/qbit-downloads"
+        - "{{path.stdout}}/downloads:/downloads"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"

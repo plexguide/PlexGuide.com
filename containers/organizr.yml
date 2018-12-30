@@ -16,8 +16,8 @@
     set_fact:
       pgrole: "organizr"
       intport: "80"
-      extport: "8020"
-      image: "lsiocommunity/organizr"
+      extport: "8040"
+      image: "organizrtools/organizr-v2"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role

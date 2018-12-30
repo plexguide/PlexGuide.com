@@ -39,18 +39,15 @@
         traefik.frontend.auth.basic.users: "{{auth.stdout}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-  
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}/config:/config"
-        - "/mnt/unionfs:/unionfs"
-        - "{{path.stdout}}/{{pgrole}}/torrents:/torrents"
-        - "{{path.stdout}}/{{pgrole}}/downloads:/qbit-downloads"
-        - "{{path.stdout}}/{{pgrole}}/incomplete:/incomplete"
         - "/etc/localtime:/etc/localtime:ro"
+        - "/opt/appdata/{{pgrole}}:/config"
+        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+        - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
 
   - name: "Setting PG ENV"
     set_fact:
