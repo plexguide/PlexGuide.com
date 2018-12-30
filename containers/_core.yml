@@ -102,7 +102,7 @@
 
   - name: "Script Execute Part II"
     pause:
-      second: 1
+      seconds: 1
 
   - name: "Transfer Image Variable"
     shell: "cat /var/plexguide/auth.var"
