@@ -21,7 +21,7 @@
       extport2: "58846"
       intport3: "58946"
       extport3: "58946"
-      image: "binhex/arch-deluge"
+      image: "linuxserver/deluge"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
@@ -35,7 +35,7 @@
         traefik.frontend.auth.basic.users: "{{auth.stdout}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-        traefik.frontend.redirect.entryPoint: "https"
+  
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
@@ -43,10 +43,8 @@
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/config"
         - "/mnt/unionfs:/unionfs"
-        - "{{path.stdout}}/deluge/temp:/temp"
-        - "{{path.stdout}}/deluge/downloaded:/downloaded"
-        - "{{path.stdout}}/deluge/torrent:/torrent"
-        - "{{path.stdout}}/deluge/torrent:/watch"
+        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+        - "{{path.stdout}}/downloads/{{pgrole}}/:/downloads/{{pgrole}}"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"

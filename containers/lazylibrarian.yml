@@ -31,7 +31,7 @@
         traefik.frontend.auth.basic.users: "{{auth.stdout}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-        traefik.frontend.redirect.entryPoint: "https"
+  
         traefik.frontend.rule: "Host:lazy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
@@ -40,12 +40,7 @@
         - "/opt/appdata/{{pgrole}}:/config"
         - "/mnt/unionfs/ebooks:/books"
         - "/mnt/unionfs/abooks:/abooks"
-        - "{{path.stdout}}/torrentvpn/downloaded:/data/completed"
-        - "{{path.stdout}}/sab/complete:/complete"
-        - "{{path.stdout}}/nzbget/completed:/completed"
-        - "{{path.stdout}}/rutorrent:/downloads"
-        - "{{path.stdout}}/deluge/downloaded:/downloaded"
-        - "{{path.stdout}}/qbittorrent/downloads:/qbit-downloads"
+        - "{{path.stdout}}/downloads:/downloads"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"

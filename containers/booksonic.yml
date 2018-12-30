@@ -30,14 +30,14 @@
       pg_labels:
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-        traefik.frontend.redirect.entryPoint: "https"
+  
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
         - "/opt/appdata/pgrole:/config"
-        - "/mnt/unionfs/audiobooks:/books"
+        - "/mnt/unionfs/abooks:/books"
         - "/mnt/unionfs/podcasts:/podcasts"
         - "/etc/localtime:/etc/localtime:ro"
 
