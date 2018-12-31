@@ -32,7 +32,7 @@
       block:
         - name: "Creating new downloads location"
           command: "mkdir -p {{path.stdout}}/downloads/{{pgrole}}"
-
+        
         - name: "Creating new incomplete downloads location"
           command: "mkdir -p {{path.stdout}}/incomplete/{{pgrole}}"
 
@@ -74,7 +74,7 @@
     - name: "Adding Traefik"
       set_fact:
         pg_labels:
-          traefik.frontend.auth.forward.address: "{{gauth}}"
+          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
           traefik.enable: "true"
           traefik.port: "{{intport}}"
 

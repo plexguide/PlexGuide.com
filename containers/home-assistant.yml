@@ -27,11 +27,10 @@
     - name: "Adding Traefik"
       set_fact:
         pg_labels:
+          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
           traefik.enable: "true"
           traefik.port: "{{intport}}"
           traefik.frontend.rule: "Host:home.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
-          traefik.frontend.auth.forward.address: "{{gauth}}"
-
 
     - name: "Setting PG Volumes"
       set_fact:

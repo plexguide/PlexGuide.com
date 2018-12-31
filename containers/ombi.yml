@@ -45,19 +45,7 @@
           traefik.enable: "true"
           traefik.port: "{{intport}}"
 
-<<<<<<< HEAD
-# LABELS ######################################################################
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-  
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-        traefik.frontend.auth.forward.address: "{{gauth}}"
-=======
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
->>>>>>> 7.6edge
 
     - name: "Setting PG Volumes"
       set_fact:

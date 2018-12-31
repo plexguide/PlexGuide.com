@@ -31,15 +31,7 @@
           traefik.enable: "true"
           traefik.port: "{{intport}}"
 
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.frontend.auth.basic.users: "{{auth.stdout}}"
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-        traefik.frontend.auth.forward.address: "{{gauth}}"
-
+          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
     - name: "Setting PG Volumes"
       set_fact:

@@ -31,12 +31,6 @@
           traefik.enable: "true"
           traefik.port: "{{intport}}"
 
-    - name: "Setting PG Labels"
-      set_fact:
-        pg_labels:
-          traefik.frontend.auth.forward.address: "{{gauth}}"
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
     - name: "Setting PG Volumes"
@@ -54,21 +48,21 @@
 
     # MAIN DEPLOYMENT #############################################################
 
-  - name: "Deploying Container - {{pgrole}}"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      capabilities:
-        - SYS_PTRACE
-      expose:
-        - "19999"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      state: started
-      labels: "{{pg_labels}}"
+    - name: "Deploying {{pgrole}}"
+      docker_container:
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        capabilities:
+          - SYS_PTRACE
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+        volumes: "{{pg_volumes}}"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
+        state: started
+        labels: "{{pg_labels}}"

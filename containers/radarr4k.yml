@@ -30,19 +30,7 @@
           traefik.enable: "true"
           traefik.port: "{{intport}}"
 
-<<<<<<< HEAD
-# LABELS ######################################################################
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.frontend.auth.forward.address: "{{gauth}}"
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-  
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-=======
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
->>>>>>> 7.6edge
 
     - name: Create Folders
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"

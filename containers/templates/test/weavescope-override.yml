@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705 - Deiteq
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- name: Create and start WeaveScope Container
+  docker_container:
+    name: weavescope
+    image: "weaveworks/scope"
+    pull: yes
+    privileged: true
+    command:
+      - probe.docker: true
+    env:
+      PID: 1000
+      GID: 1000
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
+    networks:
+      - name: plexguide
+        aliases:
+          - weavescope
+    restart_policy: always
+    state: started
+    labels:
+      works.weave.role: system
+      traefik.enable: "true"
+
+      traefik.frontend.rule: "Host:weavescope.{{domain.stdout}},next.{{domain.stdout}}"
+      traefik.port: "443"
+      traefik.protocol: "https"

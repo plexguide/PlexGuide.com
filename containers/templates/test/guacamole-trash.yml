@@ -1,0 +1,71 @@
+#!/bin/bash
+#
+# Version:  Ansible-1
+# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
+# Author:   Admin9705 & Deiteq & Bryde ツ
+# URL:      https://plexguide.com
+#
+# PlexGuide Copyright (C) 2018 PlexGuide.com
+# Licensed under GNU General Public License v3.0 GPL-3 (in short)
+#
+#   You may copy, distribute and modify the software as long as you track
+#   changes/dates in source files. Any modifications to our software
+#   including (via compiler) GPL-licensed code must also be made available
+#   under the GPL along with build & install instructions.
+#
+############################################################# (KEY START)
+---
+- name: Create DataBase
+  docker_container:
+    name: mysql
+    image: "mysql/mysql-server"
+    pull: yes
+    published_ports:
+      - "127.0.0.1:3306:3306"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      MYSQL_DATABASE: "guacamole_db"
+      MYSQL_USER: "guacamole_user"
+      MYSQL_PASSWORD: "some_password"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/opt/mariadb:/config"
+    networks:
+      - name: plexguide
+        aliases:
+          - mariadb
+    purge_networks: yes
+    restart_policy: always
+    state: started
+
+- name: Create Gauc Container
+  docker_container:
+    name: guacamole
+    image: "guacamole/guacamole"
+    pull: yes
+    published_ports:
+      - "8080:8080"
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      MYSQL_DATABASE: "guacamole_db"
+      MYSQL_USER: "guacamole_user"
+      MYSQL_PASSWORD: "some_password"
+      MYSQL_HOSTNAME: "0.0.0.0"
+      GUACD_HOSTNAME: "0.0.0.0"
+      GUACD_PORT: "4822"
+    volumes:
+      - /opt/appdata/{{pgrole}}
+      - /opt/appdata/{{pgrole}}/sync
+    networks:
+      - name: plexguide
+        aliases:
+          - guacamole
+    restart_policy: always
+    state: started
+    labels:
+      traefik.enable: "true"
+      traefik.port: "{{intport}}"
+
+      traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"

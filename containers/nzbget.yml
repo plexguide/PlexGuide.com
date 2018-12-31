@@ -9,101 +9,6 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-<<<<<<< HEAD
-
-# FACTS #######################################################################
-
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "nzbget"
-      intport: "6789"
-      extport: "6789"
-      image: "linuxserver/nzbget"
-
-# CORE (MANDATORY) ############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
-
-  #- name: Create Extra Folders
-  #  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  #  with_items:
-  #    - "/opt/appdata/nzbget/scripts/nzbgetpp/rarfile/"
-
-  - name: "Chown NZB Owners"
-    shell: "chown -R 1000:1000 {{path.stdout}}/downloads/nzbget"
-
-  - name: "NZB Permissions Set"
-    shell: "chmod -R 775 {{path.stdout}}/downloads/nzbget"
-
-  - name: "Chown NZB Owners"
-    shell: "chown -R 1000:1000 {{path.stdout}}/incomplete/nzbget"
-
-  - name: "NZB Permissions Set"
-    shell: "chmod -R 775 {{path.stdout}}/incomplete/nzbget"
-
-  - name: "NZBGET Check"
-    stat:
-      path: /opt/appdata/nzbget/nzbget.conf
-    register: confcheck
-
-# LABELS ######################################################################
-
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-        traefik.frontend.auth.forward.address: "{{gauth}}"
-
-  - name: "Setting PG Volumes"
-    set_fact:
-      pg_volumes:
-        # BASICS ######################################
-        - "/etc/localtime:/etc/localtime:ro"
-        - "/opt/appdata/{{pgrole}}:/config"
-        - "/opt/appdata/{{pgrole}}/scripts:/scripts"
-        # MAIN DIRECTORIES ############################
-        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
-        - "{{path.stdout}}/downloads/{{pgrole}}:/complete"
-
-  - name: "Setting PG ENV"
-    set_fact:
-      pg_env:
-        PUID: 1000
-        PGID: 1000
-        LC_ALL: "C"
-
-# MAIN DEPLOYMENT #############################################################
-
-  - name: "Deploying Container - {{pgrole}}"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      state: started
-      labels: "{{pg_labels}}"
-
-# ENDING FOR NZBGET #############
-  - name: "First Time Check"
-    block:
-
-    - name: Please Wait - Pending .conf generation from NZBGET
-      wait_for:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        state: present
-
-    - name: Customize nzbget.conf
-=======
     # FACTS #######################################################################
 
     - name: "Set Known Facts"
@@ -194,7 +99,6 @@
     # MAIN DEPLOYMENT #############################################################
 
     - name: "Deploying {{pgrole}}"
->>>>>>> 7.6edge
       docker_container:
         name: "{{pgrole}}"
         image: "{{image}}"

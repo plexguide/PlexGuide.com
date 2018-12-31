@@ -41,7 +41,7 @@
 
         - name: "Moving incomplete downloads to new location"
           command: "mv {{path.stdout}}/sab/downloads/incomplete/* {{path.stdout}}/incomplete/{{pgrole}}/"
-
+        
         - name: Remove old download directory
           file:
             state: absent
@@ -80,8 +80,6 @@
           traefik.enable: "true"
           traefik.port: "{{intport}}"
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-          traefik.frontend.auth.forward.address: "{{gauth}}"
-
 
     - name: "Setting PG Volumes"
       set_fact:

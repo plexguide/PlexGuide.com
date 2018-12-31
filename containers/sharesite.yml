@@ -39,6 +39,7 @@
           traefik.enable: "true"
           traefik.port: "{{intport}}"
           traefik.frontend.headers.customResponseHeaders: "X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex"
+
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
     - name: "Setting PG Volumes"

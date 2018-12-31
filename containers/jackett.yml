@@ -32,21 +32,11 @@
           traefik.port: "{{intport}}"
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-<<<<<<< HEAD
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.frontend.auth.forward.address: "{{gauth}}"
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-=======
     - name: "Setting PG Volumes"
       set_fact:
         pg_volumes:
           - "/opt/appdata/{{pgrole}}:/config"
           - "/etc/localtime:/etc/localtime:ro"
->>>>>>> 7.6edge
 
     - name: "Setting PG ENV"
       set_fact:

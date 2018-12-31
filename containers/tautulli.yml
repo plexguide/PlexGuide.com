@@ -9,99 +9,96 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS #######################################################################
 
-# FACTS #######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "tautulli"
+        intport: "8181"
+        extport: "8181"
+        image: "linuxserver/tautulli"
 
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "tautulli"
-      intport: "8181"
-      extport: "8181"
-      image: "linuxserver/tautulli"
+    # CORE (MANDATORY) ############################################################
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-# CORE (MANDATORY) ############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: "Tautulli Check"
+      stat:
+        path: /opt/appdata/tautulli/config.ini
+      register: confcheck
+    # LABELS ######################################################################
 
-  - name: "Tautulli Check"
-    stat:
-      path: /opt/appdata/tautulli/config.ini
-    register: confcheck
-# LABELS ######################################################################
+    - name: "Adding Traefik"
+      set_fact:
+        pg_labels:
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
 
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-  
-        traefik.frontend.rule: "Host:plexpy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
-        traefik.frontend.auth.forward.address: "{{gauth}}"
+          traefik.frontend.rule: "Host:plexpy.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-  - name: "Setting PG Volumes"
-    set_fact:
-      pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/config"
-        - "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Logs:/logs"
-        - "/opt/appdata/pgrole/scripts:/scripts"
+    - name: "Setting PG Volumes"
+      set_fact:
+        pg_volumes:
+          - "/opt/appdata/{{pgrole}}:/config"
+          - "/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Logs:/logs"
+          - "/opt/appdata/pgrole/scripts:/scripts"
 
-  - name: "Setting PG ENV"
-    set_fact:
-      pg_env:
-        PUID: 1000
-        PGID: 1000
+    - name: "Setting PG ENV"
+      set_fact:
+        pg_env:
+          PUID: 1000
+          PGID: 1000
 
-# MAIN DEPLOYMENT #############################################################
+    # MAIN DEPLOYMENT #############################################################
 
-  - name: "Deploying Container - {{pgrole}}"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      state: started
-      labels: "{{pg_labels}}"
-
-# AFTER ########################################################################
-
-  - name: "First Time Check"
-    block:
-
-    - name: Please Wait - Pending config.ini generation
-      wait_for:
-        path: "/opt/appdata/tautulli/config.ini"
-        state: present
-
-    - name: Stop Container
+    - name: "Deploying {{pgrole}}"
       docker_container:
-        name: tautulli
-        state: stopped
-
-    - name: Default User
-      lineinfile:
-        path: "/opt/appdata/tautulli/config.ini"
-        regexp: '^http_username\s?='
-        line: 'http_username = plex'
-        state: present
-
-    - name: Default Password
-      lineinfile:
-        path: "/opt/appdata/tautulli/config.ini"
-        regexp: 'http_password = ""'
-        line: 'http_password = guide'
-        state: present
-
-    - name: Restart Container
-      docker_container:
-        name: tautulli
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+        volumes: "{{pg_volumes}}"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
         state: started
+        labels: "{{pg_labels}}"
 
-    when: not confcheck.stat.exists
+    # AFTER ########################################################################
+
+    - name: "Configuring {{pgrole}} for first time use"
+      block:
+        - name: "Wating for {{pgrole}} to start"
+          wait_for:
+            path: "/opt/appdata/tautulli/config.ini"
+            state: present
+
+        - name: Stop Container
+          docker_container:
+            name: tautulli
+            state: stopped
+
+        - name: Default User
+          lineinfile:
+            path: "/opt/appdata/tautulli/config.ini"
+            regexp: '^http_username\s?='
+            line: "http_username = plex"
+            state: present
+
+        - name: Default Password
+          lineinfile:
+            path: "/opt/appdata/tautulli/config.ini"
+            regexp: 'http_password = ""'
+            line: "http_password = guide"
+            state: present
+
+        - name: Restart Container
+          docker_container:
+            name: tautulli
+            state: started
+
+      when: not confcheck.stat.exists
