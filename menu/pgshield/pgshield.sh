@@ -57,11 +57,20 @@ case $typed in
         appexempt
         phase1 ;;
     4 )
+
+        # Sanity Check to Ensure At Least 1 Authroized User Exists
         touch /var/plexguide/pgshield.emails
         efg=$(cat "/var/plexguide/pgshield.emails")
         if [[ "$efg" == "" ]]; then
         echo
         echo "SANITY CHECK: No Authorized Users have been Added! Exiting!"
+        read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty; question1; fi
+
+        # Sanity Check to Ensure that Web ID ran domaincheck
+        file="/var/plexguide/auth.idset"
+        if [ ! -e "$file" ]; then
+        echo
+        echo "SANITY CHECK: You Must @ Least Run the Web ID Interface Once!"
         read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty; question1; fi
 
         touch /var/plexguide/pgshield.compiled
@@ -258,6 +267,7 @@ if [ "$secret" = "exit" ]; then question1; fi
 echo "$secret" > /var/plexguide/shield.clientsecret
 
 read -p '🌎 Client ID & Secret Set |  Press [ENTER] ' public < /dev/tty
+touch /var/plexguide/auth.idset
 question1
 }
 
