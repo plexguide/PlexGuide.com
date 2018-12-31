@@ -95,3 +95,38 @@
   - name: Export Internal Port
     shell: "echo {{extport}} > /tmp/program_port"
     ignore_errors: True
+
+# FOR AUTHENTICATION
+  - name: "Script Execute Part I"
+    shell: "bash /opt/plexguide/menu/pgshield/drop.sh"
+
+  - name: "Script Execute Part II"
+    shell: "cat /var/plexguide/auth.var"
+    register: oauth
+
+  - name: "OAuth Exe"
+    block:
+
+    - name: Check if Anti Auth Variable Exists
+      stat:
+        path: "/var/plexguide/auth/{{pgrole}}"
+      register: authcheck
+
+    - name: "Auth Check 1"
+      set_fact:
+        gauth: "http://oauth:4181"
+      when: not authcheck.stat.exists
+
+    - name: "Auth Check 2"
+      set_fact:
+        gauth: ""
+      when: authcheck.stat.exists
+
+    when: oauth.stdout == 'good'
+
+  - name: "OAuth Exe"
+    set_fact:
+      gauth: ""
+    when: not oauth.stdout == 'good'
+
+  - debug: msg="OAuth - {{oauth.stdout}}"
