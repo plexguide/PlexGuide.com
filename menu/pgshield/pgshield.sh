@@ -58,6 +58,12 @@ case $typed in
         phase1 ;;
     4 )
         touch /var/plexguide/pgshield.compiled
+        efg=$(cat "/var/plexguide/pgshield.compiled")
+        if [[ "$efg" == "" ]]; then
+        echo "SANITY CHECK: No Authorized Users have been Added! Exiting!"
+        read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty; question1; fi
+    
+        touch /var/plexguide/pgshield.compiled
         rm -r /var/plexguide/pgshield.compiled
         while read p; do
           echo -n "$p," >> /var/plexguide/pgshield.compiled
