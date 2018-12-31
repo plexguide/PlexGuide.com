@@ -64,6 +64,8 @@
         - /mnt/gcrypt/movies
         - /mnt/gcrypt/music
         - /mnt/gcrypt/ebooks
+        - /mnt/gcrypt/abooks
+        - /mnt/gcrypt/xxx
       when: gcrypt.stat.exists == False
       ignore_errors: yes
   ############ TCrypt
@@ -79,6 +81,8 @@
         - /mnt/tcrypt/movies
         - /mnt/tcrypt/music
         - /mnt/tcrypt/ebooks
+        - /mnt/tcrypt/abooks
+        - /mnt/tcrypt/xxx
       when: tcrypt.stat.exists == False
       ignore_errors: yes
 
@@ -135,6 +139,8 @@
         - /mnt/gdrive/movies
         - /mnt/gdrive/music
         - /mnt/gdrive/ebooks
+        - /mnt/gdrive/abooks
+        - /mnt/gdrive/xxx
       when: gdrive.stat.exists == False
       ignore_errors: yes
   ############ TCrypt
@@ -146,6 +152,8 @@
         - /mnt/tcrypt/movies
         - /mnt/tcrypt/music
         - /mnt/tcrypt/ebooks
+        - /mnt/tcrypt/abooks
+        - /mnt/tcrypt/xxx
       when: gdrive.stat.exists == False
       ignore_errors: yes
 
@@ -163,6 +171,8 @@
         - /mnt/tdrive/movies
         - /mnt/tdrive/music
         - /mnt/tdrive/ebooks
+        - /mnt/tdrive/abooks
+        - /mnt/tdrive/xxx
       when: tdrive.stat.exists == False
       ignore_errors: yes
 
@@ -179,6 +189,8 @@
         - /mnt/encrypt/movies
         - /mnt/encrypt/music
         - /mnt/encrypt/ebooks
+        - /mnt/encrypt/abooks
+        - /mnt/encrypt/xxx
       when: encrypt.stat.exists == False
       ignore_errors: yes
 
@@ -189,6 +201,7 @@
         - "{{path.stdout}}/downloads/nzbget/movies"
         - "{{path.stdout}}/downloads/nzbget/music"
         - "{{path.stdout}}/downloads/nzbget/tv"
+        - "{{path.stdout}}/downloads/nzbget/xxx"
         - "{{path.stdout}}/downloads/nzbget/ebooks"
         - "{{path.stdout}}/downloads/nzbget/nzb"
         - "{{path.stdout}}/downloads/nzbget/queue"
@@ -207,26 +220,44 @@
         - /opt/appdata/pgblitz/keys/processed
         - /opt/appdata/pgblitz/keys/badjson
         - "{{path.stdout}}/pgblitz"
-        - "{{path.stdout}}/qbittorrent/downloads"
-        - "{{path.stdout}}/qbittorrent/downloads/incomplete"
-        - "{{path.stdout}}/deluge"
-        - "{{path.stdout}}/deluge/temp"
-        - "{{path.stdout}}/deluge/downloaded"
-        - "{{path.stdout}}/deluge/torrent"
-        - "{{path.stdout}}/rutorrent"
-        - "{{path.stdout}}/rutorrent/downloads"
+        - "{{path.stdout}}/torrent"
+        - "{{path.stdout}}/torrent/watch"
+        - "{{path.stdout}}/downloads/qbittorrent"
+        - "{{path.stdout}}/downloads/qbittorrent/ebooks"
+        - "{{path.stdout}}/downloads/qbittorrent/tv"
+        - "{{path.stdout}}/downloads/qbittorrent/movies"
+        - "{{path.stdout}}/downloads/qbittorrent/music"
+        - "{{path.stdout}}/downloads/qbittorrent/xxx"
+        - "{{path.stdout}}/incomplete/qbittorrent"
+        - "{{path.stdout}}/downloads/deluge"
+        - "{{path.stdout}}/downloads/deluge/ebooks"
+        - "{{path.stdout}}/downloads/deluge/tv"
+        - "{{path.stdout}}/downloads/deluge/movies"
+        - "{{path.stdout}}/downloads/deluge/music"
+        - "{{path.stdout}}/downloads/deluge/xxx"
+        - "{{path.stdout}}/downloads/ebooks"
+        - "{{path.stdout}}/incomplete/deluge"
+        - "{{path.stdout}}/downloads/rutorrent"
+        - "{{path.stdout}}/downloads/rutorrent"
+        - "{{path.stdout}}/downloads/rutorrent/ebooks"
+        - "{{path.stdout}}/downloads/rutorrent/tv"
+        - "{{path.stdout}}/downloads/rutorrent/movies"
+        - "{{path.stdout}}/downloads/rutorrent/music"
+        - "{{path.stdout}}/downloads/rutorrent/xxx"
+        - "{{path.stdout}}/incomplete/rutorrent"
         - "{{path.stdout}}/move"
         - "{{path.stdout}}/move/tv"
         - "{{path.stdout}}/move/movies"
         - "{{path.stdout}}/move/music"
+        - "{{path.stdout}}/move/ebooks"
+        - "{{path.stdout}}/move/abooks"
+        - "{{path.stdout}}/move/xxx"
         - "{{path.stdout}}/sab"
-        - "{{path.stdout}}/sab/admin"
-        - "{{path.stdout}}/sab/complete"
-        - "{{path.stdout}}/sab/complete/tv"
-        - "{{path.stdout}}/sab/complete/movies"
-        - "{{path.stdout}}/sab/complete/music"
-        - "{{path.stdout}}/sab/complete/ebooks"
-        - "{{path.stdout}}/sab/incomplete"
-        - "{{path.stdout}}/sab/nzb"
-        - "{{path.stdout}}/sab/complete/ebooks"
+        - "{{path.stdout}}/downloads/sabnzbd"
+        - "{{path.stdout}}/incomplete/sabnzbd"
+        - "{{path.stdout}}/downloads/sabnzbd/tv"
+        - "{{path.stdout}}/downloads/sabnzbd/movies"
+        - "{{path.stdout}}/downloads/sabnzbd/music"
+        - "{{path.stdout}}/downloads/sabnzbd/ebooks"
+        - "{{path.stdout}}/downloads/sabnzbd/xxx"
       ignore_errors: yes
