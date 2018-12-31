@@ -57,7 +57,7 @@
         # MAIN DIRECTORIES ############################
         - "/mnt/unionfs:/unionfs"
         - "/mnt/:/mnt"
-        - "{{path.stdout}}/downloads:/downloads"
+        - "{{path.stdout}}/downloads/nzbget:/complete"
 
   - name: "Setting PG ENV"
     set_fact:
