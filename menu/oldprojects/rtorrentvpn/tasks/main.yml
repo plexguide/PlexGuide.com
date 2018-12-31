@@ -187,7 +187,7 @@
     labels:
       traefik.enable: "true"
       traefik.frontend.auth.basic: "{{auth.stdout}}"
-      traefik.frontend.redirect.entryPoint: "https"
+
       traefik.flood.port: "3000"
       traefik.rutorrent.port: "9080"
       traefik.flood.frontend.rule: "Host:flood.{{domain.stdout}}"

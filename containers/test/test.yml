@@ -91,6 +91,6 @@
           - "8080:8080"
         labels:
           traefik.enable: "true"
-          traefik.frontend.redirect.entryPoint: "https"
+    
           traefik.frontend.rule: "Host:guacamole.mydomain.com; guac.mydomain.com; AddPrefix: /guacamole"
           traefik.port: "8080"

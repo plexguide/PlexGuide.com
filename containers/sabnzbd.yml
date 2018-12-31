@@ -24,10 +24,10 @@
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
   - name: "Chown NZB Owners"
-    shell: "chown -R 1000:1000 {{path.stdout}}/sab/"
+    shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}/"
 
   - name: "SAB Permissions Set"
-    shell: "chmod -R 775 {{path.stdout}}/sab/"
+    shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}/"
 
   - name: "Ini Check"
     stat:
@@ -42,18 +42,16 @@
         traefik.frontend.auth.forward.address: "{{gauth}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-        traefik.frontend.redirect.entryPoint: "https"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
 
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/sabnzbd/:/config/"
-        - "{{path.stdout}}/sab/downloads:/config/Downloads"
-        - "/mnt/unionfs:/unionfs"
-        - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
+        - "/opt/appdata/{{pgrole}}:/config"
+        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+        - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
 
   - name: "Setting PG ENV"
     set_fact:
@@ -83,7 +81,7 @@
 # ENDING FOR SABNZBD ###########################################################
   - name: "Path for .ini"
     wait_for:
-      path: "/opt/appdata/sabnzbd/sabnzbd.ini"
+      path: "/opt/appdata/{{pgrole}}/sabnzbd.ini"
       state: present
 
   - name: "First Time Check"
@@ -174,9 +172,9 @@
         state: started
 
     - name: "Chown NZB Owners"
-      shell: "chown -R 1000:1000 {{path.stdout}}/sab/"
+      shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}/"
 
     - name: "SAB Permissions Set"
-      shell: "chmod -R 775 {{path.stdout}}/sab/"
+      shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}/"
 
     when: not inicheck.stat.exists

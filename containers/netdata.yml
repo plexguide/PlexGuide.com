@@ -30,8 +30,7 @@
       pg_labels:
         traefik.frontend.auth.forward.address: "{{gauth}}"
         traefik.enable: "true"
-        traefik.basic.port: "19999"
-        traefik.frontend.redirect.entryPoint: "https"
+        traefik.port: "{{intport}}"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
         traefik.frontend.auth.forward.address: "{{gauth}}"
 

@@ -16,8 +16,8 @@
     set_fact:
       pgrole: "organizr"
       intport: "80"
-      extport: "8020"
-      image: "lsiocommunity/organizr"
+      extport: "8040"
+      image: "organizrtools/organizr-v2"
 
 # CORE (MANDATORY) ############################################################
   - name: CronJob Role
@@ -31,7 +31,6 @@
         traefik.frontend.auth.forward.address: "{{gauth}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-        traefik.frontend.redirect.entryPoint: "https"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
