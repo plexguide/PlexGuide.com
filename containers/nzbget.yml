@@ -87,7 +87,7 @@
           - "/etc/localtime:/etc/localtime:ro"
           - "/opt/appdata/{{pgrole}}:/config"
           - "/opt/appdata/{{pgrole}}/scripts:/scripts"
-          - "{{path.stdout}}/incomplete:/incomplete/{{pgrole}}"
+          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete/{{pgrole}}"
           - "{{path.stdout}}/downloads:/downloads"
 
     - name: "Setting PG ENV"
@@ -160,7 +160,7 @@
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
             regexp: '^InterDir\s?='
-            line: "InterDir=/incomplete"
+            line: "InterDir=/incomplete/{{pgrole}}"
             state: present
 
 
