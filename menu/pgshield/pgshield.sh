@@ -8,9 +8,11 @@
 source /opt/plexguide/menu/functions/functions.sh
 
 question1 () {
+touch /var/plexguide/auth.bypass
 
-a7=$(docker ps | grep oauth)
-if [[ "$a7" == "" ]]; then shieldcheck; fi
+a7=$(cat /var/plexguide/Sauth.bypass)
+if [[ "$a7" != "good" ]]; then shieldcheck; fi
+echo good > /var/plexguide/auth.bypass
 
 touch /var/plexguide/pgshield.emails
 mkdir -p /var/plexguide/auth/
