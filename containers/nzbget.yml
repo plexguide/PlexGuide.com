@@ -22,16 +22,49 @@
     - name: "Including cron job"
       include_tasks: "/opt/plexguide/containers/_core.yml"
 
+    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+    - name: "Check for old volumes"
+      stat:
+        path: "{{path.stdout}}/{{pgrole}}"
+      register: oldcheck
+
+    - name: "Migrations"
+      block:
+        - name: "Creating new downloads location"
+          command: "mkdir -p {{path.stdout}}/downloads/{{pgrole}}"
+        
+        - name: "Creating new incomplete downloads location"
+          command: "mkdir -p {{path.stdout}}/incomplete/{{pgrole}}"
+
+        - name: "Moving downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/completed/* {{path.stdout}}/downloads/{{pgrole}}/"
+
+        - name: "Moving incomplete downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/incomplete/* {{path.stdout}}/incomplete/{{pgrole}}/"
+        # - name: Remove old download directory
+        #   file:
+        #     state: absent
+        #     path: "{{path.stdout}}/{{pgrole}}"
+
+      when: oldcheck.stat.exists
+      ignore_errors: yes
+
     #- name: Create Extra Folders
     #  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
     #  with_items:
     #    - "/opt/appdata/{{pgrole}}/scripts/nzbgetpp/rarfile/"
 
     - name: "Chown NZB Owners"
-      shell: "chown -R 1000:1000 {{path.stdout}}/nzbget/"
+      shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}"
 
     - name: "NZB Permissions Set"
-      shell: "chmod -R 775 {{path.stdout}}/nzbget/"
+      shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}"
+
+    - name: "Chown NZB Owners"
+      shell: "chown -R 1000:1000 {{path.stdout}}/incomplete/{{pgrole}}"
+
+    - name: "NZB Permissions Set"
+      shell: "chmod -R 775 {{path.stdout}}/incomplete/{{pgrole}}"
 
     - name: "NZBGET Check"
       stat:
@@ -120,6 +153,13 @@
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
             regexp: '^DirectUnpack\s?='
             line: "DirectUnpack=yes"
+            state: present
+
+        - name: Set Download Location
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^DestDir\s?='
+            line: "DestDir=${MainDir}/{{pgrole}}"
             state: present
 
         - name: Lowercase & Set Movie Category

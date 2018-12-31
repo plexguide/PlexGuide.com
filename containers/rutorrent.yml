@@ -18,6 +18,38 @@
         extport: "8999"
         image: "linuxserver/rutorrent"
 
+    # CORE (MANDATORY) ############################################################
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
+
+    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+    - name: "Check for old volumes"
+      stat:
+        path: "{{path.stdout}}/{{pgrole}}"
+      register: oldcheck
+
+    - name: "Migrations"
+      block:
+        - name: "Creating new downloads location"
+          command: "mkdir -p {{path.stdout}}/downloads/{{pgrole}}"
+        
+        - name: "Creating new incomplete downloads location"
+          command: "mkdir -p {{path.stdout}}/incomplete/{{pgrole}}"
+
+        - name: "Moving downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/* {{path.stdout}}/downloads/{{pgrole}}/"
+
+        - name: "Moving torrent to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/torrent/* {{path.stdout}}/torrent"
+
+        # - name: Remove old download directory
+        #   file:
+        #     state: absent
+        #     path: "{{path.stdout}}/{{pgrole}}"
+
+      when: oldcheck.stat.exists
+      ignore_errors: yes
+
     # EXTRA FOR RUTORRENT #########################################################
     - name: "Create scripts directory for {{pgrole}}"
       file:
@@ -36,10 +68,6 @@
         owner: 1000
         group: 1000
         mode: 0755
-
-    # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
 
     # LABELS ######################################################################
 
@@ -60,6 +88,7 @@
           - "/opt/appdata/{{pgrole}}/scripts:/scripts"
           - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
           - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
+          - "{{path.stdout}}/torrent:/torrent"
 
     - name: "Setting PG ENV"
       set_fact:

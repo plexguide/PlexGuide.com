@@ -34,7 +34,7 @@
   
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-  - name: "Connecting the dots"
+  - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/config"

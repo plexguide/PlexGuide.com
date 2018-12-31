@@ -26,6 +26,57 @@
     - name: "Including cron job"
       include_tasks: "/opt/plexguide/containers/_core.yml"
 
+    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+    - name: "Check for old volumes"
+      stat:
+        path: "{{path.stdout}}/{{pgrole}}"
+      register: oldcheck
+
+    - name: "Migrations"
+      block:
+        - name: "Creating new downloads location"
+          command: "mkdir -p {{path.stdout}}/downloads/{{pgrole}}"
+        
+        - name: "Creating new incomplete downloads location"
+          command: "mkdir -p {{path.stdout}}/incomplete/{{pgrole}}"
+        
+        - name: "Moving downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/downloaded/* {{path.stdout}}/downloads/{{pgrole}}/"
+        
+        - name: "Moving incomplete downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/temp/* {{path.stdout}}/incomplete/{{pgrole}}/"
+        
+        - name: "Moving torrent to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/torrent/* {{path.stdout}}/torrent"
+
+        - name: "Moving watch to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/watch/* {{path.stdout}}/torrent/watch"
+
+        # - name: Remove old download directory
+        #   file:
+        #     state: absent
+        #     path: "{{palsth.stdout}}/{{pgrole}}"
+
+      when: oldcheck.stat.exists
+      ignore_errors: yes
+
+    - name: "Chown download folder"
+      shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}/"
+
+    - name: "Chmod download folder"
+      shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}/"
+      
+    - name: "Chown incomplete folder"
+      shell: "chown -R 1000:1000 {{path.stdout}}/incomplete/{{pgrole}}/"
+
+    - name: "Chmod incomplete folder"
+      shell: "chmod -R 775 {{path.stdout}}/incomplete/{{pgrole}}/"
+
+    - name: "Ini Check"
+      stat:
+        path: /opt/appdata/{{pgrole}}/core.conf
+      register: inicheck
+
     # LABELS ######################################################################
 
     - name: "Adding Traefik"
@@ -109,6 +160,15 @@
         state: started
         labels: "{{pg_labels}}"
 
+    - name: "Wait 6 Seconds"
+      wait_for:
+        timeout: 6
+
+    - name: Stop Container
+      docker_container:
+        name: "{{pgrole}}"
+        state: stopped
+
     # ENDING FOR DELUGE ###########################################################
 
     - name: "Waiting for {{pgrole}} to initialize"
@@ -126,42 +186,42 @@
         - name: Setting plugins directory
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/core.conf"
-            regexp: '"download_location":'
-            line: '"plugins_location": "/torrent",'
+            regexp: '"plugins_location"'
+            line: '"plugins_location": "/plugins",'
             state: present
 
         - name: Setting incomplete downloads directory
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/core.conf"
-            regexp: '"download_location":'
+            regexp: '"download_location"'
             line: '"download_location": "/incomplete/{{pgrole}}",'
             state: present
 
         - name: Setting complete downloads directory
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/core.conf"
-            regexp: '"move_completed_path":'
-            line: '"move_completed_path": "/downloads",'
+            regexp: '"move_completed_path"'
+            line: '"move_completed_path": "/downloads/{{pgrole}}",'
             state: present
 
         - name: Setting torrent file directory
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/core.conf"
-            regexp: '"torrentfiles_location":'
+            regexp: '"torrentfiles_location"'
             line: '"torrentfiles_location": "/torrent",'
             state: present
 
         - name: Setting torrent watch directory
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/core.conf"
-            regexp: '"autoadd_location":'
+            regexp: '"autoadd_location"'
             line: '"autoadd_location": "/torrent/watch",'
             state: present
 
         - name: Setting move on completion
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/core.conf"
-            regexp: '"move_completed":'
+            regexp: '"move_completed"'
             line: '"move_completed": true,'
             state: present
 
@@ -170,8 +230,4 @@
             name: "{{pgrole}}"
             state: started
 
-        - name: "Chown download folder"
-          shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}/"
-
-        - name: "Chmod download folder"
-          shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}/"
+      when: not inicheck.stat.exists

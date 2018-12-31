@@ -22,11 +22,50 @@
     - name: "Including cron job"
       include_tasks: "/opt/plexguide/containers/_core.yml"
 
+    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+    - name: "Check for old volumes"
+      stat:
+        path: "{{path.stdout}}/sab"
+      register: oldcheck
+
+    - name: "Migrations"
+      block:
+        - name: "Creating new downloads location"
+          command: "mkdir -p {{path.stdout}}/downloads/{{pgrole}}"
+
+        - name: "Creating new incomplete downloads location"
+          command: "mkdir -p {{path.stdout}}/incomplete/{{pgrole}}"
+
+        - name: "Moving downloads to new location"
+          command: "mv {{path.stdout}}/sab/downloads/complete/* {{path.stdout}}/downloads/{{pgrole}}/"
+
+        - name: "Moving incomplete downloads to new location"
+          command: "mv {{path.stdout}}/sab/downloads/incomplete/* {{path.stdout}}/incomplete/{{pgrole}}/"
+        
+        - name: Remove old download directory
+          file:
+            state: absent
+            path: "{{path.stdout}}/sab"
+
+        # - name: Remove old directory
+        #   file:
+        #     state: absent
+        #     path: "{{path.stdout}}/sabnzbd"
+
+      when: oldcheck.stat.exists
+      ignore_errors: yes
+
     - name: "Chown NZB Owners"
-      shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}/"
+      shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}"
 
     - name: "SAB Permissions Set"
-      shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}/"
+      shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}"
+
+    - name: "Chown NZB Owners"
+      shell: "chown -R 1000:1000 {{path.stdout}}/incomplete/{{pgrole}}"
+
+    - name: "SAB Permissions Set"
+      shell: "chmod -R 775 {{path.stdout}}/incomplete/{{pgrole}}"
 
     - name: "Ini Check"
       stat:
@@ -88,13 +127,6 @@
           docker_container:
             name: "{{pgrole}}"
             state: stopped
-
-
-        - name: "Cleanup old plexguide downloads"
-          shell: "rm -rf /opt/appdata/sabnzbd/Downloads"
-
-        - name: "Move old downloads to new directory structure."          
-          shell: "rm -rf /opt/appdata/sabnzbd/Downloads"
 
         - replace:
             path: /opt/appdata/sabnzbd/sabnzbd.ini

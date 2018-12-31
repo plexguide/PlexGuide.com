@@ -22,6 +22,33 @@
     - name: "Including cron job"
       include_tasks: "/opt/plexguide/containers/_core.yml"
 
+    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+    - name: "Check for old volumes"
+      stat:
+        path: "{{path.stdout}}/{{pgrole}}"
+      register: oldcheck
+
+    - name: "Migrations"
+      block:
+        - name: "Moving downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/downloaded/* {{path.stdout}}/downloads/{{pgrole}}/"
+
+        - name: "Moving incomplete downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/temp/* {{path.stdout}}/incomplete/{{pgrole}}/"
+
+        - name: "Moving torrent to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/torrent/* {{path.stdout}}/torrent"
+
+        - name: "Moving watch to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/watch/* {{path.stdout}}/torrent/watch"
+
+        - name: Remove old download directory
+          file:
+            state: absent
+            path: "{{path.stdout}}/{{pgrole}}"
+
+      when: oldcheck.stat.exists
+
     # EXTRA FOR QBITORRENT #########################################################
     - name: Create Basic directories for qBittorrent
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
@@ -47,6 +74,7 @@
           - "/opt/appdata/{{pgrole}}:/config"
           - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
           - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
+          - "{{path.stdout}}/torrent:/torrent"
 
     - name: "Setting PG ENV"
       set_fact:
