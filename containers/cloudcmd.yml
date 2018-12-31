@@ -43,7 +43,6 @@
       pg_labels:
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-  
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
         traefik.frontend.auth.forward.address: "{{gauth}}"
 
