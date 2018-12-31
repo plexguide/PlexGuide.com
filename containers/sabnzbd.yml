@@ -88,7 +88,7 @@
         pg_volumes:
           - "/etc/localtime:/etc/localtime:ro"
           - "/opt/appdata/{{pgrole}}:/config"
-          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete/{{pgrole}}"
           - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
 
     - name: "Setting PG ENV"
@@ -133,7 +133,7 @@
         - replace:
             path: /opt/appdata/sabnzbd/sabnzbd.ini
             regexp: 'download_dir = Downloads/incomplete'
-            replace: "download_dir = /incomplete"
+            replace: "download_dir = /incomplete/{{pgrole}}"
 
         - replace:
             path: /opt/appdata/sabnzbd/sabnzbd.ini
