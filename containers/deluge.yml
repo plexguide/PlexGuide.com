@@ -9,9 +9,6 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    # FACTS #######################################################################
-
-<<<<<<< HEAD
 # FACTS #######################################################################
 
   - name: "Set Known Facts"
@@ -37,7 +34,6 @@
         traefik.frontend.auth.forward.address: "{{gauth}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-  
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
@@ -128,16 +124,16 @@
       block:
         - name: "Creating new downloads location"
           command: "mkdir -p {{path.stdout}}/downloads/{{pgrole}}"
-        
+
         - name: "Creating new incomplete downloads location"
           command: "mkdir -p {{path.stdout}}/incomplete/{{pgrole}}"
-        
+
         - name: "Moving downloads to new location"
           command: "mv {{path.stdout}}/{{pgrole}}/downloaded/* {{path.stdout}}/downloads/{{pgrole}}/"
-        
+
         - name: "Moving incomplete downloads to new location"
           command: "mv {{path.stdout}}/{{pgrole}}/temp/* {{path.stdout}}/incomplete/{{pgrole}}/"
-        
+
         - name: "Moving torrent to new location"
           command: "mv {{path.stdout}}/{{pgrole}}/torrent/* {{path.stdout}}/torrent"
 
@@ -157,7 +153,7 @@
 
     - name: "Chmod download folder"
       shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}/"
-      
+
     - name: "Chown incomplete folder"
       shell: "chown -R 1000:1000 {{path.stdout}}/incomplete/{{pgrole}}/"
 
