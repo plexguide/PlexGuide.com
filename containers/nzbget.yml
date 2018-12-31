@@ -128,19 +128,19 @@
             name: "{{pgrole}}"
             state: stopped
 
-        - name: Default User
-          lineinfile:
-            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
-            regexp: '^ControlUsername\s?='
-            line: "ControlUsername=plex"
-            state: present
+        #- name: Default User
+        #  lineinfile:
+        #    path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+        #    regexp: '^ControlUsername\s?='
+        #    line: "ControlUsername=plex"
+        #    state: present
 
-        - name: Default Password
-          lineinfile:
-            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
-            regexp: ControlPassword=tegbzn6789
-            line: "ControlPassword=guide"
-            state: present
+        #- name: Default Password
+        #  lineinfile:
+        #    path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+        #    regexp: ControlPassword=tegbzn6789
+        #    line: "ControlPassword=guide"
+        #    state: present
 
         - name: ScriptDir
           lineinfile:
