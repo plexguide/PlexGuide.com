@@ -64,7 +64,11 @@
         - "/opt/appdata/{{pgrole}}/scripts:/scripts"
         # MAIN DIRECTORIES ############################
         - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
-        - "{{path.stdout}}/downloads/{{pgrole}}:/complete"
+        - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
+        #- "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+        #- "{{path.stdout}}/downloads/{{pgrole}}:/complete"
+
+
 
   - name: "Setting PG ENV"
     set_fact:

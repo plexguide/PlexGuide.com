@@ -44,12 +44,13 @@
         traefik.port: "{{intport}}"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
+        # BASICS ######################################
         - "/etc/localtime:/etc/localtime:ro"
         - "/opt/appdata/{{pgrole}}:/config"
+        # MAIN DIRECTORIES ############################
         - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
         - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
 
