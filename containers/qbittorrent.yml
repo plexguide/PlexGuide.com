@@ -72,7 +72,7 @@
         pg_volumes:
           - "/etc/localtime:/etc/localtime:ro"
           - "/opt/appdata/{{pgrole}}:/config"
-          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete/{{pgrole}}"
           - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
           - "{{path.stdout}}/torrent:/torrent"
 
@@ -128,7 +128,7 @@
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
             regexp: "Downloads.TempPath="
-            line: "Downloads.TempPath=/incomplete"
+            line: "Downloads.TempPath=/incomplete/{{pgrole}}"
             state: present
 
         - name: Turn off DHT
