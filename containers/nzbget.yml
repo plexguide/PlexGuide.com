@@ -88,8 +88,8 @@
           - "/opt/appdata/{{pgrole}}:/config"
           - "/opt/appdata/{{pgrole}}/scripts:/scripts"
           - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete/{{pgrole}}"
-          - "{{path.stdout}}/downloads:/downloads"
-
+          - "{{path.stdout}}/downloads:/downloads/{{pgrole}}"
+          - "{{path.stdout}}/nzb:/nzb"
     - name: "Setting PG ENV"
       set_fact:
         pg_env:
@@ -141,12 +141,19 @@
         #    regexp: ControlPassword=tegbzn6789
         #    line: "ControlPassword=guide"
         #    state: present
-
+        
+        - name: Set Main Location
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^MainDir\s?='
+            line: "MainDir=/config"
+            state: present
+            
         - name: ScriptDir
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
             regexp: '^ScriptDir\s?='
-            line: "ScriptDir=/scripts"
+            line: "ScriptDir=${MainDir}/scripts"
             state: present
 
         - name: DirectUnpack Set to On
@@ -162,7 +169,13 @@
             regexp: '^InterDir\s?='
             line: "InterDir=/incomplete/{{pgrole}}"
             state: present
-
+            
+        - name: Set temp Location
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^TempDir\s?='
+            line: "TempDir=/tmp"
+            state: present
 
         - name: Set Download Location
           lineinfile:
@@ -170,7 +183,14 @@
             regexp: '^DestDir\s?='
             line: "DestDir=/downloads/{{pgrole}}"
             state: present
-
+            
+        - name: Set nzb Location
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^NzbDir\s?='
+            line: "NzbDir=/nzb"
+            state: present
+            
         - name: Lowercase & Set Movie Category
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
