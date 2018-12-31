@@ -252,7 +252,6 @@
         - "{{path.stdout}}/move/ebooks"
         - "{{path.stdout}}/move/abooks"
         - "{{path.stdout}}/move/xxx"
-        - "{{path.stdout}}/sab"
         - "{{path.stdout}}/downloads/sabnzbd"
         - "{{path.stdout}}/incomplete/sabnzbd"
         - "{{path.stdout}}/downloads/sabnzbd/tv"
