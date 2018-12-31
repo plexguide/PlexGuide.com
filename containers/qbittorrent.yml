@@ -9,112 +9,138 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS #######################################################################
 
-# FACTS #######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "qbittorrent"
+        intport: "8080"
+        extport: "8080"
+        image: "linuxserver/qbittorrent"
 
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "qbittorrent"
-      intport: "8080"
-      extport: "8080"
-      image: "linuxserver/qbittorrent"
+    # CORE (MANDATORY) #############################################################
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-# CORE (MANDATORY) #############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
+    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+    - name: "Check for old volumes"
+      stat:
+        path: "{{path.stdout}}/{{pgrole}}"
+      register: oldcheck
 
-# EXTRA FOR QBITORRENT #########################################################
-  - name: Create Basic directories for qBittorrent
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-    with_items:
-      - "{{path.stdout}}/{{pgrole}}"
-      - "/opt/appdata/{{pgrole}}"
-      - "/opt/appdata/{{pgrole}}/config"
+    - name: "Migrations"
+      block:
+        - name: "Moving downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/downloaded/* {{path.stdout}}/downloads/{{pgrole}}/"
 
-# LABELS ######################################################################
+        - name: "Moving incomplete downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/temp/* {{path.stdout}}/incomplete/{{pgrole}}/"
 
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.frontend.auth.basic.users: "{{auth.stdout}}"
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+        - name: "Moving torrent to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/torrent/* {{path.stdout}}/torrent"
 
-  - name: "Setting PG Volumes"
-    set_fact:
-      pg_volumes:
-        - "/etc/localtime:/etc/localtime:ro"
-        - "/opt/appdata/{{pgrole}}:/config"
-        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
-        - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
+        - name: "Moving watch to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/watch/* {{path.stdout}}/torrent/watch"
 
-  - name: "Setting PG ENV"
-    set_fact:
-      pg_env:
-        PUID: 1000
-        PGID: 1000
+        - name: Remove old download directory
+          file:
+            state: absent
+            path: "{{path.stdout}}/{{pgrole}}"
 
-# MAIN DEPLOYMENT #############################################################
-  - name: ConfCheck
-    stat:
-      path: "/opt/appdata/qbittorrent/config/qBittorrent/qBittorrent.conf"
-    register: confcheck
+      when: oldcheck.stat.exists
 
-  - name: "Deploying Container - {{pgrole}}"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      state: started
-      labels: "{{pg_labels}}"
+    # EXTRA FOR QBITORRENT #########################################################
+    - name: Create Basic directories for qBittorrent
+      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+      with_items:
+        - "{{path.stdout}}/{{pgrole}}"
+        - "/opt/appdata/{{pgrole}}"
+        - "/opt/appdata/{{pgrole}}/config"
 
-  # ENDING TASK FOR RUTORRENT ####################################################
-  - name: "First Time Check"
-    block:
+    # LABELS ######################################################################
 
-    - name: Please Wait - Pending .conf generation from qBittorrent
-      wait_for:
-        path: "/opt/appdata/qbittorrent/config/qBittorrent/qBittorrent.conf"
-        state: present
+    - name: "Adding Traefik"
+      set_fact:
+        pg_labels:
+          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
+          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-    - name: "Wait 5 Seconds"
-      wait_for:
-        timeout: 5
+    - name: "Setting PG Volumes"
+      set_fact:
+        pg_volumes:
+          - "/etc/localtime:/etc/localtime:ro"
+          - "/opt/appdata/{{pgrole}}:/config"
+          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+          - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
+          - "{{path.stdout}}/torrent:/torrent"
 
-    - name: Set Download Location
-      lineinfile:
-        path: "/opt/appdata/qbittorrent/config/qBittorrent/qBittorrent.conf"
-        regexp: 'Downloads.SavePath='
-        line: 'Downloads.SavePath=/qbit-downloads/'
-        state: present
+    - name: "Setting PG ENV"
+      set_fact:
+        pg_env:
+          PUID: 1000
+          PGID: 1000
 
-    - name: Set Incomplete Download Location
-      lineinfile:
-        path: "/opt/appdata/qbittorrent/config/qBittorrent/qBittorrent.conf"
-        regexp: 'Downloads.TempPath='
-        line: 'Downloads.TempPath=/incomplete/'
-        state: present
+    # MAIN DEPLOYMENT #############################################################
+    - name: ConfCheck
+      stat:
+        path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+      register: confcheck
 
-    - name: Turn off DHT
-      lineinfile:
-        path: "/opt/appdata/qbittorrent/config/qBittorrent/qBittorrent.conf"
-        regexp: 'Bitorrent.DHT='
-        line: 'Bitorrent.DHT=false'
-        state: present
-
-    - name: Restart Container
+    - name: "Deploying {{pgrole}}"
       docker_container:
-        name: qbittorrent
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+        volumes: "{{pg_volumes}}"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
         state: started
+        labels: "{{pg_labels}}"
 
-    when: not confcheck.stat.exists
+    # ENDING TASK FOR RUTORRENT ####################################################
+    - name: "Configuring {{pgrole}} for first time use"
+      block:
+        - name: "Wating for {{pgrole}} to start"
+          wait_for:
+            path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+            state: present
+
+        - name: "Wait 5 Seconds"
+          wait_for:
+            timeout: 5
+
+        - name: Set Download Location
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+            regexp: "Downloads.SavePath="
+            line: "Downloads.SavePath=/downloads/{{pgrole}}"
+            state: present
+
+        - name: Set Incomplete Download Location
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+            regexp: "Downloads.TempPath="
+            line: "Downloads.TempPath=/incomplete"
+            state: present
+
+        - name: Turn off DHT
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+            regexp: "Bitorrent.DHT="
+            line: "Bitorrent.DHT=false"
+            state: present
+
+        - name: Restart Container
+          docker_container:
+            name: qbittorrent
+            state: started
+
+      when: not confcheck.stat.exists

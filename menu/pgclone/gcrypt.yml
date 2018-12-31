@@ -9,12 +9,11 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Install GCrypt Service
+      template:
+        src: /opt/plexguide/menu/pgclone/templates/gcrypt.service
+        dest: /etc/systemd/system/gcrypt.service
+        force: yes
 
-  - name: Install GCrypt Service
-    template:
-      src: /opt/plexguide/menu/pgclone/templates/gcrypt.service
-      dest: /etc/systemd/system/gcrypt.service
-      force: yes
-
-  - name: Start GCrypt SERVICE
-    systemd: state=started name=gcrypt daemon_reload=yes enabled=yes
+    - name: Start GCrypt SERVICE
+      systemd: state=started name=gcrypt daemon_reload=yes enabled=yes

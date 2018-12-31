@@ -9,14 +9,13 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Install TDRIVE Service
+      template:
+        src: /opt/plexguide/menu/pgclone/templates/tdrive.service
+        dest: /etc/systemd/system/tdrive.service
+        force: yes
+      ignore_errors: yes
 
-  - name: Install TDRIVE Service
-    template:
-      src: /opt/plexguide/menu/pgclone/templates/tdrive.service
-      dest: /etc/systemd/system/tdrive.service
-      force: yes
-    ignore_errors: yes
-
-  - name: Start TDRIVE SERVICE
-    systemd: state=started name=tdrive daemon_reload=yes enabled=yes
-    ignore_errors: yes
+    - name: Start TDRIVE SERVICE
+      systemd: state=started name=tdrive daemon_reload=yes enabled=yes
+      ignore_errors: yes

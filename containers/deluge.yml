@@ -9,94 +9,225 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS #######################################################################
 
-# FACTS #######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "deluge"
+        intport: "8112"
+        extport: "8112"
+        intport2: "58846"
+        extport2: "58846"
+        intport3: "58946"
+        extport3: "58946"
+        image: "linuxserver/deluge"
 
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "deluge"
-      intport: "8112"
-      extport: "8112"
-      intport2: "58846"
-      extport2: "58846"
-      intport3: "58946"
-      extport3: "58946"
-      image: "linuxserver/deluge"
+    # CORE (MANDATORY) ############################################################
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-# CORE (MANDATORY) ############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
+    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+    - name: "Check for old volumes"
+      stat:
+        path: "{{path.stdout}}/{{pgrole}}"
+      register: oldcheck
 
-# LABELS ######################################################################
+    - name: "Migrations"
+      block:
+        - name: "Creating new downloads location"
+          command: "mkdir -p {{path.stdout}}/downloads/{{pgrole}}"
+        
+        - name: "Creating new incomplete downloads location"
+          command: "mkdir -p {{path.stdout}}/incomplete/{{pgrole}}"
+        
+        - name: "Moving downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/downloaded/* {{path.stdout}}/downloads/{{pgrole}}/"
+        
+        - name: "Moving incomplete downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/temp/* {{path.stdout}}/incomplete/{{pgrole}}/"
+        
+        - name: "Moving torrent to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/torrent/* {{path.stdout}}/torrent"
 
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.frontend.auth.basic.users: "{{auth.stdout}}"
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-  
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+        - name: "Moving watch to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/watch/* {{path.stdout}}/torrent/watch"
 
-  - name: "Setting PG Volumes"
-    set_fact:
-      pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/config"
-        - "/mnt/unionfs:/unionfs"
-        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
-        - "{{path.stdout}}/downloads/{{pgrole}}/:/downloads/{{pgrole}}"
-        - "/etc/localtime:/etc/localtime:ro"
+        # - name: Remove old download directory
+        #   file:
+        #     state: absent
+        #     path: "{{palsth.stdout}}/{{pgrole}}"
 
-  - name: "Setting PG ENV"
-    set_fact:
-      pg_env:
-        PUID: 1000
-        PGID: 1000
+      when: oldcheck.stat.exists
+      ignore_errors: yes
 
-# MAIN DEPLOYMENT #############################################################
-  - name: "Copy scripts into directory - {{pgrole}}"
-    copy:
-      src: ./templates/deluge_extract.sh
-      dest: /opt/appdata/{{pgrole}}/scripts
-      directory_mode: yes
-      force: yes
-      owner: 1000
-      group: 1000
-      mode: 0755
+    - name: "Chown download folder"
+      shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}/"
 
-  - name: "Create scripts folder - {{pgrole}}"
-    file:
-      path: /opt/appdata/{{pgrole}}/plugins
-      state: directory
-      owner: 1000
-      group: 1000
-      mode: 0755
+    - name: "Chmod download folder"
+      shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}/"
+      
+    - name: "Chown incomplete folder"
+      shell: "chown -R 1000:1000 {{path.stdout}}/incomplete/{{pgrole}}/"
 
-  - name: "Copy scripts into directory - {{pgrole}}"
-    copy:
-      src: ./templates/deluge/plugins
-      dest: /opt/appdata/{{pgrole}}
-      directory_mode: yes
-      force: yes
-      owner: 1000
-      group: 1000
-      mode: 0755
+    - name: "Chmod incomplete folder"
+      shell: "chmod -R 775 {{path.stdout}}/incomplete/{{pgrole}}/"
 
-  - name: "Deploying Container - {{pgrole}}"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-        - "{{ports.stdout}}{{extport2}}:{{intport2}}"
-        - "{{ports.stdout}}{{extport3}}:{{intport3}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      state: started
-      labels: "{{pg_labels}}"
+    - name: "Ini Check"
+      stat:
+        path: /opt/appdata/{{pgrole}}/core.conf
+      register: inicheck
+
+    # LABELS ######################################################################
+
+    - name: "Adding Traefik"
+      set_fact:
+        pg_labels:
+          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
+
+          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+
+    - name: "Setting PG Volumes"
+      set_fact:
+        pg_volumes:
+          - "/opt/appdata/{{pgrole}}:/config"
+          - "/mnt/unionfs:/unionfs"
+          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+          - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
+          - "{{path.stdout}}/torrent:/torrent"
+          - "/etc/localtime:/etc/localtime:ro"
+
+    - name: "Setting PG ENV"
+      set_fact:
+        pg_env:
+          PUID: 1000
+          PGID: 1000
+
+    # MAIN DEPLOYMENT #############################################################
+    - name: "Create scripts directory for {{pgrole}}"
+      file:
+        path: /opt/appdata/{{pgrole}}/scripts
+        state: directory
+        owner: 1000
+        group: 1000
+        mode: 0755
+
+    - name: "Copy scripts into directory for {{pgrole}}"
+      copy:
+        src: ./templates/deluge_extract.sh
+        dest: /opt/appdata/{{pgrole}}/scripts
+        directory_mode: yes
+        force: yes
+        owner: 1000
+        group: 1000
+        mode: 0755
+
+    - name: "Create plugins directory for {{pgrole}}"
+      file:
+        path: /opt/appdata/{{pgrole}}/plugins
+        state: directory
+        owner: 1000
+        group: 1000
+        mode: 0755
+
+    - name: "Copy plugins into directory for {{pgrole}}"
+      copy:
+        src: ./templates/{{pgrole}}/plugins
+        dest: /opt/appdata/{{pgrole}}
+        directory_mode: yes
+        force: yes
+        owner: 1000
+        group: 1000
+        mode: 0755
+
+    - name: "Deploying {{pgrole}}"
+      docker_container:
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+          - "{{ports.stdout}}{{extport2}}:{{intport2}}"
+          - "{{ports.stdout}}{{extport3}}:{{intport3}}"
+        volumes: "{{pg_volumes}}"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
+        state: started
+        labels: "{{pg_labels}}"
+
+    - name: "Wait 6 Seconds"
+      wait_for:
+        timeout: 6
+
+    - name: Stop Container
+      docker_container:
+        name: "{{pgrole}}"
+        state: stopped
+
+    # ENDING FOR DELUGE ###########################################################
+
+    - name: "Waiting for {{pgrole}} to initialize"
+      wait_for:
+        path: "/opt/appdata/{{pgrole}}/core.conf"
+        state: present
+
+    - name: "Configuring {{pgrole}} for first time use"
+      block:
+        - name: "Stopping {{pgrole}}"
+          docker_container:
+            name: "{{pgrole}}"
+            state: stopped
+
+        - name: Setting plugins directory
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/core.conf"
+            regexp: '"plugins_location"'
+            line: '"plugins_location": "/plugins",'
+            state: present
+
+        - name: Setting incomplete downloads directory
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/core.conf"
+            regexp: '"download_location"'
+            line: '"download_location": "/incomplete/{{pgrole}}",'
+            state: present
+
+        - name: Setting complete downloads directory
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/core.conf"
+            regexp: '"move_completed_path"'
+            line: '"move_completed_path": "/downloads/{{pgrole}}",'
+            state: present
+
+        - name: Setting torrent file directory
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/core.conf"
+            regexp: '"torrentfiles_location"'
+            line: '"torrentfiles_location": "/torrent",'
+            state: present
+
+        - name: Setting torrent watch directory
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/core.conf"
+            regexp: '"autoadd_location"'
+            line: '"autoadd_location": "/torrent/watch",'
+            state: present
+
+        - name: Setting move on completion
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/core.conf"
+            regexp: '"move_completed"'
+            line: '"move_completed": true,'
+            state: present
+
+        - name: Restart Container
+          docker_container:
+            name: "{{pgrole}}"
+            state: started
+
+      when: not inicheck.stat.exists

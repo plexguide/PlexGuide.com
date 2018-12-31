@@ -9,242 +9,285 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS #######################################################################
 
-# FACTS #######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "nzbget"
+        intport: "6789"
+        extport: "6789"
+        image: "linuxserver/nzbget"
 
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "nzbget"
-      intport: "6789"
-      extport: "6789"
-      image: "linuxserver/nzbget"
+    # CORE (MANDATORY) ############################################################
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-# CORE (MANDATORY) ############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
+    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+    - name: "Check for old volumes"
+      stat:
+        path: "{{path.stdout}}/{{pgrole}}"
+      register: oldcheck
 
-  #- name: Create Extra Folders
-  #  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-  #  with_items:
-  #    - "/opt/appdata/nzbget/scripts/nzbgetpp/rarfile/"
+    - name: "Migrations"
+      block:
+        - name: "Creating new downloads location"
+          command: "mkdir -p {{path.stdout}}/downloads/{{pgrole}}"
+        
+        - name: "Creating new incomplete downloads location"
+          command: "mkdir -p {{path.stdout}}/incomplete/{{pgrole}}"
 
-  - name: "Chown NZB Owners"
-    shell: "chown -R 1000:1000 {{path.stdout}}/nzbget/"
+        - name: "Moving downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/completed/* {{path.stdout}}/downloads/{{pgrole}}/"
 
-  - name: "NZB Permissions Set"
-    shell: "chmod -R 775 {{path.stdout}}/nzbget/"
+        - name: "Moving incomplete downloads to new location"
+          command: "mv {{path.stdout}}/{{pgrole}}/incomplete/* {{path.stdout}}/incomplete/{{pgrole}}/"
+        # - name: Remove old download directory
+        #   file:
+        #     state: absent
+        #     path: "{{path.stdout}}/{{pgrole}}"
 
-  - name: "NZBGET Check"
-    stat:
-      path: /opt/appdata/nzbget/nzbget.conf
-    register: confcheck
+      when: oldcheck.stat.exists
+      ignore_errors: yes
 
-# LABELS ######################################################################
+    #- name: Create Extra Folders
+    #  file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    #  with_items:
+    #    - "/opt/appdata/{{pgrole}}/scripts/nzbgetpp/rarfile/"
 
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-        traefik.frontend.auth.forward.address: "{{gauth}}"
+    - name: "Chown NZB Owners"
+      shell: "chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}"
 
-  - name: "Setting PG Volumes"
-    set_fact:
-      pg_volumes:
-        - "/etc/localtime:/etc/localtime:ro"
-        - "/opt/appdata/{{pgrole}}:/config"
-        - "/opt/appdata/{{pgrole}}/scripts:/scripts"
-        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
-        - "{{path.stdout}}/downloads/{{pgrole}}:/complete"
+    - name: "NZB Permissions Set"
+      shell: "chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}"
 
-  - name: "Setting PG ENV"
-    set_fact:
-      pg_env:
-        PUID: 1000
-        PGID: 1000
-        LC_ALL: "C"
+    - name: "Chown NZB Owners"
+      shell: "chown -R 1000:1000 {{path.stdout}}/incomplete/{{pgrole}}"
 
-# MAIN DEPLOYMENT #############################################################
+    - name: "NZB Permissions Set"
+      shell: "chmod -R 775 {{path.stdout}}/incomplete/{{pgrole}}"
 
-  - name: "Deploying Container - {{pgrole}}"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      state: started
-      labels: "{{pg_labels}}"
+    - name: "NZBGET Check"
+      stat:
+        path: /opt/appdata/{{pgrole}}/nzbget.conf
+      register: confcheck
 
-# ENDING FOR NZBGET #############
-  - name: "First Time Check"
-    block:
+    # LABELS ######################################################################
 
-    - name: Please Wait - Pending .conf generation from NZBGET
-      wait_for:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        state: present
+    - name: "Adding Traefik"
+      set_fact:
+        pg_labels:
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
+          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-    - name: Customize nzbget.conf
+    - name: "Setting PG Volumes"
+      set_fact:
+        pg_volumes:
+          - "/etc/localtime:/etc/localtime:ro"
+          - "/opt/appdata/{{pgrole}}:/config"
+          - "/opt/appdata/{{pgrole}}/scripts:/scripts"
+          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+          - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
+
+    - name: "Setting PG ENV"
+      set_fact:
+        pg_env:
+          PUID: 1000
+          PGID: 1000
+          LC_ALL: "C"
+
+    # MAIN DEPLOYMENT #############################################################
+
+    - name: "Deploying {{pgrole}}"
       docker_container:
-        name: nzbget
-        state: stopped
-
-    #- name: Default User
-    #  lineinfile:
-    #    path: "/opt/appdata/nzbget/nzbget.conf"
-    #    regexp: '^ControlUsername\s?='
-    #    line: 'ControlUsername=plex'
-    #    state: present
-
-    #- name: Default Password
-    #  lineinfile:
-    #    path: "/opt/appdata/nzbget/nzbget.conf"
-    #    regexp: ControlPassword=tegbzn6789
-    #    line: 'ControlPassword=guide'
-    #    state: present
-
-    - name: ScriptDir
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^ScriptDir\s?='
-        line: 'ScriptDir=/scripts'
-        state: present
-
-    - name: DirectUnpack Set to On
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^DirectUnpack\s?='
-        line: 'DirectUnpack=yes'
-        state: present
-
-    - name: Lowercase & Set Movie Category
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^Category1.Name\s?='
-        line: 'Category1.Name=movies'
-        state: present
-
-    - name: Set Location of Movies
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^Category1.Name\s?='
-        line: 'Category1.DestDir=/downloads/movies'
-        state: present
-
-    - name: Lowercase & Set TV Category
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^Category2.Name\s?='
-        line: 'Category2.Name=tv'
-        state: present
-
-    - name: Set Location of TV
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^Category1.Name\s?='
-        line: 'Category2.DestDir=/downloads/tv'
-        state: present
-
-    - name: Lowercase & Set Music Category
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^Category3.Name\s?='
-        line: 'Category3.Name=music'
-        state: present
-
-    - name: Set Location of Music
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^Category1.Name\s?='
-        line: 'Category3.DestDir=/downloads/music'
-        state: present
-
-    - name: Lowercase & Set EBook Category
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^Category4.Name\s?='
-        line: 'Category4.Name=ebooks'
-        state: present
-
-    - name: Set Location of EBooks
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^Category1.Name\s?='
-        line: 'Category4.DestDir=/downloads/ebooks'
-        state: present
-
-    - name: Fix Lowercase & Set Movie Category
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: 'Category1.Name='
-        line: 'Category1.Name=movies'
-        state: present
-
-    - name: HealthCheck
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^HealthCheck\s?=.*'
-        line: 'HealthCheck=Delete'
-        state: present
-
-    - name: Set DiskSpace
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^DiskSpace\s?=.*'
-        line: 'DiskSpace=25000'
-        state: present
-
-    - name: Remove Generic Task
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: "{{ item.regexp }}"
-        state: absent
-      with_items:
-        - {regexp: '.Task1\.Time\=.*' }
-        - {regexp: '.Task1\.WeekDays\=.*' }
-        - {regexp: '.Task1\.Command\=.*' }
-        - {regexp: '.Task1\.Param\=.*' }
-
-    - name: Unpause
-      blockinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        block: |
-          Task1.Time=*,*:00,*:30
-          Task1.WeekDays=1-7
-          Task1.Command=UnpauseDownload
-          Task1.Param=
-        insertafter: "^### SCHEDULER"
-
-    - name: Transfer Files1
-      copy:
-        src: /opt/plexguide/containers/templates/nzbget/scripts
-        dest: "/opt/appdata/nzbget"
-        owner: "1000"
-        group: "1000"
-        mode: a+x
-        force: yes
-
-    - name: Transfer Files2
-      copy:
-        src: /opt/plexguide/containers/templates/nzbgetpp
-        dest: "/opt/appdata/nzbget/scripts/"
-        owner: "1000"
-        group: "1000"
-        mode: a+x
-        force: yes
-
-    - name: Restart Container
-      docker_container:
-        name: nzbget
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+        volumes: "{{pg_volumes}}"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
         state: started
+        labels: "{{pg_labels}}"
 
-    when: not confcheck.stat.exists
+    - name: "Waiting for {{pgrole}} to initialize"
+      wait_for:
+        path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+        state: present
+
+    - name: "Configuring {{pgrole}} for first time use"
+      block:
+        - name: "Stopping {{pgrole}}"
+          docker_container:
+            name: "{{pgrole}}"
+            state: stopped
+
+        - name: Default User
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^ControlUsername\s?='
+            line: "ControlUsername=plex"
+            state: present
+
+        - name: Default Password
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: ControlPassword=tegbzn6789
+            line: "ControlPassword=guide"
+            state: present
+
+        - name: ScriptDir
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^ScriptDir\s?='
+            line: "ScriptDir=/scripts"
+            state: present
+
+        - name: DirectUnpack Set to On
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^DirectUnpack\s?='
+            line: "DirectUnpack=yes"
+            state: present
+
+        - name: Set Download Location
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^DestDir\s?='
+            line: "DestDir=${MainDir}/{{pgrole}}"
+            state: present
+
+        - name: Lowercase & Set Movie Category
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^Category1.Name\s?='
+            line: "Category1.Name=movies"
+            state: present
+
+        - name: Set Location of Movies
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^Category1.DestDir\s?='
+            line: "Category1.DestDir=/downloads/{{pgrole}}/movies"
+            state: present
+
+        - name: Lowercase & Set TV Category
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^Category2.Name\s?='
+            line: "Category2.Name=tv"
+            state: present
+
+        - name: Set Location of TV
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^Category2.DestDir\s?='
+            line: "Category2.DestDir=/downloads/{{pgrole}}/tv"
+            state: present
+
+        - name: Lowercase & Set Music Category
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^Category3.Name\s?='
+            line: "Category3.Name=music"
+            state: present
+
+        - name: Set Location of Music
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^Category3.DestDir\s?='
+            line: "Category3.DestDir=/downloads/{{pgrole}}/music"
+            state: present
+
+        - name: Lowercase & Set EBook Category
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^Category4.Name\s?='
+            line: "Category4.Name=ebooks"
+            state: present
+
+        - name: Set Location of EBooks
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^Category4.DestDir\s?='
+            line: "Category4.DestDir=/downloads/{{pgrole}}/ebooks"
+            state: present
+
+        - name: Set Location of aBooks
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: "Category5.Name="
+            line: "Category5.Name=abooks"
+            state: present
+
+        - name: Set Location of aBooks
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: "Category5.DestDir="
+            line: "Category5.DestDir==/downloads/{{pgrole}}/abooks"
+            state: present
+
+        - name: HealthCheck
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^HealthCheck\s?=.*'
+            line: "HealthCheck=Delete"
+            state: present
+
+        - name: Set DiskSpace
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^DiskSpace\s?=.*'
+            line: "DiskSpace=25000"
+            state: present
+
+        - name: Remove Generic Task
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: "{{ item.regexp }}"
+            state: absent
+          with_items:
+            - { regexp: '.Task1\.Time\=.*' }
+            - { regexp: '.Task1\.WeekDays\=.*' }
+            - { regexp: '.Task1\.Command\=.*' }
+            - { regexp: '.Task1\.Param\=.*' }
+
+        - name: Unpause
+          blockinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            block: |
+              Task1.Time=*,*:00,*:30
+              Task1.WeekDays=1-7
+              Task1.Command=UnpauseDownload
+              Task1.Param=
+            insertafter: "^### SCHEDULER"
+
+        - name: Transfer Files1
+          copy:
+            src: /opt/plexguide/containers/templates/nzbget/scripts
+            dest: "/opt/appdata/{{pgrole}}/"
+            owner: "1000"
+            group: "1000"
+            mode: a+x
+            force: yes
+
+        - name: Transfer Files2
+          copy:
+            src: /opt/plexguide/containers/templates/nzbgetpp
+            dest: "/opt/appdata/{{pgrole}}/scripts/"
+            owner: "1000"
+            group: "1000"
+            mode: a+x
+            force: yes
+
+        - name: Restart Container
+          docker_container:
+            name: nzbget
+            state: started
+
+      when: not confcheck.stat.exists

@@ -10,88 +10,87 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS ######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "pgscan"
+        extport: "0"
 
-# FACTS ######################################################################
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "pgscan"
-      extport: "0"
+    - name: Token Recall
+      shell: "cat /var/plexguide/plex.token"
+      register: token
 
-  - name: Token Recall
-    shell: "cat /var/plexguide/plex.token"
-    register: token
+    - name: Install pip requirements
+      pip:
+        requirements: /opt/plexguide/menu/pgscan/requirements.txt
+        executable: pip2
 
-  - name: Install pip requirements
-    pip:
-      requirements: /opt/plexguide/menu/pgscan/requirements.txt
-      executable: pip2
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
-
-  - name: Create Basic Directories
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-    with_items:
+    - name: Create Basic Directories
+      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      with_items:
         - "/opt/appdata/pgscan/"
 
-  - name: Transfer Files
-    copy:
-      src: /opt/plexguide/menu/pgscan
-      dest: /opt/appdata
-      owner: "1000"
-      group: "1000"
-      mode: a+x
-      force: yes
+    - name: Transfer Files
+      copy:
+        src: /opt/plexguide/menu/pgscan
+        dest: /opt/appdata
+        owner: "1000"
+        group: "1000"
+        mode: a+x
+        force: yes
 
-  - name: Import default config
-    template:
-      src: /opt/appdata/pgscan/config/default.config
-      dest: /opt/appdata/pgscan/config.json
-      owner: "1000"
-      group: "1000"
-      mode: 0775
-      force: yes
+    - name: Import default config
+      template:
+        src: /opt/appdata/pgscan/config/default.config
+        dest: /opt/appdata/pgscan/config.json
+        owner: "1000"
+        group: "1000"
+        mode: 0775
+        force: yes
 
-  - name: Set pgscan.py as executable
-    file:
-      path: /opt/appdata/pgscan/scan.py
-      owner: 1000
-      group: 1000
-      mode: a+x
+    - name: Set pgscan.py as executable
+      file:
+        path: /opt/appdata/pgscan/scan.py
+        owner: 1000
+        group: 1000
+        mode: a+x
 
-  - name: "Create /usr/local/bin symlink"
-    file:
-      src: "/opt/appdata/pgscan/scan.py"
-      dest: "/bin/pgscan"
-      state: link
+    - name: "Create /usr/local/bin symlink"
+      file:
+        src: "/opt/appdata/pgscan/scan.py"
+        dest: "/bin/pgscan"
+        state: link
 
-  - name: Check Service's Existance
-    stat:
-      path: "/etc/systemd/systemd/pgscan.service"
-    register: pgp
+    - name: Check Service's Existance
+      stat:
+        path: "/etc/systemd/systemd/pgscan.service"
+      register: pgp
 
-  - name: Stop service
-    service:
-      name: pgscan
-      state: stopped
-    when: pgp.stat.exists
+    - name: Stop service
+      service:
+        name: pgscan
+        state: stopped
+      when: pgp.stat.exists
 
-  - name: pgscan Service
-    template:
-      src: /opt/appdata/pgscan/system/pgscan.service
-      dest: /etc/systemd/system/pgscan.service
-      force: yes
+    - name: pgscan Service
+      template:
+        src: /opt/appdata/pgscan/system/pgscan.service
+        dest: /etc/systemd/system/pgscan.service
+        force: yes
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=pgscan daemon_reload=yes enabled=no
+    - name: Daemon-Reload
+      systemd: state=stopped name=pgscan daemon_reload=yes enabled=no
 
-  - name: Section Updates
-    command: "/opt/appdata/pgscan/scan.py sections"
-    tags: plex_autoscan_update_sections
+    - name: Section Updates
+      command: "/opt/appdata/pgscan/scan.py sections"
+      tags: plex_autoscan_update_sections
 
-  - name: Mapping Configs
-    command: "/opt/appdata/pgscan/scan.py update_sections"
-    tags: plex_autoscan_update_sections
+    - name: Mapping Configs
+      command: "/opt/appdata/pgscan/scan.py update_sections"
+      tags: plex_autoscan_update_sections
 
-  - name: Start pgscan
-    systemd: state=started name=pgscan enabled=yes
+    - name: Start pgscan
+      systemd: state=started name=pgscan enabled=yes

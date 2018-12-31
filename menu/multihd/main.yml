@@ -17,19 +17,19 @@
       pause:
         prompt: "\nCurrent Mounts:
                  \n{{multilist.stdout}}
-    \n\n---------------------------------------------
-    \nWelcome to the PG Multi-HD Builder!
-    \nNOTE: Be Careful Adding the Drive PG is on due use of combined space!
-    \n\n1. EXIT Interface
-    \n2. Add a Path
-    \n3. Remove a Path
-    \n4. Deploy UnionFS
-    \n\nType a [MENU CHOICE] & Press [ENTER]"
+                 \n\n---------------------------------------------
+                 \nWelcome to the PG Multi-HD Builder!
+                 \nNOTE: Be Careful Adding the Drive PG is on due use of combined space!
+                 \n\n1. EXIT Interface
+                 \n2. Add a Path
+                 \n3. Remove a Path
+                 \n4. Deploy UnionFS
+                 \n\nType a [MENU CHOICE] & Press [ENTER]"    
       register: choice
       until: choice.user_input == "1" or
-             choice.user_input == "2" or
-             choice.user_input == "3" or
-             choice.user_input == "4"
+        choice.user_input == "2" or
+        choice.user_input == "3" or
+        choice.user_input == "4"
       retries: 99
       delay: 1
 

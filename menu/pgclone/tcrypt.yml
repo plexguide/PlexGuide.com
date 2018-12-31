@@ -9,12 +9,11 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Install TCrypt Service
+      template:
+        src: /opt/plexguide/menu/pgclone/templates/tcrypt.service
+        dest: /etc/systemd/system/tcrypt.service
+        force: yes
 
-  - name: Install TCrypt Service
-    template:
-      src: /opt/plexguide/menu/pgclone/templates/tcrypt.service
-      dest: /etc/systemd/system/tcrypt.service
-      force: yes
-
-  - name: Start TCrypt SERVICE
-    systemd: state=started name=tcrypt daemon_reload=yes enabled=yes
+    - name: Start TCrypt SERVICE
+      systemd: state=started name=tcrypt daemon_reload=yes enabled=yes

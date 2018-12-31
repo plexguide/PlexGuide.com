@@ -12,7 +12,7 @@
 
 # FACTS #######################################################################
 
-  - name: "Set Known Facts"
+  - name: "Creating Alternative Facts"
     set_fact:
       pgrole: "qbittorrent"
       intport: "8080"
@@ -20,7 +20,7 @@
       image: "linuxserver/qbittorrent"
 
 # CORE (MANDATORY) #############################################################
-  - name: CronJob Role
+  - name: "Always have a backup plan"
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
 # EXTRA FOR QBITORRENT #########################################################
@@ -33,7 +33,7 @@
 
 # LABELS ######################################################################
 
-  - name: "Setting PG Labels"
+  - name: "Navigating Traefik"
     set_fact:
       pg_labels:
         traefik.frontend.auth.basic.users: "{{auth.stdout}}"
@@ -64,7 +64,7 @@
       path: "/opt/appdata/qbittorrent/config/qBittorrent/qBittorrent.conf"
     register: confcheck
 
-  - name: "Deploying Container - {{pgrole}}"
+  - name: "Deploying {{pgrole}}"
     docker_container:
       name: "{{pgrole}}"
       image: "{{image}}"
@@ -82,10 +82,10 @@
       labels: "{{pg_labels}}"
 
   # ENDING TASK FOR RUTORRENT ####################################################
-  - name: "First Time Check"
+  - name: "Configuring {{pgrole}} for first time use"
     block:
 
-    - name: Please Wait - Pending .conf generation from qBittorrent
+    - name: "Wating for {{pgrole}} to start"
       wait_for:
         path: "/opt/appdata/qbittorrent/config/qBittorrent/qBittorrent.conf"
         state: present
