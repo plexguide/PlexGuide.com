@@ -15,8 +15,8 @@
   - name: "Set Known Facts"
     set_fact:
       pgrole: "heimdall"
-      intport: "80"
-      extport: "1111"
+      intport: "443"
+      extport: "127.0.0.1:1111"
       image: "linuxserver/heimdall"
 
 # CORE (MANDATORY) ############################################################
@@ -28,10 +28,11 @@
   - name: "Setting PG Labels"
     set_fact:
       pg_labels:
-        traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+        traefik.frontend.auth.forward.address: "{{gauth}}"
         traefik.enable: "true"
-        traefik.port: "{{intport}}"
-
+        traefik.protocol: https
+        traefik.port: "443"
+        traefik.frontend.redirect.entryPoint: "https"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: "Setting PG Volumes"
@@ -53,8 +54,8 @@
       name: "{{pgrole}}"
       image: "{{image}}"
       pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
+      expose:
+        - "1111"
       volumes: "{{pg_volumes}}"
       env: "{{pg_env}}"
       restart_policy: always
