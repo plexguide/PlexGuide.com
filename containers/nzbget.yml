@@ -58,9 +58,11 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
+        # BASICS ######################################
         - "/etc/localtime:/etc/localtime:ro"
         - "/opt/appdata/{{pgrole}}:/config"
         - "/opt/appdata/{{pgrole}}/scripts:/scripts"
+        # MAIN DIRECTORIES ############################
         - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
         - "{{path.stdout}}/downloads/{{pgrole}}:/complete"
 
