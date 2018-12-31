@@ -182,6 +182,19 @@
       when: encrypt.stat.exists == False
       ignore_errors: yes
 
+    - name: Create NZB Directories
+      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+      with_items:
+        - "{{path.stdout}}/incomplete/nzbget"
+        - "{{path.stdout}}/downloads/nzbget/movies"
+        - "{{path.stdout}}/downloads/nzbget/music"
+        - "{{path.stdout}}/downloads/nzbget/tv"
+        - "{{path.stdout}}/downloads/nzbget/ebooks"
+        - "{{path.stdout}}/downloads/nzbget/nzb"
+        - "{{path.stdout}}/downloads/nzbget/queue"
+        - "{{path.stdout}}/downloads/nzbget/tmp"
+        - "{{path.stdout}}/downloads/nzbget/log"
+
     - name: Create Basic Directories
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
       with_items:
@@ -206,15 +219,6 @@
         - "{{path.stdout}}/move/tv"
         - "{{path.stdout}}/move/movies"
         - "{{path.stdout}}/move/music"
-        - "{{path.stdout}}/nzbget/downloads/completed/movies"
-        - "{{path.stdout}}/nzbget/downloads/completed/music"
-        - "{{path.stdout}}/nzbget/downloads/completed/tv"
-        - "{{path.stdout}}/nzbget/downloads/completed/ebooks"
-        - "{{path.stdout}}/nzbget/downloads/incomplete"
-        - "{{path.stdout}}/nzbget/downloads/nzb"
-        - "{{path.stdout}}/nzbget/downloads/queue"
-        - "{{path.stdout}}/nzbget/downloads/tmp"
-        - "{{path.stdout}}/nzbget/downloads/log"
         - "{{path.stdout}}/sab"
         - "{{path.stdout}}/sab/admin"
         - "{{path.stdout}}/sab/complete"
