@@ -88,7 +88,7 @@
           - "/opt/appdata/{{pgrole}}:/config"
           - "/opt/appdata/{{pgrole}}/scripts:/scripts"
           - "{{path.stdout}}/incomplete:/incomplete/{{pgrole}}"
-          - "{{path.stdout}}/downloads:/downloads"
+          - "{{path.stdout}}/downloads:/downloads/{{pgrole}}"
 
     - name: "Setting PG ENV"
       set_fact:
