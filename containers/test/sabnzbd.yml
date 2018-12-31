@@ -12,7 +12,7 @@
 
 # FACTS #######################################################################
 
-  - name: "Set Known Facts"
+  - name: "Creating Alternative Facts"
     set_fact:
       pgrole: "sabnzbd"
       intport: "8080"
@@ -20,12 +20,12 @@
       image: "linuxserver/sabnzbd"
 
 # CORE (MANDATORY) ############################################################
-  - name: CronJob Role
+  - name: "Always have a backup plan"
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
 # LABELS ######################################################################
 
-  - name: "Setting PG Labels"
+  - name: "Navigating Traefik"
     set_fact:
       pg_labels:
         traefik.frontend.auth.forward.address: "{{gauth}}"
@@ -53,7 +53,7 @@
 
 # MAIN DEPLOYMENT #############################################################
 
-  - name: "Deploying Container - {{pgrole}}"
+  - name: "Deploying {{pgrole}}"
     docker_container:
       name: "{{pgrole}}"
       image: "{{image}}"

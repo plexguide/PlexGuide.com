@@ -9,21 +9,27 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS #######################################################################
 
-# FACTS #######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "ubooquity"
+        intport: "2202"
+        extport: "2202"
+        image: "linuxserver/ubooquity"
 
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "ubooquity"
-      intport: "2202"
-      extport: "2202"
-      image: "linuxserver/ubooquity"
+    # CORE (MANDATORY) ############################################################
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-# CORE (MANDATORY) ############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
+    # LABELS ######################################################################
 
-# LABELS ######################################################################
+    - name: "Adding Traefik"
+      set_fact:
+        pg_labels:
+          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
 
   - name: "Setting PG Labels"
     set_fact:
@@ -31,38 +37,38 @@
         traefik.frontend.auth.forward.address: "{{gauth}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-  
+
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-  - name: "Setting PG Volumes"
-    set_fact:
-      pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/config"
-        - "/mnt/unionfs/audiobooks:/books"
-        - "/mnt/unionfs/podcasts:/podcasts"
-        - "/etc/localtime:/etc/localtime:ro"
+    - name: "Setting PG Volumes"
+      set_fact:
+        pg_volumes:
+          - "/opt/appdata/{{pgrole}}:/config"
+          - "/mnt/unionfs/audiobooks:/books"
+          - "/mnt/unionfs/podcasts:/podcasts"
+          - "/etc/localtime:/etc/localtime:ro"
 
-  - name: "Setting PG ENV"
-    set_fact:
-      pg_env:
-        PUID: 1000
-        PGID: 1000
+    - name: "Setting PG ENV"
+      set_fact:
+        pg_env:
+          PUID: 1000
+          PGID: 1000
 
-# MAIN DEPLOYMENT #############################################################
+    # MAIN DEPLOYMENT #############################################################
 
-  - name: "Deploying Container - {{pgrole}}"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      state: started
-      labels: "{{pg_labels}}"
+    - name: "Deploying {{pgrole}}"
+      docker_container:
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+        volumes: "{{pg_volumes}}"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
+        state: started
+        labels: "{{pg_labels}}"

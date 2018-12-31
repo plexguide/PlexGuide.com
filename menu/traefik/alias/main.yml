@@ -1,0 +1,270 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705 - Deiteq
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Logging Ansible Role Information
+      shell: "echo 'INFO - Ansible Role - Alias Started' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh"
+
+    - name: Install Status Move
+      template:
+        src: smove
+        dest: /bin/smove
+        force: yes
+        mode: 0775
+
+    - name: Nano Move
+      template:
+        src: nmove
+        dest: /bin/nmove
+        force: yes
+        mode: 0775
+
+    - name: Install PGVPN
+      template:
+        src: pgvpn
+        dest: /bin/pgvpn
+        force: yes
+        mode: 0775
+
+    - name: Install Status GDrive
+      template:
+        src: sgdrive
+        dest: /bin/sgdrive
+        force: yes
+        mode: 0775
+
+    - name: Nano GDrive
+      template:
+        src: ngdrive
+        dest: /bin/ngdrive
+        force: yes
+        mode: 0775
+
+    - name: Install Status TDrive
+      template:
+        src: stdrive
+        dest: /bin/stdrive
+        force: yes
+        mode: 0775
+
+    - name: Nano TDrive
+      template:
+        src: ntdrive
+        dest: /bin/ntdrive
+        force: yes
+        mode: 0775
+
+    - name: Install Status UnionFS
+      template:
+        src: sunionfs
+        dest: /bin/sunionfs
+        force: yes
+        mode: 0775
+
+    - name: Nano UnionFS
+      template:
+        src: nunionfs
+        dest: /bin/nunionfs
+        force: yes
+        mode: 0775
+
+    - name: Install Status UFSMonitor
+      template:
+        src: sufs
+        dest: /bin/sufs
+        force: yes
+        mode: 0775
+
+    - name: Nano UFSMonitor
+      template:
+        src: nufs
+        dest: /bin/nufs
+        force: yes
+        mode: 0775
+
+    - name: Install Status SuperTransfer2
+      template:
+        src: sst2
+        dest: /bin/sst2
+        force: yes
+        mode: 0775
+
+    ####### Encrypted Services
+
+    - name: Install Status GCrypt
+      template:
+        src: sgcrypt
+        dest: /bin/sgcrypt
+        force: yes
+        mode: 0775
+
+    - name: Nano GCrypt
+      template:
+        src: ngcrypt
+        dest: /bin/ngcrypt
+        force: yes
+        mode: 0775
+
+    - name: Install Status TCrypt
+      template:
+        src: stcrypt
+        dest: /bin/stcrypt
+        force: yes
+        mode: 0775
+
+    - name: Nano TCrypt
+      template:
+        src: ntcrypt
+        dest: /bin/ntcrypt
+        force: yes
+        mode: 0775
+
+    ###### Install PGLog
+
+    - name: Nano PGLog
+      template:
+        src: pglog
+        dest: /bin/pglog
+        force: yes
+        mode: 0775
+
+    ###### Install PGUpdate
+
+    - name: PGUpdate
+      template:
+        src: pgupdate
+        dest: /bin/pgupdate
+        force: yes
+        mode: 0775
+
+    ###### Install PGDEV
+
+    - name: PGDev
+      template:
+        src: pgdev
+        dest: /bin/pgdev
+        force: yes
+        mode: 0775
+
+    ###### Install PlexGuide
+
+    - name: PlexGuide
+      template:
+        src: plexguide
+        dest: /bin/plexguide
+        force: yes
+        mode: 0775
+        owner: root
+
+    ###### Server reboot
+
+    - name: server reboot
+      template:
+        src: reboot
+        dest: /bin/reboot
+        force: yes
+        mode: 0775
+
+    ###### Check list of services
+
+    - name: list systemd services
+      template:
+        src: slist
+        dest: /bin/slist
+        force: yes
+        mode: 0775
+        owner: root
+
+    ###### Server update
+
+    - name: update server
+      template:
+        src: update
+        dest: /bin/update
+        force: yes
+        mode: 0775
+
+    ###### Server upgrade
+
+    - name: upgrade server
+      template:
+        src: upgrade
+        dest: /bin/upgrade
+        force: yes
+        mode: 0775
+        owner: root
+
+    ###### Install app
+
+    - name: install appname
+      template:
+        src: install
+        dest: /bin/install
+        force: yes
+        mode: 0775
+        owner: root
+
+    ###### Autoremove installed app packages
+
+    - name: autoremove unused packages after app install
+      template:
+        src: autoremove
+        dest: /bin/autoremove
+        force: yes
+        mode: 0775
+        owner: root
+
+    ###### Remove old docker containers (Tip from @barryclamsworth)
+
+    - name: Prune docker containers appname
+      template:
+        src: prune
+        dest: /bin/prune
+        force: yes
+        mode: 0775
+        owner: root
+
+    - name: Install PGFork
+      template:
+        src: pgfork
+        dest: /bin/pgfork
+        force: yes
+        mode: 0775
+
+    - name: Install Backup
+      template:
+        src: backup
+        dest: /bin/backup
+        force: yes
+        mode: 0775
+
+    - name: Install PGEdge
+      template:
+        src: pgedge
+        dest: /bin/pgedge
+        force: yes
+        mode: 0775
+
+    - name: Install Status PGBlitz
+      template:
+        src: spgblitz
+        dest: /bin/spgblitz
+        force: yes
+        mode: 0775
+
+    - name: Install Transfer PGBlitz
+      template:
+        src: tpgblitz
+        dest: /bin/tpgblitz
+        force: yes
+        mode: 0775
+
+    - name: Logging Ansible Role Information
+      shell: "echo 'INFO - Ansible Role Alias Completed' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh"

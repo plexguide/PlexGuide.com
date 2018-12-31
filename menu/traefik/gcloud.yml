@@ -19,38 +19,37 @@
 - hosts: localhost
   gather_facts: true
   tasks:
+    - name: Part 1
+      shell: "cat /var/plexguide/GCE_PROJECT"
+      register: part1
 
-  - name: Part 1
-    shell: "cat /var/plexguide/GCE_PROJECT"
-    register: part1
+    - name: Part 2
+      shell: "cat /var/plexguide/GCE_SERVICE_ACCOUNT_FILE"
+      register: part2
 
-  - name: Part 2
-    shell: "cat /var/plexguide/GCE_SERVICE_ACCOUNT_FILE"
-    register: part2
-
-  - name: Deploy Traefik - GCLOUD
-    docker_container:
-      name: traefik
-      image: traefik:1.7
-      pull: yes
-      published_ports:
-        - "443:443"
-        - "80:80"
-      env:
-        PUID: 1000
-        PGID: 1000
-        PROVIDER: gcloud
-        GCE_PROJECT: "{{part1.stdout}}"
-        GCE_SERVICE_ACCOUNT_FILE: "{{part2.stdout}}"
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock:ro
-        - /etc/localtime:/etc/localtime:ro
-        - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
-        - /opt/appdata/traefik/acme:/etc/traefik/acme
-        - "{{part2.stdout}}:{{part2.stdout}}"
-      restart_policy: always
-      state: started
-      networks:
-        - name: plexguide
-          aliases:
-            - traefik
+    - name: Deploy Traefik - GCLOUD
+      docker_container:
+        name: traefik
+        image: traefik:1.7
+        pull: yes
+        published_ports:
+          - "443:443"
+          - "80:80"
+        env:
+          PUID: 1000
+          PGID: 1000
+          PROVIDER: gcloud
+          GCE_PROJECT: "{{part1.stdout}}"
+          GCE_SERVICE_ACCOUNT_FILE: "{{part2.stdout}}"
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+          - /etc/localtime:/etc/localtime:ro
+          - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+          - /opt/appdata/traefik/acme:/etc/traefik/acme
+          - "{{part2.stdout}}:{{part2.stdout}}"
+        restart_policy: always
+        state: started
+        networks:
+          - name: plexguide
+            aliases:
+              - traefik

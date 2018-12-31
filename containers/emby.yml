@@ -9,64 +9,68 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS #######################################################################
 
-# FACTS #######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "emby"
+        intport: "8096"
+        extport: "8096"
+        image: "emby/embyserver:latest"
 
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "emby"
-      intport: "8096"
-      extport: "8096"
-      image: "emby/embyserver:latest"
+    # CORE (MANDATORY) ############################################################
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-# CORE (MANDATORY) ############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
+    # LABELS ######################################################################
 
-# LABELS ######################################################################
+    - name: "Adding Traefik"
+      set_fact:
+        pg_labels:
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
 
   - name: "Setting PG Labels"
     set_fact:
       pg_labels:
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-  
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
         traefik.frontend.auth.forward.address: "{{gauth}}"
 
-  - name: "Setting PG Volumes"
-    set_fact:
-      pg_volumes:
-        - /etc/localtime:/etc/localtime:ro
-        - /opt/appdata/emby:/config
-        - /mnt/plexdrive/:/plexdrive
-        - /mnt/unionfs:/unionfs
-        - /mnt/encrypt:/encrypt
-        - /:/yourcomputer
+    - name: "Setting PG Volumes"
+      set_fact:
+        pg_volumes:
+          - /etc/localtime:/etc/localtime:ro
+          - /opt/appdata/{{pgrole}}:/config
+          - /mnt/plexdrive/:/plexdrive
+          - /mnt/unionfs:/unionfs
+          - /mnt/encrypt:/encrypt
+          - /:/yourcomputer
 
-  - name: "Setting PG ENV"
-    set_fact:
-      pg_env:
-        UID: 1000
-        GID: 1000
-        GIDLIST: "1000"
+    - name: "Setting PG ENV"
+      set_fact:
+        pg_env:
+          PUID: 1000
+          PGID: 1000
+          GIDLIST: "1000"
 
-# MAIN DEPLOYMENT #############################################################
+    # MAIN DEPLOYMENT #############################################################
 
-  - name: "Deploying Container - {{pgrole}}"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      expose: "8096"
-      state: started
-      labels: "{{pg_labels}}"
+    - name: "Deploying {{pgrole}}"
+      docker_container:
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+        volumes: "{{pg_volumes}}"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
+        expose: "8096"
+        state: started
+        labels: "{{pg_labels}}"

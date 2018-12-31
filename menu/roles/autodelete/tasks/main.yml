@@ -8,14 +8,35 @@
 ---
 - cron:
     name: Build a Cron Job - NZBGET
-    special_time: 'hourly'
+    special_time: "hourly"
     job: "bash /opt/plexguide/menu/roles/autodelete/scripts/nzbget.sh"
     state: present
   ignore_errors: yes
 
 - cron:
     name: Build a Cron Job - SABNZBD
-    special_time: 'hourly'
+    special_time: "hourly"
     job: "bash /opt/plexguide/menu/roles/autodelete/scripts/sabnzbd.sh"
+    state: present
+  ignore_errors: yes
+
+- cron:
+    name: Build a Cron Job - DELUGE
+    special_time: 'hourly'
+    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/deluge.sh"
+    state: present
+  ignore_errors: yes
+
+- cron:
+    name: Build a Cron Job - RUTORRENT
+    special_time: 'hourly'
+    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/rutorrent.sh"
+    state: present
+  ignore_errors: yes
+
+  - cron:
+    name: Build a Cron Job - QBITTORRENT
+    special_time: 'hourly'
+    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/qbittorrent.sh"
     state: present
   ignore_errors: yes

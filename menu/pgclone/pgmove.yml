@@ -9,29 +9,28 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Bandwidth Limit
+      shell: "cat /var/plexguide/move.bw"
+      register: bandwidth
 
-  - name: Bandwidth Limit
-    shell: "cat /var/plexguide/move.bw"
-    register: bandwidth
+    - name: Deploy Version
+      shell: "cat /var/plexguide/rclone/deploy.version"
+      register: ver
 
-  - name: Deploy Version
-    shell: "cat /var/plexguide/rclone/deploy.version"
-    register: ver
+    - name: Install MOVE Service
+      template:
+        src: /opt/plexguide/menu/pgclone/templates/move_script.sh
+        dest: /opt/appdata/plexguide/move.sh
+        force: yes
 
-  - name: Install MOVE Service
-    template:
-      src: /opt/plexguide/menu/pgclone/templates/move_script.sh
-      dest: /opt/appdata/plexguide/move.sh
-      force: yes
+    - name: Install MOVE Service
+      template:
+        src: /opt/plexguide/menu/pgclone/templates/move.service
+        dest: /etc/systemd/system/move.service
+        force: yes
 
-  - name: Install MOVE Service
-    template:
-      src: /opt/plexguide/menu/pgclone/templates/move.service
-      dest: /etc/systemd/system/move.service
-      force: yes
+    - name: Daemon-Reload
+      systemd: state=stopped name=move daemon_reload=yes enabled=no
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=move daemon_reload=yes enabled=no
-
-  - name: Start Move
-    systemd: state=started name=move enabled=yes
+    - name: Start Move
+      systemd: state=started name=move enabled=yes

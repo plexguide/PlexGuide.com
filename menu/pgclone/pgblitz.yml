@@ -9,7 +9,6 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-
     - name: Install pgblitz script
       template:
         src: /opt/plexguide/menu/pgclone/templates/pgblitz.sh

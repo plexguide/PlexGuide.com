@@ -19,32 +19,31 @@
 - hosts: localhost
   gather_facts: true
   tasks:
+    - name: Part 1
+      shell: "cat /var/plexguide/GANDIV5_API_KEY"
+      register: part1
 
-  - name: Part 1
-    shell: "cat /var/plexguide/GANDIV5_API_KEY"
-    register: part1
-
-  - name: Deploy Traefik
-    docker_container:
-      name: traefik
-      image: traefik:1.7
-      pull: yes
-      published_ports:
-        - "443:443"
-        - "80:80"
-      env:
-        PUID: 1000
-        PGID: 1000
-        PROVIDER: gandiv5
-        GANDIV5_API_KEY: "{{part1.stdout}}"
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock:ro
-        - /etc/localtime:/etc/localtime:ro
-        - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
-        - /opt/appdata/traefik/acme:/etc/traefik/acme
-      restart_policy: always
-      state: started
-      networks:
-        - name: plexguide
-          aliases:
-            - traefik
+    - name: Deploy Traefik
+      docker_container:
+        name: traefik
+        image: traefik:1.7
+        pull: yes
+        published_ports:
+          - "443:443"
+          - "80:80"
+        env:
+          PUID: 1000
+          PGID: 1000
+          PROVIDER: gandiv5
+          GANDIV5_API_KEY: "{{part1.stdout}}"
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+          - /etc/localtime:/etc/localtime:ro
+          - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+          - /opt/appdata/traefik/acme:/etc/traefik/acme
+        restart_policy: always
+        state: started
+        networks:
+          - name: plexguide
+            aliases:
+              - traefik
