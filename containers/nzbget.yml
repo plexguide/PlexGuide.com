@@ -55,8 +55,8 @@
         - "/etc/localtime:/etc/localtime:ro"
         - "/opt/appdata/{{pgrole}}:/config"
         - "/opt/appdata/{{pgrole}}/scripts:/scripts"
-        - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
-        - "{{path.stdout}}/downloads/{{pgrole}}:/downloads"
+        - "{{path.stdout}}/incomplete/{{pgrole}}:/nzbget/incomplete"
+        - "{{path.stdout}}/downloads/{{pgrole}}:/nzbget/complete"
 
   - name: "Setting PG ENV"
     set_fact:
