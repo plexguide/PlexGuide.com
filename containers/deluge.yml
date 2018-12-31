@@ -93,7 +93,7 @@
         pg_volumes:
           - "/opt/appdata/{{pgrole}}:/config"
           - "/mnt/unionfs:/unionfs"
-          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete/{{pgrole}}"
           - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
           - "{{path.stdout}}/torrent:/torrent"
           - "/etc/localtime:/etc/localtime:ro"
@@ -194,7 +194,7 @@
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/core.conf"
             regexp: '"download_location"'
-            line: '"download_location": "/incomplete",'
+            line: '"download_location": "/incomplete/{{pgrole}}",'
             state: present
 
         - name: Setting complete downloads directory
