@@ -57,10 +57,10 @@ case $typed in
         appexempt
         phase1 ;;
     4 )
-        touch /var/plexguide/pgshield.compiled
-        efg=$(cat "/var/plexguide/pgshield.compiled")
+        touch /var/plexguide/pgshield.emails
+        efg=$(cat "/var/plexguide/pgshield.emails")
         if [[ "$efg" == "" ]]; then
-        echo 
+        echo
         echo "SANITY CHECK: No Authorized Users have been Added! Exiting!"
         read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty; question1; fi
 
