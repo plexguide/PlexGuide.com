@@ -32,7 +32,7 @@
       block:
         - name: "Creating new downloads location"
           command: "mkdir -p {{path.stdout}}/downloads/{{pgrole}}"
-        
+
         - name: "Creating new incomplete downloads location"
           command: "mkdir -p {{path.stdout}}/incomplete/{{pgrole}}"
 
@@ -79,6 +79,7 @@
           traefik.enable: "true"
           traefik.port: "{{intport}}"
           traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
 
     - name: "Setting PG Volumes"
       set_fact:
