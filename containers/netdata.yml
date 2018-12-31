@@ -54,7 +54,6 @@
 
     # MAIN DEPLOYMENT #############################################################
 
-<<<<<<< HEAD
   - name: "Deploying Container - {{pgrole}}"
     docker_container:
       name: "{{pgrole}}"
@@ -73,23 +72,3 @@
             - "{{pgrole}}"
       state: started
       labels: "{{pg_labels}}"
-=======
-    - name: "Deploying {{pgrole}}"
-      docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
-        pull: yes
-        capabilities:
-          - SYS_PTRACE
-        published_ports:
-          - "{{ports.stdout}}{{extport}}:{{intport}}"
-        volumes: "{{pg_volumes}}"
-        env: "{{pg_env}}"
-        restart_policy: always
-        networks:
-          - name: plexguide
-            aliases:
-              - "{{pgrole}}"
-        state: started
-        labels: "{{pg_labels}}"
->>>>>>> 7.6edge
