@@ -194,7 +194,7 @@
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/core.conf"
             regexp: '"download_location"'
-            line: '"download_location": "/incomplete/{{pgrole}}",'
+            line: '"download_location": "/incomplete",'
             state: present
 
         - name: Setting complete downloads directory
@@ -223,6 +223,20 @@
             path: "/opt/appdata/{{pgrole}}/core.conf"
             regexp: '"move_completed"'
             line: '"move_completed": true,'
+            state: present
+
+        - name: Setting extractor folder
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/extractor.conf"
+            regexp: '"use_name_folder"'
+            line: '"use_name_folder": true,'
+            state: present
+
+        - name: Setting extractor
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/extractor.conf"
+            regexp: '"extract_path"'
+            line: '"extract_path": "/downloads/deluge"'
             state: present
 
         - name: Restart Container
