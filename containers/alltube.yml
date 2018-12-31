@@ -33,49 +33,40 @@
         group: 1000
 
     # LABELS ######################################################################
-
-    - name: "Adding Traefik"
+    - name: "Setting PG Labels"
       set_fact:
         pg_labels:
-          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
           traefik.enable: "true"
           traefik.port: "{{intport}}"
+          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+          traefik.frontend.auth.forward.address: "{{gauth}}"
 
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
+      - name: "Setting PG Volumes"
+        set_fact:
+          pg_volumes:
+            - /opt/appdata/{{pgrole}}:/var/www/html/config
 
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-        traefik.frontend.auth.forward.address: "{{gauth}}"
+      - name: "Setting PG ENV"
+        set_fact:
+          pg_env:
+            PUID: 1000
+            PGID: 1000
 
-    - name: "Setting PG Volumes"
-      set_fact:
-        pg_volumes:
-          - /opt/appdata/{{pgrole}}:/var/www/html/config
+      # MAIN DEPLOYMENT #############################################################
 
-    - name: "Setting PG ENV"
-      set_fact:
-        pg_env:
-          PUID: 1000
-          PGID: 1000
-
-    # MAIN DEPLOYMENT #############################################################
-
-    - name: "Deploying {{pgrole}}"
-      docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
-        pull: yes
-        published_ports:
-          - "{{ports.stdout}}{{extport}}:{{intport}}"
-        volumes: "{{pg_volumes}}"
-        env: "{{pg_env}}"
-        restart_policy: always
-        networks:
-          - name: plexguide
-            aliases:
-              - "{{pgrole}}"
-        state: started
-        labels: "{{pg_labels}}"
+      - name: "Deploying {{pgrole}}"
+        docker_container:
+          name: "{{pgrole}}"
+          image: "{{image}}"
+          pull: yes
+          published_ports:
+            - "{{ports.stdout}}{{extport}}:{{intport}}"
+          volumes: "{{pg_volumes}}"
+          env: "{{pg_env}}"
+          restart_policy: always
+          networks:
+            - name: plexguide
+              aliases:
+                - "{{pgrole}}"
+          state: started
+          labels: "{{pg_labels}}"
