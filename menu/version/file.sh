@@ -17,6 +17,7 @@ done
 
 pgnumber=$(cat "/var/plexguide/pg.number")
 latest=$(cat "/opt/pgstage/versions.sh" | head -n1)
+beta=$(cat /opt/pgstage/versions.sh | sed -n 2p)
 
 tee <<-EOF
 
@@ -24,12 +25,13 @@ tee <<-EOF
 📂  PG Update Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✅  Latest Version : $latest
+✅   Latest Version : $latest
+     Latest Beta    : $beta
     Current Verison: $pgnumber
 
 💬  Prior Versions?  Visit > versions.plexguide.com
     Quitting? TYPE > exit
-		
+
 EOF
 
 break=no
