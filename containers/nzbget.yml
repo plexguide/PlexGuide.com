@@ -47,6 +47,7 @@
         traefik.enable: "true"
         traefik.port: "{{intport}}"
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+        traefik.frontend.auth.forward.address: "{{gauth}}"
 
   - name: "Setting PG Volumes"
     set_fact:
@@ -55,7 +56,7 @@
         - "/opt/appdata/{{pgrole}}:/config"
         - "/opt/appdata/{{pgrole}}/scripts:/scripts"
         - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
-        - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
+        - "{{path.stdout}}/downloads/{{pgrole}}:/downloads"
 
   - name: "Setting PG ENV"
     set_fact:
@@ -97,19 +98,19 @@
         name: nzbget
         state: stopped
 
-    - name: Default User
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: '^ControlUsername\s?='
-        line: 'ControlUsername=plex'
-        state: present
+    #- name: Default User
+    #  lineinfile:
+    #    path: "/opt/appdata/nzbget/nzbget.conf"
+    #    regexp: '^ControlUsername\s?='
+    #    line: 'ControlUsername=plex'
+    #    state: present
 
-    - name: Default Password
-      lineinfile:
-        path: "/opt/appdata/nzbget/nzbget.conf"
-        regexp: ControlPassword=tegbzn6789
-        line: 'ControlPassword=guide'
-        state: present
+    #- name: Default Password
+    #  lineinfile:
+    #    path: "/opt/appdata/nzbget/nzbget.conf"
+    #    regexp: ControlPassword=tegbzn6789
+    #    line: 'ControlPassword=guide'
+    #    state: present
 
     - name: ScriptDir
       lineinfile:
