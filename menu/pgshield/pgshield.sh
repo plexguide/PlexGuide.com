@@ -10,7 +10,7 @@ source /opt/plexguide/menu/functions/functions.sh
 question1 () {
 touch /var/plexguide/auth.bypass
 
-a7=$(cat /var/plexguide/Sauth.bypass)
+a7=$(cat /var/plexguide/auth.bypass)
 if [[ "$a7" != "good" ]]; then shieldcheck; fi
 echo good > /var/plexguide/auth.bypass
 
