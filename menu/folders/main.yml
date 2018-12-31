@@ -214,7 +214,7 @@
         - "{{path.stdout}}/downloads/nzbget/queue"
         - "{{path.stdout}}/downloads/nzbget/tmp"
         - "{{path.stdout}}/downloads/nzbget/log"
-        - "{{path.stdout}}/incomplete/nzbget/"
+        - "{{path.stdout}}/incomplete/nzbget"
         - "{{path.stdout}}/sab"
         - "{{path.stdout}}/sab/admin"
         - "{{path.stdout}}/sab/complete"
