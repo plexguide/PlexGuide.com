@@ -46,11 +46,7 @@ updateprime() {
   echo "50" > ${abc}/pg.pythonstart
   echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
-<<<<<<< HEAD
   echo "20" > ${abc}/pg.folders
-=======
-  echo "16" > ${abc}/pg.folders
->>>>>>> 7.6edge
   echo "13" > ${abc}/pg.rcloneprime
   echo "10" > ${abc}/pg.dockerinstall
   echo "15" > ${abc}/pg.server
