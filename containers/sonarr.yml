@@ -30,7 +30,7 @@
         traefik.frontend.auth.forward.address: "{{gauth}}"
         traefik.enable: "true"
         traefik.port: "{{intport}}"
-  
+
         traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
   - name: Create Folders
@@ -50,11 +50,14 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
+        # BASICS ######################################
+        - "/etc/localtime:/etc/localtime:ro"
         - "/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator"
         - "/opt/appdata/{{pgrole}}:/config"
+        # MAIN DIRECTORIES ############################
         - "/mnt/unionfs:/unionfs"
+        - "/mnt/:/mnt"
         - "{{path.stdout}}/downloads:/downloads"
-        - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"
     set_fact:
