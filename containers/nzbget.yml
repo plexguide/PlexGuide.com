@@ -156,11 +156,19 @@
             line: "DirectUnpack=yes"
             state: present
 
+        - name: Set incomplete download Location
+          lineinfile:
+            path: "/opt/appdata/{{pgrole}}/nzbget.conf"
+            regexp: '^InterDir\s?='
+            line: "InterDir=/incomplete"
+            state: present
+
+
         - name: Set Download Location
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
             regexp: '^DestDir\s?='
-            line: "DestDir=${MainDir}/{{pgrole}}"
+            line: "DestDir=/downloads/{{pgrole}}"
             state: present
 
         - name: Lowercase & Set Movie Category
