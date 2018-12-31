@@ -203,10 +203,6 @@
         - "{{path.stdout}}/downloads/nzbget/tv"
         - "{{path.stdout}}/downloads/nzbget/xxx"
         - "{{path.stdout}}/downloads/nzbget/ebooks"
-        - "{{path.stdout}}/downloads/nzbget/nzb"
-        - "{{path.stdout}}/downloads/nzbget/queue"
-        - "{{path.stdout}}/downloads/nzbget/tmp"
-        - "{{path.stdout}}/downloads/nzbget/log"
 
     - name: Create Basic Directories
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
@@ -220,6 +216,7 @@
         - /opt/appdata/pgblitz/keys/processed
         - /opt/appdata/pgblitz/keys/badjson
         - "{{path.stdout}}/pgblitz"
+        - "{{path.stdout}}/nzb"
         - "{{path.stdout}}/torrent"
         - "{{path.stdout}}/torrent/watch"
         - "{{path.stdout}}/downloads/qbittorrent"
