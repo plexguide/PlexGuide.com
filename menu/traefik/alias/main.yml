@@ -9,7 +9,6 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-
     - name: Logging Ansible Role Information
       shell: "echo 'INFO - Ansible Role - Alias Started' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh"
 
@@ -97,7 +96,7 @@
         force: yes
         mode: 0775
 
-  ####### Encrypted Services
+    ####### Encrypted Services
 
     - name: Install Status GCrypt
       template:
@@ -127,7 +126,7 @@
         force: yes
         mode: 0775
 
-  ###### Install PGLog
+    ###### Install PGLog
 
     - name: Nano PGLog
       template:
@@ -136,7 +135,7 @@
         force: yes
         mode: 0775
 
-  ###### Install PGUpdate
+    ###### Install PGUpdate
 
     - name: PGUpdate
       template:
@@ -145,7 +144,7 @@
         force: yes
         mode: 0775
 
-  ###### Install PGDEV
+    ###### Install PGDEV
 
     - name: PGDev
       template:
@@ -154,7 +153,7 @@
         force: yes
         mode: 0775
 
-  ###### Install PlexGuide
+    ###### Install PlexGuide
 
     - name: PlexGuide
       template:
@@ -164,7 +163,7 @@
         mode: 0775
         owner: root
 
-  ###### Server reboot
+    ###### Server reboot
 
     - name: server reboot
       template:
@@ -173,7 +172,7 @@
         force: yes
         mode: 0775
 
-  ###### Check list of services
+    ###### Check list of services
 
     - name: list systemd services
       template:
@@ -183,8 +182,7 @@
         mode: 0775
         owner: root
 
-
-  ###### Server update
+    ###### Server update
 
     - name: update server
       template:
@@ -193,7 +191,7 @@
         force: yes
         mode: 0775
 
-  ###### Server upgrade
+    ###### Server upgrade
 
     - name: upgrade server
       template:
@@ -203,7 +201,7 @@
         mode: 0775
         owner: root
 
-  ###### Install app
+    ###### Install app
 
     - name: install appname
       template:
@@ -213,7 +211,7 @@
         mode: 0775
         owner: root
 
-  ###### Autoremove installed app packages
+    ###### Autoremove installed app packages
 
     - name: autoremove unused packages after app install
       template:
@@ -223,7 +221,7 @@
         mode: 0775
         owner: root
 
-  ###### Remove old docker containers (Tip from @barryclamsworth)
+    ###### Remove old docker containers (Tip from @barryclamsworth)
 
     - name: Prune docker containers appname
       template:

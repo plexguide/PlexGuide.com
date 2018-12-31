@@ -9,58 +9,56 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS #######################################################################
 
-# FACTS #######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "home-assistant"
+        intport: "8123"
+        extport: "8123"
+        image: "homeassistant/home-assistant"
 
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "home-assistant"
-      intport: "8123"
-      extport: "8123"
-      image: "homeassistant/home-assistant"
+    # CORE (MANDATORY) ############################################################
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-# CORE (MANDATORY) ############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
+    # LABELS ######################################################################
 
-# LABELS ######################################################################
+    - name: "Adding Traefik"
+      set_fact:
+        pg_labels:
+          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
+          traefik.frontend.rule: "Host:home.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.frontend.auth.basic.users: "{{auth.stdout}}"
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-  
-        traefik.frontend.rule: "Host:home.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}"
+    - name: "Setting PG Volumes"
+      set_fact:
+        pg_volumes:
+          - "/etc/localtime:/etc/localtime:ro"
+          - "/opt/appdata/homeassistant:/config"
 
-  - name: "Setting PG Volumes"
-    set_fact:
-      pg_volumes:
-        - "/etc/localtime:/etc/localtime:ro"
-        - "/opt/appdata/homeassistant:/config"
+    - name: "Setting PG ENV"
+      set_fact:
+        pg_env:
+          PUID: 1000
+          PGID: 1000
 
-  - name: "Setting PG ENV"
-    set_fact:
-      pg_env:
-        PUID: 1000
-        PGID: 1000
+    # MAIN DEPLOYMENT #############################################################
 
-# MAIN DEPLOYMENT #############################################################
-
-  - name: "Deploying Container - {{pgrole}}"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      state: started
-      labels: "{{pg_labels}}"
+    - name: "Deploying {{pgrole}}"
+      docker_container:
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+        volumes: "{{pg_volumes}}"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
+        state: started
+        labels: "{{pg_labels}}"

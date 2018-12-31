@@ -17,70 +17,69 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS #######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "resilio"
+        intport: "8888"
+        extport: "8888"
+        intport2: "55555"
+        extport2: "55555"
+        image: "linuxserver/resilio-sync"
 
-# FACTS #######################################################################
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "resilio"
-      intport: "8888"
-      extport: "8888"
-      intport2: "55555"
-      extport2: "55555"
-      image: "linuxserver/resilio-sync"
+    # EXTRAS FOR RESILIO ##########################################################
+    - name: "Create {{pgrole}} script directories"
+      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
+      with_items:
+        - "/opt/appdata/{{pgrole}}"
+        - "/opt/appdata/{{pgrole}}/config"
+        - "/opt/appdata/{{pgrole}}/sync"
+        - "/opt/appdata/{{pgrole}}/downloads"
 
-# EXTRAS FOR RESILIO ##########################################################
-  - name: "Create {{pgrole}} script directories"
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes"
-    with_items:
-      - "/opt/appdata/{{pgrole}}"
-      - "/opt/appdata/{{pgrole}}/config"
-      - "/opt/appdata/{{pgrole}}/sync"
-      - "/opt/appdata/{{pgrole}}/downloads"
+    # CORE (MANDATORY) ############################################################
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-# CORE (MANDATORY) ############################################################
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
+    # LABELS ######################################################################
 
-# LABELS ######################################################################
+    - name: "Adding Traefik"
+      set_fact:
+        pg_labels:
+          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
+          traefik.enable: "true"
+          traefik.port: "{{intport}}"
 
-  - name: "Setting PG Labels"
-    set_fact:
-      pg_labels:
-        traefik.frontend.auth.basic.users: "{{auth.stdout}}"
-        traefik.enable: "true"
-        traefik.port: "{{intport}}"
-  
-        traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
 
-  - name: "Setting PG Volumes"
-    set_fact:
-      pg_volumes:
-        - "/opt/appdata/{{pgrole}}/config:/config"
-        - "/opt/appdata/{{pgrole}}/sync:/sync"
-        - "/opt/appdata/{{pgrole}}/downloads:/downloads"
+    - name: "Setting PG Volumes"
+      set_fact:
+        pg_volumes:
+          - "/opt/appdata/{{pgrole}}/config:/config"
+          - "/opt/appdata/{{pgrole}}/sync:/sync"
+          - "/opt/appdata/{{pgrole}}/downloads:/downloads"
 
-  - name: "Setting PG ENV"
-    set_fact:
-      pg_env:
-        PUID: 1000
-        PGID: 1000
+    - name: "Setting PG ENV"
+      set_fact:
+        pg_env:
+          PUID: 1000
+          PGID: 1000
 
-# MAIN DEPLOYMENT #############################################################
+    # MAIN DEPLOYMENT #############################################################
 
-  - name: "Deploy {{pgrole}} Container - OverRide"
-    docker_container:
-      name: "{{pgrole}}"
-      image: "{{image}}"
-      pull: yes
-      published_ports:
-        - "{{ports.stdout}}{{extport}}:{{intport}}"
-        - "{{ports.stdout}}{{extport2}}:{{intport2}}"
-      volumes: "{{pg_volumes}}"
-      env: "{{pg_env}}"
-      restart_policy: always
-      networks:
-        - name: plexguide
-          aliases:
-            - "{{pgrole}}"
-      state: started
-      labels: "{{pg_labels}}"
+    - name: "Deploy {{pgrole}} Container - OverRide"
+      docker_container:
+        name: "{{pgrole}}"
+        image: "{{image}}"
+        pull: yes
+        published_ports:
+          - "{{ports.stdout}}{{extport}}:{{intport}}"
+          - "{{ports.stdout}}{{extport2}}:{{intport2}}"
+        volumes: "{{pg_volumes}}"
+        env: "{{pg_env}}"
+        restart_policy: always
+        networks:
+          - name: plexguide
+            aliases:
+              - "{{pgrole}}"
+        state: started
+        labels: "{{pg_labels}}"

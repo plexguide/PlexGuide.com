@@ -10,97 +10,96 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # FACTS ######################################################################
+    - name: "Set Known Facts"
+      set_fact:
+        pgrole: "pgpatrol"
+        extport: "0"
 
-# FACTS ######################################################################
-  - name: "Set Known Facts"
-    set_fact:
-      pgrole: "pgpatrol"
-      extport: "0"
+    - name: Server ID
+      shell: "cat /var/plexguide/pg.serverid"
+      register: serverid
 
-  - name: Server ID
-    shell: "cat /var/plexguide/pg.serverid"
-    register: serverid
+    - name: Token Recall
+      shell: "cat /var/plexguide/plex.token"
+      register: plextoken
 
-  - name: Token Recall
-    shell: "cat /var/plexguide/plex.token"
-    register: plextoken
+    - name: Recall User
+      shell: "cat /var/plexguide/plex.user"
+      register: user
 
-  - name: Recall User
-    shell: "cat /var/plexguide/plex.user"
-    register: user
+    - name: Register IP
+      shell: "cat /var/plexguide/server.ip"
+      register: ipaddress
 
-  - name: Register IP
-    shell: "cat /var/plexguide/server.ip"
-    register: ipaddress
+    - name: Video Transcodes Info
+      shell: "cat /var/plexguide/pgpatrol/multiple.ips"
+      register: multipleips
 
-  - name: Video Transcodes Info
-    shell: "cat /var/plexguide/pgpatrol/multiple.ips"
-    register: multipleips
+    - name: Multiple IPs Info
+      shell: "cat /var/plexguide/pgpatrol/video.transcodes"
+      register: videotranscodes
 
-  - name: Multiple IPs Info
-    shell: "cat /var/plexguide/pgpatrol/video.transcodes"
-    register: videotranscodes
+    - name: Paused Info
+      shell: "cat /var/plexguide/pgpatrol/kick.minutes"
+      register: kickminutes
 
-  - name: Paused Info
-    shell: "cat /var/plexguide/pgpatrol/kick.minutes"
-    register: kickminutes
+    - name: Install pip requirements
+      pip:
+        requirements: /opt/plexguide/menu/pgpatrol/requirements.txt
+        executable: pip3
 
-  - name: Install pip requirements
-    pip:
-      requirements: /opt/plexguide/menu/pgpatrol/requirements.txt
-      executable: pip3
+    - name: "Including cron job"
+      include_tasks: "/opt/plexguide/containers/_core.yml"
 
-  - name: CronJob Role
-    include_tasks: "/opt/plexguide/containers/_core.yml"
-
-  - name: Create Basic Directories
-    file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-    with_items:
+    - name: Create Basic Directories
+      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      with_items:
         - "/opt/appdata/pgpatrol/"
 
-  #- name: Check INI's Existance
-  #  stat:
-  #    path: "/opt/appdata/pgpatrol/settings.ini"
-  #  register: config
+    #- name: Check INI's Existance
+    #  stat:
+    #    path: "/opt/appdata/pgpatrol/settings.ini"
+    #  register: config
 
-  - name: Transfer Files
-    copy:
-      src: /opt/plexguide/menu/pgpatrol
-      dest: /opt/appdata
-      owner: "1000"
-      group: "1000"
-      mode: a+x
-      force: yes
+    - name: Transfer Files
+      copy:
+        src: /opt/plexguide/menu/pgpatrol
+        dest: /opt/appdata
+        owner: "1000"
+        group: "1000"
+        mode: a+x
+        force: yes
 
-  - name: Import default config
-    template:
-      src: /opt/appdata/pgpatrol/settings.ini.default
-      dest: /opt/appdata/pgpatrol/settings.ini
-      owner: "1000"
-      group: "1000"
-      mode: 0775
-      force: yes
-    #when: not config.stat.exists
+    - name: Import default config
+      template:
+        src: /opt/appdata/pgpatrol/settings.ini.default
+        dest: /opt/appdata/pgpatrol/settings.ini
+        owner: "1000"
+        group: "1000"
+        mode: 0775
+        force: yes
 
-  - name: Check Service's Existance
-    stat:
-      path: "/etc/systemd/system/pgpatrol.service"
-    register: pgp
+      #when: not config.stat.exists
+    - name: Check Service's Existance
+      stat:
+        path: "/etc/systemd/system/pgpatrol.service"
+      register: pgp
 
-  - name: Stop service
-    service:
-      name: pgpatrol
-      state: stopped
-    when: pgp.stat.exists
+    - name: Stop service
+      service:
+        name: pgpatrol
+        state: stopped
+      when: pgp.stat.exists
 
-  - name: PG Patrol Service
-    template:
-      src: /opt/appdata/pgpatrol/system/pgpatrol.service
-      dest: /etc/systemd/system/pgpatrol.service
-      force: yes
+    - name: PG Patrol Service
+      template:
+        src: /opt/appdata/pgpatrol/system/pgpatrol.service
+        dest: /etc/systemd/system/pgpatrol.service
+        force: yes
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=pgpatrol daemon_reload=yes enabled=no
+    - name: Daemon-Reload
+      systemd: state=stopped name=pgpatrol daemon_reload=yes enabled=no
 
-  - name: Start PGPatrol
-    systemd: state=started name=pgpatrol enabled=yes
+    - name: Start PGPatrol
+      systemd: state=started name=pgpatrol enabled=yes

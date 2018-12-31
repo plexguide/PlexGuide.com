@@ -19,7 +19,6 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-    
     - name: Remove Old MOTD
       file: "path={{item}} state=absent"
       with_items:
