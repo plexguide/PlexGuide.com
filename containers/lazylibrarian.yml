@@ -100,7 +100,7 @@
             path: "/opt/appdata/{{pgrole}}/config.ini"
             section: General
             option: download_dir
-            value: /downloads
+            value: /downloads/nzbget/ebooks,/downloads/sabnzbd/ebooks,/downloads/deluge/ebooks,/downloads/qbittorrent/ebooks,/downloads/rutorrent/ebooks
             state: present
 
         - name: Set user
