@@ -182,7 +182,7 @@
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
             regexp: '^Category1.DestDir\s?='
-            line: "Category1.DestDir=/downloads/{{pgrole}}/movies"
+            line: "Category1.DestDir=/downloads/movies"
             state: present
 
         - name: Lowercase & Set TV Category
@@ -196,7 +196,7 @@
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
             regexp: '^Category2.DestDir\s?='
-            line: "Category2.DestDir=/downloads/{{pgrole}}/tv"
+            line: "Category2.DestDir=/downloads/tv"
             state: present
 
         - name: Lowercase & Set Music Category
@@ -210,7 +210,7 @@
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
             regexp: '^Category3.DestDir\s?='
-            line: "Category3.DestDir=/downloads/{{pgrole}}/music"
+            line: "Category3.DestDir=/downloads/music"
             state: present
 
         - name: Lowercase & Set EBook Category
@@ -224,7 +224,7 @@
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
             regexp: '^Category4.DestDir\s?='
-            line: "Category4.DestDir=/downloads/{{pgrole}}/ebooks"
+            line: "Category4.DestDir=/downloads/ebooks"
             state: present
 
         - name: Set Location of aBooks
@@ -238,7 +238,7 @@
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
             regexp: "Category5.DestDir="
-            line: "Category5.DestDir==/downloads/{{pgrole}}/abooks"
+            line: "Category5.DestDir==/downloads/abooks"
             state: present
 
         - name: HealthCheck
