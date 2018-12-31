@@ -87,7 +87,7 @@
           - "/etc/localtime:/etc/localtime:ro"
           - "/opt/appdata/{{pgrole}}:/config"
           - "/opt/appdata/{{pgrole}}/scripts:/scripts"
-          - "{{path.stdout}}/incomplete:/incomplete/nzbget"
+          - "{{path.stdout}}/incomplete:/incomplete/{{pgrole}}"
           - "{{path.stdout}}/downloads:/downloads"
 
     - name: "Setting PG ENV"
