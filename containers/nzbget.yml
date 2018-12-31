@@ -64,11 +64,7 @@
         - "/opt/appdata/{{pgrole}}/scripts:/scripts"
         # MAIN DIRECTORIES ############################
         - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
-        - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
-        #- "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
-        #- "{{path.stdout}}/downloads/{{pgrole}}:/complete"
-
-
+        - "{{path.stdout}}/downloads/{{pgrole}}:/complete"
 
   - name: "Setting PG ENV"
     set_fact:
@@ -149,7 +145,7 @@
       lineinfile:
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^Category1.Name\s?='
-        line: 'Category1.DestDir=/downloads/{{pgrole}}/movies'
+        line: 'Category1.DestDir=/downloads/movies'
         state: present
 
     - name: Lowercase & Set TV Category
@@ -163,7 +159,7 @@
       lineinfile:
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^Category1.Name\s?='
-        line: 'Category2.DestDir=/downloads/{{pgrole}}/tv'
+        line: 'Category2.DestDir=/downloads/tv'
         state: present
 
     - name: Lowercase & Set Music Category
@@ -177,7 +173,7 @@
       lineinfile:
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^Category1.Name\s?='
-        line: 'Category3.DestDir=/downloads/{{pgrole}}/music'
+        line: 'Category3.DestDir=/downloads/music'
         state: present
 
     - name: Lowercase & Set EBook Category
@@ -191,7 +187,7 @@
       lineinfile:
         path: "/opt/appdata/nzbget/nzbget.conf"
         regexp: '^Category1.Name\s?='
-        line: 'Category4.DestDir=/downloads/{{pgrole}}/ebooks'
+        line: 'Category4.DestDir=/downloads/ebooks'
         state: present
 
     - name: Fix Lowercase & Set Movie Category
