@@ -86,7 +86,7 @@
           - "/etc/localtime:/etc/localtime:ro"
           - "/opt/appdata/{{pgrole}}:/config"
           - "/opt/appdata/{{pgrole}}/scripts:/scripts"
-          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete"
+          - "{{path.stdout}}/incomplete/{{pgrole}}:/incomplete/{{pgrole}}"
           - "{{path.stdout}}/downloads/{{pgrole}}:/downloads/{{pgrole}}"
           - "{{path.stdout}}/torrent:/torrent"
 
