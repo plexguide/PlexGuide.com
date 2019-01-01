@@ -114,9 +114,12 @@
             path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
             state: present
 
-        - name: Wait 5 seconds
-          wait_for:
-            timeout: 5
+    - name: "Configuring {{pgrole}} for first time use"
+      block:
+        - name: "Stopping {{pgrole}}"
+          docker_container:
+            name: "{{pgrole}}"
+            state: stopped
 
         - name: Enable AutoRun
           ini_file:
