@@ -26,7 +26,7 @@ _**Table of Contents**_
 # 2. YouTube Video - Intro
 
 <p align="center">
-<a href="https://www.youtube.com/watch?v=DL48o0YiE3Q"><img src="https://plexguide.com/news/wp-content/uploads/2018/10/Xnip2018-10-17_12-01-20-768x440.png" width="400"/></p>
+<a href="https://www.youtube.com/watch?v=DL48o0YiE3Q"><img src="https://plexguide.com/news/wp-content/uploads/2018/10/Xnip2018-10-17_12-01-20-768x440.png" width="600"/></p>
 <p align="center"><b>PG Introduction Video</b></p>
 
 # 3. Testimonials
