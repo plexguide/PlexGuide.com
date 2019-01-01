@@ -18,7 +18,7 @@ _**Table of Contents**_
 
 ----
 # 1. General Intro
-<p align="center"><kbd><img src="https://plexguide.com/wikipics/cpuguy.gif"></kbd></p>
+<p align="center"><kbd><img src="https://plexguide.com/wikipics/pglogo-move.gif" width="600""></kbd></p>
 <p align="center"><b>Manage PlexGuide - AnyTime, Anywhere!</b></p>
 
 **Mission Statement:** PlexGuide is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
@@ -30,6 +30,8 @@ _**Table of Contents**_
 <p align="center"><b>PG Introduction Video</b></p>
 
 # 3. Testimonials
+<p align="center"><kbd><img src="https://plexguide.com/wikipics/cpuguy.gif"></kbd></p>
+
 [**Dexxa:**](https://plexguide.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install plex and link plex to my gdrive, when i just knew how to install plex on its on, i tried many ways to mount gdrive to my plex and couldnt get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
 
 [**Cyb3rGh05t:**](https://plexguide.com/threads/thank-you-pg-team.942/) hi PlexGuide Team, just want to say thank you to the PlexGuide Team :) you did an amazing job:) Everything is really easy to setup an the interface is also very nice :) Thanks for all the hard work an all the support :) you guys rock :) .Keep up that good work. looking further for new features on PlexGuide :) thanks :)
