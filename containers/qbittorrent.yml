@@ -217,6 +217,38 @@
             value: 10
             state: present
 
+        - name: Set GlobalMaxSeedingMinutes
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: BitTorrent
+            option: Session\GlobalMaxSeedingMinutes
+            value: 20160
+            state: present
+
+        - name: Set MaxRatio
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Bittorrent\MaxRatio
+            value: 1
+            state: present
+
+        - name: pause on MaxRatioAction
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Bittorrent\MaxRatioAction
+            value: 0
+            state: present
+
+        - name: Set default user - plexguide
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: WebUI\Username
+            value: plexguide
+            state: present
+
         - name: Set default pass - plexguide
           ini_file:
             path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
