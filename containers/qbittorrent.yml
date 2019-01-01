@@ -106,7 +106,7 @@
         state: started
         labels: "{{pg_labels}}"
 
-    # ENDING TASK FOR RUTORRENT ####################################################
+    # ENDING TASK FOR QBITTORRENT ####################################################
     - name: "Configuring {{pgrole}} for first time use"
       block:
         - name: "Wating for {{pgrole}} to start"
@@ -114,29 +114,100 @@
             path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
             state: present
 
-        - name: "Wait 5 Seconds"
-          wait_for:
-            timeout: 5
-
-        - name: Set Download Location
-          lineinfile:
+        - name: Enable AutoRun
+          ini_file:
             path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
-            regexp: "Downloads.SavePath="
-            line: "Downloads.SavePath=/downloads/{{pgrole}}"
+            section: AutoRun
+            option: enabled
+            value: true
             state: present
 
-        - name: Set Incomplete Download Location
-          lineinfile:
+        - name: Enable Auto UnRar
+          ini_file:
             path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
-            regexp: "Downloads.TempPath="
-            line: "Downloads.TempPath=/incomplete/{{pgrole}}"
+            section: AutoRun
+            option: program
+            value: '/usr/bin/unrar x -r \"%F/.\" \"%F/\"'
             state: present
 
-        - name: Turn off DHT
-          lineinfile:
+        - name: Disable DHT
+          ini_file:
             path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
-            regexp: "Bitorrent.DHT="
-            line: "Bitorrent.DHT=false"
+            section: Preferences
+            option: Bittorrent\DHT
+            value: false
+            state: present
+
+        - name: Disable PeX
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Bittorrent\PeX
+            value: false
+            state: present
+
+        - name: Disable LSD
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Bittorrent\LSD
+            value: false
+            state: present
+
+        - name: Use incomplete extension
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Downloads\UseIncompleteExtension
+            value: true
+            state: present
+
+        - name: Set incomplete path
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Downloads\TempPath
+            value: /incomplete/qbittorrent/
+            state: present
+
+        - name: Set incomplete path
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Queueing\IgnoreSlowTorrents
+            value: true
+            state: present
+
+        - name: Set MaxActiveDownloads
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Queueing\MaxActiveDownloads
+            value: 5
+            state: present
+
+        - name: Set MaxActiveTorrents
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Queueing\MaxActiveTorrents
+            value: 10
+            state: present
+
+        - name: Set MaxActiveUploads
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Queueing\MaxActiveUploads
+            value: 10
+            state: present
+
+        - name: Set default pass - plexguide
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: WebUI\Password_ha1
+            value: "@ByteArray(ae571ae427114974f10305cfc62ae0a8)"
             state: present
 
         - name: Restart Container
