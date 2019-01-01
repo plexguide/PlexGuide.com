@@ -166,15 +166,23 @@
             value: true
             state: present
 
+        - name: Set download path
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Downloads\SavePath
+            value: /downloads/{{pgrole}}
+            state: present
+
         - name: Set incomplete path
           ini_file:
             path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
             section: Preferences
             option: Downloads\TempPath
-            value: /incomplete/qbittorrent/
+            value: /incomplete/{{pgrole}}
             state: present
 
-        - name: Set incomplete path
+        - name: Ignore slow torrents
           ini_file:
             path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
             section: Preferences
