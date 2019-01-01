@@ -86,7 +86,7 @@
     # MAIN DEPLOYMENT #############################################################
     - name: ConfCheck
       stat:
-        path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+        path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
       register: confcheck
 
     - name: "Deploying {{pgrole}}"
@@ -111,7 +111,7 @@
       block:
         - name: "Wating for {{pgrole}} to start"
           wait_for:
-            path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
             state: present
 
         - name: "Wait 5 Seconds"
@@ -120,21 +120,21 @@
 
         - name: Set Download Location
           lineinfile:
-            path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
             regexp: "Downloads.SavePath="
             line: "Downloads.SavePath=/downloads/{{pgrole}}"
             state: present
 
         - name: Set Incomplete Download Location
           lineinfile:
-            path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
             regexp: "Downloads.TempPath="
             line: "Downloads.TempPath=/incomplete/{{pgrole}}"
             state: present
 
         - name: Turn off DHT
           lineinfile:
-            path: "/opt/appdata/{{pgrole}}/config/qBittorrent/qBittorrent.conf"
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
             regexp: "Bitorrent.DHT="
             line: "Bitorrent.DHT=false"
             state: present
