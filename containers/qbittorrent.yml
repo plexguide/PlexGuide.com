@@ -161,6 +161,14 @@
             value: false
             state: present
 
+        - name: Enable Encryption
+          ini_file:
+            path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
+            section: Preferences
+            option: Bittorrent\Encryption
+            value: 1
+            state: present
+
         - name: Use incomplete extension
           ini_file:
             path: "/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf"
