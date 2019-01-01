@@ -15,7 +15,7 @@
       set_fact:
         pgrole: "qbittorrent"
         intport: "8080"
-        extport: "8080"
+        extport: "8083"
         image: "linuxserver/qbittorrent"
 
     # CORE (MANDATORY) #############################################################
@@ -49,7 +49,7 @@
 
       when: oldcheck.stat.exists
       ignore_errors: yes
-      
+
     # EXTRA FOR QBITORRENT #########################################################
     - name: Create Basic directories for qBittorrent
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
