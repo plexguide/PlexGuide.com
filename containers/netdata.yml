@@ -10,59 +10,56 @@
   gather_facts: false
   tasks:
     # FACTS #######################################################################
-
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "netdata"
-        intport: "19999"
-        extport: "19999"
-        image: "titpetric/netdata"
+        pgrole: 'netdata'
+        intport: '19999'
+        extport: '19999'
+        image: 'titpetric/netdata'
 
     # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/plexguide/containers/_core.yml'
 
     # LABELS ######################################################################
-
-    - name: "Adding Traefik"
+    - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.frontend.auth.forward.address: "{{gauth}}"
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
 
-          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - "/sys:/host/sys:ro"
-          - "/proc:/host/proc:ro"
-          - "/var/run/docker.sock:/var/run/docker.sock"
+          - '/sys:/host/sys:ro'
+          - '/proc:/host/proc:ro'
+          - '/var/run/docker.sock:/var/run/docker.sock'
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
           PUID: 1000
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
-
-    - name: "Deploying {{pgrole}}"
+    - name: 'Deploying {{pgrole}}'
       docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
+        name: '{{pgrole}}'
+        image: '{{image}}'
         pull: yes
         capabilities:
           - SYS_PTRACE
         published_ports:
-          - "{{ports.stdout}}{{extport}}:{{intport}}"
-        volumes: "{{pg_volumes}}"
-        env: "{{pg_env}}"
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
         restart_policy: always
         networks:
           - name: plexguide
             aliases:
-              - "{{pgrole}}"
+              - '{{pgrole}}'
         state: started
-        labels: "{{pg_labels}}"
+        labels: '{{pg_labels}}'
