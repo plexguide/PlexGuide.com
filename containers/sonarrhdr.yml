@@ -13,9 +13,9 @@
 
     - name: 'Set Known Facts'
       set_fact:
-        pgrole: 'sonarrhdr'
+        pgrole: 'sonarr4k'
         intport: '8989'
-        extport: '8987'
+        extport: '8984'
         image: 'linuxserver/sonarr'
 
     # CORE (MANDATORY) ############################################################
@@ -51,7 +51,8 @@
         pg_volumes:
           - '/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator'
           - '/opt/appdata/{{pgrole}}:/config'
-          - '{{path.stdout}}:{{path.stdout}}'
+          - '/mnt/unionfs:/unionfs'
+          - '{{path.stdout}}/downloads:/downloads'
           - '/etc/localtime:/etc/localtime:ro'
 
     - name: 'Setting PG ENV'
