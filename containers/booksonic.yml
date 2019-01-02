@@ -35,9 +35,8 @@
     - name: "Setting PG Volumes"
       set_fact:
         pg_volumes:
-          - "/opt/appdata/pgrole:/config"
-          - "/mnt/unionfs/abooks:/books"
-          - "/mnt/unionfs/podcasts:/podcasts"
+          - "/opt/appdata/{{pgrole}}:/config"
+          - "{{path.stdout}}:{{path.stdout}}"
           - "/etc/localtime:/etc/localtime:ro"
 
     - name: "Setting PG ENV"
