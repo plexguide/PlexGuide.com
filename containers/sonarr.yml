@@ -51,8 +51,7 @@
         pg_volumes:
           - "/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator"
           - "/opt/appdata/{{pgrole}}:/config"
-          - "/mnt/unionfs:/unionfs"
-          - "{{path.stdout}}/downloads:/downloads"
+          - "{{path.stdout}}:{{path.stdout}}"
           - "/etc/localtime:/etc/localtime:ro"
 
     - name: "Setting PG ENV"
