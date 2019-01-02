@@ -25,7 +25,8 @@
     - name: 'Create {{pgrole}} directories'
       file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
-        - /mnt/beats/music
+        - '{{path.stdout}}/downloads/{{pgrole}}'
+        - '{{path.stdout}}/downloads/{{pgrole}}/music'
     # LABELS ######################################################################
 
     - name: 'Adding Traefik'
