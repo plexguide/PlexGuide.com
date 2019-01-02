@@ -10,7 +10,6 @@
   gather_facts: false
   tasks:
     # FACTS #######################################################################
-
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'lazylibrarian'
@@ -23,7 +22,6 @@
       include_tasks: '/opt/plexguide/containers/_core.yml'
 
     # LABELS ######################################################################
-
     - name: 'Adding Traefik'
       set_fact:
         pg_labels:
@@ -36,7 +34,6 @@
       set_fact:
         pg_volumes:
           - '/opt/appdata/{{pgrole}}:/config'
-          - '/mnt/unionfs:/unionfs'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
 
@@ -47,7 +44,6 @@
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
-
     - name: 'Deploying {{pgrole}}'
       docker_container:
         name: '{{pgrole}}'
@@ -66,7 +62,6 @@
         labels: '{{pg_labels}}'
 
     # ENDING FOR LAZYLIBRARIAN #############
-
     - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
         path: '/opt/appdata/{{pgrole}}/config.ini'
