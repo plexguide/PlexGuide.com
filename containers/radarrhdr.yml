@@ -15,7 +15,7 @@
       set_fact:
         pgrole: 'radarrhdr'
         intport: '7878'
-        extport: '7878'
+        extport: '7877'
         image: 'linuxserver/radarr'
 
     # CORE (MANDATORY) ############################################################
