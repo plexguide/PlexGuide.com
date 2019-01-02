@@ -11,24 +11,24 @@
   tasks:
     # FACTS #######################################################################
 
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "ombihdr"
-        intport: "3579"
-        extport: "3577"
-        image: "linuxserver/ombi"
+        pgrole: 'ombihdr'
+        intport: '3579'
+        extport: '3577'
+        image: 'linuxserver/ombi'
 
     # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/plexguide/containers/_core.yml'
 
     # PRETASKS ####################################################################
     - name: Check JSON exists
       stat:
-        path: "/opt/appdata/{{pgrole}}/appsettings.json"
+        path: '/opt/appdata/{{pgrole}}/appsettings.json'
       register: jsonfile
 
-    - name: "Download {{pgrole}} appsettings.json config file"
+    - name: 'Download {{pgrole}} appsettings.json config file'
       get_url:
         url: https://raw.githubusercontent.com/tidusjar/Ombi/master/src/Ombi/appsettings.json
         dest: /opt/appdata/{{pgrole}}/appsettings.json
@@ -39,22 +39,23 @@
       when: jsonfile.stat.exists == False
 
     # LABELS ######################################################################
-    - name: "Adding Traefik"
+    - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
-          traefik.frontend.auth.basic.users: "{{auth.stdout}}"
-          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.auth.basic.users: '{{auth.stdout}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - "/opt/appdata/{{pgrole}}:/config"
-          - "/etc/localtime:/etc/localtime:ro"
-          - "/opt/appdata/{{pgrole}}/appsettings.json:/opt/{{pgrole}}/appsettings.json"
+          - '/opt/appdata/{{pgrole}}:/config'
+          - '/etc/localtime:/etc/localtime:ro'
+          - '{{path.stdout}}:{{path.stdout}}'
+          - '/opt/appdata/{{pgrole}}/appsettings.json:/opt/{{pgrole}}/appsettings.json'
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
           PUID: 1000
@@ -62,19 +63,19 @@
 
     # MAIN DEPLOYMENT #############################################################
 
-    - name: "Deploying {{pgrole}}"
+    - name: 'Deploying {{pgrole}}'
       docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
+        name: '{{pgrole}}'
+        image: '{{image}}'
         pull: yes
         published_ports:
-          - "{{ports.stdout}}{{extport}}:{{intport}}"
-        volumes: "{{pg_volumes}}"
-        env: "{{pg_env}}"
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
         restart_policy: always
         networks:
           - name: plexguide
             aliases:
-              - "{{pgrole}}"
+              - '{{pgrole}}'
         state: started
-        labels: "{{pg_labels}}"
+        labels: '{{pg_labels}}'
