@@ -18,21 +18,20 @@
   gather_facts: false
   tasks:
     # FACTS #######################################################################
-
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "nextcloud"
-        intport: "443"
-        extport: "127.0.0.1:4645"
-        image: "linuxserver/nextcloud"
+        pgrole: 'nextcloud'
+        intport: '443'
+        extport: '127.0.0.1:4645'
+        image: 'linuxserver/nextcloud'
 
     # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/plexguide/containers/_core.yml'
 
     # EXTRA #######################################################################
     - name: Create required directories
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /opt/appdata/nextcloud
         - /opt/appdata/nextcloud/conf
@@ -40,47 +39,44 @@
         - /opt/appdata/nextcloud/mariadb
 
     # LABELS ######################################################################
-
-    - name: "Adding Traefik"
+    - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.frontend.auth.forward.address: "{{gauth}}"
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
 
-          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - "/etc/localtime:/etc/localtime:ro"
-          - "/opt/appdata/{{pgrole}}/data:/data"
-          - "/opt/appdata/{{pgrole}}/conf:/config"
-          - "/mnt:/mnt"
-          - "{{path.stdout}}:{{path.stdout}}"
+          - '/etc/localtime:/etc/localtime:ro'
+          - '/opt/appdata/{{pgrole}}/data:/data'
+          - '/opt/appdata/{{pgrole}}/conf:/config'
+          - '{{path.stdout}}:{{path.stdout}}'
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
           PUID: 1000
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
-
     - name: Deploy a MariaDB Container
       docker_container:
         name: mariadb-nextcloud
-        image: "linuxserver/mariadb"
+        image: 'linuxserver/mariadb'
         pull: yes
         published_ports:
-          - "127.0.0.1:3306:3306"
+          - '127.0.0.1:3306:3306'
         env:
           PUID: 1000
           PGID: 1000
-          MYSQL_ROOT_PASSWORD: "plexguide123456789com"
+          MYSQL_ROOT_PASSWORD: 'plexguide123456789com'
         volumes:
-          - "/etc/localtime:/etc/localtime:ro"
-          - "/opt/appdata/nextcloud/mariadb:/config"
+          - '/etc/localtime:/etc/localtime:ro'
+          - '/opt/appdata/nextcloud/mariadb:/config'
         networks:
           - name: plexguide
             aliases:
@@ -91,20 +87,19 @@
     - name: Create and start nextcloud container
       docker_container:
         name: nextcloud
-        image: "linuxserver/nextcloud"
+        image: 'linuxserver/nextcloud'
         pull: yes
         published_ports:
-          - "127.0.0.1:4645:443"
+          - '127.0.0.1:4645:443'
           #- "{{ports.stdout}}4645:443"
         env:
           PUID: 1000
           PGID: 1000
         volumes:
-          - "/etc/localtime:/etc/localtime:ro"
-          - "/opt/appdata/nextcloud/data:/data"
-          - "/opt/appdata/nextcloud/conf:/config"
-          - "/mnt:/mnt"
-          - "{{path.stdout}}:{{path.stdout}}"
+          - '/etc/localtime:/etc/localtime:ro'
+          - '/opt/appdata/nextcloud/data:/data'
+          - '/opt/appdata/nextcloud/conf:/config'
+          - '{{path.stdout}}:{{path.stdout}}'
         networks:
           - name: plexguide
             aliases:
@@ -112,8 +107,8 @@
         restart_policy: always
         state: started
         labels:
-          traefik.enable: "true"
+          traefik.enable: 'true'
 
-          traefik.frontend.rule: "Host:nextcloud.{{domain.stdout}},next.{{domain.stdout}}"
-          traefik.port: "443"
-          traefik.protocol: "https"
+          traefik.frontend.rule: 'Host:nextcloud.{{domain.stdout}},next.{{domain.stdout}}'
+          traefik.port: '443'
+          traefik.protocol: 'https'
