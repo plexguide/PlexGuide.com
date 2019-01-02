@@ -10,61 +10,54 @@
   gather_facts: false
   tasks:
     # FACTS #######################################################################
-
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "emby"
-        intport: "8096"
-        extport: "8096"
-        image: "emby/embyserver:latest"
+        pgrole: 'emby'
+        intport: '8096'
+        extport: '8096'
+        image: 'emby/embyserver'
 
     # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/plexguide/containers/_core.yml'
 
     # LABELS ######################################################################
-
-    - name: "Adding Traefik"
+    - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
-          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
-
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
           - /etc/localtime:/etc/localtime:ro
           - /opt/appdata/{{pgrole}}:/config
-          - /mnt/plexdrive/:/plexdrive
-          - /mnt/unionfs:/unionfs
-          - /mnt/encrypt:/encrypt
-          - /:/yourcomputer
+          - '{{path.stdout}}:{{path.stdout}}'
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
           PUID: 1000
           PGID: 1000
-          GIDLIST: "1000"
+          GIDLIST: '1000'
 
     # MAIN DEPLOYMENT #############################################################
-
-    - name: "Deploying {{pgrole}}"
+    - name: 'Deploying {{pgrole}}'
       docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
+        name: '{{pgrole}}'
+        image: '{{image}}'
         pull: yes
         published_ports:
-          - "{{ports.stdout}}{{extport}}:{{intport}}"
-        volumes: "{{pg_volumes}}"
-        env: "{{pg_env}}"
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
         restart_policy: always
         networks:
           - name: plexguide
             aliases:
-              - "{{pgrole}}"
-        expose: "8096"
+              - '{{pgrole}}'
+        expose: '8096'
         state: started
-        labels: "{{pg_labels}}"
+        labels: '{{pg_labels}}'
