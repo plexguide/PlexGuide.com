@@ -11,41 +11,39 @@
   tasks:
     # FACTS #######################################################################
 
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "beets"
-        intport: "8337"
-        extport: "8337"
-        image: "linuxserver/beets"
+        pgrole: 'beets'
+        intport: '8337'
+        extport: '8337'
+        image: 'linuxserver/beets'
 
     # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/plexguide/containers/_core.yml'
 
-    - name: "Create {{pgrole}} directories"
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+    - name: 'Create {{pgrole}} directories'
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /mnt/beats/music
     # LABELS ######################################################################
 
-    - name: "Adding Traefik"
+    - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.frontend.auth.forward.address: "{{gauth}}"
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
-          traefik.frontend.auth.forward.address: "{{gauth}}"
-          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - "/opt/appdata/{{pgrole}}:/config"
-          - "/etc/localtime:/etc/localtime:ro"
-          - "/mnt/beats/music:/downloads"
-          - "/mnt/unionfs/music:/music"
+          - '/opt/appdata/{{pgrole}}:/config'
+          - '/etc/localtime:/etc/localtime:ro'
+          - '{{path.stdout}}:{{path.stdout}}'
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
           PUID: 1000
@@ -54,56 +52,56 @@
     # MAIN DEPLOYMENT #############################################################
     - name: ConfCheck
       stat:
-        path: "/opt/appdata/{{pgrole}}/config.yaml"
+        path: '/opt/appdata/{{pgrole}}/config.yaml'
       register: confcheck
 
-    - name: "Configuring {{pgrole}} for first time use"
+    - name: 'Configuring {{pgrole}} for first time use'
       block:
-        - name: "Deploying {{pgrole}}"
+        - name: 'Deploying {{pgrole}}'
           docker_container:
-            name: "beets"
-            image: "{{image}}"
+            name: 'beets'
+            image: '{{image}}'
             pull: yes
             published_ports:
-              - "{{ports.stdout}}{{extport}}:{{intport}}"
-            volumes: "{{pg_volumes}}"
-            env: "{{pg_env}}"
+              - '{{ports.stdout}}{{extport}}:{{intport}}'
+            volumes: '{{pg_volumes}}'
+            env: '{{pg_env}}'
             restart_policy: always
             networks:
               - name: plexguide
                 aliases:
-                  - "{{pgrole}}"
+                  - '{{pgrole}}'
             state: started
-            labels: "{{pg_labels}}"
+            labels: '{{pg_labels}}'
 
         - name: Automatic Import
           cron:
-            name: "{{pgrole}} Import"
-            user: "root"
+            name: '{{pgrole}} Import'
+            user: 'root'
             special_time: hourly
             job: "s'"
             state: present
 
         - name: YAML Creation Hold
           wait_for:
-            path: "/opt/appdata/{{pgrole}}/config.yaml"
+            path: '/opt/appdata/{{pgrole}}/config.yaml'
             state: present
 
         - name: Container Stop
           docker_container:
-            name: "{{pgrole}}"
+            name: '{{pgrole}}'
             state: stopped
 
         - name: File Length Limit
           lineinfile:
-            path: "/opt/appdata/{{pgrole}}/config.yaml"
-            line: "max_filename_length: 255"
+            path: '/opt/appdata/{{pgrole}}/config.yaml'
+            line: 'max_filename_length: 255'
             insertafter: per_disc*
             state: present
 
         - name: Contair Start
           docker_container:
-            name: "{{pgrole}}"
+            name: '{{pgrole}}'
             state: started
 
       when: not confcheck.stat.exists
