@@ -10,51 +10,48 @@
   gather_facts: false
   tasks:
     # FACTS #######################################################################
-
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "ddclient"
-        intport: "0"
-        extport: "0"
-        image: "linuxserver/ddclient"
+        pgrole: 'ddclient'
+        intport: '0'
+        extport: '0'
+        image: 'linuxserver/ddclient'
 
     # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/plexguide/containers/_core.yml'
 
     # LABELS ######################################################################
-
-    - name: "Adding Traefik"
+    - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.enable: "false"
+          traefik.enable: 'false'
 
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - "/etc/localtime:/etc/localtime:ro"
-          - "/opt/appdata/{{pgrole}}:/config"
+          - '/etc/localtime:/etc/localtime:ro'
+          - '/opt/appdata/{{pgrole}}:/config'
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
           UID: 1000
           GID: 1000
-          GIDLIST: "1000"
+          GIDLIST: '1000'
 
     # MAIN DEPLOYMENT #############################################################
-
-    - name: "Deploying {{pgrole}}"
+    - name: 'Deploying {{pgrole}}'
       docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
+        name: '{{pgrole}}'
+        image: '{{image}}'
         pull: yes
-        volumes: "{{default_volumes}}"
-        env: "{{default_env}}"
+        volumes: '{{default_volumes}}'
+        env: '{{default_env}}'
         restart_policy: always
         networks:
           - name: plexguide
             aliases:
-              - "{{pgrole}}"
+              - '{{pgrole}}'
         state: started
-        labels: "{{default_labels}}"
+        labels: '{{default_labels}}'
