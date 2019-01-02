@@ -35,7 +35,6 @@
         pg_volumes:
           - '/opt/appdata/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt/unionfs/:/tv'
 
     - name: 'Setting PG ENV'
       set_fact:
