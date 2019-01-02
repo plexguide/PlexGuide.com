@@ -11,36 +11,36 @@
   tasks:
     # FACTS #######################################################################
 
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "lazylibrarian"
-        intport: "5299"
-        extport: "5299"
-        image: "linuxserver/lazylibrarian"
+        pgrole: 'lazylibrarian'
+        intport: '5299'
+        extport: '5299'
+        image: 'linuxserver/lazylibrarian'
 
     # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/plexguide/containers/_core.yml'
 
     # LABELS ######################################################################
 
-    - name: "Adding Traefik"
+    - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.frontend.auth.forward.address: "{{gauth}}"
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
-          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - "/opt/appdata/{{pgrole}}:/config"
-          - "/mnt/unionfs:/unionfs"
-          - "{{path.stdout}}/downloads:/downloads"
-          - "/etc/localtime:/etc/localtime:ro"
+          - '/opt/appdata/{{pgrole}}:/config'
+          - '/mnt/unionfs:/unionfs'
+          - '{{path.stdout}}:{{path.stdout}}'
+          - '/etc/localtime:/etc/localtime:ro'
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
           PUID: 1000
@@ -48,40 +48,40 @@
 
     # MAIN DEPLOYMENT #############################################################
 
-    - name: "Deploying {{pgrole}}"
+    - name: 'Deploying {{pgrole}}'
       docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
+        name: '{{pgrole}}'
+        image: '{{image}}'
         pull: yes
         published_ports:
-          - "{{ports.stdout}}{{extport}}:{{intport}}"
-        volumes: "{{pg_volumes}}"
-        env: "{{pg_env}}"
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
         restart_policy: always
         networks:
           - name: plexguide
             aliases:
-              - "{{pgrole}}"
+              - '{{pgrole}}'
         state: started
-        labels: "{{pg_labels}}"
+        labels: '{{pg_labels}}'
 
     # ENDING FOR LAZYLIBRARIAN #############
 
-    - name: "Waiting for {{pgrole}} to initialize"
+    - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        path: "/opt/appdata/{{pgrole}}/config.ini"
+        path: '/opt/appdata/{{pgrole}}/config.ini'
         state: present
 
-    - name: "Configuring {{pgrole}} for first time use"
+    - name: 'Configuring {{pgrole}} for first time use'
       block:
-        - name: "Stopping {{pgrole}}"
+        - name: 'Stopping {{pgrole}}'
           docker_container:
-            name: "{{pgrole}}"
+            name: '{{pgrole}}'
             state: stopped
 
         - name: Set eBooks library Location
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: General
             option: ebook_dir
             value: /unionfs/ebooks
@@ -89,7 +89,7 @@
 
         - name: Set Audio Books library Location
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: General
             option: audio_dir
             value: /unionfs/abooks
@@ -97,15 +97,15 @@
 
         - name: Set downloads location
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: General
             option: download_dir
-            value: /downloads/nzbget/ebooks,/downloads/sabnzbd/ebooks,/downloads/deluge/ebooks,/downloads/qbittorrent/ebooks,/downloads/rutorrent/ebooks
+            value: '{{path.stdout}}/downloads'
             state: present
 
         - name: Set user
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: General
             option: http_user
             value: plex
@@ -113,7 +113,7 @@
 
         - name: Enable audio tab
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: General
             option: audio_tab
             value: 1
@@ -121,7 +121,7 @@
 
         - name: Enable series tab
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: General
             option: series_tab
             value: 1
@@ -129,7 +129,7 @@
 
         - name: Set notfound status
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: LibraryScan
             option: notfound_status
             value: Wanted
@@ -137,7 +137,7 @@
 
         - name: Set newbook status
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: LibraryScan
             option: newbook_status
             value: Wanted
@@ -145,7 +145,7 @@
 
         - name: Set newauthor status
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: LibraryScan
             option: newauthor_audio
             value: Wanted
@@ -153,7 +153,7 @@
 
         - name: Set newaudio status
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: LibraryScan
             option: newaudio_status
             value: Wanted
@@ -161,7 +161,7 @@
 
         - name: Set newauthor status
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: LibraryScan
             option: newauthor_status
             value: Wanted
@@ -169,7 +169,7 @@
 
         - name: Set add series
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: LibraryScan
             option: add_series
             value: 1
@@ -177,17 +177,17 @@
 
         - name: Set add author
           ini_file:
-            path: "/opt/appdata/{{pgrole}}/config.ini"
+            path: '/opt/appdata/{{pgrole}}/config.ini'
             section: LibraryScan
             option: add_author
             value: 1
             state: present
 
-        - name: "Configuring downloaders"
+        - name: 'Configuring downloaders'
           block:
             - name: Set deluge host
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: DELUGE
                 option: deluge_host
                 value: deluge
@@ -195,7 +195,7 @@
 
             - name: Set deluge label
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: DELUGE
                 option: deluge_label
                 value: ebooks
@@ -203,7 +203,7 @@
 
             - name: Set deluge pass
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: DELUGE
                 option: deluge_pass
                 value: plexguide
@@ -211,7 +211,7 @@
 
             - name: Set deluge port
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: DELUGE
                 option: deluge_port
                 value: 8112
@@ -219,7 +219,7 @@
 
             - name: Set nzbget host
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: NZBGet
                 option: nzbget_host
                 value: http://nzbget
@@ -227,7 +227,7 @@
 
             - name: Set nzbget port
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: NZBGet
                 option: nzbget_port
                 value: 6789
@@ -235,7 +235,7 @@
 
             - name: Set nzbget label
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: NZBGet
                 option: nzbget_label
                 value: ebooks
@@ -243,7 +243,7 @@
 
             - name: Set nzbget user
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: NZBGet
                 option: nzbget_user
                 value: plex
@@ -251,7 +251,7 @@
 
             - name: Set qbittorrent host
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: QBITTORRENT
                 option: qbittorrent_host
                 value: qbittorrent
@@ -259,7 +259,7 @@
 
             - name: Set qbittorrent port
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: QBITTORRENT
                 option: qbittorrent_port
                 value: 8080
@@ -267,7 +267,7 @@
 
             - name: Set qbittorrent label
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: QBITTORRENT
                 option: qbittorrent_label
                 value: ebooks
@@ -275,7 +275,7 @@
 
             - name: Set qbittorrent user
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: QBITTORRENT
                 option: qbittorrent_user
                 value: plex
@@ -283,7 +283,7 @@
 
             - name: Set qbittorrent pass
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: QBITTORRENT
                 option: qbittorrent_pass
                 value: guide
@@ -291,7 +291,7 @@
 
             - name: Set sabnzbd host
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: SABnzbd
                 option: sab_host
                 value: sabnzbd
@@ -299,7 +299,7 @@
 
             - name: Set sabnzbd api
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: SABnzbd
                 option: sab_api
                 value: abced78e11b70c659b8ca01b3e9a40a1
@@ -307,7 +307,7 @@
 
             - name: Set sabnzbd user
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: SABnzbd
                 option: sab_user
                 value: plex
@@ -315,7 +315,7 @@
 
             - name: Set sabnzbd pass
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: SABnzbd
                 option: sab_pass
                 value: guide
@@ -323,7 +323,7 @@
 
             - name: Set sabnzbd label
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: SABnzbd
                 option: sab_label
                 value: ebooks
@@ -331,7 +331,7 @@
 
             - name: Set rtorrent host
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: RTORRENT
                 option: rtorrent_host
                 value: rutorrent
@@ -339,7 +339,7 @@
 
             - name: Set rtorrent user
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: RTORRENT
                 option: rtorrent_user
                 value: plex
@@ -347,7 +347,7 @@
 
             - name: Set rtorrent pass
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: RTORRENT
                 option: rtorrent_pass
                 value: guide
@@ -355,17 +355,17 @@
 
             - name: Set rtorrent label
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: RTORRENT
                 option: rtorrent_label
                 value: ebooks
                 state: present
 
-        - name: "Configuring indexers"
+        - name: 'Configuring indexers'
           block:
             - name: Setup hydra on Newznab0 host
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: Newznab0
                 option: host
                 value: nzbhydra2:5076
@@ -373,7 +373,7 @@
 
             - name: Setup hydra on Torznab0 host
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: Torznab0
                 option: host
                 value: nzbhydra2:5076/torznab
@@ -381,7 +381,7 @@
 
             - name: Setup hydra on Torznab0 priority
               ini_file:
-                path: "/opt/appdata/{{pgrole}}/config.ini"
+                path: '/opt/appdata/{{pgrole}}/config.ini'
                 section: Torznab0
                 option: dlpriority
                 value: 1
@@ -389,5 +389,5 @@
 
         - name: Restart Container
           docker_container:
-            name: "{{pgrole}}"
+            name: '{{pgrole}}'
             state: started
