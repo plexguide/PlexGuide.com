@@ -10,17 +10,16 @@
   gather_facts: false
   tasks:
     # FACTS #######################################################################
-
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "dockergc"
-        intport: "1"
-        extport: "1"
-        image: "clockworksoul/docker-gc-cron"
+        pgrole: 'dockergc'
+        intport: '1'
+        extport: '1'
+        image: 'clockworksoul/docker-gc-cron'
 
     # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/plexguide/containers/_core.yml'
 
     # MANDATORY DOCKERGC ##########################################################
     - name: Install docker-gc-exclude
@@ -33,15 +32,14 @@
         group: 1000
 
     # LABELS ######################################################################
-
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
           - /opt/appdata/dockergc/docker-gc-exclude:/etc/docker-gc-exclude
           - /var/run/docker.sock:/var/run/docker.sock
           - /etc/localtime:/etc/localtime:ro
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
           PUID: 1000
@@ -49,19 +47,18 @@
           CLEAN_UP_VOLUMES: 1
 
     # MAIN DEPLOYMENT #############################################################
-
-    - name: "Deploying {{pgrole}}"
+    - name: 'Deploying {{pgrole}}'
       docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
+        name: '{{pgrole}}'
+        image: '{{image}}'
         pull: yes
-        volumes: "{{pg_volumes}}"
-        env: "{{pg_env}}"
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
         restart_policy: always
         networks:
           - name: plexguide
             aliases:
-              - "{{pgrole}}"
+              - '{{pgrole}}'
         state: started
         labels:
-          traefik.enabled: "false"
+          traefik.enabled: 'false'
