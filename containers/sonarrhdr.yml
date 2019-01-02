@@ -11,29 +11,29 @@
   tasks:
     # FACTS #######################################################################
 
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "sonarrhdr"
-        intport: "8989"
-        extport: "8987"
-        image: "linuxserver/sonarr"
+        pgrole: 'sonarrhdr'
+        intport: '8989'
+        extport: '8987'
+        image: 'linuxserver/sonarr'
 
     # CORE (MANDATORY) ############################################################
-    - name: "Including cron job"
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/plexguide/containers/_core.yml'
 
     # LABELS ######################################################################
-    - name: "Adding Traefik"
+    - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.frontend.auth.forward.address: "{{gauth}}"
-          traefik.enable: "true"
-          traefik.port: "{{intport}}"
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
 
-          traefik.frontend.rule: "Host:{{pgrole}}.{{domain.stdout}},{{tldset}}"
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
     - name: Create Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /opt/appdata/{{pgrole}}/mp4_automator
 
@@ -46,23 +46,23 @@
         owner: 1000
         group: 1000
 
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - "/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator"
-          - "/opt/appdata/{{pgrole}}:/config"
-          - "{{path.stdout}}:{{path.stdout}}"
-          - "/etc/localtime:/etc/localtime:ro"
+          - '/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator'
+          - '/opt/appdata/{{pgrole}}:/config'
+          - '{{path.stdout}}:{{path.stdout}}'
+          - '/etc/localtime:/etc/localtime:ro'
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
           PUID: 1000
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
-    
-    - name: "Create scripts directory for {{pgrole}}"
+
+    - name: 'Create scripts directory for {{pgrole}}'
       file:
         path: /opt/appdata/{{pgrole}}/scripts
         state: directory
@@ -70,7 +70,7 @@
         group: 1000
         mode: 0755
 
-    - name: "Copy scripts into directory for {{pgrole}}"
+    - name: 'Copy scripts into directory for {{pgrole}}'
       copy:
         src: ./templates/cleanup-sonarr.sh
         dest: /opt/appdata/{{pgrole}}/scripts
@@ -79,20 +79,20 @@
         owner: 1000
         group: 1000
         mode: 0755
-       
-    - name: "Deploying {{pgrole}}"
+
+    - name: 'Deploying {{pgrole}}'
       docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
+        name: '{{pgrole}}'
+        image: '{{image}}'
         pull: yes
         published_ports:
-          - "{{ports.stdout}}{{extport}}:{{intport}}"
-        volumes: "{{pg_volumes}}"
-        env: "{{pg_env}}"
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
         restart_policy: always
         networks:
           - name: plexguide
             aliases:
-              - "{{pgrole}}"
+              - '{{pgrole}}'
         state: started
-        labels: "{{pg_labels}}"
+        labels: '{{pg_labels}}'
