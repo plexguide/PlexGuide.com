@@ -34,9 +34,9 @@
     state: present
   ignore_errors: yes
 
-  - cron:
-    name: Build a Cron Job - QBITTORRENT
-    special_time: 'hourly'
-    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/qbittorrent.sh"
-    state: present
-  ignore_errors: yes
+- cron:
+  name: Build a Cron Job - QBITTORRENT
+  special_time: 'hourly'
+  job: "bash /opt/plexguide/menu/roles/autodelete/scripts/qbittorrent.sh"
+  state: present
+ignore_errors: yes
