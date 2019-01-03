@@ -21,6 +21,11 @@
     - name: 'Including cron job'
       include_tasks: '/opt/plexguide/containers/_core.yml'
 
+    - name: 'Checking for existing app data'
+      stat:
+        path: /opt/appdata/{{pgrole}}/config.ini
+      register: inicheck
+
     # LABELS ######################################################################
     - name: 'Adding Traefik'
       set_fact:
