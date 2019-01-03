@@ -51,6 +51,7 @@
           - '/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator'
           - '/opt/appdata/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
+          - '{{path.stdout}}/downloads:/downloads'
           - '{{path.stdout}}/unionfs/movies:/movies'
           - '/etc/localtime:/etc/localtime:ro'
 
