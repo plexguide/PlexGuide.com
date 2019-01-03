@@ -106,6 +106,15 @@
             value: plex
             state: present
 
+            
+        - name: Set pass
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/config.ini'
+            section: General
+            option: http_pass
+            value: guide
+            state: present
+
         - name: Enable audio tab
           ini_file:
             path: '/opt/appdata/{{pgrole}}/config.ini'
