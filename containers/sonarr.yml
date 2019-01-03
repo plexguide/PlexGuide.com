@@ -15,8 +15,8 @@
       set_fact:
         pgrole: 'sonarr'
         intport: '8989'
-        extport: '8989'
-        image: 'linuxserver/sonarr'
+        extport: '8988'
+        image: 'lsiodev/sonarr-preview'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
@@ -31,20 +31,6 @@
           traefik.port: '{{intport}}'
 
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
-
-    - name: Create Folders
-      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
-      with_items:
-        - /opt/appdata/{{pgrole}}/mp4_automator
-
-    - name: Install autoProcess.ini
-      template:
-        src: /opt/plexguide/containers/templates/sonarr.ini
-        dest: /opt/appdata/{{pgrole}}/mp4_automator/autoProcess.ini
-        force: yes
-        mode: 0775
-        owner: 1000
-        group: 1000
 
     - name: 'Setting PG Volumes'
       set_fact:
@@ -61,6 +47,7 @@
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
+
     - name: 'Create scripts directory for {{pgrole}}'
       file:
         path: /opt/appdata/{{pgrole}}/scripts

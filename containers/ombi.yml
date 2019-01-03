@@ -52,7 +52,6 @@
         pg_volumes:
           - '/opt/appdata/{{pgrole}}:/config'
           - '/etc/localtime:/etc/localtime:ro'
-          - '{{path.stdout}}:{{path.stdout}}'
           - '/opt/appdata/{{pgrole}}/appsettings.json:/opt/{{pgrole}}/appsettings.json'
 
     - name: 'Setting PG ENV'
