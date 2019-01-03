@@ -79,7 +79,7 @@
             path: '/opt/appdata/{{pgrole}}/config.ini'
             section: General
             option: ebook_dir
-            value: /unionfs/ebooks
+            value: '{{path.stdout}}/unionfs/ebooks'
             state: present
 
         - name: Set Audio Books library Location
@@ -87,7 +87,7 @@
             path: '/opt/appdata/{{pgrole}}/config.ini'
             section: General
             option: audio_dir
-            value: /unionfs/abooks
+            value: '{{path.stdout}}/unionfs/abooks'
             state: present
 
         - name: Set downloads location
@@ -105,7 +105,6 @@
             option: http_user
             value: plex
             state: present
-
             
         - name: Set pass
           ini_file:
