@@ -395,3 +395,4 @@
           docker_container:
             name: '{{pgrole}}'
             state: started
+      when: not inicheck.stat.exists
