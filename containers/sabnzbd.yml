@@ -217,7 +217,7 @@
         - replace:
             path: /opt/appdata/sabnzbd/sabnzbd.ini
             regexp: 'dirscan_dir ='
-            replace: 'dirscan_dir = /nzb/watch'
+            replace: 'dirscan_dir = {{path.stdout}}/nzb/watch'
 
         - replace:
             path: /opt/appdata/sabnzbd/sabnzbd.ini
