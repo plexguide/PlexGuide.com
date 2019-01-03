@@ -7,5 +7,5 @@
       git:
         repo: "https://github.com/Admin9705/PlexGuide-Installer"
         dest: /opt/pgstage
-        version: "master"
+        version: "8.0"
         force: yes
