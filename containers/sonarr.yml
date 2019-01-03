@@ -37,7 +37,6 @@
           - '/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator'
           - '/opt/appdata/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '{{path.stdout}}/unionfs/tv:/tv'
           - '/etc/localtime:/etc/localtime:ro'
 
     - name: 'Setting PG ENV'
