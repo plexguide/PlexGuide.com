@@ -18,12 +18,23 @@ tee <<-EOF
 💎 Access Configuration Info > http://$program.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-▫ $ip:${port}${extra}
 EOF
 
-if [ "$domain" != "NOT-SET" ]; then
+file="/var/plexguide/server.ports"
+  if [ -e "$file" ]; then
 tee <<-EOF
-▫ $domain:${port}${extra}
+▫ $ip:${port}${extra}
+EOF
+fi
+
+if [ "$domain" != "NOT-SET" ]; then
+  file="/var/plexguide/server.ports"
+  if [ -e "$file" ]; then
+tee <<-EOF
+▫ $ip:${port}${extra}
+EOF
+  fi
+tee <<-EOF
 ▫ $program.$domain${extra}
 EOF
 fi
