@@ -48,7 +48,7 @@
         pull: yes
         volumes: '{{default_volumes}}'
         env: '{{default_env}}'
-        restart_policy: always
+        restart_policy: unless-stopped
         networks:
           - name: plexguide
             aliases:

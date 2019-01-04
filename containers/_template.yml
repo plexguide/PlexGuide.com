@@ -149,7 +149,7 @@
           - '{{ports.stdout}}{{extport3}}:{{intport3}}'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
-        restart_policy: always
+        restart_policy: unless-stopped
         networks:
           - name: plexguide
             aliases:

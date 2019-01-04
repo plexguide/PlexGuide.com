@@ -36,7 +36,7 @@
         aliases:
           - mariadb
     purge_networks: yes
-    restart_policy: always
+    restart_policy: unless-stopped
     state: started
 
 - name: Create Gauc Container
@@ -62,7 +62,7 @@
       - name: plexguide
         aliases:
           - guacamole
-    restart_policy: always
+    restart_policy: unless-stopped
     state: started
     labels:
       traefik.enable: "true"

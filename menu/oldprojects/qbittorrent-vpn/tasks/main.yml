@@ -54,7 +54,7 @@
       - name: plexguide
         aliases:
           - "{{role_name}}"
-    restart_policy: always
+    restart_policy: unless-stopped
     state: started
     labels:
       traefik.enable: "true"
