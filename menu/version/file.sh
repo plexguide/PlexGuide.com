@@ -25,7 +25,7 @@ tee <<-EOF
 📂  PG Update Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✅   Latest Version : $latest
+✅  Latest Version : $latest
     Latest Beta    : $beta
     Current Verison: $pgnumber
 
