@@ -80,7 +80,7 @@
           traefik.enable: 'true'
           traefik.port: '{{intport}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
-          traefik.frontend.auth.basic.users: '{{auth.stdout}}'
+          traefik.frontend.auth.forward.address: '{{gauth}}'
 
     - name: 'Setting PG Volumes'
       set_fact:
