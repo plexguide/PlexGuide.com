@@ -16,7 +16,7 @@
         intport: '9000'
         extport: '9000'
         image: 'portainer/portainer'
-        command: --no-auth
+
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
       include_tasks: '/opt/plexguide/containers/_core.yml'
@@ -60,3 +60,4 @@
               - '{{pgrole}}'
         state: started
         labels: '{{pg_labels}}'
+        command: --no-auth
