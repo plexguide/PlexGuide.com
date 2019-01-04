@@ -54,11 +54,7 @@
       - name: plexguide
         aliases:
           - "wordpress-{{wpid.stdout}}-db"
-    restart_policy:
-          condition: on-failure
-          delay: 5s
-          max_attempts: 3
-          window: 120s
+    restart_policy: always
     state: started
 
 - name: Deploy Wordpress Container
@@ -83,11 +79,7 @@
     volumes:
       - /opt/appdata/wordpress/{{wpid.stdout}}:/var/www/html
       - /etc/localtime:/etc/localtime:ro
-    restart_policy:
-          condition: on-failure
-          delay: 5s
-          max_attempts: 3
-          window: 120s
+    restart_policy: always
     state: started
     labels:
       traefik.enable: "true"
