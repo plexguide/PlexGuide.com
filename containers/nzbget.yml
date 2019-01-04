@@ -54,6 +54,8 @@
     #  with_items:
     #    - "/opt/appdata/{{pgrole}}/scripts/nzbgetpp/rarfile/"
 
+
+
     - name: 'Chown NZB Owners'
       shell: 'chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}'
 
@@ -76,7 +78,7 @@
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
       with_items:
         - '/opt/appdata/{{pgrole}}/nzb:/nzb'
-        - '/tmp/nzbget:/nzb'
+        - '/mnt/downloads/{{pgrole}}/tmp:/tmp'
 
     # LABELS ######################################################################
 
