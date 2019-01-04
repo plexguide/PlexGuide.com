@@ -68,7 +68,7 @@
       - name: plexguide
         aliases:
           - "{{pgrole}}"
-    restart_policy: always
+    restart_policy: unless-stopped
     state: started
     labels:
       traefik.enable: "true"

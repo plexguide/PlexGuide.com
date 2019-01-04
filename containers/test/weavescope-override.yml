@@ -24,7 +24,7 @@
       - name: plexguide
         aliases:
           - weavescope
-    restart_policy: always
+    restart_policy: unless-stopped
     state: started
     labels:
       works.weave.role: system

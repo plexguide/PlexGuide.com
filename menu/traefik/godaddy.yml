@@ -46,7 +46,7 @@
           - /etc/localtime:/etc/localtime:ro
           - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
           - /opt/appdata/traefik/acme:/etc/traefik/acme
-        restart_policy: always
+        restart_policy: unless-stopped
         state: started
         networks:
           - name: plexguide

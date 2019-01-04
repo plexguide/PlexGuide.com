@@ -81,7 +81,7 @@
           - name: plexguide
             aliases:
               - mariadb
-        restart_policy: always
+        restart_policy: unless-stopped
         state: started
 
     - name: Create and start nextcloud container
@@ -104,7 +104,7 @@
           - name: plexguide
             aliases:
               - next
-        restart_policy: always
+        restart_policy: unless-stopped
         state: started
         labels:
           traefik.enable: 'true'
