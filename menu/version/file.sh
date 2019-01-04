@@ -74,5 +74,5 @@ fi
 
 rm -r /opt/pgstage
 mkdir -p /opt/pgstage
-ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml &>/dev/null &
+ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml #&>/dev/null &
 mainstart
