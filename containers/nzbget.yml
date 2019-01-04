@@ -77,8 +77,8 @@
     - name: Create GDrive Folders
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
       with_items:
-        - '/opt/appdata/{{pgrole}}/nzb:/nzb'
-        - '/mnt/downloads/{{pgrole}}/tmp:/tmp'
+        - '/opt/appdata/{{pgrole}}/nzb'
+        - '/mnt/downloads/{{pgrole}}/tmp'
 
     # LABELS ######################################################################
 
@@ -97,7 +97,7 @@
           - '/opt/appdata/{{pgrole}}:/config'
           - '/opt/appdata/{{pgrole}}/nzb:/nzb'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/tmp/nzbget:/tmp'
+          - '/mnt/downloads/{{pgrole}}/tmp:/tmp'
 
     - name: 'Setting PG ENV'
       set_fact:
