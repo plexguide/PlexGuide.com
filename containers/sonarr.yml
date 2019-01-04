@@ -16,7 +16,7 @@
         pgrole: 'sonarr'
         intport: '8989'
         extport: '8988'
-        image: 'linuxserver/sonarr:develop'
+        image: 'lsiodev/sonarr-preview'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
@@ -29,7 +29,6 @@
           traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.enable: 'true'
           traefik.port: '{{intport}}'
-
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
     - name: 'Setting PG Volumes'
@@ -51,6 +50,14 @@
     - name: 'Create scripts directory for {{pgrole}}'
       file:
         path: /opt/appdata/{{pgrole}}/scripts
+        state: directory
+        owner: 1000
+        group: 1000
+        mode: 0755
+
+    - name: 'Create plugins directory for {{pgrole}}'
+      file:
+        path: /opt/appdata/{{pgrole}}/plugins
         state: directory
         owner: 1000
         group: 1000
