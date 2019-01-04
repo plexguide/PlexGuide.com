@@ -33,7 +33,11 @@
         volumes:
           - /var/run/docker.sock:/var/run/docker.sock
           - /etc/localtime:/etc/localtime:ro
-        restart_policy: always
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
         networks:
           - name: plexguide
             aliases:

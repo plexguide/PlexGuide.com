@@ -24,7 +24,11 @@
         name: "init-guac-db"
         image: "guacamole/guacamole:latest"
         pull: yes
-        restart_policy: always
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
         command: "'/bin/sh', '-c', 'test -e /init/initdb.sql' && echo 'init file already exists' || /opt/guacamole/bin/initdb.sh --postgres > /init/initdb.sql"
         networks:
           - name: plexguide
@@ -39,7 +43,11 @@
         name: "postgres"
         image: "postgres:lastest"
         pull: yes
-        restart_policy: always
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
         networks:
           - name: plexguide
             aliases:
@@ -59,7 +67,11 @@
         name: "postgres"
         image: "guacamole/guacd:latest"
         pull: yes
-        restart_policy: always
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
         networks:
           - name: plexguide
             aliases:
@@ -74,7 +86,11 @@
         depends_on:
           - guacd
           - postgres
-        restart_policy: always
+        restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
         env:
           GUACD_HOSTNAME: guacd
           POSTGRES_HOSTNAME: postgres

@@ -55,7 +55,11 @@
       - name: plexguide
         aliases:
           - VNC
-    restart_policy: always
+    restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
     state: started
 
 - name: Download VNC Software

@@ -48,7 +48,11 @@
         - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
         - /opt/appdata/traefik/acme:/etc/traefik/acme
         - "{{part2.stdout}}:{{part2.stdout}}"
-      restart_policy: always
+      restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 3
+          window: 120s
       state: started
       networks:
         - name: plexguide
