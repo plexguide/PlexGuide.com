@@ -31,7 +31,7 @@ if [ "$domain" != "NOT-SET" ]; then
   file="/var/plexguide/server.ports"
   if [ -e "$file" ]; then
 tee <<-EOF
-▫ $ip:${port}${extra}
+▫ $domain:${port}${extra}
 EOF
   fi
 tee <<-EOF
