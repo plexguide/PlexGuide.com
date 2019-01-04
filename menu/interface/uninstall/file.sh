@@ -82,7 +82,7 @@ done
   echo ""
   sleep 2
   rm -rf /etc/docker
-  apt-get purge docker-ce -y
+  apt-get purge docker-ce -y --allow-change-held-packages
   rm -rf /var/lib/docker
 
   while true; do
