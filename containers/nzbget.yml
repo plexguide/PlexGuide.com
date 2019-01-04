@@ -71,6 +71,13 @@
         path: /opt/appdata/{{pgrole}}/nzbget.conf
       register: confcheck
 
+  ############ TCrypt
+    - name: Create GDrive Folders
+      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      with_items:
+        - '/opt/appdata/{{pgrole}}/nzb:/nzb'
+        - '/tmp/nzbget:/nzb'
+
     # LABELS ######################################################################
 
     - name: 'Adding Traefik'
@@ -86,7 +93,10 @@
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
           - '/opt/appdata/{{pgrole}}:/config'
+          - '/opt/appdata/{{pgrole}}/nzb:/nzb'
           - '{{path.stdout}}:{{path.stdout}}'
+          - '/tmp/nzbget:/tmp'
+
     - name: 'Setting PG ENV'
       set_fact:
         pg_env:
