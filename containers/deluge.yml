@@ -148,11 +148,7 @@
           - '{{ports.stdout}}{{extport3}}:{{intport3}}'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
-        restart_policy:
-          condition: on-failure
-          delay: 5s
-          max_attempts: 3
-          window: 120s
+        restart_policy: always
         networks:
           - name: plexguide
             aliases:
