@@ -27,7 +27,7 @@
       set_fact:
         pg_labels:
           traefik.frontend.auth.forward.address: '{{gauth}}'
-          #traefik.protocol: 'https,http'
+          traefik.protocol: 'https'
           traefik.enable: 'true'
           traefik.port: '80'
           traefik.frontend.entryPoints: 'http'
