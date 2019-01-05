@@ -13,6 +13,6 @@
   - cron:
       name: Build a Cron Job - Auto Prune
       special_time: "hourly"
-      job: "prune"
+      job: "prune 1>/dev/null 2>&1"
       state: present
     ignore_errors: yes
