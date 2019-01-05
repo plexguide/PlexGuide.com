@@ -101,7 +101,7 @@
           - '/opt/appdata/{{pgrole}}/data/owncloud.db:/data/owncloud.db:rw'
           - '/opt/appdata/{{pgrole}}/data/owncloud.db-shm:/data/owncloud.db-shm:rw'
           - '/opt/appdata/{{pgrole}}/data/nextcloud.log:/data/nextcloud.log:rw'
-          - '/opt/appdata/{{pgrole}}/data/data/owncloud.db-wal:/data/owncloud.db-wal:rw'
+          - '/opt/appdata/{{pgrole}}/data/owncloud.db-wal:/data/owncloud.db-wal:rw'
           - '/mnt/unionfs/nextcloud:/data'
           - '/opt/appdata/{{pgrole}}/conf:/config'
           - '{{path.stdout}}:{{path.stdout}}'
