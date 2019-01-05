@@ -26,6 +26,7 @@
     - name: 'Adding Traefik'
       set_fact:
         pg_labels:
+          name: "{{pgrole}}.localhost"
           traefik.frontend.auth.forward.address: '{{gauth}}'
           #traefik.protocol: 'https,http'
           traefik.enable: 'true'
@@ -33,6 +34,7 @@
           traefik.frontend.entryPoints: 'http'
           traefik.https.port: '443'
           traefik.https.frontend.entryPoints: 'https'
+          traefik.https.backend: "heimdall"
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
     - name: 'Setting PG Volumes'
