@@ -15,7 +15,7 @@
       set_fact:
         pgrole: 'sonarr'
         intport: '8989'
-        extport: '8988'
+        extport: '8989'
         image: 'lsiodev/sonarr-preview'
 
     # CORE (MANDATORY) ############################################################
