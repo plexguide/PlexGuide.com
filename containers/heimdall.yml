@@ -14,7 +14,7 @@
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'heimdall'
-        intport: '80'
+        intport: '443'
         extport: '1111'
         image: 'linuxserver/heimdall'
 
@@ -27,10 +27,11 @@
       set_fact:
         pg_labels:
           traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.protocol: 'https'
           traefik.enable: 'true'
-          traefik.port: '{{intport}}'
-
-          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+          traefik.https.port: '443'
+          traefik.https.frontend.entryPoints: 'https'
+          traefik.https.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
     - name: 'Setting PG Volumes'
       set_fact:
@@ -51,7 +52,8 @@
         image: '{{image}}'
         pull: yes
         published_ports:
-          - '{{ports.stdout}}{{extport}}:{{intport}}'
+          - '127.0.0.0.1:1112:443'
+          - '{{ports.stdout}}1111:80'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: unless-stopped

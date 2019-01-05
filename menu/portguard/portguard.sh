@@ -38,7 +38,6 @@ tee <<-EOF
 🌎 Welcome to PortGuard!             📓 Reference: portguard.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-
 Ports Are Currently: [$guard]
 
 1. $opp Ports

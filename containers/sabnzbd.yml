@@ -143,15 +143,15 @@
             regexp: 'html_login = ""'
             replace: 'html_login = 1'
 
-        - replace:
-            path: /opt/appdata/sabnzbd/sabnzbd.ini
-            regexp: 'username = ""'
-            replace: 'username = plex'
+        #- replace:
+        #    path: /opt/appdata/sabnzbd/sabnzbd.ini
+        #    regexp: 'username = ""'
+        #    replace: 'username = plex'
 
-        - replace:
-            path: /opt/appdata/sabnzbd/sabnzbd.ini
-            regexp: 'password = ""'
-            replace: 'password = guide'
+        #- replace:
+        #    path: /opt/appdata/sabnzbd/sabnzbd.ini
+        #    regexp: 'password = ""'
+        #    replace: 'password = guide'
 
         - replace:
             path: /opt/appdata/sabnzbd/sabnzbd.ini
