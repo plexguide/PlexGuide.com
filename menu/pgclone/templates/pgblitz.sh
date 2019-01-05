@@ -95,17 +95,17 @@ do
                     break
                 fi
             fi
-            log "Sleeping 30s before looking at next file"
-            sleep 30
+            log "Sleeping 5s before looking at next file"
+            sleep 5
         done
-        log "Finished looking for files, sleeping 30 secs"
+        log "Finished looking for files, sleeping 5 secs"
     else
-        log "Nothing to upload, sleeping 30 secs"
+        log "Nothing to upload, sleeping 5 secs"
         log "Running Blitz Finder for files not uploaded"
         log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024" | bc` MB of 750000 MB"
         finder
     fi
-    sleep 30
+    sleep 5
     echo "${GDSAARRAY[$GDSAUSE]}" > /var/plexguide/blitz.last
 done
 {% endraw %}

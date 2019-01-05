@@ -77,11 +77,11 @@ echo $GDSA > /tmp/gdsa.file
 echo $FILEDIR > /tmp/gdsa.filedir
 echo $JSONFILE > /tmp/gdsa.jsonfile
 
-rclone moveto --tpslimit 6 --checkers=20 \
+rclone moveto --tpslimit 12 --checkers=20 \
       --config /opt/appdata/plexguide/rclone.conf \
-      --transfers=8 \
+      --transfers=16 \
       --log-file=$LOGFILE --log-level INFO --stats 2s \
-      --drive-chunk-size=32M \
+      --drive-chunk-size=128M \
       "$downloadpath/pgblitz/$GDSA$FILEDIR/$FILEBASE" "$REMOTE:$FILEDIR/$FILEBASE"
 
 #update json file for PGBlitz GUI
@@ -110,6 +110,6 @@ rm -f $LOGFILE
 rm -f /opt/appdata/pgblitz/pid/$FILEBASE.trans
 find "$downloadpath/move/" -mindepth 1 -type d -empty -delete
 find "/mnt/pgblitz/" -mindepth 2 -type d -empty -delete
-sleep 60
+sleep 45
 rm -f $JSONFILE
 {% endraw %}
