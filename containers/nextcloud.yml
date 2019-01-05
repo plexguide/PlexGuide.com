@@ -36,7 +36,6 @@
         - /opt/appdata/nextcloud
         - /opt/appdata/nextcloud/conf
         - /opt/appdata/nextcloud/data
-        - /opt/appdata/nextcloud/mariadb
         - /mnt/unionfs/nextcloud
 
     # LABELS ######################################################################
@@ -54,7 +53,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/mnt/unionfs/nextcloud:/data'
+          - '/opt/appdata/nextcloud/data:/data'
           - '/opt/appdata/{{pgrole}}/conf:/config'
           - '{{path.stdout}}:{{path.stdout}}'
 
@@ -63,28 +62,6 @@
         pg_env:
           PUID: 1000
           PGID: 1000
-
-    # MAIN DEPLOYMENT #############################################################
-    - name: Deploy a MariaDB Container
-      docker_container:
-        name: mariadb-nextcloud
-        image: 'linuxserver/mariadb'
-        pull: yes
-        published_ports:
-          - '127.0.0.1:3306:3306'
-        env:
-          PUID: 1000
-          PGID: 1000
-          MYSQL_ROOT_PASSWORD: 'plexguide123456789com'
-        volumes:
-          - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/nextcloud/mariadb:/config'
-        networks:
-          - name: plexguide
-            aliases:
-              - mariadb
-        restart_policy: unless-stopped
-        state: started
 
     - name: Create and start nextcloud container
       docker_container:
@@ -96,11 +73,7 @@
         env:
           PUID: 1000
           PGID: 1000
-        volumes:
-          - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/nextcloud/data:/data'
-          - '/opt/appdata/{{pgrole}}/conf:/config'
-          - '{{path.stdout}}:{{path.stdout}}'
+        volumes: '{{pg_volumes}}'
         networks:
           - name: plexguide
             aliases:
