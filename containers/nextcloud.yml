@@ -43,7 +43,6 @@
       set_fact:
         pg_labels:
           traefik.frontend.auth.forward.address: '{{gauth}}'
-          traefik.protocol: 'https'
           traefik.enable: 'true'
           traefik.https.port: '443'
           traefik.https.frontend.entryPoints: 'https'
