@@ -51,11 +51,9 @@
         name: '{{pgrole}}'
         image: '{{image}}'
         pull: yes
-        #published_ports:
-        #  - '{{ports.stdout}}{{extport}}:{{intport}}'
         published_ports:
           - '127.0.0.0.1:1112:443'
-          - '1111:80'
+          - '{{ports.stdout}}1111:80'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: unless-stopped
