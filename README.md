@@ -13,8 +13,9 @@ _**Table of Contents**_
 
 1. [General Intro](#1-general-intro)
 2. [YouTube Video - Intro](#2-youtube-video---intro)
-3. [Testimonials](#3-testimonials)
-4. [Conclusion](#4-conclusion)
+3. [Functional Use](#3-functional-use)
+4. [Testimonials](#4-testimonials)
+5. [Conclusion](#5-conclusion)
 
 ----
 # 1. General Intro
