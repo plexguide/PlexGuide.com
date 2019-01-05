@@ -47,7 +47,7 @@ do
             else
                 # Check if file is still getting bigger
                 FILESIZE1=`wc -c < "$i"`
-                sleep 3
+                sleep 1
                 FILESIZE2=`wc -c < "$i"`
                 if [ "$FILESIZE1" -ne "$FILESIZE2" ]; then
                 log "File is still getting bigger $i"
