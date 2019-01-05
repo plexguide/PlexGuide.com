@@ -54,6 +54,7 @@
     - name: Create Basic directories for qBittorrent
       file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true'
       with_items:
+        - '/mnt:/mnt'
         - '{{path.stdout}}/{{pgrole}}'
         - '/opt/appdata/{{pgrole}}'
         - '/opt/appdata/{{pgrole}}/config'
