@@ -14,7 +14,7 @@
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'heimdall'
-        intport: '80'
+        intport: '443'
         extport: '1111'
         image: 'linuxserver/heimdall'
 
@@ -30,6 +30,7 @@
           traefik.enable: 'true'
           traefik.port: '{{intport}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+          traefik.protocol: 'https'
 
     - name: 'Setting PG Volumes'
       set_fact:
@@ -55,7 +56,6 @@
           - '127.0.0.1:1111:443'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
-        expose: 1111
         restart_policy: unless-stopped
         networks:
           - name: plexguide
