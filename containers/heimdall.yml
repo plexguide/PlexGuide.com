@@ -29,7 +29,6 @@
           traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.enable: 'true'
           traefik.port: '{{intport}}'
-
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
     - name: 'Setting PG Volumes'
@@ -50,10 +49,13 @@
         name: '{{pgrole}}'
         image: '{{image}}'
         pull: yes
+        #published_ports:
+        #  - '{{ports.stdout}}{{extport}}:{{intport}}'
         published_ports:
-          - '{{ports.stdout}}{{extport}}:{{intport}}'
+          - '127.0.0.1:1111:443'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
+        expose: 1111
         restart_policy: unless-stopped
         networks:
           - name: plexguide
