@@ -37,6 +37,7 @@
         - /opt/appdata/nextcloud/conf
         - /opt/appdata/nextcloud/data
         - /opt/appdata/nextcloud/mariadb
+        - /mnt/unionfs/nextcloud
 
     # LABELS ######################################################################
     - name: 'Adding Traefik'
@@ -53,7 +54,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}/data:/data'
+          - '/mnt/unionfs/nextcloud:/data'
           - '/opt/appdata/{{pgrole}}/conf:/config'
           - '{{path.stdout}}:{{path.stdout}}'
 
