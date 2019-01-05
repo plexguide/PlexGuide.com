@@ -27,11 +27,11 @@
       set_fact:
         pg_labels:
           traefik.frontend.auth.forward.address: '{{gauth}}'
-          traefik.protocol: 'https,http'
+          #traefik.protocol: 'https,http'
           traefik.enable: 'true'
           traefik.port: '80'
           traefik.frontend.entryPoints: 'http'
-          traefik.https.port: 443
+          traefik.https.port: '443'
           traefik.https.frontend.entryPoints: 'https'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
@@ -57,6 +57,7 @@
         #  - '{{ports.stdout}}{{extport}}:{{intport}}'
         published_ports:
           - '1111:443'
+          - '1110:80'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: unless-stopped
