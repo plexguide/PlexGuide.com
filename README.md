@@ -28,14 +28,21 @@ _**Table of Contents**_
 <a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"><img src="https://plexguide.com/wikipics/pg-introv4.png" width="600"/></p>
 <p align="center"><b>PG Introduction Video</b></p>
 
-# 3. Testimonials
+# 3. Functional Use
+
+1. b
+1. c
+1. a
+
+
+# 4. Testimonials
 <p align="center"><kbd><img src="https://plexguide.com/wikipics/pg-assistyou.gif" width="600""></kbd></p>
 
 [**Dexxa:**](https://plexguide.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install plex and link plex to my gdrive, when i just knew how to install plex on its on, i tried many ways to mount gdrive to my plex and couldnt get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
 
 [**Cyb3rGh05t:**](https://plexguide.com/threads/thank-you-pg-team.942/) hi PlexGuide Team, just want to say thank you to the PlexGuide Team :) you did an amazing job:) Everything is really easy to setup an the interface is also very nice :) Thanks for all the hard work an all the support :) you guys rock :) .Keep up that good work. looking further for new features on PlexGuide :) thanks :)
 
-# 4. Conclusion
+# 5. Conclusion
 
 Well anyways, welcome to the Site! Visit the forums @ [**https://plexguide.com/forums**](https://plexguide.com/forums).
 
