@@ -16,6 +16,7 @@ sed -i -e "/bitwarden/d" /var/plexguide/container.running
 sed -i -e "/ombi/d" /var/plexguide/container.running
 sed -i -e "/portainer/d" /var/plexguide/container.running
 sed -i -e "/dockergc/d" /var/plexguide/container.running
+sed -i -e "/mariadb-nextcloud/d" /var/plexguide/container.running
 
 count=$(wc -l < /var/plexguide/container.running)
 ((count++))

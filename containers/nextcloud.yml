@@ -22,7 +22,7 @@
       set_fact:
         pgrole: 'nextcloud'
         intport: '443'
-        extport: '127.0.0.1:4645'
+        extport: '4645'
         image: 'linuxserver/nextcloud'
 
     # CORE (MANDATORY) ############################################################
@@ -43,10 +43,11 @@
       set_fact:
         pg_labels:
           traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.protocol: 'https'
           traefik.enable: 'true'
-          traefik.port: '{{intport}}'
-
-          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+          traefik.https.port: '443'
+          traefik.https.frontend.entryPoints: 'https'
+          traefik.https.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
     - name: 'Setting PG Volumes'
       set_fact:
@@ -90,8 +91,8 @@
         image: 'linuxserver/nextcloud'
         pull: yes
         published_ports:
-          - '127.0.0.1:4645:443'
-          #- "{{ports.stdout}}4645:443"
+          - '127.0.0.0.1:4646:443'
+          - '{{ports.stdout}}4645:80'
         env:
           PUID: 1000
           PGID: 1000
@@ -106,9 +107,4 @@
               - next
         restart_policy: unless-stopped
         state: started
-        labels:
-          traefik.enable: 'true'
-
-          traefik.frontend.rule: 'Host:nextcloud.{{domain.stdout}},next.{{domain.stdout}}'
-          traefik.port: '443'
-          traefik.protocol: 'https'
+        labels: '{{pg_labels}}'
