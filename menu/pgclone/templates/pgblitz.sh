@@ -56,7 +56,7 @@ do
 
                 # Check if we have any upload slots available
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
-                if [ ! $TRANSFERS -ge 8 ]; then
+                if [ ! $TRANSFERS -ge 16 ]; then
                     if [ -e $i ]; then
                     log "Starting upload of $i"
                         # Append filesize to GDSAAMOUNT
