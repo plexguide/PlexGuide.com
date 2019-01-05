@@ -36,6 +36,7 @@
           - /opt/appdata/{{pgrole}}
           - /opt/appdata/{{pgrole}}/sync
           - /:/source
+          - '/mnt:/mnt'
 
     - name: 'Setting PG ENV'
       set_fact:

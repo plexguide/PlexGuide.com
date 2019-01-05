@@ -41,6 +41,7 @@
           - '/opt/appdata/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
+          - '/mnt:/mnt'
 
     - name: 'Setting PG ENV'
       set_fact:
@@ -110,7 +111,7 @@
             option: http_user
             value: plex
             state: present
-            
+
         - name: Set pass
           ini_file:
             path: '/opt/appdata/{{pgrole}}/config.ini'
