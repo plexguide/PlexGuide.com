@@ -30,10 +30,13 @@ _**Table of Contents**_
 
 # 3. Functional Use
 
-1. b
-1. c
-1. a
-
+1. Deploys multiple programs/app and functional within 10 - 30 seconds
+1. Deploy PG on a remote machine, local machine, VPS, or virtual machines
+1. Deploy PG utilizing Google's GSuite for unlimited space or through the solo or multiple HD editions
+1. Deploys a Reverse Proxy (Traefik) so you can obtain https:// certificates on all your containers
+1. Backup and Restore data through your Google Drive
+1. Aligns data and ports for effficiency 
+1. Deploys with a simple installer and a GUI like interface (commands do not have to be typed out)
 
 # 4. Testimonials
 <p align="center"><kbd><img src="https://plexguide.com/wikipics/pg-assistyou.gif" width="600""></kbd></p>
