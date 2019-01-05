@@ -98,8 +98,8 @@
           PGID: 1000
         volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/nextcloud/data:/data'
-          - '/opt/appdata/nextcloud/conf:/config'
+          - '/mnt/unionfs/nextcloud:/data'
+          - '/opt/appdata/{{pgrole}}/conf:/config'
           - '{{path.stdout}}:{{path.stdout}}'
         networks:
           - name: plexguide
