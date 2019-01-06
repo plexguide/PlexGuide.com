@@ -44,7 +44,7 @@
         - "/opt/appdata/{{pgrole}}/config:/config"
         - "/opt/appdata/{{pgrole}}/socket:/socket"
         - "/mnt:/mnt"
-        - "{{path.stdout}}:{path.stdout}}"
+        - "{{path.stdout}}:{{path.stdout}}"
         - "/etc/localtime:/etc/localtime:ro"
 
   - name: "Setting PG ENV"

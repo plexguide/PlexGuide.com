@@ -63,13 +63,19 @@
 - name: 'Copy any scripts and plugins into appdata directory for {{pgrole}}'
   copy:
     src: ./templates/{{pgrole}}
-    dest: /opt/appdata/{{pgrole}}
+    dest: /opt/appdata
     directory_mode: yes
     force: yes
     owner: 1000
     group: 1000
     mode: 0755
   ignore_errors: yes
+
+- name: 'Setting permissions on appdata'
+  shell: 'chown -R 1000:1000 /opt/appdata'
+
+- name: 'Setting permissions on appdata'
+  shell: 'chmod -R 775 /opt/appdata'
 
 # OVERWRITE IMAGES #############################################################
 - name: Check if Image Variable Exists
