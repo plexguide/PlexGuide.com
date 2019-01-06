@@ -191,35 +191,42 @@
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
             regexp: '"stop_seed_ratio""'
-            line: '"stop_seed_ratio"": 1.0,'
+            line: '"stop_seed_ratio": 1.0,'
             state: present
 
-        - name: set seed_time_ratio_limit"
+        - name: set share_ratio_limit"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"stop_seed_ratio"'
-            line: '"stop_seed_ratio"": 1.0,'
+            regexp: '"share_ratio_limit"'
+            line: '"share_ratio_limit": 1.0,'
             state: present
 
-        - name: set seed_time_ratio_limit"
+        - name: set remove_seed_at_ratio"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"stop_seed_ratio"'
-            line: '"remove_seed_at_ratio"": true,'
+            regexp: '"remove_seed_at_ratio"'
+            line: '"remove_seed_at_ratio": true,'
             state: present
 
         - name: set enc_prefer_rc4"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
             regexp: '"enc_prefer_rc4"'
-            line: '"enc_prefer_rc4"": true,'
+            line: '"enc_prefer_rc4": true,'
+            state: present
+
+        - name: set enc_level"
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
+            regexp: '"enc_level"'
+            line: '"enc_level": 2,'
             state: present
 
         - name: set enabled_plugins"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
             regexp: '"enabled_plugins"'
-            line: '"enabled_plugins"": ["Extractor", "Label"],'
+            line: '"enabled_plugins": ["Extractor", "Label"],'
             state: present
           when: not confcheck.stat.exists
         #when: not confcheck.stat.exists
