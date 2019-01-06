@@ -92,14 +92,6 @@
         state: present
       when: incomplete.stdout is undefined
 
-    - name: 'Creating new incomplete location'
-      path: '{{incomplete.stdout}}/{{pgrole}}'
-      state: directory
-      owner: 1000
-      group: 1000
-      mode: 0755
-      when: incomplete.stdout is defined
-
     - name: Set download location
       ini_file:
         path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
