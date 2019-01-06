@@ -161,17 +161,11 @@
 
 - name: 'Migrations'
   block:
-  - name: 'Creating new downloads location'
+  - name: Creating new downloads location
     path: '{{path.stdout}}/downloads/{{pgrole}}'
     state: directory
     owner: 1000
     group: 1000
     mode: 0755
-
-    # - name: Remove old download directory
-    #   file:
-    #     state: absent
-    #     path: "{{path.stdout}}/{{pgrole}}"
-
   when: oldcheck.stat.exists
   ignore_errors: yes
