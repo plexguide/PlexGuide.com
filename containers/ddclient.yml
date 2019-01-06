@@ -46,12 +46,12 @@
         name: '{{pgrole}}'
         image: '{{image}}'
         pull: yes
-        volumes: '{{default_volumes}}'
-        env: '{{default_env}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
         restart_policy: unless-stopped
         networks:
           - name: plexguide
             aliases:
               - '{{pgrole}}'
         state: started
-        labels: '{{default_labels}}'
+        labels: '{{pg_labels}}'

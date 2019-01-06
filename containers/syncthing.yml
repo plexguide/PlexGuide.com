@@ -47,6 +47,8 @@
         pg_volumes:
           - '/opt/appdata/{{pgrole}}/config:/config'
           - '/opt/appdata/{{pgrole}}/sync:/sync'
+          - '/mnt:/mnt'
+
 
     - name: 'Setting PG ENV'
       set_fact:

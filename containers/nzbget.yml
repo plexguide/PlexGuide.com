@@ -98,6 +98,7 @@
           - '/opt/appdata/{{pgrole}}/nzb:/nzb'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt/downloads/{{pgrole}}/tmp:/tmp'
+          - '/mnt:/mnt'
 
     - name: 'Setting PG ENV'
       set_fact:

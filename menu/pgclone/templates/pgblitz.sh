@@ -47,7 +47,7 @@ do
             else
                 # Check if file is still getting bigger
                 FILESIZE1=`wc -c < "$i"`
-                sleep 3
+                sleep 1
                 FILESIZE2=`wc -c < "$i"`
                 if [ "$FILESIZE1" -ne "$FILESIZE2" ]; then
                 log "File is still getting bigger $i"
@@ -56,7 +56,7 @@ do
 
                 # Check if we have any upload slots available
                 TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
-                if [ ! $TRANSFERS -ge 8 ]; then
+                if [ ! $TRANSFERS -ge 16 ]; then
                     if [ -e $i ]; then
                     log "Starting upload of $i"
                         # Append filesize to GDSAAMOUNT
@@ -95,17 +95,17 @@ do
                     break
                 fi
             fi
-            log "Sleeping 30s before looking at next file"
-            sleep 30
+            log "Sleeping 5s before looking at next file"
+            sleep 5
         done
-        log "Finished looking for files, sleeping 30 secs"
+        log "Finished looking for files, sleeping 5 secs"
     else
-        log "Nothing to upload, sleeping 30 secs"
+        log "Nothing to upload, sleeping 5 secs"
         log "Running Blitz Finder for files not uploaded"
         log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024" | bc` MB of 750000 MB"
         finder
     fi
-    sleep 30
+    sleep 5
     echo "${GDSAARRAY[$GDSAUSE]}" > /var/plexguide/blitz.last
 done
 {% endraw %}

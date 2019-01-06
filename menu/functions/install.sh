@@ -55,7 +55,7 @@ updateprime() {
   echo "10" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.motd
-  echo "92" > ${abc}/pg.alias
+  echo "93" > ${abc}/pg.alias
   echo "2" > ${abc}/pg.dep
   echo "2" > ${abc}/pg.cleaner
   echo "3" > ${abc}/pg.gcloud
@@ -64,6 +64,7 @@ updateprime() {
   echo "7.3" > ${abc}/pg.verionid
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
+  echo "3" > ${abc}/pg.prune
 }
 
 pginstall () {
@@ -84,6 +85,7 @@ pginstall () {
   core cleaner &>/dev/null &
   core serverid
   core watchtower
+  core prune
   customcontainers &>/dev/null &
 
   pgedition
@@ -143,6 +145,10 @@ docstart () {
 
 folders () {
   ansible-playbook /opt/plexguide/menu/folders/main.yml
+}
+
+prune () {
+  ansible-playbook /opt/plexguide/menu/prune/main.yml
 }
 
 hetzner () {

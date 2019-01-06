@@ -48,6 +48,8 @@
           - '/opt/appdata/{{pgrole}}/config:/config'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
+          - '/mnt:/mnt'
+
 
     - name: 'Setting PG ENV'
       set_fact:

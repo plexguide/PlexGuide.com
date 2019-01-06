@@ -38,6 +38,7 @@
           - '/opt/appdata/{{pgrole}}/playlists:/airsonic/playlists'
           - '/opt/appdata/{{pgrole}}/podcasts:/airsonic/podcasts'
           - '{{path.stdout}}:{{path.stdout}}'
+          - '/mnt:/mnt'
 
     - name: 'Setting PG ENV'
       set_fact:

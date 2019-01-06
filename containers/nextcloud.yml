@@ -1,18 +1,10 @@
 #!/bin/bash
 #
-# GitHub:   https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server
-# Author:   Admin9705
-# URL:      https://plexguide.com
-#
-# PlexGuide Copyright (C) 2018 PlexGuide.com
-# Licensed under GNU General Public License v3.0 GPL-3 (in short)
-#
-#   You may copy, distribute and modify the software as long as you track
-#   changes/dates in source files. Any modifications to our software
-#   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions.
-#
-###############################################################################
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
 ---
 - hosts: localhost
   gather_facts: false
@@ -22,7 +14,7 @@
       set_fact:
         pgrole: 'nextcloud'
         intport: '443'
-        extport: '127.0.0.1:4645'
+        extport: '4645'
         image: 'linuxserver/nextcloud'
 
     # CORE (MANDATORY) ############################################################
@@ -36,25 +28,27 @@
         - /opt/appdata/nextcloud
         - /opt/appdata/nextcloud/conf
         - /opt/appdata/nextcloud/data
-        - /opt/appdata/nextcloud/mariadb
+        - /mnt/unionfs/nextcloud
 
     # LABELS ######################################################################
     - name: 'Adding Traefik'
       set_fact:
         pg_labels:
           traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.protocol: 'https'
           traefik.enable: 'true'
-          traefik.port: '{{intport}}'
-
-          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+          traefik.https.port: '443'
+          traefik.https.frontend.entryPoints: 'https'
+          traefik.https.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}/data:/data'
+          - '/opt/appdata/nextcloud/data:/data'
           - '/opt/appdata/{{pgrole}}/conf:/config'
           - '{{path.stdout}}:{{path.stdout}}'
+          - '/mnt:/mnt'
 
     - name: 'Setting PG ENV'
       set_fact:
@@ -62,53 +56,21 @@
           PUID: 1000
           PGID: 1000
 
-    # MAIN DEPLOYMENT #############################################################
-    - name: Deploy a MariaDB Container
-      docker_container:
-        name: mariadb-nextcloud
-        image: 'linuxserver/mariadb'
-        pull: yes
-        published_ports:
-          - '127.0.0.1:3306:3306'
-        env:
-          PUID: 1000
-          PGID: 1000
-          MYSQL_ROOT_PASSWORD: 'plexguide123456789com'
-        volumes:
-          - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/nextcloud/mariadb:/config'
-        networks:
-          - name: plexguide
-            aliases:
-              - mariadb
-        restart_policy: unless-stopped
-        state: started
-
     - name: Create and start nextcloud container
       docker_container:
         name: nextcloud
         image: 'linuxserver/nextcloud'
         pull: yes
         published_ports:
-          - '127.0.0.1:4645:443'
-          #- "{{ports.stdout}}4645:443"
+          - '127.0.0.0.1:4645:443'
         env:
           PUID: 1000
           PGID: 1000
-        volumes:
-          - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/nextcloud/data:/data'
-          - '/opt/appdata/nextcloud/conf:/config'
-          - '{{path.stdout}}:{{path.stdout}}'
+        volumes: '{{pg_volumes}}'
         networks:
           - name: plexguide
             aliases:
               - next
         restart_policy: unless-stopped
         state: started
-        labels:
-          traefik.enable: 'true'
-
-          traefik.frontend.rule: 'Host:nextcloud.{{domain.stdout}},next.{{domain.stdout}}'
-          traefik.port: '443'
-          traefik.protocol: 'https'
+        labels: '{{pg_labels}}'
