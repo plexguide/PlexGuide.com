@@ -150,22 +150,3 @@
   when: not oauth.stdout == 'good'
 
 - debug: msg="OAuth - {{oauth.stdout}}"
-
-
-
-# MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
-- name: 'Check for old volumes'
-  stat:
-    path: '{{path.stdout}}/{{pgrole}}'
-  register: oldcheck
-
-- name: 'Migrations'
-  block:
-  - name: Creating new downloads location
-    path: '{{path.stdout}}/downloads/{{pgrole}}'
-    state: directory
-    owner: 1000
-    group: 1000
-    mode: 0755
-  when: oldcheck.stat.exists
-  ignore_errors: yes
