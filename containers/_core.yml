@@ -72,10 +72,10 @@
   ignore_errors: yes
 
 - name: 'Setting permissions on appdata'
-  shell: 'chown -R 1000:1000 /opt/appdata'
+  shell: 'chown -R 1000:1000 /opt/appdata/{{pgrole}}'
 
 - name: 'Setting permissions on appdata'
-  shell: 'chmod -R 775 /opt/appdata'
+  shell: 'chmod -R 775 /opt/appdata/{{pgrole}}'
 
 # OVERWRITE IMAGES #############################################################
 - name: Check if Image Variable Exists
