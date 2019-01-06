@@ -109,7 +109,7 @@
         regexp: '^InterDir\s*=.*'
         line: 'InterDir='
         state: present
-      when: incomplete.stdout is undefined
+      when: incomplete.stdout | length == 0
 
     - name: Set InterDir
       lineinfile:
@@ -117,7 +117,7 @@
         regexp: '^InterDir\s*=.*'
         line: 'InterDir={{incomplete.stdout}}/{{pgrole}}'
         state: present
-      when: incomplete.stdout is defined
+      when: incomplete.stdout | length > 0
 
     - name: Set TempDir
       lineinfile:

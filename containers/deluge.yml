@@ -119,7 +119,7 @@
             regexp: '"download_location.+"'
             line: '"download_location": "{{path.stdout}}/downloads/{{pgrole}}",'
             state: present
-          when: incomplete.stdout is undefined
+          when: incomplete.stdout | length == 0
 
         - name: Set incomplete path
           lineinfile:
@@ -127,7 +127,7 @@
             regexp: '"download_location.+"'
             line: '"download_location": "{{path.stdout}}/incomplete/{{pgrole}}",'
             state: present
-          when: incomplete.stdout is defined
+          when: incomplete.stdout | length > 0
 
         - name: Setting complete downloads directory
           lineinfile:
@@ -135,7 +135,7 @@
             regexp: '"move_completed_path.+"'
             line: '"move_completed_path": "{{path.stdout}}/downloads/{{pgrole}}",'
             state: present
-          when: incomplete.stdout is defined
+          when: incomplete.stdout | length > 0
 
         - name: Setting torrent file directory
           lineinfile:
@@ -157,7 +157,7 @@
             regexp: '"move_completed.+"'
             line: '"move_completed": false,'
             state: present
-          when: incomplete.stdout is undefined
+          when: incomplete.stdout | length == 0
 
         - name: Setting move on completion
           lineinfile:
@@ -165,7 +165,7 @@
             regexp: '"move_completed.+"'
             line: '"move_completed": true,'
             state: present
-          when: incomplete.stdout is defined
+          when: incomplete.stdout | length > 0
 
         - name: Setting extractor folder
           lineinfile:

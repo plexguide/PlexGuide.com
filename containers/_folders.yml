@@ -17,13 +17,13 @@
         - '{{incomplete.stdout}}/{{pgrole}}/ebooks'
         - '{{incomplete.stdout}}/{{pgrole}}/abooks'
         - '{{incomplete.stdout}}/{{pgrole}}/xxx'
-      when: incomplete.stdout is defined
+      when: incomplete.stdout | length > 0
       ignore_errors: yes
 
       
     - name: 'Moving downloads to new location'
       command: 'mv {{path.stdout}}/incomplete/{{pgrole}}/* {{path.stdout}}/downloads/{{pgrole}}/'
-      when: incomplete.stdout is undefined
+      when: incomplete.stdout | length == 0
       ignore_errors: yes
 
 

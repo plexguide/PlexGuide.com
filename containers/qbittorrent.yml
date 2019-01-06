@@ -97,7 +97,7 @@
         option: Downloads\TempPath
         value: '{{incomplete.stdout}}/{{pgrole}}'
         state: present
-      when: incomplete.stdout is defined
+      when: incomplete.stdout | length > 0
 
     - name: Set TempPath when incomplete is undefined
       ini_file:
@@ -106,7 +106,7 @@
         option: Downloads\TempPath
         value: '{{path.stdout}}/incomplete/{{pgrole}}'
         state: present
-      when: incomplete.stdout is undefined
+      when: incomplete.stdout | length == 0
 
     - name: Set TempPathEnabled when incomplete is undefined
       ini_file:
@@ -115,7 +115,7 @@
         option: Downloads\TempPathEnabled
         value: false
         state: present
-      when: incomplete.stdout is undefined
+      when: incomplete.stdout | length == 0
 
 
     # FIRST TIME CONFIGURATION ####################################################
