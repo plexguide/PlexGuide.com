@@ -83,25 +83,25 @@
         name: '{{pgrole}}'
         state: stopped
 
-    - name: Disabling incomplete handling, incomplete location is not set.
+    - name: Set download_dir when incomplete is undefined
       ini_file:
         path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
         section: misc
-        option: complete_dir
-        value: '{{path.stdout}}/downloads/{{pgrole}}'
+        option: download_dir 
+        value: '{{path.stdout}}/incomplete/{{pgrole}}'
         state: present
       when: incomplete.stdout is undefined
 
-    - name: Set download location
+    - name: Set download_dir  when incomplete is undefined
       ini_file:
         path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
         section: misc
-        option: complete_dir
-        value: '{{path.stdout}}/downloads/{{pgrole}}'
+        option: download_dir 
+        value: '{{incomplete.stdout}}/{{pgrole}}'
         state: present
       when: incomplete.stdout is defined
 
-    - name: Set download location
+    - name: Set complete_dir
       ini_file:
         path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
         section: misc
