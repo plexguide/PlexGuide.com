@@ -57,6 +57,7 @@
           - '/dev/shm:/ram_transcode'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
+          - '/mnt/unionfs:/unionfs'
 
     - name: 'Establish Key Variables'
       set_fact:
