@@ -251,10 +251,10 @@ tee <<-EOF
 EOF
 
 ### Removes /mnt if /mnt/unionfs exists
-check=$(echo $typed | head -c 12)
-if [ "$check" == "/mnt/unionfs" ]; then
-typed=${typed:4}
-fi
+#check=$(echo $typed | head -c 12)
+#if [ "$check" == "/mnt/unionfs" ]; then
+#typed=${typed:4}
+#fi
 
 echo "$typed" > /var/plexguide/pgtrak.spath
 read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
@@ -341,10 +341,10 @@ tee <<-EOF
 EOF
 
 ### Removes /mnt if /mnt/unionfs exists
-check=$(echo $typed | head -c 12)
-if [ "$check" == "/mnt/unionfs" ]; then
-typed=${typed:4}
-fi
+#check=$(echo $typed | head -c 12)
+#if [ "$check" == "/mnt/unionfs" ]; then
+#typed=${typed:4}
+#fi
 
 echo "$typed" > /var/plexguide/pgtrak.rpath
 read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
