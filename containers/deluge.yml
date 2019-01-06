@@ -59,10 +59,6 @@
           PUID: 1000
           PGID: 1000
 
-    # FOLDER CREATION #############################################################
-    - name: 'Including folders'
-      include_tasks: '/opt/plexguide/containers/_folders.yml'
-
     # MAIN DEPLOYMENT #############################################################
     - name: 'Deploying {{pgrole}}'
       docker_container:
