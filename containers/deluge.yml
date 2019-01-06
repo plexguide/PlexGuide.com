@@ -114,7 +114,7 @@
             state: present
 
 
-        - name: Setting downloads directory
+        - name: Set download location
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
             regexp: '"download_location"'
@@ -122,7 +122,7 @@
             state: present
           when: incomplete.stdout is undefined
 
-        - name: Setting incomplete downloads directory
+        - name: Set incomplete path
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
             regexp: '"download_location"'

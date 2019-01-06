@@ -72,12 +72,17 @@
         labels: '{{pg_labels}}'
 
     # CONFIGURATION ####################################################
+    - name: 'Wating for {{pgrole}} to start'
+      wait_for:
+      path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+      state: present
+      
     - name: 'Stopping {{pgrole}}'
       docker_container:
         name: '{{pgrole}}'
         state: stopped
 
-    - name: Set download path
+    - name: Set download location
       ini_file:
         path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
         section: Preferences
@@ -103,13 +108,6 @@
       when: incomplete.stdout is undefined
 
     # FIRST TIME CONFIGURATION ####################################################
-    - name: 'Configuring {{pgrole}} for first time use'
-      block:
-        - name: 'Wating for {{pgrole}} to start'
-          wait_for:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
-            state: present
-
     - name: 'Configuring {{pgrole}} for first time use'
       block:
         - name: Enable AutoRun

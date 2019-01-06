@@ -100,7 +100,7 @@
       mode: 0755
       when: incomplete.stdout is defined
 
-    - name: Set download Location
+    - name: Set download location
       ini_file:
         path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
         section: misc

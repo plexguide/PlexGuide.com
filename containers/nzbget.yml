@@ -98,7 +98,7 @@
         line: 'MainDir=/config'
         state: present
 
-    - name: Set Download Location
+    - name: Set download location
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
         regexp: '^DestDir\s*=.*'
