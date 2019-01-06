@@ -104,7 +104,8 @@
         path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
         section: Preferences
         option: Downloads\TempPath
-        state: absent
+        value:
+        state: present
       when: incomplete.stdout is undefined
 
     # FIRST TIME CONFIGURATION ####################################################

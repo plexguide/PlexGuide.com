@@ -33,10 +33,10 @@
   register: path
   ignore_errors: True
 
-- name: Register incomplete Path
-  shell: 'cat /var/plexguide/server.incomplete.path'
-  register: incomplete
-  ignore_errors: True
+# - name: Register incomplete Path
+#   shell: 'cat /var/plexguide/server.incomplete.path'
+#   register: incomplete
+#   ignore_errors: True
 
 - name: Register Auth Path
   shell: 'cat /var/plexguide/server.ht'
