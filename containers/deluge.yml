@@ -230,7 +230,7 @@
 
         - name: Setting extractor
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/plguins/extractor.conf'
+            path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
             regexp: '"extract_path"'
             line: '"extract_path": "{{path.stdout}}/downloads/deluge"'
             state: present
