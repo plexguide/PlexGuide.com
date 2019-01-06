@@ -77,6 +77,23 @@
         path: /opt/appdata/{{pgrole}}/core.conf
       register: inicheck
 
+    - name: 'Create plugins directory for {{pgrole}}'
+      file:
+        path: /opt/appdata/{{pgrole}}/plugins
+        state: directory
+        owner: 1000
+        group: 1000
+        mode: 0755
+
+    - name: 'Copy plugins into directory for {{pgrole}}'
+      copy:
+        src: ./templates/{{pgrole}}/plugins
+        dest: /opt/appdata/{{pgrole}}
+        directory_mode: yes
+        force: yes
+        owner: 1000
+        group: 1000
+        mode: 0755
     # LABELS ######################################################################
 
     - name: 'Adding Traefik'
@@ -114,24 +131,6 @@
       copy:
         src: ./templates/deluge_extract.sh
         dest: /opt/appdata/{{pgrole}}/scripts
-        directory_mode: yes
-        force: yes
-        owner: 1000
-        group: 1000
-        mode: 0755
-
-    - name: 'Create plugins directory for {{pgrole}}'
-      file:
-        path: /opt/appdata/{{pgrole}}/plugins
-        state: directory
-        owner: 1000
-        group: 1000
-        mode: 0755
-
-    - name: 'Copy plugins into directory for {{pgrole}}'
-      copy:
-        src: ./templates/{{pgrole}}/plugins
-        dest: /opt/appdata/{{pgrole}}
         directory_mode: yes
         force: yes
         owner: 1000
