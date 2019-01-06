@@ -41,8 +41,6 @@
     - name: 'Setting PG ENV'
       set_fact:
         pg_env:
-          PUID: 1000
-          PGID: 1000
           GIDLIST: '1000'
 
     # MAIN DEPLOYMENT #############################################################
@@ -56,6 +54,7 @@
         name: '{{pgrole}}'
         image: '{{image}}'
         pull: yes
+        user: 1000:1000
         published_ports:
           - '{{ports.stdout}}{{extport}}:{{intport}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
