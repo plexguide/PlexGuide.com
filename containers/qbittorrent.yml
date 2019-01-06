@@ -82,7 +82,7 @@
         name: '{{pgrole}}'
         state: stopped
 
-    - name: Set download location
+    - name: Set SavePath
       ini_file:
         path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
         section: Preferences
@@ -90,7 +90,7 @@
         value: '{{path.stdout}}/downloads/{{pgrole}}'
         state: present
 
-    - name: Set incomplete path
+    - name: Set TempPath when incomplete is defined
       ini_file:
         path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
         section: Preferences
@@ -99,14 +99,24 @@
         state: present
       when: incomplete.stdout is defined
 
-    - name: Set incomplete path
+    - name: Set TempPath when incomplete is undefined
       ini_file:
         path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
         section: Preferences
         option: Downloads\TempPath
-        value:
+        value: '{{path.stdout}}/incomplete/{{pgrole}}'
         state: present
       when: incomplete.stdout is undefined
+
+    - name: Set TempPathEnabled when incomplete is undefined
+      ini_file:
+        path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+        section: Preferences
+        option: Downloads\TempPathEnabled
+        value: false
+        state: present
+      when: incomplete.stdout is undefined
+
 
     # FIRST TIME CONFIGURATION ####################################################
     - name: 'Configuring {{pgrole}} for first time use'
@@ -159,13 +169,13 @@
             value: 1
             state: present
 
-        # - name: Use incomplete extension
-        #   ini_file:
-        #     path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
-        #     section: Preferences
-        #     option: Downloads\UseIncompleteExtension
-        #     value: true
-        #     state: present
+        - name: Use incomplete extension
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            section: Preferences
+            option: Downloads\UseIncompleteExtension
+            value: false
+            state: present
 
         - name: Ignore slow torrents
           ini_file:
