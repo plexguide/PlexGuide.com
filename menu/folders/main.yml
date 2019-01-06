@@ -30,6 +30,11 @@
       register: path
       ignore_errors: True
 
+    - name: Register HD Path
+      shell: "cat /var/plexguide/server.hd.path"
+      register: path
+      ignore_errors: True
+
     - name: Register Auth Path
       shell: "cat /var/plexguide/server.ht"
       register: auth
@@ -181,16 +186,6 @@
       when: encrypt.stat.exists == False
       ignore_errors: yes
 
-    - name: Create NZB Directories
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
-      with_items:
-        - "{{path.stdout}}/incomplete/nzbget"
-        - "{{path.stdout}}/downloads/nzbget/movies"
-        - "{{path.stdout}}/downloads/nzbget/music"
-        - "{{path.stdout}}/downloads/nzbget/tv"
-        - "{{path.stdout}}/downloads/nzbget/xxx"
-        - "{{path.stdout}}/downloads/nzbget/ebooks"
-
     - name: Create Basic Directories
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
       with_items:
@@ -198,51 +193,13 @@
         - "/var/plexguide"
         - "/mnt/move"
         - "/var/plexguide/logs"
-        - "{{path.stdout}}/pgops"
-        - "{{path.stdout}}/downloads"
-        - "{{path.stdout}}/incomplete"
         - /opt/appdata/pgblitz/keys/unprocessed
         - /opt/appdata/pgblitz/keys/processed
         - /opt/appdata/pgblitz/keys/badjson
+        - "{{path.stdout}}/pgops"
         - "{{path.stdout}}/pgblitz"
+        - "{{path.stdout}}/downloads"
         - "{{path.stdout}}/nzb"
         - "{{path.stdout}}/torrent"
-        - "{{path.stdout}}/torrent/watch"
-        - "{{path.stdout}}/downloads/qbittorrent"
-        - "{{path.stdout}}/downloads/qbittorrent/ebooks"
-        - "{{path.stdout}}/downloads/qbittorrent/tv"
-        - "{{path.stdout}}/downloads/qbittorrent/movies"
-        - "{{path.stdout}}/downloads/qbittorrent/music"
-        - "{{path.stdout}}/downloads/qbittorrent/xxx"
-        - "{{path.stdout}}/incomplete/qbittorrent"
-        - "{{path.stdout}}/downloads/deluge"
-        - "{{path.stdout}}/downloads/deluge/ebooks"
-        - "{{path.stdout}}/downloads/deluge/tv"
-        - "{{path.stdout}}/downloads/deluge/movies"
-        - "{{path.stdout}}/downloads/deluge/music"
-        - "{{path.stdout}}/downloads/deluge/xxx"
-        - "{{path.stdout}}/downloads/ebooks"
-        - "{{path.stdout}}/incomplete/deluge"
-        - "{{path.stdout}}/downloads/rutorrent"
-        - "{{path.stdout}}/downloads/rutorrent"
-        - "{{path.stdout}}/downloads/rutorrent/ebooks"
-        - "{{path.stdout}}/downloads/rutorrent/tv"
-        - "{{path.stdout}}/downloads/rutorrent/movies"
-        - "{{path.stdout}}/downloads/rutorrent/music"
-        - "{{path.stdout}}/downloads/rutorrent/xxx"
-        - "{{path.stdout}}/incomplete/rutorrent"
         - "{{path.stdout}}/move"
-        - "{{path.stdout}}/move/tv"
-        - "{{path.stdout}}/move/movies"
-        - "{{path.stdout}}/move/music"
-        - "{{path.stdout}}/move/ebooks"
-        - "{{path.stdout}}/move/abooks"
-        - "{{path.stdout}}/move/xxx"
-        - "{{path.stdout}}/downloads/sabnzbd"
-        - "{{path.stdout}}/incomplete/sabnzbd"
-        - "{{path.stdout}}/downloads/sabnzbd/tv"
-        - "{{path.stdout}}/downloads/sabnzbd/movies"
-        - "{{path.stdout}}/downloads/sabnzbd/music"
-        - "{{path.stdout}}/downloads/sabnzbd/ebooks"
-        - "{{path.stdout}}/downloads/sabnzbd/xxx"
       ignore_errors: yes

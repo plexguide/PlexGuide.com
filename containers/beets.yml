@@ -51,7 +51,7 @@
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
-    - name: ConfCheck
+    - name: 'Checking for existing app data'
       stat:
         path: '/opt/appdata/{{pgrole}}/config.yaml'
       register: confcheck

@@ -19,6 +19,8 @@ echo "plexguide.com" > /var/plexguide/server.domain
 echo "1.1.1.1" > /var/plexguide/server.ip
 echo "" > /var/plexguide/server.ports
 echo "/mnt" > /var/plexguide/server.hd.path
+echo "/mnt/downloads" > /var/plexguide/server.completed.path
+echo "" > /var/plexguide/server.processing.path
 echo "" > /var/plexguide/server.ht
 echo "portainer" > /var/plexguide/tld.program
 echo "1" > /var/plexguide/pg.ansible.stored

@@ -21,6 +21,10 @@
     - name: 'Including cron job'
       include_tasks: '/opt/plexguide/containers/_core.yml'
 
+    # FOLDER CREATION #############################################################
+    - name: 'Including folders'
+      include_tasks: '/opt/plexguide/containers/_folders.yml'
+
     - name: 'Checking for existing app data'
       stat:
         path: /opt/appdata/{{pgrole}}/config.ini
@@ -104,21 +108,21 @@
             value: '{{path.stdout}}/downloads'
             state: present
 
-        - name: Set user
-          ini_file:
-            path: '/opt/appdata/{{pgrole}}/config.ini'
-            section: General
-            option: http_user
-            value: plex
-            state: present
+        # - name: Set user
+        #   ini_file:
+        #     path: '/opt/appdata/{{pgrole}}/config.ini'
+        #     section: General
+        #     option: http_user
+        #     value: plex
+        #     state: present
 
-        - name: Set pass
-          ini_file:
-            path: '/opt/appdata/{{pgrole}}/config.ini'
-            section: General
-            option: http_pass
-            value: guide
-            state: present
+        # - name: Set pass
+        #   ini_file:
+        #     path: '/opt/appdata/{{pgrole}}/config.ini'
+        #     section: General
+        #     option: http_pass
+        #     value: guide
+        #     state: present
 
         - name: Enable audio tab
           ini_file:
@@ -400,4 +404,4 @@
           docker_container:
             name: '{{pgrole}}'
             state: started
-      when: not inicheck.stat.exists
+#      when: not inicheck.stat.exists

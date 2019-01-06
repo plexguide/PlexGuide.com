@@ -21,7 +21,7 @@
     - name: 'Including cron job'
       include_tasks: '/opt/plexguide/containers/_core.yml'
 
-    - name: 'Tautulli Check'
+    - name: 'Checking for existing app data'
       stat:
         path: /opt/appdata/tautulli/config.ini
       register: confcheck
@@ -79,19 +79,21 @@
             name: tautulli
             state: stopped
 
-        #- name: Default User
-        #  lineinfile:
-        #    path: "/opt/appdata/tautulli/config.ini"
-        #    regexp: '^http_username\s?='
-        #    line: "http_username = plex"
-        #    state: present
+        # - name: set http_username
+        #   ini_file:
+        #     path: '/opt/appdata/{{pgrole}}/config.ini'
+        #     section: misc
+        #     option: http_username
+        #     value: plex
+        #     state: present
 
-        #- name: Default Password
-        #  lineinfile:
-        #    path: "/opt/appdata/tautulli/config.ini"
-        #    regexp: 'http_password = ""'
-        #    line: "http_password = guide"
-        #    state: present
+        # - name: set http_password
+        #   ini_file:
+        #     path: '/opt/appdata/{{pgrole}}/config.ini'
+        #     section: misc
+        #     option: http_password
+        #     value: guide
+        #     state: present
 
         - name: Restart Container
           docker_container:

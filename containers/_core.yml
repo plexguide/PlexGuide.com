@@ -33,6 +33,16 @@
   register: path
   ignore_errors: True
 
+- name: Register downloads Path
+  shell: 'cat /var/plexguide/server.downloads.path'
+  register: downloads
+  ignore_errors: True
+
+- name: Register incomplete Path
+  shell: 'cat /var/plexguide/server.incomplete.path'
+  register: incomplete
+  ignore_errors: True
+
 - name: Register Auth Path
   shell: 'cat /var/plexguide/server.ht'
   register: auth
@@ -48,12 +58,23 @@
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
 
-# FOLDER #######################################################################
-- name: Create Folders
+# PLUGINS #######################################################################
+- name: Creating scripts and plugins paths
   file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
   with_items:
     - '/opt/appdata/{{pgrole}}/scripts'
     - '/opt/appdata/{{pgrole}}/plugins'
+
+- name: 'Copy any scripts and plugins into appdata directory for {{pgrole}}'
+  copy:
+    src: ./templates/{{pgrole}}
+    dest: /opt/appdata/{{pgrole}}
+    directory_mode: yes
+    force: yes
+    owner: 1000
+    group: 1000
+    mode: 0755
+  ignore_errors: yes
 
 # OVERWRITE IMAGES #############################################################
 - name: Check if Image Variable Exists
@@ -77,7 +98,7 @@
 
 - name: 'If Fact Matches - Enable TLD'
   set_fact:
-    tldset: '{{domain.stdout}}'
+    tldset: '{{}}'
   when: 'toplevel.stdout == pgrole'
 
 - debug: msg="TLDSET is now for {{toplevel.stdout}}"
@@ -129,3 +150,29 @@
   when: not oauth.stdout == 'good'
 
 - debug: msg="OAuth - {{oauth.stdout}}"
+
+
+
+# MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+- name: 'Check for old volumes'
+  stat:
+    path: '{{path.stdout}}/{{pgrole}}'
+  register: oldcheck
+
+- name: 'Migrations'
+  block:
+
+  - name: 'Creating new downloads location'
+    path: '{path.stdout}}/downloads/{{pgrole}}'
+    state: directory
+    owner: 1000
+    group: 1000
+    mode: 0755
+
+    # - name: Remove old download directory
+    #   file:
+    #     state: absent
+    #     path: "{{path.stdout}}/{{pgrole}}"
+
+  when: oldcheck.stat.exists
+  ignore_errors: yes

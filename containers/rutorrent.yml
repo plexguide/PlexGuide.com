@@ -30,11 +30,14 @@
 
     - name: 'Migrations'
       block:
-        - name: 'Creating new downloads location'
-          command: 'mkdir -p {{path.stdout}}/downloads/{{pgrole}}'
 
-        - name: 'Creating new incomplete downloads location'
-          command: 'mkdir -p {{path.stdout}}/incomplete/{{pgrole}}'
+        - name: 'Creating new downloads location'
+          file:
+            path: '{{path.stdout}}/downloads/{{pgrole}}'
+            state: directory
+            owner: 1000
+            group: 1000
+            mode: 0755
 
         - name: 'Moving downloads to new location'
           command: 'mv {{path.stdout}}/{{pgrole}}/* {{path.stdout}}/downloads/{{pgrole}}/'
