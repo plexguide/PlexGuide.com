@@ -1,5 +1,0 @@
-description: Add previously used labels to the add-torrent menu.
-author: thezwallrus
-version: 0.8
-runlevel: 11
-need_rtorrent: 0
