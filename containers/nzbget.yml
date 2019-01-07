@@ -270,7 +270,7 @@
             insertafter: '^### SCHEDULER'
 #      when: not confcheck.stat.exists
 
-    - name: Restart Container
+    - name: Restart {{pgrole}}
       docker_container:
         name: nzbget
         state: started

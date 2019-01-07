@@ -233,26 +233,30 @@
             value: 0
             state: present
 
-        # - name: Set default user - plexguide
-        #   ini_file:
-        #     path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
-        #     section: Preferences
-        #     option: WebUI\Username
-        #     value: plexguide
-        #     state: present
+        - name: Set default user - plexguide
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            section: Preferences
+            option: WebUI\Username
+            value:
+            allow_no_value: yes
+            force: yes
+            state: present
 
-        # - name: Set default pass - plexguide
-        #   ini_file:
-        #     path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
-        #     section: Preferences
-        #     option: WebUI\Password_ha1
-        #     value: '@ByteArray(ae571ae427114974f10305cfc62ae0a8)'
-        #     state: present
+        - name: Set default pass - plexguide
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            section: Preferences
+            option: WebUI\Password_ha1
+            value:
+            allow_no_value: yes
+            force: yes
+            state: present
 
       #when: not confcheck.stat.exists
 
       
-    - name: Restart Container
+    - name: Restart {{pgrole}}
       docker_container:
-        name: qbittorrent
+        name: '{{pgrole}}'
         state: started

@@ -217,7 +217,7 @@
           state: present
 #      when: not inicheck.stat.exists
 
-    - name: Restart Container
+    - name: Restart {{pgrole}}
       docker_container:
         name: '{{pgrole}}'
         state: started

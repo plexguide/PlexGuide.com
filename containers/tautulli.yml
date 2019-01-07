@@ -95,7 +95,7 @@
         #     value: guide
         #     state: present
 
-        - name: Restart Container
+        - name: Restart {{pgrole}}
           docker_container:
             name: tautulli
             state: started

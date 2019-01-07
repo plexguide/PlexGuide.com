@@ -400,7 +400,7 @@
                 value: 1
                 state: present
 
-        - name: Restart Container
+        - name: Restart {{pgrole}}
           docker_container:
             name: '{{pgrole}}'
             state: started
