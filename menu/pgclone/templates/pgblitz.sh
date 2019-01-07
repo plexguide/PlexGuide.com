@@ -36,7 +36,7 @@ while [ 1 ]; do
   if [ "$encheck" == "eblitz" ]; then keyuse=${keyuse}C; fi
 
   echo "Upload Test - Using $keyuse"
-  rclone moveto --tpslimit 12 --checkers=20 \
+  rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
         --transfers=16 \
         --drive-chunk-size=128M \
