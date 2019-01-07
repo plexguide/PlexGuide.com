@@ -28,7 +28,7 @@
     # FOLDER CREATION #############################################################
     - name: 'Including folders'
       include_tasks: '/opt/plexguide/containers/_folders.yml'
-      
+
     - name: 'Checking for existing app data'
       stat:
         path: /opt/appdata/{{pgrole}}/core.conf
@@ -77,21 +77,25 @@
         state: started
         labels: '{{pg_labels}}'
 
-    - name: 'Wait 7 Seconds'
+    - name: 'Wait 5 Seconds'
       wait_for:
-        timeout: 7
+        timeout: 5
 
     - name: Stop Container
       docker_container:
         name: '{{pgrole}}'
         state: stopped
 
+    - name: 'Wait 2 Seconds'
+      wait_for:
+        timeout: 2
+
     # CONFIGURATION ###########################################################
     - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
         path: '/opt/appdata/{{pgrole}}/core.conf'
         state: present
-  
+
     - name: 'Stopping {{pgrole}}'
       docker_container:
         name: '{{pgrole}}'
@@ -214,7 +218,35 @@
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
             regexp: '"enc_level".+'
-            line: '"enc_level": 2,'
+            line: '"enc_level": 1,'
+            state: present
+
+        - name: set enc_in_policy
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"enc_in_policy".+'
+            line: '"enc_in_policy": 1,'
+            state: present
+
+        - name: set enc_out_policy
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"enc_out_policy".+'
+            line: '"enc_out_policy": 1,'
+            state: present
+
+        - name: set max_active_downloading
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"max_active_downloading".+'
+            line: '"max_active_downloading": 4,'
+            state: present
+
+        - name: set dont_count_slow_torrents
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"dont_count_slow_torrents".+'
+            line: '"dont_count_slow_torrents": true,'
             state: present
 
         - name: set enabled_plugins
@@ -222,10 +254,29 @@
             path: '/opt/appdata/{{pgrole}}/core.conf'
             regexp: '"enabled_plugins".+'
             line: '"enabled_plugins": ["Extractor", "Label"],'
+        - name: set share_ratio_limit
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"share_ratio_limit".+'
+            line: '"share_ratio_limit": 1,'
             state: present
-          when: not confcheck.stat.exists
+
+        - name: set stop_seed_at_ratio
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"stop_seed_at_ratio".+'
+            line: '"stop_seed_at_ratio": true,'
+            state: present
+
+        - name: set stop_seed_at_ratio
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"stop_seed_at_ratio".+'
+            line: '"stop_seed_at_ratio": true,'
+            state: present
+
         #when: not confcheck.stat.exists
-        
+
     - name: Restart {{pgrole}}
       docker_container:
         name: '{{pgrole}}'
