@@ -49,7 +49,9 @@ while [ 1 ]; do
         --drive-chunk-size=128M \
         "/mnt/move/" "$keyuse:/"
 
+rm -rf /opt/appdata/plexguide/pgblitz.log
+
 # Remove empty directories (MrWednesday)
-find "/mnt/move/" -mindepth 2 -type d -empty -delete
+find "/mnt/move/" -mindepth 1 -type d -empty -delete
 
 done
