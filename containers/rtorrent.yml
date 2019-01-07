@@ -22,6 +22,10 @@
   - name: CronJob Role
     include_tasks: "/opt/plexguide/containers/_core.yml"
 
+  # FOLDER CREATION #############################################################
+  - name: 'Including folders'
+    include_tasks: '/opt/plexguide/containers/_folders.yml'
+
   - name: Checking for existing app data
     stat:
       path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
