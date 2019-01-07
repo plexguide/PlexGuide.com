@@ -76,30 +76,25 @@
               - '{{pgrole}}'
         state: started
         labels: '{{pg_labels}}'
+    # CONFIGURATION ###########################################################
 
-    - name: 'Wait 5 Seconds'
+    - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        timeout: 5
+        timeout: 10
 
-    - name: Stop Container
+    - name: Stopping {{pgrole}}
       docker_container:
         name: '{{pgrole}}'
         state: stopped
 
-    - name: 'Wait 2 Seconds'
+    - name: 'Waiting'
       wait_for:
-        timeout: 2
+        timeout: 3
 
-    # CONFIGURATION ###########################################################
-    - name: 'Waiting for {{pgrole}} to initialize'
+    - name: 'Checking for appdata'
       wait_for:
         path: '/opt/appdata/{{pgrole}}/core.conf'
         state: present
-
-    - name: 'Stopping {{pgrole}}'
-      docker_container:
-        name: '{{pgrole}}'
-        state: stopped
 
     - name: Setting plugins directory
       lineinfile:
