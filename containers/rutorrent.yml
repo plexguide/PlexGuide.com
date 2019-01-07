@@ -155,7 +155,7 @@
         - name: max_peers
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'min_peers.+'
+            regexp: 'max_peers.+'
             line: 'max_peers = 1200'
             state: present
 
