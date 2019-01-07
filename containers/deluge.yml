@@ -79,9 +79,9 @@
         state: started
         labels: '{{pg_labels}}'
 
-    - name: 'Wait 6 Seconds'
+    - name: 'Wait 7 Seconds'
       wait_for:
-        timeout: 6
+        timeout: 7
 
     - name: Stop Container
       docker_container:
@@ -105,14 +105,14 @@
         - name: Setting plugins directory
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"plugins_location"'
+            regexp: '"plugins_location".+'
             line: '"plugins_location": "/config/plugins",'
             state: present
 
         - name: Set download location
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"download_location"'
+            regexp: '"download_location".+'
             line: '"download_location": "{{path.stdout}}/downloads/{{pgrole}}",'
             state: present
           when: incomplete.stdout | length == 0
@@ -120,7 +120,7 @@
         - name: Set incomplete path
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"download_location"'
+            regexp: '"download_location".+'
             line: '"download_location": "{{path.stdout}}/incomplete/{{pgrole}}",'
             state: present
           when: incomplete.stdout | length > 0
@@ -128,7 +128,7 @@
         - name: Setting complete downloads directory
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"move_completed_path"'
+            regexp: '"move_completed_path".+'
             line: '"move_completed_path": "{{path.stdout}}/downloads/{{pgrole}}",'
             state: present
           when: incomplete.stdout | length > 0
@@ -136,21 +136,21 @@
         - name: Setting torrent file directory
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"torrentfiles_location"'
+            regexp: '"torrentfiles_location".+'
             line: '"torrentfiles_location": "{{path.stdout}}/torrent",'
             state: present
 
         - name: Setting torrent watch directory
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"autoadd_location"'
+            regexp: '"autoadd_location".+'
             line: '"autoadd_location": "{{path.stdout}}/torrent/watch",'
             state: present
 
         - name: Setting move_completed when incomplete is undefined
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"move_completed"'
+            regexp: '"move_completed".+'
             line: '"move_completed": false,'
             state: present
           when: incomplete.stdout | length == 0
@@ -158,7 +158,7 @@
         - name: Setting move_completed when incomplete is defined
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"move_completed"'
+            regexp: '"move_completed".+'
             line: '"move_completed": true,'
             state: present
           when: incomplete.stdout | length > 0
@@ -166,14 +166,14 @@
         - name: Setting extractor folder
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"use_name_folder"'
+            regexp: '"use_name_folder".+'
             line: '"use_name_folder": true,'
             state: present
 
         - name: Setting extractor
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"extract_path"'
+            regexp: '"extract_path".+'
             line: '"extract_path": "{{path.stdout}}/downloads/deluge"'
             state: present
 
@@ -183,49 +183,49 @@
         - name: set compact_allocation
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"compact_allocation"'
+            regexp: '"compact_allocation".+'
             line: '"compact_allocation": true,'
             state: present
 
         - name: set stop_seed_ratio"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"stop_seed_ratio""'
+            regexp: '"stop_seed_ratio"".+'
             line: '"stop_seed_ratio": 1.0,'
             state: present
 
         - name: set share_ratio_limit"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"share_ratio_limit"'
+            regexp: '"share_ratio_limit".+'
             line: '"share_ratio_limit": 1.0,'
             state: present
 
         - name: set remove_seed_at_ratio"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"remove_seed_at_ratio"'
+            regexp: '"remove_seed_at_ratio".+'
             line: '"remove_seed_at_ratio": true,'
             state: present
 
         - name: set enc_prefer_rc4"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"enc_prefer_rc4"'
+            regexp: '"enc_prefer_rc4".+'
             line: '"enc_prefer_rc4": true,'
             state: present
 
         - name: set enc_level"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"enc_level"'
+            regexp: '"enc_level".+'
             line: '"enc_level": 2,'
             state: present
 
         - name: set enabled_plugins"
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"enabled_plugins"'
+            regexp: '"enabled_plugins".+'
             line: '"enabled_plugins": ["Extractor", "Label"],'
             state: present
           when: not confcheck.stat.exists
