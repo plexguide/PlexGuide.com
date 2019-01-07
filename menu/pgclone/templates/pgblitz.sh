@@ -39,7 +39,17 @@ while [ 1 ]; do
   rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
         --transfers=16 \
+        --max-transfer=250G \
+        --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
+        --exclude='**partial~' --exclude=".unionfs-fuse/**" \
+        --checkers=16 --max-size=99G \
+        --stats-one-line --stats=1s --progress \
+        --log-file=/opt/appdata/plexguide/pgblitz.log \
+        --log-level INFO --stats 5s \
         --drive-chunk-size=128M \
         "/mnt/move/" "$keyuse:/"
+
+# Remove empty directories (MrWednesday)
+find "/mnt/move/" -mindepth 2 -type d -empty -delete
 
 done
