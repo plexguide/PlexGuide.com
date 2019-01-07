@@ -50,3 +50,9 @@
       npm: "name={{item}} global=yes"
       with_items:
         - frontail
+
+    - name: Install lolcat pip module
+      pip:
+        name: lolcat
+        state: latest
+      ignore_errors: yes
