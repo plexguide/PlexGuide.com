@@ -10,7 +10,6 @@
   gather_facts: false
   tasks:
     # FACTS #######################################################################
-
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'rutorrent'
@@ -21,6 +20,10 @@
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
       include_tasks: '/opt/plexguide/containers/_core.yml'
+
+  # FOLDER CREATION #############################################################
+  - name: 'Including folders'
+    include_tasks: '/opt/plexguide/containers/_folders.yml'
 
     - name: Checking for existing app data
       stat:

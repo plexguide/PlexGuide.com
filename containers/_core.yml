@@ -60,7 +60,7 @@
     - '/opt/appdata/{{pgrole}}/scripts'
     - '/opt/appdata/{{pgrole}}/plugins'
 
-- name: 'Copy any scripts and plugins into appdata directory for {{pgrole}}'
+- name: 'Copy any scripts and plugins into appdata directory for {{pgrole}}  - This may take up to a few minutes'
   copy:
     src: ./templates/{{pgrole}}
     dest: /opt/appdata
