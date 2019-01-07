@@ -143,6 +143,12 @@
           line: 'system.file.allocate.set = 0'
           state: present
 
+      - name: scgi_port
+        lineinfile:
+          path: '/opt/appdata/{{pgrole}}/config/rtorrent.rc'
+          regexp: 'scgi_port .+'
+          line: 'scgi_port = 127.0.0.1:5000'
+          state: present
   - name: Restart Docker Container
     docker_container:
       name: '{{pgrole}}'
