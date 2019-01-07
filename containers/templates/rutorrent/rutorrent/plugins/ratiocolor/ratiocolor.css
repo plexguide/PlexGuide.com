@@ -1,0 +1,12 @@
+#ratiocolorLevelsbar {
+    width:100%;
+    height: 30px;
+}
+
+#ratiocolorLevelsbar .level {
+    height: 30px;
+    float:left;
+    padding:0;
+    text-align: right;
+    vertical-align: middle;
+}

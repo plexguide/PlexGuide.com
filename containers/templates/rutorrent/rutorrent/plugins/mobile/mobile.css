@@ -1,0 +1,188 @@
+/*** General ***/
+html, body {
+  overflow: visible;
+}
+a, button, tr, select, input, label {
+  -webkit-tap-highlight-color: transparent;
+}
+div input {
+  margin: 0px;
+}
+select {
+  width:auto;
+}
+.hiddenPath {
+  display: none;
+}
+.table {
+  margin-bottom: 0;
+}
+.icon-white {
+  color: white;
+}
+.icon-black {
+  color: black;
+}
+a:hover, a:focus {
+  color: #428bca;
+  outline: none;
+  text-decoration: none;
+}
+#mainContainer {
+  background-color: #fff;
+  padding: 39px 3px 51px 3px;
+  margin: 0;
+}
+.progress .progress-bar {
+  white-space: nowrap;
+  text-shadow:1px 1px 3px #000
+}
+h5, #detailsTrackersPage a, #detailsFilesPage a, #detailsDetailsPage #label td, .nav a, #getDirList td {
+  word-break:break-all;
+}
+
+
+/*** navbar bottom ***/
+.navbar .nav > li {
+  float: left;
+  margin-right: 15px;
+}
+.navbar .nav > li:last-child {
+  margin-right: 0px;
+}
+.navbar .nav > li > a, .navbar .nav > li > a:hover, .navbar .nav > li > a:focus {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0;
+  font-size: 14px;
+  background-color: transparent;
+  height: 50px;
+}
+.navbar .nav > li > div > span {
+  position: relative;
+  top: -2px;
+  font-size: 70%;
+  color: #fff;
+  line-height: 0;
+}
+.navbar .nav > li > div > i {
+  margin-top: 7px;
+  margin-right: 2px;
+}
+.navbar .divider-vertical {
+  height: 50px;
+  margin: 0 15px 0 0;
+  border-right: 1px solid #323232;
+  border-left: 1px solid #111111;
+}
+
+
+/*** navtabs top ***/
+.nav-tabs {
+  background-color: #fff;
+  padding: 3px 3px 0 3px;
+}
+#torrentsList .nav {
+  white-space: nowrap;
+  font-size: 0;
+}
+#torrentsList .nav > li > a {
+  margin-right: 1px;
+}
+#torrentsList .nav > li > a > span {
+  float: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#torrentsList .nav > li > a > .caret {
+  position: relative;
+  display: inline;
+  top: 9px;
+}
+.nav-tabs .open .dropdown-toggle {
+  color: #fff !important;
+  background-color: #999 !important;
+  border-color: #999 !important;
+}
+.nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+.nav-tabs #sort {
+  float: right;
+}
+.nav-tabs #sort #sortIcon i {
+  color: #428bca;
+}
+
+
+/*** Torrent Details ***/
+#torrentDetailsHeader, #detailsTrackersPage, #detailsFilesPage {
+  padding-top: 9px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+#torrentDetails #detailsDetailsPage tr td:first-child {
+  white-space: nowrap;
+}
+#torrentDetails #detailsDetailsPage #label input {
+  display: inline;
+  height: 24px;
+  width: 139px;
+  padding-top: 5px;
+  vertical-align: middle;
+}
+#torrentDetails #detailsFilesPage > div {
+  min-height: 24px;
+}
+#torrentDetails #detailsFilesPage > div a {
+  display: block;
+  padding-top: 4px;
+}
+#torrentDetails #detailsFilesPage button {
+  margin-left: 4px;
+}
+
+
+/*** Add Torrent ***/
+#addTorrent {
+  margin-top: -20px;
+}
+#addTorrent #showGetDir {
+  height: 34px;
+}
+
+
+/*** Get Dir List ***/
+#getDirList {
+  margin-top: -20px;
+}
+#getDirList h5 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+#getDirList button {
+  margin-left: 8px;
+  margin-bottom: 15px;
+}
+#getDirList td {
+  padding: 14px;
+}
+
+/*** Torrent Sort ***/
+#torrentSort {
+  margin-top: -20px;
+}
+
+
+/*** Global Settings ***/
+#globalSettings {
+  margin-top: -20px;
+}
+
+
+/*** Confirm Delete ***/
+#confimTorrentDelete #confirmText {
+  word-break: normal;
+}

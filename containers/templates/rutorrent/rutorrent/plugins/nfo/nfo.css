@@ -1,0 +1,11 @@
+div#dlg_nfo div.dlg-header {
+	background-image: url(./images/nfo.png)
+}
+#dlg_nfo #nfo_text {
+	overflow: scroll;
+	height: 400px;
+}
+#dlg_nfo #nfo_text pre {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 9pt;
+}

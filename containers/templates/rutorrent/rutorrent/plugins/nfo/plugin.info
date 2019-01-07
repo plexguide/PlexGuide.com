@@ -1,0 +1,6 @@
+plugin.description: This plugin displays .nfo files.
+plugin.author: AceP1983/soupnazi/HWK
+plugin.version: 3.6
+rtorrent.remote: error
+rtorrent.external.error: php
+plugin.runlevel: 12
