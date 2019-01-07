@@ -13,8 +13,8 @@
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'nzbhydra'
-        intport: '5076'
-        extport: '5076'
+        intport: '5075'
+        extport: '5075'
         image: 'linuxserver/hydra2'
 
     # CORE (MANDATORY) ############################################################
