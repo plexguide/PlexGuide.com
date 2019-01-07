@@ -147,8 +147,9 @@
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
           regexp: 'scgi_port .+'
-          line: 'scgi_port = 127.0.0.1:5000'
+          line: 'scgi_port = 0.0.0.0:5000'
           state: present
+          
   - name: Restart Docker Container
     docker_container:
       name: '{{pgrole}}'
