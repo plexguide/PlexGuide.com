@@ -222,20 +222,6 @@
             line: 'peer_exchange = no'
             state: present
 
-        - name: Network http SSL Peer
-          lineinfile:
-            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'network.http.ssl_verify_peer.set.+'
-            line: 'network.http.ssl_verify_peer.set=0'
-            state: present
-
-        - name: Network http SSL Host
-          lineinfile:
-            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'network.http.ssl_verify_host.set.+'
-            line: 'network.http.ssl_verify_host.set = 0'
-            state: present
-
         - name: Preload Piece to Host
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
