@@ -80,16 +80,26 @@
 
     - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        timeout: 10
+        timeout: 7
 
     - name: Stopping {{pgrole}}
       docker_container:
         name: '{{pgrole}}'
         state: stopped
 
+    - name: Starting {{pgrole}}
+      docker_container:
+        name: '{{pgrole}}'
+        state: started
+
     - name: 'Waiting'
       wait_for:
-        timeout: 3
+        timeout: 7
+
+    - name: Stopping {{pgrole}}
+      docker_container:
+        name: '{{pgrole}}'
+        state: stopped
 
     - name: 'Checking for appdata'
       wait_for:
