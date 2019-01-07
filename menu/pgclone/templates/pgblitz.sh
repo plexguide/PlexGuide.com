@@ -17,30 +17,29 @@ dlpath=$(cat /var/plexguide/server.hd.path)
 mkdir -p /$dlpath/pgblitz/upload
 
 # Inside Variables
-GDSAARRAY=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa`)
-
 keyarray=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa`)
 keycount=`expr ${#keyarray[@]}`
+keystart=`expr ${#keyarray[@]}`
+keyuse=`expr ${#keyarray[@]}`
 
-keystart=$keyarray
-keyuse=$keystart
 keylast=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa | tail -n1`)
 
-#while [ 1 ]; do
+while [ 1 ]; do
 
-  if [ "$keylast" == "$keyuse" ]; then keyuse=$keystart; fi
+  #if [ "$keylast" == "$keyuse" ]; then keyuse=$keystart; fi
 
+  #encheck=$(cat /var/plexguide/pgclone.transport)
+  #if [ "$encheck" == "eblitz" ]; then keyuse=${keyuse}C; fi
+
+  echo "Upload Test - Using $keyuse"
   rclone moveto --tpslimit 12 --checkers=20 \
         --config /opt/appdata/plexguide/rclone.conf \
         --transfers=16 \
-        #--log-file=$LOGFILE --log-level INFO --stats 2s \
         --drive-chunk-size=128M \
-        "$dlpath/pgblitz/upload/*" "$keyuse:/"
+        "/mnt/move/" "$keyuse:/"
 
-#  keyuse=`expr $keyuse + 1`
-#done
-
-
+  keyuse=`expr $keyuse + 1`
+done
 
 # Run Loop
 while [ 1 ]
