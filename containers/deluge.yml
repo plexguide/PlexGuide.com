@@ -80,7 +80,7 @@
 
     - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        timeout: 7
+        timeout: 10
 
     - name: Stopping {{pgrole}}
       docker_container:
@@ -94,7 +94,7 @@
 
     - name: 'Waiting'
       wait_for:
-        timeout: 7
+        timeout: 10
 
     - name: Stopping {{pgrole}}
       docker_container:
@@ -278,14 +278,14 @@
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
             regexp: '"stop_seed_at_ratio".+'
-            line: '"stop_seed_at_ratio": true,'
+            line: '"stop_seed_at_ratio": 1.0,'
             state: present
 
-        - name: set stop_seed_at_ratio
+        - name: set seed_time_ratio_limit
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"stop_seed_at_ratio".+'
-            line: '"stop_seed_at_ratio": true,'
+            regexp: '"seed_time_ratio_limit".+'
+            line: '"seed_time_ratio_limit": 1.0,'
             state: present
 
         #when: not confcheck.stat.exists
