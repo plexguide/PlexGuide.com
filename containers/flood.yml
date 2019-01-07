@@ -35,7 +35,7 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/data"
-        - "/opt/appdata/rtorrent/socket/rtorrent.sock:/rtorrent.sock"
+        - "/opt/appdata/rtorrent/socket:/socket"    
         - "{{path.stdout}}:{{path.stdout}}"
         - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
