@@ -34,7 +34,7 @@
   - name: "Setting PG Volumes"
     set_fact:
       pg_volumes:
-        - "/opt/appdata/{{pgrole}}:/data"
+        - "/opt/appdata/{{pgrole}}:/flood-db"
         - "/opt/appdata/rtorrent/socket:/socket"    
         - "{{path.stdout}}:{{path.stdout}}"
         - "/mnt:/mnt"
