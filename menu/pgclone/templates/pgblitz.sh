@@ -1,4 +1,3 @@
-{% raw %}
 #!/bin/bash
 #
 # Title:      PlexGuide (Reference Title File)
@@ -8,29 +7,45 @@
 ################################################################################
 source /opt/plexguide/menu/functions/pgblitz.sh
 
-starter
-stasks
+#starter
+#stasks
 
-file="/var/plexguide/blitz.last"
-  if [ -e "$file" ]; then
-    GDSAARRAY=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa`)
-    GDSACOUNT=`expr ${#GDSAARRAY[@]}`
-    GDSAUSE=$(cat "/var/plexguide/blitz.last")
-    GDSAUSE=${GDSAUSE:5}
-    if [ "$GDSAUSE" == "" ]; then $GDSAUSE=gdsa01; fi
-    if [ ${GDSAUSE} -ge ${GDSACOUNT} ]; then
-        GDSAUSE="0"
-        GDSAAMOUNT=0
-    else
-        GDSAUSE=`expr $GDSAUSE + 1`
-        GDSAAMOUNT=0
-fi; fi
+# Outside Variables
+dlpath=$(cat /var/plexguide/server.hd.path)
+
+# Starting Actions
+mkdir -p /$dlpath/pgblitz/upload
+
+# Inside Variables
+GDSAARRAY=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa`)
+
+keyarray=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa`)
+keycount=`expr ${#keyarray[@]}`
+
+keystart=$keyarray
+keyuse=$keystart
+keylast=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa | tail -n1`)
+
+#while [ 1 ]; do
+
+  if [ "$keylast" == "$keyuse" ]; then keyuse=$keystart; fi
+
+  rclone moveto --tpslimit 12 --checkers=20 \
+        --config /opt/appdata/plexguide/rclone.conf \
+        --transfers=16 \
+        #--log-file=$LOGFILE --log-level INFO --stats 2s \
+        --drive-chunk-size=128M \
+        "$dlpath/pgblitz/upload/*" "$keyuse:/"
+
+#  keyuse=`expr $keyuse + 1`
+#done
+
+
 
 # Run Loop
 while [ 1 ]
 do
 
-  blitzdef=$(cat /var/plexguide/blitz.last)
   if [ "$blitzdef" == "" ]; then GDSAUSE=0 && echo gdsa01 > /var/plexguide/blitz.last; fi
     #Find files to transfer
     IFS=$'\n'
