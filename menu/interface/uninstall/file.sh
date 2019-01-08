@@ -65,15 +65,13 @@ done
   sleep 2
   ansible-playbook /opt/plexguide/menu/interface/uninstall/remove-service.yml
 
-
   echo ""
   echo "-----------------------------------------------------------"
   echo "SYSTEM MESSAGE: Removing All PlexGuide File Directories"
   echo "-----------------------------------------------------------"
   echo ""
   sleep 2
-  ansible-playbook /opt/plexguide/menu/interface/uninstall/unfiles.yml
-
+  rm -rf /var/plexguide
 
   echo ""
   echo "-----------------------------------------------------------"
