@@ -15,6 +15,7 @@ dlpath=$(cat /var/plexguide/server.hd.path)
 
 # Starting Actions
 mkdir -p /$dlpath/pgblitz/upload
+touch /opt/appdata/plexguide/pgblitz.log
 
 # Inside Variables
 ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa > /opt/appdata/plexguide/key.list
@@ -27,6 +28,8 @@ keycurrent=0
 
 while [ 1 ]; do
 
+  mkdir -p /$dlpath/pgblitz/upload
+
   if [ "$keylast" == "$keyuse" ]; then keycurrent=0; fi
 
   let "keycurrent++"
@@ -35,7 +38,6 @@ while [ 1 ]; do
   encheck=$(cat /var/plexguide/pgclone.transport)
   if [ "$encheck" == "eblitz" ]; then keyuse=${keyuse}C; fi
 
-  echo "Upload Test - Using $keyuse"
   rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
         --transfers=16 \
@@ -43,16 +45,26 @@ while [ 1 ]; do
         --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
         --exclude='**partial~' --exclude=".unionfs-fuse/**" \
         --checkers=16 --max-size=99G \
+        --drive-chunk-size=128M \
+        "/mnt/move/" "/$dlpath/pgblitz/upload"
+
+  echo "Upload Test - Using $keyuse"
+  rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
+        --config /opt/appdata/plexguide/rclone.conf \
+        --transfers=16 \
+        --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
+        --exclude='**partial~' --exclude=".unionfs-fuse/**" \
+        --checkers=16 --max-size=99G \
         --log-file=/opt/appdata/plexguide/pgblitz.log \
         --log-level INFO --stats 5s \
         --drive-chunk-size=128M \
-        "/mnt/move/" "$keyuse:/"
+        "/$dlpath/pgblitz/upload" "$keyuse:/"
 
 echo "PG Blitz Log" > /opt/appdata/plexguide/pgblitz.log
 echo "" > /opt/appdata/plexguide/pgblitz.log
 
 # Remove empty directories (MrWednesday)
-find "/mnt/move/" -mindepth 1 -mmin +60 -type d -empty -delete
+find "/mnt/move/" -mindepth 1 -mmin +180 -type d -empty -delete
 #find /mnt/move/* -maxdepth 1 -mmin +5 -type f -exec rm -fv {}
 
 done
