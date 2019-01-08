@@ -26,7 +26,7 @@ cat << "EOF"
 │ ————————————————————————————————————│
 │ Restart Plexguide:        plexguide │
 │ Update Plexguide:         pgupdate  │
-│ View the PG Blitz Logs:   pgblitz   │
+│ View the PG Blitz Logs:   blitz     │
 │ Download Your PG Fork:    pgfork    │
 │ ————————————————————————————————————│
 │ Visit: newshosting.plexguide.com    │
