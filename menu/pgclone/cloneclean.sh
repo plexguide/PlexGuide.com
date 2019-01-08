@@ -11,8 +11,8 @@ mkdir -p '/mnt/move'
 # Permissions
 chown '1000:1000 /mnt/move'
 chown '$dlpath/pgblitz/upload'
-chmod '755 /mnt/move'
-chown '$dlpath/pgblitz/upload'
+chmod 755 '/mnt/move'
+chown 755 '$dlpath/pgblitz/upload'
 
 # Execution
 find '/mnt/move/' -mindepth 1 -mmin +30 -type d -empty -delete
