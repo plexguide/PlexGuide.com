@@ -173,20 +173,6 @@
             line: 'max_downloads = 5'
             state: present
             
-#         - name: encryption
-#           lineinfile:
-#             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-#             regexp: '^#*encryption\s*=.*'
-#             line: 'encryption = allow_incoming,try_outgoing,enable_retry'
-#             state: present
-
-        - name: encryption
-          lineinfile:
-            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '^#*protocol.encryption.set\s*=.*'
-            line: 'protocol.encryption.set = allow_incoming,try_outgoing,enable_retry'
-            state: present
-            
         - name: Upload Rate
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
@@ -262,20 +248,6 @@
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
             regexp: '#*network.receive_buffer.size\s*=.*'
             line: 'network.receive_buffer.size = 2'
-            state: present
-            
-        - name: disable dht
-          lineinfile:
-            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '#*dht.mode.set\s*=.*'
-            line: 'dht.mode.set = disable'
-            state: present
-            
-        - name: disable pex
-          lineinfile:
-            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '#*protocol.pex.set\s*=.*'
-            line: 'protocol.pex.set = disable'
             state: present
             
     - name: Restart Docker Container
