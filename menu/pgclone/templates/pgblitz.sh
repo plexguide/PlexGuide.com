@@ -41,7 +41,7 @@ while [ 1 ]; do
   rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
         --transfers=16 \
-        --max-transfer=250G \
+        --max-transfer=100G \
         --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
         --exclude='**partial~' --exclude=".unionfs-fuse/**" \
         --checkers=16 --max-size=99G \
