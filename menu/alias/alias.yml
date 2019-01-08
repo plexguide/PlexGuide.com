@@ -121,7 +121,7 @@
 
     - name: Nano PGBlitz
       template:
-        src: pglog
+        src: pgblitz
         dest: /bin/pgblitz
         force: yes
         mode: 0775
