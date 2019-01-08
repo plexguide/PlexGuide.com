@@ -165,7 +165,14 @@
             regexp: '^#*max_uploads\s*=.*'
             line: 'max_uploads = 15'
             state: present
-
+            
+        - name: max_downloads
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*max_downloads\s*=.*'
+            line: 'max_downloads = 5'
+            state: present
+            
         - name: encryption
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
@@ -215,12 +222,12 @@
             line: 'check_hash = no'
             state: present
 
-        - name: Peer exchange
-          lineinfile:
-            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '#*peer_exchange\s*=.*'
-            line: 'peer_exchange = no'
-            state: present
+#         - name: Peer exchange
+#           lineinfile:
+#             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+#             regexp: '#*peer_exchange\s*=.*'
+#             line: 'peer_exchange = no'
+#             state: present
 
         - name: Preload Piece to Host
           lineinfile:
