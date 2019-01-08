@@ -64,7 +64,7 @@ updateprime() {
   echo "7.3" > ${abc}/pg.verionid
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
-  echo "3" > ${abc}/pg.prune
+  echo "4" > ${abc}/pg.prune
 }
 
 pginstall () {

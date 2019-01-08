@@ -16,3 +16,10 @@
       job: "prune 1>/dev/null 2>&1"
       state: present
     ignore_errors: yes
+
+  - cron:
+      name: Hourly Clean PG Clone Clean
+      special_time: "hourly"
+      job: "bash /opt/plexguide/menu/pgclone/cloneclean.sh"
+      state: present
+    ignore_errors: yes
