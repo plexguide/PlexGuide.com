@@ -138,7 +138,7 @@ tee <<-EOF
 ✅️   WOOT WOOT: Location Is Valid - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
+sleep 2
 
 tee <<-EOF
 
@@ -146,7 +146,7 @@ tee <<-EOF
 ⌛  STANDBY: Setting Up Your Permissions
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
+sleep 2
 
 chown 1000:1000 "$typed"
 chmod 0775 "$typed"
@@ -157,11 +157,12 @@ break=off
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛  STANDBY: Rebuilding the Systems Docker Containers!
+⌛  STANDBY: Making Folders & Rebuilding the Systems Docker Containers!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
+sleep 2
 
+ansible-playbook /opt/plexguide/menu/folders/main.yml
 bash /opt/plexguide/menu/dlpath/rebuild.sh
 
 tee <<-EOF
