@@ -93,20 +93,21 @@
     - name: Set Main Location
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^MainDir\s*='
+        regexp: '^MainDir\s*=.*'
         line: 'MainDir=/config'
         state: present
 
     - name: Set download location
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^DestDir\s*='
+        regexp: '^DestDir\s*=.*'
         line: 'DestDir={{path.stdout}}/downloads/{{pgrole}}'
-
+        state: present
+        
     - name: Disabling InterDir, incomplete location is not set.
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^InterDir\s*='
+        regexp: '^InterDir\s*=.*'
         line: 'InterDir='
         state: present
       when: incomplete.stdout | length == 0
@@ -114,7 +115,7 @@
     - name: Set InterDir
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^InterDir\s*='
+        regexp: '^InterDir\s*=.*'
         line: 'InterDir={{incomplete.stdout}}/{{pgrole}}'
         state: present
       when: incomplete.stdout | length > 0
@@ -122,14 +123,14 @@
     - name: Set TempDir
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^TempDir\s*='
+        regexp: '^TempDir\s*=.*'
         line: 'TempDir={{path.stdout}}/downloads/{{pgrole}}/tmp'
         state: present
 
     - name: Set NzbDir Location
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^NzbDir\s*='
+        regexp: '^NzbDir\s*=.*'
         line: 'NzbDir={{path.stdout}}/nzb'
         state: present
 
@@ -143,28 +144,28 @@
     - name: Set Location of Movies
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^Category1.DestDir\s*='
+        regexp: '^Category1.DestDir\s*=.*'
         line: 'Category1.DestDir={{path.stdout}}/downloads/{{pgrole}}/movies'
         state: present
 
     - name: Lowercase & Set TV Category
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^Category2.Name\s*='
+        regexp: '^Category2.Name\s*=.*'
         line: 'Category2.Name=tv'
         state: present
 
     - name: Set Location of TV
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^Category2.DestDir\s*='
+        regexp: '^Category2.DestDir\s*=.*'
         line: 'Category2.DestDir={{path.stdout}}/downloads/{{pgrole}}/tv'
         state: present
 
     - name: Lowercase & Set Music Category
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^Category3.Name\s*='
+        regexp: '^Category3.Name\s*=.*'
         line: 'Category3.Name=music'
         state: present
 
@@ -178,7 +179,7 @@
     - name: Lowercase & Set EBook Category
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^Category4.Name\s*='
+        regexp: '^Category4.Name\s*=.*'
         line: 'Category4.Name=ebooks'
         state: present
 
@@ -192,21 +193,21 @@
     - name: Set Location of aBooks
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: 'Category5.Name\s*='
+        regexp: 'Category5.Name\s*=.*'
         line: 'Category5.Name=abooks'
         state: present
 
     - name: Set Location of aBooks
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: 'Category5.DestDir\s*='
+        regexp: 'Category5.DestDir\s*=.*'
         line: 'Category5.DestDir={{path.stdout}}/downloads/{{pgrole}}/abooks'
         state: present
 
     - name: ScriptDir
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^ScriptDir\s*='
+        regexp: '^ScriptDir\s*=.*'
         line: 'ScriptDir=${MainDir}/scripts'
         state: present
 
@@ -216,35 +217,35 @@
         - name: Default User
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
-            regexp: '^ControlUsername\s*='
+            regexp: '^ControlUsername\s*=.*'
             line: "ControlUsername="
             state: present
 
         - name: Default Password
           lineinfile:
             path: "/opt/appdata/{{pgrole}}/nzbget.conf"
-            regexp: 'ControlPassword\s*='
+            regexp: 'ControlPassword\s*=.*'
             line: "ControlPassword="
             state: present
 
         - name: DirectUnpack Set to On
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-            regexp: '^DirectUnpack\s*='
+            regexp: '^DirectUnpack\s*=.*'
             line: 'DirectUnpack=yes'
             state: present
 
         - name: HealthCheck
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-            regexp: '^HealthCheck\s*='
+            regexp: '^HealthCheck\s*=.*'
             line: 'HealthCheck=Delete'
             state: present
 
         - name: Set DiskSpace
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-            regexp: '^DiskSpace\s*='
+            regexp: '^DiskSpace\s*=.*'
             line: 'DiskSpace=25000'
             state: present
 
