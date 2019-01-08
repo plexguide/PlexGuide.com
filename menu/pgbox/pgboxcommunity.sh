@@ -45,6 +45,20 @@ initial () {
   touch /var/plexguide/app.list
   touch /var/plexguide/pgbox.buildup
 
+  file="/opt/communityapps"
+  if [ -e "$file" ]; then rm -rf /opt/communityapps; fi
+  mkdir /opt/communityapps
+  ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml
+
+  echo ""
+  echo "💬  Pulling Update Files - Please Wait"
+  file="/opt/communityapps/place.holder"
+  waitvar=0
+  while [ "$waitvar" == "0" ]; do
+  	sleep .5
+  	if [ -e "$file" ]; then waitvar=1; fi
+  done
+
   bash /opt/plexguide/containers/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 }
