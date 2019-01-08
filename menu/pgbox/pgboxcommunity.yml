@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
 
-    - name: Cloning PlexGuide
+    - name: Cloning Community Apps
       git:
         repo: "https://github.com/Admin9705/PlexGuide-Community"
         dest: /opt/communityapps
