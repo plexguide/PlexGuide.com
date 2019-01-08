@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Title:      PlexGuide (Reference Title File)
-# Author(s):  Admin9705 - Deiteq
+# Author(s):  Admin9705 - FlickerRate
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
@@ -26,7 +26,7 @@ cat << "EOF"
 │ ————————————————————————————————————│
 │ Restart Plexguide:        plexguide │
 │ Update Plexguide:         pgupdate  │
-│ View the PG Logs:         pglog     │
+│ View the PG Blitz Logs:   pgblitz   │
 │ Download Your PG Fork:    pgfork    │
 │ ————————————————————————————————————│
 │ Visit: newshosting.plexguide.com    │

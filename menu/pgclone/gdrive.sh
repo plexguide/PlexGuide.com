@@ -29,6 +29,7 @@ tee <<-EOF
 
 [1] Data Transport Mode: $transport
 [Z] Exit
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
@@ -76,7 +77,6 @@ elif [ "$typed" == "4" ]; then
       ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
-      ansible-playbook /opt/plexguide/containers/blitzui.yml
       pgbdeploy
       question1
     elif [ "$transport" == "PG Blitz /w Encryption" ]; then
@@ -91,7 +91,6 @@ elif [ "$typed" == "4" ]; then
       ansible-playbook /opt/plexguide/menu/pgclone/tcrypt.yml
       ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
-      ansible-playbook /opt/plexguide/containers/blitzui.yml
       pgbdeploy
       question1
     fi
