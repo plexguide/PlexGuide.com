@@ -171,7 +171,7 @@ fi
 tee <<-EOF
 [4] PG Box  : Official  - App Installer
 [5] PG Box  : Community - App Installer
-[6] PG Box  : App Removal
+[6] PG Box  : Removal   - App UnInstaller
 [7] PG Cloud: GCE & Virtual Instances
 [8] PG Tools
 [9] PG Settings
