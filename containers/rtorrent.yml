@@ -130,7 +130,7 @@
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
           regexp: '^encryption\s*=.*'
-          line: 'encryption = allow_incoming,try_outgoing,enable_retry,prefer_plaintext'
+          line: 'encryption = allow_incoming,try_outgoing,enable_retry'
           state: present
 
       - name: MAX DL 1024
