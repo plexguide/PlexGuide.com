@@ -91,7 +91,7 @@
   - name: Set download location
     lineinfile:
       path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-      regexp: 'directory.default.set'
+      regexp: '^directory.default.set.*'
       line: 'directory.default.set = {{path.stdout}}/downloads/{{pgrole}}'
       state: present
 
@@ -101,56 +101,56 @@
       - name: Upload Rate
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-          regexp: 'upload_rate'
+          regexp: '^upload_rate.*'
           line: 'upload_rate = 100000'
           state: present
 
       - name: Download Rate
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-          regexp: 'download_rate'
+          regexp: '^download_rate.*'
           line: 'download_rate = 100000'
           state: present
 
       - name: Low Disk - Set to 20GB
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-          regexp: 'low_diskspace'
+          regexp: '^low_diskspace.*'
           line: 'schedule = low_diskspace,5,60,close_low_diskspace=20000M'
           state: present
 
       - name: Global Upload to Unlmited
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-          regexp: 'throttle.global_up.max_rate.set_kb'
+          regexp: '^throttle.global_up.max_rate.set_kb'
           line: 'throttle.global_up.max_rate.set_kb = 0'
           state: present
 
       - name: Set Encryption
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-          regexp: 'encryption = allow_incoming,try_outgoing,enable_retry'
+          regexp: '^encryption\s*=.*'
           line: 'encryption = allow_incoming,try_outgoing,enable_retry,prefer_plaintext'
           state: present
 
       - name: MAX DL 1024
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-          regexp: 'throttle.global_down.max_rate.set_kb'
+          regexp: '^throttle.global_down.max_rate.set_kb.*'
           line: 'throttle.max_downloads.global.set = 1024'
           state: present
 
       - name: No File Allocation
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-          regexp: 'system.file_allocate.set'
+          regexp: '^system.file_allocate.set.*'
           line: 'system.file.allocate.set = 0'
           state: present
 
       - name: scgi_port
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-          regexp: '^scgi_port'
+          regexp: '^scgi_port.*'
           line: 'scgi_port = 0.0.0.0:5000'
           state: present
           
