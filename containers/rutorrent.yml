@@ -106,70 +106,70 @@
         - name: Upload Rate
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'upload_rate.+'
+            regexp: 'upload_rate'
             line: 'upload_rate = 100000'
             state: present
 
         - name: Download Rate
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'download_rate.+'
+            regexp: 'download_rate'
             line: 'download_rate = 100000'
             state: present
 
         - name: Low Disk - Set to 20GB
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'low_diskspace.+'
+            regexp: 'low_diskspace'
             line: 'schedule = low_diskspace,5,60,close_low_diskspace=20000M'
             state: present
 
         - name: Global Upload to Unlmited
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'throttle.global_up.max_rate.set_kb.+'
+            regexp: 'throttle.global_up.max_rate.set_kb'
             line: 'throttle.global_up.max_rate.set_kb = 0'
             state: present
 
         - name: MAX DL 1024
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'throttle.max_downloads.global.set_kb.+'
+            regexp: 'throttle.max_downloads.global.set_kb'
             line: 'throttle.max_downloads.global.set = 1024'
             state: present
 
         - name: No File Allocation
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'system.file_allocate.set.+'
+            regexp: 'system.file_allocate.set'
             line: 'system.file.allocate.set = 0'
             state: present
 
         - name: min_peers
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'min_peers.+'
+            regexp: 'min_peers'
             line: 'min_peers = 40'
             state: present
 
         - name: max_peers
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'max_peers.+'
+            regexp: 'max_peers'
             line: 'max_peers = 1200'
             state: present
 
         - name: max_uploads
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'max_uploads.+'
+            regexp: 'max_uploads'
             line: 'max_uploads = 15'
             state: present
 
         - name: encryption
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'encryption.+'
+            regexp: 'encryption'
             line: 'encryption = allow_incoming,try_outgoing,enable_retry'
             state: present
 
@@ -197,63 +197,63 @@
         - name: DHT disable
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'dht.+'
+            regexp: 'dht'
             line: '#dht = auto'
             state: present
 
         - name: DHT port
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'dht_port.+'
+            regexp: 'dht_port'
             line: '#dht_port = 6881'
             state: present
 
         - name: check Hash
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'check_hash.+'
+            regexp: 'check_hash'
             line: 'check_hash = no'
             state: present
 
         - name: Peer exchange
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'peer_exchange.+'
+            regexp: 'peer_exchange'
             line: 'peer_exchange = no'
             state: present
 
         - name: Preload Piece to Host
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'pieces.preload.type.+'
+            regexp: 'pieces.preload.type'
             line: 'pieces.preload.type = 2'
             state: present
 
         - name: Preload Piece to Host
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'pieces.preload.type.+'
+            regexp: 'pieces.preload.type'
             line: 'pieces.preload.type = 2'
             state: present
 
         - name: lower DNS timeout
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'network.http.dns_cache_timeout.set.+'
+            regexp: 'network.http.dns_cache_timeout.set'
             line: 'network.http.dns_cache_timeout.set = 25'
             state: present
 
         - name: Network Send Buffer Size
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'network.send_buffer.size.+'
+            regexp: 'network.send_buffer.size'
             line: 'network.send_buffer.size = 2'
             state: present
 
         - name: Network Recived Buffer Size
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: 'network.receive_buffer.size.+'
+            regexp: 'network.receive_buffer.size'
             line: 'network.receive_buffer.size = 2'
             state: present
 
