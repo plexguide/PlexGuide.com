@@ -121,7 +121,7 @@
 
     - name: Nano Blitz
       template:
-        src: pgblitz
+        src: blitz
         dest: /bin/blitz
         force: yes
         mode: 0775
