@@ -9,8 +9,8 @@ mkdir -p '$dlpath/pgblitz/upload'
 mkdir -p '/mnt/move'
 
 # Permissions
-chown '1000:1000 /mnt/move'
-chown '$dlpath/pgblitz/upload'
+chown 1000:1000 '/mnt/move'
+chown 1000:1000 '$dlpath/pgblitz/upload'
 chmod 755 '/mnt/move'
 chown 755 '$dlpath/pgblitz/upload'
 
