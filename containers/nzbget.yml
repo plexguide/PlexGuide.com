@@ -137,7 +137,7 @@
     - name: Lowercase & Set Movie Category
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^Category1.Name\s*='
+        regexp: '^Category1.Name\s*=.*'
         line: 'Category1.Name=movies'
         state: present
 
@@ -172,7 +172,7 @@
     - name: Set Location of Music
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^Category3.DestDir\s*='
+        regexp: '^Category3.DestDir\s*=.*'
         line: 'Category3.DestDir={{path.stdout}}/downloads/{{pgrole}}/music'
         state: present
 
@@ -186,7 +186,7 @@
     - name: Set Location of EBooks
       lineinfile:
         path: '/opt/appdata/{{pgrole}}/nzbget.conf'
-        regexp: '^Category4.DestDir\s*='
+        regexp: '^Category4.DestDir\s*=.*'
         line: 'Category4.DestDir={{path.stdout}}/downloads/{{pgrole}}/ebooks'
         state: present
 
