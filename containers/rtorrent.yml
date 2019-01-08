@@ -91,7 +91,7 @@
   - name: Set download location
     lineinfile:
       path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-      regexp: 'directory.default.set.+'
+      regexp: 'directory.default.set'
       line: 'directory.default.set = {{path.stdout}}/downloads/{{pgrole}}'
       state: present
 
@@ -150,7 +150,7 @@
       - name: scgi_port
         lineinfile:
           path: '/opt/appdata/{{pgrole}}/config/.rtorrent.rc'
-          regexp: 'scgi_port .+'
+          regexp: '^scgi_port'
           line: 'scgi_port = 0.0.0.0:5000'
           state: present
           
