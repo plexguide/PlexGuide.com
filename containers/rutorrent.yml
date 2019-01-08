@@ -19,8 +19,8 @@
         extport2: '51413'
         intport3: '5000'
         extport3: '5000'
-        intport3: '6881/udp'
-        extport3: '6881'
+        intport4: '6881/udp'
+        extport4: '6881'
         image: 'linuxserver/rutorrent'
 
     # CORE (MANDATORY) ############################################################
