@@ -173,13 +173,20 @@
             line: 'max_downloads = 5'
             state: present
             
+#         - name: encryption
+#           lineinfile:
+#             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+#             regexp: '^#*encryption\s*=.*'
+#             line: 'encryption = allow_incoming,try_outgoing,enable_retry'
+#             state: present
+
         - name: encryption
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '^#*encryption\s*=.*'
-            line: 'encryption = allow_incoming,try_outgoing,enable_retry'
+            regexp: '^#*protocol.encryption.set\s*=.*'
+            line: 'protocol.encryption.set = allow_incoming,try_outgoing,enable_retry'
             state: present
-
+            
         - name: Upload Rate
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
@@ -222,48 +229,55 @@
             line: 'check_hash = no'
             state: present
 
-#         - name: Peer exchange
-#           lineinfile:
-#             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-#             regexp: '#*peer_exchange\s*=.*'
-#             line: 'peer_exchange = no'
-#             state: present
-
         - name: Preload Piece to Host
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '#*pieces.preload.type.*'
+            regexp: '#*pieces.preload.type\s*=.*'
             line: 'pieces.preload.type = 2'
             state: present
 
         - name: Preload Piece to Host
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '#*pieces.preload.type.*'
+            regexp: '#*pieces.preload.type\s*=.*'
             line: 'pieces.preload.type = 2'
             state: present
 
         - name: lower DNS timeout
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '#*network.http.dns_cache_timeout.set.*'
+            regexp: '#*network.http.dns_cache_timeout.set\s*=.*'
             line: 'network.http.dns_cache_timeout.set = 25'
             state: present
 
         - name: Network Send Buffer Size
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '#*network.send_buffer.size.*'
+            regexp: '#*network.send_buffer.size\s*=.*'
             line: 'network.send_buffer.size = 2'
             state: present
 
         - name: Network Recived Buffer Size
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
-            regexp: '#*network.receive_buffer.size.*'
+            regexp: '#*network.receive_buffer.size\s*=.*'
             line: 'network.receive_buffer.size = 2'
             state: present
-
+            
+        - name: disable dht
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*dht.mode.set\s*=.*'
+            line: 'dht.mode.set = disable'
+            state: present
+            
+        - name: disable pex
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*protocol.pex.set\s*=.*'
+            line: 'protocol.pex.set = disable'
+            state: present
+            
     - name: Restart Docker Container
       docker_container:
         name: '{{pgrole}}'
