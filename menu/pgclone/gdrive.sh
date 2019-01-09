@@ -19,6 +19,7 @@ question1 () {
   mkdir -p /opt/appdata/pgblitz/keys/processed/
   keynum=$(ls /opt/appdata/pgblitz/keys/processed/ | wc -l)
   bwdisplay=$(cat /var/plexguide/move.bw)
+  bwdisplay2=$(cat /var/plexguide/blitz.bw)
 
 if [ "$transport" == "NOT-SET" ]; then
 tee <<-EOF
@@ -50,7 +51,8 @@ tee <<-EOF
 [1] Data Transport Mode: $transport
 [2] OAuth & Mounts
 [3] Key Management:      $keynum Keys Deployed
-[4] Deploy:              $transport
+[4] Throttle Limit:      $bwdisplay2 MB
+[5] Deploy:              $transport
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -67,6 +69,9 @@ elif [ "$typed" == "3" ]; then
 keymenu
 question1
 elif [ "$typed" == "4" ]; then
+bandwidthblitz
+question1
+elif [ "$typed" == "5" ]; then
     if [ "$transport" == "PG Blitz /w No Encryption" ]; then
       deploygdrivecheck
       deploytdrivecheck
@@ -127,6 +132,7 @@ question1
 elif [ "$typed" == "3" ]; then
 bandwidth
 question1
+
 elif [ "$typed" == "4" ]; then
     if [ "$transport" == "PG Move /w No Encryption" ]; then
       mkdir -p /var/plexguide/rclone/
@@ -168,6 +174,7 @@ variable /var/plexguide/pgclone.transport "PG Move /w No Encryption"
 variable /var/plexguide/gdrive.pgclone "⚠️  Not Activated"
 variable /var/plexguide/tdrive.pgclone "⚠️  Not Activated"
 variable /var/plexguide/move.bw  "10"
+variable /var/plexguide/blitz.bw  "1000"
 variable /var/plexguide/pgclone.password ""
 variable /var/plexguide/pgclone.salt ""
 
