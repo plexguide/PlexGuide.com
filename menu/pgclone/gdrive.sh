@@ -130,7 +130,7 @@ elif [ "$typed" == "2" ]; then
 mountsmenu
 question1
 elif [ "$typed" == "3" ]; then
-bandwidth
+bandwidthblitz
 question1
 
 elif [ "$typed" == "4" ]; then
