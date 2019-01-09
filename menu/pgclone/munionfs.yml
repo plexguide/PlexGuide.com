@@ -9,16 +9,16 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+
+    - name: Register HD Path
+      shell: 'cat /var/plexguide/server.hd.path'
+      register: hdpath
+      
     - name: Install UNIONFS Service
       template:
         src: /opt/plexguide/menu/pgclone/templates/munionfs.service
         dest: /etc/systemd/system/unionfs.service
         force: yes
-
-    - name: Register HD Path
-      shell: 'cat /var/plexguide/server.hd.path'
-      register: hdpath
-      ignore_errors: True
 
     - name: Daemon-Reload
       systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
