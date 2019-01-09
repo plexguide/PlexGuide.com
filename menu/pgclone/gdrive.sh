@@ -19,6 +19,7 @@ question1 () {
   mkdir -p /opt/appdata/pgblitz/keys/processed/
   keynum=$(ls /opt/appdata/pgblitz/keys/processed/ | wc -l)
   bwdisplay=$(cat /var/plexguide/move.bw)
+  bwdisplay2=$(cat /var/plexguide/blitz.bw)
 
 if [ "$transport" == "NOT-SET" ]; then
 tee <<-EOF
@@ -29,6 +30,7 @@ tee <<-EOF
 
 [1] Data Transport Mode: $transport
 [Z] Exit
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
@@ -49,7 +51,8 @@ tee <<-EOF
 [1] Data Transport Mode: $transport
 [2] OAuth & Mounts
 [3] Key Management:      $keynum Keys Deployed
-[4] Deploy:              $transport
+[4] Throttle Limit:      $bwdisplay2 MB
+[5] Deploy:              $transport
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -66,6 +69,9 @@ elif [ "$typed" == "3" ]; then
 keymenu
 question1
 elif [ "$typed" == "4" ]; then
+bandwidthblitz
+question1
+elif [ "$typed" == "5" ]; then
     if [ "$transport" == "PG Blitz /w No Encryption" ]; then
       deploygdrivecheck
       deploytdrivecheck
@@ -76,7 +82,6 @@ elif [ "$typed" == "4" ]; then
       ansible-playbook /opt/plexguide/menu/pgclone/tdrive.yml
       ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
-      ansible-playbook /opt/plexguide/containers/blitzui.yml
       pgbdeploy
       question1
     elif [ "$transport" == "PG Blitz /w Encryption" ]; then
@@ -91,7 +96,6 @@ elif [ "$typed" == "4" ]; then
       ansible-playbook /opt/plexguide/menu/pgclone/tcrypt.yml
       ansible-playbook /opt/plexguide/menu/pgclone/bunionfs.yml
       ansible-playbook /opt/plexguide/menu/pgclone/pgblitz.yml
-      ansible-playbook /opt/plexguide/containers/blitzui.yml
       pgbdeploy
       question1
     fi
@@ -169,6 +173,7 @@ variable /var/plexguide/pgclone.transport "PG Move /w No Encryption"
 variable /var/plexguide/gdrive.pgclone "⚠️  Not Activated"
 variable /var/plexguide/tdrive.pgclone "⚠️  Not Activated"
 variable /var/plexguide/move.bw  "10"
+variable /var/plexguide/blitz.bw  "1000"
 variable /var/plexguide/pgclone.password ""
 variable /var/plexguide/pgclone.salt ""
 

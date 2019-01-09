@@ -9,6 +9,11 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+
+    - name: Register HD Path
+      shell: 'cat /var/plexguide/server.hd.path'
+      register: hdpath
+      
     - name: Install UNIONFS Service
       template:
         src: /opt/plexguide/menu/pgclone/templates/munionfs.service
