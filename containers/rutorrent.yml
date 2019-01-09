@@ -50,6 +50,7 @@
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
           - '/opt/appdata/{{pgrole}}:/config'
+          - '/opt/appdata/{{pgrole}}/sock:/run/php/.rtorrent.sock'
           - '{{path.stdout}}:{{path.stdout}}'
 
     - name: 'Setting PG ENV'
