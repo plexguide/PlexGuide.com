@@ -54,7 +54,7 @@ updateprime() {
   echo "24" > ${abc}/pg.dependency
   echo "10" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.watchtower
-  echo "1" > ${abc}/pg.motd
+  echo "2" > ${abc}/pg.motd
   echo "98" > ${abc}/pg.alias
   echo "2" > ${abc}/pg.dep
   echo "2" > ${abc}/pg.cleaner
