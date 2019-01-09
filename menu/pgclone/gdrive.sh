@@ -130,9 +130,8 @@ elif [ "$typed" == "2" ]; then
 mountsmenu
 question1
 elif [ "$typed" == "3" ]; then
-bandwidthblitz
+bandwidth
 question1
-
 elif [ "$typed" == "4" ]; then
     if [ "$transport" == "PG Move /w No Encryption" ]; then
       mkdir -p /var/plexguide/rclone/
