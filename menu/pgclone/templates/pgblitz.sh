@@ -39,13 +39,13 @@ while [ 1 ]; do
   encheck=$(cat /var/plexguide/pgclone.transport)
   if [ "$encheck" == "eblitz" ]; then keyuse=${keyuse}C; fi
 
-  rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
+  rclone moveto --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
         --transfers=16 \
         --max-transfer=100G \
         --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
         --exclude='**partial~' --exclude=".unionfs-fuse/**" \
-        --checkers=16 --max-size=99G \
+        --max-size=99G \
         --drive-chunk-size=128M \
         "/mnt/move/" "/$dlpath/pgblitz/upload"
 
@@ -53,6 +53,7 @@ while [ 1 ]; do
   rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
         --transfers=16 \
+        --bwlimit {{bandwidth.stdout}}M \
         --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
         --exclude='**partial~' --exclude=".unionfs-fuse/**" \
         --checkers=16 --max-size=99G \

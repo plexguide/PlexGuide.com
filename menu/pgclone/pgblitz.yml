@@ -9,6 +9,10 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Bandwidth Limit
+      shell: "cat /var/plexguide/blitz.bw"
+      register: bandwidth
+
     - name: Install pgblitz script
       template:
         src: /opt/plexguide/menu/pgclone/templates/pgblitz.sh
