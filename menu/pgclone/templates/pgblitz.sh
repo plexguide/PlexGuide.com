@@ -47,7 +47,7 @@ while [ 1 ]; do
         --exclude='**partial~' --exclude=".unionfs-fuse/**" \
         --max-size=99G \
         --drive-chunk-size=128M \
-        "/mnt/move/" "/$dlpath/pgblitz/upload"
+        "$dlpath/move/" "$dlpath/pgblitz/upload"
 
   echo "Upload Test - Using $keyuse"
   rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
@@ -60,13 +60,13 @@ while [ 1 ]; do
         --log-file=/opt/appdata/plexguide/pgblitz.log \
         --log-level INFO --stats 5s \
         --drive-chunk-size=128M \
-        "/$dlpath/pgblitz/upload" "$keyuse:/"
+        "$dlpath/pgblitz/upload" "$keyuse:/"
 
 echo "PG Blitz Log" > /opt/appdata/plexguide/pgblitz.log
 echo "" > /opt/appdata/plexguide/pgblitz.log
 
 # Remove empty directories (MrWednesday)
-find "/mnt/move/" -mindepth 1 -mmin +30 -type d -empty -delete
+find "$dlpath/move/" -mindepth 1 -mmin +30 -type d -empty -delete
 find "$dlpath/pgblitz/upload" -mindepth 1 -mmin +5 -type d -empty -delete
 
 done
