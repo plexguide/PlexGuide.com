@@ -547,7 +547,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '↘️  Acknowledge Info  | Press [Enter]: ' public < /dev/tty
+read -p '↘️  Acknowledge Info  | Press [ENTER] ' public < /dev/tty
 mountsmenu
 }
 
@@ -571,7 +571,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '↘️  Acknowledge Info  | Press [Enter]: ' public < /dev/tty
+read -p '↘️  Acknowledge Info  | Press [ENTER] ' public < /dev/tty
 
 mountsmenu
 }
