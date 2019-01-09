@@ -35,7 +35,7 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/data"
-        - "/opt/appdata/rutorrent/sock/rutorrent.sock:/data/rtorrent.sock"    
+        - "/opt/appdata/rutorrent/sock/.rtorrent.sock:/data/rtorrent.sock"   
         - "{{path.stdout}}:{{path.stdout}}"
         - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
@@ -45,6 +45,7 @@
       pg_env:
         PUID: 1000
         PGID: 1000
+        FLOOD_SECRET: PlexGuideRulez
 
 # MAIN DEPLOYMENT #############################################################
   - name: "Deploying {{pgrole}}"
