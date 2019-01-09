@@ -15,6 +15,11 @@
         dest: /etc/systemd/system/unionfs.service
         force: yes
 
+    - name: Register HD Path
+      shell: 'cat /var/plexguide/server.hd.path'
+      register: hdpath
+      ignore_errors: True
+
     - name: Daemon-Reload
       systemd: state=stopped name=unionfs daemon_reload=yes enabled=no
 
