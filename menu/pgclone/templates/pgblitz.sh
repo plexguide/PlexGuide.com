@@ -28,6 +28,7 @@ keycurrent=0
 
 while [ 1 ]; do
 
+  dlpath=$(cat /var/plexguide/server.hd.path)
   mkdir -p /$dlpath/pgblitz/upload
 
   if [ "$keylast" == "$keyuse" ]; then keycurrent=0; fi
@@ -64,7 +65,7 @@ echo "PG Blitz Log" > /opt/appdata/plexguide/pgblitz.log
 echo "" > /opt/appdata/plexguide/pgblitz.log
 
 # Remove empty directories (MrWednesday)
-find "/mnt/move/" -mindepth 1 -mmin +180 -type d -empty -delete
-#find /mnt/move/* -maxdepth 1 -mmin +5 -type f -exec rm -fv {}
+find "/mnt/move/" -mindepth 1 -mmin +30 -type d -empty -delete
+find "$dlpath/pgblitz/upload" -mindepth 1 -mmin +5 -type d -empty -delete
 
 done
