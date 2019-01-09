@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Title:      PlexGuide (Reference Title File)
-# Author(s):  Admin9705 
+# Author(s):  Admin9705
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
@@ -18,6 +18,22 @@ tee <<-EOF
 EOF
   read -p '↘️  Type a Speed from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" -ge "1" && "$typed" -le "1000" ]]; then echo "$typed" > /var/plexguide/move.bw && question1;
+  else badinput && bandwidth; fi
+}
+
+bandwidthblitz () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: BW Limit Notice        📓 Reference: move.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💬 100MB = 1 Gig Speeds | 1000MB = 10 Gig Speeds - Remember that your
+   upload speeds are still limited to your server's max upload connection
+
+EOF
+  read -p '↘️  Type a Speed from 1 - 1000 | Press [ENTER]: ' typed < /dev/tty
+  if [[ "$typed" -ge "1" && "$typed" -le "1000" ]]; then echo "$typed" > /var/plexguide/blitz.bw && question1;
   else badinput && bandwidth; fi
 }
 
@@ -531,7 +547,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '↘️  Acknowledge Info  | Press [Enter]: ' public < /dev/tty
+read -p '↘️  Acknowledge Info  | Press [ENTER] ' public < /dev/tty
 mountsmenu
 }
 
@@ -555,7 +571,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '↘️  Acknowledge Info  | Press [Enter]: ' public < /dev/tty
+read -p '↘️  Acknowledge Info  | Press [ENTER] ' public < /dev/tty
 
 mountsmenu
 }
