@@ -17,4 +17,4 @@ chown 755 '$dlpath/pgblitz/upload'
 # Execution
 find '/mnt/move/' -mindepth 1 -mmin +30 -type d -empty -delete
 find '$dlpath/pgblitz/upload' -mindepth 1 -mmin +30 -type d -empty -delete
-find '/mnt/pgblitz/upload' -mindepth 1 -mmin +30 -type d -empty -delete
+#find '/mnt/pgblitz/upload' -mindepth 1 -mmin +30 -type d -empty -delete
