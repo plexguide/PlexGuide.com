@@ -35,7 +35,7 @@
     set_fact:
       pg_volumes:
         - "/opt/appdata/{{pgrole}}:/flood-db"
-        - "/opt/appdata/rtorrent/socket:/socket"    
+        - "/opt/appdata/rutorrent/sock:/sock"    
         - "{{path.stdout}}:{{path.stdout}}"
         - "/mnt:/mnt"
         - "/etc/localtime:/etc/localtime:ro"
