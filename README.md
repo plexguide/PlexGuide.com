@@ -7,7 +7,7 @@
   <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/wikipics/logo-wiki.png" width="160"/>
   <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/logo-pg-install.png" width="160"/>
   <a href="https://plexguide.com/account/upgrades" target="_blank"><img src="https://plexguide.com/wikipics/logo-donate.png" width="160"/>
-</p>
+</p> 
 
 _**Table of Contents**_
 
@@ -28,7 +28,7 @@ _**Table of Contents**_
 <p align="center">
 <a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"><img src="https://plexguide.com/wikipics/pg-introv4.png" width="600"/></p>
 <p align="center"><b>PG Introduction Video</b></p>
-
+ 
 # 3. Functional Use
 
 1. Deploys multiple programs/app and functional within 10 - 30 seconds
