@@ -9,6 +9,11 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+
+    - name: Register HD Path
+      shell: 'cat /var/plexguide/server.hd.path'
+      register: hdpath
+
     - name: Register UNIONFS PATH
       shell: "cat /var/plexguide/unionfs.pgpath"
       register: unionfs_path

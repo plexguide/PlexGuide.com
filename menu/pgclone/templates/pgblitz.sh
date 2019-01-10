@@ -1,4 +1,3 @@
-{% raw %}
 #!/bin/bash
 #
 # Title:      PlexGuide (Reference Title File)
@@ -8,104 +7,68 @@
 ################################################################################
 source /opt/plexguide/menu/functions/pgblitz.sh
 
-starter
-stasks
+#starter
+#stasks
 
-file="/var/plexguide/blitz.last"
-  if [ -e "$file" ]; then
-    GDSAARRAY=(`ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa`)
-    GDSACOUNT=`expr ${#GDSAARRAY[@]}`
-    GDSAUSE=$(cat "/var/plexguide/blitz.last")
-    GDSAUSE=${GDSAUSE:5}
-    if [ "$GDSAUSE" == "" ]; then $GDSAUSE=gdsa01; fi
-    if [ ${GDSAUSE} -ge ${GDSACOUNT} ]; then
-        GDSAUSE="0"
-        GDSAAMOUNT=0
-    else
-        GDSAUSE=`expr $GDSAUSE + 1`
-        GDSAAMOUNT=0
-fi; fi
+# Outside Variables
+dlpath=$(cat /var/plexguide/server.hd.path)
 
-# Run Loop
-while [ 1 ]
-do
+# Starting Actions
+mkdir -p /$dlpath/pgblitz/upload
+touch /opt/appdata/plexguide/pgblitz.log
 
-  blitzdef=$(cat /var/plexguide/blitz.last)
-  if [ "$blitzdef" == "" ]; then GDSAUSE=0 && echo gdsa01 > /var/plexguide/blitz.last; fi
-    #Find files to transfer
-    IFS=$'\n'
-    files=(`find ${downloadpath}/move -type f ! -name '*partial~' ! -name '*_HIDDEN~' ! -name '*.fuse_hidden*' ! -name "*.lck" ! -name "*.version" ! -path '.unionfs-fuse/*' ! -path '.unionfs/*' ! -path '*.inProgress/*'`)
-    if [[ ${#files[@]} -gt 0 ]]; then
-        # If files are found loop though and upload
-        log "Files found to upload"
-        for i in "${files[@]}"
-        do
-            # If file has a lockfile skip
-            if [ -e ${i}.lck ]; then
-                log "Lock File found for $i"
-                continue
-            else
-                # Check if file is still getting bigger
-                FILESIZE1=`wc -c < "$i"`
-                sleep 1
-                FILESIZE2=`wc -c < "$i"`
-                if [ "$FILESIZE1" -ne "$FILESIZE2" ]; then
-                log "File is still getting bigger $i"
-                    continue
-                fi
+# Inside Variables
+ls -la /opt/appdata/pgblitz/keys/processed | awk '{print $9}' | grep gdsa > /opt/appdata/plexguide/key.list
+keytotal=$(wc -l /opt/appdata/plexguide/key.list | awk '{ print $1 }')
 
-                # Check if we have any upload slots available
-                TRANSFERS=`ls -la /opt/appdata/pgblitz/pid/ | grep trans | wc -l`
-                if [ ! $TRANSFERS -ge 16 ]; then
-                    if [ -e $i ]; then
-                    log "Starting upload of $i"
-                        # Append filesize to GDSAAMOUNT
-                        GDSAAMOUNT=`echo "$GDSAAMOUNT + $FILESIZE2" | bc`
+keyfirst=$(cat /opt/appdata/plexguide/key.list | head -n1)
+keylast=$(cat /opt/appdata/plexguide/key.list | tail -n1)
 
-                        # Run upload script demonised
-                        /opt/appdata/pgblitz/upload.sh $i ${GDSAARRAY[$GDSAUSE]} &
+keycurrent=0
 
-                        PID=$!
-                        FILEBASE=`basename $i`
+while [ 1 ]; do
 
-                        # Add transfer to pid directory
-                        echo "$PID" > /opt/appdata/pgblitz/pid/$FILEBASE.trans
+  dlpath=$(cat /var/plexguide/server.hd.path)
+  mkdir -p /$dlpath/pgblitz/upload
 
-                        # Increase or reset $GDSAUSE?
-                        if [ "$GDSAAMOUNT" -gt "768831531520" ]; then
-                            log "${GDSAARRAY[$GDSAUSE]} has hit 730GB switching to next SA"
-                            if [ ${GDSAUSE} -eq ${GDSACOUNT} ]; then
-                                GDSAUSE=0
-                                GDSAAMOUNT=0
-                            else
-                                GDSAUSE=`expr $GDSAUSE + 1`
-                                GDSAAMOUNT=0
-                            fi
-                            # Record next GDSA in case of crash/reboot
-                            echo "$GDSAUSE" > /opt/appdata/pgblitz/vars/lastGDSA
-                        fi
-                        log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024" | bc` MB of 750000"
-                        # Record GDSA transfered in case of crash/reboot
-                        echo "$GDSAAMOUNT" > /opt/appdata/pgblitz/vars/gdsaAmount
-                    else
-                        log "File $i seems to have dissapeared"
-                    fi
-                else
-                    log "Already 8 transfers running, waiting for next loop"
-                    break
-                fi
-            fi
-            log "Sleeping 5s before looking at next file"
-            sleep 5
-        done
-        log "Finished looking for files, sleeping 5 secs"
-    else
-        log "Nothing to upload, sleeping 5 secs"
-        log "Running Blitz Finder for files not uploaded"
-        log "${GDSAARRAY[$GDSAUSE]} is now `echo "$GDSAAMOUNT/1024/1024" | bc` MB of 750000 MB"
-        finder
+  if [ "$keylast" == "$keyuse" ]; then keycurrent=0; fi
+
+  let "keycurrent++"
+  keyuse=$(sed -n ''$keycurrent'p' < /opt/appdata/plexguide/key.list)
+
+  encheck=$(cat /var/plexguide/pgclone.transport)
+    if [ "$encheck" == "eblitz" ]; then 
+    keyuse="${keyuse}C"
     fi
-    sleep 5
-    echo "${GDSAARRAY[$GDSAUSE]}" > /var/plexguide/blitz.last
+
+  rclone moveto --min-age=2m \
+        --config /opt/appdata/plexguide/rclone.conf \
+        --transfers=16 \
+        --max-transfer=100G \
+        --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
+        --exclude='**partial~' --exclude=".unionfs-fuse/**" \
+        --max-size=99G \
+        --drive-chunk-size=128M \
+        "$dlpath/move/" "$dlpath/pgblitz/upload"
+
+  echo "Upload Test - Using $keyuse"
+  rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
+        --config /opt/appdata/plexguide/rclone.conf \
+        --transfers=16 \
+        --bwlimit {{bandwidth.stdout}}M \
+        --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
+        --exclude='**partial~' --exclude=".unionfs-fuse/**" \
+        --checkers=16 --max-size=99G \
+        --log-file=/opt/appdata/plexguide/pgblitz.log \
+        --log-level INFO --stats 5s \
+        --drive-chunk-size=128M \
+        "$dlpath/pgblitz/upload" "$keyuse:/"
+
+echo "PG Blitz Log" > /opt/appdata/plexguide/pgblitz.log
+echo "" > /opt/appdata/plexguide/pgblitz.log
+
+# Remove empty directories (MrWednesday)
+find "$dlpath/move/" -mindepth 1 -mmin +30 -type d -empty -delete
+find "$dlpath/pgblitz/upload" -mindepth 1 -mmin +5 -type d -empty -delete
+
 done
-{% endraw %}

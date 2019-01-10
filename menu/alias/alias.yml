@@ -119,10 +119,10 @@
 
   ###### Install PGLog
 
-    - name: Nano PGLog
+    - name: Nano Blitz
       template:
-        src: pglog
-        dest: /bin/pglog
+        src: blitz
+        dest: /bin/blitz
         force: yes
         mode: 0775
 
