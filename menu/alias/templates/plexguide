@@ -32,7 +32,6 @@ mkdir -p /opt/appdata/plexguide
 
 sudocheck
 missingpull
-pginstall
 
 file="/opt/plexguide/containercheck"
 if [ ! -e "$file" ]; then
@@ -44,4 +43,5 @@ done </var/plexguide/app.list
 touch /opt/plexguide/containercheck
 fi
 
+pginstall
 pgdeploy
