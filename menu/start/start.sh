@@ -169,9 +169,9 @@ else
 fi
 
 tee <<-EOF
-[4] PG Box  : Official  - App Installer
-[5] PG Box  : Community - App Installer
-[6] PG Box  : Removal   - App UnInstaller
+[4] PG Box Apps: Official
+[5] PG Box Apps: Community
+[6] PG Box Apps: Removal
 [7] PG Cloud: GCE & Virtual Instances
 [8] PG Tools
 [9] PG Settings
