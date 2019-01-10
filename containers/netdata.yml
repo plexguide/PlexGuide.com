@@ -61,5 +61,7 @@
           - name: plexguide
             aliases:
               - '{{pgrole}}'
+        security_opts:    
+          - apparmor:unconfined
         state: started
         labels: '{{pg_labels}}'
