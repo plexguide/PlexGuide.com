@@ -50,7 +50,8 @@ while [ 1 ]; do
         --drive-chunk-size=128M \
         "$dlpath/move/" "$dlpath/pgblitz/upload"
 
-  echo "PG Blitz Log - Start" > /opt/appdata/plexguide/pgblitz.log
+  echo "" > /opt/appdata/plexguide/pgblitz.log
+  echo "PG Blitz Log - Start Refresh" >> /opt/appdata/plexguide/pgblitz.log
   echo "" >> /opt/appdata/plexguide/pgblitz.log
   echo "Utilizing: $keytransfer" > /opt/appdata/plexguide/pgblitz.log
 
