@@ -67,8 +67,8 @@ initial () {
 
       mkdir -p /opt/mycontainers
       touch /opt/appdata/plexguide/rclone.conf
-      rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/communityapps/ /opt/plexguide/containers
-      
+      rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/communityapps/apps/ /opt/plexguide/containers
+
     done </var/plexguide/app.list
       touch /var/plexguide/community.app
     fi
