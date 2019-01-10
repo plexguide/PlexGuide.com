@@ -59,6 +59,10 @@ tee <<-EOF
 EOF
 sleep 2
 touch /var/plexguide/new.install
+
+file="/var/plexguide/community.app"
+if [ -e "$file" ]; then rm -rf /var/plexguide/community.app; fi
+
 exit
 else
 tee <<-EOF

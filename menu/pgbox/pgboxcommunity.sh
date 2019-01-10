@@ -45,8 +45,6 @@ initial () {
   touch /var/plexguide/app.list
   touch /var/plexguide/pgbox.buildup
 
-  file="/opt/communityapps"
-  if [ -e "$file" ]; then rm -rf /opt/communityapps; fi
   mkdir /opt/communityapps
   ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml
 
@@ -59,16 +57,16 @@ initial () {
   	if [ -e "$file" ]; then waitvar=1; fi
   done
 
-  file="/opt/plexguide/menu/community.check"
-  if [ ! -e "$file" ]; then
-    ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
-    | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list
-  while read p; do
-    echo "" >> /opt/communityapps/apps/$p.yml
-    echo "##PG-Community" >> /opt/communityapps/apps/$p.yml
-  done </var/plexguide/app.list
-  touch /opt/plexguide/menu/community.check
-  fi
+    file="/var/plexguide/community.app"
+    if [ ! -e "$file" ]; then
+      ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
+      | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list
+    while read p; do
+      echo "" >> /opt/communityapps/apps/$p.yml
+      echo "##PG-Community" >> /opt/communityapps/apps/$p.yml
+    done </var/plexguide/app.list
+      touch /var/plexguide/community.app
+    fi
 
   bash /opt/plexguide/containers/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
