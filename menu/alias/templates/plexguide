@@ -33,14 +33,14 @@ mkdir -p /opt/appdata/plexguide
 sudocheck
 missingpull
 
-file="/opt/plexguide/containercheck"
+file="/opt/plexguide/menu/container.check"
 if [ ! -e "$file" ]; then
   bash /opt/plexguide/containers/_appsgen.sh
 while read p; do
   echo "" >> /opt/plexguide/containers/$p.yml
   echo "##PG-Official" >> /opt/plexguide/containers/$p.yml
 done </var/plexguide/app.list
-touch /opt/plexguide/containercheck
+touch /opt/plexguide/menu/container.check
 fi
 
 pginstall
