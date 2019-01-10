@@ -59,6 +59,17 @@ initial () {
   	if [ -e "$file" ]; then waitvar=1; fi
   done
 
+  file="/opt/plexguide/menu/container.check"
+  if [ ! -e "$file" ]; then
+    ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
+    | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list
+  while read p; do
+    echo "" >> /opt/communityapps/apps/$p.yml
+    echo "##PG-Community" >> /opt/communityapps/apps/$p.yml
+  done </var/plexguide/app.list
+  touch /opt/plexguide/menu/container.check
+  fi
+
   bash /opt/plexguide/containers/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 }
@@ -70,6 +81,17 @@ question1 () {
 while read p; do
   sed -i "/^$p\b/Id" /var/plexguide/app.list
 done </var/plexguide/pgbox.running
+
+cp /var/plexguide/app.list /var/plexguide/app.list2
+### Remove Official Apps
+while read p; do
+  # reminder, need one for custom apps
+  baseline=0
+  test01=$(cat /opt/plexguide/containers/$p.yml | grep "##PG-Official")
+
+  if [ "$test01" == "" ]; then baseline=1; fi
+  if [ "$baseline" == "1" ]; then sed -i -e "/$p/d" /var/plexguide/app.list; fi
+done </var/plexguide/app.list2
 
 ### Blank Out Temp List
 rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
