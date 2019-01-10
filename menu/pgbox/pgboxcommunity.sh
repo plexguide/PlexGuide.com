@@ -72,20 +72,21 @@ initial () {
     done </var/plexguide/app.list
       touch /var/plexguide/community.app
     fi
-
-  bash /opt/plexguide/containers/_appsgen.sh
-  docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 }
 # FIRST QUESTION
 
 question1 () {
 
-### Remove Running Apps
-while read p; do
-  sed -i "/^$p\b/Id" /var/plexguide/app.list
-done </var/plexguide/pgbox.running
+bash /opt/plexguide/containers/_appsgen.sh
+docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 
 cp /var/plexguide/app.list /var/plexguide/app.list2
+
+### Remove Running Apps
+while read p; do
+  sed -i "/^$p\b/Id" /var/plexguide/app.list2
+done </var/plexguide/pgbox.running
+
 ### Remove Official Apps
 while read p; do
   # reminder, need one for custom apps
