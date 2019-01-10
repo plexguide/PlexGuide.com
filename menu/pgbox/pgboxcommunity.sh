@@ -45,7 +45,7 @@ initial () {
   touch /var/plexguide/app.list
   touch /var/plexguide/pgbox.buildup
 
-  mkdir /opt/communityapps
+  mkdir -p /opt/communityapps
   ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml
 
   echo ""
@@ -89,7 +89,7 @@ cp /var/plexguide/app.list /var/plexguide/app.list2
 while read p; do
   # reminder, need one for custom apps
   baseline=$(cat /opt/plexguide/containers/$p.yml | grep "##PG-Community")
-  if [ "$baseline" != "" ]; then sed -i -e "/$p/d" /var/plexguide/app.list; fi
+  if [ "$baseline" == "" ]; then sed -i -e "/$p/d" /var/plexguide/app.list; fi
 done </var/plexguide/app.list2
 
 ### Blank Out Temp List
