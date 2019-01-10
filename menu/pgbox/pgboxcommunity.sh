@@ -64,6 +64,11 @@ initial () {
     while read p; do
       echo "" >> /opt/communityapps/apps/$p.yml
       echo "##PG-Community" >> /opt/communityapps/apps/$p.yml
+
+      mkdir -p /opt/mycontainers
+      touch /opt/appdata/plexguide/rclone.conf
+      rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/communityapps/ /opt/plexguide/containers
+      
     done </var/plexguide/app.list
       touch /var/plexguide/community.app
     fi
@@ -74,10 +79,6 @@ initial () {
 # FIRST QUESTION
 
 question1 () {
-
-mkdir -p /opt/mycontainers
-touch /opt/appdata/plexguide/rclone.conf
-rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/communityapps/ /opt/plexguide/containers
 
 ### Remove Running Apps
 while read p; do
