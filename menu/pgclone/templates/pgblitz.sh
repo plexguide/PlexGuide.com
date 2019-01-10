@@ -37,7 +37,7 @@ while [ 1 ]; do
   keyuse=$(sed -n ''$keycurrent'p' < /opt/appdata/plexguide/key.list)
 
   encheck=$(cat /var/plexguide/pgclone.transport)
-  if [ "$encheck" == "eblitz" ]; then keyuse=${keyuse}C; fi
+  if [ "$encheck" == "eblitz" ]; then keyuse=${keyuse}; fi
 
   rclone moveto --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
