@@ -55,6 +55,18 @@
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
+    - name: Creating incomplete paths
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
+      with_items:
+        - '{{path.stdout}}/{{pgrole}}'
+        - '{{path.stdout}}/{{pgrole}}/tv'
+        - '{{path.stdout}}/{{pgrole}}/movies'
+        - '{{path.stdout}}/{{pgrole}}/ebooks'
+        - '{{path.stdout}}/{{pgrole}}/abooks'
+        - '{{path.stdout}}/{{pgrole}}/xxx'
+      when: incomplete.stdout | length == 0
+      ignore_errors: yes
+
     - name: 'Deploying {{pgrole}}'
       docker_container:
         name: '{{pgrole}}'
@@ -87,7 +99,7 @@
       ini_file:
         path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
         section: misc
-        option: download_dir 
+        option: download_dir
         value: '{{path.stdout}}/incomplete/{{pgrole}}'
         state: present
       when: incomplete.stdout | length == 0
@@ -96,7 +108,7 @@
       ini_file:
         path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
         section: misc
-        option: download_dir 
+        option: download_dir
         value: '{{incomplete.stdout}}/{{pgrole}}'
         state: present
       when: incomplete.stdout | length > 0
@@ -136,86 +148,86 @@
     # FIRST TIME CONFIGURATION ###########################################################
     - name: 'Configuring {{pgrole}} for first time use'
       block:
-      - name: Set host_whitelist
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: host_whitelist
-          value: 'sabnzbd.{{domain.stdout}},'
-          state: present
+        - name: Set host_whitelist
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: host_whitelist
+            value: 'sabnzbd.{{domain.stdout}},'
+            state: present
 
-      - name: Set direct_unpack
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: direct_unpack
-          value: 1
-          state: present
+        - name: Set direct_unpack
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: direct_unpack
+            value: 1
+            state: present
 
-      - name: Set ignore_samples
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: ignore_samples
-          value: 1
-          state: present
-          
-      - name: set unwanted_extensions
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: unwanted_extensions
-          value: exe, com, bat, sh, iso, m2ts, mt2s
-          state: present
+        - name: Set ignore_samples
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: ignore_samples
+            value: 1
+            state: present
 
-      - name: set cleanup_list
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: cleanup_list
-          value: nfo, exe, com, bat, txt, doc, xls, xlxs, docx, doc, jpg, jeg, gif, png
-          state: present
+        - name: set unwanted_extensions
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: unwanted_extensions
+            value: exe, com, bat, sh, iso, m2ts, mt2s
+            state: present
 
-      - name: set action_on_unwanted_extensions
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: action_on_unwanted_extensions
-          value: 2
-          state: present
+        - name: set cleanup_list
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: cleanup_list
+            value: nfo, exe, com, bat, txt, doc, xls, xlxs, docx, doc, jpg, jeg, gif, png
+            state: present
 
-      - name: set pause_on_pwrar - aborts encrypted rar rather than pausing
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: pause_on_pwrar
-          value: 2
-          state: present
+        - name: set action_on_unwanted_extensions
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: action_on_unwanted_extensions
+            value: 2
+            state: present
 
-      - name: set new_nzb_on_failure - try a new nzb if it fails
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: new_nzb_on_failure
-          value: 1
-          state: present
+        - name: set pause_on_pwrar - aborts encrypted rar rather than pausing
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: pause_on_pwrar
+            value: 2
+            state: present
 
-      - name: set flat_unpack
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: flat_unpack
-          value: 1
-          state: present
+        - name: set new_nzb_on_failure - try a new nzb if it fails
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: new_nzb_on_failure
+            value: 1
+            state: present
 
-      - name: set download_free
-        ini_file:
-          path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
-          section: misc
-          option: download_free
-          value: 25G
-          state: present
-#      when: not inicheck.stat.exists
+        - name: set flat_unpack
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: flat_unpack
+            value: 1
+            state: present
+
+        - name: set download_free
+          ini_file:
+            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            section: misc
+            option: download_free
+            value: 25G
+            state: present
+    #      when: not inicheck.stat.exists
 
     - name: Restart {{pgrole}}
       docker_container:
