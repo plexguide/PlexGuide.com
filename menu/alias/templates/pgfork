@@ -68,5 +68,7 @@ tee <<-EOF
 ✅️  SYSTEM MESSAGE: Installed User's Forked Version of PG! Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 4
+sleep 1.5
+file="/var/plexguide/community.app"
+if [ -e "$file" ]; then rm -rf /var/plexguide/community.app; fi
 bash /opt/plexguide/menu/ending/ending.sh
