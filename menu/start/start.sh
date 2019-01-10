@@ -157,7 +157,7 @@ quote=$(cat /var/plexguide/startup.quote)
 source=$(cat /var/plexguide/startup.source)
 echo
 echo "[1] Traefik : [$traefik]"
-echo "[2] PG Def  : PG Shield /w Port Guard"
+echo "[2] Defense : PG Shield /w Port Guard"
 
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "[3] PG Clone: Mount Transport"
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "[3] PG Clone: Mount Transport"
@@ -169,9 +169,9 @@ else
 fi
 
 tee <<-EOF
-[4] PG Box Apps: Official
-[5] PG Box Apps: Community
-[6] PG Box Apps: Removal
+[4] Box Apps: Official
+[5] Box Apps: Community
+[6] Box Apps: Removal
 [7] PG Cloud: GCE & Virtual Instances
 [8] PG Tools
 [9] PG Settings
