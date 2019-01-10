@@ -12,10 +12,11 @@ fi
 sleep 10
 while true
 do
+hdmount=$(cat /var/plexguide/server.hd.path)
 ## Sync, Sleep 2 Minutes, Repeat. BWLIMIT 9 Prevents Google 750GB Google Upload Ban
 rclone move --config /opt/appdata/plexguide/rclone.conf --bwlimit {{bandwidth.stdout}}M \
   --tpslimit 6 --exclude='**partial~' --exclude="**_HIDDEN~" --exclude=".unionfs/**" \
   --exclude=".unionfs-fuse/**" --checkers=16 --max-size 99G --log-file=/opt/appdata/plexguide/rclone \
-  --log-level INFO --stats 5s /mnt/move {{ver.stdout}}:/
+  --log-level INFO --stats 5s '$hdmount/move' {{ver.stdout}}:/
 sleep 10
 done
