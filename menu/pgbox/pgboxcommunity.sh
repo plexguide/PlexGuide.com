@@ -77,7 +77,7 @@ question1 () {
 
 mkdir -p /opt/mycontainers
 touch /opt/appdata/plexguide/rclone.conf
-rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/plexguide/containers
+rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/communityapps/ /opt/plexguide/containers
 
 ### Remove Running Apps
 while read p; do
