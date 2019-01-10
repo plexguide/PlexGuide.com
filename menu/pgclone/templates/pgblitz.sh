@@ -50,7 +50,9 @@ while [ 1 ]; do
         --drive-chunk-size=128M \
         "$dlpath/move/" "$dlpath/pgblitz/upload"
 
-  echo "Utiizing Key: $keytransfer" > /opt/appdata/plexguide/pgblitz.log
+  echo "PG Blitz Log - Start" > /opt/appdata/plexguide/pgblitz.log
+  echo "" >> /opt/appdata/plexguide/pgblitz.log
+  echo "Utilizing: $keytransfer" > /opt/appdata/plexguide/pgblitz.log
 
   rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
@@ -63,9 +65,6 @@ while [ 1 ]; do
         --log-level INFO --stats 5s \
         --drive-chunk-size=128M \
         "$dlpath/pgblitz/upload" "$keytransfer:/"
-
-echo "PG Blitz Log" > /opt/appdata/plexguide/pgblitz.log
-echo "" > /opt/appdata/plexguide/pgblitz.log
 
 # Remove empty directories (MrWednesday)
 find "$dlpath/move/" -mindepth 1 -mmin +30 -type d -empty -delete
