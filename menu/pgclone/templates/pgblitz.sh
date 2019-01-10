@@ -37,9 +37,8 @@ while [ 1 ]; do
   keyuse=$(sed -n ''$keycurrent'p' < /opt/appdata/plexguide/key.list)
 
   encheck=$(cat /var/plexguide/pgclone.transport)
-    if [ "$encheck" == "eblitz" ]; then 
-    keyuse="${keyuse}C"
-    fi
+    if [ "$encheck" == "eblitz" ]; then
+    keytransfer="${keyuse}C"; else keytransfer="$keyuse"; fi
 
   rclone moveto --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
@@ -51,7 +50,11 @@ while [ 1 ]; do
         --drive-chunk-size=128M \
         "$dlpath/move/" "$dlpath/pgblitz/upload"
 
-  echo "Upload Test - Using $keyuse"
+  echo "" > /opt/appdata/plexguide/pgblitz.log
+  echo "PG Blitz Log - Start Refresh" >> /opt/appdata/plexguide/pgblitz.log
+  echo "" >> /opt/appdata/plexguide/pgblitz.log
+  echo "Utilizing: $keytransfer" > /opt/appdata/plexguide/pgblitz.log
+
   rclone moveto --tpslimit 12 --checkers=20 --min-age=2m \
         --config /opt/appdata/plexguide/rclone.conf \
         --transfers=16 \
@@ -62,10 +65,7 @@ while [ 1 ]; do
         --log-file=/opt/appdata/plexguide/pgblitz.log \
         --log-level INFO --stats 5s \
         --drive-chunk-size=128M \
-        "$dlpath/pgblitz/upload" "$keyuse:/"
-
-echo "PG Blitz Log" > /opt/appdata/plexguide/pgblitz.log
-echo "" > /opt/appdata/plexguide/pgblitz.log
+        "$dlpath/pgblitz/upload" "$keytransfer:/"
 
 # Remove empty directories (MrWednesday)
 find "$dlpath/move/" -mindepth 1 -mmin +30 -type d -empty -delete
