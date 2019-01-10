@@ -29,7 +29,6 @@
           traefik.port: '{{intport}}'
           traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
-          pg.official: 'true'
 
     - name: 'Setting PG Volumes'
       set_fact:
