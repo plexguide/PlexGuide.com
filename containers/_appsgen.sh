@@ -25,4 +25,4 @@ sed -i "/^test\b/Id" /var/plexguide/app.list
 sed -i -e "/nzbthrottle/d" /var/plexguide/app.list
 sed -i -e "/watchtower/d" /var/plexguide/app.list
 sed -i "/^_templates.yml\b/Id" /var/plexguide/app.list
-sed -i -e "/mariadb-nextcloud/d" /var/plexguide/app.list
+sed -i -e "/oauth/d" /var/plexguide/app.list
