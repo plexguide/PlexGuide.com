@@ -77,6 +77,10 @@ initial () {
 
 question1 () {
 
+mkdir -p /opt/mycontainers
+touch /opt/appdata/plexguide/rclone.conf
+rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/plexguide/containers
+
 ### Remove Running Apps
 while read p; do
   sed -i "/^$p\b/Id" /var/plexguide/app.list
@@ -86,11 +90,8 @@ cp /var/plexguide/app.list /var/plexguide/app.list2
 ### Remove Official Apps
 while read p; do
   # reminder, need one for custom apps
-  baseline=0
-  test01=$(cat /opt/plexguide/containers/$p.yml | grep "##PG-Official")
-
-  if [ "$test01" == "" ]; then baseline=1; fi
-  if [ "$baseline" == "1" ]; then sed -i -e "/$p/d" /var/plexguide/app.list; fi
+  baseline=$(cat /opt/plexguide/containers/$p.yml | grep "##PG-Community")
+  if [ "$baseline" != "" ]; then sed -i -e "/$p/d" /var/plexguide/app.list; fi
 done </var/plexguide/app.list2
 
 ### Blank Out Temp List
