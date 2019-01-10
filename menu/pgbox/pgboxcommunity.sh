@@ -59,7 +59,7 @@ initial () {
   	if [ -e "$file" ]; then waitvar=1; fi
   done
 
-  file="/opt/plexguide/menu/container.check"
+  file="/opt/plexguide/menu/community.check"
   if [ ! -e "$file" ]; then
     ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
     | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list
@@ -67,7 +67,7 @@ initial () {
     echo "" >> /opt/communityapps/apps/$p.yml
     echo "##PG-Community" >> /opt/communityapps/apps/$p.yml
   done </var/plexguide/app.list
-  touch /opt/plexguide/menu/container.check
+  touch /opt/plexguide/menu/community.check
   fi
 
   bash /opt/plexguide/containers/_appsgen.sh
