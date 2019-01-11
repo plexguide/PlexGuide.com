@@ -190,6 +190,7 @@
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
       with_items:
         - "/opt/appdata/plexguide"
+        - "/opt/communityapps"
         - "/var/plexguide"
         - "/mnt/move"
         - "/var/plexguide/logs"

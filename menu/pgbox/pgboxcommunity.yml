@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Cloning Community Apps
+      git:
+        repo: "https://github.com/Admin9705/PlexGuide-Community"
+        dest: /opt/communityapps
+        version: "v8"
+        force: yes
