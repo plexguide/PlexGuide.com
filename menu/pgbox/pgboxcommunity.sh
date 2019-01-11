@@ -69,7 +69,7 @@ question1 () {
   cp /var/plexguide/app.list /var/plexguide/app.list2
 
   file="/var/plexguide/community.app"
-  if [ ! -e "$file" ]; then
+  #if [ ! -e "$file" ]; then
     ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
     | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list
   while read p; do
@@ -81,7 +81,7 @@ question1 () {
     rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/communityapps/apps/ /opt/plexguide/containers
   done </var/plexguide/app.list
     touch /var/plexguide/community.app
-  fi
+  #fi
 
 #bash /opt/plexguide/containers/_appsgen.sh
 docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
