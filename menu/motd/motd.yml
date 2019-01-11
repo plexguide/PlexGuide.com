@@ -20,11 +20,9 @@
   gather_facts: false
   tasks:
     - name: Remove Old MOTD
-      file: "path={{item}} state=absent"
+      file: 'path={{item}} state=absent'
       with_items:
         - /etc/update-motd.d
-        - /etc/motd
-        - /etc/motd.dynamic
 
     - name: Deploy Dynamic MOTD
       file:
@@ -40,7 +38,7 @@
     #    - 90-footer
 
     - name: Import Support Files
-      copy: "src={{item}} dest=/etc/update-motd.d/{{item}} force=yes mode=0775"
+      copy: 'src={{item}} dest=/etc/update-motd.d/{{item}} force=yes mode=0775'
       with_items:
         - 10-hostname-color
         - 20-sysinfo
@@ -49,17 +47,17 @@
         - 60-docker
         - 90-footer
 
-#     - name: Symlink
-#       file:
-#         src: /var/run/motd
-#         dest: /etc/motd
-#         state: link
-#         force: yes
+    # - name: Symlink
+    #   file:
+    #     src: /var/run/motd
+    #     dest: /etc/mot
+    #     state: link
+    #     force: yes
 
-    - name: Npm Mods
-      npm: "name={{item}} global=yes"
-      with_items:
-        - frontail
+    # - name: Npm Mods
+    #   npm: 'name={{item}} global=yes'
+    #   with_items:
+    #     - frontail
 
     - name: Install lolcat pip module
       pip:
@@ -67,10 +65,10 @@
         state: latest
       ignore_errors: yes
 
-    - cron: 
-        name: "Update MOTD"
-        user: "root"
-        minute: "10"
-        job: "update-motd"
+    - cron:
+        name: 'Update MOTD'
+        user: 'root'
+        minute: '10'
+        job: 'update-motd'
         state: present
       become_user: root
