@@ -14,10 +14,6 @@
       shell: 'cat /var/plexguide/server.hd.path'
       register: hdpath
 
-    - name: Register UNIONFS PATH
-      shell: "cat /var/plexguide/unionfs.pgpath"
-      register: unionfs_path
-
     - name: Install UNIONFS Service
       template:
         src: /opt/plexguide/menu/pgclone/templates/munionfs.service
