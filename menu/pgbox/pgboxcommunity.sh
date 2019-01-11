@@ -233,7 +233,8 @@ tee <<-EOF
 
 NOTES: Community Box allows users to install unofficial-community apps
 within PlexGuide! Want to add apps to the community? Visit the link
-above for more information! Push yours apps today!
+above for more information! Utilize the forum and discord community areas
+for support by other members! Push yours apps today!
 
 [1] Utilize PG's Community Box
 [Z] Exit
