@@ -169,7 +169,7 @@ else
 fi
 
 tee <<-EOF
-[4] Box Apps: Official
+[4] Box Apps: Core
 [5] Box Apps: Community
 [6] Box Apps: Removal
 [7] PG Cloud: GCE & Virtual Instances
