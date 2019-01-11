@@ -74,3 +74,4 @@
         minute: "10"
         job: "update-motd"
         state: present
+      become_user: root
