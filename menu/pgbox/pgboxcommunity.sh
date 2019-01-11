@@ -57,10 +57,6 @@ initial () {
   	if [ -e "$file" ]; then waitvar=1; fi
   done
 
-  done </var/plexguide/app.list
-    touch /var/plexguide/community.app
-  fi
-
 }
 
 question1 () {
@@ -69,14 +65,15 @@ question1 () {
   while read p; do
     sed -i "/^$p\b/Id" /var/plexguide/app.list
   done </var/plexguide/pgbox.running
-  echo "FLAG 3"
+  echo "FLAG 0"
 
   cp /var/plexguide/app.list /var/plexguide/app.list2
 
+  echo "FLAG 1"
   file="/var/plexguide/community.app"
   if [ ! -e "$file" ]; then
     ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
-    | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list; fi
+    | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list
   while read p; do
     echo "" >> /opt/communityapps/apps/$p.yml
     echo "##PG-Community" >> /opt/communityapps/apps/$p.yml
@@ -84,15 +81,14 @@ question1 () {
     mkdir -p /opt/mycontainers
     touch /opt/appdata/plexguide/rclone.conf
     rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/communityapps/apps/ /opt/plexguide/containers
-  done
+  done </var/plexguide/app.list
+    touch /var/plexguide/community.app
+  fi
 
-echo "FLAG 1"
+echo "FLAG 2"
 #bash /opt/plexguide/containers/_appsgen.sh
 docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
-echo "FLAG 2"
-
-
-echo "FLAG 4"
+echo "FLAG 3"
 
 ### Remove Official Apps
 while read p; do
@@ -100,7 +96,7 @@ while read p; do
   baseline=$(cat /opt/plexguide/containers/$p.yml | grep "##PG-Community")
   if [ "$baseline" == "" ]; then sed -i -e "/$p/d" /var/plexguide/app.list; fi
 done </var/plexguide/app.list2
-echo "FLAG 5"
+echo "FLAG 4"
 
 ### Blank Out Temp List
 rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
