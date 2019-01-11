@@ -1,6 +1,6 @@
 ---
 #rclone version can be defined as a release number or as beta
-rclone_version: "1.44"
+rclone_version: "1.45"
 
 # Defaults in case no variables for OS are chosen
 PACKAGES:

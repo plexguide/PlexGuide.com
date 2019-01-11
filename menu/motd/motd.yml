@@ -32,11 +32,21 @@
         state: directory
         mode: 0775
 
+    #- name: Import Support Files
+    #  copy: "src={{item}} dest=/etc/update-motd.d/{{item}} force=yes mode=0775"
+    #  with_items:
+    #    - 00-header
+    #    - 10-sysinfo
+    #    - 90-footer
+
     - name: Import Support Files
       copy: "src={{item}} dest=/etc/update-motd.d/{{item}} force=yes mode=0775"
       with_items:
-        - 00-header
-        - 10-sysinfo
+        - 10-hostname-color
+        - 20-sysinfo
+        - 30-diskinfo
+        - 40-services
+        - 60-docker
         - 90-footer
 
     - name: Symlink
@@ -50,3 +60,9 @@
       npm: "name={{item}} global=yes"
       with_items:
         - frontail
+
+    - name: Install lolcat pip module
+      pip:
+        name: lolcat
+        state: latest
+      ignore_errors: yes

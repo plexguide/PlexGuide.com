@@ -10,74 +10,39 @@
   gather_facts: false
   tasks:
     # FACTS #######################################################################
-
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'rutorrent'
         intport: '80'
         extport: '8999'
+        intport2: '51413'
+        extport2: '51413'
+        intport3: '5000'
+        extport3: '5000'
+        intport4: '6881/udp'
+        extport4: '6881'
         image: 'linuxserver/rutorrent'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
       include_tasks: '/opt/plexguide/containers/_core.yml'
 
-    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
-    - name: 'Check for old volumes'
+    # FOLDER CREATION #############################################################
+    - name: 'Including folders'
+      include_tasks: '/opt/plexguide/containers/_folders.yml'
+
+    - name: Checking for existing app data
       stat:
-        path: '{{path.stdout}}/{{pgrole}}'
-      register: oldcheck
-
-    - name: 'Migrations'
-      block:
-        - name: 'Creating new downloads location'
-          command: 'mkdir -p {{path.stdout}}/downloads/{{pgrole}}'
-
-        - name: 'Creating new incomplete downloads location'
-          command: 'mkdir -p {{path.stdout}}/incomplete/{{pgrole}}'
-
-        - name: 'Moving downloads to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/* {{path.stdout}}/downloads/{{pgrole}}/'
-
-        - name: 'Moving torrent to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/torrent/* {{path.stdout}}/torrent'
-
-        # - name: Remove old download directory
-        #   file:
-        #     state: absent
-        #     path: "{{path.stdout}}/{{pgrole}}"
-
-      when: oldcheck.stat.exists
-      ignore_errors: yes
-
-    # EXTRA FOR RUTORRENT #########################################################
-    - name: 'Create plugins directory for {{pgrole}}'
-      file:
-        path: /opt/appdata/{{pgrole}}/plugins
-        state: directory
-        owner: 1000
-        group: 1000
-        mode: 0755
-
-    - name: 'Copy plugins into directory for {{pgrole}}'
-      copy:
-        src: /opt/plexguide/containers/templates/{{pgrole}}/plugins
-        dest: /opt/appdata/{{pgrole}}
-        directory_mode: yes
-        force: yes
-        owner: 1000
-        group: 1000
-        mode: 0755
+        path: '/opt/appdata/{{pgrole}}rutorrent/rtorrent/rtorrent.rc'
+      register: rccheck
 
     # LABELS ######################################################################
-
     - name: 'Adding Traefik'
       set_fact:
         pg_labels:
           traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.enable: 'true'
           traefik.port: '{{intport}}'
-
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
     - name: 'Setting PG Volumes'
@@ -85,6 +50,7 @@
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
           - '/opt/appdata/{{pgrole}}:/config'
+          - '/opt/appdata/{{pgrole}}/sock:/run/php'
           - '{{path.stdout}}:{{path.stdout}}'
 
     - name: 'Setting PG ENV'
@@ -94,11 +60,6 @@
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
-    - name: RCCHECK
-      stat:
-        path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-      register: rccheck
-
     - name: 'Deploying {{pgrole}}'
       docker_container:
         name: '{{pgrole}}'
@@ -106,8 +67,9 @@
         pull: yes
         published_ports:
           - '{{ports.stdout}}{{extport}}:{{intport}}'
-          - '6881:6881/udp'
-          - '51413:51413'
+          - '{{ports.stdout}}{{extport2}}:{{intport2}}'
+          - '{{ports.stdout}}{{extport3}}:{{intport3}}'
+          - '{{ports.stdout}}{{extport4}}:{{intport4}}'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: unless-stopped
@@ -120,92 +82,184 @@
         stop_timeout: '240'
         labels: '{{pg_labels}}'
 
-    # ENDING TASK FOR RUTORRENT ####################################################
+    # CONFIGURATION ####################################################
+    - name: rtorrent.rc creation
+      wait_for:
+        path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+        state: present
+        msg: rtorrent.rc creation failed
+
+    - name: 'Stopping {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        state: stopped
+
+    - name: Set download location
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+        regexp: '^#*directory\s*=.*'
+        line: 'directory = {{path.stdout}}/downloads/{{pgrole}}'
+        state: present
+
+    - name: Set download location
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+        regexp: '^#*directory.default.set\s*=.*'
+        line: 'directory.default.set = {{path.stdout}}/downloads/{{pgrole}}'
+        state: present
+
+    # FIRST TIME CONFIGURATION ####################################################
     - name: 'Configuring {{pgrole}} for first time use'
       block:
-        - name: rtorrent.rc creation
-          wait_for:
-            path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-            state: present
-            msg: rtorrent.rc creation failed
-
-        - name: '7 Second Hold'
-          wait_for:
-            timeout: 7
-
-        - name: 'Stopping {{pgrole}}'
-          docker_container:
-            name: '{{pgrole}}'
-            state: stopped
-
         - name: Upload Rate
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-            regexp: 'upload_rate'
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*upload_rate\s*=.*'
             line: 'upload_rate = 100000'
             state: present
 
         - name: Download Rate
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-            regexp: 'download_rate'
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*download_rate\s*=.*'
             line: 'download_rate = 100000'
             state: present
 
         - name: Low Disk - Set to 20GB
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-            regexp: 'low_diskspace'
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*low_diskspace\s*=.*'
             line: 'schedule = low_diskspace,5,60,close_low_diskspace=20000M'
             state: present
 
         - name: Global Upload to Unlmited
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-            regexp: 'throttle.global_up.max_rate.set_kb'
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*throttle.global_up.max_rate.set_kb\s*=.*'
             line: 'throttle.global_up.max_rate.set_kb = 0'
-            state: present
-
-        - name: Set Encryption
-          lineinfile:
-            path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-            regexp: 'encryption = allow_incoming,try_outgoing,enable_retry'
-            line: 'encryption = allow_incoming,try_outgoing,enable_retry,prefer_plaintext'
             state: present
 
         - name: MAX DL 1024
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-            regexp: 'throttle.global_down.max_rate.set_kb'
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*throttle.max_downloads.global.set_kb\s*=.*'
             line: 'throttle.max_downloads.global.set = 1024'
             state: present
 
         - name: No File Allocation
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-            regexp: 'system.file_allocate.set'
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*system.file_allocate.set\s*=.*'
             line: 'system.file.allocate.set = 0'
             state: present
 
-        - name: DL Location
+        - name: min_peers
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/config/rtorrent/rtorrent.rc'
-            regexp: 'directory.default.set'
-            line: 'directory.default.set = {{path.stdout}}/downloads/{{pgrole}}'
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*min_peers\s*=.*'
+            line: 'min_peers = 40'
             state: present
 
-        - name: Force New Plugin
-          copy:
-            src: /opt/plexguide/containers/templates/rutorrent.ini
-            owner: 1000
-            group: 1000
-            dest: '/opt/appdata/{{pgrole}}/config/rutorrent/settings/plugins.ini'
-            mode: 0775
-            force: yes
+        - name: max_peers
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*max_peers\s*=.*'
+            line: 'max_peers = 1200'
+            state: present
 
-        - name: Restart Docker Container
-          docker_container:
-            name: '{{pgrole}}'
-            state: started
+        - name: max_uploads
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*max_uploads\s*=.*'
+            line: 'max_uploads = 15'
+            state: present
+            
+        - name: max_downloads
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*max_downloads\s*=.*'
+            line: 'max_downloads = 5'
+            state: present
+            
+        - name: Upload Rate
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '^#*upload_rate\s*=.*'
+            line: 'upload_rate = 100000'
+            state: present
 
-      when: not rccheck.stat.exists
+        - name: Download Rate
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*download_rate\s*=.*'
+            line: 'download_rate = 100000'
+            state: present
+
+        - name: Global Upload to Unlmited
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*throttle.global_up.max_rate.set_kb\s*=.*'
+            line: 'throttle.global_up.max_rate.set_kb = 0'
+            state: present
+
+        - name: DHT disable
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*dht\s*=.*'
+            line: '#dht = auto'
+            state: present
+
+        - name: DHT port
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*dht_port\s*=.*'
+            line: '#dht_port = 6881'
+            state: present
+
+        - name: check Hash
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*check_hash\s*=.*'
+            line: 'check_hash = no'
+            state: present
+
+        - name: Preload Piece to Host
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*pieces.preload.type\s*=.*'
+            line: 'pieces.preload.type = 2'
+            state: present
+
+        - name: Preload Piece to Host
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*pieces.preload.type\s*=.*'
+            line: 'pieces.preload.type = 2'
+            state: present
+
+        - name: lower DNS timeout
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*network.http.dns_cache_timeout.set\s*=.*'
+            line: 'network.http.dns_cache_timeout.set = 25'
+            state: present
+
+        - name: Network Send Buffer Size
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*network.send_buffer.size\s*=.*'
+            line: 'network.send_buffer.size = 2'
+            state: present
+
+        - name: Network Recived Buffer Size
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/rtorrent/rtorrent.rc'
+            regexp: '#*network.receive_buffer.size\s*=.*'
+            line: 'network.receive_buffer.size = 2'
+            state: present
+            
+    - name: Restart Docker Container
+      docker_container:
+        name: '{{pgrole}}'
+        state: started
+      #when: not rccheck.stat.exists

@@ -21,19 +21,6 @@
     - name: 'Including cron job'
       include_tasks: '/opt/plexguide/containers/_core.yml'
 
-    # FILE MOVES & CHECKS #########################################################
-    - name: Check config file exists
-      stat:
-        path: '/opt/appdata/{{pgrole}}/.cloudcmd.json'
-      register: cloud_json
-
-    - name: Install config.json
-      template:
-        src: /opt/plexguide/containers/templates/cloudcmd.json
-        dest: /opt/appdata/{{pgrole}}/.cloudcmd.json
-        force: yes
-      when: cloud_json.stat.exists == False
-
     # LABELS ######################################################################
     - name: 'Adding Traefik'
       set_fact:

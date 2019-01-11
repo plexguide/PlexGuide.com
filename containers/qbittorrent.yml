@@ -22,45 +22,11 @@
     - name: 'Including cron job'
       include_tasks: '/opt/plexguide/containers/_core.yml'
 
-    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
-    - name: 'Check for old volumes'
-      stat:
-        path: '{{path.stdout}}/{{pgrole}}'
-      register: oldcheck
-
-    - name: 'Migrations'
-      block:
-        - name: 'Moving downloads to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/downloaded/* {{path.stdout}}/downloads/{{pgrole}}/'
-
-        - name: 'Moving incomplete downloads to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/temp/* {{path.stdout}}/incomplete/{{pgrole}}/'
-
-        - name: 'Moving torrent to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/torrent/* {{path.stdout}}/torrent'
-
-        - name: 'Moving watch to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/watch/* {{path.stdout}}/torrent/watch'
-
-        - name: Remove old download directory
-          file:
-            state: absent
-            path: '{{path.stdout}}/{{pgrole}}'
-
-      when: oldcheck.stat.exists
-      ignore_errors: yes
-
-    # EXTRA FOR QBITORRENT #########################################################
-    - name: Create Basic directories for qBittorrent
-      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true'
-      with_items:
-        - '/mnt:/mnt'
-        - '{{path.stdout}}/{{pgrole}}'
-        - '/opt/appdata/{{pgrole}}'
-        - '/opt/appdata/{{pgrole}}/config'
+    # FOLDER CREATION #############################################################
+    - name: 'Including folders'
+      include_tasks: '/opt/plexguide/containers/_folders.yml'
 
     # LABELS ######################################################################
-
     - name: 'Adding Traefik'
       set_fact:
         pg_labels:
@@ -83,7 +49,7 @@
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
-    - name: ConfCheck
+    - name: 'Checking for existing app data'
       stat:
         path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
       register: confcheck
@@ -105,21 +71,56 @@
         state: started
         labels: '{{pg_labels}}'
 
-    # ENDING TASK FOR QBITTORRENT ####################################################
+    # CONFIGURATION ####################################################
+    - name: 'Wating for {{pgrole}} to start'
+      wait_for:
+      path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+      state: present
+      
+    - name: 'Stopping {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        state: stopped
+
+    - name: Set SavePath
+      ini_file:
+        path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+        section: Preferences
+        option: Downloads\SavePath
+        value: '{{path.stdout}}/downloads/{{pgrole}}'
+        state: present
+
+    - name: Set TempPath when incomplete is defined
+      ini_file:
+        path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+        section: Preferences
+        option: Downloads\TempPath
+        value: '{{incomplete.stdout}}/{{pgrole}}'
+        state: present
+      when: incomplete.stdout | length > 0
+
+    - name: Set TempPath when incomplete is undefined
+      ini_file:
+        path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+        section: Preferences
+        option: Downloads\TempPath
+        value: '{{path.stdout}}/incomplete/{{pgrole}}'
+        state: present
+      when: incomplete.stdout | length == 0
+
+    - name: Set TempPathEnabled when incomplete is undefined
+      ini_file:
+        path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+        section: Preferences
+        option: Downloads\TempPathEnabled
+        value: false
+        state: present
+      when: incomplete.stdout | length == 0
+
+
+    # FIRST TIME CONFIGURATION ####################################################
     - name: 'Configuring {{pgrole}} for first time use'
       block:
-        - name: 'Wating for {{pgrole}} to start'
-          wait_for:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
-            state: present
-
-    - name: 'Configuring {{pgrole}} for first time use'
-      block:
-        - name: 'Stopping {{pgrole}}'
-          docker_container:
-            name: '{{pgrole}}'
-            state: stopped
-
         - name: Enable AutoRun
           ini_file:
             path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
@@ -173,23 +174,7 @@
             path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Downloads\UseIncompleteExtension
-            value: true
-            state: present
-
-        - name: Set download path
-          ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
-            section: Preferences
-            option: Downloads\SavePath
-            value: '{{path.stdout}}/downloads/{{pgrole}}'
-            state: present
-
-        - name: Set incomplete path
-          ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
-            section: Preferences
-            option: Downloads\TempPath
-            value: '{{path.stdout}}/incomplete/{{pgrole}}'
+            value: false
             state: present
 
         - name: Ignore slow torrents
@@ -253,7 +238,9 @@
             path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: WebUI\Username
-            value: plexguide
+            value:
+            allow_no_value: yes
+            force: yes
             state: present
 
         - name: Set default pass - plexguide
@@ -261,12 +248,15 @@
             path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: WebUI\Password_ha1
-            value: '@ByteArray(ae571ae427114974f10305cfc62ae0a8)'
+            value:
+            allow_no_value: yes
+            force: yes
             state: present
 
-        - name: Restart Container
-          docker_container:
-            name: qbittorrent
-            state: started
+      #when: not confcheck.stat.exists
 
-      when: not confcheck.stat.exists
+      
+    - name: Restart {{pgrole}}
+      docker_container:
+        name: '{{pgrole}}'
+        state: started

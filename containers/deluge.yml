@@ -10,7 +10,6 @@
   gather_facts: false
   tasks:
     # FACTS #######################################################################
-
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'deluge'
@@ -26,76 +25,16 @@
     - name: 'Including cron job'
       include_tasks: '/opt/plexguide/containers/_core.yml'
 
-    # MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
-    - name: 'Check for old volumes'
-      stat:
-        path: '{{path.stdout}}/{{pgrole}}'
-      register: oldcheck
+    # FOLDER CREATION #############################################################
+    - name: 'Including folders'
+      include_tasks: '/opt/plexguide/containers/_folders.yml'
 
-    - name: 'Migrations'
-      block:
-        - name: 'Creating new downloads location'
-          command: 'mkdir -p {{path.stdout}}/downloads/{{pgrole}}'
-
-        - name: 'Creating new incomplete downloads location'
-          command: 'mkdir -p {{path.stdout}}/incomplete/{{pgrole}}'
-
-        - name: 'Moving downloads to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/downloaded/* {{path.stdout}}/downloads/{{pgrole}}/'
-
-        - name: 'Moving incomplete downloads to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/temp/* {{path.stdout}}/incomplete/{{pgrole}}/'
-
-        - name: 'Moving torrent to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/torrent/* {{path.stdout}}/torrent'
-
-        - name: 'Moving watch to new location'
-          command: 'mv {{path.stdout}}/{{pgrole}}/watch/* {{path.stdout}}/torrent/watch'
-
-        # - name: Remove old download directory
-        #   file:
-        #     state: absent
-        #     path: "{{palsth.stdout}}/{{pgrole}}"
-
-      when: oldcheck.stat.exists
-      ignore_errors: yes
-
-    - name: 'Chown download folder'
-      shell: 'chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}/'
-
-    - name: 'Chmod download folder'
-      shell: 'chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}/'
-
-    - name: 'Chown incomplete folder'
-      shell: 'chown -R 1000:1000 {{path.stdout}}/incomplete/{{pgrole}}/'
-
-    - name: 'Chmod incomplete folder'
-      shell: 'chmod -R 775 {{path.stdout}}/incomplete/{{pgrole}}/'
-
-    - name: 'Ini Check'
+    - name: 'Checking for existing app data'
       stat:
         path: /opt/appdata/{{pgrole}}/core.conf
-      register: inicheck
+      register: confcheck
 
-    - name: 'Create plugins directory for {{pgrole}}'
-      file:
-        path: /opt/appdata/{{pgrole}}/plugins
-        state: directory
-        owner: 1000
-        group: 1000
-        mode: 0755
-
-    - name: 'Copy plugins into directory for {{pgrole}}'
-      copy:
-        src: ./templates/{{pgrole}}/plugins
-        dest: /opt/appdata/{{pgrole}}
-        directory_mode: yes
-        force: yes
-        owner: 1000
-        group: 1000
-        mode: 0755
     # LABELS ######################################################################
-
     - name: 'Adding Traefik'
       set_fact:
         pg_labels:
@@ -119,24 +58,6 @@
           PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
-    - name: 'Create scripts directory for {{pgrole}}'
-      file:
-        path: /opt/appdata/{{pgrole}}/scripts
-        state: directory
-        owner: 1000
-        group: 1000
-        mode: 0755
-
-    - name: 'Copy scripts into directory for {{pgrole}}'
-      copy:
-        src: ./templates/deluge_extract.sh
-        dest: /opt/appdata/{{pgrole}}/scripts
-        directory_mode: yes
-        force: yes
-        owner: 1000
-        group: 1000
-        mode: 0755
-
     - name: 'Deploying {{pgrole}}'
       docker_container:
         name: '{{pgrole}}'
@@ -155,89 +76,208 @@
               - '{{pgrole}}'
         state: started
         labels: '{{pg_labels}}'
-
-    - name: 'Wait 6 Seconds'
+        
+    # CONFIGURATION ###########################################################
+    - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        timeout: 6
+        timeout: 10
 
-    - name: Stop Container
+    - name: Stopping {{pgrole}}
       docker_container:
         name: '{{pgrole}}'
         state: stopped
 
-    # ENDING FOR DELUGE ###########################################################
-
-    - name: 'Waiting for {{pgrole}} to initialize'
+    - name: 'Checking for appdata'
       wait_for:
         path: '/opt/appdata/{{pgrole}}/core.conf'
         state: present
 
+    - name: Setting plugins directory
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/core.conf'
+        regexp: '"plugins_location".*'
+        line: '"plugins_location": "/config/plugins",'
+        state: present
+
+    - name: Set download location
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/core.conf'
+        regexp: '"download_location".*'
+        line: '"download_location": "{{path.stdout}}/downloads/{{pgrole}}",'
+        state: present
+      when: incomplete.stdout | length == 0
+
+    - name: Set incomplete path
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/core.conf'
+        regexp: '"download_location".*'
+        line: '"download_location": "{{path.stdout}}/incomplete/{{pgrole}}",'
+        state: present
+      when: incomplete.stdout | length > 0
+
+    - name: Setting complete downloads directory
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/core.conf'
+        regexp: '"move_completed_path".*'
+        line: '"move_completed_path": "{{path.stdout}}/downloads/{{pgrole}}",'
+        state: present
+      when: incomplete.stdout | length > 0
+
+    - name: Setting torrent file directory
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/core.conf'
+        regexp: '"torrentfiles_location".*'
+        line: '"torrentfiles_location": "{{path.stdout}}/torrent",'
+        state: present
+
+    - name: Setting torrent watch directory
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/core.conf'
+        regexp: '"autoadd_location".*'
+        line: '"autoadd_location": "{{path.stdout}}/torrent/watch",'
+        state: present
+
+    - name: Setting move_completed when incomplete is undefined
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/core.conf'
+        regexp: '"move_completed".*'
+        line: '"move_completed": false,'
+        state: present
+      when: incomplete.stdout | length == 0
+
+    - name: Setting move_completed when incomplete is defined
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/core.conf'
+        regexp: '"move_completed".*'
+        line: '"move_completed": true,'
+        state: present
+      when: incomplete.stdout | length > 0
+
+    - name: Setting extractor folder
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
+        regexp: '"use_name_folder".*'
+        line: '"use_name_folder": true,'
+        state: present
+
+    - name: Setting extractor
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
+        regexp: '"extract_path".*'
+        line: '"extract_path": "{{path.stdout}}/downloads/deluge"'
+        state: present
+
+    - name: set enabled_plugins
+      lineinfile:
+        path: '/opt/appdata/{{pgrole}}/core.conf'
+        regexp: '"enabled_plugins".*'
+        line: '"enabled_plugins": ["Extractor", "Label"],'
+        state: present
+        
+    # FIRST TIME CONFIGURATION ####################################################
     - name: 'Configuring {{pgrole}} for first time use'
       block:
-        - name: 'Stopping {{pgrole}}'
-          docker_container:
-            name: '{{pgrole}}'
-            state: stopped
-
-        - name: Setting plugins directory
+        - name: set compact_allocation
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"plugins_location"'
-            line: '"plugins_location": "/config/plugins",'
+            regexp: '"compact_allocation".*'
+            line: '"compact_allocation": true,'
             state: present
 
-        - name: Setting incomplete downloads directory
+        - name: set stop_seed_ratio
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"download_location"'
-            line: '"download_location": "{{path.stdout}}/incomplete/{{pgrole}}",'
+            regexp: '"stop_seed_ratio"".*'
+            line: '"stop_seed_ratio": 1.0,'
             state: present
 
-        - name: Setting complete downloads directory
+        - name: set share_ratio_limit
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"move_completed_path"'
-            line: '"move_completed_path": "{{path.stdout}}/downloads/{{pgrole}}",'
+            regexp: '"share_ratio_limit".*'
+            line: '"share_ratio_limit": 1.0,'
             state: present
 
-        - name: Setting torrent file directory
+        - name: set remove_seed_at_ratio
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"torrentfiles_location"'
-            line: '"torrentfiles_location": "{{path.stdout}}/torrent",'
+            regexp: '"remove_seed_at_ratio".*'
+            line: '"remove_seed_at_ratio": true,'
             state: present
 
-        - name: Setting torrent watch directory
+        - name: set enc_prefer_rc4
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"autoadd_location"'
-            line: '"autoadd_location": "{{path.stdout}}/torrent/watch",'
+            regexp: '"enc_prefer_rc4".*'
+            line: '"enc_prefer_rc4": true,'
             state: present
 
-        - name: Setting move on completion
+        - name: set enc_level
           lineinfile:
             path: '/opt/appdata/{{pgrole}}/core.conf'
-            regexp: '"move_completed"'
-            line: '"move_completed": true,'
+            regexp: '"enc_level".*'
+            line: '"enc_level": 1,'
             state: present
 
-        - name: Setting extractor folder
+        - name: set enc_in_policy
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"use_name_folder"'
-            line: '"use_name_folder": true,'
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"enc_in_policy".*'
+            line: '"enc_in_policy": 1,'
             state: present
 
-        - name: Setting extractor
+        - name: set enc_out_policy
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/plugins/extractor.conf'
-            regexp: '"extract_path"'
-            line: '"extract_path": "{{path.stdout}}/downloads/deluge"'
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"enc_out_policy".*'
+            line: '"enc_out_policy": 1,'
             state: present
 
-        - name: Restart Container
-          docker_container:
-            name: '{{pgrole}}'
-            state: started
+        - name: set max_active_downloading
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"max_active_downloading".*'
+            line: '"max_active_downloading": 4,'
+            state: present
 
-      when: not inicheck.stat.exists
+        - name: set dont_count_slow_torrents
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"dont_count_slow_torrents".*'
+            line: '"dont_count_slow_torrents": true,'
+            state: present
+
+        - name: set max_active_seeding
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"enabled_plugins".*'
+            line: '"max_active_seeding": 8,'
+            state: present
+
+        - name: set share_ratio_limit
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"share_ratio_limit".*'
+            line: '"share_ratio_limit": 1,'
+            state: present
+
+        - name: set stop_seed_at_ratio
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"stop_seed_at_ratio".*'
+            line: '"stop_seed_at_ratio": 1.0,'
+            state: present
+
+        - name: set seed_time_ratio_limit
+          lineinfile:
+            path: '/opt/appdata/{{pgrole}}/core.conf'
+            regexp: '"seed_time_ratio_limit".*'
+            line: '"seed_time_ratio_limit": 1.0,'
+            state: present
+
+        #when: not confcheck.stat.exists
+
+    - name: Restart {{pgrole}}
+      docker_container:
+        name: '{{pgrole}}'
+        state: started

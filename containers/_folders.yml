@@ -1,0 +1,55 @@
+    - name: Creating download paths
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
+      with_items:
+        - '{{path.stdout}}/downloads/{{pgrole}}'
+        - '{{path.stdout}}/downloads/{{pgrole}}/tv'
+        - '{{path.stdout}}/downloads/{{pgrole}}/movies'
+        - '{{path.stdout}}/downloads/{{pgrole}}/ebooks'
+        - '{{path.stdout}}/downloads/{{pgrole}}/abooks'
+        - '{{path.stdout}}/downloads/{{pgrole}}/xxx'
+
+    - name: Creating incomplete paths
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
+      with_items:
+        - '{{incomplete.stdout}}/{{pgrole}}'
+        - '{{incomplete.stdout}}/{{pgrole}}/tv'
+        - '{{incomplete.stdout}}/{{pgrole}}/movies'
+        - '{{incomplete.stdout}}/{{pgrole}}/ebooks'
+        - '{{incomplete.stdout}}/{{pgrole}}/abooks'
+        - '{{incomplete.stdout}}/{{pgrole}}/xxx'
+      when: incomplete.stdout | length > 0
+      ignore_errors: yes
+
+      
+    - name: 'Moving downloads to new location'
+      command: 'mv {{path.stdout}}/incomplete/{{pgrole}}/* {{path.stdout}}/downloads/{{pgrole}}/'
+      when: incomplete.stdout | length == 0
+      ignore_errors: yes
+
+
+# MIGRATIONS (REMOVE SECTION ON MARCH 1st) #############################################################
+    - name: 'Check for old volumes'
+      stat:
+        path: '{{path.stdout}}/sab'
+      register: oldcheck
+
+    - name: 'Migrations'
+      block:
+        - name: 'Moving downloads to new location'
+          command: 'mv {{path.stdout}}/sab/downloads/complete/* {{path.stdout}}/downloads/{{pgrole}}/'
+
+        - name: 'Moving incomplete downloads to new location'
+          command: 'mv {{path.stdout}}/sab/downloads/incomplete/* {{path.stdout}}/incomplete/{{pgrole}}/'
+
+        - name: 'Setting owner on downloads'
+          shell: 'chown -R 1000:1000 {{path.stdout}}/downloads/{{pgrole}}'
+
+        - name: 'Setting 775 on downloads'
+          shell: 'chmod -R 775 {{path.stdout}}/downloads/{{pgrole}}'
+
+        # - name: Remove old download directory
+        #   file:
+        #     state: absent
+        #     path: '{{path.stdout}}/sab'
+      when: oldcheck.stat.exists
+      ignore_errors: yes

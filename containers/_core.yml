@@ -33,6 +33,11 @@
   register: path
   ignore_errors: True
 
+- name: Register incomplete Path
+  shell: 'cat /var/plexguide/server.incomplete.path'
+  register: incomplete
+  ignore_errors: True
+
 - name: Register Auth Path
   shell: 'cat /var/plexguide/server.ht'
   register: auth
@@ -48,12 +53,29 @@
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
 
-# FOLDER #######################################################################
-- name: Create Folders
+# PLUGINS #######################################################################
+- name: Creating scripts and plugins paths
   file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
   with_items:
     - '/opt/appdata/{{pgrole}}/scripts'
     - '/opt/appdata/{{pgrole}}/plugins'
+
+- name: 'Copy any scripts and plugins into appdata directory for {{pgrole}}  - This may take up to a few minutes'
+  copy:
+    src: ./templates/{{pgrole}}
+    dest: /opt/appdata
+    directory_mode: yes
+    force: yes
+    owner: 1000
+    group: 1000
+    mode: 0755
+  ignore_errors: yes
+
+- name: 'Setting permissions on appdata'
+  shell: 'chown -R 1000:1000 /opt/appdata/{{pgrole}}'
+
+- name: 'Setting permissions on appdata'
+  shell: 'chmod -R 775 /opt/appdata/{{pgrole}}'
 
 # OVERWRITE IMAGES #############################################################
 - name: Check if Image Variable Exists

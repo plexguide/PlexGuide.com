@@ -60,3 +60,4 @@
               - '{{pgrole}}'
         state: started
         labels: '{{pg_labels}}'
+        command: --no-auth
