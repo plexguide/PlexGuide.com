@@ -46,7 +46,7 @@ updateprime() {
   echo "50" > ${abc}/pg.pythonstart
   echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
-  echo "21" > ${abc}/pg.folders
+  echo "22" > ${abc}/pg.folders
   echo "13" > ${abc}/pg.rcloneprime
   echo "10" > ${abc}/pg.dockerinstall
   echo "15" > ${abc}/pg.server
@@ -55,7 +55,7 @@ updateprime() {
   echo "10" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.motd
-  echo "98" > ${abc}/pg.alias
+  echo "103" > ${abc}/pg.alias
   echo "2" > ${abc}/pg.dep
   echo "2" > ${abc}/pg.cleaner
   echo "3" > ${abc}/pg.gcloud

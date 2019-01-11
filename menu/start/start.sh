@@ -157,7 +157,7 @@ quote=$(cat /var/plexguide/startup.quote)
 source=$(cat /var/plexguide/startup.source)
 echo
 echo "[1] Traefik : [$traefik]"
-echo "[2] PG Def  : PG Shield /w Port Guard"
+echo "[2] Defense : PG Shield /w Port Guard"
 
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "[3] PG Clone: Mount Transport"
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "[3] PG Clone: Mount Transport"
@@ -169,11 +169,12 @@ else
 fi
 
 tee <<-EOF
-[4] PG Box  : App Installer
-[5] PG Box  : App Removal
-[6] PG Cloud: GCE & Virtual Instances
-[7] PG Tools
-[8] PG Settings
+[4] Box Apps: Official
+[5] Box Apps: Community
+[6] Box Apps: Removal
+[7] PG Cloud: GCE & Virtual Instances
+[8] PG Tools
+[9] PG Settings
 [Z] Exit
 
 "$quote"
@@ -208,12 +209,14 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/pgbox/pgbox.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/removal/removal.sh
+  bash /opt/plexguide/menu/pgbox/pgboxcommunity.sh
 elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
+  bash /opt/plexguide/menu/removal/removal.sh
 elif [ "$typed" == "7" ]; then
-  bash /opt/plexguide/menu/tools/tools.sh
+  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
 elif [ "$typed" == "8" ]; then
+  bash /opt/plexguide/menu/tools/tools.sh
+elif [ "$typed" == "9" ]; then
   bash /opt/plexguide/menu/settings/settings.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   bash /opt/plexguide/menu/ending/ending.sh
