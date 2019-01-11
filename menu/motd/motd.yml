@@ -66,3 +66,11 @@
         name: lolcat
         state: latest
       ignore_errors: yes
+
+
+    - cron: 
+        name: "Update MOTD"
+        user: "root"
+        minute: "10"
+        job: "update-motd"
+        state: present
