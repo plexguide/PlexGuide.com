@@ -110,7 +110,6 @@ done </var/plexguide/app.list
 
 notrun=$(cat /var/plexguide/program.temp)
 buildup=$(cat /var/plexguide/pgbox.output)
-echo "FLAG 7"
 
 if [ "$buildup" == "" ]; then buildup="NONE"; fi
 tee <<-EOF
