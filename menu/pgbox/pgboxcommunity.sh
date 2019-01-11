@@ -231,10 +231,10 @@ tee <<-EOF
 🚀 PG Community Box Edition!         📓 Reference: community.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬  Community Box apps empower users to install community applications.
+💬 Community Box apps empower users to install Community Applications.
 PG provides less support and focus on these apps because of their limited
-use! Want to push on toe the community box? Visit the link above and push
-your containers today!
+use! Want to push an application to community box? Visit the link above
+and push your containers today!
 
 [1] Utilize PG's Community Box
 [Z] Exit
