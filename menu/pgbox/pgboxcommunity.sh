@@ -224,7 +224,39 @@ cat /tmp/output.info
 final
 }
 
+mainbanner () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Community Box Edition!         📓 Reference: community.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTES: Community Box allows users to install unofficial-community apps
+within PlexGuide! Want to add apps to the community? Visit the link
+above for more information! Push yours apps today!
+
+[1] Utilize PG's Community Box
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
+
+case $typed in
+    1 )
+        initial
+        question1 ;;
+    z )
+        exit ;;
+    Z )
+        exit ;;
+    * )
+        mainbanner ;;
+esac
+}
+
+
 # FUNCTIONS END ##############################################################
 echo "" > /tmp/output.info
-initial
-question1
+mainbanner
