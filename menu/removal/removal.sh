@@ -115,6 +115,13 @@ tee <<-EOF
 EOF
 sleep 1
 rm -rf /opt/appdata/$typed
+
+file="/opt/plexguide/containers/$typed.yml"
+if [ ! -e "$file" ]; then
+  check=$(cat /opt/plexguide/containers/$typed.yml | grep '##PG-Community')
+    if [ "$check" == "##PG-Community" ]; then rm -r /opt/plexguide/containers/$typed.yml; fi
+fi
+  
 sleep 1.5
 
 tee <<-EOF
