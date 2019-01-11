@@ -65,11 +65,9 @@ question1 () {
   while read p; do
     sed -i "/^$p\b/Id" /var/plexguide/app.list
   done </var/plexguide/pgbox.running
-  echo "FLAG 0"
 
   cp /var/plexguide/app.list /var/plexguide/app.list2
 
-  echo "FLAG 1"
   file="/var/plexguide/community.app"
   if [ ! -e "$file" ]; then
     ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
@@ -85,10 +83,8 @@ question1 () {
     touch /var/plexguide/community.app
   fi
 
-echo "FLAG 2"
 #bash /opt/plexguide/containers/_appsgen.sh
 docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
-echo "FLAG 3"
 
 ### Remove Official Apps
 while read p; do
@@ -96,7 +92,6 @@ while read p; do
   baseline=$(cat /opt/plexguide/containers/$p.yml | grep "##PG-Community")
   if [ "$baseline" == "" ]; then sed -i -e "/$p/d" /var/plexguide/app.list; fi
 done </var/plexguide/app.list
-echo "FLAG 4"
 
 ### Blank Out Temp List
 rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
@@ -112,7 +107,6 @@ while read p; do
     echo " " >> /var/plexguide/program.temp
   fi
 done </var/plexguide/app.list
-echo "FLAG 6"
 
 notrun=$(cat /var/plexguide/program.temp)
 buildup=$(cat /var/plexguide/pgbox.output)
