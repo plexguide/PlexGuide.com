@@ -95,7 +95,7 @@ while read p; do
   # reminder, need one for custom apps
   baseline=$(cat /opt/plexguide/containers/$p.yml | grep "##PG-Community")
   if [ "$baseline" == "" ]; then sed -i -e "/$p/d" /var/plexguide/app.list; fi
-done </var/plexguide/app.list2
+done </var/plexguide/app.list
 echo "FLAG 4"
 
 ### Blank Out Temp List
