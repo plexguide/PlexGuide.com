@@ -56,37 +56,42 @@ initial () {
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
-    file="/var/plexguide/community.app"
-    if [ ! -e "$file" ]; then
-      ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
-      | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list
-    while read p; do
-      echo "" >> /opt/communityapps/apps/$p.yml
-      echo "##PG-Community" >> /opt/communityapps/apps/$p.yml
 
-      mkdir -p /opt/mycontainers
-      touch /opt/appdata/plexguide/rclone.conf
-      rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/communityapps/apps/ /opt/plexguide/containers
+  done </var/plexguide/app.list
+    touch /var/plexguide/community.app
+  fi
 
-    done </var/plexguide/app.list
-      touch /var/plexguide/community.app
-    fi
-  echo "FLAG 1"
-  bash /opt/plexguide/containers/_appsgen.sh
-  docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
-  echo "FLAG 2"
 }
-# FIRST QUESTION
 
 question1 () {
 
-### Remove Running Apps
-while read p; do
-  sed -i "/^$p\b/Id" /var/plexguide/app.list
-done </var/plexguide/pgbox.running
-echo "FLAG 3"
+  ### Remove Running Apps
+  while read p; do
+    sed -i "/^$p\b/Id" /var/plexguide/app.list
+  done </var/plexguide/pgbox.running
+  echo "FLAG 3"
 
-cp /var/plexguide/app.list /var/plexguide/app.list2
+  cp /var/plexguide/app.list /var/plexguide/app.list2
+
+  file="/var/plexguide/community.app"
+  if [ ! -e "$file" ]; then
+    ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
+    | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list; fi
+  while read p; do
+    echo "" >> /opt/communityapps/apps/$p.yml
+    echo "##PG-Community" >> /opt/communityapps/apps/$p.yml
+
+    mkdir -p /opt/mycontainers
+    touch /opt/appdata/plexguide/rclone.conf
+    rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/communityapps/apps/ /opt/plexguide/containers
+  done
+
+echo "FLAG 1"
+#bash /opt/plexguide/containers/_appsgen.sh
+docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
+echo "FLAG 2"
+
+
 echo "FLAG 4"
 
 ### Remove Official Apps
