@@ -56,7 +56,7 @@ initial () {
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
-
+  echo "FLAG 0"
     file="/var/plexguide/community.app"
     if [ ! -e "$file" ]; then
       ls -la /opt/communityapps/apps | sed -e 's/.yml//g' \
@@ -72,7 +72,7 @@ initial () {
     done </var/plexguide/app.list
       touch /var/plexguide/community.app
     fi
-
+  echo "FLAG 1"
   bash /opt/plexguide/containers/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 }
