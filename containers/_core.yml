@@ -60,6 +60,11 @@
     - '/opt/appdata/{{pgrole}}/scripts'
     - '/opt/appdata/{{pgrole}}/plugins'
 
+- name: 'Check if Templates Exist for {{pgrole}}'
+  stat:
+    path: './templates/{{pgrole}}'
+  register: copycheck
+
 - name: 'Copy any scripts and plugins into appdata directory for {{pgrole}}  - This may take up to a few minutes'
   copy:
     src: ./templates/{{pgrole}}
@@ -69,7 +74,7 @@
     owner: 1000
     group: 1000
     mode: 0755
-  ignore_errors: yes
+  when: copycheck.stat.exists
 
 - name: 'Setting permissions on appdata'
   shell: 'chown -R 1000:1000 /opt/appdata/{{pgrole}}'
