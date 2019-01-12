@@ -57,7 +57,6 @@
         - /mnt/gcrypt/music
         - /mnt/gcrypt/ebooks
         - /mnt/gcrypt/abooks
-        - /mnt/gcrypt/xxx
       when: gcrypt.stat.exists == False
       ignore_errors: yes
   ############ TCrypt
@@ -74,7 +73,6 @@
         - /mnt/tcrypt/music
         - /mnt/tcrypt/ebooks
         - /mnt/tcrypt/abooks
-        - /mnt/tcrypt/xxx
       when: tcrypt.stat.exists == False
       ignore_errors: yes
 
@@ -132,7 +130,6 @@
         - /mnt/gdrive/music
         - /mnt/gdrive/ebooks
         - /mnt/gdrive/abooks
-        - /mnt/gdrive/xxx
       when: gdrive.stat.exists == False
       ignore_errors: yes
   ############ TCrypt
@@ -145,7 +142,6 @@
         - /mnt/tcrypt/music
         - /mnt/tcrypt/ebooks
         - /mnt/tcrypt/abooks
-        - /mnt/tcrypt/xxx
       when: gdrive.stat.exists == False
       ignore_errors: yes
 
@@ -164,7 +160,6 @@
         - /mnt/tdrive/music
         - /mnt/tdrive/ebooks
         - /mnt/tdrive/abooks
-        - /mnt/tdrive/xxx
       when: tdrive.stat.exists == False
       ignore_errors: yes
 
@@ -182,7 +177,6 @@
         - /mnt/encrypt/music
         - /mnt/encrypt/ebooks
         - /mnt/encrypt/abooks
-        - /mnt/encrypt/xxx
       when: encrypt.stat.exists == False
       ignore_errors: yes
 
@@ -191,6 +185,7 @@
       with_items:
         - "/opt/appdata/plexguide"
         - "/opt/communityapps"
+        - "/opt/coreapps"
         - "/var/plexguide"
         - "/mnt/move"
         - "/var/plexguide/logs"
