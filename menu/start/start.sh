@@ -207,7 +207,7 @@ elif [ "$typed" == "1" ]; then
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgshield/pgshield.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/pgbox/pgbox.sh
+  bash /opt/plexguide/menu/pgbox/pgboxcore.sh
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/pgbox/pgboxcommunity.sh
 elif [ "$typed" == "6" ]; then
