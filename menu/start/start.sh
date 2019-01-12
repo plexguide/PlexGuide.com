@@ -49,6 +49,7 @@ variable /var/plexguide/pgfork.version "NOT-SET"
 variable /var/plexguide/tld.program "NOT-SET"
 variable /opt/appdata/plexguide/plextoken "NOT-SET"
 variable /var/plexguide/server.ht ""
+variable /var/plexguide/server.incomplete.path ""
 variable /var/plexguide/server.email "NOT-SET"
 variable /var/plexguide/server.domain "NOT-SET"
 
@@ -207,7 +208,7 @@ elif [ "$typed" == "1" ]; then
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgshield/pgshield.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/pgbox/pgbox.sh
+  bash /opt/plexguide/menu/pgbox/pgboxcore.sh
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/pgbox/pgboxcommunity.sh
 elif [ "$typed" == "6" ]; then

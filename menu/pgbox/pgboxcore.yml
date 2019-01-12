@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Cloning Core Apps
+      git:
+        repo: "https://github.com/Admin9705/PlexGuide-Core"
+        dest: /opt/coreapps
+        version: "master"
+        force: yes
