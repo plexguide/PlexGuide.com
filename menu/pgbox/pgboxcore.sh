@@ -228,7 +228,7 @@ final
 
 pinterface () {
 
-boxuser=$(cat /var/plexguide/boxuser.branch)
+boxuser=$(cat /var/plexguide/boxcore.user)
 boxbranch=$(cat /var/plexguide/boxcore.branch)
 
 tee <<-EOF
