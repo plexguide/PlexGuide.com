@@ -256,7 +256,7 @@ tee <<-EOF
 💬 IMPORTANT MESSAGE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Username & Branch are both case sensitive! Normal default branch is v8,
-but check the branch under your fork!
+but check the branch under your fork that is being pulled!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
