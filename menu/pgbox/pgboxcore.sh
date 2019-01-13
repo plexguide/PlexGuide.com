@@ -251,7 +251,8 @@ read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
 case $typed in
     1 )
         echo ""
-        echo "BOTH ARE CASE SENSITIVE!"
+        echo "⚠️  BOTH ARE CASE SENSITIVE!"
+        echo 
         read -p '💬 GITHUB UserName | Press [ENTER]: ' typed < /dev/tty
         read -p '💬 Version - (Default: v8) | Press [ENTER]: ' typed < /dev/tty
         pinterface ;;
