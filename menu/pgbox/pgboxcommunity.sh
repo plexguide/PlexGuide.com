@@ -48,8 +48,8 @@ initial () {
   mkdir -p /opt/communityapps
 
 
-  if [ "$boxversion" == "official" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgbox_communitypersonal.yml
-  else ansible-playbook ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml; fi
+  if [ "$boxversion" == "official" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml
+  else ansible-playbook /opt/plexguide/menu/pgbox/pgbox_communitypersonal.yml; fi
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
