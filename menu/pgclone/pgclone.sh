@@ -28,14 +28,14 @@ mainbanner () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Press (WordPress)!               📓 Reference: pgpress.plexguide.com
+🚀 PG Clone                            📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 PG Press is a combined group of services that enables the user to
-deploy their own wordpress websites; including the use of other multiple
-instances!
+💬 PG Clone utilizes RClone to deploy a series of mounts and to deploy
+PG Move or PG Blitz to move data to your cloud drive!
 
-[1] Utilize PG's - PG Press
+[1] Utilize PG Clone - PlexGuide's
+[2] Utilize PG Clone - Personal (Forked)
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
