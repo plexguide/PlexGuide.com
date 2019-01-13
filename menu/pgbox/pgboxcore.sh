@@ -227,13 +227,17 @@ final
 }
 
 pinterface () {
+
+boxuser=$(cat /var/plexguide/boxcore.branch)
+boxbranch=$(cat /var/plexguide/boxcore.branch)
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Core Box Edition!                   📓 Reference: core.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 User: $user | Branch: $branch
+💬 User: $boxuser | Branch: $boxbranch
 
 [1] Change User Name & Branch
 [2] Deploy Core Box - Personal (Forked)
@@ -250,8 +254,6 @@ case $typed in
         initial
         pinterface ;;
     2 )
-        boxuser=$(cat /var/plexguide/boxcore.branch)
-        boxbranch=$(cat /var/plexguide/boxcore.branch)
         existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PlexGuide-Core" | grep "$boxbranch")
         if [ "$existcheck" == "" ]; then echo;
         read -p 'Exiting!Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
