@@ -15,5 +15,5 @@
       git:
         repo: 'https://github.com/{{boxuser.stdout}}/PlexGuide-Core'
         dest: '/opt/coreapps'
-        version: '{{boxuser.stdout}}'
+        version: '{{boxbranch.stdout}}'
         force: yes
