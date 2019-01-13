@@ -14,6 +14,6 @@
     - name: Cloning Core Apps
       git:
         repo: "https://github.com/Admin9705/PlexGuide-Core"
-        dest: "{{boxbranch.stdout}}"
-        version: "{{boxuser.stdout}}"
+        dest: "Admin9705"
+        version: "v8"
         force: yes
