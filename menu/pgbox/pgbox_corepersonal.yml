@@ -11,7 +11,7 @@
       shell: 'cat /var/plexguide/boxcore.branch'
       register: boxbranch
 
-    - name: Cloning Core Apps
+    - name: 'Cloning {{boxuser.stdout}} Core Apps'
       git:
         repo: 'https://github.com/{{boxuser.stdout}}/PlexGuide-Core'
         dest: '/opt/coreapps'
