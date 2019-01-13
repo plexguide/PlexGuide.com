@@ -48,7 +48,7 @@ initial () {
   mkdir -p /opt/communityapps
 
 
-  if [ "$boxversion" == "official" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgbox_communitypersonal
+  if [ "$boxversion" == "official" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgbox_communitypersonal.yml
   else ansible-playbook ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml; fi
 
   echo ""
