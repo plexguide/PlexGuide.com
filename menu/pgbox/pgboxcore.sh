@@ -46,7 +46,9 @@ initial () {
   touch /var/plexguide/pgbox.buildup
 
   mkdir -p /opt/coreapps
-  ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml
+
+  if [ "$boxversion" == "official" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml
+  else ansible-playbook /opt/plexguide/menu/pgbox/pgbox_corepersonal.yml; fi
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
@@ -224,18 +226,21 @@ cat /tmp/output.info
 final
 }
 
-mainbanner () {
+pinterface () {
+
+boxuser=$(cat /var/plexguide/boxcore.user)
+boxbranch=$(cat /var/plexguide/boxcore.branch)
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Core Box Edition!                   📓 Reference: core.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 Core Box apps simplify their usage within PlexGuide! PG provides more
-focused support and development based on core usage. Want to assist in
-approving the core apps? Visit the link above for more information!
+💬 User: $boxuser | Branch: $boxbranch
 
-[1] Utilize PG's Core Box
+[1] Change User Name & Branch
+[2] Deploy Core Box - Personal (Forked)
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -245,8 +250,70 @@ read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 IMPORTANT MESSAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Username & Branch are both case sensitive! Normal default branch is v8,
+but check the branch under your fork that is being pulled!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+        read -p 'Username | Press [ENTER]: ' boxuser < /dev/tty
+        read -p 'Branch   | Press [ENTER]: ' boxbranch < /dev/tty
+        echo "$boxuser" > /var/plexguide/boxcore.user
+        echo "$boxbranch" > /var/plexguide/boxcore.branch
+        pinterface ;;
+    2 )
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PlexGuide-Core" | grep "$boxbranch")
+        if [ "$existcheck" == "" ]; then echo;
+        read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
+        mainbanner; fi
+
+        boxversion="personal"
         initial
         question1 ;;
+    z )
+        exit ;;
+    Z )
+        exit ;;
+    * )
+        mainbanner ;;
+esac
+}
+
+mainbanner () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Core Box Edition!                   📓 Reference: core.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💬 Core Box apps simplify their usage within PlexGuide! PG provides more
+focused support and development based on core usage.
+
+💬 The Personal Forked option will install your version of Core Box. Good
+for testing or for personal mod's! Ensure that it exist prior to use!
+
+[1] Utilize Core Box - PlexGuide's
+[2] Utilize Core Box - Personal (Forked)
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
+
+case $typed in
+    1 )
+        boxversion="official"
+        initial
+        question1 ;;
+    2 )
+        variable /var/plexguide/boxcore.user "NOT-SET"
+        variable /var/plexguide/boxcore.branch "NOT-SET"
+        pinterface ;;
     z )
         exit ;;
     Z )

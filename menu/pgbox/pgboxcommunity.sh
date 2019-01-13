@@ -46,7 +46,10 @@ initial () {
   touch /var/plexguide/pgbox.buildup
 
   mkdir -p /opt/communityapps
-  ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml
+
+
+  if [ "$boxversion" == "official" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml
+  else ansible-playbook /opt/plexguide/menu/pgbox/pgbox_communitypersonal.yml; fi
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
@@ -224,19 +227,21 @@ cat /tmp/output.info
 final
 }
 
-mainbanner () {
+pinterface () {
+
+boxuser=$(cat /var/plexguide/boxcommunity.user)
+boxbranch=$(cat /var/plexguide/boxcommunity.branch)
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Community Box Edition!         📓 Reference: community.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 Community Box apps empower users to install Community Applications.
-PG provides less support and focus on these apps because of their limited
-use! Want to push an application to community box? Visit the link above
-and push your containers today!
+💬 User: $boxuser | Branch: $boxbranch
 
-[1] Utilize PG's Community Box
+[1] Change User Name & Branch
+[2] Deploy Community Box - Personal (Forked)
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -246,6 +251,28 @@ read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 IMPORTANT MESSAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Username & Branch are both case sensitive! Normal default branch is v8,
+but check the branch under your fork that is being pulled!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+        read -p 'Username | Press [ENTER]: ' boxuser < /dev/tty
+        read -p 'Branch   | Press [ENTER]: ' boxbranch < /dev/tty
+        echo "$boxuser" > /var/plexguide/boxcommunity.user
+        echo "$boxbranch" > /var/plexguide/boxcommunity.branch
+        pinterface ;;
+    2 )
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PlexGuide-Community" | grep "$boxbranch")
+        if [ "$existcheck" == "" ]; then echo;
+        read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
+        mainbanner; fi
+
+        boxversion="personal"
         initial
         question1 ;;
     z )
@@ -257,6 +284,45 @@ case $typed in
 esac
 }
 
+mainbanner () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Community Box Edition!         📓 Reference: community.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💬 Community Box apps simplify their usage within PlexGuide! PG provides more
+focused support and development based on community usage.
+
+💬 The Personal Forked option will install your version of Community Box. Good
+for testing or for personal mod's! Ensure that it exist prior to use!
+
+[1] Utilize Community Box - PlexGuide's
+[2] Utilize Community Box - Personal (Forked)
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
+
+case $typed in
+    1 )
+        boxversion="official"
+        initial
+        question1 ;;
+    2 )
+        variable /var/plexguide/boxcommunity.user "NOT-SET"
+        variable /var/plexguide/boxcommunity.branch "NOT-SET"
+        pinterface ;;
+    z )
+        exit ;;
+    Z )
+        exit ;;
+    * )
+        mainbanner ;;
+esac
+}
 
 # FUNCTIONS END ##############################################################
 echo "" > /tmp/output.info
