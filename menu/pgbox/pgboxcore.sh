@@ -233,9 +233,7 @@ tee <<-EOF
 🚀 PG Core Box Edition!                   📓 Reference: core.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 Have a forked version generated prior or it will result in failure.
-
-💬 User: $user | Branch $branch
+💬 User: $user | Branch: $branch
 
 [1] Change User Name & Branch
 [2] Deploy Core Box - Personal (Forked)
