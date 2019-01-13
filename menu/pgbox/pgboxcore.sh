@@ -250,11 +250,16 @@ read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
-        echo ""
-        echo "⚠️  BOTH ARE CASE SENSITIVE!"
-        echo
-        read -p '💬 GITHUB UserName | Press [ENTER]: ' boxuser < /dev/tty
-        read -p '💬 Version - (Default: v8) | Press [ENTER]: ' boxbranch < /dev/tty
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 Username & Branch are both case sensitive! Normal default branch is v8,
+but check the branch under your fork!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+        read -p 'UserName | Press [ENTER]: ' boxuser < /dev/tty
+        read -p 'Branch | Press [ENTER]: ' boxbranch < /dev/tty
         echo "$boxuser" > /var/plexguide/boxcore.user
         echo "$boxbranch" > /var/plexguide/boxcore.branch
         pinterface ;;
