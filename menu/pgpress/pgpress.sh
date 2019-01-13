@@ -32,7 +32,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💬 PG Press is a combined group of services that enables the user to
-deploy their own wordpress website; including other multiple instances!
+deploy their own wordpress websites; including the use of other multiple
+instances!
 
 [1] Utilize PG's - PG Press
 [Z] Exit
