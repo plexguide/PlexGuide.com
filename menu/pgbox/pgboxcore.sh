@@ -256,7 +256,7 @@ case $typed in
     2 )
         existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PlexGuide-Core" | grep "$boxbranch")
         if [ "$existcheck" == "" ]; then echo;
-        read -p 'Exiting!Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
+        read -p 'Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi
 
         boxversion="personal"
