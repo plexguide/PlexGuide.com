@@ -291,6 +291,8 @@ case $typed in
         initial
         question1 ;;
     2 )
+        variable /var/plexguide/box.user "NOT-SET"
+        variable /var/plexguide/box.branch "NOT-SET"
         pinterface;;
     z )
         exit ;;

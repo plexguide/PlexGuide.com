@@ -3,11 +3,11 @@
   gather_facts: false
   tasks:
 
-    - name: Register HD Path
+    - name: Register User
       shell: 'cat /var/plexguide/box.user'
       register: boxuser
 
-    - name: Register HD Path
+    - name: Register Branch
       shell: 'cat /var/plexguide/box.branch'
       register: boxbranch
 
