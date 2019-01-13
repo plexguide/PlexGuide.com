@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Register HD Path
+      shell: 'cat /var/plexguide/box.user'
+      register: boxuser
+
+    - name: Register HD Path
+      shell: 'cat /var/plexguide/box.branch'
+      register: boxbranch
+
+    - name: Cloning Core Apps
+      git:
+        repo: "https://github.com/Admin9705/PlexGuide-Core"
+        dest: "{{boxbranch.stdout}}"
+        version: "{{boxuser.stdout}}"
+        force: yes

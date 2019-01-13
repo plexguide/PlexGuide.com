@@ -232,10 +232,13 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💬 Core Box apps simplify their usage within PlexGuide! PG provides more
-focused support and development based on core usage. Want to assist in
-approving the core apps? Visit the link above for more information!
+focused support and development based on core usage.
 
-[1] Utilize PG's Core Box
+💬 The Personal Forked option will install your version of Core Box. Good
+for testing or for personal mod's! Ensure that it exist prior to use!
+
+[1] Utilize Core Box - PlexGuide's
+[2] Utilize Core Box - Personal (Forked)
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -245,6 +248,11 @@ read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
+        boxversion="official"
+        initial
+        question1 ;;
+    2 )
+        boxversion="personal"
         initial
         question1 ;;
     z )
