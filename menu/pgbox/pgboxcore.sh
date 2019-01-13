@@ -46,7 +46,9 @@ initial () {
   touch /var/plexguide/pgbox.buildup
 
   mkdir -p /opt/coreapps
-  ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml
+
+  if [ "$boxversion" == "official" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml
+  else ansible-playbook /opt/plexguide/menu/pgbox/pgbox_corepersonal.yml; fi
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
