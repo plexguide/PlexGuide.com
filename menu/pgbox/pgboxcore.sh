@@ -260,8 +260,8 @@ but check the branch under your fork that is being pulled!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-        read -p 'UserName | Press [ENTER]: ' boxuser < /dev/tty
-        read -p 'Branch | Press [ENTER]: ' boxbranch < /dev/tty
+        read -p 'Username | Press [ENTER]: ' boxuser < /dev/tty
+        read -p 'Branch   | Press [ENTER]: ' boxbranch < /dev/tty
         echo "$boxuser" > /var/plexguide/boxcore.user
         echo "$boxbranch" > /var/plexguide/boxcore.branch
         pinterface ;;
