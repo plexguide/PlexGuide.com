@@ -248,9 +248,15 @@ case $typed in
     1 )
         boxversion="official"
         initial
-        question1 ;;
+        pinterface ;;
     2 )
-        existcheck=$(git ls-remote --exit-code -h "https://github.com/Admin9705/PlexGuide-Core" | grep "v8")
+        boxuser=$(cat /var/plexguide/boxcore.branch)
+        boxbranch=$(cat /var/plexguide/boxcore.branch)
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PlexGuide-Core" | grep "$boxbranch")
+        if [ "$existcheck" == "" ]; then echo;
+        read -p 'Exiting!Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
+        mainbanner; fi
+
         boxversion="personal"
         initial
         question1 ;;
@@ -291,9 +297,9 @@ case $typed in
         initial
         question1 ;;
     2 )
-        variable /var/plexguide/box.user "NOT-SET"
-        variable /var/plexguide/box.branch "NOT-SET"
-        pinterface;;
+        variable /var/plexguide/boxcore.user "NOT-SET"
+        variable /var/plexguide/boxcore.branch "NOT-SET"
+        pinterface ;;
     z )
         exit ;;
     Z )

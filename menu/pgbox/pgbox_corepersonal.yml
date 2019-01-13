@@ -4,16 +4,16 @@
   tasks:
 
     - name: Register User
-      shell: 'cat /var/plexguide/box.user'
+      shell: 'cat /var/plexguide/boxcore.user'
       register: boxuser
 
     - name: Register Branch
-      shell: 'cat /var/plexguide/box.branch'
+      shell: 'cat /var/plexguide/boxcore.branch'
       register: boxbranch
 
     - name: Cloning Core Apps
       git:
         repo: "https://github.com/Admin9705/PlexGuide-Core"
-        dest: "Admin9705"
-        version: "v8"
+        dest: "{{boxbranch.stdout}}"
+        version: "{{boxuser.stdout}}"
         force: yes
