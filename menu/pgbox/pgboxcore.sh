@@ -226,6 +226,45 @@ cat /tmp/output.info
 final
 }
 
+pinterface () {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Core Box Edition!                   📓 Reference: core.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💬 Have a forked version generated prior or it will result in failure.
+
+💬 User: $user | Branch $branch
+
+[1] Change User Name & Branch
+[2] Deploy Core Box - Personal (Forked)
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
+
+case $typed in
+    1 )
+        boxversion="official"
+        initial
+        question1 ;;
+    2 )
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/Admin9705/PlexGuide-Core" | grep "v8")
+        boxversion="personal"
+        initial
+        question1 ;;
+    z )
+        exit ;;
+    Z )
+        exit ;;
+    * )
+        mainbanner ;;
+esac
+}
+
 mainbanner () {
 tee <<-EOF
 
@@ -254,9 +293,7 @@ case $typed in
         initial
         question1 ;;
     2 )
-        boxversion="personal"
-        initial
-        question1 ;;
+        pinterface;;
     z )
         exit ;;
     Z )
