@@ -252,9 +252,11 @@ case $typed in
     1 )
         echo ""
         echo "⚠️  BOTH ARE CASE SENSITIVE!"
-        echo 
-        read -p '💬 GITHUB UserName | Press [ENTER]: ' typed < /dev/tty
-        read -p '💬 Version - (Default: v8) | Press [ENTER]: ' typed < /dev/tty
+        echo
+        read -p '💬 GITHUB UserName | Press [ENTER]: ' boxuser < /dev/tty
+        read -p '💬 Version - (Default: v8) | Press [ENTER]: ' boxbranch < /dev/tty
+        echo "$boxuser" > /var/plexguide/boxcore.user
+        echo "$boxbranch" > /var/plexguide/boxcore.branch
         pinterface ;;
     2 )
         existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PlexGuide-Core" | grep "$boxbranch")
