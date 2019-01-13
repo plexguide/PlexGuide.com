@@ -250,13 +250,15 @@ read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
-        boxversion="official"
-        initial
+        echo ""
+        echo "BOTH ARE CASE SENSITIVE!"
+        read -p '💬 GITHUB UserName | Press [ENTER]: ' typed < /dev/tty
+        read -p '💬 Version - (Default: v8) | Press [ENTER]: ' typed < /dev/tty
         pinterface ;;
     2 )
         existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PlexGuide-Core" | grep "$boxbranch")
         if [ "$existcheck" == "" ]; then echo;
-        read -p 'Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
+        read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi
 
         boxversion="personal"
