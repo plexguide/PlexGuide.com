@@ -23,10 +23,8 @@ sed -i -e "/word*/d" /var/plexguide/container.running
 sed -i -e "/plex/d" /var/plexguide/container.running
 sed -i -e "/x2go*/d" /var/plexguide/container.running
 sed -i -e "/pgblitz/d" /var/plexguide/container.running
-sed -i -e "/phlex/d" /var/plexguide/container.running
 sed -i -e "/dockergc/d" /var/plexguide/container.running
 sed -i -e "/oauth/d" /var/plexguide/container.running
-sed -i -e "/mariadb-nextcloud/d" /var/plexguide/container.running
 
 ### Your Wondering Why No While Loop, using a While Loops Screws Up Ansible Prompts
 ### BackDoor WorkAround to Stop This Behavior

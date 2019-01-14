@@ -25,7 +25,6 @@ sed -i -e "/plex/d" /var/plexguide/container.running
 sed -i -e "/x2go*/d" /var/plexguide/container.running
 sed -i -e "/authclient/d" /var/plexguide/container.running
 sed -i -e "/dockergc/d" /var/plexguide/container.running
-sed -i -e "/mariadb-nextcloud/d" /tmp/backup.list
 
 count=$(wc -l < /var/plexguide/container.running)
 ((count++))
