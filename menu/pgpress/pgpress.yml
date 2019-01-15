@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Cloning PG Press
+      git:
+        repo: "https://github.com/Admin9705/PlexGuide-PGPress"
+        dest: /opt/pgpress
+        version: "v8"
+        force: yes
