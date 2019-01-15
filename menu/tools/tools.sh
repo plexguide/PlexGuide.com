@@ -64,10 +64,10 @@ tee <<-EOF
 🚀 PG Tools Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[1] PG Vault      [Backup & Restore]
-[2] PG Press      [Not Ready]
+[1] PG Vault  [Backup & Restore]
+[2] PG Press  [Deploy WordPress Instances]
 [3] PG Patrol
-[4] PG Scan       [Not Ready]
+[4] PG Scan   [Not Ready]
 [5] PG Trakt
 [6] Personal VPN Service Installer
 [7] System & Network Auditor
