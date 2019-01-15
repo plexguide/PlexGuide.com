@@ -85,6 +85,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   bash /opt/plexguide/menu/pgvault/pgvault.sh
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgpress/pgpress.sh
+  bash /opt/pgpress/pressmain.sh
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "4" ]; then
