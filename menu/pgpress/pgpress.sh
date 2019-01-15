@@ -28,14 +28,14 @@ mainbanner () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Press (WordPress)!               📓 Reference: pgpress.plexguide.com
+🚀 PG Press                            📓 Reference: pgpress.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💬 PG Press is a combined group of services that enables the user to
 deploy their own wordpress websites; including the use of other multiple
 instances!
 
-[1] Utilize PG's - PG Press
+[1] Utilize PlexGuide's - PG Press
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
