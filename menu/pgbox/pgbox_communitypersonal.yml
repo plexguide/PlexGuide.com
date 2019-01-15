@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Register User
+      shell: 'cat /var/plexguide/boxcommunity.user'
+      register: boxuser
+
+    - name: Register Branch
+      shell: 'cat /var/plexguide/boxcommunity.branch'
+      register: boxbranch
+
+    - name: 'Cloning {{boxuser.stdout}} Community Apps'
+      git:
+        repo: 'https://github.com/{{boxuser.stdout}}/PlexGuide-community'
+        dest: '/opt/communityapps'
+        version: '{{boxbranch.stdout}}'
+        force: yes
