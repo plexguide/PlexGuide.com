@@ -76,7 +76,7 @@
     mode: 0755
   when: copycheck.stat.exists
 
-- name: 'Setting permissions on appdata'
+- name: 'Setting ownership on appdata'
   shell: 'chown -R 1000:1000 /opt/appdata/{{pgrole}}'
 
 - name: 'Setting permissions on appdata'
