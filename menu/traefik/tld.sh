@@ -17,12 +17,10 @@
 docker ps --format '{{.Names}}' > /tmp/backup.list
 sed -i -e "/traefik/d" /tmp/backup.list
 sed -i -e "/watchtower/d" /tmp/backup.list
-sed -i -e "/word*/d" /tmp/backup.list
+sed -i -e "/wp-*/d" /tmp/backup.list
 sed -i -e "/x2go*/d" /tmp/backup.list
 sed -i -e "/plexguide/d" /tmp/backup.list
 sed -i -e "/cloudplow/d" /tmp/backup.list
-sed -i -e "/phlex/d" /tmp/backup.list
-sed -i -e "/wp-*/d" /tmp/backup.list
 
 rm -rf /tmp/backup.build 1>/dev/null 2>&1
 #### Commenting Out To Let User See
