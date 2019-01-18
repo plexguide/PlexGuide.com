@@ -114,7 +114,23 @@ sleep 4
 old=$(cat /var/plexguide/old.program)
 new=$(cat /var/plexguide/tld.program)
 
-if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then ansible-playbook /opt/plexguide/containers/$old.yml; fi
+touch /var/plexguide/tld.type
+tldtype=$(cat /var/plexguide/tld.type)
+
+if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then
+ansible-playbook /opt/plexguide/containers/$old.yml
+
+  if [[ "$tldtype" == "standard" ]]; then
+    ansible-playbook /opt/plexguide/containers/$old.yml
+  elif [[ "$tldtype" == "wordpress" ]]; then
+    echo "$old" > /tmp/wp_id
+    ansible-playbook /opt/pgpress/wordpress.yml
+    echo "$typed" > /tmp/wp_id
+  fi
+
+fi
+
+
 
 ansible-playbook /opt/plexguide/containers/$new.yml
 echo "standard" > /var/plexguide/tld.type
