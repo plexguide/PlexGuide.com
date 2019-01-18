@@ -117,6 +117,8 @@ new=$(cat /var/plexguide/tld.program)
 if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then ansible-playbook /opt/plexguide/containers/$old.yml; fi
 
 ansible-playbook /opt/plexguide/containers/$new.yml
+echo "standard" > /var/plexguide/tld.type
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
