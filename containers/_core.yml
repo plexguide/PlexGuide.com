@@ -65,7 +65,7 @@
     path: './templates/{{pgrole}}'
   register: copycheck
 
-- name: 'Copy any scripts and plugins into appdata directory for {{pgrole}}  - This may take up to a few minutes'
+- name: 'Copying Scripts & Plugins'
   copy:
     src: ./templates/{{pgrole}}
     dest: /opt/appdata
