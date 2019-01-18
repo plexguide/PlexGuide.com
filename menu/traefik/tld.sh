@@ -22,6 +22,7 @@ sed -i -e "/x2go*/d" /tmp/backup.list
 sed -i -e "/plexguide/d" /tmp/backup.list
 sed -i -e "/cloudplow/d" /tmp/backup.list
 sed -i -e "/phlex/d" /tmp/backup.list
+sed -i -e "/wp-/d" /tmp/backup.list
 
 rm -rf /tmp/backup.build 1>/dev/null 2>&1
 #### Commenting Out To Let User See
@@ -128,8 +129,6 @@ if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then
   fi
 
 fi
-
-
 
 ansible-playbook /opt/plexguide/containers/$new.yml
 echo "standard" > /var/plexguide/tld.type
