@@ -118,7 +118,6 @@ touch /var/plexguide/tld.type
 tldtype=$(cat /var/plexguide/tld.type)
 
 if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then
-ansible-playbook /opt/plexguide/containers/$old.yml
 
   if [[ "$tldtype" == "standard" ]]; then
     ansible-playbook /opt/plexguide/containers/$old.yml
