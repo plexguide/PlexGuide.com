@@ -107,7 +107,7 @@ EOF
 
         pressversion="personal"
         initial
-        pinterface ;;
+        question1 ;;
     z )
         exit ;;
     Z )
