@@ -64,12 +64,12 @@ tee <<-EOF
 🚀 PG Tools Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[3] PG Patrol
-[4] PG Scan   [Not Ready]
-[5] PG Trakt
-[6] Personal VPN Service Installer
-[7] System & Network Auditor
-[8] TroubleShoot ~ PreInstaller
+[1] PG Patrol
+[2] PG Scan   [Not Ready]
+[4] PG Trakt
+[3] Personal VPN Service Installer
+[5] System & Network Auditor
+[6] TroubleShoot ~ PreInstaller
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -78,23 +78,20 @@ EOF
 # Standby
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
+  #if [ "$typed" == "1" ]; then
+  #gcheck
+  #bash /opt/plexguide/menu/pgvault/pgvault.sh
   if [ "$typed" == "1" ]; then
-  gcheck
-  bash /opt/plexguide/menu/pgvault/pgvault.sh
-elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/pgpress/pgpress.sh
-  bash /opt/pgpress/pressmain.sh
-elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgpatrol/pgpatrol.sh
-elif [ "$typed" == "4" ]; then
+elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgscan/pgscan.sh
-elif [ "$typed" == "5" ]; then
+elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgtrakt/pgtrakt.sh
-elif [ "$typed" == "6" ]; then
+elif [ "$typed" == "4" ]; then
   echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-elif [ "$typed" == "7" ]; then
+elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/network/network.sh
-elif [ "$typed" == "8" ]; then
+elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/tshoot/tshoot.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
