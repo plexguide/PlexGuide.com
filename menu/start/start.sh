@@ -171,7 +171,7 @@ else
 fi
 
 tee <<-EOF
-[4] PG Box  : Apps [Core, Community & Removal]
+[4] PG Box  : Apps ~ Core, Community & Removal
 [5] PG Press: Deploy WordPress Instances
 [6] PG Vault: Backup & Restore
 [7] PG Cloud: GCE & Virtual Instances
