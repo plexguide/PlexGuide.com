@@ -106,8 +106,7 @@ EOF
         mainbanner; fi
 
         pressversion="personal"
-        initial
-        question1 ;;
+        initial ;;
     z )
         exit ;;
     Z )
