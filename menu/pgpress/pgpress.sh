@@ -100,14 +100,14 @@ EOF
         echo "$pressbranch" > /var/plexguide/pgpress.branch
         pinterface ;;
     2 )
-        existcheck=$(git ls-remote --exit-code -h "https://github.com/$pressuser/PlexGuide-Core" | grep "$pressbranch")
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$pressuser/PlexGuide-PGPress" | grep "$pressbranch")
         if [ "$existcheck" == "" ]; then echo;
         read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi
 
         pressversion="personal"
         initial
-        question1 ;;
+        pinterface ;;
     z )
         exit ;;
     Z )
