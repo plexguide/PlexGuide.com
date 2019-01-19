@@ -104,8 +104,6 @@ EOF
         if [ "$existcheck" == "" ]; then echo;
         read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi
-
-        pressversion="personal"
         initial ;;
     z )
         exit ;;
