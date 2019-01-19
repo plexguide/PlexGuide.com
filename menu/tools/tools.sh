@@ -78,9 +78,6 @@ EOF
 # Standby
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
-  #if [ "$typed" == "1" ]; then
-  #gcheck
-  #bash /opt/plexguide/menu/pgvault/pgvault.sh
   if [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "2" ]; then
