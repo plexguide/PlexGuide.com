@@ -66,8 +66,8 @@ tee <<-EOF
 
 [1] PG Patrol
 [2] PG Scan   [Not Ready]
-[4] PG Trakt
-[3] Personal VPN Service Installer
+[3] PG Trakt
+[4] Personal VPN Service Installer
 [5] System & Network Auditor
 [6] TroubleShoot ~ PreInstaller
 [Z] Exit
