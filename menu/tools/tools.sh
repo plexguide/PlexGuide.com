@@ -64,8 +64,6 @@ tee <<-EOF
 🚀 PG Tools Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[1] PG Vault  [Backup & Restore]
-[2] PG Press  [Deploy WordPress Instances]
 [3] PG Patrol
 [4] PG Scan   [Not Ready]
 [5] PG Trakt
