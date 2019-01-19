@@ -209,13 +209,12 @@ elif [ "$typed" == "1" ]; then
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgshield/pgshield.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/pgbox/pgboxcore.sh
-  bash /opt/plexguide/menu/pgbox/pgboxcommunity.sh
+  bash /opt/plexguide/menu/pgbox/pgboxselect.sh
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/pgpress/pgpress.sh
   bash /opt/pgpress/pressmain.sh
 elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/removal/removal.sh
+
 elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/cloudselect/cloudselect.sh
 elif [ "$typed" == "8" ]; then
