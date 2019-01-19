@@ -17,11 +17,10 @@
 docker ps --format '{{.Names}}' > /tmp/backup.list
 sed -i -e "/traefik/d" /tmp/backup.list
 sed -i -e "/watchtower/d" /tmp/backup.list
-sed -i -e "/word*/d" /tmp/backup.list
+sed -i -e "/wp-*/d" /tmp/backup.list
 sed -i -e "/x2go*/d" /tmp/backup.list
 sed -i -e "/plexguide/d" /tmp/backup.list
 sed -i -e "/cloudplow/d" /tmp/backup.list
-sed -i -e "/phlex/d" /tmp/backup.list
 
 rm -rf /tmp/backup.build 1>/dev/null 2>&1
 #### Commenting Out To Let User See
@@ -114,9 +113,24 @@ sleep 4
 old=$(cat /var/plexguide/old.program)
 new=$(cat /var/plexguide/tld.program)
 
-if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then ansible-playbook /opt/plexguide/containers/$old.yml; fi
+touch /var/plexguide/tld.type
+tldtype=$(cat /var/plexguide/tld.type)
+
+if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then
+
+  if [[ "$tldtype" == "standard" ]]; then
+    ansible-playbook /opt/plexguide/containers/$old.yml
+  elif [[ "$tldtype" == "wordpress" ]]; then
+    echo "$old" > /tmp/wp_id
+    ansible-playbook /opt/pgpress/wordpress.yml
+    echo "$typed" > /tmp/wp_id
+  fi
+
+fi
 
 ansible-playbook /opt/plexguide/containers/$new.yml
+echo "standard" > /var/plexguide/tld.type
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

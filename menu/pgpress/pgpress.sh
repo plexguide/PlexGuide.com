@@ -35,7 +35,8 @@ tee <<-EOF
 deploy their own wordpress websites; including the use of other multiple
 instances!
 
-[1] Utilize PlexGuide's - PG Press
+[1] Utilize PG Press - PlexGuide's
+[2] Utilize PG Press - Personal (Forked)
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -45,6 +46,64 @@ read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
+        initial ;;
+    2 )
+        variable /var/plexguide/pgpress.user "NOT-SET"
+        variable /var/plexguide/pgpress.branch "NOT-SET"
+        pinterface ;;
+    z )
+        exit ;;
+    Z )
+        exit ;;
+    * )
+        mainbanner ;;
+esac
+}
+
+pinterface () {
+
+pressuser=$(cat /var/plexguide/pgpress.user)
+pressbranch=$(cat /var/plexguide/pgpress.branch)
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PG Press!                   📓 Reference: core.plexguide.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💬 User: $pressuser | Branch: $pressbranch
+
+[1] Change User Name & Branch
+[2] Deploy PG Press - Personal (Forked)
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
+
+case $typed in
+    1 )
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 IMPORTANT MESSAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Username & Branch are both case sensitive! Normal default branch is v8,
+but check the branch under your fork that is being pulled!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+        read -p 'Username | Press [ENTER]: ' pressuser < /dev/tty
+        read -p 'Branch   | Press [ENTER]: ' pressbranch < /dev/tty
+        echo "$pressuser" > /var/plexguide/pgpress.user
+        echo "$pressbranch" > /var/plexguide/pgpress.branch
+        pinterface ;;
+    2 )
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$pressuser/PlexGuide-PGPress" | grep "$pressbranch")
+        if [ "$existcheck" == "" ]; then echo;
+        read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
+        mainbanner; fi
         initial ;;
     z )
         exit ;;

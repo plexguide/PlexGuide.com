@@ -360,6 +360,7 @@ shieldcheck() {
   echo "1. Forget to enable Traefik?"
   echo "2. Valdiate if Subdomain is Working?"
   echo "3. Validate Portainer is Deployed?"
+  echo "4. Did you forget to put * wildcare in your DNS?"
   echo ""
   read -p 'Confirm Info | Press [ENTER]: ' typed < /dev/tty
   exit; fi

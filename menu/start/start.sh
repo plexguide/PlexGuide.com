@@ -52,6 +52,7 @@ variable /var/plexguide/server.ht ""
 variable /var/plexguide/server.incomplete.path ""
 variable /var/plexguide/server.email "NOT-SET"
 variable /var/plexguide/server.domain "NOT-SET"
+variable /var/plexguide/tld.type "standard"
 
 #### Temp Fix - Fixes Bugged AppGuard
 serverht=$(cat /var/plexguide/server.ht)
@@ -170,9 +171,9 @@ else
 fi
 
 tee <<-EOF
-[4] Box Apps: Core
-[5] Box Apps: Community
-[6] Box Apps: Removal
+[4] PG Box  : Apps ~ Core, Community & Removal
+[5] PG Press: Deploy WordPress Instances
+[6] PG Vault: Backup & Restore
 [7] PG Cloud: GCE & Virtual Instances
 [8] PG Tools
 [9] PG Settings
@@ -208,11 +209,12 @@ elif [ "$typed" == "1" ]; then
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgshield/pgshield.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/pgbox/pgboxcore.sh
+  bash /opt/plexguide/menu/pgbox/pgboxselect.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/pgbox/pgboxcommunity.sh
+  bash /opt/plexguide/menu/pgpress/pgpress.sh
+  bash /opt/pgpress/pressmain.sh
 elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/removal/removal.sh
+  bash /opt/plexguide/menu/pgvault/pgvault.sh
 elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/cloudselect/cloudselect.sh
 elif [ "$typed" == "8" ]; then
