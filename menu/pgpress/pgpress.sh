@@ -74,7 +74,7 @@ tee <<-EOF
 💬 User: $pressuser | Branch: $pressbranch
 
 [1] Change User Name & Branch
-[2] Deploy Core Box - Personal (Forked)
+[2] Deploy PG Press - Personal (Forked)
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
