@@ -41,8 +41,10 @@ initial2 () {
 }
 
 final () {
+  echo
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   read -p '✅ Process Complete! | PRESS [ENTER] ' typed < /dev/tty
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   bash /opt/plexguide/menu/pgvault/pgvault.sh
   exit
 }
