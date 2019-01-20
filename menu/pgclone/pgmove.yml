@@ -17,7 +17,7 @@
       shell: "cat /var/plexguide/rclone/deploy.version"
       register: ver
       
-     - name: Register HD Path
+    - name: Register HD Path
       shell: "cat /var/plexguide/server.hd.path"
       register: hdpath
       
