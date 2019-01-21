@@ -31,9 +31,9 @@ tee <<-EOF
 🚀 PG Clone                            📓 Reference: pgclone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 PG Clone is a combined group of services that enables the user to
-deploy their own wordpress websites; including the use of other multiple
-instances!
+💬 PG Clone is a combined group of services that utilizes PG Blitz and
+PG Move in conjuction with RClone and automations to mount data drives
+and transfer data in a hasty manner!
 
 [1] Utilize PG Clone - PlexGuide's
 [2] Utilize PG Clone - Personal (Forked)
@@ -100,7 +100,7 @@ EOF
         echo "$clonebranch" > /var/plexguide/pgclone.branch
         pinterface ;;
     2 )
-        existcheck=$(git ls-remote --exit-code -h "https://github.com/$cloneuser/PlexGuide-PGPress" | grep "$clonebranch")
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$cloneuser/PlexGuide-PGClone" | grep "$clonebranch")
         if [ "$existcheck" == "" ]; then echo;
         read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi

@@ -3,7 +3,7 @@
   gather_facts: false
   tasks:
 
-    - name: Cloning PG Press
+    - name: Cloning PG Clone
       git:
         repo: "https://github.com/Admin9705/PlexGuide-PGClone"
         dest: /opt/pgclone
