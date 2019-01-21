@@ -4,16 +4,16 @@
   tasks:
 
     - name: Register User
-      shell: 'cat /var/plexguide/boxcore.user'
-      register: boxuser
+      shell: 'cat /var/plexguide/presscore.user'
+      register: pressuser
 
     - name: Register Branch
-      shell: 'cat /var/plexguide/boxcore.branch'
-      register: boxbranch
+      shell: 'cat /var/plexguide/presscore.branch'
+      register: pressbranch
 
-    - name: 'Cloning {{boxuser.stdout}} Core Apps'
+    - name: 'Cloning {{boxuser.stdout}} Press'
       git:
-        repo: 'https://github.com/{{boxuser.stdout}}/PlexGuide-PGPress'
+        repo: 'https://github.com/{{pressuser.stdout}}/PlexGuide-PGPress'
         dest: '/opt/pgpress'
-        version: '{{boxbranch.stdout}}'
+        version: '{{pressbranch.stdout}}'
         force: yes
