@@ -191,10 +191,10 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
     if [ "$edition" == "PG Edition - GDrive" ]; then
       bash /opt/plexguide/menu/pgclone/pgclone.sh
-      bash /opt/pgclone/pgclone.sh
+      bash /opt/pgclone/gdrive.sh
   elif [ "$edition" == "PG Edition - GCE Feed" ]; then
       bash bash /opt/plexguide/menu/pgclone/pgclone.sh
-      bash /opt/pgclone/pgclone.sh
+      bash /opt/pgclone/gdrive.sh
     elif [ "$edition" == "PG Edition - HD Multi" ]; then bash /opt/plexguide/menu/multihd/scripts/main.sh
     elif [ "$edition" == "PG Edition - HD Solo" ]; then
 tee <<-EOF
