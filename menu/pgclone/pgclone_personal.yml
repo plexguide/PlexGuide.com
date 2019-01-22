@@ -4,11 +4,11 @@
   tasks:
 
     - name: Register User
-      shell: 'cat /var/plexguide/clonecore.user'
+      shell: 'cat /var/plexguide/pgclone.user'
       register: cloneuser
 
     - name: Register Branch
-      shell: 'cat /var/plexguide/clonecore.branch'
+      shell: '/var/plexguide/pgclone.branch'
       register: clonebranch
 
     - name: 'Cloning {{cloneuser.stdout}} - PG Clone'
