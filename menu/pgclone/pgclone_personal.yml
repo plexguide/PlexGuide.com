@@ -3,11 +3,11 @@
   gather_facts: false
   tasks:
 
-    - name: Register User
+    - name: Register User - Personal
       shell: 'cat /var/plexguide/pgclone.user'
       register: cloneuser
 
-    - name: Register Branch
+    - name: Register Branch - Personal
       shell: '/var/plexguide/pgclone.branch'
       register: clonebranch
 
