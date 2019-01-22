@@ -24,6 +24,21 @@ initial () {
   done
 }
 
+custom () {
+  rolename='pgclone'
+  mkdir -p "/opt/$rolename"
+  ansible-playbook "/opt/plexguide/menu/$rolename/${rolename}_personal.yml"
+
+  echo ""
+  echo "💬  Pulling Update Files - Please Wait"
+  file="/opt/pgclone/place.holder"
+  waitvar=0
+  while [ "$waitvar" == "0" ]; do
+  	sleep .5
+  	if [ -e "$file" ]; then waitvar=1; fi
+  done
+}
+
 mainbanner () {
 tee <<-EOF
 
@@ -68,7 +83,7 @@ clonebranch=$(cat /var/plexguide/pgclone.branch)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Clone!                   📓 Reference: core.plexguide.com
+🚀 PG Clone!                             📓 Reference: clone.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💬 User: $cloneuser | Branch: $clonebranch
@@ -104,7 +119,7 @@ EOF
         if [ "$existcheck" == "" ]; then echo;
         read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi
-        initial ;;
+        custom ;;
     z )
         exit ;;
     Z )
