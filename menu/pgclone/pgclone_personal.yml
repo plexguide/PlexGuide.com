@@ -8,7 +8,7 @@
       register: cloneuser
 
     - name: Register Branch - Personal
-      shell: "/var/plexguide/pgclone.branch"
+      shell: "cat /var/plexguide/pgclone.branch"
       register: clonebranch
 
     - name: 'Cloning {{cloneuser.stdout}} - PG Clone'
