@@ -7,5 +7,5 @@
       git:
         repo: "https://github.com/Admin9705/PlexGuide-PGClone"
         dest: /opt/pgclone
-        version: "v8.0"
+        version: "v8.2"
         force: yes
