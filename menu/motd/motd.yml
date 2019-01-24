@@ -43,8 +43,6 @@
         - 10-hostname-color
         - 20-sysinfo
         - 30-diskinfo
-        - 40-services
-        - 60-docker
         - 90-footer
 
     # - name: Symlink
@@ -70,5 +68,5 @@
         user: 'root'
         minute: '10'
         job: 'update-motd'
-        state: present
+        state: absent
       become_user: root
