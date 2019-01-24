@@ -8,6 +8,7 @@
 
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
+mkdir -p /opt/pgclone
 
 initial () {
   rolename='pgclone'
