@@ -12,5 +12,5 @@
       git:
         repo: "https://github.com/Admin9705/{{pname}}"
         dest: "/opt/{{prole}}"
-        version: "v8.2"
+        version: "v8"
         force: yes

@@ -44,12 +44,12 @@ mainbanner () {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG $roleproper | 📓 Reference: $rolename.plexguide.com
+🚀 $roleproper | 📓 Reference: $rolename.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 $roleproper a combined group of services that utilizes PG Blitz and
-PG Move in conjuction with RClone and automations to mount data drives
-and transfer data in a hasty manner!
+💬 $roleproper for PlexGuide serves as a reverse proxy that enables a user
+to mass obtain https (secure) certificates for all their containers! Users
+may also enable a container to operate at the Top Level Domain!
 
 [1] Utilize $roleproper - PlexGuide's
 [2] Utilize $roleproper - Personal (Forked)
@@ -84,7 +84,7 @@ branch=$(cat /var/plexguide/$rolename.branch)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG $roleproper | 📓 Reference: $rolename.plexguide.com
+🚀 $roleproper | 📓 Reference: $rolename.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💬 User: $user | Branch: $branch
