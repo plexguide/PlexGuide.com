@@ -8,15 +8,16 @@
 
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
-rolename='traefik'
-roleproper="Traefik"
-projectname="PlexGuide-Traefik"
-projectversion="v8"
+
+rolename=$(cat /var/plexguide/pgcloner.rolename)
+roleproper=$(cat /var/plexguide/pgcloner.roleproper)
+projectname=$(cat /var/plexguide/pgcloner.projectname)
+projectversion=$(cat /var/plexguide/pgcloner.projectversion)
 
 mkdir -p "/opt/$rolename"
 
 initial () {
-  ansible-playbook "/opt/plexguide/menu/$rolename/primary.yml"
+  ansible-playbook "./primary.yml"
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
   file="/opt/$rolename/place.holder"
@@ -29,7 +30,7 @@ initial () {
 
 custom () {
   mkdir -p "/opt/$rolename"
-  ansible-playbook "/opt/plexguide/menu/$rolename/personal.yml"
+  ansible-playbook "./personal.yml"
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
