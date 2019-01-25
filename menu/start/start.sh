@@ -210,6 +210,7 @@ sleep 3
 
 elif [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/traefik/main.sh
+  bash /opt/traefik/main.sh
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgshield/pgshield.sh
 elif [ "$typed" == "4" ]; then
