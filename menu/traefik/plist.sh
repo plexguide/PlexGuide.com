@@ -7,3 +7,4 @@ namecheap
 ovh
 vultr
 gcloud
+route53

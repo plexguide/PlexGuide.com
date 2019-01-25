@@ -129,6 +129,10 @@ elif [ "$fprovider" == "digitalocean" ]; then
 elif [ "$fprovider" == "namecheap" ]; then
   deploy /var/plexguide/NAMECHEAP_API_USER NOT-SET NAMECHEAP_API_USER
   deploy /var/plexguide/NAMECHEAP_API_KEY NOT-SET NAMECHEAP_API_KEY
+elif [ "$fprovider" == "route53" ]; then
+  deploy /var/plexguide/AWS_ACCESS_KEY_ID NOT-SET AWS_ACCESS_KEY_ID
+  deploy /var/plexguide/AWS_SECRET_ACCESS_KEY NOT-SET AWS_SECRET_ACCESS_KEY
+  deploy /var/plexguide/AWS_HOSTED_ZONE_ID NOT-SET AWS_HOSTED_ZONE_ID  
 elif [ "$fprovider" == "ovh" ]; then
   deploy /var/plexguide/OVH_ENDPOINT NOT-SET OVH_ENDPOINT
   deploy /var/plexguide/OVH_APPLICATION_KEY NOT-SET OVH_APPLICATION_KEY
