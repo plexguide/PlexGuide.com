@@ -43,15 +43,14 @@ custom () {
 }
 
 mainbanner () {
+clonerinfo=$(cat /var/plexguide/pgcloner.info)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 $roleproper | 📓 Reference: $rolename.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 $roleproper for PlexGuide serves as a reverse proxy that enables a user
-to mass obtain https (secure) certificates for all their containers! Users
-may also enable a container to operate at the Top Level Domain!
+$clonerinfo
 
 [1] Utilize $roleproper - PlexGuide's
 [2] Utilize $roleproper - Personal (Forked)
