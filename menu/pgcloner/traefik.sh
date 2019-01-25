@@ -10,6 +10,7 @@
 echo 'traefik' > /var/plexguide/pgcloner.rolename
 echo 'Traefik' > /var/plexguide/pgcloner.roleproper
 echo 'PlexGuide-Traefik' > /var/plexguide/pgcloner.projectname
+echo 'v8' > /var/plexguide/pgcloner.projectversion
 
 ### START PROCESS
 bash /opt/plexguide/menu/pgcloner/core/main.sh
