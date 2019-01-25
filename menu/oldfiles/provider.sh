@@ -22,7 +22,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-cat /opt/plexguide/menu/traefik/plist.sh
+cat /opt/traefik/plist.sh
 tee <<-EOF
 
 ⚠️  WARNING: Remember... it's case sensitive!
@@ -33,7 +33,7 @@ EOF
 # Standby
 read -p 'Type a Provider Name | Press [ENTER]: ' typed < /dev/tty
 
-tcheck=$(cat /opt/plexguide/menu/traefik/plist.sh | grep "\<$typed\>")
+tcheck=$(cat /opt/traefik/plist.sh | grep "\<$typed\>")
 if [ "$tcheck" == "" ]; then
   tee <<-EOF
 
@@ -42,7 +42,7 @@ if [ "$tcheck" == "" ]; then
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/traefik/provider.sh
+bash /opt/traefik/provider.sh
 exit
 fi
 
@@ -54,7 +54,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/traefik/traefik.sh
+bash /opt/traefik/traefik.sh
 exit
 else
 tee <<-EOF

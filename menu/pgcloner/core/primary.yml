@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Register Project Name
+      shell: "cat /var/plexguide/pgcloner.projectname"
+      register: pname
+
+    - name: Register Role
+      shell: "cat /var/plexguide/pgcloner.rolename"
+      register: prole
+
+    - name: Register Project Version
+      shell: "cat /var/plexguide/pgcloner.projectversion"
+      register: pversion
+
+    - name: Clone Role
+      git:
+        repo: "https://github.com/Admin9705/{{pname.stdout}}"
+        dest: "/opt/{{prole.stdout}}"
+        version: "{{pversion.stdout}}"
+        force: yes

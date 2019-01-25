@@ -89,9 +89,9 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/traefik/tld.sh
+  bash /opt/traefik/tld.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/traefik/provider.sh
+  bash /opt/traefik/provider.sh
 elif [ "$typed" == "3" ]; then
   main2 /var/plexguide/server.domain NOT-SET domain
 elif [ "$typed" == "4" ]; then
@@ -108,7 +108,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
     sleep 3
-    bash /opt/plexguide/menu/traefik/traefik.sh
+    bash /opt/traefik/traefik.sh
     exit; fi
 
 fprovider=$(cat /var/plexguide/traefik.provider)
@@ -147,8 +147,8 @@ tee <<-EOF
 EOF
 
 sleep 3
-ansible-playbook /opt/plexguide/menu/traefik/common.yml
-ansible-playbook /opt/plexguide/menu/traefik/$fprovider.yml
+ansible-playbook /opt/traefik/common.yml
+ansible-playbook /opt/traefik/$fprovider.yml
 
 tee <<-EOF
 
@@ -157,7 +157,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/traefik/rebuild2.sh
+bash /opt/traefik/rebuild2.sh
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -173,5 +173,5 @@ else
 bash /opt/plexguide/menu/treafik/traefik.sh
 fi
 
-bash /opt/plexguide/menu/traefik/traefik.sh
+bash /opt/traefik/traefik.sh
 exit

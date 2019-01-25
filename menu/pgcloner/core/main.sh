@@ -8,16 +8,19 @@
 
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
-mkdir -p /opt/pgclone
+
+rolename=$(cat /var/plexguide/pgcloner.rolename)
+roleproper=$(cat /var/plexguide/pgcloner.roleproper)
+projectname=$(cat /var/plexguide/pgcloner.projectname)
+projectversion=$(cat /var/plexguide/pgcloner.projectversion)
+
+mkdir -p "/opt/$rolename"
 
 initial () {
-  rolename='pgclone'
-  mkdir -p "/opt/$rolename"
-  ansible-playbook "/opt/plexguide/menu/$rolename/$rolename.yml"
-
+  ansible-playbook "/opt/plexguide/menu/pgcloner/core/primary.yml"
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
-  file="/opt/pgclone/place.holder"
+  file="/opt/$rolename/place.holder"
   waitvar=0
   while [ "$waitvar" == "0" ]; do
   	sleep .5
@@ -26,13 +29,12 @@ initial () {
 }
 
 custom () {
-  rolename='pgclone'
   mkdir -p "/opt/$rolename"
-  ansible-playbook "/opt/plexguide/menu/$rolename/${rolename}_personal.yml"
+  ansible-playbook "/opt/plexguide/menu/pgcloner/core/personal.yml"
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
-  file="/opt/pgclone/place.holder"
+  file="/opt/$rolename/place.holder"
   waitvar=0
   while [ "$waitvar" == "0" ]; do
   	sleep .5
@@ -41,18 +43,17 @@ custom () {
 }
 
 mainbanner () {
+clonerinfo=$(cat /var/plexguide/pgcloner.info)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Clone                            📓 Reference: pgclone.plexguide.com
+🚀 $roleproper | 📓 Reference: $rolename.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 PG Clone is a combined group of services that utilizes PG Blitz and
-PG Move in conjuction with RClone and automations to mount data drives
-and transfer data in a hasty manner!
+$clonerinfo
 
-[1] Utilize PG Clone - PlexGuide's
-[2] Utilize PG Clone - Personal (Forked)
+[1] Utilize $roleproper - PlexGuide's
+[2] Utilize $roleproper - Personal (Forked)
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -64,8 +65,8 @@ case $typed in
     1 )
         initial ;;
     2 )
-        variable /var/plexguide/pgclone.user "NOT-SET"
-        variable /var/plexguide/pgclone.branch "NOT-SET"
+        variable /var/plexguide/$rolename.user "NOT-SET"
+        variable /var/plexguide/$rolename.branch "NOT-SET"
         pinterface ;;
     z )
         exit ;;
@@ -78,19 +79,19 @@ esac
 
 pinterface () {
 
-cloneuser=$(cat /var/plexguide/pgclone.user)
-clonebranch=$(cat /var/plexguide/pgclone.branch)
+user=$(cat /var/plexguide/$rolename.user)
+branch=$(cat /var/plexguide/$rolename.branch)
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Clone!                             📓 Reference: clone.plexguide.com
+🚀 $roleproper | 📓 Reference: $rolename.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 User: $cloneuser | Branch: $clonebranch
+💬 User: $user | Branch: $branch
 
 [1] Change User Name & Branch
-[2] Deploy PG Clone - Personal (Forked)
+[2] Deploy $roleproper - Personal (Forked)
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -105,18 +106,18 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬 IMPORTANT MESSAGE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Username & Branch are both case sensitive! Normal default branch is v8.0,
-but check the branch under your fork that is being pulled!
+Username & Branch are both case sensitive! Make sure to check for the
+default or selected branch!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-        read -p 'Username | Press [ENTER]: ' cloneuser < /dev/tty
-        read -p 'Branch   | Press [ENTER]: ' clonebranch < /dev/tty
-        echo "$cloneuser" > /var/plexguide/pgclone.user
-        echo "$clonebranch" > /var/plexguide/pgclone.branch
+        read -p 'Username | Press [ENTER]: ' user < /dev/tty
+        read -p 'Branch   | Press [ENTER]: ' branch < /dev/tty
+        echo "$user" > /var/plexguide/$rolename.user
+        echo "$branch" > /var/plexguide/$rolename.branch
         pinterface ;;
     2 )
-        existcheck=$(git ls-remote --exit-code -h "https://github.com/$cloneuser/PlexGuide-PGClone" | grep "$clonebranch")
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$user/$projectname" | grep "$branch")
         if [ "$existcheck" == "" ]; then echo;
         read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi
