@@ -220,7 +220,7 @@ elif [ "$typed" == "5" ]; then
   bash /opt/pgpress/pressmain.sh
 elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/pgcloner/pgvault.sh
-  bash /opt/pgpress/pgvault.sh
+  bash /opt/pgvault/pgvault.sh
 elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/cloudselect/cloudselect.sh
 elif [ "$typed" == "8" ]; then
