@@ -12,4 +12,4 @@ echo 'Traefik' > /var/plexguide/pgcloner.roleproper
 echo 'PlexGuide-Traefik' > /var/plexguide/pgcloner.projectname
 
 ### START PROCESS
-bash /opt/plexguide/pgcloner/core/main.sh
+bash /opt/plexguide/menu/pgcloner/core/main.sh
