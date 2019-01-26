@@ -13,9 +13,7 @@ echo 'PlexGuide-Traefik' > /var/plexguide/pgcloner.projectname
 echo 'v8' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 PG Clone is a combined group of services that utilizes PG Blitz and
-PG Move in conjuction with RClone and automations to mount data drives
-and transfer data in a hasty manner!" > /var/plexguide/pgcloner.info
+echo "💬 Traefik is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy." > /var/plexguide/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
