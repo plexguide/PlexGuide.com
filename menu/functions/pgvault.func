@@ -457,11 +457,11 @@ tee <<-EOF
 
 $notrun
 
-💾 Apps Queued for Backup
+💾 Apps Queued for Restore
 
 $buildup
 
-💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
+💬 Quitting? TYPE > exit | 💪 Ready to Restore? TYPE > deploy
 EOF
 read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 
