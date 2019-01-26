@@ -85,7 +85,7 @@ question1 () {
     touch /var/plexguide/core.app
   #fi
 
-#bash /opt/plexguide/containers/_appsgen.sh
+bash /opt/plexguide/containers/_appsgen.sh
 docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 
 ### Remove Official Apps
