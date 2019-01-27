@@ -19,8 +19,7 @@
       - wget
       - lsb-release
       - figlet
-      #- update-motd
-      #- update-notifier-common
+      - mergerfs
       - unionfs-fuse
       - software-properties-common
       - unrar
@@ -35,7 +34,6 @@
       - htop
       - openssh-server
       - dirmngr
-      #- npm
       - zip
       - apt-transport-https
       - ca-certificates
@@ -53,3 +51,10 @@
       - acl
       - bc
     #ignore_errors: yes
+
+  - name: Download MergerFS
+    get_url: url=https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.debian-stretch_amd64.deb dest=/tmp/mergerfs.deb
+
+  - name: Install MergerFS
+    apt:
+      deb: /tmp/mergerfs.deb

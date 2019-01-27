@@ -53,3 +53,10 @@
       - acl
       - bc
     #ignore_errors: yes
+
+  - name: Download MergerFS
+    get_url: url=https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb dest=/tmp/mergerfs.deb
+
+  - name: Install MergerFS
+    apt:
+      deb: /tmp/mergerfs.deb
