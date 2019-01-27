@@ -21,6 +21,7 @@
       - figlet
       - update-notifier-common
       - unionfs-fuse
+      - mergerfs
       - software-properties-common
       - unrar
       - unzip
