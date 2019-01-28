@@ -1,3 +1,5 @@
+## DEPRECATED, Use _downloaders.yml instead!
+
     - name: Creating download paths
       file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:

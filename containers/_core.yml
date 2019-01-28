@@ -53,11 +53,21 @@
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
 
+- name: 'Setting ownership on appdata (this can take a while)'
+  shell: 'chown -R 1000:1000 /opt/appdata/{{pgrole}}'
+  when: not '"plex" in pgrole'
+
+- name: 'Setting permissions on appdata (this can take a while)'
+  shell: 'chmod -R 775 /opt/appdata/{{pgrole}}'
+  when: not '"plex" in pgrole'
+
 - name: 'Setting ownership on appdata'
   shell: 'chown 1000:1000 /opt/appdata/{{pgrole}}'
+  when: '"plex" in pgrole'
 
 - name: 'Setting permissions on appdata'
   shell: 'chmod 775 /opt/appdata/{{pgrole}}'
+  when: '"plex" in pgrole'
 
 # OVERWRITE IMAGES #############################################################
 - name: Check if Image Variable Exists
