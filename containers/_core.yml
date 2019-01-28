@@ -76,11 +76,11 @@
     mode: 0755
   when: copycheck.stat.exists
 
-- name: 'Setting ownership on appdata'
-  shell: 'chown -R 1000:1000 /opt/appdata/{{pgrole}}'
+- name: 'Setting on appdata'
+  shell: 'chown 1000:1000 /opt/appdata/{{pgrole}}'
 
 - name: 'Setting permissions on appdata'
-  shell: 'chmod -R 775 /opt/appdata/{{pgrole}}'
+  shell: 'chmod 775 /opt/appdata/{{pgrole}}'
 
 # OVERWRITE IMAGES #############################################################
 - name: Check if Image Variable Exists
