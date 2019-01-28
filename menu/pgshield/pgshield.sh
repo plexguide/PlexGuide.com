@@ -355,12 +355,12 @@ shieldcheck() {
   domaincheck=$(cat /tmp/portainer.check)
   if [ "$domaincheck" == "" ]; then
   echo
-  echo "💬  Unable to reach your Subdomain for Portainer!"
+  echo "💬  Unable to reach ${domaincheck} for Portainer!"
   echo ""
   echo "1. Forget to enable Traefik?"
   echo "2. Valdiate if Subdomain is Working?"
   echo "3. Validate Portainer is Deployed?"
-  echo "4. Did you forget to put * wildcare in your DNS?"
+  echo "4. Check your DNS settings for the domain."
   echo ""
   read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
   exit; fi
