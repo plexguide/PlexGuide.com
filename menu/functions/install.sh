@@ -38,7 +38,7 @@ updateprime() {
   if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
   else echo "ubuntu" > ${abc}/os.version; fi
 
-  echo "2" > ${abc}/pg.mergerfs
+  echo "2" > ${abc}/pg.mergerinstall
   echo "50" > ${abc}/pg.pythonstart
   echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
@@ -61,7 +61,6 @@ updateprime() {
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "5" > ${abc}/pg.prune
-  echo "2" > ${abc}/pg.mergerfs
 }
 
 pginstall () {
