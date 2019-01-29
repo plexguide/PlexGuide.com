@@ -7,5 +7,5 @@
       git:
         repo: "https://github.com/Admin9705/PlexGuide-Core"
         dest: /opt/coreapps
-        version: "v8"
+        version: "v8.3"
         force: yes
