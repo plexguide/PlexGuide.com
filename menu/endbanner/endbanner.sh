@@ -21,6 +21,10 @@ tee <<-EOF
 
 EOF
 
+tee <<-EOF
+▫ $program:${port} <- use this to connect this app to another (internal communication)
+EOF
+
 if [ "$ports" == "" ]; then
 tee <<-EOF
 ▫ $ip:${port}${extra}
