@@ -22,7 +22,7 @@ tee <<-EOF
 EOF
 
 tee <<-EOF
-▫ $program:${port} <- use this to connect this app to another (internal communication)
+▫ $program:${port} <- use this to connect other apps to this app (internal only)
 EOF
 
 if [ "$ports" == "" ]; then
