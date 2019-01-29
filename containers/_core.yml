@@ -53,6 +53,10 @@
   shell: "echo '{{pgrole}}' > /tmp/program_var"
   ignore_errors: True
 
+# APPDATA #######################################################################
+- name: 'Creating appdata folder if it does not exist.'
+  shell: 'mkdir -p /opt/appdata/{{pgrole}}'
+
 - name: 'Setting ownership on appdata'
   shell: 'chown 1000:1000 /opt/appdata/{{pgrole}}'
   when: '"plex" in pgrole'
