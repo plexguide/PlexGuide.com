@@ -22,7 +22,7 @@ tee <<-EOF
 EOF
 
 tee <<-EOF
-▫ $program:${port} <- use this to connect this app to snother (internal communication)
+▫ $program:${port} <- use this to connect this app to another (internal communication)
 EOF
 
 if [ "$ports" == "" ]; then
