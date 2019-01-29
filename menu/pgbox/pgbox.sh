@@ -55,6 +55,7 @@ question1 () {
 ### Remove Running Apps
 while read p; do
   sed -i "/^$p\b/Id" /var/plexguide/app.list
+  sed -i "templates" /var/plexguide/app.list
 done </var/plexguide/pgbox.running
 
 ### Blank Out Temp List
