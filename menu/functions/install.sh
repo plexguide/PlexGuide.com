@@ -179,7 +179,7 @@ mergerinstall () {
     if [ "$ub16check" != "" ]; then
     activated=true
     echo "ub16" > /var/plexguide/mergerfs.version
-    wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.25.1.ubuntu-xenial_amd64.deb"
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-xenial_amd64.deb"
     apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
     fi
 
@@ -193,7 +193,7 @@ mergerinstall () {
     if [ "$deb9check" != "" ]; then
     activated=true
     echo "deb9" > /var/plexguide/mergerfs.version
-    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.0/mergerfs_2.25.0.debian-stretch_amd64.deb"
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.debian-stretch_amd64.deb"
     apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
     fi
 
