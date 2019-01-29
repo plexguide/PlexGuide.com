@@ -38,11 +38,6 @@ updateprime() {
   if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
   else echo "ubuntu" > ${abc}/os.version; fi
 
-  #rm -r /opt/pgstage
-  #mkdir -p /opt/pgstage
-  #ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml
-  #git clone https://github.com/Admin9705/PlexGuide-Installer.git /opt/pgstage #&>/dev/null &
-
   echo "50" > ${abc}/pg.pythonstart
   echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
@@ -65,6 +60,7 @@ updateprime() {
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "5" > ${abc}/pg.prune
+  echo "1" > ${abc}/pg.mergerfs
 }
 
 pginstall () {
@@ -78,6 +74,7 @@ pginstall () {
   core dockerinstall
   core docstart
   portainer
+  core mergerfs
   core motd &>/dev/null &
   core hetzner &>/dev/null &
   core gcloud
@@ -166,6 +163,54 @@ gcloud () {
   echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
   sudo apt-get update && sudo apt-get install google-cloud-sdk -y
+}
+
+mergerfs () {
+
+  ub16check=$(cat /etc/*-release | grep xenial)
+  ub18check=$(cat /etc/*-release | grep bionic)
+  deb9check=$(cat /etc/*-release | grep stretch)
+  activated=false
+
+    apt --fix-broken install -y
+    apt-get remove mergerfs -y
+    mkdir -p /var/plexguide
+
+    if [ "$ub16check" != "" ]; then
+    activated=true
+    echo "ub16" > /var/plexguide/mergerfs.version
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.25.1.ubuntu-xenial_amd64.deb"
+    apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+    fi
+
+    if [ "$ub18check" != "" ]; then
+    activated=true
+    echo "ub18" > /var/plexguide/mergerfs.version
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
+    apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+    fi
+
+    if [ "$deb9check" != "" ]; then
+    activated=true
+    echo "deb9" > /var/plexguide/mergerfs.version
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.0/mergerfs_2.25.0.debian-stretch_amd64.deb"
+    apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+    fi
+
+    #if [ "$activated" != "true" ]; then
+    #activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
+    #wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
+    #apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+    #fi
+
+    git clone https://github.com/trapexit/mergerfs.git
+    cd mergerfs
+    make clean
+    make deb
+    cd ..
+    dpkg -i mergerfs*_amd64.deb
+    rm mergerfs*_amd64.deb
+
 }
 
 motd () {
