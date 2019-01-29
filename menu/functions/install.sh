@@ -72,11 +72,10 @@ pginstall () {
   core alias &>/dev/null &
   core folders
   core dependency
-  core mergerfs
+  core mergerinstall
   core dockerinstall
   core docstart
   portainer
-  core mergerfs
   core motd &>/dev/null &
   core hetzner &>/dev/null &
   core gcloud
@@ -167,7 +166,7 @@ gcloud () {
   sudo apt-get update && sudo apt-get install google-cloud-sdk -y
 }
 
-mergerfs () {
+mergerinstall () {
 
   ub16check=$(cat /etc/*-release | grep xenial)
   ub18check=$(cat /etc/*-release | grep bionic)
