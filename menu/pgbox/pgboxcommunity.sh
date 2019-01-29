@@ -101,6 +101,7 @@ rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
 
 ### List Out Apps In Readable Order (One's Not Installed)
 sed -i -e "/templates/d" /var/plexguide/app.list
+sed -i -e "/images/d" /var/plexguide/app.list
 sed -i -e "/_/d" /var/plexguide/app.list
 num=0
 while read p; do
