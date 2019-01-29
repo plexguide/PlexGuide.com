@@ -76,7 +76,11 @@
     group: 1000
     mode: 0755
   when: copycheck.stat.exists
-  
+
+# APPDATA #######################################################################
+- name: 'Creating appdata folder if it does not exist.'
+  shell: 'mkdir -p /opt/appdata/{{pgrole}}'
+
 - name: 'Setting ownership on appdata'
   shell: 'chown 1000:1000 /opt/appdata/{{pgrole}}'
   when: '"plex" in pgrole'
@@ -92,6 +96,7 @@
 - name: 'Setting permissions on appdata recursivley (this can take a while!)'
   shell: 'chmod -R 775 /opt/appdata/{{pgrole}}'
   when: '"plex" not in pgrole'
+  
 # OVERWRITE IMAGES #############################################################
 - name: Check if Image Variable Exists
   stat:
