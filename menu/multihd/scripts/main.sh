@@ -47,7 +47,7 @@ echo "---------------------------------------------------"
 echo ""
 sleep 3
 wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" #1>/dev/null 2>&1
-apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+
 git clone https://github.com/trapexit/mergerfs.git 1>/dev/null 2>&1
 cd mergerfs
 make clean #1>/dev/null 2>&1
