@@ -60,7 +60,7 @@ updateprime() {
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "5" > ${abc}/pg.prune
-  echo "1" > ${abc}/pg.mergerfs
+  echo "2" > ${abc}/pg.mergerfs
 }
 
 pginstall () {
@@ -71,6 +71,7 @@ pginstall () {
   core alias &>/dev/null &
   core folders
   core dependency
+  core mergerfs
   core dockerinstall
   core docstart
   portainer
