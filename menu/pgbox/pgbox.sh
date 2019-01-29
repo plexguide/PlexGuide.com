@@ -55,14 +55,14 @@ question1 () {
 ### Remove Running Apps
 while read p; do
   sed -i "/^$p\b/Id" /var/plexguide/app.list
-  sed -i -e "/templates/d" /var/plexguide/app.list
-
 done </var/plexguide/pgbox.running
 
 ### Blank Out Temp List
 rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
 
 ### List Out Apps In Readable Order (One's Not Installed)
+sed -i -e "/templates/d" /var/plexguide/app.list
+touch /tmp/test.99
 num=0
 while read p; do
   echo -n $p >> /var/plexguide/program.temp
