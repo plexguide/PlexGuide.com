@@ -197,11 +197,11 @@ mergerfs () {
     apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
     fi
 
-    #if [ "$activated" != "true" ]; then
-    #activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
-    #wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
-    #apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
-    #fi
+    if [ "$activated" != "true" ]; then
+    activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
+    apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+    fi
 
     git clone https://github.com/trapexit/mergerfs.git
     cd mergerfs
