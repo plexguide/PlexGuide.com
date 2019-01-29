@@ -25,9 +25,9 @@ tee <<-EOF
 📂  PG Update Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✅  Latest Version : $latest
-    Latest Beta    : $beta
-    Current Verison: $pgnumber
+✅  Stable    : $latest
+⚠️  Beta      : $beta
+    Installed : $pgnumber
 
 💬  Prior Versions?  Visit > versions.plexguide.com
     Quitting? TYPE > exit
