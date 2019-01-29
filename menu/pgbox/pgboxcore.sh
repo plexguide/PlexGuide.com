@@ -131,7 +131,7 @@ $notrun
 
 $buildup
 
-💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
+💬 Quitting? TYPE > exit | 💪 Ready to Install? TYPE > deploy
 EOF
 read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 
