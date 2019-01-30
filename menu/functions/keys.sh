@@ -42,6 +42,14 @@ EOF
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 System Message: Deleting Test Directory - $type:/plexguide
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+  sleep 1
+  rclone rmdir $type:/plexguide
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔  System Message: Validation Checks Failed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -415,7 +423,10 @@ tee <<-EOF
 [3] Create 6 Keys:  Daily Limit - 4.5  TB  <--- Realistic
 [4] Create 8 Keys:  Daily Limit - 6.0  TB
 [5] Create 10 Keys: Daily Limit - 7.5  TB
-[6] Create 20 Keys: Daily Limit - 15   TB
+[6] Create 20 Keys: Daily Limit - 15   TB <---- More than 20 Keys is overkill
+[7] Create 30 Keys: Daily Limit - 22.5 TB 
+[8] Create 40 Keys: Daily Limit - 30.0 TB
+[9] Create 50 Keys: Daily Limit - 37.5 TB
 
 💬 # of Keys Generated Sets Your Daily Upload Limit!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -431,6 +442,9 @@ elif [ "$typed" == "3" ]; then echo "Creating 6 Keys - Daily Upload Limit Set to
 elif [ "$typed" == "4" ]; then echo "Creating 8 Keys - Daily Upload Limit Set to 6.0TB" && keys=8;
 elif [ "$typed" == "5" ]; then echo "Creating 10 Keys - Daily Upload Limit Set to 7.5TB" && keys=10;
 elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set to 15.0TB" && keys=20;
+elif [ "$typed" == "7" ]; then echo "Creating 30 Keys - Daily Upload Limit Set to 22.5TB" && keys=30;
+elif [ "$typed" == "8" ]; then echo "Creating 40 Keys - Daily Upload Limit Set to 30.0TB" && keys=40;
+elif [ "$typed" == "9" ]; then echo "Creating 50 Keys - Daily Upload Limit Set to 37.5TB" && keys=50;
   fi
   sleep 2
   echo ""
