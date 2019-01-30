@@ -176,6 +176,7 @@ tee <<-EOF
 [7] PG Cloud: GCE & Virtual Instances
 [8] PG Tools
 [9] PG Settings
+[10] Rclone.conf editor
 [Z] Exit
 
 "$quote"
@@ -219,6 +220,8 @@ elif [ "$typed" == "8" ]; then
   bash /opt/plexguide/menu/tools/tools.sh
 elif [ "$typed" == "9" ]; then
   bash /opt/plexguide/menu/settings/settings.sh
+  elif [ "$typed" == "10" ]; then
+  nano /opt/appdata/plexguide/rclone.conf
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   bash /opt/plexguide/menu/ending/ending.sh
   exit
