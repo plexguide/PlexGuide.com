@@ -385,6 +385,10 @@ tee <<-EOF
 📁 RClone Configuration
 [5] gdrive   : $gstatus
 [6] tdrive   : $tstatus
+
+📁 RClone.conf Editor
+[7] rclone.conf editor
+
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -414,6 +418,10 @@ elif [ "$typed" == "6" ]; then
   encpasswdcheck
   tmcheck=$(cat /var/plexguide/pgclone.teamdrive)
   if [ "$tmcheck" == "" ]; then
+  
+ elif [ "$typed" == "7" ]; then
+  nano /opt/appdata/plexguide/rclone.conf
+  
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -767,7 +775,7 @@ if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
   echo "" >> /opt/appdata/plexguide/test.conf
   echo "[$entype]" >> /opt/appdata/plexguide/test.conf
   echo "type = crypt" >> /opt/appdata/plexguide/test.conf
-  echo "remote = $type:/encrypt" >> /opt/appdata/plexguide/test.conf
+  echo "remote = $type:/" >> /opt/appdata/plexguide/test.conf
   echo "filename_encryption = standard" >> /opt/appdata/plexguide/test.conf
   echo "directory_name_encryption = true" >> /opt/appdata/plexguide/test.conf
   echo "password = $ENC_PASSWORD" >> /opt/appdata/plexguide/test.conf
@@ -810,7 +818,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone rmdir $type:/plexguide
+  rclone rmdir tdrive:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
