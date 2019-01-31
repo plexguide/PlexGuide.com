@@ -30,7 +30,7 @@ tee <<-EOF
 ⚡  Reference: http://editions.plexguide.com
 
 1 - Edition: GDrive
-2 - Edition: Solo HD (No GDrive support!)
+2 - Edition: Local Storage (No GDrive support!)
 
 ⚠️  NOTE: Can Only Select this Once!
 

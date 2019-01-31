@@ -203,7 +203,7 @@ mergerinstall () {
       cd ..
     fi
 
-    dpkg -i mergerfs*_amd64.deb
+    apt install -y ./mergerfs*_amd64.deb
     rm mergerfs*_amd64.deb
 }
 
