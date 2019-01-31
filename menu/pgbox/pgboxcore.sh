@@ -190,7 +190,7 @@ done </var/plexguide/pgbox.buildup
 
 # Cron Execution
 edition=$( cat /var/plexguide/pg.edition )
-if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]]; then a=b
+if [[ "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else
   croncount=$(sed -n '$=' /var/plexguide/pgbox.buildup)
   echo "false" > /var/plexguide/cron.count
@@ -216,7 +216,7 @@ echo $p > /tmp/program_var
 # Execute Main Program
 ansible-playbook /opt/plexguide/containers/$p.yml
 
-if [[ "$edition" == "PG Edition - HD Multi" || "$edition" == "PG Edition - HD Solo" ]]; then a=b
+if [[ "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else if [ "$croncount" -eq "1" ]; then cronexe; fi; fi
 
 # End Banner

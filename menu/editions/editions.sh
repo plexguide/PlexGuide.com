@@ -30,8 +30,7 @@ tee <<-EOF
 ⚡  Reference: http://editions.plexguide.com
 
 1 - Edition: GDrive
-2 - Edition: Solo  HD
-3 - Edition: Multi HD
+2 - Edition: Solo HD (No GDrive support!)
 
 ⚠️  NOTE: Can Only Select this Once!
 
@@ -48,10 +47,6 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 elif [ "$typed" == "2" ]; then
     echo "PG Edition - HD Solo" > /var/plexguide/pg.edition
     echo "drive" > /var/plexguide/pg.server.deploy
-    cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
-elif [ "$typed" == "3" ]; then
-    echo "PG Edition - HD Multi" > /var/plexguide/pg.edition
-    echo "drives" > /var/plexguide/pg.server.deploy
     cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
 else
 tee <<-EOF

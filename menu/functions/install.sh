@@ -181,21 +181,17 @@ mergerinstall () {
     echo "ub16" > /var/plexguide/mergerfs.version
     wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-xenial_amd64.deb"
 
-    else
-
-    if [ "$ub18check" != "" ]; then
+    elif [ "$ub18check" != "" ]; then
       activated=true
       echo "ub18" > /var/plexguide/mergerfs.version
       wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
-    else
 
-    if [ "$deb9check" != "" ]; then
+    elif [ "$deb9check" != "" ]; then
       activated=true
       echo "deb9" > /var/plexguide/mergerfs.version
       wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.debian-stretch_amd64.deb"
-    else
-
-    if [ "$activated" != "true" ]; then
+  
+    elif [ "$activated" != "true" ]; then
       activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
       wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
     else
@@ -231,9 +227,6 @@ pgdeploy () {
   edition=$( cat /var/plexguide/pg.edition )
 
   if [ "$edition" == "PG Edition - GDrive" ]; then
-      bash /opt/plexguide/menu/start/start.sh
-      exit
-  elif [ "$edition" == "PG Edition - HD Multi" ]; then
       bash /opt/plexguide/menu/start/start.sh
       exit
   elif [ "$edition" == "PG Edition - HD Solo" ]; then
