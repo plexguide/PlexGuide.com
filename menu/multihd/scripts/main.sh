@@ -32,32 +32,6 @@ file="/var/plexguide/multi.build"
     touch /var/plexguide/multi.build
   fi
 
-#### Install MergerFS If Missing
-file="/usr/bin/mergerfs"
-  if [ -e "$file" ]
-    then
-echo 'INFO - MergerFS is Already Installed' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
-    else
-echo 'INFO - Installing MERGER FS' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
-echo ""
-echo "---------------------------------------------------"
-echo "PLEASE STANDBY"
-echo "System Message: Installing MergerFS for PG Multi HD"
-echo "---------------------------------------------------"
-echo ""
-sleep 3
-wget "https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb" #1>/dev/null 2>&1
-
-git clone https://github.com/trapexit/mergerfs.git 1>/dev/null 2>&1
-cd mergerfs
-make clean #1>/dev/null 2>&1
-make deb #1>/dev/null 2>&1
-cd ..
-dpkg -i mergerfs*_amd64.deb #1>/dev/null 2>&1
-rm mergerfs*_amd64.deb mergerfs*_amd64.changes mergerfs*.dsc mergerfs*.tar.gz #1>/dev/null 2>&1
-  fi
-####
-
 while [ "$menu" != "break" ]; do
 menu=$(cat /var/plexguide/multi.menu)
 ansible-playbook /opt/plexguide/menu/multihd/main.yml
