@@ -53,6 +53,7 @@ variable /var/plexguide/server.incomplete.path ""
 variable /var/plexguide/server.email "NOT-SET"
 variable /var/plexguide/server.domain "NOT-SET"
 variable /var/plexguide/tld.type "standard"
+variable /var/plexguide/transcode.path "standard"
 
 #### Temp Fix - Fixes Bugged AppGuard
 serverht=$(cat /var/plexguide/server.ht)
