@@ -51,7 +51,7 @@ First Time Plex Claim Notice
 EOF
 if [ "$domain" != "NOT-SET" ]; then
 tee <<-EOF
-▫ http://plex.${domain}${extra} <-- Use http; not https
+▫ http://plex.${domain}:32400 <-- Use http; not https
 EOF
 fi
 
