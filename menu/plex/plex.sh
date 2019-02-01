@@ -31,6 +31,7 @@ tee <<-EOF
 
 1 - Plex Public
 2 - Plex Pass
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
@@ -52,10 +53,12 @@ tee <<-EOF
 1 - Plex Server > Remote (Outside Network)
 2 - Plex Server > Local  (Within  Network)
 Z - EXIT
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  echo ""
   if [ "$typed" == "1" ]; then echo remote > /var/plexguide/plex.server && question3;
 elif [ "$typed" == "2" ]; then echo local > /var/plexguide/plex.server;
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
@@ -69,8 +72,8 @@ tee <<-EOF
 🌎 Remote Plex Server - Claim the Plex Server
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-To Claim the Plex Server, visit https://www.plex.tv/claim/ and input the code
-below! You have 5 minutes to do so!
+To Claim the Plex Server, visit https://www.plex.tv/claim/ and input the
+code below! You have 5 minutes to do so!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 

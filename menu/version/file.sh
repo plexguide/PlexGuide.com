@@ -26,7 +26,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅  Stable    : $latest
-⚠️  Beta      : $beta
+⚠️   Beta      : $beta
     Installed : $pgnumber
 
 💬  Prior Versions?  Visit > versions.plexguide.com
