@@ -72,8 +72,8 @@ tee <<-EOF
 🌎 Remote Plex Server - Claim the Plex Server
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-To Claim the Plex Server, visit https://www.plex.tv/claim/ and input the code
-below! You have 5 minutes to do so!
+To Claim the Plex Server, visit https://www.plex.tv/claim/ and input the
+code below! You have 5 minutes to do so!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
