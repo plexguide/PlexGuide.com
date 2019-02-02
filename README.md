@@ -22,9 +22,6 @@ _**Table of Contents**_
 <p align="center"><kbd><img src="https://plexguide.com/wikipics/pglogo-move.gif" width="600""></kbd></p>
 <p align="center"><b>Manage PlexGuide - AnyTime, Anywhere!</b></p>
 
-## User Setup
-You need to create a user with a uid of 1000 and a gid of 1000. You cannot use the root account, PG will not work if you install PG logged in (or through su) as the root user. It won't work if you do not have a user with 1000:1000. Please consult google for how to create a user and add the user to sudo.
-
 **Mission Statement:** PlexGuide is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
  
 # 2. YouTube Video - Intro
