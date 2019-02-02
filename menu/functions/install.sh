@@ -43,7 +43,6 @@ updateprime() {
   echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
   echo "22" > ${abc}/pg.folders
-  echo "13" > ${abc}/pg.rcloneprime
   echo "10" > ${abc}/pg.dockerinstall
   echo "15" > ${abc}/pg.server
   echo "1" > ${abc}/pg.serverid
@@ -78,7 +77,6 @@ pginstall () {
   core motd &>/dev/null &
   core hetzner &>/dev/null &
   core gcloud
-  core rcloneprime
   core cleaner &>/dev/null &
   core serverid
   core watchtower
@@ -307,20 +305,6 @@ pythonstart () {
 
   # Variables Need to Line Up with pg.sh (start)
   touch /var/plexguide/background.1
-}
-
-rcloneprime () {
-  ansible-playbook /opt/plexguide/menu/pg.yml --tags rcloneinstall
-
-tee "/etc/fuse.conf" > /dev/null <<EOF
-# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
-# Set the maximum number of FUSE mounts allowed to non-root users.
-# The default is 1000.
-#mount_max = 1000
-# Allow non-root users to specify the allow_other or allow_root mount options.
-user_allow_other
-EOF
-
 }
 
 dockerinstall () {
