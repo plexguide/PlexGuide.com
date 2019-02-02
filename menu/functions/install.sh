@@ -248,10 +248,6 @@ pgdeploy () {
 pgedition () {
   file="${abc}/path.check"
   if [ ! -e "$file" ]; then touch ${abc}/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
-
-  # FOR MULTI-HD EDITION
-  file="${abc}/multi.unionfs"
-    if [ ! -e "$file" ]; then touch ${abc}/multi.unionfs; fi
   # FOR PG-BLITZ
   file="${abc}/project.deployed"
     if [ ! -e "$file" ]; then echo "no" > ${abc}/project.deployed; fi
@@ -347,8 +343,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️   Establishing Server ID               💬  Use One Word & Keep it Simple
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
+sleep 2.5
   read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
 
     if [ "$typed" == "" ]; then
