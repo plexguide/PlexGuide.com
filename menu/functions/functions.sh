@@ -23,10 +23,6 @@ variable () {
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
 }
 
-removemounts () {
-  ansible-playbook /opt/plexguide/menu/remove/mounts.yml
-}
-
 readrcloneconfig () {
   touch /opt/appdata/plexguide/rclone.conf
   mkdir -p /var/plexguide/rclone/
