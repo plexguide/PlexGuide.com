@@ -35,6 +35,8 @@
       - {name: tcrypt.service}
       - {name: supertransfer2.service}
       - {name: unionfs.service}
+      - {name: pgmove.service}
+      - {name: pgunion.service}
       - {name: move.service}
       - {name: pgblitz.service}
       - {name: plexdrive.service}
