@@ -7,4 +7,4 @@
 ################################################################################
 dt=`date '+%d/%m/%Y %H:%M:%S'`
 log=$( cat /var/plexguide/pg.log )
-echo "$dt $log" >> "/opt/appdata/plexguide/pg.log"
+echo "$dt $log" >> "/var/plexguide/logs/pg.log"

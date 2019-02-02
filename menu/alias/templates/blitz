@@ -15,4 +15,4 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-tail -100 /opt/appdata/plexguide/pgblitz.log
+tail -100 /var/plexguide/logs/pgblitz.log
