@@ -49,8 +49,8 @@ updateprime() {
   echo "24" > ${abc}/pg.dependency
   echo "10" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.watchtower
-  echo "1" > ${abc}/pg.motd
-  echo "105" > ${abc}/pg.alias
+  echo "2" > ${abc}/pg.motd
+  echo "106" > ${abc}/pg.alias
   echo "2" > ${abc}/pg.dep
   echo "2" > ${abc}/pg.cleaner
   echo "3" > ${abc}/pg.gcloud
@@ -59,7 +59,7 @@ updateprime() {
   echo "8.3" > ${abc}/pg.verionid
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
-  echo "5" > ${abc}/pg.prune
+  echo "6" > ${abc}/pg.prune
 }
 
 pginstall () {
