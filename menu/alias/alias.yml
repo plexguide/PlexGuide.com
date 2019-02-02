@@ -117,7 +117,18 @@
         force: yes
         mode: 0775
 
-  ###### Install PGLog
+        
+  ###### Install PGLog for move
+
+    - name: Nano Blitz
+      template:
+        src: move
+        dest: /bin/move
+        force: yes
+        mode: 0775
+
+
+  ###### Install PGLog for blitz
 
     - name: Nano Blitz
       template:
