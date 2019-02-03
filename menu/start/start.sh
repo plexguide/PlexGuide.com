@@ -173,9 +173,9 @@ varstart() {
 
 menuprime() {
   # New Setups Will Force To Use Mini Menu
-  if [[ "$transport" == "NOT-SET" ]]; then
-  forcepgclone
-  exit; fi
+  #if [[ "$transport" == "NOT-SET" ]]; then
+  #forcepgclone
+  #exit; fi
 
 # Menu Interface
 tee <<-EOF
@@ -252,10 +252,10 @@ case $typed in
       bash /opt/plexguide/menu/tools/tools.sh ;;
     9 )
       bash /opt/plexguide/menu/settings/settings.sh ;;
-    y )
+    z )
       bash /opt/plexguide/menu/ending/ending.sh
       exit ;;
-    Y )
+    Z )
       bash /opt/plexguide/menu/ending/ending.sh
       exit ;;
     * )
