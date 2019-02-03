@@ -183,7 +183,7 @@ tee <<-EOF
 🌎 $edition | Version: $pgnumber | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🌵 PG Disk Used Space:  $used of $capacity | $percentage Used Capacity
+🌵 PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 EOF
 
 # Displays Second Drive If GCE
