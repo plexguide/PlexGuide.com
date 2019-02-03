@@ -86,7 +86,7 @@ case $typed in
         bash /opt/plexguide/menu/ending/ending.sh
         exit ;;
     * )
-        mainbanner ;;
+        forcepgclone ;;
 esac
 
 }
