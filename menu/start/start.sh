@@ -28,8 +28,16 @@ variable () {
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
 }
 
-# For New Installs, Forces This Menu To Display First
+# When Called, A Quoate is Randomly Selected
+quoteselect () {
+  bash /opt/plexguide/menu/start/quotes.sh
+  quote=$(cat /var/plexguide/startup.quote)
+  source=$(cat /var/plexguide/startup.source)
+}
+
+# For New Installs, Forces This Menu To Display First; Vital For RClone
 forcepgclone() {
+quoteselect
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -42,9 +50,12 @@ NOTE: New Install Interface! User Must Select a Mount Option First!
 [1] PG Clone: Mount Transport
 [Z] Exit
 
-EOF
+"$quote"
 
-read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
+$source
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
@@ -190,10 +201,7 @@ if [ "$edition" != "PG Edition - GCE Feed" ]; then
 
 fi
 
-bash /opt/plexguide/menu/start/quotes.sh
-
-quote=$(cat /var/plexguide/startup.quote)
-source=$(cat /var/plexguide/startup.source)
+quoteselect
 echo
 echo "[1] Traefik : [$traefik]"
 echo "[2] Defense : PG Shield /w Port Guard"
