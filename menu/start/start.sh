@@ -172,7 +172,9 @@ if [ "$edition" == "PG Edition - GDrive" ]; then a=b
 elif [ "$edition" == "PG Edition - GDrive" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b; fi
 
-forcepgclone
+# New Setups Will Force To Use Mini Menu
+test97=$(cat /var/plexguide/pgclone.transport)
+if [ "$test97" == "NOT-SET"; then forcepgclone; fi
 
 # Menu Interface
 tee <<-EOF
