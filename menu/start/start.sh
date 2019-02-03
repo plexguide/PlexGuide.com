@@ -257,9 +257,9 @@ case $typed in
       exit ;;
     Z )
       bash /opt/plexguide/menu/ending/ending.sh
-      exit ;;
+      ;;
     * )
-      exit ;;
+      primestart ;;
 esac
 }
 
