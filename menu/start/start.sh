@@ -39,6 +39,13 @@ variable () {
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
 }
 
+# What Loads the Order of Execution
+primestart(){
+  pcloadletter
+  varstart
+  menuprime
+}
+
 # When Called, A Quoate is Randomly Selected
 quoteselect () {
   bash /opt/plexguide/menu/start/quotes.sh
@@ -246,17 +253,10 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
     bash /opt/plexguide/menu/settings/settings.sh
   elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
     bash /opt/plexguide/menu/ending/ending.sh
-    exit
   else
     bash /opt/plexguide/menu/start/start.sh
-    exit
+    primestart
   fi
-}
-
-primestart(){
-  pcloadletter
-  varstart
-  menuprime
 }
 
 primestart
