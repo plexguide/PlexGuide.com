@@ -78,7 +78,8 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 case $typed in
     1 )
         bash /opt/plexguide/menu/pgcloner/pgclone.sh
-        bash /opt/pgclone/gdrive.sh ;;
+        bash /opt/pgclone/gdrive.sh
+        primestart ;;
     z )
         bash /opt/plexguide/menu/ending/ending.sh
         exit ;;
