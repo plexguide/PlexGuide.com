@@ -252,7 +252,7 @@ case $typed in
     6 )
       bash /opt/plexguide/menu/pgcloner/pgvault.sh
       bash /opt/pgvault/pgvault.sh
-      primstart ;;
+      primestart ;;
     7 )
       bash /opt/plexguide/menu/cloudselect/cloudselect.sh
       primestart ;;
