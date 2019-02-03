@@ -229,34 +229,38 @@ EOF
   # Standby
 read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
-    if [ "$typed" == "1" ]; then
-    bash /opt/plexguide/menu/pgcloner/traefik.sh
-    bash /opt/traefik/traefik.sh
-  elif [ "$typed" == "2" ]; then
-    bash /opt/plexguide/menu/pgshield/pgshield.sh
-  elif [ "$typed" == "3" ]; then
-    bash /opt/plexguide/menu/pgcloner/pgclone.sh
-    bash /opt/pgclone/gdrive.sh
-  elif [ "$typed" == "4" ]; then
-    bash /opt/plexguide/menu/pgbox/pgboxselect.sh
-  elif [ "$typed" == "5" ]; then
-    bash /opt/plexguide/menu/pgpress/pgpress.sh
-    bash /opt/pgpress/pressmain.sh
-  elif [ "$typed" == "6" ]; then
-    bash /opt/plexguide/menu/pgcloner/pgvault.sh
-    bash /opt/pgvault/pgvault.sh
-  elif [ "$typed" == "7" ]; then
-    bash /opt/plexguide/menu/cloudselect/cloudselect.sh
-  elif [ "$typed" == "8" ]; then
-    bash /opt/plexguide/menu/tools/tools.sh
-  elif [ "$typed" == "9" ]; then
-    bash /opt/plexguide/menu/settings/settings.sh
-  elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
-    bash /opt/plexguide/menu/ending/ending.sh
-  else
-    bash /opt/plexguide/menu/start/start.sh
-    primestart
-  fi
+case $typed in
+    1 )
+      bash /opt/plexguide/menu/pgcloner/traefik.sh
+      bash /opt/traefik/traefik.sh ;;
+    2 )
+      bash /opt/plexguide/menu/pgshield/pgshield.sh ;;
+    3 )
+      bash /opt/plexguide/menu/pgcloner/pgclone.sh
+      bash /opt/pgclone/gdrive.sh ;;
+    4 )
+      bash /opt/plexguide/menu/pgbox/pgboxselect.sh ;;
+    5 )
+      bash /opt/plexguide/menu/pgpress/pgpress.sh
+      bash /opt/pgpress/pressmain.sh ;;
+    6 )
+      bash /opt/plexguide/menu/pgcloner/pgvault.sh
+      bash /opt/pgvault/pgvault.sh ;;
+    7 )
+      bash /opt/plexguide/menu/cloudselect/cloudselect.sh ;;
+    8 )
+      bash /opt/plexguide/menu/tools/tools.sh ;;
+    9 )
+      bash /opt/plexguide/menu/settings/settings.sh ;;
+    z )
+      bash /opt/plexguide/menu/ending/ending.sh
+      exit ;;
+    Z )
+      bash /opt/plexguide/menu/ending/ending.sh
+      exit ;;
+    * )
+      primestart ;;
+esac
 }
 
 primestart
