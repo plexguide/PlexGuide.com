@@ -259,7 +259,7 @@ case $typed in
       bash /opt/plexguide/menu/ending/ending.sh
       exit ;;
     * )
-      primestart ;;
+      exit ;;
 esac
 }
 
