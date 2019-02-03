@@ -248,5 +248,4 @@ else
   exit
 fi
 
-bash /opt/plexguide/menu/start/start.sh
 exit
