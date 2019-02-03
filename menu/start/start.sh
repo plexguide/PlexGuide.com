@@ -28,6 +28,38 @@ variable () {
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
 }
 
+# For New Installs, Forces This Menu To Display First
+forcepgclone() {
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 $edition | Version: $pgnumber | ID: $serverid
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTE: New Install Interface! User Must Select a Mount Option First!
+🌵 PG Disk Used Space:  $used of $capacity | $percentage Used Capacity
+
+[1] PG Clone: Mount Transport
+[Z] Exit
+
+EOF
+
+read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
+
+case $typed in
+    1 )
+        bash /opt/plexguide/menu/pgcloner/pgclone.sh
+        bash /opt/pgclone/gdrive.sh ;;
+    z )
+        exit ;;
+    Z )
+        exit ;;
+    * )
+        mainbanner ;;
+esac
+
+}
+
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 file="/var/plexguide"
 if [ ! -e "$file" ]; then
@@ -56,6 +88,7 @@ variable /var/plexguide/server.domain "NOT-SET"
 variable /var/plexguide/tld.type "standard"
 variable /var/plexguide/transcode.path "standard"
 variable /var/plexguide/pgclone.transport "NOT-SET"
+
 
 #### Temp Fix - Fixes Bugged AppGuard
 serverht=$(cat /var/plexguide/server.ht)
@@ -125,6 +158,9 @@ edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition - GDrive" ]; then a=b
 elif [ "$edition" == "PG Edition - GDrive" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b; fi
+
+forcepgclone
+
 # Menu Interface
 tee <<-EOF
 
