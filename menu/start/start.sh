@@ -5,6 +5,16 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
+touch /var/plexguide/pgclone.transport
+temp=$(cat /var/plexguide/pgclone.transport)
+  if [ "$temp" == "umove" ]; then transport="PG Move /w No Encryption"
+elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
+elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
+elif [ "$temp" == "eblitz" ]; then transport="PG Blitz /w Encryption"
+elif [ "$temp" == "solohd" ]; then transport="PG Local"
+else transport="NOT-SET"; fi
+################################################################################
+
 file="/var/plexguide/pg.number"
 if [ -e "$file" ]; then
   check="$(cat /var/plexguide/pg.number | head -c 1)"
@@ -126,6 +136,7 @@ touch /var/plexguide/pg.number
 touch /var/plexguide/traefik.deployed
 touch /var/plexguide/server.ht
 touch /var/plexguide/server.ports
+touch /var/plexguide/pg.server.deploy
 
 # Call Variables
 edition=$(cat /var/plexguide/pg.edition)
@@ -158,15 +169,15 @@ if [[ "$test97" == "NOT-SET" ]]; then forcepgclone; fi
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 $edition | Version: $pgnumber | ID: $serverid
+🌎 $transport | Version: $pgnumber | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🌵 PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 EOF
 
 # Displays Second Drive If GCE
-edition=$( cat /var/plexguide/pg.edition )
-if [ "$edition" == "PG Edition - GCE Feed" ]; then
+edition=$(cat /var/plexguide/pg.server.deploy)
+if [ "$edition" != "feeder" ]; then
   used_gce=$(df -h /mnt | tail -n +2 | awk '{print $3}')
   capacity_gce=$(df -h /mnt | tail -n +2 | awk '{print $2}')
   percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
@@ -174,7 +185,7 @@ if [ "$edition" == "PG Edition - GCE Feed" ]; then
 fi
 
 disktwo=$(cat "/var/plexguide/server.hd.path")
-if [ "$edition" != "PG Edition - GCE Feed" ]; then
+if [ "$edition" == "feeder" ]; then
   used_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $3}')
   capacity_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $2}')
   percentage_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $5}')

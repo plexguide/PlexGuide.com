@@ -64,7 +64,7 @@ updateprime() {
 
 pginstall () {
   updateprime
-  bash /opt/plexguide/menu/editions/editions.sh
+  bash /opt/plexguide/menu/pggce/gcechecker.sh
   core pythonstart
   core aptupdate
   core alias &>/dev/null &
@@ -188,7 +188,7 @@ mergerinstall () {
       activated=true
       echo "deb9" > /var/plexguide/mergerfs.version
       wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.debian-stretch_amd64.deb"
-  
+
     elif [ "$activated" != "true" ]; then
       activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
       wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
@@ -222,27 +222,7 @@ newinstall () {
 
 pgdeploy () {
   touch /var/plexguide/pg.edition
-  edition=$( cat /var/plexguide/pg.edition )
-
-  if [ "$edition" == "PG Edition - GDrive" ]; then
-      bash /opt/plexguide/menu/start/start.sh
-      exit
-  elif [ "$edition" == "PG Edition - HD Solo" ]; then
-      bash /opt/plexguide/menu/start/start.sh
-      exit
-  elif [ "$edition" == "PG Edition - GCE Feed" ]; then
-      bash /opt/plexguide/menu/start/start.sh
-      exit
-  else
-      file="/var/plexguide/pg.preinstall.stored"
-      if [ -e "$file" ]; then
-        touch /var/plexguide/pg.edition
-        bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-        bash /opt/plexguide/menu/start/start.sh
-      else
-        bash /opt/plexguide/menu/start/start.sh
-      fi
-  fi
+  bash /opt/plexguide/menu/start/start.sh
 }
 
 pgedition () {
