@@ -174,7 +174,7 @@ elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b; fi
 
 # New Setups Will Force To Use Mini Menu
 test97=$(cat /var/plexguide/pgclone.transport)
-if [ "$test97" == "NOT-SET"; then forcepgclone; fi
+if [[ "$test97" == "NOT-SET" ]]; then forcepgclone; fi
 
 # Menu Interface
 tee <<-EOF
