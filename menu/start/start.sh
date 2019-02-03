@@ -41,7 +41,7 @@ quoteselect
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 $edition | Version: $pgnumber | ID: $serverid
+🌎 Interface Selection | Version: $pgnumber | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 NOTE: New Install Interface! User Must Select a Mount Option First!
 
@@ -102,7 +102,6 @@ variable /var/plexguide/tld.type "standard"
 variable /var/plexguide/transcode.path "standard"
 variable /var/plexguide/pgclone.transport "NOT-SET"
 
-
 #### Temp Fix - Fixes Bugged AppGuard
 serverht=$(cat /var/plexguide/server.ht)
 if [ "$serverht" == "NOT-SET" ]; then
@@ -118,22 +117,6 @@ echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
 file="/var/plexguide/update.failed"
 if [ -e "$file" ]; then rm -rf /var/plexguide/update.failed
   exit; fi
-
-## Selects an edition
-touch /var/plexguide/pg.edition
-edition=$( cat /var/plexguide/pg.edition )
-if [ "$edition" == "PG Edition - GDrive" ]; then a=b
-elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b
-elif [ "$edition" == "PG Edition - GCE Feed" ]; then a=b
-else
-    file="/var/plexguide/pg.preinstall.stored"
-    if [ -e "$file" ]; then
-      touch /var/plexguide/pg.edition
-      bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-      #bash-/opt/plexguide/pg.sh
-    fi
-fi
-
 #################################################################################
 
 # Touch Variables Incase They Do Not Exist
@@ -167,11 +150,6 @@ used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
 capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
 percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 
-edition=$( cat /var/plexguide/pg.edition )
-if [ "$edition" == "PG Edition - GDrive" ]; then a=b
-elif [ "$edition" == "PG Edition - GDrive" ]; then a=b
-elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b; fi
-
 # New Setups Will Force To Use Mini Menu
 test97=$(cat /var/plexguide/pgclone.transport)
 if [[ "$test97" == "NOT-SET" ]]; then forcepgclone; fi
@@ -187,6 +165,7 @@ tee <<-EOF
 EOF
 
 # Displays Second Drive If GCE
+edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition - GCE Feed" ]; then
   used_gce=$(df -h /mnt | tail -n +2 | awk '{print $3}')
   capacity_gce=$(df -h /mnt | tail -n +2 | awk '{print $2}')
@@ -202,23 +181,14 @@ if [ "$edition" != "PG Edition - GCE Feed" ]; then
 
   if [[ "$disktwo" != "/mnt" ]]; then
   echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"; fi
-
 fi
 
 quoteselect
-echo
-echo "[1] Traefik : [$traefik]"
-echo "[2] Defense : PG Shield /w Port Guard"
-
-if [ "$edition" == "PG Edition - GDrive" ]; then echo "[3] PG Clone: Mount Transport"
-elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "[3] PG Clone: Mount Transport"
-elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "[3] No Mounts for Solo HD"
-else
-  echo "[2] Mounts & Data Transports"
-  echo "PG Edition - GDrive" > /var/plexguide/pg.edition
-fi
 
 tee <<-EOF
+[1] Traefik : [$traefik]
+[2] Defense : PG Shield /w Port Guard
+[3] PG Clone: Mount Transport
 [4] PG Box  : Apps ~ Core, Community & Removal
 [5] PG Press: Deploy WordPress Instances
 [6] PG Vault: Backup & Restore
@@ -235,31 +205,14 @@ EOF
 # Standby
 read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "3" ]; then
-
-    if [ "$edition" == "PG Edition - GDrive" ]; then
-      bash /opt/plexguide/menu/pgcloner/pgclone.sh
-      bash /opt/pgclone/gdrive.sh
-  elif [ "$edition" == "PG Edition - GCE Feed" ]; then
-      bash /opt/plexguide/menu/pgcloner/pgclone.sh
-      bash /opt/pgclone/gdrive.sh
-    elif [ "$edition" == "PG Edition - HD Solo" ]; then
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ WARNING! - Using Solo HD Edition! You Cannot Set Mounts! Restarting!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-sleep 3
-  else
-  bash /opt/plexguide/menu/transport/transport.sh
-     fi
-
-elif [ "$typed" == "1" ]; then
+  if [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/pgcloner/traefik.sh
   bash /opt/traefik/traefik.sh
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgshield/pgshield.sh
+elif [ "$typed" == "3" ]; then
+  bash /opt/plexguide/menu/pgcloner/pgclone.sh
+  bash /opt/pgclone/gdrive.sh
 elif [ "$typed" == "4" ]; then
   bash /opt/plexguide/menu/pgbox/pgboxselect.sh
 elif [ "$typed" == "5" ]; then
