@@ -162,7 +162,9 @@ capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
 percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 
 # New Setups Will Force To Use Mini Menu
-if [[ "$transport" == "NOT-SET" ]]; then forcepgclone; fi
+if [[ "$transport" == "NOT-SET" ]]; then
+forcepgclone
+exit; fi
 
 # Menu Interface
 tee <<-EOF
