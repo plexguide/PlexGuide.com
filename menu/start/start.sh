@@ -76,7 +76,6 @@ if [ -e "$file" ]; then rm -rf /var/plexguide/update.failed
 touch /var/plexguide/pg.edition
 edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition - GDrive" ]; then a=b
-elif [ "$edition" == "PG Edition - HD Multi" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then a=b
 else
@@ -124,7 +123,6 @@ percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 edition=$( cat /var/plexguide/pg.edition )
 if [ "$edition" == "PG Edition - GDrive" ]; then a=b
 elif [ "$edition" == "PG Edition - GDrive" ]; then a=b
-elif [ "$edition" == "PG Edition - HD Multi" ]; then a=b
 elif [ "$edition" == "PG Edition - HD Solo" ]; then a=b; fi
 # Menu Interface
 tee <<-EOF
@@ -165,7 +163,6 @@ echo "[2] Defense : PG Shield /w Port Guard"
 
 if [ "$edition" == "PG Edition - GDrive" ]; then echo "[3] PG Clone: Mount Transport"
 elif [ "$edition" == "PG Edition - GCE Feed" ]; then echo "[3] PG Clone: Mount Transport"
-elif [ "$edition" == "PG Edition - HD Multi" ]; then echo "[3] MultiHD : MultiFS Combined Mounts"
 elif [ "$edition" == "PG Edition - HD Solo" ]; then echo "[3] No Mounts for Solo HD"
 else
   echo "[2] Mounts & Data Transports"
@@ -197,7 +194,6 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
   elif [ "$edition" == "PG Edition - GCE Feed" ]; then
       bash /opt/plexguide/menu/pgcloner/pgclone.sh
       bash /opt/pgclone/gdrive.sh
-    elif [ "$edition" == "PG Edition - HD Multi" ]; then bash /opt/plexguide/menu/multihd/scripts/main.sh
     elif [ "$edition" == "PG Edition - HD Solo" ]; then
 tee <<-EOF
 
