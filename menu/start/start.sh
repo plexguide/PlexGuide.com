@@ -31,9 +31,9 @@ variable () {
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 file="/var/plexguide"
 if [ ! -e "$file" ]; then
-   mkdir -p /var/plexguide 1>/dev/null 2>&1
-   chown 0755 /var/plexguide 1>/dev/null 2>&1
-   chmod 1000:1000 /var/plexguide 1>/dev/null 2>&1
+   mkdir -p /var/plexguide/logs 1>/dev/null 2>&1
+   chown -R 0755 /var/plexguide 1>/dev/null 2>&1
+   chmod -R 1000:1000 /var/plexguide 1>/dev/null 2>&1
 fi
 
 file="/opt/appdata/plexguide"
