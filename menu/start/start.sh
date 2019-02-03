@@ -84,86 +84,89 @@ esac
 
 }
 
+varstart() {
+  ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
+  file="/var/plexguide"
+  if [ ! -e "$file" ]; then
+     mkdir -p /var/plexguide/logs 1>/dev/null 2>&1
+     chown -R 0755 /var/plexguide 1>/dev/null 2>&1
+     chmod -R 1000:1000 /var/plexguide 1>/dev/null 2>&1
+  fi
+
+  file="/opt/appdata/plexguide"
+  if [ ! -e "$file" ]; then
+     mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
+     chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
+     chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
+  fi
+
+  ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
+  variable /var/plexguide/pgfork.project "NOT-SET"
+  variable /var/plexguide/pgfork.version "NOT-SET"
+  variable /var/plexguide/tld.program "NOT-SET"
+  variable /opt/appdata/plexguide/plextoken "NOT-SET"
+  variable /var/plexguide/server.ht ""
+  variable /var/plexguide/server.ports ""
+  variable /var/plexguide/server.incomplete.path ""
+  variable /var/plexguide/server.email "NOT-SET"
+  variable /var/plexguide/server.domain "NOT-SET"
+  variable /var/plexguide/tld.type "standard"
+  variable /var/plexguide/transcode.path "standard"
+  variable /var/plexguide/pgclone.transport "NOT-SET"
+
+  #### Temp Fix - Fixes Bugged AppGuard
+  serverht=$(cat /var/plexguide/server.ht)
+  if [ "$serverht" == "NOT-SET" ]; then
+  rm /var/plexguide/server.ht
+  touch /var/plexguide/server.ht
+  fi
+
+  hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+  ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
+  echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
+
+  # run pg main
+  file="/var/plexguide/update.failed"
+  if [ -e "$file" ]; then rm -rf /var/plexguide/update.failed
+    exit; fi
+  #################################################################################
+
+  # Touch Variables Incase They Do Not Exist
+  touch /var/plexguide/pg.edition
+  touch /var/plexguide/server.id
+  touch /var/plexguide/pg.number
+  touch /var/plexguide/traefik.deployed
+  touch /var/plexguide/server.ht
+  touch /var/plexguide/server.ports
+  touch /var/plexguide/pg.server.deploy
+
+  # Call Variables
+  edition=$(cat /var/plexguide/pg.edition)
+  serverid=$(cat /var/plexguide/server.id)
+  pgnumber=$(cat /var/plexguide/pg.number)
+
+  # Declare Traefik Deployed Docker STate
+  docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed
+  traefik=$(cat /var/plexguide/traefik.deployed)
+  if [ "$traefik" == "" ]; then
+    traefik="NOT DEPLOYED"
+  else
+    traefik="DEPLOYED"
+  fi
+
+  # For ZipLocations
+  file="/var/plexguide/data.location"
+  if [ ! -e "$file" ]; then echo "/opt/appdata/plexguide" > /var/plexguide/data.location; fi
+
+  space=$(cat /var/plexguide/data.location)
+  used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
+  capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
+  percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+}
+
 ### Forces To Recall Version Type
 pcloadletter
-
-###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
-file="/var/plexguide"
-if [ ! -e "$file" ]; then
-   mkdir -p /var/plexguide/logs 1>/dev/null 2>&1
-   chown -R 0755 /var/plexguide 1>/dev/null 2>&1
-   chmod -R 1000:1000 /var/plexguide 1>/dev/null 2>&1
-fi
-
-file="/opt/appdata/plexguide"
-if [ ! -e "$file" ]; then
-   mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
-   chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
-   chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
-fi
-
-###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
-variable /var/plexguide/pgfork.project "NOT-SET"
-variable /var/plexguide/pgfork.version "NOT-SET"
-variable /var/plexguide/tld.program "NOT-SET"
-variable /opt/appdata/plexguide/plextoken "NOT-SET"
-variable /var/plexguide/server.ht ""
-variable /var/plexguide/server.ports ""
-variable /var/plexguide/server.incomplete.path ""
-variable /var/plexguide/server.email "NOT-SET"
-variable /var/plexguide/server.domain "NOT-SET"
-variable /var/plexguide/tld.type "standard"
-variable /var/plexguide/transcode.path "standard"
-variable /var/plexguide/pgclone.transport "NOT-SET"
-
-#### Temp Fix - Fixes Bugged AppGuard
-serverht=$(cat /var/plexguide/server.ht)
-if [ "$serverht" == "NOT-SET" ]; then
-rm /var/plexguide/server.ht
-touch /var/plexguide/server.ht
-fi
-
-hostname -I | awk '{print $1}' > /var/plexguide/server.ip
-###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
-echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
-
-# run pg main
-file="/var/plexguide/update.failed"
-if [ -e "$file" ]; then rm -rf /var/plexguide/update.failed
-  exit; fi
-#################################################################################
-
-# Touch Variables Incase They Do Not Exist
-touch /var/plexguide/pg.edition
-touch /var/plexguide/server.id
-touch /var/plexguide/pg.number
-touch /var/plexguide/traefik.deployed
-touch /var/plexguide/server.ht
-touch /var/plexguide/server.ports
-touch /var/plexguide/pg.server.deploy
-
-# Call Variables
-edition=$(cat /var/plexguide/pg.edition)
-serverid=$(cat /var/plexguide/server.id)
-pgnumber=$(cat /var/plexguide/pg.number)
-
-# Declare Traefik Deployed Docker STate
-docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed
-traefik=$(cat /var/plexguide/traefik.deployed)
-if [ "$traefik" == "" ]; then
-  traefik="NOT DEPLOYED"
-else
-  traefik="DEPLOYED"
-fi
-
-# For ZipLocations
-file="/var/plexguide/data.location"
-if [ ! -e "$file" ]; then echo "/opt/appdata/plexguide" > /var/plexguide/data.location; fi
-
-space=$(cat /var/plexguide/data.location)
-used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
-capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
-percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+varstart
 
 # New Setups Will Force To Use Mini Menu
 if [[ "$transport" == "NOT-SET" ]]; then
