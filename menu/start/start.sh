@@ -252,12 +252,12 @@ case $typed in
       bash /opt/plexguide/menu/tools/tools.sh ;;
     9 )
       bash /opt/plexguide/menu/settings/settings.sh ;;
-    z )
+    y )
       bash /opt/plexguide/menu/ending/ending.sh
       exit ;;
-    Z )
+    Y )
       bash /opt/plexguide/menu/ending/ending.sh
-      ;;
+      exit ;;
     * )
       primestart ;;
 esac
