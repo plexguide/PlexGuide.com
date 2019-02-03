@@ -35,8 +35,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 $edition | Version: $pgnumber | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 NOTE: New Install Interface! User Must Select a Mount Option First!
+
 🌵 PG Disk Used Space:  $used of $capacity | $percentage Used Capacity
 
 [1] PG Clone: Mount Transport
