@@ -62,8 +62,10 @@ case $typed in
         bash /opt/plexguide/menu/pgcloner/pgclone.sh
         bash /opt/pgclone/gdrive.sh ;;
     z )
+        bash /opt/plexguide/menu/ending/ending.sh
         exit ;;
     Z )
+        bash /opt/plexguide/menu/ending/ending.sh
         exit ;;
     * )
         mainbanner ;;
