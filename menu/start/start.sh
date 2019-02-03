@@ -5,16 +5,6 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-touch /var/plexguide/pgclone.transport
-temp=$(cat /var/plexguide/pgclone.transport)
-  if [ "$temp" == "umove" ]; then transport="PG Move /w No Encryption"
-elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
-elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
-elif [ "$temp" == "eblitz" ]; then transport="PG Blitz /w Encryption"
-elif [ "$temp" == "solohd" ]; then transport="PG Local"
-else transport="NOT-SET"; fi
-################################################################################
-
 file="/var/plexguide/pg.number"
 if [ -e "$file" ]; then
   check="$(cat /var/plexguide/pg.number | head -c 1)"
@@ -33,6 +23,17 @@ EOF
     exit; fi; fi
 
 # Create Variables (If New) & Recall
+pcloadletter () {
+  touch /var/plexguide/pgclone.transport
+  temp=$(cat /var/plexguide/pgclone.transport)
+    if [ "$temp" == "umove" ]; then transport="PG Move /w No Encryption"
+  elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
+  elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
+  elif [ "$temp" == "eblitz" ]; then transport="PG Blitz /w Encryption"
+  elif [ "$temp" == "solohd" ]; then transport="PG Local"
+  else transport="NOT-SET"; fi
+}
+
 variable () {
   file="$1"
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
@@ -82,6 +83,9 @@ case $typed in
 esac
 
 }
+
+### Forces To Recall Version Type
+pcloadletter
 
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 file="/var/plexguide"
