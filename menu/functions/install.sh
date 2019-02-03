@@ -50,7 +50,7 @@ updateprime() {
   echo "10" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.watchtower
   echo "2" > ${abc}/pg.motd
-  echo "106" > ${abc}/pg.alias
+  echo "107" > ${abc}/pg.alias
   echo "2" > ${abc}/pg.dep
   echo "2" > ${abc}/pg.cleaner
   echo "3" > ${abc}/pg.gcloud
@@ -82,7 +82,6 @@ pginstall () {
   core watchtower
   core prune
   customcontainers &>/dev/null &
-
   pgedition
   pgdeploy
 }

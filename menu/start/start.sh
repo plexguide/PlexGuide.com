@@ -173,9 +173,9 @@ varstart() {
 
 menuprime() {
   # New Setups Will Force To Use Mini Menu
-  #if [[ "$transport" == "NOT-SET" ]]; then
-  #forcepgclone
-  #exit; fi
+  if [[ "$transport" == "NOT-SET" ]]; then
+  forcepgclone
+  exit; fi
 
 # Menu Interface
 tee <<-EOF
