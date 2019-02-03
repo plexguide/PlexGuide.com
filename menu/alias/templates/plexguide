@@ -33,5 +33,5 @@ mkdir -p /opt/appdata/plexguide
 sudocheck
 missingpull
 
-# pg install contains pgdeploy at end
+# pg deploy contains pgdeploy at end
 pginstall
