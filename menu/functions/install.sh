@@ -334,8 +334,8 @@ tee <<-EOF
 ⛔️  WARNING! - The Server ID Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 2.5
-  rm -rf
+  sleep 1
+  serverid
 else
 tee <<-EOF
 
@@ -344,7 +344,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   echo "$typed" > /var/plexguide/server.id
-  sleep 2
+  sleep 1
   fi
 }
 
