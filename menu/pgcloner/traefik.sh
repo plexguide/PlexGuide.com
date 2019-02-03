@@ -13,7 +13,8 @@ echo 'PlexGuide-Traefik' > /var/plexguide/pgcloner.projectname
 echo 'v8' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 Traefik is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy. It serves as a reverse proxy that enables a user \
+echo "💬 Traefik is a modern HTTP reverse proxy and load balancer that makes 
+deploying microservices easy. It serves as a reverse proxy that enables a user
 to mass obtain https (secure) certificates for all their containers!" > /var/plexguide/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
