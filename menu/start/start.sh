@@ -164,95 +164,99 @@ varstart() {
   percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 }
 
-### Forces To Recall Version Type
-pcloadletter
-varstart
+menuprime() {
+  # New Setups Will Force To Use Mini Menu
+  if [[ "$transport" == "NOT-SET" ]]; then
+  forcepgclone
+  exit; fi
 
-# New Setups Will Force To Use Mini Menu
-if [[ "$transport" == "NOT-SET" ]]; then
-forcepgclone
-exit; fi
+  # Menu Interface
+  tee <<-EOF
 
-# Menu Interface
-tee <<-EOF
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🌎 $transport | Version: $pgnumber | ID: $serverid
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 $transport | Version: $pgnumber | ID: $serverid
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🌵 PG Disk Used Space: $used of $capacity | $percentage Used Capacity
+  EOF
 
-🌵 PG Disk Used Space: $used of $capacity | $percentage Used Capacity
-EOF
+  # Displays Second Drive If GCE
+  edition=$(cat /var/plexguide/pg.server.deploy)
+  if [ "$edition" == "feeder" ]; then
+    used_gce=$(df -h /mnt | tail -n +2 | awk '{print $3}')
+    capacity_gce=$(df -h /mnt | tail -n +2 | awk '{print $2}')
+    percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
+    echo "   GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
+  fi
 
-# Displays Second Drive If GCE
-edition=$(cat /var/plexguide/pg.server.deploy)
-if [ "$edition" == "feeder" ]; then
-  used_gce=$(df -h /mnt | tail -n +2 | awk '{print $3}')
-  capacity_gce=$(df -h /mnt | tail -n +2 | awk '{print $2}')
-  percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
-  echo "   GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
-fi
+  disktwo=$(cat "/var/plexguide/server.hd.path")
+  if [ "$edition" != "feeder" ]; then
+    used_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $3}')
+    capacity_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $2}')
+    percentage_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $5}')
 
-disktwo=$(cat "/var/plexguide/server.hd.path")
-if [ "$edition" != "feeder" ]; then
-  used_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $3}')
-  capacity_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $2}')
-  percentage_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $5}')
+    if [[ "$disktwo" != "/mnt" ]]; then
+    echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"; fi
+  fi
 
-  if [[ "$disktwo" != "/mnt" ]]; then
-  echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"; fi
-fi
+  quoteselect
 
-quoteselect
+  tee <<-EOF
 
-tee <<-EOF
+  [1] Traefik : [$traefik]
+  [2] Defense : PG Shield /w Port Guard
+  [3] PG Clone: Mount Transport
+  [4] PG Box  : Apps ~ Core, Community & Removal
+  [5] PG Press: Deploy WordPress Instances
+  [6] PG Vault: Backup & Restore
+  [7] PG Cloud: GCE & Virtual Instances
+  [8] PG Tools
+  [9] PG Settings
+  [Z] Exit
 
-[1] Traefik : [$traefik]
-[2] Defense : PG Shield /w Port Guard
-[3] PG Clone: Mount Transport
-[4] PG Box  : Apps ~ Core, Community & Removal
-[5] PG Press: Deploy WordPress Instances
-[6] PG Vault: Backup & Restore
-[7] PG Cloud: GCE & Virtual Instances
-[8] PG Tools
-[9] PG Settings
-[Z] Exit
+  "$quote"
 
-"$quote"
+  $source
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  EOF
+  # Standby
+  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
-$source
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-# Standby
-read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
+    if [ "$typed" == "1" ]; then
+    bash /opt/plexguide/menu/pgcloner/traefik.sh
+    bash /opt/traefik/traefik.sh
+  elif [ "$typed" == "2" ]; then
+    bash /opt/plexguide/menu/pgshield/pgshield.sh
+  elif [ "$typed" == "3" ]; then
+    bash /opt/plexguide/menu/pgcloner/pgclone.sh
+    bash /opt/pgclone/gdrive.sh
+  elif [ "$typed" == "4" ]; then
+    bash /opt/plexguide/menu/pgbox/pgboxselect.sh
+  elif [ "$typed" == "5" ]; then
+    bash /opt/plexguide/menu/pgpress/pgpress.sh
+    bash /opt/pgpress/pressmain.sh
+  elif [ "$typed" == "6" ]; then
+    bash /opt/plexguide/menu/pgcloner/pgvault.sh
+    bash /opt/pgvault/pgvault.sh
+  elif [ "$typed" == "7" ]; then
+    bash /opt/plexguide/menu/cloudselect/cloudselect.sh
+  elif [ "$typed" == "8" ]; then
+    bash /opt/plexguide/menu/tools/tools.sh
+  elif [ "$typed" == "9" ]; then
+    bash /opt/plexguide/menu/settings/settings.sh
+  elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
+    bash /opt/plexguide/menu/ending/ending.sh
+    exit
+  else
+    bash /opt/plexguide/menu/start/start.sh
+    exit
+  fi
+}
 
-  if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/pgcloner/traefik.sh
-  bash /opt/traefik/traefik.sh
-elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/pgshield/pgshield.sh
-elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/pgcloner/pgclone.sh
-  bash /opt/pgclone/gdrive.sh
-elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/pgbox/pgboxselect.sh
-elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/pgpress/pgpress.sh
-  bash /opt/pgpress/pressmain.sh
-elif [ "$typed" == "6" ]; then
-  bash /opt/plexguide/menu/pgcloner/pgvault.sh
-  bash /opt/pgvault/pgvault.sh
-elif [ "$typed" == "7" ]; then
-  bash /opt/plexguide/menu/cloudselect/cloudselect.sh
-elif [ "$typed" == "8" ]; then
-  bash /opt/plexguide/menu/tools/tools.sh
-elif [ "$typed" == "9" ]; then
-  bash /opt/plexguide/menu/settings/settings.sh
-elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
-  bash /opt/plexguide/menu/ending/ending.sh
-  exit
-else
-  bash /opt/plexguide/menu/start/start.sh
-  exit
-fi
+primestart(){
+  pcloadletter
+  varstart
+  menuprime
+}
 
-exit
+primestart
