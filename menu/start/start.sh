@@ -170,15 +170,15 @@ menuprime() {
   forcepgclone
   exit; fi
 
-  # Menu Interface
-  tee <<-EOF
+# Menu Interface
+tee <<-EOF
 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  🌎 $transport | Version: $pgnumber | ID: $serverid
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎 $transport | Version: $pgnumber | ID: $serverid
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  🌵 PG Disk Used Space: $used of $capacity | $percentage Used Capacity
-  EOF
+🌵 PG Disk Used Space: $used of $capacity | $percentage Used Capacity
+EOF
 
   # Displays Second Drive If GCE
   edition=$(cat /var/plexguide/pg.server.deploy)
@@ -199,7 +199,7 @@ menuprime() {
     echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"; fi
   fi
 
-  quoteselect
+quoteselect
 
 tee <<-EOF
 
@@ -220,7 +220,7 @@ $source
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   # Standby
-  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
     if [ "$typed" == "1" ]; then
     bash /opt/plexguide/menu/pgcloner/traefik.sh
