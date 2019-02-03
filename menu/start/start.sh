@@ -177,7 +177,7 @@ EOF
 
 # Displays Second Drive If GCE
 edition=$(cat /var/plexguide/pg.server.deploy)
-if [ "$edition" != "feeder" ]; then
+if [ "$edition" == "feeder" ]; then
   used_gce=$(df -h /mnt | tail -n +2 | awk '{print $3}')
   capacity_gce=$(df -h /mnt | tail -n +2 | awk '{print $2}')
   percentage_gce=$(df -h /mnt | tail -n +2 | awk '{print $5}')
@@ -185,7 +185,7 @@ if [ "$edition" != "feeder" ]; then
 fi
 
 disktwo=$(cat "/var/plexguide/server.hd.path")
-if [ "$edition" == "feeder" ]; then
+if [ "$edition" != "feeder" ]; then
   used_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $3}')
   capacity_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $2}')
   percentage_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $5}')
@@ -197,6 +197,7 @@ fi
 quoteselect
 
 tee <<-EOF
+
 [1] Traefik : [$traefik]
 [2] Defense : PG Shield /w Port Guard
 [3] PG Clone: Mount Transport
