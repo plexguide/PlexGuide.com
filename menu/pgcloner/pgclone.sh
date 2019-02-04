@@ -13,7 +13,7 @@ echo 'PlexGuide-PGClone' > /var/plexguide/pgcloner.projectname
 echo 'v8.3' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 PG Clone for PlexGuide serves as rclone mounts + mergerfs union" > /var/plexguide/pgcloner.info
+echo "💬 PG Clone utilizes RClone's Mounts + MergerFS's Union" > /var/plexguide/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS

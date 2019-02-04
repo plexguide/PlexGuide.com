@@ -68,7 +68,3 @@ else
 	bash /opt/plexguide/menu/ending/ending.sh
 fi
 }
-######################################################## START: Key Variables
-#bash /opt/plexguide/install/declare.sh
-######################################################## START: New Install
-#bash /opt/plexguide/install/reboot.sh

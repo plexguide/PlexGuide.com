@@ -19,7 +19,6 @@
       - wget
       - lsb-release
       - figlet
-      - unionfs-fuse
       - software-properties-common
       - unrar
       - unzip

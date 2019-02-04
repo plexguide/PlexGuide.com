@@ -20,7 +20,6 @@
       - lsb-release
       - figlet
       - update-notifier-common
-      - unionfs-fuse
       - software-properties-common
       - unrar
       - unzip

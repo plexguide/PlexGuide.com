@@ -38,7 +38,6 @@ EOF
       rm -rf /var/plexguide/gce.failed 1>/dev/null 2>&1
       rm -rf /var/plexguide/gce.false 1>/dev/null 2>&1
 
-      echo "PG Edition - GCE Feed" > /var/plexguide/pg.edition
       echo "feeder" > /var/plexguide/pg.server.deploy
       cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
 
