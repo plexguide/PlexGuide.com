@@ -10,69 +10,6 @@
   gather_facts: false
   tasks:
 
-    - name: Install Status Move
-      template:
-        src: smove
-        dest: /bin/smove
-        force: yes
-        mode: 0775
-
-    - name: Nano Move
-      template:
-        src: nmove
-        dest: /bin/nmove
-        force: yes
-        mode: 0775
-
-    - name: Install PGVPN
-      template:
-        src: pgvpn
-        dest: /bin/pgvpn
-        force: yes
-        mode: 0775
-
-    - name: Install Status GDrive
-      template:
-        src: sgdrive
-        dest: /bin/sgdrive
-        force: yes
-        mode: 0775
-
-    - name: Nano GDrive
-      template:
-        src: ngdrive
-        dest: /bin/ngdrive
-        force: yes
-        mode: 0775
-
-    - name: Install Status TDrive
-      template:
-        src: stdrive
-        dest: /bin/stdrive
-        force: yes
-        mode: 0775
-
-    - name: Nano TDrive
-      template:
-        src: ntdrive
-        dest: /bin/ntdrive
-        force: yes
-        mode: 0775
-
-    - name: Install Status UnionFS
-      template:
-        src: sunionfs
-        dest: /bin/sunionfs
-        force: yes
-        mode: 0775
-
-    - name: Nano UnionFS
-      template:
-        src: nunionfs
-        dest: /bin/nunionfs
-        force: yes
-        mode: 0775
-
     - name: Install Status UFSMonitor
       template:
         src: sufs
@@ -84,36 +21,6 @@
       template:
         src: nufs
         dest: /bin/nufs
-        force: yes
-        mode: 0775
-
-  ####### Encrypted Services
-
-    - name: Install Status GCrypt
-      template:
-        src: sgcrypt
-        dest: /bin/sgcrypt
-        force: yes
-        mode: 0775
-
-    - name: Nano GCrypt
-      template:
-        src: ngcrypt
-        dest: /bin/ngcrypt
-        force: yes
-        mode: 0775
-
-    - name: Install Status TCrypt
-      template:
-        src: stcrypt
-        dest: /bin/stcrypt
-        force: yes
-        mode: 0775
-
-    - name: Nano TCrypt
-      template:
-        src: ntcrypt
-        dest: /bin/ntcrypt
         force: yes
         mode: 0775
 
@@ -225,26 +132,5 @@
       template:
         src: backup
         dest: /bin/backup
-        force: yes
-        mode: 0775
-
-    - name: Install PGEdge
-      template:
-        src: pgedge
-        dest: /bin/pgedge
-        force: yes
-        mode: 0775
-
-    - name: Install Status PGBlitz
-      template:
-        src: spgblitz
-        dest: /bin/spgblitz
-        force: yes
-        mode: 0775
-
-    - name: Install Transfer PGBlitz
-      template:
-        src: tpgblitz
-        dest: /bin/tpgblitz
         force: yes
         mode: 0775

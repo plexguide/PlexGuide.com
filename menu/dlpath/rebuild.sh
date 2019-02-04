@@ -27,4 +27,4 @@ for ((i=1; i<$count+1; i++)); do
 done
 
 echo ""
-echo 'INFO - Rebuilding Complete!' > /var/plexguide/pg.log && bash /opt/plexguide/menu/log/log.sh
+echo 'INFO - Rebuilding Complete!' > /var/plexguide/logs/pg.log && bash /opt/plexguide/menu/log/log.sh

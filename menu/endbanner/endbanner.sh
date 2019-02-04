@@ -21,6 +21,10 @@ tee <<-EOF
 
 EOF
 
+tee <<-EOF
+▫ $program:${port} <- Utilize to Connect Other Apps to this App (Internal Only)
+EOF
+
 if [ "$ports" == "" ]; then
 tee <<-EOF
 ▫ $ip:${port}${extra}
@@ -35,5 +39,23 @@ EOF
   fi
 tee <<-EOF
 ▫ $program.$domain${extra}
+EOF
+fi
+
+if [ "$program" == "plex" ]; then
+tee <<-EOF
+
+First Time Plex Claim Notice
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EOF
+if [ "$domain" != "NOT-SET" ]; then
+tee <<-EOF
+▫ http://plex.${domain}:32400 <-- Use http; not https
+EOF
+fi
+
+tee <<-EOF
+▫ $ip:${port}${extra}
 EOF
 fi

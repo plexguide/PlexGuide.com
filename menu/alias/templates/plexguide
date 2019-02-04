@@ -27,10 +27,11 @@ source /opt/plexguide/menu/functions/start.sh
 source /opt/plexguide/menu/functions/install.sh
 
 mkdir -p /opt/plexguide/roles/log
-mkdir -p /var/plexguide
+mkdir -p /var/plexguide/logs
 mkdir -p /opt/appdata/plexguide
 
 sudocheck
 missingpull
+
+# pg deploy contains pgdeploy at end
 pginstall
-pgdeploy

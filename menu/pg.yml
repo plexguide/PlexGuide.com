@@ -4,7 +4,6 @@
     extra: ""
 
   roles:
-    - { role: rcloneinstall, tags: ["rcloneinstall"] }
     - { role: docker, tags: ["docker"] }
     - { role: docstart, tags: ["docstart"] }
     - { role: dockerdeb, tags: ["dockerdeb"] }

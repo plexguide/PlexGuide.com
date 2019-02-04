@@ -43,29 +43,28 @@ updateprime() {
   echo "10" > ${abc}/pg.aptupdate
   echo "149" > ${abc}/pg.preinstall
   echo "22" > ${abc}/pg.folders
-  echo "13" > ${abc}/pg.rcloneprime
   echo "10" > ${abc}/pg.dockerinstall
   echo "15" > ${abc}/pg.server
   echo "1" > ${abc}/pg.serverid
   echo "24" > ${abc}/pg.dependency
   echo "10" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.watchtower
-  echo "1" > ${abc}/pg.motd
-  echo "105" > ${abc}/pg.alias
+  echo "2" > ${abc}/pg.motd
+  echo "107" > ${abc}/pg.alias
   echo "2" > ${abc}/pg.dep
   echo "2" > ${abc}/pg.cleaner
   echo "3" > ${abc}/pg.gcloud
   echo "12" > ${abc}/pg.hetzner
   echo "1" > ${abc}/pg.amazonaws
-  echo "7.3" > ${abc}/pg.verionid
+  echo "8.3" > ${abc}/pg.verionid
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
-  echo "5" > ${abc}/pg.prune
+  echo "6" > ${abc}/pg.prune
 }
 
 pginstall () {
   updateprime
-  bash /opt/plexguide/menu/editions/editions.sh
+  bash /opt/plexguide/menu/pggce/gcechecker.sh
   core pythonstart
   core aptupdate
   core alias &>/dev/null &
@@ -78,13 +77,11 @@ pginstall () {
   core motd &>/dev/null &
   core hetzner &>/dev/null &
   core gcloud
-  core rcloneprime
   core cleaner &>/dev/null &
   core serverid
   core watchtower
   core prune
   customcontainers &>/dev/null &
-
   pgedition
   pgdeploy
 }
@@ -180,37 +177,31 @@ mergerinstall () {
     activated=true
     echo "ub16" > /var/plexguide/mergerfs.version
     wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-xenial_amd64.deb"
-    apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+
+    elif [ "$ub18check" != "" ]; then
+      activated=true
+      echo "ub18" > /var/plexguide/mergerfs.version
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
+
+    elif [ "$deb9check" != "" ]; then
+      activated=true
+      echo "deb9" > /var/plexguide/mergerfs.version
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.debian-stretch_amd64.deb"
+
+    elif [ "$activated" != "true" ]; then
+      activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
+    else
+      apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+      git clone https://github.com/trapexit/mergerfs.git
+      cd mergerfs
+      make clean
+      make deb
+      cd ..
     fi
 
-    if [ "$ub18check" != "" ]; then
-    activated=true
-    echo "ub18" > /var/plexguide/mergerfs.version
-    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
-    apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
-    fi
-
-    if [ "$deb9check" != "" ]; then
-    activated=true
-    echo "deb9" > /var/plexguide/mergerfs.version
-    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.debian-stretch_amd64.deb"
-    apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
-    fi
-
-    if [ "$activated" != "true" ]; then
-    activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
-    wget "https://github.com/trapexit/mergerfs/releases/download/2.25.1/mergerfs_2.25.1.ubuntu-bionic_amd64.deb"
-    apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
-    fi
-
-    git clone https://github.com/trapexit/mergerfs.git
-    cd mergerfs
-    make clean
-    make deb
-    cd ..
-    dpkg -i mergerfs*_amd64.deb
+    apt install -y ./mergerfs*_amd64.deb
     rm mergerfs*_amd64.deb
-
 }
 
 motd () {
@@ -230,39 +221,12 @@ newinstall () {
 
 pgdeploy () {
   touch /var/plexguide/pg.edition
-  edition=$( cat /var/plexguide/pg.edition )
-
-  if [ "$edition" == "PG Edition - GDrive" ]; then
-      bash /opt/plexguide/menu/start/start.sh
-      exit
-  elif [ "$edition" == "PG Edition - HD Multi" ]; then
-      bash /opt/plexguide/menu/start/start.sh
-      exit
-  elif [ "$edition" == "PG Edition - HD Solo" ]; then
-      bash /opt/plexguide/menu/start/start.sh
-      exit
-  elif [ "$edition" == "PG Edition - GCE Feed" ]; then
-      bash /opt/plexguide/menu/start/start.sh
-      exit
-  else
-      file="/var/plexguide/pg.preinstall.stored"
-      if [ -e "$file" ]; then
-        touch /var/plexguide/pg.edition
-        bash /opt/plexguide/menu/interface/install/scripts/edition.sh
-        bash /opt/plexguide/menu/start/start.sh
-      else
-        bash /opt/plexguide/menu/start/start.sh
-      fi
-  fi
+  bash /opt/plexguide/menu/start/start.sh
 }
 
 pgedition () {
   file="${abc}/path.check"
   if [ ! -e "$file" ]; then touch ${abc}/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
-
-  # FOR MULTI-HD EDITION
-  file="${abc}/multi.unionfs"
-    if [ ! -e "$file" ]; then touch ${abc}/multi.unionfs; fi
   # FOR PG-BLITZ
   file="${abc}/project.deployed"
     if [ ! -e "$file" ]; then echo "no" > ${abc}/project.deployed; fi
@@ -318,20 +282,6 @@ pythonstart () {
   touch /var/plexguide/background.1
 }
 
-rcloneprime () {
-  ansible-playbook /opt/plexguide/menu/pg.yml --tags rcloneinstall
-
-tee "/etc/fuse.conf" > /dev/null <<EOF
-# /etc/fuse.conf - Configuration file for Filesystem in Userspace (FUSE)
-# Set the maximum number of FUSE mounts allowed to non-root users.
-# The default is 1000.
-#mount_max = 1000
-# Allow non-root users to specify the allow_other or allow_root mount options.
-user_allow_other
-EOF
-
-}
-
 dockerinstall () {
   ospgversion=$(cat /var/plexguide/os.version)
   if [ "$ospgversion" == "debian" ]; then
@@ -372,8 +322,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️   Establishing Server ID               💬  Use One Word & Keep it Simple
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
+sleep 2.5
   read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
 
     if [ "$typed" == "" ]; then
@@ -383,8 +333,8 @@ tee <<-EOF
 ⛔️  WARNING! - The Server ID Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 2.5
-  rm -rf
+  sleep 1
+  serverid
 else
 tee <<-EOF
 
@@ -393,7 +343,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   echo "$typed" > /var/plexguide/server.id
-  sleep 2
+  sleep 1
   fi
 }
 
