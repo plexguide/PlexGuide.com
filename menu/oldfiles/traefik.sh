@@ -78,7 +78,7 @@ tee <<-EOF
 1 - Top Level Domain App: [$tld]
 2 - Domain Provider     : [$provider]
 3 - Domain Name         : [$domain]
-4 - EMail Address       : [$email]
+4 - Email Address       : [$email]
 5 - Deploy Traefik      : [$deployed]
 Z - Exit
 
