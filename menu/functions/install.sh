@@ -111,7 +111,7 @@ aptupdate () {
 customcontainers () {
 mkdir -p /opt/mycontainers
 touch /opt/appdata/plexguide/rclone.conf
-rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/plexguide/containers
+rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/communityapps/apps
 
 file="/opt/mycontainers/_template.yml"
 if [ ! -e "$file" ]; then
