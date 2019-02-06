@@ -139,9 +139,7 @@ read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 
 if [[ "$typed" == "deploy" && "$buildup" != "" ]]; then question2; fi
 if [[ "$buildup" == "NONE" ]]; then
-  typed==""
   badinput1
-  question1
 fi
 
 if [ "$typed" == "exit" ]; then exit; fi
