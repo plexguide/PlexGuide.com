@@ -15,6 +15,15 @@
       shell: "cat /var/plexguide/pgcloner.projectversion"
       register: pversion
 
+    - name: Check if Path Exists
+      stat:
+        path: "/opt/{{prole.stdout}}"
+      register: pathcheck
+
+    - name: 'Transfer Image Variable'
+      shell: "rm -rf /opt/{{prole.stdout}}"
+      when: pathcheck.stat.exists
+
     - name: Clone Role
       git:
         repo: "https://github.com/Admin9705/{{pname.stdout}}"
