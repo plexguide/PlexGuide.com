@@ -8,6 +8,7 @@
 
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/install.sh
 
 queued () {
 echo
@@ -59,7 +60,7 @@ initial () {
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
-
+  customcontainers
 }
 
 question1 () {
@@ -108,7 +109,7 @@ while read p; do
   echo -n $p >> /var/plexguide/program.temp
   echo -n " " >> /var/plexguide/program.temp
   num=$[num+1]
-  if [ "$num" == 7 ]; then
+  if [[ "$num" == "7" ]]; then
     num=0
     echo " " >> /var/plexguide/program.temp
   fi

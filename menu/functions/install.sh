@@ -111,12 +111,8 @@ aptupdate () {
 customcontainers () {
 mkdir -p /opt/mycontainers
 touch /opt/appdata/plexguide/rclone.conf
-rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/plexguide/containers
-
-file="/opt/mycontainers/_template.yml"
-if [ ! -e "$file" ]; then
-yes | cp -rf /opt/plexguide/containers/_template.yml /opt/mycontainers
-fi
+mkdir -p /opt/communityapps/apps
+rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/communityapps/apps
 }
 
 cleaner () {
@@ -323,8 +319,7 @@ tee <<-EOF
 ↘️   Establishing Server ID               💬  Use One Word & Keep it Simple
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2.5
-  read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
+read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
 
     if [ "$typed" == "" ]; then
 tee <<-EOF
