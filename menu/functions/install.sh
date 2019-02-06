@@ -323,8 +323,7 @@ tee <<-EOF
 ↘️   Establishing Server ID               💬  Use One Word & Keep it Simple
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2.5
-  read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
+read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
 
     if [ "$typed" == "" ]; then
 tee <<-EOF
