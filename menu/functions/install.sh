@@ -115,7 +115,7 @@ rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/
 
 file="/opt/mycontainers/_template.yml"
 if [ ! -e "$file" ]; then
-yes | cp -rf /opt/plexguide/containers/_template.yml /opt/mycontainers
+yes | cp -rf /opt/plexguide/containers/_template.yml /opt/communityapps/apps
 fi
 }
 

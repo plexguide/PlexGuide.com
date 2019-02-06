@@ -8,6 +8,7 @@
 
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/install.sh
 
 queued () {
 echo
@@ -59,7 +60,7 @@ initial () {
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
-
+  customcontainers
 }
 
 question1 () {
