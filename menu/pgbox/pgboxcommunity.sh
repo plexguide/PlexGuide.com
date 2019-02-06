@@ -137,10 +137,7 @@ $buildup
 EOF
 read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 
-if [[ "$typed" == "deploy" && "$buildup" != "" ]]; then question2; fi
-if [[ "$buildup" == "NONE" ]]; then
-  badinput1
-fi
+if [[ "$typed" == "deploy" ]]; then question2; fi
 
 if [ "$typed" == "exit" ]; then exit; fi
 
