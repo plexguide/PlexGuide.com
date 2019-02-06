@@ -137,7 +137,7 @@ $buildup
 EOF
 read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 
-if [ "$typed" == "deploy" ] && [ -z "$p" ]; then
+if [ "$typed" == "deploy" ] && [ "$buildup" == "" ]; then
   echo "ERROR -- No APP Queued for Install!"
 elif [ "$typed" == "deploy" ]; then
   question2
