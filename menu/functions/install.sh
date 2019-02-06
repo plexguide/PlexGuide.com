@@ -113,11 +113,6 @@ mkdir -p /opt/mycontainers
 touch /opt/appdata/plexguide/rclone.conf
 mkdir -p /opt/communityapps/apps
 rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/communityapps/apps
-
-file="/opt/mycontainers/_template.yml"
-if [ ! -e "$file" ]; then
-yes | cp -rf /opt/plexguide/containers/_template.yml /opt/communityapps/apps
-fi
 }
 
 cleaner () {
