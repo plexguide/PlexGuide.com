@@ -79,7 +79,8 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/pgpatrol/pgpatrol.sh
+  bash /opt/plexguide/menu/pgcloner/pgpatrol.sh
+  bash /opt/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "2" ]; then
   bash /opt/plexguide/menu/pgscan/pgscan.sh
 elif [ "$typed" == "3" ]; then

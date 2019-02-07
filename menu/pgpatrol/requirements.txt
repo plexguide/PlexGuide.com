@@ -1,3 +1,0 @@
-requests~=2.20.0
-python-decouple==3.1
-parse==1.9.0
