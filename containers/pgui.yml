@@ -15,7 +15,7 @@
         pgrole: 'pgui'
         intport: '80'
         extport: '8555'
-        image: 'richarvey/nginx-php'
+        image: 'richarvey/nginx-php-fpm'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
