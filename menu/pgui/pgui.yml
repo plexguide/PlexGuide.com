@@ -33,7 +33,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/config:/config'
+          - '/opt/appdata/{{pgrole}}:/'
 
     - name: 'Setting PG ENV'
       set_fact:
