@@ -30,11 +30,6 @@
           traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
-    - name: Creating Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
-      with_items:
-        - "/opt/appdata/{{pgrole}}/var/www/html"
-
     - name: 'Setting PG ENV'
       set_fact:
         pg_env:
