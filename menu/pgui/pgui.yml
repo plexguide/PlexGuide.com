@@ -33,13 +33,13 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/var/www/html:/var/www/html'
+          - '/opt/appdata/{{pgrole}}/var:/var'
 
     - name: 'Setting PG ENV'
       set_fact:
         pg_env:
-          PUID: 0
-          PGID: 0
+          PUID: 1000
+          PGID: 1000
 
     # MAIN DEPLOYMENT #############################################################
     - name: 'Deploying {{pgrole}}'
