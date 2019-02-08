@@ -7,14 +7,14 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'pgpatrol' > /var/plexguide/pgcloner.rolename
-echo 'PG Patrol' > /var/plexguide/pgcloner.roleproper
-echo 'PlexGuide-PGPatrol' > /var/plexguide/pgcloner.projectname
+echo 'hcloud' > /var/plexguide/pgcloner.rolename
+echo 'HCloud (Hetzner)' > /var/plexguide/pgcloner.roleproper
+echo 'PlexGuide-HCloud-Hetzner' > /var/plexguide/pgcloner.projectname
 echo 'v8.4' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 PG Patrol can boot idle plex users, users utilizing multiple
-ips (sharing the server), and much more!" > /var/plexguide/pgcloner.info
+echo "💬 HCloud in conjuction with PlexGuide enables users to
+deploy Hetzner Cloud Instance (VMs) within seconds" > /var/plexguide/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS

@@ -254,7 +254,7 @@ case $typed in
       bash /opt/pgvault/pgvault.sh
       primestart ;;
     7 )
-      bash /opt/plexguide/menu/cloudselect/cloudselect.sh
+      bash /opt/plexguide/menu/interface/cloudselect.sh
       primestart ;;
     8 )
       bash /opt/plexguide/menu/tools/tools.sh
