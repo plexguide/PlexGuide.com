@@ -30,11 +30,6 @@
           traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
-    - name: 'Setting PG Volumes'
-      set_fact:
-        pg_volumes:
-          - '/opt/appdata/{{pgrole}}/var/www/html/index.php:/var/www/html/index.php:rw'
-
     - name: 'Setting PG ENV'
       set_fact:
         pg_env:
