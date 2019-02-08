@@ -38,7 +38,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/var/www/html:/var/www/html'
+          - '/opt/appdata/{{pgrole}}/:/var/www/html'
 
     - name: 'Setting PG ENV'
       set_fact:
