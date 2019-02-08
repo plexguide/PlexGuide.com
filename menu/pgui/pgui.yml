@@ -35,7 +35,6 @@
       with_items:
         - "/opt/appdata/{{pgrole}}/var/www/html"
 
-
     - name: 'Setting PG ENV'
       set_fact:
         pg_env:
