@@ -246,7 +246,7 @@ case $typed in
       bash /opt/plexguide/menu/pgbox/pgboxselect.sh
       primestart ;;
     5 )
-      bash /opt/plexguide/menu/pgpress/pgpress.sh
+      bash /opt/plexguide/menu/pgcloner/pgpress.sh
       bash /opt/pgpress/pressmain.sh
       primestart ;;
     6 )
