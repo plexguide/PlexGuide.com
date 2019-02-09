@@ -13,4 +13,4 @@ echo 'PlexGuide-UI' > /var/plexguide/pgcloner.projectname
 echo 'v8.4' > /var/plexguide/pgcloner.projectversion
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/core/main.sh
+ansible-playbook /opt/plexguide/menu/pgcloner/primary.yml
