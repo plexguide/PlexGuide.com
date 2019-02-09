@@ -181,6 +181,10 @@ varstart() {
   used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
   capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
   percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+
+  # For the PlexGuide UI
+  echo "$used" > /var/plexguide/pg.used
+  echo "$capacity" > /var/plexguide/pg.capacity
 }
 
 menuprime() {
