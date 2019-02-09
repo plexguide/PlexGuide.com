@@ -154,6 +154,8 @@ varstart() {
   if [ "$ports" == "" ]; then echo "Open" > /var/plexguide/pg.ports
   else echo "Closed" > /var/plexguide/pg.ports; fi
 
+  ansible --version | head -n +1 | awk '{print $2'} > /var/plexguide/pg.ansible
+
   # Call Variables
   edition=$(cat /var/plexguide/pg.edition)
   serverid=$(cat /var/plexguide/server.id)
