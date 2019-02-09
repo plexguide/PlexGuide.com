@@ -149,6 +149,11 @@ varstart() {
   touch /var/plexguide/server.ports
   touch /var/plexguide/pg.server.deploy
 
+  # For PG UI - Force Variable to Set
+  ports=$(cat /var/plexguide/server.ports)
+  if [ "$ports" == "" ]; then echo "Open" > /var/plexguide/pg.ports
+  else echo "Closed" > /var/plexguide/pg.ports; fi
+
   # Call Variables
   edition=$(cat /var/plexguide/pg.edition)
   serverid=$(cat /var/plexguide/server.id)
@@ -159,8 +164,10 @@ varstart() {
   traefik=$(cat /var/plexguide/traefik.deployed)
   if [ "$traefik" == "" ]; then
     traefik="NOT DEPLOYED"
+    echo "Not Deployed" > /var/plexguide/pg.traefik
   else
     traefik="DEPLOYED"
+    echo "Deployed" > /var/plexguide/pg.traefik
   fi
 
   # For ZipLocations
