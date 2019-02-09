@@ -32,6 +32,7 @@ pcloadletter () {
   elif [ "$temp" == "eblitz" ]; then transport="PG Blitz /w Encryption"
   elif [ "$temp" == "solohd" ]; then transport="PG Local"
   else transport="NOT-SET"; fi
+  echo "$transport" > /var/plexguide/pg.transport
 }
 
 variable () {
