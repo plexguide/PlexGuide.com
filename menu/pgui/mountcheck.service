@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+[Unit]
+Description=MountCheck Service Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=0
+Group=0
+ExecStart=/bin/bash /opt/plexguide/menu/pgui/mountcheck.sh
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

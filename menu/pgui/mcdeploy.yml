@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# Title:      PlexGuide (Reference Title File)
+# YML Author: Admin9705
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Check Service's Existance
+      stat:
+        path: "/etc/systemd/systemd/mountcheck.service"
+      register: pgp
+
+    - name: Stop service
+      service:
+        name: mountcheck
+        state: stopped
+      when: pgp.stat.exists
+
+    - name: MountCheck Service
+      template:
+        src: /opt/plexguide/menu/pgui/mountcheck.service
+        dest: /etc/systemd/system/mountcheck.service
+        force: yes
+        
+    - name: Daemon-Reload
+      systemd: state=stopped name=mountcheck daemon_reload=yes enabled=no
+
+    - name: Start pgscan
+      systemd: state=started name=mountcheck enabled=yes
