@@ -8,7 +8,7 @@
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/install.sh
 # Menu Interface
-setstart () {
+setstart() {
 
 swithcheck=$(cat /var/plexguide/pgui.switch)
 tee <<-EOF
@@ -53,4 +53,7 @@ case $typed in
     * )
       setstart ;;
 esac
+
 }
+
+setstart
