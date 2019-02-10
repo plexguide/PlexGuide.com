@@ -175,6 +175,14 @@ varstart() {
     echo "Deployed" > /var/plexguide/pg.traefik
   fi
 
+  if [[ $(docker ps | grep "oauth") == "" ]]; then
+    traefik="NOT DEPLOYED"
+    echo "Not Deployed" > /var/plexguide/pg.shield
+  else
+    traefik="DEPLOYED"
+    echo "Deployed" > /var/plexguide/pg.shield
+  fi
+
   # For ZipLocations
   file="/var/plexguide/data.location"
   if [ ! -e "$file" ]; then echo "/opt/appdata/plexguide" > /var/plexguide/data.location; fi
