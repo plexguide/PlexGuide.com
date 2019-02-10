@@ -177,10 +177,10 @@ varstart() {
 
   if [[ $(docker ps | grep "oauth") == "" ]]; then
     traefik="NOT DEPLOYED"
-    echo "Not Deployed" > /var/plexguide/pg.shield
+    echo "Not Deployed" > /var/plexguide/pg.auth
   else
     traefik="DEPLOYED"
-    echo "Deployed" > /var/plexguide/pg.shield
+    echo "Deployed" > /var/plexguide/pg.oauth
   fi
 
   # For ZipLocations
