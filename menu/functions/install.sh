@@ -76,6 +76,7 @@ pginstall () {
   core dockerinstall
   core docstart
   portainer
+  pgui
   core motd &>/dev/null &
   core hetzner &>/dev/null &
   core gcloud
@@ -87,7 +88,6 @@ pginstall () {
   pgedition
   core mountcheck
   pgdeploy
-  pgui
 }
 
 core () {
