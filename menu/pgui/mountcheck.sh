@@ -12,10 +12,10 @@ do
 
 # GDrive
 if [[ $(rclone lsd --config /opt/appdata/plexguide/rclone.conf gdrive: | grep "\<plexguide\>") == "" ]]; then
-  echo "Not Operational"> pg.gdrive; else echo "Operational" > pg.gdrive; fi
+  echo "Not Operational"> /var/plexguide/pg.gdrive; else echo "Operational" > /var/plexguide/pg.gdrive; fi
 
 if [[ $(rclone lsd --config /opt/appdata/plexguide/rclone.conf tdrive: | grep "\<plexguide\>") == "" ]]; then
-  echo "Not Operational"> pg.tdrive; else echo "Operational" > pg.tdrive; fi
+  echo "Not Operational"> /var/plexguide/pg.tdrive; else echo "Operational" > /var/plexguide/pg.tdrive; fi
 
 sleep 10
 done
