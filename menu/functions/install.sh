@@ -254,9 +254,10 @@ pgui ()
 
     pguicheck=$(cat /var/plexguide/pgui.switch)
   if [[ "$pguicheck" == "On" ]]; then
+
     dstatus=$(docker ps --format '{{.Names}}' | grep "pgui")
     if [ "$dstatus" != "pgui" ]; then
-    ansible-playbook /opt/pgui/pgui.yml &>/dev/null &
+    ansible-playbook /opt/pgui/pgui.yml 
     fi
 fi
 }
