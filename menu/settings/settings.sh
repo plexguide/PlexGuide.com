@@ -52,4 +52,5 @@ case $typed in
       exit ;;
     * )
       setstart ;;
+esac
 }
