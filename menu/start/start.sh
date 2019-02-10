@@ -162,16 +162,16 @@ varstart() {
   serverid=$(cat /var/plexguide/server.id)
   pgnumber=$(cat /var/plexguide/pg.number)
 
-  # Declare Traefik Deployed Docker STate
-  docker ps --format '{{.Names}}' | grep traefik > /var/plexguide/traefik.deployed
-  traefik=$(cat /var/plexguide/traefik.deployed)
-  if [ "$traefik" == "" ]; then
+  # Declare Traefik Deployed Docker State
+  if [[ $(docker ps | grep "traefik") == "" ]]; then
     traefik="NOT DEPLOYED"
     echo "Not Deployed" > /var/plexguide/pg.traefik
   else
     traefik="DEPLOYED"
     echo "Deployed" > /var/plexguide/pg.traefik
   fi
+
+
 
   # For ZipLocations
   file="/var/plexguide/data.location"
