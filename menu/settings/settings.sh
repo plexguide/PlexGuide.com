@@ -44,13 +44,14 @@ case $typed in
     5 )
       echo
       echo "Standby ..."
+      echo
       if [[ "$switchcheck" == "On" ]]; then
          echo "Off" > /var/plexguide/pgui.switch
-         docker stop pgui 1>/dev/null 2>&1
-         docker rm pgui 1>/dev/null 2>&1
+         docker stop pgui
+         docker rm pgui
       else echo "On" > /var/plexguide/pgui.switch; fi
-        bash /opt/plexguide/menu/pgcloner/solo/pgui.sh 1>/dev/null 2>&1
-        ansible-playbook /opt/pgui/pgui.yml 1>/dev/null 2>&1
+        bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
+        ansible-playbook /opt/pgui/pgui.yml
       setstart ;;
     z )
       exit ;;
