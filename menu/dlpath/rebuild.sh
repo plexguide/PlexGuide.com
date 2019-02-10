@@ -13,6 +13,7 @@ sed -i -e "/wp-*/d" /var/plexguide/container.running
 sed -i -e "/plex/d" /var/plexguide/container.running
 sed -i -e "/pgblitz/d" /var/plexguide/container.running
 sed -i -e "/oauth/d" /var/plexguide/container.running
+sed -i -e "/dockergc/d" /var/plexguide/container.running
 sed -i -e "/pgui/d" /var/plexguide/container.running
 
 ### Your Wondering Why No While Loop, using a While Loops Screws Up Ansible Prompts
