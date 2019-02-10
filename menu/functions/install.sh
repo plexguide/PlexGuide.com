@@ -87,6 +87,7 @@ pginstall () {
   pgedition
   core mountcheck
   pgdeploy
+  pgui
 }
 
 core () {
@@ -244,6 +245,20 @@ portainer () {
   if [ "$dstatus" != "portainer" ]; then
   ansible-playbook /opt/plexguide/containers/portainer.yml &>/dev/null &
   fi
+}
+
+pgui ()
+{
+  file="/var/plexguide/pgui.switch"
+    if [ ! -e "$file" ]; then echo "On" > /var/plexguide/pgui.switch; fi
+
+    pguicheck=$(cat /var/plexguide/pgui.switch)
+  if [[ "$pguicheck" == "On" ]]; then
+    dstatus=$(docker ps --format '{{.Names}}' | grep "pgui")
+    if [ "$dstatus" != "portainer" ]; then
+    ansible-playbook /opt/pgui/pgui.yml &>/dev/null &
+    fi
+fi
 }
 
 pythonstart () {
