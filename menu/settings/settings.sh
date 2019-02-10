@@ -10,7 +10,7 @@ source /opt/plexguide/menu/functions/install.sh
 # Menu Interface
 setstart() {
 
-swithcheck=$(cat /var/plexguide/pgui.switch)
+switchcheck=$(cat /var/plexguide/pgui.switch)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -44,7 +44,11 @@ case $typed in
     5 )
       if [[ "$switchcheck" == "On" ]]; then
          echo "Off" > /var/plexguide/pgui.switch
+         docker stop pgui 1>/dev/null 2>&1
+         docker rm pgui 1>/dev/null 2>&1
       else echo "On" > /var/plexguide/pgui.switch; fi
+        bash /opt/plexguide/menu/pgcloner/solo/pgui.sh 1>/dev/null 2>&1
+        ansible-playbook /opt/pgui/pgui.yml 1>/dev/null 2>&1
       setstart ;;
     z )
       exit ;;
