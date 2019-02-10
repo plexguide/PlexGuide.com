@@ -158,6 +158,9 @@ varstart() {
   docker --version | head -n +1 | awk '{print $3'} | sed 's/,$//' > /var/plexguide/pg.docker
   cat /etc/os-release | head -n +5 | tail -n +5 | cut -d'"' -f2 > /var/plexguide/pg.os
 
+  file="/var/plexguide/gce.false"
+  if [ -e "$file" ]; then echo "No" > /var/plexguide/pg.gce; else echo "Yes" > /var/plexguide/pg.gce; fi
+
   # Call Variables
   edition=$(cat /var/plexguide/pg.edition)
   serverid=$(cat /var/plexguide/server.id)
@@ -171,8 +174,6 @@ varstart() {
     traefik="DEPLOYED"
     echo "Deployed" > /var/plexguide/pg.traefik
   fi
-
-
 
   # For ZipLocations
   file="/var/plexguide/data.location"
