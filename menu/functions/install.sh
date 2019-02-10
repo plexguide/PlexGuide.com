@@ -209,7 +209,10 @@ motd () {
 }
 
 mountcheck () {
+  bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
+  ansible-playbook /opt/pgui/pgui.yml
   ansible-playbook /opt/plexguide/menu/pgui/mcdeploy.yml
+
 }
 
 newinstall () {
@@ -257,7 +260,8 @@ pgui ()
 
     dstatus=$(docker ps --format '{{.Names}}' | grep "pgui")
     if [ "$dstatus" != "pgui" ]; then
-    ansible-playbook /opt/pgui/pgui.yml 
+    bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
+    ansible-playbook /opt/pgui/pgui.yml
     fi
 fi
 }
