@@ -42,6 +42,8 @@ case $typed in
     4 )
       dpkg-reconfigure tzdata ;;
     5 )
+      echo
+      echo "Standby ..."
       if [[ "$switchcheck" == "On" ]]; then
          echo "Off" > /var/plexguide/pgui.switch
          docker stop pgui 1>/dev/null 2>&1
