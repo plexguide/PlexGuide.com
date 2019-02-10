@@ -31,5 +31,7 @@ if [[ $(rclone lsd --config /opt/appdata/plexguide/rclone.conf pgunion: | grep "
 if [[ $(ls -la /mnt/unionfs | grep "plexguide") == "" ]]; then
   echo "Not Operational ⚠️"> /var/plexguide/pg.umount; else echo "Operational ✅ " > /var/plexguide/pg.umount; fi
 
+
+
 sleep 10
 done
