@@ -49,9 +49,10 @@ case $typed in
          echo "Off" > /var/plexguide/pgui.switch
          docker stop pgui
          docker rm pgui
-      else echo "On" > /var/plexguide/pgui.switch; fi
+      else echo "On" > /var/plexguide/pgui.switch
         bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
         ansible-playbook /opt/pgui/pgui.yml
+      fi 
       setstart ;;
     z )
       exit ;;
