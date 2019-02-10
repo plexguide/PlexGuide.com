@@ -21,7 +21,7 @@ tee <<-EOF
 [2] Processor    :  Enhance the CPU Processing Power
 [3] WatchTower   :  Auto-Update Application Manager
 [4] Change Time  :  Change the Server Time
-[5] PG UI        :  $switchcheck
+[5] PG UI        :  $switchcheck | Port 8555 | pgui.domain.com
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -52,7 +52,7 @@ case $typed in
       else echo "On" > /var/plexguide/pgui.switch
         bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
         ansible-playbook /opt/pgui/pgui.yml
-      fi 
+      fi
       setstart ;;
     z )
       exit ;;
