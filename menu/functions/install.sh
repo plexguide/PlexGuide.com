@@ -255,7 +255,7 @@ pgui ()
     pguicheck=$(cat /var/plexguide/pgui.switch)
   if [[ "$pguicheck" == "On" ]]; then
     dstatus=$(docker ps --format '{{.Names}}' | grep "pgui")
-    if [ "$dstatus" != "portainer" ]; then
+    if [ "$dstatus" != "pgui" ]; then
     ansible-playbook /opt/pgui/pgui.yml &>/dev/null &
     fi
 fi
