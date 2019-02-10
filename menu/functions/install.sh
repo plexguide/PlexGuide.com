@@ -85,6 +85,7 @@ pginstall () {
   core prune
   customcontainers &>/dev/null &
   pgedition
+  core mountcheck
   pgdeploy
 }
 
