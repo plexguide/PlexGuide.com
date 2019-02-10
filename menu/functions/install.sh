@@ -60,6 +60,8 @@ updateprime() {
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "6" > ${abc}/pg.prune
+  echo "1" > ${abc}/pg.mountcheck
+
 }
 
 pginstall () {
@@ -202,6 +204,10 @@ mergerinstall () {
 
 motd () {
   ansible-playbook /opt/plexguide/menu/motd/motd.yml
+}
+
+mountcheck () {
+  ansible-playbook /opt/plexguide/menu/pgui/mcdeploy.yml
 }
 
 newinstall () {
