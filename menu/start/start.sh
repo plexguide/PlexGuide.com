@@ -236,7 +236,7 @@ quoteselect
 
 tee <<-EOF
 
-[1] Traefik : [$traefik]
+[1] Traefik : Reverse Proxy
 [2] Defense : PG Shield /w Port Guard
 [3] PG Clone: Mount Transport
 [4] PG Box  : Apps ~ Core, Community & Removal
