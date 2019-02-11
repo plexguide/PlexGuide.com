@@ -66,12 +66,16 @@ fi
 
 echo "" > /var/plexguide/emergency.log
 
+if [[ $(ls /opt/appdata/plexguide/emergency) != "" ]]; then
 countmessage=0
 while read p; do
   let countmessage++
   echo -n "${countmessage}. " >> /var/plexguide/emergency.log
   echo "$(cat /opt/appdata/plexguide/emergency/$p)" >> /var/plexguide/emergency.log
 done <<< "$(ls /opt/appdata/plexguide/emergency)"
+else
+  echo "NONE" > /var/plexguide/emergency.log
+fi
 
 sleep 5
 done
