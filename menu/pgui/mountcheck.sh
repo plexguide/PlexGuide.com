@@ -39,7 +39,7 @@ leftover=$(df /opt/appdata/plexguide | tail -n +2 | awk '{print $4}')
   #used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
   #capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
   #percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
-                       
+
 if [[ "$leftover" -lt "3000000" ]]; then
   diskspace27=1
   echo "Emergency: Primary DiskSpace Under 3GB - Stopped Media Programs & Downloading Programs (i.e. Plex, NZBGET, RuTorrent)" > /opt/appdata/plexguide/emergency/message.1
@@ -63,6 +63,21 @@ elif [[ "$leftover" -gt "3000000" && "$diskspace27" == "1" ]]; then
   rm -rf /opt/appdata/plexguide/emergency/message.1
   diskspace27=0
 fi
+
+
+# For Warning Log
+file="/var/plexguide/emergency.log"
+if [ -e "$file" ]; then
+  rm -rf /var/plexguide/emergency.log
+  touch /var/plexguide/emergency.log
+fi
+
+countmessage=0
+while read p; do
+  let countmessage++
+  echo -n "${countmessage}. " >>
+  cat /opt/appdata/plexguide/emergency/$p
+done <<< "$(ls /opt/appdata/plexguide/emergency)"
 
 sleep 5
 done
