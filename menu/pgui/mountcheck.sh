@@ -64,19 +64,13 @@ elif [[ "$leftover" -gt "3000000" && "$diskspace27" == "1" ]]; then
   diskspace27=0
 fi
 
-
-# For Warning Log
-file="/var/plexguide/emergency.log"
-if [ -e "$file" ]; then
-  rm -rf /var/plexguide/emergency.log
-  touch /var/plexguide/emergency.log
-fi
+echo "" > /var/plexguide/emergency.log
 
 countmessage=0
 while read p; do
   let countmessage++
-  echo -n "${countmessage}. " >>
-  cat /opt/appdata/plexguide/emergency/$p
+  echo -n "${countmessage}. " >> /var/plexguide/emergency.log
+  echo "$(cat /opt/appdata/plexguide/emergency/$p)" >> /var/plexguide/emergency.log
 done <<< "$(ls /opt/appdata/plexguide/emergency)"
 
 sleep 5
