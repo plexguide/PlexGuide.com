@@ -158,6 +158,7 @@ EOF
 
   echo
   read -n 1 -s -r -p "Acknowledge Info | Press [ENTER]"
+  echo 
 
 fi
 
