@@ -257,7 +257,7 @@ https://pgui.yourdomain.com | http://pgui.domain.com:8555 | ipv4:8555
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p 'Acknolwedge Info | Press [ENTER]: ' typed < /dev/tty
+read -p 'Acknolwedge Info | Press [ENTER] ' typed < /dev/tty
 
 }
 
