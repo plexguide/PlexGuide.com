@@ -67,8 +67,7 @@ fi
 ##### Warning for Ports Open with Traefik Deployed
 if [[ $(cat /var/plexguide/pg.ports) != "Closed" && $(docker ps --format '{{.Names}}' | grep "traefik") == "traefik" ]]; then
   echo "Warning  : Traefik Deployed with Ports Open! Vulnerable to an Attack!" > /opt/appdata/plexguide/emergency/message.a
-else
-  if [ -e "/opt/appdata/plexguide/emergency/message.a" ]; then rm -rf /opt/appdata/plexguide/emergency/message.a; fi
+elif [ -e "/opt/appdata/plexguide/emergency/message.a" ]; then rm -rf /opt/appdata/plexguide/emergency/message.a; fi
 
 ################# Generate Output
 echo "" > /var/plexguide/emergency.log
