@@ -146,7 +146,7 @@ if [[ $(ls /opt/appdata/plexguide/emergency) != "" ]]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  Emergency Log - WARNING!
+⛔️  Emergency & Warning Log Generator | Visit - http://emlog.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
