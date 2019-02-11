@@ -25,6 +25,7 @@ updateprime() {
   variable /var/plexguide/server.email "changeme@badmail.com"
   variable /var/plexguide/server.domain "NOT-SET"
   variable /var/plexguide/pg.number "New-Install"
+  variable /var/plexguide/emergency.log ""
   pgnumber=$(cat /var/plexguide/pg.number)
 
   hostname -I | awk '{print $1}' > /var/plexguide/server.ip
