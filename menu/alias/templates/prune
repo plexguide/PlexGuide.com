@@ -16,4 +16,4 @@
 #
 #################################################################################
 
-sudo docker image prune -af
+sudo docker system prune --volumes
