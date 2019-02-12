@@ -1,42 +1,37 @@
 #!/bin/bash
 #
 # Title:      PlexGuide (Reference Title File)
-# Author(s):  Admin9705 - Deiteq
+# Author(s):  Admin9705
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
 ---
-- cron:
+- name: Remove old NZBGET job
+  cron:
     name: Build a Cron Job - NZBGET
-    special_time: "hourly"
-    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/nzbget.sh"
     state: absent
   ignore_errors: yes
 
-- cron:
+- name: Remove old SABNZBD job
+  cron:
     name: Build a Cron Job - SABNZBD
-    special_time: "hourly"
-    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/sabnzbd.sh"
     state: absent
   ignore_errors: yes
 
-- cron:
+- name: Remove old DELUGE job
+  cron:
     name: Build a Cron Job - DELUGE
-    special_time: 'hourly'
-    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/deluge.sh"
     state: absent
   ignore_errors: yes
 
-- cron:
+- name: Remove old RUTORRENT job
+  cron:
     name: Build a Cron Job - RUTORRENT
-    special_time: 'hourly'
-    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/rutorrent.sh"
     state: absent
   ignore_errors: yes
 
-- cron:
+- name: Remove old QBITTORRENT job
+  cron:
     name: Build a Cron Job - QBITTORRENT
-    special_time: 'hourly'
-    job: "bash /opt/plexguide/menu/roles/autodelete/scripts/qbittorrent.sh"
     state: absent
   ignore_errors: yes

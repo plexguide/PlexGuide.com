@@ -61,7 +61,7 @@ updateprime() {
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "6" > ${abc}/pg.prune
-  echo "15" > ${abc}/pg.mountcheck
+  echo "16" > ${abc}/pg.mountcheck
 
 }
 
@@ -257,7 +257,7 @@ https://pgui.yourdomain.com | http://pgui.domain.com:8555 | ipv4:8555
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p 'Acknolwedge Info | Press [ENTER] ' typed < /dev/tty
+read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty
 
 }
 
