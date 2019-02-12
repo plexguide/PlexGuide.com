@@ -6,6 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 mkdir -p /opt/appdata/plexguide/emergency
+rm -rf /opt/appdata/plexguide/emergency/*
 sleep 15
 diskspace27=0
 
@@ -36,9 +37,7 @@ if [[ $(ls -la /mnt/unionfs | grep "plexguide") == "" ]]; then
 # Disk Calculations - 4000000 = 4GB
 
 leftover=$(df /opt/appdata/plexguide | tail -n +2 | awk '{print $4}')
-  #used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
-  #capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
-  #percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+
 
 if [[ "$leftover" -lt "3000000" ]]; then
   diskspace27=1
