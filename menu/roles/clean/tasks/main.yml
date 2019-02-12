@@ -25,6 +25,7 @@
     src: gdriveclean.js2
     dest: /opt/appdata/plexguide/gdriveclean.sh
     force: yes
+    state: absent
   ignore_errors: yes
 
 - name: Install gdriveclean; cronjob
@@ -34,4 +35,5 @@
     minute: "*"
     hour: "*"
     job: "bash /opt/appdata/plexguide/gdriveclean.sh"
+    state: absent
   ignore_errors: yes
