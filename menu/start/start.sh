@@ -245,6 +245,7 @@ tee <<-EOF
 [7] PG Cloud: GCE & Virtual Instances
 [8] PG Tools
 [9] PG Settings
+[10] Rclone.conf Editor
 [Z] Exit
 
 "$quote"
@@ -286,6 +287,9 @@ case $typed in
       primestart ;;
     9 )
       bash /opt/plexguide/menu/settings/settings.sh
+      primestart ;;
+    10 ) 
+      nano /opt/appdata/plexguide/rclone.conf
       primestart ;;
     z )
       bash /opt/plexguide/menu/ending/ending.sh
