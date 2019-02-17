@@ -24,7 +24,7 @@ count=$(wc -l < /var/plexguide/container.running)
 
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
-	ansible-playbook /opt/plexguide/containers/$app.yml
+	ansible-playbook /opt/coreapps/apps/$app.yml
 done
 
 echo ""

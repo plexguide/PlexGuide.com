@@ -47,7 +47,7 @@ tee <<-EOF
 
 EOF
 	sleep 3
-	ansible-playbook /opt/plexguide/containers/$app.yml
+	ansible-playbook /opt/coreapps/apps/$app.yml
 done
 
 echo ""

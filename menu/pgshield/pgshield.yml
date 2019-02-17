@@ -21,7 +21,7 @@
 
   # CORE (MANDATORY) ############################################################
     - name: CronJob Role
-      include_tasks: "/opt/plexguide/containers/_core.yml"
+      include_tasks: "/opt/coreapps/apps/_core.yml"
 
     - name: Register Auth Path
       shell: "cat /var/plexguide/shield.clientid"
