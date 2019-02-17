@@ -16,5 +16,5 @@
       git:
         repo: "https://github.com/Admin9705/PlexGuide-Community"
         dest: /opt/communityapps
-        version: "v8.4"
+        version: "v8.5"
         force: yes

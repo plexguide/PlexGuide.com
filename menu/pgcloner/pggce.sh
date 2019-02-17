@@ -10,7 +10,7 @@
 echo 'pggce' > /var/plexguide/pgcloner.rolename
 echo 'PG GCE' > /var/plexguide/pgcloner.roleproper
 echo 'PlexGuide-GCE' > /var/plexguide/pgcloner.projectname
-echo 'v8.4' > /var/plexguide/pgcloner.projectversion
+echo 'v8.5' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PG Google GCE scripts are setup so that users can deploy any
