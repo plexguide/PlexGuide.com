@@ -7,7 +7,7 @@
 ################################################################################
 
 # Generates App List
-ls -la /opt/plexguide/containers/ | sed -e 's/.yml//g' \
+ls -la /opt/coreapps/apps/ | sed -e 's/.yml//g' \
 | awk '{print $9}' | tail -n +4  > /var/plexguide/app.list
 
 ls -la /opt/mycontainers/ | sed -e 's/.yml//g' \

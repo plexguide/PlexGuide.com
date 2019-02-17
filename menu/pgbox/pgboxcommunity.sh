@@ -27,12 +27,12 @@ else exists; fi
 }
 
 cronexe () {
-croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$p\>")
+croncheck=$(cat /opt/communityapps/apps/_cron.list | grep -c "\<$p\>")
 if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 }
 
 cronmass () {
-croncheck=$(cat /opt/plexguide/containers/_cron.list | grep -c "\<$p\>")
+croncheck=$(cat /opt/communityapps/apps/_cron.list | grep -c "\<$p\>")
 if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
 }
 
@@ -87,13 +87,13 @@ question1 () {
     touch /var/plexguide/community.app
   #fi
 
-#bash /opt/plexguide/containers/_appsgen.sh
+#bash /opt/communityapps/apps/_appsgen.sh
 docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 
 ### Remove Official Apps
 while read p; do
   # reminder, need one for custom apps
-  baseline=$(cat /opt/plexguide/containers/$p.yml | grep "##PG-Community")
+  baseline=$(cat /opt/communityapps/apps/$p.yml | grep "##PG-Community")
   if [ "$baseline" == "" ]; then sed -i -e "/$p/d" /var/plexguide/app.list; fi
 done </var/plexguide/app.list
 
@@ -187,7 +187,7 @@ while read p; do
 
 echo $p > /tmp/program_var
 
-bash /opt/plexguide/containers/image/_image.sh
+bash /opt/communityapps/apps/image/_image.sh
 done </var/plexguide/pgbox.buildup
 
 # Cron Execution
@@ -216,7 +216,7 @@ elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 # Store Used Program
 echo $p > /tmp/program_var
 # Execute Main Program
-ansible-playbook /opt/plexguide/containers/$p.yml
+ansible-playbook /opt/communityapps/apps/$p.yml
 
 if [[ "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else if [ "$croncount" -eq "1" ]; then cronexe; fi; fi

@@ -115,10 +115,10 @@ EOF
 sleep 1
 rm -rf /opt/appdata/$typed
 
-file="/opt/plexguide/containers/$typed.yml"
+file="/opt/coreapps/apps/$typed.yml"
 if [ -e "$file" ]; then
-  check=$(cat /opt/plexguide/containers/$typed.yml | grep '##PG-Community')
-    if [ "$check" == "##PG-Community" ]; then rm -r /opt/plexguide/containers/$typed.yml; fi
+  check=$(cat /opt/coreapps/apps/$typed.yml | grep '##PG-Community')
+    if [ "$check" == "##PG-Community" ]; then rm -r /opt/communityapps/apps/$typed.yml; fi
 rm -rf /var/plexguide/community.app
 fi
 

@@ -292,7 +292,7 @@ pgedition () {
 portainer () {
   dstatus=$(docker ps --format '{{.Names}}' | grep "portainer")
   if [ "$dstatus" != "portainer" ]; then
-  ansible-playbook /opt/plexguide/containers/portainer.yml &>/dev/null &
+  ansible-playbook /opt/coreapps/apps/portainer.yml &>/dev/null &
   fi
 }
 
@@ -446,17 +446,17 @@ EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
     watchtowergen
-    ansible-playbook /opt/plexguide/containers/watchtower.yml
+    ansible-playbook /opt/coreapps/apps/watchtower.yml
     echo "1" > /var/plexguide/watchtower.wcheck
   elif [ "$typed" == "2" ]; then
     watchtowergen
     sed -i -e "/plex/d" /tmp/watchtower.set 1>/dev/null 2>&1
     sed -i -e "/emby/d" /tmp/watchtower.set 1>/dev/null 2>&1
-    ansible-playbook /opt/plexguide/containers/watchtower.yml
+    ansible-playbook /opt/coreapps/apps/watchtower.yml
     echo "2" > /var/plexguide/watchtower.wcheck
   elif [ "$typed" == "3" ]; then
     echo null > /tmp/watchtower.set
-    ansible-playbook /opt/plexguide/containers/watchtower.yml
+    ansible-playbook /opt/coreapps/apps/watchtower.yml
     echo "3" > /var/plexguide/watchtower.wcheck
   elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
     if [ "$wexit" == "0" ]; then
@@ -477,7 +477,7 @@ EOF
 }
 
 watchtowergen () {
-  bash /opt/plexguide/containers/_appsgen.sh
+  bash /opt/coreapps/apps/_appsgen.sh
   while read p; do
     echo -n $p >> /tmp/watchtower.set
     echo -n " " >> /tmp/watchtower.set
