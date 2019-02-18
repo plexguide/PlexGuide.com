@@ -80,7 +80,6 @@ question1 () {
 
     mkdir -p /opt/mycontainers
     touch /opt/appdata/plexguide/rclone.conf
-    rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/coreapps/apps/ /opt/plexguide/containers
   done </var/plexguide/app.list
     touch /var/plexguide/core.app
   #fi
