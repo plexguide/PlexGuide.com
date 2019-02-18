@@ -8,8 +8,8 @@
 ---
 - name: "Establish Facts"
   set_fact:
-    switch="on"
-    updatecheck="default"
+    switch: "on"
+    updatecheck: "default"
 
 - name: "Docker Check"
   stat:
@@ -25,7 +25,7 @@
 
 - name: "Switch - On"
   set_fact:
-    switch="off"
+    switch: "off"
   when: updatecheck.stdout == "18.09.2,"
 
 - debug:
@@ -35,8 +35,10 @@
     msg: "UpdateCheck - {{ updatecheck }}"
 
 - name: Install required packages
-  apt: "name={{item}} state=present"
-  with_items:
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
     - apt-transport-https
     - ca-certificates
     - software-properties-common

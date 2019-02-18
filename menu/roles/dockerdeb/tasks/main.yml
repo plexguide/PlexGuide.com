@@ -35,8 +35,10 @@
     msg: "UpdateCheck - {{ updatecheck }}"
 
 - name: Install required packages
-  apt: "name={{item}} state=present"
-  with_items:
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
     - apt-transport-https
     - ca-certificates
     - software-properties-common
