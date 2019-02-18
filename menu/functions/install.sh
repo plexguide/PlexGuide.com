@@ -298,7 +298,10 @@ portainer () {
 }
 
 pgcore() {
-  ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml
+  file="/opt/coreapps/place.holder"
+    if [ ! -e "$file" ]; then
+      ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml;
+    fi
 }
 
 pgui ()
