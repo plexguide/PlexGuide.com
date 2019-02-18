@@ -116,7 +116,6 @@ varstart() {
   variable /opt/appdata/plexguide/plextoken "NOT-SET"
   variable /var/plexguide/server.ht ""
   variable /var/plexguide/server.ports ""
-  variable /var/plexguide/server.incomplete.path ""
   variable /var/plexguide/server.email "NOT-SET"
   variable /var/plexguide/server.domain "NOT-SET"
   variable /var/plexguide/tld.type "standard"
