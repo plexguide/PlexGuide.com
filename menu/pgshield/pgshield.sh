@@ -17,24 +17,26 @@ echo good > /var/plexguide/auth.bypass
 touch /var/plexguide/pgshield.emails
 mkdir -p /var/plexguide/auth/
 
+domain=$(cat /var/plexguide/server.domain)
 # Declare Ports State
 ports=$(cat /var/plexguide/server.ports)
+
 if [ "$ports" == "" ]; then ports="OPEN"
 else ports="CLOSED"; fi
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  PG Defense                       ⚡ Reference: pgshield.plexguide.com
+🛡️  PG Shield                       ⚡ Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬  PG Shield requires Google Web Auth Keys! Visit the link above!
 
 [1] Set Web Client ID & Secret
 [2] Authorize User(s)
 [3] Exempt PG Apps
-[4] Deploy PG Shield
+[4] [$ports] Ports
+[5] Deploy PG Shield
 
-[A] PG Port Guard [$ports]
 [Z] EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -57,8 +59,10 @@ case $typed in
         appexempt
         phase1 ;;
     4 )
-
-        # Sanity Check to Ensure At Least 1 Authroized User Exists
+        bash /opt/plexguide/menu/portguard/portguard.sh
+        question1 ;;
+    5 )
+        # Sanity Check to Ensure At Least 1 Authorized User Exists
         touch /var/plexguide/pgshield.emails
         efg=$(cat "/var/plexguide/pgshield.emails")
         if [[ "$efg" == "" ]]; then
@@ -73,6 +77,14 @@ case $typed in
         echo "SANITY CHECK: You Must @ Least Run the Web ID Interface Once!"
         read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty; question1; fi
 
+        # Sanity Check to Ensure Ports are closed
+        touch /var/plexguide/server.ports
+        efg=$(cat "/var/plexguide/server.ports")
+        if [ "$ports" != "127.0.0.1:" ]; then 
+        echo
+        echo "SANITY CHECK: Ports are open, PGShield cannot be enabled until they are closed due to security risks!"
+        read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty; question1; fi
+
         touch /var/plexguide/pgshield.compiled
         rm -r /var/plexguide/pgshield.compiled
         while read p; do
@@ -81,12 +93,6 @@ case $typed in
 
         ansible-playbook /opt/plexguide/menu/pgshield/pgshield.yml
         bash /opt/plexguide/menu/pgshield/rebuild.sh
-        question1 ;;
-    A )
-        bash /opt/plexguide/menu/portguard/portguard.sh
-        question1 ;;
-    a )
-        bash /opt/plexguide/menu/portguard/portguard.sh
         question1 ;;
     z )
         exit ;;
@@ -104,7 +110,7 @@ ls -l /var/plexguide/auth | awk '{ print $9 }' > /var/plexguide/pgshield.ex15
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  PG Shield - App Exemption        ⚡ Reference: pgshield.plexguide.com
+🛡️  PG Shield - App Exemption        ⚡ Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. Application: Exempt
@@ -130,10 +136,10 @@ case $typed in
     3 )
         emptycheck=$(cat /var/plexguide/pgshield.ex15)
         if [[ "$emptycheck" == "" ]]; then echo;
-        read -p 'No Apps Are Exempt! Exiting | Press [ENTER]'; appexempt; fi
+        read -p 'No Apps are exempt! Exiting | Press [ENTER]'; appexempt; fi
         rm -rf /var/plexguide/auth/*
         echo ""
-        echo "NOTE: Does Not Take Effect Until PG Shield is Redeployed!"
+        echo "NOTE: Does not take effect until PG Shield is redeployed!"
         read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty; email
         appexempt;;
     z )
@@ -172,7 +178,7 @@ phase31(){
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Shield - App Exemption         📓 Reference: pgshield.plexguide.com
+🛡️ PG Shield - App Exemption         📓 Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📂 Potential Apps to Exempt
@@ -189,11 +195,11 @@ grep -w "$typed" /var/plexguide/program.temp > /var/plexguide/check55.sh
 usercheck=$(cat /var/plexguide/check55.sh)
 
 if [[ "$usercheck" == "" ]]; then echo;
-read -p 'App Does Not Exist! | Press [ENTER] ' note < /dev/tty; appexempt; fi
+read -p 'App does not exist! | Press [ENTER] ' note < /dev/tty; appexempt; fi
 
 touch /var/plexguide/auth/$typed
 echo
-echo "NOTE: No Effect until PG Shield or the App Solo is Redeployed!"
+echo "NOTE: No effect until PGShield or the app is redeployed!"
 read -p '🌍 Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt
 }
 
@@ -201,7 +207,7 @@ phase21(){
 
   emptycheck=$(cat /var/plexguide/pgshield.ex15)
   if [[ "$emptycheck" == "" ]]; then echo;
-  read -p 'No Apps Are Exempt! Exiting | Press [ENTER]'; appexempt; fi
+  read -p 'No apps are exempt! Exiting | Press [ENTER]'; appexempt; fi
   ### Blank Out Temp List
   rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
 
@@ -222,7 +228,7 @@ phase21(){
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Shield - App Protect Restore   📓 Reference: pgshield.plexguide.com
+🛡️ PG Shield - App Protect Restore   📓 Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📂 Potential Apps to Restore
@@ -231,7 +237,7 @@ $notrun
 
 💬 Quitting? TYPE > exit
 EOF
-  read -p '🌍 Type APP to Restore | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍 Type app to restore | Press [ENTER]: ' typed < /dev/tty
 
   if [[ "$typed" == "exit" ]]; then appexempt; fi
 
@@ -239,11 +245,11 @@ grep -w "$typed" /var/plexguide/pgshield.ex15 > /var/plexguide/check55.sh
 usercheck=$(cat /var/plexguide/check55.sh)
 
 if [[ "$usercheck" == "" ]]; then echo;
-read -p 'App Does Not Exist! | Press [ENTER] ' note < /dev/tty; appexempt; fi
+read -p 'App does not exist! | Press [ENTER] ' note < /dev/tty; appexempt; fi
 
 rm -rf /var/plexguide/auth/$typed
 echo
-echo "NOTE: No Effect until PG Shield or the App Solo is Redeployed!"
+echo "NOTE: No effect until PG Shield or the app is redeployed!"
 read -p '🌍 Acknoweldge! | Press [ENTER] ' note < /dev/tty; appexempt
 }
 
@@ -251,7 +257,7 @@ webid() {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 Google Web Keys - Client ID       📓 Reference: pgshield.plexguide.com
+🔑 Google Web Keys - Client ID       📓 Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 NOTE: Visit reference for Google Web Auth Keys
@@ -266,7 +272,7 @@ read -p '↘️  Web Client Secret | Press [Enter]: ' secret < /dev/tty
 if [ "$secret" = "exit" ]; then question1; fi
 echo "$secret" > /var/plexguide/shield.clientsecret
 
-read -p '🌎 Client ID & Secret Set |  Press [ENTER] ' public < /dev/tty
+read -p '🔑 Client ID & Secret Set |  Press [ENTER] ' public < /dev/tty
 touch /var/plexguide/auth.idset
 question1
 }
@@ -275,7 +281,7 @@ email() {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  PG Shield - Trusted Users        ⚡ Reference: pgshield.plexguide.com
+🛡️  PG Shield - Trusted Users        ⚡ Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. E-Mail: Add User
@@ -313,10 +319,10 @@ case $typed in
         read -p 'User Email to Remove | Press [ENTER]: ' typed < /dev/tty
         testremove=$(cat /var/plexguide/pgshield.emails | grep $typed )
         if [[ "$testremove" == "" ]]; then
-        read -p 'User Does Not Exist | Press [ENTER] ' typed < /dev/tty; email; fi
+        read -p 'User does not exist | Press [ENTER] ' typed < /dev/tty; email; fi
         sed -i -e "/$typed/d" /var/plexguide/pgshield.emails
         echo ""
-        echo "NOTE: Does Not Take Effect Until PG Shield is Redeployed!"
+        echo "NOTE: Does not take effect until PG Shield is redeployed!"
         read -p 'Removed User | Press [ENTER] ' typed < /dev/tty; email
         email ;;
     3 )
@@ -358,9 +364,9 @@ shieldcheck() {
   echo "💬  Unable to reach your Subdomain for Portainer!"
   echo ""
   echo "1. Forget to enable Traefik?"
-  echo "2. Valdiate if Subdomain is Working?"
-  echo "3. Validate Portainer is Deployed?"
-  echo "4. Did you forget to put * wildcare in your DNS?"
+  echo "2. Valdiate if subdomain is working?"
+  echo "3. Validate Portainer is deployed?"
+  echo "4. oauth.${domain} cname in your DNS?"
   echo ""
   read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
   exit; fi
