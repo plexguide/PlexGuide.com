@@ -11,8 +11,9 @@
   tasks:
 
   - name: Install Common Packages (Takes Awhile)
-    apt: "name={{item}} state=present"
-    with_items:
+    apt:
+      update_cache: yes
+      name:
       - fuse
       - nano
       - fail2ban
