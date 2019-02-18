@@ -22,7 +22,7 @@ domain=$(cat /var/plexguide/server.domain)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️  PG Sheild                        ⚡ Reference: pgshield.plexguide.com
+🛡️  PG Shield                        ⚡ Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬  PG Shield requires Google Web Auth Keys! Visit the link above!
 
