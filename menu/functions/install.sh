@@ -57,7 +57,7 @@ updateprime() {
   echo "3" > ${abc}/pg.gcloud
   echo "12" > ${abc}/pg.hetzner
   echo "1" > ${abc}/pg.amazonaws
-  echo "8.4" > ${abc}/pg.verionid
+  echo "8.5" > ${abc}/pg.verionid
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "6" > ${abc}/pg.prune
