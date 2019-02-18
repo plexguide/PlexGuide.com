@@ -22,7 +22,7 @@ tee <<-EOF
 EOF
 
 tee <<-EOF
-▫ $program:${port} <- Utilize to Connect Other Apps to this App (Internal Only)
+▫ $program:${port} <- Traefik URL (Internal App-to-App)
 EOF
 
 if [ "$ports" == "" ]; then
