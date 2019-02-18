@@ -68,6 +68,10 @@ if [[ $(cat /var/plexguide/pg.ports) != "Closed" && $(docker ps --format '{{.Nam
   echo "Warning: Traefik deployed with ports open! PGShield will be unavailable until you close them!" > /opt/appdata/plexguide/emergency/message.a
 elif [ -e "/opt/appdata/plexguide/emergency/message.a" ]; then rm -rf /opt/appdata/plexguide/emergency/message.a; fi
 
+if [[ $(cat /var/plexguide/pg.ports) == "Closed" && $(docker ps --format '{{.Names}}' | grep "traefik") == "" ]]; then
+  echo "Warning: Apps Cannot Be Accessed! Ports are Closed & Traefik is not enabled! Either deploy traefik or open your ports (which is worst for security)" > /opt/appdata/plexguide/emergency/message.a
+elif [ -e "/opt/appdata/plexguide/emergency/message.b" ]; then rm -rf /opt/appdata/plexguide/emergency/message.b; fi
+
 ################# Generate Output
 echo "" > /var/plexguide/emergency.log
 
