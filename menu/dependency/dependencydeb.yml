@@ -11,8 +11,10 @@
   tasks:
 
   - name: Install Common Packages (Takes Awhile)
-    apt: "name={{item}} state=present"
-    with_items:
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
       - fuse
       - nano
       - fail2ban

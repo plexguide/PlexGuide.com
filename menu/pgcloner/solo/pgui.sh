@@ -10,7 +10,7 @@
 echo 'pgui' > /var/plexguide/pgcloner.rolename
 echo 'UI' > /var/plexguide/pgcloner.roleproper
 echo 'PlexGuide-UI' > /var/plexguide/pgcloner.projectname
-echo 'v8.5.4' > /var/plexguide/pgcloner.projectversion
+echo 'v8.4.5' > /var/plexguide/pgcloner.projectversion
 
 ### START PROCESS
 ansible-playbook /opt/plexguide/menu/pgcloner/core/primary.yml
