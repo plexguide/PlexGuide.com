@@ -12,6 +12,7 @@
 
   - name: Install Common Packages (Takes Awhile)
     apt:
+      update_cache: yes
       name:
       - fuse
       - nano

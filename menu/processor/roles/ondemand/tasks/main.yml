@@ -19,8 +19,8 @@
 #################################################################################
 
 - name: Install CPUFrequtils
-  apt: "name={{item}} state=latest"
-  with_items:
+  apt:
+    name:
     - cpufrequtils
 
 ########### Remove Governer Policy If Exists
