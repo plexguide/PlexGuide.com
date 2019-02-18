@@ -20,13 +20,6 @@
     state: absent
     path: "/mnt/move/.unionfs-fuse"
 
-- name: Install gdriveclean; insert script
-  template:
-    src: gdriveclean.js2
-    dest: /opt/pgclone/gdriveclean.sh
-    state: absent
-  ignore_errors: yes
-
 - name: Install gdriveclean; cronjob
   cron:
     name: "gdriveclean"
