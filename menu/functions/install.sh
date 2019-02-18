@@ -76,6 +76,7 @@ pginstall () {
   core mergerinstall
   core dockerinstall
   core docstart
+  pgcore
   portainer
   pgui
   core motd &>/dev/null &
@@ -294,6 +295,10 @@ portainer () {
   if [ "$dstatus" != "portainer" ]; then
   ansible-playbook /opt/coreapps/apps/portainer.yml &>/dev/null &
   fi
+}
+
+pgcore() {
+  ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml
 }
 
 pgui ()

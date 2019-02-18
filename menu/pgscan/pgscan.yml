@@ -54,8 +54,8 @@
     - name: Set pgscan.py as executable
       file:
         path: /opt/appdata/pgscan/scan.py
-        owner: 1000
-        group: 1000
+        owner: '1000'
+        group: '1000'
         mode: a+x
 
     - name: "Create /usr/local/bin symlink"
