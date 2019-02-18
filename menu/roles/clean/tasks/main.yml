@@ -23,17 +23,12 @@
 - name: Install gdriveclean; insert script
   template:
     src: gdriveclean.js2
-    dest: /opt/appdata/plexguide/gdriveclean.sh
-    force: yes
+    dest: /opt/pgclone/gdriveclean.sh
     state: absent
   ignore_errors: yes
 
 - name: Install gdriveclean; cronjob
   cron:
     name: "gdriveclean"
-    user: "root"
-    minute: "*"
-    hour: "*"
-    job: "bash /opt/appdata/plexguide/gdriveclean.sh"
     state: absent
   ignore_errors: yes
