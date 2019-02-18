@@ -78,5 +78,5 @@ fi
 
 rm -r /opt/pgstage
 mkdir -p /opt/pgstage
-ansible-playbook /opt/pgstage/pgstage.yml #&>/dev/null &
+ansible-playbook /opt/pgstage/clone.yml #&>/dev/null &
 mainstart
