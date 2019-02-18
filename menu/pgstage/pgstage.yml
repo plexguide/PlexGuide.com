@@ -6,6 +6,6 @@
     - name: Cloning PlexGuide
       git:
         repo: "https://github.com/Admin9705/PlexGuide-Installer"
-        dest: /opt/plexguide/menu/pgstage/
+        dest: /opt/pgstage
         version: "v8"
         force: yes
