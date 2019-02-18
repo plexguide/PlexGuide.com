@@ -79,7 +79,7 @@ case $typed in
 
         # Sanity Check to Ensure Ports are closed
         touch /var/plexguide/server.ports
-        efg=$(cat "/var/plexguide/server.ports")
+        ports=$(cat "/var/plexguide/server.ports")
         if [ "$ports" != "127.0.0.1:" ]; then 
         echo
         echo "SANITY CHECK: Ports are open, PGShield cannot be enabled until they are closed due to security risks!"
