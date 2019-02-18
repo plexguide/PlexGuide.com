@@ -231,20 +231,27 @@ EOF
     echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"; fi
   fi
 
+  # Declare Ports State
+  ports=$(cat /var/plexguide/server.ports)
+
+  if [ "$ports" == "" ]; then ports="OPEN"
+  else ports="CLOSED"; fi
+
 quoteselect
 
 tee <<-EOF
 
-[1] Traefik : Reverse Proxy
-[2] Defense : PG Shield /w Port Guard
-[3] PG Clone: Mount Transport
-[4] PG Box  : Apps ~ Core, Community & Removal
-[5] PG Press: Deploy WordPress Instances
-[6] PG Vault: Backup & Restore
-[7] PG Cloud: GCE & Virtual Instances
-[8] PG Tools
-[9] PG Settings
-[Z] Exit
+[1]  Traefik   : Reverse Proxy
+[2]  Port Guard: [$ports] Protects the Server Ports
+[3]  PG Shield : Enable Google's OAuthentication Protection
+[4]  PG Clone  : Mount Transport
+[5]  PG Box    : Apps ~ Core, Community & Removal
+[6]  PG Press  : Deploy WordPress Instances
+[7]  PG Vault  : Backup & Restore
+[8]  PG Cloud  : GCE & Virtual Instances
+[9]  PG Tools
+[10] PG Settings
+[Z]  Exit
 
 "$quote"
 
@@ -260,30 +267,33 @@ case $typed in
       bash /opt/traefik/traefik.sh
       primestart ;;
     2 )
-      bash /opt/plexguide/menu/pgshield/pgshield.sh
+      bash /opt/plexguide/menu/portguard/portguard.sh
       primestart ;;
     3 )
+      bash /opt/plexguide/menu/pgshield/pgshield.sh
+      primestart ;;
+    4 )
       bash /opt/plexguide/menu/pgcloner/pgclone.sh
       bash /opt/pgclone/gdrive.sh
       primestart ;;
-    4 )
+    5 )
       bash /opt/plexguide/menu/pgbox/pgboxselect.sh
       primestart ;;
-    5 )
+    6 )
       bash /opt/plexguide/menu/pgcloner/pgpress.sh
       bash /opt/pgpress/pressmain.sh
       primestart ;;
-    6 )
+    7 )
       bash /opt/plexguide/menu/pgcloner/pgvault.sh
       bash /opt/pgvault/pgvault.sh
       primestart ;;
-    7 )
+    8 )
       bash /opt/plexguide/menu/interface/cloudselect.sh
       primestart ;;
-    8 )
+    9 )
       bash /opt/plexguide/menu/tools/tools.sh
       primestart ;;
-    9 )
+    10 )
       bash /opt/plexguide/menu/settings/settings.sh
       primestart ;;
     z )

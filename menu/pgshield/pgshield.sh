@@ -18,24 +18,18 @@ touch /var/plexguide/pgshield.emails
 mkdir -p /var/plexguide/auth/
 
 domain=$(cat /var/plexguide/server.domain)
-# Declare Ports State
-ports=$(cat /var/plexguide/server.ports)
-
-if [ "$ports" == "" ]; then ports="OPEN"
-else ports="CLOSED"; fi
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️  PG Defense                       ⚡ Reference: pgshield.plexguide.com
+🛡️  PG Sheild                        ⚡ Reference: pgshield.plexguide.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬  PG Shield requires Google Web Auth Keys! Visit the link above!
 
 [1] Set Web Client ID & Secret
 [2] Authorize User(s)
 [3] Exempt PG Apps
-[4] [$ports] Ports
-[5] Deploy PG Shield
+[4] Deploy PG Shield
 
 [Z] EXIT
 
@@ -59,9 +53,6 @@ case $typed in
         appexempt
         phase1 ;;
     4 )
-        bash /opt/plexguide/menu/portguard/portguard.sh
-        question1 ;;
-    5 )
         # Sanity Check to Ensure At Least 1 Authorized User Exists
         touch /var/plexguide/pgshield.emails
         efg=$(cat "/var/plexguide/pgshield.emails")
@@ -80,7 +71,7 @@ case $typed in
         # Sanity Check to Ensure Ports are closed
         touch /var/plexguide/server.ports
         ports=$(cat "/var/plexguide/server.ports")
-        if [ "$ports" != "127.0.0.1:" ]; then 
+        if [ "$ports" != "127.0.0.1:" ]; then
         echo
         echo "SANITY CHECK: Ports are open, PGShield cannot be enabled until they are closed due to security risks!"
         read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty; question1; fi
