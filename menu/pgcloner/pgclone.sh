@@ -10,7 +10,7 @@
 echo 'pgclone' > /var/plexguide/pgcloner.rolename
 echo 'PG Clone' > /var/plexguide/pgcloner.roleproper
 echo 'PlexGuide-PGClone' > /var/plexguide/pgcloner.projectname
-echo 'v8.5' > /var/plexguide/pgcloner.projectversion
+echo 'v8.4' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PG Clone utilizes RClone's Mounts + MergerFS's Union" > /var/plexguide/pgcloner.info
