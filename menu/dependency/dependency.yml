@@ -18,6 +18,7 @@
       - nano
       - fail2ban
       - wget
+      - intel-gpu-tools
       - lsb-release
       - figlet
       - update-notifier-common

@@ -17,6 +17,7 @@
       - wget
       - lsb-release
       - figlet
+      - intel-gpu-tools
       - software-properties-common
       - unrar
       - unzip
