@@ -61,7 +61,7 @@ updateprime() {
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "7" > ${abc}/pg.prune
-  echo "19" > ${abc}/pg.mountcheck
+  echo "20" > ${abc}/pg.mountcheck
 
 }
 
@@ -80,7 +80,7 @@ pginstall () {
   # Roles Ensure that PG Replicates and has once if missing; important for startup, cron and etc
   pgcore
   pgcommunity
-  
+
   portainer
   pgui
   core motd &>/dev/null &
