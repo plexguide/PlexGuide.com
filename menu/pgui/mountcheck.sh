@@ -84,7 +84,7 @@ else
 fi
 ##### Warning for Traefik Rate Limit Exceeded
 if [[ $(cat /opt/appdata/plexguide/traefik.check) == "" && $(docker logs traefik | grep "rateLimited") != "" ]]; then
-  echo "$domain rated limited has exceed for Traefik (LetsEncrypt)! Requires upto one week for it to clear up (or use a new domain)" > /opt/appdata/plexguide/emergency/message.d
+  echo "$domain's rated limited exceed | Traefik (LetsEncrypt)! Takes upto one week to clear up (or use a new domain)" > /opt/appdata/plexguide/emergency/message.d
 else
   if [ -e "/opt/appdata/plexguide/emergency/message.d" ]; then
   rm -rf /opt/appdata/plexguide/emergency/message.d; fi
