@@ -66,7 +66,7 @@ fi
 
 ##### Warning for Ports Open with Traefik Deployed
 if [[ $(cat /var/plexguide/pg.ports) != "Closed" && $(docker ps --format '{{.Names}}' | grep "traefik") == "traefik" ]]; then
-  echo "Warning: Traefik deployed with ports open! PGShield will be unavailable until you close them!" > /opt/appdata/plexguide/emergency/message.a
+  echo "Warning: Traefik deployed with ports open! Server at risk for explotation!" > /opt/appdata/plexguide/emergency/message.a
 elif [ -e "/opt/appdata/plexguide/emergency/message.a" ]; then rm -rf /opt/appdata/plexguide/emergency/message.a; fi
 
 if [[ $(cat /var/plexguide/pg.ports) == "Closed" && $(docker ps --format '{{.Names}}' | grep "traefik") == "" ]]; then
@@ -79,7 +79,8 @@ wget -q "https://portainer.${domain}" -O "/opt/appdata/plexguide/traefik.check"
 if [[ $(cat /opt/appdata/plexguide/traefik.check) == "" && $(docker ps --format '{{.Names}}' | grep traefik) == "traefik" ]]; then
   echo "Traefik is Not Deployed Properly! Cannot Reach the Portainer SubDomain!" > /opt/appdata/plexguide/emergency/message.c
 else
-  if [ -e "/opt/appdata/plexguide/emergency/message.c" ]; then rm -rf /opt/appdata/plexguide/emergency/message.c; fi
+  if [ -e "/opt/appdata/plexguide/emergency/message.c" ]; then
+  rm -rf /opt/appdata/plexguide/emergency/message.c; fi
 fi
 ################# Generate Output
 echo "" > /var/plexguide/emergency.log

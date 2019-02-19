@@ -61,7 +61,7 @@ updateprime() {
   echo "10" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "7" > ${abc}/pg.prune
-  echo "18" > ${abc}/pg.mountcheck
+  echo "19" > ${abc}/pg.mountcheck
 
 }
 
