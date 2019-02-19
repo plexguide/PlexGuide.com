@@ -72,7 +72,7 @@ elif [ -e "/opt/appdata/plexguide/emergency/message.a" ]; then rm -rf /opt/appda
 if [[ $(cat /var/plexguide/pg.ports) == "Closed" && $(docker ps --format '{{.Names}}' | grep "traefik") == "" ]]; then
   echo "Warning: Apps Cannot Be Accessed! Ports are Closed & Traefik is not enabled! Either deploy traefik or open your ports (which is worst for security)" > /opt/appdata/plexguide/emergency/message.b
 elif [ -e "/opt/appdata/plexguide/emergency/message.b" ]; then rm -rf /opt/appdata/plexguide/emergency/message.b; fi
-##### Warning for Bad Traefik Deployment
+##### Warning for Bad Traefik Deployment - message.c is tied to traefik showing a status! Do not change unless you know what your doing
 touch /opt/appdata/plexguide/traefik.check
 domain=$(cat /var/plexguide/server.domain)
 wget -q "https://portainer.${domain}" -O "/opt/appdata/plexguide/traefik.check"
