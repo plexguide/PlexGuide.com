@@ -6,6 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 mkdir -p /opt/appdata/plexguide/emergency
+mkdir -p /opt/appdata/plexguide
 rm -rf /opt/appdata/plexguide/emergency/*
 sleep 15
 diskspace27=0
@@ -69,9 +70,17 @@ if [[ $(cat /var/plexguide/pg.ports) != "Closed" && $(docker ps --format '{{.Nam
 elif [ -e "/opt/appdata/plexguide/emergency/message.a" ]; then rm -rf /opt/appdata/plexguide/emergency/message.a; fi
 
 if [[ $(cat /var/plexguide/pg.ports) == "Closed" && $(docker ps --format '{{.Names}}' | grep "traefik") == "" ]]; then
-  echo "Warning: Apps Cannot Be Accessed! Ports are Closed & Traefik is not enabled! Either deploy traefik or open your ports (which is worst for security)" > /opt/appdata/plexguide/emergency/message.a
+  echo "Warning: Apps Cannot Be Accessed! Ports are Closed & Traefik is not enabled! Either deploy traefik or open your ports (which is worst for security)" > /opt/appdata/plexguide/emergency/message.b
 elif [ -e "/opt/appdata/plexguide/emergency/message.b" ]; then rm -rf /opt/appdata/plexguide/emergency/message.b; fi
-
+##### Warning for Bad Traefik Deployment
+touch /opt/appdata/plexguide/traefik.check
+domain=$(cat /var/plexguide/server.domain)
+wget -q "https://portainer.${domain}" -O "/opt/appdata/plexguide/traefik.check"
+if [[ $(cat /opt/appdata/plexguide/traefik.check) == "" && $(docker ps --format '{{.Names}}' | grep traefik) == "traefik" ]]; then
+  echo "Traefik is Not Deployed Properly! Cannot Reach the Portainer SubDomain!" > /opt/appdata/plexguide/emergency/message.c
+else
+  if [ -e "/opt/appdata/plexguide/emergency/message.c" ]; then rm -rf /opt/appdata/plexguide/emergency/message.c; fi
+fi
 ################# Generate Output
 echo "" > /var/plexguide/emergency.log
 
