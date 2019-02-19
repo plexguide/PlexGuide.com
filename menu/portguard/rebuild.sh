@@ -35,7 +35,7 @@ tee <<-EOF
 ⚠️  PortGuard - Rebuilding Containers!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
+sleep 2
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /var/plexguide/container.running)
 
@@ -46,8 +46,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-	sleep 3
-	ansible-playbook /opt/coreapps/apps/$app.yml
+	sleep 1
+	if [ -e "/opt/coreapps/apps/$app.yml" ]; then ansible-playbook /opt/coreapps/apps/$app.yml; fi
+	if [ -e "/opt/coreapps/communityapps/$app.yml" ]; then ansible-playbook /opt/coreapps/apps/$app.yml; fi
 done
 
 echo ""
