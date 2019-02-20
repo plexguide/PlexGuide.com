@@ -94,6 +94,7 @@
           - pyOpenSSL
           - requests
           - netaddr
+          - ansible
         state: latest
         executable: pip3
 
@@ -105,5 +106,6 @@
           - pyOpenSSL
           - requests
           - netaddr
+          - ansible
         state: latest
         executable: pip2
