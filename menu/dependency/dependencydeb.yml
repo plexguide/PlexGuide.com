@@ -6,10 +6,11 @@
 # GNU:        General Public License v3.0
 ################################################################################
 ---
-
+- hosts: localhost
+  gather_facts: true
+  tasks:
   - name: Install Common Packages (Takes Awhile)
     apt:
-      update_cache: yes
       name:
       - fuse
       - nano
