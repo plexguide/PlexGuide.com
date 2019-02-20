@@ -6,45 +6,45 @@
 # GNU:        General Public License v3.0
 ################################################################################
 ---
-
-  - name: Install Common Packages (Takes Awhile)
-    apt:
-      update_cache: yes
-      name:
-      - fuse
-      - nano
-      - fail2ban
-      - wget
-      - lsb-release
-      - figlet
-      - intel-gpu-tools
-      - software-properties-common
-      - unrar
-      - unzip
-      - glances
-      - python-pip
-      - python3-pip
-      - python-passlib
-      - zip
-      - curl
-      - man-db
-      - htop
-      - openssh-server
-      - dirmngr
-      - zip
-      - apt-transport-https
-      - ca-certificates
-      - tree
-      - ncdu
-      - ctop
-      - dialog
-      - dnsutils
-      - mc
-      - apache2-utils
-      - lsof
-      - pwgen
-      - gawk
-      - python-lxml
-      - acl
-      - bc
-    #ignore_errors: yes
+- hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Install Common Packages (Takes Awhile)
+      apt:
+        name:
+          - fuse
+          - nano
+          - fail2ban
+          - wget
+          - lsb-release
+          - figlet
+          - software-properties-common
+          - unrar
+          - unzip
+          - glances
+          - python-pip
+          - python3-pip
+          - python-passlib
+          - zip
+          - curl
+          - man-db
+          - htop
+          - openssh-server
+          - dirmngr
+          - zip
+          - apt-transport-https
+          - ca-certificates
+          - tree
+          - ncdu
+          - ctop
+          - dialog
+          - dnsutils
+          - mc
+          - apache2-utils
+          - lsof
+          - pwgen
+          - gawk
+          - python-lxml
+          - acl
+          - bc
+      #ignore_errors: yes
