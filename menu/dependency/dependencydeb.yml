@@ -12,6 +12,7 @@
     - name: Install Common Packages (Takes Awhile)
       apt: "name={{item}} state=present"
       with_items:
+        - docker-ce
         - fuse
         - nano
         - fail2ban
@@ -47,7 +48,7 @@
         - python-lxml
         - acl
         - bc
-  # New ansible way of doing this, this should replace old method soon.
+    # New ansible way of doing this, this should replace old method soon.
     #   apt:
     #     name:
     #       - fuse
@@ -87,8 +88,8 @@
     #       - bc
 
     - name: Update pip packages for python3
-      pip: 
-        name: 
+      pip:
+        name:
           - pip
           - setuptools
           - pyOpenSSL
@@ -99,8 +100,8 @@
         executable: pip3
 
     - name: Update pip packages for python2
-      pip: 
-        name: 
+      pip:
+        name:
           - pip
           - setuptools
           - pyOpenSSL

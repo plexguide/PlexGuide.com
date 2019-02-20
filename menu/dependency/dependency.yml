@@ -12,6 +12,7 @@
     - name: Install Common Packages (Takes Awhile)
       apt: "name={{item}} state=present"
       with_items:
+        - docker-ce
         - fuse
         - nano
         - fail2ban
@@ -49,6 +50,7 @@
         - python-lxml
         - acl
         - bc
+
 
       # apt:
       #   name:
@@ -89,11 +91,9 @@
       #     - python-lxml
       #     - acl
       #     - bc
-
-      
     - name: Update pip packages for python3
-      pip: 
-        name: 
+      pip:
+        name:
           - pip
           - setuptools
           - pyOpenSSL
@@ -104,8 +104,8 @@
         executable: pip3
 
     - name: Update pip packages for python2
-      pip: 
-        name: 
+      pip:
+        name:
           - pip
           - setuptools
           - pyOpenSSL
