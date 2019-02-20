@@ -47,7 +47,7 @@ updateprime() {
   echo "11" > ${abc}/pg.dockerinstall
   echo "15" > ${abc}/pg.server
   echo "1" > ${abc}/pg.serverid
-  echo "26" > ${abc}/pg.dependency
+  echo "27" > ${abc}/pg.dependency
   echo "11" > ${abc}/pg.docstart
   echo "3" > ${abc}/pg.watchtower
   echo "2" > ${abc}/pg.motd
