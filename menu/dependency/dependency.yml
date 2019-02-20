@@ -9,44 +9,44 @@
 - hosts: localhost
   gather_facts: true
   tasks:
-  - name: Install Common Packages (Takes Awhile)
-    apt:
-      name:
-      - fuse
-      - nano
-      - fail2ban
-      - wget
-      - lsb-release
-      - figlet
-      - update-notifier-common
-      - software-properties-common
-      - unrar
-      - unzip
-      - glances
-      - python-pip
-      - python3-pip
-      - python-passlib
-      - zip
-      - curl
-      - man-db
-      - htop
-      - openssh-server
-      - dirmngr
-      - npm
-      - zip
-      - apt-transport-https
-      - ca-certificates
-      - tree
-      - ncdu
-      - ctop
-      - dialog
-      - dnsutils
-      - mc
-      - apache2-utils
-      - lsof
-      - pwgen
-      - gawk
-      - python-lxml
-      - acl
-      - bc
-    #ignore_errors: yes
+    - name: Install Common Packages (Takes Awhile)
+      apt:
+        name:
+          - fuse
+          - nano
+          - fail2ban
+          - wget
+          - lsb-release
+          - figlet
+          - update-notifier-common
+          - software-properties-common
+          - unrar
+          - unzip
+          - glances
+          - python-pip
+          - python3-pip
+          - python-passlib
+          - zip
+          - curl
+          - man-db
+          - htop
+          - openssh-server
+          - dirmngr
+          - npm
+          - zip
+          - apt-transport-https
+          - ca-certificates
+          - tree
+          - ncdu
+          - ctop
+          - dialog
+          - dnsutils
+          - mc
+          - apache2-utils
+          - lsof
+          - pwgen
+          - gawk
+          - python-lxml
+          - acl
+          - bc
+      #ignore_errors: yes
