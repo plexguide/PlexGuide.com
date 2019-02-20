@@ -19,14 +19,14 @@ _**Table of Contents**_
  
 ----
 # 1. General Intro
-<p align="center"><kbd><img src="https://plexguide.com/wikipics/pglogo-move.gif" width="600""></kbd></p>
+<p align="center"><kbd><img src="https://pgblitz.com/wikipics/pglogo-move.gif" width="600""></kbd></p>
 <p align="center"><b>Manage PlexGuide - AnyTime, Anywhere!</b></p>
 
 **Mission Statement:** PlexGuide is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
  
 # 2. YouTube Video - Intro
 <p align="center">
-<a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"><img src="https://plexguide.com/wikipics/pg-introv4.png" width="600"/></p>
+<a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"><img src="https://pgblitz.com/wikipics/pg-introv4.png" width="600"/></p>
 <p align="center"><b>PG Introduction Video</b></p>
  
 # 3. Functional Use
@@ -40,7 +40,7 @@ _**Table of Contents**_
 1. Deploys with a simple installer and a GUI like interface (commands do not have to be typed out)
 
 # 4. Testimonials
-<p align="center"><kbd><img src="https://plexguide.com/wikipics/pg-assistyou.gif" width="600""></kbd></p>
+<p align="center"><kbd><img src="https://pgblitz.com/wikipics/pg-assistyou.gif" width="600""></kbd></p>
 
 [**Dexxa:**](https://plexguide.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install plex and link plex to my gdrive, when i just knew how to install plex on its on, i tried many ways to mount gdrive to my plex and couldnt get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
 
@@ -48,10 +48,10 @@ _**Table of Contents**_
 
 # 5. Conclusion
 
-Well anyways, welcome to the Site! Visit the forums @ [**https://plexguide.com/forums**](https://plexguide.com/forums).
+Well anyways, welcome to the Site! Visit the forums @ [**https://pgblitz.com/forums**](https://plexguide.com/forums).
 
 <p align="right">
-<a href="https://plexguide.com" target="_blank"><img src="https://plexguide.com/wikipics/logo.png" width="75"/>
+<a href="https://plexguide.com" target="_blank"><img src="https://pgblitz.com/wikipics/logo.png" width="75"/>
 </p>
 
 ST2 which is now PGBlitz Concept: [Flicker-Rate](https://github.com/flicker-rate)
@@ -62,4 +62,4 @@ ST2 which is now PGBlitz Concept: [Flicker-Rate](https://github.com/flicker-rate
 Below is a Funny, but True Process Made By [Flicker-Rate](https://github.com/flicker-rate)
 
 ----
-[![N|Solid](https://i.imgur.com/chNkIx6.png)](https://plexguide.com/threads/pg-build-guide-which-programs-do-i-pick.759/)
+[![N|Solid](https://i.imgur.com/chNkIx6.png)](https://pgblitz.com/threads/pg-build-guide-which-programs-do-i-pick.759/)
