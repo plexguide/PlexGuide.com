@@ -3,10 +3,10 @@
 📂 [**Click Here**](https://controlpanel.newshosting.com/signup/index.php?promo=partners&a_aid=5a65169240efd&a_bid=5ecfe99b) - NZB's with from NewsHost - PG Members Receive a 58% Discount
 
 <p align="center">
-  <a href="https://plexguide.com/forums" target="_blank"><img src="https://plexguide.com/wikipics/logo-forums.png" width="160"/>   
-  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://plexguide.com/wikipics/logo-wiki.png" width="160"/>
-  <a href="https://plexguide.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://plexguide.com/wikipics/logo-pg-install.png" width="160"/>
-  <a href="https://plexguide.com/account/upgrades" target="_blank"><img src="https://plexguide.com/wikipics/logo-donate.png" width="160"/>
+  <a href="https://pgblitz.com/forums" target="_blank"><img src="https://pgblitz.com/wikipics/logo-forums.png" width="160"/>   
+  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://pgblitz.com/wikipics/logo-wiki.png" width="160"/>
+  <a href="https://pgblitz.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://pgblitz.com/wikipics/logo-pg-install.png" width="160"/>
+  <a href="https://pgblitz.com/account/upgrades" target="_blank"><img src="https://plexguide.com/wikipics/logo-donate.png" width="160"/>
 </p> 
  
 _**Table of Contents**_
@@ -42,9 +42,9 @@ _**Table of Contents**_
 # 4. Testimonials
 <p align="center"><kbd><img src="https://pgblitz.com/wikipics/pg-assistyou.gif" width="600""></kbd></p>
 
-[**Dexxa:**](https://plexguide.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install plex and link plex to my gdrive, when i just knew how to install plex on its on, i tried many ways to mount gdrive to my plex and couldnt get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
+[**Dexxa:**](https://pgblitz.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install plex and link plex to my gdrive, when i just knew how to install plex on its on, i tried many ways to mount gdrive to my plex and couldnt get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
 
-[**Cyb3rGh05t:**](https://plexguide.com/threads/thank-you-pg-team.942/) hi PlexGuide Team, just want to say thank you to the PlexGuide Team :) you did an amazing job:) Everything is really easy to setup an the interface is also very nice :) Thanks for all the hard work an all the support :) you guys rock :) .Keep up that good work. looking further for new features on PlexGuide :) thanks :)
+[**Cyb3rGh05t:**](https://pgblitz.com/threads/thank-you-pg-team.942/) hi PlexGuide Team, just want to say thank you to the PlexGuide Team :) you did an amazing job:) Everything is really easy to setup an the interface is also very nice :) Thanks for all the hard work an all the support :) you guys rock :) .Keep up that good work. looking further for new features on PlexGuide :) thanks :)
 
 # 5. Conclusion
 
