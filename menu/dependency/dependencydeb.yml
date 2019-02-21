@@ -12,7 +12,6 @@
     - name: Install Common Packages (Takes Awhile)
       apt: "name={{item}} state=present"
       with_items:
-        - docker-ce
         - fuse
         - nano
         - fail2ban
@@ -95,6 +94,7 @@
           - pyOpenSSL
           - requests
           - netaddr
+          - lxml
           - ansible
         state: latest
         executable: pip3
@@ -107,6 +107,7 @@
           - pyOpenSSL
           - requests
           - netaddr
+          - lxml
           - ansible
         state: latest
         executable: pip2
