@@ -26,6 +26,7 @@ updateprime() {
   variable /var/plexguide/server.domain "NOT-SET"
   variable /var/plexguide/pg.number "New-Install"
   variable /var/plexguide/emergency.log ""
+  variable /var/plexguide/pgbox.running ""
   pgnumber=$(cat /var/plexguide/pg.number)
 
   hostname -I | awk '{print $1}' > /var/plexguide/server.ip
