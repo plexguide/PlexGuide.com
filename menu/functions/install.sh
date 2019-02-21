@@ -41,24 +41,23 @@ updateprime() {
 
   echo "2" > ${abc}/pg.mergerinstall
   echo "51" > ${abc}/pg.pythonstart
-  echo "10" > ${abc}/pg.aptupdate
-  echo "149" > ${abc}/pg.preinstall
+  echo "11" > ${abc}/pg.aptupdate
+  echo "150" > ${abc}/pg.preinstall
   echo "22" > ${abc}/pg.folders
-  echo "11" > ${abc}/pg.dockerinstall
+  echo "12" > ${abc}/pg.dockerinstall
   echo "15" > ${abc}/pg.server
   echo "1" > ${abc}/pg.serverid
-  echo "27" > ${abc}/pg.dependency
+  echo "28" > ${abc}/pg.dependency
   echo "11" > ${abc}/pg.docstart
-  echo "3" > ${abc}/pg.watchtower
   echo "2" > ${abc}/pg.motd
   echo "108" > ${abc}/pg.alias
-  echo "2" > ${abc}/pg.dep
+  echo "3" > ${abc}/pg.dep
   echo "2" > ${abc}/pg.cleaner
   echo "3" > ${abc}/pg.gcloud
   echo "12" > ${abc}/pg.hetzner
   echo "1" > ${abc}/pg.amazonaws
   echo "8.4" > ${abc}/pg.verionid
-  echo "10" > ${abc}/pg.watchtower
+  echo "11" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "7" > ${abc}/pg.prune
   echo "17" > ${abc}/pg.mountcheck
