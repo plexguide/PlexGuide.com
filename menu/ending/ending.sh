@@ -5,9 +5,6 @@
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
-source /opt/plexguide/menu/functions/install.sh
-emergency
-
 # PG ascii art with color
 echo ""
 cat << "EOF"
