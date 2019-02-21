@@ -9,14 +9,14 @@
 ### FILL OUT THIS AREA ###
 echo 'pgvault' > /var/plexguide/pgcloner.rolename
 echo 'PG Vault' > /var/plexguide/pgcloner.roleproper
-echo 'PlexGuide-PGVault' > /var/plexguide/pgcloner.projectname
-echo 'v8.2' > /var/plexguide/pgcloner.projectversion
+echo 'PGVault' > /var/plexguide/pgcloner.projectname
+echo 'v8.5' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PG Vault is a combined group of services that utilizes the backup
-and restore processes, which enables the safe storage and transport through 
+and restore processes, which enables the safe storage and transport through
 the use of Google Drive in a hasty and efficient manner!" > /var/plexguide/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/core/main.sh
+bash /opt/plexguide/menu/pgcloner/corev2/main.sh

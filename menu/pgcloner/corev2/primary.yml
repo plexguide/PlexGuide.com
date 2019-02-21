@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Register Project Name
+      shell: "cat /var/plexguide/pgcloner.projectname"
+      register: pname
+
+    - name: Register Role
+      shell: "cat /var/plexguide/pgcloner.rolename"
+      register: prole
+
+    - name: Register Project Version
+      shell: "cat /var/plexguide/pgcloner.projectversion"
+      register: pversion
+
+    - name: Check if Path Exists
+      stat:
+        path: "/opt/{{prole.stdout}}"
+      register: pathcheck
+
+    - name: 'Transfer Image Variable'
+      shell: "rm -rf /opt/{{prole.stdout}}"
+      when: pathcheck.stat.exists
+
+    - name: Clone Role
+      git:
+        repo: "https://github.com/PGBlitz/{{pname.stdout}}"
+        dest: "/opt/{{prole.stdout}}"
+        version: "{{pversion.stdout}}"
+        force: yes
