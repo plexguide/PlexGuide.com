@@ -95,7 +95,6 @@
           - requests
           - netaddr
           - lxml
-          - ansible
         state: latest
         executable: pip3
 
@@ -108,6 +107,5 @@
           - requests
           - netaddr
           - lxml
-          - ansible
         state: latest
         executable: pip2
