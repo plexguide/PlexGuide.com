@@ -17,7 +17,7 @@ projectversion=$(cat /var/plexguide/pgcloner.projectversion)
 mkdir -p "/opt/$rolename"
 
 initial () {
-  ansible-playbook "/opt/plexguide/menu/pgcloner/core/primary.yml"
+  ansible-playbook "/opt/plexguide/menu/pgcloner/corev2/primary.yml"
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
   file="/opt/$rolename/place.holder"
@@ -30,7 +30,7 @@ initial () {
 
 custom () {
   mkdir -p "/opt/$rolename"
-  ansible-playbook "/opt/plexguide/menu/pgcloner/core/personal.yml"
+  ansible-playbook "/opt/plexguide/menu/pgcloner/corev2/personal.yml"
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
