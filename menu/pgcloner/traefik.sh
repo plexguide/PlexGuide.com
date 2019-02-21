@@ -10,7 +10,7 @@
 echo 'traefik' > /var/plexguide/pgcloner.rolename
 echo 'Traefik' > /var/plexguide/pgcloner.roleproper
 echo 'PlexGuide-Traefik' > /var/plexguide/pgcloner.projectname
-echo 'v8.4' > /var/plexguide/pgcloner.projectversion
+echo 'v8.5' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 Traefik is a modern HTTP reverse proxy and load balancer that makes

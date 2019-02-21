@@ -61,7 +61,7 @@ updateprime() {
   echo "11" > ${abc}/pg.watchtower
   echo "1" > ${abc}/pg.installer
   echo "7" > ${abc}/pg.prune
-  echo "17" > ${abc}/pg.mountcheck
+  echo "20" > ${abc}/pg.mountcheck
 
 }
 
@@ -76,7 +76,11 @@ pginstall () {
   core mergerinstall
   core dockerinstall
   core docstart
+
+  # Roles Ensure that PG Replicates and has once if missing; important for startup, cron and etc
   pgcore
+  pgcommunity
+
   portainer
   pgui
   core motd &>/dev/null &
@@ -297,12 +301,9 @@ portainer () {
   fi
 }
 
-pgcore() {
-  file="/opt/coreapps/place.holder"
-    if [ ! -e "$file" ]; then
-      ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml;
-    fi
-}
+# Roles Ensure that PG Replicates and has once if missing; important for startup, cron and etc
+pgcore() { if [ ! -e "/opt/coreapps/place.holder" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml; fi }
+pgcommunity() { if [ ! -e "/opt/communityapps/place.holder" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml; fi }
 
 pgui ()
 {
