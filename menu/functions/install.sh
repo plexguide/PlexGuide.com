@@ -41,7 +41,7 @@ updateprime() {
   else echo "ubuntu" > ${abc}/os.version; fi
 
   echo "2" > ${abc}/pg.mergerinstall
-  echo "51" > ${abc}/pg.pythonstart
+  echo "52" > ${abc}/pg.pythonstart
   echo "11" > ${abc}/pg.aptupdate
   echo "150" > ${abc}/pg.preinstall
   echo "22" > ${abc}/pg.folders
@@ -340,7 +340,7 @@ pythonstart () {
       netaddr
   python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==9.0.3
   python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
-  python -m pip install --disable-pip-version-check --upgrade --force-reinstall ansible==${1-2.5.11}
+  python -m pip install --disable-pip-version-check --upgrade --force-reinstall ansible==${1-2.7.8}
 
   ## Copy pip to /usr/bin
   cp /usr/local/bin/pip /usr/bin/pip
