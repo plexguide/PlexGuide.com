@@ -20,19 +20,10 @@
   shell: "docker --version | awk '{print $3}'"
   register: updatecheck
 
-- debug:
-    msg: " {{ updatecheck }} "
-
 - name: "Switch - On"
   set_fact:
     switch: "off"
   when: updatecheck.stdout == "18.09.2,"
-
-- debug:
-    msg: "Switch - {{ switch }}"
-
-- debug:
-    msg: "UpdateCheck - {{ updatecheck }}"
 
 - name: Install required packages
   apt:
@@ -107,19 +98,29 @@
   register: docker_daemon
 
 - name: Stop docker to enable overlay2
-  systemd: state=stopped name=docker enabled=yes
+  systemd: 
+    state: stopped 
+    name: docker 
+    enabled: yes
   when:
     - docker_daemon.stat.exists == False
     - switch == "on"
 
 - name: Import daemon.json
-  copy: "src=daemon.json dest=/etc/docker/daemon.json force=yes mode=0775"
+  copy: 
+    src: daemon.json 
+    dest: /etc/docker/daemon.json 
+    force: yes 
+    mode: 0775
   when:
     - docker_daemon.stat.exists == False
     - switch == "on"
 
 - name: Start docker (Please Wait)
-  systemd: state=started name=docker enabled=yes
+  systemd: 
+    state: started
+    name: docker
+    enabled: yes
   when:
     - docker_daemon.stat.exists == False
     - switch == "on"
@@ -135,14 +136,21 @@
   register: docker_override
 
 - name: Create override folder
-  file: "path=/etc/systemd/system/docker.service.d state=directory mode=0775"
+  file: 
+    path: /etc/systemd/system/docker.service.d 
+    state: directory 
+    mode: 0775"
   when:
     - docker_override.stat.exists == False
     - switch == "on"
   tags: docker_standard
 
 - name: Import override file
-  copy: "src=override.conf dest=/etc/systemd/system/docker.service.d/override.conf force=yes mode=0775"
+  copy: 
+    src: override.conf 
+    dest: /etc/systemd/system/docker.service.d/override.conf 
+    force: yes
+    mode: 0775
   tags: docker_standard
   when: switch == "on"
 
