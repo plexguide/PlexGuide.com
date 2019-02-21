@@ -99,7 +99,6 @@
           - requests
           - netaddr
           - docker
-          - ansible
         state: latest
         executable: pip3
 
@@ -112,6 +111,5 @@
           - requests
           - netaddr
           - docker
-          - ansible
         state: latest
         executable: pip2
