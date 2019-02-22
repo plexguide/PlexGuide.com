@@ -68,7 +68,7 @@
 - name: Install docker-ce
   apt:
     name: docker-ce
-    state: present
+    state: latest
     update_cache: yes
   when: switch == "on"
 

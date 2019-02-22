@@ -95,7 +95,7 @@
           - requests
           - netaddr
           - lxml
-          - ansible
+          - docker
         state: latest
         executable: pip3
 
@@ -108,6 +108,6 @@
           - requests
           - netaddr
           - lxml
-          - ansible
+          - docker
         state: latest
         executable: pip2
