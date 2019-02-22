@@ -23,7 +23,7 @@
 - name: "Switch - On"
   set_fact:
     switch: "off"
-  when: updatecheck.stdout == "18.06.0-ce,"
+  when: updatecheck.stdout == "18.09.2,"
 
 - name: Install required packages
   apt: "name={{item}} state=present"
