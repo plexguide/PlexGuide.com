@@ -45,10 +45,10 @@ updateprime() {
   echo "11" > ${abc}/pg.aptupdate
   echo "150" > ${abc}/pg.preinstall
   echo "22" > ${abc}/pg.folders
-  echo "13" > ${abc}/pg.dockerinstall
+  echo "14" > ${abc}/pg.dockerinstall
   echo "15" > ${abc}/pg.server
   echo "1" > ${abc}/pg.serverid
-  echo "30" > ${abc}/pg.dependency
+  echo "31" > ${abc}/pg.dependency
   echo "11" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.motd
   echo "108" > ${abc}/pg.alias
