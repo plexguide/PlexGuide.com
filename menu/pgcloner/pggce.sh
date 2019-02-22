@@ -19,4 +19,4 @@ three months!" > /var/plexguide/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/core/main.sh
+bash /opt/plexguide/menu/pgcloner/corev2/main.sh
