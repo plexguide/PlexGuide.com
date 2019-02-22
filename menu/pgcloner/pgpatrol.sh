@@ -8,8 +8,8 @@
 
 ### FILL OUT THIS AREA ###
 echo 'pgpatrol' > /var/plexguide/pgcloner.rolename
-echo 'PG Patrol' > /var/plexguide/pgcloner.roleproper
-echo 'PlexGuide-PGPatrol' > /var/plexguide/pgcloner.projectname
+echo 'PGPatrol' > /var/plexguide/pgcloner.roleproper
+echo 'PGPatrol' > /var/plexguide/pgcloner.projectname
 echo 'v8.5' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -18,4 +18,4 @@ ips (sharing the server), and much more!" > /var/plexguide/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/core/main.sh
+bash /opt/plexguide/menu/pgcloner/corev2/main.sh
