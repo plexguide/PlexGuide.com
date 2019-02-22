@@ -9,7 +9,7 @@
 ### FILL OUT THIS AREA ###
 echo 'traefik' > /var/plexguide/pgcloner.rolename
 echo 'Traefik' > /var/plexguide/pgcloner.roleproper
-echo 'PlexGuide-Traefik' > /var/plexguide/pgcloner.projectname
+echo 'Traefik' > /var/plexguide/pgcloner.projectname
 echo 'v8.5' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -19,4 +19,4 @@ user to mass obtain https (secure) certificates for all their containers" > /var
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/core/main.sh
+bash /opt/plexguide/menu/pgcloner/corev2/main.sh
