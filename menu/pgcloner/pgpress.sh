@@ -8,15 +8,15 @@
 
 ### FILL OUT THIS AREA ###
 echo 'pgpress' > /var/plexguide/pgcloner.rolename
-echo 'PG Press' > /var/plexguide/pgcloner.roleproper
-echo 'PlexGuide-PGPress' > /var/plexguide/pgcloner.projectname
+echo 'PGPress' > /var/plexguide/pgcloner.roleproper
+echo 'PGPress' > /var/plexguide/pgcloner.projectname
 echo 'v8' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 PG Press is a combined group of services that enables the user to
+echo "💬 PGPress is a combined group of services that enables the user to
 deploy their own wordpress websites; including the use of other multiple
 instances!" > /var/plexguide/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/core/main.sh
+bash /opt/plexguide/menu/pgcloner/corev2/main.sh
