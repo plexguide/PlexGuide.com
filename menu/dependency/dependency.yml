@@ -96,8 +96,7 @@
           - pyOpenSSL
           - requests
           - netaddr
-          - docker
-          - ansible
+          - lxml
         state: latest
         executable: pip3
 
@@ -109,7 +108,6 @@
           - pyOpenSSL
           - requests
           - netaddr
-          - docker
-          - ansible
+          - lxml
         state: latest
         executable: pip2

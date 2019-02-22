@@ -148,7 +148,7 @@
     src: override.conf
     dest: /etc/systemd/system/docker.service.d/override.conf 
     force: yes
-    mode: 0775"
+    mode: 0775
   tags: docker_standard
   when: switch == "on"
 

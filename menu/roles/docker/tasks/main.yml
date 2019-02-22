@@ -139,7 +139,7 @@
   file: 
     path: /etc/systemd/system/docker.service.d 
     state: directory 
-    mode: 0775"
+    mode: 0775
   when:
     - docker_override.stat.exists == False
     - switch == "on"
