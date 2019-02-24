@@ -32,7 +32,7 @@ cat << "EOF"
 │ View the PG Blitz Logs:   blitz     │
 │ Download Your PG Fork:    pgfork    │
 │ ————————————————————————————————————│
-│   Thanks For Being Part of a Team   │
+│ Thanks For Being Part of the Team!  │
 └─────────────────────────────────────┘
 
 EOF
