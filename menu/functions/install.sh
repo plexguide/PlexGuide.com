@@ -80,6 +80,7 @@ pginstall () {
   # Roles Ensure that PG Replicates and has once if missing; important for startup, cron and etc
   pgcore
   pgcommunity
+  pgshield
 
   portainer
   pgui
