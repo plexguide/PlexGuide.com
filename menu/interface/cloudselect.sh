@@ -28,7 +28,6 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
     bash /opt/pggce/pggce.sh
 elif [ "$typed" == "2" ]; then
     bash /opt/plexguide/menu/pgcloner/hcloud.sh
-    bash /opt/hcloud/hcloud.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
     exit
 else

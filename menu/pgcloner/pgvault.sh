@@ -11,6 +11,7 @@ echo 'pgvault' > /var/plexguide/pgcloner.rolename
 echo 'PG Vault' > /var/plexguide/pgcloner.roleproper
 echo 'PGVault' > /var/plexguide/pgcloner.projectname
 echo 'v8.5' > /var/plexguide/pgcloner.projectversion
+echo 'pgvault.sh' > /var/plexguide/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PG Vault is a combined group of services that utilizes the backup

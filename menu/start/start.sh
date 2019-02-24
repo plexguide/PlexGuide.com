@@ -264,7 +264,6 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 case $typed in
     1 )
       bash /opt/plexguide/menu/pgcloner/traefik.sh
-      bash /opt/traefik/traefik.sh
       primestart ;;
     2 )
       bash /opt/plexguide/menu/portguard/portguard.sh
@@ -274,18 +273,15 @@ case $typed in
       primestart ;;
     4 )
       bash /opt/plexguide/menu/pgcloner/pgclone.sh
-      bash /opt/pgclone/gdrive.sh
       primestart ;;
     5 )
       bash /opt/plexguide/menu/pgbox/pgboxselect.sh
       primestart ;;
     6 )
       bash /opt/plexguide/menu/pgcloner/pgpress.sh
-      bash /opt/pgpress/pressmain.sh
       primestart ;;
     7 )
       bash /opt/plexguide/menu/pgcloner/pgvault.sh
-      bash /opt/pgvault/pgvault.sh
       primestart ;;
     8 )
       bash /opt/plexguide/menu/interface/cloudselect.sh

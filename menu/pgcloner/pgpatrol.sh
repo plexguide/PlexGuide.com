@@ -11,6 +11,7 @@ echo 'pgpatrol' > /var/plexguide/pgcloner.rolename
 echo 'PGPatrol' > /var/plexguide/pgcloner.roleproper
 echo 'PGPatrol' > /var/plexguide/pgcloner.projectname
 echo 'v8.5' > /var/plexguide/pgcloner.projectversion
+echo 'v8.5' > /var/plexguide/pgcloner.projectversion
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PG Patrol can boot idle plex users, users utilizing multiple
