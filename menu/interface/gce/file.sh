@@ -2,7 +2,7 @@
 #
 # Title:      PlexGuide (Reference Title File)
 # Author(s):  Admin9705 - Deiteq
-# URL:        https://plexguide.com - http://github.plexguide.com
+# URL:        https://plexguide.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
 menu=$(cat /var/plexguide/final.choice)
@@ -116,7 +116,7 @@ if [ "$menu" == "4" ]; then
   echo "SYSTEM MESSAGE: GCloud Project Interface"
   echo "------------------------------------------------------------------------------"
   echo ""
-  echo "NOTE: If no project is listed, please visit https://project.plexguide.com and"
+  echo "NOTE: If no project is listed, please visit https://project.pgblitz.com and"
   echo "      review the wiki on how to build a project! Without one, this will fail!"
   echo ""
   read -p "Set or Change the Project ID (y/n)? " -n 1 -r

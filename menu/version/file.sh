@@ -2,7 +2,7 @@
 #
 # Title:      PlexGuide (Reference Title File)
 # Author(s):  Admin9705 - Deiteq
-# URL:        https://plexguide.com - http://github.plexguide.com
+# URL:        https://plexguide.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
 mainstart() {
@@ -25,11 +25,11 @@ tee <<-EOF
 📂  PG Update Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✅  Stable    : $latest
-⚠️   Beta      : $beta
-    Installed : $pgnumber
+Lastest:  : $latest
+Beta      : $beta
+Installed : $pgnumber
 
-💬  Prior Versions?  Visit > versions.plexguide.com
+💬  Prior Versions?  Visit > versions.pgblitz.com
     Quitting? TYPE > exit
 
 EOF

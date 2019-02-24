@@ -2,7 +2,7 @@
 #
 # Title:      PlexGuide (Reference Title File)
 # Author(s):  Admin9705 - Deiteq
-# URL:        https://plexguide.com - http://github.plexguide.com
+# URL:        https://plexguide.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
 menu=$(cat /var/plexguide/final.choice)
@@ -27,7 +27,7 @@ if [ "$menu" == "2" ]; then
   echo ""
   cat /opt/appdata/plexguide/vpn.info
   echo ""
-  echo "Config Info: Visit http://pgvpn.plexguide.com or WIKI"
+  echo "Config Info: Visit http://pgvpn.pgblitz.com or WIKI"
   echo "Note: pgvpn <<< command to recall your vpn info"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "

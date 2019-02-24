@@ -12,4 +12,4 @@ echo "-----------------------------------------------------"
 echo ""
 cat /opt/appdata/plexguide/vpn.info
 echo ""
-echo "Config Info: Visit http://pgvpn.plexguide.com or WIKI"
+echo "Config Info: Visit http://pgvpn.pgblitz.com or WIKI"

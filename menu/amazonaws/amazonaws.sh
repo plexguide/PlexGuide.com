@@ -2,7 +2,7 @@
 #
 # Title:      PlexGuide (Reference Title File)
 # Author(s):  Admin9705 - Deiteq
-# URL:        https://plexguide.com - http://github.plexguide.com
+# URL:        https://plexguide.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
 test=$(hcloud server list)
@@ -13,7 +13,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - You Must Input an API from Hetzner First!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ Reference: http://hcloud.plexguide.com
+⚡ Reference: http://hcloud.pgblitz.com
 
 * Activate a Hetzner Cloud Account and Create a Project
 * Click Access (left hand side) and then click API Tokens
@@ -37,7 +37,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 PG - Hetzner's Cloud Generator
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ Reference: http://hcloud.plexguide.com
+⚡ Reference: http://hcloud.pgblitz.com
 
 1 - Deploy a New Server
 2 - Destory a Server
@@ -135,7 +135,7 @@ echo "" >> /bin/pg-$name
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" > /bin/pg-$name
 echo "echo '↘️  Server - $name | Initial Password $initialpw'" >> /bin/pg-$name
 echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" >> /bin/pg-$name
-echo "echo '✅️ Donate @ donate.plexguide.com - Helps Costs & Mrs. Admin - #1 Enemy!'" >> /bin/pg-$name
+echo "echo '✅️ Donate @ donate.pgblitz.com - Helps Costs & Mrs. Admin - #1 Enemy!'" >> /bin/pg-$name
 echo "echo ''" >> /bin/pg-$name
 echo "ssh root@$serverip" >> /bin/pg-$name
 chmod 777 /bin/pg-$name
