@@ -49,10 +49,10 @@
         mode: 0775
         owner: root
 
-    - name: PlexGuide
+    - name: PGBlitz
       template:
         src: pgblitz
-        dest: /bin/plexguide
+        dest: /bin/pgblitz
         force: yes
         mode: 0775
         owner: root
