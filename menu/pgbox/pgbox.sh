@@ -181,7 +181,7 @@ if [[ "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else if [ "$croncount" -eq "1" ]; then cronexe; fi; fi
 
 # End Banner
-bash /opt/plexguide/menu/endbanner/endbanner.sh >> /tmp/output.info
+bash /opt/plexguide/menu/pgbox/endbanner.sh >> /tmp/output.info
 
 sleep 2
 done </var/plexguide/pgbox.buildup
