@@ -79,7 +79,7 @@ pginstall () {
 
 
 touch /var/plexguide/install.roles
-rolenumber=2
+rolenumber=3
   # Roles Ensure that PG Replicates and has once if missing; important for startup, cron and etc
 if [[ $(cat /var/plexguide/install.roles) != "$rolenumber" ]]; then
   rm -rf /opt/communityapps
