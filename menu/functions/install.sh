@@ -309,7 +309,7 @@ pgshield() { if [ ! -e "/opt/pgshield/place.holder" ]; then
 echo 'pgshield' > /var/plexguide/pgcloner.rolename
 echo 'PGShield' > /var/plexguide/pgcloner.roleproper
 echo 'PGShield' > /var/plexguide/pgcloner.projectname
-echo 'v8.5' > /var/plexguide/pgcloner.projectversion
+echo 'v8.5.6' > /var/plexguide/pgcloner.projectversion
 echo 'pgshield.sh' > /var/plexguide/pgcloner.startlink
 ansible-playbook "/opt/plexguide/menu/pgcloner/corev2/primary.yml"; fi }
 
