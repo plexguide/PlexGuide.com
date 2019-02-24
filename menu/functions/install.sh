@@ -304,6 +304,13 @@ portainer () {
 # Roles Ensure that PG Replicates and has once if missing; important for startup, cron and etc
 pgcore() { if [ ! -e "/opt/coreapps/place.holder" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml; fi }
 pgcommunity() { if [ ! -e "/opt/communityapps/place.holder" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml; fi }
+pgshield() { if [ ! -e "/opt/pgshield/place.holder" ]; then
+echo 'pgshield' > /var/plexguide/pgcloner.rolename
+echo 'PGShield' > /var/plexguide/pgcloner.roleproper
+echo 'PGShield' > /var/plexguide/pgcloner.projectname
+echo 'v8.5' > /var/plexguide/pgcloner.projectversion
+echo 'pgshield.sh' > /var/plexguide/pgcloner.startlink
+ansible-playbook "/opt/plexguide/menu/pgcloner/corev2/primary.yml"; fi }
 
 pgui ()
 {
