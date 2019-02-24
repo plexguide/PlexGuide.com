@@ -23,7 +23,7 @@ fi
 
 downloadpg() {
   rm -rf /opt/plexguide
-  git clone https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
+  git clone https://github.com/PGBlitz/PGBlitz.com.git /opt/plexguide && cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/
   cp /opt/plexguide/menu/interface/alias/templates/plexguide /bin/plexguide
 }
 

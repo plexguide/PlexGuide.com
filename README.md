@@ -4,11 +4,11 @@
 
 <p align="center">
   <a href="https://pgblitz.com/forums" target="_blank"><img src="https://pgblitz.com/wikipics/logo-forums.png" width="160"/>   
-  <a href="https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server/wiki" target="_blank"><img src="https://pgblitz.com/wikipics/logo-wiki.png" width="160"/>
+  <a href="https://github.com/PGBlitz/PGBlitz.com/wiki" target="_blank"><img src="https://pgblitz.com/wikipics/logo-wiki.png" width="160"/>
   <a href="https://pgblitz.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://pgblitz.com/wikipics/logo-pg-install.png" width="160"/>
   <a href="https://pgblitz.com/account/upgrades" target="_blank"><img src="https://plexguide.com/wikipics/logo-donate.png" width="160"/>
-</p> 
- 
+</p>
+
 _**Table of Contents**_
 
 1. [General Intro](#1-general-intro)
@@ -16,19 +16,19 @@ _**Table of Contents**_
 3. [Functional Use](#3-functional-use)
 4. [Testimonials](#4-testimonials)
 5. [Conclusion](#5-conclusion)
- 
+
 ----
 # 1. General Intro
 <p align="center"><kbd><img src="https://pgblitz.com/wikipics/pglogo-move.gif" width="600""></kbd></p>
 <p align="center"><b>Manage PlexGuide - AnyTime, Anywhere!</b></p>
 
 **Mission Statement:** PlexGuide is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PlexGuide utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
- 
+
 # 2. YouTube Video - Intro
 <p align="center">
 <a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"><img src="https://pgblitz.com/wikipics/pg-introv4.png" width="600"/></p>
 <p align="center"><b>PG Introduction Video</b></p>
- 
+
 # 3. Functional Use
 
 1. Deploys multiple programs/app and functional within 10 - 30 seconds
@@ -36,7 +36,7 @@ _**Table of Contents**_
 1. Deploy PG utilizing Google's GSuite for unlimited space or through the solo or multiple HD editions
 1. Deploys a Reverse Proxy (Traefik) so you can obtain https:// certificates on all your containers
 1. Backup and Restore data through your Google Drive
-1. Aligns data and ports for effficiency 
+1. Aligns data and ports for effficiency
 1. Deploys with a simple installer and a GUI like interface (commands do not have to be typed out)
 
 # 4. Testimonials

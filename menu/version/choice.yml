@@ -15,7 +15,7 @@
 
     - name: "Installing Version {{serverid.stdout}}"
       git:
-        repo: "https://github.com/Admin9705/PlexGuide.com-The-Awesome-Plex-Server"
+        repo: "https://github.com/PGBlitz/PGBlitz.com"
         dest: "/opt/plexguide"
         version: "{{serverid.stdout}}"
         force: yes
