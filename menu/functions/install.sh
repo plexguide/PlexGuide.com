@@ -172,7 +172,7 @@ fi
 }
 
 folders () {
-  ansible-playbook /opt/plexguide/menu/folders/main.yml
+  ansible-playbook /opt/plexguide/menu/installer/main.yml
 }
 
 prune () {

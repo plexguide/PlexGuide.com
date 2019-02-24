@@ -162,7 +162,7 @@ tee <<-EOF
 EOF
 sleep 2
 
-ansible-playbook /opt/plexguide/menu/folders/main.yml
+ansible-playbook /opt/plexguide/menu/installer/main.yml
 bash /opt/plexguide/menu/dlpath/rebuild.sh
 
 tee <<-EOF
