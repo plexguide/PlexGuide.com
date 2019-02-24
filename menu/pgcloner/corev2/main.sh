@@ -13,6 +13,7 @@ rolename=$(cat /var/plexguide/pgcloner.rolename)
 roleproper=$(cat /var/plexguide/pgcloner.roleproper)
 projectname=$(cat /var/plexguide/pgcloner.projectname)
 projectversion=$(cat /var/plexguide/pgcloner.projectversion)
+startlink=$(cat /var/plexguide/pgcloner.startlink)
 
 mkdir -p "/opt/$rolename"
 
@@ -26,6 +27,7 @@ initial () {
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
+  bash /opt/${rolename}/${startlink}
 }
 
 custom () {
@@ -40,6 +42,7 @@ custom () {
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
+  bash /opt/${rolename}/${startlink}
 }
 
 mainbanner () {
