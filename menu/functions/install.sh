@@ -89,7 +89,7 @@ if [[ $(cat /var/plexguide/install.roles) != "$rolenumber" ]]; then
   pgcore
   pgcommunity
   pgshield
-  echo "$rolenumber" > cat /var/plexguide/install.roles
+  echo "$rolenumber" > /var/plexguide/install.roles
 fi
 
   portainer
