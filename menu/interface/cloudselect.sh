@@ -24,8 +24,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     echo gce > /var/plexguide/type.choice
-    bash /opt/plexguide/menu/pgcloner/pggce.sh
-    bash /opt/pggce/pggce.sh
+    bash /opt/plexguide/menu/pgcloner/blitzgce.sh
 elif [ "$typed" == "2" ]; then
     bash /opt/plexguide/menu/pgcloner/hcloud.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
