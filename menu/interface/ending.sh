@@ -22,17 +22,17 @@ EOF
 
 cat << "EOF"
 ┌─────────────────────────────────────┐
-│        -== Team PlexGuide ==-       │
+│        -== Team PGBLitz ==-         │
 │ ————————————————————————————————————│
-│ Star PG:      github.plexguide.com  │
-│ Donate:       donate.plexguide.com  │
+│ Star PG:        github.pgblitz.com  │
+│ Donate:         github.pgblitz.com  │
 │ ————————————————————————————————————│
-│ Restart Plexguide:        plexguide │
-│ Update Plexguide:         pgupdate  │
+│ Restart PGBlitz:          pgblitz   │
+│ Update  PGBlitz:          pgupdate  │
 │ View the PG Blitz Logs:   blitz     │
 │ Download Your PG Fork:    pgfork    │
 │ ————————————————————————————————————│
-│ Visit: newshosting.plexguide.com    │
+│   Thanks For Being Part of a Team   │
 └─────────────────────────────────────┘
 
 EOF

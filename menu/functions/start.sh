@@ -61,10 +61,10 @@ exitcheck() {
 bash /opt/plexguide/menu/version/file.sh
 file="/var/plexguide/exited.upgrade"
 if [ ! -e "$file" ]; then
-	bash /opt/plexguide/menu/ending/ending.sh
+	bash /opt/plexguide/menu/interface/ending.sh
 else
 	rm -rf /var/plexguide/exited.upgrade 1>/dev/null 2>&1
 	echo ""
-	bash /opt/plexguide/menu/ending/ending.sh
+	bash /opt/plexguide/menu/interface/ending.sh
 fi
 }

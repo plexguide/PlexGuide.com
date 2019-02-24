@@ -82,10 +82,10 @@ case $typed in
         bash /opt/pgclone/gdrive.sh
         primestart ;;
     z )
-        bash /opt/plexguide/menu/ending/ending.sh
+        bash /opt/plexguide/menu/interface/ending.sh
         exit ;;
     Z )
-        bash /opt/plexguide/menu/ending/ending.sh
+        bash /opt/plexguide/menu/interface/ending.sh
         exit ;;
     * )
         forcepgclone ;;
@@ -297,10 +297,10 @@ case $typed in
       bash /opt/plexguide/menu/settings/settings.sh
       primestart ;;
     z )
-      bash /opt/plexguide/menu/ending/ending.sh
+      bash /opt/plexguide/menu/interface/ending.sh
       exit ;;
     Z )
-      bash /opt/plexguide/menu/ending/ending.sh
+      bash /opt/plexguide/menu/interface/ending.sh
       exit ;;
     * )
       primestart ;;

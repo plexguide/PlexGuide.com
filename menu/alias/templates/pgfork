@@ -28,4 +28,4 @@ EOF
 sleep 1.5
 file="/var/plexguide/community.app"
 if [ -e "$file" ]; then rm -rf /var/plexguide/community.app; fi
-bash /opt/plexguide/menu/ending/ending.sh
+bash /opt/plexguide/menu/interface/ending.sh
