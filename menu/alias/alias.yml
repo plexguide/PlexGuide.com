@@ -49,6 +49,14 @@
         mode: 0775
         owner: root
 
+    - name: PlexGuide
+      template:
+        src: pgblitz
+        dest: /bin/plexguide
+        force: yes
+        mode: 0775
+        owner: root
+
   ###### Server reboot
 
     - name: server reboot
