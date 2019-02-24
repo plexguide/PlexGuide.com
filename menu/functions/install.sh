@@ -77,10 +77,20 @@ pginstall () {
   core dockerinstall
   core docstart
 
+
+touch /var/plexguide/install.roles
+rolenumber=1
   # Roles Ensure that PG Replicates and has once if missing; important for startup, cron and etc
+if [[ $(cat /var/plexguide/install.roles) != "$rolenumber" ]]; then
+  rm -rf /opt/communityapps
+  rm -rf /opt/coreapps
+  rm -rf /opt/pgshield
+
   pgcore
   pgcommunity
   pgshield
+  echo "1" > cat /var/plexguide/install.roles
+fi
 
   portainer
   pgui

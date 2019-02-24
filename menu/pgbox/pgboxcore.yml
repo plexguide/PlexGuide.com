@@ -14,7 +14,7 @@
 
     - name: Cloning Core Apps
       git:
-        repo: "https://github.com/Admin9705/PlexGuide-Core"
+        repo: "https://github.com/PGBlitz/Apps-Core"
         dest: /opt/coreapps
-        version: "v8.5"
+        version: "v8.5.6"
         force: yes

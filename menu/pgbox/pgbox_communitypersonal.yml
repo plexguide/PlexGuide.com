@@ -13,7 +13,7 @@
 
     - name: 'Cloning {{boxuser.stdout}} Community Apps'
       git:
-        repo: 'https://github.com/{{boxuser.stdout}}/PlexGuide-community'
+        repo: 'https://github.com/{{boxuser.stdout}}/Apps-Community'
         dest: '/opt/communityapps'
         version: '{{boxbranch.stdout}}'
         force: yes
