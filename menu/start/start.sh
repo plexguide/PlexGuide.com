@@ -270,7 +270,7 @@ case $typed in
       bash /opt/plexguide/menu/portguard/portguard.sh
       primestart ;;
     3 )
-      bash /opt/plexguide/menu/pgshield/pgshield.sh
+      bash /opt/plexguide/menu/pgcloner/pgshield.sh
       primestart ;;
     4 )
       bash /opt/plexguide/menu/pgcloner/pgclone.sh
