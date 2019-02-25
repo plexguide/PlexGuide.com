@@ -156,11 +156,10 @@ docstart () {
 }
 
 emergency() {
-
+  variable /var/plexguide/emergency.display "On"
 if [[ $(ls /opt/appdata/plexguide/emergency) != "" ]]; then
 
 # If not on, do not display emergency logs
-variable /var/plexguide/emergency.display "On"
 if [[ $(cat /var/plexguide/emergency.display) == "On" ]]; then
 
 tee <<-EOF
