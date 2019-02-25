@@ -19,4 +19,4 @@ deploy Hetzner Cloud Instance (VMs) within seconds" > /var/plexguide/pgcloner.in
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/core/main.sh
+bash /opt/plexguide/menu/pgcloner/corev2/main.sh
