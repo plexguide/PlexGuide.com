@@ -10,6 +10,7 @@ source /opt/plexguide/menu/functions/install.sh
 # Menu Interface
 setstart() {
 
+emdisplay=$(cat /var/plexguide/emergency.display)
 switchcheck=$(cat /var/plexguide/pgui.switch)
 tee <<-EOF
 
@@ -17,11 +18,12 @@ tee <<-EOF
 🚀 PG Settings Interface Menu
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[1] Download Path:  Change the Processing Location
-[2] Processor    :  Enhance the CPU Processing Power
-[3] WatchTower   :  Auto-Update Application Manager
-[4] Change Time  :  Change the Server Time
-[5] PG UI        :  $switchcheck | Port 8555 | pgui.domain.com
+[1] Download Path    :  Change the Processing Location
+[2] Processor        :  Enhance the CPU Processing Power
+[3] WatchTower       :  Auto-Update Application Manager
+[4] Change Time      :  Change the Server Time
+[5] PG UI            :  $switchcheck | Port 8555 | pgui.domain.com
+[6] Emergency Display:  $emdisplay
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -54,6 +56,9 @@ case $typed in
         ansible-playbook /opt/pgui/pgui.yml
       fi
       setstart ;;
+    6)
+       if [[ "$emdisplay" == "On"]]; then echo "Off" > /var/plexguide/emergency.display
+       else echo "On" > /var/plexguide/emergency.display; fi;; 
     z )
       exit ;;
     Z )

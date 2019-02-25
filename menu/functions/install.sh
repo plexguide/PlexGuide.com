@@ -159,6 +159,10 @@ emergency() {
 
 if [[ $(ls /opt/appdata/plexguide/emergency) != "" ]]; then
 
+# If not on, do not display emergency logs
+variable /var/plexguide/emergency.display "On"
+if [[ $(cat /var/plexguide/emergency.display) == "On" ]]; then
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -178,7 +182,7 @@ EOF
   echo
 else
   touch /var/plexguide/emergency.log
-fi
+fi; fi
 
 }
 
