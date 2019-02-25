@@ -290,7 +290,7 @@ case $typed in
       bash /opt/plexguide/menu/tools/tools.sh
       primestart ;;
     10 )
-      bash /opt/plexguide/menu/settings/settings.sh
+      bash /opt/plexguide/menu/interface/settings.sh
       primestart ;;
     z )
       bash /opt/plexguide/menu/interface/ending.sh
