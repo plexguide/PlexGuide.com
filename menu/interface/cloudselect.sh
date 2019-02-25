@@ -26,7 +26,7 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
     echo gce > /var/plexguide/type.choice
     bash /opt/plexguide/menu/pgcloner/blitzgce.sh
 elif [ "$typed" == "2" ]; then
-    bash /opt/plexguide/menu/pgcloner/hcloud.sh
+    bash /opt/plexguide/menu/pgcloner/hetzner.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
     exit
 else
