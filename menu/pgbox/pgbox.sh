@@ -169,9 +169,6 @@ EOF
 
 sleep 2.5
 
-if [ "$p" == "plex" ]; then bash /opt/plexguide/menu/plex/plex.sh;
-elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
-
 # Store Used Program
 echo $p > /tmp/program_var
 # Execute Main Program
