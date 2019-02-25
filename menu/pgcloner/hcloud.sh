@@ -9,7 +9,7 @@
 ### FILL OUT THIS AREA ###
 echo 'hcloud' > /var/plexguide/pgcloner.rolename
 echo 'HCloud (Hetzner)' > /var/plexguide/pgcloner.roleproper
-echo 'PlexGuide-HCloud-Hetzner' > /var/plexguide/pgcloner.projectname
+echo 'Hetzner' > /var/plexguide/pgcloner.projectname
 echo 'v8.5' > /var/plexguide/pgcloner.projectversion
 echo 'hcloud' > /var/plexguide/pgcloner.projectversion
 
