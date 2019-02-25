@@ -24,7 +24,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂  PG Update Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💬  Prior Versions?  Visit > versions.pgblitz.com
+Prior Versions? Visit > versions.pgblitz.com
 
 Lastest:  : $latest
 Beta      : $beta
@@ -32,7 +32,6 @@ Installed : $pgnumber
 
 Quitting? TYPE > exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
 
 break=no
