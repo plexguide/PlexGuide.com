@@ -58,7 +58,8 @@ case $typed in
       setstart ;;
     6)
        if [[ "$emdisplay" == "On" ]]; then echo "Off" > /var/plexguide/emergency.display
-       else echo "On" > /var/plexguide/emergency.display; fi; setstart;;
+       else echo "On" > /var/plexguide/emergency.display; fi
+       setstart ;;
     z )
       exit ;;
     Z )
