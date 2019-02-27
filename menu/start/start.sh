@@ -121,6 +121,7 @@ varstart() {
   variable /var/plexguide/tld.type "standard"
   variable /var/plexguide/transcode.path "standard"
   variable /var/plexguide/pgclone.transport "NOT-SET"
+  variable /var/plexguide/plex.claim ""
 
   #### Temp Fix - Fixes Bugged AppGuard
   serverht=$(cat /var/plexguide/server.ht)
