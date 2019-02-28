@@ -26,8 +26,8 @@ _**Table of Contents**_
 
 # 2. YouTube Video - Intro
 <p align="center"><kbd>
-<a href="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv4.png?raw=true" width="600"/></kbd></p>
-<p align="center"><b>PG Introduction Video</b></p>
+<a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv4.png?raw=true" width="600"/></kbd></p>
+<p align="center"><b>PGBlitz Introduction Video</b></p>
 
 # 3. Functional Use
 
