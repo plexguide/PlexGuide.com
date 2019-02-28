@@ -51,7 +51,7 @@ _**Table of Contents**_
 Well anyways, welcome to the Site! Visit the forums @ [**https://pgblitz.com/forums**](https://plexguide.com/forums).
 
 <p align="right">
-<a href="https://plexguide.com" target="_blank"><img src="https://pgblitz.com/wikipics/logo.png" width="75"/>
+<a href="https://pgblitz.com" target="_blank"><img src="https://github.com/PGBlitz/Assets/blob/master/logos/blitz-small.png?raw=true" width="75"/>
 </p>
 
 ST2 which is now PGBlitz Concept: [Flicker-Rate](https://github.com/flicker-rate)
