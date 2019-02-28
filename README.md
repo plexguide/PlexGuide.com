@@ -25,8 +25,8 @@ _**Table of Contents**_
 **Mission Statement:** PGBlitz is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PGBlitz utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
 
 # 2. YouTube Video - Intro
-<p align="center">
-<a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"><img src="https://pgblitz.com/wikipics/pg-introv4.png" width="600"/></p>
+<p align="center"><kbd>
+<a href="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv4.png?raw=true" width="600"/></kbd></p>
 <p align="center"><b>PG Introduction Video</b></p>
 
 # 3. Functional Use
