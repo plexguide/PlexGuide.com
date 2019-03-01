@@ -61,10 +61,6 @@ _**Table of Contents**_
 
 In general, it's best to go down the line on the wiki on how to install PGBlitz and run through the steps, but one major goal is to provide a list of reading on some basic fundamentals; which will ensure better execution.
 
-<p align="right">
-<a href="https://pgblitz.com" target="_blank"><img src="https://github.com/PGBlitz/Assets/blob/master/logos/blitz-small.png?raw=true" width="75"/>
-</p>
-
 [**[Click Here]**](https://github.com/PGBlitz/PGBlitz.com/wiki/Pre-Reading) to view the list!
 
 ## 6. Having Issues?
