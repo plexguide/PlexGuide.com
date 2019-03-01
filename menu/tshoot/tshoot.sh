@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)
+# Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705 - Deiteq
-# URL:        https://plexguide.com - http://github.pgblitz.com
+# URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
 
@@ -15,7 +15,7 @@ tee <<-EOF
 
 1 - Pre-Installer: Force the Entire Process Again
 2 - UnInstaller  : Docker & Running Containers | Force Pre-Install
-3 - UnInstaller  : PlexGuide
+3 - UnInstaller  : PGBlitz
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -46,7 +46,7 @@ sleep 3
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️ WOOT WOOT - Process Complete! Exit & Restart PlexGuide Now!
+✅️ WOOT WOOT - Process Complete! Exit & Restart PGBlitz Now!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 5
@@ -77,7 +77,7 @@ sleep 3
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️ WOOT WOOT - Process Complete! Exit & Restart PlexGuide Now!
+✅️ WOOT WOOT - Process Complete! Exit & Restart PGBlitz Now!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 5

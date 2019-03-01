@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)
+# Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705
-# URL:        https://plexguide.com - http://github.pgblitz.com
+# URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
 file="/var/plexguide/pg.number"
@@ -192,7 +192,7 @@ varstart() {
   capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
   percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 
-  # For the PlexGuide UI
+  # For the PGBlitz UI
   echo "$used" > /var/plexguide/pg.used
   echo "$capacity" > /var/plexguide/pg.capacity
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)
+# Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705 - Deiteq - Sub7Seven
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
@@ -12,7 +12,7 @@ if [ "$menu" == "2" ]; then
 
 echo ""
 echo "-----------------------------------------------------------"
-echo "SYSTEM MESSAGE: WARNING! PlexGuide Uninstall Interface!"
+echo "SYSTEM MESSAGE: WARNING! PGBlitz Uninstall Interface!"
 echo "-----------------------------------------------------------"
 echo ""
 sleep 3
@@ -49,7 +49,7 @@ done
 
   echo ""
   echo "-----------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Removing All PlexGuide Dependent Services"
+  echo "SYSTEM MESSAGE: Removing All PGBlitz Dependent Services"
   echo "-----------------------------------------------------------"
   echo ""
   sleep 2
@@ -57,7 +57,7 @@ done
 
   echo ""
   echo "-----------------------------------------------------------"
-  echo "SYSTEM MESSAGE: Removing All PlexGuide File Directories"
+  echo "SYSTEM MESSAGE: Removing All PGBlitz File Directories"
   echo "-----------------------------------------------------------"
   echo ""
   sleep 2
@@ -95,7 +95,7 @@ done
   sleep 3
   echo ""
   echo "----------------------------------------------------"
-  echo "SYSTEM MESSAGE: PlexGuide Will Never Die! GoodBye!"
+  echo "SYSTEM MESSAGE: PGBlitz Will Never Die! GoodBye!"
   echo "----------------------------------------------------"
   echo ""
   sleep 2

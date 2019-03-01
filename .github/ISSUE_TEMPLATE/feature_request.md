@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: This template is for submitting a feature request ONLY. For support questions go to the Plexguide.com forums and/or join the PlexGuide Discord chat for real time help/support.
+about: This template is for submitting a feature request ONLY. For support questions go to the pgblitz.com forums and/or join the PGBlitz Discord chat for real time help/support.
 
 ---
 

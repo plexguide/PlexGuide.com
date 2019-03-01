@@ -1,5 +1,5 @@
 quote0 () {
-echo "Welcome to PlexGuide! Started in December of 2016!" > /var/plexguide/startup.quote
+echo "Welcome to PGBlitz! Started in December of 2016!" > /var/plexguide/startup.quote
 echo "                                                                 Admin9705" > /var/plexguide/startup.source
 }
 
