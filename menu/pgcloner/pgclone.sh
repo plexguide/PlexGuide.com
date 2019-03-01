@@ -10,7 +10,7 @@
 echo 'pgclone' > /var/plexguide/pgcloner.rolename
 echo 'PG Clone' > /var/plexguide/pgcloner.roleproper
 echo 'PGClone' > /var/plexguide/pgcloner.projectname
-echo 'v8.5' > /var/plexguide/pgcloner.projectversion
+echo 'v8.6 > /var/plexguide/pgcloner.projectversion
 echo 'gdrive.sh' > /var/plexguide/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
