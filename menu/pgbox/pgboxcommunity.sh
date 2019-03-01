@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)
+# Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
@@ -270,7 +270,7 @@ EOF
         echo "$boxbranch" > /var/plexguide/boxcommunity.branch
         pinterface ;;
     2 )
-        existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PlexGuide-Community" | grep "$boxbranch")
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PGBlitz-Community" | grep "$boxbranch")
         if [ "$existcheck" == "" ]; then echo;
         read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi
@@ -294,13 +294,13 @@ tee <<-EOF
 🚀 PG Community Box Edition!         📓 Reference: community.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 Community Box apps simplify their usage within PlexGuide! PG provides more
+💬 Community Box apps simplify their usage within PGBlitz! PG provides more
 focused support and development based on community usage.
 
 💬 The Personal Forked option will install your version of Community Box. Good
 for testing or for personal mod's! Ensure that it exist prior to use!
 
-[1] Utilize Community Box - PlexGuide's
+[1] Utilize Community Box - PGBlitz's
 [2] Utilize Community Box - Personal (Forked)
 [Z] Exit
 

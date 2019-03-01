@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)
+# Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705 - Deiteq
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
@@ -32,7 +32,7 @@
 
 - name: "Key Menu Facts"
   set_fact:
-    head1: "\nPlexGuide GCE Deployment Interface - Make a Selection"
+    head1: "\nPGBlitz GCE Deployment Interface - Make a Selection"
     head2: ""
     info2: "\n2.  Log-In to Your Account: {{account.stdout}}"
     info3: "\n3.  Build a New Project"

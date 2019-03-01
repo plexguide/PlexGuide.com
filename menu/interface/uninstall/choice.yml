@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)
+# Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705 - Deiteq - Sub7Seven
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
@@ -8,6 +8,6 @@
 ---
 - name: "Key Menu Facts"
   set_fact:
-    head1: "\nPlexGuide UnInstaller Interface"
+    head1: "\nPGBlitz UnInstaller Interface"
     head2: "\nWARNING! Ensure to Backup any Data!"
-    info2: "\n2.  I want to UnInstall PlexGuide!"
+    info2: "\n2.  I want to UnInstall PGBlitz!"

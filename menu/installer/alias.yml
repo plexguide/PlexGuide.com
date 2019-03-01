@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)
+# Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705 - Deiteq
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
@@ -42,9 +42,9 @@
         force: yes
         mode: 0775
 
-  ###### Install PlexGuide
+  ###### Install PGBlitz
 
-    - name: PlexGuide
+    - name: PGBlitz
       template:
         src: plexguide
         dest: /bin/plexguide

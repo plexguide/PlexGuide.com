@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)
+# Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
@@ -410,7 +410,7 @@ dockerinstall () {
       then
       sleep 5
     else
-      echo "INFO - FAILED: Docker Failed to Install! Exiting PlexGuide!"
+      echo "INFO - FAILED: Docker Failed to Install! Exiting PGBlitz!"
         exit
       fi
   fi

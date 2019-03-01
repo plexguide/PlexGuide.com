@@ -1,4 +1,4 @@
-PlexGuide.com (C) 2018
+PGBlitz.com (C) 2018
 
  GNU GENERAL PUBLIC LICENSE
  Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (Reference Title File)
+# Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
@@ -268,7 +268,7 @@ EOF
         echo "$boxbranch" > /var/plexguide/boxcore.branch
         pinterface ;;
     2 )
-        existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PlexGuide-Core" | grep "$boxbranch")
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PGBlitz-Core" | grep "$boxbranch")
         if [ "$existcheck" == "" ]; then echo;
         read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi
@@ -292,13 +292,13 @@ tee <<-EOF
 🚀 PG Core Box Edition!                   📓 Reference: core.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💬 Core Box apps simplify their usage within PlexGuide! PG provides more
+💬 Core Box apps simplify their usage within PGBlitz! PG provides more
 focused support and development based on core usage.
 
 💬 The Personal Forked option will install your version of Core Box. Good
 for testing or for personal mod's! Ensure that it exist prior to use!
 
-[1] Utilize Core Box - PlexGuide's
+[1] Utilize Core Box - PGBlitz's
 [2] Utilize Core Box - Personal (Forked)
 [Z] Exit
 
