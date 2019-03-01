@@ -20,6 +20,6 @@
   - cron:
       name: Hourly Clean PG Clone Clean
       special_time: "hourly"
-      job: "bash /opt/plexguide/menu/pgclone/cloneclean.sh"
+      job: "bash /opt/pgclone/templates/cloneclean.sh"
       state: present
     ignore_errors: yes

@@ -76,6 +76,9 @@ tee <<-EOF
 
 To Claim the Plex Server, visit https://www.plex.tv/claim/ and input the
 code below! You have 5 minutes to do so!
+
+If you are reinstalling plex with existing appdata press enter to skip 
+this step as you won't need to claim it again.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
