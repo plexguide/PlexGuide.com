@@ -296,7 +296,7 @@ tee <<-EOF
 focused support and development based on core usage.
 
 💬 The Personal Forked option will install your version of Core Box. Good
-for testing or for personal mod's! Ensure that it exist prior to use!
+for testing or for personal mods! Ensure that it exist prior to use!
 
 [1] Utilize Core Box - PGBlitz's
 [2] Utilize Core Box - Personal (Forked)
