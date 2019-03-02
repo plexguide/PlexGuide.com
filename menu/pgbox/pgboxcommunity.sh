@@ -298,7 +298,7 @@ tee <<-EOF
 focused support and development based on community usage.
 
 💬 The Personal Forked option will install your version of Community Box. Good
-for testing or for personal mod's! Ensure that it exist prior to use!
+for testing or for personal mods! Ensure that it exist prior to use!
 
 [1] Utilize Community Box - PGBlitz's
 [2] Utilize Community Box - Personal (Forked)
