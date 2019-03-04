@@ -54,45 +54,6 @@ quoteselect () {
   source=$(cat /var/plexguide/startup.source)
 }
 
-# For New Installs, Forces This Menu To Display First; Vital For RClone
-forcepgclone() {
-quoteselect
-tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 Interface Selection | Version: $pgnumber | ID: $serverid
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NOTE: New Install Interface! User Must Select a Mount Option First!
-
-🌵 PG Disk Used Space:  $used of $capacity | $percentage Used Capacity
-
-[1] PG Clone: Mount Transport
-[Z] Exit
-
-"$quote"
-
-$source
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
-
-case $typed in
-    1 )
-        bash /opt/plexguide/menu/pgcloner/pgclone.sh
-        bash /opt/pgclone/gdrive.sh
-        primestart ;;
-    z )
-        bash /opt/plexguide/menu/interface/ending.sh
-        exit ;;
-    Z )
-        bash /opt/plexguide/menu/interface/ending.sh
-        exit ;;
-    * )
-        forcepgclone ;;
-esac
-
-}
-
 varstart() {
   ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
   file="/var/plexguide"
@@ -198,11 +159,6 @@ varstart() {
 }
 
 menuprime() {
-  # New Setups Will Force To Use Mini Menu
-  if [[ "$transport" == "NOT-SET" ]]; then
-  forcepgclone
-  exit; fi
-
 # Menu Interface
 tee <<-EOF
 
