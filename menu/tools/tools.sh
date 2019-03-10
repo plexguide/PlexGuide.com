@@ -79,7 +79,7 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgtrakt/pgtrakt.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/hetzner/pghetznerigpu.sh
+  bash /opt/plexguide/menu/hetzner/pghetznerigpu.sh
 elif [ "$typed" == "5" ]; then
   echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "6" ]; then
