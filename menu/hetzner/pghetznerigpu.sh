@@ -32,11 +32,16 @@ echo "install complete"
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Hetzner iGPU / GPU HW-Transcode
+
+NOTE: You MUST have Plex Pass to enable hardware transcoding in the Plex server
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 [1] Ubuntu 16.04 LTS
 [2] Ubuntu 18.04 LTS
-[3] Debian 9.6 
+[3] Debian 9.6
+
 [4] iGPU / GPU TEST
+
 [Z] Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -44,7 +49,7 @@ EOF
 # Standby
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
-if [ "$typed" == "1" ]; then		
+if [ "$typed" == "1" ]; then
 	sed -i '/blacklist i915/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
 	sed -i '/blacklist i915_bdw/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
 	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/^#*/#/g' /etc/default/grub.d/hetzner.cfg
@@ -56,7 +61,7 @@ if [ "$typed" == "1" ]; then
 	docker restart plex
 	echo "please reboot your server"
 	
-elif [ "$typed" == "2" ]; then		
+elif [ "$typed" == "2" ]; then
 	sed -i '/blacklist i915/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
 	sed -i '/blacklist i915_bdw/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
 	sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/s/^#*/#/g' /etc/default/grub
@@ -65,7 +70,7 @@ elif [ "$typed" == "2" ]; then
 	chmod -R 777 /dev/dri
 	docker exec plex apt-get -y update
 	docker exec plex apt-get -y install i965-va-driver vainfo
-	docker restart plex		
+	docker restart plex
 	echo "please reboot your server"
 	
 elif [ "$typed" == "3" ]; then
