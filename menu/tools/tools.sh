@@ -60,7 +60,7 @@ tee <<-EOF
 [2] PG Scan   [Not Ready]
 [3] PG Trakt
 [4] PG Hetzner iGPU / GPU HW-Transcode
-[5] PG DNS chnager 
+[5] PG DNS changer 
 [6] Personal VPN Service Installer
 [7] System & Network Auditor
 [8] TroubleShoot ~ PreInstaller
