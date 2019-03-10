@@ -59,9 +59,10 @@ tee <<-EOF
 [1] PG Patrol
 [2] PG Scan   [Not Ready]
 [3] PG Trakt
-[4] Personal VPN Service Installer
-[5] System & Network Auditor
-[6] TroubleShoot ~ PreInstaller
+[4] PG Hetzner iGPU / GPU HW-Transcode
+[5] Personal VPN Service Installer
+[6] System & Network Auditor
+[7] TroubleShoot ~ PreInstaller
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -78,10 +79,12 @@ elif [ "$typed" == "2" ]; then
 elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgtrakt/pgtrakt.sh
 elif [ "$typed" == "4" ]; then
-  echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  bash /opt/plexguide/hetzner/pghetznerigpu.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/network/network.sh
+  echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "6" ]; then
+  bash /opt/plexguide/menu/network/network.sh
+elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/tshoot/tshoot.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
