@@ -12,19 +12,21 @@ tee <<-EOF
 ⌛  Verifiying PG Hetzner iGPU / GPU HW-Transcode !
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-
-echo "Upgdating packages" 
-	apt-get update -yqq
+echo "Upgdating packages"
+        apt-get update -yqq > /dev/null
+        export DEBIAN_FRONTEND=noninteractive
 echo "Upgrading packages"
-	apt-get upgrade -yqq
-echo "Dist-Upgrading packages"   
-	apt-get dist-upgrade -yqq
-echo "Autoremove old Updates"    
-	apt-get autoremove -yqq
-echo "ethotools fix"
-	sudo apt-get install ethtool -yqq && ethtool -K enp0s31f6 tso off gso off
+        apt-get upgrade -yqq > /dev/null
+        export DEBIAN_FRONTEND=noninteractive
+echo "Dist-Upgrading packages"
+        apt-get dist-upgrade -yqq > /dev/null
+        export DEBIAN_FRONTEND=noninteractive
+echo "Autoremove old Updates"
+        apt-get autoremove -yqq > /dev/null
+        export DEBIAN_FRONTEND=noninteractive
 echo "install vainfo"
-	sudo apt install vainfo -yqq
+        sudo apt-get install vainfo -yqq > /dev/null
+        export DEBIAN_FRONTEND=noninteractive
 echo "install complete"
 
 tee <<-EOF
@@ -84,8 +86,10 @@ elif [ "$typed" == "4" ]; then
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 	echo $GPU $RAM	
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-	apt-get autoremove vainfo -yqq
-	
+        apt-get autoremove -yqq > /dev/null
+        apt-get purge vainfo -yqq > /dev/null
+                export DEBIAN_FRONTEND=noninteractive
+
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
