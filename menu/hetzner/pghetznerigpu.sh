@@ -27,13 +27,17 @@ echo "Autoremove old Updates"
 echo "install vainfo"
         sudo apt-get install vainfo -yqq > /dev/null
         export DEBIAN_FRONTEND=noninteractive
-echo "install complete"
+apt-get install lsb-release -yqq 2>&1 >> /dev/null
+	export DEBIAN_FRONTEND=noninteractive
+echo "install complete"	
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Hetzner iGPU / GPU HW-Transcode
 
-NOTE: You MUST have Plex Pass to enable hardware transcoding in the Plex server
+NOTE : You MUST have Plex Pass to enable hardware transcoding in the Plex server
+
+Your Operations System	 : $(lsb_release -sd)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [1] Ubuntu 16.04 LTS
@@ -71,6 +75,7 @@ elif [ "$typed" == "2" ]; then
 	docker exec plex apt-get -y update
 	docker exec plex apt-get -y install i965-va-driver vainfo
 	docker restart plex
+	
 	echo "please reboot your server"
 	
 elif [ "$typed" == "3" ]; then
@@ -83,7 +88,8 @@ elif [ "$typed" == "3" ]; then
 	docker exec plex apt-get -y update
 	docker exec plex apt-get -y install i965-va-driver vainfo
 	docker restart plex
-	echo "please reboot your server"	
+	
+	echo "please reboot your server"
 	
 elif [ "$typed" == "4" ]; then
 
@@ -92,7 +98,6 @@ elif [ "$typed" == "4" ]; then
 	echo $GPU $RAM	
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         apt-get autoremove -yqq > /dev/null
-        apt-get purge vainfo -yqq > /dev/null
                 export DEBIAN_FRONTEND=noninteractive
 
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
