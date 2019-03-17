@@ -16,5 +16,5 @@
       git:
         repo: "https://github.com/PGBlitz/Apps-Community"
         dest: /opt/communityapps
-        version: "v8.5.6"
+        version: "v8.6"
         force: yes
