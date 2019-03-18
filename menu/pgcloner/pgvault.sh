@@ -10,7 +10,7 @@
 echo 'pgvault' > /var/plexguide/pgcloner.rolename
 echo 'PG Vault' > /var/plexguide/pgcloner.roleproper
 echo 'PGVault' > /var/plexguide/pgcloner.projectname
-echo 'v8.5' > /var/plexguide/pgcloner.projectversion
+echo 'v8.6' > /var/plexguide/pgcloner.projectversion
 echo 'pgvault.sh' > /var/plexguide/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
