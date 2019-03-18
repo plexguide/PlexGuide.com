@@ -13,19 +13,19 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 echo "Upgdating packages"
-        apt-get update -yqq > /dev/null
+        apt-get update -yqq 2>&1 >> /dev/null
         export DEBIAN_FRONTEND=noninteractive
 echo "Upgrading packages"
-        apt-get upgrade -yqq > /dev/null
+        apt-get upgrade -yqq 2>&1 >> /dev/null
         export DEBIAN_FRONTEND=noninteractive
 echo "Dist-Upgrading packages"
-        apt-get dist-upgrade -yqq > /dev/null
+        apt-get dist-upgrade -yqq 2>&1 >> /dev/null
         export DEBIAN_FRONTEND=noninteractive
 echo "Autoremove old Updates"
-        apt-get autoremove -yqq > /dev/null
+        apt-get autoremove -yqq 2>&1 >> /dev/null
         export DEBIAN_FRONTEND=noninteractive
 echo "install vainfo"
-        sudo apt-get install vainfo -yqq > /dev/null
+        sudo apt-get install vainfo -yqq 2>&1 >> /dev/null
         export DEBIAN_FRONTEND=noninteractive
 apt-get install lsb-release -yqq 2>&1 >> /dev/null
 	export DEBIAN_FRONTEND=noninteractive
@@ -97,7 +97,7 @@ elif [ "$typed" == "4" ]; then
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 	echo $GPU $RAM	
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        apt-get autoremove -yqq > /dev/null
+        apt-get autoremove -yqq 2>&1 >> /dev/null
                 export DEBIAN_FRONTEND=noninteractive
 
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
@@ -107,5 +107,5 @@ else
   exit
 fi
 
-bash /opt/plexguide/menu/tools/tools.sh
+bash /opt/plexguide/menu/tools/pghetznerigpu.sh
 exit	
