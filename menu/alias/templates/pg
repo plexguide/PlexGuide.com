@@ -22,13 +22,13 @@ must be installed on a FRESH BOX! Exiting!
 EOF
     exit; fi; fi
 
-source /opt/pgblitz/menu/functions/functions.sh
-source /opt/pgblitz/menu/functions/start.sh
-source /opt/pgblitz/menu/functions/install.sh
+source /opt/plexguide/menu/functions/functions.sh
+source /opt/plexguide/menu/functions/start.sh
+source /opt/plexguide/menu/functions/install.sh
 
-mkdir -p /opt/pgblitz/roles/log
-mkdir -p /var/pgblitz/logs
-mkdir -p /opt/appdata/pgblitz
+mkdir -p /opt/plexguide/roles/log
+mkdir -p /var/plexguide/logs
+mkdir -p /opt/appdata/plexguide
 
 sudocheck
 missingpull
