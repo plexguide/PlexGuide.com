@@ -79,7 +79,7 @@ question1 () {
     echo "##PG-Core" >> /opt/coreapps/apps/$p.yml
 
     mkdir -p /opt/mycontainers
-    touch /opt/appdata/pgblitz/rclone.conf
+    touch /opt/appdata/plexguide/rclone.conf
   done </var/plexguide/app.list
     touch /var/plexguide/core.app
   #fi

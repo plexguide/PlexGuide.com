@@ -9,7 +9,7 @@ function gcheck {
 
 edition=$(cat /var/plexguide/pg.edition)
 if [ "$edition" == "PG Edition - GDrive" ] || [ "$edition" == "PG Edition - GCE Feed" ]; then
-gcheck=$(cat /opt/appdata/pgblitz/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8)
+gcheck=$(cat /opt/appdata/plexguide/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8)
   if [ "$gcheck" != "[gdrive]" ]; then
 tee <<-EOF
 
