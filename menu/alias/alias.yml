@@ -41,14 +41,21 @@
 
   ###### Install PGBlitz
 
-    - name: PGBlitz
+    - name: PlexGuide
       template:
         src: plexguide
         dest: /bin/plexguide
         force: yes
         mode: 0775
         owner: root
-
+    - name: PG
+      template:
+        src: pg
+        dest: /bin/pg
+        force: yes
+        mode: 0775
+        owner: root
+        
     - name: PGBlitz
       template:
         src: pgblitz

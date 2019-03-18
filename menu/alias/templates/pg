@@ -5,9 +5,9 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-file="/var/plexguide/pg.number"
+file="/var/pgblitz/pg.number"
 if [ -e "$file" ]; then
-  check="$(cat /var/plexguide/pg.number | head -c 1)"
+  check="$(cat /var/pgblitz/pg.number | head -c 1)"
   if [[ "$check" == "5" || "$check" == "6" || "$check" == "7" ]]; then
 
 tee <<-EOF
@@ -22,13 +22,13 @@ must be installed on a FRESH BOX! Exiting!
 EOF
     exit; fi; fi
 
-source /opt/plexguide/menu/functions/functions.sh
-source /opt/plexguide/menu/functions/start.sh
-source /opt/plexguide/menu/functions/install.sh
+source /opt/pgblitz/menu/functions/functions.sh
+source /opt/pgblitz/menu/functions/start.sh
+source /opt/pgblitz/menu/functions/install.sh
 
-mkdir -p /opt/plexguide/roles/log
-mkdir -p /var/plexguide/logs
-mkdir -p /opt/appdata/plexguide
+mkdir -p /opt/pgblitz/roles/log
+mkdir -p /var/pgblitz/logs
+mkdir -p /opt/appdata/pgblitz
 
 sudocheck
 missingpull
