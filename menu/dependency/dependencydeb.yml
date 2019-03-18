@@ -7,7 +7,7 @@
 ################################################################################
 ---
 - hosts: localhost
-  gather_facts: true
+  gather_facts: True
   tasks:
     - name: Install Common Packages (Takes Awhile)
       apt: "name={{item}} state=present"
