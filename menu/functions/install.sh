@@ -44,7 +44,7 @@ updateprime() {
   echo "52" > ${abc}/pg.pythonstart
   echo "11" > ${abc}/pg.aptupdate
   echo "150" > ${abc}/pg.preinstall
-  echo "22" > ${abc}/pg.folders
+  echo "23" > ${abc}/pg.folders
   echo "15" > ${abc}/pg.dockerinstall
   echo "15" > ${abc}/pg.server
   echo "1" > ${abc}/pg.serverid

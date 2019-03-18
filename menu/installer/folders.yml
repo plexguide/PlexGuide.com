@@ -198,4 +198,5 @@
         - "{{path.stdout}}/nzb"
         - "{{path.stdout}}/torrent"
         - "{{path.stdout}}/move"
+        - "/opt/var"
       ignore_errors: yes
