@@ -10,7 +10,7 @@
 echo 'pgpress' > /var/plexguide/pgcloner.rolename
 echo 'PGPress' > /var/plexguide/pgcloner.roleproper
 echo 'PGPress' > /var/plexguide/pgcloner.projectname
-echo 'v8.6' > /var/plexguide/pgcloner.projectversion
+echo 'v8' > /var/plexguide/pgcloner.projectversion
 echo 'pressmain.sh' > /var/plexguide/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
