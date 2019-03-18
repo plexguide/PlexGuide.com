@@ -132,9 +132,9 @@ aptupdate () {
 
 customcontainers () {
 mkdir -p /opt/mycontainers
-touch /opt/appdata/plexguide/rclone.conf
+touch /opt/appdata/pgblitz/rclone.conf
 mkdir -p /opt/communityapps/apps
-rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/communityapps/apps
+rclone --config /opt/appdata/pgblitz/rclone.conf copy /opt/mycontainers/ /opt/communityapps/apps
 }
 
 cleaner () {

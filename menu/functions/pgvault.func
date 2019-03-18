@@ -291,9 +291,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-rclone --config /opt/appdata/plexguide/rclone.conf mkdir gdrive:/plexguide/backup/${server_id} 1>/dev/null 2>&1
+rclone --config /opt/appdata/pgblitz/rclone.conf mkdir gdrive:/plexguide/backup/${server_id} 1>/dev/null 2>&1
 
-rclone --config /opt/appdata/plexguide/rclone.conf \
+rclone --config /opt/appdata/pgblitz/rclone.conf \
 --stats-one-line --stats 1s --progress \
 moveto ${tarlocation}/${program_var}.tar \
 gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
@@ -349,7 +349,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-rclone --config /opt/appdata/plexguide/rclone.conf --stats-one-line \
+rclone --config /opt/appdata/pgblitz/rclone.conf --stats-one-line \
 --stats 1s --progress \
 copy gdrive:/plexguide/backup/${srecall}/${program_var}.tar \
 ${tarlocation} \

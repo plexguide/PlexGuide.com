@@ -81,7 +81,7 @@ question1 () {
     echo "##PG-Community" >> /opt/communityapps/apps/$p.yml
 
     mkdir -p /opt/mycontainers
-    touch /opt/appdata/plexguide/rclone.conf
+    touch /opt/appdata/pgblitz/rclone.conf
   done </var/plexguide/app.list
     touch /var/plexguide/community.app
   #fi
