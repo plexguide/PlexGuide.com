@@ -59,15 +59,15 @@ varstart() {
   file="/var/plexguide"
   if [ ! -e "$file" ]; then
      mkdir -p /var/plexguide/logs 1>/dev/null 2>&1
-     chown -R 0755 /var/plexguide 1>/dev/null 2>&1
+     chown -R 0775 /var/plexguide 1>/dev/null 2>&1
      chmod -R 1000:1000 /var/plexguide 1>/dev/null 2>&1
   fi
 
   file="/opt/appdata/plexguide"
   if [ ! -e "$file" ]; then
-     mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
-     chown 0755 /opt/appdata/plexguide 1>/dev/null 2>&1
-     chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
+     mkdir -p /opt/appdata/pgblitz 1>/dev/null 2>&1
+     chown 0775 /opt/appdata/pgblitz 1>/dev/null 2>&1
+     chmod 1000:1000 /opt/appdata/pgblitz 1>/dev/null 2>&1
   fi
 
   ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
