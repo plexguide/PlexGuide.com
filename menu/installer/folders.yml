@@ -189,11 +189,10 @@
         - "/var/plexguide"
         - "/mnt/move"
         - "/var/plexguide/logs"
-        - /opt/appdata/plexguide/keys/unprocessed
-        - /opt/appdata/plexguide/keys/processed
-        - /opt/appdata/plexguide/keys/badjson
+        - "/opt/appdata/plexguide/keys/unprocessed"
+        - "/opt/appdata/plexguide/keys/processed"
+        - "/opt/appdata/plexguide/keys/badjson"
         - "{{path.stdout}}/pgops"
-        - "{{path.stdout}}/pgblitz"
         - "{{path.stdout}}/downloads"
         - "{{path.stdout}}/nzb"
         - "{{path.stdout}}/torrent"
