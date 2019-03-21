@@ -14,8 +14,7 @@ echo 'v8.6' > /var/plexguide/pgcloner.projectversion
 echo 'multihd.sh' > /var/plexguide/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 MultiHD enables the user to adds multiple drives and
-mountpoints to MergerFS" > /var/plexguide/pgcloner.info
+echo "💬 MultiHD enables to add multiple drives and mountpoints to MergerFS!" > /var/plexguide/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
