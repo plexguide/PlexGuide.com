@@ -11,7 +11,7 @@ echo 'multihd' > /var/plexguide/pgcloner.rolename
 echo 'MultiHD' > /var/plexguide/pgcloner.roleproper
 echo 'MultiHD' > /var/plexguide/pgcloner.projectname
 echo 'v8.6' > /var/plexguide/pgcloner.projectversion
-echo 'multi.hd' > /var/plexguide/pgcloner.startlink
+echo 'multihd.sh' > /var/plexguide/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 MultiHD enables the user to adds multiple drives and
