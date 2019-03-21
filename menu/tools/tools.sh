@@ -57,13 +57,12 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [1] PG Patrol
-[2] PG Scan   [Not Ready]
-[3] PG Trakt
-[4] PG Hetzner iGPU / GPU HW-Transcode
-[5] PG DNS changer 
-[6] Personal VPN Service Installer
-[7] System & Network Auditor
-[8] TroubleShoot ~ PreInstaller
+[2] PG Trakt
+[3] PG Hetzner iGPU / GPU HW-Transcode
+[4] PG DNS changer
+[5] Personal VPN Service Installer
+[6] System & Network Auditor
+[7] TroubleShoot ~ PreInstaller
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -76,18 +75,16 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   bash /opt/plexguide/menu/pgcloner/pgpatrol.sh
   bash /opt/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/pgscan/pgscan.sh
-elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/pgtrakt/pgtrakt.sh
-elif [ "$typed" == "4" ]; then
+elif [ "$typed" == "3" ]; then
   bash /opt/plexguide/menu/hetzner/pghetznerigpu.sh
+elif [ "$typed" == "4" ]; then
+  bash /opt/plexguide/menu/pgdnsswitcher/pgdnschanger.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/pgdnsswitcher/pgdnschanger.sh  
-elif [ "$typed" == "6" ]; then
   echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
-elif [ "$typed" == "7" ]; then
+elif [ "$typed" == "6" ]; then
   bash /opt/plexguide/menu/network/network.sh
-elif [ "$typed" == "8" ]; then
+elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/tshoot/tshoot.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit

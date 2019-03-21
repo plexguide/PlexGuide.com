@@ -19,11 +19,12 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [1] Download Path    :  Change the Processing Location
-[2] Processor        :  Enhance the CPU Processing Power
-[3] WatchTower       :  Auto-Update Application Manager
-[4] Change Time      :  Change the Server Time
-[5] PG UI            :  $switchcheck | Port 8555 | pgui.domain.com
-[6] Emergency Display:  $emdisplay
+[2] MultiHD          :  Add Multiple HDs and/or Mount Points to MergerFS
+[3] Processor        :  Enhance the CPU Processing Power
+[4] WatchTower       :  Auto-Update Application Manager
+[5] Change Time      :  Change the Server Time
+[6] PG UI            :  $switchcheck | Port 8555 | pgui.domain.com
+[7] Emergency Display:  $emdisplay
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -35,15 +36,17 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 case $typed in
     1 )
       bash /opt/plexguide/menu/dlpath/dlpath.sh
-      setstart;;
+      setstart ;;
     2 )
+      bash /opt/plexguide/menu/pgcloner/multihd.sh ;;
+    3 )
       bash /opt/plexguide/menu/processor/processor.sh
       setstart ;;
-    3 )
-      watchtower ;;
     4 )
-      dpkg-reconfigure tzdata ;;
+      watchtower ;;
     5 )
+      dpkg-reconfigure tzdata ;;
+    6 )
       echo
       echo "Standby ..."
       echo
@@ -56,7 +59,7 @@ case $typed in
         ansible-playbook /opt/pgui/pgui.yml
       fi
       setstart ;;
-    6)
+    7)
        if [[ "$emdisplay" == "On" ]]; then echo "Off" > /var/plexguide/emergency.display
        else echo "On" > /var/plexguide/emergency.display; fi
        setstart ;;
