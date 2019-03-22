@@ -66,7 +66,7 @@ if [ "$typed" == "1" ]; then
 	tee <<-EOF
 		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 		✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
-		✅ PASSED ! Please reboot your server , and plex to hardware decode 
+		✅ PASSED ! Please reboot your server , and edit plex to hardware decode 
 		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 	EOF
 	sleep 10
@@ -82,10 +82,10 @@ elif [ "$typed" == "2" ]; then
 	docker restart plex
 	
 	tee <<-EOF
-	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-	✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
-	✅ PASSED ! Please reboot your server , and plex to hardware decode 
-	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
+		✅ PASSED ! Please reboot your server , and edit plex to hardware decode 
+		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 	EOF
 	sleep 10
 elif [ "$typed" == "3" ]; then
@@ -100,10 +100,10 @@ elif [ "$typed" == "3" ]; then
 	docker restart plex
 	
 	tee <<-EOF
-	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-	✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
-	✅ PASSED ! Please reboot your server , and plex to hardware decode 
-	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
+		✅ PASSED ! Please reboot your server , and edit plex to hardware decode 
+		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 	EOF
 	sleep 10
 elif [ "$typed" == "4" ]; then
