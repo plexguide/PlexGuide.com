@@ -114,5 +114,5 @@ else
   exit
 fi
 
-bash /opt/plexguide/menu/hetzner/pghetznerigpu.sh
+bash /opt/plexguide/menu/tools/tools.sh
 exit	
