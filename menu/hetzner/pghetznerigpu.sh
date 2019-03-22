@@ -63,12 +63,10 @@ if [ "$typed" == "1" ]; then
 	docker exec plex apt-get -y update
 	docker exec plex apt-get -y install i965-va-driver vainfo
 	docker restart plex
-	tee <<-EOF
-		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-		✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
-		✅ PASSED ! Please reboot your server , and edit plex to hardware decode 
-		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-	EOF
+	echo " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ "
+	echo " ✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	"
+	echo " ✅ PASSED ! Please reboot your server , and edit plex to hardware decode "
+	echo "	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 	sleep 10
 elif [ "$typed" == "2" ]; then
 	sed -i '/blacklist i915/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
@@ -80,13 +78,10 @@ elif [ "$typed" == "2" ]; then
 	docker exec plex apt-get -y update
 	docker exec plex apt-get -y install i965-va-driver vainfo
 	docker restart plex
-	
-	tee <<-EOF
-		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-		✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
-		✅ PASSED ! Please reboot your server , and edit plex to hardware decode 
-		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-	EOF
+	echo " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ "
+	echo " ✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	"
+	echo " ✅ PASSED ! Please reboot your server , and edit plex to hardware decode "
+	echo "	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 	sleep 10
 elif [ "$typed" == "3" ]; then
 	sed -i '/blacklist i915/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
@@ -98,13 +93,10 @@ elif [ "$typed" == "3" ]; then
 	docker exec plex apt-get -y update
 	docker exec plex apt-get -y install i965-va-driver vainfo
 	docker restart plex
-	
-	tee <<-EOF
-		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-		✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
-		✅ PASSED ! Please reboot your server , and edit plex to hardware decode 
-		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-	EOF
+	echo " ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ "
+	echo " ✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	"
+	echo " ✅ PASSED ! Please reboot your server , and edit plex to hardware decode "
+	echo "	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 	sleep 10
 elif [ "$typed" == "4" ]; then
 
