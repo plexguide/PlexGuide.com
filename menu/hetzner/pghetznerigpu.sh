@@ -63,8 +63,13 @@ if [ "$typed" == "1" ]; then
 	docker exec plex apt-get -y update
 	docker exec plex apt-get -y install i965-va-driver vainfo
 	docker restart plex
-	echo "please reboot your server"
-	
+	tee <<-EOF
+		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
+		✅ PASSED ! Please reboot your server , and plex to hardware decode 
+		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	EOF
+	sleep 10
 elif [ "$typed" == "2" ]; then
 	sed -i '/blacklist i915/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
 	sed -i '/blacklist i915_bdw/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
@@ -76,8 +81,13 @@ elif [ "$typed" == "2" ]; then
 	docker exec plex apt-get -y install i965-va-driver vainfo
 	docker restart plex
 	
-	echo "please reboot your server"
-	
+	tee <<-EOF
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
+	✅ PASSED ! Please reboot your server , and plex to hardware decode 
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	EOF
+	sleep 10
 elif [ "$typed" == "3" ]; then
 	sed -i '/blacklist i915/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
 	sed -i '/blacklist i915_bdw/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
@@ -89,8 +99,13 @@ elif [ "$typed" == "3" ]; then
 	docker exec plex apt-get -y install i965-va-driver vainfo
 	docker restart plex
 	
-	echo "please reboot your server"
-	
+	tee <<-EOF
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	✅ PASSED ! PG Hetzner iGPU / GPU HW-Transcode - finish	
+	✅ PASSED ! Please reboot your server , and plex to hardware decode 
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	EOF
+	sleep 10
 elif [ "$typed" == "4" ]; then
 
 	GPU=$(lspci | grep VGA | cut -d ":" -f3);RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2)
@@ -99,7 +114,7 @@ elif [ "$typed" == "4" ]; then
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         apt-get autoremove -yqq 2>&1 >> /dev/null
                 export DEBIAN_FRONTEND=noninteractive
-
+	sleep 10
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
@@ -107,5 +122,5 @@ else
   exit
 fi
 
-bash /opt/plexguide/menu/tools/pghetznerigpu.sh
+bash /opt/plexguide/menu/hetzner/pghetznerigpu.sh
 exit	
