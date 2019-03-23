@@ -32,7 +32,7 @@ if [ "$typed" == "1" ]; then
   question1
 elif [ "$typed" == "2" ]; then
   echo ""
-  curl -LsO raw.githubusercontent.com/Admin9705/plexguide-bench/master/bench.sh; chmod +x bench.sh; chmod +x bench.sh
+  curl -LsO raw.githubusercontent.com/PGBlitz/Bench/master/bench.sh; chmod +x bench.sh; chmod +x bench.sh
   echo ""
   ./bench.sh -a
   echo ""
