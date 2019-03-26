@@ -7,7 +7,7 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'MultiHD' > /var/plexguide/pgcloner.rolename
+echo 'multihd' > /var/plexguide/pgcloner.rolename
 echo 'MultiHD' > /var/plexguide/pgcloner.roleproper
 echo 'MultiHD' > /var/plexguide/pgcloner.projectname
 echo 'v8.6' > /var/plexguide/pgcloner.projectversion
