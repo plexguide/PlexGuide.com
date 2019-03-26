@@ -10,7 +10,7 @@
 echo 'multihd' > /var/plexguide/pgcloner.rolename
 echo 'MultiHD' > /var/plexguide/pgcloner.roleproper
 echo 'MultiHD' > /var/plexguide/pgcloner.projectname
-echo '8.6beta3' > /var/plexguide/pgcloner.projectversion
+echo 'v8.6beta3' > /var/plexguide/pgcloner.projectversion
 echo 'multihd.sh' > /var/plexguide/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
