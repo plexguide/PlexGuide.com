@@ -51,7 +51,7 @@ updateprime() {
   echo "32" > ${abc}/pg.dependency
   echo "11" > ${abc}/pg.docstart
   echo "2" > ${abc}/pg.motd
-  echo "114" > ${abc}/pg.alias
+  echo "115" > ${abc}/pg.alias
   echo "3" > ${abc}/pg.dep
   echo "2" > ${abc}/pg.cleaner
   echo "3" > ${abc}/pg.gcloud
