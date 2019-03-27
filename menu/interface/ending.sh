@@ -25,7 +25,7 @@ cat << "EOF"
 │        -== Team PGBLitz ==-         │
 │ ————————————————————————————————————│
 │ Star PG:        github.pgblitz.com  │
-│ Donate:         github.pgblitz.com  │
+│ Donate:         donate.pgblitz.com  │
 │ ————————————————————————————————————│
 │ Restart PGBlitz:          pgblitz   │
 │ Update  PGBlitz:          pgupdate  │
