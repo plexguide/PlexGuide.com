@@ -29,7 +29,7 @@ _**Table of Contents**_
 <p align="center"><b>PGBlitz Introduction Video</b></p>
 
 <p align="center"><kbd>
-<a href="https://youtu.be/s3hrY2x1a2M"><img src="https://pgblitz.com/press/wp-content/uploads/2019/02/youtube-install-v9-2-1024x578.png" width="600"/></kbd></p>
+<a href="https://youtu.be/8lotdbpsrUE"><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv10.png?raw=true" width="600"/></kbd></p>
 <p align="center">
 
 [**[Click Here]**](https://pgblitz.com/threads/plexguide-install-instructions.243/) for installation instructions to start the process
