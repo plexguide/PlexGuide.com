@@ -1,4 +1,3 @@
-##### WANT TO HELP? CLICK THE ★ (STAR LOGO) in the Upper-Right! 
 <p align="center">
   <a href="https://pgblitz.com/forums" target="_blank"><img src="https://pgblitz.com/wikipics/logo-forums.png" width="160"></a>   
   <a href="https://github.com/PGBlitz/PGBlitz.com/wiki" target="_blank"><img src="https://pgblitz.com/wikipics/logo-wiki.png" width="160"></a>
@@ -25,13 +24,11 @@ _**Table of Contents**_
 
 ## 1. PG YouTube
 
-<p align="center"><kbd>
-<a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv4.png?raw=true" width="600"/></kbd></p>
+<p align="center"><kbd><a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"></a><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv4.png" width="400"></kbd></p>
 <p align="center"><b>PGBlitz Introduction Video</b></p>
 
-<p align="center"><kbd>
-<a href="https://youtu.be/s3hrY2x1a2M"><img src="https://pgblitz.com/press/wp-content/uploads/2019/02/youtube-install-v9-2-1024x578.png" width="600"/></kbd></p>
-<p align="center">
+<p align="center"><kbd><a href="https://youtu.be/8lotdbpsrUE"></a><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv10.png" width="400"></kbd></p>
+<p align="center"><b>PGBlitz Installation Video</b></p>
 
 [**[Click Here]**](https://pgblitz.com/threads/plexguide-install-instructions.243/) for installation instructions to start the process
 
