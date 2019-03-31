@@ -24,7 +24,7 @@ _**Table of Contents**_
 
 ## 1. PG YouTube
 
-<p align="center"><kbd><a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv4.png" width="400"></kbd></p>
+<p align="center"><kbd><a href="http://www.youtube.com/watch?v=FkQ5sOcJGjs"></a><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv4.png" width="400"></kbd></p>
 <p align="center"><b>PGBlitz Introduction Video</b></p>
 
 <p align="center"><kbd><a href="https://youtu.be/8lotdbpsrUE"></a><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv10.png" width="400"></kbd></p>
