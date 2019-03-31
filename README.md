@@ -32,7 +32,7 @@ _**Table of Contents**_
 
 ## 2. Project Statement
 
-<p align="center"><kbd><a href="https://youtu.be/8lotdbpsrUE"><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv10.png" width="400"></kbd></p>
+<p align="center"><kbd><a href="https://youtu.be/8lotdbpsrUE"></a><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv10.png" width="400"></kbd></p>
 <p align="center"><b>PGBlitz Installation Video</b></p>
 
 <p align="center"><kbd><img src="https://pgblitz.com/press/wp-content/uploads/2019/02/explode.gif" width="400""></kbd></p>
