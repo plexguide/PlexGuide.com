@@ -35,7 +35,7 @@ _**Table of Contents**_
 [**[Click Here]**](https://pgblitz.com/threads/plexguide-install-instructions.243/) for installation instructions to start the process
 
 ## 2. Project Statement
-<p align="center"><kbd><img src="https://pgblitz.com/press/wp-content/uploads/2019/02/explode.gif" width="600""></kbd></p>
+<p align="center"><kbd><img src="https://pgblitz.com/press/wp-content/uploads/2019/02/explode.gif" width="400""></kbd></p>
 <p align="center"><b>Manage PGBlitz - AnyTime, Anywhere!</b></p>
 
 **Project Statement:** PGBlitz is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PGBlitz utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
