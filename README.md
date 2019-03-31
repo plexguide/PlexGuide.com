@@ -51,7 +51,7 @@ _**Table of Contents**_
 1. Deploys with a simple installer and a GUI like interface (commands do not have to be typed out)
 
 ## 4. Testimonials
-<p align="center"><kbd><img src="https://pgblitz.com/wikipics/pg-assistyou.gif" width="600""></kbd></p>
+<p align="center"><kbd><img src="https://pgblitz.com/wikipics/pg-assistyou.gif" width="400""></kbd></p>
 
 [**Dexxa:**](https://pgblitz.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install Plex and link Plex to Google Drive, when i just knew how to install Plex on its on, i tried many ways to mount Google Drive to my Plex and couldn't get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
 
