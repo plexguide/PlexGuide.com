@@ -30,7 +30,7 @@ _**Table of Contents**_
 
 <p align="center"><kbd>
 <a href="https://youtu.be/8lotdbpsrUE"><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv10.png?raw=true" width="400"/></kbd></p>
-<p align="center">
+<p align="center"><b>PGBlitz Installation Video</b></p>
 
 [**[Click Here]**](https://pgblitz.com/threads/plexguide-install-instructions.243/) for installation instructions to start the process
 
