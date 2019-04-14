@@ -61,7 +61,7 @@ if [ "$typed" == "1" ]; then
       ethtool -K $network tso off tx off
       sed -i '$a\' /etc/crontab
       sed -i '$a\#################################' /etc/crontab
-      sed -i '$a\##	PG Network tweak	##' /etc/crontab
+      sed -i '$a\##	PG Network tweak	  ' /etc/crontab
       sed -i '$a\#################################' /etc/crontab 
       sed -i '$a\@reboot ethtool -K '$network' tso off tx off\' /etc/crontab
       sleep 2
@@ -78,7 +78,7 @@ elif [ "$typed" == "2" ]; then
       sed -i '$a\' /etc/sysctl.conf
       sed -i '$a\' /etc/sysctl.conf
       sed -i '$a\#########################################' /etc/sysctl.conf
-      sed -i '$a\##	Docker PG Swapness changes	##' /etc/sysctl.conf
+      sed -i '$a\##	Docker PG Swapness changes	  ' /etc/sysctl.conf
       sed -i '$a\#########################################' /etc/sysctl.conf
       sed -i '$a\vm.swappiness=0\' /etc/sysctl.conf
       sed -i '$a\vm.overcommit_memory=1\' /etc/sysctl.conf
@@ -101,7 +101,7 @@ username=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
 		
         sed -i '$a\ ' /etc/logrotate.conf
         sed -i '$a\########################################' /etc/logrotate.conf
-        sed -i '$a\##    PGBlitz Upload logrotate        ##' /etc/logrotate.conf
+        sed -i '$a\##    PGBlitz Upload logrotate          ' /etc/logrotate.conf
         sed -i '$a\########################################' /etc/logrotate.conf
         sed -i '$a\ ' /etc/logrotate.conf
         sed -i '$a\/var/plexguide/logs/*.log {' /etc/logrotate.conf
@@ -116,7 +116,7 @@ username=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
         sed -i '$a\}' /etc/logrotate.conf
         sed -i '$a\ ' /etc/logrotate.conf
         sed -i '$a\######################################' /etc/logrotate.conf
-        sed -i '$a\##    PGBlitz Upload logrotate      ##' /etc/logrotate.conf
+        sed -i '$a\##    PGBlitz Upload logrotate        ' /etc/logrotate.conf
         sed -i '$a\######################################' /etc/logrotate.conf
         sleep 2
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -126,7 +126,7 @@ username=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
         echo " ✅ PASSED ! max age 7 Days "
         echo " ✅ PASSED ! auto delete older logs"
         echo ""
-      	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && sleep 10
+	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && sleep 10
 
 elif [ "$typed" == "4" ]; then
         echo "networktools | vnstat | vnstati install | please wait"
