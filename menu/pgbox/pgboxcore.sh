@@ -268,7 +268,7 @@ EOF
         echo "$boxbranch" > /var/plexguide/boxcore.branch
         pinterface ;;
     2 )
-        existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/PGBlitz-Core" | grep "$boxbranch")
+        existcheck=$(git ls-remote --exit-code -h "https://github.com/$boxuser/Apps-Core" | grep "$boxbranch")
         if [ "$existcheck" == "" ]; then echo;
         read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
         mainbanner; fi
