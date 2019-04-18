@@ -345,7 +345,7 @@ fi
 
 pythonstart () {
 
-  ansible="2.8.0b1"
+  ansible="2.7.8"
   pip="19.0.2"
 
   apt-get install -y --reinstall \
