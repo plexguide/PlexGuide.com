@@ -38,7 +38,8 @@ cat << "EOF"
 EOF
 
 if [[ ! -e "/bin/pgblitz" ]]; then
-  cp /opt/plexguide/menu/alias/templates/pgblitz /bin/ &>/dev/null &
-  chown 1000:1000 /bin/pgblitz
-  chmod 0755 /bin/pgblitz
+  cp /opt/plexguide/menu/alias/templates/pgblitz /bin
 fi
+
+chown 1000:1000 /bin/pgblitz &>/dev/null &
+chmod 0755 /bin/pgblitz &>/dev/null &
