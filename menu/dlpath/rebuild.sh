@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+# 
 # Title:      PGBlitz (Reference Title File)
 # Author(s):  Admin9705 - Deiteq
 # URL:        https://pgblitz.com - http://github.pgblitz.com
