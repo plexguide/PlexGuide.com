@@ -65,7 +65,7 @@
 
     - name: Clone Fork
       git:
-        repo: "https://github.com/{{projectfinal.stdout}}/PGBlitz.com-The-Awesome-Plex-Server"
+        repo: "https://github.com/{{projectfinal.stdout}}/PGBlitz.com"
         dest: /opt/plexguide
         version: "{{versionfinal.stdout}}"
         force: yes
