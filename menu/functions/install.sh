@@ -344,6 +344,10 @@ fi
 }
 
 pythonstart () {
+
+  ansible="2.7.8"
+  pip="19.0.2"
+
   apt-get install -y --reinstall \
       nano \
       git \
@@ -354,15 +358,15 @@ pythonstart () {
       python3-pip \
       python-dev \
       python-pip
-  python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==9.0.3
+  python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==${pip}
   python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
   python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
       pyOpenSSL \
       requests \
       netaddr
-  python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==9.0.3
+  python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==${pip}
   python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
-  python -m pip install --disable-pip-version-check --upgrade --force-reinstall ansible==${1-2.7.8}
+  python -m pip install --disable-pip-version-check --upgrade --force-reinstall ansible==${1-$ansible}
 
   ## Copy pip to /usr/bin
   cp /usr/local/bin/pip /usr/bin/pip
