@@ -297,7 +297,7 @@ rclone --config /opt/appdata/plexguide/rclone.conf \
 --stats-one-line --stats 1s --progress \
 moveto ${tarlocation}/${program_var}.tar \
 gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
--v --checksum --drive-chunk-size=64M --transfers=8
+-v --checksum --drive-chunk-size=64M --transfers=8 --user-agent="backup" 
 
 ##### Remove File Incase
 rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
@@ -353,7 +353,7 @@ rclone --config /opt/appdata/plexguide/rclone.conf --stats-one-line \
 --stats 1s --progress \
 copy gdrive:/plexguide/backup/${srecall}/${program_var}.tar \
 ${tarlocation} \
--v --checksum --drive-chunk-size=64M --transfers=8
+-v --checksum --drive-chunk-size=64M --transfers=8 --user-agent="backup"
 
 ##### Stop Docker Container if Running
 runningcheck
