@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# Title:      PGBlitz (local space used service)
+# YML Author: Admin9705
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Check Service's Existance
+      stat:
+        path: "/etc/systemd/systemd/localspace.service"
+      register: pgp
+    - name: Stop service
+      service:
+        name: localspace
+        state: stopped
+      when: pgp.stat.exists
+    - name: localspace Service
+      template:
+        src: /opt/plexguide/menu/pgui/localspace.service
+        dest: /etc/systemd/system/localspace.service
+        force: yes
+        
+    - name: Daemon-Reload
+      systemd: state=stopped name=localspace daemon_reload=yes enabled=no
+    - name: Start pgscan
+      systemd: state=started name=localspace enabled=yes
