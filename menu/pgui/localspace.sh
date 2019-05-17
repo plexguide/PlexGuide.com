@@ -8,7 +8,7 @@
 ################################################################################
 while [ 1 ]; do
 
- rm -rf /var/plexguide/logs/spaceused.log
+ rm -rf /var/plexguide/spaceused.log
 
 	 du -sh /mnt/downloads | awk '{print $1}' >> /var/plexguide/spaceused.log
 	 du -sh /mnt/move | awk '{print $1}' >> /var/plexguide/spaceused.log
