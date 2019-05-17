@@ -258,9 +258,14 @@ motd () {
 }
 
 mountcheck () {
-  bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
-  ansible-playbook /opt/pgui/pgui.yml
-  ansible-playbook /opt/plexguide/menu/pgui/mcdeploy.yml
+bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
+ansible-playbook /opt/pgui/pgui.yml
+ansible-playbook /opt/plexguide/menu/pgui/mcdeploy.yml
+}
+
+localspace () {
+ansible-playbook /opt/pgui/pgui.yml
+ansible-playbook /opt/plexguide/menu/pgui/localspace.yml
 
 tee <<-EOF
 
