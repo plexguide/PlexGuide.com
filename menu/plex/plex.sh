@@ -36,8 +36,8 @@ tee <<-EOF
 EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then echo public > /var/plexguide/plex.extension && question2;
-elif [ "$typed" == "2" ]; then echo plexpass > /var/plexguide/plex.extension && question2;
+  if [ "$typed" == "1" ]; then echo public > /pg/var/plex.extension && question2;
+elif [ "$typed" == "2" ]; then echo plexpass > /pg/var/plex.extension && question2;
 else badinput; fi
 }
 
@@ -61,8 +61,8 @@ EOF
 
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   echo ""
-  if [ "$typed" == "1" ]; then echo remote > /var/plexguide/plex.server && question3;
-elif [ "$typed" == "2" ]; then echo local > /var/plexguide/plex.server;
+  if [ "$typed" == "1" ]; then echo remote > /pg/var/plex.server && question3;
+elif [ "$typed" == "2" ]; then echo local > /pg/var/plex.server;
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput2; fi
 }
@@ -83,7 +83,7 @@ this step as you won't need to claim it again.
 EOF
 
   read -p 'Plex Server Claim Number | Press [ENTER]: ' typed < /dev/tty
-  echo $typed > /var/plexguide/plex.claim && break=on;
+  echo $typed > /pg/var/plex.claim && break=on;
 }
 
 # FUNCTIONS END ##############################################################

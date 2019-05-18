@@ -10,8 +10,8 @@ source /opt/plexguide/menu/functions/install.sh
 # Menu Interface
 setstart() {
 
-emdisplay=$(cat /var/plexguide/emergency.display)
-switchcheck=$(cat /var/plexguide/pgui.switch)
+emdisplay=$(cat /pg/var/emergency.display)
+switchcheck=$(cat /pg/var/pgui.switch)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -51,17 +51,17 @@ case $typed in
       echo "Standby ..."
       echo
       if [[ "$switchcheck" == "On" ]]; then
-         echo "Off" > /var/plexguide/pgui.switch
+         echo "Off" > /pg/var/pgui.switch
          docker stop pgui
          docker rm pgui
-      else echo "On" > /var/plexguide/pgui.switch
+      else echo "On" > /pg/var/pgui.switch
         bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
         ansible-playbook /opt/pgui/pgui.yml
       fi
       setstart ;;
     7)
-       if [[ "$emdisplay" == "On" ]]; then echo "Off" > /var/plexguide/emergency.display
-       else echo "On" > /var/plexguide/emergency.display; fi
+       if [[ "$emdisplay" == "On" ]]; then echo "Off" > /pg/var/emergency.display
+       else echo "On" > /pg/var/emergency.display; fi
        setstart ;;
     z )
       exit ;;

@@ -9,11 +9,11 @@
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
 
-rolename=$(cat /var/plexguide/pgcloner.rolename)
-roleproper=$(cat /var/plexguide/pgcloner.roleproper)
-projectname=$(cat /var/plexguide/pgcloner.projectname)
-projectversion=$(cat /var/plexguide/pgcloner.projectversion)
-startlink=$(cat /var/plexguide/pgcloner.startlink)
+rolename=$(cat /pg/var/pgcloner.rolename)
+roleproper=$(cat /pg/var/pgcloner.roleproper)
+projectname=$(cat /pg/var/pgcloner.projectname)
+projectversion=$(cat /pg/var/pgcloner.projectversion)
+startlink=$(cat /pg/var/pgcloner.startlink)
 
 mkdir -p "/opt/$rolename"
 
@@ -46,7 +46,7 @@ custom () {
 }
 
 mainbanner () {
-clonerinfo=$(cat /var/plexguide/pgcloner.info)
+clonerinfo=$(cat /pg/var/pgcloner.info)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -68,8 +68,8 @@ case $typed in
     1 )
         initial ;;
     2 )
-        variable /var/plexguide/$rolename.user "NOT-SET"
-        variable /var/plexguide/$rolename.branch "NOT-SET"
+        variable /pg/var/$rolename.user "NOT-SET"
+        variable /pg/var/$rolename.branch "NOT-SET"
         pinterface ;;
     z )
         exit ;;
@@ -82,8 +82,8 @@ esac
 
 pinterface () {
 
-user=$(cat /var/plexguide/$rolename.user)
-branch=$(cat /var/plexguide/$rolename.branch)
+user=$(cat /pg/var/$rolename.user)
+branch=$(cat /pg/var/$rolename.branch)
 
 tee <<-EOF
 
@@ -116,8 +116,8 @@ default or selected branch!
 EOF
         read -p 'Username | Press [ENTER]: ' user < /dev/tty
         read -p 'Branch   | Press [ENTER]: ' branch < /dev/tty
-        echo "$user" > /var/plexguide/$rolename.user
-        echo "$branch" > /var/plexguide/$rolename.branch
+        echo "$user" > /pg/var/$rolename.user
+        echo "$branch" > /pg/var/$rolename.branch
         pinterface ;;
     2 )
         existcheck=$(git ls-remote --exit-code -h "https://github.com/$user/$projectname" | grep "$branch")
@@ -135,5 +135,5 @@ esac
 }
 
 # FUNCTIONS END ##############################################################
-echo "" > /tmp/output.info
+echo "" > /pg/tmp/output.info
 mainbanner

@@ -5,11 +5,11 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-program=$(cat /tmp/program_var)
-domain=$(cat /var/plexguide/server.domain)
-port=$(cat /tmp/program_port)
-ip=$(cat /var/plexguide/server.ip)
-ports=$(cat /var/plexguide/server.ports)
+program=$(cat /pg/tmp/program_var)
+domain=$(cat /pg/var/server.domain)
+port=$(cat /pg/tmp/program_port)
+ip=$(cat /pg/var/server.ip)
+ports=$(cat /pg/var/server.ports)
 
 if [ "$program" == "plex" ]; then extra="/web"; else extra=""; fi
 

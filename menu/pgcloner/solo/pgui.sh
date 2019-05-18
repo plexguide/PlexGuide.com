@@ -7,10 +7,10 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'pgui' > /var/plexguide/pgcloner.rolename
-echo 'UI' > /var/plexguide/pgcloner.roleproper
-echo 'BlitzUI' > /var/plexguide/pgcloner.projectname
-echo 'v8.6' > /var/plexguide/pgcloner.projectversion
+echo 'pgui' > /pg/var/pgcloner.rolename
+echo 'UI' > /pg/var/pgcloner.roleproper
+echo 'BlitzUI' > /pg/var/pgcloner.projectname
+echo 'v8.6' > /pg/var/pgcloner.projectversion
 
 ### START PROCESS
 ansible-playbook /opt/plexguide/menu/pgcloner/core/primary.yml

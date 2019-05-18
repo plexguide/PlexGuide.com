@@ -5,38 +5,38 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-echo 9 > /var/plexguide/menu.number
+echo 9 > /pg/var/menu.number
 
-gcloud info | grep Account: | cut -c 10- > /var/plexguide/project.account
+gcloud info | grep Account: | cut -c 10- > /pg/var/project.account
 
-file="/var/plexguide/project.final"
+file="/pg/var/project.final"
   if [ ! -e "$file" ]; then
-    echo "[NOT SET]" > /var/plexguide/project.final
+    echo "[NOT SET]" > /pg/var/project.final
   fi
 
-file="/var/plexguide/project.processor"
+file="/pg/var/project.processor"
   if [ ! -e "$file" ]; then
-    echo "NOT-SET" > /var/plexguide/project.processor
+    echo "NOT-SET" > /pg/var/project.processor
   fi
 
-file="/var/plexguide/project.location"
+file="/pg/var/project.location"
   if [ ! -e "$file" ]; then
-    echo "NOT-SET" > /var/plexguide/project.location
+    echo "NOT-SET" > /pg/var/project.location
   fi
 
-file="/var/plexguide/project.ipregion"
+file="/pg/var/project.ipregion"
   if [ ! -e "$file" ]; then
-    echo "NOT-SET" > /var/plexguide/project.ipregion
+    echo "NOT-SET" > /pg/var/project.ipregion
   fi
 
-file="/var/plexguide/project.ipaddress"
+file="/pg/var/project.ipaddress"
   if [ ! -e "$file" ]; then
-    echo "IP NOT-SET" > /var/plexguide/project.ipaddress
+    echo "IP NOT-SET" > /pg/var/project.ipaddress
   fi
 
-file="/var/plexguide/gce.deployed"
+file="/pg/var/gce.deployed"
   if [ -e "$file" ]; then
-    echo "Server Deployed" > /var/plexguide/gce.deployed.status
+    echo "Server Deployed" > /pg/var/gce.deployed.status
   else
-    echo "Not Deployed" > /var/plexguide/gce.deployed.status
+    echo "Not Deployed" > /pg/var/gce.deployed.status
   fi

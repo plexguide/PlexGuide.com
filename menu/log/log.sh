@@ -6,5 +6,5 @@
 # GNU:        General Public License v3.0
 ################################################################################
 dt=`date '+%d/%m/%Y %H:%M:%S'`
-log=$( cat /var/plexguide/logs/pg.log )
-echo "$dt $log" >> "/var/plexguide/logs/pg.log"
+log=$( cat /pg/var/logs/pg.log )
+echo "$dt $log" >> "/pg/var/logs/pg.log"

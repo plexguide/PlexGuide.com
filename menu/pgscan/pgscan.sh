@@ -15,7 +15,7 @@
 ################################################################################
 
 # KEY VARIABLE RECALL & EXECUTION
-mkdir -p /var/plexguide/pgscan
+mkdir -p /pg/var/pgscan
 
 # FUNCTIONS START ##############################################################
 
@@ -47,11 +47,11 @@ EOF
 }
 
 token () {
- touch /var/plexguide/plex.token
- ptoken=$(cat /var/plexguide/plex.token)
+ touch /pg/var/plex.token
+ ptoken=$(cat /pg/var/plex.token)
  if [ "$ptoken" == "" ]; then
    bash /opt/plexguide/menu/plex/token.sh
-   ptoken=$(cat /var/plexguide/plex.token)
+   ptoken=$(cat /pg/var/plex.token)
    if [ "$ptoken" == "" ]; then
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

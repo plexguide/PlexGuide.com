@@ -8,10 +8,10 @@
 
 ######################################################## Declare Variables
 sname="PG Installer: Set PG Edition"
-pg_edition=$( cat /var/plexguide/pg.edition )
-pg_edition_stored=$( cat /var/plexguide/pg.edition.stored )
+pg_edition=$( cat /pg/var/pg.edition )
+pg_edition_stored=$( cat /pg/var/pg.edition.stored )
 ######################################################## START: PG Log
-sudo echo "INFO - Start of Script: $sname" > /var/plexguide/logs/pg.log
+sudo echo "INFO - Start of Script: $sname" > /pg/var/logs/pg.log
 sudo bash /opt/plexguide/menu/log/log.sh
 ######################################################## START: Main Script
 if [ "$pg_edition" == "$pg_edition_stored" ]; then
@@ -23,5 +23,5 @@ fi
 #
 #
 ######################################################## END: PG Log
-sudo echo "INFO - END of Script: $sname" > /var/plexguide/logs/pg.log
+sudo echo "INFO - END of Script: $sname" > /pg/var/logs/pg.log
 sudo bash /opt/plexguide/menu/log/log.sh

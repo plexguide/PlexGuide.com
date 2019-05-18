@@ -15,7 +15,7 @@
   - name: Install Docker Reboot
     template:
       src: v2dockerscript.js2
-      dest: /opt/appdata/plexguide/v2dockerscript.sh
+      dest: /pg/data/blitz/v2dockerscript.sh
       force: yes
 ########################################## Remove Old Services
 
@@ -27,7 +27,7 @@
   - name: Remove Old Docker File
     file:
       state: absent
-      path: /opt/appdata/plexguide/docstart.sh
+      path: /pg/data/blitz/docstart.sh
 
 ########################################## New Service
 

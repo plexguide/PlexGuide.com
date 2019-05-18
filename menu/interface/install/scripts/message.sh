@@ -5,7 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-message=$(cat /var/plexguide/message.phase)
+message=$(cat /pg/var/message.phase)
 
 echo ""
 echo "----------------------------------------------------"

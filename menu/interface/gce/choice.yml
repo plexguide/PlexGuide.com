@@ -7,27 +7,27 @@
 ################################################################################
 ---
 - name: Register Project
-  shell: "cat /var/plexguide/project.final"
+  shell: "cat /pg/var/project.final"
   register: project
 
 - name: Register Account
-  shell: "cat /var/plexguide/project.account"
+  shell: "cat /pg/var/project.account"
   register: account
 
 - name: Register Processor Count
-  shell: "cat /var/plexguide/project.processor"
+  shell: "cat /pg/var/project.processor"
   register: processor
 
 - name: Register IP region
-  shell: "cat /var/plexguide/project.ipregion"
+  shell: "cat /pg/var/project.ipregion"
   register: ipregion
 
 - name: Register IP region
-  shell: "cat /var/plexguide/project.ipaddress"
+  shell: "cat /pg/var/project.ipaddress"
   register: ipaddress
 
 - name: Register Deployment Status
-  shell: "cat /var/plexguide/gce.deployed.status"
+  shell: "cat /pg/var/gce.deployed.status"
   register: deployment
 
 - name: "Key Menu Facts"

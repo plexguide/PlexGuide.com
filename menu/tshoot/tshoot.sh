@@ -32,16 +32,16 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-    echo "0" > /var/plexguide/pg.preinstall.stored
-    echo "0" > /var/plexguide/pg.ansible.stored
-    echo "0" > /var/plexguide/pg.rclone.stored
-    echo "0" > /var/plexguide/pg.python.stored
-    echo "0" > /var/plexguide/pg.docker.stored
-    echo "0" > /var/plexguide/pg.docstart.stored
-    echo "0" > /var/plexguide/pg.watchtower.stored
-    echo "0" > /var/plexguide/pg.label.stored
-    echo "0" > /var/plexguide/pg.alias.stored
-    echo "0" > /var/plexguide/pg.dep.stored
+    echo "0" > /pg/var/pg.preinstall.stored
+    echo "0" > /pg/var/pg.ansible.stored
+    echo "0" > /pg/var/pg.rclone.stored
+    echo "0" > /pg/var/pg.python.stored
+    echo "0" > /pg/var/pg.docker.stored
+    echo "0" > /pg/var/pg.docstart.stored
+    echo "0" > /pg/var/pg.watchtower.stored
+    echo "0" > /pg/var/pg.label.stored
+    echo "0" > /pg/var/pg.alias.stored
+    echo "0" > /pg/var/pg.dep.stored
 
 tee <<-EOF
 
@@ -63,16 +63,16 @@ sleep 3
   rm -rf /etc/docker
   apt-get purge docker-ce
   rm -rf /var/lib/docker
-  rm -rf /var/plexguide/dep*
-  echo "0" > /var/plexguide/pg.preinstall.stored
-  echo "0" > /var/plexguide/pg.ansible.stored
-  echo "0" > /var/plexguide/pg.rclone.stored
-  echo "0" > /var/plexguide/pg.python.stored
-  echo "0" > /var/plexguide/pg.docstart.stored
-  echo "0" > /var/plexguide/pg.watchtower.stored
-  echo "0" > /var/plexguide/pg.label.stored
-  echo "0" > /var/plexguide/pg.alias.stored
-  echo "0" > /var/plexguide/pg.dep
+  rm -rf /pg/var/dep*
+  echo "0" > /pg/var/pg.preinstall.stored
+  echo "0" > /pg/var/pg.ansible.stored
+  echo "0" > /pg/var/pg.rclone.stored
+  echo "0" > /pg/var/pg.python.stored
+  echo "0" > /pg/var/pg.docstart.stored
+  echo "0" > /pg/var/pg.watchtower.stored
+  echo "0" > /pg/var/pg.label.stored
+  echo "0" > /pg/var/pg.alias.stored
+  echo "0" > /pg/var/pg.dep
 
 tee <<-EOF
 
@@ -90,7 +90,7 @@ tee <<-EOF
 EOF
 sleep 3
 
-  echo "uninstall" > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  echo "uninstall" > /pg/var/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else

@@ -104,7 +104,7 @@ username=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
         sed -i '$a\##    PGBlitz Upload logrotate          ' /etc/logrotate.conf
         sed -i '$a\########################################' /etc/logrotate.conf
         sed -i '$a\ ' /etc/logrotate.conf
-        sed -i '$a\/var/plexguide/logs/*.log {' /etc/logrotate.conf
+        sed -i '$a\/pg/var/logs/*.log {' /etc/logrotate.conf
         sed -i '$a\     su '$username' '$username' ' /etc/logrotate.conf
         sed -i '$a\     rotate 7' /etc/logrotate.conf
         sed -i '$a\     daily' /etc/logrotate.conf

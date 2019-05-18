@@ -5,18 +5,18 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-docker ps -a --format "{{.Names}}"  > /var/plexguide/container.running
+docker ps -a --format "{{.Names}}"  > /pg/var/container.running
 
-sed -i -e "/traefik/d" /var/plexguide/container.running
-sed -i -e "/watchtower/d" /var/plexguide/container.running
-sed -i -e "/wp-*/d" /var/plexguide/container.running
-sed -i -e "/plex/d" /var/plexguide/container.running
-sed -i -e "/bitwarden/d" /var/plexguide/container.running
-sed -i -e "/ombi/d" /var/plexguide/container.running
-sed -i -e "/portainer/d" /var/plexguide/container.running
-sed -i -e "/dockergc/d" /var/plexguide/container.running
+sed -i -e "/traefik/d" /pg/var/container.running
+sed -i -e "/watchtower/d" /pg/var/container.running
+sed -i -e "/wp-*/d" /pg/var/container.running
+sed -i -e "/plex/d" /pg/var/container.running
+sed -i -e "/bitwarden/d" /pg/var/container.running
+sed -i -e "/ombi/d" /pg/var/container.running
+sed -i -e "/portainer/d" /pg/var/container.running
+sed -i -e "/dockergc/d" /pg/var/container.running
 
-count=$(wc -l < /var/plexguide/container.running)
+count=$(wc -l < /pg/var/container.running)
 ((count++))
 ((count--))
 
@@ -28,7 +28,7 @@ tee <<-EOF
 EOF
 
 for ((i=1; i<$count+1; i++)); do
-	app=$(sed "${i}q;d" /var/plexguide/container.running)
+	app=$(sed "${i}q;d" /pg/var/container.running)
 
 tee <<-EOF
 

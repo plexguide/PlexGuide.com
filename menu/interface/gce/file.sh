@@ -5,7 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-menu=$(cat /var/plexguide/final.choice)
+menu=$(cat /pg/var/final.choice)
 
 if [ "$menu" == "2" ]; then
   ########## Server Must Not Be Deployed - START
@@ -28,7 +28,7 @@ if [ "$menu" == "2" ]; then
   ########## Server Must Not Be Deployed - END
 
   gcloud auth login
-  echo "[NOT SET]" > /var/plexguide/project.final
+  echo "[NOT SET]" > /pg/var/project.final
 fi
 
 if [ "$menu" == "3" ]; then
@@ -110,7 +110,7 @@ if [ "$menu" == "4" ]; then
   fi
   ########## Server Must Not Be Deployed - END
 
-  gcloud projects list && gcloud projects list > /var/plexguide/projects.list
+  gcloud projects list && gcloud projects list > /pg/var/projects.list
   echo ""
   echo "------------------------------------------------------------------------------"
   echo "SYSTEM MESSAGE: GCloud Project Interface"
@@ -141,12 +141,12 @@ if [ "$menu" == "4" ]; then
     echo "SYSTEM MESSAGE: Project Selection Interface"
     echo "------------------------------------------------------------------------------"
     echo ""
-    cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2
-    cat /var/plexguide/projects.list | cut -d' ' -f1 | tail -n +2 > /var/plexguide/project.cut
+    cat /pg/var/projects.list | cut -d' ' -f1 | tail -n +2
+    cat /pg/var/projects.list | cut -d' ' -f1 | tail -n +2 > /pg/var/project.cut
     echo ""
     echo "NOTE: Type the Name of the Project you want to utilize!"
     read -p 'Type the Name of the Project to Utlize & Press [ENTER]: ' typed
-    list=$(cat /var/plexguide/project.cut | grep $typed)
+    list=$(cat /pg/var/project.cut | grep $typed)
     echo ""
 
     if [ "$typed" != "$list" ]; then
@@ -185,8 +185,8 @@ if [ "$menu" == "4" ]; then
     fi
   done
 
-  echo $typed > /var/plexguide/project.final
-  echo 'INFO - Selected: Exiting Application Suite Interface' > /var/plexguide/logs/pg.log && bash /opt/plexguide/menu/log/log.sh
+  echo $typed > /pg/var/project.final
+  echo 'INFO - Selected: Exiting Application Suite Interface' > /pg/var/logs/pg.log && bash /opt/plexguide/menu/log/log.sh
   exit
 fi
 
@@ -207,7 +207,7 @@ if [ "$menu" == "5" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
-  project=$(cat /var/plexguide/project.final)
+  project=$(cat /pg/var/project.final)
   projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
@@ -248,7 +248,7 @@ if [ "$menu" == "5" ]; then
   ########## Server Must Not Be Deployed - END
 
   ### Part 1
-  pcount=$(cat /var/plexguide/project.processor)
+  pcount=$(cat /pg/var/project.processor)
   echo ""
   echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Current Processor Count Interface"
@@ -304,7 +304,7 @@ if [ "$menu" == "5" ]; then
       echo "SYSTEM MESSAGE: Passed! Process Count $typed Set"
       echo "----------------------------------------------"
       echo ""
-      echo $typed > /var/plexguide/project.processor
+      echo $typed > /pg/var/project.processor
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       break=on
     fi
@@ -330,7 +330,7 @@ if [ "$menu" == "6" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
-  project=$(cat /var/plexguide/project.final)
+  project=$(cat /pg/var/project.final)
   projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
@@ -370,26 +370,26 @@ if [ "$menu" == "6" ]; then
   fi
   ########## Server Must Not Be Deployed - END
 
-gcloud compute regions list | awk '{print $1}' | tail -n +2 > /tmp/regions.list
+gcloud compute regions list | awk '{print $1}' | tail -n +2 > /pg/tmp/regions.list
 num=0
-echo " " > /tmp/regions.print
+echo " " > /pg/tmp/regions.print
 
 while read p; do
-  echo -n $p >> /tmp/regions.print
-  echo -n " " >> /tmp/regions.print
+  echo -n $p >> /pg/tmp/regions.print
+  echo -n " " >> /pg/tmp/regions.print
 
   num=$[num+1]
   if [ $num == 5 ]; then
     num=0
-    echo " " >> /tmp/regions.print
+    echo " " >> /pg/tmp/regions.print
   fi
-done </tmp/regions.list
+done </pg/tmp/regions.list
 
 ### Part 2
-#gcloud compute regions list | awk '{print $1}' | tail -n +2 > /var/plexguide/project.region
+#gcloud compute regions list | awk '{print $1}' | tail -n +2 > /pg/var/project.region
 
 typed=nullstart
-prange=$(cat /tmp/regions.print)
+prange=$(cat /pg/tmp/regions.print)
 tcheck=""
 break=off
 while [ "$break" == "off" ]; do
@@ -397,7 +397,7 @@ while [ "$break" == "off" ]; do
   echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Google Cloud IP Regions List"
   echo "--------------------------------------------------------"
-  cat /tmp/regions.print
+  cat /pg/tmp/regions.print
   echo "" && echo ""
   read -p 'Type the Name of an IP Region | PRESS [ENTER]: ' typed
   echo ""
@@ -416,7 +416,7 @@ while [ "$break" == "off" ]; do
     echo "SYSTEM MESSAGE: Passed! IP Region $typed Set"
     echo "--------------------------------------------------------"
     echo ""
-    echo $typed > /var/plexguide/project.ipregion
+    echo $typed > /pg/var/project.ipregion
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
     echo ""
     echo ""
@@ -434,8 +434,8 @@ echo "NOTE: Please Standby"
   break=off
   while [ "$break" == off ]; do
 
-  gcloud compute addresses list | grep pg-gce | tail -n +1 > /tmp/ip.delete
-  ipdelete=$(cat /tmp/ip.delete)
+  gcloud compute addresses list | grep pg-gce | tail -n +1 > /pg/tmp/ip.delete
+  ipdelete=$(cat /pg/tmp/ip.delete)
     if [ "$ipdelete" != "" ]; then
     regdelete=$(gcloud compute addresses list | grep pg-gce | head -n +1 | awk '{print $2}')
     addprint=$(gcloud compute addresses list | grep pg-gce | head -n +1 | awk '{print $3}')
@@ -456,11 +456,11 @@ echo "--------------------------------------------------------"
 echo ""
 echo "NOTE: Please Standby"
 echo ""
-projectname=$(cat /var/plexguide/project.final)
-region=$(cat /var/plexguide/project.ipregion)
+projectname=$(cat /pg/var/project.final)
+region=$(cat /pg/var/project.ipregion)
 gcloud compute addresses create pg-gce --region $region --project $projectname
-gcloud compute addresses list | grep pg-gce | awk '{print $3}' > /var/plexguide/project.ipaddress
-ipaddress=$(cat /var/plexguide/project.ipaddress)
+gcloud compute addresses list | grep pg-gce | awk '{print $3}' > /pg/var/project.ipaddress
+ipaddress=$(cat /pg/var/project.ipaddress)
 sleep 1.5
 echo "" & echo ""
 echo "--------------------------------------------------------"
@@ -491,25 +491,25 @@ inslist=$(gcloud compute instances list | grep pg-gce)
 ########## Server Must Not Be Deployed - END
 
 ### Part 1
-ipregion=$(cat /var/plexguide/project.ipregion)
-gcloud compute zones list | awk '{print $1}' | tail -n +2 | grep $ipregion > /tmp/zones.list
+ipregion=$(cat /pg/var/project.ipregion)
+gcloud compute zones list | awk '{print $1}' | tail -n +2 | grep $ipregion > /pg/tmp/zones.list
 num=0
-echo " " > /tmp/zones.print
+echo " " > /pg/tmp/zones.print
 
   while read p; do
-    echo -n $p >> /tmp/zones.print
-    echo -n " " >> /tmp/zones.print
+    echo -n $p >> /pg/tmp/zones.print
+    echo -n " " >> /pg/tmp/zones.print
 
     num=$[num+1]
     if [ $num == 4 ]; then
       num=0
-      echo " " >> /tmp/zones.print
+      echo " " >> /pg/tmp/zones.print
     fi
-  done </tmp/zones.list
+  done </pg/tmp/zones.list
 
 ### Part 2
 typed=nullstart
-prange=$(cat /tmp/zones.print)
+prange=$(cat /pg/tmp/zones.print)
 tcheck=""
 break=off
   while [ "$break" == "off" ]; do
@@ -517,7 +517,7 @@ break=off
   echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: Google Cloud Server Zones List"
   echo "--------------------------------------------------------"
-  cat /tmp/zones.print
+  cat /pg/tmp/zones.print
   echo ""
   echo ""
   read -p 'Type a Server Zone Name | PRESS [ENTER]: ' typed
@@ -537,7 +537,7 @@ break=off
       echo "SYSTEM MESSAGE: Passed! Location $typed Set"
       echo "----------------------------------------------"
       echo ""
-      echo $typed > /var/plexguide/project.location
+      echo $typed > /pg/var/project.location
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       break=on
     fi
@@ -565,7 +565,7 @@ if [ "$menu" == "7" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
-  project=$(cat /var/plexguide/project.final)
+  project=$(cat /pg/var/project.final)
   projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
@@ -592,11 +592,11 @@ if [ "$menu" == "7" ]; then
   echo "--------------------------------------------------------"
   echo ""
   ##########
-  project=$(cat /var/plexguide/project.final)
-  ipaddress=$(cat /var/plexguide/project.ipaddress)
-  location=$(cat /var/plexguide/project.location)
-  region=$(cat /var/plexguide/project.ipregion)
-  cpu=$(cat /var/plexguide/project.processor)
+  project=$(cat /pg/var/project.final)
+  ipaddress=$(cat /pg/var/project.ipaddress)
+  location=$(cat /pg/var/project.location)
+  region=$(cat /pg/var/project.ipregion)
+  cpu=$(cat /pg/var/project.processor)
 
   inslist=$(gcloud compute instances list | grep pg-gce)
   if [ "$inslist" != "" ]; then
@@ -695,7 +695,7 @@ finalchecks=$(gcloud compute instances list | grep pg-gce)
     echo "--------------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-    touch /var/plexguide/gce.deployed
+    touch /pg/var/gce.deployed
   else
     echo "--------------------------------------------------------"
     echo "SYSTEM MESSAGE: Deployment Failed"
@@ -726,7 +726,7 @@ if [ "$menu" == "8" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
-  project=$(cat /var/plexguide/project.final)
+  project=$(cat /pg/var/project.final)
   projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
@@ -760,7 +760,7 @@ echo ""
 read -n 1 -s -r -p "Press [ANY KEY] to Continue "
 echo ""
 echo ""
-ipproject=$(cat /var/plexguide/project.location)
+ipproject=$(cat /pg/var/project.location)
 gcloud compute ssh pg-gce --zone "$ipproject"
 echo ""
 echo "--------------------------------------------------------"
@@ -789,7 +789,7 @@ if [ "$menu" == "9" ]; then
   fi
   ############################## BILLING CHECKS - END
   ############################## PROJECT BILLING CHECKS - START
-  project=$(cat /var/plexguide/project.final)
+  project=$(cat /pg/var/project.final)
   projectlink=$(gcloud beta billing accounts list | grep "\<True\>" | awk '{ print $1 }')
   billingcheck=$(gcloud beta billing projects link $project --billing-account $projectlink | grep "billingEnabled: true")
   if [ "$billingcheck" == "" ]; then
@@ -814,12 +814,12 @@ if [ "$menu" == "9" ]; then
   echo "SYSTEM MESSAGE: Destroying GCE Server"
   echo "--------------------------------------------------------"
   echo ""
-  location=$(cat /var/plexguide/project.location)
+  location=$(cat /pg/var/project.location)
   echo "NOTE: Please Standby"
   echo ""
   gcloud compute instances delete pg-gce --quiet --zone "$location"
   rm -rf /root/.ssh/google_compute_engine 1>/dev/null 2>&1
-  rm -rf /var/plexguide/gce.deployed 1>/dev/null 2>&1
+  rm -rf /pg/var/gce.deployed 1>/dev/null 2>&1
   echo ""
   echo "--------------------------------------------------------"
   echo "SYSTEM MESSAGE: PG GCE Server Destroyed!"

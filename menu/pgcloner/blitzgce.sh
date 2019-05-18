@@ -7,16 +7,16 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'blitzgce' > /var/plexguide/pgcloner.rolename
-echo 'BlitzGCE' > /var/plexguide/pgcloner.roleproper
-echo 'BlitzGCE' > /var/plexguide/pgcloner.projectname
-echo 'v8.6' > /var/plexguide/pgcloner.projectversion
-echo 'blitzgce.sh' > /var/plexguide/pgcloner.startlink
+echo 'blitzgce' > /pg/var/pgcloner.rolename
+echo 'BlitzGCE' > /pg/var/pgcloner.roleproper
+echo 'BlitzGCE' > /pg/var/pgcloner.projectname
+echo 'v8.6' > /pg/var/pgcloner.projectversion
+echo 'blitzgce.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 Blitz GCE scripts are setup so that users can deploy any
 Google Cloud Edition container to act as as feeder between two to
-three months!" > /var/plexguide/pgcloner.info
+three months!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS

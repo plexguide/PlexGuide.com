@@ -5,15 +5,15 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-echo "dummy" > /var/plexguide/final.choice
+echo "dummy" > /pg/var/final.choice
 
-#### Note How to Make It Select a Type - echo "removal" > /var/plexguide/type.choice
-program=$(cat /var/plexguide/type.choice)
+#### Note How to Make It Select a Type - echo "removal" > /pg/var/type.choice
+program=$(cat /pg/var/type.choice)
 
 menu=$(echo "on")
 
 while [ "$menu" != "break" ]; do
-menu=$(cat /var/plexguide/final.choice)
+menu=$(cat /pg/var/final.choice)
 
 ### Loads Key Variables
 bash /opt/plexguide/menu/interface/$program/var.sh
@@ -23,7 +23,7 @@ ansible-playbook /opt/plexguide/menu/core/selection.yml
 bash /opt/plexguide/menu/interface/$program/file.sh
 
 ### Calls Variable Again - Incase of Break
-menu=$(cat /var/plexguide/final.choice)
+menu=$(cat /pg/var/final.choice)
 
 if [ "$menu" == "break" ];then
 echo ""

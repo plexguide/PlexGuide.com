@@ -12,7 +12,7 @@
 
 # KEY VARIABLES ################################################################
   - name: Set PGRole
-    shell: "cat /tmp/program_var"
+    shell: "cat /pg/tmp/program_var"
     register: pgrole
 
 # CRON REMOVE ##################################################################

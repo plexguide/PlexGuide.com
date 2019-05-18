@@ -5,4 +5,4 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-echo 3 > /var/plexguide/menu.number
+echo 3 > /pg/var/menu.number

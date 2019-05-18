@@ -17,7 +17,7 @@
         extport: "0"
 
     - name: Token Recall
-      shell: "cat /var/plexguide/plex.token"
+      shell: "cat /pg/var/plex.token"
       register: token
 
     - name: Install pip requirements
@@ -31,12 +31,12 @@
     - name: Create Basic Directories
       file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
       with_items:
-        - "/opt/appdata/pgscan/"
+        - "/pg/data/pgscan/"
 
     - name: Transfer Files
       copy:
         src: /opt/plexguide/menu/pgscan
-        dest: /opt/appdata
+        dest: /pg/data
         owner: "1000"
         group: "1000"
         mode: a+x
@@ -44,8 +44,8 @@
 
     - name: Import default config
       template:
-        src: /opt/appdata/pgscan/config/default.config
-        dest: /opt/appdata/pgscan/config.json
+        src: /pg/data/pgscan/config/default.config
+        dest: /pg/data/pgscan/config.json
         owner: "1000"
         group: "1000"
         mode: 0775
@@ -53,14 +53,14 @@
 
     - name: Set pgscan.py as executable
       file:
-        path: /opt/appdata/pgscan/scan.py
+        path: /pg/data/pgscan/scan.py
         owner: '1000'
         group: '1000'
         mode: a+x
 
     - name: "Create /usr/local/bin symlink"
       file:
-        src: "/opt/appdata/pgscan/scan.py"
+        src: "/pg/data/pgscan/scan.py"
         dest: "/bin/pgscan"
         state: link
 
@@ -77,7 +77,7 @@
 
     - name: pgscan Service
       template:
-        src: /opt/appdata/pgscan/system/pgscan.service
+        src: /pg/data/pgscan/system/pgscan.service
         dest: /etc/systemd/system/pgscan.service
         force: yes
 
@@ -85,11 +85,11 @@
       systemd: state=stopped name=pgscan daemon_reload=yes enabled=no
 
     - name: Section Updates
-      command: "/opt/appdata/pgscan/scan.py sections"
+      command: "/pg/data/pgscan/scan.py sections"
       tags: plex_autoscan_update_sections
 
     - name: Mapping Configs
-      command: "/opt/appdata/pgscan/scan.py update_sections"
+      command: "/pg/data/pgscan/scan.py update_sections"
       tags: plex_autoscan_update_sections
 
     - name: Start pgscan

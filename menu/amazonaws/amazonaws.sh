@@ -94,7 +94,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  hcloud server create --name $name --type cx11 --image ubuntu-18.04 > /opt/appdata/plexguide/server.info
+  hcloud server create --name $name --type cx11 --image ubuntu-18.04 > /pg/data/blitz/server.info
 
 tee <<-EOF
 
@@ -103,17 +103,17 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-cat /opt/appdata/plexguide/server.info
+cat /pg/data/blitz/server.info
 
 # Creates Log
-touch /opt/appdata/plexguide/server.store
-cat /opt/appdata/plexguide/server.info >> /opt/appdata/plexguide/server.store
-echo "Server Name: $name" >> /opt/appdata/plexguide/server.store
-echo "" >> /opt/appdata/plexguide/server.store
+touch /pg/data/blitz/server.store
+cat /pg/data/blitz/server.info >> /pg/data/blitz/server.store
+echo "Server Name: $name" >> /pg/data/blitz/server.store
+echo "" >> /pg/data/blitz/server.store
 
 # Variable Info
-serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
-initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
+serverip=$(cat /pg/data/blitz/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
+initialpw=$(cat /pg/data/blitz/server.info | tail -n +4 | cut -d " " -f3-)
 
 tee <<-EOF
 
@@ -219,8 +219,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-touch /opt/appdata/plexguide/server.store
-tac -r /opt/appdata/plexguide/server.store
+touch /pg/data/blitz/server.store
+tac -r /pg/data/blitz/server.store
 echo "" & echo ""
 read -p 'Press [ENTER] to Continue! ' corn < /dev/tty
 

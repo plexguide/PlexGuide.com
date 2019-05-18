@@ -7,14 +7,14 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'pgclone' > /var/plexguide/pgcloner.rolename
-echo 'PG Clone' > /var/plexguide/pgcloner.roleproper
-echo 'PGClone' > /var/plexguide/pgcloner.projectname
-echo 'v8.6' > /var/plexguide/pgcloner.projectversion
-echo 'pgclone.sh' > /var/plexguide/pgcloner.startlink
+echo 'pgclone' > /pg/var/pgcloner.rolename
+echo 'PG Clone' > /pg/var/pgcloner.roleproper
+echo 'PGClone' > /pg/var/pgcloner.projectname
+echo 'v8.6' > /pg/var/pgcloner.projectversion
+echo 'pgclone.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 PG Clone utilizes RClone's Mounts + MergerFS's Union" > /var/plexguide/pgcloner.info
+echo "💬 PG Clone utilizes RClone's Mounts + MergerFS's Union" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS

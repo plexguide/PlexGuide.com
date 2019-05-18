@@ -7,7 +7,7 @@
 ################################################################################
 ---
 - name: Register Project
-  shell: "cat /var/plexguide/server.id"
+  shell: "cat /pg/var/server.id"
   register: tempid
 
 - name: "Set Server ID"

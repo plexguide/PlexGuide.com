@@ -7,15 +7,15 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'pgshield' > /var/plexguide/pgcloner.rolename
-echo 'PGShield' > /var/plexguide/pgcloner.roleproper
-echo 'PGShield' > /var/plexguide/pgcloner.projectname
-echo 'v8.6' > /var/plexguide/pgcloner.projectversion
-echo 'pgshield.sh' > /var/plexguide/pgcloner.startlink
+echo 'pgshield' > /pg/var/pgcloner.rolename
+echo 'PGShield' > /pg/var/pgcloner.roleproper
+echo 'PGShield' > /pg/var/pgcloner.projectname
+echo 'v8.6' > /pg/var/pgcloner.projectversion
+echo 'pgshield.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PG Shield protects users by deploying adding Google
-Authentication to all the containers for protection!" > /var/plexguide/pgcloner.info
+Authentication to all the containers for protection!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS

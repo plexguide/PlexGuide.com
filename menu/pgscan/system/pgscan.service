@@ -8,8 +8,8 @@ After=network-online.target unionfs.service
 User=1000
 Group=1000
 Type=simple
-WorkingDirectory=/opt/appdata/pgscan/
-ExecStart=/opt/appdata/pgscan/scan.py server --loglevel=INFO
+WorkingDirectory=/pg/data/pgscan/
+ExecStart=/pg/data/pgscan/scan.py server --loglevel=INFO
 Restart=always
 RestartSec=10
 

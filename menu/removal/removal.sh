@@ -5,32 +5,32 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-rm -rf /tmp/backup.build 1>/dev/null 2>&1
-rm -rf /tmp/backup.list 1>/dev/null 2>&1
-rm -rf /tmp/backup.final 1>/dev/null 2>&1
+rm -rf /pg/tmp/backup.build 1>/dev/null 2>&1
+rm -rf /pg/tmp/backup.list 1>/dev/null 2>&1
+rm -rf /pg/tmp/backup.final 1>/dev/null 2>&1
 
-docker ps --format '{{.Names}}' > /tmp/backup.list
-sed -i -e "/traefik/d" /tmp/backup.list
-sed -i -e "/watchtower/d" /tmp/backup.list
-sed -i -e "/wp-*/d" /tmp/backup.list
-sed -i -e "/x2go*/d" /tmp/backup.list
-sed -i -e "/plexguide/d" /tmp/backup.list
-sed -i -e "/cloudplow/d" /tmp/backup.list
-sed -i -e "/phlex/d" /tmp/backup.list
+docker ps --format '{{.Names}}' > /pg/tmp/backup.list
+sed -i -e "/traefik/d" /pg/tmp/backup.list
+sed -i -e "/watchtower/d" /pg/tmp/backup.list
+sed -i -e "/wp-*/d" /pg/tmp/backup.list
+sed -i -e "/x2go*/d" /pg/tmp/backup.list
+sed -i -e "/plexguide/d" /pg/tmp/backup.list
+sed -i -e "/cloudplow/d" /pg/tmp/backup.list
+sed -i -e "/phlex/d" /pg/tmp/backup.list
 
 #### Commenting Out To Let User See
 num=0
 while read p; do
 let "num++"
-echo -n $p >> /tmp/backup.final
-echo -n " " >> /tmp/backup.final
+echo -n $p >> /pg/tmp/backup.final
+echo -n " " >> /pg/tmp/backup.final
   if [ "$num" == 7 ]; then
     num=0
-    echo " " >> /tmp/backup.final
+    echo " " >> /pg/tmp/backup.final
   fi
-done </tmp/backup.list
+done </pg/tmp/backup.list
 
-running=$(cat /tmp/backup.final)
+running=$(cat /pg/tmp/backup.final)
 # If Blank, Exit
 if [ "$running" == "" ]; then
 tee <<-EOF
@@ -109,17 +109,17 @@ docker rm $typed 1>/dev/null 2>&1
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🍖  NOM NOM - Removing /opt/appdata/$typed
+🍖  NOM NOM - Removing /pg/data/$typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 1
-rm -rf /opt/appdata/$typed
+rm -rf /pg/data/$typed
 
 file="/opt/coreapps/apps/$typed.yml"
 if [ -e "$file" ]; then
   check=$(cat /opt/coreapps/apps/$typed.yml | grep '##PG-Community')
     if [ "$check" == "##PG-Community" ]; then rm -r /opt/communityapps/apps/$typed.yml; fi
-rm -rf /var/plexguide/community.app
+rm -rf /pg/var/community.app
 fi
 
 sleep 1.5

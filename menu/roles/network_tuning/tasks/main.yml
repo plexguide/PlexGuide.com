@@ -9,20 +9,20 @@
 ########### Check If Backup sysctl exists
 - name: sysctl Checker
   stat:
-    path: /opt/appdata/plexguide/sysctl.conf
+    path: /pg/data/blitz/sysctl.conf
   register: sysctl
 
 ########### Backup Sysctl Config
 - name: Backup Kernel Parameters
   copy:
     src: /etc/sysctl.conf
-    dest: /opt/appdata/plexguide/sysctl.conf
+    dest: /pg/data/blitz/sysctl.conf
   when: sysctl.stat.exists == False
 
 ########### Reset Sysctl Config With Backup File
 - name: Reseting Kernel Parameters
   copy:
-    src: /opt/appdata/plexguide/sysctl.conf
+    src: /pg/data/blitz/sysctl.conf
     dest: /etc/sysctl.conf
   when: sysctl.stat.exists == True
 

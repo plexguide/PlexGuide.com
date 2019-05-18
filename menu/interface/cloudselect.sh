@@ -23,7 +23,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-    echo gce > /var/plexguide/type.choice
+    echo gce > /pg/var/type.choice
     bash /opt/plexguide/menu/pgcloner/blitzgce.sh
 elif [ "$typed" == "2" ]; then
     bash /opt/plexguide/menu/pgcloner/hetzner.sh

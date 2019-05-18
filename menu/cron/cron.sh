@@ -7,9 +7,9 @@
 ################################################################################
 
 # KEY VARIABLE RECALL & EXECUTION
-program=$(cat /tmp/program_var)
-mkdir -p /var/plexguide/cron/
-mkdir -p /opt/appdata/plexguide/cron
+program=$(cat /pg/tmp/program_var)
+mkdir -p /pg/var/cron/
+mkdir -p /pg/data/blitz/cron
 # FUNCTIONS START ##############################################################
 source /opt/plexguide/menu/functions/functions.sh
 
@@ -58,8 +58,8 @@ DAILY
 EOF
 
   read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" -ge "0" && "$typed" -le "7" ]]; then echo $typed > /var/plexguide/cron/cron.day && break=1;
-elif [ "$typed" == "8" ]; then echo "*/1" > /var/plexguide/cron/$program.cron.day && break=1;
+  if [[ "$typed" -ge "0" && "$typed" -le "7" ]]; then echo $typed > /pg/var/cron/cron.day && break=1;
+elif [ "$typed" == "8" ]; then echo "*/1" > /pg/var/cron/$program.cron.day && break=1;
 else badinput; fi
 }
 
@@ -81,7 +81,7 @@ Type an HOUR from [0 to 23]
 EOF
 
   read -p '↘️  Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then echo $typed > /var/plexguide/cron/cron.hour && break=1;
+  if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then echo $typed > /pg/var/cron/cron.hour && break=1;
 else badinput; fi
 }
 
@@ -91,5 +91,5 @@ break=off && while [ "$break" == "off" ]; do question1; done
 break=off && while [ "$break" == "off" ]; do question2; done
 break=off && while [ "$break" == "off" ]; do question3; done
 
-echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
+echo $(($RANDOM % 59)) > /pg/var/cron/cron.minute
 ansible-playbook /opt/plexguide/menu/cron/cron.yml

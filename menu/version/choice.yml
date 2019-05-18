@@ -10,7 +10,7 @@
   gather_facts: false
   tasks:
     - name: Register Project
-      shell: "cat /var/plexguide/pg.number"
+      shell: "cat /pg/var/pg.number"
       register: serverid
 
     - name: "Installing Version {{serverid.stdout}}"
@@ -23,5 +23,5 @@
       ignore_errors: True
 
     - name: "Stops First Time Run"
-      shell: "touch /var/plexguide/ask.yes"
+      shell: "touch /pg/var/ask.yes"
       register: program

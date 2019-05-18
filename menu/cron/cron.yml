@@ -12,24 +12,24 @@
 
 # KEY VARIABLES ################################################################
   - name: Set PGRole
-    shell: "cat /tmp/program_var"
+    shell: "cat /pg/tmp/program_var"
     register: pgrole
 
   - name: Set PGRole
-    shell: "cat /var/plexguide/cron/cron.hour"
+    shell: "cat /pg/var/cron/cron.hour"
     register: cronhour
 
   - name: Set PGRole
-    shell: "cat /var/plexguide/cron/cron.minute"
+    shell: "cat /pg/var/cron/cron.minute"
     register: cronminute
 
   - name: Set PGRole
-    shell: "cat /var/plexguide/cron/cron.day"
+    shell: "cat /pg/var/cron/cron.day"
     register: cronday
 
 # CRON START ###################################################################
 #  - name: Build Cron Job File
-#    shell: echo "ansible-playbook /opt/plexguide/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}'" > /opt/appdata/plexguide/cron/{{pgrole.stdout}}
+#    shell: echo "ansible-playbook /opt/plexguide/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}'" > /pg/data/blitz/cron/{{pgrole.stdout}}
 
   - name: Build Cron Job Schedule
     cron:
@@ -38,6 +38,6 @@
       minute: "{{cronminute.stdout}}"
       hour: "{{cronhour.stdout}}"
       user: root
-      job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/pgvault/pgcron"
+      job: "echo {{pgrole.stdout}} > /pg/tmp/program_var && bash /opt/pgvault/pgcron"
       state: present
     become_user: root

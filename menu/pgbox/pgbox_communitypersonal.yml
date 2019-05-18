@@ -4,11 +4,11 @@
   tasks:
 
     - name: Register User
-      shell: 'cat /var/plexguide/boxcommunity.user'
+      shell: 'cat /pg/var/boxcommunity.user'
       register: boxuser
 
     - name: Register Branch
-      shell: 'cat /var/plexguide/boxcommunity.branch'
+      shell: 'cat /pg/var/boxcommunity.branch'
       register: boxbranch
 
     - name: 'Cloning {{boxuser.stdout}} Community Apps'

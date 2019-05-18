@@ -5,7 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-pgpath=$(cat /var/plexguide/server.hd.path)
+pgpath=$(cat /pg/var/server.hd.path)
 
 break=no
 while [ "$break" == "no" ]; do
@@ -64,7 +64,7 @@ EOF
 
 read -p 'Type the NEW PATH (follow example above): ' typed
 
-storage=$(grep $typed /var/plexguide/ver.temp)
+storage=$(grep $typed /pg/var/ver.temp)
 
   if [ "$typed" == "exit" ]; then
 tee <<-EOF
@@ -180,7 +180,7 @@ sleep 2
     chown 1000:1000 "$typed"
     chmod 0775 "$typed"
     rm -rf "$typed/test"
-    echo $typed > /var/plexguide/server.hd.path
+    echo $typed > /pg/var/server.hd.path
     break=off
 
 tee <<-EOF

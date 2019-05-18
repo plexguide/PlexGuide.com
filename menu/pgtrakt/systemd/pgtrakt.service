@@ -6,8 +6,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/appdata/pgtrakt
-ExecStart=/usr/bin/python3 /opt/appdata/pgtrakt/pgtrakt.py run
+WorkingDirectory=/pg/data/pgtrakt
+ExecStart=/usr/bin/python3 /pg/data/pgtrakt/pgtrakt.py run
 Restart=always
 RestartSec=10
 

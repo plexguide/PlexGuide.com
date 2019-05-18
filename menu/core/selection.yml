@@ -11,7 +11,7 @@
   tasks:
 
     - name: Recall Menu Type
-      shell: "cat /var/plexguide/type.choice"
+      shell: "cat /pg/var/type.choice"
       register: menutemp
 
     - name: "Set Facts for Menu"
@@ -36,7 +36,7 @@
 
 ################ Blank Out Variable Recall
     - name: Recall Menu Type
-      shell: "cat /var/plexguide/menu.number"
+      shell: "cat /pg/var/menu.number"
       register: tempnumber
 
     - name: "Blank Out Variable Recall"
@@ -146,37 +146,37 @@
         fchoice: "{{choice.user_input}}"
 
     - name: Exiting Interface
-      shell: "echo break > /var/plexguide/final.choice"
+      shell: "echo break > /pg/var/final.choice"
       when: fchoice == "1"
 
     - name: Choice 2 Selected
-      shell: "echo 2 > /var/plexguide/final.choice"
+      shell: "echo 2 > /pg/var/final.choice"
       when: fchoice == "2"
 
     - name: Choice 3 Selected
-      shell: "echo 3 > /var/plexguide/final.choice"
+      shell: "echo 3 > /pg/var/final.choice"
       when: fchoice == "3"
 
     - name: Choice 4 Selected
-      shell: "echo 4 > /var/plexguide/final.choice"
+      shell: "echo 4 > /pg/var/final.choice"
       when: fchoice == "4"
 
     - name: Choice 5 Selected
-      shell: "echo 5 > /var/plexguide/final.choice"
+      shell: "echo 5 > /pg/var/final.choice"
       when: fchoice == "5"
 
     - name: Choice 6 Selected
-      shell: "echo 6 > /var/plexguide/final.choice"
+      shell: "echo 6 > /pg/var/final.choice"
       when: fchoice == "6"
 
     - name: Choice 7 Selected
-      shell: "echo 7 > /var/plexguide/final.choice"
+      shell: "echo 7 > /pg/var/final.choice"
       when: fchoice == "7"
 
     - name: Choice 8 Selected
-      shell: "echo 8 > /var/plexguide/final.choice"
+      shell: "echo 8 > /pg/var/final.choice"
       when: fchoice == "8"
 
     - name: Choice 9 Selected
-      shell: "echo 9 > /var/plexguide/final.choice"
+      shell: "echo 9 > /pg/var/final.choice"
       when: fchoice == "9"

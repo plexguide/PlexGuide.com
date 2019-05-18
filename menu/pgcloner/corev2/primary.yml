@@ -4,15 +4,15 @@
   tasks:
 
     - name: Register Project Name
-      shell: "cat /var/plexguide/pgcloner.projectname"
+      shell: "cat /pg/var/pgcloner.projectname"
       register: pname
 
     - name: Register Role
-      shell: "cat /var/plexguide/pgcloner.rolename"
+      shell: "cat /pg/var/pgcloner.rolename"
       register: prole
 
     - name: Register Project Version
-      shell: "cat /var/plexguide/pgcloner.projectversion"
+      shell: "cat /pg/var/pgcloner.projectversion"
       register: pversion
 
     - name: Check if Path Exists

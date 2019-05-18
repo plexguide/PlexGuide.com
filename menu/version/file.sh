@@ -15,7 +15,7 @@ while [ "$waitvar" == "0" ]; do
 	if [ -e "$file" ]; then waitvar=1; fi
 done
 
-pgnumber=$(cat "/var/plexguide/pg.number")
+pgnumber=$(cat "/pg/var/pg.number")
 latest=$(cat "/opt/pgstage/versions.sh" | head -n1)
 beta=$(cat /opt/pgstage/versions.sh | sed -n 2p)
 
@@ -43,11 +43,11 @@ parttwo
 
 parttwo() {
 if [[ "$typed" == "exit" || "$typed" == "EXIT" || "$typed" == "Exit" ]]; then
-  echo ""; touch /var/plexguide/exited.upgrade; exit; fi
+  echo ""; touch /pg/var/exited.upgrade; exit; fi
 
 if [ "$storage" != "" ]; then
   break=yes
-  echo $storage > /var/plexguide/pg.number
+  echo $storage > /pg/var/pg.number
   ansible-playbook /opt/plexguide/menu/version/choice.yml
 
 tee <<-EOF
@@ -57,10 +57,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 2
-touch /var/plexguide/new.install
+touch /pg/var/new.install
 
-file="/var/plexguide/community.app"
-if [ -e "$file" ]; then rm -rf /var/plexguide/community.app; fi
+file="/pg/var/community.app"
+if [ -e "$file" ]; then rm -rf /pg/var/community.app; fi
 
 exit
 else

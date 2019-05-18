@@ -5,7 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-menu=$(cat /var/plexguide/final.choice)
+menu=$(cat /pg/var/final.choice)
 
 if [ "$menu" == "2" ]; then
   echo ""
@@ -67,7 +67,7 @@ if [ "$menu" == "2" ]; then
       echo ""
       echo "Your Server ID is Now Set! Thank you!"
       echo ""
-      echo $typed > /var/plexguide/server.id
+      echo $typed > /pg/var/server.id
       break=yes
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
       echo "";
@@ -77,7 +77,7 @@ if [ "$menu" == "2" ]; then
 #### Final fi
 fi
 
-idtest=$(cat /var/plexguide/server.id)
+idtest=$(cat /pg/var/server.id)
 if [ "$idtest" == "NOT-SET" ]; then
   echo ""
   echo "---------------------------------------------------"
@@ -87,6 +87,6 @@ if [ "$idtest" == "NOT-SET" ]; then
   echo "Restarting the Process"
   echo
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo serverid > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  echo serverid > /pg/var/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
   exit
 fi

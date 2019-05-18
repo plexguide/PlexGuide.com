@@ -12,32 +12,32 @@ runningcheck () {
 }
 
 initial () {
-  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
-  rm -rf /var/plexguide/pgvault.buildup 1>/dev/null 2>&1
-  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
-  rm -rf /var/plexguide/app.list 1>/dev/null 2>&1
-  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
-  touch /var/plexguide/pgvault.output
-  touch /var/plexguide/program.temp
-  touch /var/plexguide/app.list
-  touch /var/plexguide/pgvault.buildup
-  touch /var/plexguide/pgvault.output
-  touch /var/plexguide/rclone.size
-  space=$(cat /var/plexguide/data.location)
+  rm -rf /pg/var/pgvault.output 1>/dev/null 2>&1
+  rm -rf /pg/var/pgvault.buildup 1>/dev/null 2>&1
+  rm -rf /pg/var/program.temp 1>/dev/null 2>&1
+  rm -rf /pg/var/app.list 1>/dev/null 2>&1
+  rm -rf /pg/var/pgvault.output 1>/dev/null 2>&1
+  touch /pg/var/pgvault.output
+  touch /pg/var/program.temp
+  touch /pg/var/app.list
+  touch /pg/var/pgvault.buildup
+  touch /pg/var/pgvault.output
+  touch /pg/var/rclone.size
+  space=$(cat /pg/var/data.location)
   # To Get Used Space
-  used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
+  used=$(df -h /pg/data/blitz | tail -n +2 | awk '{print $3}')
   # To Get All Space
-  capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
+  capacity=$(df -h /pg/data/blitz | tail -n +2 | awk '{print $2}')
   # Percentage
-  percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+  percentage=$(df -h /pg/data/blitz | tail -n +2 | awk '{print $5}')
 }
 
 initial2 () {
-  path=$(cat /var/plexguide/server.hd.path)
-  tarlocation=$(cat /var/plexguide/data.location)
-  program_size=$(cat /var/plexguide/rclone.size)
-  program_var=$(cat /tmp/program_var)
-  server_id=$(cat /var/plexguide/server.id)
+  path=$(cat /pg/var/server.hd.path)
+  tarlocation=$(cat /pg/var/data.location)
+  program_size=$(cat /pg/var/rclone.size)
+  program_var=$(cat /pg/tmp/program_var)
+  server_id=$(cat /pg/var/server.id)
 }
 
 final () {
@@ -65,81 +65,81 @@ rclonelist () {
 }
 
 pgboxrecall () {
-  ls -p /opt/coreapps/apps | grep -v / > /var/plexguide/pgvault.apprecall
+  ls -p /opt/coreapps/apps | grep -v / > /pg/var/pgvault.apprecall
   while read p; do
-    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+    sed -i "/^$p\b/Id" /pg/var/pgvault.apprecall
   done </opt/pgvault/exempt.list
 
   while read p; do
-    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
-    basename "$p" .yml >> /var/plexguide/pgvault.apprecall
-  done </var/plexguide/pgvault.apprecall
+    sed -i "/^$p\b/Id" /pg/var/pgvault.apprecall
+    basename "$p" .yml >> /pg/var/pgvault.apprecall
+  done </pg/var/pgvault.apprecall
 }
 
 mathprime () {
   ### List Out Apps In Readable Order (One's Not Installed)
   num=0
-  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
+  rm -rf /pg/var/program.temp 1>/dev/null 2>&1
   while read p; do
-    echo -n $p >> /var/plexguide/program.temp
-    echo -n " " >> /var/plexguide/program.temp
+    echo -n $p >> /pg/var/program.temp
+    echo -n " " >> /pg/var/program.temp
     num=$[num+1]
     if [ "$num" == 7 ]; then
       num=0
-      echo " " >> /var/plexguide/program.temp
+      echo " " >> /pg/var/program.temp
     fi
-  done </var/plexguide/pgvault.apprecall
+  done </pg/var/pgvault.apprecall
 }
 
 ################################################ FOR BACKUP - START
 apprecall () {
-  tree -d -L 1 /opt/appdata | awk '{print $2}' | tail -n +2 | head -n -2 > /var/plexguide/pgvault.apprecall
+  tree -d -L 1 /pg/data | awk '{print $2}' | tail -n +2 | head -n -2 > /pg/var/pgvault.apprecall
   while read p; do
-    sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
+    sed -i "/^$p\b/Id" /pg/var/pgvault.apprecall
   done </opt/pgvault/exempt.list
 
   ### Blank Out Temp List
-  rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
+  rm -rf /pg/var/program.temp && touch /pg/var/program.temp
   mathprime
 }
 
 buildup () {
-  echo "$typed" >> /var/plexguide/pgvault.buildup
-  sed -i "/^$typed\b/Id" /var/plexguide/pgvault.apprecall
+  echo "$typed" >> /pg/var/pgvault.buildup
+  sed -i "/^$typed\b/Id" /pg/var/pgvault.apprecall
 
   num=0
-  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
+  rm -rf /pg/var/pgvault.output 1>/dev/null 2>&1
   while read p; do
-  echo -n $p >> /var/plexguide/pgvault.output
-  echo -n " " >> /var/plexguide/pgvault.output
+  echo -n $p >> /pg/var/pgvault.output
+  echo -n " " >> /pg/var/pgvault.output
   if [ "$num" == 7 ]; then
     num=0
-    echo " " >> /var/plexguide/pgvault.output
+    echo " " >> /pg/var/pgvault.output
   fi
-  done </var/plexguide/pgvault.buildup
+  done </pg/var/pgvault.buildup
 
   mathprime
   vaultbackup
 }
 ################################################ FOR BACKUP - END
 serverprime () {
-  tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2 > /tmp/server.list
+  tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2 > /pg/tmp/server.list
 
   ### List Out Apps In Readable Order (One's Not Installed)
   num=0
-  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
+  rm -rf /pg/var/program.temp 1>/dev/null 2>&1
   while read p; do
-    echo -n $p >> /var/plexguide/program.temp
-    echo -n " " >> /var/plexguide/program.temp
+    echo -n $p >> /pg/var/program.temp
+    echo -n " " >> /pg/var/program.temp
     num=$[num+1]
     if [ "$num" == 7 ]; then
       num=0
-      echo " " >> /var/plexguide/program.temp
+      echo " " >> /pg/var/program.temp
     fi
-  done </tmp/server.list
+  done </pg/tmp/server.list
 
-servers=$(cat /var/plexguide/program.temp)
-server_id=$(cat /var/plexguide/server.id)
+servers=$(cat /pg/var/program.temp)
+server_id=$(cat /pg/var/server.id)
 
 tee <<-EOF
 
@@ -154,46 +154,46 @@ $servers
 💬 Quitting? TYPE > exit
 EOF
 read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
-  echo $server > /tmp/server.select
+  echo $server > /pg/tmp/server.select
 
   if [ "$server" == "exit" ]; then exit; fi
 
-  current2=$(cat /tmp/server.list | grep "\<$server\>")
+  current2=$(cat /pg/tmp/server.list | grep "\<$server\>")
   if [ "$current2" == "" ]; then
   badserver
   serverprime; fi
 
   tempserver=$server
-  ls -l  /mnt/gdrive/plexguide/backup/$tempserver | awk '{print $9}' | tail -n +2 > /var/plexguide/pgvault.restoreapps
+  ls -l  /mnt/gdrive/plexguide/backup/$tempserver | awk '{print $9}' | tail -n +2 > /pg/var/pgvault.restoreapps
 
   ### Blank Out Temp List
-  rm -rf /var/plexguide/pgvault.apprecall 1>/dev/null 2>&1
-  touch /var/plexguide/pgvault.apprecall
+  rm -rf /pg/var/pgvault.apprecall 1>/dev/null 2>&1
+  touch /pg/var/pgvault.apprecall
 
   while read p; do
-    basename "$p" .tar >> /var/plexguide/pgvault.apprecall
-  done </var/plexguide/pgvault.restoreapps
+    basename "$p" .tar >> /pg/var/pgvault.apprecall
+  done </pg/var/pgvault.restoreapps
 
   ### Blank Out Temp List
-  rm -rf /var/plexguide/program.temp 1>/dev/null 2>&1
-  touch /var/plexguide/program.temp
+  rm -rf /pg/var/program.temp 1>/dev/null 2>&1
+  touch /pg/var/program.temp
   mathprime
 }
 
 buildup2 () {
-  echo "$typed" >> /var/plexguide/pgvault.buildup
-  sed -i "/^$typed\b/Id" /var/plexguide/pgvault.apprecall
+  echo "$typed" >> /pg/var/pgvault.buildup
+  sed -i "/^$typed\b/Id" /pg/var/pgvault.apprecall
 
   num=0
-  rm -rf /var/plexguide/pgvault.output 1>/dev/null 2>&1
+  rm -rf /pg/var/pgvault.output 1>/dev/null 2>&1
   while read p; do
-  echo -n $p >> /var/plexguide/pgvault.output
-  echo -n " " >> /var/plexguide/pgvault.output
+  echo -n $p >> /pg/var/pgvault.output
+  echo -n " " >> /pg/var/pgvault.output
   if [ "$num" == 7 ]; then
     num=0
-    echo " " >> /var/plexguide/pgvault.output
+    echo " " >> /pg/var/pgvault.output
   fi
-  done </var/plexguide/pgvault.buildup
+  done </pg/var/pgvault.buildup
 
   mathprime
   vaultrestore
@@ -216,12 +216,12 @@ EOF
   sleep 2.5
 
   # Store Used Program
-  echo $p > /tmp/program_var
+  echo $p > /pg/tmp/program_var
   # Execute Main Program
   backup_process
 
   sleep 2
-  done </var/plexguide/pgvault.buildup
+  done </pg/var/pgvault.buildup
   final
 }
 
@@ -233,7 +233,7 @@ initial2
 #↘️  Determining Initial File Size - $program_var
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #EOF
-#size=$(du -sh --apparent-size /opt/appdata/$program_var | /usr/bin/awk '{print $1}')
+#size=$(du -sh --apparent-size /pg/data/$program_var | /usr/bin/awk '{print $1}')
 #sleep 2
 #echo "Initial File Size: $size"
 #sleep 2
@@ -258,19 +258,19 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-path=$(cat /var/plexguide/server.hd.path)
-tarlocation=$(cat /var/plexguide/data.location)
-server_id=$(cat /var/plexguide/server.id)
+path=$(cat /pg/var/server.hd.path)
+tarlocation=$(cat /pg/var/data.location)
+server_id=$(cat /pg/var/server.id)
 
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
   --exclude-from=/opt/pgvault/exclude.list \
-  -C /opt/appdata/${program_var} -cvf /opt/appdata/plexguide/${program_var}.tar ./
+  -C /pg/data/${program_var} -cvf /pg/data/blitz/${program_var}.tar ./
 
 #tar \
 #--warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
 #--exclude-from=/opt/pgvault/exclude.list \
-#-cfv ${program_var}.tar /opt/appdata/${program_var}
+#-cfv ${program_var}.tar /pg/data/${program_var}
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
@@ -291,13 +291,13 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-rclone --config /opt/appdata/plexguide/rclone.conf mkdir gdrive:/plexguide/backup/${server_id} 1>/dev/null 2>&1
+rclone --config /pg/data/blitz/rclone.conf mkdir gdrive:/plexguide/backup/${server_id} 1>/dev/null 2>&1
 
-rclone --config /opt/appdata/plexguide/rclone.conf \
+rclone --config /pg/data/blitz/rclone.conf \
 --stats-one-line --stats 1s --progress \
 moveto ${tarlocation}/${program_var}.tar \
 gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
--v --checksum --drive-chunk-size=64M --transfers=8 --user-agent="backup" 
+-v --checksum --drive-chunk-size=64M --transfers=8
 
 ##### Remove File Incase
 rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
@@ -318,18 +318,18 @@ EOF
 sleep 2.5
 
 # Store Used Program
-echo $p > /tmp/program_var
+echo $p > /pg/tmp/program_var
 # Execute Main Program
 restore_process
 
 sleep 2
-done </var/plexguide/pgvault.buildup
+done </pg/var/pgvault.buildup
 final
 }
 
 restore_process () {
 initial2
-srecall=$(cat /tmp/server.select)
+srecall=$(cat /pg/tmp/server.select)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -349,11 +349,11 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-rclone --config /opt/appdata/plexguide/rclone.conf --stats-one-line \
+rclone --config /pg/data/blitz/rclone.conf --stats-one-line \
 --stats 1s --progress \
 copy gdrive:/plexguide/backup/${srecall}/${program_var}.tar \
 ${tarlocation} \
--v --checksum --drive-chunk-size=64M --transfers=8 --user-agent="backup"
+-v --checksum --drive-chunk-size=64M --transfers=8
 
 ##### Stop Docker Container if Running
 runningcheck
@@ -375,13 +375,13 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-mkdir -p "/opt/appdata/${program_var}"
-rm -rf "/opt/appdata/${program_var}/*"
-chown -R 1000:1000 "/opt/appdata/${program_var}"
-chmod -R 775 "/opt/appdata/${program_var}"
-tar -C /opt/appdata/${program_var} -xvf ${tarlocation}/${program_var}.tar
-chown -R 1000:1000 "/opt/appdata/${program_var}"
-chmod -R 775 "/opt/appdata/${program_var}"
+mkdir -p "/pg/data/${program_var}"
+rm -rf "/pg/data/${program_var}/*"
+chown -R 1000:1000 "/pg/data/${program_var}"
+chmod -R 775 "/pg/data/${program_var}"
+tar -C /pg/data/${program_var} -xvf ${tarlocation}/${program_var}.tar
+chown -R 1000:1000 "/pg/data/${program_var}"
+chmod -R 775 "/pg/data/${program_var}"
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
@@ -402,8 +402,8 @@ rm -rf ${tarlocation}/${program_var}.tar 1>/dev/null 2>&1
 ##################################################### START - Backup Interface
 vaultbackup () {
 ### List Out Apps In Readable Order (One's Not Installed)
-notrun=$(cat /var/plexguide/program.temp)
-buildup=$(cat /var/plexguide/pgvault.output)
+notrun=$(cat /pg/var/program.temp)
+buildup=$(cat /pg/var/pgvault.output)
 
 if [ "$buildup" == "" ]; then buildup="NONE"; fi
 tee <<-EOF
@@ -427,14 +427,14 @@ read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 if [ "$typed" == "deploy" ]; then backup_start; fi
 if [ "$typed" == "exit" ]; then exit; fi
 
-current2=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")
+current2=$(cat /pg/var/pgvault.buildup | grep "\<$typed\>")
 if [ "$current2" != "" ]; then
 queued
 vaultbackup; fi
 
-cat /var/plexguide/pgvault.buildup > /tmp/appcheck.5
-cat /var/plexguide/pgvault.apprecall >> /tmp/appcheck.5
-current1=$(cat /tmp/appcheck.5 | grep "\<$typed\>")
+cat /pg/var/pgvault.buildup > /pg/tmp/appcheck.5
+cat /pg/var/pgvault.apprecall >> /pg/tmp/appcheck.5
+current1=$(cat /pg/tmp/appcheck.5 | grep "\<$typed\>")
 if [ "$current1" == "" ]; then badinput && vaultbackup; fi
 
 buildup
@@ -443,8 +443,8 @@ buildup
 #
 ##################################################### START - Restore Interface
 vaultrestore () {
-notrun=$(cat /var/plexguide/program.temp)
-buildup=$(cat /var/plexguide/pgvault.output)
+notrun=$(cat /pg/var/program.temp)
+buildup=$(cat /pg/var/pgvault.output)
 
 if [ "$buildup" == "" ]; then buildup="NONE"; fi
 tee <<-EOF
@@ -468,14 +468,14 @@ read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 if [ "$typed" == "deploy" ]; then restore_start; fi
 if [ "$typed" == "exit" ]; then exit; fi
 
-current2=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")
+current2=$(cat /pg/var/pgvault.buildup | grep "\<$typed\>")
 if [ "$current2" != "" ]; then
 queued
 vaultrestore; fi
 
-cat /var/plexguide/pgvault.buildup > /tmp/appcheck.5
-cat /var/plexguide/pgvault.apprecall >> /tmp/appcheck.5
-current1=$(cat /tmp/appcheck.5 | grep "\<$typed\>")
+cat /pg/var/pgvault.buildup > /pg/tmp/appcheck.5
+cat /pg/var/pgvault.apprecall >> /pg/tmp/appcheck.5
+current1=$(cat /pg/tmp/appcheck.5 | grep "\<$typed\>")
 if [ "$current1" == "" ]; then badinput && vaultrestore; fi
 
 buildup2
@@ -509,7 +509,7 @@ EOF
     vaultrestore
     primaryinterface
   elif [ "$typed" == "3" ]; then
-    echo "0" > /var/plexguide/server.id.stored
+    echo "0" > /pg/var/server.id.stored
     bash /opt/plexguide/menu/interface/serverid.sh
     primaryinterface
   elif [ "$typed" == "4" ]; then

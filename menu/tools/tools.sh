@@ -7,9 +7,9 @@
 ################################################################################
 function gcheck {
 
-edition=$(cat /var/plexguide/pg.edition)
+edition=$(cat /pg/var/pg.edition)
 if [ "$edition" == "PG Edition - GDrive" ] || [ "$edition" == "PG Edition - GCE Feed" ]; then
-gcheck=$(cat /opt/appdata/plexguide/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8)
+gcheck=$(cat /pg/data/blitz/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8)
   if [ "$gcheck" != "[gdrive]" ]; then
 tee <<-EOF
 
@@ -34,7 +34,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 NOTE: If backing up your files, they are located at the folllowing
-location: /opt/appdata
+location: /pg/data
 
 You're on OWN because it's too complex for PG to standardize a backup.
 Example, you may have a second hard drive, may store it to the same
@@ -84,7 +84,7 @@ elif [ "$typed" == "4" ]; then
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/nttweak/nttweak.sh
 elif [ "$typed" == "6" ]; then
-  echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  echo 'vpnserver' > /pg/var/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/network/network.sh
 elif [ "$typed" == "8" ]; then

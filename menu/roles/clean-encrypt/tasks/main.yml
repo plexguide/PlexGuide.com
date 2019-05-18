@@ -15,20 +15,20 @@
 - name: Install Cloudplow; remove old directory
   file:
     state: absent
-    path: "/opt/appdata/cloudplow"
+    path: "/pg/data/cloudplow"
 
 - name: Install Cloudplow; download
   become_user: root
-  shell: "git clone https://github.com/Admin9705/clean /opt/appdata/cloudplow"
+  shell: "git clone https://github.com/Admin9705/clean /pg/data/cloudplow"
 
 - name: Install Cloudplow; dependencies
   become_user: root
-  shell: "python3 -m pip install -r /opt/appdata/cloudplow/requirements.txt"
+  shell: "python3 -m pip install -r /pg/data/cloudplow/requirements.txt"
 
 - name: Install Cloudplow; config
   template:
     src: config.js2
-    dest: /opt/appdata/cloudplow/config.json
+    dest: /pg/data/cloudplow/config.json
     force: yes
 
 - name: Install Cloudplow; cronjob
@@ -37,4 +37,4 @@
     user: "root"
     minute: "0"
     hour: "0"
-    job: "cd /opt/appdata/cloudplow && /usr/bin/python3 cloudplow.py clean"
+    job: "cd /pg/data/cloudplow && /usr/bin/python3 cloudplow.py clean"

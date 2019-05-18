@@ -7,14 +7,14 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'multihd' > /var/plexguide/pgcloner.rolename
-echo 'MultiHD' > /var/plexguide/pgcloner.roleproper
-echo 'MultiHD' > /var/plexguide/pgcloner.projectname
-echo 'v8.6' > /var/plexguide/pgcloner.projectversion
-echo 'multihd.sh' > /var/plexguide/pgcloner.startlink
+echo 'multihd' > /pg/var/pgcloner.rolename
+echo 'MultiHD' > /pg/var/pgcloner.roleproper
+echo 'MultiHD' > /pg/var/pgcloner.projectname
+echo 'v8.6' > /pg/var/pgcloner.projectversion
+echo 'multihd.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 MultiHD enables to add multiple drives and mountpoints to MergerFS!" > /var/plexguide/pgcloner.info
+echo "💬 MultiHD enables to add multiple drives and mountpoints to MergerFS!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS

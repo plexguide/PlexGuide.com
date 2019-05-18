@@ -13,15 +13,15 @@
   tasks:
 
   - name: Recall User
-    shell: "cat /var/plexguide/plex.user"
+    shell: "cat /pg/var/plex.user"
     register: user
 
   - name: Recall PW
-    shell: "cat /var/plexguide/plex.pw"
+    shell: "cat /pg/var/plex.pw"
     register: pw
 
   - name: Blank Out Token
-    shell: "echo '' > /var/plexguide/plex.token"
+    shell: "echo '' > /pg/var/plex.token"
     ignore_errors: yes
 
   - name: Token Generation
@@ -43,5 +43,5 @@
       plexauth: "{{plextoken.json.user.authToken | regex_replace('\n', '') }}"
 
   - name: Save Token
-    shell: "echo {{plexauth}} > /var/plexguide/plex.token"
+    shell: "echo {{plexauth}} > /pg/var/plex.token"
     ignore_errors: yes

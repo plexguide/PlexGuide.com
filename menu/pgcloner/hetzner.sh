@@ -7,15 +7,15 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'hetzner' > /var/plexguide/pgcloner.rolename
-echo 'HCloud (Hetzner)' > /var/plexguide/pgcloner.roleproper
-echo 'Hetzner' > /var/plexguide/pgcloner.projectname
-echo 'v8.6' > /var/plexguide/pgcloner.projectversion
-echo 'hcloud.sh' > /var/plexguide/pgcloner.startlink
+echo 'hetzner' > /pg/var/pgcloner.rolename
+echo 'HCloud (Hetzner)' > /pg/var/pgcloner.roleproper
+echo 'Hetzner' > /pg/var/pgcloner.projectname
+echo 'v8.6' > /pg/var/pgcloner.projectversion
+echo 'hcloud.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 HCloud in conjuction with PGBlitz enables users to
-deploy Hetzner Cloud Instance (VMs) within seconds" > /var/plexguide/pgcloner.info
+deploy Hetzner Cloud Instance (VMs) within seconds" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS

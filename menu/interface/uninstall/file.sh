@@ -5,7 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-menu=$(cat /var/plexguide/final.choice)
+menu=$(cat /pg/var/final.choice)
 
 if [ "$menu" == "2" ]; then
 #read -n 1 -s -r -p "Press [ANY KEY] to Continue "
@@ -35,17 +35,17 @@ done
   echo ""
   sleep 3
 
-  echo "0" > /var/plexguide/pg.preinstall.stored
-  echo "0" > /var/plexguide/pg.ansible.stored
-  echo "0" > /var/plexguide/pg.rclone.stored
-  echo "0" > /var/plexguide/pg.python.stored
-  echo "0" > /var/plexguide/pg.docker.stored
-  echo "0" > /var/plexguide/pg.docstart.stored
-  echo "0" > /var/plexguide/pg.watchtower.stored
-  echo "0" > /var/plexguide/pg.label.stored
-  echo "0" > /var/plexguide/pg.alias.stored
-  echo "0" > /var/plexguide/pg.dep
-  rm -rf /var/plexguide/dep* 1>/dev/null 2>&1
+  echo "0" > /pg/var/pg.preinstall.stored
+  echo "0" > /pg/var/pg.ansible.stored
+  echo "0" > /pg/var/pg.rclone.stored
+  echo "0" > /pg/var/pg.python.stored
+  echo "0" > /pg/var/pg.docker.stored
+  echo "0" > /pg/var/pg.docstart.stored
+  echo "0" > /pg/var/pg.watchtower.stored
+  echo "0" > /pg/var/pg.label.stored
+  echo "0" > /pg/var/pg.alias.stored
+  echo "0" > /pg/var/pg.dep
+  rm -rf /pg/var/dep* 1>/dev/null 2>&1
 
   echo ""
   echo "-----------------------------------------------------------"
@@ -61,7 +61,7 @@ done
   echo "-----------------------------------------------------------"
   echo ""
   sleep 2
-  rm -rf /var/plexguide
+  rm -rf /pg/var
 
   echo ""
   echo "-----------------------------------------------------------"
@@ -74,11 +74,11 @@ done
   rm -rf /var/lib/docker
 
   while true; do
-      read -p "Pay Attention! Do you want to DELETE /opt/appdata (y or n)? " yn
+      read -p "Pay Attention! Do you want to DELETE /pg/data (y or n)? " yn
       case $yn in
           [Yy]* ) echo ""
                   echo "Deleting Your Data Forever - Please Wait!"
-                  rm -rf /opt/appdata
+                  rm -rf /pg/data
                   sleep 3
                   echo "I'm here, I'm there, wait...I'm your DATA! Poof! I'm gone!"
                   sleep 3; break;;

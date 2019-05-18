@@ -11,12 +11,12 @@
   tasks:
     ############# Exists Checker
     - name: Pull Stored Data
-      shell: "cat /var/plexguide/pgfork.project"
+      shell: "cat /pg/var/pgfork.project"
       register: basicproject
 
     ##################################################### SPLIT
     - name: Pull Stored Data
-      shell: "cat /var/plexguide/pgfork.version"
+      shell: "cat /pg/var/pgfork.version"
       register: basicversion
 
     ############## Start Asking
@@ -43,7 +43,7 @@
       when: exit.user_input == "2"
 
     - name: Store User Name
-      shell: "echo '{{project.user_input}}' > /var/plexguide/pgfork.project"
+      shell: "echo '{{project.user_input}}' > /pg/var/pgfork.project"
       when: exit.user_input == "2"
     ############################## REGISTER BRANCH
     - pause:
@@ -52,15 +52,15 @@
       when: exit.user_input == "2"
 
     - name: Store Project Link
-      shell: "echo '{{version.user_input}}' > /var/plexguide/pgfork.version"
+      shell: "echo '{{version.user_input}}' > /pg/var/pgfork.version"
       when: exit.user_input == "2"
     ############################################# END
     - name: Reregister Project Link
-      shell: "cat /var/plexguide/pgfork.project"
+      shell: "cat /pg/var/pgfork.project"
       register: projectfinal
 
     - name: Reregister Project Link
-      shell: "cat /var/plexguide/pgfork.version"
+      shell: "cat /pg/var/pgfork.version"
       register: versionfinal
 
     - name: Clone Fork
@@ -71,4 +71,4 @@
         force: yes
 
     - name: Note Fork Version
-      shell: "echo 'Personal Fork' > /var/plexguide/pg.number"
+      shell: "echo 'Personal Fork' > /pg/var/pg.number"
