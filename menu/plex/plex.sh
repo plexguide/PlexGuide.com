@@ -89,4 +89,4 @@ EOF
 # FUNCTIONS END ##############################################################
 
 question1
-#ansible-playbook /opt/coreapps/apps/plex.yml
+#ansible-playbook /pg/coreapps/apps/plex.yml

@@ -14,13 +14,13 @@ roleproper=$(cat /pg/var/pgcloner.roleproper)
 projectname=$(cat /pg/var/pgcloner.projectname)
 projectversion=$(cat /pg/var/pgcloner.projectversion)
 
-mkdir -p "/opt/$rolename"
+mkdir -p "/pg/$rolename"
 
 initial () {
   ansible-playbook "/pg/pgblitz/menu/pgcloner/core/primary.yml"
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
-  file="/opt/$rolename/place.holder"
+  file="/pg/$rolename/place.holder"
   waitvar=0
   while [ "$waitvar" == "0" ]; do
   	sleep .5
@@ -29,12 +29,12 @@ initial () {
 }
 
 custom () {
-  mkdir -p "/opt/$rolename"
+  mkdir -p "/pg/$rolename"
   ansible-playbook "/pg/pgblitz/menu/pgcloner/core/personal.yml"
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
-  file="/opt/$rolename/place.holder"
+  file="/pg/$rolename/place.holder"
   waitvar=0
   while [ "$waitvar" == "0" ]; do
   	sleep .5

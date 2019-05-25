@@ -9,7 +9,7 @@
       register: pathcheck
 
     - name: 'Transfer Image Variable'
-      shell: 'rm -rf /opt/coreapps'
+      shell: 'rm -rf /pg/coreapps'
       when: pathcheck.stat.exists
 
     - name: Cloning Core Apps

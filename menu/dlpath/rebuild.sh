@@ -24,8 +24,8 @@ count=$(wc -l < /pg/var/container.running)
 
 for ((i=1; i<$count+1; i++)); do
 	app=$(sed "${i}q;d" /pg/var/container.running)
-	if [ -e "/opt/coreapps/apps/$app.yml" ]; then ansible-playbook /opt/coreapps/apps/$app.yml; fi
-	if [ -e "/opt/coreapps/communityapps/$app.yml" ]; then ansible-playbook /opt/communityapps/apps/$app.yml; fi
+	if [ -e "/pg/coreapps/apps/$app.yml" ]; then ansible-playbook /pg/coreapps/apps/$app.yml; fi
+	if [ -e "/pg/coreapps/communityapps/$app.yml" ]; then ansible-playbook /pg/communityapps/apps/$app.yml; fi
 done
 
 echo ""

@@ -22,6 +22,6 @@
     - name: 'Cloning Personal Forked Role'
       git:
         repo: 'https://github.com/{{user.stdout}}/{{pname.stdout}}'
-        dest: '/opt/{{prole.stdout}}'
+        dest: '/pg/{{prole.stdout}}'
         version: '{{branch.stdout}}'
         force: yes

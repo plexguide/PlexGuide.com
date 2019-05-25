@@ -56,7 +56,7 @@ case $typed in
          docker rm pgui
       else echo "On" > /pg/var/pgui.switch
         bash /pg/pgblitz/menu/pgcloner/solo/pgui.sh
-        ansible-playbook /opt/pgui/pgui.yml
+        ansible-playbook /pg/pgui/pgui.yml
       fi
       setstart ;;
     7)

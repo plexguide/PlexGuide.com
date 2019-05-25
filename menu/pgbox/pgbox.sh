@@ -26,12 +26,12 @@ else exists; fi
 }
 
 cronexe () {
-croncheck=$(cat /opt/coreapps/apps/_cron.list | grep -c "\<$p\>")
+croncheck=$(cat /pg/coreapps/apps/_cron.list | grep -c "\<$p\>")
 if [ "$croncheck" == "0" ]; then bash /pg/pgblitz/menu/cron/cron.sh; fi
 }
 
 cronmass () {
-croncheck=$(cat /opt/coreapps/apps/_cron.list | grep -c "\<$p\>")
+croncheck=$(cat /pg/coreapps/apps/_cron.list | grep -c "\<$p\>")
 if [ "$croncheck" == "0" ]; then bash /pg/pgblitz/menu/cron/cron.sh; fi
 }
 
@@ -45,7 +45,7 @@ initial () {
   touch /pg/var/app.list
   touch /pg/var/pgbox.buildup
 
-  bash /opt/coreapps/apps/_appsgen.sh
+  bash /pg/coreapps/apps/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /pg/var/pgbox.running
 }
 # FIRST QUESTION
@@ -146,7 +146,7 @@ while read p; do
 
 echo $p > /pg/tmp/program_var
 
-bash /opt/coreapps/apps/image/_image.sh
+bash /pg/coreapps/apps/image/_image.sh
 done </pg/var/pgbox.buildup
 
 # Cron Execution
@@ -175,7 +175,7 @@ elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 # Store Used Program
 echo $p > /pg/tmp/program_var
 # Execute Main Program
-ansible-playbook /opt/coreapps/apps/$p.yml
+ansible-playbook /pg/coreapps/apps/$p.yml
 
 if [[ "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else if [ "$croncount" -eq "1" ]; then cronexe; fi; fi

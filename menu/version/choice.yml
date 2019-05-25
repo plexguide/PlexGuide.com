@@ -16,7 +16,7 @@
     - name: "Installing Version {{serverid.stdout}}"
       git:
         repo: "https://github.com/PGBlitz/PGBlitz.com"
-        dest: "/opt/plexguide"
+        dest: "/pg/plexguide"
         version: "{{serverid.stdout}}"
         force: yes
       when: not serverid.stdout == "edge"

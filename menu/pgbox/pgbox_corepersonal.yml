@@ -14,6 +14,6 @@
     - name: 'Cloning {{boxuser.stdout}} Core Apps'
       git:
         repo: 'https://github.com/{{boxuser.stdout}}/Apps-Core'
-        dest: '/opt/coreapps'
+        dest: '/pg/coreapps'
         version: '{{boxbranch.stdout}}'
         force: yes

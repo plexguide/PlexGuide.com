@@ -5,11 +5,11 @@
 
     - name: Check if Image Variable Exists
       stat:
-        path: '/opt/communityapps'
+        path: '/pg/communityapps'
       register: pathcheck
 
     - name: 'Transfer Image Variable'
-      shell: 'rm -rf /opt/communityapps'
+      shell: 'rm -rf /pg/communityapps'
       when: pathcheck.stat.exists
 
     - name: Cloning Community Apps

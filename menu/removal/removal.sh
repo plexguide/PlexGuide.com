@@ -83,7 +83,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/traefik/tld.sh
+bash /pg/traefik/tld.sh
 exit
 fi
 
@@ -115,10 +115,10 @@ EOF
 sleep 1
 rm -rf /pg/data/$typed
 
-file="/opt/coreapps/apps/$typed.yml"
+file="/pg/coreapps/apps/$typed.yml"
 if [ -e "$file" ]; then
-  check=$(cat /opt/coreapps/apps/$typed.yml | grep '##PG-Community')
-    if [ "$check" == "##PG-Community" ]; then rm -r /opt/communityapps/apps/$typed.yml; fi
+  check=$(cat /pg/coreapps/apps/$typed.yml | grep '##PG-Community')
+    if [ "$check" == "##PG-Community" ]; then rm -r /pg/communityapps/apps/$typed.yml; fi
 rm -rf /pg/var/community.app
 fi
 

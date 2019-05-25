@@ -15,34 +15,34 @@ projectname=$(cat /pg/var/pgcloner.projectname)
 projectversion=$(cat /pg/var/pgcloner.projectversion)
 startlink=$(cat /pg/var/pgcloner.startlink)
 
-mkdir -p "/opt/$rolename"
+mkdir -p "/pg/$rolename"
 
 initial () {
   ansible-playbook "/pg/pgblitz/menu/pgcloner/corev2/primary.yml"
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
-  file="/opt/$rolename/place.holder"
+  file="/pg/$rolename/place.holder"
   waitvar=0
   while [ "$waitvar" == "0" ]; do
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
-  bash /opt/${rolename}/${startlink}
+  bash /pg/${rolename}/${startlink}
 }
 
 custom () {
-  mkdir -p "/opt/$rolename"
+  mkdir -p "/pg/$rolename"
   ansible-playbook "/pg/pgblitz/menu/pgcloner/corev2/personal.yml"
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
-  file="/opt/$rolename/place.holder"
+  file="/pg/$rolename/place.holder"
   waitvar=0
   while [ "$waitvar" == "0" ]; do
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
-  bash /opt/${rolename}/${startlink}
+  bash /pg/${rolename}/${startlink}
 }
 
 mainbanner () {

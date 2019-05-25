@@ -6,6 +6,6 @@
     - name: "Cloning PGBlitz"
       git:
         repo: "https://github.com/PGBlitz/Install"
-        dest: "/opt/pgstage"
+        dest: "/pg/pgstage"
         version: "v8.5"
         force: yes

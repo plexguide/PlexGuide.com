@@ -26,12 +26,12 @@ else exists; fi
 }
 
 cronexe () {
-croncheck=$(cat /opt/coreapps/apps/_cron.list | grep -c "\<$p\>")
+croncheck=$(cat /pg/coreapps/apps/_cron.list | grep -c "\<$p\>")
 if [ "$croncheck" == "0" ]; then bash /pg/pgblitz/menu/cron/cron.sh; fi
 }
 
 cronmass () {
-croncheck=$(cat /opt/coreapps/apps/_cron.list | grep -c "\<$p\>")
+croncheck=$(cat /pg/coreapps/apps/_cron.list | grep -c "\<$p\>")
 if [ "$croncheck" == "0" ]; then bash /pg/pgblitz/menu/cron/cron.sh; fi
 }
 
@@ -45,14 +45,14 @@ initial () {
   touch /pg/var/app.list
   touch /pg/var/pgbox.buildup
 
-  mkdir -p /opt/coreapps
+  mkdir -p /pg/coreapps
 
   if [ "$boxversion" == "official" ]; then ansible-playbook /pg/pgblitz/menu/pgbox/pgboxcore.yml
   else ansible-playbook /pg/pgblitz/menu/pgbox/pgbox_corepersonal.yml; fi
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
-  file="/opt/coreapps/place.holder"
+  file="/pg/coreapps/place.holder"
   waitvar=0
   while [ "$waitvar" == "0" ]; do
   	sleep .5
@@ -72,25 +72,25 @@ question1 () {
 
   file="/pg/var/core.app"
   #if [ ! -e "$file" ]; then
-    ls -la /opt/coreapps/apps | sed -e 's/.yml//g' \
+    ls -la /pg/coreapps/apps | sed -e 's/.yml//g' \
     | awk '{print $9}' | tail -n +4  > /pg/var/app.list
   while read p; do
-    echo "" >> /opt/coreapps/apps/$p.yml
-    echo "##PG-Core" >> /opt/coreapps/apps/$p.yml
+    echo "" >> /pg/coreapps/apps/$p.yml
+    echo "##PG-Core" >> /pg/coreapps/apps/$p.yml
 
-    mkdir -p /opt/mycontainers
+    mkdir -p /pg/mycontainers
     touch /pg/data/blitz/rclone.conf
   done </pg/var/app.list
     touch /pg/var/core.app
   #fi
 
-#bash /opt/coreapps/apps/_appsgen.sh
+#bash /pg/coreapps/apps/_appsgen.sh
 docker ps | awk '{print $NF}' | tail -n +2 > /pg/var/pgbox.running
 
 ### Remove Official Apps
 while read p; do
   # reminder, need one for custom apps
-  baseline=$(cat /opt/coreapps/apps/$p.yml | grep "##PG-Core")
+  baseline=$(cat /pg/coreapps/apps/$p.yml | grep "##PG-Core")
   if [ "$baseline" == "" ]; then sed -i -e "/$p/d" /pg/var/app.list; fi
 done </pg/var/app.list
 
@@ -184,7 +184,7 @@ while read p; do
 
 echo $p > /pg/tmp/program_var
 
-bash /opt/coreapps/apps/image/_image.sh
+bash /pg/coreapps/apps/image/_image.sh
 done </pg/var/pgbox.buildup
 
 # Cron Execution
@@ -213,7 +213,7 @@ elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 # Store Used Program
 echo $p > /pg/tmp/program_var
 # Execute Main Program
-ansible-playbook /opt/coreapps/apps/$p.yml
+ansible-playbook /pg/coreapps/apps/$p.yml
 
 if [[ "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else if [ "$croncount" -eq "1" ]; then cronexe; fi; fi
