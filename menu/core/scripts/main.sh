@@ -16,11 +16,11 @@ while [ "$menu" != "break" ]; do
 menu=$(cat /pg/var/final.choice)
 
 ### Loads Key Variables
-bash /opt/plexguide/menu/interface/$program/var.sh
+bash /pg/pgblitz/menu/interface/$program/var.sh
 ### Loads Key Execution
-ansible-playbook /opt/plexguide/menu/core/selection.yml
+ansible-playbook /pg/pgblitz/menu/core/selection.yml
 ### Executes Actions
-bash /opt/plexguide/menu/interface/$program/file.sh
+bash /pg/pgblitz/menu/interface/$program/file.sh
 
 ### Calls Variable Again - Incase of Break
 menu=$(cat /pg/var/final.choice)

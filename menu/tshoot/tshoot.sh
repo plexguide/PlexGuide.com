@@ -90,13 +90,13 @@ tee <<-EOF
 EOF
 sleep 3
 
-  echo "uninstall" > /pg/var/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  echo "uninstall" > /pg/var/type.choice && bash /pg/pgblitz/menu/core/scripts/main.sh
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
   exit
 else
-  bash /opt/plexguide/menu/tshoot/tshoot.sh
+  bash /pg/pgblitz/menu/tshoot/tshoot.sh
   exit
 fi
 
-bash /opt/plexguide/menu/tshoot/tshoot.sh
+bash /pg/pgblitz/menu/tshoot/tshoot.sh
 exit

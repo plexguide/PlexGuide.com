@@ -23,7 +23,7 @@ function. GDrive configuration is required to move data!
 EOF
 read -n 1 -s -r -p "Press [ANY] Key to Continue "
 echo
-bash /opt/plexguide/menu/tools/tools.sh
+bash /pg/pgblitz/menu/tools/tools.sh
 exit
   fi
 else
@@ -44,7 +44,7 @@ Think you get the idea!
 EOF
 read -n 1 -s -r -p "Press [ANY] Key to Continue "
 echo
-bash /opt/plexguide/menu/tools/tools.sh
+bash /pg/pgblitz/menu/tools/tools.sh
 exit
 fi
 }
@@ -73,28 +73,28 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/pgcloner/pgpatrol.sh
+  bash /pg/pgblitz/menu/pgcloner/pgpatrol.sh
   bash /opt/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/pgtrakt/pgtrakt.sh
+  bash /pg/pgblitz/menu/pgtrakt/pgtrakt.sh
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/hetzner/pghetznerigpu.sh
+  bash /pg/pgblitz/menu/hetzner/pghetznerigpu.sh
 elif [ "$typed" == "4" ]; then
-  bash /opt/plexguide/menu/pgdnsswitcher/pgdnschanger.sh
+  bash /pg/pgblitz/menu/pgdnsswitcher/pgdnschanger.sh
 elif [ "$typed" == "5" ]; then
-  bash /opt/plexguide/menu/nttweak/nttweak.sh
+  bash /pg/pgblitz/menu/nttweak/nttweak.sh
 elif [ "$typed" == "6" ]; then
-  echo 'vpnserver' > /pg/var/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  echo 'vpnserver' > /pg/var/type.choice && bash /pg/pgblitz/menu/core/scripts/main.sh
 elif [ "$typed" == "7" ]; then
-  bash /opt/plexguide/menu/network/network.sh
+  bash /pg/pgblitz/menu/network/network.sh
 elif [ "$typed" == "8" ]; then
-  bash /opt/plexguide/menu/tshoot/tshoot.sh
+  bash /pg/pgblitz/menu/tshoot/tshoot.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
-  bash /opt/plexguide/menu/tools/tools.sh
+  bash /pg/pgblitz/menu/tools/tools.sh
   exit
 fi
 
-bash /opt/plexguide/menu/tools/tools.sh
+bash /pg/pgblitz/menu/tools/tools.sh
 exit

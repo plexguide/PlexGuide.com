@@ -74,7 +74,7 @@
 
     - name: Install pip requirements
       pip:
-        requirements: /opt/plexguide/menu/pgtrakt/requirements.txt
+        requirements: /pg/pgblitz/menu/pgtrakt/requirements.txt
         executable: pip3
 
     - name: "Including cron job"
@@ -87,7 +87,7 @@
 
     - name: Transfer Files
       copy:
-        src: /opt/plexguide/menu/pgtrakt
+        src: /pg/pgblitz/menu/pgtrakt
         dest: /pg/data
         owner: "1000"
         group: "1000"

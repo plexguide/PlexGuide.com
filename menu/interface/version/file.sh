@@ -12,7 +12,7 @@ sleep 4
 ## Builds Version List for Display
 while read p; do
   echo $p >> /pg/var/ver.temp
-done </opt/plexguide/menu/interface/version/version.sh
+done </pg/pgblitz/menu/interface/version/version.sh
 
 tee <<-EOF
 
@@ -39,7 +39,7 @@ fi
 if [ "$storage" != "" ]; then
   break=yes
   echo $storage > /pg/var/pg.number
-  ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
+  ansible-playbook /pg/pgblitz/menu/interface/version/choice.yml
 
 tee <<-EOF
 

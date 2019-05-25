@@ -5,8 +5,8 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-source /opt/plexguide/menu/functions/functions.sh
-source /opt/plexguide/menu/functions/install.sh
+source /pg/pgblitz/menu/functions/functions.sh
+source /pg/pgblitz/menu/functions/install.sh
 # Menu Interface
 setstart() {
 
@@ -35,12 +35,12 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
-      bash /opt/plexguide/menu/dlpath/dlpath.sh
+      bash /pg/pgblitz/menu/dlpath/dlpath.sh
       setstart ;;
     2 )
-      bash /opt/plexguide/menu/pgcloner/multihd.sh ;;
+      bash /pg/pgblitz/menu/pgcloner/multihd.sh ;;
     3 )
-      bash /opt/plexguide/menu/processor/processor.sh
+      bash /pg/pgblitz/menu/processor/processor.sh
       setstart ;;
     4 )
       watchtower ;;
@@ -55,7 +55,7 @@ case $typed in
          docker stop pgui
          docker rm pgui
       else echo "On" > /pg/var/pgui.switch
-        bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
+        bash /pg/pgblitz/menu/pgcloner/solo/pgui.sh
         ansible-playbook /opt/pgui/pgui.yml
       fi
       setstart ;;

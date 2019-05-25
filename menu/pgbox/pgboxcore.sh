@@ -7,7 +7,7 @@
 ################################################################################
 
 # FUNCTIONS START ##############################################################
-source /opt/plexguide/menu/functions/functions.sh
+source /pg/pgblitz/menu/functions/functions.sh
 
 queued () {
 echo
@@ -27,12 +27,12 @@ else exists; fi
 
 cronexe () {
 croncheck=$(cat /opt/coreapps/apps/_cron.list | grep -c "\<$p\>")
-if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
+if [ "$croncheck" == "0" ]; then bash /pg/pgblitz/menu/cron/cron.sh; fi
 }
 
 cronmass () {
 croncheck=$(cat /opt/coreapps/apps/_cron.list | grep -c "\<$p\>")
-if [ "$croncheck" == "0" ]; then bash /opt/plexguide/menu/cron/cron.sh; fi
+if [ "$croncheck" == "0" ]; then bash /pg/pgblitz/menu/cron/cron.sh; fi
 }
 
 initial () {
@@ -47,8 +47,8 @@ initial () {
 
   mkdir -p /opt/coreapps
 
-  if [ "$boxversion" == "official" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml
-  else ansible-playbook /opt/plexguide/menu/pgbox/pgbox_corepersonal.yml; fi
+  if [ "$boxversion" == "official" ]; then ansible-playbook /pg/pgblitz/menu/pgbox/pgboxcore.yml
+  else ansible-playbook /pg/pgblitz/menu/pgbox/pgbox_corepersonal.yml; fi
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
@@ -193,7 +193,7 @@ if [[ "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else
   croncount=$(sed -n '$=' /pg/var/pgbox.buildup)
   echo "false" > /pg/var/cron.count
-  if [ "$croncount" -ge "2" ]; then bash /opt/plexguide/menu/cron/mass.sh; fi
+  if [ "$croncount" -ge "2" ]; then bash /pg/pgblitz/menu/cron/mass.sh; fi
 fi
 
 
@@ -207,7 +207,7 @@ EOF
 
 sleep 2.5
 
-if [ "$p" == "plex" ]; then bash /opt/plexguide/menu/plex/plex.sh;
+if [ "$p" == "plex" ]; then bash /pg/pgblitz/menu/plex/plex.sh;
 elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 
 # Store Used Program
@@ -219,7 +219,7 @@ if [[ "$edition" == "PG Edition - HD Solo" ]]; then a=b
 else if [ "$croncount" -eq "1" ]; then cronexe; fi; fi
 
 # End Banner
-bash /opt/plexguide/menu/pgbox/endbanner.sh >> /pg/tmp/output.info
+bash /pg/pgblitz/menu/pgbox/endbanner.sh >> /pg/tmp/output.info
 
 sleep 2
 done </pg/var/pgbox.buildup

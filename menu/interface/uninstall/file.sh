@@ -53,7 +53,7 @@ done
   echo "-----------------------------------------------------------"
   echo ""
   sleep 2
-  ansible-playbook /opt/plexguide/menu/interface/uninstall/remove-service.yml
+  ansible-playbook /pg/pgblitz/menu/interface/uninstall/remove-service.yml
 
   echo ""
   echo "-----------------------------------------------------------"

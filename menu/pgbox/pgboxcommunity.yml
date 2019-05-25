@@ -15,6 +15,6 @@
     - name: Cloning Community Apps
       git:
         repo: "https://github.com/PGBlitz/Apps-Community"
-        dest: /opt/communityapps
-        version: "v8.6"
+        dest: /pg/communityapps
+        version: "v90"
         force: yes

@@ -18,4 +18,4 @@ echo "💬 MultiHD enables to add multiple drives and mountpoints to MergerFS!" 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/corev2/main.sh
+bash /pg/pgblitz/menu/pgcloner/corev2/main.sh

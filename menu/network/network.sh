@@ -5,7 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-source /opt/plexguide/menu/functions/functions.sh
+source /pg/pgblitz/menu/functions/functions.sh
 # Menu Interface
 question1 (){
 tee <<-EOF

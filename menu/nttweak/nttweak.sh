@@ -157,9 +157,9 @@ elif [ "$typed" == "4" ]; then
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
-  bash /opt/plexguide/menu/tools/tools.sh
+  bash /pg/pgblitz/menu/tools/tools.sh
   exit
 fi
-bash /opt/plexguide/menu/tools/tools.sh
+bash /pg/pgblitz/menu/tools/tools.sh
 exit
 

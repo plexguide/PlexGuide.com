@@ -510,10 +510,10 @@ EOF
     primaryinterface
   elif [ "$typed" == "3" ]; then
     echo "0" > /pg/var/server.id.stored
-    bash /opt/plexguide/menu/interface/serverid.sh
+    bash /pg/pgblitz/menu/interface/serverid.sh
     primaryinterface
   elif [ "$typed" == "4" ]; then
-    bash /opt/plexguide/menu/data/location.sh
+    bash /pg/pgblitz/menu/data/location.sh
     primaryinterface
   elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
     exit

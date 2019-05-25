@@ -48,7 +48,7 @@ if [[ "$typed" == "exit" || "$typed" == "EXIT" || "$typed" == "Exit" ]]; then
 if [ "$storage" != "" ]; then
   break=yes
   echo $storage > /pg/var/pg.number
-  ansible-playbook /opt/plexguide/menu/version/choice.yml
+  ansible-playbook /pg/pgblitz/menu/version/choice.yml
 
 tee <<-EOF
 
@@ -77,5 +77,5 @@ fi
 
 rm -rf /opt/pgstage
 mkdir -p /opt/pgstage
-ansible-playbook /opt/plexguide/menu/pgstage/pgstage.yml #&>/de v/null &
+ansible-playbook /pg/pgblitz/menu/pgstage/pgstage.yml #&>/de v/null &
 mainstart

@@ -186,7 +186,7 @@ if [ "$menu" == "4" ]; then
   done
 
   echo $typed > /pg/var/project.final
-  echo 'INFO - Selected: Exiting Application Suite Interface' > /pg/var/logs/pg.log && bash /opt/plexguide/menu/log/log.sh
+  echo 'INFO - Selected: Exiting Application Suite Interface' > /pg/var/logs/pg.log && bash /pg/pgblitz/menu/log/log.sh
   exit
 fi
 

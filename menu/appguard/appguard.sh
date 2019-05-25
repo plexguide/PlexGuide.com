@@ -11,7 +11,7 @@ program=$(cat /pg/tmp/program_var)
 mkdir -p /pg/var/cron/
 mkdir -p /pg/data/blitz/cron
 # FUNCTIONS START ##############################################################
-source /opt/plexguide/menu/functions/functions.sh
+source /pg/pgblitz/menu/functions/functions.sh
 
 # FIRST QUESTION
 question1 () {
@@ -48,7 +48,7 @@ tee <<-EOF
 EOF
     sleep 3
   else echo "" > /pg/var/server.ht; fi
-    bash /opt/plexguide/menu/appguard/rebuild.sh
+    bash /pg/pgblitz/menu/appguard/rebuild.sh
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput1; fi
 }

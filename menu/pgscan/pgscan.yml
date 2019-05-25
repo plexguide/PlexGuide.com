@@ -22,7 +22,7 @@
 
     - name: Install pip requirements
       pip:
-        requirements: /opt/plexguide/menu/pgscan/requirements.txt
+        requirements: /pg/pgblitz/menu/pgscan/requirements.txt
         executable: pip2
 
     - name: "Including cron job"
@@ -35,7 +35,7 @@
 
     - name: Transfer Files
       copy:
-        src: /opt/plexguide/menu/pgscan
+        src: /pg/pgblitz/menu/pgscan
         dest: /pg/data
         owner: "1000"
         group: "1000"

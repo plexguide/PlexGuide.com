@@ -87,6 +87,6 @@ if [ "$idtest" == "NOT-SET" ]; then
   echo "Restarting the Process"
   echo
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo serverid > /pg/var/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  echo serverid > /pg/var/type.choice && bash /pg/pgblitz/menu/core/scripts/main.sh
   exit
 fi

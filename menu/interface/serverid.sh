@@ -31,7 +31,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/interface/serverid.sh
+bash /pg/pgblitz/menu/interface/serverid.sh
 exit
 else
 tee <<-EOF

@@ -98,7 +98,7 @@ else badinput2; fi
 question3 () {
 echo "$pw" > /pg/var/plex.pw
 echo "$user" > /pg/var/plex.user
-ansible-playbook /opt/plexguide/menu/plex/token.yml
+ansible-playbook /pg/pgblitz/menu/plex/token.yml
 token=$(cat /pg/var/plex.token)
   if [ "$token" != "" ]; then
 tee <<-EOF

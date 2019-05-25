@@ -11,7 +11,7 @@ program=$(cat /pg/tmp/program_var)
 mkdir -p /pg/var/cron/
 mkdir -p /pg/data/blitz/cron
 # FUNCTIONS START ##############################################################
-source /opt/plexguide/menu/functions/functions.sh
+source /pg/pgblitz/menu/functions/functions.sh
 
 # FIRST QUESTION
 question1 () {
@@ -29,7 +29,7 @@ tee <<-EOF
 EOF
 
   read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
+  if [ "$typed" == "1" ]; then ansible-playbook /pg/pgblitz/menu/cron/remove.yml && exit;
 elif [ "$typed" == "2" ]; then break="on";
 else badinput; fi
 }
@@ -92,4 +92,4 @@ break=off && while [ "$break" == "off" ]; do question2; done
 break=off && while [ "$break" == "off" ]; do question3; done
 
 echo $(($RANDOM % 59)) > /pg/var/cron/cron.minute
-ansible-playbook /opt/plexguide/menu/cron/cron.yml
+ansible-playbook /pg/pgblitz/menu/cron/cron.yml

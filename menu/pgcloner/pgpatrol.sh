@@ -18,4 +18,4 @@ ips (sharing the server), and much more!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/corev2/main.sh
+bash /pg/pgblitz/menu/pgcloner/corev2/main.sh

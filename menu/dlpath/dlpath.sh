@@ -162,8 +162,8 @@ tee <<-EOF
 EOF
 sleep 2
 
-ansible-playbook /opt/plexguide/menu/installer/main.yml
-bash /opt/plexguide/menu/dlpath/rebuild.sh
+ansible-playbook /pg/pgblitz/menu/installer/main.yml
+bash /pg/pgblitz/menu/dlpath/rebuild.sh
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -198,7 +198,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/dlpath/dlpath.sh
+bash /pg/pgblitz/menu/dlpath/dlpath.sh
 exit
 fi
 

@@ -163,7 +163,7 @@ then
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   echo ""
-  bash /opt/plexguide/menu/interface/dlpath/main.sh
+  bash /pg/pgblitz/menu/interface/dlpath/main.sh
   exit
 fi
 
@@ -191,7 +191,7 @@ SYSTEM MESSAGE: Rewriting Folders! STANDBY!
 
 EOF
 sleep 2
-ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
+ansible-playbook /pg/pgblitz/menu/interface/folders/main.yml
 tee <<-EOF
 
 ---------------------------------------------------------------------------
@@ -201,7 +201,7 @@ SYSTEM MESSAGE: Rebuilding Containers! STANDBY!
 EOF
 sleep 2
 
-bash /opt/plexguide/menu/interface/dlpath/rebuild.sh
+bash /pg/pgblitz/menu/interface/dlpath/rebuild.sh
 
 tee <<-EOF
 

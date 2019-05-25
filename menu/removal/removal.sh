@@ -71,7 +71,7 @@ if [ "$tcheck" == "" ]; then
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/removal/removal.sh
+bash /pg/pgblitz/menu/removal/removal.sh
 exit
 fi
 

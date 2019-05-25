@@ -373,7 +373,7 @@ token () {
  touch /pg/var/plex.token
  ptoken=$(cat /pg/var/plex.token)
  if [ "$ptoken" == "" ]; then
-   bash /opt/plexguide/menu/plex/token.sh
+   bash /pg/pgblitz/menu/plex/token.sh
    ptoken=$(cat /pg/var/plex.token)
    if [ "$ptoken" == "" ]; then
 tee <<-EOF
@@ -543,7 +543,7 @@ echo "$info2" > /pg/var/pgtrak.sapi
 fi
 fi
 # keys for sonarr and radarr need to be added
-ansible-playbook /opt/plexguide/menu/pgtrakt/pgtrakt.yml && question1;
+ansible-playbook /pg/pgblitz/menu/pgtrakt/pgtrakt.yml && question1;
 
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
 else badinput; fi

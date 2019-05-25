@@ -5,7 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-source /opt/plexguide/menu/functions/install.sh
+source /pg/pgblitz/menu/functions/install.sh
 emergency
 
 # PG ascii art with color
@@ -38,7 +38,7 @@ cat << "EOF"
 EOF
 
 if [[ ! -e "/bin/pgblitz" ]]; then
-  cp /opt/plexguide/menu/alias/templates/pgblitz /bin
+  cp /pg/pgblitz/menu/alias/templates/pgblitz /bin
 fi
 
 chown 1000:1000 /bin/pgblitz &>/dev/null &

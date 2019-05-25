@@ -18,4 +18,4 @@ echo "💬 PG Clone utilizes RClone's Mounts + MergerFS's Union" > /pg/var/pgclo
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/corev2/main.sh
+bash /pg/pgblitz/menu/pgcloner/corev2/main.sh

@@ -27,11 +27,11 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
-  bash /opt/plexguide/menu/pgbox/pgboxcore.sh
+  bash /pg/pgblitz/menu/pgbox/pgboxcore.sh
 elif [ "$typed" == "2" ]; then
-  bash /opt/plexguide/menu/pgbox/pgboxcommunity.sh
+  bash /pg/pgblitz/menu/pgbox/pgboxcommunity.sh
 elif [ "$typed" == "3" ]; then
-  bash /opt/plexguide/menu/removal/removal.sh
+  bash /pg/pgblitz/menu/removal/removal.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
 exit
 else

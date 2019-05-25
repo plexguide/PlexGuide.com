@@ -12,13 +12,13 @@ pg_ansible=$( cat /pg/var/pg.ansible )
 pg_ansible_stored=$( cat /pg/var/pg.ansible.stored )
 ######################################################## START: PG Log
 sudo echo "INFO - Start of Script: $sname" > /pg/var/logs/pg.log
-sudo bash /opt/plexguide/menu/log/log.sh
+sudo bash /pg/pgblitz/menu/log/log.sh
 ######################################################## START: Main Script
 if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
       echo "" 1>/dev/null 2>&1
     else
       echo "Installing / Upgrading Ansible" > /pg/var/message.phase
-      bash /opt/plexguide/menu/interface/install/scripts/message.sh
+      bash /pg/pgblitz/menu/interface/install/scripts/message.sh
       echo ""
       #sudo apt-get remove ansible -y
       #sudo apt-add-repository --remove ppa:ansible/ansible -y && sudo add-apt-repository ppa:ansible/ansible-2.5 -y && sudo apt install ansible -y
@@ -48,4 +48,4 @@ if [ "$pg_ansible" == "$pg_ansible_stored" ]; then
 #
 ######################################################## END: PG Log
 sudo echo "INFO - END of Script: $sname" > /pg/var/logs/pg.log
-sudo bash /opt/plexguide/menu/log/log.sh
+sudo bash /pg/pgblitz/menu/log/log.sh

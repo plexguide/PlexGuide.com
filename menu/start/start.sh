@@ -49,7 +49,7 @@ primestart(){
 
 # When Called, A Quoate is Randomly Selected
 quoteselect () {
-  bash /opt/plexguide/menu/start/quotes.sh
+  bash /pg/pgblitz/menu/start/quotes.sh
   quote=$(cat /pg/var/startup.quote)
   source=$(cat /pg/var/startup.source)
 }
@@ -220,40 +220,40 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
-      bash /opt/plexguide/menu/pgcloner/traefik.sh
+      bash /pg/pgblitz/menu/pgcloner/traefik.sh
       primestart ;;
     2 )
-      bash /opt/plexguide/menu/portguard/portguard.sh
+      bash /pg/pgblitz/menu/portguard/portguard.sh
       primestart ;;
     3 )
-      bash /opt/plexguide/menu/pgcloner/pgshield.sh
+      bash /pg/pgblitz/menu/pgcloner/pgshield.sh
       primestart ;;
     4 )
-      bash /opt/plexguide/menu/pgcloner/pgclone.sh
+      bash /pg/pgblitz/menu/pgcloner/pgclone.sh
       primestart ;;
     5 )
-      bash /opt/plexguide/menu/pgbox/pgboxselect.sh
+      bash /pg/pgblitz/menu/pgbox/pgboxselect.sh
       primestart ;;
     6 )
-      bash /opt/plexguide/menu/pgcloner/pgpress.sh
+      bash /pg/pgblitz/menu/pgcloner/pgpress.sh
       primestart ;;
     7 )
-      bash /opt/plexguide/menu/pgcloner/pgvault.sh
+      bash /pg/pgblitz/menu/pgcloner/pgvault.sh
       primestart ;;
     8 )
-      bash /opt/plexguide/menu/interface/cloudselect.sh
+      bash /pg/pgblitz/menu/interface/cloudselect.sh
       primestart ;;
     9 )
-      bash /opt/plexguide/menu/tools/tools.sh
+      bash /pg/pgblitz/menu/tools/tools.sh
       primestart ;;
     10 )
-      bash /opt/plexguide/menu/interface/settings.sh
+      bash /pg/pgblitz/menu/interface/settings.sh
       primestart ;;
     z )
-      bash /opt/plexguide/menu/interface/ending.sh
+      bash /pg/pgblitz/menu/interface/ending.sh
       exit ;;
     Z )
-      bash /opt/plexguide/menu/interface/ending.sh
+      bash /pg/pgblitz/menu/interface/ending.sh
       exit ;;
     * )
       primestart ;;

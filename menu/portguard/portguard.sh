@@ -42,7 +42,7 @@ EOF
   if [ "$typed" == "1" ]; then
     if [ "$guard" == "CLOSED" ]; then echo "" > /pg/var/server.ports
   else echo "127.0.0.1:" > /pg/var/server.ports; fi
-    bash /opt/plexguide/menu/portguard/rebuild.sh
+    bash /pg/pgblitz/menu/portguard/rebuild.sh
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
 else badinput; fi
 }

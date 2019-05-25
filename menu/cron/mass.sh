@@ -10,7 +10,7 @@
 mkdir -p /pg/var/cron/
 mkdir -p /pg/data/blitz/cron
 # FUNCTIONS START ##############################################################
-source /opt/plexguide/menu/functions/functions.sh
+source /pg/pgblitz/menu/functions/functions.sh
 
 weekrandom () {
   while read p; do
@@ -18,7 +18,7 @@ weekrandom () {
   echo $(($RANDOM % 23)) > /pg/var/cron/cron.hour
   echo $(($RANDOM % 59)) > /pg/var/cron/cron.minute
   echo $(($RANDOM % 6))> /pg/var/cron/cron.day
-  ansible-playbook /opt/plexguide/menu/cron/cron.yml
+  ansible-playbook /pg/pgblitz/menu/cron/cron.yml
   done </pg/var/pgbox.buildup
   exit
 }
@@ -29,7 +29,7 @@ dailyrandom () {
   echo $(($RANDOM % 23)) > /pg/var/cron/cron.hour
   echo $(($RANDOM % 59)) > /pg/var/cron/cron.minute
   echo "*/1" > /pg/var/cron/cron.day
-  ansible-playbook /opt/plexguide/menu/cron/cron.yml
+  ansible-playbook /pg/pgblitz/menu/cron/cron.yml
   done </pg/var/pgbox.buildup
   exit
 }
@@ -37,7 +37,7 @@ dailyrandom () {
 manualuser () {
   while read p; do
   echo "$p" > /pg/tmp/program_var
-  bash /opt/plexguide/menu/cron/cron.sh
+  bash /pg/pgblitz/menu/cron/cron.sh
   done </pg/var/pgbox.buildup
   exit
 }
@@ -62,9 +62,9 @@ EOF
 
   read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then exit;
-elif [ "$typed" == "2" ]; then manualuser && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
-elif [ "$typed" == "3" ]; then dailyrandom && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
-elif [ "$typed" == "4" ]; then weekrandom && ansible-playbook /opt/plexguide/menu/cron/cron.yml;
+elif [ "$typed" == "2" ]; then manualuser && ansible-playbook /pg/pgblitz/menu/cron/cron.yml;
+elif [ "$typed" == "3" ]; then dailyrandom && ansible-playbook /pg/pgblitz/menu/cron/cron.yml;
+elif [ "$typed" == "4" ]; then weekrandom && ansible-playbook /pg/pgblitz/menu/cron/cron.yml;
 else badinput1; fi
 }
 

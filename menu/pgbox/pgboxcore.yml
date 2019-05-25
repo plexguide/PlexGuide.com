@@ -5,7 +5,7 @@
 
     - name: Check if Image Variable Exists
       stat:
-        path: '/opt/coreapps'
+        path: '/pg/coreapps'
       register: pathcheck
 
     - name: 'Transfer Image Variable'
@@ -15,6 +15,6 @@
     - name: Cloning Core Apps
       git:
         repo: "https://github.com/PGBlitz/Apps-Core"
-        dest: /opt/coreapps
-        version: "v8.6"
+        dest: /pg/coreapps
+        version: "v90"
         force: yes

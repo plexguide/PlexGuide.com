@@ -27,13 +27,13 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
-        ansible-playbook /opt/plexguide/menu/processor/processor.yml  --tags performance
+        ansible-playbook /pg/pgblitz/menu/processor/processor.yml  --tags performance
         rebootpro ;;
     2 )
-        ansible-playbook /opt/plexguide/roles/menu/processor.yml  --tags ondemand
+        ansible-playbook /pg/pgblitz/roles/menu/processor.yml  --tags ondemand
         rebootpro ;;
     3 )
-        ansible-playbook /opt/plexguide/roles/menu/processor.yml  --tags conservative
+        ansible-playbook /pg/pgblitz/roles/menu/processor.yml  --tags conservative
         rebootpro ;;
     4 )
         echo ""
@@ -51,7 +51,7 @@ esac
 }
 
 rebootpro() {
-  bash /opt/plexguide/menu/processor/scripts/reboot.sh
+  bash /pg/pgblitz/menu/processor/scripts/reboot.sh
 }
 
 question1

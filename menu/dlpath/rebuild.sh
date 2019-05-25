@@ -29,4 +29,4 @@ for ((i=1; i<$count+1; i++)); do
 done
 
 echo ""
-echo 'INFO - Rebuilding Complete!' > /pg/var/logs/pg.log && bash /opt/plexguide/menu/log/log.sh
+echo 'INFO - Rebuilding Complete!' > /pg/var/logs/pg.log && bash /pg/pgblitz/menu/log/log.sh

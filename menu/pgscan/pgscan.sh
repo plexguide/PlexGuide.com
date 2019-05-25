@@ -50,7 +50,7 @@ token () {
  touch /pg/var/plex.token
  ptoken=$(cat /pg/var/plex.token)
  if [ "$ptoken" == "" ]; then
-   bash /opt/plexguide/menu/plex/token.sh
+   bash /pg/pgblitz/menu/plex/token.sh
    ptoken=$(cat /pg/var/plex.token)
    if [ "$ptoken" == "" ]; then
 tee <<-EOF
@@ -88,7 +88,7 @@ EOF
 
   read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
-  if [ "$typed" == "1" ]; then ansible-playbook /opt/plexguide/menu/pgscan/pgscan.yml && question1;
+  if [ "$typed" == "1" ]; then ansible-playbook /pg/pgblitz/menu/pgscan/pgscan.yml && question1;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
 else badinput; fi
 }

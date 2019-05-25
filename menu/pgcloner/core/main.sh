@@ -7,7 +7,7 @@
 ################################################################################
 
 # FUNCTIONS START ##############################################################
-source /opt/plexguide/menu/functions/functions.sh
+source /pg/pgblitz/menu/functions/functions.sh
 
 rolename=$(cat /pg/var/pgcloner.rolename)
 roleproper=$(cat /pg/var/pgcloner.roleproper)
@@ -17,7 +17,7 @@ projectversion=$(cat /pg/var/pgcloner.projectversion)
 mkdir -p "/opt/$rolename"
 
 initial () {
-  ansible-playbook "/opt/plexguide/menu/pgcloner/core/primary.yml"
+  ansible-playbook "/pg/pgblitz/menu/pgcloner/core/primary.yml"
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
   file="/opt/$rolename/place.holder"
@@ -30,7 +30,7 @@ initial () {
 
 custom () {
   mkdir -p "/opt/$rolename"
-  ansible-playbook "/opt/plexguide/menu/pgcloner/core/personal.yml"
+  ansible-playbook "/pg/pgblitz/menu/pgcloner/core/personal.yml"
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"

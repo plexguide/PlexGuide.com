@@ -20,4 +20,4 @@ user to mass obtain https (secure) certificates for all their containers" > /pg/
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /opt/plexguide/menu/pgcloner/corev2/main.sh
+bash /pg/pgblitz/menu/pgcloner/corev2/main.sh
