@@ -7,16 +7,15 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'pgshield' > /pg/var/pgcloner.rolename
-echo 'PGShield' > /pg/var/pgcloner.roleproper
-echo 'PGShield' > /pg/var/pgcloner.projectname
+echo 'pgpatrol' > /pg/var/pgcloner.rolename
+echo 'PGPatrol' > /pg/var/pgcloner.roleproper
+echo 'PGPatrol' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
-echo 'pgshield.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 PG Shield protects users by deploying adding Google
-Authentication to all the containers for protection!" > /pg/var/pgcloner.info
+echo "💬 PG Patrol can boot idle plex users, users utilizing multiple
+ips (sharing the server), and much more!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/core/main.sh
+bash /pg/pgblitz/pgcloner/core/main.sh

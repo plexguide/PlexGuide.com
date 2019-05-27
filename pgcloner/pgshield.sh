@@ -7,15 +7,16 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'apps' > /pg/var/pgcloner.rolename
-echo 'Apps' > /pg/var/pgcloner.roleproper
-echo 'Apps' > /pg/var/pgcloner.projectname
+echo 'pgshield' > /pg/var/pgcloner.rolename
+echo 'PGShield' > /pg/var/pgcloner.roleproper
+echo 'PGShield' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
-echo 'multihd.sh' > /pg/var/pgcloner.startlink
+echo 'pgshield.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 MultiHD enables to add multiple drives and mountpoints to MergerFS!" > /pg/var/pgcloner.info
+echo "💬 PG Shield protects users by deploying adding Google
+Authentication to all the containers for protection!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/core/main.sh
+bash /pg/pgblitz/pgcloner/core/main.sh

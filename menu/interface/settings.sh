@@ -38,7 +38,7 @@ case $typed in
       bash /pg/pgblitz/menu/dlpath/dlpath.sh
       setstart ;;
     2 )
-      bash /pg/pgblitz/menu/pgcloner/multihd.sh ;;
+      bash /pg/pgblitz/pgcloner/multihd.sh ;;
     3 )
       bash /pg/pgblitz/menu/processor/processor.sh
       setstart ;;
@@ -55,7 +55,7 @@ case $typed in
          docker stop pgui
          docker rm pgui
       else echo "On" > /pg/var/pgui.switch
-        bash /pg/pgblitz/menu/pgcloner/solo/pgui.sh
+        bash /pg/pgblitz/pgcloner/solo/pgui.sh
         ansible-playbook /pg/pgui/pgui.yml
       fi
       setstart ;;

@@ -20,4 +20,4 @@ the use of Google Drive in a hasty and efficient manner!" > /pg/var/pgcloner.inf
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/core/main.sh
+bash /pg/pgblitz/pgcloner/core/main.sh

@@ -7,17 +7,17 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'pgpress' > /pg/var/pgcloner.rolename
-echo 'PGPress' > /pg/var/pgcloner.roleproper
-echo 'PGPress' > /pg/var/pgcloner.projectname
+echo 'blitzgce' > /pg/var/pgcloner.rolename
+echo 'BlitzGCE' > /pg/var/pgcloner.roleproper
+echo 'BlitzGCE' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
-echo 'pressmain.sh' > /pg/var/pgcloner.startlink
+echo 'blitzgce.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 PGPress is a combined group of services that enables the user to
-deploy their own wordpress websites; including the use of other multiple
-instances!" > /pg/var/pgcloner.info
+echo "💬 Blitz GCE scripts are setup so that users can deploy any
+Google Cloud Edition container to act as as feeder between two to
+three months!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/core/main.sh
+bash /pg/pgblitz/pgcloner/core/main.sh

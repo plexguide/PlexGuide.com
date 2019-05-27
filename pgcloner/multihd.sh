@@ -7,16 +7,15 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'hetzner' > /pg/var/pgcloner.rolename
-echo 'HCloud (Hetzner)' > /pg/var/pgcloner.roleproper
-echo 'Hetzner' > /pg/var/pgcloner.projectname
+echo 'multihd' > /pg/var/pgcloner.rolename
+echo 'MultiHD' > /pg/var/pgcloner.roleproper
+echo 'MultiHD' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
-echo 'hcloud.sh' > /pg/var/pgcloner.startlink
+echo 'multihd.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 HCloud in conjuction with PGBlitz enables users to
-deploy Hetzner Cloud Instance (VMs) within seconds" > /pg/var/pgcloner.info
+echo "💬 MultiHD enables to add multiple drives and mountpoints to MergerFS!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/core/main.sh
+bash /pg/pgblitz/pgcloner/core/main.sh

@@ -7,15 +7,17 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'pgclone' > /pg/var/pgcloner.rolename
-echo 'PG Clone' > /pg/var/pgcloner.roleproper
-echo 'PGClone' > /pg/var/pgcloner.projectname
+echo 'pgpress' > /pg/var/pgcloner.rolename
+echo 'PGPress' > /pg/var/pgcloner.roleproper
+echo 'PGPress' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
-echo 'pgclone.sh' > /pg/var/pgcloner.startlink
+echo 'pressmain.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 PG Clone utilizes RClone's Mounts + MergerFS's Union" > /pg/var/pgcloner.info
+echo "💬 PGPress is a combined group of services that enables the user to
+deploy their own wordpress websites; including the use of other multiple
+instances!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/core/main.sh
+bash /pg/pgblitz/pgcloner/core/main.sh

@@ -7,17 +7,15 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'traefik' > /pg/var/pgcloner.rolename
-echo 'Traefik' > /pg/var/pgcloner.roleproper
-echo 'Traefik' > /pg/var/pgcloner.projectname
+echo 'pgclone' > /pg/var/pgcloner.rolename
+echo 'PG Clone' > /pg/var/pgcloner.roleproper
+echo 'PGClone' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
-echo 'traefik.sh' > /pg/var/pgcloner.startlink
+echo 'pgclone.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 Traefik is a modern HTTP reverse proxy and load balancer that makes
-deploying microservices easy. It serves as a reverse proxy that enables a
-user to mass obtain https (secure) certificates for all their containers" > /pg/var/pgcloner.info
+echo "💬 PG Clone utilizes RClone's Mounts + MergerFS's Union" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/core/main.sh
+bash /pg/pgblitz/pgcloner/core/main.sh

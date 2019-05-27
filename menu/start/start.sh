@@ -220,25 +220,25 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
-      bash /pg/pgblitz/menu/pgcloner/traefik.sh
+      bash /pg/pgblitz/pgcloner/traefik.sh
       primestart ;;
     2 )
       bash /pg/pgblitz/menu/portguard/portguard.sh
       primestart ;;
     3 )
-      bash /pg/pgblitz/menu/pgcloner/pgshield.sh
+      bash /pg/pgblitz/pgcloner/pgshield.sh
       primestart ;;
     4 )
-      bash /pg/pgblitz/menu/pgcloner/pgclone.sh
+      bash /pg/pgblitz/pgcloner/pgclone.sh
       primestart ;;
     5 )
       bash /pg/pgblitz/menu/pgbox/pgboxselect.sh
       primestart ;;
     6 )
-      bash /pg/pgblitz/menu/pgcloner/pgpress.sh
+      bash /pg/pgblitz/pgcloner/pgpress.sh
       primestart ;;
     7 )
-      bash /pg/pgblitz/menu/pgcloner/pgvault.sh
+      bash /pg/pgblitz/pgcloner/pgvault.sh
       primestart ;;
     8 )
       bash /pg/pgblitz/menu/interface/cloudselect.sh

@@ -7,17 +7,17 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'blitzgce' > /pg/var/pgcloner.rolename
-echo 'BlitzGCE' > /pg/var/pgcloner.roleproper
-echo 'BlitzGCE' > /pg/var/pgcloner.projectname
+echo 'traefik' > /pg/var/pgcloner.rolename
+echo 'Traefik' > /pg/var/pgcloner.roleproper
+echo 'Traefik' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
-echo 'blitzgce.sh' > /pg/var/pgcloner.startlink
+echo 'traefik.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 Blitz GCE scripts are setup so that users can deploy any
-Google Cloud Edition container to act as as feeder between two to
-three months!" > /pg/var/pgcloner.info
+echo "💬 Traefik is a modern HTTP reverse proxy and load balancer that makes
+deploying microservices easy. It serves as a reverse proxy that enables a
+user to mass obtain https (secure) certificates for all their containers" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/core/main.sh
+bash /pg/pgblitz/pgcloner/core/main.sh

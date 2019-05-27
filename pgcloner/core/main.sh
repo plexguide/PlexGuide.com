@@ -18,7 +18,7 @@ startlink=$(cat /pg/var/pgcloner.startlink)
 mkdir -p "/pg/$rolename"
 
 initial () {
-  ansible-playbook "/pg/pgblitz/menu/pgcloner/core/primary.yml"
+  ansible-playbook "/pg/pgblitz/pgcloner/core/primary.yml"
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
   file="/pg/$rolename/place.holder"
@@ -32,7 +32,7 @@ initial () {
 
 developer () {
   echo "dev" > /pg/var/pgcloner.projectversion
-  ansible-playbook "/pg/pgblitz/menu/pgcloner/core/primary.yml"
+  ansible-playbook "/pg/pgblitz/pgcloner/core/primary.yml"
   echo ""
   echo "💬  Pulling Update Files - Please Wait"
   file="/pg/$rolename/place.holder"
@@ -46,7 +46,7 @@ developer () {
 
 custom () {
   mkdir -p "/pg/$rolename"
-  ansible-playbook "/pg/pgblitz/menu/pgcloner/core/personal.yml"
+  ansible-playbook "/pg/pgblitz/pgcloner/core/personal.yml"
 
   echo ""
   echo "💬  Pulling Update Files - Please Wait"

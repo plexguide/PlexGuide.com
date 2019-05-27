@@ -13,4 +13,4 @@ echo 'BlitzUI' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
 
 ### START PROCESS
-ansible-playbook /pg/pgblitz/menu/pgcloner/core/primary.yml
+ansible-playbook /pg/pgblitz/pgcloner/core/primary.yml

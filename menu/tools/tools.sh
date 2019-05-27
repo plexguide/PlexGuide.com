@@ -73,7 +73,7 @@ EOF
 read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
-  bash /pg/pgblitz/menu/pgcloner/pgpatrol.sh
+  bash /pg/pgblitz/pgcloner/pgpatrol.sh
   bash /pg/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "2" ]; then
   bash /pg/pgblitz/menu/pgtrakt/pgtrakt.sh
