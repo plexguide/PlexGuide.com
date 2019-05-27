@@ -232,7 +232,7 @@ case $typed in
       bash /pg/pgblitz/pgcloner/pgclone.sh
       primestart ;;
     5 )
-      bash /pg/pgblitz/pgcloner/pgbox.sh
+      bash /pg/pgblitz/pgcloner/apps.sh
       primestart ;;
     6 )
       bash /pg/pgblitz/pgcloner/pgpress.sh
