@@ -13,6 +13,7 @@ rolename=$(cat /pg/var/pgcloner.rolename)
 roleproper=$(cat /pg/var/pgcloner.roleproper)
 projectname=$(cat /pg/var/pgcloner.projectname)
 projectversion=$(cat /pg/var/pgcloner.projectversion)
+startlink=$(cat /pg/var/pgcloner.startlink)
 
 mkdir -p "/pg/$rolename"
 
@@ -26,6 +27,7 @@ initial () {
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
+  bash /pg/${rolename}/${startlink}
 }
 
 custom () {
@@ -40,6 +42,7 @@ custom () {
   	sleep .5
   	if [ -e "$file" ]; then waitvar=1; fi
   done
+  bash /pg/${rolename}/${startlink}
 }
 
 mainbanner () {

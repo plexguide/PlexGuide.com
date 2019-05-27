@@ -20,4 +20,4 @@ instances!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/corev2/main.sh
+bash /pg/pgblitz/menu/pgcloner/core/main.sh

@@ -19,4 +19,4 @@ Authentication to all the containers for protection!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
-bash /pg/pgblitz/menu/pgcloner/corev2/main.sh
+bash /pg/pgblitz/menu/pgcloner/core/main.sh
