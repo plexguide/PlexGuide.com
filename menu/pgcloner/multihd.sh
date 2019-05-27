@@ -10,7 +10,7 @@
 echo 'multihd' > /pg/var/pgcloner.rolename
 echo 'MultiHD' > /pg/var/pgcloner.roleproper
 echo 'MultiHD' > /pg/var/pgcloner.projectname
-echo 'v8.6' > /pg/var/pgcloner.projectversion
+echo 'v90' > /pg/var/pgcloner.projectversion
 echo 'multihd.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

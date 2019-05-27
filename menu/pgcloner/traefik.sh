@@ -10,7 +10,7 @@
 echo 'traefik' > /pg/var/pgcloner.rolename
 echo 'Traefik' > /pg/var/pgcloner.roleproper
 echo 'Traefik' > /pg/var/pgcloner.projectname
-echo 'v8.6' > /pg/var/pgcloner.projectversion
+echo 'v90' > /pg/var/pgcloner.projectversion
 echo 'traefik.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

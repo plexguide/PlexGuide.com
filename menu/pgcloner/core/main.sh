@@ -30,6 +30,20 @@ initial () {
   bash /pg/${rolename}/${startlink}
 }
 
+developer () {
+  echo "dev" > /pg/var/pgcloner.projectversion
+  ansible-playbook "/pg/pgblitz/menu/pgcloner/core/primary.yml"
+  echo ""
+  echo "💬  Pulling Update Files - Please Wait"
+  file="/pg/$rolename/place.holder"
+  waitvar=0
+  while [ "$waitvar" == "0" ]; do
+  	sleep .5
+  	if [ -e "$file" ]; then waitvar=1; fi
+  done
+  bash /pg/${rolename}/${startlink}
+}
+
 custom () {
   mkdir -p "/pg/$rolename"
   ansible-playbook "/pg/pgblitz/menu/pgcloner/core/personal.yml"
@@ -55,8 +69,9 @@ tee <<-EOF
 
 $clonerinfo
 
-[1] Utilize $roleproper - PGBlitz's
-[2] Utilize $roleproper - Personal (Forked)
+[1] Utilize $roleproper - Official
+[2] Utilize $roleproper - Developer (Beta)
+[3] Utilize $roleproper - Personal  (Forked)
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -68,6 +83,8 @@ case $typed in
     1 )
         initial ;;
     2 )
+        initial ;;
+    3 )
         variable /pg/var/$rolename.user "NOT-SET"
         variable /pg/var/$rolename.branch "NOT-SET"
         pinterface ;;

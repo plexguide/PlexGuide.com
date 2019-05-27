@@ -7,14 +7,14 @@
 ################################################################################
 
 ### FILL OUT THIS AREA ###
-echo 'pgpatrol' > /pg/var/pgcloner.rolename
-echo 'PGPatrol' > /pg/var/pgcloner.roleproper
-echo 'PGPatrol' > /pg/var/pgcloner.projectname
+echo 'apps' > /pg/var/pgcloner.rolename
+echo 'Apps' > /pg/var/pgcloner.roleproper
+echo 'Apps' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
+echo 'multihd.sh' > /pg/var/pgcloner.startlink
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo "💬 PG Patrol can boot idle plex users, users utilizing multiple
-ips (sharing the server), and much more!" > /pg/var/pgcloner.info
+echo "💬 MultiHD enables to add multiple drives and mountpoints to MergerFS!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ### START PROCESS
