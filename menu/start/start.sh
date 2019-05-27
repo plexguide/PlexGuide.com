@@ -202,7 +202,7 @@ tee <<-EOF
 [2]  Port Guard: [$ports] Protects the Server Ports
 [3]  PG Shield : Enable Google's OAuthentication Protection
 [4]  PG Clone  : Mount Transport
-[5]  PG Box    : Apps ~ Core, Community & Removal
+[5]  PG Box    : Applications (Programs)
 [6]  PG Press  : Deploy WordPress Instances
 [7]  PG Vault  : Backup & Restore
 [8]  PG Cloud  : GCE & Virtual Instances
@@ -232,7 +232,7 @@ case $typed in
       bash /pg/pgblitz/pgcloner/pgclone.sh
       primestart ;;
     5 )
-      bash /pg/pgblitz/menu/pgbox/pgboxselect.sh
+      bash /pg/pgblitz/pgcloner/pgbox.sh
       primestart ;;
     6 )
       bash /pg/pgblitz/pgcloner/pgpress.sh
