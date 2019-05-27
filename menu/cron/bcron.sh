@@ -6,7 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 pgrole=$(cat /pg/tmp/program_var)
-path=$(cat /pg/var/server.hd.path)
+path=$(cat /pg/var/hd.path)
 tarlocation=$(cat /pg/var/data.location)
 serverid=$(cat /pg/var/pg.serverid)
 

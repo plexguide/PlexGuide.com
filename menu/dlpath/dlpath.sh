@@ -14,8 +14,8 @@ variable () {
 
 # For ZipLocations
 
-variable /pg/var/server.hd.path "/mnt"
-pgpath=$(cat /pg/var/server.hd.path)
+variable /pg/var/hd.path "/mnt"
+pgpath=$(cat /pg/var/hd.path)
 
 used=$(df -h $pgpath | tail -n +2 | awk '{print $3}')
 capacity=$(df -h $pgpath | tail -n +2 | awk '{print $2}')
@@ -151,7 +151,7 @@ sleep 2
 chown 1000:1000 "$typed"
 chmod 0775 "$typed"
 rm -rf "$typed/test"
-echo $typed > /pg/var/server.hd.path
+echo $typed > /pg/var/hd.path
 break=off
 
 tee <<-EOF

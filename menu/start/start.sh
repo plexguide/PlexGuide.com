@@ -178,7 +178,7 @@ EOF
     echo "   GCE Disk Used Space: $used_gce of $capacity_gce | $percentage_gce Used Capacity"
   fi
 
-  disktwo=$(cat "/pg/var/server.hd.path")
+  disktwo=$(cat "/pg/var/hd.path")
   if [ "$edition" != "feeder" ]; then
     used_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $3}')
     capacity_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $2}')

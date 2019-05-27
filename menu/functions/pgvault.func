@@ -33,7 +33,7 @@ initial () {
 }
 
 initial2 () {
-  path=$(cat /pg/var/server.hd.path)
+  path=$(cat /pg/var/hd.path)
   tarlocation=$(cat /pg/var/data.location)
   program_size=$(cat /pg/var/rclone.size)
   program_var=$(cat /pg/tmp/program_var)
@@ -258,7 +258,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-path=$(cat /pg/var/server.hd.path)
+path=$(cat /pg/var/hd.path)
 tarlocation=$(cat /pg/var/data.location)
 server_id=$(cat /pg/var/server.id)
 

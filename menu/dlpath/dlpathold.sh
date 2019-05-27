@@ -5,7 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-pgpath=$(cat /pg/var/server.hd.path)
+pgpath=$(cat /pg/var/hd.path)
 
 break=no
 while [ "$break" == "no" ]; do
@@ -180,7 +180,7 @@ sleep 2
     chown 1000:1000 "$typed"
     chmod 0775 "$typed"
     rm -rf "$typed/test"
-    echo $typed > /pg/var/server.hd.path
+    echo $typed > /pg/var/hd.path
     break=off
 
 tee <<-EOF
