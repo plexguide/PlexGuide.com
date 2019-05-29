@@ -518,6 +518,7 @@ EOF
 
 watchtowergen () {
   bash /opt/coreapps/apps/_appsgen.sh
+  bash /opt/communityapps/apps/_appsgen.sh
   while read p; do
     echo -n $p >> /tmp/watchtower.set
     echo -n " " >> /tmp/watchtower.set

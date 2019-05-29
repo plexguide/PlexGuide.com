@@ -46,6 +46,7 @@ initial () {
   touch /var/plexguide/pgbox.buildup
 
   bash /opt/coreapps/apps/_appsgen.sh
+  bash /opt/communityapps/apps/_appsgen.sh
   docker ps | awk '{print $NF}' | tail -n +2 > /var/plexguide/pgbox.running
 }
 # FIRST QUESTION
