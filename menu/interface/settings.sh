@@ -6,7 +6,6 @@
 # GNU:        General Public License v3.0
 ################################################################################
 source /pg/pgblitz/menu/functions/functions.sh
-source /pg/pgblitz/menu/functions/install.sh
 # Menu Interface
 setstart() {
 

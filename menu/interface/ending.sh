@@ -5,7 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-source /pg/pgblitz/menu/functions/install.sh
+source /pg/stage/functions/emergency.sh
 emergency
 
 # PG ascii art with color
