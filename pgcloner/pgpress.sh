@@ -13,7 +13,7 @@ echo 'PGPress' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
 echo 'pressmain.sh' > /pg/var/pgcloner.startlink
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PGPress is a combined group of services that enables the user to
 deploy their own wordpress websites; including the use of other multiple
 instances!" > /pg/var/pgcloner.info

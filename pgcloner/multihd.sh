@@ -13,7 +13,7 @@ echo 'MultiHD' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
 echo 'multihd.sh' > /pg/var/pgcloner.startlink
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 MultiHD enables to add multiple drives and mountpoints to MergerFS!" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

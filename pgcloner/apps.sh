@@ -13,7 +13,7 @@ echo 'Apps' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
 echo 'pgbox.sh' > /pg/var/pgcloner.startlink
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PGBox deploys Applications (Apps) supported by PGBlitz" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

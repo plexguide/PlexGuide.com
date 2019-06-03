@@ -13,7 +13,7 @@ echo 'PGClone' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
 echo 'pgclone.sh' > /pg/var/pgcloner.startlink
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PG Clone utilizes RClone's Mounts + MergerFS's Union" > /pg/var/pgcloner.info
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

@@ -13,7 +13,7 @@ echo 'PGVault' > /pg/var/pgcloner.projectname
 echo 'v90' > /pg/var/pgcloner.projectversion
 echo 'pgvault.sh' > /pg/var/pgcloner.startlink
 
-#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 echo "💬 PG Vault is a combined group of services that utilizes the backup
 and restore processes, which enables the safe storage and transport through
 the use of Google Drive in a hasty and efficient manner!" > /pg/var/pgcloner.info
