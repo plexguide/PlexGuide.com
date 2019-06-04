@@ -198,16 +198,11 @@ quoteselect
 
 tee <<-EOF
 
-[1]  Traefik   : Reverse Proxy
-[2]  Port Guard: [$ports] Protects the Server Ports
-[3]  PG Shield : Enable Google's OAuthentication Protection
-[4]  PG Clone  : Mount Transport
-[5]  PG Box    : Applications (Programs)
-[6]  PG Press  : Deploy WordPress Instances
-[7]  PG Vault  : Backup & Restore
-[8]  PG Cloud  : GCE & Virtual Instances
-[9]  PG Tools
-[10] PG Settings
+[1]  Traefik   : Reverse Proxy   |  [6]  Press: Word Press Deployment
+[2]  Port Guard: [$ports] Ports  |  [7]  Vault: Backup & Restore
+[3]  Shield : Google Protection  |  [8]  Cloud: Deploy GCE & Hetzner
+[4]  Clone  : Mount Transport    |  [9]  Tools: Misc Products
+[5]  Box    : Apps ~ Programs    |  [10] Settings
 [Z]  Exit
 
 "$quote"
