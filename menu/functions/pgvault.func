@@ -61,7 +61,7 @@ badserver () {
 
 #not used yet
 rclonelist () {
-  ls -l  /mnt/gdrive/plexguide/backup | grep "^d" | awk '{print $9}' > pgvault.serverlist
+  ls -l  /pg/gd/plexguide/backup | grep "^d" | awk '{print $9}' > pgvault.serverlist
 }
 
 pgboxrecall () {
@@ -123,7 +123,7 @@ buildup () {
 }
 ################################################ FOR BACKUP - END
 serverprime () {
-  tree -d -L 1 /mnt/gdrive/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2 > /pg/tmp/server.list
+  tree -d -L 1 /pg/gd/plexguide/backup | awk '{print $2}' | tail -n +2 | head -n -2 > /pg/tmp/server.list
 
   ### List Out Apps In Readable Order (One's Not Installed)
   num=0
@@ -164,7 +164,7 @@ read -p '🌍 Type Server Name | Press [ENTER]: ' server < /dev/tty
   serverprime; fi
 
   tempserver=$server
-  ls -l  /mnt/gdrive/plexguide/backup/$tempserver | awk '{print $9}' | tail -n +2 > /pg/var/pgvault.restoreapps
+  ls -l  /pg/gd/plexguide/backup/$tempserver | awk '{print $9}' | tail -n +2 > /pg/var/pgvault.restoreapps
 
   ### Blank Out Temp List
   rm -rf /pg/var/pgvault.apprecall 1>/dev/null 2>&1
@@ -336,7 +336,7 @@ tee <<-EOF
 ↘️  Determining Initial File Size - $program_var
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-size=$(du -sh --apparent-size /mnt/gdrive/plexguide/backup/${srecall}/${program_var}.tar | /usr/bin/awk '{print $1}')
+size=$(du -sh --apparent-size /pg/gd/plexguide/backup/${srecall}/${program_var}.tar | /usr/bin/awk '{print $1}')
 sleep 2
 echo "Initial File Size: $size"
 sleep 2

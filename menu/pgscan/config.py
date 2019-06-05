@@ -143,11 +143,11 @@ class Config(object):
         }
 
         # add example file trash control files
-        cfg['PLEX_EMPTY_TRASH_CONTROL_FILES'] = ['/mnt/unionfs/mounted.bin']
+        cfg['PLEX_EMPTY_TRASH_CONTROL_FILES'] = ['/pg/unity/mounted.bin']
 
         # add example server path mappings
         cfg['SERVER_PATH_MAPPINGS'] = {
-            '/mnt/unionfs': [
+            '/pg/unity': [
                 '/home/seed/media/fused'
             ]
         }

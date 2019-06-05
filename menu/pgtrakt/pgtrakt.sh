@@ -196,7 +196,7 @@ NOTE: In order for this to work, you must set the PATH to where Sonarr is
 actively scanning your tv shows.
 
 Examples:
-/mnt/unionfs/tv
+/pg/unity/tv
 /media/tv
 /secondhd/tv
 
@@ -250,9 +250,9 @@ tee <<-EOF
 
 EOF
 
-### Removes /mnt if /mnt/unionfs exists
+### Removes /mnt if /pg/unity exists
 #check=$(echo $typed | head -c 12)
-#if [ "$check" == "/mnt/unionfs" ]; then
+#if [ "$check" == "/pg/unity" ]; then
 #typed=${typed:4}
 #fi
 
@@ -340,9 +340,9 @@ tee <<-EOF
 
 EOF
 
-### Removes /mnt if /mnt/unionfs exists
+### Removes /mnt if /pg/unity exists
 #check=$(echo $typed | head -c 12)
-#if [ "$check" == "/mnt/unionfs" ]; then
+#if [ "$check" == "/pg/unity" ]; then
 #typed=${typed:4}
 #fi
 
