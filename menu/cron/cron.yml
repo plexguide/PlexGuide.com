@@ -29,7 +29,7 @@
 
 # CRON START ###################################################################
 #  - name: Build Cron Job File
-#    shell: echo "ansible-playbook /pg/pgblitz/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}'" > /pg/data/blitz/cron/{{pgrole.stdout}}
+#    shell: echo "ansible-playbook /pg/pgblitz/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}'" > /pg/var/cron/{{pgrole.stdout}}
 
   - name: Build Cron Job Schedule
     cron:

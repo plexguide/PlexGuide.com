@@ -9,7 +9,7 @@
 # KEY VARIABLE RECALL & EXECUTION
 program=$(cat /pg/tmp/program_var)
 mkdir -p /pg/var/cron/
-mkdir -p /pg/data/blitz/cron
+mkdir -p /pg/var/cron
 # FUNCTIONS START ##############################################################
 
 # BAD INPUT

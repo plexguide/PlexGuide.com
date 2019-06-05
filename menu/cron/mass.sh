@@ -8,7 +8,7 @@
 
 # KEY VARIABLE RECALL & EXECUTION
 mkdir -p /pg/var/cron/
-mkdir -p /pg/data/blitz/cron
+mkdir -p /pg/var/cron
 # FUNCTIONS START ##############################################################
 source /pg/pgblitz/menu/functions/functions.sh
 

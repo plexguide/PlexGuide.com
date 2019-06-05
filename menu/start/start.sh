@@ -74,7 +74,7 @@ varstart() {
   variable /pg/var/pgfork.project "NOT-SET"
   variable /pg/var/pgfork.version "NOT-SET"
   variable /pg/var/tld.program "NOT-SET"
-  variable /pg/data/blitz/plextoken "NOT-SET"
+  variable /pg/var/plextoken "NOT-SET"
   variable /pg/var/server.ht ""
   variable /pg/var/server.ports "127.0.0.1:"
   variable /pg/var/server.email "NOT-SET"

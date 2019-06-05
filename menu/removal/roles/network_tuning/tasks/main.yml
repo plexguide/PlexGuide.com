@@ -9,20 +9,20 @@
 ########### Check If Backup sysctl exists
 - name: sysctl Checker
   stat:
-    path: /pg/data/blitz/sysctl.conf
+    path: /pg/var/sysctl.conf
   register: sysctl
 
 ########### Backup Sysctl Config
 - name: Backup Kernel Parameters
   copy:
     src: /etc/sysctl.conf
-    dest: /pg/data/blitz/sysctl.conf
+    dest: /pg/var/sysctl.conf
   when: sysctl.stat.exists == False
 
 ########### Reset Sysctl Config With Backup File
 - name: Reseting Kernel Parameters
   copy:
-    src: /pg/data/blitz/sysctl.conf
+    src: /pg/var/sysctl.conf
     dest: /etc/sysctl.conf
   when: sysctl.stat.exists == True
 

@@ -17,15 +17,15 @@ if [ "$menu" == "2" ]; then
   sleep 2
   echo ""
   wget https://git.io/vpnsetup -O vpnsetup.sh 1>/dev/null 2>&1
-  sudo sh vpnsetup.sh > /pg/data/blitz/vpninfo.raw
-  cat /pg/data/blitz/vpninfo.raw | tail -n -12 | head -n +4 > /pg/data/blitz/vpn.info
-  rm -rf /pg/data/blitz/vpninfo.raw
+  sudo sh vpnsetup.sh > /pg/var/vpninfo.raw
+  cat /pg/var/vpninfo.raw | tail -n -12 | head -n +4 > /pg/var/vpn.info
+  rm -rf /pg/var/vpninfo.raw
   echo
   echo "-----------------------------------------------------"
   echo "SYSTEM MESSAGE: Please Copy Your Information"
   echo "-----------------------------------------------------"
   echo ""
-  cat /pg/data/blitz/vpn.info
+  cat /pg/var/vpn.info
   echo ""
   echo "Config Info: Visit http://pgvpn.pgblitz.com or WIKI"
   echo "Note: pgvpn <<< command to recall your vpn info"

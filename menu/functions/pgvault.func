@@ -265,12 +265,12 @@ server_id=$(cat /pg/var/server.id)
 tar \
   --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
   --exclude-from=/pg/pgvault/exclude.list \
-  -C /pg/data/${program_var} -cvf /pg/data/blitz/${program_var}.tar ./
+  -C /pg/tmp/${program_var} -cvf /pg/var/${program_var}.tar ./
 
 #tar \
 #--warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
 #--exclude-from=/pg/pgvault/exclude.list \
-#-cfv ${program_var}.tar /pg/data/${program_var}
+#-cfv ${program_var}.tar /pg/tmp/${program_var}
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then
@@ -291,9 +291,9 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-rclone --config /pg/data/blitz/rclone.conf mkdir gdrive:/plexguide/backup/${server_id} 1>/dev/null 2>&1
+rclone --config /pg/var/rclone/blitz.conf mkdir gdrive:/plexguide/backup/${server_id} 1>/dev/null 2>&1
 
-rclone --config /pg/data/blitz/rclone.conf \
+rclone --config /pg/var/rclone/blitz.conf \
 --stats-one-line --stats 1s --progress \
 moveto ${tarlocation}/${program_var}.tar \
 gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
@@ -349,7 +349,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-rclone --config /pg/data/blitz/rclone.conf --stats-one-line \
+rclone --config /pg/var/rclone/blitz.conf --stats-one-line \
 --stats 1s --progress \
 copy gdrive:/plexguide/backup/${srecall}/${program_var}.tar \
 ${tarlocation} \
@@ -375,13 +375,13 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-mkdir -p "/pg/data/${program_var}"
-rm -rf "/pg/data/${program_var}/*"
-chown -R 1000:1000 "/pg/data/${program_var}"
-chmod -R 775 "/pg/data/${program_var}"
-tar -C /pg/data/${program_var} -xvf ${tarlocation}/${program_var}.tar
-chown -R 1000:1000 "/pg/data/${program_var}"
-chmod -R 775 "/pg/data/${program_var}"
+mkdir -p "/pg/tmp/${program_var}"
+rm -rf "/pg/tmp/${program_var}/*"
+chown -R 1000:1000 "/pg/tmp/${program_var}"
+chmod -R 775 "/pg/tmp/${program_var}"
+tar -C /pg/tmp/${program_var} -xvf ${tarlocation}/${program_var}.tar
+chown -R 1000:1000 "/pg/tmp/${program_var}"
+chmod -R 775 "/pg/tmp/${program_var}"
 
 ##### Restart Docker Application if was Running Prior
 if [ "$running" == "1" ]; then

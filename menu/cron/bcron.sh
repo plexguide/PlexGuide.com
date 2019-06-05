@@ -23,7 +23,7 @@ tar \
 if [ $doc == yes ]; then docker restart $pgrole; fi
 
 chown -R 1000:1000 $tarlocation
-rclone --config /pg/data/blitz/rclone.conf copy $tarlocation/$pgrole.tar gdrive:/plexguide/backup/$serverid -v --checksum --drive-chunk-size=64M
+rclone --config /pg/var/rclone/blitz.conf copy $tarlocation/$pgrole.tar gdrive:/plexguide/backup/$serverid -v --checksum --drive-chunk-size=64M
 
 du -sh --apparent-size /pg/data/$pgrole | awk '{print $1}'
 rm -rf '$tarlocation/$pgrole.tar'
