@@ -225,21 +225,21 @@ mergerinstall () {
     if [ "$ub16check" != "" ]; then
     activated=true
     echo "ub16" > /var/plexguide/mergerfs.version
-    wget "https://github.com/trapexit/mergerfs/releases/download/2.28.0/mergerfs_2.28.0.ubuntu-xenial_amd64.deb"
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-xenial_amd64.deb"
 
     elif [ "$ub18check" != "" ]; then
       activated=true
       echo "ub18" > /var/plexguide/mergerfs.version
-      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.0/mergerfs_2.28.0.ubuntu-bionic_amd64.deb"
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-bionic_amd64.deb"
 
     elif [ "$deb9check" != "" ]; then
       activated=true
       echo "deb9" > /var/plexguide/mergerfs.version
-      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.0/mergerfs_2.28.0.debian-stretch_amd64.deb"
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.debian-stretch_amd64.deb"
 
     elif [ "$activated" != "true" ]; then
       activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
-      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.0/mergerfs_2.28.0.ubuntu-bionic_amd64.deb"
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-bionic_amd64.deb"
     else
       apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
       git clone https://github.com/trapexit/mergerfs.git
