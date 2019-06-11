@@ -251,6 +251,30 @@ mergerinstall () {
 
     apt install -y ./mergerfs*_amd64.deb
     rm mergerfs*_amd64.deb
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+↘️  MergerFS has been updated! Requires PG Clone redeployment.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+INFORMATION:  MergerFS was updated on your system and brings performance improvements!
+Users have reported faster plex scanning and playback with the new mergerfs and pgclone configuration.
+
+ATTENTION:
+You are required to re-deploy your mounts in the PG Clone menu (option 4, option A).
+It is advised to check the VFS mount settings in the options menu (C,2), as options have been updated.
+
+WARNING: This is not optional, you must redeploy your mounts in the PG Clone menu.
+Your mounts are currently down until you re-deploy pg clone as it requires configuration updates!
+This is not done for you, you must go to the PG Clone Menu (option 4) and deploy (option A).
+
+We apologize for this one-time inconvenience.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+
 }
 
 motd () {
