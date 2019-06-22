@@ -21,7 +21,7 @@ rclone size gdrive: \
  --no-update-modtime \
  --user-agent="$useragent" \
  --timeout=30m \
- --exclude="**encryp**" \
+ --exclude="**encrypt**" \
  --config /opt/appdata/plexguide/rclone.conf | awk '{print $3,$4}' >> $log/gduncrypt.log
  sed -i 's/Total size: / /g' $log/gduncrypt.log
 fi
