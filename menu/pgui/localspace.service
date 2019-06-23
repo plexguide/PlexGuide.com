@@ -16,7 +16,7 @@ Group=0
 Type=simple
 ExecStart=/bin/bash /opt/plexguide/menu/pgui/localspace.sh
 KillMode=process
-RemainAfterEcit=20sec
+RemainAfterExit=20sec
 TimeoutStopSec=20sec
 
 [Install]
