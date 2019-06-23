@@ -55,7 +55,7 @@ if [ "$typed" == "1" ]; then
   			export DEBIAN_FRONTEND=noninteractive
 	echo "networktools installed"
 		sleep 2
-	network=$(ifconfig | grep -E 'eno1|enp0s|ens5' | awk '{print $1}' | sed -e 's/://g' )
+	network=$(ifconfig | grep -E 'eno1|enp|ens5' | awk '{print $1}' | sed -e 's/://g' )
 		sleep 2
       echo $network "network detected"
       ethtool -K $network tso off tx off
@@ -134,7 +134,7 @@ elif [ "$typed" == "4" ]; then
 				export DEBIAN_FRONTEND=noninteractive
         echo "networktools | vnstat | vnstati installed"
                 sleep 2
-        network=$(ifconfig | grep -E 'eno1|enp0s|ens5' | awk '{print $1}' | sed -e 's/://g' )
+        network=$(ifconfig | grep -E 'eno1|enp|ens5' | awk '{print $1}' | sed -e 's/://g' )
                 sleep 2
 		echo $network "network detected"
 		sed -i 's/eth0/'$network'/g' /etc/vnstat.conf
