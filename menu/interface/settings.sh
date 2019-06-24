@@ -54,6 +54,8 @@ case $typed in
          echo "Off" > /var/plexguide/pgui.switch
          docker stop pgui
          docker rm pgui
+         service localspace stop
+         rm -f /etc/systemd/system/localspace.servive
       else echo "On" > /var/plexguide/pgui.switch
         bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
         ansible-playbook /opt/pgui/pgui.yml
