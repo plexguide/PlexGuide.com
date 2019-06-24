@@ -34,7 +34,7 @@ if grep -q "tdrive:" $config ; then
  --no-update-modtime \
  --user-agent="$useragent" \
  --timeout=30m \
- --exclude="**encrypt**"
+ --exclude="**encrypt**" \
  --config /opt/appdata/plexguide/rclone.conf | awk '{print $3,$4}' >> $log/tduncrypt.log
  sed -i 's/Total size: / /g' $log/tduncrypt.log
 fi
