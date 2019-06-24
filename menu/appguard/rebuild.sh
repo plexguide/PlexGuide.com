@@ -39,7 +39,7 @@ tee <<-EOF
 EOF
 	sleep 2
 	if [ -e "/opt/coreapps/apps/$app.yml" ]; then ansible-playbook /opt/coreapps/apps/$app.yml; fi
-	if [ -e "/opt/coreapps/communityapps/$app.yml" ]; then ansible-playbook /opt/communityapps/apps/$app.yml; fi
+	if [ -e "/opt/communityapps/$app.yml" ]; then ansible-playbook /opt/communityapps/apps/$app.yml; fi
 done
 
 echo ""
