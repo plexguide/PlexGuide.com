@@ -86,6 +86,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚠ Failure to perform manual configuration changes will cause problems!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 🌍 Visit the wiki for instructions on how to configure $program.
 http://$program.pgblitz.com or http://github.com/PGBlitz/PGBlitz.com/wiki/$program
 
