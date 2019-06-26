@@ -60,7 +60,7 @@ tee <<-EOF
 EOF
 fi
 
-if [ "$program" == *"sonarr"* ] || [ "$program" == *"radarr"* ] || [ "$program" == *"lidarr"* ]; then
+if [[ "$program" == *"sonarr"* ]] || [[ "$program" == *"radarr"* ]] || [[ "$program" == *"lidarr"* ]]; then
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -69,7 +69,7 @@ tee <<-EOF
       
   $program requires additional manual configuration!
 EOF
-if [ "$program" == *"sonarr"* ] || [ "$program" == *"radarr"* ] || [ "$program" == *"lidarr"* ]; then
+if [[ "$program" == *"sonarr"* ]] || [[ "$program" == *"radarr"* ]] || [[ "$program" == *"lidarr"* ]]; then
 tee <<-EOF
 
   $program requires "downloader mappings" to enable hardlinking and rapid importing.
