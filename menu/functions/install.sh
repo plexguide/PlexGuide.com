@@ -53,7 +53,7 @@ updateprime() {
   echo "2" > ${abc}/pg.motd
   echo "115" > ${abc}/pg.alias
   echo "3" > ${abc}/pg.dep
-  echo "2" > ${abc}/pg.cleaner
+  echo "3" > ${abc}/pg.cleaner
   echo "3" > ${abc}/pg.gcloud
   echo "12" > ${abc}/pg.hetzner
   echo "1" > ${abc}/pg.amazonaws

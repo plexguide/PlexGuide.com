@@ -59,3 +59,35 @@ tee <<-EOF
 ▫ $ip:${port}${extra}
 EOF
 fi
+
+if [[ "$program" == *"sonarr"* ]] || [[ "$program" == *"radarr"* ]] || [[ "$program" == *"lidarr"* ]]; then
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 Manual Configuration Required > http://$program.pgblitz.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      
+  $program requires additional manual configuration!
+EOF
+if [[ "$program" == *"sonarr"* ]] || [[ "$program" == *"radarr"* ]] || [[ "$program" == *"lidarr"* ]]; then
+tee <<-EOF
+
+  $program requires "downloader mappings" to enable hardlinking and rapid importing.
+
+  If you do not have these mappings, $program can't rename and move the files on import.
+  This will result in files being copied instead of moved, and it will cause other issues.
+
+  The mappings are on the download client settings (advanced setting), at the bottom of the page.
+  Visit https://github.com/PGBlitz/PGBlitz.com/wiki/Remote-Path-Mappings for more information.
+
+EOF
+fi
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠ Failure to perform manual configuration changes will cause problems!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌍 Visit the wiki for instructions on how to configure $program.
+http://$program.pgblitz.com or http://github.com/PGBlitz/PGBlitz.com/wiki/$program
+
+EOF
+fi
