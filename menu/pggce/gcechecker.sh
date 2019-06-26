@@ -5,6 +5,8 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
+
+### NOTE THIS IS JUST A COPY - MAIN ONE SITE IN MAIN REPO - THIS IS JUST FOR INFO
 file1="/dev/nvme0n1"
 file2="/var/plexguide/gce.check"
 gcheck=$(dnsdomainname | tail -c 10)
