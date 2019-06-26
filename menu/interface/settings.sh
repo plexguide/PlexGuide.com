@@ -59,6 +59,7 @@ case $typed in
       else echo "On" > /var/plexguide/pgui.switch
         bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
         ansible-playbook /opt/pgui/pgui.yml
+        service localspace start
       fi
       setstart ;;
     7)
