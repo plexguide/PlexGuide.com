@@ -26,7 +26,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Prior Versions? Visit > versions.pgblitz.com
 
-Lastest:  : $latest
+Latest:  : $latest
 Beta      : $beta
 Installed : $pgnumber
 
