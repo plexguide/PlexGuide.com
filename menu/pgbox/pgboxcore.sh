@@ -101,7 +101,7 @@ rm -rf /var/plexguide/program.temp && touch /var/plexguide/program.temp
 num=0
 sed -i -e "/templates/d" /var/plexguide/app.list
 sed -i -e "/image/d" /var/plexguide/app.list
-sed -i -e "watchtower" /var/plexguide/app.list
+sed -i -e "/watchtower/d" /var/plexguide/app.list
 sed -i -e "/_/d" /var/plexguide/app.list
 while read p; do
   echo -n $p >> /var/plexguide/program.temp
