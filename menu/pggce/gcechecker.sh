@@ -93,8 +93,8 @@ fi
       touch /var/plexguide/gce.check
       rm -rf /var/plexguide/gce.failed 1>/dev/null 2>&1
       rm -rf /var/plexguide/gce.false 1>/dev/null 2>&1
-      rm -rf /var/plexguide/nvme 1>/dev/null 2>&1
-      rm -rf /var/plexguide/nvmeraid 1>/dev/null 2>&1
+      rm -rf /var/plexguide/nvme.log 1>/dev/null 2>&1
+      rm -rf /var/plexguide/nvmeraid.log 1>/dev/null 2>&1
       
       echo "feeder" > /var/plexguide/pg.server.deploy
       cat /var/plexguide/pg.edition > /var/plexguide/pg.edition.stored
@@ -133,7 +133,7 @@ read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
 rm -rf /var/plexguide/gce.failed 1>/dev/null 2>&1
 rm -rf /var/plexguide/gce.false 1>/dev/null 2>&1
 rm -rf /var/plexguide/nvme.log 1>/dev/null 2>&1
-rm -rf /var/plexguide/nvmeraid.log1>/dev/null 2>&1
+rm -rf /var/plexguide/nvmeraid.log 1>/dev/null 2>&1
 else
     touch /var/plexguide/gce.false
 fi
