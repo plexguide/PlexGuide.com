@@ -29,9 +29,9 @@ EOF
 apt-get install mdadm --no-install-recommends -yqq  2>&1 >> /dev/null
         export DEBIAN_FRONTEND=noninteractive
  #Check for NVME
-        lsblk | grep nvme | awk  '{print $1}' > /var/plexguide/nvme
-        lsblk | grep nvme | awk  '{print $1}' > /var/plexguide/nvmeraid
-        sed -i 's/nvme0n//g' /var/plexguide/nvmeraid
+        lsblk | grep nvme | awk  '{print $1}' > /var/plexguide/nvme.log
+        lsblk | grep nvme | awk  '{print $1}' > /var/plexguide/nvmeraid.log
+        sed -i 's/nvme0n//g' /var/plexguide/nvmeraid.log
   #Check for NVME
         nvme="$(tail -n1 /var/plexguide/nvmeraid.log)"
 
