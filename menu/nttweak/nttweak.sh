@@ -15,7 +15,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-echo "Upgdating packages" 
+echo "Updating packages" 
 	apt-get update -yqq 2>&1 >> /dev/null
 		export DEBIAN_FRONTEND=noninteractive
 echo "Upgrading packages"
