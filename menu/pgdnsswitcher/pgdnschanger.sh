@@ -13,7 +13,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-echo "Upgdating packages" 
+echo "Updating packages" 
 	apt-get update -yqq > /dev/null
 echo "Upgrading packages"
 	apt-get upgrade -yqq > /dev/null
