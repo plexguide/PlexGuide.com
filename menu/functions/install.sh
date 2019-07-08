@@ -36,7 +36,7 @@ updateprime() {
   file="${abc}/new.install"
   if [ ! -e "$file" ]; then newinstall; fi
 
-  ospgversion=$(cat /etc/*-release | grep Debian | grep 9)
+  ospgversion=$(cat /etc/*-release | grep Debian | grep '9\|10')
   if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
   else echo "ubuntu" > ${abc}/os.version; fi
 
@@ -216,6 +216,7 @@ mergerinstall () {
   ub16check=$(cat /etc/*-release | grep xenial)
   ub18check=$(cat /etc/*-release | grep bionic)
   deb9check=$(cat /etc/*-release | grep stretch)
+  deb10check=$(cat /etc/*-release | grep buster)
   activated=false
 
     apt --fix-broken install -y
@@ -236,6 +237,11 @@ mergerinstall () {
       activated=true
       echo "deb9" > /var/plexguide/mergerfs.version
       wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.debian-stretch_amd64.deb"
+
+    elif [ "$deb10check" != "" ]; then
+      activated=true
+      echo "deb10" > /var/plexguide/mergerfs.version
+      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.debian-buster_amd64.deb"
 
     elif [ "$activated" != "true" ]; then
       activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
