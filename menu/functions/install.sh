@@ -242,7 +242,7 @@ mergerinstall () {
       activated=true
       echo "deb10" > /var/plexguide/mergerfs.version
       wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.debian-buster_amd64.deb"
-      sudo apt-get install python-backports.ssl-match-hostname
+      sudo apt-get install python-backports.ssl-match-hostname -y
 
     elif [ "$activated" != "true" ]; then
       activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
