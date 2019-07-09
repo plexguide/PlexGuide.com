@@ -33,7 +33,7 @@ tee <<-EOF
 Ports Are Currently: [$guard]
 
 1. $opp Ports
-Z. EXIT
+Z. Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF

@@ -81,7 +81,7 @@ tee <<-EOF
 ⚡ Reference: http://pgscan.pgblitz.com
 
 1 - Deploy PG Scan                     [$dstatus]
-Z - EXIT
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF

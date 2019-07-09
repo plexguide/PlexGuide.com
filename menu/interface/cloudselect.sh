@@ -14,7 +14,7 @@ tee <<-EOF
 
 1 - Cloud Instance: Google   (Blitz ~ GCE Edition)
 2 - Cloud Instance: Hetzner
-Z - EXIT
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF

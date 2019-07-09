@@ -18,7 +18,7 @@ tee <<-EOF
 2. OnDemand Mode
 3. Conservative Mode
 4. View Processor Policy
-Z. EXIT
+Z. Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
