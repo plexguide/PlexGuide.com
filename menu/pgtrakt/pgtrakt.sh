@@ -470,7 +470,7 @@ NOTE: Changes Made? Must Redeploy PGTrak when Complete!
 4 - Sonarr Profile  [$sprofile]
 5 - Radarr Profile  [$rprofile]
 6 - Deploy PGTrak   [$dstatus]
-Z - EXIT
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF

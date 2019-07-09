@@ -24,7 +24,7 @@
         prompt: "\nWelcome to the PG Fork Interface!
                    \n\nYour GITHUB User-Name: {{basicproject.stdout}}
                    \nBranch-Release Link: {{basicversion.stdout}}
-                   \n\n1 - EXIT the PG Fork
+                   \n\n1 - Exit the PG Fork
                    \n2 - Update Your GITHUB User-Name & Branch
                    \n3 - Download Current Forked Project
                    \n\nType a Selection Number"

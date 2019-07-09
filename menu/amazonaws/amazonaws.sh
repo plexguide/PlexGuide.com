@@ -43,7 +43,7 @@ tee <<-EOF
 2 - Destory a Server
 A - List Server Info
 B - Display Inital Server Passwords
-Z - EXIT
+Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
