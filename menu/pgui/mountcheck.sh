@@ -54,7 +54,14 @@ while true; do
     docker stop sabnzbd 1>/dev/null 2>&1
     docker stop rutorrent 1>/dev/null 2>&1
     docker stop deluge 1>/dev/null 2>&1
-    docker stop qbitorrent 1>/dev/null 2>&1
+    docker stop qbittorrent 1>/dev/null 2>&1
+    docker stop deluge-vpn 1>/dev/null 2>&1
+    docker stop transmission 1>/dev/null 2>&1
+    docker stop rflood-vpn 1>/dev/null 2>&1
+    docker stop rutorrent-vpn 1>/dev/null 2>&1
+    docker stop transmission-vpn 1>/dev/null 2>&1
+    docker stop jdownloader2 1>/dev/null 2>&1
+    docker stop jd2-openvpn 1>/dev/null 2>&1
   elif [[ "$leftover" -gt "3000000" && "$diskspace27" == "1" ]]; then
     docker start plex 1>/dev/null 2>&1
     docker start emby 1>/dev/null 2>&1
@@ -63,7 +70,14 @@ while true; do
     docker start sabnzbd 1>/dev/null 2>&1
     docker start rutorrent 1>/dev/null 2>&1
     docker start deluge 1>/dev/null 2>&1
-    docker start qbitorrent 1>/dev/null 2>&1
+    docker start qbittorrent 1>/dev/null 2>&1
+    docker start deluge-vpn 1>/dev/null 2>&1
+    docker start transmission 1>/dev/null 2>&1
+    docker start rflood-vpn 1>/dev/null 2>&1
+    docker start rutorrent-vpn 1>/dev/null 2>&1
+    docker start transmission-vpn 1>/dev/null 2>&1
+    docker start jdownloader2 1>/dev/null 2>&1
+    docker start jd2-openvpn 1>/dev/null 2>&1
     rm -rf /opt/appdata/plexguide/emergency/message.1
     diskspace27=0
   fi
