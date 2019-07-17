@@ -9,22 +9,22 @@
 # FUNCTIONS START ##############################################################
 
 # BAD INPUT
-badinput () {
-echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
-question1
+badinput() {
+  echo
+  read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed </dev/tty
+  question1
 }
 
-badinput2 () {
-echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
-question2
+badinput2() {
+  echo
+  read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed </dev/tty
+  question2
 }
 
 # FIRST QUESTION
 
-question1 () {
-tee <<-EOF
+question1() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 PG - PlexToken Generator
@@ -38,27 +38,28 @@ Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p 'Make a Selection | Press [ENTER]: ' typed < /dev/tty
-echo
+  read -p 'Make a Selection | Press [ENTER]: ' typed </dev/tty
+  echo
 
   if [ "$typed" == "1" ]; then
-    read -p 'Enter the PLEX User Name | Press [ENTER]: ' user < /dev/tty
-    read -p 'Enter the PLEX User Pass | Press [ENTER]: ' pw < /dev/tty
+    read -p 'Enter the PLEX User Name | Press [ENTER]: ' user </dev/tty
+    read -p 'Enter the PLEX User Pass | Press [ENTER]: ' pw </dev/tty
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🍖  NOM NOM - Saved Your Information!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
-question2
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
-else badinput; fi
+    sleep 3
+    question2
+  elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
+    exit
+  else badinput; fi
 }
 
-question2 () {
-tee <<-EOF
+question2() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂  PG - User Name & PassWord Confirmation
@@ -76,10 +77,10 @@ Z - Exit Interface
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p 'Make a Selection | Press [ENTER]: ' typed < /dev/tty
+  read -p 'Make a Selection | Press [ENTER]: ' typed </dev/tty
 
   if [ "$typed" == "1" ]; then
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🍖 NOM NOM - Got It! Generating the Plex Token!
@@ -88,28 +89,30 @@ tee <<-EOF
 NOTE: If the token is bad, this process will repeat again!
 
 EOF
-sleep 4
-question3
-elif [ "$typed" == "2" ]; then question1;
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
-else badinput2; fi
+    sleep 4
+    question3
+  elif [ "$typed" == "2" ]; then
+    question1
+  elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
+    exit
+  else badinput2; fi
 }
 
-question3 () {
-echo "$pw" > /var/plexguide/plex.pw
-echo "$user" > /var/plexguide/plex.user
-ansible-playbook /opt/plexguide/menu/plex/token.yml
-token=$(cat /var/plexguide/plex.token)
+question3() {
+  echo "$pw" >/var/plexguide/plex.pw
+  echo "$user" >/var/plexguide/plex.user
+  ansible-playbook /opt/plexguide/menu/plex/token.yml
+  token=$(cat /var/plexguide/plex.token)
   if [ "$token" != "" ]; then
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️  PG - PlexToken Generation Succeeded!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 4
-else
-tee <<-EOF
+    sleep 4
+  else
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  PG - PlexToken Generation Failed!
@@ -118,8 +121,8 @@ tee <<-EOF
 NOTE: Process will repeat until you succeed or exit!
 
 EOF
-  read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
-  question1
+    read -p 'Confirm Info | Press [ENTER] ' typed </dev/tty
+    question1
   fi
 }
 

@@ -7,38 +7,38 @@
 ################################################################################
 ---
 - name: Register Project
-  shell: "cat /var/plexguide/project.final"
+  shell: 'cat /var/plexguide/project.final'
   register: project
 
 - name: Register Account
-  shell: "cat /var/plexguide/project.account"
+  shell: 'cat /var/plexguide/project.account'
   register: account
 
 - name: Register Processor Count
-  shell: "cat /var/plexguide/project.processor"
+  shell: 'cat /var/plexguide/project.processor'
   register: processor
 
 - name: Register IP region
-  shell: "cat /var/plexguide/project.ipregion"
+  shell: 'cat /var/plexguide/project.ipregion'
   register: ipregion
 
 - name: Register IP region
-  shell: "cat /var/plexguide/project.ipaddress"
+  shell: 'cat /var/plexguide/project.ipaddress'
   register: ipaddress
 
 - name: Register Deployment Status
-  shell: "cat /var/plexguide/gce.deployed.status"
+  shell: 'cat /var/plexguide/gce.deployed.status'
   register: deployment
 
-- name: "Key Menu Facts"
+- name: 'Key Menu Facts'
   set_fact:
-    head1: "\nPGBlitz GCE Deployment Interface - Make a Selection"
-    head2: ""
-    info2: "\n2.  Log-In to Your Account: {{account.stdout}}"
-    info3: "\n3.  Build a New Project"
-    info4: "\n4.  Establish Project ID  : [{{project.stdout}}]"
-    info5: "\n5.  Set Processor Count   : [{{processor.stdout}}]"
-    info6: "\n6.  Set IP Region / Server: [{{ipaddress.stdout}}] - [{{ipregion.stdout}}]"
-    info7: "\n7.  Deploy PG GCE Server  : [{{deployment.stdout}}]"
-    info8: "\n8.  SSH Securely into your GCE Feeder Box"
-    info9: "\n9.  Destroy Server"
+      head1: "\nPGBlitz GCE Deployment Interface - Make a Selection"
+      head2: ''
+      info2: "\n2.  Log-In to Your Account: {{account.stdout}}"
+      info3: "\n3.  Build a New Project"
+      info4: "\n4.  Establish Project ID  : [{{project.stdout}}]"
+      info5: "\n5.  Set Processor Count   : [{{processor.stdout}}]"
+      info6: "\n6.  Set IP Region / Server: [{{ipaddress.stdout}}] - [{{ipregion.stdout}}]"
+      info7: "\n7.  Deploy PG GCE Server  : [{{deployment.stdout}}]"
+      info8: "\n8.  SSH Securely into your GCE Feeder Box"
+      info9: "\n9.  Destroy Server"

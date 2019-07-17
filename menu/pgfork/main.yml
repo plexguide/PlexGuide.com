@@ -11,30 +11,30 @@
   tasks:
     ############# Exists Checker
     - name: Pull Stored Data
-      shell: "cat /var/plexguide/pgfork.project"
+      shell: 'cat /var/plexguide/pgfork.project'
       register: basicproject
 
     ##################################################### SPLIT
     - name: Pull Stored Data
-      shell: "cat /var/plexguide/pgfork.version"
+      shell: 'cat /var/plexguide/pgfork.version'
       register: basicversion
 
     ############## Start Asking
     - pause:
         prompt: "\nWelcome to the PG Fork Interface!
-                   \n\nYour GITHUB User-Name: {{basicproject.stdout}}
-                   \nBranch-Release Link: {{basicversion.stdout}}
-                   \n\n1 - Exit the PG Fork
-                   \n2 - Update Your GITHUB User-Name & Branch
-                   \n3 - Download Current Forked Project
-                   \n\nType a Selection Number"
+          \n\nYour GITHUB User-Name: {{basicproject.stdout}}
+          \nBranch-Release Link: {{basicversion.stdout}}
+          \n\n1 - Exit the PG Fork
+          \n2 - Update Your GITHUB User-Name & Branch
+          \n3 - Download Current Forked Project
+          \n\nType a Selection Number"
       register: exit
       until: exit.user_input > "0" and exit.user_input < "4"
       retries: 99
       delay: 1
 
     - fail:
-        msg: "User Opted NOT to CONTINUE! Aborting!"
+        msg: 'User Opted NOT to CONTINUE! Aborting!'
       when: exit.user_input == "1"
     ############################## REGISTER PROJECT
     - pause:
@@ -56,18 +56,18 @@
       when: exit.user_input == "2"
     ############################################# END
     - name: Reregister Project Link
-      shell: "cat /var/plexguide/pgfork.project"
+      shell: 'cat /var/plexguide/pgfork.project'
       register: projectfinal
 
     - name: Reregister Project Link
-      shell: "cat /var/plexguide/pgfork.version"
+      shell: 'cat /var/plexguide/pgfork.version'
       register: versionfinal
 
     - name: Clone Fork
       git:
-        repo: "https://github.com/{{projectfinal.stdout}}/PGBlitz.com"
+        repo: 'https://github.com/{{projectfinal.stdout}}/PGBlitz.com'
         dest: /opt/plexguide
-        version: "{{versionfinal.stdout}}"
+        version: '{{versionfinal.stdout}}'
         force: yes
 
     - name: Note Fork Version

@@ -30,7 +30,7 @@
         force: yes
         mode: 0775
 
-  ###### Install PGUpdate
+    ###### Install PGUpdate
 
     - name: PGUpdate
       template:
@@ -39,7 +39,7 @@
         force: yes
         mode: 0775
 
-  ###### Install PGBlitz
+    ###### Install PGBlitz
 
     - name: PlexGuide
       template:
@@ -55,7 +55,7 @@
         force: yes
         mode: 0775
         owner: root
-        
+
     - name: PGBlitz
       template:
         src: pgblitz
@@ -64,7 +64,7 @@
         mode: 0775
         owner: root
 
-  ###### Server reboot
+    ###### Server reboot
 
     - name: server reboot
       template:
@@ -73,7 +73,7 @@
         force: yes
         mode: 0775
 
-  ###### Check list of services
+    ###### Check list of services
 
     - name: list systemd services
       template:
@@ -83,8 +83,7 @@
         mode: 0775
         owner: root
 
-
-  ###### Server update
+    ###### Server update
 
     - name: update server
       template:
@@ -93,7 +92,7 @@
         force: yes
         mode: 0775
 
-  ###### Server upgrade
+    ###### Server upgrade
 
     - name: upgrade server
       template:
@@ -103,7 +102,7 @@
         mode: 0775
         owner: root
 
-  ###### Install app
+    ###### Install app
 
     - name: install appname
       template:
@@ -113,7 +112,7 @@
         mode: 0775
         owner: root
 
-  ###### Autoremove installed app packages
+    ###### Autoremove installed app packages
 
     - name: autoremove unused packages after app install
       template:

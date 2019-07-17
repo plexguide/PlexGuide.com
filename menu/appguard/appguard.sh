@@ -14,11 +14,12 @@ mkdir -p /opt/appdata/plexguide/cron
 source /opt/plexguide/menu/functions/functions.sh
 
 # FIRST QUESTION
-question1 () {
+question1() {
   appguard=$(cat /var/plexguide/server.ht)
-  if [ "$appguard" == "" ]; then guard="DISABLED" && opp="Enable";
-else guard="ENABLED" && opp="Disable"; fi
-tee <<-EOF
+  if [ "$appguard" == "" ]; then
+    guard="DISABLED" && opp="Enable"
+  else guard="ENABLED" && opp="Disable"; fi
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 Welcome to AppGuard!
@@ -33,24 +34,25 @@ Z. Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
   if [ "$typed" == "1" ]; then
     if [ "$guard" == "DISABLED" ]; then
-    echo ""
-    read -p '↘️ [Type] a USERNAME! | PRESS [ENTER] ' user < /dev/tty
-    read -p '↘️ [Type] a PASSWORD! | PRESS [ENTER] ' pw < /dev/tty
-    htpasswd -cbs /var/plexguide/server.ht $user $pw
-tee <<-EOF
+      echo ""
+      read -p '↘️ [Type] a USERNAME! | PRESS [ENTER] ' user </dev/tty
+      read -p '↘️ [Type] a PASSWORD! | PRESS [ENTER] ' pw </dev/tty
+      htpasswd -cbs /var/plexguide/server.ht $user $pw
+      tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️  AppGuard - Hashed UserName & Password
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-    sleep 3
-  else echo "" > /var/plexguide/server.ht; fi
+      sleep 3
+    else echo "" >/var/plexguide/server.ht; fi
     bash /opt/plexguide/menu/appguard/rebuild.sh
-elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
-else badinput1; fi
+  elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
+    exit
+  else badinput1; fi
 }
 
 # FUNCTIONS END ##############################################################

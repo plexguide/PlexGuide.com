@@ -11,7 +11,7 @@ touch /var/plexguide/ver.temp
 sleep 4
 ## Builds Version List for Display
 while read p; do
-  echo $p >> /var/plexguide/ver.temp
+  echo $p >>/var/plexguide/ver.temp
 done </opt/plexguide/menu/interface/version/version.sh
 
 tee <<-EOF
@@ -27,37 +27,37 @@ echo ""
 echo "To QUIT, type >>> exit"
 break=no
 while [ "$break" == "no" ]; do
-read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed
-storage=$(grep $typed /var/plexguide/ver.temp)
+  read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed
+  storage=$(grep $typed /var/plexguide/ver.temp)
 
-if [ "$typed" == "exit" ]; then
-  echo ""
-  touch /var/plexguide/exited.upgrade
-  exit
-fi
+  if [ "$typed" == "exit" ]; then
+    echo ""
+    touch /var/plexguide/exited.upgrade
+    exit
+  fi
 
-if [ "$storage" != "" ]; then
-  break=yes
-  echo $storage > /var/plexguide/pg.number
-  ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
+  if [ "$storage" != "" ]; then
+    break=yes
+    echo $storage >/var/plexguide/pg.number
+    ansible-playbook /opt/plexguide/menu/interface/version/choice.yml
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️  SYSTEM MESSAGE: Installed Verison - $storage - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 4
-else
-tee <<-EOF
+    sleep 4
+  else
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  SYSTEM MESSAGE: Version $storage does not exist! - Standby!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 4
-  cat /var/plexguide/ver.temp
-  echo ""
-fi
+    sleep 4
+    cat /var/plexguide/ver.temp
+    echo ""
+  fi
 
 done

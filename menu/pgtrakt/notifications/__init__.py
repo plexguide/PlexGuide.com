@@ -17,10 +17,12 @@ class Notifications:
 
     def load(self, **kwargs):
         if 'service' not in kwargs:
-            log.error("You must specify a service to load with the service parameter")
+            log.error(
+                "You must specify a service to load with the service parameter")
             return False
         elif kwargs['service'] not in SERVICES:
-            log.error("You specified an invalid service to load: %s", kwargs['service'])
+            log.error("You specified an invalid service to load: %s",
+                      kwargs['service'])
             return False
 
         try:
@@ -32,7 +34,8 @@ class Notifications:
             self.services.append(service)
 
         except Exception:
-            log.exception("Exception while loading service, kwargs=%r: ", kwargs)
+            log.exception(
+                "Exception while loading service, kwargs=%r: ", kwargs)
 
     def send(self, **kwargs):
         try:
@@ -51,4 +54,5 @@ class Notifications:
                 elif service.send(**kwargs):
                     log.debug("Sent notification with %s", service.NAME)
         except Exception:
-            log.exception("Exception sending notification, kwargs=%r: ", kwargs)
+            log.exception(
+                "Exception sending notification, kwargs=%r: ", kwargs)

@@ -16,7 +16,8 @@ class Pushover:
 
     def send(self, **kwargs):
         if not self.app_token or not self.user_token:
-            log.error("You must specify an app_token and user_token when initializing this class")
+            log.error(
+                "You must specify an app_token and user_token when initializing this class")
             return False
 
         # send notification
@@ -27,7 +28,8 @@ class Pushover:
                 'message': kwargs['message'],
                 'priority': self.priority,
             }
-            resp = requests.post('https://api.pushover.net/1/messages.json', data=payload, timeout=30)
+            resp = requests.post(
+                'https://api.pushover.net/1/messages.json', data=payload, timeout=30)
             return True if resp.status_code == 200 else False
 
         except Exception:

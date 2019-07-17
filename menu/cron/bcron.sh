@@ -15,10 +15,10 @@ rolecheck=$(docker ps | grep -c "\<$pgrole\>")
 if [ $rolecheck != 0 ]; then docker stop $pgrole && doc=yes; fi
 
 tar \
---ignore-failed-read \
---warning=no-file-changed \
---warning=no-file-removed \
--cvzf $tarlocation/$pgrole.tar /opt/appdata/$pgrole/
+    --ignore-failed-read \
+    --warning=no-file-changed \
+    --warning=no-file-removed \
+    -cvzf $tarlocation/$pgrole.tar /opt/appdata/$pgrole/
 
 if [ $doc == yes ]; then docker restart $pgrole; fi
 

@@ -9,10 +9,9 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-
     - name: Check Service's Existance
       stat:
-        path: "/etc/systemd/systemd/localspace.service"
+        path: '/etc/systemd/systemd/localspace.service'
       register: pgp
     - name: Stop service
       service:
@@ -24,7 +23,7 @@
         src: /opt/plexguide/menu/pgui/localspace.service
         dest: /etc/systemd/system/localspace.service
         force: yes
-        
+
     - name: Daemon-Reload
       systemd: state=stopped name=localspace daemon_reload=yes enabled=no
     - name: Start pgscan

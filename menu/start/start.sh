@@ -10,7 +10,7 @@ if [ -e "$file" ]; then
   check="$(cat /var/plexguide/pg.number | head -c 1)"
   if [[ "$check" == "5" || "$check" == "6" || "$check" == "7" ]]; then
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎  INSTALLER BLOCK: Notice
@@ -20,35 +20,42 @@ must be installed on a FRESH BOX! Exiting!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    exit; fi; fi
+    exit
+  fi
+fi
 
 # Create Variables (If New) & Recall
-pcloadletter () {
+pcloadletter() {
   touch /var/plexguide/pgclone.transport
   temp=$(cat /var/plexguide/pgclone.transport)
-    if [ "$temp" == "umove" ]; then transport="PG Move /w No Encryption"
-  elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
-  elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
-  elif [ "$temp" == "eblitz" ]; then transport="PG Blitz /w Encryption"
-  elif [ "$temp" == "solohd" ]; then transport="PG Local"
+  if [ "$temp" == "umove" ]; then
+    transport="PG Move /w No Encryption"
+  elif [ "$temp" == "emove" ]; then
+    transport="PG Move /w Encryption"
+  elif [ "$temp" == "ublitz" ]; then
+    transport="PG Blitz /w No Encryption"
+  elif [ "$temp" == "eblitz" ]; then
+    transport="PG Blitz /w Encryption"
+  elif [ "$temp" == "solohd" ]; then
+    transport="PG Local"
   else transport="NOT-SET"; fi
-  echo "$transport" > /var/plexguide/pg.transport
+  echo "$transport" >/var/plexguide/pg.transport
 }
 
-variable () {
+variable() {
   file="$1"
-  if [ ! -e "$file" ]; then echo "$2" > $1; fi
+  if [ ! -e "$file" ]; then echo "$2" >$1; fi
 }
 
 # What Loads the Order of Execution
-primestart(){
+primestart() {
   pcloadletter
   varstart
   menuprime
 }
 
 # When Called, A Quoate is Randomly Selected
-quoteselect () {
+quoteselect() {
   bash /opt/plexguide/menu/start/quotes.sh
   quote=$(cat /var/plexguide/startup.quote)
   source=$(cat /var/plexguide/startup.source)
@@ -58,16 +65,16 @@ varstart() {
   ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
   file="/var/plexguide"
   if [ ! -e "$file" ]; then
-     mkdir -p /var/plexguide/logs 1>/dev/null 2>&1
-     chown -R 0775 /var/plexguide 1>/dev/null 2>&1
-     chmod -R 1000:1000 /var/plexguide 1>/dev/null 2>&1
+    mkdir -p /var/plexguide/logs 1>/dev/null 2>&1
+    chown -R 0775 /var/plexguide 1>/dev/null 2>&1
+    chmod -R 1000:1000 /var/plexguide 1>/dev/null 2>&1
   fi
 
   file="/opt/appdata/plexguide"
   if [ ! -e "$file" ]; then
-     mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
-     chown 0775 /opt/appdata/plexguide 1>/dev/null 2>&1
-     chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
+    mkdir -p /opt/appdata/plexguide 1>/dev/null 2>&1
+    chown 0775 /opt/appdata/plexguide 1>/dev/null 2>&1
+    chmod 1000:1000 /opt/appdata/plexguide 1>/dev/null 2>&1
   fi
 
   ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
@@ -87,18 +94,20 @@ varstart() {
   #### Temp Fix - Fixes Bugged AppGuard
   serverht=$(cat /var/plexguide/server.ht)
   if [ "$serverht" == "NOT-SET" ]; then
-  rm /var/plexguide/server.ht
-  touch /var/plexguide/server.ht
+    rm /var/plexguide/server.ht
+    touch /var/plexguide/server.ht
   fi
 
-  hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+  hostname -I | awk '{print $1}' >/var/plexguide/server.ip
   ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
-  echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
+  echo "export NCURSES_NO_UTF8_ACS=1" >>/etc/bash.bashrc.local
 
   # run pg main
   file="/var/plexguide/update.failed"
-  if [ -e "$file" ]; then rm -rf /var/plexguide/update.failed
-    exit; fi
+  if [ -e "$file" ]; then
+    rm -rf /var/plexguide/update.failed
+    exit
+  fi
   #################################################################################
 
   # Touch Variables Incase They Do Not Exist
@@ -112,15 +121,16 @@ varstart() {
 
   # For PG UI - Force Variable to Set
   ports=$(cat /var/plexguide/server.ports)
-  if [ "$ports" == "" ]; then echo "Open" > /var/plexguide/pg.ports
-  else echo "Closed" > /var/plexguide/pg.ports; fi
+  if [ "$ports" == "" ]; then
+    echo "Open" >/var/plexguide/pg.ports
+  else echo "Closed" >/var/plexguide/pg.ports; fi
 
-  ansible --version | head -n +1 | awk '{print $2'} > /var/plexguide/pg.ansible
-  docker --version | head -n +1 | awk '{print $3'} | sed 's/,$//' > /var/plexguide/pg.docker
-  cat /etc/os-release | head -n +5 | tail -n +5 | cut -d'"' -f2 > /var/plexguide/pg.os
+  ansible --version | head -n +1 | awk '{print $2'} >/var/plexguide/pg.ansible
+  docker --version | head -n +1 | awk '{print $3'} | sed 's/,$//' >/var/plexguide/pg.docker
+  cat /etc/os-release | head -n +5 | tail -n +5 | cut -d'"' -f2 >/var/plexguide/pg.os
 
   file="/var/plexguide/gce.false"
-  if [ -e "$file" ]; then echo "No" > /var/plexguide/pg.gce; else echo "Yes" > /var/plexguide/pg.gce; fi
+  if [ -e "$file" ]; then echo "No" >/var/plexguide/pg.gce; else echo "Yes" >/var/plexguide/pg.gce; fi
 
   # Call Variables
   edition=$(cat /var/plexguide/pg.edition)
@@ -130,23 +140,23 @@ varstart() {
   # Declare Traefik Deployed Docker State
   if [[ $(docker ps | grep "traefik") == "" ]]; then
     traefik="NOT DEPLOYED"
-    echo "Not Deployed" > /var/plexguide/pg.traefik
+    echo "Not Deployed" >/var/plexguide/pg.traefik
   else
     traefik="DEPLOYED"
-    echo "Deployed" > /var/plexguide/pg.traefik
+    echo "Deployed" >/var/plexguide/pg.traefik
   fi
 
   if [[ $(docker ps | grep "oauth") == "" ]]; then
     traefik="NOT DEPLOYED"
-    echo "Not Deployed" > /var/plexguide/pg.auth
+    echo "Not Deployed" >/var/plexguide/pg.auth
   else
     traefik="DEPLOYED"
-    echo "Deployed" > /var/plexguide/pg.oauth
+    echo "Deployed" >/var/plexguide/pg.oauth
   fi
 
   # For ZipLocations
   file="/var/plexguide/data.location"
-  if [ ! -e "$file" ]; then echo "/opt/appdata/plexguide" > /var/plexguide/data.location; fi
+  if [ ! -e "$file" ]; then echo "/opt/appdata/plexguide" >/var/plexguide/data.location; fi
 
   space=$(cat /var/plexguide/data.location)
   used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
@@ -154,13 +164,13 @@ varstart() {
   percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
 
   # For the PGBlitz UI
-  echo "$used" > /var/plexguide/pg.used
-  echo "$capacity" > /var/plexguide/pg.capacity
+  echo "$used" >/var/plexguide/pg.used
+  echo "$capacity" >/var/plexguide/pg.capacity
 }
 
 menuprime() {
-# Menu Interface
-tee <<-EOF
+  # Menu Interface
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 $transport | Version: $pgnumber | ID: $serverid
@@ -185,18 +195,20 @@ EOF
     percentage_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $5}')
 
     if [[ "$disktwo" != "/mnt" ]]; then
-    echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"; fi
+      echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"
+    fi
   fi
 
   # Declare Ports State
   ports=$(cat /var/plexguide/server.ports)
 
-  if [ "$ports" == "" ]; then ports="OPEN"
+  if [ "$ports" == "" ]; then
+    ports="OPEN"
   else ports="CLOSED"; fi
 
-quoteselect
+  quoteselect
 
-tee <<-EOF
+  tee <<-EOF
 
 [1]  Traefik   : Reverse Proxy
 [2]  Port Guard: [$ports] Protects the Server Ports
@@ -216,48 +228,61 @@ $source
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   # Standby
-read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Number | Press [ENTER]: ' typed </dev/tty
 
-case $typed in
-    1 )
-      bash /opt/plexguide/menu/pgcloner/traefik.sh
-      primestart ;;
-    2 )
-      bash /opt/plexguide/menu/portguard/portguard.sh
-      primestart ;;
-    3 )
-      bash /opt/plexguide/menu/pgcloner/pgshield.sh
-      primestart ;;
-    4 )
-      bash /opt/plexguide/menu/pgcloner/pgclone.sh
-      primestart ;;
-    5 )
-      bash /opt/plexguide/menu/pgbox/pgboxselect.sh
-      primestart ;;
-    6 )
-      bash /opt/plexguide/menu/pgcloner/pgpress.sh
-      primestart ;;
-    7 )
-      bash /opt/plexguide/menu/pgcloner/pgvault.sh
-      primestart ;;
-    8 )
-      bash /opt/plexguide/menu/interface/cloudselect.sh
-      primestart ;;
-    9 )
-      bash /opt/plexguide/menu/tools/tools.sh
-      primestart ;;
-    10 )
-      bash /opt/plexguide/menu/interface/settings.sh
-      primestart ;;
-    z )
-      bash /opt/plexguide/menu/interface/ending.sh
-      exit ;;
-    Z )
-      bash /opt/plexguide/menu/interface/ending.sh
-      exit ;;
-    * )
-      primestart ;;
-esac
+  case $typed in
+  1)
+    bash /opt/plexguide/menu/pgcloner/traefik.sh
+    primestart
+    ;;
+  2)
+    bash /opt/plexguide/menu/portguard/portguard.sh
+    primestart
+    ;;
+  3)
+    bash /opt/plexguide/menu/pgcloner/pgshield.sh
+    primestart
+    ;;
+  4)
+    bash /opt/plexguide/menu/pgcloner/pgclone.sh
+    primestart
+    ;;
+  5)
+    bash /opt/plexguide/menu/pgbox/pgboxselect.sh
+    primestart
+    ;;
+  6)
+    bash /opt/plexguide/menu/pgcloner/pgpress.sh
+    primestart
+    ;;
+  7)
+    bash /opt/plexguide/menu/pgcloner/pgvault.sh
+    primestart
+    ;;
+  8)
+    bash /opt/plexguide/menu/interface/cloudselect.sh
+    primestart
+    ;;
+  9)
+    bash /opt/plexguide/menu/tools/tools.sh
+    primestart
+    ;;
+  10)
+    bash /opt/plexguide/menu/interface/settings.sh
+    primestart
+    ;;
+  z)
+    bash /opt/plexguide/menu/interface/ending.sh
+    exit
+    ;;
+  Z)
+    bash /opt/plexguide/menu/interface/ending.sh
+    exit
+    ;;
+  *)
+    primestart
+    ;;
+  esac
 }
 
 primestart

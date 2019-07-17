@@ -33,7 +33,8 @@ def remove_existing_movies(radarr_movies, trakt_movies, callback=None):
         # loop list adding to movies that do not already exist
         for tmp in trakt_movies:
             if 'movie' not in tmp or 'ids' not in tmp['movie'] or 'tmdb' not in tmp['movie']['ids']:
-                log.debug("Skipping movie because it did not have required fields: %s", tmp)
+                log.debug(
+                    "Skipping movie because it did not have required fields: %s", tmp)
                 if callback:
                     callback('movie', tmp)
                 continue

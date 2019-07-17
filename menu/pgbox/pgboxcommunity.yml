@@ -2,7 +2,6 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-
     - name: Check if Image Variable Exists
       stat:
         path: '/opt/communityapps'
@@ -14,7 +13,7 @@
 
     - name: Cloning Community Apps
       git:
-        repo: "https://github.com/PGBlitz/Apps-Community"
+        repo: 'https://github.com/PGBlitz/Apps-Community'
         dest: /opt/communityapps
-        version: "v8.6"
+        version: 'v8.6'
         force: yes

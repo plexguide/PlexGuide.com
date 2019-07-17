@@ -9,7 +9,7 @@ rm -rf /tmp/backup.build 1>/dev/null 2>&1
 rm -rf /tmp/backup.list 1>/dev/null 2>&1
 rm -rf /tmp/backup.final 1>/dev/null 2>&1
 
-docker ps --format '{{.Names}}' > /tmp/backup.list
+docker ps --format '{{.Names}}' >/tmp/backup.list
 sed -i -e "/traefik/d" /tmp/backup.list
 sed -i -e "/watchtower/d" /tmp/backup.list
 sed -i -e "/wp-*/d" /tmp/backup.list
@@ -21,26 +21,26 @@ sed -i -e "/phlex/d" /tmp/backup.list
 #### Commenting Out To Let User See
 num=0
 while read p; do
-let "num++"
-echo -n $p >> /tmp/backup.final
-echo -n " " >> /tmp/backup.final
+  let "num++"
+  echo -n $p >>/tmp/backup.final
+  echo -n " " >>/tmp/backup.final
   if [ "$num" == 7 ]; then
     num=0
-    echo " " >> /tmp/backup.final
+    echo " " >>/tmp/backup.final
   fi
 done </tmp/backup.list
 
 running=$(cat /tmp/backup.final)
 # If Blank, Exit
 if [ "$running" == "" ]; then
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! - No Apps are Running! Exiting!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
-exit
+  sleep 3
+  exit
 fi
 
 # Menu Interface
@@ -58,7 +58,7 @@ $running
 
 💬 Quitting? TYPE > exit
 EOF
-read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
+read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 
 if [ "$typed" == "exit" ]; then exit; fi
 
@@ -70,21 +70,21 @@ if [ "$tcheck" == "" ]; then
 ⛔️  WARNING! - Type an Application Name! Case Senstive! Restarting!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
-bash /opt/plexguide/menu/removal/removal.sh
-exit
+  sleep 3
+  bash /opt/plexguide/menu/removal/removal.sh
+  exit
 fi
 
 if [ "$typed" == "" ]; then
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - The App Name Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
-bash /opt/traefik/tld.sh
-exit
+  sleep 3
+  bash /opt/traefik/tld.sh
+  exit
 fi
 
 tee <<-EOF
@@ -118,8 +118,8 @@ rm -rf /opt/appdata/$typed
 file="/opt/coreapps/apps/$typed.yml"
 if [ -e "$file" ]; then
   check=$(cat /opt/coreapps/apps/$typed.yml | grep '##PG-Community')
-    if [ "$check" == "##PG-Community" ]; then rm -r /opt/communityapps/apps/$typed.yml; fi
-rm -rf /var/plexguide/community.app
+  if [ "$check" == "##PG-Community" ]; then rm -r /opt/communityapps/apps/$typed.yml; fi
+  rm -rf /var/plexguide/community.app
 fi
 
 sleep 1.5

@@ -6,9 +6,9 @@
 # GNU:        General Public License v3.0
 ################################################################################
 ---
-- name: "Key Menu Facts"
+- name: 'Key Menu Facts'
   set_fact:
-    head1: "\nWelcome to the PG VPN Server Access Interface!"
-    head2: "\nCommand to View VPN Information: pgvpn"
-    info2: "\n2.  VPNServer: Install"
-    info3: "\n3.  VPNServer: UnInstall"
+      head1: "\nWelcome to the PG VPN Server Access Interface!"
+      head2: "\nCommand to View VPN Information: pgvpn"
+      info2: "\n2.  VPNServer: Install"
+      info3: "\n3.  VPNServer: UnInstall"

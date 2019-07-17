@@ -10,7 +10,7 @@ if [ -e "$file" ]; then
   check="$(cat /var/plexguide/pg.number | head -c 1)"
   if [[ "$check" == "5" || "$check" == "6" || "$check" == "7" ]]; then
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎  INSTALLER BLOCK: Notice
@@ -20,7 +20,9 @@ must be installed on a FRESH BOX! Exiting!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    exit; fi; fi
+    exit
+  fi
+fi
 
 source /opt/plexguide/menu/functions/functions.sh
 source /opt/plexguide/menu/functions/start.sh

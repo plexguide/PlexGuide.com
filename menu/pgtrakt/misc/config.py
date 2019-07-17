@@ -10,7 +10,8 @@ class Singleton(type):
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+            cls._instances[cls] = super(
+                Singleton, cls).__call__(*args, **kwargs)
 
         return cls._instances[cls]
 
@@ -80,7 +81,7 @@ class Config(object, metaclass=Singleton):
                 'blacklisted_tmdb_ids': [],
                 'allowed_countries': [],
                 'allowed_languages': [],
-                'rating_limit':""
+                'rating_limit': ""
             }
         },
         'automatic': {
@@ -171,7 +172,8 @@ class Config(object, metaclass=Singleton):
                     if not key:
                         print("Added %r config option: %s" % (str(k), str(v)))
                     else:
-                        print("Added %r to config option %r: %s" % (str(k), str(key), str(v)))
+                        print("Added %r to config option %r: %s" %
+                              (str(k), str(key), str(v)))
                     continue
 
                 # iterate children
@@ -193,11 +195,13 @@ class Config(object, metaclass=Singleton):
         return merged, sub_upgraded
 
     def upgrade_settings(self, currents):
-        upgraded_settings, upgraded = self.__inner_upgrade(self.base_config, currents)
+        upgraded_settings, upgraded = self.__inner_upgrade(
+            self.base_config, currents)
         return AttrConfig(upgraded_settings), upgraded
 
     def merge_settings(self, settings_to_merge):
-        upgraded_settings, upgraded = self.__inner_upgrade(settings_to_merge, self.conf, overwrite=True)
+        upgraded_settings, upgraded = self.__inner_upgrade(
+            settings_to_merge, self.conf, overwrite=True)
 
         self.conf = upgraded_settings
 

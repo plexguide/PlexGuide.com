@@ -26,42 +26,42 @@ tee <<-EOF
 EOF
 
 if [ "$ports" == "" ]; then
-tee <<-EOF
+  tee <<-EOF
 ▫ $ip:${port}${extra}
 EOF
 fi
 
 if [ "$domain" != "NOT-SET" ]; then
   if [ "$ports" == "" ]; then
-tee <<-EOF
+    tee <<-EOF
 ▫ $domain:${port}${extra}
 EOF
   fi
-tee <<-EOF
+  tee <<-EOF
 ▫ $program.$domain${extra}
 EOF
 fi
 
 if [ "$program" == "plex" ]; then
-tee <<-EOF
+  tee <<-EOF
 
 First Time Plex Claim Notice
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-if [ "$domain" != "NOT-SET" ]; then
-tee <<-EOF
+  if [ "$domain" != "NOT-SET" ]; then
+    tee <<-EOF
 ▫ http://plex.${domain}:32400 <-- Use http; not https
 EOF
-fi
+  fi
 
-tee <<-EOF
+  tee <<-EOF
 ▫ $ip:${port}${extra}
 EOF
 fi
 
 if [[ "$program" == *"sonarr"* ]] || [[ "$program" == *"radarr"* ]] || [[ "$program" == *"lidarr"* ]]; then
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬 Manual Configuration Required > http://$program.pgblitz.com
@@ -69,8 +69,8 @@ tee <<-EOF
       
   $program requires additional manual configuration!
 EOF
-if [[ "$program" == *"sonarr"* ]] || [[ "$program" == *"radarr"* ]] || [[ "$program" == *"lidarr"* ]]; then
-tee <<-EOF
+  if [[ "$program" == *"sonarr"* ]] || [[ "$program" == *"radarr"* ]] || [[ "$program" == *"lidarr"* ]]; then
+    tee <<-EOF
 
   $program requires "downloader mappings" to enable hardlinking and rapid importing.
 
@@ -81,8 +81,8 @@ tee <<-EOF
   Visit https://github.com/PGBlitz/PGBlitz.com/wiki/Remote-Path-Mappings for more information.
 
 EOF
-fi
-tee <<-EOF
+  fi
+  tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚠ Failure to perform manual configuration changes will cause problems!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

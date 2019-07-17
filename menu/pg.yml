@@ -1,12 +1,12 @@
 ---
 - hosts: localhost
   vars:
-    extra: ""
+    extra: ''
 
   roles:
-    - { role: docker, tags: ["docker"] }
-    - { role: docstart, tags: ["docstart"] }
-    - { role: dockerdeb, tags: ["dockerdeb"] }
-    - { role: autodelete, tags: ["autodelete"] }
-    - { role: clean, tags: ["clean"] }
-    - { role: clean-encrypt, tags: ["clean-encrypt"] }
+    - { role: docker, tags: ['docker'] }
+    - { role: docstart, tags: ['docstart'] }
+    - { role: dockerdeb, tags: ['dockerdeb'] }
+    - { role: autodelete, tags: ['autodelete'] }
+    - { role: clean, tags: ['clean'] }
+    - { role: clean-encrypt, tags: ['clean-encrypt'] }

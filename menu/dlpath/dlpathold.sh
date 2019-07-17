@@ -10,7 +10,7 @@ pgpath=$(cat /var/plexguide/server.hd.path)
 break=no
 while [ "$break" == "no" ]; do
 
-tee <<-EOF
+  tee <<-EOF
 
 ---------------------------------------------------------------------------
 PGBlitz Download/Processing Selection Interface
@@ -29,21 +29,20 @@ Default Path: /mnt
 Current Path: $pgpath
 
 EOF
-read -p "Change the Current Download/Processing Path? (y/n): " -n 1 -r
-echo    # move cursor to a new line
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-  echo ""
-  echo "---------------------------------------------------"
-  echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
-  echo "---------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  exit 1;
-fi
+  read -p "Change the Current Download/Processing Path? (y/n): " -n 1 -r
+  echo # move cursor to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo ""
+    echo "---------------------------------------------------"
+    echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
+    echo "---------------------------------------------------"
+    echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit 1
+  fi
 
-tee <<-EOF
+  tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: User Selected to Change the Path!
@@ -62,49 +61,49 @@ Examples:
 echo "To QUIT, type >>> exit"
 EOF
 
-read -p 'Type the NEW PATH (follow example above): ' typed
+  read -p 'Type the NEW PATH (follow example above): ' typed
 
-storage=$(grep $typed /var/plexguide/ver.temp)
+  storage=$(grep $typed /var/plexguide/ver.temp)
 
   if [ "$typed" == "exit" ]; then
-tee <<-EOF
+    tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: Exiting the Downloading/Processing Selection Interface
 ---------------------------------------------------------------------------
 
 EOF
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  exit
-else
-tee <<-EOF
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
+    exit
+  else
+    tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: Checking Path: $typed
 ---------------------------------------------------------------------------
 EOF
-sleep 1.5
+    sleep 1.5
 
-##################################################### TYPED CHECKERS - START
-  typed2=$typed
-  bonehead=no
-  ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
-  initial="$(echo $typed | head -c 1)"
-  if [ "$initial" != "/" ]; then
-    typed="/$typed"
-    bonehead=yes
-  fi
-  ##### If BONEHEAD added a / at the end, we fix for them
-  initial="${typed: -1}"
-  if [ "$initial" == "/" ]; then
-    typed=${typed::-1}
-    bonehead=yes
-  fi
+    ##################################################### TYPED CHECKERS - START
+    typed2=$typed
+    bonehead=no
+    ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
+    initial="$(echo $typed | head -c 1)"
+    if [ "$initial" != "/" ]; then
+      typed="/$typed"
+      bonehead=yes
+    fi
+    ##### If BONEHEAD added a / at the end, we fix for them
+    initial="${typed: -1}"
+    if [ "$initial" == "/" ]; then
+      typed=${typed::-1}
+      bonehead=yes
+    fi
 
-  ##### Notify User is a Bonehead
-  if [ "$bonehead" == "yes" ]; then
-tee <<-EOF
+    ##### Notify User is a Bonehead
+    if [ "$bonehead" == "yes" ]; then
+      tee <<-EOF
 
 ---------------------------------------------------------------------------
 ALERT: We Fixed Your Typos (pay attention to the example next time)
@@ -115,30 +114,30 @@ Changed To: $typed
 
 EOF
 
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-else
-tee <<-EOF
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    else
+      tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: Input is Valid
 ---------------------------------------------------------------------------
 EOF
-  fi
-##################################################### TYPED CHECKERS - START
-tee <<-EOF
+    fi
+    ##################################################### TYPED CHECKERS - START
+    tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: Checking if the Location is Valid
 ---------------------------------------------------------------------------
 EOF
-sleep 1.5
+    sleep 1.5
 
-mkdir $typed/test 1>/dev/null 2>&1
+    mkdir $typed/test 1>/dev/null 2>&1
 
-file="$typed/test"
-  if [ -e "$file" ]; then
+    file="$typed/test"
+    if [ -e "$file" ]; then
 
-tee <<-EOF
+      tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: The Path Exists! Review the Amount of Space You Have!
@@ -147,27 +146,26 @@ SYSTEM MESSAGE: The Path Exists! Review the Amount of Space You Have!
 Your Current Space for $typed:
 
 EOF
-df -h $typed
-echo ""
-echo "Pay Attention to How Much Space You Have!"
-echo ""
+      df -h $typed
+      echo ""
+      echo "Pay Attention to How Much Space You Have!"
+      echo ""
 
-read -p "Continue to Set $typed? (y/n): " -n 1 -r
-echo    # move cursor to a new line
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-  echo ""
-  echo "---------------------------------------------------------------------------"
-  echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Restarting!"
-  echo "---------------------------------------------------------------------------"
-  echo ""
-  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo ""
-  bash /opt/plexguide/menu/interface/dlpath/main.sh
-  exit
-fi
+      read -p "Continue to Set $typed? (y/n): " -n 1 -r
+      echo # move cursor to a new line
+      if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo ""
+        echo "---------------------------------------------------------------------------"
+        echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Restarting!"
+        echo "---------------------------------------------------------------------------"
+        echo ""
+        read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+        echo ""
+        bash /opt/plexguide/menu/interface/dlpath/main.sh
+        exit
+      fi
 
-tee <<-EOF
+      tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: CHMODing & CHOWNing: $typed
@@ -175,45 +173,45 @@ SYSTEM MESSAGE: CHMODing & CHOWNing: $typed
 
 Note: Please Standby
 EOF
-sleep 2
+      sleep 2
 
-    chown 1000:1000 "$typed"
-    chmod 0775 "$typed"
-    rm -rf "$typed/test"
-    echo $typed > /var/plexguide/server.hd.path
-    break=off
+      chown 1000:1000 "$typed"
+      chmod 0775 "$typed"
+      rm -rf "$typed/test"
+      echo $typed >/var/plexguide/server.hd.path
+      break=off
 
-tee <<-EOF
+      tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: Rewriting Folders! STANDBY!
 ---------------------------------------------------------------------------
 
 EOF
-sleep 2
-ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
-tee <<-EOF
+      sleep 2
+      ansible-playbook /opt/plexguide/menu/interface/folders/main.yml
+      tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: Rebuilding Containers! STANDBY!
 ---------------------------------------------------------------------------
 
 EOF
-sleep 2
+      sleep 2
 
-bash /opt/plexguide/menu/interface/dlpath/rebuild.sh
+      bash /opt/plexguide/menu/interface/dlpath/rebuild.sh
 
-tee <<-EOF
+      tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: Process Complete!
 ---------------------------------------------------------------------------
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-echo ""
-  else
-tee <<-EOF
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo ""
+    else
+      tee <<-EOF
 
 ---------------------------------------------------------------------------
 SYSTEM MESSAGE: $typed DOES NOT Exist!
@@ -226,11 +224,11 @@ your location.
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-echo ""
-  fi
+      read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+      echo ""
+    fi
 
-### Final FI
-fi
+  ### Final FI
+  fi
 
 done

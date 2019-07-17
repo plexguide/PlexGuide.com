@@ -7,15 +7,15 @@
 ################################################################################
 ---
 - name: Register Project
-  shell: "cat /var/plexguide/server.id"
+  shell: 'cat /var/plexguide/server.id'
   register: tempid
 
-- name: "Set Server ID"
+- name: 'Set Server ID'
   set_fact:
-    serverid: "{{tempid.stdout}}"
+      serverid: '{{tempid.stdout}}'
 
-- name: "Key Menu Facts"
+- name: 'Key Menu Facts'
   set_fact:
-    head1: "\nPG Server Identification Interface"
-    head2: "\nServer ID: {{serverid}}"
-    info2: "\n2.  Server ID: Change It"
+      head1: "\nPG Server Identification Interface"
+      head2: "\nServer ID: {{serverid}}"
+      info2: "\n2.  Server ID: Change It"

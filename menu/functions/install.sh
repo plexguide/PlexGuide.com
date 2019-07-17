@@ -29,43 +29,44 @@ updateprime() {
   variable /var/plexguide/pgbox.running ""
   pgnumber=$(cat /var/plexguide/pg.number)
 
-  hostname -I | awk '{print $1}' > /var/plexguide/server.ip
+  hostname -I | awk '{print $1}' >/var/plexguide/server.ip
   file="${abc}/server.hd.path"
-  if [ ! -e "$file" ]; then echo "/mnt" > ${abc}/server.hd.path; fi
+  if [ ! -e "$file" ]; then echo "/mnt" >${abc}/server.hd.path; fi
 
   file="${abc}/new.install"
   if [ ! -e "$file" ]; then newinstall; fi
 
   ospgversion=$(cat /etc/*-release | grep Debian | grep 9)
-  if [ "$ospgversion" != "" ]; then echo "debian"> ${abc}/os.version;
-  else echo "ubuntu" > ${abc}/os.version; fi
+  if [ "$ospgversion" != "" ]; then
+    echo "debian" >${abc}/os.version
+  else echo "ubuntu" >${abc}/os.version; fi
 
-  echo "3" > ${abc}/pg.mergerinstall
-  echo "52" > ${abc}/pg.pythonstart
-  echo "11" > ${abc}/pg.aptupdate
-  echo "150" > ${abc}/pg.preinstall
-  echo "24" > ${abc}/pg.folders
-  echo "15" > ${abc}/pg.dockerinstall
-  echo "15" > ${abc}/pg.server
-  echo "1" > ${abc}/pg.serverid
-  echo "32" > ${abc}/pg.dependency
-  echo "11" > ${abc}/pg.docstart
-  echo "2" > ${abc}/pg.motd
-  echo "115" > ${abc}/pg.alias
-  echo "3" > ${abc}/pg.dep
-  echo "3" > ${abc}/pg.cleaner
-  echo "3" > ${abc}/pg.gcloud
-  echo "12" > ${abc}/pg.hetzner
-  echo "1" > ${abc}/pg.amazonaws
-  echo "8.4" > ${abc}/pg.verionid
-  echo "11" > ${abc}/pg.watchtower
-  echo "1" > ${abc}/pg.installer
-  echo "7" > ${abc}/pg.prune
-  echo "20" > ${abc}/pg.mountcheck
+  echo "3" >${abc}/pg.mergerinstall
+  echo "52" >${abc}/pg.pythonstart
+  echo "11" >${abc}/pg.aptupdate
+  echo "150" >${abc}/pg.preinstall
+  echo "24" >${abc}/pg.folders
+  echo "15" >${abc}/pg.dockerinstall
+  echo "15" >${abc}/pg.server
+  echo "1" >${abc}/pg.serverid
+  echo "32" >${abc}/pg.dependency
+  echo "11" >${abc}/pg.docstart
+  echo "2" >${abc}/pg.motd
+  echo "115" >${abc}/pg.alias
+  echo "3" >${abc}/pg.dep
+  echo "3" >${abc}/pg.cleaner
+  echo "3" >${abc}/pg.gcloud
+  echo "12" >${abc}/pg.hetzner
+  echo "1" >${abc}/pg.amazonaws
+  echo "8.4" >${abc}/pg.verionid
+  echo "11" >${abc}/pg.watchtower
+  echo "1" >${abc}/pg.installer
+  echo "7" >${abc}/pg.prune
+  echo "20" >${abc}/pg.mountcheck
 
 }
 
-pginstall () {
+pginstall() {
   updateprime
   bash /opt/plexguide/menu/pggce/gcechecker.sh
   core pythonstart
@@ -77,20 +78,19 @@ pginstall () {
   core dockerinstall
   core docstart
 
-
-touch /var/plexguide/install.roles
-rolenumber=3
+  touch /var/plexguide/install.roles
+  rolenumber=3
   # Roles Ensure that PG Replicates and has once if missing; important for startup, cron and etc
-if [[ $(cat /var/plexguide/install.roles) != "$rolenumber" ]]; then
-  rm -rf /opt/communityapps
-  rm -rf /opt/coreapps
-  rm -rf /opt/pgshield
+  if [[ $(cat /var/plexguide/install.roles) != "$rolenumber" ]]; then
+    rm -rf /opt/communityapps
+    rm -rf /opt/coreapps
+    rm -rf /opt/pgshield
 
-  pgcore
-  pgcommunity
-  pgshield
-  echo "$rolenumber" > /var/plexguide/install.roles
-fi
+    pgcore
+    pgcommunity
+    pgshield
+    echo "$rolenumber" >/var/plexguide/install.roles
+  fi
 
   portainer
   pgui
@@ -108,61 +108,62 @@ fi
   pgdeploy
 }
 
-core () {
-    touch /var/plexguide/pg."${1}".stored
-    start=$(cat /var/plexguide/pg."${1}")
-    stored=$(cat /var/plexguide/pg."${1}".stored)
-    if [ "$start" != "$stored" ]; then
-      $1
-      cat /var/plexguide/pg."${1}" > /var/plexguide/pg."${1}".stored;
-    fi
+core() {
+  touch /var/plexguide/pg."${1}".stored
+  start=$(cat /var/plexguide/pg."${1}")
+  stored=$(cat /var/plexguide/pg."${1}".stored)
+  if [ "$start" != "$stored" ]; then
+    $1
+    cat /var/plexguide/pg."${1}" >/var/plexguide/pg."${1}".stored
+  fi
 }
 
 ############################################################ INSTALLER FUNCTIONS
-alias () {
+alias() {
   ansible-playbook /opt/plexguide/menu/alias/alias.yml
 }
 
-aptupdate () {
+aptupdate() {
   yes | apt-get update
   yes | apt-get install software-properties-common
   yes | apt-get install sysstat nmon
   sed -i 's/false/true/g' /etc/default/sysstat
 }
 
-customcontainers () {
-mkdir -p /opt/mycontainers
-touch /opt/appdata/plexguide/rclone.conf
-mkdir -p /opt/communityapps/apps
-rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/communityapps/apps
+customcontainers() {
+  mkdir -p /opt/mycontainers
+  touch /opt/appdata/plexguide/rclone.conf
+  mkdir -p /opt/communityapps/apps
+  rclone --config /opt/appdata/plexguide/rclone.conf copy /opt/mycontainers/ /opt/communityapps/apps
 }
 
-cleaner () {
+cleaner() {
   ansible-playbook /opt/plexguide/menu/pg.yml --tags autodelete &>/dev/null &
   ansible-playbook /opt/plexguide/menu/pg.yml --tags clean &>/dev/null &
   ansible-playbook /opt/plexguide/menu/pg.yml --tags clean-encrypt &>/dev/null &
 }
 
-dependency () {
+dependency() {
   ospgversion=$(cat /var/plexguide/os.version)
   if [ "$ospgversion" == "debian" ]; then
-    ansible-playbook /opt/plexguide/menu/dependency/dependencydeb.yml;
+    ansible-playbook /opt/plexguide/menu/dependency/dependencydeb.yml
   else
-    ansible-playbook /opt/plexguide/menu/dependency/dependency.yml; fi
+    ansible-playbook /opt/plexguide/menu/dependency/dependency.yml
+  fi
 }
 
-docstart () {
-   ansible-playbook /opt/plexguide/menu/pg.yml --tags docstart
+docstart() {
+  ansible-playbook /opt/plexguide/menu/pg.yml --tags docstart
 }
 
 emergency() {
   variable /var/plexguide/emergency.display "On"
-if [[ $(ls /opt/appdata/plexguide/emergency) != "" ]]; then
+  if [[ $(ls /opt/appdata/plexguide/emergency) != "" ]]; then
 
-# If not on, do not display emergency logs
-if [[ $(cat /var/plexguide/emergency.display) == "On" ]]; then
+    # If not on, do not display emergency logs
+    if [[ $(cat /var/plexguide/emergency.display) == "On" ]]; then
 
-tee <<-EOF
+      tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  Emergency & Warning Log Generator | Visit - http://emlog.pgblitz.com
@@ -171,30 +172,31 @@ NOTE: This can be turned [On] or Off in Settings!
 
 EOF
 
-  countmessage=0
-  while read p; do
-    let countmessage++
-    echo -n "${countmessage}. " && cat /opt/appdata/plexguide/emergency/$p
-  done <<< "$(ls /opt/appdata/plexguide/emergency)"
+      countmessage=0
+      while read p; do
+        let countmessage++
+        echo -n "${countmessage}. " && cat /opt/appdata/plexguide/emergency/$p
+      done <<<"$(ls /opt/appdata/plexguide/emergency)"
 
-  echo
-  read -n 1 -s -r -p "Acknowledge Info | Press [ENTER]"
-  echo
-else
-  touch /var/plexguide/emergency.log
-fi; fi
+      echo
+      read -n 1 -s -r -p "Acknowledge Info | Press [ENTER]"
+      echo
+    else
+      touch /var/plexguide/emergency.log
+    fi
+  fi
 
 }
 
-folders () {
+folders() {
   ansible-playbook /opt/plexguide/menu/installer/folders.yml
 }
 
-prune () {
+prune() {
   ansible-playbook /opt/plexguide/menu/prune/main.yml
 }
 
-hetzner () {
+hetzner() {
   if [ -e "$file" ]; then rm -rf /bin/hcloud; fi
   version="v1.10.0"
   wget -P /opt/appdata/plexguide "https://github.com/hetznercloud/cli/releases/download/$version/hcloud-linux-amd64-$version.tar.gz"
@@ -204,55 +206,55 @@ hetzner () {
   rm -rf /opt/appdata/plexguide/hcloud-linux-amd64-$version
 }
 
-gcloud () {
+gcloud() {
   export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
   echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
   sudo apt-get update && sudo apt-get install google-cloud-sdk -y
 }
 
-mergerinstall () {
+mergerinstall() {
 
   ub16check=$(cat /etc/*-release | grep xenial)
   ub18check=$(cat /etc/*-release | grep bionic)
   deb9check=$(cat /etc/*-release | grep stretch)
   activated=false
 
-    apt --fix-broken install -y
-    apt-get remove mergerfs -y
-    mkdir -p /var/plexguide
+  apt --fix-broken install -y
+  apt-get remove mergerfs -y
+  mkdir -p /var/plexguide
 
-    if [ "$ub16check" != "" ]; then
+  if [ "$ub16check" != "" ]; then
     activated=true
-    echo "ub16" > /var/plexguide/mergerfs.version
+    echo "ub16" >/var/plexguide/mergerfs.version
     wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-xenial_amd64.deb"
 
-    elif [ "$ub18check" != "" ]; then
-      activated=true
-      echo "ub18" > /var/plexguide/mergerfs.version
-      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-bionic_amd64.deb"
+  elif [ "$ub18check" != "" ]; then
+    activated=true
+    echo "ub18" >/var/plexguide/mergerfs.version
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-bionic_amd64.deb"
 
-    elif [ "$deb9check" != "" ]; then
-      activated=true
-      echo "deb9" > /var/plexguide/mergerfs.version
-      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.debian-stretch_amd64.deb"
+  elif [ "$deb9check" != "" ]; then
+    activated=true
+    echo "deb9" >/var/plexguide/mergerfs.version
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.debian-stretch_amd64.deb"
 
-    elif [ "$activated" != "true" ]; then
-      activated=true && echo "ub18 - but didn't detect correctly" > /var/plexguide/mergerfs.version
-      wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-bionic_amd64.deb"
-    else
-      apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
-      git clone https://github.com/trapexit/mergerfs.git
-      cd mergerfs
-      make clean
-      make deb
-      cd ..
-    fi
+  elif [ "$activated" != "true" ]; then
+    activated=true && echo "ub18 - but didn't detect correctly" >/var/plexguide/mergerfs.version
+    wget "https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-bionic_amd64.deb"
+  else
+    apt-get install g++ pkg-config git git-buildpackage pandoc debhelper libfuse-dev libattr1-dev -y
+    git clone https://github.com/trapexit/mergerfs.git
+    cd mergerfs
+    make clean
+    make deb
+    cd ..
+  fi
 
-    apt install -y ./mergerfs*_amd64.deb
-    rm mergerfs*_amd64.deb
+  apt install -y ./mergerfs*_amd64.deb
+  rm mergerfs*_amd64.deb
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  MergerFS has been updated! Requires PG Clone redeployment.
@@ -273,25 +275,25 @@ We apologize for this one-time inconvenience.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
 
 }
 
-motd () {
+motd() {
   ansible-playbook /opt/plexguide/menu/motd/motd.yml
 }
 
-mountcheck () {
-bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
-ansible-playbook /opt/pgui/pgui.yml
-ansible-playbook /opt/plexguide/menu/pgui/mcdeploy.yml
+mountcheck() {
+  bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
+  ansible-playbook /opt/pgui/pgui.yml
+  ansible-playbook /opt/plexguide/menu/pgui/mcdeploy.yml
 }
 
-localspace () {
-ansible-playbook /opt/pgui/pgui.yml
-ansible-playbook /opt/plexguide/menu/pgui/localspace.yml
+localspace() {
+  ansible-playbook /opt/pgui/pgui.yml
+  ansible-playbook /opt/plexguide/menu/pgui/localspace.yml
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  PG User Interface (PGUI) Installed / Updated
@@ -306,93 +308,93 @@ https://pgui.yourdomain.com | http://pgui.domain.com:8555 | ipv4:8555
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
 
 }
 
-newinstall () {
+newinstall() {
   rm -rf /var/plexguide/pg.exit 1>/dev/null 2>&1
   file="${abc}/new.install"
   if [ ! -e "$file" ]; then
-    touch ${abc}/pg.number && echo off > /tmp/program_source
+    touch ${abc}/pg.number && echo off >/tmp/program_source
     bash /opt/plexguide/menu/version/file.sh
     file="${abc}/new.install"
     if [ ! -e "$file" ]; then exit; fi
- fi
+  fi
 }
 
-pgdeploy () {
+pgdeploy() {
   touch /var/plexguide/pg.edition
   bash /opt/plexguide/menu/start/start.sh
 }
 
-pgedition () {
+pgedition() {
   file="${abc}/path.check"
   if [ ! -e "$file" ]; then touch ${abc}/path.check && bash /opt/plexguide/menu/dlpath/dlpath.sh; fi
   # FOR PG-BLITZ
   file="${abc}/project.deployed"
-    if [ ! -e "$file" ]; then echo "no" > ${abc}/project.deployed; fi
+  if [ ! -e "$file" ]; then echo "no" >${abc}/project.deployed; fi
   file="${abc}/project.keycount"
-    if [ ! -e "$file" ]; then echo "0" > ${abc}/project.keycount; fi
+  if [ ! -e "$file" ]; then echo "0" >${abc}/project.keycount; fi
   file="${abc}/server.id"
-    if [ ! -e "$file" ]; then echo "[NOT-SET]" > ${abc}/rm -rf; fi
+  if [ ! -e "$file" ]; then echo "[NOT-SET]" -rf >${abc}/rm; fi
 }
 
-portainer () {
+portainer() {
   dstatus=$(docker ps --format '{{.Names}}' | grep "portainer")
   if [ "$dstatus" != "portainer" ]; then
-  ansible-playbook /opt/coreapps/apps/portainer.yml &>/dev/null &
+    ansible-playbook /opt/coreapps/apps/portainer.yml &>/dev/null &
   fi
 }
 
 # Roles Ensure that PG Replicates and has once if missing; important for startup, cron and etc
-pgcore() { if [ ! -e "/opt/coreapps/place.holder" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml; fi }
-pgcommunity() { if [ ! -e "/opt/communityapps/place.holder" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml; fi }
+pgcore() { if [ ! -e "/opt/coreapps/place.holder" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcore.yml; fi; }
+pgcommunity() { if [ ! -e "/opt/communityapps/place.holder" ]; then ansible-playbook /opt/plexguide/menu/pgbox/pgboxcommunity.yml; fi; }
 pgshield() { if [ ! -e "/opt/pgshield/place.holder" ]; then
-echo 'pgshield' > /var/plexguide/pgcloner.rolename
-echo 'PGShield' > /var/plexguide/pgcloner.roleproper
-echo 'PGShield' > /var/plexguide/pgcloner.projectname
-echo 'v8.6' > /var/plexguide/pgcloner.projectversion
-echo 'pgshield.sh' > /var/plexguide/pgcloner.startlink
-ansible-playbook "/opt/plexguide/menu/pgcloner/corev2/primary.yml"; fi }
+  echo 'pgshield' >/var/plexguide/pgcloner.rolename
+  echo 'PGShield' >/var/plexguide/pgcloner.roleproper
+  echo 'PGShield' >/var/plexguide/pgcloner.projectname
+  echo 'v8.6' >/var/plexguide/pgcloner.projectversion
+  echo 'pgshield.sh' >/var/plexguide/pgcloner.startlink
+  ansible-playbook "/opt/plexguide/menu/pgcloner/corev2/primary.yml"
+fi; }
 
-pgui ()
-{
+pgui() {
   file="/var/plexguide/pgui.switch"
-    if [ ! -e "$file" ]; then echo "On" > /var/plexguide/pgui.switch; fi
+  if [ ! -e "$file" ]; then echo "On" >/var/plexguide/pgui.switch; fi
 
-    pguicheck=$(cat /var/plexguide/pgui.switch)
+  pguicheck=$(cat /var/plexguide/pgui.switch)
   if [[ "$pguicheck" == "On" ]]; then
 
     dstatus=$(docker ps --format '{{.Names}}' | grep "pgui")
     if [ "$dstatus" != "pgui" ]; then
-    bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
-    ansible-playbook /opt/pgui/pgui.yml
+      bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
+      ansible-playbook /opt/pgui/pgui.yml
     fi
-fi
+  fi
 }
 
-pythonstart () {
+pythonstart() {
 
   ansible="2.7.8"
   pip="19.0.2"
 
   apt-get install -y --reinstall \
-      nano \
-      git \
-      build-essential \
-      libssl-dev \
-      libffi-dev \
-      python3-dev \
-      python3-pip \
-      python-dev \
-      python-pip
+    nano \
+    git \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    python3-pip \
+    python-dev \
+    python-pip
   python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==${pip}
   python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
   python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-      pyOpenSSL \
-      requests \
-      netaddr
+    pyOpenSSL \
+    requests \
+    netaddr
   python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==${pip}
   python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
   python -m pip install --disable-pip-version-check --upgrade --force-reinstall ansible==${1-$ansible}
@@ -402,20 +404,20 @@ pythonstart () {
   cp /usr/local/bin/pip3 /usr/bin/pip3
 
   mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
-  echo "[local]" > /etc/ansible/inventories/local
-  echo "127.0.0.1 ansible_connection=local" >> /etc/ansible/inventories/local
+  echo "[local]" >/etc/ansible/inventories/local
+  echo "127.0.0.1 ansible_connection=local" >>/etc/ansible/inventories/local
 
   ### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
-  echo "[defaults]" > /etc/ansible/ansible.cfg
-  echo "command_warnings = False" >> /etc/ansible/ansible.cfg
-  echo "callback_whitelist = profile_tasks" >> /etc/ansible/ansible.cfg
-  echo "inventory = /etc/ansible/inventories/local" >> /etc/ansible/ansible.cfg
+  echo "[defaults]" >/etc/ansible/ansible.cfg
+  echo "command_warnings = False" >>/etc/ansible/ansible.cfg
+  echo "callback_whitelist = profile_tasks" >>/etc/ansible/ansible.cfg
+  echo "inventory = /etc/ansible/inventories/local" >>/etc/ansible/ansible.cfg
 
   # Variables Need to Line Up with pg.sh (start)
   touch /var/plexguide/background.1
 }
 
-dockerinstall () {
+dockerinstall() {
   ospgversion=$(cat /var/plexguide/os.version)
   if [ "$ospgversion" == "debian" ]; then
     ansible-playbook /opt/plexguide/menu/pg.yml --tags dockerdeb
@@ -424,73 +426,72 @@ dockerinstall () {
     # If Docker FAILED, Emergency Install
     file="/usr/bin/docker"
     if [ ! -e "$file" ]; then
-        clear
-        echo "Installing Docker the Old School Way - (Please Be Patient)"
-        sleep 2
-        clear
-        curl -fsSL get.docker.com -o get-docker.sh
-        sh get-docker.sh
-        echo ""
-        echo "Starting Docker (Please Be Patient)"
-        sleep 2
-        systemctl start docker
-        sleep 2
+      clear
+      echo "Installing Docker the Old School Way - (Please Be Patient)"
+      sleep 2
+      clear
+      curl -fsSL get.docker.com -o get-docker.sh
+      sh get-docker.sh
+      echo ""
+      echo "Starting Docker (Please Be Patient)"
+      sleep 2
+      systemctl start docker
+      sleep 2
     fi
 
     ##### Checking Again, if fails again; warns user
     file="/usr/bin/docker"
-    if [ -e "$file" ]
-      then
+    if [ -e "$file" ]; then
       sleep 5
     else
       echo "INFO - FAILED: Docker Failed to Install! Exiting PGBlitz!"
-        exit
-      fi
+      exit
+    fi
   fi
 }
 
-serverid () {
-tee <<-EOF
+serverid() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️   Establishing Server ID               💬  Use One Word & Keep it Simple
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed </dev/tty
 
-    if [ "$typed" == "" ]; then
-tee <<-EOF
+  if [ "$typed" == "" ]; then
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - The Server ID Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 1
-  serverid
-else
-tee <<-EOF
+    sleep 1
+    serverid
+  else
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️  PASS: Server ID $typed Established
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  echo "$typed" > /var/plexguide/server.id
-  sleep 1
+    echo "$typed" >/var/plexguide/server.id
+    sleep 1
   fi
 }
 
-watchtower () {
+watchtower() {
 
   file="/var/plexguide/watchtower.wcheck"
   if [ ! -e "$file" ]; then
-  echo "4" > /var/plexguide/watchtower.wcheck
+    echo "4" >/var/plexguide/watchtower.wcheck
   fi
 
   wcheck=$(cat "/var/plexguide/watchtower.wcheck")
-    if [[ "$wcheck" -ge "1" && "$wcheck" -le "3" ]]; then
+  if [[ "$wcheck" -ge "1" && "$wcheck" -le "3" ]]; then
     wexit="1"
-    else wexit=0; fi
-tee <<-EOF
+  else wexit=0; fi
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📂  PG WatchTower Edition          📓 Reference: watchtower.pgblitz.com
@@ -507,44 +508,44 @@ Z - Exit
 EOF
 
   # Standby
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
   if [ "$typed" == "1" ]; then
     watchtowergen
     ansible-playbook /opt/coreapps/apps/watchtower.yml
-    echo "1" > /var/plexguide/watchtower.wcheck
+    echo "1" >/var/plexguide/watchtower.wcheck
   elif [ "$typed" == "2" ]; then
     watchtowergen
     sed -i -e "/plex/d" /tmp/watchtower.set 1>/dev/null 2>&1
     sed -i -e "/emby/d" /tmp/watchtower.set 1>/dev/null 2>&1
     ansible-playbook /opt/coreapps/apps/watchtower.yml
-    echo "2" > /var/plexguide/watchtower.wcheck
+    echo "2" >/var/plexguide/watchtower.wcheck
   elif [ "$typed" == "3" ]; then
-    echo null > /tmp/watchtower.set
+    echo null >/tmp/watchtower.set
     ansible-playbook /opt/coreapps/apps/watchtower.yml
-    echo "3" > /var/plexguide/watchtower.wcheck
+    echo "3" >/var/plexguide/watchtower.wcheck
   elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
     if [ "$wexit" == "0" ]; then
-tee <<-EOF
+      tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚠️   WatchTower Preference Must be Set Once!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-    sleep 3
-    watchtower
+      sleep 3
+      watchtower
     fi
     exit
   else
-  badinput
-  watchtower
+    badinput
+    watchtower
   fi
 }
 
-watchtowergen () {
+watchtowergen() {
   bash /opt/coreapps/apps/_appsgen.sh
   bash /opt/communityapps/apps/_appsgen.sh
   while read p; do
-    echo -n $p >> /tmp/watchtower.set
-    echo -n " " >> /tmp/watchtower.set
+    echo -n $p >>/tmp/watchtower.set
+    echo -n " " >>/tmp/watchtower.set
   done </var/plexguide/app.list
 }

@@ -17,8 +17,8 @@ if [ "$menu" == "2" ]; then
   sleep 2
   echo ""
   wget https://git.io/vpnsetup -O vpnsetup.sh 1>/dev/null 2>&1
-  sudo sh vpnsetup.sh > /opt/appdata/plexguide/vpninfo.raw
-  cat /opt/appdata/plexguide/vpninfo.raw | tail -n -12 | head -n +4 > /opt/appdata/plexguide/vpn.info
+  sudo sh vpnsetup.sh >/opt/appdata/plexguide/vpninfo.raw
+  cat /opt/appdata/plexguide/vpninfo.raw | tail -n -12 | head -n +4 >/opt/appdata/plexguide/vpn.info
   rm -rf /opt/appdata/plexguide/vpninfo.raw
   echo
   echo "-----------------------------------------------------"
@@ -31,12 +31,12 @@ if [ "$menu" == "2" ]; then
   echo "Note: pgvpn <<< command to recall your vpn info"
   echo ""
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  else
-      echo "";# leave if statement and continue.
-  fi
+else
+  echo "" # leave if statement and continue.
+fi
 
-  if [ "$menu" == "3" ]; then
-    echo "Uninstaller Not Ready!"
-    echo ""
-    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  fi
+if [ "$menu" == "3" ]; then
+  echo "Uninstaller Not Ready!"
+  echo ""
+  read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+fi

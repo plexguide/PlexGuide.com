@@ -10,9 +10,9 @@ source /opt/plexguide/menu/functions/install.sh
 # Menu Interface
 setstart() {
 
-emdisplay=$(cat /var/plexguide/emergency.display)
-switchcheck=$(cat /var/plexguide/pgui.switch)
-tee <<-EOF
+  emdisplay=$(cat /var/plexguide/emergency.display)
+  switchcheck=$(cat /var/plexguide/pgui.switch)
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG Settings Interface Menu
@@ -30,49 +30,61 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-# Standby
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  # Standby
+  read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
-case $typed in
-    1 )
-      bash /opt/plexguide/menu/dlpath/dlpath.sh
-      setstart ;;
-    2 )
-      bash /opt/plexguide/menu/pgcloner/multihd.sh ;;
-    3 )
-      bash /opt/plexguide/menu/processor/processor.sh
-      setstart ;;
-    4 )
-      watchtower ;;
-    5 )
-      dpkg-reconfigure tzdata ;;
-    6 )
-      echo
-      echo "Standby ..."
-      echo
-      if [[ "$switchcheck" == "On" ]]; then
-         echo "Off" > /var/plexguide/pgui.switch
-         docker stop pgui
-         docker rm pgui
-         service localspace stop
-         rm -f /etc/systemd/system/localspace.servive
-      else echo "On" > /var/plexguide/pgui.switch
-        bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
-        ansible-playbook /opt/pgui/pgui.yml
-        service localspace start
-      fi
-      setstart ;;
-    7)
-       if [[ "$emdisplay" == "On" ]]; then echo "Off" > /var/plexguide/emergency.display
-       else echo "On" > /var/plexguide/emergency.display; fi
-       setstart ;;
-    z )
-      exit ;;
-    Z )
-      exit ;;
-    * )
-      setstart ;;
-esac
+  case $typed in
+  1)
+    bash /opt/plexguide/menu/dlpath/dlpath.sh
+    setstart
+    ;;
+  2)
+    bash /opt/plexguide/menu/pgcloner/multihd.sh
+    ;;
+  3)
+    bash /opt/plexguide/menu/processor/processor.sh
+    setstart
+    ;;
+  4)
+    watchtower
+    ;;
+  5)
+    dpkg-reconfigure tzdata
+    ;;
+  6)
+    echo
+    echo "Standby ..."
+    echo
+    if [[ "$switchcheck" == "On" ]]; then
+      echo "Off" >/var/plexguide/pgui.switch
+      docker stop pgui
+      docker rm pgui
+      service localspace stop
+      rm -f /etc/systemd/system/localspace.servive
+    else
+      echo "On" >/var/plexguide/pgui.switch
+      bash /opt/plexguide/menu/pgcloner/solo/pgui.sh
+      ansible-playbook /opt/pgui/pgui.yml
+      service localspace start
+    fi
+    setstart
+    ;;
+  7)
+    if [[ "$emdisplay" == "On" ]]; then
+      echo "Off" >/var/plexguide/emergency.display
+    else echo "On" >/var/plexguide/emergency.display; fi
+    setstart
+    ;;
+  z)
+    exit
+    ;;
+  Z)
+    exit
+    ;;
+  *)
+    setstart
+    ;;
+  esac
 
 }
 

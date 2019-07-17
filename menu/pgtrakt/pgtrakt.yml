@@ -11,64 +11,64 @@
   gather_facts: false
   tasks:
     # FACTS ######################################################################
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "pgtrakt"
-        extport: "0"
+        pgrole: 'pgtrakt'
+        extport: '0'
 
     - name: Server ID
-      shell: "cat /var/plexguide/pg.serverid"
+      shell: 'cat /var/plexguide/pg.serverid'
       register: serverid
 
     - name: Token Recall
-      shell: "cat /var/plexguide/plex.token"
+      shell: 'cat /var/plexguide/plex.token'
       register: plextoken
 
     - name: Recall User
-      shell: "cat /var/plexguide/plex.user"
+      shell: 'cat /var/plexguide/plex.user'
       register: user
 
     - name: Register IP
-      shell: "cat /var/plexguide/server.ip"
+      shell: 'cat /var/plexguide/server.ip'
       register: ipaddress
 
     - name: Sonarr API
-      shell: "cat /var/plexguide/pgtrak.sapi"
+      shell: 'cat /var/plexguide/pgtrak.sapi'
       register: sapi
       ignore_errors: True
 
     - name: Radarr API
-      shell: "cat /var/plexguide/pgtrak.rapi"
+      shell: 'cat /var/plexguide/pgtrak.rapi'
       register: rapi
       ignore_errors: True
 
     - name: Sonarr Profile
-      shell: "cat /var/plexguide/pgtrak.sprofile"
+      shell: 'cat /var/plexguide/pgtrak.sprofile'
       register: sprofile
       ignore_errors: True
 
     - name: Radarr Profile
-      shell: "cat /var/plexguide/pgtrak.rprofile"
+      shell: 'cat /var/plexguide/pgtrak.rprofile'
       register: rprofile
       ignore_errors: True
 
     - name: Trakt.tv Client
-      shell: "cat /var/plexguide/pgtrak.client"
+      shell: 'cat /var/plexguide/pgtrak.client'
       register: client
       ignore_errors: True
 
     - name: Trakt.tv Secret
-      shell: "cat /var/plexguide/pgtrak.secret"
+      shell: 'cat /var/plexguide/pgtrak.secret'
       register: secret
       ignore_errors: True
 
     - name: Radarr Path
-      shell: "cat /var/plexguide/pgtrak.rpath"
+      shell: 'cat /var/plexguide/pgtrak.rpath'
       register: rpath
       ignore_errors: True
 
     - name: API Sonnar
-      shell: "cat /var/plexguide/pgtrak.spath"
+      shell: 'cat /var/plexguide/pgtrak.spath'
       register: spath
       ignore_errors: True
 
@@ -77,20 +77,20 @@
         requirements: /opt/plexguide/menu/pgtrakt/requirements.txt
         executable: pip3
 
-    - name: "Including cron job"
-      include_tasks: "/opt/coreapps/apps/_core.yml"
+    - name: 'Including cron job'
+      include_tasks: '/opt/coreapps/apps/_core.yml'
 
     - name: Create Basic Directories
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
-        - "/opt/appdata/pgtrakt/"
+        - '/opt/appdata/pgtrakt/'
 
     - name: Transfer Files
       copy:
         src: /opt/plexguide/menu/pgtrakt
         dest: /opt/appdata
-        owner: "1000"
-        group: "1000"
+        owner: '1000'
+        group: '1000'
         mode: a+x
         force: yes
 
@@ -98,8 +98,8 @@
       template:
         src: /opt/appdata/pgtrakt/config.json.sample
         dest: /opt/appdata/pgtrakt/config.json
-        owner: "1000"
-        group: "1000"
+        owner: '1000'
+        group: '1000'
         mode: 0775
         force: yes
 
@@ -110,15 +110,15 @@
         group: '1000'
         mode: a+x
 
-    - name: "Create /usr/local/bin symlink"
+    - name: 'Create /usr/local/bin symlink'
       file:
-        src: "/opt/appdata/pgtrakt/pgtrakt.py"
-        dest: "/bin/pgtrakt"
+        src: '/opt/appdata/pgtrakt/pgtrakt.py'
+        dest: '/bin/pgtrakt'
         state: link
 
     - name: Check Service's Existance
       stat:
-        path: "/etc/systemd/systemd/pgtrakt.service"
+        path: '/etc/systemd/systemd/pgtrakt.service'
       register: pgp
 
     - name: Stop service

@@ -9,10 +9,9 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-
     - name: Check Service's Existance
       stat:
-        path: "/etc/systemd/systemd/mountcheck.service"
+        path: '/etc/systemd/systemd/mountcheck.service'
       register: pgp
 
     - name: Stop service
@@ -26,7 +25,7 @@
         src: /opt/plexguide/menu/pgui/mountcheck.service
         dest: /etc/systemd/system/mountcheck.service
         force: yes
-        
+
     - name: Daemon-Reload
       systemd: state=stopped name=mountcheck daemon_reload=yes enabled=no
 

@@ -8,7 +8,7 @@
 test=$(hcloud server list)
 if [ "$test" == "" ]; then
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - You Must Input an API from Hetzner First!
@@ -21,12 +21,12 @@ tee <<-EOF
 * Not Ready? Just Something & Press [ENTER]
 
 EOF
-hcloud context create plexguide
+  hcloud context create plexguide
 
   test=$(hcloud server list)
   if [ "$test" == "" ]; then
     hcloud context delete plexguide
-  exit
+    exit
   fi
 
 fi
@@ -47,18 +47,18 @@ Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
 if [ "$typed" == "1" ]; then
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  PG - Create a Server Name
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p 'Type a Server Name | Press [ENTER]: ' name < /dev/tty
-tee <<-EOF
+  read -p 'Type a Server Name | Press [ENTER]: ' name </dev/tty
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  PG - Hetzner's Cloud OS Selector
@@ -76,46 +76,53 @@ Z - Exit
 
 EOF
 
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "1" ]; then os="ubuntu-18.04";
-elif [ "$typed" == "2" ]; then os="ubuntu-16.04";
-elif [ "$typed" == "3" ]; then os="debian-9";
-elif [ "$typed" == "4" ]; then os="centos-7";
-elif [ "$typed" == "5" ]; then os="fendora-28";
-elif [ "$typed" == "6" ]; then os="fendora-27";
-elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then exit;
+  if [ "$typed" == "1" ]; then
+    os="ubuntu-18.04"
+  elif [ "$typed" == "2" ]; then
+    os="ubuntu-16.04"
+  elif [ "$typed" == "3" ]; then
+    os="debian-9"
+  elif [ "$typed" == "4" ]; then
+    os="centos-7"
+  elif [ "$typed" == "5" ]; then
+    os="fendora-28"
+  elif [ "$typed" == "6" ]; then
+    os="fendora-27"
+  elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
+    exit
   fi
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PG - Deploying Your Server!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  hcloud server create --name $name --type cx11 --image ubuntu-18.04 > /opt/appdata/plexguide/server.info
+  hcloud server create --name $name --type cx11 --image ubuntu-18.04 >/opt/appdata/plexguide/server.info
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  PG - New Server Information - [$name]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-cat /opt/appdata/plexguide/server.info
+  cat /opt/appdata/plexguide/server.info
 
-# Creates Log
-touch /opt/appdata/plexguide/server.store
-cat /opt/appdata/plexguide/server.info >> /opt/appdata/plexguide/server.store
-echo "Server Name: $name" >> /opt/appdata/plexguide/server.store
-echo "" >> /opt/appdata/plexguide/server.store
+  # Creates Log
+  touch /opt/appdata/plexguide/server.store
+  cat /opt/appdata/plexguide/server.info >>/opt/appdata/plexguide/server.store
+  echo "Server Name: $name" >>/opt/appdata/plexguide/server.store
+  echo "" >>/opt/appdata/plexguide/server.store
 
-# Variable Info
-serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
-initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
+  # Variable Info
+  serverip=$(cat /opt/appdata/plexguide/server.info | tail -n +3 | head -n 1 | cut -d " " -f2-)
+  initialpw=$(cat /opt/appdata/plexguide/server.info | tail -n +4 | cut -d " " -f3-)
 
-tee <<-EOF
+  tee <<-EOF
 
 ⚠️  To Reach Your Server >>> EXIT PG >>> TYPE: pg-$name ⚠️
 
@@ -128,24 +135,24 @@ Command: ssh root@$serverip
 FIRST TIME LOGIN - Initial Password: $initialpw
 
 EOF
-read -p 'Press [ENTER] to Exit ' fill < /dev/tty
+  read -p 'Press [ENTER] to Exit ' fill </dev/tty
 
-# Creates Command pg-whatevername 2
-echo "" >> /bin/pg-$name
-echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" > /bin/pg-$name
-echo "echo '↘️  Server - $name | Initial Password $initialpw'" >> /bin/pg-$name
-echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" >> /bin/pg-$name
-echo "echo '✅️ Donate @ donate.pgblitz.com - Helps Costs & Mrs. Admin - #1 Enemy!'" >> /bin/pg-$name
-echo "echo ''" >> /bin/pg-$name
-echo "ssh root@$serverip" >> /bin/pg-$name
-chmod 777 /bin/pg-$name
-chown 1000:1000 /bin/pg-$name
+  # Creates Command pg-whatevername 2
+  echo "" >>/bin/pg-$name
+  echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" >/bin/pg-$name
+  echo "echo '↘️  Server - $name | Initial Password $initialpw'" >>/bin/pg-$name
+  echo "echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" >>/bin/pg-$name
+  echo "echo '✅️ Donate @ donate.pgblitz.com - Helps Costs & Mrs. Admin - #1 Enemy!'" >>/bin/pg-$name
+  echo "echo ''" >>/bin/pg-$name
+  echo "ssh root@$serverip" >>/bin/pg-$name
+  chmod 777 /bin/pg-$name
+  chown 1000:1000 /bin/pg-$name
 
-bash /opt/plexguide/menu/hetzner/hetzner.sh
-exit
+  bash /opt/plexguide/menu/hetzner/hetzner.sh
+  exit
 
 elif [ "$typed" == "A" ] || [ "$typed" == "a" ]; then
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  PG - Hetzner Server Cloud List
@@ -154,15 +161,15 @@ tee <<-EOF
 Server Name
 ━━━━━━━━━━━
 EOF
-hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
-echo
-read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+  hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
+  echo
+  read -p 'Press [ENTER] to Continue! ' typed </dev/tty
 
-bash /opt/plexguide/menu/hetzner/hetzner.sh
-exit
+  bash /opt/plexguide/menu/hetzner/hetzner.sh
+  exit
 
 elif [ "$typed" == "2" ]; then
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  PG - Destory a Hetzner Cloud Server!
@@ -171,10 +178,10 @@ tee <<-EOF
 Server Name
 ━━━━━━━━━━━
 EOF
-hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
-echo
-echo "Quit? Type >>> exit"
-read -p 'Type a Server to Destroy | Press [ENTER]: ' destroy < /dev/tty
+  hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
+  echo
+  echo "Quit? Type >>> exit"
+  read -p 'Type a Server to Destroy | Press [ENTER]: ' destroy </dev/tty
   if [ "$destroy" == "exit" ]; then
     bash /opt/plexguide/menu/hetzner/hetzner.sh
     exit
@@ -182,34 +189,34 @@ read -p 'Type a Server to Destroy | Press [ENTER]: ' destroy < /dev/tty
     check=$(hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-)
     next=$(echo $check | grep -c "\<$destroy\>")
     if [ "$next" == "0" ]; then
-tee <<-EOF
+      tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  PG - Server: $destroy - Does Not Exist!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
-    bash /opt/plexguide/menu/hetzner/hetzner.sh
-    exit
-  fi
-  echo
-  hcloud server delete $destroy
-tee <<-EOF
+      read -p 'Press [ENTER] to Continue! ' typed </dev/tty
+      bash /opt/plexguide/menu/hetzner/hetzner.sh
+      exit
+    fi
+    echo
+    hcloud server delete $destroy
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  PG - Server: $destroy - Destroyed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Press [ENTER] to Continue! ' typed < /dev/tty
+    read -p 'Press [ENTER] to Continue! ' typed </dev/tty
     rm -rf /bin/pg-$destroy
     bash /opt/plexguide/menu/hetzner/hetzner.sh
     exit
   fi
 
 elif [ "$typed" == "B" ] || [ "$typed" == "b" ]; then
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ↘️  PG - Inital Server Passwords
@@ -219,13 +226,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-touch /opt/appdata/plexguide/server.store
-tac -r /opt/appdata/plexguide/server.store
-echo "" & echo ""
-read -p 'Press [ENTER] to Continue! ' corn < /dev/tty
+  touch /opt/appdata/plexguide/server.store
+  tac -r /opt/appdata/plexguide/server.store
+  echo "" &
+  echo ""
+  read -p 'Press [ENTER] to Continue! ' corn </dev/tty
 
-bash /opt/plexguide/menu/hetzner/hetzner.sh
-exit
+  bash /opt/plexguide/menu/hetzner/hetzner.sh
+  exit
 
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit

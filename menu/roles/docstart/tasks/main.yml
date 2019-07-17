@@ -7,42 +7,42 @@
 ################################################################################
 ---
 ########################################## Scripts
-  - name: Check DockerFix Service
-    stat:
-      path: "/etc/systemd/system/v2docstart.service"
-    register: v2docstart
+- name: Check DockerFix Service
+  stat:
+    path: '/etc/systemd/system/v2docstart.service'
+  register: v2docstart
 
-  - name: Install Docker Reboot
-    template:
-      src: v2dockerscript.js2
-      dest: /opt/appdata/plexguide/v2dockerscript.sh
-      force: yes
+- name: Install Docker Reboot
+  template:
+    src: v2dockerscript.js2
+    dest: /opt/appdata/plexguide/v2dockerscript.sh
+    force: yes
 ########################################## Remove Old Services
 
-  - name: Remove Old Docker Fix
-    file:
-      state: absent
-      path: /etc/systemd/system/docstart.service
+- name: Remove Old Docker Fix
+  file:
+    state: absent
+    path: /etc/systemd/system/docstart.service
 
-  - name: Remove Old Docker File
-    file:
-      state: absent
-      path: /opt/appdata/plexguide/docstart.sh
+- name: Remove Old Docker File
+  file:
+    state: absent
+    path: /opt/appdata/plexguide/docstart.sh
 
 ########################################## New Service
 
-  - name: Stop If DockerFix Service Running
-    systemd: state=stopped name=v2docstart
-    when: v2docstart.stat.exists
+- name: Stop If DockerFix Service Running
+  systemd: state=stopped name=v2docstart
+  when: v2docstart.stat.exists
 
-  - name: Install DockerFix Service
-    template:
-      src: v2docstart.js2
-      dest: /etc/systemd/system/v2docstart.service
-      force: yes
+- name: Install DockerFix Service
+  template:
+    src: v2docstart.js2
+    dest: /etc/systemd/system/v2docstart.service
+    force: yes
 
-  - name: Daemon-Reload
-    systemd: state=stopped name=v2docstart daemon_reload=yes enabled=no
+- name: Daemon-Reload
+  systemd: state=stopped name=v2docstart daemon_reload=yes enabled=no
 
-  - name: Start DockerFix
-    systemd: state=started name=v2docstart enabled=yes
+- name: Start DockerFix
+  systemd: state=started name=v2docstart enabled=yes

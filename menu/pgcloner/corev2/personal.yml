@@ -2,21 +2,20 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-
     - name: Register Role
-      shell: "cat /var/plexguide/pgcloner.projectname"
+      shell: 'cat /var/plexguide/pgcloner.projectname'
       register: pname
 
     - name: Register Role
-      shell: "cat /var/plexguide/pgcloner.rolename"
+      shell: 'cat /var/plexguide/pgcloner.rolename'
       register: prole
 
     - name: Register User - Personal
-      shell: "cat /var/plexguide/{{prole.stdout}}.user"
+      shell: 'cat /var/plexguide/{{prole.stdout}}.user'
       register: user
 
     - name: Register Branch - Personal
-      shell: "cat /var/plexguide/{{prole.stdout}}.branch"
+      shell: 'cat /var/plexguide/{{prole.stdout}}.branch'
       register: branch
 
     - name: 'Cloning Personal Forked Role'

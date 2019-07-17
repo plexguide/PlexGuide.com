@@ -20,17 +20,17 @@ Z - Exit
 EOF
 
 # Standby
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "1" ]; then
-    echo gce > /var/plexguide/type.choice
-    bash /opt/plexguide/menu/pgcloner/blitzgce.sh
+if [ "$typed" == "1" ]; then
+  echo gce >/var/plexguide/type.choice
+  bash /opt/plexguide/menu/pgcloner/blitzgce.sh
 elif [ "$typed" == "2" ]; then
-    bash /opt/plexguide/menu/pgcloner/hetzner.sh
+  bash /opt/plexguide/menu/pgcloner/hetzner.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
-    exit
+  exit
 else
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - Please Make a Valid Selection!

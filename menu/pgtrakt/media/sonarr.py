@@ -21,7 +21,8 @@ class Sonarr(PVR):
         try:
             # make request
             req = requests.get(
-                os.path.join(misc_str.ensure_endswith(self.server_url, "/"), 'api/tag'),
+                os.path.join(misc_str.ensure_endswith(
+                    self.server_url, "/"), 'api/tag'),
                 headers=self.headers,
                 timeout=60,
                 allow_redirects=False
@@ -36,7 +37,8 @@ class Sonarr(PVR):
                     tags[tag['label']] = tag['id']
                 return tags
             else:
-                log.error("Failed to retrieve all tags, request response: %d", req.status_code)
+                log.error(
+                    "Failed to retrieve all tags, request response: %d", req.status_code)
         except Exception:
             log.exception("Exception retrieving tags: ")
         return None
@@ -44,7 +46,8 @@ class Sonarr(PVR):
     @backoff.on_predicate(backoff.expo, lambda x: x is None, max_tries=4, on_backoff=backoff_handler)
     def add_series(self, series_tvdbid, series_title, series_title_slug, profile_id, root_folder, tag_ids=None,
                    search_missing=False):
-        payload = self._prepare_add_object_payload(series_title, series_title_slug, profile_id, root_folder)
+        payload = self._prepare_add_object_payload(
+            series_title, series_title_slug, profile_id, root_folder)
 
         payload = dict_merge(payload, {
             'tvdbId': series_tvdbid,

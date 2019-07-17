@@ -10,26 +10,26 @@
   gather_facts: false
   tasks:
     - name: Register Project
-      shell: "cat /var/plexguide/pg.number"
+      shell: 'cat /var/plexguide/pg.number'
       register: serverid
 
     - name: Installing EDGE
       git:
-        repo: "https://github.com/PGBlitz/PGBlitz.com"
-        dest: "/opt/plexguide"
+        repo: 'https://github.com/PGBlitz/PGBlitz.com'
+        dest: '/opt/plexguide'
         version: Edge
         force: yes
       when: serverid.stdout == "edge"
 
-    - name: "Installing Version {{serverid.stdout}}"
+    - name: 'Installing Version {{serverid.stdout}}'
       git:
-        repo: "https://github.com/PGBlitz/PGBlitz.com"
-        dest: "/opt/plexguide"
-        version: "{{serverid.stdout}}"
+        repo: 'https://github.com/PGBlitz/PGBlitz.com'
+        dest: '/opt/plexguide'
+        version: '{{serverid.stdout}}'
         force: yes
       when: not serverid.stdout == "edge"
       ignore_errors: True
 
-    - name: "Stops First Time Run"
-      shell: "touch /var/plexguide/ask.yes"
+    - name: 'Stops First Time Run'
+      shell: 'touch /var/plexguide/ask.yes'
       register: program

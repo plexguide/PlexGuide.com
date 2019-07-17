@@ -9,48 +9,47 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-
     - name: Register Domain
-      shell: "cat /var/plexguide/server.domain"
+      shell: 'cat /var/plexguide/server.domain'
       register: domain
       ignore_errors: True
 
     - name: Register IP
-      shell: "cat /var/plexguide/server.ip"
+      shell: 'cat /var/plexguide/server.ip'
       register: ipaddress
       ignore_errors: True
 
     - name: Register Ports
-      shell: "cat /var/plexguide/server.ports"
+      shell: 'cat /var/plexguide/server.ports'
       register: ports
       ignore_errors: True
 
     - name: Register HD Path
-      shell: "cat /var/plexguide/server.hd.path"
+      shell: 'cat /var/plexguide/server.hd.path'
       register: path
       ignore_errors: True
 
     - name: Register HD Path
-      shell: "cat /var/plexguide/server.hd.path"
+      shell: 'cat /var/plexguide/server.hd.path'
       register: path
       ignore_errors: True
 
     - name: Register Auth Path
-      shell: "cat /var/plexguide/server.ht"
+      shell: 'cat /var/plexguide/server.ht'
       register: auth
       ignore_errors: True
 
     - name: Logging Ansible Role Information
       shell: "echo 'INFO - Ansible Role Folders Started' > /var/plexguide/logs/pg.log && bash /opt/plexguide/menu/log/log.sh"
 
-  ############ GCrypt
+    ############ GCrypt
     - name: GCrypt Check
       stat:
         path: /mnt/gcrypt
       register: gcrypt
 
     - name: Create GCrypt Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /mnt/gcrypt/tv
         - /mnt/gcrypt/movies
@@ -59,14 +58,14 @@
         - /mnt/gcrypt/abooks
       when: gcrypt.stat.exists == False
       ignore_errors: yes
-  ############ TCrypt
+    ############ TCrypt
     - name: TCrypt Check
       stat:
         path: /mnt/tcrypt
       register: tcrypt
 
     - name: Create TCrypt Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /mnt/tcrypt/tv
         - /mnt/tcrypt/movies
@@ -76,53 +75,53 @@
       when: tcrypt.stat.exists == False
       ignore_errors: yes
 
-  ############ Personal Containers Folder
+    ############ Personal Containers Folder
     - name: MyContainers Check
       stat:
         path: /opt/mycontainers
       register: mycontainers
 
     - name: Create MyContainers Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /opt/mycontainers
       when: mycontainers.stat.exists == False
       ignore_errors: yes
 
-  ############ PGUnion
+    ############ PGUnion
     - name: PGUnion Check
       stat:
         path: /mnt/unionfs
       register: pgunion
 
     - name: Create PGUnion Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /mnt/unionfs
       when: pgunion.stat.exists == False
       ignore_errors: yes
 
-  ############ TMP
+    ############ TMP
     - name: TMP Check
       stat:
         path: /mnt/tmp
       register: tmp
 
     - name: Create GDrive Folders
-      file: "path={{item}} state=directory"
+      file: 'path={{item}} state=directory'
       with_items:
         - /mnt/tmp
       when: tmp.stat.exists == False
       ignore_errors: yes
 
-  ############ GDrive
+    ############ GDrive
     - name: GDrive Check
       stat:
         path: /mnt/gdrive
       register: gdrive
 
     - name: Create GDrive Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /mnt/gdrive
         - /mnt/gdrive/tv
@@ -132,9 +131,9 @@
         - /mnt/gdrive/abooks
       when: gdrive.stat.exists == False
       ignore_errors: yes
-  ############ TCrypt
+    ############ TCrypt
     - name: Create GDrive Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /mnt/tcrypt
         - /mnt/tcrypt/tv
@@ -145,14 +144,14 @@
       when: gdrive.stat.exists == False
       ignore_errors: yes
 
-  ############ TDrive
+    ############ TDrive
     - name: TDrive Check
       stat:
         path: /mnt/tdrive
       register: tdrive
 
     - name: Create TDrive Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /mnt/tdrive
         - /mnt/tdrive/tv
@@ -163,14 +162,14 @@
       when: tdrive.stat.exists == False
       ignore_errors: yes
 
-  ############ Encrypt
+    ############ Encrypt
     - name: Encrypt Check
       stat:
         path: /mnt/encrypt
       register: encrypt
 
     - name: Create Encrypt Folders
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
         - /mnt/encrypt/tv
         - /mnt/encrypt/movies
@@ -181,21 +180,21 @@
       ignore_errors: yes
 
     - name: Create Basic Directories
-      file: "path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=true'
       with_items:
-        - "/opt/appdata/plexguide"
-        - "/opt/communityapps"
-        - "/opt/coreapps"
-        - "/var/plexguide"
-        - "/mnt/move"
-        - "/var/plexguide/logs"
-        - "/opt/appdata/plexguide/keys/unprocessed"
-        - "/opt/appdata/plexguide/keys/processed"
-        - "/opt/appdata/plexguide/keys/badjson"
-        - "{{path.stdout}}/pgops"
-        - "{{path.stdout}}/downloads"
-        - "{{path.stdout}}/nzb"
-        - "{{path.stdout}}/torrent"
-        - "{{path.stdout}}/move"
-        - "/opt/var"
+        - '/opt/appdata/plexguide'
+        - '/opt/communityapps'
+        - '/opt/coreapps'
+        - '/var/plexguide'
+        - '/mnt/move'
+        - '/var/plexguide/logs'
+        - '/opt/appdata/plexguide/keys/unprocessed'
+        - '/opt/appdata/plexguide/keys/processed'
+        - '/opt/appdata/plexguide/keys/badjson'
+        - '{{path.stdout}}/pgops'
+        - '{{path.stdout}}/downloads'
+        - '{{path.stdout}}/nzb'
+        - '{{path.stdout}}/torrent'
+        - '{{path.stdout}}/move'
+        - '/opt/var'
       ignore_errors: yes

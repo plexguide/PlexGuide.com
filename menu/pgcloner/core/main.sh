@@ -16,35 +16,35 @@ projectversion=$(cat /var/plexguide/pgcloner.projectversion)
 
 mkdir -p "/opt/$rolename"
 
-initial () {
-  ansible-playbook "/opt/plexguide/menu/pgcloner/core/primary.yml"
-  echo ""
-  echo "💬  Pulling Update Files - Please Wait"
-  file="/opt/$rolename/place.holder"
-  waitvar=0
-  while [ "$waitvar" == "0" ]; do
-  	sleep .5
-  	if [ -e "$file" ]; then waitvar=1; fi
-  done
+initial() {
+    ansible-playbook "/opt/plexguide/menu/pgcloner/core/primary.yml"
+    echo ""
+    echo "💬  Pulling Update Files - Please Wait"
+    file="/opt/$rolename/place.holder"
+    waitvar=0
+    while [ "$waitvar" == "0" ]; do
+        sleep .5
+        if [ -e "$file" ]; then waitvar=1; fi
+    done
 }
 
-custom () {
-  mkdir -p "/opt/$rolename"
-  ansible-playbook "/opt/plexguide/menu/pgcloner/core/personal.yml"
+custom() {
+    mkdir -p "/opt/$rolename"
+    ansible-playbook "/opt/plexguide/menu/pgcloner/core/personal.yml"
 
-  echo ""
-  echo "💬  Pulling Update Files - Please Wait"
-  file="/opt/$rolename/place.holder"
-  waitvar=0
-  while [ "$waitvar" == "0" ]; do
-  	sleep .5
-  	if [ -e "$file" ]; then waitvar=1; fi
-  done
+    echo ""
+    echo "💬  Pulling Update Files - Please Wait"
+    file="/opt/$rolename/place.holder"
+    waitvar=0
+    while [ "$waitvar" == "0" ]; do
+        sleep .5
+        if [ -e "$file" ]; then waitvar=1; fi
+    done
 }
 
-mainbanner () {
-clonerinfo=$(cat /var/plexguide/pgcloner.info)
-tee <<-EOF
+mainbanner() {
+    clonerinfo=$(cat /var/plexguide/pgcloner.info)
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 $roleproper | 📓 Reference: $rolename.pgblitz.com
@@ -59,30 +59,35 @@ $clonerinfo
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
+    read -p 'Type a Selection | Press [ENTER]: ' typed </dev/tty
 
-case $typed in
-    1 )
-        initial ;;
-    2 )
+    case $typed in
+    1)
+        initial
+        ;;
+    2)
         variable /var/plexguide/$rolename.user "NOT-SET"
         variable /var/plexguide/$rolename.branch "NOT-SET"
-        pinterface ;;
-    z )
-        exit ;;
-    Z )
-        exit ;;
-    * )
-        mainbanner ;;
-esac
+        pinterface
+        ;;
+    z)
+        exit
+        ;;
+    Z)
+        exit
+        ;;
+    *)
+        mainbanner
+        ;;
+    esac
 }
 
-pinterface () {
+pinterface() {
 
-user=$(cat /var/plexguide/$rolename.user)
-branch=$(cat /var/plexguide/$rolename.branch)
+    user=$(cat /var/plexguide/$rolename.user)
+    branch=$(cat /var/plexguide/$rolename.branch)
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 $roleproper | 📓 Reference: $rolename.pgblitz.com
@@ -97,11 +102,11 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-read -p 'Type a Selection | Press [ENTER]: ' typed < /dev/tty
+    read -p 'Type a Selection | Press [ENTER]: ' typed </dev/tty
 
-case $typed in
-    1 )
-tee <<-EOF
+    case $typed in
+    1)
+        tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬 IMPORTANT MESSAGE
@@ -111,26 +116,33 @@ default or selected branch!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-        read -p 'Username | Press [ENTER]: ' user < /dev/tty
-        read -p 'Branch   | Press [ENTER]: ' branch < /dev/tty
-        echo "$user" > /var/plexguide/$rolename.user
-        echo "$branch" > /var/plexguide/$rolename.branch
-        pinterface ;;
-    2 )
+        read -p 'Username | Press [ENTER]: ' user </dev/tty
+        read -p 'Branch   | Press [ENTER]: ' branch </dev/tty
+        echo "$user" >/var/plexguide/$rolename.user
+        echo "$branch" >/var/plexguide/$rolename.branch
+        pinterface
+        ;;
+    2)
         existcheck=$(git ls-remote --exit-code -h "https://github.com/$user/$projectname" | grep "$branch")
-        if [ "$existcheck" == "" ]; then echo;
-        read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed < /dev/tty
-        mainbanner; fi
-        custom ;;
-    z )
-        exit ;;
-    Z )
-        exit ;;
-    * )
-        mainbanner ;;
-esac
+        if [ "$existcheck" == "" ]; then
+            echo
+            read -p '💬 Exiting! Forked Version Does Not Exist! | Press [ENTER]: ' typed </dev/tty
+            mainbanner
+        fi
+        custom
+        ;;
+    z)
+        exit
+        ;;
+    Z)
+        exit
+        ;;
+    *)
+        mainbanner
+        ;;
+    esac
 }
 
 # FUNCTIONS END ##############################################################
-echo "" > /tmp/output.info
+echo "" >/tmp/output.info
 mainbanner

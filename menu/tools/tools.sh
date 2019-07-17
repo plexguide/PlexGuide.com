@@ -5,13 +5,13 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-function gcheck {
+function gcheck() {
 
-edition=$(cat /var/plexguide/pg.edition)
-if [ "$edition" == "PG Edition - GDrive" ] || [ "$edition" == "PG Edition - GCE Feed" ]; then
-gcheck=$(cat /opt/appdata/plexguide/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8)
-  if [ "$gcheck" != "[gdrive]" ]; then
-tee <<-EOF
+  edition=$(cat /var/plexguide/pg.edition)
+  if [ "$edition" == "PG Edition - GDrive" ] || [ "$edition" == "PG Edition - GCE Feed" ]; then
+    gcheck=$(cat /opt/appdata/plexguide/rclone.conf 2>/dev/null | grep 'gdrive' | head -n1 | cut -b1-8)
+    if [ "$gcheck" != "[gdrive]" ]; then
+      tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - Must Configure RClone First /w >>> gdrive
@@ -21,13 +21,13 @@ NOTE: You must deploy PG Move or PG Blitz in order to use the backup
 function. GDrive configuration is required to move data!
 
 EOF
-read -n 1 -s -r -p "Press [ANY] Key to Continue "
-echo
-bash /opt/plexguide/menu/tools/tools.sh
-exit
-  fi
-else
-tee <<-EOF
+      read -n 1 -s -r -p "Press [ANY] Key to Continue "
+      echo
+      bash /opt/plexguide/menu/tools/tools.sh
+      exit
+    fi
+  else
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - Backup is Only for GDrive / GCE Editions
@@ -42,11 +42,11 @@ drive, a NAS... (kind of hard to account for all the situations).
 Think you get the idea!
 
 EOF
-read -n 1 -s -r -p "Press [ANY] Key to Continue "
-echo
-bash /opt/plexguide/menu/tools/tools.sh
-exit
-fi
+    read -n 1 -s -r -p "Press [ANY] Key to Continue "
+    echo
+    bash /opt/plexguide/menu/tools/tools.sh
+    exit
+  fi
 }
 
 # Menu Interface
@@ -70,9 +70,9 @@ tee <<-EOF
 EOF
 
 # Standby
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "1" ]; then
+if [ "$typed" == "1" ]; then
   bash /opt/plexguide/menu/pgcloner/pgpatrol.sh
   bash /opt/pgpatrol/pgpatrol.sh
 elif [ "$typed" == "2" ]; then
@@ -84,7 +84,7 @@ elif [ "$typed" == "4" ]; then
 elif [ "$typed" == "5" ]; then
   bash /opt/plexguide/menu/nttweak/nttweak.sh
 elif [ "$typed" == "6" ]; then
-  echo 'vpnserver' > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  echo 'vpnserver' >/var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
 elif [ "$typed" == "7" ]; then
   bash /opt/plexguide/menu/network/network.sh
 elif [ "$typed" == "8" ]; then

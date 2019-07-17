@@ -8,50 +8,50 @@
 ################################################################################
 
 tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛  Verifiying PG Hetzner iGPU / GPU HW-Transcode !
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	⌛  Verifiying PG Hetzner iGPU / GPU HW-Transcode !
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 echo "Updating packages"
-        apt-get update -yqq 2>&1 >> /dev/null
-        export DEBIAN_FRONTEND=noninteractive
+apt-get update -yqq 2>&1 >>/dev/null
+export DEBIAN_FRONTEND=noninteractive
 echo "Upgrading packages"
-        apt-get upgrade -yqq 2>&1 >> /dev/null
-        export DEBIAN_FRONTEND=noninteractive
+apt-get upgrade -yqq 2>&1 >>/dev/null
+export DEBIAN_FRONTEND=noninteractive
 echo "Dist-Upgrading packages"
-        apt-get dist-upgrade -yqq 2>&1 >> /dev/null
-        export DEBIAN_FRONTEND=noninteractive
+apt-get dist-upgrade -yqq 2>&1 >>/dev/null
+export DEBIAN_FRONTEND=noninteractive
 echo "Autoremove old Updates"
-        apt-get autoremove -yqq 2>&1 >> /dev/null
-        export DEBIAN_FRONTEND=noninteractive
+apt-get autoremove -yqq 2>&1 >>/dev/null
+export DEBIAN_FRONTEND=noninteractive
 echo "install vainfo"
-        sudo apt-get install vainfo -yqq 2>&1 >> /dev/null
-        export DEBIAN_FRONTEND=noninteractive
-apt-get install lsb-release -yqq 2>&1 >> /dev/null
-	export DEBIAN_FRONTEND=noninteractive
-echo "install complete"	
+sudo apt-get install vainfo -yqq 2>&1 >>/dev/null
+export DEBIAN_FRONTEND=noninteractive
+apt-get install lsb-release -yqq 2>&1 >>/dev/null
+export DEBIAN_FRONTEND=noninteractive
+echo "install complete"
 
 tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG Hetzner iGPU / GPU HW-Transcode
-
-NOTE : You MUST have Plex Pass to enable hardware transcoding in the Plex server
-
-Your Operations System	 : $(lsb_release -sd)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-[1] Ubuntu 16.04 LTS
-[2] Ubuntu 18.04 LTS
-[3] Debian 9.6
-
-[4] iGPU / GPU TEST
-
-[Z] Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	🚀 PG Hetzner iGPU / GPU HW-Transcode
+	
+	NOTE : You MUST have Plex Pass to enable hardware transcoding in the Plex server
+	
+	Your Operations System	 : $(lsb_release -sd)
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+	
+	[1] Ubuntu 16.04 LTS
+	[2] Ubuntu 18.04 LTS
+	[3] Debian 9.6
+	
+	[4] iGPU / GPU TEST
+	
+	[Z] Exit
+	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
 # Standby
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
 if [ "$typed" == "1" ]; then
 	sed -i '/blacklist i915/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf
@@ -100,19 +100,23 @@ elif [ "$typed" == "3" ]; then
 	sleep 10
 elif [ "$typed" == "4" ]; then
 
-	GPU=$(lspci | grep VGA | cut -d ":" -f3);RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2)
+	GPU=$(lspci | grep VGA | cut -d ":" -f3)
+	RAM=$(
+		cardid=$(lspci | grep VGA | cut -d " " -f1)
+		lspci -v -s $cardid | grep " prefetchable" | cut -d "=" -f2
+	)
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-	echo $GPU $RAM	
+	echo $GPU $RAM
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        apt-get autoremove -yqq 2>&1 >> /dev/null
-                export DEBIAN_FRONTEND=noninteractive
+	apt-get autoremove -yqq 2>&1 >>/dev/null
+	export DEBIAN_FRONTEND=noninteractive
 	sleep 10
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
-  exit
+	exit
 else
-  bash /opt/plexguide/menu/tools/tools.sh
-  exit
+	bash /opt/plexguide/menu/tools/tools.sh
+	exit
 fi
 
 bash /opt/plexguide/menu/tools/tools.sh
-exit	
+exit

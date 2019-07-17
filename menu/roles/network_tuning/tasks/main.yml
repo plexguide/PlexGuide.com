@@ -33,7 +33,7 @@
 - name: Enable BBR TCP Congestion Control
   blockinfile:
     path: /etc/sysctl.conf
-    marker: "# TCP BBR"
+    marker: '# TCP BBR'
     block: |
       net.core.default_qdisc=fq
       net.ipv4.tcp_congestion_control=bbr
@@ -43,7 +43,7 @@
 - name: Seedboxer Kernel Tweaks
   blockinfile:
     path: /etc/sysctl.conf
-    marker: "# Seedboxer"
+    marker: '# Seedboxer'
     block: |
       fs.file-max = 2097152
       vm.swappiness = 10
@@ -80,7 +80,7 @@
 - name: tj007s13's kernel tweaks
   blockinfile:
     path: /etc/sysctl.conf
-    marker: "# tj007s13"
+    marker: '# tj007s13'
     block: |
       vm.swappiness = 1
       fs.file-max = 2000000
@@ -133,7 +133,7 @@
 - name: Klaver.it Kernel Tweaks
   blockinfile:
     path: /etc/sysctl.conf
-    marker: "# Klaver"
+    marker: '# Klaver'
     block: |
       net.ipv4.tcp_syncookies = 1
       net.ipv4.tcp_syn_retries = 2
@@ -222,4 +222,4 @@
 ################### Load Kernel Configs
 
 - name: Apply Kernel Settings
-  shell: "sysctl -e -p"
+  shell: 'sysctl -e -p'

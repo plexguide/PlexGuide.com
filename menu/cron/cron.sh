@@ -14,8 +14,8 @@ mkdir -p /opt/appdata/plexguide/cron
 source /opt/plexguide/menu/functions/functions.sh
 
 # FIRST QUESTION
-question1 () {
-tee <<-EOF
+question1() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⌛ PG Cron - Schedule Cron Jobs (Backups) | $program?
@@ -28,15 +28,17 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit;
-elif [ "$typed" == "2" ]; then break="on";
-else badinput; fi
+  read -p '↘️  Type Number | Press [ENTER]: ' typed </dev/tty
+  if [ "$typed" == "1" ]; then
+    ansible-playbook /opt/plexguide/menu/cron/remove.yml && exit
+  elif [ "$typed" == "2" ]; then
+    break="on"
+  else badinput; fi
 }
 
 # SECOND QUESTION
-question2 () {
-tee <<-EOF
+question2() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⌛ PG Cron - Backup How Often?
@@ -57,15 +59,17 @@ DAILY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" -ge "0" && "$typed" -le "7" ]]; then echo $typed > /var/plexguide/cron/cron.day && break=1;
-elif [ "$typed" == "8" ]; then echo "*/1" > /var/plexguide/cron/$program.cron.day && break=1;
-else badinput; fi
+  read -p '↘️  Type Number | Press [ENTER]: ' typed </dev/tty
+  if [[ "$typed" -ge "0" && "$typed" -le "7" ]]; then
+    echo $typed >/var/plexguide/cron/cron.day && break=1
+  elif [ "$typed" == "8" ]; then
+    echo "*/1" >/var/plexguide/cron/$program.cron.day && break=1
+  else badinput; fi
 }
 
 # THIRD QUESTION
-question3 () {
-tee <<-EOF
+question3() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⌛ PG Cron - Hour of the Day?
@@ -80,9 +84,10 @@ Type an HOUR from [0 to 23]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then echo $typed > /var/plexguide/cron/cron.hour && break=1;
-else badinput; fi
+  read -p '↘️  Type a Number | Press [ENTER]: ' typed </dev/tty
+  if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then
+    echo $typed >/var/plexguide/cron/cron.hour && break=1
+  else badinput; fi
 }
 
 # FUNCTIONS END ##############################################################
@@ -91,5 +96,5 @@ break=off && while [ "$break" == "off" ]; do question1; done
 break=off && while [ "$break" == "off" ]; do question2; done
 break=off && while [ "$break" == "off" ]; do question3; done
 
-echo $(($RANDOM % 59)) > /var/plexguide/cron/cron.minute
+echo $(($RANDOM % 59)) >/var/plexguide/cron/cron.minute
 ansible-playbook /opt/plexguide/menu/cron/cron.yml

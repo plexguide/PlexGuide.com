@@ -9,35 +9,34 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # KEY VARIABLES ################################################################
+    - name: Set PGRole
+      shell: 'cat /tmp/program_var'
+      register: pgrole
 
-# KEY VARIABLES ################################################################
-  - name: Set PGRole
-    shell: "cat /tmp/program_var"
-    register: pgrole
+    - name: Set PGRole
+      shell: 'cat /var/plexguide/cron/cron.hour'
+      register: cronhour
 
-  - name: Set PGRole
-    shell: "cat /var/plexguide/cron/cron.hour"
-    register: cronhour
+    - name: Set PGRole
+      shell: 'cat /var/plexguide/cron/cron.minute'
+      register: cronminute
 
-  - name: Set PGRole
-    shell: "cat /var/plexguide/cron/cron.minute"
-    register: cronminute
+    - name: Set PGRole
+      shell: 'cat /var/plexguide/cron/cron.day'
+      register: cronday
 
-  - name: Set PGRole
-    shell: "cat /var/plexguide/cron/cron.day"
-    register: cronday
+    # CRON START ###################################################################
+    #  - name: Build Cron Job File
+    #    shell: echo "ansible-playbook /opt/plexguide/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}'" > /opt/appdata/plexguide/cron/{{pgrole.stdout}}
 
-# CRON START ###################################################################
-#  - name: Build Cron Job File
-#    shell: echo "ansible-playbook /opt/plexguide/menu/cron/bcron.yml --extra-vars 'program_var={{pgrole.stdout}}'" > /opt/appdata/plexguide/cron/{{pgrole.stdout}}
-
-  - name: Build Cron Job Schedule
-    cron:
-      name: "{{pgrole.stdout}}"
-      weekday: "{{cronday.stdout}}"
-      minute: "{{cronminute.stdout}}"
-      hour: "{{cronhour.stdout}}"
-      user: root
-      job: "echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/pgvault/pgcron"
-      state: present
-    become_user: root
+    - name: Build Cron Job Schedule
+      cron:
+        name: '{{pgrole.stdout}}'
+        weekday: '{{cronday.stdout}}'
+        minute: '{{cronminute.stdout}}'
+        hour: '{{cronhour.stdout}}'
+        user: root
+        job: 'echo {{pgrole.stdout}} > /tmp/program_var && bash /opt/pgvault/pgcron'
+        state: present
+      become_user: root

@@ -17,7 +17,8 @@ class Slack:
 
     def send(self, **kwargs):
         if not self.webhook_url or not self.sender_name or not self.sender_icon:
-            log.error("You must specify an webhook_url, sender_name and sender_icon when initializing this class")
+            log.error(
+                "You must specify an webhook_url, sender_name and sender_icon when initializing this class")
             return False
 
         # send notification

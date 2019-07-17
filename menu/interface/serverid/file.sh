@@ -23,24 +23,23 @@ if [ "$menu" == "2" ]; then
   echo ""
   echo ""
   read -p "Set or Change the Server ID (y/n)? " -n 1 -r
-  echo    # move cursor to a new line
-  if [[ ! $REPLY =~ ^[Yy]$ ]]
-  then
+  echo # move cursor to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     echo ""
     echo "---------------------------------------------------"
     echo "SYSTEM MESSAGE: [Y] Key was NOT Selected - Exiting!"
     echo "---------------------------------------------------"
     echo ""
     read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-      echo "";
-      exit 1;
+    echo ""
+    exit 1
   fi
 
   break=no
   while [ "$break" == "no" ]; do
-  echo ""
-  read -p 'Type a Sever ID & Then Press [ENTER]: ' typed
-  #typed=typed+0
+    echo ""
+    read -p 'Type a Sever ID & Then Press [ENTER]: ' typed
+    #typed=typed+0
     echo ""
     echo "-------------------------------------------------"
     echo "SYSTEM MESSAGE: Server ID - $typed"
@@ -48,8 +47,7 @@ if [ "$menu" == "2" ]; then
     echo ""
     read -p "Continue with the Set Server ID (y/n)? " -n 1 -r
 
-    if [[ ! $REPLY =~ ^[Yy]$ ]]
-    then
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
       echo ""
       echo "---------------------------------------------------"
       echo "SYSTEM MESSAGE: [Y] Key was NOT Selected"
@@ -58,7 +56,7 @@ if [ "$menu" == "2" ]; then
       echo "You will be able to set the Server ID Again!"
       echo
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-      echo "";
+      echo ""
     else
       echo ""
       echo "---------------------------------------------------"
@@ -67,10 +65,10 @@ if [ "$menu" == "2" ]; then
       echo ""
       echo "Your Server ID is Now Set! Thank you!"
       echo ""
-      echo $typed > /var/plexguide/server.id
+      echo $typed >/var/plexguide/server.id
       break=yes
       read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-      echo "";
+      echo ""
     fi
   done
 
@@ -87,6 +85,6 @@ if [ "$idtest" == "NOT-SET" ]; then
   echo "Restarting the Process"
   echo
   read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-  echo serverid > /var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
+  echo serverid >/var/plexguide/type.choice && bash /opt/plexguide/menu/core/scripts/main.sh
   exit
 fi

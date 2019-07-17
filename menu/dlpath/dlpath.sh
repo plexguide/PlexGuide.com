@@ -7,9 +7,9 @@
 ################################################################################
 
 # Create Variables (If New) & Recall
-variable () {
+variable() {
   file="$1"
-  if [ ! -e "$file" ]; then echo "$2" > $1; fi
+  if [ ! -e "$file" ]; then echo "$2" >$1; fi
 }
 
 # For ZipLocations
@@ -47,12 +47,12 @@ Do You Want To Change the Processing Disk?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 # Standby
-read -p '↘️   Type a Number | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️   Type a Number | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "1" ]; then
-    exit
+if [ "$typed" == "1" ]; then
+  exit
 elif [ "$typed" == "2" ]; then
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🍖  NOM NOM: Selected to Change the Processing Path
@@ -72,33 +72,33 @@ STOP the Process by Typing >>> exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-# Standby
-read -p '↘️   Type the NEW PATH (Follow Above Examples): ' typed < /dev/tty
+  # Standby
+  read -p '↘️   Type the NEW PATH (Follow Above Examples): ' typed </dev/tty
 
-# SubQuestion About Continuing
+  # SubQuestion About Continuing
   if [ "$typed" == "exit" ]; then
     exit
   fi
 
-# Checking Input
-typed2=$typed
-bonehead=no
-##### If BONEHEAD forgot to add a / in the beginning, we fix for them
-initial="$(echo $typed | head -c 1)"
-if [ "$initial" != "/" ]; then
-  typed="/$typed"
-  bonehead=yes
-fi
-##### If BONEHEAD added a / at the end, we fix for them
-initial="${typed: -1}"
-if [ "$initial" == "/" ]; then
-  typed=${typed::-1}
-  bonehead=yes
-fi
+  # Checking Input
+  typed2=$typed
+  bonehead=no
+  ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
+  initial="$(echo $typed | head -c 1)"
+  if [ "$initial" != "/" ]; then
+    typed="/$typed"
+    bonehead=yes
+  fi
+  ##### If BONEHEAD added a / at the end, we fix for them
+  initial="${typed: -1}"
+  if [ "$initial" == "/" ]; then
+    typed=${typed::-1}
+    bonehead=yes
+  fi
 
-# Telling Them They Are a BoneHead
+  # Telling Them They Are a BoneHead
   if [ "$bonehead" == "yes" ]; then
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ☠  BONEHEAD:  PG Fixed the Paths For You... (read next time)
@@ -107,73 +107,73 @@ tee <<-EOF
 You Typed : $typed2
 Changed To: $typed
 EOF
-sleep 5
+    sleep 5
   else
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️ WOOT WOOT: The Input is Valid!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
+    sleep 3
   fi
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🍖  NOM NOM: Checking the Processing Path's Existance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-sleep 3
+  sleep 3
 
-mkdir $typed/test 1>/dev/null 2>&1
+  mkdir $typed/test 1>/dev/null 2>&1
 
-file="$typed/test"
+  file="$typed/test"
   if [ -e "$file" ]; then
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️   WOOT WOOT: Location Is Valid - $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2
+    sleep 2
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⌛  STANDBY: Setting Up Your Permissions
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2
+    sleep 2
 
-chown 1000:1000 "$typed"
-chmod 0775 "$typed"
-rm -rf "$typed/test"
-echo $typed > /var/plexguide/server.hd.path
-break=off
+    chown 1000:1000 "$typed"
+    chmod 0775 "$typed"
+    rm -rf "$typed/test"
+    echo $typed >/var/plexguide/server.hd.path
+    break=off
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⌛  STANDBY: Making Folders & Rebuilding the Systems Docker Containers!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2
+    sleep 2
 
-ansible-playbook /opt/plexguide/menu/installer/main.yml
-bash /opt/plexguide/menu/dlpath/rebuild.sh
+    ansible-playbook /opt/plexguide/menu/installer/main.yml
+    bash /opt/plexguide/menu/dlpath/rebuild.sh
 
-tee <<-EOF
+    tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️   WOOT WOOT: Process Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   else
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! - Mount Error!
@@ -187,19 +187,19 @@ Try >>> cd $path and see what happens!
 Exiting! Nothing has changed!
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
   fi
 else
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🍖  NOM NOM: Failed to Make a Valid Selection! Restarting the Process!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
-bash /opt/plexguide/menu/dlpath/dlpath.sh
-exit
+  sleep 3
+  bash /opt/plexguide/menu/dlpath/dlpath.sh
+  exit
 fi
 
 exit

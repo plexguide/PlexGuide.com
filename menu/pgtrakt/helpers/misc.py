@@ -18,12 +18,14 @@ def get_response_dict(response, key_field=None, key_value=None):
                         break
 
                 if not found_response:
-                    log.error("Unable to find a result with key %s where the value is %s", key_field, key_value)
+                    log.error(
+                        "Unable to find a result with key %s where the value is %s", key_field, key_value)
 
         elif isinstance(response, dict):
             found_response = response
         else:
-            log.error("Unexpected response instance type of %s for %s", type(response).__name__, response)
+            log.error("Unexpected response instance type of %s for %s",
+                      type(response).__name__, response)
 
     except Exception:
         log.exception("Exception determining response for %s: ", response)

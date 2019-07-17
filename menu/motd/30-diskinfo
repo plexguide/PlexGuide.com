@@ -18,9 +18,8 @@ printf "\nstorage:\n"
 
 for line in "${dfs[@]}"; do
 
-    if [[ $line =~ .*docker.* ]]
-    then
-      continue
+    if [[ $line =~ .*docker.* ]]; then
+        continue
     fi
 
     # get disk usage
@@ -35,9 +34,9 @@ for line in "${dfs[@]}"; do
     else
         color=$green
     fi
-    
+
     output+=$(echo " ${path} ${color}${used}${undim} used, ${color}${free}${undim} free, ${color}${total}${undim} total\n")
-   
+
 done
-printf "${output}" | 
+printf "${output}" |
     awk '{printf "  %.15s %s\n", $1 "............:", $2 " " $3 " " $4 " " $5 " " $6 " " $7}'

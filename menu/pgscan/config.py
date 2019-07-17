@@ -14,7 +14,8 @@ class Singleton(type):
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+            cls._instances[cls] = super(
+                Singleton, cls).__call__(*args, **kwargs)
 
         return cls._instances[cls]
 
@@ -187,9 +188,11 @@ class Config(object):
                     merged[k] = v
                     sub_upgraded = True
                     if not key:
-                        logger.info("Added %r config option: %s", str(k), str(v))
+                        logger.info("Added %r config option: %s",
+                                    str(k), str(v))
                     else:
-                        logger.info("Added %r to config option %r: %s", str(k), str(key), str(v))
+                        logger.info("Added %r to config option %r: %s",
+                                    str(k), str(key), str(v))
                     continue
 
                 # iterate children
@@ -205,7 +208,8 @@ class Config(object):
                 if v not in settings2:
                     merged.append(v)
                     sub_upgraded = True
-                    logger.info("Added to config option %r: %s", str(key), str(v))
+                    logger.info("Added to config option %r: %s",
+                                str(key), str(v))
                     continue
 
         return merged, sub_upgraded
@@ -224,7 +228,8 @@ class Config(object):
         currents.update(fields_env)
 
         # Do inner upgrade
-        upgraded_settings, upgraded = self.__inner_upgrade(self.base_config, currents)
+        upgraded_settings, upgraded = self.__inner_upgrade(
+            self.base_config, currents)
         return upgraded_settings, upgraded
 
     def load(self):
@@ -243,14 +248,14 @@ class Config(object):
 
         self.configs = cfg
 
-    def save(self, cfg,exitOnSave=True):
+    def save(self, cfg, exitOnSave=True):
         with open(self.settings['config'], 'w') as fp:
             json.dump(cfg, fp, indent=2, sort_keys=True)
-	if exitOnSave:
-             logger.warn(
-                 "Please configure/review config before running again: %r",
-                 self.settings['config']
-             )
+        if exitOnSave:
+            logger.warn(
+                "Please configure/review config before running again: %r",
+                self.settings['config']
+            )
 
         if exitOnSave:
             exit(0)
@@ -285,7 +290,8 @@ class Config(object):
                 setts[name] = value
 
             except Exception:
-                logger.exception("Exception retrieving setting value: %r" % name)
+                logger.exception(
+                    "Exception retrieving setting value: %r" % name)
 
         return setts
 
@@ -301,7 +307,8 @@ class Config(object):
 
         # Mode
         parser.add_argument('cmd',
-                            choices=('sections', 'server', 'authorize','update_sections'),
+                            choices=('sections', 'server',
+                                     'authorize', 'update_sections'),
                             help=(
                                 '"sections": prints plex sections\n'
                                 '"server": starts the application\n'
@@ -314,36 +321,41 @@ class Config(object):
         parser.add_argument(self.base_settings['config']['argv'],
                             nargs='?',
                             const=None,
-                            help='Config file location (default: %s)' % self.base_settings['config']['default']
-                            )
+                            help='Config file location (default: %s)' % self.base_settings[
+            'config']['default']
+        )
 
         # Log file
         parser.add_argument(self.base_settings['logfile']['argv'],
                             nargs='?',
                             const=None,
-                            help='Log file location (default: %s)' % self.base_settings['logfile']['default']
-                            )
+                            help='Log file location (default: %s)' % self.base_settings[
+            'logfile']['default']
+        )
 
         # Queue file
         parser.add_argument(self.base_settings['queuefile']['argv'],
                             nargs='?',
                             const=None,
-                            help='Queue file location (default: %s)' % self.base_settings['queuefile']['default']
-                            )
+                            help='Queue file location (default: %s)' % self.base_settings[
+            'queuefile']['default']
+        )
 
         # Token file
         parser.add_argument(self.base_settings['tokenfile']['argv'],
                             nargs='?',
                             const=None,
-                            help='Google token file location (default: %s)' % self.base_settings['tokenfile']['default']
-                            )
+                            help='Google token file location (default: %s)' % self.base_settings[
+            'tokenfile']['default']
+        )
 
         # Cache file
         parser.add_argument(self.base_settings['cachefile']['argv'],
                             nargs='?',
                             const=None,
-                            help='Google cache file location (default: %s)' % self.base_settings['cachefile']['default']
-                            )
+                            help='Google cache file location (default: %s)' % self.base_settings[
+            'cachefile']['default']
+        )
 
         # Logging level
         parser.add_argument(self.base_settings['loglevel']['argv'],

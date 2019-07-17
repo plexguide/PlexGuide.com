@@ -9,21 +9,21 @@
 # FUNCTIONS START ##############################################################
 
 # BAD INPUT
-badinput () {
-echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
+badinput() {
+  echo
+  read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed </dev/tty
 
 }
 
-badinput2 () {
-echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
-question2
+badinput2() {
+  echo
+  read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed </dev/tty
+  question2
 }
 # FIRST QUESTION
 
-question1 () {
-tee <<-EOF
+question1() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 Plex - Version of Plex To Install?
@@ -35,15 +35,17 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
-  if [ "$typed" == "1" ]; then echo public > /var/plexguide/plex.extension && question2;
-elif [ "$typed" == "2" ]; then echo plexpass > /var/plexguide/plex.extension && question2;
-else badinput; fi
+  read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
+  if [ "$typed" == "1" ]; then
+    echo public >/var/plexguide/plex.extension && question2
+  elif [ "$typed" == "2" ]; then
+    echo plexpass >/var/plexguide/plex.extension && question2
+  else badinput; fi
 }
 
 # SECOND QUESTION
-question2 () {
-tee <<-EOF
+question2() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 PG - PGBlitz Installer ~ http://plex.pgblitz.com
@@ -59,17 +61,20 @@ Z - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+  read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
   echo ""
-  if [ "$typed" == "1" ]; then echo remote > /var/plexguide/plex.server && question3;
-elif [ "$typed" == "2" ]; then echo local > /var/plexguide/plex.server;
-elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then exit;
-else badinput2; fi
+  if [ "$typed" == "1" ]; then
+    echo remote >/var/plexguide/plex.server && question3
+  elif [ "$typed" == "2" ]; then
+    echo local >/var/plexguide/plex.server
+  elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
+    exit
+  else badinput2; fi
 }
 
 # THIRD QUESTION
-question3 () {
-tee <<-EOF
+question3() {
+  tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 Remote Plex Server - Claim the Plex Server
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -82,8 +87,8 @@ this step as you won't need to claim it again.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Plex Server Claim Number | Press [ENTER]: ' typed < /dev/tty
-  echo $typed > /var/plexguide/plex.claim && break=on;
+  read -p 'Plex Server Claim Number | Press [ENTER]: ' typed </dev/tty
+  echo $typed >/var/plexguide/plex.claim && break=on
 }
 
 # FUNCTIONS END ##############################################################

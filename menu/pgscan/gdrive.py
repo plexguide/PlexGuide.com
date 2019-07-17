@@ -24,12 +24,14 @@ class Gdrive:
         # token file
         if not os.path.exists(self.token_path):
             # token.json does not exist, lets do the first run auth process
-            print("Visit %s and authorize against the account you wish to use" % self.authorize_url())
+            print("Visit %s and authorize against the account you wish to use" %
+                  self.authorize_url())
             auth_code = raw_input('Enter authorization code: ')
             if self.first_access_token(auth_code) and self.token is not None:
                 self.dump_token()
             else:
-                logger.error("Failed to authorize with the supplied client_id/client_secret/auth_code...")
+                logger.error(
+                    "Failed to authorize with the supplied client_id/client_secret/auth_code...")
                 return False
         else:
             self.token = utils.load_json(self.token_path)
@@ -47,7 +49,8 @@ class Gdrive:
             'access_type': 'offline',
             'scope': 'https://www.googleapis.com/auth/drive'
         }
-        url = 'https://accounts.google.com/o/oauth2/v2/auth?' + urlencode(payload)
+        url = 'https://accounts.google.com/o/oauth2/v2/auth?' + \
+            urlencode(payload)
         return url
 
     def first_access_token(self, auth_code):
@@ -100,7 +103,8 @@ class Gdrive:
                                                  params={'supportsTeamDrives': self.cfg['GDRIVE']['TEAMDRIVE']})
         if success and resp.status_code == 200:
             if 'startPageToken' not in data:
-                logger.error("Failed to retrieve startPageToken from returned startPageToken:\n%s", data)
+                logger.error(
+                    "Failed to retrieve startPageToken from returned startPageToken:\n%s", data)
                 return False
             self.token['page_token'] = data['startPageToken']
             self.dump_token()
@@ -134,7 +138,8 @@ class Gdrive:
                 return False, data
             return True, data
         else:
-            logger.error("Error getting page changes for page_token %r:\n%s", self.token['page_token'], data)
+            logger.error("Error getting page changes for page_token %r:\n%s",
+                         self.token['page_token'], data)
             return False, data
 
     def get_id_metadata(self, item_id, teamdrive_id=None):
@@ -145,7 +150,8 @@ class Gdrive:
 
         # does item_id match teamdrive_id?
         if teamdrive_id is not None and item_id == teamdrive_id:
-            success, resp, data = self._make_request('https://www.googleapis.com/drive/v3/teamdrives/%s' % str(item_id))
+            success, resp, data = self._make_request(
+                'https://www.googleapis.com/drive/v3/teamdrives/%s' % str(item_id))
             if success and resp.status_code == 200 and 'name' in data:
                 # we successfully retrieved this teamdrive info, lets place a mimeType key in the result
                 # so we know it needs to be cached
@@ -160,7 +166,8 @@ class Gdrive:
         if success and resp.status_code == 200:
             return True, data
         else:
-            logger.error("Error retrieving metadata for item %r:\n%s", item_id, data)
+            logger.error(
+                "Error retrieving metadata for item %r:\n%s", item_id, data)
             return False, data
 
     def get_id_file_paths(self, item_id, teamdrive_id=None):
@@ -178,7 +185,8 @@ class Gdrive:
                 # add item object to cache if we know its not from cache
                 if 'mimeType' in obj:
                     # we know this is a new item fetched from the api, because the cache does not store this field
-                    self.add_item_to_cache(obj['id'], obj['name'], [] if 'parents' not in obj else obj['parents'])
+                    self.add_item_to_cache(
+                        obj['id'], obj['name'], [] if 'parents' not in obj else obj['parents'])
                     new_cache_entries += 1
 
                 if path.strip() == '':
@@ -188,14 +196,16 @@ class Gdrive:
 
                 if 'parents' in obj and obj['parents']:
                     for parent in obj['parents']:
-                        new_cache_entries += get_item_paths(parent, path, paths, new_cache_entries, teamdrive_id)
+                        new_cache_entries += get_item_paths(
+                            parent, path, paths, new_cache_entries, teamdrive_id)
 
                 if (not obj or 'parents' not in obj or not obj['parents']) and len(path):
                     paths.append(path)
                     return new_cache_entries
                 return new_cache_entries
 
-            added_to_cache += get_item_paths(item_id, '', file_paths, added_to_cache, teamdrive_id)
+            added_to_cache += get_item_paths(item_id, '',
+                                             file_paths, added_to_cache, teamdrive_id)
             if added_to_cache:
                 logger.debug("Dumping cache due to new entries!")
                 self.dump_cache()
@@ -206,7 +216,8 @@ class Gdrive:
                 return False, file_paths
 
         except Exception:
-            logger.exception("Exception retrieving filepaths for '%s': ", item_id)
+            logger.exception(
+                "Exception retrieving filepaths for '%s': ", item_id)
 
         return False, []
 
@@ -243,7 +254,7 @@ class Gdrive:
 
     # requests
     @backoff.on_predicate(backoff.expo, lambda x: not x[0] and (
-            'error' in x[2] and 'code' in x[2]['error'] and x[2]['error']['code'] != 401), max_tries=8)
+        'error' in x[2] and 'code' in x[2]['error'] and x[2]['error']['code'] != 401), max_tries=8)
     def _make_request(self, url, headers=None, data=None, params=None, request_type='get'):
         refreshed_token = False
 

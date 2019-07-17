@@ -14,7 +14,8 @@ class Radarr(PVR):
     @backoff.on_predicate(backoff.expo, lambda x: x is None, max_tries=4, on_backoff=backoff_handler)
     def add_movie(self, movie_tmdbid, movie_title, movie_year, movie_title_slug, profile_id, root_folder,
                   search_missing=False):
-        payload = self._prepare_add_object_payload(movie_title, movie_title_slug, profile_id, root_folder)
+        payload = self._prepare_add_object_payload(
+            movie_title, movie_title_slug, profile_id, root_folder)
 
         payload = dict_merge(payload, {
             'tmdbId': movie_tmdbid,

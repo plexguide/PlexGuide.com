@@ -6,8 +6,8 @@
 # GNU:        General Public License v3.0
 ################################################################################
 ---
-- name: "Key Menu Facts"
+- name: 'Key Menu Facts'
   set_fact:
-    head1: "\nPGBlitz UnInstaller Interface"
-    head2: "\nWARNING! Ensure to Backup any Data!"
-    info2: "\n2.  I want to UnInstall PGBlitz!"
+      head1: "\nPGBlitz UnInstaller Interface"
+      head2: "\nWARNING! Ensure to Backup any Data!"
+      info2: "\n2.  I want to UnInstall PGBlitz!"

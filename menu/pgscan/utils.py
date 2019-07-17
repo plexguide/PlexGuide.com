@@ -42,7 +42,8 @@ def map_pushed_path_file_exists(config, path):
     for mapped_path, mappings in config['SERVER_FILE_EXIST_PATH_MAPPINGS'].items():
         for mapping in mappings:
             if mapping in path:
-                logger.debug("Mapping file check path '%s' to '%s'", mapping, mapped_path)
+                logger.debug("Mapping file check path '%s' to '%s'",
+                             mapping, mapped_path)
                 return path.replace(mapping, mapped_path)
     return path
 
@@ -51,7 +52,8 @@ def map_file_exists_path_for_rclone(config, path):
     for mapped_path, mappings in config['RCLONE_RC_CACHE_EXPIRE']['FILE_EXISTS_TO_REMOTE_MAPPINGS'].items():
         for mapping in mappings:
             if mapping in path:
-                logger.debug("Mapping file check path '%s' to '%s' for rclone cache clear", mapping, mapped_path)
+                logger.debug(
+                    "Mapping file check path '%s' to '%s' for rclone cache clear", mapping, mapped_path)
                 return path.replace(mapping, mapped_path)
     return path
 
@@ -66,7 +68,8 @@ def is_process_running(process_name):
     except psutil.ZombieProcess:
         return False, None
     except Exception:
-        logger.exception("Exception checking for process: '%s': ", process_name)
+        logger.exception(
+            "Exception checking for process: '%s': ", process_name)
         return False, None
 
 
@@ -88,9 +91,11 @@ def wait_running_process(process_name):
 
 
 def run_command(command):
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    process = subprocess.Popen(
+        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     while True:
-        output = str(process.stdout.readline()).lstrip('b').replace('\\n', '').strip()
+        output = str(process.stdout.readline()).lstrip(
+            'b').replace('\\n', '').strip()
         if process.poll() is not None:
             break
         if output and len(output) >= 8:
@@ -119,19 +124,23 @@ def get_priority(config, scan_path):
         for priority, paths in config['SERVER_SCAN_PRIORITIES'].items():
             for path in paths:
                 if path.lower() in scan_path.lower():
-                    logger.debug("Using priority %d for path '%s'", int(priority), scan_path)
+                    logger.debug("Using priority %d for path '%s'",
+                                 int(priority), scan_path)
                     return int(priority)
         logger.debug("Using default priority 0 for path '%s'", scan_path)
     except Exception:
-        logger.exception("Exception determining priority to use for '%s': ", scan_path)
+        logger.exception(
+            "Exception determining priority to use for '%s': ", scan_path)
     return 0
 
 
 def rclone_rc_clear_cache(config, scan_path):
     try:
-        rclone_rc_url = urljoin(config['RCLONE_RC_CACHE_EXPIRE']['RC_URL'], 'cache/expire')
+        rclone_rc_url = urljoin(
+            config['RCLONE_RC_CACHE_EXPIRE']['RC_URL'], 'cache/expire')
 
-        cache_clear_path = map_file_exists_path_for_rclone(config, scan_path).lstrip(os.path.sep)
+        cache_clear_path = map_file_exists_path_for_rclone(
+            config, scan_path).lstrip(os.path.sep)
         logger.debug("Top level cache_clear_path: '%s'", cache_clear_path)
 
         while True:
@@ -146,16 +155,20 @@ def rclone_rc_clear_cache(config, scan_path):
                 last_clear_path = cache_clear_path
 
             # send cache clear request
-            logger.info("Sending rclone cache clear for: '%s'", cache_clear_path)
+            logger.info("Sending rclone cache clear for: '%s'",
+                        cache_clear_path)
             try:
-                resp = requests.post(rclone_rc_url, json={'remote': cache_clear_path}, timeout=120)
+                resp = requests.post(rclone_rc_url, json={
+                                     'remote': cache_clear_path}, timeout=120)
                 if '{' in resp.text and '}' in resp.text:
                     data = resp.json()
                     if 'error' in data:
-                        logger.info("Failed to clear rclone cache for '%s': %s", cache_clear_path, data['error'])
+                        logger.info(
+                            "Failed to clear rclone cache for '%s': %s", cache_clear_path, data['error'])
                         continue
                     elif ('status' in data and 'message' in data) and data['status'] == 'ok':
-                        logger.info("Successfully cleared rclone cache for '%s'", cache_clear_path)
+                        logger.info(
+                            "Successfully cleared rclone cache for '%s'", cache_clear_path)
                         return True
 
                 # abort on unexpected response (no json response, no error/status & message in returned json
@@ -169,7 +182,8 @@ def rclone_rc_clear_cache(config, scan_path):
                 break
 
     except Exception:
-        logger.exception("Exception clearing rclone directory cache for '%s': ", scan_path)
+        logger.exception(
+            "Exception clearing rclone directory cache for '%s': ", scan_path)
     return False
 
 
@@ -203,16 +217,19 @@ def remove_files_exist_in_plex_database(file_paths, plex_db_path):
                     for file_path in copy(file_paths):
                         # check if file exists in plex
                         file_name = os.path.basename(file_path)
-                        logger.debug("Checking if '%s' exists in the plex database at '%s'", file_name, plex_db_path)
+                        logger.debug(
+                            "Checking if '%s' exists in the plex database at '%s'", file_name, plex_db_path)
                         found_item = c.execute("SELECT * FROM media_parts WHERE file LIKE ?", ('%' + file_name,)) \
                             .fetchone()
                         if found_item:
-                            logger.debug("'%s' was found in the plex media_parts table", file_name)
+                            logger.debug(
+                                "'%s' was found in the plex media_parts table", file_name)
                             file_paths.remove(file_path)
                             removed_items += 1
 
     except Exception:
-        logger.exception("Exception checking if %s exists in the plex database: ", file_paths)
+        logger.exception(
+            "Exception checking if %s exists in the plex database: ", file_paths)
     return removed_items
 
 

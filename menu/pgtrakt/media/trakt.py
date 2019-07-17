@@ -11,7 +11,8 @@ log = logger.get_logger(__name__)
 
 
 class Trakt:
-    non_user_lists = ['anticipated', 'trending', 'popular', 'boxoffice', 'watched', 'played']
+    non_user_lists = ['anticipated', 'trending',
+                      'popular', 'boxoffice', 'watched', 'played']
 
     def __init__(self, cfg):
         self.cfg = cfg
@@ -28,9 +29,11 @@ class Trakt:
 
         # make request
         if request_type == 'delete':
-            req = requests.delete(url, headers=headers, params=payload, timeout=30)
+            req = requests.delete(url, headers=headers,
+                                  params=payload, timeout=30)
         else:
-            req = requests.get(url, headers=headers, params=payload, timeout=30)
+            req = requests.get(url, headers=headers,
+                               params=payload, timeout=30)
         log.debug("Request URL: %s", req.url)
         log.debug("Request Payload: %s", payload)
         log.debug("Request User: %s", authenticate_user)
@@ -49,10 +52,12 @@ class Trakt:
                 resp_json = req.json()
                 return resp_json
             elif req.status_code == 401:
-                log.error("The authentication to Trakt is revoked. Please re-authenticate.")
+                log.error(
+                    "The authentication to Trakt is revoked. Please re-authenticate.")
                 exit()
             else:
-                log.error("Failed to retrieve %s, request response: %d", object_name, req.status_code)
+                log.error("Failed to retrieve %s, request response: %d",
+                          object_name, req.status_code)
                 return None
         except Exception:
             log.exception("Exception retrieving %s: ", object_name)
@@ -64,14 +69,16 @@ class Trakt:
         if not languages:
             languages = ['en']
 
-        payload = dict_merge(payload, {'extended': 'full', 'limit': limit, 'page': 1, 'languages': ','.join(languages)})
+        payload = dict_merge(payload, {
+                             'extended': 'full', 'limit': limit, 'page': 1, 'languages': ','.join(languages)})
         if genres:
             payload['genres'] = genres
 
         processed = []
 
         if authenticate_user:
-            type_name = type_name.replace('{authenticate_user}', self._user_used_for_authentication(authenticate_user))
+            type_name = type_name.replace(
+                '{authenticate_user}', self._user_used_for_authentication(authenticate_user))
 
         try:
             while True:
@@ -90,14 +97,16 @@ class Trakt:
                         for item in resp_json['cast']:
                             if item not in processed:
                                 if object_name.rstrip('s') not in item and 'title' in item:
-                                    processed.append({object_name.rstrip('s'): item})
+                                    processed.append(
+                                        {object_name.rstrip('s'): item})
                                 else:
                                     processed.append(item)
                     else:
                         for item in resp_json:
                             if item not in processed:
                                 if object_name.rstrip('s') not in item and 'title' in item:
-                                    processed.append({object_name.rstrip('s'): item})
+                                    processed.append(
+                                        {object_name.rstrip('s'): item})
                                 else:
                                     processed.append(item)
 
@@ -106,25 +115,31 @@ class Trakt:
                         log.debug("There were no more pages to retrieve")
                         break
                     elif current_page >= total_pages:
-                        log.debug("There are no more pages to retrieve results from")
+                        log.debug(
+                            "There are no more pages to retrieve results from")
                         break
                     else:
-                        log.info("There are %d pages left to retrieve results from", total_pages - current_page)
+                        log.info(
+                            "There are %d pages left to retrieve results from", total_pages - current_page)
                         payload['page'] += 1
                         time.sleep(sleep_between)
                 elif req.status_code == 401:
-                    log.error("The authentication to Trakt is revoked. Please re-authenticate.")
+                    log.error(
+                        "The authentication to Trakt is revoked. Please re-authenticate.")
                     exit()
                 else:
-                    log.error("Failed to retrieve %s %s, request response: %d", type_name, object_name, req.status_code)
+                    log.error("Failed to retrieve %s %s, request response: %d",
+                              type_name, object_name, req.status_code)
                     break
 
             if len(processed):
-                log.debug("Found %d %s %s", len(processed), type_name, object_name)
+                log.debug("Found %d %s %s", len(
+                    processed), type_name, object_name)
                 return processed
             return None
         except Exception:
-            log.exception("Exception retrieving %s %s: ", type_name, object_name)
+            log.exception("Exception retrieving %s %s: ",
+                          type_name, object_name)
         return None
 
     def validate_client_id(self):
@@ -143,7 +158,8 @@ class Trakt:
 
     def remove_recommended_item(self, item_type, trakt_id, authenticate_user=None):
         ret = self._make_request(
-            url='https://api.trakt.tv/recommendations/%ss/%s' % (item_type, str(trakt_id)),
+            url='https://api.trakt.tv/recommendations/%ss/%s' % (
+                item_type, str(trakt_id)),
             authenticate_user=authenticate_user,
             request_type='delete'
         )
@@ -156,7 +172,8 @@ class Trakt:
     ############################################################
 
     def __oauth_request_device_code(self):
-        log.info("We're talking to Trakt to get your verification code. Please wait a moment...")
+        log.info(
+            "We're talking to Trakt to get your verification code. Please wait a moment...")
 
         payload = {'client_id': self.cfg.trakt.client_id}
 
@@ -186,7 +203,8 @@ class Trakt:
             temp_headers = self._headers_without_authentication()
             temp_headers['Authorization'] = 'Bearer ' + access_token
 
-            req = requests.get('https://api.trakt.tv/users/me', headers=temp_headers)
+            req = requests.get(
+                'https://api.trakt.tv/users/me', headers=temp_headers)
 
             from misc.config import Config
             new_config = Config()
@@ -200,13 +218,17 @@ class Trakt:
             success = True
         elif req.status_code == 404:
             log.debug('The device code was wrong')
-            log.error('Whoops, something went wrong; aborting the authentication process')
+            log.error(
+                'Whoops, something went wrong; aborting the authentication process')
         elif req.status_code == 409:
-            log.error('You\'ve already authenticated this application; aborting the authentication process')
+            log.error(
+                'You\'ve already authenticated this application; aborting the authentication process')
         elif req.status_code == 410:
-            log.error('The authentication process has expired; please start again')
+            log.error(
+                'The authentication process has expired; please start again')
         elif req.status_code == 418:
-            log.error('You\'ve denied the authentication; are you sure? Please try again')
+            log.error(
+                'You\'ve denied the authentication; are you sure? Please try again')
         elif req.status_code == 429:
             log.debug('We\'re polling too quickly.')
 
@@ -285,13 +307,15 @@ class Trakt:
         token_information = self.cfg['trakt'][user]
 
         # Check if the acces_token for the user is expired
-        expires_at = token_information['created_at'] + token_information['expires_in']
+        expires_at = token_information['created_at'] + \
+            token_information['expires_in']
         if expires_at < round(time.time()):
             log.info("The access token for the user %s has expired. We're requesting a new one; please wait a moment.",
                      user)
 
             if self.__oauth_refresh_access_token(token_information["refresh_token"]):
-                log.info("The access token for the user %s has been refreshed. Please restart the application.", user)
+                log.info(
+                    "The access token for the user %s has been refreshed. Please restart the application.", user)
 
     def _user_used_for_authentication(self, user=None):
         if user is None:
@@ -318,7 +342,8 @@ class Trakt:
 
         if user is not None:
             self._renew_oauth_token_if_expired(user)
-            headers['Authorization'] = 'Bearer ' + self.cfg['trakt'][user]['access_token']
+            headers['Authorization'] = 'Bearer ' + \
+                self.cfg['trakt'][user]['access_token']
         else:
             log.info('No user')
 
@@ -376,7 +401,8 @@ class Trakt:
 
     def get_most_played_shows(self, limit=1000, languages=None, genres=None, most_type=None):
         return self._make_items_request(
-            url='https://api.trakt.tv/shows/played/%s' % ('weekly' if not most_type else most_type),
+            url='https://api.trakt.tv/shows/played/%s' % (
+                'weekly' if not most_type else most_type),
             limit=limit,
             languages=languages,
             object_name='shows',
@@ -386,7 +412,8 @@ class Trakt:
 
     def get_most_watched_shows(self, limit=1000, languages=None, genres=None, most_type=None):
         return self._make_items_request(
-            url='https://api.trakt.tv/shows/watched/%s' % ('weekly' if not most_type else most_type),
+            url='https://api.trakt.tv/shows/watched/%s' % (
+                'weekly' if not most_type else most_type),
             limit=limit,
             languages=languages,
             object_name='shows',
@@ -421,7 +448,8 @@ class Trakt:
         log.debug('Fetching %s from %s', list_key, list_user)
 
         return self._make_items_request(
-            url='https://api.trakt.tv/users/' + list_user + '/lists/' + list_key + '/items/shows',
+            url='https://api.trakt.tv/users/' + list_user +
+                '/lists/' + list_key + '/items/shows',
             authenticate_user=authenticate_user,
             limit=limit,
             languages=languages,
@@ -481,7 +509,8 @@ class Trakt:
 
     def get_most_played_movies(self, limit=1000, languages=None, genres=None, most_type=None):
         return self._make_items_request(
-            url='https://api.trakt.tv/movies/played/%s' % ('weekly' if not most_type else most_type),
+            url='https://api.trakt.tv/movies/played/%s' % (
+                'weekly' if not most_type else most_type),
             limit=limit,
             languages=languages,
             object_name='movies',
@@ -491,7 +520,8 @@ class Trakt:
 
     def get_most_watched_movies(self, limit=1000, languages=None, genres=None, most_type=None):
         return self._make_items_request(
-            url='https://api.trakt.tv/movies/watched/%s' % ('weekly' if not most_type else most_type),
+            url='https://api.trakt.tv/movies/watched/%s' % (
+                'weekly' if not most_type else most_type),
             limit=limit,
             languages=languages,
             object_name='movies',
@@ -535,7 +565,8 @@ class Trakt:
         log.debug('Fetching %s from %s', list_key, list_user)
 
         return self._make_items_request(
-            url='https://api.trakt.tv/users/' + list_user + '/lists/' + list_key + '/items/movies',
+            url='https://api.trakt.tv/users/' + list_user +
+                '/lists/' + list_key + '/items/movies',
             authenticate_user=authenticate_user,
             limit=limit,
             languages=languages,

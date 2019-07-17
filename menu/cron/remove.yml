@@ -9,15 +9,14 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    # KEY VARIABLES ################################################################
+    - name: Set PGRole
+      shell: 'cat /tmp/program_var'
+      register: pgrole
 
-# KEY VARIABLES ################################################################
-  - name: Set PGRole
-    shell: "cat /tmp/program_var"
-    register: pgrole
+    # CRON REMOVE ##################################################################
 
-# CRON REMOVE ##################################################################
-
-  - cron:
-      name: "{{pgrole.stdout}}"
-      state: absent
-    ignore_errors: yes
+    - cron:
+        name: '{{pgrole.stdout}}'
+        state: absent
+      ignore_errors: yes

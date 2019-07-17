@@ -2,7 +2,6 @@
 - hosts: localhost
   gather_facts: false
   tasks:
-
     - name: Register User
       shell: 'cat /var/plexguide/boxcore.user'
       register: boxuser

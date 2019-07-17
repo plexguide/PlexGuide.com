@@ -12,50 +12,53 @@ mkdir -p /var/plexguide/pgtrakt
 # FUNCTIONS START ##############################################################
 
 # FIRST FUNCTION
-variable () {
+variable() {
   file="$1"
-  if [ ! -e "$file" ]; then echo "$2" > $1; fi
+  if [ ! -e "$file" ]; then echo "$2" >$1; fi
 }
 
-deploycheck () {
+deploycheck() {
   dcheck=$(systemctl status pgtrakt | grep "\(running\)\>" | grep "\<since\>")
-  if [ "$dcheck" != "" ]; then dstatus="✅ DEPLOYED";
-else dstatus="⚠️ NOT DEPLOYED"; fi
+  if [ "$dcheck" != "" ]; then
+    dstatus="✅ DEPLOYED"
+  else dstatus="⚠️ NOT DEPLOYED"; fi
 }
 
-sonarrcheck () {
+sonarrcheck() {
   pcheck=$(docker ps | grep "\<sonarr\>")
   if [ "$pcheck" == "" ]; then
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - Sonarr is not Installed/Running! Cannot Proceed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
-    question1; fi
+    read -p 'Confirm Info | PRESS [ENTER] ' typed </dev/tty
+    question1
+  fi
 }
 
-radarrcheck () {
+radarrcheck() {
   pcheck=$(docker ps | grep "\<radarr\>")
   if [ "$pcheck" == "" ]; then
 
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - Radarr is not Installed/Running! Cannot Proceed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
-    question1; fi
+    read -p 'Confirm Info | PRESS [ENTER] ' typed </dev/tty
+    question1
+  fi
 }
 
-squality () {
-sonarrcheck
-tee <<-EOF
+squality() {
+  sonarrcheck
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📁 Sonarr Profile
@@ -75,11 +78,12 @@ HD - 720p/1080p
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "exit" ]; then question1;
-else
-tee <<-EOF
+  if [ "$typed" == "exit" ]; then
+    question1
+  else
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ SYSTEM MESSAGE: Sonarr Path Completed!
@@ -89,16 +93,16 @@ Quality Set Is: $typed
 
 EOF
 
-echo "$typed" > /var/plexguide/pgtrak.sprofile
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-question1
-fi
+    echo "$typed" >/var/plexguide/pgtrak.sprofile
+    read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+    question1
+  fi
 
 }
 
-rquality () {
-radarrcheck
-tee <<-EOF
+rquality() {
+  radarrcheck
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📁 Radarr Profile
@@ -118,11 +122,12 @@ HD - 720p/1080p
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "exit" ]; then question1;
-else
-tee <<-EOF
+  if [ "$typed" == "exit" ]; then
+    question1
+  else
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ SYSTEM MESSAGE: Radarr Path Completed!
@@ -132,15 +137,15 @@ Quality Set Is: $typed
 
 EOF
 
-echo "$typed" > /var/plexguide/pgtrak.rprofile
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-question1
-fi
+    echo "$typed" >/var/plexguide/pgtrak.rprofile
+    read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+    question1
+  fi
 
 }
 
-api () {
-tee <<-EOF
+api() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📁 Trakt API-Key
@@ -159,14 +164,15 @@ continuing, please follow the current steps.
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type API Client | Press [ENTER]: ' typed < /dev/tty
-echo $typed > /var/plexguide/pgtrak.client
-read -p '↘️ Type API Secret | Press [ENTER]: ' typed < /dev/tty
-echo $typed > /var/plexguide/pgtrak.secret
+  read -p '↘️ Type API Client | Press [ENTER]: ' typed </dev/tty
+  echo $typed >/var/plexguide/pgtrak.client
+  read -p '↘️ Type API Secret | Press [ENTER]: ' typed </dev/tty
+  echo $typed >/var/plexguide/pgtrak.secret
 
-  if [ "$typed" == "exit" ]; then question1;
-else
-tee <<-EOF
+  if [ "$typed" == "exit" ]; then
+    question1
+  else
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ SYSTEM MESSAGE: PGTrak API Notice
@@ -179,15 +185,15 @@ INFO: Messed up? Rerun this API Interface to update the information!
 
 EOF
 
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-question1
-fi
+    read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+    question1
+  fi
 
 }
 
-spath () {
-sonarrcheck
-tee <<-EOF
+spath() {
+  sonarrcheck
+  tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📁 Sonarr Path
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -202,47 +208,48 @@ Examples:
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "exit" ]; then question1;
-else
-tee <<-EOF
+  if [ "$typed" == "exit" ]; then
+    question1
+  else
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 SYSTEM MESSAGE: Checking Path $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 1.5
+    sleep 1.5
 
-##################################################### TYPED CHECKERS - START
-  typed2=$typed
-  bonehead=no
-  ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
-  initial="$(echo $typed | head -c 1)"
-  if [ "$initial" != "/" ]; then
-    typed="/$typed"
-  fi
-  ##### If BONEHEAD added a / at the end, we fix for them
-  initial="${typed: -1}"
-  if [ "$initial" == "/" ]; then
-    typed=${typed::-1}
-  fi
+    ##################################################### TYPED CHECKERS - START
+    typed2=$typed
+    bonehead=no
+    ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
+    initial="$(echo $typed | head -c 1)"
+    if [ "$initial" != "/" ]; then
+      typed="/$typed"
+    fi
+    ##### If BONEHEAD added a / at the end, we fix for them
+    initial="${typed: -1}"
+    if [ "$initial" == "/" ]; then
+      typed=${typed::-1}
+    fi
 
-##################################################### TYPED CHECKERS - START
-tee <<-EOF
+    ##################################################### TYPED CHECKERS - START
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 SYSTEM MESSAGE: Checking if Location is Valid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 1.5
+    sleep 1.5
 
-mkdir $typed/test 1>/dev/null 2>&1
+    mkdir $typed/test 1>/dev/null 2>&1
 
-file="$typed/test"
-  if [ -e "$file" ]; then
+    file="$typed/test"
+    if [ -e "$file" ]; then
 
-tee <<-EOF
+      tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ SYSTEM MESSAGE: Sonarr Path Completed!
@@ -250,18 +257,18 @@ tee <<-EOF
 
 EOF
 
-### Removes /mnt if /mnt/unionfs exists
-#check=$(echo $typed | head -c 12)
-#if [ "$check" == "/mnt/unionfs" ]; then
-#typed=${typed:4}
-#fi
+      ### Removes /mnt if /mnt/unionfs exists
+      #check=$(echo $typed | head -c 12)
+      #if [ "$check" == "/mnt/unionfs" ]; then
+      #typed=${typed:4}
+      #fi
 
-echo "$typed" > /var/plexguide/pgtrak.spath
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-echo ""
-question1
-  else
-tee <<-EOF
+      echo "$typed" >/var/plexguide/pgtrak.spath
+      read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+      echo ""
+      question1
+    else
+      tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔ ALERT: Path $typed DOES NOT Exist! No Changes Made!
@@ -272,16 +279,16 @@ your location.
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-echo "" && question1
+      read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+      echo "" && question1
+    fi
   fi
-fi
 
 }
 
-rpath () {
-radarrcheck
-tee <<-EOF
+rpath() {
+  radarrcheck
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📁 Radarr Path
@@ -292,47 +299,48 @@ actively scanning your movies.
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "exit" ]; then question1;
-else
-tee <<-EOF
+  if [ "$typed" == "exit" ]; then
+    question1
+  else
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 SYSTEM MESSAGE: Checking Path $typed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 1.5
+    sleep 1.5
 
-##################################################### TYPED CHECKERS - START
-  typed2=$typed
-  bonehead=no
-  ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
-  initial="$(echo $typed | head -c 1)"
-  if [ "$initial" != "/" ]; then
-    typed="/$typed"
-  fi
-  ##### If BONEHEAD added a / at the end, we fix for them
-  initial="${typed: -1}"
-  if [ "$initial" == "/" ]; then
-    typed=${typed::-1}
-  fi
+    ##################################################### TYPED CHECKERS - START
+    typed2=$typed
+    bonehead=no
+    ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
+    initial="$(echo $typed | head -c 1)"
+    if [ "$initial" != "/" ]; then
+      typed="/$typed"
+    fi
+    ##### If BONEHEAD added a / at the end, we fix for them
+    initial="${typed: -1}"
+    if [ "$initial" == "/" ]; then
+      typed=${typed::-1}
+    fi
 
-##################################################### TYPED CHECKERS - START
-tee <<-EOF
+    ##################################################### TYPED CHECKERS - START
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 SYSTEM MESSAGE: Checking if Location is Valid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 1.5
+    sleep 1.5
 
-mkdir $typed/test 1>/dev/null 2>&1
+    mkdir $typed/test 1>/dev/null 2>&1
 
-file="$typed/test"
-  if [ -e "$file" ]; then
+    file="$typed/test"
+    if [ -e "$file" ]; then
 
-tee <<-EOF
+      tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅ SYSTEM MESSAGE: Radarr Path Completed!
@@ -340,18 +348,18 @@ tee <<-EOF
 
 EOF
 
-### Removes /mnt if /mnt/unionfs exists
-#check=$(echo $typed | head -c 12)
-#if [ "$check" == "/mnt/unionfs" ]; then
-#typed=${typed:4}
-#fi
+      ### Removes /mnt if /mnt/unionfs exists
+      #check=$(echo $typed | head -c 12)
+      #if [ "$check" == "/mnt/unionfs" ]; then
+      #typed=${typed:4}
+      #fi
 
-echo "$typed" > /var/plexguide/pgtrak.rpath
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-echo ""
-question1
-  else
-tee <<-EOF
+      echo "$typed" >/var/plexguide/pgtrak.rpath
+      read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+      echo ""
+      question1
+    else
+      tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔ ALERT: Path $typed DOES NOT Exist! No Changes Made!
@@ -362,39 +370,41 @@ your location.
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-echo "" && question1
+      read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+      echo "" && question1
+    fi
   fi
-fi
 
 }
 
-token () {
- touch /var/plexguide/plex.token
- ptoken=$(cat /var/plexguide/plex.token)
- if [ "$ptoken" == "" ]; then
-   bash /opt/plexguide/menu/plex/token.sh
-   ptoken=$(cat /var/plexguide/plex.token)
-   if [ "$ptoken" == "" ]; then
-tee <<-EOF
+token() {
+  touch /var/plexguide/plex.token
+  ptoken=$(cat /var/plexguide/plex.token)
+  if [ "$ptoken" == "" ]; then
+    bash /opt/plexguide/menu/plex/token.sh
+    ptoken=$(cat /var/plexguide/plex.token)
+    if [ "$ptoken" == "" ]; then
+      tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - Failed to Generate a Valid Plex Token! Exiting Deployment!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
-    exit; fi; fi
+      read -p 'Confirm Info | PRESS [ENTER] ' typed </dev/tty
+      exit
+    fi
+  fi
 }
 
 # BAD INPUT
-badinput () {
-echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
-question1
+badinput() {
+  echo
+  read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed </dev/tty
+  question1
 }
 
-selection1 () {
-tee <<-EOF
+selection1() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 Instantly Kick Video Transcodes?
@@ -405,14 +415,16 @@ tee <<-EOF
 2 - True
 
 EOF
-  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
-    if [ "$typed" == "1" ]; then echo "False" > /var/plexguide/pgtrakt/video.transcodes && question1;
-  elif [ "$typed" == "2" ]; then echo "True" > /var/plexguide/pgtrakt/video.transcodes && question1;
-    else badinput; fi
+  read -p 'Type Number | PRESS [ENTER] ' typed </dev/tty
+  if [ "$typed" == "1" ]; then
+    echo "False" >/var/plexguide/pgtrakt/video.transcodes && question1
+  elif [ "$typed" == "2" ]; then
+    echo "True" >/var/plexguide/pgtrakt/video.transcodes && question1
+  else badinput; fi
 }
 
-selection2 () {
-tee <<-EOF
+selection2() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 Limit Amount of Different IPs a User Can Make?
@@ -422,13 +434,14 @@ tee <<-EOF
 Set a Number from 1 - 99
 
 EOF
-  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
-    if [[ "$typed" -ge "1" && "$typed" -le "99" ]]; then echo "$typed" > /var/plexguide/pgtrakt/multiple.ips && question1;
-    else badinput; fi
+  read -p 'Type Number | PRESS [ENTER] ' typed </dev/tty
+  if [[ "$typed" -ge "1" && "$typed" -le "99" ]]; then
+    echo "$typed" >/var/plexguide/pgtrakt/multiple.ips && question1
+  else badinput; fi
 }
 
-selection3 () {
-tee <<-EOF
+selection3() {
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 Limit How Long a User Can Pause For!
@@ -438,24 +451,25 @@ tee <<-EOF
 Set a Number from 5 - 999 Mintues
 
 EOF
-  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
-    if [[ "$typed" -ge "1" && "$typed" -le "999" ]]; then echo "$typed" > /var/plexguide/pgtrakt/kick.minutes && question1;
-    else badinput; fi
+  read -p 'Type Number | PRESS [ENTER] ' typed </dev/tty
+  if [[ "$typed" -ge "1" && "$typed" -le "999" ]]; then
+    echo "$typed" >/var/plexguide/pgtrakt/kick.minutes && question1
+  else badinput; fi
 }
 
 # FIRST QUESTION
-question1 () {
+question1() {
 
-api=$(cat /var/plexguide/pgtrak.secret)
-if [ "$api" == "NOT-SET" ]; then api="NOT-SET"; else api="SET"; fi
+  api=$(cat /var/plexguide/pgtrak.secret)
+  if [ "$api" == "NOT-SET" ]; then api="NOT-SET"; else api="SET"; fi
 
-rpath=$(cat /var/plexguide/pgtrak.rpath)
-spath=$(cat /var/plexguide/pgtrak.spath)
-rprofile=$(cat /var/plexguide/pgtrak.rprofile)
-sprofile=$(cat /var/plexguide/pgtrak.sprofile)
-deploycheck
+  rpath=$(cat /var/plexguide/pgtrak.rpath)
+  spath=$(cat /var/plexguide/pgtrak.spath)
+  rprofile=$(cat /var/plexguide/pgtrak.rprofile)
+  sprofile=$(cat /var/plexguide/pgtrak.sprofile)
+  deploycheck
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🚀 PGTrakt Interface
@@ -475,78 +489,82 @@ Z - Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Number | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "1" ]; then api;
-elif [ "$typed" == "2" ]; then spath;
-elif [ "$typed" == "3" ]; then rpath;
-elif [ "$typed" == "4" ]; then squality;
-elif [ "$typed" == "5" ]; then rquality;
-elif [ "$typed" == "6" ]; then
+  if [ "$typed" == "1" ]; then
+    api
+  elif [ "$typed" == "2" ]; then
+    spath
+  elif [ "$typed" == "3" ]; then
+    rpath
+  elif [ "$typed" == "4" ]; then
+    squality
+  elif [ "$typed" == "5" ]; then
+    rquality
+  elif [ "$typed" == "6" ]; then
 
-  sonarr=$(docker ps | grep "sonarr")
-  radarr=$(docker ps | grep "radarr")
+    sonarr=$(docker ps | grep "sonarr")
+    radarr=$(docker ps | grep "radarr")
 
-if [ "$radarr" == "" ] && [ "$sonarr" == "" ]; then
-tee <<-EOF
+    if [ "$radarr" == "" ] && [ "$sonarr" == "" ]; then
+      tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - Sonarr or Radarr must be Running!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
 
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-  echo
-  question1
-  else
+      read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+      echo
+      question1
+    else
 
-if [ "$sonarr" = "" ]; then
-tee <<-EOF
+      if [ "$sonarr" = "" ]; then
+        tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - PGTrakt will only work for movies! Sonarr Not Running!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-echo
-fi
+        read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+        echo
+      fi
 
-if [ "$radarr" = "" ]; then
-tee <<-EOF
+      if [ "$radarr" = "" ]; then
+        tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  WARNING! - PGTrakt will only work for shows! Radarr Not Running!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
-echo
-fi
+        read -p '🌎 Acknowledge Info | Press [ENTER] ' typed </dev/tty
+        echo
+      fi
 
-file="/opt/appdata/radarr/config.xml"
-if [ -e "$file" ]
-then
-info=$( cat /opt/appdata/radarr/config.xml )
-info=${info#*<ApiKey>} 1>/dev/null 2>&1
-info1=$( echo ${info:0:32} ) 1>/dev/null 2>&1
-echo "$info1" > /var/plexguide/pgtrak.rapi
-fi
+      file="/opt/appdata/radarr/config.xml"
+      if [ -e "$file" ]; then
+        info=$(cat /opt/appdata/radarr/config.xml)
+        info=${info#*<ApiKey>} 1>/dev/null 2>&1
+        info1=$(echo ${info:0:32}) 1>/dev/null 2>&1
+        echo "$info1" >/var/plexguide/pgtrak.rapi
+      fi
 
-file="/opt/appdata/sonarr/config.xml"
-if [ -e "$file" ]
-then
-info=$( cat /opt/appdata/sonarr/config.xml )
-info=${info#*<ApiKey>} 1>/dev/null 2>&1
-info2=$( echo ${info:0:32} ) 1>/dev/null 2>&1
-echo "$info2" > /var/plexguide/pgtrak.sapi
-fi
-fi
-# keys for sonarr and radarr need to be added
-ansible-playbook /opt/plexguide/menu/pgtrakt/pgtrakt.yml && question1;
+      file="/opt/appdata/sonarr/config.xml"
+      if [ -e "$file" ]; then
+        info=$(cat /opt/appdata/sonarr/config.xml)
+        info=${info#*<ApiKey>} 1>/dev/null 2>&1
+        info2=$(echo ${info:0:32}) 1>/dev/null 2>&1
+        echo "$info2" >/var/plexguide/pgtrak.sapi
+      fi
+    fi
+    # keys for sonarr and radarr need to be added
+    ansible-playbook /opt/plexguide/menu/pgtrakt/pgtrakt.yml && question1
 
-elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;
-else badinput; fi
+  elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
+    exit
+  else badinput; fi
 }
 
 # FUNCTIONS END ##############################################################

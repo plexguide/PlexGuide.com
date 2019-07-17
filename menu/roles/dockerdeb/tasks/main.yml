@@ -6,27 +6,27 @@
 # GNU:        General Public License v3.0
 ################################################################################
 ---
-- name: "Establish Facts"
+- name: 'Establish Facts'
   set_fact:
-    switch: "on"
-    updatecheck: "default"
+    switch: 'on'
+    updatecheck: 'default'
 
-- name: "Docker Check"
+- name: 'Docker Check'
   stat:
-    path: "/usr/bin/docker"
+    path: '/usr/bin/docker'
   register: check
 
-- name: "Docker Version Check - True"
+- name: 'Docker Version Check - True'
   shell: "docker --version | awk '{print $3}'"
   register: updatecheck
 
-- name: "Switch - On"
+- name: 'Switch - On'
   set_fact:
-    switch: "off"
+    switch: 'off'
   when: updatecheck.stdout == "18.09.6,"
 
 - name: Install required packages
-  apt: "name={{item}} state=present"
+  apt: 'name={{item}} state=present'
   with_items:
     - apt-transport-https
     - ca-certificates
@@ -39,8 +39,8 @@
     url: https://download.docker.com/linux/debian/gpg
   when: switch == "on"
 
-- name: "Stop All Containers"
-  shell: "docker stop $(docker ps -a -q)"
+- name: 'Stop All Containers'
+  shell: 'docker stop $(docker ps -a -q)'
   ignore_errors: yes
   when:
     - check.stat.exists == True
@@ -48,7 +48,7 @@
 
 - name: Official Repo
   apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} edge"
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} edge'
   register: apt_docker_repositories
   when: switch == "on"
 
@@ -96,7 +96,7 @@
   register: docker_daemon
 
 - name: Stop docker to enable overlay2
-  systemd: 
+  systemd:
     state: stopped
     name: docker
     enabled: yes
@@ -105,9 +105,9 @@
     - switch == "on"
 
 - name: Import daemon.json
-  copy: 
+  copy:
     src: daemon.json
-    dest: /etc/docker/daemon.json 
+    dest: /etc/docker/daemon.json
     force: yes
     mode: 0775
   when:
@@ -115,7 +115,7 @@
     - switch == "on"
 
 - name: Start docker (Please Wait)
-  systemd: 
+  systemd:
     state: started
     name: docker
     enabled: yes
@@ -123,7 +123,7 @@
     - docker_daemon.stat.exists == False
     - switch == "on"
 
-- name: "Wait for 20 seconds before commencing"
+- name: 'Wait for 20 seconds before commencing'
   wait_for:
     timeout: 20
   when: switch == "on"
@@ -134,7 +134,7 @@
   register: docker_override
 
 - name: Create override folder
-  file: 
+  file:
     path: /etc/systemd/system/docker.service.d
     state: directory
     mode: 0775
@@ -144,9 +144,9 @@
   tags: docker_standard
 
 - name: Import override file
-  copy: 
+  copy:
     src: override.conf
-    dest: /etc/systemd/system/docker.service.d/override.conf 
+    dest: /etc/systemd/system/docker.service.d/override.conf
     force: yes
     mode: 0775
   tags: docker_standard
@@ -154,13 +154,13 @@
 
 - name: create plexguide network
   docker_network:
-    name: "plexguide"
+    name: 'plexguide'
     state: present
   tags: docker_standard
   when: switch == "on"
 
-- name: "Start All Containers"
-  shell: "docker start $(docker ps -a -q)"
+- name: 'Start All Containers'
+  shell: 'docker start $(docker ps -a -q)'
   ignore_errors: yes
   when:
     - switch == "on"

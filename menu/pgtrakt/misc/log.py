@@ -30,7 +30,8 @@ class Logger:
         if file_name:
             if os.path.sep not in file_name:
                 # file_name was a filename, lets build a full file_path
-                self.log_file_path = os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])), file_name)
+                self.log_file_path = os.path.join(os.path.dirname(
+                    os.path.realpath(sys.argv[0])), file_name)
             else:
                 self.log_file_path = file_name
 
@@ -50,4 +51,5 @@ class Logger:
 
 
 # Default logger
-logger = Logger(Config().logfile, logging.DEBUG if Config().cfg.core.debug else logging.INFO)
+logger = Logger(Config().logfile,
+                logging.DEBUG if Config().cfg.core.debug else logging.INFO)

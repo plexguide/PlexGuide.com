@@ -11,37 +11,36 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - name: Recall User
+      shell: 'cat /var/plexguide/plex.user'
+      register: user
 
-  - name: Recall User
-    shell: "cat /var/plexguide/plex.user"
-    register: user
+    - name: Recall PW
+      shell: 'cat /var/plexguide/plex.pw'
+      register: pw
 
-  - name: Recall PW
-    shell: "cat /var/plexguide/plex.pw"
-    register: pw
+    - name: Blank Out Token
+      shell: "echo '' > /var/plexguide/plex.token"
+      ignore_errors: yes
 
-  - name: Blank Out Token
-    shell: "echo '' > /var/plexguide/plex.token"
-    ignore_errors: yes
+    - name: Token Generation
+      uri:
+        url: https://plex.tv/users/sign_in.json
+        method: POST
+        status_code: 201
+        headers:
+          X-Plex-Product: 'plexguide'
+          X-Plex-Version: '1.0.0'
+          X-Plex-Client-Identifier: 'XXX'
+          Content-Type: 'application/x-www-form-urlencoded; charset=utf-8'
+        password: '{{pw.stdout}}'
+        user: '{{user.stdout}}'
+      register: plextoken
 
-  - name: Token Generation
-    uri:
-      url: https://plex.tv/users/sign_in.json
-      method: POST
-      status_code: 201
-      headers:
-        X-Plex-Product: "plexguide"
-        X-Plex-Version: "1.0.0"
-        X-Plex-Client-Identifier: "XXX"
-        Content-Type: "application/x-www-form-urlencoded; charset=utf-8"
-      password: '{{pw.stdout}}'
-      user: '{{user.stdout}}'
-    register: plextoken
+    - name: Set Token
+      set_fact:
+        plexauth: "{{plextoken.json.user.authToken | regex_replace('\n', '') }}"
 
-  - name: Set Token
-    set_fact:
-      plexauth: "{{plextoken.json.user.authToken | regex_replace('\n', '') }}"
-
-  - name: Save Token
-    shell: "echo {{plexauth}} > /var/plexguide/plex.token"
-    ignore_errors: yes
+    - name: Save Token
+      shell: 'echo {{plexauth}} > /var/plexguide/plex.token'
+      ignore_errors: yes
