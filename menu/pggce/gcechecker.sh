@@ -45,7 +45,7 @@ EOF
             tune2fs -m 0 /dev/md0
             echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             echo "✅ PASSED ! PG NVME RAID0 Creator with 2 NVMEs - finish"
-            echo "✅ PASSED ! HDD Space now :" $(df -h /mnt/ --total --local -x tmpfs | grep 'total' | awk '{print $2}')
+            echo "✅ PASSED ! HDD Space now :" "$(df -h /mnt/ --total --local -x tmpfs | grep 'total' | awk '{print $2}')"
             echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             sleep 2
       elif [[ "$nvme" == "3" ]]; then
@@ -58,7 +58,7 @@ EOF
             tune2fs -m 0 /dev/md0
             echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             echo "✅ PASSED ! PG NVME RAID0 Creator with 3 NVMEs - finish"
-            echo "✅ PASSED ! HDD Space now :" $(df -h /mnt/ --total --local -x tmpfs | grep 'total' | awk '{print $2}')
+            echo "✅ PASSED ! HDD Space now :" "$(df -h /mnt/ --total --local -x tmpfs | grep 'total' | awk '{print $2}')"
             echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             sleep 2
       elif [[ "$nvme" == "4" ]]; then
@@ -71,7 +71,7 @@ EOF
             tune2fs -m 0 /dev/md0
             echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             echo "✅ PASSED ! PG NVME RAID0 Creator with 4 NVMEs - finish"
-            echo "✅ PASSED ! HDD Space now :" $(df -h /mnt/ --total --local -x tmpfs | grep 'total' | awk '{print $2}')
+            echo "✅ PASSED ! HDD Space now :" "$(df -h /mnt/ --total --local -x tmpfs | grep 'total' | awk '{print $2}')"
             echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
             sleep 2
       elif [[ "$nvme" == "1" ]]; then
@@ -79,13 +79,13 @@ EOF
             mkfs.ext4 -F /dev/nvme0n1 1>/dev/null 2>&1
             mount -o discard,defaults,nobarrier /dev/nvme0n1 /mnt
             chmod a+w /mnt 1>/dev/null 2>&1
-            echo UUID=$(blkid | grep nvme0n1 | cut -f2 -d'"') /mnt ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
+            echo UUID="$(blkid | grep nvme0n1 | cut -f2 -d'"')" /mnt ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
 
             mkdir -p /nvme1 1>/dev/null 2>&1
             mkfs.ext4 -F /dev/nvme0n1
             mount -o discard,defaults,nobarrier /dev/nvme0n1 /nvme1
             chmod a+w /nvme1 1>/dev/null 2>&1
-            echo UUID=$(blkid | grep nvme0n1 | cut -f2 -d'"') /nvme1 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
+            echo UUID="$(blkid | grep nvme0n1 | cut -f2 -d'"')" /nvme1 ext4 discard,defaults,nobarrier,nofail 0 2 | tee -a /etc/fstab
       else
             echo "nothing to do"
       fi
