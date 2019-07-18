@@ -24,13 +24,13 @@ EOF
 
 cat /var/plexguide/ver.temp
 echo ""
-echo "To QUIT, type >>> exit"
+echo "To QUIT, type >>> z or exit"
 break=no
 while [ "$break" == "no" ]; do
   read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed
   storage=$(grep $typed /var/plexguide/ver.temp)
 
-  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then
+  if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then
     echo ""
     touch /var/plexguide/exited.upgrade
     exit

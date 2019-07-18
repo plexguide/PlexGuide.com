@@ -76,7 +76,7 @@ EOF
   read -p '↘️   Type the NEW PATH (Follow Above Examples): ' typed </dev/tty
 
   # SubQuestion About Continuing
-  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then
+  if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then
     exit
   fi
 

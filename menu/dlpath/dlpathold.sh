@@ -58,14 +58,14 @@ Examples:
 /secondhd/media
 /myhd/storage/media
 
-echo "To QUIT, type >>> q exit"
+echo "To quit, type >>> z or exit"
 EOF
 
   read -p 'Type the NEW PATH (follow example above): ' typed
 
   storage=$(grep $typed /var/plexguide/ver.temp)
 
-  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then
+  if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then
     tee <<-EOF
 
 ---------------------------------------------------------------------------

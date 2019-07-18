@@ -151,12 +151,12 @@ serverprime() {
 
 $servers
 
-💬 Quitting? TYPE > q or exit
+💬 To quit, type >>> z or exit
 EOF
   read -p '🌍 Type Server Name | Press [ENTER]: ' server </dev/tty
   echo $server >/tmp/server.select
 
-  if [ "$server" == "exit" ]; then exit; fi
+  if [[ "$server" == "exit" || "$server" == "Exit" || "$server" == "EXIT" || "$server" == "z" || "$server" == "Z" ]]; then exit; fi
 
   current2=$(cat /tmp/server.list | grep "\<$server\>")
   if [ "$current2" == "" ]; then
@@ -424,12 +424,12 @@ $notrun
 
 $buildup
 
-💬 Quitting? TYPE > q or exit | 💪 Ready to Backup? TYPE > deploy
+💬 To quit, type >>> z or exit | 💪 Ready to Backup? type > backup
 EOF
   read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "deploy" ]; then backup_start; fi
-  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then exit; fi
+  if [[ "$typed" == "backup" || "$typed" == "a" || "$typed" == "A" ]]; then backup_start; fi
+  if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then exit; fi
 
   current2=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")
   if [ "$current2" != "" ]; then
@@ -466,12 +466,12 @@ $notrun
 
 $buildup
 
-💬 Quitting? TYPE > q or exit | 💪 Ready to Restore? TYPE > deploy
+💬 To quit, type >>> z or exit | 💪 Ready to Restore? type >>> restore
 EOF
   read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "deploy" ]; then restore_start; fi
-  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then exit; fi
+  if [[ "$typed" == "restore" || "$typed" == "a" || "$typed" == "A" ]]; then restore_start; fi
+  if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then exit; fi
 
   current2=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")
   if [ "$current2" != "" ]; then
