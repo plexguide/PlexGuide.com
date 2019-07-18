@@ -376,8 +376,8 @@ pgui() {
 
 pythonstart() {
 
-  ansible="2.7.8"
-  pip="19.0.2"
+  ansible="2.8.2"
+  pip="19.1.1"
 
   apt-get install -y --reinstall \
     nano \

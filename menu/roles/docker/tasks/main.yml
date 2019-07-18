@@ -23,7 +23,7 @@
 - name: 'Switch - On'
   set_fact:
     switch: 'off'
-  when: updatecheck.stdout == "18.09.6,"
+  when: updatecheck.stdout == "18.09.7,"
 
 - name: Install required packages
   apt:
