@@ -169,6 +169,8 @@ varstart() {
 }
 
 menuprime() {
+  transport=$(cat /var/plexguide/pg.transport)
+
   # Menu Interface
   tee <<-EOF
 
