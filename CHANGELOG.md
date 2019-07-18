@@ -1,6 +1,12 @@
 # Changelog
 
 All notable changes to the core project will be added to this repo. For changes to PGClone, see [PGClone Changelog](https://github.com/PGBlitz/PGClone/blob/v8.6/CHANGELOG.md).
+## [8.6.8] - 2019-07-18
+
+**Bugfixes**
+
+- Fixes issue with rebuilding community apps when using portguard
+- Fixes issue with rebuilding community apps changing the processing disk.
 
 ## [8.6.7] - 2019-07-17
 
