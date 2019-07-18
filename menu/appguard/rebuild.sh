@@ -11,6 +11,8 @@ sed -i -e "/traefik/d" /var/plexguide/container.running
 sed -i -e "/watchtower/d" /var/plexguide/container.running
 sed -i -e "/wp-*/d" /var/plexguide/container.running
 sed -i -e "/plex/d" /var/plexguide/container.running
+sed -i -e "/emby/d" /var/plexguide/container.running
+sed -i -e "/jellyfin/d" /var/plexguide/container.running
 sed -i -e "/ombi/d" /var/plexguide/container.running
 sed -i -e "/oauth/d" /var/plexguide/container.running
 sed -i -e "/portainer/d" /var/plexguide/container.running

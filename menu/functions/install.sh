@@ -517,6 +517,7 @@ EOF
     watchtowergen
     sed -i -e "/plex/d" /tmp/watchtower.set 1>/dev/null 2>&1
     sed -i -e "/emby/d" /tmp/watchtower.set 1>/dev/null 2>&1
+    sed -i -e "/jellyfin/d" /tmp/watchtower.set 1>/dev/null 2>&1
     ansible-playbook /opt/coreapps/apps/watchtower.yml
     echo "2" >/var/plexguide/watchtower.wcheck
   elif [ "$typed" == "3" ]; then
