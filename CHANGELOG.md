@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the core project will be added to this repo. For changes to PGClone, see it's changelog
+All notable changes to the core project will be added to this repo. For changes to PGClone, see [PGClone Changelog](https://github.com/PGBlitz/PGClone/blob/v8.6/CHANGELOG.md).
 
 ## [8.6.7] - 2019-07-17
 
@@ -12,7 +12,9 @@ All notable changes to the core project will be added to this repo. For changes 
 
 **Bugfixes**
 
-- removes watchtower from the core menu, use watchtower settings inside PG Settings to deploy
+- Fixes PGVault apps listing
+- Fixes PGShield apps listing when using community apps, previously core apps would not be displayed.
+- Removes watchtower from the core menu, use watchtower settings inside PG Settings to deploy.
 - Minor GCE fixes
 
 **New features**
