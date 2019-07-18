@@ -134,13 +134,13 @@ $notrun
 
 $buildup
 
-💬 Quitting? TYPE > exit | 💪 Ready to install? TYPE > deploy
+💬 Quitting? TYPE > q or exit | 💪 Ready to install? TYPE > deploy
 EOF
   read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 
   if [[ "$typed" == "deploy" ]]; then question2; fi
 
-  if [ "$typed" == "exit" ]; then exit; fi
+  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then exit; fi
 
   current=$(cat /var/plexguide/pgbox.buildup | grep "\<$typed\>")
   if [ "$current" != "" ]; then queued && question1; fi

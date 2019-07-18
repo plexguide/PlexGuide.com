@@ -30,7 +30,7 @@ while [ "$break" == "no" ]; do
   read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed
   storage=$(grep $typed /var/plexguide/ver.temp)
 
-  if [ "$typed" == "exit" ]; then
+  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then
     echo ""
     touch /var/plexguide/exited.upgrade
     exit

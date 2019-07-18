@@ -56,11 +56,11 @@ tee <<-EOF
 
 $running
 
-💬 Quitting? TYPE > exit
+💬 Quitting? TYPE > q or exit
 EOF
 read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 
-if [ "$typed" == "exit" ]; then exit; fi
+if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then exit; fi
 
 tcheck=$(echo $running | grep "\<$typed\>")
 if [ "$tcheck" == "" ]; then

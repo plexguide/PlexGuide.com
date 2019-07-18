@@ -30,7 +30,7 @@ Latest:  : $latest
 Beta      : $beta
 Installed : $pgnumber
 
-Quitting? TYPE > exit
+Quitting? TYPE > q or exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
@@ -42,7 +42,7 @@ EOF
 }
 
 parttwo() {
-  if [[ "$typed" == "exit" || "$typed" == "EXIT" || "$typed" == "Exit" ]]; then
+  if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "q" || "$typed" == "Q" ]]; then
     echo ""
     touch /var/plexguide/exited.upgrade
     exit

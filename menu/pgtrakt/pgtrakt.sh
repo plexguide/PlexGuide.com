@@ -80,7 +80,7 @@ Go Back? Type > exit
 EOF
   read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "exit" ]; then
+  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then
     question1
   else
     tee <<-EOF
@@ -124,7 +124,7 @@ Go Back? Type > exit
 EOF
   read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "exit" ]; then
+  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then
     question1
   else
     tee <<-EOF
@@ -169,7 +169,7 @@ EOF
   read -p '↘️ Type API Secret | Press [ENTER]: ' typed </dev/tty
   echo $typed >/var/plexguide/pgtrak.secret
 
-  if [ "$typed" == "exit" ]; then
+  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then
     question1
   else
     tee <<-EOF
@@ -210,7 +210,7 @@ Go Back? Type > exit
 EOF
   read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "exit" ]; then
+  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then
     question1
   else
     tee <<-EOF
@@ -301,7 +301,7 @@ Go Back? Type > exit
 EOF
   read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed </dev/tty
 
-  if [ "$typed" == "exit" ]; then
+  if [ "$typed" == "exit" ] || [ "$typed" == "q" ] || [ "$typed" == "Q" ]; then
     question1
   else
     tee <<-EOF
