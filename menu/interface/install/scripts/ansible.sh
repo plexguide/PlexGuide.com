@@ -34,6 +34,7 @@ else
 
   ### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
   echo "[defaults]" >/etc/ansible/ansible.cfg
+  echo "deprecation_warnings=False" >>/etc/ansible/ansible.cfg
   echo "command_warnings = False" >>/etc/ansible/ansible.cfg
   echo "callback_whitelist = profile_tasks" >>/etc/ansible/ansible.cfg
   echo "inventory = /etc/ansible/inventories/local" >>/etc/ansible/ansible.cfg
