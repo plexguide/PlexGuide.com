@@ -1,13 +1,20 @@
 # Changelog
 
 All notable changes to the core project will be added to this repo. For changes to PGClone, see [PGClone Changelog](https://github.com/PGBlitz/PGClone/blob/v8.6/CHANGELOG.md).
+## [8.6.10] - 2019-07-19
+
+**New features**
+
+- disable ansible deprecation warnings when updating ansible.
 
 ## [8.6.9] - 2019-07-18
 
 **New features**
 
-- type q to exit is now supported
-
+- type `q` to exit is now supported on prompts that expect typing 'exit'
+- type `a` to deploy is now supoorted on prompts that expect typing 'deploy'
+- type `backup` or a to backup appdata in pgvault (typing deploy still works)
+- type `restore` or a to restore appdata in pgvault (typing deploy still works)
 ## [8.6.8] - 2019-07-18
 
 **New features**
