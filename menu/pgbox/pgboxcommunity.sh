@@ -134,7 +134,7 @@ $notrun
 
 $buildup
 
-💬 To quit, type >>> z or exit | 💪 Ready to install? type >>> install
+💬 To quit, type >>> z or exit | 💪 Ready to install? type >>> a or install
 EOF
   read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 
