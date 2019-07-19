@@ -95,7 +95,7 @@ $notrun
 
 $buildup
 
-💬 To quit, type >>> z or exit | 💪 Ready to install? type >>> a or install
+💬 To quit, type >>> z or exit | 💪 Ready to install? type >>> install
 EOF
   read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 
@@ -183,7 +183,7 @@ EOF
 
     if [[ "$edition" == "PG Edition - HD Solo" ]]; then
       a=b
-    else if [ "$croncount" -eq "1" ]; then cronexe; fi; fi
+    elif [ "$croncount" -eq "1" ]; then cronexe; fi;
 
     # End Banner
     bash /opt/plexguide/menu/pgbox/endbanner.sh >>/tmp/output.info
