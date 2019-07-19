@@ -28,16 +28,16 @@ fi
 pcloadletter() {
   touch /var/plexguide/pgclone.transport
   temp=$(cat /var/plexguide/pgclone.transport)
-  if [ "$temp" == "umove" ]; then
-    transport="PG Move /w No Encryption"
-  elif [ "$temp" == "emove" ]; then
-    transport="PG Move /w Encryption"
-  elif [ "$temp" == "ublitz" ]; then
-    transport="PG Blitz /w No Encryption"
-  elif [ "$temp" == "eblitz" ]; then
-    transport="PG Blitz /w Encryption"
-  elif [ "$temp" == "solohd" ]; then
-    transport="PG Local"
+  if [ "$temp" == "mu" ]; then
+    transport="Move"
+  elif [ "$temp" == "me" ]; then
+    transport="Move: Encrypted"
+  elif [ "$temp" == "bu" ]; then
+    transport="Blitz"
+  elif [ "$temp" == "be" ]; then
+    transport="Blitz: Encrypted"
+  elif [ "$temp" == "le" ]; then
+    transport="Local"
   else transport="NOT-SET"; fi
   echo "$transport" >/var/plexguide/pg.transport
 }
