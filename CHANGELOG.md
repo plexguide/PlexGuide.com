@@ -7,6 +7,10 @@ All notable changes to the core project will be added to this repo. For changes 
 
 - disable ansible deprecation warnings when updating ansible.
 
+**Bugfixes**
+
+- Fixes NOT-SET being displayed in main menu
+
 ## [8.6.9] - 2019-07-18
 
 **New features**
@@ -15,6 +19,7 @@ All notable changes to the core project will be added to this repo. For changes 
 - type `a` to deploy is now supoorted on prompts that expect typing 'deploy'
 - type `backup` or a to backup appdata in pgvault (typing deploy still works)
 - type `restore` or a to restore appdata in pgvault (typing deploy still works)
+
 ## [8.6.8] - 2019-07-18
 
 **New features**
