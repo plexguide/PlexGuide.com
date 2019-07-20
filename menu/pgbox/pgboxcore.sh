@@ -202,7 +202,7 @@ question2() {
   else
     croncount=$(sed -n '$=' /var/plexguide/pgbox.buildup)
     echo "false" >/var/plexguide/cron.count
-    if [ "$croncount" -ge "2" ]; then bash /opt/plexguide/menu/cron/mass.sh; fi
+    if [ "$croncount" -ge 2 ]; then bash /opt/plexguide/menu/cron/mass.sh; fi
   fi
 
   # CName & Port Execution
