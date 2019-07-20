@@ -12,13 +12,13 @@ source /opt/plexguide/menu/functions/install.sh
 
 queued() {
   echo
-  read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed </dev/tty
+  read -p "⛔️ ERROR - $typed Already Queued! | Press [ENTER] " typed </dev/tty
   question1
 }
 
 exists() {
   echo ""
-  echo "⛔️ ERROR - APP Already Installed!"
+  echo "⛔️ ERROR - $typed Already Installed!"
   read -p '⚠️  Do You Want To ReInstall ~ y or n | Press [ENTER] ' foo </dev/tty
 
   if [ "$foo" == "y" ]; then
@@ -186,7 +186,7 @@ question2() {
   image=off
   while read p; do
 
-    echo $p >/tmp/program_var
+    echo "$p" >/tmp/program_var
 
     bash /opt/communityapps/apps/image/_image.sh
   done </var/plexguide/pgbox.buildup
@@ -209,14 +209,15 @@ $p - Now Installing!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-    sleep 2.5
+    sleep 1
 
     if [ "$p" == "plex" ]; then
       bash /opt/plexguide/menu/plex/plex.sh
     elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 
     # Store Used Program
-    echo $p >/tmp/program_var
+    echo "$p" >/tmp/program_var
+    
     # Execute Main Program
     ansible-playbook /opt/communityapps/apps/$p.yml
 
