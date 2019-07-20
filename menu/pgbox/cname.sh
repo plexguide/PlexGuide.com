@@ -63,11 +63,11 @@ EOF
         exit
     elif [ "$typed" == "1" ]; then
         read -p "🌍 Type subdomain to use for $program | Press [ENTER]: " typed </dev/tty
-        echo "$typed" >"/var/plexguide/$program.cname"
+        echo "$typed" >/var/plexguide/$program.cname
         question1
     elif [ "$typed" == "2" ]; then
-        read -p '🌍 Type external port to use for $program | Press [ENTER]: ' typed </dev/tty
-        echo "$typed" >"/var/plexguide/$program.port"
+        read -p "🌍 Type external port to use for $program | Press [ENTER]: " typed </dev/tty
+        echo "$typed" >/var/plexguide/$program.port
         question1
     else badinput1; fi
 }
