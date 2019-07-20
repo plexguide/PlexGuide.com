@@ -6,6 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 program=$(cat /tmp/program_var)
+cname=$(cat /var/plexguide/$program.cname)
 domain=$(cat /var/plexguide/server.domain)
 port=$(cat /tmp/program_port)
 ip=$(cat /var/plexguide/server.ip)
@@ -38,7 +39,7 @@ if [ "$domain" != "NOT-SET" ]; then
 EOF
   fi
   tee <<-EOF
-▫ $program.$domain${extra}
+▫ $cname.$domain${extra}
 EOF
 fi
 
