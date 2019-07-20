@@ -30,7 +30,7 @@ Latest:  : $latest
 Beta      : $beta
 Installed : $pgnumber
 
-To quit, type >>> z or exit
+[Z] Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 

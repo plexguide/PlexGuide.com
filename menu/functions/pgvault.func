@@ -151,7 +151,10 @@ serverprime() {
 
 $servers
 
-💬 To quit, type >>> z or exit
+💬 [Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
   read -p '🌍 Type Server Name | Press [ENTER]: ' server </dev/tty
   echo $server >/tmp/server.select
@@ -424,7 +427,11 @@ $notrun
 
 $buildup
 
-💬 To quit, type >>> z or exit | 💪 Ready to Backup? type >>> a or backup
+[A] Backup
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
   read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 
@@ -466,7 +473,11 @@ $notrun
 
 $buildup
 
-💬 To quit, type >>> z or exit | 💪 Ready to Restore? type >>> restore
+[A] Restore
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
   read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 

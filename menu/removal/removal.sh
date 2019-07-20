@@ -56,7 +56,7 @@ tee <<-EOF
 
 $running
 
-💬 To quit, type >>> z or exit
+💬 [Z] Exit
 EOF
 read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 

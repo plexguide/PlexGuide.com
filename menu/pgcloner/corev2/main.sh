@@ -60,6 +60,7 @@ $clonerinfo
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
 
     read -p 'Type a Selection | Press [ENTER]: ' typed </dev/tty

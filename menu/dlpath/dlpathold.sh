@@ -58,7 +58,7 @@ Examples:
 /secondhd/media
 /myhd/storage/media
 
-echo "To quit, type >>> z or exit"
+echo "[Z] Exit"
 EOF
 
   read -p 'Type the NEW PATH (follow example above): ' typed

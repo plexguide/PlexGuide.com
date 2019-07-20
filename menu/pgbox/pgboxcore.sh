@@ -134,7 +134,11 @@ $notrun
 
 $buildup
 
-💬 To quit, type >>> z or exit | 💪 Ready to Install? type >>> a or install
+[A] Install
+[Z] Exit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
   read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
 
@@ -256,6 +260,7 @@ pinterface() {
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
 
   read -p 'Type a Selection | Press [ENTER]: ' typed </dev/tty
@@ -320,6 +325,7 @@ for testing or for personal mods! Ensure that it exist prior to use!
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
 
   read -p 'Type a Selection | Press [ENTER]: ' typed </dev/tty

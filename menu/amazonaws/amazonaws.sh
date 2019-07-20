@@ -180,7 +180,7 @@ Server Name
 EOF
   hcloud server list | tail -n +2 | cut -d " " -f2- | cut -d " " -f2- | cut -d " " -f2-
   echo
-  echo "To quit, type >>> z or exit"
+  echo "[Z] Exit"
   read -p 'Type a Server to Destroy | Press [ENTER]: ' destroy </dev/tty
   if [[ "$destroy" == "exit" || "$destroy" == "Exit" || "$destroy" == "EXIT" || "$destroy" == "z" || "$destroy" == "Z" ]]; then
     bash /opt/plexguide/menu/hetzner/hetzner.sh
