@@ -25,6 +25,7 @@ EOF
 cat /var/plexguide/ver.temp
 echo ""
 echo "[Z] Exit"
+echo ""
 break=no
 while [ "$break" == "no" ]; do
   read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed

@@ -58,7 +58,8 @@ Examples:
 /secondhd/media
 /myhd/storage/media
 
-echo "[Z] Exit"
+[Z] Exit
+
 EOF
 
   read -p 'Type the NEW PATH (follow example above): ' typed
