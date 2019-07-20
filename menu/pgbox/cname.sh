@@ -5,7 +5,6 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-source /opt/plexguide/menu/functions/functions.sh
 
 # vars
 program=$(cat /tmp/program_var)
@@ -46,11 +45,11 @@ EOF
 
     if [[ $port != "" ]]; then
         tee <<-EOF
-[3] Use $cname:$port
+[3] Use https://$cname.$domain:$port
 EOF
     else
         tee <<-EOF
-[3] Use $cname    
+[3] Use https://$cname.$domain
 EOF
     fi
     tee <<-EOF
@@ -64,11 +63,11 @@ EOF
         exit
     elif [ "$typed" == "1" ]; then
         read -p "🌍 Type subdomain to use for $program | Press [ENTER]: " typed </dev/tty
-        echo "$typed" >/var/plexguide/"$program".cname
+        echo "$typed" >"/var/plexguide/$program.cname"
         question1
     elif [ "$typed" == "2" ]; then
         read -p "🌍 Type external port to use for $program | Press [ENTER]: " typed </dev/tty
-        echo "$typed" >/var/plexguide/"$program".port
+        echo "$typed" >"/var/plexguide/$program.port"
         question1
     else badinput1; fi
 }
