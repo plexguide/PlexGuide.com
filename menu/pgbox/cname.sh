@@ -29,12 +29,10 @@ question1() {
 EOF
     if [[ $port != "" ]]; then
         tee <<-EOF
-
 External Url:     https://$cname.$domain:$port
 EOF
     else
         tee <<-EOF
-
 External Url:     https://$cname.$domain
 EOF
     fi
@@ -64,12 +62,12 @@ EOF
     if [ "$typed" == "3" ]; then
         exit
     elif [ "$typed" == "1" ]; then
-        read -p '🌍 Type subdomain to use for $program | Press [ENTER]: ' typed </dev/tty
-        echo $("$typed" >/var/plexguide/$program.cname)
+        read -p "🌍 Type subdomain to use for $program | Press [ENTER]: " typed </dev/tty
+        echo "$typed" >"/var/plexguide/$program.cname"
         question1
     elif [ "$typed" == "2" ]; then
         read -p '🌍 Type external port to use for $program | Press [ENTER]: ' typed </dev/tty
-        echo $("$typed" >/var/plexguide/$program.port)
+        echo "$typed" >"/var/plexguide/$program.port"
         question1
     else badinput1; fi
 }
