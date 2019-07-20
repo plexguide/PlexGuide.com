@@ -33,7 +33,7 @@ question1() {
 
 Token Status: [Detected]
 
-1 - Generate Token
+[1] Generate Token
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -71,8 +71,8 @@ User Pass: $pw
 
 ⚠️  Information Correct?
 
-1 - YES
-2 - NO
+[1] YES
+[2] NO
 Z - Exit Interface
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

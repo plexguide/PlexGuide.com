@@ -22,8 +22,8 @@ question1() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://cron.pgblitz.com
 
-1 - No
-2 - Yes
+[1] No
+[2] Yes
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -46,15 +46,15 @@ question2() {
 
 WEEKLY
 0 - Sunday
-1 - Monday
-2 - Tuesday
-3 - Wednesday
-4 - Thursday
-5 - Friday
-6 - Saturday
+[1] Monday
+[2] Tuesday
+[3] Wednesday
+[4] Thursday
+[5] Friday
+[6] Saturday
 
 DAILY
-7 - Daily
+[7] Daily
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF

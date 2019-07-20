@@ -163,7 +163,7 @@ part1() {
   while read p; do
     echo -n $p >>/var/plexguide/pgbox.output
     echo -n " " >>/var/plexguide/pgbox.output
-    if [ "$num" == 7 ]; then
+    if [[ "$num" == 7 ]]; then
       num=0
       echo " " >>/var/plexguide/pgbox.output
     fi
@@ -217,13 +217,13 @@ EOF
 
     # Store Used Program
     echo "$p" >/tmp/program_var
-    
+
     # Execute Main Program
     ansible-playbook /opt/communityapps/apps/$p.yml
 
     if [[ "$edition" == "PG Edition - HD Solo" ]]; then
       a=b
-    else if [ "$croncount" -eq "1" ]; then cronexe; fi; fi
+    elif [ "$croncount" -eq "1" ]; then cronexe; fi
 
     # End Banner
     bash /opt/plexguide/menu/pgbox/endbanner.sh >>/tmp/output.info

@@ -500,9 +500,9 @@ watchtower() {
 
 💬  WatchTower updates your containers soon as possible!
 
-1 - Containers: Auto-Update All
-2 - Containers: Auto-Update All Except | Plex & Emby
-3 - Containers: Never Update
+[1] Containers: Auto-Update All
+[2] Containers: Auto-Update All Except | Plex & Emby
+[3] Containers: Never Update
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

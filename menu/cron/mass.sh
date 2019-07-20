@@ -51,12 +51,13 @@ question1() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://cron.pgblitz.com
 
-1 - No  [Skip   - All Cron Jobs]
-2 - Yes [Manual - Select for Each App]
-3 - Yes [Daily  - Select Random Times]
-4 - Yes [Weekly - Select Random Times & Days]
+[1] No  [Skip   - All Cron Jobs]
+[2] Yes [Manual - Select for Each App]
+[3] Yes [Daily  - Select Random Times]
+[4] Yes [Weekly - Select Random Times & Days]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
 
   read -p '↘️  Type Number | Press [ENTER]: ' typed </dev/tty

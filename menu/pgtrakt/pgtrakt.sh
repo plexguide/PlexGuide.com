@@ -411,8 +411,8 @@ selection1() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://pgtrakt.pgblitz.com
 
-1 - False
-2 - True
+[1] False
+[2] True
 
 EOF
   read -p 'Type Number | PRESS [ENTER] ' typed </dev/tty
@@ -431,7 +431,7 @@ selection2() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://pgtrakt.pgblitz.com
 
-Set a Number from 1 - 99
+Set a Number from [1] 99
 
 EOF
   read -p 'Type Number | PRESS [ENTER] ' typed </dev/tty
@@ -448,7 +448,7 @@ selection3() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://pgtrakt.pgblitz.com
 
-Set a Number from 5 - 999 Mintues
+Set a Number from [5] 999 Mintues
 
 EOF
   read -p 'Type Number | PRESS [ENTER] ' typed </dev/tty
@@ -478,12 +478,12 @@ question1() {
 
 NOTE: Changes Made? Must Redeploy PGTrak when Complete!
 
-1 - Trakt API-Key   [$api]
-2 - Sonarr Path     [$spath]
-3 - Raddar Path     [$rpath]
-4 - Sonarr Profile  [$sprofile]
-5 - Radarr Profile  [$rprofile]
-6 - Deploy PGTrak   [$dstatus]
+[1] Trakt API-Key   [$api]
+[2] Sonarr Path     [$spath]
+[3] Raddar Path     [$rpath]
+[4] Sonarr Profile  [$sprofile]
+[5] Radarr Profile  [$rprofile]
+[6] Deploy PGTrak   [$dstatus]
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

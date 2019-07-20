@@ -13,9 +13,9 @@ tee <<-EOF
 🚥 PG TroubleShoot Interface
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Pre-Installer: Force the Entire Process Again
-2 - UnInstaller  : Docker & Running Containers | Force Pre-Install
-3 - UnInstaller  : PGBlitz
+[1] Pre-Installer: Force the Entire Process Again
+[2] UnInstaller  : Docker & Running Containers | Force Pre-Install
+[3] UnInstaller  : PGBlitz
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

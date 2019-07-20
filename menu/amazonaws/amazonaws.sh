@@ -39,8 +39,8 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⚡ Reference: http://hcloud.pgblitz.com
 
-1 - Deploy a New Server
-2 - Destory a Server
+[1] Deploy a New Server
+[2] Destory a Server
 A - List Server Info
 B - Display Inital Server Passwords
 Z - Exit
@@ -64,12 +64,12 @@ EOF
 ↘️  PG - Hetzner's Cloud OS Selector
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Ubuntu 18.04 (PGBlitz Works)
-2 - Ubuntu 16.04 (PGBlitz Works)
-3 - Debian 9
-4 - Centos 7
-5 - Fendora 28
-6 - Fendora 27
+[1] Ubuntu 18.04 (PGBlitz Works)
+[2] Ubuntu 16.04 (PGBlitz Works)
+[3] Debian 9
+[4] Centos 7
+[5] Fendora 28
+[6] Fendora 27
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

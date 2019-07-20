@@ -11,13 +11,13 @@ source /opt/plexguide/menu/functions/functions.sh
 
 queued() {
   echo
-  read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed </dev/tty
+  read -p "⛔️ ERROR - $typed Already Queued! | Press [ENTER] " typed </dev/tty
   question1
 }
 
 exists() {
   echo ""
-  echo "⛔️ ERROR - APP Already Installed!"
+  echo "⛔️ ERROR - $typed Already Installed!"
   read -p '⚠️  Do You Want To ReInstall ~ y or n | Press [ENTER] ' foo </dev/tty
 
   if [ "$foo" == "y" ]; then
@@ -186,7 +186,7 @@ question2() {
   image=off
   while read p; do
 
-    echo $p >/tmp/program_var
+    echo "$p" >/tmp/program_var
 
     bash /opt/coreapps/apps/image/_image.sh
   done </var/plexguide/pgbox.buildup
@@ -222,7 +222,7 @@ EOF
 
     if [[ "$edition" == "PG Edition - HD Solo" ]]; then
       a=b
-    elif [ "$croncount" -eq "1" ]; then cronexe; fi;
+    elif [ "$croncount" -eq "1" ]; then cronexe; fi
 
     # End Banner
     bash /opt/plexguide/menu/pgbox/endbanner.sh >>/tmp/output.info

@@ -12,8 +12,8 @@ tee <<-EOF
 📂  PG Cloud Service Installer | http://cloud.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1 - Cloud Instance: Google   (Blitz ~ GCE Edition)
-2 - Cloud Instance: Hetzner
+[1] Cloud Instance: Google   (Blitz ~ GCE Edition)
+[2] Cloud Instance: Hetzner
 Z - Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
