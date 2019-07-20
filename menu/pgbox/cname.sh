@@ -42,15 +42,16 @@ EOF
 
 [1] Change subdomain
 [2] Change external port
+
 EOF
 
     if [[ $port != "" ]]; then
         tee <<-EOF
-[3] Use https://$cname.$domain:$port
+[A] Use https://$cname.$domain:$port
 EOF
     else
         tee <<-EOF
-[3] Use https://$cname.$domain
+[A] Use https://$cname.$domain
 EOF
     fi
     tee <<-EOF
@@ -60,7 +61,7 @@ EOF
 EOF
 
     read -p '↘️  Type Number | Press [ENTER]: ' typed </dev/tty
-    if [ "$typed" == "3" ]; then
+    if [[ "$typed" == "A" || "$typed" == "a" ]]; then
         exit
     elif [ "$typed" == "1" ]; then
         read -p "🌍 Type subdomain to use for $program | Press [ENTER]: " typed </dev/tty
