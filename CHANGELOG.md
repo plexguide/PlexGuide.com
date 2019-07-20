@@ -5,6 +5,7 @@ All notable changes to the core project will be added to this repo. For changes 
 
 **New features**
 
+- Removed Plex Pass / Public prompt in favor of image selection
 - disable ansible deprecation warnings when updating ansible.
 
 **Bugfixes**
