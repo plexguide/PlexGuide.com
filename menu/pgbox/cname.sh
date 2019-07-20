@@ -12,13 +12,13 @@ program=$(cat /tmp/program_var)
 domain=$(cat "/var/plexguide/server.domain")
 
 variable "/var/plexguide/$program.cname" "$program"
-cname=$(cat "/var/plexguide/$program.cname")
 
 variable "/var/plexguide/$program.port" ""
-port=$(cat "/var/plexguide/$program.port")
 
 # FIRST QUESTION
 question1() {
+    cname=$(cat "/var/plexguide/$program.cname")
+    port=$(cat "/var/plexguide/$program.port")
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
