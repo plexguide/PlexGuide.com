@@ -166,6 +166,9 @@ question2() {
     if [ "$croncount" -ge "2" ]; then bash /opt/plexguide/menu/cron/mass.sh; fi
   fi
 
+  # CName & Port Execution
+  bash /opt/plexguide/menu/pgbox/cname.sh
+
   while read p; do
     tee <<-EOF
 
