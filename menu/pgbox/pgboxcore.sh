@@ -257,6 +257,7 @@ pinterface() {
 
 [1] Change User Name & Branch
 [2] Deploy Core Box - Personal (Forked)
+
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -322,6 +323,7 @@ for testing or for personal mods! Ensure that it exist prior to use!
 
 [1] Utilize Core Box - PGBlitz's
 [2] Utilize Core Box - Personal (Forked)
+
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -258,6 +258,7 @@ pinterface() {
 
 [1] Change User Name & Branch
 [2] Deploy Community Box - Personal (Forked)
+
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -323,6 +324,7 @@ for testing or for personal mods! Ensure that it exist prior to use!
 
 [1] Utilize Community Box - PGBlitz's
 [2] Utilize Community Box - Personal (Forked)
+
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

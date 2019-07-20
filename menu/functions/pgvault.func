@@ -512,6 +512,7 @@ primaryinterface() {
 [2] Data Restore
 [3] Current Server ID  : $server_id
 [4] Processing Location: $tarlocation
+
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

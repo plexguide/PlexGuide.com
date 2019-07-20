@@ -54,6 +54,7 @@ $clonerinfo
 
 [1] Utilize $roleproper - PGBlitz's
 [2] Utilize $roleproper - Personal (Forked)
+
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -97,6 +98,7 @@ pinterface() {
 
 [1] Change User Name & Branch
 [2] Deploy $roleproper - Personal (Forked)
+
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
