@@ -10,14 +10,14 @@
 program=$(cat /tmp/program_var)
 domain=$(cat "/var/plexguide/server.domain")
 
-variable "/var/plexguide/$program.cname" "$program"
+variable /var/plexguide/"$program".cname "$program"
 
-variable "/var/plexguide/$program.port" ""
+variable /var/plexguide/"$program".port ""
 
 # FIRST QUESTION
 question1() {
-    cname=$(cat "/var/plexguide/$program.cname")
-    port=$(cat "/var/plexguide/$program.port")
+    cname=$(cat /var/plexguide/"$program".cname)
+    port=$(cat /var/plexguide/"$program".port)
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -63,11 +63,11 @@ EOF
         exit
     elif [ "$typed" == "1" ]; then
         read -p "🌍 Type subdomain to use for $program | Press [ENTER]: " typed </dev/tty
-        echo "$typed" >"/var/plexguide/$program.cname"
+        echo "$typed" >/var/plexguide/"$program".cname
         question1
     elif [ "$typed" == "2" ]; then
         read -p "🌍 Type external port to use for $program | Press [ENTER]: " typed </dev/tty
-        echo "$typed" >"/var/plexguide/$program.port"
+        echo "$typed" >/var/plexguide/"$program".port
         question1
     else badinput1; fi
 }
