@@ -70,7 +70,7 @@ EOF
             badinput1
         else
             if ! [[ "$typed" =~ ^(([a-zA-Z0-9_]|[a-zA-Z0-9_][a-zA-Z0-9_\-]*[a-zA-Z0-9_])\.)*([A-Za-z0-9_]|[A-Za-z0-9_][A-Za-z0-9_\-]*[A-Za-z0-9_](\.?))$ ]]; then
-                badinput
+                badinput1
             else
                 echo "$typed" >"/var/plexguide/$program.cname"
                 question1
@@ -82,7 +82,7 @@ EOF
             echo "" >"/var/plexguide/$program.port"
         else
             if ! [[ "$typed" =~ ^[0-9]+$ || "$typed" -gt 1025 || "$typed" -lt 65536 ]]; then
-                badinput
+                badinput1
             else
                 echo "$typed" >"/var/plexguide/$program.port"
             fi
