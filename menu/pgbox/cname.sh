@@ -81,7 +81,7 @@ EOF
         if [[ "$typed" == "" ]]; then
             echo "" >"/var/plexguide/$program.port"
         else
-            if ! [[ "$typed" =~ ^[0-9]+$ || "$typed" -gt 1025 || "$typed" -lt 65536 ]]; then
+            if ! [[ "$typed" =~ ^[0-9]+$ && "$typed" -gt 1025 && "$typed" -lt 65536 ]]; then
                 badinput1
             else
                 echo "$typed" >"/var/plexguide/$program.port"
