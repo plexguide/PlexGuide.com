@@ -16,7 +16,6 @@
         - { package: 'fail2ban' }
         - { package: 'update-notifier-common' }
         - { package: 'software-properties-common' }
-        - { package: 'unrar' }
         - { package: 'unzip' }
         - { package: 'python-pip' }
         - { package: 'glances' }
@@ -58,7 +57,6 @@
       #     - figlet
       #     - update-notifier-common
       #     - software-properties-common
-      #     - unrar
       #     - unzip
       #     - glances
       #     - python-pip

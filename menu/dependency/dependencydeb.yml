@@ -19,7 +19,6 @@
         - lsb-release
         - figlet
         - software-properties-common
-        - unrar
         - unzip
         - glances
         - python-pip
