@@ -77,11 +77,11 @@ EOF
             fi
         fi
     elif [ "$typed" == "2" ]; then
-        read -p "🌍 Type external port to use for $program | blank for default port | Press [ENTER]: " typed </dev/tty
+        read -p "🌍 Type external port (1025-65535) to use for $program | blank for default port | Press [ENTER]: " typed </dev/tty
         if [[ "$typed" == "" ]]; then
             echo "" >"/var/plexguide/$program.port"
         else
-            if ! [[ "$typed" =~ ^[0-9]+$ && "$typed" -gt 1025 && "$typed" -lt 65536 ]]; then
+            if ! [[ "$typed" =~ ^[0-9]+$ && "$typed" -ge 1025 && "$typed" -le 65535 ]]; then
                 badinput1
             else
                 echo "$typed" >"/var/plexguide/$program.port"
