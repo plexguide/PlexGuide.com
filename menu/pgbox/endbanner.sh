@@ -6,7 +6,12 @@
 # GNU:        General Public License v3.0
 ################################################################################
 program=$(cat /tmp/program_var)
-cname=$(cat /var/plexguide/$program.cname)
+cname=$program
+
+if [[ -f "/var/plexguide/$program.cname" ]]; then
+  cname=$(cat "/var/plexguide/$program.cname")
+fi
+
 domain=$(cat /var/plexguide/server.domain)
 port=$(cat /tmp/program_port)
 ip=$(cat /var/plexguide/server.ip)
