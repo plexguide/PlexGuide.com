@@ -154,6 +154,9 @@ question2() {
     echo $p >/tmp/program_var
 
     bash /opt/coreapps/apps/image/_image.sh
+    
+    # CName & Port Execution
+    bash /opt/plexguide/menu/pgbox/cname.sh
   done </var/plexguide/pgbox.buildup
 
   # Cron Execution
@@ -165,10 +168,7 @@ question2() {
     echo "false" >/var/plexguide/cron.count
     if [ "$croncount" -ge "2" ]; then bash /opt/plexguide/menu/cron/mass.sh; fi
   fi
-
-  # CName & Port Execution
-  bash /opt/plexguide/menu/pgbox/cname.sh
-
+  
   while read p; do
     tee <<-EOF
 
@@ -176,15 +176,14 @@ question2() {
 $p - Now Installing!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-
-    sleep 2.5
+    # Store Used Program
+    echo $p >/tmp/program_var
 
     if [ "$p" == "plex" ]; then
       bash /opt/plexguide/menu/plex/plex.sh
     elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 
-    # Store Used Program
-    echo $p >/tmp/program_var
+
     # Execute Main Program
     ansible-playbook /opt/coreapps/apps/$p.yml
 
