@@ -2,6 +2,12 @@
 
 All notable changes to the core project will be added to this repo. For changes to PGClone, see [PGClone Changelog](https://github.com/PGBlitz/PGClone/blob/v8.6/CHANGELOG.md).
 
+## [8.7.2] - 2019-07-21
+
+**Bugfixes**
+
+- Fixes error when cname is not set while displaying endbanner after app install.
+
 ## [8.7.1] - 2019-07-20
 
 **Bugfixes**
