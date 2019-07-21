@@ -93,7 +93,13 @@ while true; do
   ##### Warning for Bad Traefik Deployment - message.c is tied to traefik showing a status! Do not change unless you know what your doing
   touch /opt/appdata/plexguide/traefik.check
   domain=$(cat /var/plexguide/server.domain)
-  wget -q "https://portainer.${domain}" -O "/opt/appdata/plexguide/traefik.check"
+
+  cname="portainer"
+  if [[ -f "/var/plexguide/portainer.cname" ]]; then
+    cname=$(cat "/var/plexguide/portainer.cname")
+  fi
+  
+  wget -q "https://${cname}.${domain}" -O "/opt/appdata/plexguide/traefik.check"
   if [[ $(cat /opt/appdata/plexguide/traefik.check) == "" && $(docker ps --format '{{.Names}}' | grep traefik) == "traefik" ]]; then
     echo "Traefik is Not Deployed Properly! Cannot Reach the Portainer SubDomain!" >/opt/appdata/plexguide/emergency/message.c
   else
