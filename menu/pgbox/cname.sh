@@ -77,7 +77,7 @@ EOF
             fi
         fi
     elif [ "$typed" == "2" ]; then
-        read -p "🌍 Type external port (1025-65535) to use for $program | blank for default port | Press [ENTER]: " typed </dev/tty
+        read -p "🌍 Type port 1025-65535 to use for $program | blank for default | Press [ENTER]: " typed </dev/tty
         if [[ "$typed" == "" ]]; then
             echo "" >"/var/plexguide/$program.port"
         else
