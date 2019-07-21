@@ -18,11 +18,11 @@ queued() {
 exists() {
   echo ""
   echo "⛔️ ERROR - $typed Already Installed!"
-  read -p '⚠️  Do You Want To ReInstall ~ y or n | Press [ENTER] ' foo </dev/tty
+  read -p '⚠️  Reinstall? [Y/N] | Press [ENTER] ' foo </dev/tty
 
-  if [ "$foo" == "y" ]; then
+  if [[ "$foo" == "y" || "$foo" == "Y" ]]; then
     part1
-  elif [ "$foo" == "n" ]; then
+  elif [[ "$foo" == "n" || "$foo" == "N" ]]; then
     question1
   else exists; fi
 }
@@ -140,7 +140,7 @@ $buildup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
+  read -p '↪️ Type app to queue install | Press [ENTER]: ' typed </dev/tty
 
   if [[ "$typed" == "deploy" || "$typed" == "Deploy" || "$typed" == "DEPLOY" || "$typed" == "install" || "$typed" == "Install" || "$typed" == "INSTALL" || "$typed" == "a" || "$typed" == "A" ]]; then question2; fi
 
@@ -193,6 +193,9 @@ question2() {
     echo "$p" >/tmp/program_var
 
     bash /opt/coreapps/apps/image/_image.sh
+    
+     # CName & Port Execution
+     bash /opt/plexguide/menu/pgbox/cname.sh
   done </var/plexguide/pgbox.buildup
 
   # Cron Execution
@@ -204,9 +207,6 @@ question2() {
     echo "false" >/var/plexguide/cron.count
     if [ "$croncount" -ge 2 ]; then bash /opt/plexguide/menu/cron/mass.sh; fi
   fi
-
-  # CName & Port Execution
-  bash /opt/plexguide/menu/pgbox/cname.sh
 
   while read p; do
     tee <<-EOF
@@ -273,8 +273,9 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬 IMPORTANT MESSAGE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Username & Branch are both case sensitive! Normal default branch is v8,
-but check the branch under your fork that is being pulled!
+
+Username & Branch are both case sensitive!
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
