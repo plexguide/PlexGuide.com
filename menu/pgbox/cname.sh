@@ -67,7 +67,7 @@ EOF
         read -p "🌍 Type subdomain to use for $program | Press [ENTER]: " typed </dev/tty
 
         if [[ "$typed" == "" ]]; then
-            badinput
+            badinput1
         else
             echo "$typed" >"/var/plexguide/$program.cname"
             question1
