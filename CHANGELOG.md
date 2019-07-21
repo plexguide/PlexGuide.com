@@ -2,6 +2,14 @@
 
 All notable changes to the core project will be added to this repo. For changes to PGClone, see [PGClone Changelog](https://github.com/PGBlitz/PGClone/blob/v8.6/CHANGELOG.md).
 
+## [8.7.1] - 2019-07-20
+
+**Bugfixes**
+
+- Fixes bug with menu not showing appname in header 
+- Adds input validation for port
+- Blank entry in external port now resets port to app default
+
 ## [8.7.0] - 2019-07-20
 
 **New features**
