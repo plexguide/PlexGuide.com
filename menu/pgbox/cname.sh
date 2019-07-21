@@ -22,7 +22,7 @@ question1() {
     tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛ Customize subdomains & ports for $p
+⌛ Customize subdomains & ports for $program
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ⚡ Reference: http://$program.pgblitz.com
@@ -65,11 +65,24 @@ EOF
         exit
     elif [ "$typed" == "1" ]; then
         read -p "🌍 Type subdomain to use for $program | Press [ENTER]: " typed </dev/tty
-        echo "$typed" >"/var/plexguide/$program.cname"
-        question1
+
+        if [[ "$typed" == "" ]]; then
+            badinput
+        else
+            echo "$typed" >"/var/plexguide/$program.cname"
+            question1
+        fi
     elif [ "$typed" == "2" ]; then
-        read -p "🌍 Type external port to use for $program | Press [ENTER]: " typed </dev/tty
-        echo "$typed" >"/var/plexguide/$program.port"
+        read -p "🌍 Type external port to use for $program | blank for default port | Press [ENTER]: " typed </dev/tty
+        if [[ "$typed" == "" ]]; then
+            echo "" >"/var/plexguide/$program.port"
+        else
+            if ! [[ "$typed" =~ ^[0-9]+$ ]]; then
+                badinput
+            else
+                echo "$typed" >"/var/plexguide/$program.port"
+            fi
+        fi
         question1
     else badinput1; fi
 }
