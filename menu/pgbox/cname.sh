@@ -69,15 +69,19 @@ EOF
         if [[ "$typed" == "" ]]; then
             badinput1
         else
-            echo "$typed" >"/var/plexguide/$program.cname"
-            question1
+            if ! [[ "$typed" =~ ^(([a-zA-Z0-9_]|[a-zA-Z0-9_][a-zA-Z0-9_\-]*[a-zA-Z0-9_])\.)*([A-Za-z0-9_]|[A-Za-z0-9_][A-Za-z0-9_\-]*[A-Za-z0-9_](\.?))$ ]]; then
+                badinput
+            else
+                echo "$typed" >"/var/plexguide/$program.cname"
+                question1
+            fi
         fi
     elif [ "$typed" == "2" ]; then
         read -p "🌍 Type external port to use for $program | blank for default port | Press [ENTER]: " typed </dev/tty
         if [[ "$typed" == "" ]]; then
             echo "" >"/var/plexguide/$program.port"
         else
-            if ! [[ "$typed" =~ ^[0-9]+$ ]]; then
+            if ! [[ "$typed" =~ ^[0-9]+$ || "$typed" -gt 1025 || "$typed" -lt 65536 ]]; then
                 badinput
             else
                 echo "$typed" >"/var/plexguide/$program.port"
