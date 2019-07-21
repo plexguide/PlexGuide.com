@@ -2,6 +2,12 @@
 
 All notable changes to the core project will be added to this repo. For changes to PGClone, see [PGClone Changelog](https://github.com/PGBlitz/PGClone/blob/v8.6/CHANGELOG.md).
 
+## [8.7.3] - 2019-07-21
+
+**Bugfixes**
+
+- Fixes portainer validation checks if you are using a custom cname.
+
 ## [8.7.2] - 2019-07-21
 
 **Bugfixes**
