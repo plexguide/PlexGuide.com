@@ -13,43 +13,46 @@ diskspace27=0
 
 while true; do
 
-  # GDrive
-  if [[ $(rclone lsd --config /opt/appdata/plexguide/rclone.conf gdrive: | grep "\<plexguide\>") == "" ]]; then
-    echo "🔴 Not Operational " >/var/plexguide/pg.gdrive
-  else echo "✅ Operational " >/var/plexguide/pg.gdrive; fi
+  gdrivecheck=$(systemctl is-active gdrive)
+  gcryptcheck=$(systemctl is-active gcrypt)
+  tdrivecheck=$(systemctl is-active tdrive)
+  tcryptcheck=$(systemctl is-active tcrypt)
+  pgunioncheck=$(systemctl is-active pgunion)
+  pgblitzcheck=$(systemctl is-active pgblitz)
 
-  if [[ $(ls -la /mnt/gdrive | grep "plexguide") == "" ]]; then
+  # Todo remove the dupes or change to crypt once PGUI is updated
+
+  if [[ "$gdrivecheck" != "active" ]]; then
+    echo "🔴 Not Operational" >/var/plexguide/pg.gdrive
+  else echo "✅ Operational" >/var/plexguide/pg.gdrive; fi
+
+  if [[ "$gdrivecheck" != "active" ]]; then
     echo "🔴 Not Operational" >/var/plexguide/pg.gmount
   else echo "✅ Operational" >/var/plexguide/pg.gmount; fi
 
-  # TDrive
-  if [[ $(rclone lsd --config /opt/appdata/plexguide/rclone.conf tdrive: | grep "\<plexguide\>") == "" ]]; then
-    echo "🔴 Not Operational" >/var/plexguide/pg.tdrive
+  if [[ "$tdrivecheck" != "active" ]]; then
+    echo "🔴 Not Operational " >/var/plexguide/pg.tdrive
   else echo "✅ Operational" >/var/plexguide/pg.tdrive; fi
 
-  if [[ $(ls -la /mnt/tdrive | grep "plexguide") == "" ]]; then
+  if [[ "$tdrivecheck" != "active" ]]; then
     echo "🔴 Not Operational " >/var/plexguide/pg.tmount
   else echo "✅ Operational" >/var/plexguide/pg.tmount; fi
 
-  # Union
-  if [[ $(rclone lsd --config /opt/appdata/plexguide/rclone.conf pgunion: | grep "\<plexguide\>") == "" ]]; then
+  if [[ "$pgunioncheck" != "active" ]]; then
     echo "🔴 Not Operational " >/var/plexguide/pg.union
-  else echo "✅ Operational" >/var/plexguide/pg.union; fi
+  else echo "✅ Operational " >/var/plexguide/pg.union; fi
 
-  if [[ $(ls -la /mnt/unionfs | grep "plexguide") == "" ]]; then
+  if [[ "$pgunioncheck" != "active" ]]; then
     echo "🔴 Not Operational " >/var/plexguide/pg.umount
   else echo "✅ Operational " >/var/plexguide/pg.umount; fi
 
-  # Disk Calculations - 4000000 = 4GB
+  # Disk Calculations - 5000000 = 5GB
 
   leftover=$(df /opt/appdata/plexguide | tail -n +2 | awk '{print $4}')
 
-  if [[ "$leftover" -lt "3000000" ]]; then
+  if [[ "$leftover" -lt "5000000" ]]; then
     diskspace27=1
-    echo "Emergency: Primary DiskSpace Under 3GB - Stopped Media Programs & Downloading Programs (i.e. Plex, NZBGET, RuTorrent)" >/opt/appdata/plexguide/emergency/message.1
-    docker stop plex 1>/dev/null 2>&1
-    docker stop emby 1>/dev/null 2>&1
-    docker stop jellyfin 1>/dev/null 2>&1
+    echo "Emergency: Primary DiskSpace Under 5GB - Stopped Downloading Programs (i.e. NZBGET, RuTorrent)" >/opt/appdata/plexguide/emergency/message.1
     docker stop nzbget 1>/dev/null 2>&1
     docker stop sabnzbd 1>/dev/null 2>&1
     docker stop rutorrent 1>/dev/null 2>&1
@@ -63,9 +66,6 @@ while true; do
     docker stop jdownloader2 1>/dev/null 2>&1
     docker stop jd2-openvpn 1>/dev/null 2>&1
   elif [[ "$leftover" -gt "3000000" && "$diskspace27" == "1" ]]; then
-    docker start plex 1>/dev/null 2>&1
-    docker start emby 1>/dev/null 2>&1
-    docker start jellyfin 1>/dev/null 2>&1
     docker start nzbget 1>/dev/null 2>&1
     docker start sabnzbd 1>/dev/null 2>&1
     docker start rutorrent 1>/dev/null 2>&1
@@ -98,7 +98,7 @@ while true; do
   if [[ -f "/var/plexguide/portainer.cname" ]]; then
     cname=$(cat "/var/plexguide/portainer.cname")
   fi
-  
+
   wget -q "https://${cname}.${domain}" -O "/opt/appdata/plexguide/traefik.check"
   if [[ $(cat /opt/appdata/plexguide/traefik.check) == "" && $(docker ps --format '{{.Names}}' | grep traefik) == "traefik" ]]; then
     echo "Traefik is Not Deployed Properly! Cannot Reach the Portainer SubDomain!" >/opt/appdata/plexguide/emergency/message.c
