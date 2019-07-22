@@ -30,9 +30,9 @@ startscript() {
                 du -sh /mnt/move | awk '{print $1}' >>/var/plexguide/spaceused.log
                 du -sh /mnt/downloads | awk '{print $1}' >>/var/plexguide/spaceused.log
 
-                echo "Used Traffic | last 3 days" >>/var/plexguide/logs/trafficused.log
+                echo "Used Traffic | last 7 days" >>/var/plexguide/logs/trafficused.log
 
-                vnstat -d | tail -n 5 | head -n 3 >>/var/plexguide/logs/trafficused.log
+                vnstat -d | tail -n 5 | head -n 7 >>/var/plexguide/logs/trafficused.log
 
                 #used space of incomplete
 
