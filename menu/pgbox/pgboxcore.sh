@@ -224,7 +224,7 @@ EOF
     elif [ "$p" == "nzbthrottle" ]; then nzbt; fi
 
     # Store Used Program
-    echo $p >/tmp/program_var
+    echo "$p" >/tmp/program_var
     # Execute Main Program
     ansible-playbook /opt/coreapps/apps/$p.yml
 
