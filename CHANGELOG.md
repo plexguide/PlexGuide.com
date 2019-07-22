@@ -2,6 +2,12 @@
 
 All notable changes to the core project will be added to this repo. For changes to PGClone, see [PGClone Changelog](https://github.com/PGBlitz/PGClone/blob/v8.6/CHANGELOG.md).
 
+## [8.7.5] - 2019-07-22
+
+**Bugfixes**
+
+- Fixes cname issues when rebuilding traefik
+
 ## [8.7.4] - 2019-07-21
 
 **Bugfixes**
