@@ -63,6 +63,7 @@ EOF
       docker rm pgui
       service localspace stop
       rm -f /etc/systemd/system/localspace.servive
+      rm -f /etc/systemd/system/localspace.service
     else
       echo "On" >/var/plexguide/pgui.switch
       bash /opt/plexguide/menu/pgcloner/solo/pgui.sh

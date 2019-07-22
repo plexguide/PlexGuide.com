@@ -193,9 +193,9 @@ question2() {
     echo "$p" >/tmp/program_var
 
     bash /opt/coreapps/apps/image/_image.sh
-    
-     # CName & Port Execution
-     bash /opt/plexguide/menu/pgbox/cname.sh
+
+    # CName & Port Execution
+    bash /opt/plexguide/menu/pgbox/cname.sh
   done </var/plexguide/pgbox.buildup
 
   # Cron Execution
