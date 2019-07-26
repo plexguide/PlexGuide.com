@@ -32,7 +32,7 @@ startscript() {
 
                 echo "Used Traffic | last 7 days" >>/var/plexguide/logs/trafficused.log
 
-                vnstat -d | tail -n 5 | head -n 7 >>/var/plexguide/logs/trafficused.log
+                vnstat -d | tail -n 10 | head -n 8 >>/var/plexguide/logs/trafficused.log
 
                 #used space of incomplete
 
