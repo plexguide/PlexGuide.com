@@ -263,8 +263,10 @@ quote47() {
 }
 
 quote48() {
-    echo "I've got a new recipeeeeeee!" >/var/plexguide/startup.quote
-    echo "                                         Ignis Scientia - Final Fantasy XV" >/var/plexguide/startup.source
+    echo "I know you're like me. When you see somebody walking down the street 
+wearing a Superman t-shirt, you just want to shoot them in the chest. And when
+they start to bleed go, \"I guess not\"." >/var/plexguide/startup.quote
+    echo "                                                 Dane Cook ~ Comedian" >/var/plexguide/startup.source
 }
 
 quote49() {
@@ -397,6 +399,22 @@ pillow was gone." >/var/plexguide/startup.quote
     echo "                                                 Cooper ~ British Comedian" >/var/plexguide/startup.source
 }
 
+quote71() {
+    echo "Do you want ants?! Because that's how you get ants!" >/var/plexguide/startup.quote
+    echo "                                                 Malory Archer ~ Archer (2009)" >/var/plexguide/startup.source
+}
+
+quote72() {
+    echo "Seriously Lana, call Kenny Loggins cause you're in the... danger zone." >/var/plexguide/startup.quote
+    echo "                                                 Sterling Archer ~ Archer (2009)" >/var/plexguide/startup.source
+}
+
+quote73() {
+    echo "Sir, that stolen lemur bit one of your prostitutes right in the face.
+   And she says she can't go to a hospital because she's, I quote, \"tripping balls\"." >/var/plexguide/startup.quote
+    echo "                                                 Woodhouse ~ Archer (2009)" >/var/plexguide/startup.source
+}
+
 # END FUNCTIONS ################################################################
-num=$(echo $(($RANDOM % 71)))
+num=$(echo $(($RANDOM % 74)))
 quote$num
