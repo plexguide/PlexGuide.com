@@ -7,5 +7,5 @@
       git:
         repo: "https://github.com/PGBlitz/Install"
         dest: "/pg/pgstage"
-        version: "v8.5"
+        version: "v1"
         force: yes
