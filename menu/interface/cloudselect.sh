@@ -24,9 +24,9 @@ read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     echo gce > /pg/var/type.choice
-    bash /pg/pgblitz/pgcloner/blitzgce.sh
+    bash /pg/stage/pgcloner/blitzgce.sh
 elif [ "$typed" == "2" ]; then
-    bash /pg/pgblitz/pgcloner/hetzner.sh
+    bash /pg/stage/pgcloner/hetzner.sh
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
     exit
 else
