@@ -2,8 +2,7 @@
 ###############################################################################
 # Title: PlexGuide | PGBlitz (  PG System Tweaker )
 #
-# Author(s): 	Admin9705 
-# Coder : 	MrDoob - freelance Coder 
+# Author(s): 	Admin9705  - MrDoob
 # URL: 		https://pgblitz.com
 # Base :	http://github.pgblitz.com
 # GNU: General Public License v3.0E
@@ -15,16 +14,16 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-echo "Upgdating packages" 
+echo "Upgdating packages"
 	apt-get update -yqq 2>&1 >> /dev/null
 		export DEBIAN_FRONTEND=noninteractive
 echo "Upgrading packages"
 	apt-get upgrade -yqq 2>&1 >> /dev/null
 		export DEBIAN_FRONTEND=noninteractive
-echo "Dist-Upgrading packages"   
+echo "Dist-Upgrading packages"
 	apt-get dist-upgrade -yqq 2>&1 >> /dev/null
 		export DEBIAN_FRONTEND=noninteractive
-echo "Autoremove old Updates"    
+echo "Autoremove old Updates"
 	apt-get autoremove -yqq 2>&1 >> /dev/null
 		export DEBIAN_FRONTEND=noninteractive
 echo "install complete"
@@ -62,7 +61,7 @@ if [ "$typed" == "1" ]; then
       sed -i '$a\' /etc/crontab
       sed -i '$a\#################################' /etc/crontab
       sed -i '$a\##	PG Network tweak	  ' /etc/crontab
-      sed -i '$a\#################################' /etc/crontab 
+      sed -i '$a\#################################' /etc/crontab
       sed -i '$a\@reboot ethtool -K '$network' tso off tx off\' /etc/crontab
       sleep 2
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -70,7 +69,7 @@ if [ "$typed" == "1" ]; then
         echo " ✅ PASSED ! Network Tweak done"
         echo " ✅ PASSED ! crontab line added"
         echo ""
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && sleep 10    
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && sleep 10
 
 elif [ "$typed" == "2" ]; then
       sudo sysctl vm.swappiness=0
@@ -88,7 +87,7 @@ elif [ "$typed" == "2" ]; then
         echo " ✅ PASSED ! Docker swappiness offline"
         echo " ✅ PASSED ! systctl edit"
         echo ""
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && sleep 10      
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && sleep 10
 
 elif [ "$typed" == "3" ]; then
 username=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
@@ -98,7 +97,7 @@ username=$(grep "1000" /etc/passwd | cut -d: -f1 | awk '{print $1}')
         sed -i 's/rotate 4/rotate 1/g' /etc/logrotate.conf
 
         sleep 2
-		
+
         sed -i '$a\ ' /etc/logrotate.conf
         sed -i '$a\########################################' /etc/logrotate.conf
         sed -i '$a\##    PGBlitz Upload logrotate          ' /etc/logrotate.conf
@@ -162,4 +161,3 @@ else
 fi
 bash /pg/pgblitz/menu/tools/tools.sh
 exit
-

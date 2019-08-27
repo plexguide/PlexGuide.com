@@ -27,10 +27,10 @@ cat << "EOF"
 │ Star PG:        github.pgblitz.com  │
 │ Donate:         donate.pgblitz.com  │
 │ ————————————————————————————————————│
-│ Restart PGBlitz:          pgblitz   │
-│ Update  PGBlitz:          pgupdate  │
-│ View the PG Blitz Logs:   blitz     │
-│ Download Your PG Fork:    pgfork    │
+│ Restart PGBlitz:        pgblitz     │
+│ Update  PGBlitz:        pgupdate    │
+│ View the PG Blitz Logs: pgtransfer  │
+│ Download Your PG Fork:  pgfork      │
 │ ————————————————————————————————————│
 │ Thanks For Being Part of the Team   │
 └─────────────────────────────────────┘

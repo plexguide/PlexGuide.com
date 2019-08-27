@@ -1,8 +1,7 @@
 #!/bin/bash
 #
 # Title:      PGBlitz (Hetzner iGPU / GPU)
-# Author(s):  Admin9705 - Deiteq - Sub7Seven
-# Coder :     MrDoob | Freelaancer Coder TechLead
+# Author(s):  Admin9705 - Deiteq - MrDoob
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
@@ -29,7 +28,7 @@ echo "install vainfo"
         export DEBIAN_FRONTEND=noninteractive
 apt-get install lsb-release -yqq 2>&1 >> /dev/null
 	export DEBIAN_FRONTEND=noninteractive
-echo "install complete"	
+echo "install complete"
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -102,7 +101,7 @@ elif [ "$typed" == "4" ]; then
 
 	GPU=$(lspci | grep VGA | cut -d ":" -f3);RAM=$(cardid=$(lspci | grep VGA |cut -d " " -f1);lspci -v -s $cardid | grep " prefetchable"| cut -d "=" -f2)
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-	echo $GPU $RAM	
+	echo $GPU $RAM
 	echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         apt-get autoremove -yqq 2>&1 >> /dev/null
                 export DEBIAN_FRONTEND=noninteractive
@@ -115,4 +114,4 @@ else
 fi
 
 bash /pg/pgblitz/menu/tools/tools.sh
-exit	
+exit

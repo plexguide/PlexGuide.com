@@ -1,8 +1,7 @@
 #!/bin/bash
 #
 # Title:      PGBlitz (PG DNS chnager)
-# Author(s):  Admin9705 - Deiteq - Sub7Seven
-# Coder :     MrDoob | Freelaancer Coder TechLead
+# Author(s):  Admin9705 - Deiteq - MrDoob
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
@@ -13,19 +12,19 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-echo "Upgdating packages" 
+echo "Upgdating packages"
 	apt-get update -yqq > /dev/null
 echo "Upgrading packages"
 	apt-get upgrade -yqq > /dev/null
-echo "Dist-Upgrading packages"   
+echo "Dist-Upgrading packages"
 	apt-get dist-upgrade -yqq > /dev/null
-echo "Autoremove old Updates"    
+echo "Autoremove old Updates"
 	apt-get autoremove -yqq > /dev/null
 echo "install complete"
 
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 PG DNS ( resolv.conf ) changer 
+🚀 PG DNS ( resolv.conf ) changer
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [1] Google DNS IPv4
@@ -65,17 +64,17 @@ elif [ "$typed" == "4" ]; then
 	sed -i '$a\nameserver 1.1.1.1\' /etc/resolv.conf
 	sed -i '$a\nameserver 1.0.0.1\' /etc/resolv.conf
 	sed -i '$a\nameserver 2606:4700:4700::1111\' /etc/resolv.conf
-	sed -i '$a\nameserver 2606:4700:4700::1001\' /etc/resolv.conf	
+	sed -i '$a\nameserver 2606:4700:4700::1001\' /etc/resolv.conf
 elif [ "$typed" == "5" ]; then
 	sed -i '/nameserver/s/^#*/#/g' /etc/resolv.conf
 	sed -i '/nameserver/s/^#*/#/g' /etc/resolv.conf
 	sed -i '$a\nameserver 208.67.222.222\' /etc/resolv.conf
 	sed -i '$a\nameserver 208.67.220.220\' /etc/resolv.conf
-elif [ "$typed" == "6" ]; then		
+elif [ "$typed" == "6" ]; then
 	sed -i '/nameserver/s/^#*/#/g' /etc/resolv.conf
 	sed -i '/nameserver/s/^#*/#/g' /etc/resolv.conf
 	sed -i '$a\nameserver 8.26.56.26\' /etc/resolv.conf
-	sed -i '$a\nameserver 8.20.247.20\' /etc/resolv.conf		
+	sed -i '$a\nameserver 8.20.247.20\' /etc/resolv.conf
 elif [ "$typed" == "Z" ] || [ "$typed" == "z" ]; then
   exit
 else
