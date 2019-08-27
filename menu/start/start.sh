@@ -245,10 +245,10 @@ case $typed in
       bash /pg/pgblitz/menu/interface/settings.sh
       primestart ;;
     z )
-      bash /pg/pgblitz/menu/interface/ending.sh
+      bash /pg/stage/files/ending.sh
       exit ;;
     Z )
-      bash /pg/pgblitz/menu/interface/ending.sh
+      bash /pg/stage/files/ending.sh
       exit ;;
     * )
       primestart ;;
