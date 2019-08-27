@@ -184,7 +184,7 @@ EOF
     capacity_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $2}')
     percentage_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $5}')
 
-    if [[ "$disktwo" != "/mnt" ]]; then
+    if [[ "$disktwo" != "/pg" ]]; then
     echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"; fi
   fi
 
