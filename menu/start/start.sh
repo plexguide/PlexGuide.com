@@ -191,7 +191,7 @@ EOF
   # Declare Ports State
   ports=$(cat /pg/var/server.ports)
 
-  if [ "$ports" == "" ]; then ports="[OPEN] Ports "
+  if [ "$ports" == "" ]; then ports="[OPEN] Ports  "
 else ports="[CLOSED] Ports"; fi
 
 quoteselect
@@ -199,7 +199,7 @@ quoteselect
 tee <<-EOF
 
 [1]  Traefik   : Reverse Proxy   |  [6]  Press: Word Press Deployment
-[2]  Port Guard: $ports   |  [7]  Vault: Backup & Restore
+[2]  Port Guard: $ports  |  [7]  Vault: Backup & Restore
 [3]  Shield : Google Protection  |  [8]  Cloud: Deploy GCE & Hetzner
 [4]  Clone  : Mount Transport    |  [9]  Tools: Misc Products
 [5]  Box    : Apps ~ Programs    |  [10] Settings
