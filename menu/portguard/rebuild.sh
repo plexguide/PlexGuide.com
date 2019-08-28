@@ -37,7 +37,7 @@ tee <<-EOF
 
 EOF
 	sleep .5
-	bash /pg/apps/programs/$app/start.sh; fi
+	bash /pg/apps/programs/$app/start.sh
 done
 
 echo ""
