@@ -36,15 +36,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-	sleep 1
-	if [ -e "/pg/coreapps/apps/$app.yml" ]; then ansible-playbook /pg/coreapps/apps/$app.yml; fi
-	if [ -e "/pg/coreapps/communityapps/$app.yml" ]; then ansible-playbook /pg/communityapps/apps/$app.yml; fi
+	sleep .5
+	bash /pg/apps/programs/$app/start.sh; fi
 done
 
 echo ""
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅️  PortGuard - All Containers Rebuilt!
+✅️  PortGuard - Containers have been Reconfigured!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
