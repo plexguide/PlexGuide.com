@@ -218,7 +218,7 @@ case $typed in
       bash /pg/stage/pgcloner/traefik.sh
       primestart ;;
     2 )
-      bash /pg/pgblitz/menu/portguard/portguard.sh
+      bash /pg/stage/pgcloner/portguard.sh
       primestart ;;
     3 )
       bash /pg/stage/pgcloner/pgshield.sh
