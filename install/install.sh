@@ -1,32 +1,37 @@
 #!/bin/bash
 #
-# Title:      PGBlitz (Reference Title File)
-# Author(s):  Admin9705 - Deiteq
+# Author(s):  https://github.com/PGBlitz/PGBlitz.com/graphs/contributors
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-package="curl wget software-properties-common git nano htop mc lshw zip unzip dialog sudo"
 
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎  NOTICE: PGBlitz Version 9 - Installer
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-By installing, you agreeing to the terms and conditions of the GNUv3 License!
-Thanks To: You, the Linux Noobs, Sponsors, Supporters, Community & You!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Please Standby!
-EOF
-#sleep 4
+# List packages vital to the start process
+package="curl wget software-properties-common git nano intel-gpu-tools
+python-apt htop mc lshw zip unzip dialog sudo htop lshw fortune"
 
-# Delete If it Exist for Cloning
+# Presents the Users with a Quick Notice Prior to the Installation
+tee <<-NOTICE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌎  INSTALLING: PGBlitz v10 (PGX) by PLEXGUIDE.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+By installing the use of this product; you agree to the terms and conditions of
+the GNUv3 License.
+
+THANKS TO: The Community; past and present before you!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NOTICE
+
+# Generate a Pause
+sleep 3
+
+# Deletes Any Prior Copies of PGBlitz
 if [ -e "/pg/blitz" ]; then rm -rf /pg/blitz; fi
-if [ -e "/pg/stage" ]; then rm -rf /pg/stage; fi
-rm -rf /pg/stage/place.holder 1>/dev/null 2>&1
 
 # Make Critical Folders
-mkdir -p /pg /pg/logs /pg/data /pg/stage /pg/logs /pg/tmp /pg/var/install
-chmod 775 /pg /pg/logs /pg/data /pg/stage /pg/logs /pg/tmp /pg/var/install
-chown 1000:1000 /pg /pg/logs /pg/data /pg/stage /pg/logs /pg/tmp /pg/var/install
+mkdir -p /pg /pg/logs /pg/data /pg/logs /pg/tmp /pg/var/install
+chmod 775 /pg /pg/logs /pg/data /pg/logs /pg/tmp /pg/var/install
+chown 1000:1000 /pg /pg/logs /pg/data /pg/logs /pg/tmp /pg/var/install
 rm -rf /pg/var/first.update 1>/dev/null 2>&1
 
 # Clone the Program to Stage for Installation
