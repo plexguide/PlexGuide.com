@@ -38,17 +38,17 @@ EOF
   read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
     watchtowergen
-    ansible-playbook /pg/coreapps/apps/watchtower.yml
+    ansible-playbook /pg/apps/programs/watchtower/app.yml
     echo "1" > /pg/var/watchtower.wcheck
   elif [ "$typed" == "2" ]; then
     watchtowergen
     sed -i -e "/plex/d" /pg/tmp/watchtower.set 1>/dev/null 2>&1
     sed -i -e "/emby/d" /pg/tmp/watchtower.set 1>/dev/null 2>&1
-    ansible-playbook /pg/coreapps/apps/watchtower.yml
+    ansible-playbook /pg/apps/programs/watchtower/app.yml
     echo "2" > /pg/var/watchtower.wcheck
   elif [ "$typed" == "3" ]; then
     echo null > /pg/tmp/watchtower.set
-    ansible-playbook /pg/coreapps/apps/watchtower.yml
+    ansible-playbook /pg/apps/programs/watchtower/app.yml
     echo "3" > /pg/var/watchtower.wcheck
   elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
     if [ "$wexit" == "0" ]; then
@@ -69,13 +69,13 @@ EOF
 else
   # If "easy == on", this results in a quick install of watchtower
   watchtowergen
-  ansible-playbook /pg/coreapps/apps/watchtower.yml
+  ansible-playbook /pg/apps/programs/watchtower/app.yml
   echo "1" > /pg/var/watchtower.wcheck
 fi
 }
 
 watchtowergen () {
-  bash /pg/coreapps/apps/_appsgen.sh
+  bash /pg/apps/_appsgen.sh
   while read p; do
     echo -n $p >> /pg/tmp/watchtower.set
     echo -n " " >> /pg/tmp/watchtower.set
