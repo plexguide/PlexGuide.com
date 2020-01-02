@@ -42,8 +42,8 @@ EOF
     echo "1" > /pg/var/watchtower.wcheck
   elif [ "$typed" == "2" ]; then
     watchtowergen
-    sed -i -e "/plex/d" /pg/tmp/watchtower.set 1>/dev/null 2>&1
-    sed -i -e "/emby/d" /pg/tmp/watchtower.set 1>/dev/null 2>&1
+    sed -i "s/plex //g" /pg/tmp/watchtower.set 1>/dev/null 2>&1
+    sed -i "s/emby //g" /pg/tmp/watchtower.set 1>/dev/null 2>&1
     ansible-playbook /pg/apps/programs/watchtower/app.yml
     echo "2" > /pg/var/watchtower.wcheck
   elif [ "$typed" == "3" ]; then
@@ -75,6 +75,7 @@ fi
 }
 
 watchtowergen () {
+  rm /pg/tmp/watchtower.set
   bash /pg/apps/_appsgen.sh
   while read p; do
     echo -n $p >> /pg/tmp/watchtower.set
