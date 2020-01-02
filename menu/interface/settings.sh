@@ -42,6 +42,7 @@ case $typed in
       bash /pg/pgblitz/menu/processor/processor.sh
       setstart ;;
     4 )
+      source /pg/pgblitz/menu/watchtower/watchtower.sh
       watchtower ;;
     5 )
       dpkg-reconfigure tzdata ;;
