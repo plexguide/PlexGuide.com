@@ -2,8 +2,8 @@
 # URL:        PlexGuide.com / PGBlitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-mkdir -p /pg/mods/functions
-rm -rf /pgstage
+mkdir -p /pg
+rm -rf /pgstage /pg/mods
 git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pgstage
 cp /pgstage/* /pg/
 
