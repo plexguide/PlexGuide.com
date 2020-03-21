@@ -1,0 +1,31 @@
+install_agree() {
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️ READ THIS NOTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PlexGuide.com advises that while utilizing PG, there is an inhert risk that your data
+may be lost if you do not control your own GSuite Account; the Education Edition
+or utilizing a reseller's GSuite Account. Be smart and control your OWN data!
+
+You may also lose any data if you share out your account to anyone! You have been
+warned!
+
+PlexGuide.com advises that when you are installing PG, you fully understand the risk
+that all of your data mounted on your Google Drive may be removed from Google if
+you are not adhering to the GSuite Business Terms of Service and/or utilizing an
+GSuite Education account.
+
+PlexGuide.com wishes to advise that in  installing PG you accept the risk of
+any data being transferred to your mounted Google Drive account being
+removed by Google if you are illegally using an Education account
+or not adhering to the Gsuite Business Terms of Service
+by having less than 5 users.
+
+We do not condone or support the use of education accounts specifically
+and we can refuse support at our discretion
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+common_confirm
+}

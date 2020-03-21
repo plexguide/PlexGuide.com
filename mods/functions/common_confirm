@@ -1,0 +1,4 @@
+common_confirm() {
+  echo 
+  read -p 'Confirm Information | PRESS [ENTER] ' typed </dev/tty
+}
