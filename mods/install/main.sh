@@ -4,7 +4,7 @@
 ################################################################################
 mkdir -p /pg/mods/functions
 rm -rf /pgstage
-git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.git /pgstage
+git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pgstage
 cp /pgstage/* /pg/
 
 bash /pg/mods/functions/.create.sh
