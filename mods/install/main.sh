@@ -2,6 +2,7 @@
 # URL:        PlexGuide.com / PGBlitz.com
 # GNU:        General Public License v3.0
 ################################################################################
+mkdir -p /pg/mods/functions
 bash /pg/mods/functions/.create.sh
 read /pg/mods/functions/.master.sh
 ################################################################################
