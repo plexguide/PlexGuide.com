@@ -2,7 +2,7 @@
 # URL:        PlexGuide.com / PGBlitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-mkdir -p /pg/mods/functions
+#mkdir -p /pg/mods/functions
 git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.git /pg/
 
 bash /pg/mods/functions/.create.sh
