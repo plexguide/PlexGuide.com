@@ -3,7 +3,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 mkdir -p /pg/mods/functions
-rm -rf /pg/pgstage
+rm -rf /pgstage
 git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.git /pg/pgstage
 cp /pg/pgstage/* /pg/
 
