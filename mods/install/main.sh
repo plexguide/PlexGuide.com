@@ -3,14 +3,12 @@
 # GNU:        General Public License v3.0
 ################################################################################
 mkdir -p /pg
-rm -rf /pgstage /pg/mods
-git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pgstage
-mv -f /pgstage/* /pg/
+rm -rf /pg/blitz
+git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pg/blitz
 
-bash /pg/mods/functions/.create.sh
-read /pg/mods/functions/.master.sh
+bash /pg/blitz/mods/functions/.create.sh
+read /pg/blitz/mods/functions/.master.sh
 ################################################################################
-
 
 install_sudocheck
 install_agree
