@@ -5,7 +5,7 @@
 mkdir -p /pg
 rm -rf /pgstage /pg/mods
 git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pgstage
-cp /pgstage/* /pg/
+mv /pgstage/* /pg/
 
 bash /pg/mods/functions/.create.sh
 read /pg/mods/functions/.master.sh
