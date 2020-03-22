@@ -1,9 +1,11 @@
 install_oscheck() {
 
+	a=0
 	common_header "⌛ Conducting OS Check!"
 
 	versioncheck=$(cat /etc/*-release | grep "Ubuntu" | grep -E '19')
 	  if [[ "$versioncheck" == "19" ]]; then
+			a=1
 common_message "⛔️  WARNING: OS Check" "
 Supported: UB 16-18 and Debian 9 & 10
 
@@ -13,4 +15,7 @@ PRESS CTRL+Z to STOP the Installation
 "
 			common_timer "10" ## setback to 10
 	  fi
+
+## If Passed with No Issues
+		if [[ "$a" == "0" ]]; then common_header "⌛ Conducting OS Check!"; fi
 }
