@@ -1,6 +1,6 @@
 install_pyansible() {
 
-  common_header "✅ Ansible & Python Requirements Installed!"; sleep 2
+  common_header "⌛ Ansible & Python Installing!"; sleep 2
 
   ## Constants
   readonly SYSCTL_PATH="/etc/sysctl.conf"
