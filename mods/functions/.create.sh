@@ -2,7 +2,8 @@
 # URL:        PlexGuide.com / PGBlitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-// if DOESNT EXIST //
+
+## if DOESNT EXIST ## avoid replicating # note
 
 pgfunctions="/pg/mods/functions"
 

@@ -5,8 +5,8 @@
 mkdir -p /pg/tmp
 rm -rf /pg/mods
 rm -rf /pg/tmp/checkout
-git clone -b alpha --no--checkout single-branch https://github.com/PGBlitz/PGBlitz.com.git /pg/tmp
-mv -f /pg/tmp/mods /pg
+git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pg/tmp/checkout
+mv -f /pg/tmp/checkout/mods /pg
 
 bash /pg/blitz/mods/functions/.create.sh
 source /pg/blitz/mods/functions/.master.sh
