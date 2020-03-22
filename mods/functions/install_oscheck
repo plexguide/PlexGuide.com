@@ -20,7 +20,7 @@ PRESS CTRL+Z to STOP the Installation
 
 		rm -f "$pgvar"/os
 		mkdir -p "$pgvar"
-		echo -e "$(lsb_release -si)" >"$pgvar"/os
+		echo -e "$(lsb_release -si)" >"$pgvar"/os.var
 
 		if [[ $(lsb_release -si) == "Apple" ]]; then
 			add-apt-repository main >/dev/null 2>&1
