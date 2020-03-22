@@ -17,5 +17,5 @@ PRESS CTRL+Z to STOP the Installation
 	  fi
 
 ## If Passed with No Issues
-		if [[ "$a" == "0" ]]; then common_header "⌛ Conducting OS Check!"; fi
+		if [[ "$a" == "0" ]]; then common_header "✅ OS - No Issues Detected!"; common_timer "2"; fi
 }

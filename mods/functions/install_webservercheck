@@ -20,7 +20,5 @@ install_webservercheck() {
 	        apt-get autoclean -yqq >/dev/null 2>&1
 	else a=b; fi
 
-	common_header "✅ Existing webserver check is completed!"
-	common_timer "3"
-
+	common_header "✅ Existing webserver check is completed!"; common_timer "2"
 }
