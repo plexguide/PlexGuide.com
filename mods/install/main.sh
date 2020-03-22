@@ -11,7 +11,7 @@ git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /p
 mv -f /pg/tmp/checkout/mods /pg
 
 ## Create & Establish Functions Process
-$pgfunctions="/pg/mods/functions"
+pgfunctions="/pg/mods/functions"
 bash "$pgfunctions"/.create.sh
 source "$pgfunctions"/.master.sh
 ################################################################################
