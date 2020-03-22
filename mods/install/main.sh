@@ -22,10 +22,9 @@ source /pg/mods/functions/.master.sh
 
 install_sudocheck
 
-common_message "⛔️ READ THIS NOTE" "
-PlexGuide.com advises that while utilizing PG, there is an inhert risk that
-your data may be lost if you fail to control your own GSuite Account; Control
-your OWN data! You've been warned!"
-common_confirm
+common_message "🌎 INSTALLING: PlexGuide.com GNUv3 License" "
+By Installing PlexGuide, you are agreeing to the terms and conditions of the
+GNUv3 License!"
+common_timer "3"
 
 echo "HALTED"
