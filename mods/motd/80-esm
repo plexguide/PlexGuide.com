@@ -1,0 +1,24 @@
+#!/bin/sh
+
+SERIES=$(lsb_release -cs)
+DESCRIPTION=$(lsb_release -ds)
+
+[ "$SERIES" = "precise" ] || exit 0
+
+[ -x /usr/bin/ubuntu-advantage ] || exit 0
+
+if ubuntu-advantage is-esm-enabled; then
+    cat <<EOF
+This ${DESCRIPTION} system is configured to receive extended security updates
+from Canonical:
+ * https://www.ubuntu.com/esm
+EOF
+else
+    cat <<EOF
+This ${DESCRIPTION} system is past its End of Life, and is no longer
+receiving security updates.  To protect the integrity of this system, it’s
+critical that you enable Extended Security Maintenance updates:
+ * https://www.ubuntu.com/esm
+EOF
+fi
+echo

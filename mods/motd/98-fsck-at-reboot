@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -x /usr/lib/update-notifier/update-motd-fsck-at-reboot ]; then
+    exec /usr/lib/update-notifier/update-motd-fsck-at-reboot
+fi

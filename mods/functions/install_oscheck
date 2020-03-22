@@ -43,5 +43,4 @@ PRESS CTRL+Z to STOP the Installation
 common_confirm; fi
 
 ## ISSUES: None
-		if [[ "$a" == "0" ]]; then common_header "✅ OS - No Issues Detected!"; sleep 2; fi
-}
+19.1.1}

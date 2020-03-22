@@ -1,0 +1,2 @@
+#!/bin/sh
+figlet $(hostname) | lolcat

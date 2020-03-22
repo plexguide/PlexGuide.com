@@ -1,0 +1,88 @@
+#!/bin/bash
+
+# get load averages
+IFS=" " read LOAD1 LOAD5 LOAD15 <<<$(cat /proc/loadavg | awk '{ print $1,$2,$3 }')
+# get free memory
+IFS=" " read USED FREE TOTAL <<<$(free -htm | grep "Mem" | awk {'print $3,$6,$2'})
+# get processes
+PROCESS=$(ps -eo user= | sort | uniq -c | awk '{ print $2 " " $1 }')
+PROCESS_ALL=$(echo "$PROCESS" | awk {'print $2'} | awk '{ SUM += $1} END { print SUM }')
+PROCESS_ROOT=$(echo "$PROCESS" | grep root | awk {'print $2'})
+PROCESS_USER=$(echo "$PROCESS" | grep -v root | awk {'print $2'} | awk '{ SUM += $1} END { print SUM }')
+# get processors
+PROCESSOR_NAME=$(grep "model name" /proc/cpuinfo | cut -d ' ' -f3- | awk {'print $0'} | head -1)
+PROCESSOR_COUNT=$(grep -ioP 'processor\t:' /proc/cpuinfo | wc -l)
+IP_ADDRESS=$(ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/)
+
+NTCARD=$(ifconfig | grep -E 'eno1|enp|ens5' | awk '{print $1}' | sed -e 's/://g')
+DOCKER=$(systemctl is-active docker)
+DOCKER2=$(docker --version | awk '{print $3}')
+UNIONFS=$(systemctl is-active pgunion)
+
+#PG=$(cat /var/plexguide/pg.number)
+HSTNAME=$(cat /etc/hostname)
+
+###storage local part
+mntused=$(df -h /mnt | awk '{ a = $3 } END { print a }')
+mntavi=$(df -h /mnt | awk '{ a = $4 } END { print a }')
+mntpercent=$(df -h | awk '{if($(NF) == "/mnt") {print $(NF-1); exit;}}')
+
+baseused=$(df -h / | awk '{ a = $3 } END { print a }')
+baseavi=$(df -h / | awk '{ a = $4 } END { print a }')
+basepercent=$(df -h | awk '{if($(NF) == "/") {print $(NF-1); exit;}}')
+
+#google hack for loginshell
+
+#tdrive=$(tail -n 1 /var/plexguide/tduncrypt.log)
+#gdrive=$(tail -n 1 /var/plexguide/gduncrypt.log)
+#tcrypt=$(tail -n 1 /var/plexguide/tdcrypt.log)
+#gcrypt=$(tail -n 1 /var/plexguide/gdcrypt.log)
+
+wisword=$(/usr/games/fortune -as | sed "s/^/ /")
+
+##security part
+#failledssh=$(cat /var/log/auth.log | grep -i "fail" | wc -l)
+#failledsshacc=$(head -n1 /var/log/auth.log | awk '{print $1, $2 ,$3 }')
+
+W="\e[0;39m"
+G="\e[1;32m"
+
+echo -e "
+${W}System information as of $(date) :
+
+$W  Hostname.......: $W$HSTNAME
+$W  Distro.........: $W$(lsb_release -s -d)
+$W  PG-Version....: $G$PG
+$W  Kernel.........: $W$(uname -sr)
+
+$W  Uptime.........: $W$(uptime -p)
+$W  Load...........: $G$LOAD1$W (1m) , $G$LOAD5$W (5m) , $G$LOAD15$W (15m)
+$W  Processes......: $W$G$PROCESS_ROOT$W (root) , $G$PROCESS_USER$W (user) , $G$PROCESS_ALL$W (total)
+
+$W  CPU............: $W$PROCESSOR_NAME
+$W  CPU-Cores......: $G$PROCESSOR_COUNT$W vCPU
+$W  Memory.........: $G$USED$W used , $G$FREE$W free, $G$TOTAL$W total $W
+$W  Network........: $G$IP_ADDRESS$W
+$W  Network-Card...: $G$NTCARD
+
+$W  Fail2ban
+$W  SSH.fails......: $G$failledssh
+$W  SSH.fails.since: $G$failledsshacc
+
+$W  Service Status
+$W  Docker..........: $W$DOCKER , v$G$DOCKER2
+$W  unionfs.........: $W$UNIONFS
+
+$W  Storage - Local
+$W  /...............: $W$baseused USED, $W$baseavi Avail, $W$basepercent
+$W  /mnt........... : $W$mntused USED, $W$mntavi Avail, $W$mntpercent
+
+$W  Storage - Cloud
+$W  GDrive | Uncrypted : $G$gdrive
+$W  SDrive | Uncrypted : $G$tdrive
+$W  GDrive | Crypted   : $G$gcrypt
+$W  SDrive | Crypted   : $G$tcrypt
+
+$W %++++++++++ WISE WORD OF THE DAY ++++++++++%
+$W $W$wisword
+$W %++++++++++ WISE WORD OF THE DAY ++++++++++%"

@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# config
+drives="sda sdb sdc"
+max_usage=90
+bar_width=50
+target_temp=22
+# colors
+white="\e[39m"
+green="\e[1;32m"
+red="\e[1;31m"
+dim="\e[2m"
+undim="\e[0m"
+
+# disk usage: ignore zfs, squashfs & tmpfs
+mapfile -t dfs < <(df -H -x fuse.rclone -x fuse.unionfs -x proc -x sys -x dev -x zfs -x squashfs -x tmpfs -x devtmpfs --output=target,pcent,size,avail,used | tail -n+2)
+printf "\n Storage:\n"
+
+for line in "${dfs[@]}"; do
+
+    if [[ $line =~ .*docker.* ]]; then
+        continue
+    fi
+
+    # get disk usage
+    usage=$(echo "$line" | awk '{print $2}' | sed 's/%//')
+    path=$(echo "$line" | awk '{print $1}' | sed 's/%//')
+    total=$(echo "$line" | awk '{print $3}' | sed 's/%//')
+    free=$(echo "$line" | awk '{print $4}' | sed 's/%//')
+    used=$(echo "$line" | awk '{print $5}' | sed 's/%//')
+    # color is green if usage < max_usage, else red
+    if [ "${usage}" -ge "${max_usage}" ]; then
+        color=$red
+    else
+        color=$green
+    fi
+
+    output+=$(echo " ${path} ${color}${used}${undim} used, ${color}${free}${undim} free, ${color}${total}${undim} total\n")
+
+#google hack for loginshell
+
+tdrive=$(tail -n 1 /var/plexguide/tduncrypt.log)
+gdrive=$(tail -n 1 /var/plexguide/gduncrypt.log)
+tcrypt=$(tail -n 1 /var/plexguide/tdcrypt.log)
+gcrypt=$(tail -n 1 /var/plexguide/gdcrypt.log)
+
+done
+printf "${output}" |
+    awk '{printf "  %.15s %s\n", $1 "............:", $2 " " $3 " " $4 " " $5 " " $6 " " $7}'
+
+echo ""
+
+echo "Google Cloud Used Space:"
+   echo""
+   echo "  GDrive  | uncrypted : " $gdrive
+   echo "  TDrive  | uncrypted : " $tdrive
+   echo ""
+   echo "  GDrive  | crypted   : " $gcrypt
+   echo "  TDrive  | crypted   : " $tcrypt

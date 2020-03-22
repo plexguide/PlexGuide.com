@@ -1,0 +1,93 @@
+#!/bin/sh
+
+UA=${UA:-"/usr/bin/ubuntu-advantage"}
+UA_STATUS_CACHE=${UA_STATUS_CACHE:-"/var/cache/ubuntu-advantage-tools/ubuntu-advantage-status.cache"}
+
+[ -x "$UA" ] || exit 0
+
+print_patch_state() {
+    local patch_state="$1"
+
+    case "$patch_state" in
+        unapplied)
+            echo "Patches are available, will be deployed shortly."
+            ;;
+        applied)
+            echo "All available patches applied."
+            ;;
+        applied-with-bug|apply-failed)
+            echo "Live patching failed, please run \`ubuntu-bug linux\` to report a bug."
+            ;;
+        nothing-to-apply)
+            echo "All available patches applied."
+            ;;
+        applying)
+            echo "Live patching currently in progress."
+            ;;
+        *)
+            echo "Unknown patch status. Please see /var/log/syslog for more information."
+            echo "     Status: \"$patch_state\""
+            ;;
+    esac
+}
+
+print_status() {
+    local check_state="$1"
+    local patch_state="$2"
+
+    echo -n "   - "
+    case "$check_state" in
+        needs-check)
+            echo "Regular server check is pending."
+            ;;
+        check-failed)
+            echo "Livepatch server check failed."
+            echo "     Please see /var/log/syslog for more information."
+            ;;
+        checked)
+            print_patch_state "$patch_state"
+            ;;
+        *)
+            echo "Unknown check status. Please see /var/log/syslog for more information."
+            echo "     Status: \"$check_state\""
+            ;;
+    esac
+}
+
+
+service_name="livepatch"
+# if there is no cache file yet (the cron job hasn't run yet), bail
+[ -s "$UA_STATUS_CACHE" ] || exit 0
+ua_status=$(cat "$UA_STATUS_CACHE")
+# if there is no livepatch section at all in the output, silently
+# bail
+has_livepatch=$(echo "${ua_status}" | grep "^${service_name}")
+[ -n "${has_livepatch}" ] || exit 0
+livepatch_status=$(echo "$ua_status"|grep ^${service_name}:|sed -r -n "s,^${service_name}: (.*)$,\\1,p")
+# only look for patchState and checkState inside the specific service
+# block in the status output
+patch_state=$(echo "$ua_status"|sed -r -n "/^${service_name}:/,/^\\S/s,^[[:blank:]]+patchState: (.*)$,\\1,p")
+check_state=$(echo "$ua_status"|sed -r -n "/^${service_name}:/,/^\\S/s,^[[:blank:]]+checkState: (.*)$,\\1,p")
+
+case "$livepatch_status" in
+    "disabled (not available)")
+        # do nothing
+        ;;
+    "enabled")
+        echo
+        echo " * Canonical Livepatch is enabled."
+        print_status "${check_state}" "${patch_state}"
+        ;;
+    "disabled")
+        echo
+        echo " * Canonical Livepatch is available for installation."
+        echo "   - Reduce system reboots and improve kernel security. Activate at:"
+        echo "     https://ubuntu.com/livepatch"
+        ;;
+    *)
+        echo
+        echo " * Canonical Livepatch is in an unknown state."
+        echo "   - Please see /var/log/syslog for more information."
+        echo "     Status: \"$livepatch_status\""
+        ;;
+esac
