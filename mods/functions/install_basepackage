@@ -1,21 +1,23 @@
 install_basepackage() {
 
+	common_header "⌛ Updating the Server - Standby!"
+
 	package_list="curl wget software-properties-common git zip unzip dialog sudo nano htop mc lshw ansible fortune intel-gpu-tools python-apt lolcat figlet"
-	echo -ne '             (0%)\r'
+	echo -ne '             (0  %)\r'
 	apt-get update -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-	echo -ne '##           (20%)\r'
+	echo -ne '##           (20 %)\r'
 	apt-get upgrade -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
 	apt-get dist-upgrade -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '####       (40%)\r'
+		echo -ne '####       (40 %)\r'
 	apt-get autoremove -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '######     (60%)\r'
+		echo -ne '######     (60 %)\r'
 	apt-get install $package_list -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '########   (80%)\r'
+		echo -ne '########   (80 %)\r'
 	apt-get purge unattended-upgrades -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
 		echo -ne '########## (100%)\r'; echo -ne '\n'
