@@ -33,6 +33,6 @@ common_timer "5"
 
 install_drivecheck
 
-echo "HALTED   "
+echo "HALTED - Install Check  "
 
 exit
