@@ -24,7 +24,10 @@ install_sudocheck
 
 common_message "🌎 INSTALLING: PlexGuide.com GNUv3 License" "
 By Installing PlexGuide, you are agreeing to the terms and conditions of the
-GNUv3 License!"
-common_timer "3"
+GNUv3 License!
+
+PRESS CTRL+Z to STOP the Installation
+"
+common_timer "5"
 
 echo "HALTED"
