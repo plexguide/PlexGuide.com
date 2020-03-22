@@ -1,7 +1,7 @@
 install_oscheck() {
 
 	a=0
-	common_header "⌛ Conducting OS Check!"
+	# common_header "⌛ Conducting OS Check!"
 
 	versioncheck=$(cat /etc/*-release | grep "Ubuntu" | grep -E '19')
 	  if [[ "$versioncheck" == "19" ]]; then
