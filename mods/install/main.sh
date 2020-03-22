@@ -8,8 +8,9 @@ rm -rf /pg/tmp/checkout
 git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pg/tmp/checkout
 mv -f /pg/tmp/checkout/mods /pg
 
-bash /pg/blitz/mods/functions/.create.sh
-source /pg/blitz/mods/functions/.master.sh
+$pgfunctions="/pg/mods/functions"
+bash "$pgfunctions"/.create.sh
+source "$pgfunctions"/.master.sh
 ################################################################################
 
 install_sudocheck
