@@ -13,6 +13,7 @@ mv -f /pg/tmp/checkout/mods /pg
 ## Install PG Test Command
 rm -rf /bin/install_test
 cp /pg/mods/cmds/install_test /bin/install_test
+chmod 775 /bin/install_test
 
 ## Create & Establish Functions Process
 bash /pg/mods/functions/.create.sh
