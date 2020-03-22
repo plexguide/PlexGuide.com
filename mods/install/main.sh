@@ -2,9 +2,10 @@
 # URL:        PlexGuide.com / PGBlitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-mkdir -p /pg
-rm -rf /pg/blitz
-git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pg/blitz
+mkdir -p /pg/tmp
+rm -rf /pg/mods
+rm -rf /pg/tmp/checkout
+git clone -b alpha --no--checkout single-branch https://github.com/PGBlitz/PGBlitz.com.git /pg/tmp
 
 bash /pg/blitz/mods/functions/.create.sh
 source /pg/blitz/mods/functions/.master.sh
