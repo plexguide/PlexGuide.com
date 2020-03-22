@@ -1,4 +1,4 @@
-install_package() {
+install_basepackage() {
 
 	package_list="curl wget software-properties-common git zip unzip dialog sudo nano htop mc lshw ansible fortune intel-gpu-tools python-apt lolcat figlet"
 	echo -ne '             (0%)\r'
