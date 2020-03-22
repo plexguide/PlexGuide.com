@@ -1,4 +1,4 @@
-install_webservercheck() {
+install_oscheck() {
 
 	versioncheck=$(cat /etc/*-release | grep "Ubuntu" | grep -E '19')
 	  if [[ "$versioncheck" == "19" ]]; then
