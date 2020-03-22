@@ -35,6 +35,7 @@ install_drivecheck
 install_webservercheck
 install_oscheck
 install_basepackage
+install_folders
 
 echo "HALTED - Install Check  "
 
