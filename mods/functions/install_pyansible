@@ -84,7 +84,7 @@ install_pyansible() {
   echo "nocows = 1" >>/etc/ansible/ansible.cfg
 
   # Variables Need to Line Up with pg.sh (start)
-  touch /var/plexguide/background.1
+  touch /pg/var/pyansible.log
 
   common_header "✅ Ansible & Python Requirements Installed!"; sleep 2
 
