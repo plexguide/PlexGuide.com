@@ -33,7 +33,7 @@ PRESS CTRL+Z to STOP the Installation
 			add-apt-repository restricted >/dev/null 2>&1
 			add-apt-repository multiverse >/dev/null 2>&1
 		  apt-add-repository --yes --update ppa:ansible/ansible >/dev/null 2>&1
-		elif [[ $(lsb_release -si) == "Rasbian" || $(lsb_release -si) == "Fedora" || $(lsb_release -si) == "CentOS" ]]; then
+		elif [[ $(lsb_release -si) == "Rasbian" || $(lsb_release -si) == "Ubuntu" || $(lsb_release -si) == "CentOS" ]]; then
 		a=1
 common_message "⛔️  WARNING: OS Check" "
 Supported: UB 16-18 and Debian 9 & 10
