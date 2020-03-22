@@ -21,18 +21,18 @@ PRESS CTRL+Z to STOP the Installation
 		mkdir -p "$pgvar"
 		echo -e "$(lsb_release -si)" >"$pgvar"/os.var
 
-		if [[ $(lsb_release -si) == "Apple" ]]; then
+		if [[ $(lsb_release -si) == "Debian" ]]; then
 			add-apt-repository main >/dev/null 2>&1
 			add-apt-repository non-free >/dev/null 2>&1
 			add-apt-repository contrib >/dev/null 2>&1
 			wget -qN https://raw.githubusercontent.com/MHA-Team/Install/master/source/ansible-debian-ansible.list /etc/apt/sources.list.d/
-		elif [[ $(lsb_release -si) == "Apple" ]]; then
+		elif [[ $(lsb_release -si) == "Ubuntu" ]]; then
 			add-apt-repository main >/dev/null 2>&1
 			add-apt-repository universe >/dev/null 2>&1
 			add-apt-repository restricted >/dev/null 2>&1
 			add-apt-repository multiverse >/dev/null 2>&1
 		  apt-add-repository --yes --update ppa:ansible/ansible >/dev/null 2>&1
-		elif [[ $(lsb_release -si) == "Rasbian" || $(lsb_release -si) == "Ubuntu" || $(lsb_release -si) == "CentOS" ]]; then
+		elif [[ $(lsb_release -si) == "Rasbian" || $(lsb_release -si) == "Fedora" || $(lsb_release -si) == "CentOS" ]]; then
 		a=1
 common_message "⛔️  WARNING: OS Check" "
 Supported: UB 16-18 and Debian 9 & 10
