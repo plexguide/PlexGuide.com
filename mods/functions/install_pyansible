@@ -53,11 +53,11 @@ install_pyansible() {
       netaddr
 
   ## Install pip2 Dependencies
-  python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+  python2 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
       pip==${PIP}
-  python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+  python2 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
       setuptools
-  python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+  python2 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
       pyOpenSSL \
       requests \
       netaddr \
