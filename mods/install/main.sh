@@ -28,7 +28,7 @@ data may be lost if you do not control your own GSuite Account; the Education
 Edition or utilizing a reseller's GSuite Account. Control your OWN data!
 
 May lose data if you share out your account to anyone! You've been warned!
-Visit https://plexguide.com "
+Visit https://plexguide.com 123"
 common_confirm
 
 echo "HALTED"
