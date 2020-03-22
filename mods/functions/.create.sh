@@ -26,5 +26,5 @@ EOF
 
 ## adds tempory information to complete master functions file
 while read p; do
-  echo "read $pgfunctions/$p" >> "$pgfunctions/.master.sh"
+  echo "source $pgfunctions/$p" >> "$pgfunctions/.master.sh"
 done </pg/blitz/mods/functions/.files.sh
