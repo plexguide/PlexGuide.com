@@ -29,7 +29,7 @@ GNUv3 License!
 If you have a chance to donate, please visit https://donate.plexguide.com
 PRESS CTRL+Z to STOP the Installation
 "
-common_timer "1" ## set back to 5
+common_timer "2" ## set back to 5
 
 install_drivecheck
 install_webservercheck
