@@ -11,9 +11,8 @@ git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /p
 mv -f /pg/tmp/checkout/mods /pg
 
 ## Create & Establish Functions Process
-pgfunctions="/pg/mods/functions"
-bash "$pgfunctions"/.create.sh
-source "$pgfunctions"/.master.sh
+bash /pg/mods/functions/.create.sh
+source /pg/mods/functions/.master.sh
 ################################################################################
 
 install_sudocheck
