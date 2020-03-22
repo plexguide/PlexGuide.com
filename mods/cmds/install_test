@@ -2,6 +2,6 @@
 # URL:        PlexGuide.com / PGBlitz.com
 # GNU:        General Public License v3.0
 ################################################################################
+clear
 rm -rf /pg
 wget -nc https://raw.githubusercontent.com/PGBlitz/PGBlitz.com/alpha/mods/install/main.sh -O- | bash
-clear
