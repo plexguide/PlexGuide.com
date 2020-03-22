@@ -1,17 +1,10 @@
 install_agree() {
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️ READ THIS NOTE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+common_message "⛔️ READ THIS NOTE" "
 PlexGuide.com advises that while utilizing PG, there is an inhert risk that your
 data may be lost if you do not control your own GSuite Account; the Education
 Edition or utilizing a reseller's GSuite Account. Control your OWN data!
 
 May lose data if you share out your account to anyone! You've been warned!
-Visit https://plexguide.com 
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-common_confirm
+Visit https://plexguide.com "
 }
