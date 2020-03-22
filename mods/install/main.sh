@@ -10,6 +10,10 @@ rm -rf /pg/tmp/checkout
 git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pg/tmp/checkout
 mv -f /pg/tmp/checkout/mods /pg
 
+## Install PG Test Command
+rm -rf /bin/install_test
+cp /pg/mods/cmds/install_test /bin/install_test
+
 ## Create & Establish Functions Process
 bash /pg/mods/functions/.create.sh
 source /pg/mods/functions/.master.sh

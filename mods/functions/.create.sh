@@ -25,4 +25,4 @@ EOF
 ## adds tempory information to complete master functions file
 while read p; do
   echo "source $pgfunctions/$p" >> "$pgfunctions"/.master.sh
-done </"$pgfuncitons"/.files.sh
+done </"$pgfunctions"/.files.sh
