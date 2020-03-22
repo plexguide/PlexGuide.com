@@ -31,3 +31,5 @@ PRESS CTRL+Z to STOP the Installation
 common_timer "5"
 
 echo "HALTED"
+
+exit
