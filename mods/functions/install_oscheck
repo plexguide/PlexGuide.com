@@ -1,7 +1,10 @@
 install_oscheck() {
 
+## Baseline Required Variables
 	a=0
-	# common_header "⌛ Conducting OS Check!"
+	pgvar="/pg/var"
+
+## Issues: Incorrect OS being UB19
 	versioncheck=$(cat /etc/*-release | grep "Ubuntu" | grep -E '19')
 	  if [[ "$versioncheck" == "19" ]]; then
 			a=1
@@ -13,7 +16,34 @@ This server may not be supported due to detecting an incorrect OS!
 PRESS CTRL+Z to STOP the Installation
 "
 			common_timer "10"; fi
+## Issues: Incorrect OS
 
-## If Passed with No Issues
+		rm -f "$pgvar"/os
+		mkdir -p "$pgvar"
+		echo -e "$(lsb_release -si)" >"$pgvar"/os
+
+		if [[ $(lsb_release -si) == "Debian" ]]; then2
+			add-apt-repository main >/dev/null 2>&1
+			add-apt-repository non-free >/dev/null 2>&1
+			add-apt-repository contrib >/dev/null 2>&1
+			wget -qN https://raw.githubusercontent.com/MHA-Team/Install/master/source/ansible-debian-ansible.list /etc/apt/sources.list.d/
+		elif [[ $(lsb_release -si) == "Ubuntu" ]]; then
+			add-apt-repository main >/dev/null 2>&1
+			add-apt-repository universe >/dev/null 2>&1
+			add-apt-repository restricted >/dev/null 2>&1
+			add-apt-repository multiverse >/dev/null 2>&1
+		  apt-add-repository --yes --update ppa:ansible/ansible >/dev/null 2>&1
+		elif [[ $(lsb_release -si) == "Rasbian" || $(lsb_release -si) == "Fedora" || $(lsb_release -si) == "CentOS" ]]; then
+		a=1
+common_message "⛔️  WARNING: OS Check" "
+Supported: UB 16-18 and Debian 9 & 10
+
+This server may not be supported due to detecting an incorrect OS!
+
+PRESS CTRL+Z to STOP the Installation
+"
+common_timer "10"; fi
+
+## ISSUES: None
 		if [[ "$a" == "0" ]]; then common_header "✅ OS - No Issues Detected!"; sleep 2; fi
 }
