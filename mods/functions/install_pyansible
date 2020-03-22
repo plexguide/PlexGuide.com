@@ -1,86 +1,91 @@
 install_pyansible() {
 
-## Constants
-readonly SYSCTL_PATH="/etc/sysctl.conf"
-readonly PIP="9.0.3"
-readonly ANSIBLE="2.9.6"
+  common_header "✅ Ansible & Python Requirements Installed!"; sleep 2
 
-## Environmental Variables
-export DEBIAN_FRONTEND=noninteractive
+  ## Constants
+  readonly SYSCTL_PATH="/etc/sysctl.conf"
+  readonly PIP="19.1.1"
+  readonly ANSIBLE="2.9.6"
 
-## Disable IPv6
-if [ -f "$SYSCTL_PATH" ]; then
-    if [[ $(lsb_release -rs) < 18.04 ]]; then
-        ## Add 'Disable IPv6' entries into systctl
-        grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' "$SYSCTL_PATH" || \
-            echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> "$SYSCTL_PATH"
-        grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' "$SYSCTL_PATH" || \
-            echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> "$SYSCTL_PATH"
-        grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' "$SYSCTL_PATH" || \
-            echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> "$SYSCTL_PATH"
-        sysctl -p
-    else
-        ## Remove 'Disable IPv6' entries from systctl
-        sed -i -e '/^net.ipv6.conf.all.disable_ipv6/d' "$SYSCTL_PATH"
-        sed -i -e '/^net.ipv6.conf.default.disable_ipv6/d' "$SYSCTL_PATH"
-        sed -i -e '/^net.ipv6.conf.lo.disable_ipv6/d' "$SYSCTL_PATH"
-        sysctl -p
-    fi
-fi
+  ## Environmental Variables
+  export DEBIAN_FRONTEND=noninteractive
 
-## Install Dependencies
-apt-get install -y --reinstall \
-  nano \
-  git \
-  build-essential \
-  libssl-dev \
-  libffi-dev \
-  python3-dev \
-  python3-pip \
-  python-dev \
-  python-pip
+  ## Disable IPv6
+  if [ -f "$SYSCTL_PATH" ]; then
+      if [[ $(lsb_release -rs) < 18.04 ]]; then
+          ## Add 'Disable IPv6' entries into systctl
+          grep -q -F 'net.ipv6.conf.all.disable_ipv6 = 1' "$SYSCTL_PATH" || \
+              echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> "$SYSCTL_PATH"
+          grep -q -F 'net.ipv6.conf.default.disable_ipv6 = 1' "$SYSCTL_PATH" || \
+              echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> "$SYSCTL_PATH"
+          grep -q -F 'net.ipv6.conf.lo.disable_ipv6 = 1' "$SYSCTL_PATH" || \
+              echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> "$SYSCTL_PATH"
+          sysctl -p
+      else
+          ## Remove 'Disable IPv6' entries from systctl
+          sed -i -e '/^net.ipv6.conf.all.disable_ipv6/d' "$SYSCTL_PATH"
+          sed -i -e '/^net.ipv6.conf.default.disable_ipv6/d' "$SYSCTL_PATH"
+          sed -i -e '/^net.ipv6.conf.lo.disable_ipv6/d' "$SYSCTL_PATH"
+          sysctl -p
+      fi
+  fi
 
-## Install pip3 Dependencies
-python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pip==${PIP}
-python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    setuptools
-python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pyOpenSSL \
-    requests \
-    netaddr
+  ## Install Dependencies
+  apt-get install -y --reinstall \
+    nano \
+    git \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    python3-pip \
+    python-dev \
+    python-pip
 
-## Install pip2 Dependencies
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pip==${PIP}
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    setuptools
-python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pyOpenSSL \
-    requests \
-    netaddr \
-    jmespath \
-    ansible==${1-$ANSIBLE}
+  ## Install pip3 Dependencies
+  python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+      pip==${PIP}
+  python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+      setuptools
+  python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+      pyOpenSSL \
+      requests \
+      netaddr
 
-## Copy pip to /usr/bin
-cp /usr/local/bin/pip /usr/bin/pip
-cp /usr/local/bin/pip3 /usr/bin/pip3
+  ## Install pip2 Dependencies
+  python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+      pip==${PIP}
+  python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+      setuptools
+  python -m pip install --disable-pip-version-check --upgrade --force-reinstall \
+      pyOpenSSL \
+      requests \
+      netaddr \
+      jmespath \
+      ansible==${1-$ANSIBLE}
 
-mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
-echo "[local]" >/etc/ansible/inventories/local
-echo "127.0.0.1 ansible_connection=local" >>/etc/ansible/inventories/local
+  ## Copy pip to /usr/bin
+  cp /usr/local/bin/pip /usr/bin/pip
+  cp /usr/local/bin/pip3 /usr/bin/pip3
 
-### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
-echo "[defaults]" >/etc/ansible/ansible.cfg
-echo "deprecation_warnings=False" >>/etc/ansible/ansible.cfg
+  mkdir -p /etc/ansible/inventories/ 1>/dev/null 2>&1
+  echo "[local]" >/etc/ansible/inventories/local
+  echo "127.0.0.1 ansible_connection=local" >>/etc/ansible/inventories/local
 
-echo "command_warnings = False" >>/etc/ansible/ansible.cfg
-echo "callback_whitelist = profile_tasks" >>/etc/ansible/ansible.cfg
-echo "inventory = /etc/ansible/inventories/local" >>/etc/ansible/ansible.cfg
+  ### Reference: https://docs.ansible.com/ansible/2.4/intro_configuration.html
+  echo "[defaults]" >/etc/ansible/ansible.cfg
+  echo "deprecation_warnings=False" >>/etc/ansible/ansible.cfg
 
-# Remove Cows when cowsay installed on main system
-echo "nocows = 1" >>/etc/ansible/ansible.cfg
+  echo "command_warnings = False" >>/etc/ansible/ansible.cfg
+  echo "callback_whitelist = profile_tasks" >>/etc/ansible/ansible.cfg
+  echo "inventory = /etc/ansible/inventories/local" >>/etc/ansible/ansible.cfg
 
-# Variables Need to Line Up with pg.sh (start)
-touch /var/plexguide/background.1
+  # Remove Cows when cowsay installed on main system
+  echo "nocows = 1" >>/etc/ansible/ansible.cfg
+
+  # Variables Need to Line Up with pg.sh (start)
+  touch /var/plexguide/background.1
+
+  common_header "✅ Ansible & Python Requirements Installed!"; sleep 2
+
 }
