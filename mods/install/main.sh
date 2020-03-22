@@ -26,10 +26,11 @@ common_message "🌎 INSTALLING: PlexGuide.com GNUv3 License" "
 By Installing PlexGuide, you are agreeing to the terms and conditions of the
 GNUv3 License!
 
+If you have a chance to donate, please visit https://donate.plexguide.com
 PRESS CTRL+Z to STOP the Installation
 "
 common_timer "5"
 
-echo "HALTED"
+echo "HALTED   "
 
 exit
