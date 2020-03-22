@@ -36,6 +36,7 @@ install_webservercheck
 install_oscheck
 install_basepackage
 install_folders
+install_pyansible
 
 echo "HALTED - Install Check  "
 
