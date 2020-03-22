@@ -6,16 +6,13 @@
 ## if DOESNT EXIST ## avoid replicating # note
 
 pgfunctions="/pg/mods/functions"
-
-## temporary - delete later
-mkdir -p $pgfunctions
-touch $pgfunctions/ab $pgfunctions/cd $pgfunctions/ef
+# mkdir -p "$pgfunctions"
 
 ## reads functions and stores to a temporary file
 ls "$pgfunctions" > "$pgfunctions"/.files.sh
 
 ## remove old master file if it exist
-rm -rf "$pgfunctions/.master.sh" ## add the ignore thingy
+rm -rf "$pgfunctions"/.master.sh ##
 
 cat <<- EOF > "$pgfunctions/.master.sh"
 #!/bin/bash
@@ -27,5 +24,5 @@ EOF
 
 ## adds tempory information to complete master functions file
 while read p; do
-  echo "source $pgfunctions/$p" >> "$pgfunctions/.master.sh"
-done </$pgfuncitons/.files.sh
+  echo "source $pgfunctions/$p" >> "$pgfunctions"/.master.sh
+done </"$pgfuncitons"/.files.sh
