@@ -15,7 +15,7 @@ This server may not be supported due to detecting an incorrect OS!
 
 PRESS CTRL+Z to STOP the Installation
 "
-			common_timer "10"; fi
+			common_confirm; fi
 ## Issues: Incorrect OS
 
 		rm -f "$pgvar"/os
@@ -42,7 +42,7 @@ This server may not be supported due to detecting an incorrect OS!
 
 PRESS CTRL+Z to STOP the Installation
 "
-common_timer "10"; fi
+common_confirm; fi
 
 ## ISSUES: None
 		if [[ "$a" == "0" ]]; then common_header "✅ OS - No Issues Detected!"; sleep 2; fi
