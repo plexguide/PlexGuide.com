@@ -4,8 +4,7 @@ install_webservercheck() {
 	apt-get install $list -yqq >/dev/null 2>&1
 	export DEBIAN_FRONTEND=noninteractive
 
-	common_header "⌛ Checking for Existing WebServers(s)!"
-
+	# common_header "⌛ Checking for Existing WebServers(s)!"
 	if lsof -Pi :80 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
 	        service apache2 stop >/dev/null 2>&1
 	        service nginx stop >/dev/null 2>&1
