@@ -11,16 +11,16 @@ install_basepackage() {
 		export DEBIAN_FRONTEND=noninteractive
 	apt-get dist-upgrade -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '####       (40 %)\r'
+		echo -ne '####         (40 %)\r'
 	apt-get autoremove -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '######     (60 %)\r'
+		echo -ne '######       (60 %)\r'
 	apt-get install $package_list -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '########   (80 %)\r'
+		echo -ne '########     (80 %)\r'
 	apt-get purge unattended-upgrades -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '########## (100%)\r'; echo -ne '\n'
+		echo -ne '##########     (100%)\r'; echo -ne '\n'
 
 		common_header "✅ NOTICE: Updates Complete"
 		sleep 2
