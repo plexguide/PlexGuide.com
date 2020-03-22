@@ -37,6 +37,8 @@ install_oscheck
 install_basepackage
 install_folders
 install_pyansible
+ 
+ansible-playbook /pg/mods/motd/motd.yml
 
 echo "HALTED - Install Check  "
 
