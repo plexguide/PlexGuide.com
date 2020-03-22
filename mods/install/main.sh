@@ -32,6 +32,8 @@ PRESS CTRL+Z to STOP the Installation
 common_timer "1" ## set back to 5
 
 install_drivecheck
+install_webservercheck
+install_oscheck
 
 echo "HALTED - Install Check  "
 

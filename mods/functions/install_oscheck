@@ -1,0 +1,15 @@
+install_webservercheck() {
+
+	versioncheck=$(cat /etc/*-release | grep "Ubuntu" | grep -E '19')
+	  if [[ "$versioncheck" == "19" ]]; then
+
+common_message "⛔️  WARNING: OS Check" "
+Supported: UB 16-18 and Debian 9 & 10
+
+This server may not be supported due to detecting an incorrect OS!
+
+PRESS CTRL+Z to STOP the Installation
+"
+common_timer "10" ## setback to 10
+	  else echo ""; fi
+}
