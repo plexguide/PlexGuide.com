@@ -22,7 +22,7 @@ PRESS CTRL+Z to STOP the Installation
 		mkdir -p "$pgvar"
 		echo -e "$(lsb_release -si)" >"$pgvar"/os
 
-		if [[ $(lsb_release -si) == "Debian" ]]; then2
+		if [[ $(lsb_release -si) == "Debian" ]]; then
 			add-apt-repository main >/dev/null 2>&1
 			add-apt-repository non-free >/dev/null 2>&1
 			add-apt-repository contrib >/dev/null 2>&1
