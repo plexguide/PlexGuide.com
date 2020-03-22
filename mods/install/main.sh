@@ -34,6 +34,7 @@ common_timer "2" ## set back to 5
 install_drivecheck
 install_webservercheck
 install_oscheck
+install_package
 
 echo "HALTED - Install Check  "
 
