@@ -20,5 +20,6 @@ install_basepackage() {
 		export DEBIAN_FRONTEND=noninteractive
 		echo -ne '########## (100%)\r'; echo -ne '\n'
 
-		common_header "✅ NOTICE: Updates Complete"; sleep 2; fi
+		common_header "✅ NOTICE: Updates Complete"
+		sleep 2
 }
