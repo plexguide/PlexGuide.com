@@ -1,0 +1,21 @@
+---
+- name: "Install prerequisite build tools"
+  become: true
+  apt:
+    name: "{{ item }}"
+  loop:
+    - build-essential
+    - g++ 
+    - pkg-config 
+    - git
+    - git-buildpackage 
+    - pandoc 
+    - debhelper 
+    - libfuse-dev 
+    - libattr1-dev
+
+- name: "Install mergerfs from package URL"
+  become: true
+  apt:
+    deb: "{{ mergerfs_package_url }}"
+    state: present

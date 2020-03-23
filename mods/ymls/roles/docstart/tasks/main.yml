@@ -1,0 +1,33 @@
+#!/bin/bash
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+########################################## Scripts
+- name: Check DockerFix Service
+  stat:
+    path: '/etc/systemd/system/docker_startup.service'
+  register: docker_startup
+
+- name: Install Docker Reboot
+  template:
+    src: docker_startup.js2
+    dest: /pg/plexguide/docker_startup.sh
+    force: yes
+
+########################################## New Service
+- name: Stop If DockerFix Service Running
+  systemd: state=stopped name=docker_startup
+  when: docker_startup.stat.exists
+
+- name: Install DockerFix Service
+  template:
+    src: docker_startup.js2
+    dest: /etc/systemd/system/docker_startup.service
+    force: yes
+
+- name: Daemon-Reload
+  systemd: state=stopped name=docker_startup daemon_reload=yes enabled=no
+
+- name: Start DockerFix
+  systemd: state=started name=docker_startup enabled=yes

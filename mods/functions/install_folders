@@ -44,6 +44,9 @@ install_folders() {
   #unity
     fcreate /pg/unity
 
+	#plexguide
+    fcreate /pg/plexguide
+
   #misc
     fcreate /pg/tmp
     fcreate /pg/data # folder to hold container data
@@ -57,5 +60,6 @@ install_folders() {
     fcreate /pg/nzb
     fcreate /pg/torrent
     fcreate /pg/downloads
+		fcreate /pg/data/plexguide
 
 }
