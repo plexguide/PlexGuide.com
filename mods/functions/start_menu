@@ -72,7 +72,7 @@ case $typed in
       bash /pg/stage/pgcloner/pgclone.sh
       primestart ;;
     5 )
-      bash /pg/stage/pgcloner/apps.sh
+      apps_menu
       primestart ;;
     6 )
       bash /pg/stage/pgcloner/pgpress.sh

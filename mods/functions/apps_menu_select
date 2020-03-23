@@ -1,0 +1,44 @@
+apps_menu_select() {
+
+case $typed in
+    1 )
+      bash /pg/stage/pgcloner/traefik.sh
+      primestart ;;
+    2 )
+      bash /pg/stage/pgcloner/portguard.sh
+      primestart ;;
+    3 )
+      bash /pg/stage/pgcloner/pgshield.sh
+      primestart ;;
+    4 )
+      bash /pg/stage/pgcloner/pgclone.sh
+      primestart ;;
+    5 )
+      bash /pg/stage/pgcloner/apps.sh
+      primestart ;;
+    6 )
+      bash /pg/stage/pgcloner/pgpress.sh
+      primestart ;;
+    7 )
+      bash /pg/stage/pgcloner/pgvault.sh
+      primestart ;;
+    8 )
+      bash /pg/pgblitz/menu/interface/cloudselect.sh
+      primestart ;;
+    9 )
+      bash /pg/pgblitz/menu/tools/tools.sh
+      primestart ;;
+    10 )
+      bash /pg/pgblitz/menu/interface/settings.sh
+      primestart ;;
+    z )
+      start_end
+      exit ;;
+    Z )
+      start_end
+      exit ;;
+    * )
+      primestart ;;
+esac
+
+}

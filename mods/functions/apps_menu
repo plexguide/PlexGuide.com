@@ -1,0 +1,20 @@
+apps_menu() {
+
+common_message "🚀  PG Applications Interface" "
+
+💬  Further Explanation? Visit ~ http://apps.plexguide.com
+------------------------------------------------------------------------------
+[1] Primary
+[2] Community
+[3] Core
+[4] Personal
+------------------------------------------------------------------------------
+[5] Removal
+[6] Auto-Update [XX]
+------------------------------------------------------------------------------
+[Z] Exit Interface
+"
+common_number
+apps_menu_select
+
+}
