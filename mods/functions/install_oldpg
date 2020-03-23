@@ -1,6 +1,7 @@
 install_oldpg() {
 
 	touch /pg/var/pg.number
+	echo 9 > /pg/var/pg.number # remove this
 	file="/pg/var/pg.number"
 	if [ -e "$file" ]; then
 	  check="$(cat /pg/var/pg.number | head -c 1)"
