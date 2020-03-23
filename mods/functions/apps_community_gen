@@ -1,0 +1,20 @@
+apps_community_gen() {
+
+  primary_path="/pg/var/community_app.list"
+
+  # Generates App List
+  ls -p /pg/mods/core | grep -v / | sed -e 's/.yml//g' > "$community_path"
+
+  # Enter Items Here to Prevent them From Showing Up on AppList
+  sed -i -e "/traefik/d" "$community_path"
+  sed -i -e "/image*/d" "$community_path"
+  sed -i -e "/templates/d" "$community_path"
+  sed -i -e "/retry/d" "$community_path"
+  sed -i "/^test\b/Id" "$community_path"
+  sed -i -e "/nzbthrottle/d" "$community_path"
+  sed -i "/^_templates.yml\b/Id" "$community_path"
+  sed -i -e "/oauth/d" "$community_path"
+  sed -i -e "/dockergc/d" "$community_path"
+  sed -i -e "/pgui/d" "$community_path"
+
+}
