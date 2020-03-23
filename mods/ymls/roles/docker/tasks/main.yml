@@ -222,11 +222,11 @@
   changed_when: false
   register: service_docker_status
 
-- name: Report status of docker
-  false:
-    msg: |
-      Service docker is not running.
-      Output of `systemctl status docker`:
-      {{ service_docker_status.stdout }}
-      {{ service_docker_status.stderr }}
-  when: service_docker_status | failed
+#- name: Report status of docker
+#  fail:
+#    msg: |
+#      Service docker is not running.
+#      Output of `systemctl status docker`:
+#      {{ service_docker_status.stdout }}
+#      {{ service_docker_status.stderr }}
+#  when: service_docker_status | failed
