@@ -31,11 +31,11 @@ PRESS CTRL+Z to STOP the Installation
 "
 common_timer "2" ## set back to 5
 
+install_folders
 install_drivecheck
 install_webservercheck
 install_oscheck
 install_basepackage
-install_folders
 install_pyansible
 install_dependency
 
