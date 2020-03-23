@@ -24,10 +24,13 @@ cat << "EOF"
 │ ————————————————————————————————————│
 │ Restart PlexGuide:      plexguide   │
 │ Update  PlexGuide:      pgupdate    │
-│ View the PG Blitz Logs: pgtransfer  │
+│ View PG Blitz Logs:     pgtransfer  │
 │ Download Your PG Fork:  pgfork      │
 │ ————————————————————————————————————│
 │ Thanks For Being Part of the Team   │
+│                                     │
+│ Dedicated to:                       │
+│ Deiteq, YasQueen84 & JasMarie       │
 └─────────────────────────────────────┘
 EOF
 
@@ -37,5 +40,5 @@ EOF
 
 #chown 1000:1000 /bin/pgblitz &>/dev/null &
 #chmod 0755 /bin/pgblitz &>/dev/null &
-exit 
+exit
 }
