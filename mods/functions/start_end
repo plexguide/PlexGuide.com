@@ -37,5 +37,5 @@ EOF
 
 #chown 1000:1000 /bin/pgblitz &>/dev/null &
 #chmod 0755 /bin/pgblitz &>/dev/null &
-
+exit 
 }
