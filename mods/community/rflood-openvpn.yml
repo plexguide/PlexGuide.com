@@ -1,0 +1,78 @@
+#!/bin/bash
+#
+# Title:      rTorrent + FloodUI integrated OpenVPN
+# Author(s):  h1f0x
+# URL:        https://github.com/h1f0x/rtorrent-flood-openvpn
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'rflood-openvpn'
+        intport: '80'
+        extport: '5896'
+        image: 'h1f0x/rtorrent-flood-openvpn'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+    - name: 'Including plugins'
+      include_tasks: '/opt/communityapps/apps/_plugins.yml'
+
+    - name: 'Including folders'
+      include_tasks: '/opt/communityapps/apps/_downloaders.yml'
+
+    - name: 'Ini Check'
+      stat:
+        path: /opt/appdata/{{pgrole}}/core.conf
+      register: inicheck
+
+    # LABELS ######################################################################
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/opt/appdata/{{pgrole}}:/config'
+          - '{{path.stdout}}:{{path.stdout}}'
+          - '/mnt/unionfs:/unionfs'
+          - '/mnt/downloads/{{pgrole}}:/output/complete'
+          - '/mnt/incomplete/{{pgrole}}:/output/incomplete'
+          - '/etc/localtime:/etc/localtime:ro'
+
+    - name: 'Setting PG ENV'
+      set_fact:
+        pg_env:
+          UID: 1000
+          GID: 1000
+
+    # MAIN DEPLOYMENT #############################################################
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+        privileged: yes
+        state: started
+        labels: '{{pg_labels}}'

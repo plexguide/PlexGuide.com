@@ -1,0 +1,95 @@
+#!/bin/bash
+#
+# Title:      Handbrake for PGBlitz
+# Author(s):  timekills
+# URL:        https://pgblitz.com - https://github.com/timekills
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'handbrake'
+        intport: '5800'
+        extport: '5800'
+        image: 'jlesage/handbrake:dev-latest'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+    # LABELS ######################################################################
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/opt/appdata/{{pgrole}}/config:/config:rw'
+          - '/:/storage:ro'
+          - '{{path.stdout}}:{{path.stdout}}'
+          - '/mnt/unionfs:/mnt/unionfs'
+          - '{{path.stdout}}/{{pgrole}}/watch/Very_Fast_1080p30:/watch:rw'
+          - '{{path.stdout}}/{{pgrole}}/watch/HQ_1080p30_Surround:/watch2:rw'
+          - '{{path.stdout}}/{{pgrole}}/watch/1080mkv:/watch3:rw'
+          - '{{path.stdout}}/{{pgrole}}/complete/:/output:rw'
+          - '/dev/dri:/dev/dri:rw'
+          - '/etc/localtime:/etc/localtime:ro'
+
+    - name: 'Setting PG ENV'
+      set_fact:
+        pg_env:
+          USER_ID: '1000'
+          GROUP_ID: '1000'
+          AUTOMATED_CONVERSION_PRESET: "Very Fast 1080p30"
+          AUTOMATED_CONVERSION_FORMAT: "mp4"
+          AUTOMATED_CONVERSION_PRESET_2: "HQ 1080p30 Surround"
+          AUTOMATED_CONVERSION_FORMAT_2: "mp4"
+          AUTOMATED_CONVERSION_PRESET_3: "H.264 MKV 1080p30"
+          AUTOMATED_CONVERSION_FORMAT_3: "mkv"
+#          SECURE_CONNECTION: 1
+
+    # MAIN DEPLOYMENT #############################################################
+    - name: 'Create watch directory for {{pgrole}}'
+      file:
+        path: '{{path.stdout}}/handbrake/watch'
+        state: directory
+        owner: '1000'
+        group: '1000'
+        mode: 0775
+        recurse: yes
+
+    - name: 'Create complete directory for {{pgrole}}'
+      file:
+        path: '{{path.stdout}}/handbrake/complete'
+        state: directory
+        owner: '1000'
+        group: '1000'
+        mode: 0775
+        recurse: yes
+
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+        state: started
+        labels: '{{pg_labels}}'

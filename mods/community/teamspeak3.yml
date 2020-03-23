@@ -1,0 +1,86 @@
+#!/bin/bash
+#
+# Title:      Teamspeak 3 Alpine
+# Author(s):  N1ghtshade
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'teamspeak3'
+        intport: '9987/udp'
+        extport: '9987'
+        intport2: '10011/tcp'
+        extport2: '10011'
+        intport3: '30033/tcp'
+        extport3: '30033'
+        image: 'qmcgaw/teamspeak3-alpine:latest'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+    # EXTRA FOR TS3 #########################################################
+    - name: 'Create {{pgrole}} data and log directories'
+      file: 'path={{item}} state=directory mode=0700 owner=1000 group=1000 recurse=yes'
+      with_items:
+        - '/opt/appdata/{{pgrole}}'
+        - '/opt/appdata/{{pgrole}}/data'
+        - '/opt/appdata/{{pgrole}}/logs'
+
+    # LABELS ######################################################################
+
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.enable: 'false'
+          traefik.port: '{{intport}}'
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+    # VOLUMES #########
+
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/opt/appdata/{{pgrole}}/data:/data'
+          - '/opt/appdata/{{pgrole}}/logs:/logs'
+
+    - name: 'Setting PG ENV'
+      set_fact:
+        pg_env:
+          PUID: '1000'
+          PGID: '1000'
+
+    # MAIN DEPLOYMENT #############################################################
+
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{extport}}:{{intport}}'
+          - '{{extport2}}:{{intport2}}'
+          - '{{extport3}}:{{intport3}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        command: license_accepted=1
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+        state: started
+        labels: '{{pg_labels}}'
+
+    # ENDING TASK FOR TS3 ####################################################
+    - name: 'Configuring {{pgrole}} for first time use'
+      block:
+        - name: 'Wait 30 Seconds'
+          wait_for:
+            timeout: 30

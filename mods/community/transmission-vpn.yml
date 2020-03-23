@@ -1,0 +1,150 @@
+#!/bin/bash
+#
+# Title:      Transmissionbt (with OpenVPN, WebProxy, RSS)
+# Author(s):  Eric Petit, Josh Elsasser, Bryan Varner, Charles Kerr, Kristian Haugene, nning
+# URL:        https://transmissionbt.com/ - https://github.com/haugene/docker-transmission-openvpn
+# GNU:        General Public License v2.0, v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'transmission-vpn'
+        pgrole2: 'transmission-rss'
+        intport: '9091'
+        extport: '9091'
+        intport2: '8888'
+        extport2: '8888'
+        image: 'haugene/transmission-openvpn:latest'
+        image2: 'haugene/transmission-rss:latest'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+    - name: Checking for existing rss folder
+      stat:
+        path: "/opt/appdata/{{pgrole}}/rss"
+      register: rsscheck
+
+    - name: Checking for existing rss config
+      stat:
+        path: "/opt/appdata/{{pgrole}}/rss/transmission-rss.conf"
+      register: cfgcheck
+
+    # LABELS ######################################################################
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/etc/localtime:/etc/localtime:ro'
+          - '/opt/appdata/{{pgrole}}:/config'
+          - '{{path.stdout}}:{{path.stdout}}'
+          - '/mnt:/mnt'
+
+    - name: 'Setting {{pgrole2}} Volumes'
+      set_fact:
+        pg_volumes2:
+          - '/opt/appdata/{{pgrole}}/rss/transmission-rss.conf:/etc/transmission-rss.conf:ro'
+
+    - name: 'Setting {{pgrole}} ENV'
+      set_fact:
+        pg_env:
+          PUID: '1000'
+          PGID: '1000'
+          OPENVPN_PROVIDER: 'see available configs at https://git.io/fpCSF'
+          OPENVPN_CONFIG: 'default'
+          OPENVPN_USERNAME: 'vpnuser'
+          OPENVPN_PASSWORD: 'vpnpass'
+          OPENVPN_OPTS: '--inactive 3600 --ping 10 --ping-exit 60'
+          CREATE_TUN_DEVICE: 'true'
+          WEBPROXY_ENABLED: 'true'
+          WEBPROXY_PORT: '{{extport2}}'
+          LOCAL_NETWORK: 192.168.0.0/24
+          TRANSMISSION_WEB_HOME: '/config/webui-theme'
+          TRANSMISSION_WEB_UI: 'transmission-web-control'
+          TRANSMISSION_BLOCKLIST_ENABLED: 'true'
+          TRANSMISSION_BLOCKLIST_URL: 'http://john.bitsurge.net/public/biglist.p2p.gz'
+          TRANSMISSION_DHT_ENABLED: 'false'
+          TRANSMISSION_DOWNLOAD_DIR: '/mnt/downloads/{{pgrole}}'
+          TRANSMISSION_INCOMPLETE_DIR: '/mnt/incomplete/{{pgrole}}'
+          TRANSMISSION_RPC_PORT: '{{intport}}'
+          TRANSMISSION_WATCH_DIR: '/config/watch'
+          TRANSMISSION_WATCH_DIR_ENABLED: 'false'
+          TRANSMISSION_HOME: '/config/home'
+
+    - name: 'Setting {{pgrole2}} ENV'
+      set_fact:
+        pg_env2:
+          TRANSMISSION_DOWNLOAD_DIR: '/mnt/downloads/{{pgrole}}'
+          RSS_URL: 'hxxp://unused'
+
+    # MAIN DEPLOYMENT #############################################################
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+          - '{{ports.stdout}}{{extport2}}:{{intport2}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        restart_policy: unless-stopped
+        devices:
+          - '/dev/net/tun:/dev/net/tun:rwm'
+        dns_servers:
+          - 1.1.1.1
+          - 84.200.69.80
+          - 45.33.97.5
+          - 208.67.222.222
+        capabilities:
+          - NET_ADMIN
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+        state: started
+        labels: '{{pg_labels}}'
+
+    - name: 'RSS feed configuration - Folder'
+      block:
+        - name: 'Creating RSS folder'
+          shell: "mkdir /opt/appdata/{{pgrole}}/rss"
+      when: not rsscheck.stat.exists
+
+    - name: 'RSS feed configuration - Config'
+      block:
+        - name: 'Creating configuration file'
+          shell: "touch /opt/appdata/{{pgrole}}/rss/transmission-rss.conf && chown -R 1000:1000 /opt/appdata/{{pgrole}}/rss/ && echo see https://git.io/fhAm2 to configure > /opt/appdata/{{pgrole}}/rss/transmission-rss.conf"
+      when: not cfgcheck.stat.exists
+
+    - name: 'Deploying {{pgrole2}}'
+      docker_container:
+        name: '{{pgrole2}}'
+        image: '{{image2}}'
+        pull: yes
+        volumes: '{{pg_volumes2}}'
+        env: '{{pg_env2}}'
+        links:
+          - '{{pgrole}}:transmission'
+        restart_policy: unless-stopped
+        state: started
+
+    - name: 'Wait for {{pgrole}} to initialize'
+      wait_for: timeout=30
+    
+    - name: 'Stopping {{pgrole}}. Go configure ENV values.'
+      docker_container:
+        name: '{{pgrole}}'
+        state: stopped

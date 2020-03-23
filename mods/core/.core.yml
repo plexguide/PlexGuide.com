@@ -1,0 +1,146 @@
+#!/bin/bash
+#
+# Title:      PGBlitz (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+# RECALL KEY VARIABLES #########################################################
+
+- name: 'Register TLD'
+  shell: 'cat /var/plexguide/tld.program'
+  register: toplevel
+  ignore_errors: True
+
+- name: Register Domain
+  shell: 'cat /var/plexguide/server.domain'
+  register: domain
+  ignore_errors: True
+
+- name: Register IP
+  shell: 'cat /var/plexguide/server.ip'
+  register: ipaddress
+  ignore_errors: True
+
+- name: Register Ports
+  shell: 'cat /var/plexguide/server.ports'
+  register: ports
+  ignore_errors: True
+
+- name: Register HD Path
+  shell: 'cat /var/plexguide/server.hd.path'
+  register: path
+  ignore_errors: True
+
+- name: Register Auth Path
+  shell: 'cat /var/plexguide/server.ht'
+  register: auth
+  ignore_errors: True
+
+- name: Remove {{pgrole}} Container
+  docker_container:
+    name: '{{pgrole}}'
+    state: absent
+  ignore_errors: True
+
+- name: Storing Role Name
+  shell: "echo '{{pgrole}}' > /tmp/program_var"
+  ignore_errors: True
+
+  # APPDATA
+
+- name: 'Creating appdata folder if it does not exist.'
+  shell: 'mkdir -p /opt/appdata/{{pgrole}}'
+
+- name: 'Setting ownership on appdata'
+  shell: 'chown 1000:1000 /opt/appdata/{{pgrole}}'
+  when: '"plex" in pgrole'
+
+- name: 'Setting permissions on appdata'
+  shell: 'chmod 775 /opt/appdata/{{pgrole}}'
+  when: '"plex" in pgrole'
+
+- name: 'Setting ownership on appdata recursivley (this can take a while!)'
+  shell: 'chown -R 1000:1000 /opt/appdata/{{pgrole}}'
+  when: '"plex" not in pgrole'
+
+- name: 'Setting permissions on appdata recursivley (this can take a while!)'
+  shell: 'chmod -R 775 /opt/appdata/{{pgrole}}'
+  when: '"plex" not in pgrole'
+
+
+# OVERWRITE IMAGES #############################################################
+- name: Check if Image Variable Exists
+  stat:
+    path: '/var/plexguide/image/{{pgrole}}'
+  register: imagecheck
+
+- name: 'Transfer Image Variable'
+  shell: 'cat /var/plexguide/image/{{pgrole}}'
+  register: imagetemp
+  when: imagecheck.stat.exists
+
+- name: 'If Fact Does Not Match - Disable TLD'
+  set_fact:
+    image: '{{imagetemp.stdout}}'
+  when: imagecheck.stat.exists
+
+# TOP LEVEL DOMAIN INFO SET ####################################################
+
+- debug: msg="Stored TLD - {{pgrole}} must match {{toplevel.stdout}} for TLD"
+
+- name: 'If Fact Matches - Enable TLD'
+  set_fact:
+    tldset: '{{domain.stdout}}'
+  when: 'toplevel.stdout == pgrole'
+
+- debug: msg="TLDSET is now for {{toplevel.stdout}}"
+  when: 'toplevel.stdout == pgrole'
+
+- name: 'If Fact Does Not Match - Disable TLD'
+  set_fact:
+    tldset: ''
+  when: 'not toplevel.stdout == pgrole'
+
+- debug: msg="TLD does not apply"
+  when: 'not toplevel.stdout == pgrole'
+
+# EXTERNAL PORT FOR END BANNER
+- name: Export Internal Port
+  shell: 'echo {{extport}} > /tmp/program_port'
+  ignore_errors: True
+
+# FOR AUTHENTICATION
+- name: 'Script Execute Part I'
+  shell: 'bash /opt/pgshield/drop.sh'
+
+- name: 'Script Execute Part II'
+  shell: 'cat /var/plexguide/auth.var'
+  register: oauth
+
+- name: 'OAuth Exe'
+  block:
+    - name: Check if Anti Auth Variable Exists
+      stat:
+        path: '/var/plexguide/auth/{{pgrole}}'
+      register: authcheck
+
+    - name: 'Auth Check 1'
+      set_fact:
+        gauth: 'http://oauth:4181'
+      when: not authcheck.stat.exists
+
+    - name: 'Auth Check 2'
+      set_fact:
+        gauth: ''
+      when: authcheck.stat.exists
+
+  when: oauth.stdout == 'good'
+
+- name: 'OAuth Exe'
+  set_fact:
+    gauth: ''
+  when: not oauth.stdout == 'good'
+
+- debug: msg="OAuth - {{oauth.stdout}}"

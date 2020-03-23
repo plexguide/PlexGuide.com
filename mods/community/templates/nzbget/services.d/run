@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bash
+
+umask 000
+
+exec \
+	s6-envuidgid -nB 1000:1000 /app/nzbget/nzbget -s -c /config/nzbget.conf \
+	-o OutputMode=log

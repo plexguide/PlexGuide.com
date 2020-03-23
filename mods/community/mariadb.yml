@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+# Title:      MariaDB
+# Author(s):  MariaDB Foundation
+# URL:        https://mariadb.com - https://github.com/docker-library/mariadb
+# GNU:        General Public License v2.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+# CORE (MANDATORY) DO NOT CHANGE ###########################################
+
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: "mariadb"
+        intport: "3306"
+        extport: "6603"
+        image: "mariadb:latest"
+
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+# LABELS ################################################################
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/opt/appdata/{{pgrole}}:/var/lib/mysql'
+          - '/etc/localtime:/etc/localtime:ro'
+
+    - name: 'Setting PG ENV'
+      set_fact:
+        pg_env:
+          MYSQL_ROOT_PASSWORD: plexguide
+
+    # MAIN DEPLOYMENT ##############################################################
+
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+        state: started
+        labels: '{{pg_labels}}'
+
+    # POST DEPLOYMENT ##############################################################
+
+    - name: 'Post Deployment Notes'
+      debug:
+        msg: |-
+          * Login Information * root:plexguide * This should be changed *

@@ -1,0 +1,69 @@
+#!/bin/bash
+#
+# Title:      PGBlitz (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'synclounge'
+        intport: '8088'
+        extport: '8088'
+        intport2: '8089'
+        extport2: '8089'
+        image: 'starbix/synclounge'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+    # LABELS ######################################################################
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.enable: 'true'
+          traefik.web.frontend.redirect.entryPoint: 'https'
+          traefik.web.frontend.rule: 'Host:web.{{domain.stdout}},{{pgrole}}.{{domain.stdout}},{{tldset}}'
+          traefik.web.port: '{{intport}}'
+          traefik.server.frontend.redirect.entryPoint: 'https'
+          traefik.server.frontend.rule: 'Host:server.{{domain.stdout}}'
+          traefik.server.port: '{{intport2}}'
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/opt/appdata/{{pgrole}}/config:/config'
+          - '/opt/appdata/{{pgrole}}/sync:/sync'
+
+    - name: 'Setting PG ENV'
+      set_fact:
+        pg_env:
+          UID: '1000'
+          GID: '1000'
+          DOMAIN: '{{pgrole}}.{{domain.stdout}}'
+
+    # MAIN DEPLOYMENT #############################################################
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+        state: started
+        labels: '{{pg_labels}}'

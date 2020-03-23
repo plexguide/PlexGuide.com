@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+# Title:      PGBlitz (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'nextcloud'
+        intport: '443'
+        extport: '4645'
+        image: 'linuxserver/nextcloud'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+    # LABELS ######################################################################
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.protocol: 'https'
+          traefik.enable: 'true'
+          traefik.https.port: '443'
+          traefik.https.frontend.entryPoints: 'https'
+          traefik.https.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/etc/localtime:/etc/localtime:ro'
+          - '/opt/appdata/nextcloud/data:/data'
+          - '/opt/appdata/{{pgrole}}/conf:/config'
+          - '{{path.stdout}}:{{path.stdout}}'
+          - '/mnt:/mnt'
+
+    - name: 'Setting PG ENV'
+      set_fact:
+        pg_env:
+          PUID: '1000'
+          PGID: '1000'
+
+    - name: Create and start nextcloud container
+      docker_container:
+        name: nextcloud
+        image: 'linuxserver/nextcloud'
+        pull: yes
+        published_ports:
+          - '127.0.0.0.1:4645:443'
+        env:
+          PUID: '1000'
+          PGID: '1000'
+        volumes: '{{pg_volumes}}'
+        networks:
+          - name: plexguide
+            aliases:
+              - next
+        restart_policy: unless-stopped
+        state: started
+        labels: '{{pg_labels}}'

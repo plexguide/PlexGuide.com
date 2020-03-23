@@ -1,0 +1,73 @@
+#!/bin/bash
+#
+# Title:      MakeMKV for PGBlitz
+# Author(s):  rla999
+# URL:        https://pgblitz.com - https://github.com/rla999/makemkv-for-plexguide/
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'makemkv'
+        intport: '5800'
+        extport: '5801'
+        intport2: '5903'
+        extport2: '5903'
+        image: 'jlesage/makemkv'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+    # LABELS ######################################################################
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+          
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/opt/appdata/{{pgrole}}:/config'
+          - '{{path.stdout}}:{{path.stdout}}'
+          - '/mnt/unionfs:/unionfs'
+          - '{{path.stdout}}/downloads/{{pgrole}}/:/output:rw'
+          - '/etc/localtime:/etc/localtime:ro'
+
+    - name: 'Setting PG ENV'
+      set_fact:
+        pg_env:
+          UID: '1000'
+          GID: '1000'
+          MAKEMKV_KEY: BETA
+          AUTO_DISC_RIPPER: 0
+          ENABLE_CJK_FONT: 1
+          CLEAN_TMP_DIR: 1
+          KEEP_APP_RUNNING: 1
+
+    # MAIN DEPLOYMENT #############################################################
+
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+        state: started
+        labels: '{{pg_labels}}'

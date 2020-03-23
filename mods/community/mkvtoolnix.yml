@@ -1,0 +1,81 @@
+#!/bin/bash
+#
+# Title:      MKVToolNix
+# Author(s):  jlesage/timekills
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+# Docker:     Docker image is available at: https://hub.docker.com/r/metabrainz/picard-website
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'mkvtoolnix'
+        intport: '5800'
+        extport: '5805'
+        image: 'jlesage/mkvtoolnix'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/communityapps/apps/_core.yml'
+
+    - name: 'Including folders'
+      include_tasks: '/opt/communityapps/apps/_downloaders.yml'
+
+    - name: 'Including plugins'
+      include_tasks: '/opt/communityapps/apps/_plugins.yml'
+
+    - name: 'Checking for existing app data'
+      stat:
+        path: /opt/appdata/{{pgrole}}/core.conf
+      register: confcheck
+      
+     # LABELS ######################################################################
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+
+    - name: 'Setting default Volumes'
+      set_fact:
+        pg_volumes:
+          - '/opt/appdata/{{pgrole}}:/config:rw'
+          - '{{path.stdout}}:{{path.stdout}}'
+          - '/etc/localtime:/etc/localtime:ro'
+          - '/mnt:/mnt'
+          - '/mnt/downloads/storage:/storage:rw'
+
+    - name: 'Setting default ENV'
+      set_fact:
+        pg_env:
+          USER_ID: '1000'
+          GROUP_ID: '1000'
+#          SECURE_CONNECTION: 1
+
+    # MAIN DEPLOYMENT #############################################################
+
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+        expose:
+          - 5905
+        state: started
+        labels: '{{pg_labels}}'

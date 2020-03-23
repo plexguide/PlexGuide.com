@@ -1,0 +1,21 @@
+- name: Creating scripts and plugins paths
+  file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
+  with_items:
+    - '/opt/appdata/{{pgrole}}/scripts'
+    - '/opt/appdata/{{pgrole}}/plugins'
+
+- name: 'Check if Templates Exist for {{pgrole}}'
+  stat:
+    path: './templates/{{pgrole}}'
+  register: copycheck
+
+- name: 'Copying Scripts & Plugins'
+  copy:
+    src: ./templates/{{pgrole}}
+    dest: /opt/appdata
+    directory_mode: yes
+    force: yes
+    owner: '1000'
+    group: '1000'
+    mode: 0775
+  when: copycheck.stat.exists
