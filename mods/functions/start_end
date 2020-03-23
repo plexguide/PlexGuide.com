@@ -17,6 +17,8 @@ EOF
 
 cat << "EOF"
 ┌─────────────────────────────────────┐
+│            EXITING PGX              │
+│ ————————————————————————————————————│
 │ Star PG:      github.plexguide.com  │
 │ Donate:       donate.plexguide.com  │
 │ ————————————————————————————————————│
@@ -24,13 +26,11 @@ cat << "EOF"
 │ Update  PlexGuide:      pgupdate    │
 │ View PG Blitz Logs:     pgtransfer  │
 │ Download Your PG Fork:  pgfork      │
-│ ————————————————————————————————————│
-│ Thanks For Being Part of the Team   │
+│ ——————————————————————————————————— │
+│ An Original Admin9705 Project       │
 │                                     │
 │ Dedicated to:                       │
 │ Deiteq, YasQueen84 & JasMarie       │
-│                                     │
-│ An Original Admin9705 Project       │
 └─────────────────────────────────────┘
 EOF
 
