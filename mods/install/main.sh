@@ -44,6 +44,12 @@ install_folders
 common_header "⌛ INSTALLING: Docker"; sleep 2
 ansible-playbook /pg/mods/ymls/pg.yml --tags docker
 
+common_header "⌛ INSTALLING: RClone"; sleep 2
+ansible-playbook /pg/mods/ymls/pg.yml --tags rcloneinstall
+
+common_header "⌛ INSTALLING: Google's Cloud SDK"; sleep 2
+ansible-playbook /pg/mods/ymls/pg.yml --tags google_sdk
+
 echo "HALTED - Install Check  "
 
 exit
