@@ -88,7 +88,7 @@ case $typed in
       bash /pg/stage/files/ending.sh
       exit ;;
     Z )
-      bash /pg/stage/files/ending.sh
+      start_end
       exit ;;
     * )
       primestart ;;
