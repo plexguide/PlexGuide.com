@@ -9,4 +9,5 @@
     - { role: rcloneinstall, tags: ['rcloneinstall'] }
     - { role: mergerfsinstall, tags: ['mergerfsinstall'] }
     - { role: mergerfsupdate, tags: ['mergerfsupdate'] }
+    - { role: mergerfsupdate, tags: ['nvidia'] }
     - { role: gcloud_sdk, tags: ['gcloud_sdk'] }

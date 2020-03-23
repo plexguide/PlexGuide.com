@@ -1,0 +1,45 @@
+#########################################################################
+# Title:         Nvidia: Nvidia Driver Task                             #
+# Author(s):     desimaniac, l3uddz                                     #
+# URL:           https://github.com/cloudbox/cloudbox                   #
+# --                                                                    #
+#         Part of the Cloudbox project: https://cloudbox.works          #
+#########################################################################
+#                   GNU General Public License v3.0                     #
+#########################################################################
+---
+- name: Install 'build-essential'
+  apt:
+    name: build-essential
+    update_cache: yes
+    state: present
+
+- name: Set 'nvidia_driver_version' variable
+  set_fact:
+    nvidia_driver_version: >-
+      {{ ('%.2f'|format(gpu.nvidia.driver|float))
+      if ((gpu.nvidia.driver | type_debug == 'float') or (gpu.nvidia.driver | type_debug == 'int'))
+      else (gpu.nvidia.driver | regex_replace('(^v\\.|^v)', '')) }}
+
+- name: Download Nvidia drivers
+  get_url:
+    url:  "https://download.nvidia.com/XFree86/Linux-x86_64/{{ nvidia_driver_version }}/NVIDIA-Linux-x86_64-{{ nvidia_driver_version }}.run"
+    dest: "/tmp/NVIDIA-Linux-x86_64-{{ nvidia_driver_version }}.run"
+    mode: 0775
+    owner: root
+    group: root
+    force: yes
+    validate_certs: no
+  register: driver_download
+
+- name: Install Nvidia drivers
+  shell: "/tmp/NVIDIA-Linux-x86_64-{{ nvidia_driver_version }}.run --silent"
+  register: driver_install
+  ignore_errors: yes
+
+- name: Nvidia driver did not install
+  fail:
+    msg:
+      - "{{ driver_install.stdout }}"
+      - "Nvidia driver did not install"
+  when: (driver_install is failed) or ('ERROR' in driver_install.stdout)
