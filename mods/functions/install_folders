@@ -58,6 +58,4 @@ install_folders() {
     fcreate /pg/torrent
     fcreate /pg/downloads
 
-echo ""
-
 }
