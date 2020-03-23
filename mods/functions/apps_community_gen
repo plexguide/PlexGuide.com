@@ -3,7 +3,7 @@ apps_community_gen() {
   primary_path="/pg/var/community_app.list"
 
   # Generates App List
-  ls -p /pg/mods/core | grep -v / | sed -e 's/.yml//g' > "$community_path"
+  ls -p /pg/mods/community | grep -v / | sed -e 's/.yml//g' > "$community_path"
 
   # Enter Items Here to Prevent them From Showing Up on AppList
   sed -i -e "/traefik/d" "$community_path"
