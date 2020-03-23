@@ -1,0 +1,10 @@
+[google-cloud-sdk]
+name=Google Cloud SDK
+baseurl=https://packages.cloud.google.com/yum/repos/cloud-sdk-el{{ansible_distribution_major_version}}-{{ansible_architecture}}
+enabled=1
+# TODO: Enable this after
+# https://github.com/ansible/ansible/issues/20711 is resolved
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+       https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg

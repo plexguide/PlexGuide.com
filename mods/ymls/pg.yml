@@ -5,3 +5,5 @@
 
   roles:
     - { role: docker, tags: ['docker'] }
+    - { role: rcloneinstall, tags: ['rcloneinstall'] }
+    - { role: gcloud_sdk, tags: ['gcloud_sdk'] }

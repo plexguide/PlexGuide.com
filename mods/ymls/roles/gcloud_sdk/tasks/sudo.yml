@@ -1,0 +1,8 @@
+---
+- include_tasks: compat_sudo.yml
+- include_tasks: Debian_sudo.yml
+  when: ansible_os_family == 'Debian'
+- include_tasks: RedHat_sudo.yml
+  when: ansible_os_family == 'RedHat'
+- include_tasks: install_package_names_sudo.yml
+- include_tasks: install_additional_packages_sudo.yml

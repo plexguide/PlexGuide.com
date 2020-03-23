@@ -1,0 +1,15 @@
+---
+- name: download gcloud key
+  # https does not work on centos-5
+  command: >
+    wget -O /root/A7317B0F.gpg
+    https://packages.cloud.google.com/apt/doc/apt-key.gpg
+  args:
+    creates: /root/A7317B0F.gpg
+  register: result_download
+  until: result_download is success
+  # Workaround https://github.com/ansible/ansible/issues/16868 and
+  # increase default retry count
+  retries: 20
+  delay: 10
+  become: yes

@@ -1,0 +1,26 @@
+---
+# - name: check for short-circuit
+  # raw: "> /dev/null command -v todo_fixme;"
+  # register: installed
+  # ignore_errors: True
+  # changed_when: False
+
+- name: set should_run fact
+  set_fact:
+    should_run: True
+  # when: installed is failed or not gcloud_sdk_should_shortcircuit
+
+- include_vars: "{{item}}"
+  with_first_found:
+  - "../vars/{{ansible_distribution}}-{{ansible_distribution_version}}.yml"
+  - "../vars/{{ansible_distribution}}-{{ansible_distribution_major_version}}.yml"
+  - "../vars/{{ansible_distribution}}.yml"
+  - "../vars/{{ansible_os_family}}.yml"
+  - "../vars/default.yml"
+
+- include_tasks: sudo.yml
+  when: ansible_version is defined and ansible_version.major < 2
+
+- include_tasks: become.yml
+  when: ansible_version is defined and ansible_version.major >= 2
+

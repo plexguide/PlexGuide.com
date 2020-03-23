@@ -1,0 +1,36 @@
+---
+- include_tasks: get_key.yml
+
+- name: add google cloud key to apt-key
+  apt_key: file=/root/A7317B0F.gpg
+  become: yes
+
+- name: sources.list
+  template: >
+    src=google-cloud-sdk.list.j2
+    dest=/etc/apt/sources.list.d/google-cloud-sdk.list
+    force=no
+  register: sources_list_result
+  become: yes
+
+# Install apt-transport-https
+- name: install apt-transport-https
+  action: "{{backcompat_pkg_mgr}} name=apt-transport-https"
+  register: result_install_transport_https
+  until: result_install_transport_https is success
+  # Workaround https://github.com/ansible/ansible/issues/16868 and
+  # increase default retry count
+  retries: 20
+  delay: 10
+  become: yes
+
+- name: apt-get update
+  apt: update_cache=true cache_valid_time=0
+  when: sources_list_result.changed
+  register: result_apt_update
+  until: result_apt_update is success
+  # Workaround https://github.com/ansible/ansible/issues/16868 and
+  # increase default retry count
+  retries: 20
+  delay: 10
+  become: yes

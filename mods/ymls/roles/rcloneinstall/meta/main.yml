@@ -1,0 +1,29 @@
+---
+
+dependencies: []
+
+galaxy_info:
+  author: 'Stefan G. Weichinger'
+  description: 'Install rclone'
+  company: 'oops'
+  license: 'GNU General Public License v3'
+  min_ansible_version: '2.0'
+  platforms:
+    - name: Debian
+      versions:
+        - buster
+        - stretch
+        - jessie
+    - name: Fedora
+      versions:
+        - 30
+        - 29
+        - 27
+    - name: Ubuntu
+      versions:
+        - bionic
+        - xenial
+        - trusty
+  galaxy_tags:
+    - networking
+    - system

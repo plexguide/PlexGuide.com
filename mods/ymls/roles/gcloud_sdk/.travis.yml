@@ -1,0 +1,31 @@
+language: ruby
+rvm:
+- 2.2
+- 1.9.3
+env:
+- DOCKER_IMAGES=centos:7 ANSIBLE_VERSIONS=1.6.1
+- DOCKER_IMAGES=centos:7 ANSIBLE_VERSIONS=2.1.0.0
+- DOCKER_IMAGES=debian:8 ANSIBLE_VERSIONS=1.6.1
+- DOCKER_IMAGES=debian:8 ANSIBLE_VERSIONS=2.1.0.0
+- DOCKER_IMAGES=debian:stretch ANSIBLE_VERSIONS=1.6.1
+- DOCKER_IMAGES=debian:stretch ANSIBLE_VERSIONS=2.1.0.0
+- DOCKER_IMAGES=ubuntu:12.04 ANSIBLE_VERSIONS=1.6.1
+- DOCKER_IMAGES=ubuntu:12.04 ANSIBLE_VERSIONS=2.1.0.0
+- DOCKER_IMAGES=ubuntu:14.04 ANSIBLE_VERSIONS=1.6.1
+- DOCKER_IMAGES=ubuntu:14.04 ANSIBLE_VERSIONS=2.1.0.0
+- DOCKER_IMAGES=ubuntu:16.04 ANSIBLE_VERSIONS=1.6.1
+- DOCKER_IMAGES=ubuntu:16.04 ANSIBLE_VERSIONS=2.1.0.0
+- DOCKER_IMAGES=ubuntu:18.04 ANSIBLE_VERSIONS=2.5.1
+services:
+- docker
+script:
+- wget -O- bit.ly/ansibletest | sh -x
+after_failure:
+- cat role-tester-ansible-master/.kitchen/logs/*.log | grep -v '^I, '
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  slack:
+    secure: HGI0oBCXlH+g+FgpfE1iTXZ1oLSU46CqMatC9tTCltjiW4kETX0AgPSdHnvd8Yfv835HYov57dTe8uSy3KRePf2Kizrg1fukyvDN0cjXhjMUglKGiBkGZ3MFF5QasxS7hdHpqTtjV/VJYj4i0lsGkQbYFHb+rpkwp4pNTwGlWfUaRpOXOV+icCjZuJlniPguA44BQJdpKaH0wcfEPO/y5wzIQpS98aW5ESeaxcUfNFxjd5U2K/mhdpCICigXeDON1Lnzn11lNuvZ/obK6LAR0uD9VYzCZcJBCGDPY8oNVrW4QiN9im4mbHeC1hUnRTr8JYEQtWJ/SlnnzCq4FrIL7oA/p5tgDIPYfJBIgpMSKA7JHcNBdNUahoQ7+r6jHMdOL03spSlNKbOW+lw1/+ypKYCr1C3fsuoSUyUpa4gTRt6E9q4TRMNGa/zucRYZxCAG3yGv3CrtebZ8BDTqyMP+o3nyj0WzraCtdPUu5hn5ZcFI3eGcsYNqMDvps9uUG+ZJpH0h7XZSbkZseFiWvjhC13So9h5We4D+1WDMv0CgSa6Xdx2ViTpCNF01gF0nmWo0BBtW+KtwK4JurT37xq34qWz/+bjJTf4SuYyXgh3CzcN92ffup1M1LuFj86uoSB5pVNgJ9QSlQizzzC7dxn/2NVr4F5vvn12XJFRusbp5E9U=
+  email:
+    recipients:
+      secure: ilGXa+I7Gai3AubxxQO6ffq5nLgEgeSoVDqvLz/cETY+mTdqKri3tJFOi3aJeaT7eWbYT7TXdAuUzWTytBNtA1/WvqYB/SFilEjpAiQk6hrjdfkeJyOTCzbKM3k2usQmIO4TbULniOt/yWr2EMtwXTga/s5HBa97z2Nqp0n9qnoGm/daJ4I8ss1akpRPakPOc3/j0kuTwOjT1Vsia1M2bErss+AFkK6aeop7jZBkY5cjSRr/r9DPVqavi5Tkagsc1yl53kqJiMg3rJ+JfP0kZt7Z4tEoeCVbGGlsRza3jjtu9EFNKJuQP5bt+R/BTGS9W9pv+D7aiNHl37Wrk2Ei49B85AfUoN0zzuyLrw8DVxdfMdhD0JNZji5uesq0b3scLik5xchs9mrjsynlYxhsnuNe8459+xkkHazs9+lG4ZrRU6/2tPOwtzMzqYBrHlg867AkdCDAWuJPz4Id4Ez81Q//xFyBeTlqGOUHX5tHVqkcARQHLzDFD67jJivVPXavz9WPCpV3t5qDcLQ3TrTId+vIMbJHvJoeHc+HoMxElrC5V63wssuF4SxTdfDiX08xWKlBV2CZH3V8/16dTDKuCrT+qSjYuzJLo8szSMsTAgQgr1NuSsTMDxjN9NHLCeJJ34oWQ1v5fkH3BedCBu47eOWfd7rEEF4WkeJSmTGjaqU=

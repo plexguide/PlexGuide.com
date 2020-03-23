@@ -1,0 +1,3 @@
+---
+gcloud_sdk_additional_package_names: [google-cloud-sdk-app-engine-python]
+#gcloud_sdk_should_shortcircuit: False

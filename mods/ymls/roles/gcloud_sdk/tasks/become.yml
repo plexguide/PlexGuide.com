@@ -1,0 +1,6 @@
+---
+- include_tasks: compat.yml
+- include_tasks: Debian.yml
+  when: ansible_os_family == 'Debian'
+- include_tasks: install_package_names.yml
+- include_tasks: install_additional_packages.yml

@@ -1,0 +1,138 @@
+---
+- name: install python-apt on ansible < 1.6.0 and ubuntu et al
+  raw: >
+    if > /dev/null command -v apt-get; then
+       python -c "import apt" ||
+       (> /dev/null command -v apt-get &&
+          (apt-get install -y python-apt ||
+             (apt-get update -qq && apt-get install -y python-apt)));
+    fi
+  register: result_python_apt
+  until: result_python_apt is success
+  # Workaround https://github.com/ansible/ansible/issues/16868 and
+  # increase default retry count
+  retries: 20
+  delay: 10
+  when: should_run and ansible_os_family == 'Debian'
+  changed_when: False
+  become: yes
+
+- name: install python-pycurl on ansible < 1.6.0 and ubuntu et al
+  raw: >
+    if > /dev/null command -v apt-get; then
+       python -c "import pycurl" ||
+       (> /dev/null command -v apt-get &&
+          (apt-get install -y python-pycurl ||
+             (apt-get update -qq && apt-get install -y python-pycurl)));
+    fi
+  register: result_python_pycurl
+  until: result_python_pycurl is success
+  # Workaround https://github.com/ansible/ansible/issues/16868 and
+  # increase default retry count
+  retries: 20
+  delay: 10
+  when: should_run and ansible_os_family == 'Debian'
+  changed_when: False
+  become: yes
+
+- name: install python2-yum on ansible <=1.9.2/fedora 24
+  raw: >
+    if > /dev/null command -v yum && ! > /dev/null command -v dnf; then
+       python -c "import yum" ||
+       (> /dev/null command -v yum && ! > /dev/null command -v dnf && yum install -y python2-yum);
+    fi
+  register: result_python_yum
+  until: result_python_yum is success
+  # Workaround https://github.com/ansible/ansible/issues/16868 and
+  # increase default retry count
+  retries: 20
+  delay: 10
+  when: should_run and ansible_os_family == 'RedHat'
+  changed_when: False
+  become: yes
+
+- name: install python2-dnf on ansible 2.1/fedora 24
+  raw: >
+    if > /dev/null command -v dnf; then
+       python -c "import dnf" ||
+       (> /dev/null command -v dnf && dnf install -y python2-dnf);
+    fi
+  register: result_python_dnf
+  until: result_python_dnf is success
+  # Workaround https://github.com/ansible/ansible/issues/16868 and
+  # increase default retry count
+  retries: 20
+  delay: 10
+  when: should_run and ansible_os_family == 'RedHat'
+  changed_when: False
+  become: yes
+
+# Set backcompat_pkg_mgr for versions of ansible that set
+# ansible_pkg_mgr to yum instead of dnf
+- name: check for dnf
+  raw: "> /dev/null command -v dnf"
+  register: dnf_result
+  ignore_errors: True
+  when: should_run and ansible_os_family == 'RedHat'
+  changed_when: False
+  become: yes
+
+- set_fact:
+    backcompat_pkg_mgr: 'dnf'
+  when: should_run and ansible_os_family == 'RedHat' and dnf_result is success
+
+- set_fact:
+    backcompat_pkg_mgr: '{{ansible_pkg_mgr}}'
+  when: should_run and ansible_os_family == 'RedHat' and dnf_result is failed
+
+- set_fact:
+    backcompat_pkg_mgr: '{{ansible_pkg_mgr}}'
+  when: should_run and ansible_os_family == 'Debian'
+
+- set_fact:
+    ansible_distribution_major_version: >
+      {{ansible_distribution_version|truncate(2,true,'',0)|replace(".", " ")|trim|float|int|string}}
+  when: should_run and ansible_distribution_major_version is not defined
+
+- set_fact:
+    ansible_distribution_major_version: >
+      {{ansible_distribution_version|truncate(4,true,'',0)|replace("."," ")|trim|float|int|string}}
+  when: should_run and ansible_distribution_major_version is not defined or not ansible_distribution_major_version
+
+- name: check for wget
+  raw: "> /dev/null command -v wget"
+  register: wget_result
+  ignore_errors: True
+  changed_when: False
+  when: should_run
+  become: yes
+
+# Install wget due to https://github.com/ansible/ansible/issues/12161
+- name: install wget with non-dnf
+  action: "{{backcompat_pkg_mgr}} name=wget"
+  register: result_wget
+  until: result_wget is success
+  # Workaround https://github.com/ansible/ansible/issues/16868 and
+  # increase default retry count
+  retries: 20
+  delay: 10
+  when: >
+    should_run and
+    (backcompat_pkg_mgr == "yum" or backcompat_pkg_mgr == "apt")
+       and wget_result is failed
+  become: yes
+
+# Install wget due to https://github.com/ansible/ansible/issues/12161
+# Use command since dnf was only added as a module in ansible 1.9.0
+- name: install wget with dnf
+  command: dnf install -y wget
+  register: result_wget_dnf
+  until: result_wget_dnf is success
+  # Workaround https://github.com/ansible/ansible/issues/16868 and
+  # increase default retry count
+  retries: 20
+  delay: 10
+  args:
+    creates: /usr/bin/wget
+  when: should_run and backcompat_pkg_mgr == "dnf" and wget_result is failed
+  become: yes

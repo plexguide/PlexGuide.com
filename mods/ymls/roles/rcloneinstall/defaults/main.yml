@@ -1,0 +1,15 @@
+---
+# rclone_arch can be defined as an architecture (e.g. arm, mips, 386) listed at https://github.com/ncw/rclone/releases
+rclone_arch: amd64
+
+install_manpages: true
+
+# Defaults in case no variables for OS are chosen
+rclone_setup_tmp_dir: "/tmp/rclone_setup"
+
+PACKAGES:
+  - unzip
+
+MAN_PAGES:
+  OWNER: root
+  GROUP: root

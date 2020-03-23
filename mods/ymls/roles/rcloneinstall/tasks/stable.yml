@@ -1,0 +1,20 @@
+---
+- block:
+    - name: Check latest stable rclone version number
+      uri:
+        url: https://downloads.rclone.org/version.txt
+        return_content: true
+      register:
+        rclone_latest_version
+      check_mode: false
+    - name: Set variable to latest stable version number
+      set_fact:
+        rclone_version: "{{ rclone_latest_version.content | replace ('rclone v', '', 1) | trim }}"
+  when: rclone_version is undefined
+
+- name: Get rclone stable version {{ rclone_version }}
+  unarchive:
+    src: https://downloads.rclone.org/v{{ rclone_version }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}.zip
+    dest: "{{ rclone_setup_tmp_dir }}"
+    remote_src: true
+    creates: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}"

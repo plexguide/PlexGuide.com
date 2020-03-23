@@ -1,0 +1,10 @@
+---
+
+PACKAGES:
+  - unzip
+  - man-db
+
+MAN_PAGES:
+  OWNER: root
+  GROUP: root
+  PATH: '/usr/share/man/man1'

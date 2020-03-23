@@ -1,0 +1,116 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+  options:
+    config-file: molecule/yaml-lint.yml
+platforms:
+
+  - name: centos7
+    image: "geerlingguy/docker-centos7-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: debian8
+    image: "geerlingguy/docker-debian8-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: debian9
+    image: "geerlingguy/docker-debian9-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: debian10
+    image: "geerlingguy/docker-debian10-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: fedora27
+    image: "geerlingguy/docker-fedora27-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: fedora29
+    image: "geerlingguy/docker-fedora29-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: fedora30
+    image: "geerlingguy/docker-fedora30-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: ubuntu1404
+    image: "geerlingguy/docker-ubuntu1404-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: ubuntu1604
+    image: "geerlingguy/docker-ubuntu1604-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+  - name: ubuntu1804
+    image: "geerlingguy/docker-ubuntu1804-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: false
+    pre_build_image: true
+
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ../playbook.yml
+  lint:
+    name: ansible-lint
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - destroy
+    # - dependency
+    - syntax
+    - create
+    # - prepare
+    - converge
+    - idempotence
+    # - side_effect
+    - verify
+    - destroy
+verifier:
+  name: testinfra
+  directory: ../tests/
+  lint:
+    name: flake8

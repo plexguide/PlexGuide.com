@@ -1,0 +1,18 @@
+---
+- block:
+    - name: Check latest beta rclone version number
+      uri:
+        url: https://beta.rclone.org/version.txt
+        return_content: true
+      register:
+        rclone_latest_beta_version
+    - name: Set variable for beta version
+      set_fact:
+        rclone_version: "{{ rclone_latest_beta_version.content | replace ('rclone v', '', 1) | trim }}"
+
+- name: Get rclone latest beta version
+  unarchive:
+    src: https://beta.rclone.org/rclone-beta-latest-linux-{{ rclone_arch }}.zip
+    dest: "{{ rclone_setup_tmp_dir }}"
+    remote_src: true
+    creates: "{{ rclone_setup_tmp_dir }}/rclone-v{{ rclone_version }}-linux-{{ rclone_arch }}"
