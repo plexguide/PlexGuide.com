@@ -68,11 +68,6 @@ cat /etc/os-release | head -n +5 | tail -n +5 | cut -d'"' -f2 > /pg/var/pg.os
 file="/pg/var/gce.false"
 if [ -e "$file" ]; then echo "No" > /pg/var/pg.gce; else echo "Yes" > /pg/var/pg.gce; fi
 
-# Call Variables
-edition=$(cat /pg/var/pg.edition)
-serverid=$(cat /pg/var/server.id)
-pgnumber=$(cat /pg/var/pg.number)
-
 # Declare Traefik Deployed Docker State
 if [[ $(docker ps | grep "traefik") == "" ]]; then
   traefik="NOT DEPLOYED"
