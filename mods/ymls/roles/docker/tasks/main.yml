@@ -223,7 +223,7 @@
   register: service_docker_status
 
 - name: Report status of docker
-  fail:
+  false:
     msg: |
       Service docker is not running.
       Output of `systemctl status docker`:
