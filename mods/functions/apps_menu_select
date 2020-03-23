@@ -32,10 +32,8 @@ case $typed in
       bash /pg/pgblitz/menu/interface/settings.sh
       primestart ;;
     z )
-      start_end
       exit ;;
     Z )
-      start_end
       exit ;;
     * )
       primestart ;;
