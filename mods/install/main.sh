@@ -53,14 +53,15 @@ install_folders
 #common_header "⌛ INSTALLING: MergerFS"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsinstall
 
-common_header "⌛ INSTALLING: MergerFS Update"; sleep 2
-ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsupdate
+############# DO NOT ACTIVE TILL PGUNION
+#common_header "⌛ INSTALLING: MergerFS Update"; sleep 2
+#ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsupdate
 
 #common_header "⌛ INSTALLING: Google's Cloud SDK"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags gcloud_sdk
 
-common_header "⌛ INSTALLING: Nvidia Drivers"; sleep 2
-ansible-playbook /pg/mods/ymls/pg.yml --tags nvidia
+#common_header "⌛ INSTALLING: Nvidia Drivers"; sleep 2
+#ansible-playbook /pg/mods/ymls/pg.yml --tags nvidia
 
 echo "HALTED - Install Check  "
 
