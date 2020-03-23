@@ -61,34 +61,34 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 case $typed in
     1 )
       bash /pg/stage/pgcloner/traefik.sh
-      primestart ;;
+      start_menu ;;
     2 )
       bash /pg/stage/pgcloner/portguard.sh
-      primestart ;;
+      start_menu ;;
     3 )
       bash /pg/stage/pgcloner/pgshield.sh
-      primestart ;;
+      start_menu ;;
     4 )
       bash /pg/stage/pgcloner/pgclone.sh
-      primestart ;;
+      start_menu ;;
     5 )
       apps_menu
-      primestart ;;
+      start_menu ;;
     6 )
       bash /pg/stage/pgcloner/pgpress.sh
-      primestart ;;
+      start_menu ;;
     7 )
       bash /pg/stage/pgcloner/pgvault.sh
-      primestart ;;
+      start_menu ;;
     8 )
       bash /pg/pgblitz/menu/interface/cloudselect.sh
-      primestart ;;
+      start_menu ;;
     9 )
       bash /pg/pgblitz/menu/tools/tools.sh
-      primestart ;;
+      start_menu ;;
     10 )
       bash /pg/pgblitz/menu/interface/settings.sh
-      primestart ;;
+      start_menu ;;
     z )
       start_end
       exit ;;
@@ -96,7 +96,7 @@ case $typed in
       start_end
       exit ;;
     * )
-      primestart ;;
+      start_menu ;;
 esac
 
 }
