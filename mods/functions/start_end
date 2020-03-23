@@ -19,8 +19,8 @@ cat << "EOF"
 ┌─────────────────────────────────────┐
 │       -== Team PlexGuide ==-        │
 │ ————————————————————————————————————│
-│ Star PG:        github.pgblitz.com  │
-│ Donate:         donate.pgblitz.com  │
+│ Star PG:      github.plexguide.com  │
+│ Donate:       donate.plexguide.com  │
 │ ————————————————————————————————————│
 │ Restart PlexGuide:      plexguide   │
 │ Update  PlexGuide:      pgupdate    │
