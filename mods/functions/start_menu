@@ -1,5 +1,10 @@
 start_menu() {
 
+# Call Variables
+edition=$(cat /pg/var/pg.edition)
+serverid=$(cat /pg/var/server.id)
+pgnumber=$(cat /pg/var/pg.number)
+
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -24,7 +29,7 @@ EOF
     capacity_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $2}')
     percentage_gce2=$(df -h "$disktwo" | tail -n +2 | awk '{print $5}')
 
-    if [[ "$disktwo" != "/pg" ]]; then
+    if [[ "$disktwo" != "/pg/unity" ]]; then
     echo "   2nd Disk Used Space: $used_gce2 of $capacity_gce2 | $percentage_gce2 Used Capacity"; fi
   fi
 
