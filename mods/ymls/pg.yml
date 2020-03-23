@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  vars:
+    extra: ''
+
+  roles:
+    - { role: docker, tags: ['docker'] }

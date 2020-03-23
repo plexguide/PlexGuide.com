@@ -1,0 +1,232 @@
+#!/bin/bash
+#
+# Title:      Docker Install
+###############################################################
+---
+- name: 'Establish Facts'
+  set_fact:
+    switch: 'on'
+    updatecheck: 'default'
+
+- name: 'Docker Check'
+  stat:
+    path: '/usr/bin/docker'
+  register: check
+
+- name: 'Docker Version Check - True'
+  shell: "docker --version | awk '{print $3}'"
+  register: updatecheck
+
+- name: 'Switch - On'
+  set_fact:
+    switch: 'off'
+  when: updatecheck.stdout == "18.09.8,"
+
+- name: 'Stop All Containers'
+  shell: 'docker stop $(docker ps -a -q)'
+  ignore_errors: yes
+  when:
+    - check.stat.exists == True
+    - switch == "on"
+
+#########update part
+- name: Update APT package cache
+  apt: update_cache=yes cache_valid_time=600
+
+- name: Upgrade APT to the latest packages
+  apt: upgrade=dist
+  register: apt_result
+
+- name: Autoremove unused packages
+  command: apt-get -y autoremove
+  register: apt_result
+  changed_when: "'packages will be REMOVED' in apt_result.stdout"
+
+- name: Purge residual kernel packages
+  shell: apt-get remove -y --purge $(dpkg -l | grep "^rc\s*linux-image-" | awk '{print $2}' | tr '\n' ' ')
+  register: apt_result
+  changed_when: "'packages will be REMOVED' in apt_result.stdout"
+
+###Debian part
+- name: "Install packages for apt add repository over HTTPS for Debian"
+  apt:
+    name: "{{ packagesdeb }}"
+    state: latest
+    update_cache: yes
+  vars:
+    packagesdeb:
+    - git
+    - apt-transport-https
+    - ca-certificates
+    - wget
+    - software-properties-common
+    - gnupg2
+    - curl
+    - python3-pip
+    - virtualenv
+    - python3-setuptools
+  when: ansible_distribution == 'Debian'
+
+##Ubuntu part
+
+- name: "Install packages for apt add repository over HTTPS  for Ubuntu"
+  apt:
+    name: "{{ packagesubu }}"
+    state: latest
+    update_cache: yes
+  vars:
+    packagesubu:
+    - software-properties-common
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg-agent
+    - software-properties-common
+    - python3-pip
+    - virtualenv
+    - python3-setuptools
+  when: ansible_distribution == 'Ubuntu'
+
+##Ubuntu and Debian repo adds
+
+- name: Add Apt signing key from official docker repo
+  apt_key:
+    url: https://download.docker.com/linux/{{ ansible_distribution|lower }}/gpg
+    state: present
+
+- name: Add docker official repository for {{ ansible_distribution|lower }} - {{ ansible_distribution_release }}
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} edge
+    state: present
+
+#install part
+
+- name: Update APT package cache
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Upgrade APT to the latest packages
+  apt: upgrade=dist
+
+- name: Update apt and install docker-ce
+  apt: update_cache=yes name=docker-ce state=latest
+
+- name: Update apt and install docker-ce-cli
+  apt: update_cache=yes name=docker-ce-cli state=latest
+
+- name: Update apt and install containerd.io
+  apt: update_cache=yes name=containerd.io state=latest
+
+- name: Install Docker Module for Python
+  pip:
+    name: docker
+
+- name: Install Docker-compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-{{ansible_system}}-{{ansible_architecture}}"
+    dest: /usr/local/bin/docker-compose
+    force: yes
+    mode: 0775
+
+- name: Debian install Fix
+  shell: systemctl disable docker
+  when: ansible_distribution == 'Debian'
+
+- name: Check docker daemon.json exists
+  stat:
+    path: /etc/docker/daemon.json
+  register: docker_daemon
+
+- name: Stop docker to enable overlay2
+  systemd:
+    state: stopped
+    name: docker
+    enabled: yes
+  when:
+    - docker_daemon.stat.exists == False
+    - switch == "on"
+
+- name: Import daemon.json
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    force: yes
+    mode: 0775
+  when:
+    - docker_daemon.stat.exists == False
+    - switch == "on"
+
+- name: Start docker (Please Wait)
+  systemd:
+    state: started
+    name: docker
+    enabled: yes
+  when:
+    - docker_daemon.stat.exists == False
+    - switch == "on"
+
+- name: 'Wait for 20 seconds before commencing'
+  wait_for:
+    timeout: 20
+  when: switch == "on"
+
+- name: Check override folder exists
+  stat:
+    path: /etc/systemd/system/docker.service.d
+  register: docker_override
+
+- name: Create override folder
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    mode: 0775
+  when:
+    - docker_override.stat.exists == False
+    - switch == "on"
+  tags: docker_standard
+
+- name: Import override file
+  copy:
+    src: override.conf
+    dest: /etc/systemd/system/docker.service.d/override.conf
+    force: yes
+    mode: 0775
+  tags: docker_standard
+  when: switch == "on"
+
+#need check too
+- name: systemctl deamon-reload
+  systemd:
+    daemon_reload: yes
+  notify:
+    - systemd daemon-reload
+
+- name: create plexguide network
+  docker_network:
+    name: 'plexguide'
+    state: present
+  tags: docker_standard
+  when: switch == "on"
+
+- name: 'Start All Containers'
+  shell: 'docker start $(docker ps -a -q)'
+  ignore_errors: yes
+  when:
+    - switch == "on"
+    - check.stat.exists == True
+
+- name: Check if docker is running and works
+  command: systemctl status "{{ item }}"
+  with_items:
+    - docker
+  ignore_errors: yes
+  changed_when: false
+  register: service_docker_status
+
+- name: Report status of docker
+  fail:
+    msg: |
+      Service docker is not running.
+      Output of `systemctl status docker`:
+      {{ service_docker_status.stdout }}
+      {{ service_docker_status.stderr }}
+  when: service_docker_status | failed

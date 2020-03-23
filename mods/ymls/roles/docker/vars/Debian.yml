@@ -1,0 +1,51 @@
+- name: Update APT package cache
+  apt: update_cache=yes cache_valid_time=600
+
+- name: Upgrade APT to the latest packages
+  apt: upgrade=dist
+  register: apt_result
+
+- name: Autoremove unused packages
+  command: apt-get -y autoremove
+  register: apt_result
+  changed_when: "'packages will be REMOVED' in apt_result.stdout"
+
+- name: Purge residual kernel packages
+  shell: apt-get remove -y --purge $(dpkg -l | grep "^rc\s*linux-image-" | awk '{print $2}' | tr '\n' ' ')
+  register: apt_result
+  changed_when: "'packages will be REMOVED' in apt_result.stdout"
+
+- name: Install packages for apt add repository over HTTPS
+  apt:
+    name: "{{ packages }}"
+    update_cache: yes
+  vars:
+    packagesdep:
+    - git
+    - apt-transport-https
+    - ca-certificates
+    - wget
+    - software-properties-common
+    - gnupg2
+    - curl
+
+- name: Add Apt signing key from official docker repo
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+- name: add docker official repository for {{ ansible_distribution|lower }} - {{ ansible_distribution_release }}
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} stable
+    state: present
+
+- name: Update APT package cache
+  apt: update_cache=yes cache_valid_time=600
+
+- name: Upgrade APT to the latest packages
+  apt: upgrade=dist
+
+- name: actually install docker
+  apt:
+    name: "docker-ce"
+    state: latest

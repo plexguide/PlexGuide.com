@@ -32,14 +32,15 @@ PRESS CTRL+Z to STOP the Installation
 common_timer "2" ## set back to 5
 
 install_folders
-install_drivecheck
-install_webservercheck
-install_oscheck
-install_basepackage
-install_pyansible
-install_dependency
+# install_drivecheck
+# install_webservercheck
+# install_oscheck
+# install_basepackage
+# install_pyansible
+# install_dependency
 
 # ansible-playbook /pg/mods/motd/motd.yml
+ansible-playbook /pg/mods/ymls/pg.yml --tags docker
 
 echo "HALTED - Install Check  "
 
