@@ -1,0 +1,7 @@
+start_quotes() {
+
+bash /pg/mods/start/quotes.sh
+quote=$(cat /pg/var/startup.quote)
+source=$(cat /pg/var/startup.source)
+
+}

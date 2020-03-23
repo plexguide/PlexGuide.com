@@ -5,6 +5,7 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /pg/mods/functions/.master.sh
 
 # Create Variables (If New) & Recall
 pcloadletter () {
@@ -29,13 +30,6 @@ primestart(){
   pcloadletter
   varstart
   menuprime
-}
-
-# When Called, A Quoate is Randomly Selected
-quoteselect () {
-  bash /pg/pgblitz/menu/start/quotes.sh
-  quote=$(cat /pg/var/startup.quote)
-  source=$(cat /pg/var/startup.source)
 }
 
 varstart() {
@@ -178,7 +172,7 @@ EOF
   if [ "$ports" == "" ]; then ports="[OPEN] Ports  "
 else ports="[CLOSED] Ports"; fi
 
-quoteselect
+start_quotes
 
 tee <<-EOF
 
