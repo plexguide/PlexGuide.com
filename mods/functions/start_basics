@@ -28,6 +28,7 @@ variable /pg/var/tld.type "standard"
 variable /pg/var/transcode.path "standard"
 variable /pg/var/pgclone.transport "NOT-SET"
 variable /pg/var/plex.claim ""
+variable /pg/var/hd.path "/pg/unity"
 
 #### Temp Fix - Fixes Bugged AppGuard
 serverht=$(cat /pg/var/server.ht)
