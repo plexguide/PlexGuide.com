@@ -16,8 +16,8 @@ PRESS CTRL+Z to STOP the Installation
 			common_confirm; fi
 ## Issues: Incorrect OS
 
-		rm -f "/pg/var/os.var"
-		mkdir -p "/pg/var/os.var"
+		rm -rf "/pg/var/os.var"
+		mkdir -p "/pg/var/"
 		echo -e "$(lsb_release -si)" > /pg/var/os.var
 
 		if [[ $(lsb_release -si) == "Debian" ]]; then
