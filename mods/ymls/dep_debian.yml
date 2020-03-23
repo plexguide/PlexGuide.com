@@ -1,0 +1,74 @@
+#!/bin/bash
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: True
+  tasks:
+    - name: Install Common Packages (Takes Awhile)
+      apt: "name={{item}} state=present"
+      with_items:
+        - fuse
+        - nano
+        - fail2ban
+        - wget
+        - lsb-release
+        - figlet
+        - software-properties-common
+        - unrar
+        - unzip
+        - glances
+        - python-pip
+        - python3-pip
+        - jq
+        - moreutils
+        - python-passlib
+        - zip
+        - curl
+        - man-db
+        - htop
+        - openssh-server
+        - dirmngr
+        - zip
+        - apt-transport-https
+        - ca-certificates
+        - tree
+        - ncdu
+        - ctop
+        - dialog
+        - dnsutils
+        - mc
+        - apache2-utils
+        - lsof
+        - pwgen
+        - gawk
+        - python-lxml
+        - acl
+        - bc
+
+    - name: Update pip packages for python3
+      pip:
+        name:
+          - pip
+          - setuptools
+          - pyOpenSSL
+          - requests
+          - netaddr
+          - lxml
+          - docker
+        state: latest
+        executable: pip3
+
+    - name: Update pip packages for python2
+      pip:
+        name:
+          - pip
+          - setuptools
+          - pyOpenSSL
+          - requests
+          - netaddr
+          - lxml
+          - docker
+        state: latest
+        executable: pip2

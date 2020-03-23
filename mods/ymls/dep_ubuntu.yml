@@ -1,0 +1,72 @@
+#!/bin/bash
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: True
+  tasks:
+
+    - name: Install Common Packages (Takes Awhile)
+      apt: "name={{item.package}} state=present"
+      with_items:
+        - { package: "fuse" }
+        - { package: "fail2ban" }
+        - { package: "update-notifier-common" }
+        - { package: "software-properties-common" }
+        - { package: "unrar" }
+        - { package: "unzip" }
+        - { package: "python-pip" }
+        - { package: "glances" }
+        - { package: "python3-pip" }
+        - { package: "python-passlib" }
+        - { package: "zip" }
+        - { package: "curl" }
+        - { package: "man-db" }
+        - { package: "htop" }
+        - { package: "openssh-server" }
+        - { package: "dirmngr" }
+        - { package: "jq" }
+        - { package: "moreutils" }
+        - { package: "npm" }
+        - { package: "zip" }
+        - { package: "apt-transport-https" }
+        - { package: "ca-certificates" }
+        - { package: "tree" }
+        - { package: "zip" }
+        - { package: "ncdu" }
+        - { package: "ctop" }
+        - { package: "dialog" }
+        - { package: "dnsutils" }
+        - { package: "mc" }
+        - { package: "apache2-utils" }
+        - { package: "lsof" }
+        - { package: "bc" }
+        - { package: "pwgen" }
+        - { package: "gawk" }
+        - { package: "python-lxml" }
+        - { package: "acl" }
+
+    - name: Update pip packages for python3
+      pip:
+        name:
+          - pip
+          - setuptools
+          - pyOpenSSL
+          - requests
+          - netaddr
+          - lxml
+        state: latest
+        executable: pip3
+
+    - name: Update pip packages for python2
+      pip:
+        name:
+          - pip
+          - setuptools
+          - pyOpenSSL
+          - requests
+          - netaddr
+          - lxml
+        state: latest
+        executable: pip2

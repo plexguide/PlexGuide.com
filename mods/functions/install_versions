@@ -1,0 +1,32 @@
+install_versions() {
+
+	pgstore () {
+	  maindir="/pg/var/install"
+	  if [[ ! -e "${maindir}/${1}" ]]; then echo "${2}" > "${maindir}/${1}"; fi
+	  echo "${2}" > "${maindir}/${1}"
+	}
+
+pgstore "mergerinstall" "1"
+pgstore "alias_install" "1"
+pgstore "pythonstart" "1"
+pgstore "ccommands" "1"
+pgstore "aptupdate" "1"
+pgstore "preinstall" "1"
+pgstore "folders" "1"
+pgstore "dockerinstall" "1"
+pgstore "server" "1"
+pgstore "serverid" "1"
+pgstore "permissions" "1"
+pgstore "dependency" "1"
+pgstore "dockerassist" "1"
+pgstore "motd" "1"
+pgstore "alias" "1"
+pgstore "cleaner" "1"
+pgstore "gcloud" "1"
+pgstore "hetzner" "1"
+pgstore "watchtower" "1"
+pgstore "installer" "1"
+pgstore "prune" "1"
+pgstore "mountcheck" "1"
+
+}

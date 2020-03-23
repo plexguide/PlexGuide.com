@@ -1,0 +1,7 @@
+install_dependency () {
+  ospgversion=$(cat /pg/var/os.var)
+  if [ "$ospgversion" == "Ubuntu" ]; then
+    ansible-playbook /pg/mods/ymls/dep_ubuntu.yml;
+  else
+    ansible-playbook /pg/mods/ymls/dep_debian.yml; fi
+}
