@@ -3,40 +3,40 @@ apps_menu_select() {
 case $typed in
     1 )
       bash /pg/stage/pgcloner/traefik.sh
-      primestart ;;
+      apps_menu ;;
     2 )
       bash /pg/stage/pgcloner/portguard.sh
-      primestart ;;
+      apps_menu ;;
     3 )
       bash /pg/stage/pgcloner/pgshield.sh
-      primestart ;;
+      apps_menu ;;
     4 )
       bash /pg/stage/pgcloner/pgclone.sh
-      primestart ;;
+      apps_menu ;;
     5 )
       bash /pg/stage/pgcloner/apps.sh
-      primestart ;;
+      apps_menu ;;
     6 )
       bash /pg/stage/pgcloner/pgpress.sh
-      primestart ;;
+      apps_menu ;;
     7 )
       bash /pg/stage/pgcloner/pgvault.sh
-      primestart ;;
+      apps_menu ;;
     8 )
       bash /pg/pgblitz/menu/interface/cloudselect.sh
-      primestart ;;
+      apps_menu ;;
     9 )
       bash /pg/pgblitz/menu/tools/tools.sh
-      primestart ;;
+      apps_menu ;;
     10 )
       bash /pg/pgblitz/menu/interface/settings.sh
-      primestart ;;
+      apps_menu ;;
     z )
-      exit ;;
+      ;;
     Z )
-      exit ;;
+      ;;
     * )
-      primestart ;;
+      apps_menu ;;
 esac
 
 }
