@@ -22,7 +22,7 @@
 
 - name: Install DockerFix Service
   template:
-    src: docker_startup.js2
+    src: docker_startup_service.js2
     dest: /etc/systemd/system/docker_startup.service
     force: yes
 
