@@ -63,6 +63,6 @@ install_folders
 #common_header "⌛ INSTALLING: Nvidia Drivers"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags nvidia
 
-echo "HALTED - Install Check  "
+bash /pg/mods/start/start.sh
 
 exit
