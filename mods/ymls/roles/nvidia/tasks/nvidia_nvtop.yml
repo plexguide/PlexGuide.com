@@ -1,12 +1,7 @@
-#########################################################################
-# Title:         Nvidia: Nvidia Nvtop Task                              #
-# Author(s):     desimaniac, l3uddz                                     #
-# URL:           https://github.com/cloudbox/cloudbox                   #
-# --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
-#########################################################################
-#                   GNU General Public License v3.0                     #
-#########################################################################
+#!/bin/bash
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
 ---
 - name: Install nvtop dependencies
   apt: name="{{ item }}" state=present update_cache=yes

@@ -1,14 +1,7 @@
-######################################################################
-##
-## some of this parts are cloned from Cloudbox 
-## many thanks to all the devs from Cloudbox
-##
-## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-##
-## Credits fly to l3uddz and the CBox Boys "!"
-## Mod from MrDoob ( main dev of PTS )
-## based of PGblitz v8.7.5
-#######################################################################
+#!/bin/bash
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
 
 ---
 - name: "MergerFS | Install prerequisite build tools for Debian"
@@ -17,15 +10,15 @@
   vars:
     packages:
     - build-essential
-    - g++ 
-    - pkg-config 
+    - g++
+    - pkg-config
     - git
-    - git-buildpackage 
-    - pandoc 
-    - debhelper 
-    - libfuse-dev 
+    - git-buildpackage
+    - pandoc
+    - debhelper
+    - libfuse-dev
     - libattr1-dev
-    - jq 
+    - jq
   when: ansible_distribution == 'Debian'
 
 - name: "MergerFS | Install prerequisite build tools for UBUNTU"
@@ -34,15 +27,15 @@
   vars:
     packages:
     - build-essential
-    - g++ 
-    - pkg-config 
+    - g++
+    - pkg-config
     - git
-    - git-buildpackage 
-    - pandoc 
-    - debhelper 
-    - libfuse-dev 
+    - git-buildpackage
+    - pandoc
+    - debhelper
+    - libfuse-dev
     - libattr1-dev
-    - jq 
+    - jq
   when: ansible_distribution == 'Ubuntu'
 
 - name: "MergerFS | Get URL for latest mergerfs release"

@@ -1,12 +1,7 @@
-#########################################################################
-# Title:         Cloudbox: Nvidia Role                                  #
-# Author(s):     desimaniac, l3uddz                                     #
-# URL:           https://github.com/cloudbox/cloudbox                   #
-# --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
-#########################################################################
-#                   GNU General Public License v3.0                     #
-#########################################################################
+#!/bin/bash
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
 ---
 - name: Install common pip modules
   pip:
