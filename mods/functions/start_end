@@ -17,7 +17,7 @@ EOF
 
 cat << "EOF"
 ┌─────────────────────────────────────┐
-│            EXITING PGX              │
+│        EXITING PG Version X         │
 │ ————————————————————————————————————│
 │ Star PG:      github.plexguide.com  │
 │ Donate:       donate.plexguide.com  │
