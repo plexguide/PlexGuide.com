@@ -41,8 +41,8 @@ install_folders
 
 # ansible-playbook /pg/mods/motd/motd.yml
 
-common_header "⌛ INSTALLING: Docker"; sleep 2
-ansible-playbook /pg/mods/ymls/pg.yml --tags docker
+#common_header "⌛ INSTALLING: Docker"; sleep 2
+#ansible-playbook /pg/mods/ymls/pg.yml --tags docker
 
 common_header "⌛ INSTALLING: RClone"; sleep 2
 ansible-playbook /pg/mods/ymls/pg.yml --tags rcloneinstall
