@@ -32,6 +32,7 @@ PRESS CTRL+Z to STOP the Installation
 common_timer "2" ## set back to 5
 
 install_folders
+install_oldpg
 # install_drivecheck
 # install_webservercheck
 # install_oscheck
