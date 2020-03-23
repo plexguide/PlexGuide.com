@@ -1,6 +1,6 @@
 install_folders() {
 
-	if [[ "$a" == "0" ]]; then common_header "⌛ FOLDERS - Building Key Directories"; sleep 2; fi
+	common_header "⌛ FOLDERS - Building Key Directories"; sleep 2
 
 	fcreate () {
     if [[ ! -e "$1" ]]; then

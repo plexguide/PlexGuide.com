@@ -1,5 +1,7 @@
 install_dependency () {
   ospgversion=$(cat /pg/var/os.var)
+
+  common_header "⌛ REQUIRED: Installing Key $ospgversion Dependencies"; sleep 2
   if [ "$ospgversion" == "Ubuntu" ]; then
     ansible-playbook /pg/mods/ymls/dep_ubuntu.yml;
   else
