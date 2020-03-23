@@ -7,19 +7,6 @@
 ################################################################################
 source /pg/mods/functions/.master.sh
 
-# Create Variables (If New) & Recall
-pcloadletter () {
-  touch /pg/var/pgclone.transport
-  temp=$(cat /pg/var/pgclone.transport)
-    if [ "$temp" == "umove" ]; then transport="PG Move /w No Encryption"
-  elif [ "$temp" == "emove" ]; then transport="PG Move /w Encryption"
-  elif [ "$temp" == "ublitz" ]; then transport="PG Blitz /w No Encryption"
-  elif [ "$temp" == "eblitz" ]; then transport="PG Blitz /w Encryption"
-  elif [ "$temp" == "solohd" ]; then transport="PG Local"
-  else transport="NOT-SET"; fi
-  echo "$transport" > /pg/var/pg.transport
-}
-
 variable () {
   file="$1"
   if [ ! -e "$file" ]; then echo "$2" > $1; fi
@@ -27,113 +14,8 @@ variable () {
 
 # What Loads the Order of Execution
 primestart(){
-  pcloadletter
-  varstart
+  start_basics
   menuprime
-}
-
-varstart() {
-  ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
-  file="/pg/var"
-  if [ ! -e "$file" ]; then
-     mkdir -p /pg/var/logs 1>/dev/null 2>&1
-     chown -R 0775 /pg/var 1>/dev/null 2>&1
-     chmod -R 1000:1000 /pg/var 1>/dev/null 2>&1
-  fi
-
-  file="/pg/data/blitz"
-  if [ ! -e "$file" ]; then
-     mkdir -p /pg/data/blitz 1>/dev/null 2>&1
-     chown 0775 /pg/data/blitz 1>/dev/null 2>&1
-     chmod 1000:1000 /pg/data/blitz 1>/dev/null 2>&1
-  fi
-
-  ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
-  variable /pg/var/pgfork.project "NOT-SET"
-  variable /pg/var/pgfork.version "NOT-SET"
-  variable /pg/var/tld.program "NOT-SET"
-  variable /pg/var/plextoken "NOT-SET"
-  variable /pg/var/server.ht ""
-  variable /pg/var/server.ports "127.0.0.1:"
-  variable /pg/var/server.email "NOT-SET"
-  variable /pg/var/server.domain "NOT-SET"
-  variable /pg/var/tld.type "standard"
-  variable /pg/var/transcode.path "standard"
-  variable /pg/var/pgclone.transport "NOT-SET"
-  variable /pg/var/plex.claim ""
-
-  #### Temp Fix - Fixes Bugged AppGuard
-  serverht=$(cat /pg/var/server.ht)
-  if [ "$serverht" == "NOT-SET" ]; then
-  rm /pg/var/server.ht
-  touch /pg/var/server.ht
-  fi
-
-  hostname -I | awk '{print $1}' > /pg/var/server.ip
-  ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - END
-  echo "export NCURSES_NO_UTF8_ACS=1" >> /etc/bash.bashrc.local
-
-  # run pg main
-  file="/pg/var/update.failed"
-  if [ -e "$file" ]; then rm -rf /pg/var/update.failed
-    exit; fi
-  #################################################################################
-
-  # Touch Variables Incase They Do Not Exist
-  touch /pg/var/pg.edition
-  touch /pg/var/server.id
-  touch /pg/var/pg.number
-  touch /pg/var/traefik.deployed
-  touch /pg/var/server.ht
-  touch /pg/var/server.ports
-  touch /pg/var/pg.server.deploy
-
-  # For PG UI - Force Variable to Set
-  ports=$(cat /pg/var/server.ports)
-  if [ "$ports" == "" ]; then echo "Open" > /pg/var/pg.ports
-  else echo "Closed" > /pg/var/pg.ports; fi
-
-  ansible --version | head -n +1 | awk '{print $2'} > /pg/var/pg.ansible
-  docker --version | head -n +1 | awk '{print $3'} | sed 's/,$//' > /pg/var/pg.docker
-  cat /etc/os-release | head -n +5 | tail -n +5 | cut -d'"' -f2 > /pg/var/pg.os
-
-  file="/pg/var/gce.false"
-  if [ -e "$file" ]; then echo "No" > /pg/var/pg.gce; else echo "Yes" > /pg/var/pg.gce; fi
-
-  # Call Variables
-  edition=$(cat /pg/var/pg.edition)
-  serverid=$(cat /pg/var/server.id)
-  pgnumber=$(cat /pg/var/pg.number)
-
-  # Declare Traefik Deployed Docker State
-  if [[ $(docker ps | grep "traefik") == "" ]]; then
-    traefik="NOT DEPLOYED"
-    echo "Not Deployed" > /pg/var/pg.traefik
-  else
-    traefik="DEPLOYED"
-    echo "Deployed" > /pg/var/pg.traefik
-  fi
-
-  if [[ $(docker ps | grep "oauth") == "" ]]; then
-    traefik="NOT DEPLOYED"
-    echo "Not Deployed" > /pg/var/pg.auth
-  else
-    traefik="DEPLOYED"
-    echo "Deployed" > /pg/var/pg.oauth
-  fi
-
-  # For ZipLocations
-  file="/pg/var/data.location"
-  if [ ! -e "$file" ]; then echo "/pg/data/blitz" > /pg/var/data.location; fi
-
-  space=$(cat /pg/var/data.location)
-  used=$(df -h /pg/data/blitz | tail -n +2 | awk '{print $3}')
-  capacity=$(df -h /pg/data/blitz | tail -n +2 | awk '{print $2}')
-  percentage=$(df -h /pg/data/blitz | tail -n +2 | awk '{print $5}')
-
-  # For the PGBlitz UI
-  echo "$used" > /pg/var/pg.used
-  echo "$capacity" > /pg/var/pg.capacity
 }
 
 menuprime() {
