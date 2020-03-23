@@ -1,20 +1,20 @@
-apps_core_gen() {
+apps_primary_gen() {
+
+  primary_path="/pg/var/primary_app.list"
 
   # Generates App List
-  ls -la /pg/mods/core | sed -e 's/.yml//g' \
-  | awk '{print $9}' | tail -n +4  > /pg/var/core_app.list
+  ls -p /pg/mods/core | grep -v / | sed -e 's/.yml//g' > "$primary_path"
 
   # Enter Items Here to Prevent them From Showing Up on AppList
-  sed -i -e "/traefik/d" /var/plexguide/app.list
-  sed -i -e "/image*/d" /var/plexguide/app.list
-  sed -i -e "/templates/d" /var/plexguide/app.list
-  sed -i -e "/retry/d" /var/plexguide/app.list
-  sed -i "/^test\b/Id" /var/plexguide/app.list
-  sed -i -e "/nzbthrottle/d" /var/plexguide/app.list
-  sed -i -e "/watchtower/d" /var/plexguide/app.list
-  sed -i "/^_templates.yml\b/Id" /var/plexguide/app.list
-  sed -i -e "/oauth/d" /var/plexguide/app.list
-  sed -i -e "/dockergc/d" /var/plexguide/app.list
-  sed -i -e "/pgui/d" /var/plexguide/app.list
+  sed -i -e "/traefik/d" "$primary_path"
+  sed -i -e "/image*/d" "$primary_path"
+  sed -i -e "/templates/d" "$primary_path"
+  sed -i -e "/retry/d" "$primary_path"
+  sed -i "/^test\b/Id" "$primary_path"
+  sed -i -e "/nzbthrottle/d" "$primary_path"
+  sed -i "/^_templates.yml\b/Id" "$primary_path"
+  sed -i -e "/oauth/d" "$primary_path"
+  sed -i -e "/dockergc/d" "$primary_path"
+  sed -i -e "/pgui/d" "$primary_path"
 
 }
