@@ -1,16 +1,21 @@
-    [Unit]
-    Description=Move Service Daemon
-    After=multi-user.target
+#!/bin/bash
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
 
-    [Service]
-    Type=simple
-    User=root
-    Group=root
-    ExecStart=/bin/bash /opt/appdata/plexguide/v2dockerscript.sh
-    TimeoutStopSec=20
-    KillMode=process
-    RemainAfterExit=yes
-    Restart=always
+[Unit]
+Description=Move Service Daemon
+After=multi-user.target
 
-    [Install]
-    WantedBy=multi-user.target
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/bin/bash /opt/appdata/plexguide/v2dockerscript.sh
+TimeoutStopSec=20
+KillMode=process
+RemainAfterExit=yes
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
