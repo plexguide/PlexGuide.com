@@ -49,27 +49,7 @@ nope() {
  echo
   exit 0
 }
-drivecheck() {
-  leftover=$(df / --local | tail -n +2 | awk '{print $4}')
-  if [[ "$leftover" -lt "50000000" ]]; then
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⌛ WOAH! PG noticed your current system has less then 50GB drive space !
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-We have recognized less than 50GB of storage space,
-this can lead to problems.
 
-Please make sure that there is enough space available.
-
-Moving forward you're carry out this installation at your own risk.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-doneokay
-fi
-}
-doneokay() {
- echo
-  read -p 'Confirm Info | PRESS [ENTER] ' typed </dev/tty
 }
 backupex() {
   time=$(date +%Y-%m-%d-%H:%M:%S)
@@ -118,83 +98,12 @@ base() {
 ⌛  Base Install - Standby  || This may take a few minuets. Grab a Coffee!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-versioncheck=$(cat /etc/*-release | grep "Ubuntu" | grep -E '19')
-  if [[ "$versioncheck" == "19" ]]; then
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔ WOAH! ......  System OS Warning!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Supported: UBUNTU 16.xx - 18.10 ~ LTS/SERVER and Debian 9.* / 10
-
-This server may not be supported due to having the incorrect OS detected!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  exit 0
-  else echo ""; fi
-}
 ######################
 repo() {
-# add repo
-rm -f /var/log/osname.log
-touch /var/log/osname.log
-echo -e "$(lsb_release -si)" >/var/log/osname.log
 
-if [[ $(lsb_release -si) == "Debian" ]]; then
-	add-apt-repository main >/dev/null 2>&1
-	add-apt-repository non-free >/dev/null 2>&1
-	add-apt-repository contrib >/dev/null 2>&1
-	wget -qN https://raw.githubusercontent.com/MHA-Team/Install/master/source/ansible-debian-ansible.list /etc/apt/sources.list.d/
-elif [[ $(lsb_release -si) == "Ubuntu" ]]; then
-	add-apt-repository main >/dev/null 2>&1
-	add-apt-repository universe >/dev/null 2>&1
-	add-apt-repository restricted >/dev/null 2>&1
-	add-apt-repository multiverse >/dev/null 2>&1
-    apt-add-repository --yes --update ppa:ansible/ansible >/dev/null 2>&1
-elif [[ $(lsb_release -si) == "Rasbian" || $(lsb_release -si) == "Fedora" || $(lsb_release -si) == "CentOS" ]]; then
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔ WOAH! ......  PG System Warning!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Supported: UBUNTU 16.xx - 18.10 ~ LTS/SERVER and Debian 9.*
-
-This server may not be supported due to having the incorrect OS detected!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-  exit 0
-fi
 }
 ##############################
-packlist() {
-package_list="curl wget software-properties-common git zip unzip dialog sudo nano htop mc lshw ansible fortune intel-gpu-tools python-apt lolcat figlet"
-echo -ne '                         (0%)\r'
-apt-get update -yqq >/dev/null 2>&1
-	export DEBIAN_FRONTEND=noninteractive
-echo -ne '#####                    (20%)\r'
-apt-get upgrade -yqq >/dev/null 2>&1
-	export DEBIAN_FRONTEND=noninteractive
-apt-get dist-upgrade -yqq >/dev/null 2>&1
-	export DEBIAN_FRONTEND=noninteractive
-echo -ne '##########                (40%)\r'
-apt-get autoremove -yqq >/dev/null 2>&1
-	export DEBIAN_FRONTEND=noninteractive
-echo -ne '###############            (60%)\r'
-apt-get install $package_list -yqq >/dev/null 2>&1
-	export DEBIAN_FRONTEND=noninteractive
-echo -ne '####################       (80%)\r'
-apt-get purge unattended-upgrades -yqq >/dev/null 2>&1
-	export DEBIAN_FRONTEND=noninteractive
-echo -ne '#########################    (100%)\r'
-echo -ne '\n'
-tee <<-EOF
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ PASSED - PG finished updating your system!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EOF
-}
 #####
 editionpg() {
 echo -ne '                         (0%)\r'
@@ -225,8 +134,9 @@ if [[ "$start" != "$stored" ]]; then bash /opt/pgstage/pyansible.sh 1>/dev/null 
 echo -ne '####################       (70%)\r'
 echo "51" >/var/plexguide/pg.pythonstart.stored
 pip install --upgrade pip 1>/dev/null 2>&1
-ansible-playbook /opt/pgstage/folders/folder.yml
-ansible-playbook /opt/pgstage/clone.yml
+
+
+################ ansible-playbook /opt/pgstage/clone.yml
 echo -ne '####################       (80%)\r'
 ansible-playbook /opt/plexguide/menu/alias/alias.yml
 ansible-playbook /opt/plexguide/menu/motd/motd.yml
