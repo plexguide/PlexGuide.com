@@ -5,5 +5,8 @@
 
   roles:
     - { role: docker, tags: ['docker'] }
+    - { role: docstart, tags: ['docstart'] }
     - { role: rcloneinstall, tags: ['rcloneinstall'] }
+    - { role: mergerfsinstall, tags: ['mergerfsinstall'] }
+    - { role: mergerfsupdate, tags: ['mergerfsupdate'] }
     - { role: gcloud_sdk, tags: ['gcloud_sdk'] }
