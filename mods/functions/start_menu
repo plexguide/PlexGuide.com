@@ -85,7 +85,7 @@ case $typed in
       bash /pg/pgblitz/menu/interface/settings.sh
       primestart ;;
     z )
-      bash /pg/stage/files/ending.sh
+      start_end
       exit ;;
     Z )
       start_end
