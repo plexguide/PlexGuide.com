@@ -1,36 +1,18 @@
 apps_menu_select() {
 
+## generate apps
+apps_gen_lists
+
 case $typed in
     1 )
-      bash /pg/stage/pgcloner/traefik.sh
-      apps_menu ;;
+      app_select="primary"
+      apps_interface ;;
     2 )
-      bash /pg/stage/pgcloner/portguard.sh
-      apps_menu ;;
+      app_select="community"
+      apps_interface ;;
     3 )
-      bash /pg/stage/pgcloner/pgshield.sh
-      apps_menu ;;
-    4 )
-      bash /pg/stage/pgcloner/pgclone.sh
-      apps_menu ;;
-    5 )
-      bash /pg/stage/pgcloner/apps.sh
-      apps_menu ;;
-    6 )
-      bash /pg/stage/pgcloner/pgpress.sh
-      apps_menu ;;
-    7 )
-      bash /pg/stage/pgcloner/pgvault.sh
-      apps_menu ;;
-    8 )
-      bash /pg/pgblitz/menu/interface/cloudselect.sh
-      apps_menu ;;
-    9 )
-      bash /pg/pgblitz/menu/tools/tools.sh
-      apps_menu ;;
-    10 )
-      bash /pg/pgblitz/menu/interface/settings.sh
-      apps_menu ;;
+      app_select="core"
+      apps_interface ;;
     z )
       ;;
     Z )

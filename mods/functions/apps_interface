@@ -1,16 +1,13 @@
-apps_menu() {
+apps_interface() {
 
-common_message "🚀  PG Applications Interface" "
-💬  Further Explanation? Visit ~ http://apps.plexguide.com
-------------------------------------------------------------------------------
-[1] Primary
-[2] Community
-[3] Core
-[4] Personal
-------------------------------------------------------------------------------
-[5] Removal
-[6] Auto-Update [XX]
-------------------------------------------------------------------------------
+apps_display=$(cat /pg/var/primary_app.wrap)
+
+common_message "🚀 Multi-App Installer | PGX Edition | 📂 Apps to Install" "
+$apps_display
+
+
+
+
 [Z] Exit Interface
 "
 common_number
