@@ -17,7 +17,8 @@ read -p '↘️  Type App to Install | Press [ENTER]: ' typed < /dev/tty
 ## error check
 existcheck=$(echo $app_display | grep "$typed" -w)
 if [ -z "$existcheck" ]; then
-read -p '↘️  WARNING ~ '$typed' <<< does not exist | Press [ENTER]: ' badinput < /dev/tty
+echo
+read -p '⛔️  '$typed' <<< does not exist | Press [ENTER]: ' badinput < /dev/tty
 apps_interface; fi
 
 
