@@ -1,4 +1,4 @@
-apps_gen() {
+apps_gen_lists() {
 
 echo "primary
 community
