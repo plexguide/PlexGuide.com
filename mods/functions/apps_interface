@@ -1,7 +1,7 @@
 apps_interface() {
 
 app_display=$(cat /pg/tmp/"$app_select".wrap)
-apps_to_install=$(cat /pg/tmp/appstoinstall.list)
+touch /pg/tmp/appstoinstall.list; apps_to_install=$(cat /pg/tmp/appstoinstall.list)
 
 common_message "🚀 Multi-App Installer | PGX Edition | 📂 App Install ~ $app_select" "
 $app_display
@@ -18,7 +18,7 @@ read -p '↘️  Type App to Install | Press [ENTER]: ' typed < /dev/tty
 existcheck=$(echo $app_display | grep "$typed" -w)
 if [ -z "$existcheck" ]; then
 echo
-read -p '⛔️  '$typed' <<< does not exist | Press [ENTER]: ' badinput < /dev/tty
+read -p '⛔️  '$typed' <<< does not exist | Press [ENTER]' badinput < /dev/tty
 apps_interface; fi
 
 
