@@ -1,7 +1,7 @@
 apps_interface() {
 
 installqueuecheck=$(cat /pg/tmp/appstoinstall.list)
-if [ -z "$installqueuecheck" ]; then installinfo="| [A] To Install Apps(s)"; else installinfo=""; fi
+if [ ! -z "$installqueuecheck" ]; then installinfo="| [A] To Install Apps(s)"; else installinfo=""; fi
 
 app_display=$(cat /pg/tmp/"$app_select".wrap)
 fmt -w 79 "/pg/tmp/appstoinstall.list" > "/pg/tmp/appstoinstall.wrap"
