@@ -17,6 +17,7 @@ $apps_to_install
 
 read -p '↘️  Type App to Install | Press [ENTER]: ' typed < /dev/tty
 if [[ "$typed" == "z" || "$typed" == "Z" ]]; then apps_menu; exit; fi
+if [[ "$typed" == "A" || "$typed" == "a" ]]; then apps_loop_install; exit; fi
 
 existcheck=$(echo $app_display | grep "$typed" -w)
 if [ -z "$existcheck" ]; then echo "";

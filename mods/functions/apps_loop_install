@@ -1,0 +1,16 @@
+apps_loop_install() {
+
+  i=0
+  while read p; do
+
+    let "i=i+1"
+    ansible-playbook "/pg/mods/$app_select/$p.yml"
+
+  done </pg/tmp/$app_select.list
+
+read -p '↘️  $i Apps Installed | Press [ENTER]: ' typed < /dev/tty
+
+# recycle menu back to user
+apps_menu; exit
+
+}
