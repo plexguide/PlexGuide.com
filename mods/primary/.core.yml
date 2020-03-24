@@ -9,32 +9,32 @@
 # RECALL KEY VARIABLES #########################################################
 
 - name: 'Register TLD'
-  shell: 'cat /var/plexguide/tld.program'
+  shell: 'cat /pg/data/tld.program'
   register: toplevel
   ignore_errors: True
 
 - name: Register Domain
-  shell: 'cat /var/plexguide/server.domain'
+  shell: 'cat /pg/data/server.domain'
   register: domain
   ignore_errors: True
 
 - name: Register IP
-  shell: 'cat /var/plexguide/server.ip'
+  shell: 'cat /pg/data/server.ip'
   register: ipaddress
   ignore_errors: True
 
 - name: Register Ports
-  shell: 'cat /var/plexguide/server.ports'
+  shell: 'cat /pg/data/server.ports'
   register: ports
   ignore_errors: True
 
 - name: Register HD Path
-  shell: 'cat /var/plexguide/server.hd.path'
+  shell: 'cat /pg/data/server.hd.path'
   register: path
   ignore_errors: True
 
 - name: Register Auth Path
-  shell: 'cat /var/plexguide/server.ht'
+  shell: 'cat /pg/data/server.ht'
   register: auth
   ignore_errors: True
 
@@ -73,11 +73,11 @@
 # OVERWRITE IMAGES #############################################################
 - name: Check if Image Variable Exists
   stat:
-    path: '/var/plexguide/image/{{pgrole}}'
+    path: '/pg/data/image/{{pgrole}}'
   register: imagecheck
 
 - name: 'Transfer Image Variable'
-  shell: 'cat /var/plexguide/image/{{pgrole}}'
+  shell: 'cat /pg/data/image/{{pgrole}}'
   register: imagetemp
   when: imagecheck.stat.exists
 
@@ -116,14 +116,14 @@
   shell: 'bash /opt/pgshield/drop.sh'
 
 - name: 'Script Execute Part II'
-  shell: 'cat /var/plexguide/auth.var'
+  shell: 'cat /pg/data/auth.var'
   register: oauth
 
 - name: 'OAuth Exe'
   block:
     - name: Check if Anti Auth Variable Exists
       stat:
-        path: '/var/plexguide/auth/{{pgrole}}'
+        path: '/pg/data/auth/{{pgrole}}'
       register: authcheck
 
     - name: 'Auth Check 1'
