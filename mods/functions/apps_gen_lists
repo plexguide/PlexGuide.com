@@ -7,7 +7,7 @@ core" > /pg/tmp/list.tmp
 while read p; do
 
   ls -p /pg/mods/"$p" | grep -v / | sed -e 's/.yml//g' > "/pg/tmp/$p.list"
-  fmt -w 80 "/pg/tmp/$p.list" > "/pg/tmp/$p.wrap"
+  fmt -w 79 "/pg/tmp/$p.list" > "/pg/tmp/$p.wrap"
 
   #sed -i -e "/traefik/d" "$set_path"
   #sed -i -e "/image*/d" "$set_path"
