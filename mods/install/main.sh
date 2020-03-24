@@ -29,7 +29,7 @@ GNUv3 License!
 If you have a chance to donate, please visit https://donate.plexguide.com
 PRESS CTRL+Z to STOP the Installation
 "
-common_timer "2" ## set back to 5
+common_timer "1" ## set back to 5
 
 #install_folders
 #install_oldpg
@@ -42,27 +42,27 @@ common_timer "2" ## set back to 5
 
 # ansible-playbook /pg/mods/motd/motd.yml
 
-common_header "⌛ INSTALLING: Docker"; sleep 2
-ansible-playbook /pg/mods/ymls/pg.yml --tags docker
+#common_header "⌛ INSTALLING: Docker"; sleep 2
+#ansible-playbook /pg/mods/ymls/pg.yml --tags docker
 
-common_header "⌛ INSTALLING: Docker Startup Script"; sleep 2
-ansible-playbook /pg/mods/ymls/pg.yml --tags docstart
+#common_header "⌛ INSTALLING: Docker Startup Script"; sleep 2
+#ansible-playbook /pg/mods/ymls/pg.yml --tags docstart
 
-common_header "⌛ INSTALLING: RClone"; sleep 2
-ansible-playbook /pg/mods/ymls/pg.yml --tags rcloneinstall
+#common_header "⌛ INSTALLING: RClone"; sleep 2
+#ansible-playbook /pg/mods/ymls/pg.yml --tags rcloneinstall
 
-common_header "⌛ INSTALLING: MergerFS"; sleep 2
-ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsinstall
+#common_header "⌛ INSTALLING: MergerFS"; sleep 2
+#ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsinstall
 
 ############# DO NOT ACTIVE TILL PGUNION
 #common_header "⌛ INSTALLING: MergerFS Update"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsupdate
 
-common_header "⌛ INSTALLING: Google's Cloud SDK"; sleep 2
-ansible-playbook /pg/mods/ymls/pg.yml --tags gcloud_sdk
+#common_header "⌛ INSTALLING: Google's Cloud SDK"; sleep 2
+#ansible-playbook /pg/mods/ymls/pg.yml --tags gcloud_sdk
 
-common_header "⌛ INSTALLING: Nvidia Drivers"; sleep 2
-ansible-playbook /pg/mods/ymls/pg.yml --tags nvidia
+#common_header "⌛ INSTALLING: Nvidia Drivers"; sleep 2
+#ansible-playbook /pg/mods/ymls/pg.yml --tags nvidia
 
 bash /pg/mods/start/start.sh
 
