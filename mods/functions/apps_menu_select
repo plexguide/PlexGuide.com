@@ -18,9 +18,9 @@ case $typed in
       app_select="core"
       apps_interface ;;
     z )
-      ;;
+      start_menu ;;
     Z )
-      ;;
+      start_menu ;;
     * )
       apps_menu ;;
 esac
