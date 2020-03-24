@@ -33,35 +33,35 @@ common_timer "2" ## set back to 5
 
 install_folders
 install_oldpg
-# install_drivecheck
-# install_webservercheck
-# install_oscheck
-# install_basepackage
-# install_pyansible
-# install_dependency
+install_drivecheck
+install_webservercheck
+install_oscheck
+install_basepackage
+install_pyansible
+install_dependency
 
 # ansible-playbook /pg/mods/motd/motd.yml
 
-#common_header "⌛ INSTALLING: Docker"; sleep 2
+common_header "⌛ INSTALLING: Docker"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags docker
 
-#common_header "⌛ INSTALLING: Docker Startup Script"; sleep 2
+common_header "⌛ INSTALLING: Docker Startup Script"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags docstart
 
-#common_header "⌛ INSTALLING: RClone"; sleep 2
+common_header "⌛ INSTALLING: RClone"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags rcloneinstall
 
-#common_header "⌛ INSTALLING: MergerFS"; sleep 2
+common_header "⌛ INSTALLING: MergerFS"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsinstall
 
 ############# DO NOT ACTIVE TILL PGUNION
 #common_header "⌛ INSTALLING: MergerFS Update"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsupdate
 
-#common_header "⌛ INSTALLING: Google's Cloud SDK"; sleep 2
+common_header "⌛ INSTALLING: Google's Cloud SDK"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags gcloud_sdk
 
-#common_header "⌛ INSTALLING: Nvidia Drivers"; sleep 2
+common_header "⌛ INSTALLING: Nvidia Drivers"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags nvidia
 
 bash /pg/mods/start/start.sh
