@@ -1,7 +1,7 @@
 apps_interface() {
 
 app_display=$(cat /pg/tmp/"$app_select".wrap)
-fmt -w 79 "cat /pg/tmp/appstoinstall.list" > "/pg/tmp/appstoinstall.wrap"
+fmt -w 79 "/pg/tmp/appstoinstall.list" > "/pg/tmp/appstoinstall.wrap"
 apps_to_install=$(cat /pg/tmp/appstoinstall.wrap)
 
 common_message "🚀 Multi-App Installer | PGX Edition | 📂 App Install ~ $app_select" "
