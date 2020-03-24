@@ -8,7 +8,8 @@ apps_loop_install() {
 
   done </pg/tmp/appstoinstall.list
 
-read -p "↘️  Installed $i $app_select apps | Press [ENTER]" typed < /dev/tty
+echo ""
+read -p "↘️  Installed $i $app_select application(s) | Press [ENTER]" typed < /dev/tty
 
 # recycle menu back to user
 apps_menu; exit
