@@ -1,8 +1,8 @@
 apps_interface() {
 
-apps_display=$(cat /pg/tmp/"$app_select".wrap)
+app_display=$(cat /pg/tmp/"$app_select".wrap)
 
-common_message "🚀 Multi-App Installer | PGX Edition | 📂 Apps Install ~ $app_select" "
+common_message "🚀 Multi-App Installer | PGX Edition | 📂 App Install ~ $app_select" "
 $app_display
 
 [Z] Exit Interface
