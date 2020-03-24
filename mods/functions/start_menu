@@ -60,7 +60,7 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
-      bash /pg/stage/pgcloner/traefik.sh
+      apps_primary_gen
       start_menu ;;
     2 )
       bash /pg/stage/pgcloner/portguard.sh
@@ -76,18 +76,6 @@ case $typed in
       start_menu ;;
     6 )
       bash /pg/stage/pgcloner/pgpress.sh
-      start_menu ;;
-    7 )
-      bash /pg/stage/pgcloner/pgvault.sh
-      start_menu ;;
-    8 )
-      bash /pg/pgblitz/menu/interface/cloudselect.sh
-      start_menu ;;
-    9 )
-      bash /pg/pgblitz/menu/tools/tools.sh
-      start_menu ;;
-    10 )
-      bash /pg/pgblitz/menu/interface/settings.sh
       start_menu ;;
     z )
       start_end

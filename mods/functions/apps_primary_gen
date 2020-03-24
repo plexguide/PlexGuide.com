@@ -1,9 +1,11 @@
 apps_primary_gen() {
 
   primary_path="/pg/var/primary_app.list"
+  primary_wrap="/pg/var/primary_app.wrap"
 
   # Generates App List
-  ls -p /pg/mods/core | grep -v / | sed -e 's/.yml//g' > "$primary_path"
+  ls -p /pg/mods/primary | grep -v / | sed -e 's/.yml//g' > "$primary_path"
+  fmt -w 80 "$primary_path" > "$primary_wrap"
 
   # Enter Items Here to Prevent them From Showing Up on AppList
   sed -i -e "/traefik/d" "$primary_path"
