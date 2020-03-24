@@ -5,9 +5,6 @@ apps_display=$(cat /pg/tmp/"$app_select".wrap)
 common_message "🚀 Multi-App Installer | PGX Edition | 📂 Apps to Install" "
 $app_display
 
-
-
-
 [Z] Exit Interface
 "
 common_number
