@@ -5,6 +5,7 @@ apps_gen_lists
 
 ## remove prior pending apps to install list
 rm -rf /pg/tmp/appstoinstall.list; touch /pg/tmp/appstoinstall.list
+rm -rf /pg/tmp/appstoinstall.wrap; touch /pg/tmp/appstoinstall.wrap
 
 case $typed in
     1 )
