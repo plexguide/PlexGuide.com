@@ -23,6 +23,8 @@ read -p '⛔️  '$typed' <<< does not exist | Press [ENTER]' badinput < /dev/tt
 apps_interface; fi
 
 echo "$typed" >> /pg/tmp/appstoinstall.list
+sed -i -e "/$typed/d" "/pg/tmp/$app_select.list"
+fmt -w 79 "/pg/tmp/$app_select.list" > "/pg/tmp/$app_select.wrap"
 
 #apps_menu_select
 
