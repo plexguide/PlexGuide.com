@@ -1,9 +1,9 @@
 apps_interface() {
 
-apps_display=$(cat /pg/var/primary_app.wrap)
+apps_display=$(cat /pg/tmp/"$app_select".wrap)
 
 common_message "🚀 Multi-App Installer | PGX Edition | 📂 Apps to Install" "
-$apps_display
+$app_display
 
 
 
@@ -12,5 +12,8 @@ $apps_display
 "
 common_number
 apps_menu_select
+
+# recycle menu back to user
+apps_interface
 
 }
