@@ -20,13 +20,16 @@ read -p '↘️  Type App to Install | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" == "A" || "$typed" == "a" ]]; then apps_loop_install; exit; fi
 
 existcheck=$(echo $app_display | grep "$typed" -w)
-if [ -z "$existcheck" ]; then echo "";
-read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
-apps_interface; fi
+  if [ -z "$existcheck" ]; then echo "";
+  read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
+  apps_interface; fi
 
 dockerlist=$(docker container ls --format 'table {{.Names}}' | tail -n +2)
   if [[ "1" = $(echo $dockerlist | grep -c "\<$typed\>") ]]; then echo "yes"
-  read -p '⛔️  '$typed' is already installed! Reinstall ~ Y or N? ' tempinput < /dev/tty
+    tempinput="null"
+    while [ "$tempinput" && "Y" && "$tempinput" != "y" && "$tempinut" != "N" && "$tempinput" != "n" ]; do
+    read -p '⛔️  '$typed' is already installed! Reinstall ~ Y or N? ' tempinput < /dev/tty
+    done
   fi
 
 echo "$typed" >> /pg/tmp/appstoinstall.list
