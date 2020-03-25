@@ -1,3 +1,3 @@
 common_number() {
-  read -p '↘️  Type Number/Letter | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
 }
