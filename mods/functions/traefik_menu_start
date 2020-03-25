@@ -41,6 +41,6 @@ $alphadisplay
 [Z] Exit Interface
 "
 common_number
-traefik_providers
+traefik_menu_start
 
 }
