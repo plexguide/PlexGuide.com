@@ -14,7 +14,7 @@
       include_tasks: '/opt/traefik/provider.yml'
 
     - name: Register E-Mail
-      shell: 'cat /pg/var/server.email'
+      shell: 'cat /pg/var/traefik/traefik.email'
       register: email
 
     - name: Register Delay Check

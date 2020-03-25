@@ -31,7 +31,7 @@ traefikstart() {
 }
 
 main /pg/var/traefik.provider NOT-SET provider
-main /pg/var/server.email NOT-SET email
+main /pg/var/traefik/traefik.email NOT-SET email
 main /pg/var/server.delaycheck 60 delaycheck
 main /pg/var/server.domain NOT-SET domain
 main /pg/var/tld.program NOT-SET tld

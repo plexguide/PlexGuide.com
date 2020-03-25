@@ -12,7 +12,7 @@ main() {
 }
 
 blockdeploycheck() {
-  if [[ $(cat /pg/var/traefik.provider) == "NOT-SET" || $(cat /pg/var/server.domain) == "NOT-SET" || $(cat /pg/var/server.email) == "NOT-SET" ]]; then
+  if [[ $(cat /pg/var/traefik.provider) == "NOT-SET" || $(cat /pg/var/server.domain) == "NOT-SET" || $(cat /pg/var/traefik/traefik.email) == "NOT-SET" ]]; then
     echo
     read -p 'Blocking Deployment! Must Configure Everything! | Press [ENTER]' typed </dev/tty
     traefikstart
@@ -218,7 +218,7 @@ NOTE: Make all changes first.  Traefik must be deployed/redeployed for
 the email name changes to take affect!
 
 EOF
-  echo $typed >/pg/var/server.email
+  echo $typed >/pg/var/traefik/traefik.email
   read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
 
 }
