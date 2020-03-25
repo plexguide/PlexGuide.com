@@ -7,7 +7,19 @@ common_main /pg/var/server.domain NOT-SET domain
 common_main /pg/var/tld.program NOT-SET tld
 common_main /pg/var/traefik.deploy 'Not Deployed' deploy
 
-if [[ "$provider" == "NOT-SET" ]]; then layout=" "; fi
+if [[ "$provider" == "NOT-SET" ]]; then
+  ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
+  tnumber=6
+  rm -rf /pg/tmp/mini.list
+
+  while read p; do
+  echo "[$tnumber]: $p" >> /pg/tmp/mini.list
+  let "tnumber++"
+  done </pg/tmp/provider.keys
+
+  minidisplay=$(cat /pg/tmp/mini.list)
+
+fi
 
 common_message "🚀  Traefik - Reverse Proxy Interface" "
 💬  Further Explanation? Visit ~ http://traefik.plexguide.com
@@ -18,8 +30,10 @@ common_message "🚀  Traefik - Reverse Proxy Interface" "
 [4] EMail Address       : [$email]
 [5] DNS Delay Check     : [$delaycheck] Seconds
 ------------------------------------------------------------------------------
-[6] Deploy Traefik      : [$deployed]
-[7] Destroy Traefik
+$minidisplay
+------------------------------------------------------------------------------
+[A] Deploy Traefik      : [$deployed]
+[B] Destroy Traefik
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
