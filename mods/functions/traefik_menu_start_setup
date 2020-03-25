@@ -7,7 +7,8 @@ common_main /pg/var/server.domain NOT-SET domain
 common_main /pg/var/tld.program NOT-SET tld
 common_main /pg/var/traefik.deploy "Not Deployed"
 
-if [[ "$provider" != "NOT-SET" ]]; then
+if [[ "$provider" != "NOT-SET" ]]; thenz
+
   ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
 
   tnumber=6
