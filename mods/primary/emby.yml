@@ -32,7 +32,7 @@
         pg_labels:
           traefik.enable: 'true'
           traefik.port: '{{intport}}'
-          traefik.frontend.auth.forward.address: '{{gauth}}'
+          # traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
     - name: 'Setting PG Volumes'
@@ -41,8 +41,8 @@
           - /etc/localtime:/etc/localtime:ro
           - /pg/data/{{pgrole}}:/config
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt:/mnt'
-          - '/mnt/unionfs:/unionfs'
+          - '/pg:/pg'
+          - '/pg/unity:/unity'
 
     - name: 'Setting PG ENV'
       set_fact:
