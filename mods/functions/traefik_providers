@@ -1,9 +1,7 @@
 traefik_providers() {
 
-## Last Number of List
 maxnumber="16"
 
-## Place in ABC Order & Maintain Quotations
 echo "[1] acme-dns
 [2] cloudflare
 [3] digitalocean
@@ -32,13 +30,20 @@ common_number
 select_info=$(sed -n "$typed"p /pg/tmp/traefik.providers | awk '{print $2}')
 echo "$select_info"
 
-## Ensure that a function exist for each provider above, with _fun at the end
 while read p; do
   abc=$(echo "$p" | awk '{print $2}')
   mkdir -p "/pg/var/traefik/$abc"
 done </pg/tmp/traefik.providers
 
-#variable /pg/var/pgfork.project "NOT-SET"
+base_path="/pg/var/traefik"
 
+efg=acme_dns
+  touch "$basepath/$efg/ACME_DNS_API_BASE"
+  touch "$basepath/$efg/ACME_DNS_STORAGE_PATH"
+efg=cloudflare
+  touch "$basepath/$efg/CF_API_EMAIL"
+touch "$basepath/$efg/CF_API_KEY"
+efg=digitalocean
+  touch "$basepath/$efg/DO_AUTH_TOKEN"
 
 }
