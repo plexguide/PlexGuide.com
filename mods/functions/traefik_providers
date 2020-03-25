@@ -37,13 +37,53 @@ done </pg/tmp/traefik.providers
 
 base_path="/pg/var/traefik"
 
-efg=acme_dns
+efg=acme-dns
   touch "$base_path/$efg/ACME_DNS_API_BASE"
   touch "$base_path/$efg/ACME_DNS_STORAGE_PATH"
 efg=cloudflare
   touch "$base_path/$efg/CF_API_EMAIL"
-touch "$base_path/$efg/CF_API_KEY"
+  touch "$base_path/$efg/CF_API_KEY"
 efg=digitalocean
   touch "$base_path/$efg/DO_AUTH_TOKEN"
+efg=dreamhost
+  touch "$base_path/$efg/DREAMHOST_API_KEY"
+efg=duckdns
+  touch "$base_path/$efg/DUCKDNS_TOKEN"
+efg=dyn
+  touch "$base_path/$efg/DYN_CUSTOMER_NAME"
+  touch "$base_path/$efg/DYN_PASSWORD"
+  touch "$base_path/$efg/DYN_USER_NAME"
+efg=gandiv5
+  touch "$base_path/$efg/GANDIV5_API_KEY"
+efg=gcloud
+  touch "$base_path/$efg/GCE_PROJECT"
+  touch "$base_path/$efg/GCE_SERVICE_ACCOUNT_FILE"
+efg=godaddy
+  touch "$base_path/$efg/GODADDY_API_KEY"
+  touch "$base_path/$efg/GODADDY_API_SECRET"
+efg=namecheap
+  touch "$base_path/$efg/NAMECHEAP_API_KEY"
+  touch "$base_path/$efg/NAMECHEAP_API_USER"
+efg=namedotcome
+  touch "$base_path/$efg/NAMECOM_API_TOKEN"
+  touch "$base_path/$efg/NAMECOM_SERVER"
+touch "$base_path/$efg/NAMECOM_USERNAME"
+efg=netcup
+  touch "$base_path/$efg/NAMECOM_API_KEY"
+  touch "$base_path/$efg/NAMECOM_API_PASSWORD"
+  touch "$base_path/$efg/NAMECOM_CUSTOMER_NUMBER"
+efg=ovh
+  touch "$base_path/$efg/OVH_APPLICATION_KEY"
+  touch "$base_path/$efg/OVH_APPLICATION_SECRET"
+  touch "$base_path/$efg/OVH_CONSUMER_KEY"
+  touch "$base_path/$efg/OVH_ENDPOINT"
+efg=route53
+  touch "$base_path/$efg/AWS_REGION"
+  touch "$base_path/$efg/AWS_ACCESS_KEY_ID"
+  touch "$base_path/$efg/AWS_SECRET_ACCESS_KEY"
+efg=vscale
+  touch "$base_path/$efg/VSCALE_API_TOKEN"
+efg=vultr
+  touch "$base_path/$efg/VULTR_API_KEY"
 
 }
