@@ -26,6 +26,9 @@ if [[ "$xyz" == "1" ]]; then
   alphadisplay="[!] Cannot Deploy Traefik - Info Not Complete"; else
   alphadisplay="[A] Deploy Traefik      : [$deployed]"; fi
 
+if [[ "" != $(docker ps | grep "traefik" ) ]]; then
+  def="[B] Destroy Traefik"; else def="[!] Cannot Destroy Traefik - Not Deployed"
+
 common_message "🚀  Traefik - Reverse Proxy Interface" "
 💬  Further Explanation? Visit ~ http://traefik.plexguide.com
 ------------------------------------------------------------------------------
@@ -38,7 +41,7 @@ common_message "🚀  Traefik - Reverse Proxy Interface" "
 $minidisplay
 ------------------------------------------------------------------------------
 $alphadisplay
-[B] Destroy Traefik
+$def
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
