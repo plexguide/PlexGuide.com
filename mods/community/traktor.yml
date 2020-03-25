@@ -34,10 +34,10 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-in Support/Databases:/plex:ro'
+          - '/pg/data/plex/database/Library/Application Support/Plex Media Server/Plug-in Support/Databases:/plex:ro'
 
     - name: 'Setting PG ENV'
       set_fact:

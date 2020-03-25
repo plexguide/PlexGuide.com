@@ -36,7 +36,7 @@
         pg_volumes:
           - '/var/run/docker.sock:/var/run/docker.sock'
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/data'
+          - '/pg/data/{{pgrole}}:/data'
 
     - name: 'Setting PG ENV'
       set_fact:

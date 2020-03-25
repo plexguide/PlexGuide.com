@@ -31,7 +31,7 @@
 
     - name: 'Checking for existing app data'
       stat:
-        path: /opt/appdata/{{pgrole}}/core.conf
+        path: /pg/data/{{pgrole}}/core.conf
       register: confcheck
       
      # LABELS ######################################################################
@@ -46,7 +46,7 @@
     - name: 'Setting default Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/config:rw'
+          - '/pg/data/{{pgrole}}:/config:rw'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
           - '/mnt:/mnt'

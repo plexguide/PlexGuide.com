@@ -35,8 +35,8 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/home/xteve/xteve'
-          - '/opt/appdata/{{pgrole}}/temp:/tmp/xteve'
+          - '/pg/data/{{pgrole}}:/home/xteve/xteve'
+          - '/pg/data/{{pgrole}}/temp:/tmp/xteve'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
           - '/mnt:/mnt'

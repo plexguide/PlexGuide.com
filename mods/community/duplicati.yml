@@ -33,8 +33,8 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - /opt/appdata/{{pgrole}}
-          - /opt/appdata/{{pgrole}}/sync
+          - /pg/data/{{pgrole}}
+          - /pg/data/{{pgrole}}/sync
           - /:/source
           - '/mnt:/mnt'
 

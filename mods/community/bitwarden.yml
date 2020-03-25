@@ -33,8 +33,8 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/data:/data'
-          - '/opt/appdata/{{pgrole}}/database:/database'
+          - '/pg/data/{{pgrole}}/data:/data'
+          - '/pg/data/{{pgrole}}/database:/database'
 
     - name: 'Setting PG ENV'
       set_fact:

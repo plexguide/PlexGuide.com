@@ -29,7 +29,7 @@
     - name: 'Copying file for {{pgrole}}'
       copy:
         src: '/opt/communityapps/apps/templates/{{pgrole}}/config.json'
-        dest: '/opt/appdata/{{pgrole}}/{{pgrole}}/config.json'
+        dest: '/pg/data/{{pgrole}}/{{pgrole}}/config.json'
         directory_mode: yes
         force: yes
         owner: '1000'
@@ -51,7 +51,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}/config.json:/{{pgrole}}/config.json:ro'
+          - '/pg/data/{{pgrole}}/config.json:/{{pgrole}}/config.json:ro'
 
     - name: 'Setting PG ENV'
       set_fact:

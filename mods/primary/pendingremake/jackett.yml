@@ -24,22 +24,22 @@
     # MIGRATIONS (MANDATORY) ############################################################
     - name: Checking for old app data
       stat:
-        path: '/opt/appdata/{{pgrole}}/Jackett/ServerConfig.json'
+        path: '/pg/data/{{pgrole}}/Jackett/ServerConfig.json'
       register: olddatacheck
 
     - name: Migrating appdata
-      shell: 'mv /opt/appdata/{{pgrole}}/Jackett/* /opt/appdata/{{pgrole}}'
+      shell: 'mv /pg/data/{{pgrole}}/Jackett/* /pg/data/{{pgrole}}'
       ignore_errors: yes
       when: olddatacheck.stat.exists
 
     - name: Migrating appdata
-      shell: 'rmdir /opt/appdata/{{pgrole}}/Jackett'
+      shell: 'rmdir /pg/data/{{pgrole}}/Jackett'
       ignore_errors: yes
       when: olddatacheck.stat.exists
 
     - name: Checking for existing app data
       stat:
-        path: '/opt/appdata/{{pgrole}}/ServerConfig.json'
+        path: '/pg/data/{{pgrole}}/ServerConfig.json'
       register: datacheck
 
     # LABELS ######################################################################
@@ -54,7 +54,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/config/Jackett'
+          - '/pg/data/{{pgrole}}:/config/Jackett'
           - '/etc/localtime:/etc/localtime:ro'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt:/mnt'
@@ -86,7 +86,7 @@
     # CONFIGURATION ####################################################
     - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        path: '/opt/appdata/{{pgrole}}/ServerConfig.json'
+        path: '/pg/data/{{pgrole}}/ServerConfig.json'
         state: present
         msg: ServerConfig.json creation failed
 
@@ -100,7 +100,7 @@
       block:
         - name: Set torrent blackhole location
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/ServerConfig.json'
+            path: '/pg/data/{{pgrole}}/ServerConfig.json'
             regexp: '\s*"BlackholeDir"\s*:.*'
             line: '  "BlackholeDir": "{{path.stdout}}/torrent/watch",'
             state: present

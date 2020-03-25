@@ -40,7 +40,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
           - '/etc/localtime:/etc/localtime:ro'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt:/mnt'
@@ -54,7 +54,7 @@
     # MAIN DEPLOYMENT #############################################################
     - name: ConfCheck
       stat:
-        path: '/opt/appdata/{{pgrole}}/config.yaml'
+        path: '/pg/data/{{pgrole}}/config.yaml'
       register: confcheck
 
     - name: 'Configuring {{pgrole}} for first time use'
@@ -86,7 +86,7 @@
 
         - name: YAML Creation Hold
           wait_for:
-            path: '/opt/appdata/{{pgrole}}/config.yaml'
+            path: '/pg/data/{{pgrole}}/config.yaml'
             state: present
 
         - name: Container Stop
@@ -96,7 +96,7 @@
 
         - name: File Length Limit
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/config.yaml'
+            path: '/pg/data/{{pgrole}}/config.yaml'
             line: 'max_filename_length: 255'
             insertafter: per_disc*
             state: present

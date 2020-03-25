@@ -36,9 +36,9 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/data'
+          - '/pg/data/{{pgrole}}:/data'
           - '/etc/localtime:/etc/localtime:ro'
-   ###    - '/opt/appdata/git/gitea-db:/data'
+   ###    - '/pg/data/git/gitea-db:/data'
 
     - name: 'Setting PG ENV'
       set_fact:

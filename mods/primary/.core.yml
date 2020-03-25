@@ -51,22 +51,22 @@
   # APPDATA
 
 - name: 'Creating appdata folder if it does not exist.'
-  shell: 'mkdir -p /opt/appdata/{{pgrole}}'
+  shell: 'mkdir -p /pg/data/{{pgrole}}'
 
 - name: 'Setting ownership on appdata'
-  shell: 'chown 1000:1000 /opt/appdata/{{pgrole}}'
+  shell: 'chown 1000:1000 /pg/data/{{pgrole}}'
   when: '"plex" in pgrole'
 
 - name: 'Setting permissions on appdata'
-  shell: 'chmod 775 /opt/appdata/{{pgrole}}'
+  shell: 'chmod 775 /pg/data/{{pgrole}}'
   when: '"plex" in pgrole'
 
 - name: 'Setting ownership on appdata recursivley (this can take a while!)'
-  shell: 'chown -R 1000:1000 /opt/appdata/{{pgrole}}'
+  shell: 'chown -R 1000:1000 /pg/data/{{pgrole}}'
   when: '"plex" not in pgrole'
 
 - name: 'Setting permissions on appdata recursivley (this can take a while!)'
-  shell: 'chmod -R 775 /opt/appdata/{{pgrole}}'
+  shell: 'chmod -R 775 /pg/data/{{pgrole}}'
   when: '"plex" not in pgrole'
 
 

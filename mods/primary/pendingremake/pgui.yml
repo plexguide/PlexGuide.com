@@ -24,7 +24,7 @@
     - name: Install File
       template:
         src: /opt/pgui/templates/index.php
-        dest: /opt/appdata/pgui/index.php
+        dest: /pg/data/pgui/index.php
         force: yes
         owner: '1000'
         group: '1000'
@@ -41,9 +41,9 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/pgui/index.php:/var/www/html/index.php'
+          - '/pg/data/pgui/index.php:/var/www/html/index.php'
           - '/var/plexguide:/plexguide'
-          - '/opt/appdata/plexguide:/log'
+          - '/pg/data/plexguide:/log'
 
     - name: 'Setting PG ENV'
       set_fact:

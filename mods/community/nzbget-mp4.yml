@@ -40,25 +40,25 @@
 
     - name: 'Checking for existing app data'
       stat:
-        path: /opt/appdata/{{pgrole}}/nzbget.conf
+        path: /pg/data/{{pgrole}}/nzbget.conf
       register: confcheck
 
     # EXTRAS FOR MP4 MODS ##########################################################
     - name: 'Create {{pgrole}} mp4 directories'
       file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes'
       with_items:
-        - '/opt/appdata/{{pgrole}}'
-        - '/opt/appdata/{{pgrole}}/cont-init.d'
-        - '/opt/appdata/{{pgrole}}/installer'
-        - '/opt/appdata/{{pgrole}}/scripts'
-        - '/opt/appdata/{{pgrole}}/scripts/MP4_Automator'
-        - '/opt/appdata/{{pgrole}}/ffmpeg-build'
-        - '/opt/appdata/{{pgrole}}/services.d'
+        - '/pg/data/{{pgrole}}'
+        - '/pg/data/{{pgrole}}/cont-init.d'
+        - '/pg/data/{{pgrole}}/installer'
+        - '/pg/data/{{pgrole}}/scripts'
+        - '/pg/data/{{pgrole}}/scripts/MP4_Automator'
+        - '/pg/data/{{pgrole}}/ffmpeg-build'
+        - '/pg/data/{{pgrole}}/services.d'
 
     - name: 'Copy custom init scripts into directory for {{pgrole}}'
       copy:
         src: /opt/communityapps/apps/templates/{{pgrole}}/cont-init.d/30-config
-        dest: /opt/appdata/{{pgrole}}/cont-init.d
+        dest: /pg/data/{{pgrole}}/cont-init.d
         directory_mode: yes
         force: yes
         owner: 1000
@@ -68,7 +68,7 @@
     - name: 'Copy custom install scripts into directory for {{pgrole}}'
       copy:
         src: /opt/communityapps/apps/templates/{{pgrole}}/installer/installer.sh
-        dest: /opt/appdata/{{pgrole}}/installer
+        dest: /pg/data/{{pgrole}}/installer
         directory_mode: yes
         force: yes
         owner: 1000
@@ -78,7 +78,7 @@
     - name: 'Copy custom mp4 config into directory for {{pgrole}}'
       copy:
         src: /opt/communityapps/apps/templates/{{pgrole}}/MP4_Automator/autoProcess.ini
-        dest: /opt/appdata/{{pgrole}}/scripts/MP4_Automator
+        dest: /pg/data/{{pgrole}}/scripts/MP4_Automator
         directory_mode: yes
         force: yes
         owner: 1000
@@ -88,7 +88,7 @@
     - name: 'Copy custom NZBGetPostProcess script config into directory for {{pgrole}}'
       copy:
         src: /opt/communityapps/apps/templates/{{pgrole}}/MP4_Automator/TEMPLATEPPScript
-        dest: /opt/appdata/{{pgrole}}/
+        dest: /pg/data/{{pgrole}}/
         directory_mode: yes
         force: yes
         owner: 1000
@@ -98,7 +98,7 @@
     - name: 'Copy ffmpeg build script into directory for {{pgrole}}'
       copy:
         src: /opt/communityapps/apps/templates/{{pgrole}}/ffmpeg-build/web-install.sh
-        dest: /opt/appdata/{{pgrole}}/ffmpeg-build
+        dest: /pg/data/{{pgrole}}/ffmpeg-build
         directory_mode: yes
         force: yes
         owner: 1000
@@ -108,7 +108,7 @@
     - name: 'Copy ffmpeg build script into directory for {{pgrole}}'
       copy:
         src: /opt/communityapps/apps/templates/{{pgrole}}/ffmpeg-build/build-ffmpeg
-        dest: /opt/appdata/{{pgrole}}/ffmpeg-build
+        dest: /pg/data/{{pgrole}}/ffmpeg-build
         directory_mode: yes
         force: yes
         owner: 1000
@@ -118,7 +118,7 @@
     - name: 'Copy custom init scripts into directory for {{pgrole}}'
       copy:
         src: /opt/communityapps/apps/templates/{{pgrole}}/services.d/run
-        dest: /opt/appdata/{{pgrole}}/services.d
+        dest: /pg/data/{{pgrole}}/services.d
         directory_mode: yes
         force: yes
         owner: 1000
@@ -138,12 +138,12 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt:/mnt'
           - '/tmp:/tmp'
-          - '/opt/appdata/{{pgrole}}/cont-init.d:/etc/cont-init.d'
-          - '/opt/appdata/{{pgrole}}/services.d:/etc/services.d/nzbget'
+          - '/pg/data/{{pgrole}}/cont-init.d:/etc/cont-init.d'
+          - '/pg/data/{{pgrole}}/services.d:/etc/services.d/nzbget'
 
     - name: 'Setting PG ENV'
       set_fact:
@@ -173,7 +173,7 @@
     # CONFIGURATION #############################################################
     - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+        path: '/pg/data/{{pgrole}}/nzbget.conf'
         state: present
         delay: 5
 
@@ -184,42 +184,42 @@
 
     - name: Set Main Location
       lineinfile:
-        path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+        path: '/pg/data/{{pgrole}}/nzbget.conf'
         regexp: '^MainDir\s*=.*'
         line: 'MainDir=/config'
         state: present
 
     - name: Set download location
       lineinfile:
-        path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+        path: '/pg/data/{{pgrole}}/nzbget.conf'
         regexp: '^DestDir\s*=.*'
         line: 'DestDir={{path.stdout}}/downloads/{{pgrole}}'
         state: present
 
     - name: Set incomplete location
       lineinfile:
-        path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+        path: '/pg/data/{{pgrole}}/nzbget.conf'
         regexp: '^InterDir\s*=.*'
         line: 'InterDir={{path.stdout}}/incomplete/{{pgrole}}'
         state: present
 
     - name: Set TempDir
       lineinfile:
-        path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+        path: '/pg/data/{{pgrole}}/nzbget.conf'
         regexp: '^TempDir\s*=.*'
         line: 'TempDir=/tmp'
         state: present
 
     - name: Set NzbDir Location
       lineinfile:
-        path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+        path: '/pg/data/{{pgrole}}/nzbget.conf'
         regexp: '^NzbDir\s*=.*'
         line: 'NzbDir={{path.stdout}}/nzb'
         state: present
 
     - name: ScriptDir
       lineinfile:
-        path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+        path: '/pg/data/{{pgrole}}/nzbget.conf'
         regexp: '^ScriptDir\s*=.*'
         line: 'ScriptDir=${MainDir}/scripts'
         state: present
@@ -229,154 +229,154 @@
       block:
         - name: Lowercase & Set Movie Category
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category1.Name\s*=.*'
             line: 'Category1.Name=movies'
             state: present
 
         - name: Set Location of Movies
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category1.DestDir\s*=.*'
             line: 'Category1.DestDir='
             state: present
 
         - name: Set postprocess of Movies
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category1.Extensions\s*=.*'
             line: 'Category1.Extensions=MP4_Automator/NZBGetPostProcess.py'
             state: present
 
         - name: Lowercase & Set TV Category
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category2.Name\s*=.*'
             line: 'Category2.Name=tv'
             state: present
 
         - name: Set Location of TV
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category2.DestDir\s*=.*'
             line: 'Category2.DestDir='
             state: present
 
         - name: Set postprocess of TV
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category2.Extensions\s*=.*'
             line: 'Category2.Extensions=MP4_Automator/NZBGetPostProcess.py'
             state: present
 
         - name: Lowercase & Set Music Category
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category3.Name\s*=.*'
             line: 'Category3.Name=music'
             state: present
 
         - name: Set Location of Music
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category3.DestDir\s*=.*'
             line: 'Category3.DestDir='
             state: present
 
         - name: Lowercase & Set EBook Category
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category4.Name\s*=.*'
             line: 'Category4.Name=ebooks'
             state: present
 
         - name: Set Location of EBooks
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Category4.DestDir\s*=.*'
             line: 'Category4.DestDir='
             state: present
 
         - name: Lowercase & Set abook Category
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: 'Category5.Name\s*=.*'
             line: 'Category5.Name=abooks'
             state: present
 
         - name: Set Location of aBooks
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: 'Category5.DestDir\s*=.*'
             line: 'Category5.DestDir='
             state: present
 
         - name: Set Global Extensions
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^Extensions\s*=.*'
             line: 'Extensions=unzip.py'
             state: present
 
         - name: Set ScriptOrder
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^ScriptOrder\s*=.*'
             line: 'ScriptOrder=unzip.py, MP4_Automator/NZBGetPostProcess.py'
             state: present
 
         - name: Set mp4 script location
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^MP4_Automator/NZBGetPostProcess.py:MP4_FOLDER\s*=.*'
             line: 'MP4_Automator/NZBGetPostProcess.py:MP4_FOLDER=/config/scripts/MP4_Automator/'
             state: present
 
         - name: Set mp4 conversion true
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^MP4_Automator/NZBGetPostProcess.py:SHOULDCONVERT\s*=.*'
             line: 'MP4_Automator/NZBGetPostProcess.py:SHOULDCONVERT=True'
             state: present
 
         - name: Default User
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^ControlUsername\s*=.*'
             line: 'ControlUsername='
             state: present
 
         - name: Default Password
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: 'ControlPassword\s*=.*'
             line: 'ControlPassword='
             state: present
 
         - name: DirectUnpack Set to On
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^DirectUnpack\s*=.*'
             line: 'DirectUnpack=yes'
             state: present
 
         - name: HealthCheck
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^HealthCheck\s*=.*'
             line: 'HealthCheck=Delete'
             state: present
 
         - name: Set DiskSpace
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '^DiskSpace\s*=.*'
             line: 'DiskSpace=25000'
             state: present
 
         - name: Remove Generic Task
           lineinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             regexp: '{{ item.regexp }}'
             state: absent
           with_items:
@@ -387,7 +387,7 @@
 
         - name: Unpause
           blockinfile:
-            path: '/opt/appdata/{{pgrole}}/nzbget.conf'
+            path: '/pg/data/{{pgrole}}/nzbget.conf'
             block: |
               Task1.Time=*,*:00,*:30
               Task1.WeekDays=1-7

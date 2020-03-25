@@ -35,9 +35,9 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/minecraft'
-          - '/opt/appdata/{{pgrole}}/Minecraft:/minecraft/Minecraft'
-          - '/opt/appdata/{{pgrole}}/plugins:/minecraft/Minecraft/plugins'
+          - '/pg/data/{{pgrole}}:/minecraft'
+          - '/pg/data/{{pgrole}}/Minecraft:/minecraft/Minecraft'
+          - '/pg/data/{{pgrole}}/plugins:/minecraft/Minecraft/plugins'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt:/mnt'
           - '/etc/localtime:/etc/localtime:ro'

@@ -31,10 +31,10 @@
     - name: 'Create {{pgrole}} script directories'
       file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes'
       with_items:
-        - '/opt/appdata/{{pgrole}}'
-        - '/opt/appdata/{{pgrole}}/config'
-        - '/opt/appdata/{{pgrole}}/sync'
-        - '/opt/appdata/{{pgrole}}/downloads'
+        - '/pg/data/{{pgrole}}'
+        - '/pg/data/{{pgrole}}/config'
+        - '/pg/data/{{pgrole}}/sync'
+        - '/pg/data/{{pgrole}}/downloads'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
@@ -52,9 +52,9 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/config:/config'
-          - '/opt/appdata/{{pgrole}}/sync:/sync'
-          - '/opt/appdata/{{pgrole}}/downloads:/downloads'
+          - '/pg/data/{{pgrole}}/config:/config'
+          - '/pg/data/{{pgrole}}/sync:/sync'
+          - '/pg/data/{{pgrole}}/downloads:/downloads'
           - '/mnt:/mnt'
 
     - name: 'Setting PG ENV'

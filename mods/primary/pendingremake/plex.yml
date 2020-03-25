@@ -67,7 +67,7 @@
         default_volumes:
           - '/tmp:/tmp'
           - '/mnt:/mnt'
-          - '/opt/appdata/plex/database:/config'
+          - '/pg/data/plex/database:/config'
           - '/opt/transcodes:/transcode'
           - '/dev/shm:/ram_transcode'
           - '{{path.stdout}}:{{path.stdout}}'
@@ -82,13 +82,13 @@
 
     - name: Check Preferences.xml exists
       stat:
-        path: '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml'
+        path: '/pg/data/plex/database/Library/Application Support/Plex Media Server/Preferences.xml'
       register: plex_prefs
 
     ############### This is needed because on a fresh installaions the value is missing and is defaulted to 1 Security perfered
     - name: secureConnections is missing
       xml:
-        path: '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml'
+        path: '/pg/data/plex/database/Library/Application Support/Plex Media Server/Preferences.xml'
         xpath: /Preferences/@secureConnections
         count: yes
       register: secure_hits
@@ -98,7 +98,7 @@
       ############### This is needed because on a fresh installaions the value is missing and is defaulted to 1 Security perfered
     - name: Add secureConnections if missing
       xml:
-        path: '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml'
+        path: '/pg/data/plex/database/Library/Application Support/Plex Media Server/Preferences.xml'
         xpath: /Preferences
         attribute: secureConnections
         value: '1'
@@ -108,7 +108,7 @@
 
     - name: Read Preferences.xml
       xml:
-        path: '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Preferences.xml'
+        path: '/pg/data/plex/database/Library/Application Support/Plex Media Server/Preferences.xml'
         xpath: /Preferences
         content: attribute
       register: plex_pref_content
@@ -242,20 +242,20 @@
     ###################### Plex WebTools
     - name: Check WebTools
       stat:
-        path: '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins/WebTools.bundle'
+        path: '/pg/data/plex/database/Library/Application Support/Plex Media Server/Plug-ins/WebTools.bundle'
       register: webtools
 
     - name: Create Basic Directories
       file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
-        - '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins/WebTools.bundle'
+        - '/pg/data/plex/database/Library/Application Support/Plex Media Server/Plug-ins/WebTools.bundle'
       when:
         - webtools.stat.exists == False
 
     - name: Installing WebTools
       unarchive:
         src: https://github.com/ukdtom/WebTools.bundle/releases/download/3.0.0/WebTools.bundle.zip
-        dest: /opt/appdata/plex/database/Library/Application Support/Plex Media Server/Plug-ins
+        dest: /pg/data/plex/database/Library/Application Support/Plex Media Server/Plug-ins
         keep_newer: no
         owner: '1000'
         group: '1000'

@@ -33,7 +33,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/htpcmanager:/config'
+          - '/pg/data/htpcmanager:/config'
           - '/etc/localtime:/etc/localtime:ro'
 
     - name: 'Setting PG ENV'

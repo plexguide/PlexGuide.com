@@ -37,7 +37,7 @@
           - '/dev/disk/:/dev/disk:ro'
           - '/var/lib/docker/:/var/lib/docker:ro'
           - '/sys:/sys:ro'
-          - '/opt/appdata/{{pgrole}}:/scripts'
+          - '/pg/data/{{pgrole}}:/scripts'
           - '/var/run:/var/run:ro'
           - '/:/rootfs:ro'
 

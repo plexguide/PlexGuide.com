@@ -36,7 +36,7 @@
 
     - name: 'Checking for existing app data'
       stat:
-        path: /opt/appdata/sabnzbd/sabnzbd.ini
+        path: /pg/data/sabnzbd/sabnzbd.ini
       register: inicheck
 
     # LABELS ######################################################################
@@ -53,7 +53,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
 
     - name: 'Setting PG ENV'
@@ -84,7 +84,7 @@
     # CONFIGURATION ###########################################################
     - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+        path: '/pg/data/{{pgrole}}/sabnzbd.ini'
         state: present
         delay: 5
         
@@ -95,7 +95,7 @@
 
     - name: Set download_dir when incomplete is undefined
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+        path: '/pg/data/{{pgrole}}/sabnzbd.ini'
         section: misc
         option: download_dir
         value: '{{path.stdout}}/incomplete/{{pgrole}}'
@@ -103,7 +103,7 @@
 
     - name: Set complete_dir
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+        path: '/pg/data/{{pgrole}}/sabnzbd.ini'
         section: misc
         option: complete_dir
         value: '{{path.stdout}}/downloads/{{pgrole}}'
@@ -111,7 +111,7 @@
 
     - name: Set nzb watch location
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+        path: '/pg/data/{{pgrole}}/sabnzbd.ini'
         section: misc
         option: dirscan_dir
         value: '{{path.stdout}}/nzb/watch'
@@ -119,7 +119,7 @@
 
     - name: Set nzb backup location
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+        path: '/pg/data/{{pgrole}}/sabnzbd.ini'
         section: misc
         option: nzb_backup_dir
         value: '{{path.stdout}}/nzb'
@@ -127,7 +127,7 @@
 
     - name: set script_dir
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+        path: '/pg/data/{{pgrole}}/sabnzbd.ini'
         section: misc
         option: script_dir
         value: scripts
@@ -138,7 +138,7 @@
       block:
         - name: Set host_whitelist
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: host_whitelist
             value: 'sabnzbd.{{domain.stdout}},'
@@ -146,7 +146,7 @@
 
         - name: Set direct_unpack
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: direct_unpack
             value: 1
@@ -154,7 +154,7 @@
 
         - name: Set ignore_samples
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: ignore_samples
             value: 1
@@ -162,7 +162,7 @@
 
         - name: set unwanted_extensions
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: unwanted_extensions
             value: exe, com, bat, sh, iso, m2ts, mt2s
@@ -170,7 +170,7 @@
 
         - name: set cleanup_list
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: cleanup_list
             value: nfo, exe, com, bat, txt, doc, xls, xlxs, docx, doc, jpg, jeg, gif, png
@@ -178,7 +178,7 @@
 
         - name: set action_on_unwanted_extensions
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: action_on_unwanted_extensions
             value: 2
@@ -186,7 +186,7 @@
 
         - name: set pause_on_pwrar - aborts encrypted rar rather than pausing
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: pause_on_pwrar
             value: 2
@@ -194,7 +194,7 @@
 
         - name: set new_nzb_on_failure - try a new nzb if it fails
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: new_nzb_on_failure
             value: 1
@@ -202,7 +202,7 @@
 
         - name: set flat_unpack
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: flat_unpack
             value: 1
@@ -210,7 +210,7 @@
 
         - name: set download_free
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/sabnzbd.ini'
+            path: '/pg/data/{{pgrole}}/sabnzbd.ini'
             section: misc
             option: download_free
             value: 25G

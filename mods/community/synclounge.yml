@@ -40,8 +40,8 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/config:/config'
-          - '/opt/appdata/{{pgrole}}/sync:/sync'
+          - '/pg/data/{{pgrole}}/config:/config'
+          - '/pg/data/{{pgrole}}/sync:/sync'
 
     - name: 'Setting PG ENV'
       set_fact:

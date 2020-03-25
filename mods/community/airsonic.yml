@@ -34,9 +34,9 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/airsonic/data'
-          - '/opt/appdata/{{pgrole}}/playlists:/airsonic/playlists'
-          - '/opt/appdata/{{pgrole}}/podcasts:/airsonic/podcasts'
+          - '/pg/data/{{pgrole}}:/airsonic/data'
+          - '/pg/data/{{pgrole}}/playlists:/airsonic/playlists'
+          - '/pg/data/{{pgrole}}/podcasts:/airsonic/podcasts'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt:/mnt'
 

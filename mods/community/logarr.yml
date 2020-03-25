@@ -34,9 +34,9 @@
       set_fact:
         pg_volumes:
           - '/opt:/opt'
-          - '/opt/appdata/{{pgrole}}/logs:/var/log/logarrlogs'
+          - '/pg/data/{{pgrole}}/logs:/var/log/logarrlogs'
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
 
     - name: 'Setting PG ENV'
       set_fact:

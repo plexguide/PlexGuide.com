@@ -25,7 +25,7 @@
     - name: Install docker-gc-exclude
       template:
         src: /opt/communityapps/apps/templates/docker-gc-exclude
-        dest: /opt/appdata/{{pgrole}}/docker-gc-exclude
+        dest: /pg/data/{{pgrole}}/docker-gc-exclude
         force: yes
         mode: 0775
         owner: '1000'
@@ -35,7 +35,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - /opt/appdata/dockergc/docker-gc-exclude:/etc/docker-gc-exclude
+          - /pg/data/dockergc/docker-gc-exclude:/etc/docker-gc-exclude
           - /var/run/docker.sock:/var/run/docker.sock
           - /etc/localtime:/etc/localtime:ro
 

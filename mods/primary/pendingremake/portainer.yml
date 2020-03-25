@@ -33,9 +33,9 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/data'
+          - '/pg/data/{{pgrole}}:/data'
           - '/var/run/docker.sock:/var/run/docker.sock'
-          - '/opt/appdata/{{pgrole}}:/data'
+          - '/pg/data/{{pgrole}}:/data'
 
     - name: 'Setting PG ENV'
       set_fact:

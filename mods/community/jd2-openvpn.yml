@@ -34,7 +34,7 @@
 
     - name: 'Ini Check'
       stat:
-        path: /opt/appdata/{{pgrole}}/core.conf
+        path: /pg/data/{{pgrole}}/core.conf
       register: inicheck
 
     # LABELS ######################################################################
@@ -49,13 +49,13 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt/unionfs:/unionfs'
           - '/mnt:/mnt'
           - '{{path.stdout}}/downloads/{{pgrole}}/:/output:rw'
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}/vpn:/vpn:rw'
+          - '/pg/data/{{pgrole}}/vpn:/vpn:rw'
 
     - name: 'Setting PG ENV'
       set_fact:

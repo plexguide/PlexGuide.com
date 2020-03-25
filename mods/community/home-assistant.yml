@@ -34,7 +34,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/homeassistant:/config'
+          - '/pg/data/homeassistant:/config'
 
     - name: 'Setting PG ENV'
       set_fact:

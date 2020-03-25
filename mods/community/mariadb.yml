@@ -33,7 +33,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/var/lib/mysql'
+          - '/pg/data/{{pgrole}}:/var/lib/mysql'
           - '/etc/localtime:/etc/localtime:ro'
 
     - name: 'Setting PG ENV'

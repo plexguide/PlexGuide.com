@@ -29,9 +29,9 @@
     - name: 'Create {{pgrole}} script directories'
       file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000 recurse=yes'
       with_items:
-        - '/opt/appdata/{{pgrole}}'
-        - '/opt/appdata/{{pgrole}}/sync'
-        - '/opt/appdata/{{pgrole}}/config'
+        - '/pg/data/{{pgrole}}'
+        - '/pg/data/{{pgrole}}/sync'
+        - '/pg/data/{{pgrole}}/config'
 
     # LABELS ######################################################################
     - name: 'Adding Traefik'
@@ -45,8 +45,8 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/config:/config'
-          - '/opt/appdata/{{pgrole}}/sync:/sync'
+          - '/pg/data/{{pgrole}}/config:/config'
+          - '/pg/data/{{pgrole}}/sync:/sync'
           - '/mnt:/mnt'
           - '{{path.stdout}}:{{path.stdout}}'
 
@@ -59,7 +59,7 @@
     # MAIN DEPLOYMENT #############################################################
     - name: xmlcheck
       stat:
-        path: '/opt/appdata/{{pgrole}}/config/config.xml'
+        path: '/pg/data/{{pgrole}}/config/config.xml'
       register: xmlcheck
 
     - name: 'Deploying {{pgrole}}'
@@ -90,7 +90,7 @@
 
         - name: Replace default sync path in config file
           replace:
-            path: /opt/appdata/{{pgrole}}/config/config.xml
+            path: /pg/data/{{pgrole}}/config/config.xml
             regexp: <defaultFolderPath>~</defaultFolderPath>
             replace: '<defaultFolderPath>/sync</defaultFolderPath>'
 

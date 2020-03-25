@@ -27,12 +27,12 @@
 
     - name: Checking for existing rss folder
       stat:
-        path: "/opt/appdata/{{pgrole}}/rss"
+        path: "/pg/data/{{pgrole}}/rss"
       register: rsscheck
 
     - name: Checking for existing rss config
       stat:
-        path: "/opt/appdata/{{pgrole}}/rss/transmission-rss.conf"
+        path: "/pg/data/{{pgrole}}/rss/transmission-rss.conf"
       register: cfgcheck
 
     # LABELS ######################################################################
@@ -48,14 +48,14 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt:/mnt'
 
     - name: 'Setting {{pgrole2}} Volumes'
       set_fact:
         pg_volumes2:
-          - '/opt/appdata/{{pgrole}}/rss/transmission-rss.conf:/etc/transmission-rss.conf:ro'
+          - '/pg/data/{{pgrole}}/rss/transmission-rss.conf:/etc/transmission-rss.conf:ro'
 
     - name: 'Setting {{pgrole}} ENV'
       set_fact:
@@ -120,13 +120,13 @@
     - name: 'RSS feed configuration - Folder'
       block:
         - name: 'Creating RSS folder'
-          shell: "mkdir /opt/appdata/{{pgrole}}/rss"
+          shell: "mkdir /pg/data/{{pgrole}}/rss"
       when: not rsscheck.stat.exists
 
     - name: 'RSS feed configuration - Config'
       block:
         - name: 'Creating configuration file'
-          shell: "touch /opt/appdata/{{pgrole}}/rss/transmission-rss.conf && chown -R 1000:1000 /opt/appdata/{{pgrole}}/rss/ && echo see https://git.io/fhAm2 to configure > /opt/appdata/{{pgrole}}/rss/transmission-rss.conf"
+          shell: "touch /pg/data/{{pgrole}}/rss/transmission-rss.conf && chown -R 1000:1000 /pg/data/{{pgrole}}/rss/ && echo see https://git.io/fhAm2 to configure > /pg/data/{{pgrole}}/rss/transmission-rss.conf"
       when: not cfgcheck.stat.exists
 
     - name: 'Deploying {{pgrole2}}'

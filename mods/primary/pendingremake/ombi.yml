@@ -25,13 +25,13 @@
     # PRETASKS ####################################################################
     - name: Check JSON exists
       stat:
-        path: '/opt/appdata/{{pgrole}}/appsettings.json'
+        path: '/pg/data/{{pgrole}}/appsettings.json'
       register: jsonfile
 
     - name: 'Download {{pgrole}} appsettings.json config file'
       get_url:
         url: https://raw.githubusercontent.com/tidusjar/Ombi/master/src/Ombi/appsettings.json
-        dest: /opt/appdata/{{pgrole}}/appsettings.json
+        dest: /pg/data/{{pgrole}}/appsettings.json
         owner: '1000'
         group: '1000'
         force: no
@@ -50,9 +50,9 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}/appsettings.json:/opt/{{pgrole}}/appsettings.json'
+          - '/pg/data/{{pgrole}}/appsettings.json:/opt/{{pgrole}}/appsettings.json'
 
     - name: 'Setting PG ENV'
       set_fact:

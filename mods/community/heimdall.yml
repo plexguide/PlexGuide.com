@@ -36,7 +36,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/heimdall:/config'
+          - '/pg/data/heimdall:/config'
           - '/etc/localtime:/etc/localtime:ro'
 
     - name: 'Setting PG ENV'

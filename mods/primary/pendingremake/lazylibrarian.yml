@@ -23,7 +23,7 @@
 
     - name: 'Checking for existing app data'
       stat:
-        path: /opt/appdata/{{pgrole}}/config.ini
+        path: /pg/data/{{pgrole}}/config.ini
       register: inicheck
 
     # LABELS ######################################################################
@@ -38,7 +38,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
           - '/mnt:/mnt'
@@ -71,7 +71,7 @@
 
     - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        path: '/opt/appdata/{{pgrole}}/config.ini'
+        path: '/pg/data/{{pgrole}}/config.ini'
         state: present
         delay: 5
 
@@ -82,7 +82,7 @@
 
     - name: Set eBooks library Location
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/config.ini'
+        path: '/pg/data/{{pgrole}}/config.ini'
         section: General
         option: ebook_dir
         value: '{{path.stdout}}/unionfs/ebooks'
@@ -90,7 +90,7 @@
 
     - name: Set Audio Books library Location
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/config.ini'
+        path: '/pg/data/{{pgrole}}/config.ini'
         section: General
         option: audio_dir
         value: '{{path.stdout}}/unionfs/abooks'
@@ -98,7 +98,7 @@
 
     - name: Set downloads location
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/config.ini'
+        path: '/pg/data/{{pgrole}}/config.ini'
         section: General
         option: download_dir
         value: '{{path.stdout}}/downloads/sabnzbd/ebooks,{{path.stdout}}/downloads/nzbget/ebooks,{{path.stdout}}/downloads/rutorrent/ebooks,{{path.stdout}}/downloads/qbittorrent/ebooks'
@@ -110,7 +110,7 @@
       block:
         - name: Enable audio tab
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/config.ini'
+            path: '/pg/data/{{pgrole}}/config.ini'
             section: General
             option: audio_tab
             value: 1
@@ -118,7 +118,7 @@
 
         - name: Enable series tab
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/config.ini'
+            path: '/pg/data/{{pgrole}}/config.ini'
             section: General
             option: series_tab
             value: 1
@@ -128,7 +128,7 @@
           block:
             - name: Set deluge host
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: DELUGE
                 option: deluge_host
                 value: deluge
@@ -136,7 +136,7 @@
 
             - name: Set deluge label
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: DELUGE
                 option: deluge_label
                 value: ebooks
@@ -144,7 +144,7 @@
 
             - name: Set deluge port
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: DELUGE
                 option: deluge_port
                 value: 8112
@@ -152,7 +152,7 @@
 
             - name: Set nzbget host
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: NZBGet
                 option: nzbget_host
                 value: http://nzbget
@@ -160,7 +160,7 @@
 
             - name: Set nzbget port
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: NZBGet
                 option: nzbget_port
                 value: 6789
@@ -168,7 +168,7 @@
 
             - name: Set nzbget label
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: NZBGet
                 option: nzbget_label
                 value: ebooks
@@ -176,7 +176,7 @@
 
             - name: Set qbittorrent host
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: QBITTORRENT
                 option: qbittorrent_host
                 value: qbittorrent
@@ -184,7 +184,7 @@
 
             - name: Set qbittorrent port
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: QBITTORRENT
                 option: qbittorrent_port
                 value: 8080
@@ -192,7 +192,7 @@
 
             - name: Set qbittorrent label
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: QBITTORRENT
                 option: qbittorrent_label
                 value: ebooks
@@ -200,7 +200,7 @@
 
             - name: Set sabnzbd host
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: SABnzbd
                 option: sab_host
                 value: sabnzbd
@@ -208,7 +208,7 @@
 
             - name: Set sabnzbd label
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: SABnzbd
                 option: sab_label
                 value: ebooks
@@ -216,7 +216,7 @@
 
             - name: Set rtorrent host
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: RTORRENT
                 option: rtorrent_host
                 value: rutorrent
@@ -224,7 +224,7 @@
 
             - name: Set rtorrent label
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: RTORRENT
                 option: rtorrent_label
                 value: ebooks
@@ -234,7 +234,7 @@
           block:
             - name: Setup hydra on Newznab0 host
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: Newznab0
                 option: host
                 value: nzbhydra:5076
@@ -242,7 +242,7 @@
 
             - name: Setup hydra on Torznab0 host
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: Torznab0
                 option: host
                 value: nzbhydra:5076/torznab
@@ -250,7 +250,7 @@
 
             - name: Setup hydra on Torznab0 priority
               ini_file:
-                path: '/opt/appdata/{{pgrole}}/config.ini'
+                path: '/pg/data/{{pgrole}}/config.ini'
                 section: Torznab0
                 option: dlpriority
                 value: 1

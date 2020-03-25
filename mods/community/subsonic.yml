@@ -33,7 +33,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/state:/opt/app/state:rw'
+          - '/pg/data/{{pgrole}}/state:/opt/app/state:rw'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt/unionfs:/mnt/music:ro'
           - '/etc/localtime:/etc/localtime:ro'

@@ -35,7 +35,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/config:rw'
+          - '/pg/data/{{pgrole}}:/config:rw'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt/unionfs:/unionfs:rw'
           - '/mnt:/mnt:rw'

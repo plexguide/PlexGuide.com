@@ -29,9 +29,9 @@
     - name: 'Create {{pgrole}} data and log directories'
       file: 'path={{item}} state=directory mode=0700 owner=1000 group=1000 recurse=yes'
       with_items:
-        - '/opt/appdata/{{pgrole}}'
-        - '/opt/appdata/{{pgrole}}/data'
-        - '/opt/appdata/{{pgrole}}/logs'
+        - '/pg/data/{{pgrole}}'
+        - '/pg/data/{{pgrole}}/data'
+        - '/pg/data/{{pgrole}}/logs'
 
     # LABELS ######################################################################
 
@@ -47,8 +47,8 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/data:/data'
-          - '/opt/appdata/{{pgrole}}/logs:/logs'
+          - '/pg/data/{{pgrole}}/data:/data'
+          - '/pg/data/{{pgrole}}/logs:/logs'
 
     - name: 'Setting PG ENV'
       set_fact:

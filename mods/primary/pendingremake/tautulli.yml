@@ -26,7 +26,7 @@
       
     - name: 'Checking for existing app data'
       stat:
-        path: /opt/appdata/tautulli/config.ini
+        path: /pg/data/tautulli/config.ini
       register: confcheck
 
     # LABELS ######################################################################
@@ -41,9 +41,9 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/config'
-          - '/opt/appdata/plex/database/Library/Application Support/Plex Media Server/Logs:/logs'
-          - '/opt/appdata/{{pgrole}}/scripts:/scripts'
+          - '/pg/data/{{pgrole}}:/config'
+          - '/pg/data/plex/database/Library/Application Support/Plex Media Server/Logs:/logs'
+          - '/pg/data/{{pgrole}}/scripts:/scripts'
           - '/etc/localtime:/etc/localtime:ro'
 
     - name: 'Setting PG ENV'
@@ -77,7 +77,7 @@
       block:
         - name: 'Waiting for {{pgrole}} to start'
           wait_for:
-            path: '/opt/appdata/tautulli/config.ini'
+            path: '/pg/data/tautulli/config.ini'
             state: present
 
         - name: Stop Container
@@ -87,7 +87,7 @@
 
         # - name: set http_username
         #   ini_file:
-        #     path: '/opt/appdata/{{pgrole}}/config.ini'
+        #     path: '/pg/data/{{pgrole}}/config.ini'
         #     section: misc
         #     option: http_username
         #     value: plex
@@ -95,7 +95,7 @@
 
         # - name: set http_password
         #   ini_file:
-        #     path: '/opt/appdata/{{pgrole}}/config.ini'
+        #     path: '/pg/data/{{pgrole}}/config.ini'
         #     section: misc
         #     option: http_password
         #     value: guide

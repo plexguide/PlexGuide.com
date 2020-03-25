@@ -41,7 +41,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt:/mnt'
 
@@ -54,7 +54,7 @@
     # MAIN DEPLOYMENT #############################################################
     - name: 'Checking for existing app data'
       stat:
-        path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+        path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
       register: confcheck
 
     - name: 'Deploying {{pgrole}}'
@@ -77,7 +77,7 @@
     # CONFIGURATION ####################################################
     - name: 'Waiting for {{pgrole}} to initialize'
       wait_for:
-        path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+        path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
         state: present
         timeout: 15
         delay: 5
@@ -89,7 +89,7 @@
 
     - name: Set SavePath
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+        path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
         section: Preferences
         option: Downloads\SavePath
         value: '{{path.stdout}}/downloads/{{pgrole}}'
@@ -98,7 +98,7 @@
 
     - name: Set TempPathEnabled
       ini_file:
-        path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+        path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
         section: Preferences
         option: Downloads\TempPathEnabled
         value: True
@@ -109,7 +109,7 @@
       block:
         - name: Enable AutoRun
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: AutoRun
             option: enabled
             value: True
@@ -117,7 +117,7 @@
 
         - name: Enable Auto UnRar
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: AutoRun
             option: program
             value: '/usr/bin/unrar x -r \"%F/.\" \"%F/\"'
@@ -125,7 +125,7 @@
 
         - name: Disable DHT
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Bittorrent\DHT
             value: false
@@ -133,7 +133,7 @@
 
         - name: Disable PeX
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Bittorrent\PeX
             value: false
@@ -141,7 +141,7 @@
 
         - name: Disable LSD
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Bittorrent\LSD
             value: false
@@ -149,7 +149,7 @@
 
         - name: Enable Encryption
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Bittorrent\Encryption
             value: 1
@@ -157,7 +157,7 @@
 
         - name: Don't use incomplete extension
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Downloads\UseIncompleteExtension
             value: false
@@ -165,7 +165,7 @@
 
         - name: Ignore slow torrents
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Queueing\IgnoreSlowTorrents
             value: True
@@ -173,7 +173,7 @@
 
         - name: Set MaxActiveDownloads
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Queueing\MaxActiveDownloads
             value: 10
@@ -181,7 +181,7 @@
 
         - name: Set MaxActiveTorrents
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Queueing\MaxActiveTorrents
             value: 100
@@ -189,7 +189,7 @@
 
         - name: Set MaxActiveUploads
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Queueing\MaxActiveUploads
             value: 100
@@ -197,7 +197,7 @@
 
         - name: Set GlobalMaxSeedingMinutes
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: BitTorrent
             option: Session\GlobalMaxSeedingMinutes
             value: 20160
@@ -205,7 +205,7 @@
 
         - name: Set MaxRatio
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Bittorrent\MaxRatio
             value: 1
@@ -213,7 +213,7 @@
 
         - name: pause on MaxRatioAction
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: Bittorrent\MaxRatioAction
             value: 1
@@ -221,7 +221,7 @@
 
         - name: Disable csrf
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: WebUI\CSRFProtection
             value: false
@@ -230,7 +230,7 @@
 
         - name: Disable HostHeaderValidation
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: WebUI\HostHeaderValidation
             value: false
@@ -239,7 +239,7 @@
 
         - name: Disable ClickjackingProtection
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: WebUI\ClickjackingProtection
             value: false
@@ -248,7 +248,7 @@
             
         - name: Set ServerDomains
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: WebUI\ServerDomains
             value: '*'
@@ -257,7 +257,7 @@
 
         - name: Set Address
           ini_file:
-            path: '/opt/appdata/{{pgrole}}/qBittorrent/qBittorrent.conf'
+            path: '/pg/data/{{pgrole}}/qBittorrent/qBittorrent.conf'
             section: Preferences
             option: WebUI\Address
             value: '*'

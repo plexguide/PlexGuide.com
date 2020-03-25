@@ -23,7 +23,7 @@
 
     - name: 'XML Check'
       stat:
-        path: /opt/appdata/{{pgrole}}/config/system.xml
+        path: /pg/data/{{pgrole}}/config/system.xml
       register: xmlcheck
       
     # LABELS ######################################################################
@@ -39,7 +39,7 @@
       set_fact:
         pg_volumes:
           - /etc/localtime:/etc/localtime:ro
-          - /opt/appdata/{{pgrole}}:/config
+          - /pg/data/{{pgrole}}:/config
           - '{{path.stdout}}:{{path.stdout}}'
           - '/mnt:/mnt'
           - '/mnt/unionfs:/unionfs'
@@ -82,7 +82,7 @@
 
       - name: 'Pending XML Generation'
         wait_for:
-          path: '/opt/appdata/{{pgrole}}/config/system.xml'
+          path: '/pg/data/{{pgrole}}/config/system.xml'
           state: present
 
       - name: 'Wait 5 Seconds'
@@ -96,7 +96,7 @@
 
       - name: 'Turn Off Reporting'
         xml:
-          path: '/opt/appdata/{{pgrole}}/config/system.xml'
+          path: '/pg/data/{{pgrole}}/config/system.xml'
           xpath: /ServerConfiguration/EnableAnonymousUsageReporting
           value: 'false'
 

@@ -25,12 +25,12 @@
     - name: Create Folders
       file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
-        - /opt/appdata/{{pgrole}}/mp4_automator
+        - /pg/data/{{pgrole}}/mp4_automator
 
     - name: Install autoProcess.ini
       template:
         src: /opt/coreapps/apps/templates/radarr/radarr.ini
-        dest: /opt/appdata/{{pgrole}}/mp4_automator/autoProcess.ini
+        dest: /pg/data/{{pgrole}}/mp4_automator/autoProcess.ini
         force: yes
         mode: 0775
         owner: '1000'
@@ -48,8 +48,8 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}/mp4_automator:/config_mp4_automator'
-          - '/opt/appdata/{{pgrole}}:/config'
+          - '/pg/data/{{pgrole}}/mp4_automator:/config_mp4_automator'
+          - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
           - '/mnt:/mnt'
