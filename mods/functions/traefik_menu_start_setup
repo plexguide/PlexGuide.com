@@ -5,7 +5,7 @@ common_main /pg/var/server.email NOT-SET email
 common_main /pg/var/server.delaycheck 60 delaycheck
 common_main /pg/var/server.domain NOT-SET domain
 common_main /pg/var/tld.program NOT-SET tld
-common_main /pg/var/traefik.deploy 'Not Deployed' deployed
+common_main /pg/var/traefik.deploy 'Not Deployed'
 
 if [[ "$provider" != "NOT-SET" ]]; then
   ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
@@ -22,10 +22,15 @@ if [[ "$provider" != "NOT-SET" ]]; then
   minidisplay=$(cat /pg/tmp/mini.list)
 fi
 
+if [[ "" != $(docker ps | grep "traefik" ) ]]; then
+  def="[B] Destroy Traefik"; else def="[!] Cannot Destroy Traefik - Not Deployed"; fi
+}
+
 if [[ "$xyz" == "1" ]]; then
   alphadisplay="[!] Cannot Deploy Traefik - Info Not Complete"; else
   alphadisplay="[A] Deploy Traefik      : [$deployed]"; fi
 
 if [[ "" != $(docker ps | grep "traefik" ) ]]; then
-  def="[B] Destroy Traefik"; else def="[!] Cannot Destroy Traefik - Not Deployed"; fi
+  def="[B] Destroy Traefik" && echo "Deployed" > /pg/var/traefik.deploy && def=Deployed; else
+  def="[!] Cannot Destroy Traefik - Not Deployed" && echo "Not Deployed" && def="Not Deployed" > /pg/var/traefik.deploy; fi
 }
