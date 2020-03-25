@@ -21,7 +21,6 @@ if [[ "$provider" != "NOT-SET" ]]; thenz
     let "tnumber++"
   done </pg/tmp/provider.keys
   minidisplay=$(cat /pg/tmp/mini.list)
-fi
 
 if [[ "" != $(docker ps | grep "traefik" ) ]]; then
   def="[B] Destroy Traefik"; else def="[!] Cannot Destroy Traefik - Not Deployed"; fi
