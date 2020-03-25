@@ -21,7 +21,6 @@ echo "[1] acme-dns
 providers=$(cat /pg/tmp/traefik.providers)
 
 common_message "🚀  Traefik - Select a Provider" "
-
 $providers
 ------------------------------------------------------------------------------
 [Z] Exit Interface
