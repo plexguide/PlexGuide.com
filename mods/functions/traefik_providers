@@ -28,7 +28,7 @@ $providers
 "
 common_number
 select_info=$(sed -n "$typed"p /pg/tmp/traefik.providers | awk '{print $2}')
-echo "$select_info"
+echo "$select_info" > /pg/var/traefik.provider
 
 while read p; do
   abc=$(echo "$p" | awk '{print $2}')
@@ -85,5 +85,7 @@ efg=vscale
   touch "$base_path/$efg/VSCALE_API_TOKEN"
 efg=vultr
   touch "$base_path/$efg/VULTR_API_KEY"
+
+
 
 }
