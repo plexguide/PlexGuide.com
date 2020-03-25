@@ -10,7 +10,7 @@ common_main /pg/var/traefik.deploy 'Not Deployed' deploy
 if [[ "$provider" != "NOT-SET" ]]; then
   ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
   tnumber=6
-  rm -rf /pg/tmp/mini.list
+  rm -rf /pg/tmp/mini.list && touch /pg/tmp/mini.list
 
   xyz=0
   while read p; do
