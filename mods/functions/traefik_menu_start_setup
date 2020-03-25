@@ -27,7 +27,7 @@ if [[ "$provider" != "NOT-SET" ]]; then
 
   if [[ "" != $(docker ps | grep "traefik" ) ]]; then
     def="[B] Destroy Traefik" && echo "Deployed" > /pg/var/traefik.deploy && deployedinfo=Deployed; else
-    def="[!] Cannot Destroy Traefik - Not Deployed" && echo "Not Deployed" && deployedinfo="Not Deployed" > /pg/var/traefik.deploy; fi
+    def="[!] Cannot Destroy Traefik" && echo "Not Deployed" && deployedinfo="Not Deployed" > /pg/var/traefik.deploy; fi
 
   if [[ "$xyz" == "1" ]]; then
     alphadisplay="[!] Cannot Deploy Traefik - Info Not Complete"; else
