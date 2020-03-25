@@ -14,9 +14,9 @@ Prior Info Saved (If Any): $priorinfo
 read -p "↘️  Set Info - $focusedkey | Press [ENTER]: " typed < /dev/tty
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
-if [[  "$typed" == "" ]]; then common_message "⛔️  WARNING: OS Check" && common_confirm && traefik_keys && exit; fi
+if [[  "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_keys && exit; fi
 
-echo $typed >> /pg/var/traefik/$provider/$focusedkey
+echo $typed > /pg/var/traefik/$provider/$focusedkey
 echo ""
 common_message "💾  $typed saved for $provider - $focusedkey"
 common_confirm && traefik_menu_start && exit
