@@ -30,7 +30,7 @@ common_message "🚀  Traefik - Reverse Proxy Interface" "
 💬  Further Explanation? Visit ~ http://traefik.plexguide.com
 ------------------------------------------------------------------------------
 [1] Top Level Domain App: [$tld]
-[2] Domain Provider     : [$infoprovider]
+[2] Domain Provider     : [$provider]
 [3] Domain Name         : [$domain]
 [4] EMail Address       : [$email]
 [5] DNS Delay Check     : [$delaycheck] Seconds
