@@ -21,8 +21,9 @@ if [[ "$provider" != "NOT-SET" ]]; then
   minidisplay=$(cat /pg/tmp/mini.list)
 fi
 
-if [[ "xyz" == "1" ]]; then alphadisplay="[!] Cannot Deploy Traefik - Info Not Complete"; else
-alphadisplay="[A] Deploy Traefik      : [$deployed]"; fi
+if [[ "$xyz" == "1" ]]; then 
+  alphadisplay="[!] Cannot Deploy Traefik - Info Not Complete"; else
+  alphadisplay="[A] Deploy Traefik      : [$deployed]"; fi
 
 common_message "🚀  Traefik - Reverse Proxy Interface" "
 💬  Further Explanation? Visit ~ http://traefik.plexguide.com
