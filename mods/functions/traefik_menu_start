@@ -30,14 +30,13 @@ case $typed in
     3 ) traefik_menu_start && exit ;;
     4 ) traefik_menu_start && exit ;;
     5 ) traefik_menu_start && exit ;;
-    6 ) bash /pg/stage/pgcloner/pgpress.sh && start_menu && exit ;;
+    6 ) menutmp=1 && traefik_keys && traefik_menu_start && exit ;;
+    7 ) menutmp=2 && traefik_keys && traefik_menu_start && exit ;;
+    8 ) menutmp=3 && traefik_keys && traefik_menu_start && exit ;;
+    9 ) menutmp=4 && traefik_keys && traefik_menu_start && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) traefik_menu_start && exit ;;
 esac
-
-
-
-
 
 }
