@@ -20,8 +20,8 @@ $def
 "
 common_number
 
-if [[ "$typed" -gt "$tnumber" ]]; then
-common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"; fi
+if [[ "$typed" -ge "$tnumber" ]]; then
+common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"; fi; common_confirm
 
 case $typed in
     1 ) traefik_menu_start && exit ;;
