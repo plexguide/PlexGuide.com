@@ -40,7 +40,7 @@
         pg_volumes:
           - /etc/localtime:/etc/localtime:ro
           - /pg/data/{{pgrole}}:/config
-          - '{{path.stdout}}:{{path.stdout}}'
+          #- '{{path.stdout}}:{{path.stdout}}'
           - '/pg:/pg'
           - '/pg/unity:/unity'
 
