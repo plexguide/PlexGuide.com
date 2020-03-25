@@ -27,7 +27,7 @@ existcheck=$(echo $app_display | grep "$typed" -w)
 dockerlist=$(docker container ls --format 'table {{.Names}}' | tail -n +2)
   if [[ "1" = $(echo $dockerlist | grep -c "\<$typed\>") ]]; then echo "yes"
     tempinput="null"
-    while [ "$tempinput" && "Y" && "$tempinput" != "y" && "$tempinut" != "N" && "$tempinput" != "n" ]; do
+    while [[ "$tempinput" && "Y" && "$tempinput" != "y" && "$tempinut" != "N" && "$tempinput" != "n" ]]; do
     read -p '⛔️  '$typed' is already installed! Reinstall ~ Y or N? ' tempinput < /dev/tty
     done
   fi
