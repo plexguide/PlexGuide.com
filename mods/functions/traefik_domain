@@ -3,10 +3,11 @@ traefik_domain() {
 priordomain=$(cat /pg/var/traefik/traefik.domain)
 
 common_message "🚀 PlexGuide | Traefik Domain Interface" "
-💾 What is the domain being utilized?
+💾 Domain utilized for Traefik?
 
 Prior Info Saved (If Any): $priordomain
-[Z] To Cancel and GoBack"
+[Z] To Cancel and Go Back
+"
 
 read -p "↘️  New Domain? | Press [ENTER]: " typed < /dev/tty
 

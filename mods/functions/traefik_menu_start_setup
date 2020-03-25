@@ -1,10 +1,9 @@
 traefik_menu_start_setup () {
 
-common_main /pg/var/traefik/traefik.domain NONE domain
+common_main /pg/var/traefik/traefik.domain NOT-SET domain
 common_main /pg/var/traefik.provider NONE provider
 common_main /pg/var/server.email NOT-SET email
 common_main /pg/var/server.delaycheck 60 delaycheck
-common_main /pg/var/server.domain NOT-SET domain
 common_main /pg/var/tld.program NOT-SET tld
 touch /pg/var/traefik/traefik.deploy
 
@@ -17,7 +16,7 @@ if [[ "$provider" != "NOT-SET" ]]; then
 
   xyz=0
   while read p; do
-    if [[ "" == $(cat /pg/var/traefik/$provider/$p) ]]; then tset=" <<< NOT SET" && xyz=1; else tset=""; fi
+    if [[ "" == $(cat /pg/var/traefik/$provider/$p) ]]; then tset=" <<< NOT-SET" && xyz=1; else tset=""; fi
     echo "[$tnumber] $p$tset" >> /pg/tmp/mini.list
     let "tnumber++"
   done </pg/tmp/provider.keys
