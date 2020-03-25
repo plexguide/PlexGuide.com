@@ -1,0 +1,22 @@
+traefik_email() {
+
+priordomain=$(cat /pg/var/traefik/traefik.domain)
+
+common_message "🚀 PlexGuide | Traefik Domain Interface" "
+💾 Domain utilized for Traefik?
+
+Prior Info Saved (If Any): $priordomain
+[Z] To Cancel and Go Back
+"
+
+read -p "↘️  New Domain? | Press [ENTER]: " typed < /dev/tty
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
+if [[  "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_domain && exit; fi
+
+echo $typed > /pg/var/traefik/traefik.domain
+
+common_message "💾  $typed - New Set Domain!"
+common_confirm && traefik_menu_start && exit
+
+}
