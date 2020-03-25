@@ -22,7 +22,7 @@ providers=$(cat /pg/tmp/traefik.providers)
 
 common_message "🚀  Traefik - Select a Provider" "
 
-"$providers"
+$providers
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
