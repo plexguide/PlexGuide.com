@@ -64,7 +64,7 @@ efg=godaddy
 efg=namecheap
   touch "$base_path/$efg/NAMECHEAP_API_KEY"
   touch "$base_path/$efg/NAMECHEAP_API_USER"
-efg=namedotcome
+efg=namedotcom
   touch "$base_path/$efg/NAMECOM_API_TOKEN"
   touch "$base_path/$efg/NAMECOM_SERVER"
 touch "$base_path/$efg/NAMECOM_USERNAME"
