@@ -27,8 +27,8 @@ case $typed in
     4 ) traefik_menu_start && exit ;;
     5 ) traefik_menu_start && exit ;;
     6 ) bash /pg/stage/pgcloner/pgpress.sh && start_menu && exit ;;
-    z ) exit ;;
-    Z ) exit ;;
+    z ) start_menu && exit ;;
+    Z ) start_menu && exit ;;
     * ) traefik_menu_start && exit ;;
 esac
 
