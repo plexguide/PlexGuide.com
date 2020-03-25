@@ -1,5 +1,8 @@
 traefik_providers() {
 
+## Last Number of List
+maxnumber="16"
+
 ## Place in ABC Order & Maintain Quotations
 echo "[1] acme-dns
 [2] cloudflare
