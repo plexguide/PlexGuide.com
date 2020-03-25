@@ -11,7 +11,7 @@ common_message "🚀 PlexGuide | Traefik Variable Interface" "
 Prior Info Saved (If Any): $priorinfo
 [Z] To Cancel and GoBack"
 
-read -p "↘️  Set Info - $focusedkey | Press [ENTER]" typed < /dev/tty
+read -p "↘️  Set Info - $focusedkey | Press [ENTER]: " typed < /dev/tty
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 if [[  "$typed" == "" ]]; then common_message "⛔️  WARNING: OS Check" && common_confirm && traefik_keys && exit; fi
