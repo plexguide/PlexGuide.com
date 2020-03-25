@@ -1,0 +1,4 @@
+common_variable () {
+  file="$1"
+  if [ ! -e "$file" ]; then echo "$2" > $1; fi
+}

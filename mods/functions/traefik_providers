@@ -32,5 +32,13 @@ common_number
 select_info=$(sed -n "$typed"p /pg/tmp/traefik.providers | awk '{print $2}')
 echo "$select_info"
 
+## Ensure that a function exist for each provider above, with _fun at the end
+while read p; do
+  abc=$(echo "$p" | awk '{print $2}')
+  mkdir -p "/pg/var/traefik/$abc"
+done </pg/tmp/traefik.providers
+
+#variable /pg/var/pgfork.project "NOT-SET"
+
 
 }
