@@ -1,11 +1,12 @@
 traefik_menu_start_setup () {
 
 common_main /pg/var/traefik/traefik.domain NONE domain
+common_main /pg/var/traefik.provider NONE provider
 common_main /pg/var/server.email NOT-SET email
 common_main /pg/var/server.delaycheck 60 delaycheck
 common_main /pg/var/server.domain NOT-SET domain
 common_main /pg/var/tld.program NOT-SET tld
-touch /pg/var/traefik.deploy
+touch /pg/var/traefik/traefik.deploy
 
 if [[ "$provider" != "NOT-SET" ]]; then
 
