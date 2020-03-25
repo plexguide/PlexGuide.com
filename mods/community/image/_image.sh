@@ -41,8 +41,8 @@ echo ""
 read -p '🚀  Type Number | PRESS [ENTER]: ' typed < /dev/tty
 
   if [[ "$typed" -ge "1" && "$typed" -lt "$count" ]]; then
-  mkdir -p /var/plexguide/image
-  cat "/tmp/display$typed" > "/var/plexguide/image/$image"
+  mkdir -p /pg/var/image
+  cat "/tmp/display$typed" > "/pg/var/image/$image"
 else badinput; fi
 }
 

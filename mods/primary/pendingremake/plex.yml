@@ -38,16 +38,16 @@
 
     # FACTS #######################################################################
     - name: 'Plex Server Network Type'
-      shell: 'cat /var/plexguide/plex.server'
+      shell: 'cat /pg/var/plex.server'
       register: servertype
 
     - name: Register Claim Number
-      shell: 'cat /var/plexguide/plex.claim'
+      shell: 'cat /pg/var/plex.claim'
       register: claim
       when: servertype.stdout == "remote"
 
     - name: Register Extension Type
-      shell: 'cat /var/plexguide/plex.extension'
+      shell: 'cat /pg/var/plex.extension'
       register: extension
 
     # CORE (MANDATORY) ############################################################

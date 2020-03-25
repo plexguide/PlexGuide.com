@@ -1,0 +1,90 @@
+#!/bin/bash
+#
+# Title:      PGBlitz (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: True
+  tasks:
+    # BASIC TASKS ######################################################
+    - name: 'Including cron job'
+      include_tasks: '/opt/traefik/provider.yml'
+
+    - name: Register E-Mail
+      shell: 'cat /var/plexguide/server.email'
+      register: email
+
+    - name: Register Delay Check
+      shell: 'cat /var/plexguide/server.delaycheck'
+      register: delaycheck
+
+    - name: Register Domain
+      shell: 'cat /var/plexguide/server.domain'
+      register: domain
+
+    - name: Register Provider
+      shell: 'cat /var/plexguide/traefik.provider'
+      register: provider
+
+    - name: Remove Traefik
+      docker_container:
+        name: traefik
+        state: absent
+
+    - name: Removing Prior Traefik.toml
+      file:
+        state: absent
+        path: /opt/appdata/traefik/traefik.toml
+
+    - name: Create Basic Directories
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
+      with_items:
+        - /opt/appdata/traefik
+        - /opt/appdata/traefik/acme
+
+    - name: Installing Traefik.Toml
+      template:
+        src: traefik.toml
+        dest: /opt/appdata/traefik/traefik.toml
+        force: yes
+        owner: '1000'
+        group: '1000'
+
+    - name: Check acme.json exists
+      stat:
+        path: '/opt/appdata/traefik/acme/acme.json'
+      register: acme_json
+
+    - name: Installing ACME
+      template:
+        src: acme.json
+        dest: /opt/appdata/traefik/acme/acme.json
+        force: yes
+        mode: 0600
+        owner: '1000'
+        group: '1000'
+      when: acme_json.stat.exists == False
+    # MAIN #####################################################################
+    - name: Deploy Traefik
+      docker_container:
+        name: traefik
+        image: traefik:1.7
+        pull: yes
+        published_ports:
+          - '443:443'
+          - '80:80'
+        env: '{{pg_env}}'
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+          - /etc/localtime:/etc/localtime:ro
+          - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+          - /opt/appdata/traefik/acme:/etc/traefik/acme
+        restart_policy: unless-stopped
+        state: started
+        networks:
+          - name: plexguide
+            aliases:
+              - traefik

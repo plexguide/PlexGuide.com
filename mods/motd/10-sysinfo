@@ -19,7 +19,7 @@ DOCKER=$(systemctl is-active docker)
 DOCKER2=$(docker --version | awk '{print $3}')
 UNIONFS=$(systemctl is-active pgunion)
 
-#PG=$(cat /var/plexguide/pg.number)
+#PG=$(cat /pg/var/pg.number)
 HSTNAME=$(cat /etc/hostname)
 
 ###storage local part
@@ -33,10 +33,10 @@ basepercent=$(df -h | awk '{if($(NF) == "/") {print $(NF-1); exit;}}')
 
 #google hack for loginshell
 
-#tdrive=$(tail -n 1 /var/plexguide/tduncrypt.log)
-#gdrive=$(tail -n 1 /var/plexguide/gduncrypt.log)
-#tcrypt=$(tail -n 1 /var/plexguide/tdcrypt.log)
-#gcrypt=$(tail -n 1 /var/plexguide/gdcrypt.log)
+#tdrive=$(tail -n 1 /pg/var/tduncrypt.log)
+#gdrive=$(tail -n 1 /pg/var/gduncrypt.log)
+#tcrypt=$(tail -n 1 /pg/var/tdcrypt.log)
+#gcrypt=$(tail -n 1 /pg/var/gdcrypt.log)
 
 wisword=$(/usr/games/fortune -as | sed "s/^/ /")
 

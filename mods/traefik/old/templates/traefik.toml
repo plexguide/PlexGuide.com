@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+# Title:      PGBlitz (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
+
+insecureskipverify = true
+
+logLevel = "WARN"
+
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+[entryPoints.http]
+address = ":80"
+[entryPoints.http.redirect]
+entryPoint = "https"
+[entryPoints.https]
+address = ":443"
+[entryPoints.https.tls]
+MinVersion = "VersionTLS12"
+CipherSuites = ["TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256","TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"]
+[entryPoints.monitor]
+address = ":8081"
+
+[retry]
+
+[acme]
+acmeLogging = true
+email = "{{email.stdout}}"
+storage = "/etc/traefik/acme/acme.json"
+entryPoint = "https"
+[acme.dnsChallenge]
+provider = "{{provider.stdout}}"
+delayBeforeCheck = "{{delaycheck.stdout}}"
+
+[[acme.domains]]
+main = "{{domain.stdout}}"
+[[acme.domains]]
+main = "*.{{domain.stdout}}"
+
+[backends]
+## Cockpit Backend
+[backends.cockpit]
+[backends.cockpit.servers.server]
+url = "https://127.0.0.1:9090"
+
+[frontends]
+## Cockpit Frontend
+[frontends.cockpit]
+backend = "cockpit"
+passHostHeader = true
+[frontends.cockpit.routes.cockpit]
+rule = "Host:cockpit.{{domain.stdout}}"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "{{domain.stdout}}"
+watch = true
+exposedbydefault = false
+network = "plexguide"

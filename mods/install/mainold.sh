@@ -57,7 +57,7 @@ backupex() {
   tar --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
     -C /opt/plexguide -cf /var/backup-pg/plexguide-old-"$time".tar.gz ./
   tar --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
-    -C /var/plexguide -cf /var/backup-pg/var-plexguide-old-"$time".tar.gz ./
+    -C /pg/var -cf /var/backup-pg/var-plexguide-old-"$time".tar.gz ./
 
 printfiles=$(ls -ah /var/backup-pg/ | grep -E 'plex')
 tee <<-EOF
@@ -72,7 +72,7 @@ EOF
 doneokay
 if [[ -e "/opt/plexguide" ]]; then rm -rf /opt/plexguide; fi
 if [[ -e "/opt/pgstage" ]]; then rm -rf /opt/pgstage; fi
-if [[ -e "/var/plexguide" ]]; then rm -rf /var/plexguide; fi
+if [[ -e "/pg/var" ]]; then rm -rf /pg/var; fi
 if [[ -e "/opt/pgupdate" ]]; then rm -rf /opt/pgudate; fi
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -111,7 +111,7 @@ echo -ne '                         (0%)\r'
 if [[ -e "/opt/plexguide" ]]; then rm -rf /opt/plexguide; fi
 if [[ -e "/opt/pgstage" ]]; then rm -rf /opt/pgstage; fi
 echo -ne '###                      (10%)\r'
-if [[ -e "/var/plexguide" ]]; then rm -rf /var/plexguide; fi
+if [[ -e "/pg/var" ]]; then rm -rf /pg/var; fi
 if [[ -e "/opt/pgupdate" ]]; then rm -rf /opt/pgudate; fi
 echo -ne '#####                    (20%)\r'
 rm -rf /opt/pgstage/place.holder >/dev/null 2>&1
@@ -122,17 +122,17 @@ echo -ne '#######                   (30%)\r'
 git clone -b $edition --single-branch https://github.com/MHA-Team/Install.git /opt/pgstage 1>/dev/null 2>&1
 git clone https://github.com/MHA-Team/PG-Update.git /opt/pgupdate 1>/dev/null 2>&1
 echo -ne '##########                (40%)\r'
-mkdir -p /var/plexguide/logs
-echo "" >/var/plexguide/server.ports
-echo "51" >/var/plexguide/pg.pythonstart
+mkdir -p /pg/var/logs
+echo "" >/pg/var/server.ports
+echo "51" >/pg/var/pg.pythonstart
 echo -ne '############              (50%)\r'
-touch /var/plexguide/pg.pythonstart.stored
-start=$(cat /var/plexguide/pg.pythonstart)
-stored=$(cat /var/plexguide/pg.pythonstart.stored)
+touch /pg/var/pg.pythonstart.stored
+start=$(cat /pg/var/pg.pythonstart)
+stored=$(cat /pg/var/pg.pythonstart.stored)
 echo -ne '###############            (60%)\r'
 if [[ "$start" != "$stored" ]]; then bash /opt/pgstage/pyansible.sh 1>/dev/null 2>&1; fi
 echo -ne '####################       (70%)\r'
-echo "51" >/var/plexguide/pg.pythonstart.stored
+echo "51" >/pg/var/pg.pythonstart.stored
 pip install --upgrade pip 1>/dev/null 2>&1
 
 
@@ -174,7 +174,7 @@ fi
 endingnonexist() {
 logfile=/var/log/log-install.txt
 chk=$(figlet "<<< M H A - TEAM >>>" | lolcat)
-touch /var/plexguide/new.install
+touch /pg/var/new.install
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -201,7 +201,7 @@ EOF
 endingexist() {
 logfile=/var/log/log-install.txt
 chk=$(figlet "<<< M H A - TEAM >>>" | lolcat)
-touch /var/plexguide/new.install
+touch /pg/var/new.install
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
