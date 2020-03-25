@@ -25,12 +25,9 @@ existcheck=$(echo $app_display | grep "$typed" -w)
   apps_interface; fi
 
 dockerlist=$(docker container ls --format 'table {{.Names}}' | tail -n +2)
-  if [[ "1" = $(echo $dockerlist | grep -c "\<$typed\>") ]]; then echo "yes"
-    tempinput="null"
+  if [[ "1" = $(echo $dockerlist | grep -c "\<$typed\>") ]]; then tempinput="null";
     while [[ "$tempinput" && "Y" && "$tempinput" != "y" && "$tempinut" != "N" && "$tempinput" != "n" ]]; do
-    read -p '⛔️  '$typed' is already installed! Reinstall ~ Y or N? ' tempinput < /dev/tty
-    done
-  fi
+    read -p '⛔️  '$typed' is already installed! Reinstall ~ Y or N? ' tempinput < /dev/tty; done; fi
 
 echo "$typed" >> /pg/tmp/appstoinstall.list
 sed -i -e "/$typed/d" "/pg/tmp/$app_select.list"
