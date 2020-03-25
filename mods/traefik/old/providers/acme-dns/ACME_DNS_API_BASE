@@ -1,1 +1,28 @@
+traefik_providers() {
 
+common_main /pg/var/traefik.provider NOT-SET provider
+common_main /pg/var/server.email NOT-SET email
+common_main /pg/var/server.delaycheck 60 delaycheck
+common_main /pg/var/server.domain NOT-SET domain
+common_main /pg/var/tld.program NOT-SET tld
+common_main /pg/var/traefik.deploy 'Not Deployed' deploy
+
+if [[ "$provider" == "NOT-SET" ]]; then layout=" "; fi
+
+common_message "🚀  Traefik - Reverse Proxy Interface" "
+💬  Further Explanation? Visit ~ http://traefik.plexguide.com
+------------------------------------------------------------------------------
+[1] Top Level Domain App: [$tld]
+[2] Domain Provider     : [$provider]
+[3] Domain Name         : [$domain]
+[4] EMail Address       : [$email]
+[5] DNS Delay Check     : [$delaycheck] Seconds
+------------------------------------------------------------------------------
+[6] Deploy Traefik      : [$deployed]
+[7] Destroy Traefik
+------------------------------------------------------------------------------
+[Z] Exit Interface
+"
+common_number
+
+}
