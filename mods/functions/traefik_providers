@@ -38,12 +38,12 @@ done </pg/tmp/traefik.providers
 base_path="/pg/var/traefik"
 
 efg=acme_dns
-  touch "$basepath/$efg/ACME_DNS_API_BASE"
-  touch "$basepath/$efg/ACME_DNS_STORAGE_PATH"
+  touch "$base_path/$efg/ACME_DNS_API_BASE"
+  touch "$base_path/$efg/ACME_DNS_STORAGE_PATH"
 efg=cloudflare
-  touch "$basepath/$efg/CF_API_EMAIL"
-touch "$basepath/$efg/CF_API_KEY"
+  touch "$base_path/$efg/CF_API_EMAIL"
+touch "$base_path/$efg/CF_API_KEY"
 efg=digitalocean
-  touch "$basepath/$efg/DO_AUTH_TOKEN"
+  touch "$base_path/$efg/DO_AUTH_TOKEN"
 
 }
