@@ -19,7 +19,21 @@ $def
 [Z] Exit Interface
 "
 common_number
-traefik_providers
-traefik_menu_start
+
+case $typed in
+    1 ) traefik_menu_start && exit ;;
+    2 ) traefik_providers  && exit ;;
+    3 ) traefik_menu_start && exit ;;
+    4 ) traefik_menu_start && exit ;;
+    5 ) traefik_menu_start && exit ;;
+    6 ) bash /pg/stage/pgcloner/pgpress.sh && start_menu && exit ;;
+    z ) exit ;;
+    Z ) exit ;;
+    * ) traefik_menu_start && exit ;;
+esac
+
+
+
+
 
 }
