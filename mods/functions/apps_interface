@@ -26,9 +26,8 @@ apps_interface; fi
 
 dockerlist=$(docker container ls --format 'table {{.Names}}' | tail -n +2)
   if [[ "1" = $(echo $dockerlist | grep -c "\<$typed\>") ]]; then echo "yes"
-  read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
+  read -p '⛔️  '$typed' is already installed! Reinstall ~ Y or N? ' tempinput < /dev/tty
   fi
-
 
 echo "$typed" >> /pg/tmp/appstoinstall.list
 sed -i -e "/$typed/d" "/pg/tmp/$app_select.list"
