@@ -1,12 +1,5 @@
 traefik_menu_start() {
 
-common_main /pg/var/traefik.provider NOT-SET provider
-common_main /pg/var/server.email NOT-SET email
-common_main /pg/var/server.delaycheck 60 delaycheck
-common_main /pg/var/server.domain NOT-SET domain
-common_main /pg/var/tld.program NOT-SET tld
-common_main /pg/var/traefik.deploy 'Not Deployed' deploy
-
 traefik_menu_start_setup
 
 common_message "🚀  Traefik - Reverse Proxy Interface" "
