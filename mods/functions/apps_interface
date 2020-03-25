@@ -11,6 +11,7 @@ common_message "🚀 Multi-App Installer | PGX Edition | 📂 App Install ~ $app
 $app_display
 
 💾 Apps Queued for Installation
+
 $apps_to_install
 
 [Z] Quit & Exit Interface $installinfo"
