@@ -38,7 +38,7 @@
         pg_volumes:
           - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt/unionfs:/unionfs'
+          - '/pg/unity:/unity'
           - '{{path.stdout}}/downloads/{{pgrole}}/:/output:rw'
           - '/etc/localtime:/etc/localtime:ro'
 

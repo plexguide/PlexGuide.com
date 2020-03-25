@@ -43,7 +43,7 @@
           - '/etc/localtime:/etc/localtime:ro'
           - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt:/mnt'
+          - '/pg:/pg'
 
     - name: 'Setting PG ENV'
       set_fact:

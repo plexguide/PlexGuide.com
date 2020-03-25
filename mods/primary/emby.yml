@@ -19,13 +19,13 @@
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
-      include_tasks: '/opt/coreapps/apps/_core.yml'
+      include_tasks: '/pg/mods/primary/.core.yml'
 
     - name: 'XML Check'
       stat:
         path: /pg/data/{{pgrole}}/config/system.xml
       register: xmlcheck
-      
+
     # LABELS ######################################################################
     - name: 'Adding Traefik'
       set_fact:

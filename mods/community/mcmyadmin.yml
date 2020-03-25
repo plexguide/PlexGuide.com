@@ -39,7 +39,7 @@
           - '/pg/data/{{pgrole}}/Minecraft:/minecraft/Minecraft'
           - '/pg/data/{{pgrole}}/plugins:/minecraft/Minecraft/plugins'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt:/mnt'
+          - '/pg:/pg'
           - '/etc/localtime:/etc/localtime:ro'
 
     - name: 'Setting PG ENV'

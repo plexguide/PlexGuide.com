@@ -47,7 +47,7 @@
         pg_volumes:
           - '/pg/data/{{pgrole}}/config:/config'
           - '/pg/data/{{pgrole}}/sync:/sync'
-          - '/mnt:/mnt'
+          - '/pg:/pg'
           - '{{path.stdout}}:{{path.stdout}}'
 
     - name: 'Setting PG ENV'

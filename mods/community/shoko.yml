@@ -34,7 +34,7 @@
       set_fact:
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
-          - '/mnt:/mnt'
+          - '/pg:/pg'
           - '/pg/data/{{pgrole}}/data:/home/shoko/.shoko'
 
     - name: 'Setting PG ENV'

@@ -40,8 +40,8 @@
           - '/etc/localtime:/etc/localtime:ro'
           - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt:/mnt'
-          - '/mnt/unionfs:/unionfs'
+          - '/pg:/pg'
+          - '/pg/unity:/unity'
           - '/var/run/docker.sock:/var/run/docker.sock'
 
     - name: 'Setting PG ENV'

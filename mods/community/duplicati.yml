@@ -36,7 +36,7 @@
           - /pg/data/{{pgrole}}
           - /pg/data/{{pgrole}}/sync
           - /:/source
-          - '/mnt:/mnt'
+          - '/pg:/pg'
 
     - name: 'Setting PG ENV'
       set_fact:

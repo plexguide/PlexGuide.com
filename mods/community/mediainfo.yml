@@ -37,8 +37,8 @@
         pg_volumes:
           - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt/unionfs:/unionfs:rw'
-          - '/mnt:/mnt:rw'
+          - '/pg/unity:/unity:rw'
+          - '/pg:/pg:rw'
           - '/etc/localtime:/etc/localtime:ro'
 
     - name: 'Setting PG ENV'

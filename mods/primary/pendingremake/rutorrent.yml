@@ -59,7 +59,7 @@
           - '/pg/data/{{pgrole}}:/config'
           - '/pg/data/{{pgrole}}/sock:/run/php'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt:/mnt'
+          - '/pg:/pg'
 
     - name: 'Setting PG ENV'
       set_fact:

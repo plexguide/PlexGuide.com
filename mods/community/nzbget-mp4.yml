@@ -140,7 +140,7 @@
           - '/etc/localtime:/etc/localtime:ro'
           - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt:/mnt'
+          - '/pg:/pg'
           - '/tmp:/tmp'
           - '/pg/data/{{pgrole}}/cont-init.d:/etc/cont-init.d'
           - '/pg/data/{{pgrole}}/services.d:/etc/services.d/nzbget'

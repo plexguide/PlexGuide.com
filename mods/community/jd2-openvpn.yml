@@ -51,8 +51,8 @@
         pg_volumes:
           - '/pg/data/{{pgrole}}:/config'
           - '{{path.stdout}}:{{path.stdout}}'
-          - '/mnt/unionfs:/unionfs'
-          - '/mnt:/mnt'
+          - '/pg/unity:/unity'
+          - '/pg:/pg'
           - '{{path.stdout}}/downloads/{{pgrole}}/:/output:rw'
           - '/etc/localtime:/etc/localtime:ro'
           - '/pg/data/{{pgrole}}/vpn:/vpn:rw'

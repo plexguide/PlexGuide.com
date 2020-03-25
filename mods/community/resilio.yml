@@ -55,7 +55,7 @@
           - '/pg/data/{{pgrole}}/config:/config'
           - '/pg/data/{{pgrole}}/sync:/sync'
           - '/pg/data/{{pgrole}}/downloads:/downloads'
-          - '/mnt:/mnt'
+          - '/pg:/pg'
 
     - name: 'Setting PG ENV'
       set_fact:

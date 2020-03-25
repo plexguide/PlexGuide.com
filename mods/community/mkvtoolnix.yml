@@ -49,7 +49,7 @@
           - '/pg/data/{{pgrole}}:/config:rw'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
-          - '/mnt:/mnt'
+          - '/pg:/pg'
           - '/mnt/downloads/storage:/storage:rw'
 
     - name: 'Setting default ENV'

@@ -66,13 +66,13 @@
       set_fact:
         default_volumes:
           - '/tmp:/tmp'
-          - '/mnt:/mnt'
+          - '/pg:/pg'
           - '/pg/data/plex/database:/config'
           - '/opt/transcodes:/transcode'
           - '/dev/shm:/ram_transcode'
           - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
-          - '/mnt/unionfs:/unionfs'
+          - '/pg/unity:/unity'
 
     - name: 'Establish Key Variables'
       set_fact:
