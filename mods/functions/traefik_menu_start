@@ -24,5 +24,6 @@ common_message "🚀  Traefik - Reverse Proxy Interface" "
 [Z] Exit Interface
 "
 common_number
+traefik_providers
 
 }

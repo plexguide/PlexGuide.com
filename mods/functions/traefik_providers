@@ -1,6 +1,30 @@
 traefik_providers() {
 
+## Place in ABC Order & Maintain Quotations
+echo "[1] acme-dns
+[2] cloudflare
+[3] digitalocean
+[4] dreamhost
+[5] duckdns
+[6] dyn
+[7] gandiv5
+[8] gcloud
+[9] godaddy
+[10] namecheap
+[11] namedotcom
+[12] netcup
+[13] ovh
+[14] route53
+[15] vscale
+[16] vultr" > /pg/tmp/traefik.providers
 
+providers=$(cat /pg/tmp/traefik.providers)
 
+common_message "🚀  Traefik - Select a Provider" "
 
+"$providers"
+------------------------------------------------------------------------------
+[Z] Exit Interface
+"
+common_number
 }
