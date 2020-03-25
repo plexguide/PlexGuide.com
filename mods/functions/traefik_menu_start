@@ -15,9 +15,7 @@ if [[ "$provider" != "NOT-SET" ]]; then
   while read p; do
     if [[ -e "/pg/var/$p" ]]; then tset=" <<< NOT SET"; else tset=""; fi
     echo "[$tnumber] $p$tset" >> /pg/tmp/mini.list
-  done
-
-  let "tnumber++"
+    let "tnumber++"
   done </pg/tmp/provider.keys
 
   minidisplay=$(cat /pg/tmp/mini.list)
