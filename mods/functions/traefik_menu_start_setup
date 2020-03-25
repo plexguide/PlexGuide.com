@@ -7,7 +7,7 @@ common_main /pg/var/server.domain NOT-SET domain
 common_main /pg/var/tld.program NOT-SET tld
 touch /pg/var/traefik.deploy
 
-if [[ "$provider" != "NOT-SET" ]]; thenz
+if [[ "$provider" != "NOT-SET" ]]; then
 
   ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
 
@@ -20,7 +20,7 @@ if [[ "$provider" != "NOT-SET" ]]; thenz
     echo "[$tnumber] $p$tset" >> /pg/tmp/mini.list
     let "tnumber++"
   done </pg/tmp/provider.keys
-  minidisplay=$(cat /pg/tmp/mini.list)
+  minidisplay=$(cat /pg/tmp/mini.list); fi
 
 if [[ "" != $(docker ps | grep "traefik" ) ]]; then
   def="[B] Destroy Traefik"; else def="[!] Cannot Destroy Traefik - Not Deployed"; fi
@@ -32,4 +32,5 @@ if [[ "$xyz" == "1" ]]; then
 if [[ "" != $(docker ps | grep "traefik" ) ]]; then
   def="[B] Destroy Traefik" && echo "Deployed" > /pg/var/traefik.deploy && def=Deployed; else
   def="[!] Cannot Destroy Traefik - Not Deployed" && echo "Not Deployed" && def="Not Deployed" > /pg/var/traefik.deploy; fi
+
 }
