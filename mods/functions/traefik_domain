@@ -15,7 +15,7 @@ if [[  "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank"
 
 echo $typed > /pg/var/traefik/traefik.domain
 
-common_message "💾  $typed saved for $provider - $focusedkey"
+common_message "💾  $typed - New Set Domain!"
 common_confirm && traefik_menu_start && exit
 
 }

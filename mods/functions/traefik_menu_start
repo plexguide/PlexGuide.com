@@ -27,7 +27,7 @@ common_confirm && traefik_menu_start && exit; fi
 case $typed in
     1 ) traefik_menu_start && exit ;;
     2 ) traefik_providers  && traefik_menu_start && exit ;;
-    3 ) traefik_menu_start && exit ;;
+    3 ) traefik_domain && traefik_menu_start && exit ;;
     4 ) traefik_menu_start && exit ;;
     5 ) traefik_menu_start && exit ;;
     6 ) menutmp=1 && traefik_keys && traefik_menu_start && exit ;;
