@@ -270,7 +270,7 @@ EOF
   fi
 
   # If message.c exists due to incorrect working traefik, this will show
-  if [ -e "/pg/dataplexguide/emergency/message.c" ]; then
+  if [ -e "/pg/data/plexguide/emergency/message.c" ]; then
     deployed="DEPLOYED - INCORRECTLY"
   fi
 
@@ -328,7 +328,7 @@ sleep 2
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🚀 ✅ PASSED - repull Core Apps 
+🚀 ✅ PASSED - repull Core Apps
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
  sleep 3
@@ -363,7 +363,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
- 
+
   ansible-playbook /opt/coreapps/apps/portainer.yml
 
   delseconds=10
@@ -403,12 +403,12 @@ EOF
     cname=$(cat /pg/var/portainer.cname)
   fi
 
-  touch /pg/dataplexguide/traefikportainer.check
-  wget -q "https://${cname}.${domain}" -O "/pg/dataplexguide/traefikportainer.check"
+  touch /pg/data/plexguide/traefikportainer.check
+  wget -q "https://${cname}.${domain}" -O "/pg/data/plexguide/traefikportainer.check"
 
   # If Portainer Detection Failed
-  if [[ $(cat /pg/dataplexguide/traefikportainer.check) == "" ]]; then
-    rm -rf /pg/dataplexguide/traefikportainer.check
+  if [[ $(cat /pg/data/plexguide/traefikportainer.check) == "" ]]; then
+    rm -rf /pg/data/plexguide/traefikportainer.check
 
     tee <<-EOF
 
@@ -480,7 +480,7 @@ EOF
   sed -i -e "/authclient/d" /pg/var/container.running
   sed -i -e "/dockergc/d" /pg/var/container.running
   sed -i -e "/oauth/d" /pg/var/container.running
- 
+
   sed -i -e "/portainer/d" /pg/var/container.running # Already Rebuilt
 
   count=$(wc -l </pg/var/container.running)
@@ -597,8 +597,8 @@ traefikbuilder() {
     docker rm traefik 1>/dev/null 2>&1
   fi
 
-  file="/pg/datatraefik"
-  if [ -e "$file" ]; then rm -rf /pg/datatraefik; fi
+  file="/pg/data/traefik"
+  if [ -e "$file" ]; then rm -rf /pg/data/traefik; fi
 
   ansible-playbook /opt/traefik/traefik.yml
 

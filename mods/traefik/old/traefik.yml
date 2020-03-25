@@ -14,19 +14,19 @@
       include_tasks: '/opt/traefik/provider.yml'
 
     - name: Register E-Mail
-      shell: 'cat /var/plexguide/server.email'
+      shell: 'cat /pg/var/server.email'
       register: email
 
     - name: Register Delay Check
-      shell: 'cat /var/plexguide/server.delaycheck'
+      shell: 'cat /pg/var/server.delaycheck'
       register: delaycheck
 
     - name: Register Domain
-      shell: 'cat /var/plexguide/server.domain'
+      shell: 'cat /pg/var/server.domain'
       register: domain
 
     - name: Register Provider
-      shell: 'cat /var/plexguide/traefik.provider'
+      shell: 'cat /pg/var/traefik.provider'
       register: provider
 
     - name: Remove Traefik
@@ -37,31 +37,31 @@
     - name: Removing Prior Traefik.toml
       file:
         state: absent
-        path: /opt/appdata/traefik/traefik.toml
+        path: /pg/data/traefik/traefik.toml
 
     - name: Create Basic Directories
       file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
       with_items:
-        - /opt/appdata/traefik
-        - /opt/appdata/traefik/acme
+        - /pg/data/traefik
+        - /pg/data/traefik/acme
 
     - name: Installing Traefik.Toml
       template:
         src: traefik.toml
-        dest: /opt/appdata/traefik/traefik.toml
+        dest: /pg/data/traefik/traefik.toml
         force: yes
         owner: '1000'
         group: '1000'
 
     - name: Check acme.json exists
       stat:
-        path: '/opt/appdata/traefik/acme/acme.json'
+        path: '/pg/data/traefik/acme/acme.json'
       register: acme_json
 
     - name: Installing ACME
       template:
         src: acme.json
-        dest: /opt/appdata/traefik/acme/acme.json
+        dest: /pg/data/traefik/acme/acme.json
         force: yes
         mode: 0600
         owner: '1000'
@@ -71,7 +71,7 @@
     - name: Deploy Traefik
       docker_container:
         name: traefik
-        image: traefik:1.7
+        image: traefik:2.2
         pull: yes
         published_ports:
           - '443:443'
@@ -80,8 +80,8 @@
         volumes:
           - /var/run/docker.sock:/var/run/docker.sock:ro
           - /etc/localtime:/etc/localtime:ro
-          - /opt/appdata/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
-          - /opt/appdata/traefik/acme:/etc/traefik/acme
+          - /pg/data/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+          - /pg/data/traefik/acme:/etc/traefik/acme
         restart_policy: unless-stopped
         state: started
         networks:
