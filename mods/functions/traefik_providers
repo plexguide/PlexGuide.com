@@ -29,7 +29,7 @@ $providers
 [Z] Exit Interface
 "
 common_number
-select_info=$(sed -n "$typed"p /pg/tmp/traefik.providers)
+select_info=$(sed -n "$typed"p /pg/tmp/traefik.providers | awk '{print $2}')
 echo "$select_info"
 
 
