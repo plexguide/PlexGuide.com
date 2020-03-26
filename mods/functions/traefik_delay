@@ -22,7 +22,7 @@ if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_delay && exit; fi
 if [[ "$typed" -lt "45" || "$typed" -gt "180" ]]; then common_message "⛔️  WARNING: Delay must be between 45 to 180 seconds!" && common_confirm && traefik_delay && exit; fi
 
-echo $typed > /pg/var/traefik/traefik.delay
+echo $typed > /pg/var/traefik/delay.check
 
 common_message "💾  $typed - New Set Delay Seconds!"
 common_confirm && traefik_menu_start && exit
