@@ -1,7 +1,4 @@
 #!/bin/bash
-#
-# Title:      PGBlitz (Reference Title File)
-# Author(s):  Admin9705
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
@@ -11,7 +8,7 @@
   tasks:
     # BASIC TASKS ######################################################
     - name: 'Including cron job'
-      include_tasks: '/opt/traefik/provider.yml'
+      include_tasks: '/pg/mods/traefik/provider.yml'
 
     - name: Register E-Mail
       shell: 'cat /pg/var/traefik/traefik.email'
@@ -22,11 +19,11 @@
       register: delaycheck
 
     - name: Register Domain
-      shell: 'cat /pg/var/server.domain'
+      shell: 'cat /pg/var/traefik/traefik.domain'
       register: domain
 
     - name: Register Provider
-      shell: 'cat /pg/var/traefik.provider'
+      shell: 'cat /pg/var/traefik/traefik.provider'
       register: provider
 
     - name: Remove Traefik
