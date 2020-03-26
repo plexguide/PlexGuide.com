@@ -7,8 +7,8 @@
   gather_facts: True
   tasks:
     # BASIC TASKS ######################################################
-    - name: 'Including cron job'
-      include_tasks: '/pg/mods/traefik/provider.yml'
+    #- name: 'Including cron job'
+    #  include_tasks: '/pg/mods/traefik/provider.yml'
 
     - name: Register E-Mail
       shell: 'cat /pg/var/traefik/traefik.email'
