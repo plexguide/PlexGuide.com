@@ -19,7 +19,7 @@
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
-      include_tasks: '/opt/coreapps/apps/_core.yml'
+      include_tasks: '/pg/mods/primary/.core.yml'
 
     # LABELS ######################################################################
     - name: 'Adding Traefik'
