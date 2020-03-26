@@ -12,19 +12,21 @@ logLevel = "WARN"
 
 defaultEntryPoints = ["http", "https"]
 
-[entryPoints]
-[entryPoints.web]
-address = ":80"
-#[entryPoints.http.redirect]
-#entryPoint = "https"
-[entryPoints.websecure]
-address = ":443"
-[tls.options]
-  [tls.options.default]
-    cipherSuites = [
-      "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"]
 [entryPoints.monitor]
 address = ":8081"
+
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+
+  [entryPoints.websecure]
+    address = ":443"
+
+[certificatesResolvers.myresolver.acme]
+  # ...
+  [certificatesResolvers.myresolver.acme.dnsChallenge]
+    provider = "digitalocean"
+    delayBeforeCheck = "{{delaycheck.stdout}}"
 
 [retry]
 
@@ -33,9 +35,6 @@ acmeLogging = true
 email = "{{email.stdout}}"
 storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
-[acme.dnsChallenge]
-provider = "{{provider.stdout}}"
-delayBeforeCheck = "{{delaycheck.stdout}}"
 
 [[acme.domains]]
 main = "{{domain.stdout}}"
