@@ -23,7 +23,7 @@
       register: domain
 
     - name: Register Provider
-      shell: 'cat /pg/var/traefik/traefik.provider'
+      shell: 'cat /pg/var/traefik.provider'
       register: provider
 
     - name: Remove Traefik
