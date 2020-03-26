@@ -1,0 +1,30 @@
+traefik_delay() {
+
+priordelay=$(cat /pg/var/traefik/delay.check)
+
+common_message "🚀 PlexGuide | Traefik Delay Interface" "
+💾 Delay Time Utilized for Traefik?
+
+NOTE: Enables a certain amount of time to be delayed before the provider
+validates your Traefik container! Setting it too low may result
+in the provider being unable to validate your traefik container, which may
+result in MISSING the opportunity to validate your https:// certificates!
+
+Delay the Traefik DNS Check for how many seconds? (Default 75)
+
+Prior Delayed Seconds: $priordelay
+[Z] To Cancel and Go Back
+"
+
+read -p "↘️  New Delay? | Press [ENTER]: " typed < /dev/tty
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_delay && exit; fi
+if [[ "$typed" -lt "45" || "$typed -gt 180" ]]; then common_message "⛔️  WARNING: Delay must be between 45 to 180 seconds!" && common_confirm && traefik_delay && exit; fi
+
+echo $typed > /pg/var/traefik/traefik.delay
+
+common_message "💾  $typed - New Set Delay Seconds!"
+common_confirm && traefik_menu_start && exit
+
+}

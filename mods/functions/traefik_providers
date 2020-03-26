@@ -85,7 +85,4 @@ efg=vscale
   touch "$base_path/$efg/VSCALE_API_TOKEN"
 efg=vultr
   touch "$base_path/$efg/VULTR_API_KEY"
-
-
-
 }
