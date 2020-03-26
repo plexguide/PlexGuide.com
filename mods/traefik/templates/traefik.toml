@@ -13,11 +13,11 @@ logLevel = "WARN"
 defaultEntryPoints = ["http", "https"]
 
 [entryPoints]
-[entryPoints.http]
+[entryPoints.web]
 address = ":80"
-[entryPoints.http.redirect]
-entryPoint = "https"
-[entryPoints.https]
+#[entryPoints.http.redirect]
+#entryPoint = "https"
+[entryPoints.websecure]
 address = ":443"
 [entryPoints.https.tls]
 MinVersion = "VersionTLS12"

@@ -34,6 +34,10 @@ case $typed in
     7 ) menutmp=2 && traefik_keys && traefik_menu_start && exit ;;
     8 ) menutmp=3 && traefik_keys && traefik_menu_start && exit ;;
     9 ) menutmp=4 && traefik_keys && traefik_menu_start && exit ;;
+    A ) traefik_deploy && traefik_menu_start && exit ;;
+    a ) traefik_deploy && traefik_menu_start && exit ;;
+    B ) traefik_deploy && traefik_menu_start && exit ;;
+    b ) traefik_deploy && traefik_menu_start && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) traefik_menu_start && exit ;;

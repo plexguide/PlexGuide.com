@@ -1,0 +1,5 @@
+traefik_deploy() {
+
+ansible-playbook /pg/mods/traefik/traefik.yml
+
+}
