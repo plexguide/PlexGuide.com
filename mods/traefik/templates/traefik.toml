@@ -19,6 +19,10 @@ address = ":80"
 #entryPoint = "https"
 [entryPoints.websecure]
 address = ":443"
+[tls.options]
+  [tls.options.default]
+    cipherSuites = [
+      "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"]
 [entryPoints.monitor]
 address = ":8081"
 
