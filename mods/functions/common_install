@@ -4,7 +4,7 @@ common_install() {
     start=$(cat /pg/var/install."${1}")
     stored=$(cat /pg/var/install."${1}".stored)
     if [ "$start" != "$stored" ]; then
-      $1
+      # $1
       cat /pg/var/pg."${1}" > /pg/var/pg."${1}".stored;
     fi
 }
