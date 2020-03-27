@@ -4,7 +4,7 @@ install_cmds() {
 
 common_header "⌛ COMMANDS - Installing Alias CMDs"; sleep 2
 
-"ls -p /pg/mods/cmds/ | grep -v /: > /pg/tmp/cmd_install
+"ls -p /pg/mods/cmds/ | grep -v /" > /pg/tmp/cmd_install
 
 while read p; do
   cp -f /pg/mods/cmds/$ /bin/$p
