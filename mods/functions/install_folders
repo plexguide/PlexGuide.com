@@ -61,5 +61,6 @@ install_folders() {
     fcreate /pg/torrent
     fcreate /pg/downloads
 		fcreate /pg/data/plexguide
+		fcreate /pg/var/traefik
 
 }
