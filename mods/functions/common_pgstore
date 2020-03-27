@@ -1,0 +1,5 @@
+common_pgstore () {
+  maindir="/pg/var/install"
+  if [[ ! -e "${maindir}/${1}" ]]; then echo "${2}" > "${maindir}/${1}"; fi
+  echo "${2}" > "${maindir}/${1}"
+}
