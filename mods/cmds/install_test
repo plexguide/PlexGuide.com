@@ -4,4 +4,4 @@
 ################################################################################
 clear
 rm -rf /pg
-wget -nc https://raw.githubusercontent.com/PGBlitz/PGBlitz.com/alpha/mods/install/main.sh -O- | bash
+wget -nc https://raw.githubusercontent.com/plexguide/PlexGuide.com/mods/install/main.sh -O- | bash
