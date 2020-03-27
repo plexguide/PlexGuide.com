@@ -1,0 +1,6 @@
+install_nvidea() {
+
+	common_header "⌛ INSTALLING: Nvidea Drivers"; sleep 2
+	ansible-playbook /pg/mods/ymls/pg.yml --tags nvidia
+
+}

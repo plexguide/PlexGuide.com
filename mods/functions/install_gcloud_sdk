@@ -1,4 +1,4 @@
-install_docker() {
+install_gloud_sdk() {
 
 	common_header "⌛ INSTALLING: Google's Cloud SDK"; sleep 2
 	ansible-playbook /pg/mods/ymls/pg.yml --tags gcloud_sdk
