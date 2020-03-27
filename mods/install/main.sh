@@ -51,16 +51,12 @@ common_install install_docker_start
 common_install install_rclone
 common_install install_mergerfs
 common_install install_mergerfs
+common_install install_gcloud_sdk
+common_install install_nvidia
 
 ############# DO NOT ACTIVE TILL PGUNION
 #common_header "⌛ INSTALLING: MergerFS Update"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsupdate
-
-#common_header "⌛ INSTALLING: Google's Cloud SDK"; sleep 2
-#ansible-playbook /pg/mods/ymls/pg.yml --tags gcloud_sdk
-
-#common_header "⌛ INSTALLING: Nvidia Drivers"; sleep 2
-#ansible-playbook /pg/mods/ymls/pg.yml --tags nvidia
 
 bash /pg/mods/start/start.sh
 
