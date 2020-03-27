@@ -1,6 +1,6 @@
 #!/bin/bash
 # URL:        PlexGuide.com / PGBlitz.com
-# GNU:        General Public License v3.0
+# GNU:        General Public License v3.0 
 ################################################################################
 clear
 rm -rf /pg
