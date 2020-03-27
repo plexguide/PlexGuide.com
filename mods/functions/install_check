@@ -2,26 +2,6 @@ install_check() {
 
 # Set variable numbers, plus number up to force update
 
-common_pgstore "mergerinstall" "1"
-common_pgstore "alias_install" "1"
-common_pgstore "pythonstart" "1"
-common_pgstore "ccommands" "1"
-common_pgstore "aptupdate" "1"
-common_pgstore "preinstall" "1"
-common_pgstore "folders" "1"
-common_pgstore "dockerinstall" "1"
-common_pgstore "server" "1"
-common_pgstore "serverid" "1"
-common_pgstore "permissions" "1"
-common_pgstore "dependency" "1"
-common_pgstore "dockerassist" "1"
-common_pgstore "motd" "1"
-common_pgstore "alias" "1"
-common_pgstore "cleaner" "1"
-common_pgstore "gcloud" "1"
-common_pgstore "hetzner" "1"
-common_pgstore "watchtower" "1"
-common_pgstore "installer" "1"
-common_pgstore "prune" "1"
-common_pgstore "mountcheck" "1"
+common_pgstore "install_folders" "1"
+
 }
