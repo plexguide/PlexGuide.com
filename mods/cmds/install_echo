@@ -1,0 +1,6 @@
+#!/bin/bash
+# URL:        PlexGuide.com / PGBlitz.com
+# GNU:        General Public License v3.0
+################################################################################
+clear
+echo "IT WORKS"
