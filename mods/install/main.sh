@@ -34,7 +34,7 @@ common_timer "1" ## set back to 5
 ## delete
 mkdir -p /pg/var/
 
-install_folders
+common_install install_folders
 #install_oldpg
 #install_drivecheck
 #install_webservercheck
