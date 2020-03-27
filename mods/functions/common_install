@@ -1,7 +1,7 @@
 common_install() {
-touch /pg/var/install/install."${1}".stored
-start=$(cat /pg/var/install/install."${1}")
-stored=$(cat /pg/var/install/install."${1}".stored)
+touch /pg/var/install/"${1}".stored
+start=$(cat /pg/var/install/"${1}")
+stored=$(cat /pg/var/install/"${1}".stored)
 if [ "$start" != "$stored" ]; then
   $1
   cat /pg/var/install/pg."${1}" > /pg/var/install/pg."${1}".stored;
