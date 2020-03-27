@@ -35,7 +35,6 @@ common_timer "1" ## set back to 5
 mkdir -p /pg/var/install/
 install_check
 
-sleep 200
 common_install install_folders
 #install_oldpg
 #install_drivecheck
