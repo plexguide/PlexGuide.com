@@ -3,5 +3,17 @@ install_check() {
 # Set variable numbers, plus number up to force update
 
 common_pgstore "install_folders" "1"
+common_pgstore "install_drivecheck" "1"
+common_pgstore "install_webservercheck" "1"
+common_pgstore "install_oscheck" "1"
+common_pgstore "install_basepackage" "1"
+common_pgstore "install_pyansible" "1"
+common_pgstore "install_dependency" "1"
+common_pgstore "install_docker" "1"
+common_pgstore "install_docker_start" "1"
+common_pgstore "install_rclone" "1"
+common_pgstore "install_mergerfs" "1"
+common_pgstore "install_gcloud_sdk" "1"
+common_pgstore "install_nvidia" "1"
 
 }

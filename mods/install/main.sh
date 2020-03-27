@@ -50,7 +50,6 @@ common_install install_docker
 common_install install_docker_start
 common_install install_rclone
 common_install install_mergerfs
-common_install install_mergerfs
 common_install install_gcloud_sdk
 common_install install_nvidia
 
