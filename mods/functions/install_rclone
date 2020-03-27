@@ -1,0 +1,6 @@
+install_rclone() {
+
+	common_header "⌛ INSTALLING: RClone"; sleep 2
+	ansible-playbook /pg/mods/ymls/pg.yml --tags rcloneinstall
+
+}

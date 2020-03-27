@@ -36,27 +36,21 @@ mkdir -p /pg/var/install/
 install_check
 
 common_install install_folders
-#install_oldpg
-#install_drivecheck
-#install_webservercheck
-#install_oscheck
-#install_basepackage
-#install_pyansible
-#install_dependency
+#install_oldpg ## not need unless we come out with PG11+ that requires a block
+common_install install_drivecheck
+common_install install_webservercheck
+common_install install_oscheck
+common_install install_basepackage
+common_install install_pyansible
+common_install install_dependency
 
 # ansible-playbook /pg/mods/motd/motd.yml
 
-#common_header "⌛ INSTALLING: Docker"; sleep 2
-#ansible-playbook /pg/mods/ymls/pg.yml --tags docker
-
-#common_header "⌛ INSTALLING: Docker Startup Script"; sleep 2
-#ansible-playbook /pg/mods/ymls/pg.yml --tags docstart
-
-#common_header "⌛ INSTALLING: RClone"; sleep 2
-#ansible-playbook /pg/mods/ymls/pg.yml --tags rcloneinstall
-
-#common_header "⌛ INSTALLING: MergerFS"; sleep 2
-#ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsinstall
+common_install install_docker
+common_install install_docker_start
+common_install install_rclone
+common_install install_mergerfs
+common_install install_mergerfs
 
 ############# DO NOT ACTIVE TILL PGUNION
 #common_header "⌛ INSTALLING: MergerFS Update"; sleep 2

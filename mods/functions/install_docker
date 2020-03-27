@@ -1,23 +1,6 @@
-install_webservercheck() {
+install_docker() {
 
-	list="lsof lsb-release software-properties-common"
-	apt-get install $list -yqq >/dev/null 2>&1
-	export DEBIAN_FRONTEND=noninteractive
+	common_header "⌛ INSTALLING: Docker"; sleep 2
+	ansible-playbook /pg/mods/ymls/pg.yml --tags docker
 
-	# common_header "⌛ Checking for Existing WebServers(s)!"
-	if lsof -Pi :80 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
-	        service apache2 stop >/dev/null 2>&1
-	        service nginx stop >/dev/null 2>&1
-	        apt-get purge apache nginx -yqq >/dev/null 2>&1
-	        apt-get autoremove -yqq >/dev/null 2>&1
-	        apt-get autoclean -yqq >/dev/null 2>&1
-	elif lsof -Pi :443 -sTCP:LISTEN -t >/dev/null 2>&1 ; then
-	        service apache2 stop >/dev/null 2>&1
-	        service nginx stop >/dev/null 2>&1
-	        apt-get purge apache nginx -yqq >/dev/null 2>&1
-	        apt-get autoremove -yqq >/dev/null 2>&1
-	        apt-get autoclean -yqq >/dev/null 2>&1
-	else a=b; fi
-
-	common_header "✅ Existing webserver check is completed!"; sleep 2
 }
