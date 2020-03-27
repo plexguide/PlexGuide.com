@@ -36,6 +36,7 @@ mkdir -p /pg/var/install/
 install_check
 
 common_install install_folders
+common_install install_cmds
 #install_oldpg ## not need unless we come out with PG11+ that requires a block
 common_install install_drivecheck
 common_install install_webservercheck
