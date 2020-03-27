@@ -1,4 +1,4 @@
-common_header() {
+common_install() {
 touch /pg/var/install/install."${1}".stored
 start=$(cat /pg/var/install/install."${1}")
 stored=$(cat /pg/var/install/install."${1}".stored)
