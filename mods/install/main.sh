@@ -7,7 +7,7 @@
 mkdir -p /pg/tmp
 rm -rf /pg/mods
 rm -rf /pg/tmp/checkout
-git clone -b alpha --single-branch https://github.com/PGBlitz/PGBlitz.com.git /pg/tmp/checkout
+git clone -b alpha --single-branch https://github.com/plexguide/PlexGuide.com.git /pg/tmp/checkout
 mv -f /pg/tmp/checkout/mods /pg
 
 ## Install PG Test Command
