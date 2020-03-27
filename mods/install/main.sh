@@ -33,6 +33,7 @@ common_timer "1" ## set back to 5
 
 ## delete
 mkdir -p /pg/var/install/
+pgstore
 
 common_install install_folders
 #install_oldpg

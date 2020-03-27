@@ -1,5 +1,4 @@
-install_agree() {
-
+install_check() {
 
 # Set variable numbers, plus number up to force update
 
