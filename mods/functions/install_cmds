@@ -8,8 +8,8 @@ common_header "⌛ COMMANDS - Installing Alias CMDs"; sleep 2
 
 while read p; do
   cp -f /pg/mods/cmds/$ /bin/$p
-  chmod 0775 /pg/mods/cmds/$p
-  chown 1000:1000 /pg/mods/cmds/$p
+  chmod 0775 /bin/$p
+  chown 1000:1000 /bin/$p
 done </pg/tmp/cmd_install
 
 }
