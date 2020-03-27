@@ -31,6 +31,9 @@ PRESS CTRL+Z to STOP the Installation
 "
 common_timer "1" ## set back to 5
 
+## delete
+mkdir -p /pg/var/
+
 common_install install_folders
 #install_oldpg
 #install_drivecheck
