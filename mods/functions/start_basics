@@ -15,6 +15,12 @@ if [ ! -e "$file" ]; then
    chmod 1000:1000 /pg/data/blitz 1>/dev/null 2>&1
 fi
 
+###################################################### SERVERID
+if [ ! -e "/pg/var/server.id" ]; then
+  echo "PG-$((1 + RANDOM * RANDOM)) > /pg/var/server.id; fi
+  serverid=$(cat /pg/var/server.id)
+#######################################################
+
 ###################### FOR VARIABLS ROLE SO DOESNT CREATE RED - START
 variable /pg/var/pgfork.project "NOT-SET"
 variable /pg/var/pgfork.version "NOT-SET"
