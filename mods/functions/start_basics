@@ -16,8 +16,8 @@ if [ ! -e "$file" ]; then
 fi
 
 ###################################################### SERVERID
-if [ ! -e "/pg/var/server.id" ]; then
-  echo "PG-$((1 + RANDOM * RANDOM)) > /pg/var/server.id; fi
+if [[ ! -e "/pg/var/server.id" ]]; then
+  echo "PG-$((1 + RANDOM * RANDOM))" > /pg/var/server.id; fi
   serverid=$(cat /pg/var/server.id)
 #######################################################
 
