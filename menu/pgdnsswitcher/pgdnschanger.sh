@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Title:      PGBlitz (PG DNS chnager)
-# Author(s):  Admin9705 - Deiteq - MrDoob
+# Author(s):  Admin9705 - Deiteq
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################

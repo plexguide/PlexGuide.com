@@ -2,7 +2,7 @@
 ###############################################################################
 # Title: PlexGuide | PGBlitz (  PG System Tweaker )
 #
-# Author(s): 	Admin9705  - MrDoob
+# Author(s): 	Admin9705 
 # URL: 		https://pgblitz.com
 # Base :	http://github.pgblitz.com
 # GNU: General Public License v3.0E
