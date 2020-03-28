@@ -7,8 +7,8 @@ common_header "⌛ COMMANDS - Installing CMDs"; sleep 2
 ls -p /pg/mods/cmds/ | grep -v / > /pg/tmp/cmd_install
 
 while read p; do
-  cp -f /pg/mods/cmds/$ /bin/$p
-  chmod 0775 /bin/$p
+  cp -f "/pg/mods/cmds/$" "/bin/$p"
+  chmod 0775 "/bin/$p"
   chown 1000:1000 /bin/$p
 done </pg/tmp/cmd_install
 
