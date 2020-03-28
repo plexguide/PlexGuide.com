@@ -1,0 +1,6 @@
+#!/bin/bash
+# URL:        PlexGuide.com / PGBlitz.com
+# GNU:        General Public License v3.0
+################################################################################
+rm -rf /pg/var && mkdir -p /pg/var/ &&rm -rf /pg/var/pg.noinstall
+bash /pg/mods/install/main.sh
