@@ -15,7 +15,7 @@
       register: email
 
     - name: Register Delay Check
-      shell: 'cat /pg/var/server.delaycheck'
+      shell: 'cat /pg/var/traefik/delay.check'
       register: delaycheck
 
     - name: Register Domain
