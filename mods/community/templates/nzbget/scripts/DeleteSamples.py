@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #
-# Title:      PGBlitz (Reference Title File)
+# Title:      PlexGuide (Reference Title File)
 # Maintainer: Admin9705
-# URL:        https://pgblitz.com - http://github.pgblitz.com
+# URL:        https://plexguide.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 #
 # Additions:  clinton-hall - https://github.com/Prinz23

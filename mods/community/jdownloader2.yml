@@ -2,7 +2,7 @@
 #
 # Title:      Jdownloader2 for PGBlitz (OAuth security)
 # Author(s):  timekills
-# URL:        https://pgblitz.com - https://github.com/timekills/jdownloader2-for-Plexguide
+# URL:        https://plexguide.com - https://github.com/timekills/jdownloader2-for-Plexguide
 # GNU:        General Public License v3.0
 ################################################################################
 ---
@@ -45,7 +45,7 @@
           traefik.port: '{{intport}}'
           traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
-          
+
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
