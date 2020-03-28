@@ -3,7 +3,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 mkdir -p /pg/var/
-if [[ ! -e "/pg/var/pg.noinstall" ]]; then pgcmd=true; else pgcmd=false; fi
+if [[ -e "/pg/var/pg.noinstall" ]]; then pgcmd=true; else pgcmd=false; fi
 rm -rf /pg/var/pg.noinstall
 
 if [[ "$pgcmd" != "true" ]]; then
