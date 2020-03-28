@@ -2,5 +2,6 @@
 # URL:        PlexGuide.com / PGBlitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-pgcmd="true"
-bash /pg/mods/install/main.sh 
+mkdir -p /pg/var/
+touch /pg/var/pg.noinstall
+bash /pg/mods/install/main.sh
