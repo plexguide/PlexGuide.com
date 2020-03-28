@@ -3,6 +3,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 
+if [[ "$pgcmd" != "true "]]; then
 ## Simple Clone Process
 mkdir -p /pg/tmp
 rm -rf /pg/mods
@@ -17,10 +18,12 @@ chmod 775 /bin/install_test
 
 ## Create & Establish Functions Process
 bash /pg/mods/functions/.create.sh
-source /pg/mods/functions/.master.sh
+source /pg/mods/functions/.master.sh; fi
 ################################################################################
 
 install_sudocheck
+
+if [[ "$pgcmd" != "true "]]; then
 
 common_message "🌎 INSTALLING: PlexGuide.com GNUv3 License" "
 By Installing PlexGuide, you are agreeing to the terms and conditions of the
@@ -30,6 +33,7 @@ If you have a chance to donate, please visit https://donate.plexguide.com
 PRESS CTRL+Z to STOP the Installation
 "
 common_timer "1" ## set back to 5
+fi
 
 ## delete
 mkdir -p /pg/var/install/
