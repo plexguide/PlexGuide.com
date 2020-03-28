@@ -60,7 +60,7 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 ) traefik_menu_start && start_menu && exit ;;
-    2 ) bash /pg/stage/pgcloner/portguard.sh && start_menu && exit ;;
+    2 ) portguard_menu && start_menu && exit ;;
     3 ) bash /pg/stage/pgcloner/pgshield.sh && start_menu && exit ;;
     4 ) bash /pg/stage/pgcloner/pgclone.sh && start_menu && exit ;;
     5 ) apps_menu && start_menu && exit ;;
