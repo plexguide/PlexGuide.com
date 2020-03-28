@@ -1,5 +1,6 @@
 portguard_menu() {
 
-echo ""
+common_header "⌛ Not Ready"
+common_confirm
 
 }
