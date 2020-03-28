@@ -12,19 +12,14 @@ mkdir -p /pg/tmp
 rm -rf /pg/mods
 rm -rf /pg/tmp/checkout
 git clone -b alpha --single-branch https://github.com/plexguide/PlexGuide.com.git /pg/tmp/checkout
-mv -f /pg/tmp/checkout/mods /pg
-
-## Install PG Test Command
-rm -rf /bin/install_test
-cp /pg/mods/cmds/install_test /bin/install_test
-chmod 775 /bin/install_test
-
-## Create & Establish Functions Process
-bash /pg/mods/functions/.create.sh
-source /pg/mods/functions/.master.sh; fi
+mv -f /pg/tmp/checkout/mods /pg; fi
 ################################################################################
 
+bash /pg/mods/functions/.create.sh
+source /pg/mods/functions/.master.sh
 install_sudocheck
+
+################################################################################
 echo "COMMAND IS - $pgcmd"
 if [[ "$pgcmd" != "true" ]]; then
 
