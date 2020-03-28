@@ -22,7 +22,7 @@ source /pg/mods/functions/.master.sh; fi
 ################################################################################
 
 install_sudocheck
-
+echo "COMMAND IS - $pgcmd"
 if [[ "$pgcmd" != "true" ]]; then
 
 common_message "🌎 INSTALLING: PlexGuide.com GNUv3 License" "
