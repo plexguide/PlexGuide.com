@@ -7,7 +7,7 @@ common_message "🚀  Traefik - Reverse Proxy Interface" "
 ------------------------------------------------------------------------------
 $digmessage[1] Top Level Domain App: [$tld]
 [2] Domain Provider     : [$provider]
-[3] Domain Name         : [$domain] $digmessage
+[3] Domain Name         : [$domain]
 [4] EMail Address       : [$email]
 [5] DNS Delay Check     : [$delaycheck] Seconds
 ------------------------------------------------------------------------------
