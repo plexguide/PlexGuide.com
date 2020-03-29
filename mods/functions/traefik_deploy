@@ -1,5 +1,28 @@
 traefik_deploy() {
 
+provider=$(cat /pg/var/traefik.provider)
+echo "
+- name: 'Setting PG ENV'
+  set_fact:
+    pg_env:
+      PUID: '1000'
+      PGID: '1000'
+      PROVIDER: $provider" | tee /pg/mods/provider.yml 1>/dev/null 2>&1
+
+ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
+
+while read p; do
+  echo -n "      ${p}: " >> /pg/mods/provider.yml
+  echo $(cat "/pg/var/traefik/$provider/$p") >> /pg/mods/provider.yml
+done </pg/tmp/provider.keys
+
+if [[ $(docker ps --format '{{.Names}}' | grep traefik) == "traefik" ]]; then
+  docker stop traefik 1>/dev/null 2>&1
+  docker rm traefik 1>/dev/null 2>&1; fi
+
+file="/pg/data/traefik"
+if [ -e "$file" ]; then rm -rf /pg/data/traefik; fi
+
 ansible-playbook /pg/mods/traefik/traefik.yml
 # ansible-playbook /pg/mods/primary/portainer.yml
 
