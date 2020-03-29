@@ -1,6 +1,8 @@
 traefik_domain_check() {
 
 digip=$(dig $domain | grep $domain | grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)")
+digcheck=$(echo $(ifconfig | grep $digip))
 
+if [[ "$digcheck" == "" ]]; then digwarning=1; fi
 
 }
