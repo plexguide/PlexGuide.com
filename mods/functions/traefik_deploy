@@ -7,7 +7,7 @@ echo "
     pg_env:
       PUID: '1000'
       PGID: '1000'
-      PROVIDER: $provider" | tee /pg/mods/provider.yml 1>/dev/null 2>&1
+      PROVIDER: $provider" | tee /pg/mods/traefik/provider.yml 1>/dev/null 2>&1
 
 ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
 
