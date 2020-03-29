@@ -1,6 +1,6 @@
 traefik_deploy() {
 
 ansible-playbook /pg/mods/traefik/traefik.yml
-ansible-playbook /pg/mods/primary/portainer.yml
+# ansible-playbook /pg/mods/primary/portainer.yml
 
 }
