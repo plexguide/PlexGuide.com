@@ -5,6 +5,6 @@ digcheck=$(echo $(ifconfig | grep $digip))
 
 if [[ "$digcheck" == "" ]]; then digmessage="⛔️  WARNING ~ Domain Check Failing - IPV4 'A' records set correctly?
 
-"; fi
+"; else digmessage=""; fi
 
 }
