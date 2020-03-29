@@ -1,7 +1,8 @@
 traefik_postdeploy() {
 
-#tempseconds=$(cat /pg/var/traefik/delay.check)
-#delseconds=$[${tempseconds}+10]
+tempseconds=$(cat /pg/var/traefik/delay.check)
+delseconds=$[${tempseconds}+10]
+i=3
 
 common_message "🚀  Standby for Traefik Deployment Validation" "
 NOTE 1: Do NOT EXIT this interface. Please standby for validation checks!
@@ -14,5 +15,48 @@ Standby!
 "
 
 common_timer "45"
+
+while [[ "$pstatus" != "success" || pcheck != "0" ]]; do
+
+common_header "🚀  Rebuilding Portainer"; sleep 2
+
+ansible-playbook /pg/mods/primary/portainer.yml
+
+common_message "🚀  Standby for Traefik Deployment Validation" "
+NOTE 1: Do NOT EXIT this interface. Please standby for validation checks!
+
+NOTE 2: Standing by for [$tempseconds] + 10 seconds per the set DNS delay
+check! When complete, Portainer will be rebuilt! If that passes,
+then we will rebuild the rest of the containers!
+
+Standby!
+"
+
+common_timer "10"
+common_header "🚀 Checking Portainer"
+
+rm -rf /pg/tmp/p.check
+wget -q "https://portainer.$domain" -O "/pg/tmp/p.check"
+
+if [[ $(cat /pg/tmp/p.check) == "" ]]; then pstatus="success"; else let "i=i-1";
+common_message "⛔️  FAILED ~ https://portainer.$domain not detected!" "
+NOTE: Attempting to check again!
+
+$i tries left! Restarting Checks in 5 seconds!"; sleep 5; fi
+
+done
+
+if [[ "$pstatus" == "success" ]]; then echo "complete"; common_confirm; else
+common_message "⛔️  Portainer Check: FAILED" "
+REASON 1 - CloudFlare: portainer is not set in the CNAME or A Records
+REASON 2 - DuckDNS   : Forgot to create a portainer or * - A Record
+REASON 3 - Firewall  : Everything is blocked
+REASON 4 - DelayValue: Set too low; CF users reported using 90 to work
+REASON 5 - OverUse   : Deployed too much; hit LetsEncrypt Weekly Limit
+REASON 6 - User      : PG Locally; Route is not enable to reach server
+REASON 7 - User      : Bad values input or failed to read the wiki
+REASON 8 - User      : Forgot to point DOMAIN to CORRECT IP ADDRESS
+
+There are multiple reason for failure! Visit the forums or wiki!"; common_confirm; fi
 
 }
