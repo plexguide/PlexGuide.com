@@ -73,10 +73,12 @@
         published_ports:
           - '443:443'
           - '80:80'
-        labels:
-          - traefik.http.routers.blog.rule: (Host(`{{domain.stdout}}`)
-          - traefik.http.routers.blog.tls: true
-          - traefik.http.routers.blog.tls.certresolver: myresolver
+        http:
+          routers:
+            blog:
+              rule: "Host(`{{domain.stdout}}`)"
+              tls:
+                certResolver: myresolver
         #env: '{{pg_env}}'
         volumes:
           - /var/run/docker.sock:/var/run/docker.sock:ro
