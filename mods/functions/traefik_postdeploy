@@ -16,7 +16,7 @@ Standby! Enjoy the work? Please donate @ donate.plexguide.com!
 
 common_timer "45"
 
-while [[ "$pstatus" != "success" || pcheck != "0" ]]; do
+while [[ "$pstatus" != "success" || "$pcheck" != "0" ]]; do
 
 common_header "🚀  Rebuilding Portainer"; sleep 2
 
