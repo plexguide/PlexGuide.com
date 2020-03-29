@@ -33,11 +33,13 @@ common_timer "5"
 rm -rf /pg/tmp/p.check
 wget -q "https://portainer.$domain" -O "/pg/tmp/p.check"
 
+if [[ "$i" == "0" ]]; then failmessage="Exiting!"; else failmessage="Retrying in 5 Seconds!"; fi
+
 if [[ $(cat /pg/tmp/p.check) != "" ]]; then pstatus="success"; else let "i=i-1";
 common_message "⛔️  FAILED ~ https://portainer.$domain not detected!" "
 NOTE: Attempting to check again!
 
-$i tries left! Restarting Checks in 5 seconds!"
+$i tries left! $failmessage
 sleep 5; fi
 
 done
