@@ -7,35 +7,30 @@
 ################################################################################
 
 insecureskipverify = true
-
-logLevel = "WARN"
-
 defaultEntryPoints = ["http", "https"]
 
-[entryPoints.monitor]
-address = ":8081"
+[global]
+  checkNewVersion = true
+  sendAnonymousUsage = false
+
+[log]
+  level = "WARN"
 
 [entryPoints]
   [entryPoints.web]
     address = ":80"
-
   [entryPoints.websecure]
     address = ":443"
+  [entryPoints.postgres]
+    address = ":5432"
 
-[certificatesResolvers.myresolver.acme]
-  # ...
-  [certificatesResolvers.myresolver.acme.dnsChallenge]
+[certificatesResolvers.letsencrypt.acme]
+  email = "{{email.stdout}}"
+  storage = "/etc/traefik/acme/acme.json"
+  [certificatesResolvers.letsencrypt.acme.dnsChallenge]
     provider = "{{provider.stdout}}""
     delayBeforeCheck = "{{delaycheck.stdout}}"
     resolvers = ["1.1.1.1:53", "8.8.8.8:53"]
-
-[retry]
-
-[acme]
-acmeLogging = true
-email = "{{email.stdout}}"
-storage = "/etc/traefik/acme/acme.json"
-entryPoint = "https"
 
 [[acme.domains]]
 main = "{{domain.stdout}}"
