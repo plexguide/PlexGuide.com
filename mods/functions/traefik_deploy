@@ -22,6 +22,5 @@ if [[ $(docker ps --format '{{.Names}}' | grep traefik) == "traefik" ]]; then
 if [ -e "/pg/data/traefik" ]; then rm -rf /pg/data/traefik; fi
 
 ansible-playbook /pg/mods/traefik/traefik.yml
-# ansible-playbook /pg/mods/primary/portainer.yml
 
 }
