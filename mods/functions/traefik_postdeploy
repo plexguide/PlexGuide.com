@@ -25,16 +25,16 @@ ansible-playbook /pg/mods/primary/portainer.yml
 common_header "🚀 Standby:  Portainer is loading up!"
 
 common_timer "10"
-common_header "🚀 Checking Portainer"
 
 rm -rf /pg/tmp/p.check
 wget -q "https://portainer.$domain" -O "/pg/tmp/p.check"
 
-if [[ $(cat /pg/tmp/p.check) == "" ]]; then pstatus="success"; else let "i=i-1";
+if [[ $(cat /pg/tmp/p.check) != "" ]]; then pstatus="success"; else let "i=i-1";
 common_message "⛔️  FAILED ~ https://portainer.$domain not detected!" "
 NOTE: Attempting to check again!
 
-$i tries left! Restarting Checks in 5 seconds!"; sleep 5; fi
+$i tries left! Restarting Checks in 5 seconds!"
+sleep 5; fi
 
 done
 
