@@ -1,6 +1,7 @@
 traefik_menu_start() {
 
 traefik_menu_start_setup
+if [[ "$domain" != "NOT-SET" ]]; then traefik_domaincheck; fi
 
 common_message "🚀  Traefik - Reverse Proxy Interface" "
 💬  Further Explanation? Visit ~ http://traefik.plexguide.com
