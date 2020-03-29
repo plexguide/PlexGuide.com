@@ -16,7 +16,7 @@ Standby! Enjoy the work? Please donate @ donate.plexguide.com!
 
 common_timer "45"
 
-while [[ "$pstatus" != "success" || "$pcheck" != "0" ]]; do
+while [[ "$pstatus" != "success" || "$i" != "0" ]]; do
 
 common_header "🚀  Rebuilding Portainer"; sleep 2
 
@@ -50,5 +50,4 @@ REASON 7 - User      : Bad values input or failed to read the wiki
 REASON 8 - User      : Forgot to point DOMAIN to CORRECT IP ADDRESS
 
 There are multiple reason for failure! Visit the forums or wiki!"; common_confirm; fi
-
 }
