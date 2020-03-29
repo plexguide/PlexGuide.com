@@ -11,7 +11,7 @@ NOTE 2: Standing by for [$tempseconds] + 10 seconds per the set DNS delay
 check! When complete, Portainer will be rebuilt! If that passes,
 then we will rebuild the rest of the containers!
 
-Standby!
+Standby! Enjoy the work? Please donate @ donate.plexguide.com!
 "
 
 common_timer "45"
@@ -22,15 +22,7 @@ common_header "🚀  Rebuilding Portainer"; sleep 2
 
 ansible-playbook /pg/mods/primary/portainer.yml
 
-common_message "🚀  Standby for Traefik Deployment Validation" "
-NOTE 1: Do NOT EXIT this interface. Please standby for validation checks!
-
-NOTE 2: Standing by for [$tempseconds] + 10 seconds per the set DNS delay
-check! When complete, Portainer will be rebuilt! If that passes,
-then we will rebuild the rest of the containers!
-
-Standby!
-"
+common_header "🚀 Standby:  Portainer is loading up!"
 
 common_timer "10"
 common_header "🚀 Checking Portainer"
