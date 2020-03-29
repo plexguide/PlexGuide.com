@@ -20,7 +20,7 @@ are evil, so that's why we are as NOOB friendly as possible!
 Standby! Enjoy the work? Please donate @ donate.plexguide.com!
 "
 
-common_timer "delseconds"
+common_timer "$delseconds"
 
 while [[ "$pstatus" == "failed" && "$i" != "0" ]]; do
 
