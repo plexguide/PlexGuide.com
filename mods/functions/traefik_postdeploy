@@ -11,10 +11,14 @@ NOTE 2: Standing by for [$tempseconds] + 10 seconds per the set DNS delay
 check! When complete, Portainer will be rebuilt! If that passes,
 then we will rebuild the rest of the containers!
 
+Did you know PG started in late 2016? Frusted by 76TB of 3TB HD's, there had
+to be a way to push it all in the cloud! Starting off from a document known
+as PlexGuide, we are now here what you see from today!
+
 Standby! Enjoy the work? Please donate @ donate.plexguide.com!
 "
 
-common_timer "45"
+common_timer "delseconds"
 
 while [[ "$pstatus" != "success" || "$i" != "0" ]]; do
 
