@@ -1,7 +1,4 @@
 #!/bin/bash
-#
-# Title:      PlexGuide (Reference Title File)
-# Author(s):  Admin9705
 # URL:        https://plexguide.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
@@ -51,6 +48,7 @@
   [providers.docker]
   endpoint = "unix:///var/run/docker.sock"
   domain = "{{domain.stdout}}"
+  defaultRule = "Host(`{{ normalize .Name }}.{{domain.stdout}}`)"
   watch = true
   exposedbydefault = false
   network = "plexguide"
