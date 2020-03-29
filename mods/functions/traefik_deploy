@@ -23,4 +23,6 @@ if [ -e "/pg/data/traefik" ]; then rm -rf /pg/data/traefik; fi
 
 ansible-playbook /pg/mods/traefik/traefik.yml
 
+traefik_postdeploy
+
 }
