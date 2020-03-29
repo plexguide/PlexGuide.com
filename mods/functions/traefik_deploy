@@ -13,7 +13,7 @@ ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
 
 while read p; do
   echo -n "      ${p}: " >> /pg/mods/provider.yml
-  echo $(cat "/pg/var/traefik/$provider/$p") >> /pg/mods/provider.yml
+  echo $(cat "/pg/var/traefik/$provider/$p") >> /pg/mods/traefik/provider.yml
 done </pg/tmp/provider.keys
 
 if [[ $(docker ps --format '{{.Names}}' | grep traefik) == "traefik" ]]; then
