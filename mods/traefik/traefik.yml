@@ -68,7 +68,7 @@
     - name: Deploy Traefik
       docker_container:
         name: traefik
-        image: traefik:2.2
+        image: traefik:1.7
         pull: yes
         published_ports:
           - '443:443'
