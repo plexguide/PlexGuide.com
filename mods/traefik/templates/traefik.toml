@@ -32,24 +32,30 @@ defaultEntryPoints = ["http", "https"]
     delayBeforeCheck = "{{delaycheck.stdout}}"
     resolvers = ["1.1.1.1:53", "8.8.8.8:53"]
 
-[[acme.domains]]
-main = "{{domain.stdout}}"
-[[acme.domains]]
-main = "*.{{domain.stdout}}"
+[http.routers]
+  [http.routers.blog]
+  rule = "Host(`{{domain.stdout}}`)"
+  [http.routers.blog.tls]
+    certResolver = "myresolver"
 
-[backends]
+#[[acme.domains]]
+#main = "{{domain.stdout}}"
+#[[acme.domains]]
+#main = "*.{{domain.stdout}}"
+
+#[backends]
 ## Cockpit Backend
-[backends.cockpit]
-[backends.cockpit.servers.server]
-url = "https://127.0.0.1:9090"
+#[backends.cockpit]
+#[backends.cockpit.servers.server]
+#url = "https://127.0.0.1:9090"
 
-[frontends]
+#[frontends]
 ## Cockpit Frontend
-[frontends.cockpit]
-backend = "cockpit"
-passHostHeader = true
-[frontends.cockpit.routes.cockpit]
-rule = "Host:cockpit.{{domain.stdout}}"
+#[frontends.cockpit]
+#backend = "cockpit"
+#passHostHeader = true
+#[frontends.cockpit.routes.cockpit]
+#rule = "Host:cockpit.{{domain.stdout}}"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
