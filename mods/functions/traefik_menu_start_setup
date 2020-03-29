@@ -33,6 +33,6 @@ if [[ "$provider" != "NOT-SET" ]]; then
     alphadisplay="[!] Cannot Deploy Traefik - Info Not Complete"; else
     alphadisplay="[A] Deploy Traefik      : [$deployedinfo]"; fi
 
-digwarning=0; if [[ "$domain" != "NOT-SET" ]]; then traefik_domaincheck; fi
+if [[ "$domain" != "NOT-SET" ]]; then traefik_domaincheck; fi
 
 }
