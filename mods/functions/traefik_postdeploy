@@ -39,7 +39,7 @@ if [[ $(cat /pg/tmp/p.check) != "" ]]; then pstatus="success"; else let "i=i-1";
 common_message "⛔️  FAILED ~ https://portainer.$domain not detected!" "
 NOTE: Attempting to check again!
 
-$i tries left! $failmessage
+$i tries left! $failmessage"
 sleep 5; fi
 
 done
