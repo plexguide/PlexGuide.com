@@ -6,12 +6,12 @@
 # GNU:        General Public License v3.0
 ################################################################################
 
-insecureskipverify = true
-defaultEntryPoints = ["http", "https"]
+#insecureskipverify = true
+#defaultEntryPoints = ["http", "https"]
 
-[global]
-  checkNewVersion = true
-  sendAnonymousUsage = false
+#[global]
+#  checkNewVersion = true
+#  sendAnonymousUsage = false
 
 [log]
   level = "WARN"
@@ -24,13 +24,17 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.postgres]
     address = ":5432"
 
-[certificatesResolvers.letsencrypt.acme]
+[certificatesResolvers.myresolver.acme]
   email = "{{email.stdout}}"
   storage = "/etc/traefik/acme/acme.json"
-  [certificatesResolvers.letsencrypt.acme.dnsChallenge]
+  [certificatesResolvers.myresolver.acme.dnsChallenge]
     provider = "{{provider.stdout}}""
     delayBeforeCheck = "{{delaycheck.stdout}}"
     resolvers = ["1.1.1.1:53", "8.8.8.8:53"]
+
+[api]
+  dashboard = true
+  debug = true
 
 [http.routers]
   [http.routers.blog]
@@ -43,23 +47,10 @@ defaultEntryPoints = ["http", "https"]
 #[[acme.domains]]
 #main = "*.{{domain.stdout}}"
 
-#[backends]
-## Cockpit Backend
-#[backends.cockpit]
-#[backends.cockpit.servers.server]
-#url = "https://127.0.0.1:9090"
-
-#[frontends]
-## Cockpit Frontend
-#[frontends.cockpit]
-#backend = "cockpit"
-#passHostHeader = true
-#[frontends.cockpit.routes.cockpit]
-#rule = "Host:cockpit.{{domain.stdout}}"
-
-[docker]
-endpoint = "unix:///var/run/docker.sock"
-domain = "{{domain.stdout}}"
-watch = true
-exposedbydefault = false
-network = "plexguide"
+[providers]
+  [providers.docker]
+  endpoint = "unix:///var/run/docker.sock"
+  domain = "{{domain.stdout}}"
+  watch = true
+  exposedbydefault = false
+  network = "plexguide"
