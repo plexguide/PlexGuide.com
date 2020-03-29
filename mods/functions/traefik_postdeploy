@@ -22,7 +22,7 @@ Standby! Enjoy the work? Please donate @ donate.plexguide.com!
 
 common_timer "delseconds"
 
-while [[ "$pstatus" != "success" || "$i" != "0" ]]; do
+while [[ "$pstatus" != "failed" && "$i" != "0" ]]; do
 
 common_header "🚀  Rebuilding Portainer"; sleep 2
 ansible-playbook /pg/mods/primary/portainer.yml
