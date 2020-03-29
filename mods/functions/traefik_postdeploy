@@ -3,6 +3,7 @@ traefik_postdeploy() {
 tempseconds=$(cat /pg/var/traefik/delay.check)
 delseconds=$[${tempseconds}+10]
 i=3
+pstatus="failed"
 
 common_message "🚀  Standby for Traefik Deployment Validation" "
 NOTE 1: Do NOT EXIT this interface. Please standby for validation checks!
@@ -13,7 +14,8 @@ then we will rebuild the rest of the containers!
 
 Did you know PG started in late 2016? Frusted by 76TB of 3TB HD's, there had
 to be a way to push it all in the cloud! Starting off from a document known
-as PlexGuide, we are now here what you see from today!
+as PlexGuide, this is where we are at now today! Plus traditional coders
+are evil, so that's why we are as NOOB friendly as possible!
 
 Standby! Enjoy the work? Please donate @ donate.plexguide.com!
 "
@@ -23,12 +25,10 @@ common_timer "delseconds"
 while [[ "$pstatus" != "success" || "$i" != "0" ]]; do
 
 common_header "🚀  Rebuilding Portainer"; sleep 2
-
 ansible-playbook /pg/mods/primary/portainer.yml
 
 common_header "🚀 Standby:  Portainer is loading up!"
-
-common_timer "10"
+common_timer "5"
 
 rm -rf /pg/tmp/p.check
 wget -q "https://portainer.$domain" -O "/pg/tmp/p.check"
