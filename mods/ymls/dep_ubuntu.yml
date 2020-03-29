@@ -39,6 +39,7 @@
         - { package: "dialog" }
         - { package: "dnsutils" }
         - { package: "mc" }
+        - { package: "dig" }
         - { package: "apache2-utils" }
         - { package: "lsof" }
         - { package: "bc" }
