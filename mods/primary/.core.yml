@@ -14,7 +14,7 @@
   ignore_errors: True
 
 - name: Register Domain
-  shell: 'cat /pg/data/server.domain'
+  shell: 'cat /pg/var/traefik/traefik.domain'
   register: domain
   ignore_errors: True
 
