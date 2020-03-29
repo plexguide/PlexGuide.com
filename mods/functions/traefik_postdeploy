@@ -1,5 +1,8 @@
 traefik_postdeploy() {
 
+#tempseconds=$(cat /pg/var/traefik/delay.check)
+#delseconds=$[${tempseconds}+10]
+
 echo ""
 
 }
