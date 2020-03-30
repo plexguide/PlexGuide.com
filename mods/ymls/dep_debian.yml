@@ -21,7 +21,6 @@
         - glances
         - python-pip
         - python3-pip
-        - dig
         - jq
         - moreutils
         - python-passlib
