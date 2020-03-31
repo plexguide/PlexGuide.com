@@ -17,8 +17,8 @@ EOF
 
 cat << "EOF"
 ┌─────────────────────────────────────┐
-│        EXITING PG Version X         │
-│ ————————————————————————————————————│
+│        EXITING PG Version X         │  Additional Staff
+│ ————————————————————————————————————│  Coders: TechButton & vFlagR
 │ Star PG:      github.plexguide.com  │
 │ Donate:       donate.plexguide.com  │
 │ ————————————————————————————————————│
@@ -29,8 +29,8 @@ cat << "EOF"
 │ ——————————————————————————————————— │
 │ An Original Admin9705 Project       │
 │                                     │
-│ Dedicated to:                       │  Additional Staff
-│ Deiteq, YasQueen84 & JasMarie       │  Coders: TechButton & vFlagR
+│ Dedicated to:                       │
+│ Deiteq, YasQueen84 & JasMarie       │
 └─────────────────────────────────────┘
 EOF
 
