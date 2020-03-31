@@ -19,7 +19,6 @@
       set_fact:
         pg_labels:
           traefik.enable: 'true'
-          traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.port: '{{intport}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
 
