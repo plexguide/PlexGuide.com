@@ -65,7 +65,7 @@ case $typed in
     1 ) traefik_menu_start && start_menu && exit ;;
     2 ) portguard_menu && start_menu && exit ;;
     3 ) pgshield_menu && start_menu && exit ;;
-    4 ) pgclone_menu && start_menu && exit ;;
+    4 ) drives_menu_start && start_menu && exit ;;
     5 ) apps_menu && start_menu && exit ;;
     6 ) pgpress_menu && start_menu && exit ;;
     7 ) pgpress_menu && start_menu && exit ;;
