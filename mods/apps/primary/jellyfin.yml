@@ -1,10 +1,3 @@
-#!/bin/bash
-#
-# Title:      PlexGuide (Reference Title File)
-# Author(s):  Admin9705
-# URL:        https://plexguide.com - http://github.pgblitz.com
-# GNU:        General Public License v3.0
-################################################################################
 ---
 - hosts: localhost
   gather_facts: false
@@ -15,11 +8,11 @@
         pgrole: 'jellyfin'
         intport: '8096'
         extport: '9096'
-        image: 'jellyfin/jellyfin:latest'
+        image: 'jellyfin/jellyfin'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
-      include_tasks: '/opt/coreapps/apps/_core.yml'
+      include_tasks: '/pg/mods/apps/core.yml'
 
     - name: 'XML Check'
       stat:
@@ -39,17 +32,15 @@
         pg_volumes:
           - '/etc/localtime:/etc/localtime:ro'
           - '/pg/data/{{pgrole}}:/config'
-          - '{{path.stdout}}:{{path.stdout}}'
           - '/pg:/pg'
           - '/pg/unity:/unity'
-          - '/var/run/docker.sock:/var/run/docker.sock'
 
     - name: 'Setting PG ENV'
       set_fact:
         pg_env:
+          UID: '1000'
+          GID: '1000'
           GIDLIST: '1000'
-          PUID: '1000'
-          PGID: '1000'
 
     # MAIN DEPLOYMENT #############################################################
     - name: "Check"
@@ -62,7 +53,6 @@
         name: '{{pgrole}}'
         image: '{{image}}'
         pull: yes
-        user: 1000:1000
         published_ports:
           - '{{ports.stdout}}{{extport}}:{{intport}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
@@ -73,7 +63,6 @@
           - name: plexguide
             aliases:
               - '{{pgrole}}'
-        expose: '8096'
         state: started
         labels: '{{pg_labels}}'
 
