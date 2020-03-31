@@ -34,6 +34,11 @@ cat <<- EOF > "$coreyml"
   register: auth
   ignore_errors: True
 
+- name: 'Checking for existing app data'
+  stat:
+    path: /pg/data/{{pgrole}}/config.ini
+  register: inicheck
+
 - name: Remove {{pgrole}} Container
   docker_container:
     name: '{{pgrole}}'
