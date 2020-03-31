@@ -21,19 +21,10 @@ common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"
 common_confirm && drives_menu_start && exit; fi
 
 case $typed in
-    1 ) drives_menu_start && exit ;;
+    1 ) drives_gdrive_menu && exit ;;
     2 ) drives_providers  && drives_menu_start && exit ;;
     3 ) drives_domain && drives_menu_start && exit ;;
     4 ) drives_email && drives_menu_start && exit ;;
-    5 ) drives_delay && drives_menu_start && exit ;;
-    6 ) menutmp=1 && drives_keys && drives_menu_start && exit ;;
-    7 ) menutmp=2 && drives_keys && drives_menu_start && exit ;;
-    8 ) menutmp=3 && drives_keys && drives_menu_start && exit ;;
-    9 ) menutmp=4 && drives_keys && drives_menu_start && exit ;;
-    A ) drives_deploy && drives_menu_start && exit ;;
-    a ) drives_deploy && drives_menu_start && exit ;;
-    B ) drives_deploy && drives_menu_start && exit ;;
-    b ) drives_deploy && drives_menu_start && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) drives_menu_start && exit ;;
