@@ -5,7 +5,7 @@ drives_menu_start_setup
 common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
-[1] Google Drive        : [NOT-SET] 
+[1] Google Drive        : [NOT-SET]
 [2] Share  Drive(s)     : [NOT-SET] [Total: 0]
 [3] Uploader            : [NOT-SET] $showtype
 ------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 "
 common_number
 
-if [[ "$typed" -ge "$gmenu_number" ]]; then
+if [[ "$typed" -gt "$gmenu_number" ]]; then
 common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"
 common_confirm && drives_menu_start && exit; fi
 
