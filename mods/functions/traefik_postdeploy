@@ -45,7 +45,21 @@ sleep 5; fi
 
 done
 
-if [[ "$pstatus" == "success" ]]; then echo "complete"; common_confirm; else
+if [[ "$pstatus" == "success" ]]; then
+common_header "🚀  Rebuilding the other Containers!"; sleep 2
+
+docker ps --format '{{.Names}}' > /pg/tmp/traefik.rebuild
+sed -i -e "/traefik/d" /pg/tmp/traefik.rebuild
+sed -i -e "/watchtower/d" /pg/tmp/traefik.rebuild
+sed -i -e "/oauth/d" /pg/tmp/traefik.rebuild
+
+while read p; do
+  to_rebuild=$(find /pg/mods/apps/ -name "$p.yml")
+  ansible-playbook "$to_rebuild"
+done </pg/tmp/traefik.rebuild
+
+common_confirm && traefik_menu_start && exit
+else
 common_message "⛔️  Portainer Check: FAILED" "
 REASON 1 - CloudFlare: portainer is not set in the CNAME or A Records
 REASON 2 - DuckDNS   : Forgot to create a portainer or * - A Record
