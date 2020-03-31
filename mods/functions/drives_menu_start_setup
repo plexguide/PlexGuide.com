@@ -3,7 +3,7 @@ drives_menu_start_setup () {
 mkdir -p /pg/var/drives/gd/
 
 #gdrive variables
-common_main /pg/var/drives/gd/gd.crypt NOT-SET gcryptcheck
+common_main /pg/var/drives/gd/gd.crypt NO gcryptcheck
 
 #gdrive Interface
 if [[ "$gcryptcheck" == "YES" ]]; then
