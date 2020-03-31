@@ -1,0 +1,23 @@
+drives_gdrive_clientid() {
+
+temp_path="/pg/var/drives/gd/gd.clientid"
+priorentry=$(cat $temp_path)
+
+common_message "🚀 PlexGuide | GDrive Client-ID Interface" "
+💾 Client-ID for GDrive?
+
+Prior Info Saved (If Any): $priorentry
+[Z] To Cancel and Go Back
+"
+
+read -p "↘️  New Domain? | Press [ENTER]: " typed < /dev/tty
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_domain && exit; fi
+
+echo $typed > $temp_path
+
+common_message "💾  $typed - Client ID Set!"
+common_confirm && drives_gdrive_menu && exit
+
+}

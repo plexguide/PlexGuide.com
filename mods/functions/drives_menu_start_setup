@@ -4,11 +4,19 @@ mkdir -p /pg/var/drives/gd/
 
 #gdrive variables
 common_main /pg/var/drives/gd/gd.crypt NO gcryptcheck
+common_main /pg/var/drives/gd/gd.clientid NOT-SET clientid_check
+common_main /pg/var/drives/gd/gd.clientsecret NOT-SET clientsecret_check
 
 #gdrive Interface
 if [[ "$gcryptcheck" == "YES" ]]; then
 pw_menu_option="
-[4] Passwords" && gmenu_number=4; else pw_menu_option="" && gmenu_number=3; fi
+[5] Passwords" && gmenu_number=4; else pw_menu_option="" && gmenu_number=3; fi
 
+if [[ $(cat /pg/var/drives/gd/gd.clientid) == "NOT-SET" ]]; then ci_menu="NOT-SET"
+else ci_menu="SET"; fi
+
+if [[ $(cat /pg/var/drives/gd/gd.secret) == "NOT-SET" ]]; then ci_menu="NOT-SET"
+else ci_secret="SET"; fi
 
 }
+z

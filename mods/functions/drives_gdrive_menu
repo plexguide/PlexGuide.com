@@ -4,8 +4,9 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
 [1] Utilizing Encryption: [$gcryptcheck]
-[2] Client ID & Secret
-[3] GDrive              : [NOT-SET] [Total: 0]"$pw_menu_option"
+[2] Client ID           : [$ci_menu]
+[3] Client Secret       : [$ci_secret]
+[4] GDrive              : [NOT-SET]"$pw_menu_option"
 ------------------------------------------------------------------------------
 [D] Deploy Drives
 [O] Options
@@ -14,13 +15,9 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 "
 common_number
 
-if [[ "$typed" -ge "$tnumber" ]]; then
-common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"
-common_confirm && drives_menu_start && exit; fi
-
 case $typed in
     1 ) drives_menu_start && exit ;;
-    z ) start_menu && exit ;;
+    z ) drives_gdrive_clientid && exit ;;
     Z ) start_menu && exit ;;
     * ) drives_menu_start && exit ;;
 esac
