@@ -1,0 +1,79 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
+    - name: 'Set Known Facts'
+      set_fact:
+        pgrole: 'jackett'
+        intport: '9117'
+        extport: '9117'
+        image: 'linuxserver/jackett'
+
+    # CORE (MANDATORY) ############################################################
+    - name: 'Including cron job'
+      include_tasks: '/pg/mods/apps/core.yml'
+
+    - name: 'XML Check'
+      stat:
+        path: /pg/data/{{pgrole}}/config/system.xml
+      register: xmlcheck
+
+    # LABELS ######################################################################
+    - name: 'Adding Traefik'
+      set_fact:
+        pg_labels:
+          traefik.enable: 'true'
+          traefik.port: '{{intport}}'
+          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+
+    - name: 'Setting PG Volumes'
+      set_fact:
+        pg_volumes:
+          - '/pg/data/{{pgrole}}:/config/{{pgrole}}'
+          - '/etc/localtime:/etc/localtime:ro'
+          - '/pg:/pg'
+
+    - name: 'Setting PG ENV'
+      set_fact:
+        pg_env:
+          UID: '1000'
+          GID: '1000'
+          GIDLIST: '1000'
+
+    # MAIN DEPLOYMENT #############################################################
+    - name: 'Deploying {{pgrole}}'
+      docker_container:
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: yes
+        published_ports:
+          - '{{ports.stdout}}{{extport}}:{{intport}}'
+        volumes: '{{pg_volumes}}'
+        env: '{{pg_env}}'
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+        state: started
+        labels: '{{pg_labels}}'
+
+    # FIRST TIME CONFIGURATION ###########################################################
+    - name: 'Configuring {{pgrole}} for first time use'
+      block:
+
+      - name: 'Wait 5 Seconds'
+        wait_for:
+          timeout: 5
+
+      - name: 'Stop {{pgrole}}'
+        docker_container:
+          name: '{{pgrole}}'
+          state: stopped
+
+      - name: 'Restart {{pgrole}}'
+        docker_container:
+          name: '{{pgrole}}'
+          state: started
+      when: not xmlcheck.stat.exists
