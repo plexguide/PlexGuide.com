@@ -1,0 +1,20 @@
+apps_yml_headers() {
+
+keep_startheader () {
+nogo=$(echo "$1")
+}
+
+keep_startheader "---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: 'Set Known Facts'
+      set_fact:"
+
+echo $nogo
+
+sed -i "s/ghi/$nogo/g" test.txt
+
+
+
+}

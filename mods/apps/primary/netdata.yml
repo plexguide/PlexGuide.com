@@ -1,9 +1,6 @@
-a='- name: 'Including cron job'
----
 - hosts: localhost
   gather_facts: false
   tasks:
-    # FACTS #######################################################################
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'netdata'
@@ -12,7 +9,7 @@ a='- name: 'Including cron job'
         image: 'netdata/netdata'
 
     # CORE (MANDATORY) ############################################################
-      $a
+    - name: 'Including cron job'
       include_tasks: '/pg/mods/apps/core.yml'
 
     # LABELS ######################################################################
