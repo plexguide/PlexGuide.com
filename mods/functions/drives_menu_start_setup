@@ -1,5 +1,14 @@
 drives_menu_start_setup () {
 
-echo ""
+mkdir -p /pg/var/drives/gd/
+
+#gdrive variables
+common_main /pg/var/drives/gd/gd.crypt NOT-SET gcryptcheck
+
+#gdrive Interface
+if [[ "$gcryptcheck" == "YES" ]]; then
+pw_menu_option="
+[4] Passwords"; else pw_menu_option=""; fi
+
 
 }
