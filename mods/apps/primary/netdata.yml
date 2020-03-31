@@ -1,3 +1,4 @@
+a='- name: 'Including cron job'
 ---
 - hosts: localhost
   gather_facts: false
@@ -11,7 +12,7 @@
         image: 'netdata/netdata'
 
     # CORE (MANDATORY) ############################################################
-    - name: 'Including cron job'
+      $a
       include_tasks: '/pg/mods/apps/core.yml'
 
     # LABELS ######################################################################
