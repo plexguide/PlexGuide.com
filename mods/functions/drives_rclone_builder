@@ -1,5 +1,10 @@
 drives_rclone_builder () {
 
-echo ""
+# RCLONE BUILD
+echo "#-------------------------------------" >/opt/appdata/plexguide/rclone.conf
+echo "# RClone Config Built by PlexGuide.com" >>/opt/appdata/plexguide/rclone.conf
+echo "#-------------------------------------" >>/opt/appdata/plexguide/rclone.conf
+
+
 
 }
