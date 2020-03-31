@@ -12,7 +12,7 @@
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
-      include_tasks: '/pg/mods/primary/.core.yml'
+      include_tasks: '/pg/mods/apps/community/.core.yml'
 
     - name: 'XML Check'
       stat:
