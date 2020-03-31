@@ -18,7 +18,7 @@ common_number
 case $typed in
     1 ) drives_menu_start && exit ;;
     z ) drives_gdrive_clientid && exit ;;
-    Z ) start_menu && exit ;;
+    Z ) drives_gdrive_secret && exit ;;
     * ) drives_menu_start && exit ;;
 esac
 

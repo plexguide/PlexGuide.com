@@ -19,4 +19,3 @@ if [[ $(cat /pg/var/drives/gd/gd.secret) == "NOT-SET" ]]; then ci_menu="NOT-SET"
 else ci_secret="SET"; fi
 
 }
-z
