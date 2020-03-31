@@ -29,9 +29,9 @@ cat << "EOF"
 │ ——————————————————————————————————— │
 │ An Original Admin9705 Project       │
 │                                     │
-│ Dedicated to:                       │
-│ Deiteq, YasQueen84 & JasMarie       │    Additional Staff
-└─────────────────────────────────────┘    Coders: TechButton & vFlagR
+│ Dedicated to:                       │    Additional Staff
+│ Deiteq, YasQueen84 & JasMarie       │    Coders: TechButton & vFlagR
+└─────────────────────────────────────┘
 EOF
 
 #if [[ ! -e "/bin/pgblitz" ]]; then
