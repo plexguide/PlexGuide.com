@@ -101,7 +101,7 @@
             path: '/pg/data/{{pgrole}}/config.ini'
             section: General
             option: audio_tab
-            value: 1
+            value: '1'
             state: present
 
         - name: Enable series tab
@@ -109,7 +109,7 @@
             path: '/pg/data/{{pgrole}}/config.ini'
             section: General
             option: series_tab
-            value: 1
+            value: '1'
             state: present
 
         - name: 'Configuring downloaders'
@@ -119,9 +119,9 @@
                 path: '/pg/data/{{pgrole}}/config.ini'
                 section: TORRENT
                 option: numberofseeders
-                value: 1
+                value: '1'
                 state: present
-                
+
             - name: Set deluge host
               ini_file:
                 path: '/pg/data/{{pgrole}}/config.ini'
@@ -143,7 +143,7 @@
                 path: '/pg/data/{{pgrole}}/config.ini'
                 section: DELUGE
                 option: deluge_port
-                value: 8112
+                value: '8112'
                 state: present
 
             - name: Set nzbget host
@@ -159,7 +159,7 @@
                 path: '/pg/data/{{pgrole}}/config.ini'
                 section: NZBGet
                 option: nzbget_port
-                value: 6789
+                value: '6789'
                 state: present
 
             - name: Set nzbget label
@@ -183,7 +183,7 @@
                 path: '/pg/data/{{pgrole}}/config.ini'
                 section: QBITTORRENT
                 option: qbittorrent_port
-                value: 8080
+                value: '8080'
                 state: present
 
             - name: Set qbittorrent label
@@ -249,7 +249,7 @@
                 path: '/pg/data/{{pgrole}}/config.ini'
                 section: Torznab0
                 option: dlpriority
-                value: 1
+                value: '1'
                 state: present
 
       when: not inicheck.stat.exists
