@@ -1,5 +1,8 @@
 start_menu() {
 
+# Generates Core YML for Apps
+apps_core_yml
+
 # Call Variables
 edition=$(cat /pg/var/pg.edition)
 serverid=$(cat /pg/var/server.id)
