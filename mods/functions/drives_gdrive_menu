@@ -1,5 +1,7 @@
 drives_gdrive_menu () {
 
+drives_menu_start_setup
+
 common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
