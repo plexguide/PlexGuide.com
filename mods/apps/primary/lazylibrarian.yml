@@ -1,10 +1,3 @@
-#!/bin/bash
-#
-# Title:      PlexGuide (Reference Title File)
-# Author(s):  Admin9705
-# URL:        https://plexguide.com - http://github.pgblitz.com
-# GNU:        General Public License v3.0
-################################################################################
 ---
 - hosts: localhost
   gather_facts: false
@@ -19,18 +12,13 @@
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
-      include_tasks: '/opt/coreapps/apps/_core.yml'
-
-    - name: 'Checking for existing app data'
-      stat:
-        path: /pg/data/{{pgrole}}/config.ini
-      register: inicheck
+      include_tasks: '/pg/mods/apps/core.yml'
 
     # LABELS ######################################################################
     - name: 'Adding Traefik'
       set_fact:
         pg_labels:
-          traefik.frontend.auth.forward.address: '{{gauth}}'
+
           traefik.enable: 'true'
           traefik.port: '{{intport}}'
           traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
@@ -39,15 +27,15 @@
       set_fact:
         pg_volumes:
           - '/pg/data/{{pgrole}}:/config'
-          - '{{path.stdout}}:{{path.stdout}}'
           - '/etc/localtime:/etc/localtime:ro'
-          - '/pg:/pg'
+          - '/pg/unity:/unity'
 
     - name: 'Setting PG ENV'
       set_fact:
         pg_env:
-          PUID: '1000'
-          PGID: '1000'
+          UID: '1000'
+          GID: '1000'
+          GIDLIST: '1000'
 
     # MAIN DEPLOYMENT #############################################################
     - name: 'Deploying {{pgrole}}'
