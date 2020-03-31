@@ -58,7 +58,11 @@ while read p; do
   common_header "🚀  Rebuilding - $p!"; sleep 2
   ansible-playbook "$to_rebuild"
 done </pg/tmp/traefik.rebuild
-  common_header "🚀  Rebuilding Apps Completed!"; sleep 2
+common_message "🚀  Rebuilding Apps Completed!" "
+NOTE: Testing an app? Make sure to clear the browser or utilize igcognito
+mode! Failing to do so will possibly result in seeing https failing; even
+though it's not; it is usually due to caching an old page!
+"
 common_confirm && traefik_menu_start && exit
 else
 common_message "⛔️  Portainer Check: FAILED" "
