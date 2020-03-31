@@ -2,12 +2,26 @@ drives_rclone_builder () {
 
 rclonepath="/pg/var/rclone/pg.conf"
 mkdir -p /pg/var/rclone
+drives_menu_start_setup
 
 # RCLONE BUILD
-echo "#-------------------------------------" > "$rclonepath"
-echo "# RClone Config Built by PlexGuide.com" >> "$rclonepath"
-echo "#-------------------------------------" >> "$rclonepath"
+cat <<- EOF > "$rclonepath"
+################################################################################
+# RClone Config Built by PlexGuide.com
+################################################################################
 
+EOF
 
+# Delete Me - Make sure to put an if gdrive is active
+cat <<- EOF >> "$rclonepath"
+# GOOGLE DRIVE #################################################################
+[gd]
+client_id = $clientid_check
+client_secret = $secret_check
+type = drive
+token =
+################################################################################
+
+EOF
 
 }
