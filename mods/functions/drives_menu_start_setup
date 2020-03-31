@@ -8,7 +8,7 @@ common_main /pg/var/drives/gd/gd.crypt NO gcryptcheck
 #gdrive Interface
 if [[ "$gcryptcheck" == "YES" ]]; then
 pw_menu_option="
-[4] Passwords"; else pw_menu_option=""; fi
+[4] Passwords" && gmenu_number=4; else pw_menu_option="" && gmenu_number=3; fi
 
 
 }
