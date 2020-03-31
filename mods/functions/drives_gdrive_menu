@@ -7,7 +7,7 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 ------------------------------------------------------------------------------
 [1] Utilizing Encryption: [$gcryptcheck]
 [2] Client ID           : [$ci_menu]
-[3] Client Secret       : [$gc_menu]
+[3] Secret              : [$gc_menu]
 [4] GDrive              : [NOT-SET]"$pw_menu_option"
 ------------------------------------------------------------------------------
 [D] Deploy Drives
