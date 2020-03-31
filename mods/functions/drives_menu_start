@@ -5,16 +5,12 @@ drives_menu_start_setup
 common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
-$digmessage[1] Top Level Domain App: [$tld]
-[2] Domain Provider     : [$provider]
-[3] Domain Name         : [$domain]
-[4] EMail Address       : [$email]
-[5] DNS Delay Check     : [$delaycheck] Seconds
+[1] Google Drive        : [NOT-SET]
+[2] Share  Drive(s)     : [NOT-SET] [Total: 0]
+[3] Uploader            : [NOT-SET] $showtype
 ------------------------------------------------------------------------------
-$minidisplay
-------------------------------------------------------------------------------
-$alphadisplay
-$def
+[D] Deploy Drives
+[O] Options
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
