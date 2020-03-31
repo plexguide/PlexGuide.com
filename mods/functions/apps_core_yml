@@ -1,7 +1,7 @@
 apps_core_yml() {
 
 coreyml="/pg/mods/apps/core.yml"
-rm -rf "$coreyml
+rm -rf "$coreyml"
 
 cat <<- EOF > "$coreyml"
 - name: 'Register TLD'
