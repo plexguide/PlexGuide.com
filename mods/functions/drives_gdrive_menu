@@ -17,8 +17,10 @@ common_number
 
 case $typed in
     1 ) drives_menu_start && exit ;;
-    z ) drives_gdrive_clientid && exit ;;
-    Z ) drives_gdrive_secret && exit ;;
+    2 ) drives_gdrive_clientid && exit ;;
+    3 ) drives_gdrive_secret && exit ;;
+    z ) drives_menu_start && exit ;;
+    Z ) drives_menu_start && exit ;;
     * ) drives_menu_start && exit ;;
 esac
 
