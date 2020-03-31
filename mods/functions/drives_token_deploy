@@ -1,4 +1,4 @@
-drives_gdrive_menu () {
+drives_token_deploy () {
 
 drives_menu_start_setup
 
@@ -21,7 +21,7 @@ case $typed in
     1 ) drives_menu_start && exit ;;
     2 ) drives_gdrive_clientid && exit ;;
     3 ) drives_gdrive_secret && exit ;;
-    4 ) token_deploy=gd && drives_token_deploy && exit ;;
+    4 ) drives_gdrive_secret && exit ;;
     z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
     * ) drives_menu_start && exit ;;
