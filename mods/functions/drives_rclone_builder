@@ -13,6 +13,7 @@ cat <<- EOF > "$rclonepath"
 EOF
 
 # Delete Me - Make sure to put an if gdrive is active
+drives_rclone_builder_token_var gd
 cat <<- EOF >> "$rclonepath"
 # GOOGLE DRIVE #################################################################
 [gd]
