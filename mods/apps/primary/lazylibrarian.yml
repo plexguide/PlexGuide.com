@@ -114,6 +114,14 @@
 
         - name: 'Configuring downloaders'
           block:
+            - name: set minimum seeders
+              ini_file:
+                path: '/pg/data/{{pgrole}}/config.ini'
+                section: TORRENT
+                option: numberofseeders
+                value: 1
+                state: present
+                
             - name: Set deluge host
               ini_file:
                 path: '/pg/data/{{pgrole}}/config.ini'
