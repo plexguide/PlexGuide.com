@@ -17,8 +17,8 @@ EOF
 
 cat << "EOF"
 ┌─────────────────────────────────────┐
-│        EXITING PG Version X         │  Additional Staff
-│ ————————————————————————————————————│  Coders: TechButton & vFlagR
+│        EXITING PG Version X         │
+│ ————————————————————————————————————│
 │ Star PG:      github.plexguide.com  │
 │ Donate:       donate.plexguide.com  │
 │ ————————————————————————————————————│
@@ -30,8 +30,8 @@ cat << "EOF"
 │ An Original Admin9705 Project       │
 │                                     │
 │ Dedicated to:                       │
-│ Deiteq, YasQueen84 & JasMarie       │
-└─────────────────────────────────────┘
+│ Deiteq, YasQueen84 & JasMarie       │    Additional Staff
+└─────────────────────────────────────┘    Coders: TechButton & vFlagR
 EOF
 
 #if [[ ! -e "/bin/pgblitz" ]]; then
