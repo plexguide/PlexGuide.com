@@ -52,6 +52,7 @@ docker ps --format '{{.Names}}' > /pg/tmp/traefik.rebuild
 sed -i -e "/traefik/d" /pg/tmp/traefik.rebuild
 sed -i -e "/watchtower/d" /pg/tmp/traefik.rebuild
 sed -i -e "/oauth/d" /pg/tmp/traefik.rebuild
+sed -i -e "/portainer/d" /pg/tmp/traefik.rebuild
 
 while read p; do
   to_rebuild=$(find /pg/mods/apps/ -name "$p.yml")
