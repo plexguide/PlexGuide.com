@@ -7,6 +7,7 @@ common_main /pg/var/drives/gd/gd.crypt NO gcryptcheck
 common_main /pg/var/drives/gd/gd.clientid NOT-SET clientid_check
 common_main /pg/var/drives/gd/gd.secret NOT-SET secret_check
 common_main /pg/var/drives/gd/gd.token NOT-CONFIGURED gdtokeninfo
+common_main /pg/var/drives/gd/gd.crypt NO gdcryptinfo
 
 #gdrive Interface
 if [[ "$gcryptcheck" == "YES" ]]; then
