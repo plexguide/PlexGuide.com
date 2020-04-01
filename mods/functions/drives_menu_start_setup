@@ -12,9 +12,12 @@ common_main /pg/var/drives/gd/password.1 NOT-SET gpassword1
 common_main /pg/var/drives/gd/password.2 NOT-SET gpassword2
 
 #gdrive Interface
+if [[ "$gpassword1" == "NOT-SET" || "$gpassword2" == "NOT-SET" ]]; then
+  gpassdisplay="SET"; else gpassdisplay="NOT-SET"; fi
+
 if [[ "$gdcryptinfo" == "YES" ]]; then
 pw_menu_option="
-[4] Passwords" && gmenu_number=4; else pw_menu_option="" && gmenu_number=4; fi
+[4] Passwords           :$gpassdisplay" && gmenu_number=4; else pw_menu_option="" && gmenu_number=4; fi
 
 if [[ $(cat /pg/var/drives/gd/gd.clientid) == "NOT-SET" ]]; then ci_menu="NOT-SET"
 else ci_menu="SET"; fi
