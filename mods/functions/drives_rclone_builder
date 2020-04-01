@@ -21,7 +21,7 @@ client_id = $clientid_check
 client_secret = $secret_check
 type = drive
 server_side_across_configs = true
-token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}"
+token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${refreshtoken}"expiry":"${final}"}"
 ################################################################################
 
 EOF

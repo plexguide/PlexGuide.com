@@ -23,6 +23,10 @@ if [[ "$token" == "exit" || "$token" == "Exit" || "$token" == "e" || "$token" ==
 curl --request POST --data "code=$token&client_id=$clone_clientid&client_secret=$clone_secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /pg/var/drives/${token_deploy}/token.info
 
 drives_rclone_builder
+
+#rclone lsd --config /pg/var/rclone/pg.conf ${token_deploy}:
+
+
 common_message "💾  $token_deploy Saved - Ensure to (re)deploy the token!"
 common_confirm
 
