@@ -13,7 +13,7 @@ common_main /pg/var/drives/gd/password.2 NOT-SET gpassword2
 
 #gdrive Interface
 if [[ "$gpassword1" == "NOT-SET" || "$gpassword2" == "NOT-SET" ]]; then
-  gpassdisplay="SET"; else gpassdisplay="NOT-SET"; fi
+  gpassdisplay="NOT-SET"; else gpassdisplay="SET"; fi
 
 if [[ "$gdcryptinfo" == "YES" ]]; then
 pw_menu_option="
