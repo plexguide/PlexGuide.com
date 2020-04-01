@@ -5,7 +5,7 @@ drives_menu_start_setup
 common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
-[1] Utilizing Encryption: [$gcryptcheck]
+[1] Utilizing Encryption: [$gdcryptinfo]
 [2] Client ID           : [$ci_menu]
 [3] Secret              : [$gc_menu]"$pw_menu_option"
 ------------------------------------------------------------------------------
