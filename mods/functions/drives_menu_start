@@ -5,7 +5,7 @@ drives_menu_start_setup
 common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
-[1] Google Drive        : [NOT-SET]
+[1] Google Drive        : [$gdtokeninfo]
 [2] Share  Drive(s)     : [NOT-SET] [Total: 0]
 [3] Uploader            : [NOT-SET] $showtype
 ------------------------------------------------------------------------------
