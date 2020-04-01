@@ -16,7 +16,7 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 common_number
 
 case $typed in
-    1 ) drives_menu_start && exit ;;
+    1 ) gdrives_gdrive_crypt_menu && exit ;;
     2 ) drives_gdrive_clientid && exit ;;
     3 ) drives_gdrive_secret && exit ;;
     d ) token_deploy=gd && drives_token_deploy && exit ;;
