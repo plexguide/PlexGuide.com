@@ -8,9 +8,8 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 [1] Utilizing Encryption: [$gcryptcheck]
 [2] Client ID           : [$ci_menu]
 [3] Secret              : [$gc_menu]"$pw_menu_option"
-[4] Deploy GDrive Token : [NOT-SET]
 ------------------------------------------------------------------------------
-[D] Deploy Drives
+[D] Deploy GDrive Token : [$gdtokeninfo]
 [O] Options
 ------------------------------------------------------------------------------
 [Z] Exit Interface
@@ -21,7 +20,8 @@ case $typed in
     1 ) drives_menu_start && exit ;;
     2 ) drives_gdrive_clientid && exit ;;
     3 ) drives_gdrive_secret && exit ;;
-    4 ) token_deploy=gd && drives_token_deploy && exit ;;
+    d ) token_deploy=gd && drives_token_deploy && exit ;;
+    D ) token_deploy=gd && drives_token_deploy && exit ;;
     z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
     * ) drives_menu_start && exit ;;
