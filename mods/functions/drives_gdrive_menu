@@ -10,7 +10,6 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 [3] Secret              : [$gc_menu]"$pw_menu_option"
 ------------------------------------------------------------------------------
 [D] Deploy GDrive Token : [$gdtokeninfo]
-[O] Options
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
@@ -24,7 +23,7 @@ case $typed in
     D ) token_deploy=gd && drives_token_deploy && exit ;;
     z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
-    * ) drives_menu_start && exit ;;
+    * ) drives_gdrive_menu && exit ;;
 esac
 
 }
