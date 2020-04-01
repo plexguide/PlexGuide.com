@@ -24,7 +24,9 @@ curl --request POST --data "code=$token&client_id=$clone_clientid&client_secret=
 
 drives_rclone_builder
 
-#rclone lsd --config /pg/var/rclone/pg.conf ${token_deploy}:
+common_header "⌛ TESTING: ${token_deploy}"
+rclone lsd --config /pg/var/rclone/pg.conf ${token_deploy}:
+rclone mkdir --config /pg/var/rclone/pg.conf ${token_deploy}:/plexguide.com
 
 
 common_message "💾  $token_deploy Saved - Ensure to (re)deploy the token!"
