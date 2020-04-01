@@ -17,7 +17,7 @@ if [[ "$gpassword1" == "NOT-SET" || "$gpassword2" == "NOT-SET" ]]; then
 
 if [[ "$gdcryptinfo" == "YES" ]]; then
 pw_menu_option="
-[4] Passwords           :$gpassdisplay" && gmenu_number=4; else pw_menu_option="" && gmenu_number=4; fi
+[4] Passwords           :  [$gpassdisplay]" && gmenu_number=4; else pw_menu_option="" && gmenu_number=4; fi
 
 if [[ $(cat /pg/var/drives/gd/gd.clientid) == "NOT-SET" ]]; then ci_menu="NOT-SET"
 else ci_menu="SET"; fi
