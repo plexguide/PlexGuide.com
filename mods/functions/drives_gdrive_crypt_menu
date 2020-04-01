@@ -19,7 +19,7 @@ case $typed in
     n ) echo "NO" > /pg/var/drives/gd/gd.crypt && drives_gdrive_menu && exit ;;
     z ) drives_gdrive_menu && exit ;;
     Z ) drives_gdrive_menu && exit ;;
-    * ) drives_gdrive_crypt_menu && exit ;;
+    * ) gdrives_gdrive_crypt_menu  && exit ;;
 esac
 
 }
