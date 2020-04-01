@@ -1,7 +1,7 @@
 drives_token_deploy () {
 
-clone_clientid=$(echo /pg/var/drives/${token_deploy}/${token_deploy}.clientid)
-clone_secret=$(echo /pg/var/drives/${token_deploy}/${token_deploy}.secret)
+clone_clientid=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.clientid)
+clone_secret=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.secret)
 
 common_message "🚀  Drives - $token_deploy Authentication" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
