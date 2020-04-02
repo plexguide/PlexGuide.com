@@ -6,8 +6,7 @@ drives_menu_start_setup
 ansible-playbook /pg/mods/drives/ymls/remove.yml
 
 if [[ "$gdtokeninfo" == "VALID" ]]; then
-driveselect=gd
-drives_deploy_mounts
+drives_deploy_mounts gd
 fi
 if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then drives_deploy_mounts gc; fi
 

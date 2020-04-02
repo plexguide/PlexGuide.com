@@ -14,6 +14,10 @@ ExecStart=/usr/bin/rclone mount {{drive}}: /pg/{{drive}} \
 --dir-cache-time={{dir_cache_time}}m \
 --vfs-cache-mode="writes" \
 --vfs-cache-max-age={{vfs_cache_max_age}}h \
+--vfs-cache-max-size={{vfs_cache_max_size}} \
+--vfs-read-chunk-size-limit={{vfs_read_chunk_size_limit}}M \
+--vfs-read-chunk-size={{vfs_read_chunk_size}}M \
+--buffer-size={{buffer_size}}M \
 --allow-non-empty
 
 ExecStop=/bin/fusermount -uz /pg/{{drive}} > /dev/null
