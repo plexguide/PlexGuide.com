@@ -2,6 +2,6 @@ drives_deploy_mounts() {
 
 drives_menu_start_setup
 
-ansible-playbook /pg/mods/drives/ymls/mount.yml -e "dir_cache_time=$dir_cache_time"
+ansible-playbook /pg/mods/drives/ymls/mount.yml -e "dir_cache_time=$dir_cache_time drive=gd"
 
 }
