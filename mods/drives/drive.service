@@ -11,6 +11,11 @@ ExecStart=/usr/bin/rclone mount {{drive}}: /pg/{{drive}} \
 --timeout=1h \
 --tpslimit=10 \
 --drive-skip-gdocs \
+#--vfs-cache-max-age="{vfs_cache_max_age}h" \
+#--vfs-cache-max-size="${vfs-cache-max-size}" \
+#--vfs-read-chunk-size-limit="${vfs_read_chunk_size_limit}M" \
+#--vfs-read-chunk-size="${vfs_read_chunk_size}M" \
+#--buffer-size="${buffer_size}M" \
 --dir-cache-time={{dir_cache_time}}m \
 --vfs-cache-mode="writes" \
 --allow-non-empty
