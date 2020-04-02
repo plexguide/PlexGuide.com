@@ -22,7 +22,7 @@ common_confirm && drives_menu_start && exit; fi
 
 case $typed in
     1 ) drives_gdrive_menu && exit ;;
-    2 ) drives_providers  && drives_menu_start && exit ;;
+    2 ) drives_menu_start ;;
     3 ) drives_menu_storage_method && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
