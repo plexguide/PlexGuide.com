@@ -1,4 +1,6 @@
 drives_deploy_mounts() {
 
-ansible-playbook /pg/mods/drives/ymls/mount.yml
+ansible-playbook /pg/mods/drives/ymls/mount.yml -e "\
+  drive=$driveselect"
+
 }
