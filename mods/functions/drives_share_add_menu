@@ -2,22 +2,27 @@ drives_share_menu () {
 
 drives_menu_start_setup
 
-common_message "🚀  Shared Drives - Mount Transport Data Interface" "
-💾 Active Drives: 0 of 0 <NOTE: NOT WORKING YET>
+temp_path="/pg/var/drives/gd/gd.clientid"
+priorentry=$(cat $temp_path)
 
-[A] Add    | An existing Share Drive from PG
-[M] Manage | Ones that have been added to PG
-[R] Remove | An existing Share Drive from PG | Does not delete it!
-[Z] Exit
+common_message "🚀 PlexGuide | ADD ~ ShareDrive Interface" "
+💾 No Share Drives on your Google Account? Create it first!
+
+NOTE: Does NOT have to be the name of your exact Share Drive, but recommended
+for better tracking. Must be a whole word, lowercase, and must be between
+2 - 14 letters in length. DO NOT USE SPECIAL CHARACTERS; may cause
+failure on your end!
+
+[Z] To Cancel and Go Back
 "
-common_number
 
-case $typed in
-    A ) drives_share_add_menu && exit ;;
-    a ) drives_share_add_menu && exit ;;
-    z ) drives_menu_start && exit ;;
-    Z ) drives_menu_start && exit ;;
-    * ) drives_share_menu && exit ;;
-esac
+read -p "↘️  Name of Existing ShareDrive? | Press [ENTER]: " typed < /dev/tty
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_gdrive_menu && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_gdrive_clientid && exit; fi
+
+echo $typed > $temp_path
+common_message "💾  $typed - Client ID Set!"
+common_confirm && drives_gdrive_menu && exit
 
 }
