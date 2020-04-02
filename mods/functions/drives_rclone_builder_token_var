@@ -8,5 +8,5 @@ rczone=$(date +"%:z")
 final=$(echo "${rcdate}T${rctime}${rczone}")
 
 rctimewoot=$(date +"%H:%M" --date="$givenDate 60 minutes")
-echo $rcwoot > /pg/var/drives/temp.rc
+echo $rctimewoot > /pg/var/drives/temp.rc
 }
