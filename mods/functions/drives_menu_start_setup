@@ -4,6 +4,7 @@ mkdir -p /pg/var/drives/gd/ /pg/var/rclone
 
 #startsetup
 badtoken=0
+tokengenerated=0
 
 #token variables
 common_main /pg/var/drives/temp.rc NOT-SET rc_temp
