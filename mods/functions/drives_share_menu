@@ -4,10 +4,12 @@ drives_menu_start_setup
 
 common_message "🚀  Shared Drives - Mount Transport Data Interface" "
 
-NONE-SET
+💾 Active Drives: 0 of 0
 
-------------------------------------------------------------------------------
-[C] Create a ShareDrive  [D] Delete a ShareDrive  [Z] Exit Interface
+[C] Create
+[R] Remove
+[M] Manage
+[Z] Exit Interface
 "
 common_number
 
