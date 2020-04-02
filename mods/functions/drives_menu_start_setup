@@ -2,6 +2,10 @@ drives_menu_start_setup () {
 
 mkdir -p /pg/var/drives/gd/ /pg/var/rclone
 
+#token variables
+common_main /pg/vars/drives/rc.temp NOT-SET rc_temp
+common_main /pg/var/drives/temp.token NOT-SET temp_token
+
 #primary variables
 common_main /pg/var/drives/storage.method READ-ONLY storage_method
 

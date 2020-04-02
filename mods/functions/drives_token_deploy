@@ -3,6 +3,14 @@ drives_token_deploy () {
 clone_clientid=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.clientid)
 clone_secret=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.secret)
 
+rctime_now=$(date +"%H:%M" --date="$givenDate 60 minutes")
+difference=$(( $(date -d "$rc_temp" "+%s") - $(date -d "$rctime_now" "+%s") ))
+ytemp=$(echo "scale=2 ; $difference/3600" | bc)
+xtemp=$(echo "-100 * $ytemp" | bc -l)
+f_token_check=$(echo ${xtemp%.*})
+
+if [[ "$f_token_check" -lt "84" ]]; then
+
 common_message "🚀  Drives - $token_deploy Authentication" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
@@ -20,6 +28,10 @@ into the browser, it will just work!
 "
 
 read -p '↘️  Token | PRESS [ENTER]: ' token </dev/tty
+echo $temp_token > /pg/var/drives/temp.token
+else
+  token=$(cat /pg/var/drives/temp.token); fi
+
 if [[ "$token" == "exit" || "$token" == "Exit" || "$token" == "e" || "$token" == "e" || "$token" == "Z" ]]; then drives_gdrive_menu && exit; fi
 curl --request POST --data "code=$token&client_id=$clone_clientid&client_secret=$clone_secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /pg/var/drives/${token_deploy}/token.info
 
