@@ -13,11 +13,11 @@ common_message "🚀  Shared Drives - Mount Transport Data Interface" "
 common_number
 
 case $typed in
-    A ) gdrives_gdrive_crypt_menu && exit ;;
-    a ) drives_gdrive_clientid && exit ;;
+    A ) drives_share_add_menu && exit ;;
+    a ) drives_share_add_menu && exit ;;
     z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
-    * ) drives_gdrive_menu && exit ;;
+    * ) drives_share_menu && exit ;;
 esac
 
 }
