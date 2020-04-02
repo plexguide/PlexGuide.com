@@ -1,0 +1,24 @@
+drives_share_menu () {
+
+drives_menu_start_setup
+
+common_message "🚀  Shared Drives - Mount Transport Data Interface" "
+
+NONE-SET
+
+------------------------------------------------------------------------------
+[C] Create a ShareDrive  [D] Delete a ShareDrive  [Z] Exit Interface
+"
+common_number
+
+case $typed in
+    C ) gdrives_gdrive_crypt_menu && exit ;;
+    c ) drives_gdrive_clientid && exit ;;
+    d ) drives_gdrive_secret && exit ;;
+    d ) drives_gdrive_menu_password && exit ;;
+    z ) drives_menu_start && exit ;;
+    Z ) drives_menu_start && exit ;;
+    * ) drives_gdrive_menu && exit ;;
+esac
+
+}
