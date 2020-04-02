@@ -1,6 +1,6 @@
 drives_menu_start_setup () {
 
-mkdir -p /pg/var/drives/gd/
+mkdir -p /pg/var/drives/gd/ /pg/var/rclone
 
 #primary variables
 common_main /pg/var/drives/storage.method NOT-SET storage_method
@@ -13,6 +13,14 @@ common_main /pg/var/drives/gd/gd.token NOT-CONFIGURED gdtokeninfo
 common_main /pg/var/drives/gd/gd.crypt NO gdcryptinfo
 common_main /pg/var/drives/gd/password.1 NOT-SET gpassword1
 common_main /pg/var/drives/gd/password.2 NOT-SET gpassword2
+
+#rclone variables
+common_main /pg/var/rclone/dir_cache_time 5 dir_cache_time #minutes - dct
+common_main /pg/var/rclone/drive_chunk_size 128 drive_chunk_size #M - dcs
+common_main /pg/var/rclone/vfs-read-chunk-size 64 drive_chunk_size #M - rcs
+common_main /pg/var/rclone/vfs-read-chunk-size-limit 1024 vfs-read-chunk-size-limit #M - rcsl
+common_main /pg/var/rclone/buffer-size 16 buffer-size #M - bs
+common_main /pg/var/rclone/vfs-cache-max-age 1 vfs-cache-max-age #h - cma
 
 #gdrive Interface
 if [[ "$gpassword1" == "NOT-SET" || "$gpassword2" == "NOT-SET" ]]; then

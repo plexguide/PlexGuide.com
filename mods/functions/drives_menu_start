@@ -11,6 +11,7 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 ------------------------------------------------------------------------------
 [D] Deploy Drives
 [O] Options
+[R] RClone Settings
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
