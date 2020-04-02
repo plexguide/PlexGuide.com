@@ -2,7 +2,7 @@
 #
 # Title:      PlexGuide (PG DNS chnager)
 # Author(s):  Admin9705 - Deiteq
-# URL:        https://plexguide.com - http://github.pgblitz.com
+# URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
 

@@ -2,7 +2,7 @@
 #
 # Title:      PlexGuide (Reference Title File)
 # Author(s):  Admin9705 - Deiteq
-# URL:        https://plexguide.com - http://github.pgblitz.com
+# URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
 ################################################################################
 pgpath=$(cat /pg/var/hd.path)
