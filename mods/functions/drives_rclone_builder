@@ -12,7 +12,7 @@ cat <<- EOF > "$rclonepath"
 
 EOF
 
-# Delete Me - Make sure to put an if gdrive is active
+if [[ "$clientid_check" == "SET" && "$secret_check" == "SET" ]]; then
 drives_rclone_builder_token_var gd
 cat <<- EOF >> "$rclonepath"
 # GOOGLE DRIVE #################################################################
@@ -25,8 +25,9 @@ token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${re
 ################################################################################
 
 EOF
+fi
 
-if [[ "$gdcryptinfo" == "YES" ]]; then
+if [[ "$gdcryptinfo" == "YES" && "$clientid_check" == "SET" && "$secret_check" == "SET" ]]; then
 cat <<- EOF >> "$rclonepath"
 # GOOGLE DRIVE - CRYPT #########################################################
 [gc]
