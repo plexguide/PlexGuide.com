@@ -1,0 +1,29 @@
+apps_plugins_yml() {
+
+pluginsyml="/pg/mods/apps/plugins.yml"
+rm -rf "$pluginsyml"
+
+cat <<- EOF > "$pluginsyml"
+- name: Creating scripts and plugins paths
+  file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
+  with_items:
+    - '/pg/data/{{pgrole}}/scripts'
+    - '/pg/data/{{pgrole}}/plugins'
+
+- name: 'Check if Templates Exist for {{pgrole}}'
+  stat:
+    path: './templates/{{pgrole}}'
+  register: copycheck
+
+- name: 'Copying Scripts & Plugins'
+  copy:
+    src: ./templates/{{pgrole}}
+    dest: /pg/data
+    directory_mode: yes
+    force: yes
+    owner: '1000'
+    group: '1000'
+    mode: 0775
+  when: copycheck.stat.exists
+EOF
+}
