@@ -15,8 +15,8 @@ common_number
 
 case $typed in
     1 ) echo "Basic" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
-    2 ) echo "PGBlitz" > /pg/var/drives/storage.methoddrives_providers && drives_menu_start && exit ;;
-    3 ) echo "Local" > /pg/var/drives/storage.methoddrives_providers && drives_menu_start && exit ;;
+    2 ) echo "PGBlitz" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
+    3 ) echo "Local" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
     * ) drives_menu_storage_method && exit ;;
