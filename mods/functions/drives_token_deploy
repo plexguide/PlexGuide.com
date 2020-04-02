@@ -12,7 +12,7 @@ echo "$xtemp" > /pg/var/drives/debug.xtemp
 f_token_check=$(echo ${xtemp%.*})
 echo "$xtemp" > /pg/var/drives/debug.ftoken; fi
 
-if [[ "$f_token_check" -lt "84" || "$temp_token" == "NOT-SET" ]]; then
+if [[ "$f_token_check" -gt "83" || "$temp_token" == "NOT-SET" ]]; then
 
 common_message "🚀  Drives - $token_deploy Authentication" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
