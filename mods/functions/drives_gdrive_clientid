@@ -16,7 +16,7 @@ if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_gdrive_menu && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_gdrive_clientid && exit; fi
 
 echo $typed > $temp_path
-"NOT-SET" > /pg/var/drives/temp.rc
+echo "NOT-SET" > /pg/var/drives/temp.rc
 common_message "💾  $typed - Client ID Set!"
 common_confirm && drives_gdrive_menu && exit
 
