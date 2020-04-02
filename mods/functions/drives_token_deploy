@@ -8,8 +8,9 @@ rctime_now=$(date +"%H:%M" --date="$givenDate 60 minutes")
 difference=$(( $(date -d "$rc_temp" "+%s") - $(date -d "$rctime_now" "+%s") ))
 ytemp=$(echo "scale=2 ; $difference/3600" | bc)
 xtemp=$(echo "-100 * $ytemp" | bc -l)
-echo "xtemp" > /pg/var/drives/debug.xtemp
-f_token_check=$(echo ${xtemp%.*}); fi
+echo "$xtemp" > /pg/var/drives/debug.xtemp
+f_token_check=$(echo ${xtemp%.*})
+echo "$xtemp" > /pg/var/drives/debug.ftoken; fi
 
 if [[ "$f_token_check" -lt "84" || "$temp_token" == "NOT-SET" ]]; then
 
@@ -53,7 +54,7 @@ fi
 
 ################################################################################
 if [[ "$gdcryptinfo" == "YES" ]]; then
-common_header "⌛ TESTING: ${token_deploy} token encryption"
+common_message "⌛ TESTING: ${token_deploy} token encryption"
 rclone mkdir --config /pg/var/rclone/pg.conf gd:/crypt
 rclone mkdir --config /pg/var/rclone/pg.conf gc:/plexguide.com
 gc_check=$(rclone lsd --config /pg/var/rclone/pg.conf gc: | grep "plexguide.com")
