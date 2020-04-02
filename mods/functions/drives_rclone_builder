@@ -14,7 +14,7 @@ EOF
 
 if [[ "$ci_menu" == "SET" && "$gc_menu" == "SET" ]]; then
 drives_rclone_builder_token_var gd
-echo "" >> "$rclonepath"
+# echo "" >> "$rclonepath"
 cat <<- EOF >> "$rclonepath"
 # GOOGLE DRIVE #################################################################
 [gd]
@@ -28,7 +28,7 @@ EOF
 fi
 
 if [[ "$gdcryptinfo" == "YES" && "$ci_menu" == "SET" && "$gc_menu" == "SET" ]]; then
-echo "" >> "$rclonepath"
+# echo "" >> "$rclonepath"
 cat <<- EOF >> "$rclonepath"
 # GOOGLE DRIVE - CRYPT #########################################################
 [gc]
