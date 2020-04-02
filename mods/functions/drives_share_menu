@@ -3,7 +3,6 @@ drives_share_menu () {
 drives_menu_start_setup
 
 common_message "🚀  Shared Drives - Mount Transport Data Interface" "
-
 💾 Active Drives: 0 of 0
 
 [C] Create
