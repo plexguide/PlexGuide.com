@@ -12,7 +12,7 @@ cat <<- EOF > "$rclonepath"
 
 EOF
 
-if [[ "$clientid_check" == "SET" && "$secret_check" == "SET" ]]; then
+if [[ "$ci_menu" == "SET" && "$gc_menu" == "SET" ]]; then
 drives_rclone_builder_token_var gd
 cat <<- EOF >> "$rclonepath"
 # GOOGLE DRIVE #################################################################
@@ -27,7 +27,7 @@ token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${re
 EOF
 fi
 
-if [[ "$gdcryptinfo" == "YES" && "$clientid_check" == "SET" && "$secret_check" == "SET" ]]; then
+if [[ "$gdcryptinfo" == "YES" && "$ci_menu" == "SET" && "$gc_menu" == "SET" ]]; then
 cat <<- EOF >> "$rclonepath"
 # GOOGLE DRIVE - CRYPT #########################################################
 [gc]
