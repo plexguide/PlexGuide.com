@@ -13,8 +13,6 @@ common_message "🚀  Drives - Storage Method" "
 "
 common_number
 
-common_confirm && drives_menu_start && exit; fi
-
 case $typed in
     1 ) echo "Basic" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     2 ) echo "PGBlitz" > /pg/var/drives/storage.methoddrives_providers && drives_menu_start && exit ;;
