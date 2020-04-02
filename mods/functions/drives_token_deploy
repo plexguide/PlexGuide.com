@@ -69,6 +69,8 @@ else
 common_message "💾  SUCCESS: The ${token_deploy} encryption is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token
 fi; fi
 ################################################################################
+echo $tokengenerated
+echo $badtoken
 common_confirm
 if [[ "$token_deploy" == "gd" ]]; then drives_gdrive_menu && exit; fi
 
