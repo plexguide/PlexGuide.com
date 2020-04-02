@@ -35,9 +35,8 @@ into the browser, it will just work!
 read -p '↘️  Token | PRESS [ENTER]: ' token </dev/tty
 echo $token > /pg/var/drives/temp.token
 if [[ "$token" == "exit" || "$token" == "Exit" || "$token" == "e" || "$token" == "e" || "$token" == "Z" ]]; then drives_gdrive_menu && exit; fi
-# echo "code=$token&client_id=$clone_clientid&client_secret=$clone_secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" > /pg/var/rclone/debug.token
 curl --request POST --data "code=$token&client_id=$clone_clientid&client_secret=$clone_secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /pg/var/drives/${token_deploy}/token.info
-fi
+else; tokengenerated=1; fi
 
 drives_rclone_builder
 
@@ -51,6 +50,9 @@ common_message "💾  FAILED:  Unable to read the ~ ${token_deploy} drive!"; ech
 else
 common_message "💾  SUCCESS: The ${token_deploy} is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token
 fi
+
+if [[ "$tokengenerated" == "1" && "$badtoken" == "1 " ]]; then echo "NOT-SET" > /pg/var/drives/temp.rc;
+common_message "💾  AUTO-TOKEN FAILED: Regenrate the Token Again!" && common_confirm && drives_token_deploy && exit; fi
 ################################################################################
 
 ################################################################################

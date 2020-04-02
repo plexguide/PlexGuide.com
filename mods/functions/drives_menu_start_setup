@@ -2,6 +2,9 @@ drives_menu_start_setup () {
 
 mkdir -p /pg/var/drives/gd/ /pg/var/rclone
 
+#startsetup
+badtoken=0
+
 #token variables
 common_main /pg/var/drives/temp.rc NOT-SET rc_temp
 common_main /pg/var/drives/temp.token NOT-SET temp_token
