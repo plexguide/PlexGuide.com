@@ -8,9 +8,5 @@ ansible-playbook /pg/mods/drives/remove.yml
 if [[ "$gdtokeninfo" == "VALID" ]]; then drives_deploy_mounts gd; fi
 if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then drives_deploy_mounts gc; fi
 
-esac
-
-
 drives_menu_start && exit
-
 }
