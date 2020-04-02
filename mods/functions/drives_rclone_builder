@@ -26,4 +26,18 @@ token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${re
 
 EOF
 
+if [[ "$gdcryptinfo" == "YES" ]]; then
+cat <<- EOF >> "$rclonepath"
+# GOOGLE DRIVE - CRYPT #########################################################
+[gc]
+type = crypt
+remote = gd:/encrypt
+filename_encryption = standard
+directory_name_encryption = true
+password = $gpassword1
+password2 = $gpasswor2
+################################################################################
+
+EOF
+fi
 }
