@@ -53,9 +53,9 @@ fi
 
 if [[ "$tokengenerated" == "1" && "$badtoken" == "1 " ]]; then echo "NOT-SET" > /pg/var/drives/temp.rc;
 common_message "💾  AUTO-TOKEN FAILED: Regenrate the Token Again!" && common_confirm && drives_token_deploy && exit; fi
-################################################################################
+#################################################################################
 
-################################################################################
+#################################################################################
 if [[ "$gdcryptinfo" == "YES" ]]; then
 common_message "⌛ TESTING: ${token_deploy} token encryption"
 rclone mkdir --config /pg/var/rclone/pg.conf gd:/crypt
