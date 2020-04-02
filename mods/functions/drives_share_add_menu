@@ -20,7 +20,7 @@ read -p "↘️  Name an Existing ShareDrive | Press [ENTER]: " typed < /dev/tty
 
 lettercount=$(echo $typed | wc -c)
 if [[ "$typed" -gt "15" || "$typed" -lt "3" ]]; then
-common_message "⛔️  WARNING: Is less than 2 or more than 14 characters! Try Again!" && common_confirm && drives_share_add_menu && exit
+common_message "⛔️  WARNING: Is less than 2 or more than 14 characters! Try Again!" && common_confirm && drives_share_add_menu && exit; fi
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_gdrive_menu && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_gdrive_clientid && exit; fi
