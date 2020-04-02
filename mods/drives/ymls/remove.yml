@@ -19,6 +19,7 @@
       - { name: pgblitz.service }
       - { name: plexdrive.service }
       - { name: pgunion.service }
+      - { name: gd.service } 
   tasks:
     - name: Stop All Docker Containers
       shell: docker stop $(docker ps -a -q)
