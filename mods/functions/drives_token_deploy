@@ -40,7 +40,7 @@ fi
 ################################################################################
 if [[ "$gdcryptinfo" == "YES" ]]; then
 common_header "⌛ TESTING: ${token_deploy} token encryption"
-rclone mkdir --config /pg/var/rclone/pg.conf gd:/encrypt
+rclone mkdir --config /pg/var/rclone/pg.conf gd:/crypt
 rclone mkdir --config /pg/var/rclone/pg.conf gc:/plexguide.com
 gc_check=$(rclone lsd --config /pg/var/rclone/pg.conf gc: | grep "plexguide.com")
 
@@ -52,6 +52,6 @@ fi; fi
 ################################################################################
 
 common_confirm
-if [[ "$token_deploy" == "gd" ]]; then drives_deploy_gmod && exit; fi
+if [[ "$token_deploy" == "gd" ]]; then drives_drives_menu && exit; fi
 
 }
