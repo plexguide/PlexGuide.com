@@ -5,7 +5,9 @@ drives_menu_start_setup
 common_header "⌛ DEPLOYMENT: Service Cleanup & Stopping Docker Containers"; sleep 2
 ansible-playbook /pg/mods/drives/ymls/remove.yml
 
-if [[ "$gdtokeninfo" == "VALID" ]]; then drives_deploy_mounts gd; fi
+if [[ "$gdtokeninfo" == "VALID" ]]; then
+drives_deploy_mounts gd
+fi
 if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then drives_deploy_mounts gc; fi
 
 drives_menu_start && exit
