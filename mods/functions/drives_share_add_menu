@@ -30,6 +30,12 @@ common_message "TYPED: $typed" && common_message "⛔️  WARNING: Is less than 
 common_confirm && drives_share_add_menu && exit; fi
 
 common_message "💾  $typed - SD added to PG! Go Configure it!"
+
+# Sort List
+echo "$typed" > /pg/var/drives/shared/pg.list
+temp57=$(cat /pg/var/drives/shared/pg.list | sort )
+echo "$temp57" > /pg/var/drives/shared/pg.list
+
 common_confirm && drives_share_menu && exit
 
 }
