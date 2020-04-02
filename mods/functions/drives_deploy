@@ -8,7 +8,7 @@ ansible-playbook /pg/mods/drives/ymls/remove.yml
 if [[ "$gdtokeninfo" == "VALID" ]]; then
 common_header "⌛ DEPLOYMENT: GD Mount"; sleep 1.5; drives_deploy_mounts gd; fi
 
-if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then drives_deploy_mounts gc
+if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then 
 common_header "⌛ DEPLOYMENT: GD Crypt Mount"; sleep 1.5; deploy_deploy_mounts gc; fi
 
 common_confirm
