@@ -29,6 +29,8 @@ fi
 
 if [[ "$gdcryptinfo" == "YES" && "$ci_menu" == "SET" && "$gc_menu" == "SET" ]]; then
 # echo "" >> "$rclonepath"
+enc_pass1=$(rclone obscure $gpassword1)
+enc_pass2=$(rclone obscure $gpassword2)
 cat <<- EOF >> "$rclonepath"
 # GOOGLE DRIVE - CRYPT #########################################################
 [gc]
@@ -36,8 +38,8 @@ type = crypt
 remote = gd:/encrypt
 filename_encryption = standard
 directory_name_encryption = true
-password = $gpassword1
-password2 = $gpassword2
+password = $enc_pass1
+password2 = $enc_pass2
 ################################################################################
 EOF
 fi
