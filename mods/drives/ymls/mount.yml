@@ -1,0 +1,31 @@
+#!/bin/bash
+# URL:        https://plexguide.com - http://github.plexguide.com
+# GNU:        General Public License v3.0
+################################################################################
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: "Creating Folder - /pg/{{drive}}"
+      file: 'path={{item}} state=directory mode=0775 owner=1000 group=1000'
+      with_items:
+        - "/pg/{{drive}}"
+
+    #- name: Register Agent
+    #  shell: 'cat /pg/var/uagent'
+    #  register: uagent
+
+    - name: "Install - Service {{drive}}"
+      template:
+        src: "/pg/pgclone/mounts/drive.service"
+        dest: "/etc/systemd/system/{{drive}}.service"
+        force: yes
+      ignore_errors: yes
+
+    - name: "Reload Service - {{drive}}"
+      systemd:
+        daemon_reload: yes
+        enabled: yes
+        state: reloaded
+        name: "{{drive}}"
