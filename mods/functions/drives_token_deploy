@@ -5,18 +5,7 @@ drives_menu_start_setup
 clone_clientid=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.clientid)
 clone_secret=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.secret)
 
-if [[ "$temp_token" != "NOT-SET" ]]; then
-rctime_now=$(date +"%H:%M" --date="$givenDate 60 minutes")
-difference=$(( $(date -d "$rc_temp" "+%s") - $(date -d "$rctime_now" "+%s") ))
-ytemp=$(echo "scale=2 ; $difference/3600" | bc)
-xtemp=$(echo "-100 * $ytemp" | bc -l)
-echo "$xtemp" > /pg/var/drives/debug.xtemp
-f_token_check=$(echo ${xtemp%.*})
-echo "$xtemp" > /pg/var/drives/debug.ftoken; fi
-
-tokengenerated=1
 if [[ "$f_token_check" -gt "83" || "$temp_token" == "NOT-SET" ]]; then
-tokengenerated=0
 common_message "🚀  Drives - $token_deploy Authentication" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
@@ -47,17 +36,8 @@ rclone mkdir --config /pg/var/rclone/pg.conf ${token_deploy}:/plexguide.com
 tokenpgcheck=$(rclone lsd --config /pg/var/rclone/pg.conf ${token_deploy}: | grep "plexguide.com")
 
 if [[ "$tokenpgcheck" == "" ]]; then
-common_message "💾  FAILED:  Unable to read the ~ ${token_deploy} drive!"; echo "FAILED" > /pg/var/drives/${token_deploy}/${token_deploy}.token
-badtoken=1
-else
-common_message "💾  SUCCESS: The ${token_deploy} is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token
-fi
-
-echo WOOT
-echo $tokengenerated
-echo $badtoken
-if [[ "$tokengenerated" == "1" && "$badtoken" == "1 " ]]; then echo "NOT-SET" > /pg/var/drives/temp.rc;
-common_message "💾  AUTO-TOKEN FAILED: Regenrate the Token Again!" && common_confirm && drives_token_deploy && exit; fi
+common_message "💾  FAILED:  Unable to read the ~ ${token_deploy} drive!"; echo "FAILED" > /pg/var/drives/${token_deploy}/${token_deploy}.token; else
+common_message "💾  SUCCESS: The ${token_deploy} is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token; fi
 #################################################################################
 
 #################################################################################
