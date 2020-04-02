@@ -10,4 +10,7 @@ if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then drives_deplo
 
 esac
 
+
+drives_menu_start && exit
+
 }

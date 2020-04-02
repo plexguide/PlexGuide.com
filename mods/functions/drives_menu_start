@@ -25,6 +25,8 @@ case $typed in
     1 ) drives_gdrive_menu && exit ;;
     2 ) drives_menu_start ;;
     3 ) drives_menu_storage_method && exit ;;
+    d ) drives_deploy && exit ;;
+    D ) drives_deploy && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) drives_menu_start && exit ;;
