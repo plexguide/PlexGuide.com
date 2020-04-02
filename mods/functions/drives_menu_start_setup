@@ -1,6 +1,10 @@
 drives_menu_start_setup () {
 
+# folders created
 mkdir -p /pg/var/drives/gd/ /pg/var/rclone /pg/var/drives/shared
+
+# make sure path exists
+touch /pg/var/drives/shared/pg.list
 
 #token variables
 common_main /pg/var/drives/temp.rc NOT-SET rc_temp
