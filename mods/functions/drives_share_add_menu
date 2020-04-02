@@ -8,15 +8,15 @@ priorentry=$(cat $temp_path)
 common_message "🚀 PlexGuide | ADD ~ ShareDrive Interface" "
 💾 No Share Drives on your Google Account? Create it first!
 
-NOTE: Does NOT have to be the name of your exact Share Drive, but recommended
+NOTE: Does NOT have to be the name of your exact ShareDrive, but recommended
 for better tracking. Must be a whole word, lowercase, and must be between
-2 - 14 letters in length. DO NOT USE SPECIAL CHARACTERS; may cause
-failure on your end!
+2 - 14 letters in length. DO NOT USE SPECIAL CHARACTERS; may cause failure
+on your end!
 
 [Z] To Cancel and Go Back
 "
 
-read -p "↘️  Name of Existing ShareDrive? | Press [ENTER]: " typed < /dev/tty
+read -p "↘️  Name an Existing ShareDrive | Press [ENTER]: " typed < /dev/tty
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_gdrive_menu && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_gdrive_clientid && exit; fi
