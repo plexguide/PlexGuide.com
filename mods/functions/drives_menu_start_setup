@@ -15,8 +15,8 @@ common_main /pg/var/drives/gd/password.1 NOT-SET gpassword1
 common_main /pg/var/drives/gd/password.2 NOT-SET gpassword2
 
 #rclone variables
-common_main /pg/var/rclone/dir_cache_time 5 dir_cache_time #minutes - dct
-common_main /pg/var/rclone/drive_chunk_size 128 drive_chunk_size #M - dcs
+common_main /pg/var/rclone/dir-cache_time 5 dir_cache_time #minutes - dct
+common_main /pg/var/rclone/drive-chunk-size 128 drive_chunk_size #M - dcs
 common_main /pg/var/rclone/vfs-read-chunk-size 64 drive_chunk_size #M - rcs
 common_main /pg/var/rclone/vfs-read-chunk-size-limit 1024 vfs-read-chunk-size-limit #M - rcsl
 common_main /pg/var/rclone/buffer-size 16 buffer-size #M - bs
