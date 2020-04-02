@@ -18,16 +18,18 @@ on your end!
 
 read -p "↘️  Name an Existing ShareDrive | Press [ENTER]: " typed < /dev/tty
 
+typed=$(echo $typed | awk '{print $1}')
+typed=$(echo "$typed" | awk '{print tolower($0)}'
 lettercount=$(echo $typed | wc -c)
-if [[ "$typed" -gt "15" || "$typed" -lt "3" ]]; then
-echo "TYPED: $typed" && common_message "⛔️  WARNING: Is less than 2 or more than 14 characters! Try Again!"
-common_confirm && drives_share_add_menu && exit; fi
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_gdrive_menu && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_gdrive_clientid && exit; fi
 
-echo $typed > $temp_path
-common_message "💾  $typed - Client ID Set!"
+if [[ "$typed" -gt "15" || "$typed" -lt "3" ]]; then
+common_message "TYPED: $typed" && common_message "⛔️  WARNING: Is less than 2 or more than 14 characters! Try Again!"
+common_confirm && drives_share_add_menu && exit; fi
+
+common_message "💾  $typed - Share Drive Added to PG! Now Go Configure it!"
 common_confirm && drives_gdrive_menu && exit
 
 }
