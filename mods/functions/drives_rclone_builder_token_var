@@ -6,5 +6,5 @@ rcdate=$(date +'%Y-%m-%d')
 rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
 rczone=$(date +"%:z")
 final=$(echo "${rcdate}T${rctime}${rczone}")
-echo $rctime >> /pg/vars/drives/rc.temp
+echo $rctime >> /pg/vars/drives/temp.rc
 }
