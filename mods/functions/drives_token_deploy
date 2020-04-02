@@ -10,7 +10,7 @@ ytemp=$(echo "scale=2 ; $difference/3600" | bc)
 xtemp=$(echo "-100 * $ytemp" | bc -l)
 f_token_check=$(echo ${xtemp%.*}); fi
 
-if [[ "$f_token_check" -lt "84" || "$temp_token" == "NOT-SET"]]; then
+if [[ "$f_token_check" -lt "84" || "$temp_token" == "NOT-SET" ]]; then
 
 common_message "🚀  Drives - $token_deploy Authentication" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
