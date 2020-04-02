@@ -3,7 +3,7 @@ drives_menu_start_setup () {
 mkdir -p /pg/var/drives/gd/ /pg/var/rclone
 
 #primary variables
-common_main /pg/var/drives/storage.method NOT-SET storage_method
+common_main /pg/var/drives/storage.method READ-ONLY storage_method
 
 #gdrive variables
 common_main /pg/var/drives/gd/gd.crypt NO gcryptcheck
