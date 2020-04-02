@@ -38,6 +38,7 @@ else
   token=$(cat /pg/var/drives/temp.token); fi
 
 if [[ "$token" == "exit" || "$token" == "Exit" || "$token" == "e" || "$token" == "e" || "$token" == "Z" ]]; then drives_gdrive_menu && exit; fi
+echo "code=$token&client_id=$clone_clientid&client_secret=$clone_secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" > /pg/var/rclone/debug.token
 curl --request POST --data "code=$token&client_id=$clone_clientid&client_secret=$clone_secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /pg/var/drives/${token_deploy}/token.info
 
 drives_rclone_builder
@@ -45,7 +46,7 @@ drives_rclone_builder
 ################################################################################
 common_header "⌛ TESTING: ${token_deploy} token"
 rclone mkdir --config /pg/var/rclone/pg.conf ${token_deploy}:/plexguide.com
-tokenpgcheck=$(rclone lsd --config /pg/var/rclone/pg.conf ${token_deploy}: | grep "plexguide.com")
+tokenpgcheck=$(rclone lsd --config /pg/var/rclone/pg.conf2 ${token_deploy}: | grep "plexguide.com")
 
 if [[ "$tokenpgcheck" == "" ]]; then
 common_message "💾  FAILED:  Unable to read the ~ ${token_deploy} drive!"; echo "FAILED" > /pg/var/drives/${token_deploy}/${token_deploy}.token
