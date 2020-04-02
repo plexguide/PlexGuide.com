@@ -32,9 +32,8 @@ tokenpgcheck=$(rclone lsd --config /pg/var/rclone/pg.conf ${token_deploy}: | gre
 
 if [[ "$tokenpgcheck" == "" ]]; then
 common_message "💾  FAILED:  Unable to read the ~ ${token_deploy} drive!"; echo "FAILED" > /pg/var/drives/${token_deploy}/${token_deploy}.token
-common_confirm; else
+else
 common_message "💾  SUCCESS: The ${token_deploy} is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token
-common_confirm
 fi
 ################################################################################
 
@@ -46,11 +45,12 @@ gc_check=$(rclone lsd --config /pg/var/rclone/pg.conf gd: | grep "plexguide.com"
 
 if [[ "$gc_check" == "" ]]; then
 common_message "💾  FAILED:  Unable to read the ~ ${token_deploy} encryption drive!"; echo "FAILED" > /pg/var/drives/${token_deploy}/${token_deploy}.token
-common_confirm; else
+else
 common_message "💾  SUCCESS: The ${token_deploy} encryption is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token
-common_confirm; fi; fi
+fi; fi
 ################################################################################
 
+common_confirm
 if [[ "$token_deploy" == "gd" ]]; then drives_deploy_gmod && exit; fi
 
 }
