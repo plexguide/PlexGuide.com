@@ -6,7 +6,7 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
 [1] Google Drive        : [$gdtokeninfo]
-[2] Share  Drive(s)     : [SD Tokens Deployed - 0 of $sd_list_track]
+[2] Share  Drive(s)     : [Active Tokens - 0 of $sd_list_track]
 [3] Storage Method      : [$storage_method]
 ------------------------------------------------------------------------------
 [D] Deploy Drives
