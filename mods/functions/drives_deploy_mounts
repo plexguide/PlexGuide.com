@@ -7,6 +7,6 @@ ansible-playbook /pg/mods/drives/ymls/mount.yml -e "\
   vfs_read_chunk_size_limit=$vfs_read_chunk_size_limit
   vfs_read_chunk_size=$vfs_read_chunk_size
   buffer_size=$buffer_size
-  drive=$1"
+  drive=$driveselect"
 
 }
