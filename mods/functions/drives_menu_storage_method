@@ -7,7 +7,7 @@ common_message "🚀  Drives - Storage Method" "
 ------------------------------------------------------------------------------
 [1] Drives Basic   | Novice  - Daily Cap 750GB - Google Drive Upload Only
 [2] Drives PGBlitz | Complex - Daily Cap None  - Shared Drive Upload Only
-[3] Drives Local   | Simple  - Data does not upload; stays local.
+[3] Drives Local   | Simple  - No Data Upload  - Data Stays Local
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
