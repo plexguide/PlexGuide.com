@@ -7,7 +7,7 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 ------------------------------------------------------------------------------
 [1] Google Drive        : [$gdtokeninfo]
 [2] Share  Drive(s)     : [NOT-SET] [Total: 0]
-[3] Uploader            : [NOT-SET] $showtype
+[3] Storage Method      : [$storage_method]
 ------------------------------------------------------------------------------
 [D] Deploy Drives
 [O] Options
@@ -23,8 +23,7 @@ common_confirm && drives_menu_start && exit; fi
 case $typed in
     1 ) drives_gdrive_menu && exit ;;
     2 ) drives_providers  && drives_menu_start && exit ;;
-    3 ) drives_domain && drives_menu_start && exit ;;
-    4 ) drives_email && drives_menu_start && exit ;;
+    3 ) drives_menu_storage_method && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) drives_menu_start && exit ;;

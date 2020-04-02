@@ -2,6 +2,9 @@ drives_menu_start_setup () {
 
 mkdir -p /pg/var/drives/gd/
 
+#primary variables
+common_main /pg/var/drives/storage.method NOT-SET storage_method
+
 #gdrive variables
 common_main /pg/var/drives/gd/gd.crypt NO gcryptcheck
 common_main /pg/var/drives/gd/gd.clientid NOT-SET clientid_check

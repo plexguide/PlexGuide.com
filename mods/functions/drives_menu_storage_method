@@ -1,0 +1,27 @@
+drives_menu_storage_method() {
+
+drives_menu_start_setup
+
+common_message "🚀  Drives - Storage Method" "
+💬  Further Explanation? Visit ~ http://drives.plexguide.com
+------------------------------------------------------------------------------
+[1] Drives Basic   | Novice  - Daily Cap 750GB - Google Drive Upload Only
+[2] Drives PGBlitz | Complex - Daily Cap None  - Shared Drive Upload Only
+[3] Drives Local   | Simple  - Data does not upload; stays local.
+------------------------------------------------------------------------------
+[Z] Exit Interface
+"
+common_number
+
+common_confirm && drives_menu_start && exit; fi
+
+case $typed in
+    1 ) echo "Basic" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
+    2 ) echo "PGBlitz" > /pg/var/drives/storage.methoddrives_providers && drives_menu_start && exit ;;
+    3 ) echo "Local" > /pg/var/drives/storage.methoddrives_providers && drives_menu_start && exit ;;
+    z ) drives_menu_start && exit ;;
+    Z ) drives_menu_start && exit ;;
+    * ) drives_menu_storage_method && exit ;;
+esac
+
+}
