@@ -19,7 +19,7 @@ on your end!
 read -p "↘️  Name an Existing ShareDrive | Press [ENTER]: " typed < /dev/tty
 
 typed=$(echo $typed | awk '{print $1}')
-typed=$(echo "$typed" | awk '{print tolower($0)}'
+typed=$(echo "$typed" | awk '{print tolower($0)}')
 lettercount=$(echo $typed | wc -c)
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_gdrive_menu && exit; fi
