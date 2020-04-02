@@ -2,13 +2,15 @@ drives_deploy() {
 
 drives_menu_start_setup
 
-#common_header "⌛ DEPLOYMENT: Service Cleanup & Stopping Docker Containers"; sleep 2
+common_header "⌛ DEPLOYMENT: Service Cleanup & Stopping Docker Containers"; sleep 1.5
 ansible-playbook /pg/mods/drives/ymls/remove.yml
 
 if [[ "$gdtokeninfo" == "VALID" ]]; then
-drives_deploy_mounts gd
-fi
-if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then drives_deploy_mounts gc; fi
+common_header "⌛ DEPLOYMENT: GD Mount"; sleep 1.5; drives_deploy_mounts gd; fi
 
+if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then drives_deploy_mounts gc; fi
+common_header "⌛ DEPLOYMENT: GD Crypt Mount"; sleep 1.5; deploy_deploy_mounts gc; fi
+
+common_confirm
 drives_menu_start && exit
 }
