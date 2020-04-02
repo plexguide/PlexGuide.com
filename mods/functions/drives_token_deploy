@@ -53,6 +53,9 @@ else
 common_message "💾  SUCCESS: The ${token_deploy} is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token
 fi
 
+echo WOOT
+echo $tokengenerated
+echo $badtoken
 if [[ "$tokengenerated" == "1" && "$badtoken" == "1 " ]]; then echo "NOT-SET" > /pg/var/drives/temp.rc;
 common_message "💾  AUTO-TOKEN FAILED: Regenrate the Token Again!" && common_confirm && drives_token_deploy && exit; fi
 #################################################################################
@@ -70,8 +73,6 @@ else
 common_message "💾  SUCCESS: The ${token_deploy} encryption is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token
 fi; fi
 ################################################################################
-echo $tokengenerated
-echo $badtoken
 common_confirm
 if [[ "$token_deploy" == "gd" ]]; then drives_gdrive_menu && exit; fi
 
