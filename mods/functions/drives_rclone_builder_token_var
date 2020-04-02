@@ -6,7 +6,4 @@ rcdate=$(date +'%Y-%m-%d')
 rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
 rczone=$(date +"%:z")
 final=$(echo "${rcdate}T${rctime}${rczone}")
-
-rctimewoot=$(date +"%H:%M" --date="$givenDate 60 minutes")
-echo $rctimewoot > /pg/var/drives/temp.rc
 }
