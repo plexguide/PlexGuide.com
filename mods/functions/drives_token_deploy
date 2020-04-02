@@ -1,5 +1,7 @@
 drives_token_deploy () {
 
+drives_menu_start_setup
+
 clone_clientid=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.clientid)
 clone_secret=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.secret)
 
