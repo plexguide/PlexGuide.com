@@ -1,27 +1,27 @@
 [Unit]
 Description={{drive}} Daemon
-After=network-online.target multi-user.target
+After=multi-user.target
 
 [Service]
 Type=notify
 EnvironmentFile=/pg/var/rclone/rclone.env
-ExecStart=/usr/bin/rclone mount {{drive}}: /mnt/{{drive}} \
+ExecStart=/usr/bin/rclone mount {{drive}}: /pg/{{drive}} \
 --config=/pg/var/rclone/pg.conf \
 #--log-file=/pg/logs/{{drive}}.log \
---log-level="${vfs_ll}" \
+#--log-level="${vfs_ll}" \
 --uid=1000 --gid=1000 --umask=002 \
 --allow-other \
 --timeout=1h \
---tpslimit=8 \
+--tpslimit=10 \
 --drive-skip-gdocs \
---user-agent="${uagent}" \
---dir-cache-time="${vfs_dct}" \
---vfs-cache-mode="${vfs_cm}" \
---vfs-cache-max-age="${vfs_cma}" \
---vfs-cache-max-size="${vfs_cms}" \
---vfs-read-chunk-size-limit="${vfs_rcsl}" \
---vfs-read-chunk-size="${vfs_rcs}" \
---buffer-size="${vfs_bs}"
+#--user-agent="${uagent}" \
+--dir-cache-time="${dir_cache_time}m" \
+--vfs-cache-mode="writes" \
+--vfs-cache-max-age="${vfs_cache_max_age}h" \
+--vfs-cache-max-size="${vfs-cache-max-size}" \
+--vfs-read-chunk-size-limit="${vfs_read_chunk_size_limit}M" \
+--vfs-read-chunk-size="${vfs_read_chunk_size}M" \
+--buffer-size="${buffer_size}M"
 
 ExecStop=/bin/fusermount -uz /pg/{{drive}} > /dev/null
 TimeoutSec=60
