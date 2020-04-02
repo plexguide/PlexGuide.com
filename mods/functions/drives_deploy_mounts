@@ -3,6 +3,7 @@ drives_deploy_mounts() {
 drives_menu_start_setup
 
 ansible-playbook /pg/mods/drives/ymls/mount.yml -e "dir_cache_time=$dir_cache_time \
+  vfs_cache_max_age=$vfs_cache_max_age \
   drive=gd"
 
 }
