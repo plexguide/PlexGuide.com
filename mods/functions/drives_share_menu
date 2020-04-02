@@ -5,10 +5,10 @@ drives_menu_start_setup
 common_message "🚀  Shared Drives - Mount Transport Data Interface" "
 💾 Active Drives: 0 of 0
 
-[C] Create
-[R] Remove
-[M] Manage
-[Z] Exit Interface
+[A] Add    | An existing Share Drive from PG
+[M] Manage | Ones that have been added to PG
+[R] Remove | An existing Share Drive from PG | Does not delete it!
+[Z] Exit
 "
 common_number
 
