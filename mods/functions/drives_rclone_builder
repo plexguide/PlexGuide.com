@@ -15,6 +15,7 @@ EOF
 if [[ "$ci_menu" == "SET" && "$gc_menu" == "SET" ]]; then
 drives_rclone_builder_token_var gd
 cat <<- EOF >> "$rclonepath"
+
 # GOOGLE DRIVE #################################################################
 [gd]
 client_id = $clientid_check
@@ -23,22 +24,21 @@ type = drive
 server_side_across_configs = true
 token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${refreshtoken}"expiry":"${final}"}
 ################################################################################
-
 EOF
 fi
 
 if [[ "$gdcryptinfo" == "YES" && "$ci_menu" == "SET" && "$gc_menu" == "SET" ]]; then
 cat <<- EOF >> "$rclonepath"
+
 # GOOGLE DRIVE - CRYPT #########################################################
 [gc]
 type = crypt
-remote = gd:/encrypt
+remote = gc:/encrypt
 filename_encryption = standard
 directory_name_encryption = true
 password = $gpassword1
-password2 = $gpasswor2
+password2 = $gpassword2
 ################################################################################
-
 EOF
 fi
 }

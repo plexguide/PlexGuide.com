@@ -25,6 +25,7 @@ curl --request POST --data "code=$token&client_id=$clone_clientid&client_secret=
 
 drives_rclone_builder
 
+################################################################################
 common_header "⌛ TESTING: ${token_deploy} token"
 rclone mkdir --config /pg/var/rclone/pg.conf ${token_deploy}:/plexguide.com
 tokenpgcheck=$(rclone lsd --config /pg/var/rclone/pg.conf ${token_deploy}: | grep "plexguide.com")
@@ -35,6 +36,20 @@ common_confirm; else
 common_message "💾  SUCCESS: The ${token_deploy} is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token
 common_confirm
 fi
+################################################################################
+
+################################################################################
+if [[ "$gdcryptinfo" == "YES" ]]; then
+common_header "⌛ TESTING: ${token_deploy} token encryption"
+rclone mkdir --config /pg/var/rclone/pg.conf gc:/plexguide.com
+gc_check=$(rclone lsd --config /pg/var/rclone/pg.conf gc: | grep "plexguide.com")
+
+if [[ "$tokenpgcheck" == "" ]]; then
+common_message "💾  FAILED:  Unable to read the ~ ${token_deploy} encryption drive!"; echo "FAILED" > /pg/var/drives/${token_deploy}/${token_deploy}.token
+common_confirm; else
+common_message "💾  SUCCESS: The ${token_deploy} encryption is valid!"; echo "VALID" > /pg/var/drives/${token_deploy}/${token_deploy}.token
+common_confirm; fi; fi
+################################################################################
 
 if [[ "$token_deploy" == "gd" ]]; then drives_deploy_gmod && exit; fi
 
