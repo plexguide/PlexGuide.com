@@ -2,6 +2,7 @@ start_menu() {
 
 # Generates Core YML for Apps
 apps_core_yml
+apps_core_plugins
 
 # Call Variables
 edition=$(cat /pg/var/pg.edition)
