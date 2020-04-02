@@ -4,7 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=notify
-EnvironmentFile=/pg/var/rclone/rclone.env
+#EnvironmentFile=/pg/var/rclone/rclone.env
 ExecStart=/usr/bin/rclone mount {{drive}}: /pg/{{drive}} \
 --config=/pg/var/rclone/pg.conf \
 #--log-file=/pg/logs/{{drive}}.log \
