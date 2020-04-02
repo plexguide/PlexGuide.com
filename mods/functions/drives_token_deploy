@@ -3,13 +3,14 @@ drives_token_deploy () {
 clone_clientid=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.clientid)
 clone_secret=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.secret)
 
+if [[ "$temp_token" != "NOT-SET" ]]; then
 rctime_now=$(date +"%H:%M" --date="$givenDate 60 minutes")
 difference=$(( $(date -d "$rc_temp" "+%s") - $(date -d "$rctime_now" "+%s") ))
 ytemp=$(echo "scale=2 ; $difference/3600" | bc)
 xtemp=$(echo "-100 * $ytemp" | bc -l)
-f_token_check=$(echo ${xtemp%.*})
+f_token_check=$(echo ${xtemp%.*}); fi
 
-if [[ "$f_token_check" -lt "84" ]]; then
+if [[ "$f_token_check" -lt "84" || "$temp_token" == "NOT-SET"]]; then
 
 common_message "🚀  Drives - $token_deploy Authentication" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
