@@ -52,6 +52,6 @@ fi; fi
 ################################################################################
 
 common_confirm
-if [[ "$token_deploy" == "gd" ]]; then drives_gdrives_menu && exit; fi
+if [[ "$token_deploy" == "gd" ]]; then drives_gdrive_menu && exit; fi
 
 }
