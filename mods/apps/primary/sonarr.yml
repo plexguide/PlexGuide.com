@@ -16,7 +16,7 @@
       include_tasks: '/pg/mods/apps/core.yml'
 
     - name: 'Including plugins'
-      include_tasks: '/pg/mods/apps/.plugins.yml'
+      include_tasks: '/pg/mods/apps/plugins.yml'
 
     # LABELS ######################################################################
     - name: 'Adding Traefik'
