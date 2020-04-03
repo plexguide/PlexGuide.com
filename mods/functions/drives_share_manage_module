@@ -18,6 +18,7 @@ common_message "🚀  Shared Drives Interface - $sdselect
 ------------------------------------------------------------------------------
 [Z] Exit
 "
+common_number
 
 case $typed in
     z ) drives_share_menu && exit ;;
