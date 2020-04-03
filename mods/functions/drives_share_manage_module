@@ -4,6 +4,8 @@ mkdir -p /pg/var/drives/$
 
 drives_menu_start_setup
 
+cat /pg/var/drives/shared/$sdselect/sd.clientid
+
 common_message "🚀  Shared Drives Interface - $sdselect
 
 [1] Utilizing Encryption  [$scryptcheck]
