@@ -1,7 +1,6 @@
 drives_share_manage_module () {
 
 mkdir -p /pg/var/drives/$
-sdselect=$typed
 
 drives_menu_start_setup
 
