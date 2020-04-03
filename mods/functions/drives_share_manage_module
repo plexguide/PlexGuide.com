@@ -15,10 +15,8 @@ common_message "🚀  Shared Drives Interface - $sdselect
 ------------------------------------------------------------------------------
 [D] Deploy SDrive Token   [NOT-SET]
 ------------------------------------------------------------------------------
-[Z] Exit Interface
-
+[Z] Exit
 "
-common_number
 
 case $typed in
     z ) drives_share_menu && exit ;;
