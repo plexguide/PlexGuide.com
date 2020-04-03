@@ -1,6 +1,6 @@
 drives_share_clientid() {
 
-temp_path="/pg/var/drives/$sdselect/sd.clientid"
+temp_path="/pg/var/drives/shared/$sdselect/sd.clientid"
 priorentry=$(cat $temp_path)
 
 common_message "🚀 PlexGuide | Share Drive Client-ID Interface" "
