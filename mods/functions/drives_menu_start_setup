@@ -45,4 +45,14 @@ else ci_menu="SET"; fi
 if [[ $(cat /pg/var/drives/gd/gd.secret) == "NOT-SET" ]]; then gc_menu="NOT-SET"
 else gc_menu="SET"; fi
 
+#sd variables
+if [[ $sdselect != "" ]]; then
+common_main /pg/var/drives/$sdselect/sd.crypt NO scryptcheck
+common_main /pg/var/drives/$sdselect/e.mail NOT-SET e_mail
+common_main /pg/var/drives/$sdselect/project.name NOT-SET project_name
+common_main /pg/var/drives/$sdselect/sd.name NOT-SET sd_name
+common_main /pg/var/drives/$sdselect/sd.clientid NOT-SET sclientid_check
+common_main /pg/var/drives/$sdselect/sd.secret NOT-SET ssecret_check
+fi
+
 }
