@@ -14,7 +14,7 @@ common_message "🚀  Shared Drives Interface - $sdselect
 [5] ClientID              [$sclientid_check]
 [6] Secret                [$ssecret_check]
 ------------------------------------------------------------------------------
-[D] Deploy SDrive Token   [NOT-SET]
+[D] Deploy SDrive Token   [NOT-SET] for $sdselect
 ------------------------------------------------------------------------------
 [Z] Exit"
 
