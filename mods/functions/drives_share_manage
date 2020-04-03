@@ -11,7 +11,6 @@ common_message "🚀  Shared Drives - Management Interface" "
 $sdlist
 
 [Z] Exit Interface"
-common_number
 
 read -p '↘️  Type ShareDrive to Manage | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" == "z" || "$typed" == "Z" ]]; then drives_share_menu; exit; fi
@@ -21,6 +20,6 @@ existcheck=$(echo $sdlist | grep "$typed" -w)
   read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
   drives_share_manage; fi
 
-drives_share_manage_module
+drives_share_manage_module $typed
 
 }
