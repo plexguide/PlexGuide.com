@@ -1,27 +1,29 @@
-drives_share_manage () {
+drives_share_manage_module () {
 
 mkdir -p /pg/var/drives/$
+sdselect=$typed
 
 drives_menu_start_setup
 
-common_message "🚀  Shared Drives - Mount Transport Data Interface" "
-💾 Active Drives: 0 of $sd_list_track <NOTE: NOT WORKING YET>
+common_message "🚀  Shared Drives Interface - $sdselect
 
-[A] Add    | An existing Share Drive from PG
-[M] Manage | Ones that have been added to PG
-[R] Remove | An existing Share Drive from PG | Does not delete it!
-[Z] Exit
+[1] Utilizing Encryption  [NO]
+[2] G-Account             [NOT-SET]
+[3] Project Name          [NOT-SET]
+[4] ClientID              [NOT-SET]
+[5] ShareDrive Name       [NOT-SET]
+------------------------------------------------------------------------------
+[D] Deploy SDrive Token   [NOT-SET]
+------------------------------------------------------------------------------
+[Z] Exit Interface
+
 "
 common_number
 
 case $typed in
-    A ) drives_share_add_menu && exit ;;
-    a ) drives_share_add_menu && exit ;;
-    M ) drives_share_manage ;;
-    m ) drives_share_manage && exit ;;
-    z ) drives_menu_start && exit ;;
-    Z ) drives_menu_start && exit ;;
-    * ) drives_share_menu && exit ;;
+    z ) drives_share_menu && exit ;;
+    Z ) drives_share_menu && exit ;;
+    * ) drives_share_manage_module && exit ;;
 esac
 
 }
