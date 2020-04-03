@@ -1,0 +1,22 @@
+drives_share_clientid() {
+
+temp_path="/pg/var/drives/$sdselect/sd.clientid"
+priorentry=$(cat $temp_path)
+
+common_message "🚀 PlexGuide | Share Drive Client-ID Interface" "
+💾 Client-ID for Share Drive?
+
+Prior Info Saved (If Any): $priorentry
+[Z] To Cancel and Go Back
+"
+
+read -p "↘️  New SDrive Client ID? | Press [ENTER]: " typed < /dev/tty
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_share_menu && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_share_clientid && exit; fi
+
+echo $typed > $temp_path
+common_message "💾  $typed - Client ID Set!"
+common_confirm && drives_share_menu && exit
+
+}
