@@ -1,0 +1,26 @@
+drives_share_manage () {
+
+drives_menu_start_setup
+
+fmt -w 79 "/pg/var/drives/shared/pg.list" > "/pg/tmp/sdlist.wrap"
+sdlist=$(cat /pg/tmp/sdlist.wrap)
+
+common_message "🚀  Shared Drives - Management Interface" "
+💾 Active Drives: 0 of $sd_list_track <NOTE: NOT WORKING YET>
+
+$sdlist
+
+[Z] Exit Interface"
+common_number
+
+read -p '↘️  Type ShareDrive to Manage | Press [ENTER]: ' typed < /dev/tty
+  if [[ "$typed" == "z" || "$typed" == "Z" ]]; then drives_share_menu; exit; fi
+
+existcheck=$(echo $sdlist | grep "$typed" -w)
+  if [ -z "$existcheck" ]; then echo "";
+  read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
+  drives_share_manage; fi
+
+drives_share_manage_module
+
+}
