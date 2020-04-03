@@ -15,7 +15,7 @@ common_number
 case $typed in
     A ) drives_share_add_menu && exit ;;
     a ) drives_share_add_menu && exit ;;
-    M ) drives_share_manage
+    M ) drives_share_manage ;;
     m ) drives_share_manage && exit ;;
     z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
