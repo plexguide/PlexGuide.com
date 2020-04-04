@@ -1,0 +1,24 @@
+drives_share_name_label_select () {
+
+drives_menu_start_setup
+
+common_message "🚀  Shared Drives Interface - $sdselect
+
+[1] Utilize | Existing project
+[2] Build   | New project & set
+[3] Destory | An existing project
+------------------------------------------------------------------------------
+[Z] Exit"
+
+common_number
+
+case $typed in
+    1 ) drives_share_name_label_utilize_project ;;
+    2 ) drives_share_name_label_build_project ;;
+    3 ) drives_share_name_label_destroy_project ;;
+    z ) drives_share_manage_module && exit ;;
+    Z ) drives_share_manage_module && exit ;;
+    * ) drives_share_name_label_select && exit ;;
+esac
+
+}

@@ -21,6 +21,7 @@ common_number
 
 case $typed in
     2 ) drives_share_user_account ;;
+    3 ) drives_share_name_label_select ;;
     5 ) drives_share_clientid ;;
     6 ) drives_share_secret ;;
     z ) drives_share_menu && exit ;;

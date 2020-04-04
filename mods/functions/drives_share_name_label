@@ -1,0 +1,35 @@
+drives_share_name_label () {
+
+temp_path="/pg/var/drives/shared/$sdselect/sd.name"
+priorentry=$(cat $temp_path)
+
+common_message "🚀 PlexGuide | $sdselect - Set Share Drive Label
+💾 Label Name of the Share Drive - $sdselect
+
+Prior Info Saved (If Any): $priorentry
+[Z] To Cancel and Go Back
+"
+
+read -p "↘️  New Google Account Login? | Press [ENTER]: " typed < /dev/tty
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_share_manage_module && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_share_user_account && exit; fi
+
+gcloud auth login --account = $typed
+gcloud info | grep Account: | cut -c 10- > $temp_path
+account=$(cat $temp_path)
+
+testcheck=$(gcloud auth list | grep "$typed")
+if [[ "$testcheck" == "" ]]; then
+    echo "NOT-SET" > $temp_path
+    common_message "⛔️  WARNING: E-Mail Address Failed!"
+    common_confirm
+    drives_share_manage_module && exit
+    # glogin
+fi
+
+echo $typed > $temp_path
+common_message "💾  $typed - G Account Set!"
+common_confirm && drives_share_manage_module && exit
+
+}
