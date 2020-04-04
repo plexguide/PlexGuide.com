@@ -8,8 +8,9 @@ else priorproject="NOT-SET"; fi
 common_message "🚀  Project Interface - $sdselect | Current Project: $priorproject
 
 [1] Utilize | Existing project
-[2] Create  | New project & set
-[3] Destory | An existing project
+------------------------------------------------------------------------------
+[C] Create  | New project & set
+[D] Destory | An existing project
 ------------------------------------------------------------------------------
 [Z] Exit"
 
@@ -17,8 +18,10 @@ common_number
 
 case $typed in
     1 ) drives_share_name_label_utilize_project ;;
-    2 ) drives_share_name_label_create_project ;;
-    3 ) common_header "🚀  Feature will be added when most PGX coding complete!" && common_confirm && drives_share_name_label_select && exit ;;
+    C ) drives_share_name_label_create_project ;;
+    c ) drives_share_name_label_create_project ;;
+    d ) common_header "🚀  Feature will be added when most PGX coding complete!" && common_confirm && drives_share_name_label_select && exit ;;
+    D ) common_header "🚀  Feature will be added when most PGX coding complete!" && common_confirm && drives_share_name_label_select && exit ;;
     z ) drives_share_manage_module && exit ;;
     Z ) drives_share_manage_module && exit ;;
     * ) drives_share_name_label_select && exit ;;

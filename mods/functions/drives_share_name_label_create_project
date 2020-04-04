@@ -12,6 +12,8 @@ Examples: pgserver01 - techbuttton22 - vtechr97 - admin9705rulez
 ------------------------------------------------------------------------------
 [Z] Exit"
 
+common_number
+
 case $typed in
     1 ) drives_share_name_label_select && exit;;
     2 ) junkvar="Proceed Onward" ;;
