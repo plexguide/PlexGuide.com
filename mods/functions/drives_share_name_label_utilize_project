@@ -1,7 +1,7 @@
 drives_share_name_label_utilize_project () {
 
 drives_menu_start_setup
-common_header "🚀  Checking to ensure a valid PG Project Exists!""
+common_header "🚀  Checking to ensure a valid PG Project Exists!"
 
 pro_path="/pg/tmp/plist"
 pro_file="$pro_path/project.list"
