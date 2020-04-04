@@ -15,8 +15,8 @@ Examples: pgserver01 - techbuttton22 - vtechr97 - admin9705rulez
 common_number
 
 case $typed in
-    1 ) drives_share_name_label_select && exit;;
-    2 ) junkvar="Proceed Onward" ;;
+    z ) drives_share_name_label_select && exit;;
+    Z ) drives_share_name_label_select && exit;;
     * ) drives_share_name_label_create_project  && exit ;;
 esac
 
