@@ -3,8 +3,8 @@ drives_share_name_label_utilize_project () {
 drives_menu_start_setup
 
 pro_path="/pg/tmp"
-pro_file="$propath/project.list"
-pro_final="$propath/project.output"
+pro_file="$pro_path/project.list"
+pro_final="$pro_path/project.output"
 
 if [[ $(gcloud projects list --account=${e_mail} | grep "pg-") == "" ]]; then
 common_message "⛔️  WARNING: Projects do not exist! Please create one!" && common_confirm && drives_share_name_label_select; fi
