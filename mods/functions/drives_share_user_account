@@ -1,4 +1,4 @@
-drives_share_menu_password () {
+drives_share_user_account () {
 
 temp_path="/pg/var/drives/shared/$sdselect/e.mail"
 priorentry=$(cat $temp_path)
