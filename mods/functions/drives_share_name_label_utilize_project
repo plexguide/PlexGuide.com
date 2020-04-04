@@ -2,9 +2,11 @@ drives_share_name_label_utilize_project () {
 
 drives_menu_start_setup
 
-pro_path="/pg/tmp"
+pro_path="/pg/tmp/plist"
 pro_file="$pro_path/project.list"
 pro_final="$pro_path/project.output"
+mkdir -p $pro_path
+rm -rf $pro_final $pro_file
 
 if [[ $(gcloud projects list --account=${e_mail} | grep "pg-") == "" ]]; then
 common_message "⛔️  WARNING: Projects do not exist! Please create one!" && common_confirm && drives_share_name_label_select; fi
@@ -30,6 +32,9 @@ echo "[Z] Exit"
 echo ""
 common_number
 
-common_confirm
+if [[ "$typed" -ge "1" && "$typed" -le "$pnum" ]]; then
+  existingnumber=$(cat /var/plexguide/prolist/$typed)
+
+
 
 }
