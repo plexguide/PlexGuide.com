@@ -52,6 +52,6 @@ utilizing this new project, ensure to redeploy your drives again!
 
 Is it cool? Donate to http://donate.plexguide.com today!"
 common_confirm
-drives_share_name_label_build_project && exit
+drives_share_name_label_select && exit
 
 }
