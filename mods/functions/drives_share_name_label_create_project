@@ -1,0 +1,55 @@
+drives_share_name_label_create_project () {
+
+drives_menu_start_setup
+
+common_message "🚀  PG Drives - Project Name
+What's the name of your new project? It's recommended to name your project
+after $sdselect. Not required, but best to keep in sync!
+
+* One word, 2-14 characters, no spaces, all lowercase, no special characters
+
+Examples: pgserver01 - techbuttton22 - vtechr97 - admin9705rulez
+------------------------------------------------------------------------------
+[Z] Exit"
+
+case $typed in
+    1 ) drives_share_name_label_select && exit;;
+    2 ) junkvar="Proceed Onward" ;;
+    * ) drives_share_name_label_utilize_create && exit ;;
+esac
+
+typed=$(echo $typed | awk '{print $1}')
+typed=$(echo "$typed" | awk '{print tolower($0)}')
+lettercount=$(echo $typed | wc -c)
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_share_name_label_select && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_share_name_label_create_project && exit; fi
+
+if [[ "$lettercount" -gt "15" || "$lettercount" -lt "3" ]]; then
+common_message "TYPED: $typed" && common_message "⛔️  WARNING: Is less than 2 or more than 14 characters! Try Again!"
+common_confirm && drives_share_name_label_create_project && exit; fi
+
+temp_project=$typed
+date=$(date +%m%d)
+rand=$(echo $((1 + RANDOM + RANDOM + RANDOM)))
+projectid="pg-${temp_project}-${date}${rand}"
+
+common_message "💾  $projectid - Creating New Project!"
+gcloud projects create $projectid --account=${e_mail}
+
+common_message "💾  $projectid - Enabling the API (Standby)!"
+gcloud services enable drive.googleapis.com --project $projectid --account=${e_mail}
+
+common_message "🚀  PG Drives - Process Complete!
+New Project - $projectid (extra stuff added for uniqueness)
+
+NOTE: If utilizing this new project, you must enter a new project clientid,
+secret, and ensure everything else is aligned. If you have drives deployed and
+utilizing this new project, ensure to redeploy your drives again!
+
+Is it cool? Donate to http://donate.plexguide.com today!
+"
+common_confirm
+drives_share_name_label_build_project && exit
+
+}

@@ -17,8 +17,8 @@ common_number
 
 case $typed in
     1 ) drives_share_name_label_utilize_project ;;
-    2 ) drives_share_name_label_build_project ;;
-    3 ) common_header "🚀  Feature will be added when most PGX coding complete!" && common_confirm && drives_share_name_label_select && exit ;; 
+    2 ) drives_share_name_label_create_project ;;
+    3 ) common_header "🚀  Feature will be added when most PGX coding complete!" && common_confirm && drives_share_name_label_select && exit ;;
     z ) drives_share_manage_module && exit ;;
     Z ) drives_share_manage_module && exit ;;
     * ) drives_share_name_label_select && exit ;;
