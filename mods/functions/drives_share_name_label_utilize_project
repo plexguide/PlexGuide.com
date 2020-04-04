@@ -12,7 +12,7 @@ common_message "⛔️  WARNING: Projects do not exist! Please create one!" && c
 pnum=0
 gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_file
 
-  info2 () {
+  utilize_project_output () {
 
   while read p; do
     let "pnum++"
@@ -23,7 +23,11 @@ gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_
 
   }
 
-info2
+common_message "🚀  Project Select Interface - $sdselect
+"
+utilize_project_output
+echo "------------------------------------------------------------------------------"
+echo "[Z] Exit"
 
 common_confirm
 
