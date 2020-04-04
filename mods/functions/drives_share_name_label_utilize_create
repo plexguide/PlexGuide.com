@@ -1,0 +1,74 @@
+drives_share_name_label_utilize_create () {
+
+drives_menu_start_setup
+
+common_message "🚀  PG Drives - Project Name
+What's the name of your new project? It's recommended to name your project
+after $sdselect. Not required, but best to keep in sync!
+
+* One word - no space, all lowercase, no special characters!
+
+Examples: pgserver01 - techbuttton22 - vtechr97 - admin9705rulez
+------------------------------------------------------------------------------
+[Z] Exit"
+
+case $typed in
+    1 ) drives_share_name_label_select && exit;;
+    2 ) junkvar="Proceed Onward" ;;
+    * ) drives_share_name_label_utilize_create && exit ;;
+esac
+
+typed=$(echo $typed | awk '{print $1}')
+typed=$(echo "$typed" | awk '{print tolower($0)}')
+lettercount=$(echo $typed | wc -c)
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_gdrive_menu && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_gdrive_clientid && exit; fi
+
+if [[ "$lettercount" -gt "15" || "$lettercount" -lt "3" ]]; then
+common_message "TYPED: $typed" && common_message "⛔️  WARNING: Is less than 2 or more than 14 characters! Try Again!"
+common_confirm && drives_share_add_menu && exit; fi
+
+common_message "💾  $typed - SD added to PG! Go Configure it!"
+
+# Sort List
+echo "$typed" >> /pg/var/drives/shared/pg.list
+temp57=$(cat /pg/var/drives/shared/pg.list | sort )
+echo "$temp57" > /pg/var/drives/shared/pg.list
+
+
+pnum=0
+gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_file
+
+  utilize_project_output () {
+
+  while read p; do
+    let "pnum++"
+    echo "$p" >"$propath/$pnum"
+    # echo "[$pnum] $p" >> ${pro_final}
+    echo "[$pnum] $p" >> ${pro_path}/$pnum
+    echo "[$pnum] ${filler}${p}"
+  done <$pro_file
+
+  }
+
+if [[ "$project_name" != "NOT-SET" ]]; then priorproject=$project_name
+else priorproject="NOT-SET"; fi
+
+common_header "🚀  Project Select - $sdselect | Prior Project: $priorproject"
+utilize_project_output
+echo "------------------------------------------------------------------------------"
+echo "[Z] Exit"
+echo ""
+common_number
+
+if [[ "$typed" = "Z" || "$typed" == "z" ]]; then drives_share_name_label_select; fi
+
+if [[ "$typed" -lt "1" || "$typed" -gt "$pnum" ]]; then
+drives_share_name_label_utilize_project && exit; fi
+
+cat ${pro_path}/$typed | awk '{print $2}' > /pg/var/drives/shared/$sdselect/project.name
+projectfinaloutput=$(cat /pg/var/drives/shared/$sdselect/project.name)
+
+common_header "🚀  Project $projectfinaloutput set!" && common_confirm && drives_share_manage_module && exit
+}
