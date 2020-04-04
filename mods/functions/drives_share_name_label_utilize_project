@@ -19,7 +19,8 @@ gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_
   while read p; do
     let "pnum++"
     echo "$p" >"$propath/$pnum"
-    echo "[$pnum] $p" >> ${pro_final}
+    # echo "[$pnum] $p" >> ${pro_final}
+    echo "[$pnum] $p" >> ${pro_path}/$p
     echo "[$pnum] ${filler}${p}"
   done <$pro_file
 
