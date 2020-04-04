@@ -35,7 +35,7 @@ common_number
 if [[ "$typed" -lt "1" && "$typed" -gt "$pnum" ]]; then
   exit; fi
 
-cat $typed | awk '{print $2}' > /pg/var/drives/shared/$sdselect/project.name
+cat ${pro_path}/$typed | awk '{print $2}' > /pg/var/drives/shared/$sdselect/project.name
 
 common_confirm
 
