@@ -10,7 +10,7 @@ if [[ $(gcloud projects list --account=${e_mail} | grep "pg-") == "" ]]; then
 common_message "⛔️  WARNING: Projects do not exist! Please create one!" && common_confirm && drives_share_name_label_select; fi
 
 pnum=0
-gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_path
+gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_file
 
   info2 () {
 
