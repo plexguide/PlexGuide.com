@@ -35,14 +35,14 @@ date=$(date +%m%d)
 rand=$(echo $((1 + RANDOM + RANDOM + RANDOM)))
 projectid="pg-${temp_project}-${date}${rand}"
 
-common_message "💾  $projectid - Creating New Project!"
+common_header "💾  $projectid - Creating New Project!"
 gcloud projects create $projectid --account=${e_mail}
 
-common_message "💾  $projectid - Enabling the API (Standby)!"
+common_header "💾  $projectid - Enabling the API (Standby)!"
 gcloud services enable drive.googleapis.com --project $projectid --account=${e_mail}
 
 common_message "🚀  PG Drives - Process Complete!" "
-New Project - $projectid (extra stuff added for uniqueness)
+New Project - $projectid
 
 NOTE: If utilizing this new project, you must enter a new project clientid,
 secret, and ensure everything else is aligned. If you have drives deployed and
