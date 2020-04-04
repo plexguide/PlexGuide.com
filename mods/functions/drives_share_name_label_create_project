@@ -2,7 +2,7 @@ drives_share_name_label_create_project () {
 
 drives_menu_start_setup
 
-common_message "🚀  PG Drives - Project Name
+common_message "🚀  PG Drives - Project Name" "
 What's the name of your new project? It's recommended to name your project
 after $sdselect. Not required, but best to keep in sync!
 
@@ -42,8 +42,7 @@ gcloud projects create $projectid --account=${e_mail}
 common_message "💾  $projectid - Enabling the API (Standby)!"
 gcloud services enable drive.googleapis.com --project $projectid --account=${e_mail}
 
-common_message "🚀  PG Drives - Process Complete!
-------------------------------------------------------------------------------
+common_message "🚀  PG Drives - Process Complete!" "
 New Project - $projectid (extra stuff added for uniqueness)
 
 NOTE: If utilizing this new project, you must enter a new project clientid,
