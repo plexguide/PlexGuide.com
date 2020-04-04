@@ -25,7 +25,10 @@ gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_
 
   }
 
-common_header "🚀  Project Select Interface - $sdselect"
+if [[ "$project_name" != "NOT-SET" ]]; then priorproject=$projectname
+else priorproject="NOT-SET"; fi
+
+common_header "🚀  Project Select - $sdselect | Prior Project: $priorproject"
 utilize_project_output
 echo "------------------------------------------------------------------------------"
 echo "[Z] Exit"
@@ -36,7 +39,10 @@ if [[ "$typed" -lt "1" && "$typed" -gt "$pnum" ]]; then
   exit; fi
 
 cat ${pro_path}/$typed | awk '{print $2}' > /pg/var/drives/shared/$sdselect/project.name
+projectfinaloutput=$(cat /pg/var/drives/shared/$sdselect/project.name)
 
+echo ""
+common_header "🚀  Project $sdselect set!"
 common_confirm
 
 }
