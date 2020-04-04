@@ -4,6 +4,7 @@ drives_menu_start_setup
 
 pro_path="/pg/tmp"
 pro_file="$propath/project.list"
+pro_final="$propath/project.output"
 
 if [[ $(gcloud projects list --account=${e_mail} | grep "pg-") == "" ]]; then
 common_message "⛔️  WARNING: Projects do not exist! Please create one!" && common_confirm && drives_share_name_label_select; fi
@@ -16,7 +17,7 @@ gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_
   while read p; do
     let "pnum++"
     echo "$p" >"$propath/$pnum"
-    echo "[$pnum] $p" >> $pro_path
+    echo "[$pnum] $p" >> ${pro_final}
     echo "[$pnum] ${filler}${p}"
   done <$pro_file
 
