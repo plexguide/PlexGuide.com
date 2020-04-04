@@ -1,0 +1,29 @@
+drives_share_name_label_utilize_project () {
+
+drives_menu_start_setup
+
+pro_path="/pg/tmp"
+pro_file="$propath/project.list"
+
+if [[ $(gcloud projects list --account=${email} | grep "pg-") == "" ]]; then
+common_message "⛔️  WARNING: Projects do not exist! Please create one!" && common_confirm && drives_share_name_label_select; fi
+
+pnum=0
+gcloud projects list --account=${pgcloneemail} | tail -n +2 | awk '{print $1}' > $pro_path
+
+  info2 () { 
+
+  while read p; do
+    let "pnum++"
+    echo "$p" >"$propath/$pnum"
+    echo "[$pnum] $p" >> $pro_path
+    echo "[$pnum] ${filler}${p}"
+  done <$pro_file
+
+  }
+
+info2
+
+common_confirm
+
+}
