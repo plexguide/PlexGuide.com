@@ -5,8 +5,7 @@ drives_menu_start_setup
 pro_path="/pg/tmp/plist"
 pro_file="$pro_path/project.list"
 pro_final="$pro_path/project.output"
-mkdir -p $pro_path
-rm -rf $pro_final $pro_file
+rm -rf $pro_path && mkdir -p $pro_path
 
 if [[ $(gcloud projects list --account=${e_mail} | grep "pg-") == "" ]]; then
 common_message "⛔️  WARNING: Projects do not exist! Please create one!" && common_confirm && drives_share_name_label_select; fi
