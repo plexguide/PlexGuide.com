@@ -21,7 +21,7 @@ account=$(cat $temp_path)
 
 testcheck=$(gcloud auth list | grep "$typed")
 if [[ "$testcheck" == "" ]]; then
-    echo
+    echo "NOT-SET" > $temp_path
     common_message "⛔️  WARNING: E-Mail Address Failed!"
     common_confirm
     drives_share_manage_module && exit
