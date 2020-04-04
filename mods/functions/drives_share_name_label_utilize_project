@@ -35,7 +35,7 @@ echo "[Z] Exit"
 echo ""
 common_number
 
-if [[ "$typed" = "Z" || "$typed" == "z" ]]; then drives_share_name_label_utilize_project; fi
+if [[ "$typed" = "Z" || "$typed" == "z" ]]; then drives_share_manage_module; fi
 
 if [[ "$typed" -lt "1" || "$typed" -gt "$pnum" ]]; then
 drives_share_name_label_utilize_project && exit; fi

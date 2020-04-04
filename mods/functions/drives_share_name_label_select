@@ -2,7 +2,10 @@ drives_share_name_label_select () {
 
 drives_menu_start_setup
 
-common_message "🚀  Shared Drives Interface - $sdselect
+if [[ "$project_name" != "NOT-SET" ]]; then priorproject=$project_name
+else priorproject="NOT-SET"; fi
+
+common_message "🚀  Project Interface - $sdselect | Current Project: $priorproject
 
 [1] Utilize | Existing project
 [2] Create  | New project & set
