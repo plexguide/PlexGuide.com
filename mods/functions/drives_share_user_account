@@ -24,7 +24,7 @@ if [[ "$testcheck" == "" ]]; then
     echo
     common_message "⛔️  WARNING: E-Mail Address Failed!"
     common_confirm
-    drives_share_manage_module && exit ;;
+    drives_share_manage_module && exit
     # glogin
 fi
 
