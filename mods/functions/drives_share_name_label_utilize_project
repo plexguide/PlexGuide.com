@@ -33,7 +33,7 @@ echo ""
 common_number
 
 if [[ "$typed" -ge "1" && "$typed" -le "$pnum" ]]; then
-  existingnumber=$(cat /var/plexguide/prolist/$typed)
+  existingnumber=$(cat /var/plexguide/prolist/$typed); fi
 
 
 
