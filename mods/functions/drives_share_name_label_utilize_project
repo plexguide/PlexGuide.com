@@ -25,7 +25,7 @@ gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_
 
   }
 
-if [[ "$project_name" != "NOT-SET" ]]; then priorproject=$projectname
+if [[ "$project_name" != "NOT-SET" ]]; then priorproject=$project_name
 else priorproject="NOT-SET"; fi
 
 common_header "🚀  Project Select - $sdselect | Prior Project: $priorproject"
