@@ -1,4 +1,4 @@
-drives_share_user_account() {
+drives_share_menu_password () {
 
 temp_path="/pg/var/drives/shared/$sdselect/e.mail"
 priorentry=$(cat $temp_path)
@@ -23,7 +23,6 @@ testcheck=$(gcloud auth list | grep "$typed")
 if [[ "$testcheck" == "" ]]; then
     echo
     common_message "⛔️  WARNING: E-Mail Address Failed!"
-    echo "NOT-SET" > $temp_path
     common_confirm
     drives_share_manage_module && exit ;;
     # glogin
