@@ -17,7 +17,7 @@ common_number
 case $typed in
     1 ) drives_share_name_label_select && exit;;
     2 ) junkvar="Proceed Onward" ;;
-    * ) drives_share_name_label_utilize_create && exit ;;
+    * ) drives_share_name_label_create_project  && exit ;;
 esac
 
 typed=$(echo $typed | awk '{print $1}')
@@ -43,14 +43,14 @@ common_message "💾  $projectid - Enabling the API (Standby)!"
 gcloud services enable drive.googleapis.com --project $projectid --account=${e_mail}
 
 common_message "🚀  PG Drives - Process Complete!
+------------------------------------------------------------------------------
 New Project - $projectid (extra stuff added for uniqueness)
 
 NOTE: If utilizing this new project, you must enter a new project clientid,
 secret, and ensure everything else is aligned. If you have drives deployed and
 utilizing this new project, ensure to redeploy your drives again!
 
-Is it cool? Donate to http://donate.plexguide.com today!
-"
+Is it cool? Donate to http://donate.plexguide.com today!"
 common_confirm
 drives_share_name_label_build_project && exit
 
