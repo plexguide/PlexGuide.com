@@ -23,7 +23,7 @@ gcloud projects list --account=${e_mail} | tail -n +2 | awk '{print $1}' > $pro_
 
   }
 
-common_message "🚀  Project Select Interface - $sdselect"
+common_header "🚀  Project Select Interface - $sdselect"
 utilize_project_output
 echo "------------------------------------------------------------------------------"
 echo "[Z] Exit"
