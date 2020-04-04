@@ -48,6 +48,8 @@ NOTE: If utilizing this new project, you must enter a new project clientid,
 secret, and ensure everything else is aligned. If you have drives deployed and
 utilizing this new project, ensure to redeploy your drives again!
 
+No project set? Set it now after this!
+
 Is it cool? Donate to http://donate.plexguide.com today!"
 common_confirm
 drives_share_name_label_select && exit
