@@ -2,10 +2,18 @@ drives_share_name_label_select () {
 
 drives_menu_start_setup
 
+
+if [[ $(gcloud projects list --account=${email} | grep "pg-") == "" ]]; then
+projectcheck="bad"
+common_message "⛔️  WARNING: Projects do not exist! Please create one!" && common_confirm && drives_share_name_label_select; fi
+
+
+
+
 common_message "🚀  Shared Drives Interface - $sdselect
 
 [1] Utilize | Existing project
-[2] Build   | New project & set
+[2] Create  | New project & set
 [3] Destory | An existing project
 ------------------------------------------------------------------------------
 [Z] Exit"
