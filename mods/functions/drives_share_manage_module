@@ -7,11 +7,11 @@ drives_menu_start_setup
 common_message "🚀  Shared Drives Interface - $sdselect
 
 [1] Utilizing Encryption  [$scryptcheck]
-[2] Google Acccout        [$e_mail]
-[3] Project Name          [$project_name]
-[4] SDrive Label          [$sd_name]
-[5] ClientID              [$sclientid_check]
-[6] Secret                [$ssecret_check]
+[2] Google Acccout        [$ename_menu]
+[3] Project Name          [$pname_menu]
+[4] SDrive Label          [$sdname_menu]
+[5] ClientID              [$cis_menu]
+[6] Secret                [$sds_menu]$sdpw_menu_option
 ------------------------------------------------------------------------------
 [D] Deploy SDrive Token   [NOT-SET] for $sdselect
 ------------------------------------------------------------------------------
