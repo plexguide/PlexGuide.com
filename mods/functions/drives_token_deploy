@@ -11,6 +11,7 @@ if [[ "$drivemain" == "gdrive" ]]; then
   secretdeploy="$secret_check"
   tokenstate="/pg/var/drives/$drivename/$drivename.info"
   tokeninfo="/pg/var/drives/$drivename/token.info"
+  cryptcheck="$gcryptcheck"
 else
   drivename="$sdselect"
   rclonepath="/pg/var/drives/shared/$drivename/$drivename.conf"
@@ -20,6 +21,7 @@ else
   basicname="SDrive"
   tokenstate="/pg/var/drives/shared/$drivename/$drivename.token"
   tokeninfo="/pg/var/drives/shared/${drivename}/token.info"
+  cryptcheck="$scryptcheck"
 fi
 
 common_message "🚀  $drivename ~ $basicname Authentication" "
