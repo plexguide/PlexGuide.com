@@ -30,6 +30,7 @@ cat <<- EOF >> "$rclonepath"
 # $basicname ~ $drivename ~ CRYPT ####################
 EOF
 echo "[$drivename2]" >> $rclonepath
+cat <<- EOF >> "$rclonepath"
 type = crypt
 remote = $drivename:/encrypt
 filename_encryption = standard
