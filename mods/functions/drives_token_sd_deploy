@@ -46,8 +46,7 @@ if [[ "$token" == "z" || "$token" == "Z" ]]; then
 
 curl --request POST --data "code=$token&client_id=$clientdeploy&client_secret=$secretdeploy&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > $tokeninfo
 
-if [[ "drivemain" == "gdrive" ]]; then drives_rclone_builder
-else drives_rclone_builder; fi
+if [[ "$drivemain" == "gdrive" ]]; then drives_rclone_builder; else drives_rclone_builder; fi
 
 ################################################################################
 common_header "⌛ TESTING: ${drivename} token"
