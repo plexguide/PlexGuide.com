@@ -15,13 +15,13 @@ Enable to read and store (not required) to an encrypted drive?
 common_number
 
 case $typed in
-    Y ) echo "YES" > /pg/var/drives/gd/gd.crypt && drives_gdrive_menu && exit ;;
-    y ) echo "YES" > /pg/var/drives/gd/gd.crypt && drives_gdrive_menu && exit ;;
-    N ) echo "NO" > /pg/var/drives/gd/gd.crypt && drives_gdrive_menu && exit ;;
-    n ) echo "NO" > /pg/var/drives/gd/gd.crypt && drives_gdrive_menu && exit ;;
-    z ) drives_gdrive_menu && exit ;;
-    Z ) drives_gdrive_menu && exit ;;
-    * ) gdrives_gdrive_crypt_menu  && exit ;;
+    Y ) echo "YES" > /pg/var/drives/$sdselect/sd.crypt && drives_share_manage_module && exit ;;
+    y ) echo "YES" > /pg/var/drives/$sdselect/sd.crypt && drives_share_manage_module && exit ;;
+    N ) echo "NO" > /pg/var/drives/$sdselect/sd.crypt && drives_share_manage_module && exit ;;
+    n ) echo "NO" > /pg/var/drives/$sdselect/sd.crypt && drives_share_manage_module && exit ;;
+    z ) drives_share_manage_module && exit ;;
+    Z ) drives_share_manage_module && exit ;;
+    * ) gdrives_share_crypt_menu  && exit ;;
 esac
 
 }
