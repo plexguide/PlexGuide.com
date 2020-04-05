@@ -71,6 +71,6 @@ common_message "💾  SUCCESS: The ${drivename} encryption is valid!"; echo "VAL
 fi; fi
 ################################################################################
 common_confirm
-if [[ "drivemain" == "gdrive" ]]; then drives_gdrive_menu && exit; else
+if [[ "$drivemain" == "gdrive" ]]; then drives_gdrive_menu && exit; else
 drives_share_manage_module && exit; fi;
 }
