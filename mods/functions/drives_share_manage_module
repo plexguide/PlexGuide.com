@@ -11,7 +11,7 @@ common_message "🚀  Shared Drives Interface - $sdselect
 [3] Project Name          [$pname_menu]
 [4] ClientID              [$cis_menu]
 [5] Secret                [$sds_menu]
-[6] SDrive Identifier     [$sdname_menu]sdpw_menu_option
+[6] SDrive Identifier     [$sdname_menu]$sdpw_menu_option
 ------------------------------------------------------------------------------
 [D] Deploy SDrive Token   [$svalid_check] for $sdselect
 ------------------------------------------------------------------------------
