@@ -20,7 +20,7 @@ common_message "🚀  Shared Drives Interface - $sdselect
 common_number
 
 case $typed in
-    1 ) drives_share_crypt_menu && exit;;
+    1 ) drives_share_crypt_menu && exit ;;
     2 ) drives_share_user_account && exit ;;
     3 ) drives_share_name_label_select && exit ;;
     4 ) drives_share_clientid && exit ;;
