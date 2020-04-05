@@ -2,20 +2,16 @@ drives_rclone_builder () {
 
 common_header "💾  Utilizing:  RClone Builder for GDrive"
 
-rclonepath="/pg/var/rclone/pg.conf"
 drives_menu_start_setup
 
-# RCLONE BUILD
+accesstoken=$(cat $tokenpath | grep access_token | awk '{print $2}')
+refreshtoken=$(cat $tokenpath | grep refresh_token | awk '{print $2}')
+rcdate=$(date +'%Y-%m-%d')
+rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
+rczone=$(date +"%:z")
+final=$(echo "${rcdate}T${rctime}${rczone}")
+
 cat <<- EOF > "$rclonepath"
-################################################################################
-# RClone Config Built by PlexGuide.com
-################################################################################
-
-EOF
-
-drives_rclone_builder_token_var gd
-# echo "" >> "$rclonepath"
-cat <<- EOF >> "$rclonepath"
 # GOOGLE DRIVE #################################################################
 [gd]
 client_id = $clientid_check
