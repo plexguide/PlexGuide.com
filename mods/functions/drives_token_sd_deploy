@@ -7,8 +7,8 @@ if [[ "$drivemain" == "gdrive" ]]; then
   rclonepath="/pg/var/drives/$drivename/$drivename.conf"
   tokenpath="/pg/var/drives/gd/gd.info"
   basicname="GDrive"
-  clientdeploy="$clone_clientid"
-  secretdeploy="$clone_secret"
+  clientdeploy="$clientid_check"
+  secretdeploy="$secret_check"
   tokenstate="/pg/var/drives/$drivename/$drivename.info"
   tokeninfo="/pg/var/drives/$drivename/token.info"
 else
