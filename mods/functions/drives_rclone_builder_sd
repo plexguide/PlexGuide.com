@@ -1,10 +1,9 @@
 drives_rclone_builder_sd () {
 
-rclonepath="/pg/var/drives/shared/$sdselect/$sdselect.conf"
 drives_menu_start_setup
 
-accesstoken=$(cat /pg/var/drives/shared/$sdselect/token.info | grep access_token | awk '{print $2}')
-refreshtoken=$(cat /pg/var/drives/shared/$sdselect/token.info| grep refresh_token | awk '{print $2}')
+accesstoken=$(cat $tokenpath | grep access_token | awk '{print $2}')
+refreshtoken=$(cat $tokenpath | grep refresh_token | awk '{print $2}')
 rcdate=$(date +'%Y-%m-%d')
 rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
 rczone=$(date +"%:z")
