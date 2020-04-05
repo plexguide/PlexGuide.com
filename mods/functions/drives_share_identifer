@@ -11,7 +11,7 @@ basicname="SDrive"
 tokenstate="/pg/var/drives/shared/$drivename/$drivename.token"
 tokeninfo="/pg/var/drives/shared/${drivename}/token.info"
 
-common_message "🚀  Drives - $token_deploy SDrive Identifer" "
+common_message "🚀  Drives - $drivename SDrive Identifer" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ into the browser, it will just work!
   echo $token > /pg/var/drives/temp.token
   if [[ "$token" == "exit" || "$token" == "Exit" || "$token" == "z" || "$token" == "Z" ]]; then drives_share_manage_module && exit; fi
   curl --request POST --data "code=$token&client_id=$clientdeploy&client_secret=$secretdeploy&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > $tokeninfo
-  curl -H "GData-Version: 3.0" -H "Authorization: Bearer $(cat $tokeninfo | grep access_token | awk '{ print $2 }' | cut -c2- | rev | cut -c3- | rev)" https://www.googleapis.com/drive/v3/teamdrives > $sd_name
+  curl -H "GData-Version: 3.0" -H "Authorization: Bearer $(cat $tokeninfo | grep access_token | awk '{ print $2 }' | cut -c2- | rev | cut -c3- | rev)" https://www.googleapis.com/drive/v3/teamdrives > /pg/var/drives/shared/$drivename/sd.name
 
 sdselect () {
 
