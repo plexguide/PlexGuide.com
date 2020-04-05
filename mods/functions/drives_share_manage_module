@@ -26,7 +26,7 @@ case $typed in
     4 ) drives_share_clientid && exit ;;
     5 ) drives_share_secret && exit ;;
     6 ) drives_share_identifer && exit ;;
-    7 ) drives_gdrive_menu_password && exit ;;
+    7 ) drives_share_menu_password && exit ;;
     d ) drivemain=sdrive && drives_token_deploy && exit ;;
     D ) drivemain=sdrive && drives_token_deploy && exit ;;
     z ) drives_share_menu && exit ;;
