@@ -1,4 +1,4 @@
-drives_share_name_label () {
+drives_share_identifer () {
 
 drives_menu_start_setup
 
