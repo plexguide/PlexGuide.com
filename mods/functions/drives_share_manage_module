@@ -13,7 +13,7 @@ common_message "🚀  Shared Drives Interface - $sdselect
 [5] Secret                [$sds_menu]$sdpw_menu_option
 [6] SDrive Identifier     [$sdname_menu]
 ------------------------------------------------------------------------------
-[D] Deploy SDrive Token   [NOT-SET] for $sdselect
+[D] Deploy SDrive Token   [$svalid_check] for $sdselect
 ------------------------------------------------------------------------------
 [Z] Exit"
 
