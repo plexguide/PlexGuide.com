@@ -1,7 +1,6 @@
 drives_rclone_builder () {
 
 rclonepath="/pg/var/rclone/pg.conf"
-mkdir -p /pg/var/rclone
 drives_menu_start_setup
 
 # RCLONE BUILD
