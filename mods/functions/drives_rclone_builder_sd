@@ -11,9 +11,6 @@ final=$(echo "${rcdate}T${rctime}${rczone}")
 
 # RCLONE BUILD
 cat <<- EOF > "$rclonepath"
-drives_rclone_builder_token_var $sdclient
-# echo "" >> "$rclonepath"
-cat <<- EOF >> "$rclonepath"
 # SDRIVE ~ $sdclient ####################################
 [$sdclient]
 client_id = $sclientid_check
