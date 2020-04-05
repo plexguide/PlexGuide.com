@@ -43,4 +43,21 @@ password2 = $enc_pass2
 ################################################################################
 EOF
 fi
+
+if [[ "$cis_menu" == "SET" && "$gcs_menu" == "SET" && "$sdname_menu" == "SET" && "$pname_menu" == "SET" && "ename_menu" "SET" ]]; then
+drives_rclone_builder_token_var $sdclient
+# echo "" >> "$rclonepath"
+cat <<- EOF >> "$rclonepath"
+# SDRIVE ~ $sdclient ####################################
+[$sdclient]
+client_id = $sclientid_check
+client_secret = $secret_check
+type = drive
+server_side_across_configs = true
+token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${refreshtoken}"expiry":"${final}"}
+team_drive = $sd_id
+################################################################################
+EOF
+fi
+
 }

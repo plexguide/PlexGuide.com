@@ -1,0 +1,31 @@
+drives_rclone_builder_sd () {
+
+rclonepath="/pg/var/drives/shared/$sdselect/$sdselect.conf"
+drives_menu_start_setup
+
+accesstoken=$(cat /pg/var/drives/shared/$sdselect/token.info | grep access_token | awk '{print $2}')
+refreshtoken=$(cat /pg/var/drives/shared/$sdselect/token.info| grep refresh_token | awk '{print $2}')
+rcdate=$(date +'%Y-%m-%d')
+rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
+rczone=$(date +"%:z")
+final=$(echo "${rcdate}T${rctime}${rczone}")
+
+# RCLONE BUILD
+cat <<- EOF >> "$rclonepath"
+if [[ "$cis_menu" == "SET" && "$gcs_menu" == "SET" && "$sdname_menu" == "SET" && "$pname_menu" == "SET" && "$ename_menu" == "SET" ]]; then
+drives_rclone_builder_token_var $sdclient
+# echo "" >> "$rclonepath"
+cat <<- EOF >> "$rclonepath"
+# SDRIVE ~ $sdclient ####################################
+[$sdclient]
+client_id = $sclientid_check
+client_secret = $ssecret_check
+type = drive
+server_side_across_configs = true
+token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${refreshtoken}"expiry":"${final}"}
+team_drive = $sd_id
+################################################################################
+EOF
+fi
+
+}
