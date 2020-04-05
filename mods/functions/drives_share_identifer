@@ -38,8 +38,8 @@ into the browser, it will just work!
 
 sdselect () {
 
-  cat $sd_name | grep "id" | awk '{ print $2 }' | cut -c2- | rev | cut -c3- | rev > /pg/tmp/sdrive.id
-  cat $sd_name | grep "name" | awk '{ print $2 }' | cut -c2- | rev | cut -c2- | rev > /pg/tmp/sdrive.name
+  cat /pg/var/drives/shared/$drivename/sd.name | grep "id" | awk '{ print $2 }' | cut -c2- | rev | cut -c3- | rev > /pg/tmp/sdrive.id
+  cat /pg/var/drives/shared/$drivename/sd.name | grep "name" | awk '{ print $2 }' | cut -c2- | rev | cut -c2- | rev > /pg/tmp/sdrive.name
 
   common_header "🚀  Listed Share Drive(s)"
 
