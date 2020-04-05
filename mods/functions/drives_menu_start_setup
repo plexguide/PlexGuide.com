@@ -56,7 +56,7 @@ common_main /pg/var/drives/shared/$sdselect/sd.name NOT-SET sd_name
 common_main /pg/var/drives/shared/$sdselect/sd.id "" sd_id
 common_main /pg/var/drives/shared/$sdselect/sd.clientid NOT-SET sclientid_check
 common_main /pg/var/drives/shared/$sdselect/sd.secret NOT-SET ssecret_check
-common_main /pg/var/drives/shared/${sdselect}/${sdselect}.token NOT-SET $svalid_check
+common_main /pg/var/drives/shared/${sdselect}/${sdselect}.token NOT-SET svalid_check
 #sd menu
 if [[ "$scryptcheck" == "YES" ]]; then
 sdpw_menu_option="
