@@ -2,8 +2,8 @@ drives_rclone_builder () {
 
 common_header "💾  Utilizing:  RClone Builder for $basicname"
 
-accesstoken=$(cat $tokenpath | grep access_token | awk '{print $2}')
-refreshtoken=$(cat $tokenpath | grep refresh_token | awk '{print $2}')
+accesstoken=$(cat $tokeninfo | grep access_token | awk '{print $2}')
+refreshtoken=$(cat $tokeninfo | grep refresh_token | awk '{print $2}')
 rcdate=$(date +'%Y-%m-%d')
 rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
 rczone=$(date +"%:z")
