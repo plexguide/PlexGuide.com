@@ -9,9 +9,9 @@ common_message "🚀  Shared Drives Interface - $sdselect
 [1] Utilizing Encryption  [$scryptcheck]
 [2] Google Acccout        [$ename_menu]
 [3] Project Name          [$pname_menu]
-[4] SDrive Label          [$sdname_menu]
-[5] ClientID              [$cis_menu]
-[6] Secret                [$sds_menu]$sdpw_menu_option
+[4] ClientID              [$cis_menu]
+[5] Secret                [$sds_menu]$sdpw_menu_option
+[6] SDrive Label          [$sdname_menu]
 ------------------------------------------------------------------------------
 [D] Deploy SDrive Token   [NOT-SET] for $sdselect
 ------------------------------------------------------------------------------
@@ -22,8 +22,8 @@ common_number
 case $typed in
     2 ) drives_share_user_account ;;
     3 ) drives_share_name_label_select ;;
-    5 ) drives_share_clientid ;;
-    6 ) drives_share_secret ;;
+    4 ) drives_share_clientid ;;
+    5 ) drives_share_secret ;;
     z ) drives_share_menu && exit ;;
     Z ) drives_share_menu && exit ;;
     * ) drives_share_manage_module && exit ;;
