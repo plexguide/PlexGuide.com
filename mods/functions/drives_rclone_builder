@@ -1,6 +1,6 @@
 drives_rclone_builder () {
 
-common_header "💾  Utilizing:  RClone Builder for GDrive"
+common_header "💾  Utilizing:  RClone Builder for $basicname"
 
 accesstoken=$(cat $tokenpath | grep access_token | awk '{print $2}')
 refreshtoken=$(cat $tokenpath | grep refresh_token | awk '{print $2}')
