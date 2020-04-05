@@ -1,0 +1,76 @@
+drives_token_deploy () {
+
+drives_menu_start_setup
+
+if [[ "$drivemain" == "gdrive" ]]; then
+  drivename="gd"
+  rclonepath="/pg/var/drives/$drivename/$drivename.conf"
+  tokenpath="/pg/var/drives/gd/gd.info"
+  basicname="GDrive"
+  clientdeploy="$clientid_check"
+  secretdeploy="$secret_check"
+  tokenstate="/pg/var/drives/$drivename/$drivename.info"
+  tokeninfo="/pg/var/drives/$drivename/token.info"
+else
+  drivename="$sdselect"
+  rclonepath="/pg/var/drives/shared/$drivename/$drivename.conf"
+  tokenpath="/pg/var/drives/shared/$drivename/token.info"
+  clientdeploy="$sclientid_check"
+  secretdeploy="$ssecret_check"
+  basicname="SDrive"
+  tokenstate="/pg/var/drives/shared/$drivename/$drivename.token"
+  tokeninfo="/pg/var/drives/shared/${drivename}/token.info"
+fi
+
+common_message "🚀  $drivename ~ $basicname Authentication" "
+💬  Further Explanation? Visit ~ http://drives.plexguide.com
+------------------------------------------------------------------------------
+
+https://accounts.google.com/o/oauth2/auth?client_id=$clientdeploy&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
+
+NOTE: Copy & Paste the URL into Browser! Ensure to utilize and login with
+the correct Google Account! Depending on your terminal client, some allow you
+to right click the top of it with copy and paste options.
+
+PUTTY USERS: Just select and highlight! DO NOT RIGHT CLICK! When you paste
+into the browser, it will just work!
+------------------------------------------------------------------------------
+[Z] Exit
+"
+
+read -p '↘️  Token | PRESS [ENTER]: ' token </dev/tty
+echo "$token" > /pg/var/drives/temp.token
+if [[ "$token" == "z" || "$token" == "Z" ]]; then
+  if [[ "drivemain" == "gdrive" ]]; then drives_gdrive_menu && exit; else
+  drives_share_manage_module && exit; fi; fi
+
+curl --request POST --data "code=$token&client_id=$clientdeploy&client_secret=$secretdeploy&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > $tokeninfo
+
+drives_rclone_builder
+################################################################################
+common_header "⌛ TESTING: ${drivename} token"
+rclone mkdir --config $rclonepath ${drivename}:/plexguide.com
+tokenpgcheck=$(rclone lsd --config ${rclonepath} ${drivename}: | grep "plexguide.com")
+
+if [[ "$tokenpgcheck" == "" ]]; then
+common_message "💾  FAILED:  Unable to read the ~ ${drivename} ${basicname}!"; echo "FAILED" > $tokenstate; else
+common_message "💾  SUCCESS: The ${drivename} ${basicname} is valid!"; echo "VALID" > $tokenstate; fi
+#################################################################################
+
+#################################################################################
+if [[ "$scryptcheck" == "YES" ]]; then
+common_message "⌛ TESTING: ${drivename} token encryption"
+rclone mkdir --config $rclonepath ${drivename}:/crypt
+rclone mkdir --config $rclonepath ${drivename}c:/plexguide.com
+sd_check=$(rclone lsd --config $rclonepath ${drivename}c: | grep "plexguide.com")
+
+if [[ "$sd_check" == "" ]]; then
+common_message "💾  FAILED:  Unable to read the ~ ${drivename} encryption drive!"; echo "FAILED" > $tokenstate
+else
+common_message "💾  SUCCESS: The ${drivename} encryption is valid!"; echo "VALID" > $tokenstate
+fi; fi
+################################################################################
+common_confirm
+if [[ "$drivemain" == "gdrive" ]]; then drives_gdrive_menu && exit; else
+drives_share_manage_module && exit; fi;
+}

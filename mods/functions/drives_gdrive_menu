@@ -20,8 +20,8 @@ case $typed in
     2 ) drives_gdrive_clientid && exit ;;
     3 ) drives_gdrive_secret && exit ;;
     4 ) drives_gdrive_menu_password && exit ;;
-    d ) drivemain=gdrive && drives_token_sd_deploy && exit ;;
-    D ) drivemain=gdrive && drives_token_sd_deploy && exit ;;
+    d ) drivemain=gdrive && drives_token_deploy && exit ;;
+    D ) drivemain=gdrive && drives_token_deploy && exit ;;
     z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
     * ) drives_gdrive_menu && exit ;;

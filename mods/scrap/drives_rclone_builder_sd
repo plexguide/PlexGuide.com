@@ -13,7 +13,7 @@ final=$(echo "${rcdate}T${rctime}${rczone}")
 
 # RCLONE BUILD
 cat <<- EOF > "$rclonepath"
-# SDRIVE ~ $sdselect ####################################
+# SDRIVE ~ $sdselect ####################
 EOF
 echo "[$sdselect]" >> $rclonepath
 cat <<- EOF >> "$rclonepath"
@@ -23,6 +23,6 @@ type = drive
 server_side_across_configs = true
 token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${refreshtoken}"expiry":"${final}"}
 team_drive = $sd_id
-################################################################################
+
 EOF
 }

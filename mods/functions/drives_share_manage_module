@@ -25,8 +25,8 @@ case $typed in
     4 ) drives_share_clientid ;;
     5 ) drives_share_secret ;;
     6 ) drives_share_identifer ;;
-    d ) drives_token_sd_deploy && exit ;;
-    D ) drives_token_sd_deploy && exit ;;
+    d ) drivemain=sdrive && drives_token_deploy && exit ;;
+    D ) drivemain=sdrive && drives_token_deploy && exit ;;
     z ) drives_share_menu && exit ;;
     Z ) drives_share_menu && exit ;;
     * ) drives_share_manage_module && exit ;;
