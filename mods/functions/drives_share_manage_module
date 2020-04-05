@@ -1,4 +1,4 @@
-drives_share_manage_module () {
+drives_share_crypt_menu () {
 
 mkdir -p /pg/var/drives/$
 
