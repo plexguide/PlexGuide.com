@@ -1,0 +1,81 @@
+drives_share_name_label () {
+
+drives_menu_start_setup
+
+clone_clientid=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.clientid)
+clone_secret=$(cat /pg/var/drives/${token_deploy}/${token_deploy}.secret)
+
+common_message "🚀  Drives - $token_deploy SDrive Identifer" "
+💬  Further Explanation? Visit ~ http://drives.plexguide.com
+------------------------------------------------------------------------------
+
+https://accounts.google.com/o/oauth2/auth?client_id=$sclientid_check&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
+
+PURPOSE: To associate the correct SDrive. Ensure that you have created a
+[SDrive] via drives.google.com prior to starting this!
+
+NOTE: Copy & Paste the URL into Browser! Ensure to utilize and login with
+the correct Google Account! Depending on your terminal client, some allow you
+to right click the top of it with copy and paste options.
+
+PUTTY USERS: Just select and highlight! DO NOT RIGHT CLICK! When you paste
+into the browser, it will just work!
+------------------------------------------------------------------------------
+[Z] Exit Interface
+"
+
+  read -p '↘️  Token | PRESS [ENTER]: ' token </dev/tty
+  echo $token > /pg/var/drives/temp.token
+  if [[ "$token" == "exit" || "$token" == "Exit" || "$token" == "z" || "$token" == "Z" ]]; then drives_share_manage_module && exit; fi
+  curl --request POST --data "code=$token&client_id=$sclientid_check&client_secret=$ssecret_check&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /pg/var/drives/${token_deploy}/token.info
+  curl -H "GData-Version: 3.0" -H "Authorization: Bearer $(cat /pg/var/drives/${token_deploy}/token.info | grep access_token | awk '{ print $2 }' | cut -c2- | rev | cut -c3- | rev)" https://www.googleapis.com/drive/v3/teamdrives > $sd_name
+
+sdselect () {
+
+  cat $sd_name | grep "id" | awk '{ print $2 }' | cut -c2- | rev | cut -c3- | rev > /pg/tmp/sdrive.id
+  cat $sd_name | grep "name" | awk '{ print $2 }' | cut -c2- | rev | cut -c2- | rev > /pg/tmp/sdrive.name
+
+  common_header "🚀  Listed Share Drive(s)"
+
+  A=0
+  while read p; do
+    ((A++))
+    name=$(sed -n ${A}p /pg/tmp/sdrive.name)
+    echo "[$A] $p - $name"
+  done </pg/tmp/sdrive.id
+
+if [[ $(cat /pg/tmp/sdrive.name) == "" ]]; then
+
+common_message "🚀  No Shared Drive(s) Exist or Bad Token!
+
+NOTE1: Create a shared drive first on THIS account and retry the process!
+
+NOTE2: If it is a BAD TOKEN, ensure that you are using the CORRECT GMAIL
+account when signing in! Check the upper right corner of your account.
+
+NOTE3: Ensure that you have the correct CLIENTID and Password for the
+project listed as $project_name
+"
+
+  common_confirm && drives_share_manage_module; fi
+  common_input
+}
+
+sdselect
+if [[ "$typed" -ge "1" && "$typed" -le "$A" ]]; then a=b; else sdselect; fi
+
+name=$(sed -n ${typed}p /pg/tmp/sdrive.name)
+id=$(sed -n ${typed}p /pg/tmp/sdrive.id)
+echo "$name" > /pg/var/drives/shared/$sdselect/sd.name
+echo "$id" > /pg/var/drives/shared/$sdselect/sd.id
+
+common_message "🚀  Process Complete for SDrive ~ $name
+
+NOTE: Do not share out your Shared Drive to others! The usage counts against
+your API hits and if others share your content, you have no control (and
+your shared drive can be shutdown!)
+"
+
+common_confirm
+drives_share_manage_module
+}
