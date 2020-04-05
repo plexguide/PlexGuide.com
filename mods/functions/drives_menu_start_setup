@@ -53,6 +53,7 @@ common_main /pg/var/drives/shared/$sdselect/sd.crypt NO scryptcheck
 common_main /pg/var/drives/shared/$sdselect/e.mail NOT-SET e_mail
 common_main /pg/var/drives/shared/$sdselect/project.name NOT-SET project_name
 common_main /pg/var/drives/shared/$sdselect/sd.name NOT-SET sd_name
+common_main /pg/var/drives/shared/$sdselect/sd.id "" sd_id
 common_main /pg/var/drives/shared/$sdselect/sd.clientid NOT-SET sclientid_check
 common_main /pg/var/drives/shared/$sdselect/sd.secret NOT-SET ssecret_check
 

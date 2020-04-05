@@ -24,6 +24,7 @@ case $typed in
     3 ) drives_share_name_label_select ;;
     4 ) drives_share_clientid ;;
     5 ) drives_share_secret ;;
+    6 ) drives_share_identifer ;;
     z ) drives_share_menu && exit ;;
     Z ) drives_share_menu && exit ;;
     * ) drives_share_manage_module && exit ;;
