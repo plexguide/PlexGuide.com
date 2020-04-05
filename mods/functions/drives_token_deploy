@@ -70,7 +70,7 @@ if [[ "$cryptcheck" == "YES" ]]; then
 common_message "⌛ TESTING: ${drivename} token encryption"
 rclone mkdir --config $rclonepath ${drivename}:/crypt
 rclone mkdir --config $rclonepath ${drivename}c:/plexguide.com
-sd_check=$(rclone lsd --config $rclonepath ${drivename}c: | grep "plexguide.com")
+sd_check=$(rclone lsd --config $rclonepath ${drivename2}: | grep "plexguide.com")
 
 if [[ "$sd_check" == "" ]]; then
 common_message "💾  FAILED:  Unable to read the ~ ${drivename} encryption drive!"; echo "FAILED" > $tokenstate
