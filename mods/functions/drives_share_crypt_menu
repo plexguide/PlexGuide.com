@@ -1,4 +1,4 @@
-gdrives_share_crypt_menu () {
+drives_share_crypt_menu () {
 
 drives_menu_start_setup
 
