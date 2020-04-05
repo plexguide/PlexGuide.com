@@ -24,6 +24,4 @@ token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${re
 team_drive = $sd_id
 ################################################################################
 EOF
-fi
-
 }
