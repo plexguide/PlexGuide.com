@@ -4,6 +4,7 @@ drives_menu_start_setup
 
 if [[ "$drivemain" == "gdrive" ]]; then
   drivename="gd"
+  drivename2="gc"
   rclonepath="/pg/var/drives/$drivename/$drivename.conf"
   tokenpath="/pg/var/drives/gd/gd.info"
   basicname="GDrive"
@@ -12,8 +13,11 @@ if [[ "$drivemain" == "gdrive" ]]; then
   tokenstate="/pg/var/drives/$drivename/$drivename.info"
   tokeninfo="/pg/var/drives/$drivename/token.info"
   cryptcheck="$gcryptcheck"
+  password1="$gpassword1"
+  password2="$gpassword2"
 else
   drivename="$sdselect"
+  drivename2="${drivename}c"
   rclonepath="/pg/var/drives/shared/$drivename/$drivename.conf"
   tokenpath="/pg/var/drives/shared/$drivename/token.info"
   clientdeploy="$sclientid_check"
@@ -22,6 +26,8 @@ else
   tokenstate="/pg/var/drives/shared/$drivename/$drivename.token"
   tokeninfo="/pg/var/drives/shared/${drivename}/token.info"
   cryptcheck="$scryptcheck"
+  password1="$spassword1"
+  password2="$spassword2"
 fi
 
 common_message "🚀  $drivename ~ $basicname Authentication" "
