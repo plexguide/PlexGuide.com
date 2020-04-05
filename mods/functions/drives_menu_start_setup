@@ -57,10 +57,16 @@ common_main /pg/var/drives/shared/$sdselect/sd.id "" sd_id
 common_main /pg/var/drives/shared/$sdselect/sd.clientid NOT-SET sclientid_check
 common_main /pg/var/drives/shared/$sdselect/sd.secret NOT-SET ssecret_check
 common_main /pg/var/drives/shared/${sdselect}/${sdselect}.token NOT-SET svalid_check
+common_main /pg/var/drives/shared/$sdselect/password.1 NOT-SET spassword1
+common_main /pg/var/drives/shared/$sdselect/password.2 NOT-SET spassword2
+
 #sd menu
+if [[ "$spassword1" == "NOT-SET" || "$spassword2" == "NOT-SET" ]]; then
+  spassdisplay="NOT-SET"; else spassdisplay="SET"; fi
+
 if [[ "$scryptcheck" == "YES" ]]; then
 sdpw_menu_option="
-[4] Passwords           : [$gpassdisplay]" && gmenu_number=4; else sdpw_menu_option="" && gmenu_number=4; fi
+[7] Passwords             [$spassdisplay]" && smenu_number=7; else sdpw_menu_option="" && smenu_number=4; fi
 
 if [[ $(cat /pg/var/drives/shared/$sdselect/sd.clientid) == "NOT-SET" ]]; then cis_menu="NOT-SET"
 else cis_menu="SET"; fi
