@@ -2,7 +2,7 @@ drives_token_sd_deploy () {
 
 drives_menu_start_setup
 
-if [[ "drivemain" == "gdrive" ]]; then
+if [[ "$drivemain" == "gdrive" ]]; then
   drivename="gd"
   rclonepath="/pg/var/drives/$drivename/$drivename.conf"
   tokenpath="/pg/var/drives/gd/gd.info"
