@@ -10,8 +10,8 @@ rczone=$(date +"%:z")
 final=$(echo "${rcdate}T${rctime}${rczone}")
 
 # RCLONE BUILD
+if [[ "$cis_menu" == "SET" && "$gcs_menu" == "SET" && "$sdname_menu" == "SET" && "$pname_menu" == "SET" && "$ename_menu" == "SET" ]]; then 
 cat <<- EOF >> "$rclonepath"
-if [[ "$cis_menu" == "SET" && "$gcs_menu" == "SET" && "$sdname_menu" == "SET" && "$pname_menu" == "SET" && "$ename_menu" == "SET" ]]; then
 drives_rclone_builder_token_var $sdclient
 # echo "" >> "$rclonepath"
 cat <<- EOF >> "$rclonepath"
