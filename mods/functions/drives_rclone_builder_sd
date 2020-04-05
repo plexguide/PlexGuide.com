@@ -2,6 +2,8 @@ drives_rclone_builder_sd () {
 
 drives_menu_start_setup
 
+common_header "💾  Utilizing:  RClone Builder for SDrive"
+
 accesstoken=$(cat $tokenpath | grep access_token | awk '{print $2}')
 refreshtoken=$(cat $tokenpath | grep refresh_token | awk '{print $2}')
 rcdate=$(date +'%Y-%m-%d')
