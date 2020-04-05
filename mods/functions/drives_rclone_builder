@@ -12,22 +12,25 @@ rczone=$(date +"%:z")
 final=$(echo "${rcdate}T${rctime}${rczone}")
 
 cat <<- EOF > "$rclonepath"
-# GOOGLE DRIVE #################################################################
-[gd]
-client_id = $clientid_check
-client_secret = $secret_check
+# $basicname ~ $drivename ###############################
+EOF
+echo "[$drivename]" >> $rclonepath
+cat <<- EOF >> "$rclonepath"
+client_id = $clientdeploy
+client_secret = $secretdeploy
 type = drive
 server_side_across_configs = true
 token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${refreshtoken}"expiry":"${final}"}
-################################################################################
 EOF
+if [[ "$drivename" != "gc" ]]; then echo "teamdrive = $sd_id" >> $rclonepath; fi
+echo "" >> $rclonepath
 
 if [[ "$gdcryptinfo" == "YES" ]]; then
 # echo "" >> "$rclonepath"
 enc_pass1=$(rclone obscure $gpassword1)
 enc_pass2=$(rclone obscure $gpassword2)
 cat <<- EOF >> "$rclonepath"
-# GOOGLE DRIVE - CRYPT #########################################################
+# GOOGLE DRIVE - CRYPT #######################
 [gc]
 type = crypt
 remote = gd:/encrypt
