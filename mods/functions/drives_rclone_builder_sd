@@ -11,9 +11,9 @@ final=$(echo "${rcdate}T${rctime}${rczone}")
 
 # RCLONE BUILD
 cat <<- EOF > "$rclonepath"
-# SDRIVE ~ $sdclient ####################################
+# SDRIVE ~ $sdselect ####################################
 EOF
-echo "[$sdclient]" >> $rclonepath
+echo "[$sdselect]" >> $rclonepath
 cat <<- EOF >> "$rclonepath"
 client_id = $sclientid_check
 client_secret = $ssecret_check
