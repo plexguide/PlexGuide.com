@@ -58,7 +58,7 @@ project listed as $project_name
 "
 
   common_confirm && drives_share_manage_module; fi
-  common_confirm
+  common_number
 }
 
 sdselect
