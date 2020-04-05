@@ -12,7 +12,9 @@ final=$(echo "${rcdate}T${rctime}${rczone}")
 # RCLONE BUILD
 cat <<- EOF > "$rclonepath"
 # SDRIVE ~ $sdclient ####################################
-[$sdclient]
+EOF
+echo "[$sdclient]" >> $rclonepath
+cat <<- EOF >> "$rclonepath"
 client_id = $sclientid_check
 client_secret = $ssecret_check
 type = drive
