@@ -78,6 +78,7 @@ else
 common_header "💾  SUCCESS: The ${drivename} encryption is valid!"; echo "VALID" > $tokenstate
 fi; fi
 ################################################################################
+drives_share_active_count
 common_confirm
 if [[ "$drivemain" == "gdrive" ]]; then drives_gdrive_menu && exit; else
 drives_share_manage_module && exit; fi;
