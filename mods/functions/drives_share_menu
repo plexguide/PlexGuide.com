@@ -1,7 +1,7 @@
 drives_share_menu () {
 
+drives_share_active_count
 drives_menu_start_setup
-
 
 common_message "🚀  Shared Drives - Mount Transport Data Interface" "
 💾 Active Drives:  $active_count of $sd_list_track
