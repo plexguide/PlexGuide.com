@@ -3,6 +3,9 @@ drives_menu_start_setup () {
 # folders created
 mkdir -p /pg/var/drives/gd/ /pg/var/rclone /pg/var/drives/shared
 
+# active count
+common_main /pg/var/drives/shared/active.count 0 active_count
+
 # for shared drive list control
 touch /pg/var/drives/shared/pg.list
 sd_list_track=$(wc -l /pg/var/drives/shared/pg.list | awk '{print $1}')

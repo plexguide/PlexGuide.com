@@ -2,8 +2,9 @@ drives_share_menu () {
 
 drives_menu_start_setup
 
+
 common_message "🚀  Shared Drives - Mount Transport Data Interface" "
-💾 Active Drives: 0 of $sd_list_track <NOTE: NOT WORKING YET>
+💾 Active Drives:  $active_count of $sd_list_track
 
 [A] Add    | An existing Share Drive from PG
 [M] Manage | Ones that have been added to PG

@@ -1,12 +1,13 @@
 drives_menu_start() {
 
 drives_menu_start_setup
+drives_share_active_count
 
 common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
 [1] Google Drive        : [$gdtokeninfo]
-[2] Share  Drive(s)     : [Active Tokens - 0 of $sd_list_track]
+[2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]
 [3] Storage Method      : [$storage_method]
 ------------------------------------------------------------------------------
 [D] Deploy Drives
