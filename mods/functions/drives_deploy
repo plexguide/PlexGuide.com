@@ -80,7 +80,7 @@ sc_drives_failed=$(cat /pg/tmp/edrives.bad)
 if [[ "$sd_drives_failed" != "" ]]; then echo "$sd_drives_failed" >> $f_log; fi
 if [[ "$sc_drives_failed" != "" ]]; then echo "$sc_drives_failed" >> $f_log; fi
 
-if [[ -e "$f_log" ]]; then f_final=$(cat $f_log)"
+if [[ -e "$f_log" ]]; then f_final=$(cat $f_log); fi 
 
 if [[ "$f_final" != "" ]]; then
 common_message "🚀  Failed Checks" "
