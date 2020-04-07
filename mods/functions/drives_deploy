@@ -83,7 +83,7 @@ if [[ "$gd_drives_failed" != "" ]]; then echo "$gd_drives_failed" >> $f_log; fi
 if [[ "$gc_drives_failed" != "" ]]; then echo "$gc_drives_failed" >> $f_log; fi
 if [[ "$sd_drives_failed" != "" ]]; then echo "$sd_drives_failed" >> $f_log; fi
 if [[ "$sc_drives_failed" != "" ]]; then echo "$sc_drives_failed" >> $f_log; fi
-f_final=$(echo $f_log)
+f_final=$(cat $f_log)
 
 if [[ "$f_final" != "" ]]; then
 common_message "🚀  Failed Checks" "
