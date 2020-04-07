@@ -2,12 +2,12 @@ drives_share_active_count () {
 
 find /pg/var/drives/shared/*/*.token > /pg/tmp/active.count
 rm -rf /pg/var/drives/valid.drives
-1
+
 a=0
 while read p; do
   checkvalidcount=$(cat $p)
   if [[ "$checkvalidcount" == "VALID" ]]; then
-  "$p" | cut -d'/' -f7- | rev | cut -c7- >> /pg/var/drives/valid.drives
+  echo "$p" | cut -d'/' -f7- | rev | cut -c7- >> /pg/var/drives/valid.drives
   ((a++)); fi
 done </pg/tmp/active.count
 
