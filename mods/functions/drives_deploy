@@ -30,9 +30,11 @@ while read p; do
     equick_check=$(rclone lsd --config /pg/var/drives/shared/$p/$p.conf ${p}c: | grep "plexguide.com"); fi
 
   if [[ "$quick_check" != "" && "$crypt_exist" == "" ]]; then
-    common_header "💾  PASSED:  Unencrypted Token $p is valid"; sleep 1 >> /pg/tmp/drives.list; fi
+    common_header "💾  PASSED:  Unencrypted Token $p is valid"; sleep 1
+    echo "$p" >> /pg/tmp/drives.list; fi
   if [[ "$quick_check" == "" && "$crypt_exist" == "" ]]; then
-    common_header "💾  FAILED:  Unencrypted Token $p is valid"; sleep 1 >> /pg/tmp/drives.bad; fi
+    common_header "💾  FAILED:  Unencrypted Token $p is valid"; sleep 1
+    echo "$p" >> /pg/tmp/drives.bad; fi
 
   if [[ "$quick_check" != "" && "$crypt_exist" != "" && "$equick_check" != "" ]]; then
     common_header "💾  PASSED:  Unencrypted & Encrypted Token $p is valid"
