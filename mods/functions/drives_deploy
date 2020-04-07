@@ -7,7 +7,9 @@ if [[ -e "/pg/var/drives/gd/token.info" ]]; then
     if [[ "$gdcheck" == "VALID" ]]; then
       common_header "💾  TESTING: Unencrypted GDrive Token"; sleep 1.5
       gdr_check=$(rclone lsd --config /pg/var/drives/gd/gd.conf gd: | grep "plexguide.com")
-      if [[ "$gdr_check" != "" ]]; then common_header "💾  PASSED:  Unencrypted Token gd is [VALID]"
+      if [[ "$gdr_check" != "" ]]; then common_header "💾  PASSED:  Unencrypted Token gd is [VALID]" && gd_final="VALID"
+    else
+        common_header "💾  PASSED:  Unencrypted Token gd is [INVALID]" && gd_final="INVALID"
         if [[ -e "/pg/var/drives/gd/token.encrypted" ]]; then
           common_header "💾  TESTING: Encrypted GDrive Token"; sleep 1.5
           gdrc_check=$(rclone lsd --config /pg/var/drives/gd/gd.conf gc: | grep "plexguide.com")
@@ -38,10 +40,10 @@ $tokenlist
 [ENCRYPTED]
 $etokenlist"; sleep 3
 
-rm -rf /pg/tmp/drives.list
-rm -rf /pg/tmp/edrives.list
-rm -rf /pg/tmp/drives.bad
-rm -rf /pg/tmp/edrives.bad
+rm -rf /pg/tmp/drives.list && touch /pg/tmp/drives.list
+rm -rf /pg/tmp/edrives.list && touch /pg/tmp/edrives.list
+rm -rf /pg/tmp/drives.bad && touch /pg/tmp/drives.bad
+rm -rf /pg/tmp/edrives.bad && touch /pg/tmp/edrives.bad
 
 while read p; do
   equick_check="" && enote=""
@@ -66,8 +68,33 @@ while read p; do
     echo "$p" >> /pg/tmp/drives.bad && echo "$p" >> /pg/tmp/edrives.bad; sleep 1.5; fi
 done </pg/var/drives/valid.drives
 
+f_log="/pg/tmp/failed_drive_log"
+rm -rf $f_log
 
+if [[ "$gd_final" == "INVALID" ]]; then echo "[GD] Unencrypt ~ FAILED" >> $f_log; fi
+if [[ "$gc_final" == "INVALID" ]]; then echo "[GD] Encrypted ~ FAILED" >> $f_log; fi
 
+gd_drives_failed=$(cat /pg/tmp/drives.list)
+gc_drives_failed=$(cat /pg/tmp/edrives.list)
+sd_drives_failed=$(cat /pg/tmp/drives.bad)
+sc_drives_failed=$(cat /pg/tmp/edrives.list)
+
+if [[ "$gd_drives_failed" != "" ]]; then echo "$gd_drives_failed" >> $f_log; fi
+if [[ "$gc_drives_failed" != "" ]]; then echo "$gc_drives_failed" >> $f_log; fi
+if [[ "$sd_drives_failed" != "" ]]; then echo "$sd_drives_failed" >> $f_log; fi
+if [[ "$sc_drives_failed" != "" ]]; then echo "$sc_drives_failed" >> $f_log; fi
+f_final=$(echo $f_log)
+
+if [[ "$f_final" != "" ]]; then
+common_message "🚀  Failed Checks" "
+💾 Log Information Below - The following checks have failed!
+
+Please go back and redeploy and correct any of the following mounts that
+deployed incorrectly! This is to prevent errors in the deployment of /pg/unity
+and from losing and storing data incorrectly!
+
+$f_final"
+common_confirm && drives_menu_start && exit; fi
 
 # common_header "⌛ DEPLOYMENT: Rechecking all VALID Unencrypted Tokens"
 
@@ -79,7 +106,7 @@ done </pg/var/drives/valid.drives
 
 # if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then
 # common_header "⌛ DEPLOYMENT: GD Crypt Mount"; sleep 1.5; drives_deploy_mounts gc; fi
-
+echo "DEPLOYED"
 common_confirm
 drives_menu_start && exit
 }
