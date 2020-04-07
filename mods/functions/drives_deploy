@@ -5,6 +5,7 @@ drives_menu_start_setup
 fmt -w 79 "/pg/var/drives/valid.drives" > "/pg/tmp/tokenlist.wrap"
 tokenlist=$(cat /pg/tmp/tokenlist.wrap)
 
+touch /pg/var/drives/evalid.drives
 fmt -w 79 "/pg/var/drives/evalid.drives" > "/pg/tmp/etokenlist.wrap"
 etokenlist=$(cat /pg/tmp/etokenlist.wrap)
 
