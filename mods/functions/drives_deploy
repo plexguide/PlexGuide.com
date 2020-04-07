@@ -18,7 +18,7 @@ common_message "🚀  Rechecking Validity of the Stored Tokens" "
 $tokenlist
 
 [ENCRYPTED]
-$etokenlist"; sleep 2.5
+$etokenlist"; sleep 3
 
 rm -rf /pg/tmp/drives.list
 rm -rf /pg/tmp/edrives.list
