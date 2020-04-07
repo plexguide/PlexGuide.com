@@ -46,7 +46,7 @@ rm -rf /pg/tmp/drives.bad && touch /pg/tmp/drives.bad
 rm -rf /pg/tmp/edrives.bad && touch /pg/tmp/edrives.bad
 
 while read p; do
-  equick_check="" && enote=""
+  equick_check="" && enote="" && f_final="" && f_log=""
   common_header "💾  TESTING: Shared Drive Token(s) for $p"
   quick_check=$(rclone lsd --config /pg/var/drives/shared/$p/$p.conf ${p}: | grep "plexguide.com")
     if [[ -e "/pg/var/drives/e.tokens/$p" ]]; then
@@ -79,7 +79,8 @@ sc_drives_failed=$(cat /pg/tmp/edrives.bad)
 
 if [[ "$sd_drives_failed" != "" ]]; then echo "$sd_drives_failed" >> $f_log; fi
 if [[ "$sc_drives_failed" != "" ]]; then echo "$sc_drives_failed" >> $f_log; fi
-f_final=$(cat $f_log)
+
+if [[ -e "$f_log" ]]; then f_final=$(cat $f_log)"
 
 if [[ "$f_final" != "" ]]; then
 common_message "🚀  Failed Checks" "
