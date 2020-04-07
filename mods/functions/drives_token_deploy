@@ -72,10 +72,13 @@ rclone mkdir --config $rclonepath ${drivename2}:/crypt
 rclone mkdir --config $rclonepath ${drivename2}:/plexguide.com
 sd_check=$(rclone lsd --config $rclonepath ${drivename2}: | grep "plexguide.com")
 
+mkdir -p /pg/drives/e.tokens
 if [[ "$sd_check" == "" ]]; then
 common_header "💾  FAILED:  Unable to read the ${drivename} encryption drive!"; echo "FAILED" > $tokenstate
+rm -rf /pg/drives/e.tokens/{$drivename}
 else
 common_header "💾  SUCCESS: The ${drivename} encryption is valid!"; echo "VALID" > $tokenstate
+touch /pg/drives/e.tokens/{$drivename}
 fi; fi
 ################################################################################
 drives_share_active_count
