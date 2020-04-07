@@ -15,12 +15,34 @@ common_message "🚀  Rechecking  - Management Interface" "
 $tokenlist
 
 [ENCRYPTED]
-$etokenlist; sleep 2.5
+$etokenlist"; sleep 2.5
 
+rm -rf /pg/tmp/drives.list
+rm -rf /pg/tmp/edrives.list
+rm -rf /pg/tmp/drives.bad
+rm -rf /pg/tmp/edrives.bad
+
+while read p; do
+  common_header "💾  TESTING: Token(s) for $p"
+  quick_check=$(rclone lsd --config /pg/var/drives/shared/$p/$p.conf ${p}: | grep "plexguide.com")
+    crypt_exist=$(cat /pg/var/drives/evalid.drives | grep "\<$p\>")
+    if [[ "$crypt_exist" != "" ]]; then
+    equick_check=$(rclone lsd --config /pg/var/drives/shared/$p/$p.conf ${p}c: | grep "plexguide.com"); fi
+
+  if [[ "$quick_check" != "" && "$crypt_exist" == "" ]]; then
+    common_header "💾  PASSED:  Unencrypted Token $p is valid"; sleep 1 >> /pg/tmp/drives.list; fi
+  if [[ "$quick_check" == "" && "$crypt_exist" == "" ]]; then
+    common_header "💾  FAILED:  Unencrypted Token $p is valid"; sleep 1 >> /pg/tmp/drives.bad; fi
+
+  if [[ "$quick_check" != "" && "$crypt_exist" != "" && "$equick_check" != "" ]]; then
+    common_header "💾  PASSED:  Unencrypted & Encrypted Token $p is valid"
+    echo "$p" >> /pg/tmp/drives.list && echo "$p" >> /pg/tmp/edrives.list; sleep 1.5; fi
+  if [[ "$quick_check" != "" && "$crypt_exist" != "" && "$equick_check" == "" ]]; then
+    common_header "💾  FAILED:  Encrypted token for $p failed"
+    echo "$p" >> /pg/tmp/drives.bad && echo "$p" >> /pg/tmp/edrives.bad; sleep 1.5; fi
+done </pg/var/drives/valid.drives
 
 # common_header "⌛ DEPLOYMENT: Rechecking all VALID Unencrypted Tokens"
-
-
 
 # common_header "⌛ DEPLOYMENT: Service Cleanup & Stopping Docker Containers"; sleep 1.5
 # ansible-playbook /pg/mods/drives/ymls/remove.yml
