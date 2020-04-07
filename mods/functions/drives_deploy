@@ -27,7 +27,7 @@ rm -rf /pg/tmp/edrives.bad
 
 while read p; do
   equick_check="" && enote=""
-  common_header "💾  TESTING: Token(s) for $p"
+  common_header "💾  TESTING: Shared Drive Token(s) for $p"
   quick_check=$(rclone lsd --config /pg/var/drives/shared/$p/$p.conf ${p}: | grep "plexguide.com")
     if [[ -e "/pg/var/drives/e.tokens/$p" ]]; then
     enote=yes
@@ -47,6 +47,9 @@ while read p; do
     common_header "💾  FAILED:  Encrypted token for $p failed"
     echo "$p" >> /pg/tmp/drives.bad && echo "$p" >> /pg/tmp/edrives.bad; sleep 1.5; fi
 done </pg/var/drives/valid.drives
+
+
+
 
 # common_header "⌛ DEPLOYMENT: Rechecking all VALID Unencrypted Tokens"
 

@@ -15,6 +15,7 @@ if [[ "$drivemain" == "gdrive" ]]; then
   cryptcheck="$gcryptcheck"
   password1="$gpassword1"
   password2="$gpassword2"
+  evalidcheck="/pg/var/drives"
 else
   drivename="$sdselect"
   drivename2="${drivename}c"
@@ -28,6 +29,7 @@ else
   cryptcheck="$scryptcheck"
   password1="$spassword1"
   password2="$spassword2"
+  evalidcheck="/pg/var/drives/e.tokens"
 fi
 
 common_message "🚀  $drivename ~ $basicname Authentication" "
@@ -75,10 +77,10 @@ sd_check=$(rclone lsd --config $rclonepath ${drivename2}: | grep "plexguide.com"
 mkdir -p /pg/var/drives/e.tokens
 if [[ "$sd_check" == "" ]]; then
 common_header "💾  FAILED:  Unable to read the ${drivename} encryption drive!"; echo "FAILED" > $tokenstate
-rm -rf /pg/var/drives/e.tokens/{$drivename}
+rm -rf $evalidcheck/$drivename
 else
 common_header "💾  SUCCESS: The ${drivename} encryption is valid!"; echo "VALID" > $tokenstate
-touch /pg/var/drives/e.tokens/$drivename
+touch $evalidcheck/$drivename
 fi; fi
 ################################################################################
 drives_share_active_count
