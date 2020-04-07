@@ -12,8 +12,10 @@ if [[ -e "/pg/var/drives/gd/token.info" ]]; then
           common_header "💾  TESTING: Encrypted GDrive Token"; sleep 1.5
           gdrc_check=$(rclone lsd --config /pg/var/drives/gd/gd.conf gc: | grep "plexguide.com")
           if [[ "$gdrc_check" != "" ]]; then common_header "💾  PASSED:  Encrypted Token gd is [VALID]"
+          gc_final="VALID"
         else
           common_header "💾  FAILED:  Encrypted Token gd is [INVALID]"
+          gc_final="INVALID"
 fi; fi; fi; fi; fi
 sleep 2
 ################################################################################
