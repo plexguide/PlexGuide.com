@@ -74,13 +74,9 @@ rm -rf $f_log
 if [[ "$gd_final" == "INVALID" ]]; then echo "[GD] Unencrypt ~ FAILED" >> $f_log; fi
 if [[ "$gc_final" == "INVALID" ]]; then echo "[GD] Encrypted ~ FAILED" >> $f_log; fi
 
-gd_drives_failed=$(cat /pg/tmp/drives.list)
-gc_drives_failed=$(cat /pg/tmp/edrives.list)
 sd_drives_failed=$(cat /pg/tmp/drives.bad)
-sc_drives_failed=$(cat /pg/tmp/edrives.list)
+sc_drives_failed=$(cat /pg/tmp/edrives.bad)
 
-if [[ "$gd_drives_failed" != "" ]]; then echo "$gd_drives_failed" >> $f_log; fi
-if [[ "$gc_drives_failed" != "" ]]; then echo "$gc_drives_failed" >> $f_log; fi
 if [[ "$sd_drives_failed" != "" ]]; then echo "$sd_drives_failed" >> $f_log; fi
 if [[ "$sc_drives_failed" != "" ]]; then echo "$sc_drives_failed" >> $f_log; fi
 f_final=$(cat $f_log)
