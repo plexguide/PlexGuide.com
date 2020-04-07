@@ -11,5 +11,7 @@ while read p; do
   ((a++)); fi
 done </pg/tmp/active.count
 
+ls -la /pg/var/drives/e.tokens | awk '{print $9}' | tail -n +4 > /pg/var/drives/valid.edrives
+
 echo "$a" > /pg/var/drives/shared/active.count
 }

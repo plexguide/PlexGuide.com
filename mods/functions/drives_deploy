@@ -2,6 +2,26 @@ drives_deploy() {
 
 drives_menu_start_setup
 
+fmt -w 79 "/pg/var/drives/valid.drives" > "/pg/tmp/tokenlist.wrap"
+tokenlist=$(cat /pg/tmp/tokenlist.wrap)
+
+fmt -w 79 "/pg/var/drives/evalid.drives" > "/pg/tmp/etokenlist.wrap"
+etokenlist=$(cat /pg/tmp/etokenlist.wrap)
+
+common_message "🚀  Rechecking  - Management Interface" "
+💾 Active Drives: 0 of $sd_list_track <NOTE: NOT WORKING YET>
+
+[UNENCRYPTED]
+$tokenlist
+
+[ENCRYPTED]
+$etokenlist; sleep 2.5
+
+
+# common_header "⌛ DEPLOYMENT: Rechecking all VALID Unencrypted Tokens"
+
+
+
 # common_header "⌛ DEPLOYMENT: Service Cleanup & Stopping Docker Containers"; sleep 1.5
 # ansible-playbook /pg/mods/drives/ymls/remove.yml
 
