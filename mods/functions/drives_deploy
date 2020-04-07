@@ -13,7 +13,7 @@ if [[ -e "/pg/var/drives/gd/token.info" ]]; then
           gdrc_check=$(rclone lsd --config /pg/var/drives/gd/gd.conf gc: | grep "plexguide.com")
           if [[ "$gdrc_check" == "" ]]; then common_header "💾  FAILED:  Encrypted Token gd is [INVALID]"
         else
-          "💾  FAILED:  Unencrypted Token gd is [INVALID]"
+          common_header "💾  FAILED:  Unencrypted Token gd is [INVALID]"
 fi; fi; fi; fi; fi
 sleep 2
 ################################################################################
