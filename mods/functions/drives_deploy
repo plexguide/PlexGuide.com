@@ -8,6 +8,8 @@ tokenlist=$(cat /pg/tmp/tokenlist.wrap)
 fmt -w 79 "/pg/var/drives/evalid.drives" > "/pg/tmp/etokenlist.wrap"
 etokenlist=$(cat /pg/tmp/etokenlist.wrap)
 
+if [[ "$etokenlist" == "" ]]; then $etokenlist=="No Encrypted Tokens Discovered"
+
 common_message "🚀  Rechecking  - Management Interface" "
 💾 Active Drives: 0 of $sd_list_track <NOTE: NOT WORKING YET>
 
