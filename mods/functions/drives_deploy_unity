@@ -16,7 +16,7 @@ while read p; do
 done </pg/tmp/edrives.list
   unity_build=${unity_build%?}
 
-cat <<- EOF > "$service_path"
+cat <<- EOF > "$unity_script_path"
 sleep 3
 
 chown -R 1000:1000 "/pg/downloads"
