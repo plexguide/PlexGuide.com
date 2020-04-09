@@ -16,12 +16,12 @@ systemctl daemon-reload && systemctl stop $1 && systemctl disable $1 && rm -rf "
 
 cat <<- EOF > "$service_path"
 [Unit]
-Description=$sdselect Daemon
+Description=$1 Daemon
 After=multi-user.target
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/rclone mount $sdselect: /pg/$sdselect \
+ExecStart=/usr/bin/rclone mount $1: /pg/$1 \
 --config=$rclone_path \
 --uid=1000 --gid=1000 --umask=002 \
 --allow-other \
@@ -37,7 +37,7 @@ ExecStart=/usr/bin/rclone mount $sdselect: /pg/$sdselect \
 --vfs-read-chunk-size=$vfs_read_chunk_size$rclone_MB \
 --buffer-size=$buffer_size$rclone_MB
 
-ExecStop=/bin/fusermount -uz /pg/$sdselect > /dev/null
+ExecStop=/bin/fusermount -uz /pg/$1 > /dev/null
 TimeoutSec=60
 User=0
 Group=0
@@ -50,7 +50,7 @@ StartLimitBurst=3
 WantedBy=multi-user.target
 EOF
 
-common_fcreate /pg/$sdselect
+common_fcreate /pg/$1
 common_header "💾  NOTICE:  Starting/Enabling NEW Service - $1" && sleep 1
 systemctl daemon-reload && systemctl enable $1 && systemctl restart $1
 
