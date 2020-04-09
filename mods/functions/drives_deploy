@@ -37,7 +37,7 @@ common_message "🚀  Checking SDrive Tokens" "
 [UNENCRYPTED]
 $tokenlist
 
-[ENCRYPTED]
+[ENCRYPTED - ADDS A 'c' to the END]
 $etokenlist"; sleep 3
 
 rm -rf /pg/tmp/drives.list && touch /pg/tmp/drives.list
@@ -59,13 +59,13 @@ while read p; do
   if [[ "$quick_check" == "" && "$equick_check" == "" && "$enote" != "yes" ]]; then
     common_header "💾  FAILED:  Unencrypted Token $p is valid"; sleep 1
     echo "Token: $p" >> /pg/tmp/drives.bad; fi
-
+    
   if [[ "$quick_check" != "" && "$equick_check" != "" && "$enote" == "yes" ]]; then
     common_header "💾  PASSED:  Unencrypted & Encrypted Token $p is valid"
     echo "$p" >> /pg/tmp/drives.list && echo "$p" >> /pg/tmp/edrives.list; sleep 1.5; fi
   if [[ "$quick_check" != "" && "$equick_check" == "" && "$enote" == "yes" ]]; then
-    common_header "💾  FAILED:  Encrypted token for $p failed"
-    echo "Token: $p" >> /pg/tmp/edrives.bad; sleep 1.5; fi
+    common_header "💾  FAILED:  Encrypted token for $p$temp57 failed"
+    echo "Token: $p$temp" >> /pg/tmp/edrives.bad; sleep 1.5; fi
 done </pg/var/drives/valid.drives
 
 f_log="/pg/tmp/failed_drive_log"
@@ -95,21 +95,26 @@ common_confirm && drives_menu_start && exit; fi
 
 common_header "💾  PASSED:  All Drive Tokens Are Valid!"; sleep 1.5
 
+rm -rf /pg/tmp/deploy.log
 if [[ "$gd_final" == "VALID" ]]; then
   common_header "💾  DEPLOYING:  Unencrypted GDrive ~ /pg/gd"; sleep 1.5
+  echo "Mounted: GDrive (Unencrypt) - /pg/gd" >> /pg/tmp/deploy.log
   drives_deploy_mounts gd; fi
 
 while read p; do
   common_header "💾  DEPLOYING:  Unencrypted SDrive ~ /pg/$p"; sleep 1.5
   drives_deploy_mounts $p
+  echo "Mounted: SDrive (Unencrypt) - /pg/$p" >> /pg/tmp/deploy.log
 done </pg/tmp/drives.list
 
 if [[ "$gc_final" == "VALID" ]]; then
   common_header "💾  DEPLOYING:  Encrypted GDrive ~ /pg/gc"; sleep 1.5
-  drives_deploy_mounts gc; fi 
+  echo "Mounted: GDrive (Encrypted) - /pg/gc" >> /pg/tmp/deploy.log
+  drives_deploy_mounts gc; fi
 
 while read p; do
   common_header "💾  DEPLOYING:  Encrypted SDrive ~ /pg/$p"; sleep 1.5
+  echo "Mounted: SDrive (Encrypted) - /pg/$p" >> /pg/tmp/deploy.log
   drives_deploy_mounts $p
 done </pg/tmp/edrives.list
 
