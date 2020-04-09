@@ -22,6 +22,7 @@ if [[ -e "/pg/var/drives/gd/token.info" ]]; then
 fi; fi; fi; fi; fi
 sleep 2
 ################################################################################
+touch /pg/var/drives/valid.drives
 
 fmt -w 79 "/pg/var/drives/valid.drives" > "/pg/tmp/tokenlist.wrap"
 tokenlist=$(cat /pg/tmp/tokenlist.wrap)
