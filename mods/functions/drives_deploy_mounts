@@ -1,5 +1,6 @@
 drives_deploy_mounts() {
 
+sdselect=$1
 drives_menu_start_setup
 
 service_path="/etc/systemd/system/$1.service"
