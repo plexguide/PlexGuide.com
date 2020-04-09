@@ -120,7 +120,17 @@ while read p; do
   drives_deploy_mounts $p
 done </pg/tmp/edrives.list
 
-echo "DEPLOYED"
+deploy_log_output=$(cat /pg/tmp/deploy.log)
+ech
+
+common_header "💾  DEPLOYING:  PG Drives Unity"; sleep 2; drives_deploy_unity
+common_header "💾  DEPLOYED:  PG Drives @ /pg/unity"
+
+common_message "🚀  Deployment Log" "
+💾 The following drives have deployed below:
+"
+echo "$deploy_log_output"
+
 common_confirm
 drives_menu_start && exit
 }
