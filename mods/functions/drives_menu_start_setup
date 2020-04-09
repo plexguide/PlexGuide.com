@@ -1,7 +1,7 @@
 drives_menu_start_setup () {
 
 # folders created
-mkdir -p /pg/var/drives/gd/ /pg/var/rclone /pg/var/drives/shared
+mkdir -p /pg/var/drives/gd/ /pg/var/rclone /pg/var/drives/shared /pg/var/drives/e.tokens
 
 # active count
 common_main /pg/var/drives/shared/active.count 0 active_count
