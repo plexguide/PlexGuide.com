@@ -28,13 +28,13 @@ ExecStart=/usr/bin/rclone mount $sdselect: /pg/$sdselect \
 --timeout=1h \
 --tpslimit=8 \
 --drive-skip-gdocs \
---dir-cache-time=$dir_cache_time\\m \
+--dir-cache-time=$dir_cache_time\m\ \
 --vfs-cache-mode="writes" \
---vfs-cache-max-age=$vfs_cache_max_age\\h \
---vfs-cache-max-size=$vfs_cache_max_size\\M \
---vfs-read-chunk-size-limit=$vfs_read_chunk_size_limit\\M \
---vfs-read-chunk-size=$vfs_read_chunk_size\\M\\ \
---buffer-size=$buffer_size\\M\\
+--vfs-cache-max-age=$vfs_cache_max_age\h\ \
+--vfs-cache-max-size=$vfs_cache_max_size\M\ \
+--vfs-read-chunk-size-limit=$vfs_read_chunk_size_limit\M\ \
+--vfs-read-chunk-size=$vfs_read_chunk_size\M\ \
+--buffer-size=$buffer_size\M\
 
 ExecStop=/bin/fusermount -uz /pg/$sdselect > /dev/null
 TimeoutSec=60
