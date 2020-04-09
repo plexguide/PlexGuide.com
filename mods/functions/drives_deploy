@@ -22,8 +22,9 @@ if [[ -e "/pg/var/drives/gd/token.info" ]]; then
 fi; fi; fi; fi; fi
 sleep 2
 ################################################################################
-touch /pg/var/drives/valid.drives
+touch /pg/var/drives/valid.drives && valid_drive_check=$(cat /pg/var/drives/valid.drives)
 
+if [[ "$valid_drive_check" != "" ]]; then
 fmt -w 79 "/pg/var/drives/valid.drives" > "/pg/tmp/tokenlist.wrap"
 tokenlist=$(cat /pg/tmp/tokenlist.wrap)
 
@@ -68,7 +69,7 @@ while read p; do
   if [[ "$quick_check" != "" && "$equick_check" == "" && "$enote" == "yes" ]]; then
     common_header "💾  FAILED:  Encrypted token for $p failed"
     echo "Token: $p" >> /pg/tmp/edrives.bad; sleep 1.5; fi
-done </pg/var/drives/valid.drives
+done </pg/var/drives/valid.drives; fi 
 
 f_log="/pg/tmp/failed_drive_log"
 rm -rf $f_log
