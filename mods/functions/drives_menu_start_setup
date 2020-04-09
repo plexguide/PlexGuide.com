@@ -22,7 +22,7 @@ common_main /pg/var/drives/storage.method READ-ONLY storage_method
 common_main /pg/var/drives/gd/gd.crypt NO gcryptcheck
 common_main /pg/var/drives/gd/gd.clientid NOT-SET clientid_check
 common_main /pg/var/drives/gd/gd.secret NOT-SET secret_check
-common_main /pg/var/drives/gd/gd.token NOT-CONFIGURED gdtokeninfo
+common_main /pg/var/drives/gd/gd.info NOT-CONFIGURED gdtokeninfo
 common_main /pg/var/drives/gd/gd.crypt NO gdcryptinfo
 common_main /pg/var/drives/gd/password.1 NOT-SET gpassword1
 common_main /pg/var/drives/gd/password.2 NOT-SET gpassword2
