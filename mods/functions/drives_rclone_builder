@@ -20,7 +20,7 @@ type = drive
 server_side_across_configs = true
 token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${refreshtoken}"expiry":"${final}"}
 EOF
-if [[ "$drivename" != "gc" ]]; then echo "teamdrive = $sd_id" >> $rclonepath; fi
+if [[ "$drivename" != "gd" ]]; then echo "teamdrive = $sd_id" >> $rclonepath; fi
 echo "" >> $rclonepath
 
 if [[ "$cryptcheck" == "YES" ]]; then
