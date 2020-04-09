@@ -95,13 +95,21 @@ common_confirm && drives_menu_start && exit; fi
 
 common_header "💾  PASSED:  All Drive Tokens Are Valid!"; sleep 1.5
 
+if [[ "$gd_final" == "VALID" ]]; then
+  common_header "💾  DEPLOYING:  Unencrypted GDrive ~ /pg/gd"; sleep 1.5
+  drives_deploy_mounts gd; fi
+
 while read p; do
-  common_header "💾  DEPLOYING:  Unencrypted Drive ~ /pg/$p"; sleep 1.5
+  common_header "💾  DEPLOYING:  Unencrypted SDrive ~ /pg/$p"; sleep 1.5
   drives_deploy_mounts $p
 done </pg/tmp/drives.list
 
+if [[ "$gc_final" == "VALID" ]]; then
+  common_header "💾  DEPLOYING:  Encrypted GDrive ~ /pg/gc"; sleep 1.5
+  drives_deploy_mounts gc; fi 
+
 while read p; do
-  common_header "💾  DEPLOYING:  Encrypted Drive ~ /pg/$p"; sleep 1.5
+  common_header "💾  DEPLOYING:  Encrypted SDrive ~ /pg/$p"; sleep 1.5
   drives_deploy_mounts $p
 done </pg/tmp/edrives.list
 
