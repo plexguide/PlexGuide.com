@@ -13,6 +13,7 @@ sd_list_track=$(wc -l /pg/var/drives/shared/pg.list | awk '{print $1}')
 #token variables
 common_main /pg/var/drives/temp.rc NOT-SET rc_temp
 common_main /pg/var/drives/temp.token NOT-SET temp_token
+common_main /pg/tmp/rclone_path NOT-SET temp_token
 
 #primary variables
 common_main /pg/var/drives/storage.method READ-ONLY storage_method
@@ -84,11 +85,9 @@ else sdname_menu="SET"; fi
 else pname_menu="SET"; fi
 
   if [[ $(cat /pg/var/drives/shared/$sdselect/e.mail) == "NOT-SET" ]]; then ename_menu="NOT-SET"
-else ename_menu="SET"; fi
+else ename_menu="SET"; fi; fi
 
-
-
-fi
-
-
+# rclone_path
+if [[ "$sdselect" == "gc" || "$sdselect" == "gd" ]]; then
+  rclone_path="/pg/var/drives/gd/gd.conf"; else rclone_path="/pg/var/drives/shared/$sdselect/$sdselect.conf"; fi
 }

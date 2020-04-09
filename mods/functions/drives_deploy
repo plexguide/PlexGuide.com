@@ -93,10 +93,17 @@ and from losing and storing data incorrectly!
 $f_final"
 common_confirm && drives_menu_start && exit; fi
 
-common_header "💾  PASSED:  All Drive Tokens Are Valid!"; sleep 2
+common_header "💾  PASSED:  All Drive Tokens Are Valid!"; sleep 1.5
 
+while read p; do
+  common_header "💾  DEPLOYING:  Unencrypted Drive ~ /pg/$p"; sleep 1.5
+  drives_deploy_mounts $p
+done </pg/tmp/drives.list
 
-
+while read p; do
+  common_header "💾  DEPLOYING:  Encrypted Drive ~ /pg/$p"; sleep 1.5
+  drives_deploy_mounts $p
+done </pg/tmp/edrives.list
 
 echo "DEPLOYED"
 common_confirm
