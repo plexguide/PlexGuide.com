@@ -1,5 +1,6 @@
 drives_deploy() {
 
+temp99=0
 drives_menu_start_setup
 
 if [[ -e "/pg/var/drives/gd/token.info" ]]; then
@@ -37,7 +38,7 @@ common_message "🚀  Checking SDrive Tokens" "
 [UNENCRYPTED]
 $tokenlist
 
-[ENCRYPTED - ADDS A 'c' to the END]
+[ENCRYPTED]
 $etokenlist"; sleep 3
 
 rm -rf /pg/tmp/drives.list && touch /pg/tmp/drives.list
@@ -60,13 +61,12 @@ while read p; do
     common_header "💾  FAILED:  Unencrypted Token $p is valid"; sleep 1
     echo "Token: $p" >> /pg/tmp/drives.bad; fi
 
-  temp59="c"
   if [[ "$quick_check" != "" && "$equick_check" != "" && "$enote" == "yes" ]]; then
     common_header "💾  PASSED:  Unencrypted & Encrypted Token $p is valid"
     echo "$p" >> /pg/tmp/drives.list && echo "$p" >> /pg/tmp/edrives.list; sleep 1.5; fi
   if [[ "$quick_check" != "" && "$equick_check" == "" && "$enote" == "yes" ]]; then
-    common_header "💾  FAILED:  Encrypted token for $p$temp59 failed"
-    echo "Token: $p$temp" >> /pg/tmp/edrives.bad; sleep 1.5; fi
+    common_header "💾  FAILED:  Encrypted token for $p failed"
+    echo "Token: $p" >> /pg/tmp/edrives.bad; sleep 1.5; fi
 done </pg/var/drives/valid.drives
 
 f_log="/pg/tmp/failed_drive_log"
@@ -114,6 +114,7 @@ if [[ "$gc_final" == "VALID" ]]; then
   drives_deploy_mounts gc; fi
 
 while read p; do
+  temp99="c"
   common_header "💾  DEPLOYING:  Encrypted SDrive ~ /pg/$p"; sleep 1.5
   echo "Mounted: SDrive (Encrypted) - /pg/$p" >> /pg/tmp/deploy.log
   drives_deploy_mounts $p

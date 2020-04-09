@@ -82,7 +82,7 @@ common_header "💾  FAILED:  Unable to read the ${drivename} encryption drive!"
 else
 common_header "💾  SUCCESS: The ${drivename} encryption is valid!"; echo "VALID" > $tokenstate
   if [[ "$drivename" == "gd" ]]; then
-    touch $evalidcheck/token.encrypted; else touch $evalidcheck/{$drivename}c; fi
+    touch $evalidcheck/token.encrypted; else touch $evalidcheck/$drivename; fi
 fi; fi
 ################################################################################
 drives_share_active_count
