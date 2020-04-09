@@ -2,6 +2,32 @@ drives_deploy_unity() {
 
 drives_menu_start_setup
 
+################################################################################
+unity_script_path="/pg/var/drives/unity.sh"
+  unity_build=""
+  unity_crypt="c"
+
+while read p; do
+  unity_build=$(echo ${unity_build}/pg/${p}=NC:)
+done </pg/tmp/drives.list
+
+while read p; do
+  unity_build=$(echo ${unity_build}/pg/${p}${unity_crypt}=NC:)
+done </pg/tmp/edrives.list
+  unity_build=${unity_build%?}
+
+cat <<- EOF > "$service_path"
+sleep 3
+
+chown -R 1000:1000 "/pg/downloads"
+chmod -R 755 "/pg/downloads"
+chown -R 1000:1000 "/pg/transfer"
+chmod -R 755 "/pg/transfer"
+
+mergerfs -o func.getattr=newest,category.create=ff,direct_io,use_ino,atomic_o_trunc,big_writes,default_permissions,splice_move,splice_read,splice_write,allow_other,sync_read,minfreespace=0,umask=002,uid=1000,gid=1000,fsname=pgunity,nonempty \
+/pg/transfer=RW:$unity_build /pg/unity
+EOF
+################################################################################
 service_path="/etc/systemd/system/unity.service"
 
 if [[ -e "$service_path" ]]; then
@@ -11,14 +37,14 @@ systemctl daemon-reload && systemctl stop unity && systemctl disable unity && rm
 cat <<- EOF > "$service_path"
 
 [Unit]
-Description=PlexGuide_Unity
+Description=PGUnity
 After=multi-user.target
 
 [Service]
 Type=simple
 User=0
 Group=0
-ExecStart=/bin/bash /pg/var/drives/unity.sh
+ExecStart=/bin/bash $unity_script_path
 ExecStop=/bin/fusermount -uzq /pg/unity
 TimeoutStopSec=60
 KillMode=process
@@ -39,7 +65,7 @@ WantedBy=multi-user.target
 EOF
 
 fusermount -u -q /pg/unity
-common_fcreate /pg/unity
+common_fcreate_silent /pg/unity
 common_header "💾  NOTICE:  Starting/Enabling NEW Service - Unity" && sleep 1
 systemctl daemon-reload && systemctl enable unity | fmt -w 79 && systemctl restart unity
 
