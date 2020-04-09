@@ -8,8 +8,6 @@ if [[ -e "$service_path" ]]; then
 common_header "💾  NOTICE:  Stopping/Disabling OLD Service - $1"; sleep 1
 systemctl stop $1 && systemctl disable $1 && rm -rf "$service_path"; fi
 
-if [[ "$1" == "gd" || "$1" == "gc" ]]; then rclone_path=
-
 cat <<- EOF > "$service_path"
 [Unit]
 Description={$sdselect} Daemon
@@ -50,7 +48,7 @@ WantedBy=multi-user.target
 EOF
 
 common_header "💾  NOTICE:  Starting/Enabling NEW Service - $1" && sleep 1
-systemctl enable $1 && systemctl restart
+systemctl enable $1 && systemctl restart $1
 
 common_header "💾  ENABLED:  Drive /pg/$1" && sleep 1.5
 }
