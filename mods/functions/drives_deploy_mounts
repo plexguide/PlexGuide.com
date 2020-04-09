@@ -54,7 +54,7 @@ EOF
 fusermount -u -q /pg/$1$temp99
 common_fcreate /pg/$1$temp99
 common_header "💾  NOTICE:  Starting/Enabling NEW Service - $1$temp99" && sleep 1
-systemctl daemon-reload && systemctl enable $1$temp99 && systemctl restart $1$temp99
+systemctl daemon-reload && systemctl enable $1$temp99 | fmt -w79 && systemctl restart $1$temp99
 
 common_header "💾  ENABLED:  Drive /pg/$1$temp99" && sleep 1.5
 }
