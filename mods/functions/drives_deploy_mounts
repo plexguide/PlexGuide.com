@@ -49,8 +49,8 @@ StartLimitBurst=3
 WantedBy=multi-user.target
 EOF
 
-common_header "💾  NOTICE:  Starting/Enabling NEW Service - $1"; sleep 1
+common_header "💾  NOTICE:  Starting/Enabling NEW Service - $1" && sleep 1
 systemctl enable $1 && systemctl restart
 
-common_header "💾  ENABLED:  Drive /pg/$1"; sleep 1.5
+common_header "💾  ENABLED:  Drive /pg/$1" && sleep 1.5
 }
