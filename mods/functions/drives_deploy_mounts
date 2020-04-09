@@ -50,7 +50,7 @@ WantedBy=multi-user.target
 EOF
 
 common_header "💾  NOTICE:  Starting/Enabling NEW Service - $1" && sleep 1
-systemctl enable $1 && systemctl restart $1
+systemctl daemon-reload && systemctl enable $1 && systemctl restart $1
 
 common_header "💾  ENABLED:  Drive /pg/$1" && sleep 1.5
 }
