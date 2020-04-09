@@ -93,16 +93,11 @@ and from losing and storing data incorrectly!
 $f_final"
 common_confirm && drives_menu_start && exit; fi
 
-# common_header "⌛ DEPLOYMENT: Rechecking all VALID Unencrypted Tokens"
+common_header "💾  PASSED:  All Drive Tokens Are Valid!"; sleep 2
 
-# common_header "⌛ DEPLOYMENT: Service Cleanup & Stopping Docker Containers"; sleep 1.5
-# ansible-playbook /pg/mods/drives/ymls/remove.yml
 
-# if [[ "$gdtokeninfo" == "VALID" ]]; then
-# common_header "⌛ DEPLOYMENT: GD Mount"; sleep 1.5; drives_deploy_mounts gd; fi
 
-# if [[ "$gdtokeninfo" == "VALID" && "$gcryptcheck" == "YES" ]]; then
-# common_header "⌛ DEPLOYMENT: GD Crypt Mount"; sleep 1.5; drives_deploy_mounts gc; fi
+
 echo "DEPLOYED"
 common_confirm
 drives_menu_start && exit
