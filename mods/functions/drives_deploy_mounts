@@ -2,12 +2,53 @@ drives_deploy_mounts() {
 
 drives_menu_start_setup
 
-ansible-playbook /pg/mods/drives/ymls/mount.yml -e "dir_cache_time=$dir_cache_time \
-  vfs_cache_max_age=$vfs_cache_max_age \
-  vfs_cache_max_size=$vfs_cache_max_size \
-  vfs_read_chunk_size_limit=$vfs_read_chunk_size_limit \
-  vfs_read_chunk_size=$vfs_read_chunk_size \
-  buffer_size=$buffer_size \
-  drive=$1"
+service_path="/etc/systemd/system/$1.service"
 
+if [[ -e "$service_path" ]]; then
+common_header "💾  NOTICE:  Stopping/Disabling OLD Service - $1"; sleep 1
+systemctl stop $1 && systemctl disable $1 && rm -rf "$service_path"; fi
+
+cat <<- EOF > "$service_path"
+[Unit]
+Description={{drive}} Daemon
+After=network-online.target multi-user.target
+
+[Service]
+Type=notify
+EnvironmentFile=/pg/var/rclone/rclone.env
+ExecStart=/usr/bin/rclone mount {{drive}}: /mnt/{{drive}} \
+--config=/pg/var/rclone/pg.conf \
+#--log-file=/pg/logs/{{drive}}.log \
+--log-level="${vfs_ll}" \
+--uid=1000 --gid=1000 --umask=002 \
+--allow-other \
+--timeout=1h \
+--tpslimit=8 \
+--drive-skip-gdocs \
+--user-agent="${uagent}" \
+--dir-cache-time="${vfs_dct}" \
+--vfs-cache-mode="${vfs_cm}" \
+--vfs-cache-max-age="${vfs_cma}" \
+--vfs-cache-max-size="${vfs_cms}" \
+--vfs-read-chunk-size-limit="${vfs_rcsl}" \
+--vfs-read-chunk-size="${vfs_rcs}" \
+--buffer-size="${vfs_bs}"
+
+ExecStop=/bin/fusermount -uz /pg/{{drive}} > /dev/null
+TimeoutSec=60
+User=0
+Group=0
+Restart=on-abort
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+common_header "💾  NOTICE:  Starting/Enabling NEW Service - $1"; sleep 1
+systemctl enable $1 && systemctl restart
+
+common_header "💾  ENABLED:  Drive /pg/$1"; sleep 1.5
 }
