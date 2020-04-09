@@ -6,7 +6,7 @@ service_path="/etc/systemd/system/$1.service"
 
 if [[ -e "$service_path" ]]; then
 common_header "💾  NOTICE:  Stopping/Disabling OLD Service - $1"; sleep 1
-systemctl stop $1 && systemctl disable $1 && rm -rf "$service_path"; fi
+systemctl daemon-reload && systemctl stop $1 && systemctl disable $1 && rm -rf "$service_path"; fi
 
 ## add in later
 #EnvironmentFile=/pg/var/rclone/rclone.env
