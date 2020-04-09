@@ -3,6 +3,15 @@ drives_deploy_mounts() {
 sdselect=$1
 drives_menu_start_setup
 
+#temp_rclone_variables
+rclone_MB="M"
+rclone_hours="h"
+rclone_minutes="m"
+
+# rclone_path
+if [[ "$sdselect" == "gc" || "$sdselect" == "gd" ]]; then
+  rclone_path="/pg/var/drives/gd/gd.conf"; else rclone_path="/pg/var/drives/shared/$sdselect/$sdselect.conf"; fi
+
 service_path="/etc/systemd/system/$1.service"
 
 if [[ -e "$service_path" ]]; then
