@@ -126,8 +126,7 @@ common_header "💾  DEPLOYING:  PG Drives Unity"; sleep 2; drives_deploy_unity
 common_header "💾  DEPLOYED:  PG Drives @ /pg/unity"
 
 common_message "🚀  Deployment Log" "
-💾 The following drives have deployed below:
-"
+💾 The following drives have deployed below:"
 echo "$deploy_log_output"
 
 common_confirm
