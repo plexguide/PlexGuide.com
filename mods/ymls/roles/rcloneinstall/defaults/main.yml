@@ -4,7 +4,7 @@ rclone_arch: amd64
 
 install_manpages: true
 
-rclone_version: "1.47.0"
+#rclone_version: "1.47.0"
 
 # Defaults in case no variables for OS are chosen
 rclone_setup_tmp_dir: "/tmp/rclone_setup"
