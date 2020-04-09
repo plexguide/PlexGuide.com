@@ -2,65 +2,58 @@ install_folders() {
 
 common_header "⌛ FOLDERS - Building Key Directories"; sleep 2
 
-fcreate () {
-  if [[ ! -e "$1" ]]; then
-    mkdir -p "$1"
-    chown 1000:1000 "$1"
-    chmod 0775 "$1"; fi
-    echo "Generated Folder: $1"
-  }
 echo ""
 
 #start
-fcreate /pg/transfer
+common_fcreate /pg/transfer
 
 #gcrypt
-fcreate /pg/gc
-fcreate /pg/gc/tv
-fcreate /pg/gc/movies
-fcreate /pg/gc/music
-fcreate /pg/gc/ebooks
+common_fcreate /pg/gc
+common_fcreate /pg/gc/tv
+common_fcreate /pg/gc/movies
+common_fcreate /pg/gc/music
+common_fcreate /pg/gc/ebooks
 
 #gdrive
-fcreate /pg/gd
-fcreate /pg/gd/tv
-fcreate /pg/gd/movies
-fcreate /pg/gd/music
-fcreate /pg/gd/ebooks
+common_fcreate /pg/gd
+common_fcreate /pg/gd/tv
+common_fcreate /pg/gd/movies
+common_fcreate /pg/gd/music
+common_fcreate /pg/gd/ebooks
 
 #tcrypt
-fcreate /pg/sc
-fcreate /pg/sc/tv
-fcreate /pg/sc/movies
-fcreate /pg/sc/music
-fcreate /pg/sc/ebooks
+common_fcreate /pg/sc
+common_fcreate /pg/sc/tv
+common_fcreate /pg/sc/movies
+common_fcreate /pg/sc/music
+common_fcreate /pg/sc/ebooks
 
 #tdrive
-fcreate /pg/sd/tv
-fcreate /pg/sd/movies
-fcreate /pg/sd/music
-fcreate /pg/sd/ebooks
+common_fcreate /pg/sd/tv
+common_fcreate /pg/sd/movies
+common_fcreate /pg/sd/music
+common_fcreate /pg/sd/ebooks
 
 #unity
-fcreate /pg/unity
+common_fcreate /pg/unity
 
 #plexguide
-fcreate /pg/plexguide
+common_fcreate /pg/plexguide
 
 #misc
-fcreate /pg/tmp
-fcreate /pg/data # folder to hold container data
-fcreate /pg/data/portainer
-fcreate /pg/coreapps
-fcreate /pg/communityapps
-fcreate /pg/transfer
-fcreate /pg/logs
-fcreate /pg/var/emergency
-fcreate /pg/var/keys # utilized to store rclone keys
-fcreate /pg/nzb
-fcreate /pg/torrent
-fcreate /pg/downloads
-fcreate /pg/data/plexguide
-fcreate /pg/var/traefik
+common_fcreate /pg/tmp
+common_fcreate /pg/data # folder to hold container data
+common_fcreate /pg/data/portainer
+common_fcreate /pg/coreapps
+common_fcreate /pg/communityapps
+common_fcreate /pg/transfer
+common_fcreate /pg/logs
+common_fcreate /pg/var/emergency
+common_fcreate /pg/var/keys # utilized to store rclone keys
+common_fcreate /pg/nzb
+common_fcreate /pg/torrent
+common_fcreate /pg/downloads
+common_fcreate /pg/data/plexguide
+common_fcreate /pg/var/traefik
 
 }
