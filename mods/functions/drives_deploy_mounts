@@ -27,7 +27,7 @@ ExecStart=/usr/bin/rclone mount $sdselect: /pg/$sdselect \
 --allow-other \
 --timeout=1h \
 --tpslimit=8 \
---allow-non-empty option \
+--allow-non-empty \
 --drive-skip-gdocs \
 --dir-cache-time=$dir_cache_time$rclone_minutes
 --vfs-cache-mode="writes" \
