@@ -73,7 +73,7 @@ f_log="/pg/tmp/failed_drive_log"
 rm -rf $f_log
 
 if [[ "$gd_final" == "INVALID" ]]; then echo "[GD] Unencrypt ~ FAILED" >> $f_log; fi
-if [[ "$gc_final" == "INVALID" ]]; then echo "[GD] Encrypted ~ FAILED" >> $f_log; fi
+if [[ "$gc_final" == "INVALID" ]]; then echo "[GC] Encrypted ~ FAILED" >> $f_log; fi
 
 sd_drives_failed=$(cat /pg/tmp/drives.bad)
 sc_drives_failed=$(cat /pg/tmp/edrives.bad)
@@ -115,8 +115,8 @@ if [[ "$gc_final" == "VALID" ]]; then
 
 while read p; do
   temp99="c"
-  common_header "💾  DEPLOYING:  Encrypted SDrive ~ /pg/$p"; sleep 1.5
-  echo "Mounted: SDrive (Encrypted) - /pg/$p" >> /pg/tmp/deploy.log
+  common_header "💾  DEPLOYING:  Encrypted SDrive ~ /pg/$p$temp99"; sleep 1.5
+  echo "Mounted: SDrive (Encrypted) - /pg/$p$temp99" >> /pg/tmp/deploy.log
   drives_deploy_mounts $p
 done </pg/tmp/edrives.list
 
