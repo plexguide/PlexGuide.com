@@ -14,6 +14,11 @@ systemctl daemon-reload && systemctl stop $1 && systemctl disable $1 && rm -rf "
 #--log-file=/pg/logs/{drive}.log \
 #--log-level="$vfs_ll" \
 
+#temp_variables
+$rclone_MB=M
+$rclone_hours=h
+$rclone_minutes=m
+
 cat <<- EOF > "$service_path"
 [Unit]
 Description=$sdselect Daemon
@@ -28,13 +33,13 @@ ExecStart=/usr/bin/rclone mount $sdselect: /pg/$sdselect \
 --timeout=1h \
 --tpslimit=8 \
 --drive-skip-gdocs \
---dir-cache-time=$dir_cache_time\m\ \
+--dir-cache-time=$dir_cache_time$rclone_minutes
 --vfs-cache-mode="writes" \
---vfs-cache-max-age=$vfs_cache_max_age\h\ \
---vfs-cache-max-size=$vfs_cache_max_size\M\ \
---vfs-read-chunk-size-limit=$vfs_read_chunk_size_limit\M\ \
---vfs-read-chunk-size=$vfs_read_chunk_size\M\ \
---buffer-size=$buffer_size\M\
+--vfs-cache-max-age=$vfs_cache_max_age$rclone_hours \
+--vfs-cache-max-size=$vfs_cache_max_size$rclone_MB \
+--vfs-read-chunk-size-limit=$vfs_read_chunk_size_limit$rclone_MB \
+--vfs-read-chunk-size=$vfs_read_chunk_size$rclone_MB \
+--buffer-size=$buffer_size$rclone_MB
 
 ExecStop=/bin/fusermount -uz /pg/$sdselect > /dev/null
 TimeoutSec=60
