@@ -33,8 +33,8 @@ ExecStart=/usr/bin/rclone mount $sdselect: /pg/$sdselect \
 --vfs-cache-max-age=$vfs_cache_max_age\\h \
 --vfs-cache-max-size=$vfs_cache_max_size\\M \
 --vfs-read-chunk-size-limit=$vfs_read_chunk_size_limit\\M \
---vfs-read-chunk-size=$vfs_read_chunk_size\\M \
---buffer-size=$buffer_size\\M
+--vfs-read-chunk-size=$vfs_read_chunk_size\\M\\ \
+--buffer-size=$buffer_size\\M\\
 
 ExecStop=/bin/fusermount -uz /pg/$sdselect > /dev/null
 TimeoutSec=60
