@@ -12,7 +12,7 @@ a=0
 while read p; do
   checkvalidcount=$(cat $p)
   if [[ "$checkvalidcount" == "VALID" ]]; then
-  echo "$p" | cut -d'/' -f7- | rev | cut -c7- >> /pg/var/drives/valid.drives
+  echo "$p" | cut -d'/' -f7- | rev | cut -c7- | rev >> /pg/var/drives/valid.drives
   ((a++)); fi
 done </pg/tmp/active.count
 
