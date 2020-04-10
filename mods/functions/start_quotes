@@ -30,7 +30,80 @@ from their wives. Sadly... they all failed.
 
 Al Bundy ~ Married With Children"
 }
+
+quote4 () {
+main_quote="
+I left you plenty of food. It's at the supermarket.
+
+Peggy Bundy ~ Married With Children"
+}
+
+quote5 () {
+main_quote="
+Don't do drugs kids. There is a time and place for everything. It's called
+college.
+
+Chef ~ SouthPark"
+}
+
+quote6 () {
+main_quote="
+Look, Al doesn’t like me blowing smoke in his eggs. What am I supposed to do?
+Stop smoking?
+
+Peggy Bundy ~ Married With Children"
+}
+
+quote7 () {
+main_quote="
+I don't care what your doing; it's just the idiotic way that your doing it!
+
+Vincent ~ Final Fantasy 7"
+}
+
+quote8 () {
+main_quote="
+Now, we fight like men! And ladies! And ladies who dress like men!
+
+Gilgamesh ~ Final Fantasy 5"
+}
+
+quote9 () {
+main_quote="
+Tomorrow is gonna be just like today, and I know that because today is just
+like yesterday!
+
+Amy Dubanowski ~ SuperStore"
+
+quote10 () {
+main_quote="
+You don’t win friends with salad!
+
+Homer ~ The Simpsons"
+}
+
+quote11 () {
+main_quote="
+It takes two to lie: one to lie and one to listen.
+
+Homer ~ The Simpsons"
+}
+
+quote12 () {
+main_quote="
+It takes two to lie: one to lie and one to listen.
+
+Homer ~ The Simpsons"
+}
+
+quote13 () {
+main_quote="
+Loneliness and cheeseburgers are a dangerous mix.
+
+ComicBook Guy ~ The Simpsons"
+}
+
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % 4)) )
+num=$( echo $(($RANDOM % 14)) )
 quote$num
 }
