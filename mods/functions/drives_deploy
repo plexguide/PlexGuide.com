@@ -137,6 +137,6 @@ echo "Mounted: Unity              - /pg/unity"
 
 echo "" && common_confirm
 
-cat "$storage_method - VALID" > "$deployed_mode"
+echo "$storage_method - VALID" > "$deployed_mode"
 drives_menu_start && exit
 }
