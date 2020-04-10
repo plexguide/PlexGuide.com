@@ -7,7 +7,7 @@ if [[ -e "/pg/var/drives/gd/token.info" ]]; then
   gdcheck=$(cat /pg/var/drives/gd/gd.info)
     if [[ "$gdcheck" == "VALID" ]]; then
       common_header "💾  TESTING: Unencrypted GDrive Token"; sleep 1.5
-      gdr_check=$(rclone lsd --config /pg/var/drives/gd/gd.conf gd: | grep "plexguide.com")
+      gdr_check=$(rclone lsd --config /pg/var/drives/gd/gd.conf gc: | grep "plexguide.com")
       if [[ "$gdr_check" != "" ]]; then common_header "💾  PASSED:  Unencrypted Token gd is [VALID]" && gd_final="VALID"
     else
         common_header "💾  PASSED:  Unencrypted Token gd is [INVALID]" && gd_final="INVALID"
