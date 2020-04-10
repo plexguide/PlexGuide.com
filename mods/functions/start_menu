@@ -53,10 +53,7 @@ tee <<-EOF
 [4]  Drives : Data Mounts        |  [9]  Tools: Misc Products
 [5]  Box    : Apps ~ Programs    |  [10] Settings
 [Z]  Exit
-
-"$main_quote"
-
-$source
+$main_quote
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   # Standby
