@@ -126,7 +126,15 @@ Are you allowed to impeach a president for gross incompetence.
 Donald Trump ~ 2014 Twitter"
 }
 
+quote17 () {
+main_quote="
+Only date orphans. This is the only way to NOT have their family members
+bother you later.
+
+MsKnowItAll ~ Internet"
+}
+
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % 17)) )
+num=$( echo $(($RANDOM % 18)) )
 quote$num
 }
