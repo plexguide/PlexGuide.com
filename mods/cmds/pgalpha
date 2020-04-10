@@ -3,4 +3,8 @@
 # GNU:        General Public License v3.0
 ################################################################################
 mkdir -p /pg/var/ && rm -rf /pg/var/pg.noinstall
+
+# remove junk variables on startup
+if [[ -e /pg/tmp ]]; then rm -rf /pg/tmp/*; fi
+
 bash /pg/mods/install/main.sh

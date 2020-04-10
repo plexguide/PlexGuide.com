@@ -1,6 +1,11 @@
 #!/bin/bash
-# URL:        PlexGuide.com / PGBlitz.com
-# GNU:        General Public License v3.0
 ################################################################################
+
+# ensures the variable directory exist and tells PG it's not an initial install
 mkdir -p /pg/var/ && touch /pg/var/pg.noinstall
+
+# remove junk variables on startup
+if [[ -e /pg/tmp ]]; then rm -rf /pg/tmp/*; fi
+
+# start program
 bash /pg/mods/install/main.sh
