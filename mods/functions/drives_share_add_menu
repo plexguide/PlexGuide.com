@@ -25,11 +25,16 @@ typed=$(echo "$typed" | awk '{print tolower($0)}')
 lettercount=$(echo $typed | wc -c)
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_gdrive_menu && exit; fi
-if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_gdrive_clientid && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_share_add_menu && exit; fi
 
 if [[ "$lettercount" -gt "15" || "$lettercount" -lt "3" ]]; then
 common_message "TYPED: $typed" && common_message "⛔️  WARNING: Is less than 2 or more than 14 characters! Try Again!"
 common_confirm && drives_share_add_menu && exit; fi
+
+drives_blacklist="/pg/tmp/drives_blacklist" && ls -la /pg | awk '{print $9}' > $drives_blacklist
+blacklist_final=$(cat $drives_blacklist | grep "\<$typed\>")
+if [[ "$black_final" != "" ]]; then
+common_message "⛔️  WARNING: $typed exists under /pg & cannot use! Try Again!" && common_confirm && drives_share_add_menu && exit; fi
 
 common_message "💾  $typed - SD added to PG! Go Configure it!"
 
