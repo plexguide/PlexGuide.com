@@ -10,7 +10,7 @@ Admin9705"
 quote1 () {
 main_quote="
 Manbearpig is in there and we all have to kill him while we all have the
-chance, I'm cereal!
+chance, Im cereal!
 
 Al Gore ~ SouthPark"
 }
@@ -33,14 +33,14 @@ Al Bundy ~ Married With Children"
 
 quote4 () {
 main_quote="
-I left you plenty of food. It's at the supermarket.
+I left you plenty of food. Its at the supermarket.
 
 Peggy Bundy ~ Married With Children"
 }
 
 quote5 () {
 main_quote="
-Don't do drugs kids. There is a time and place for everything. It's called
+Dont do drugs kids. There is a time and place for everything. It is called
 college.
 
 Chef ~ SouthPark"
@@ -56,7 +56,7 @@ Peggy Bundy ~ Married With Children"
 
 quote7 () {
 main_quote="
-I don't care what your doing; it's just the idiotic way that your doing it!
+I dont care what your doing; its just the idiotic way that your doing it!
 
 Vincent ~ Final Fantasy 7"
 }
@@ -74,6 +74,20 @@ Tomorrow is gonna be just like today, and I know that because today is just
 like yesterday!
 
 Amy Dubanowski ~ SuperStore"
+
+quote10 () {
+main_quote="
+You dont win friends with salad!
+
+Homer ~ The Simpsons"
+}
+
+quote11 () {
+main_quote="
+It takes two to lie - one to lie and one to listen.
+
+Homer ~ The Simpsons"
+}
 
 quote12 () {
 main_quote="
