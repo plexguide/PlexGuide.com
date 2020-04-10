@@ -18,11 +18,15 @@ client_id = $clientdeploy
 client_secret = $secretdeploy
 type = drive
 server_side_across_configs = true
+
+        {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /pg/rclone/.${type}
+
 token = {"access_token":${accesstoken}"token_type":"Bearer","refresh_token":${refreshtoken}"expiry":"${final}"}
 EOF
-if [[ "$drivename" != "gd" ]]; then echo "teamdrive = $sd_id" >> $rclonepath; fi
+if [[ "$drivename" != "gd" ]]; then echo "team_drive = $sd_id" >> $rclonepath; fi
 echo "" >> $rclonepath
 
+################################################################################
 if [[ "$cryptcheck" == "YES" ]]; then
 enc_pass1=$(rclone obscure $password1)
 enc_pass2=$(rclone obscure $password2)

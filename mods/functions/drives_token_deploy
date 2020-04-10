@@ -57,16 +57,16 @@ if [[ "$token" == "z" || "$token" == "Z" ]]; then
 
 curl --request POST --data "code=$token&client_id=$clientdeploy&client_secret=$secretdeploy&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > $tokeninfo
 
-if [[ "$basicname" == "SDrive" ]]; then
-sdrive_token=$(cat $tokeninfo | grep access_token | awk '{print $2}')
-curl --request POST \
- 'https://www.googleapis.com/drive/v3/teamdrives?requestId=foxfield' \
- --header "Authorization: Bearer ${sdrive_token}" \
- --header 'Accept: application/json' \
- --header 'Content-Type: application/json' \
- --data '{"name":"pg-media","backgroundImageLink":"https://pgblitz.com/styles/io_dark/images/pgblitz4.png"}' \
- --compressed
-fi
+#if [[ "$basicname" == "SDrive" ]]; then
+#sdrive_token=$(cat $tokeninfo | grep access_token | awk '{print $2}')
+#curl --request POST \
+# 'https://www.googleapis.com/drive/v3/teamdrives?requestId=foxfield' \
+# --header "Authorization: Bearer ${sdrive_token}" \
+# --header 'Accept: application/json' \
+# --header 'Content-Type: application/json' \
+# --data '{"name":"pg-media","backgroundImageLink":"https://pgblitz.com/styles/io_dark/images/pgblitz4.png"}' \
+# --compressed
+# fi
 
 drives_rclone_builder
 ################################################################################
