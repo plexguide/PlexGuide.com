@@ -54,7 +54,7 @@ tee <<-EOF
 [5]  Box    : Apps ~ Programs    |  [10] Settings
 [Z]  Exit
 
-"$quote"
+"$main_quote"
 
 $source
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

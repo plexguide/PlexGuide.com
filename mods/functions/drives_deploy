@@ -104,10 +104,10 @@ echo "$storage_method - FAILED" > "/pg/var/drives/deployed.mode"
 
 rm -rf /pg/tmp/deploy.log
 
-common_ifequal "$gdfinal" "VALID" "
+if [[ "$gd_final" == "VALID" ]]; then
   common_header "💾  DEPLOYING:  Unencrypted GDrive ~ /pg/gd"; sleep 1.5
   echo "Mounted: GDrive (Unencrypt) - /pg/gd" >> /pg/tmp/deploy.log
-  drives_deploy_mounts gd"
+  drives_deploy_mounts gd; fi
 
 while read p; do
   common_header "💾  DEPLOYING:  Unencrypted SDrive ~ /pg/$p"; sleep 1.5

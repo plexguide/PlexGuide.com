@@ -1,3 +1,0 @@
-common_ifblank() {
-if [[ "$1" == "" ]]; then
-}

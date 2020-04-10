@@ -1,7 +1,24 @@
 start_quotes() {
 
-bash /pg/mods/start/quotes.sh
-quote=$(cat /pg/var/startup.quote)
-source=$(cat /pg/var/startup.source)
+# 1 higher than last quote number
+num=$( echo $(($RANDOM % 3)) )
+
+quote0 {$main_quote="
+Welcome to PlexGuide.com! Started in December of 2016!
+
+Admin9705" }
+
+quote1 {$main_quote="
+Manbearpig is in there and we all have to kill him while we all have the
+chance, I'm cereal!
+
+Al Gore ~ SouthPark" }
+
+quote2 {$main_quote="
+There are no stupid answers, just stupid people
+
+Admin9705" }
+
+quote$num
 
 }
