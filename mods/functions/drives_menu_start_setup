@@ -50,7 +50,7 @@ if [[ $(cat /pg/var/drives/gd/gd.secret) == "NOT-SET" ]]; then gc_menu="NOT-SET"
 else gc_menu="SET"; fi
 
 #sd variables
-sdselect=$(cat /pg/tmp/sd.select)
+common_main /pg/tmp/sd.select  "" sdselect
 if [[ $sdselect != "" ]]; then
 mkdir -p /pg/var/drives/shared/$sdselect/
 common_main /pg/var/drives/shared/$sdselect/sd.crypt NO scryptcheck
