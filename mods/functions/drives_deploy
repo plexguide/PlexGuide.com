@@ -1,6 +1,11 @@
 drives_deploy() {
 
 temp99=""; gc_final=""; gd_final=""
+rm -rf /pg/tmp/drives.list && touch /pg/tmp/drives.list
+rm -rf /pg/tmp/edrives.list && touch /pg/tmp/edrives.list
+rm -rf /pg/tmp/drives.bad && touch /pg/tmp/drives.bad
+rm -rf /pg/tmp/edrives.bad && touch /pg/tmp/edrives.bad
+
 drives_menu_start_setup
 
 if [[ -e "/pg/var/drives/gd/token.info" ]]; then
@@ -44,11 +49,6 @@ $tokenlist
 
 [ENCRYPTED]
 $etokenlist"; sleep 3
-
-rm -rf /pg/tmp/drives.list && touch /pg/tmp/drives.list
-rm -rf /pg/tmp/edrives.list && touch /pg/tmp/edrives.list
-rm -rf /pg/tmp/drives.bad && touch /pg/tmp/drives.bad
-rm -rf /pg/tmp/edrives.bad && touch /pg/tmp/edrives.bad
 
 while read p; do
   equick_check="" && enote="" && f_final="" && f_log=""
