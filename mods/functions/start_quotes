@@ -1,8 +1,5 @@
 start_quotes() {
 
-# 1 higher than last quote number
-num=$( echo $(($RANDOM % 7)) )
-
 quote0 () {
 main_quote="
 Welcome to PlexGuide.com! Started in December of 2016!
@@ -57,7 +54,28 @@ Stop smoking?
 Peggy Bundy ~ Married With Children"
 }
 
+quote7 () {
+main_quote="
+I don't care what your doing; it's just the idiotic way that your doing it!
 
+Vincent ~ Final Fantasy 7"
+}
+
+quote8 () {
+main_quote="
+Now, we fight like men! And ladies! And ladies who dress like men!
+
+Gilgamesh ~ Final Fantasy 5"
+}
+
+quote9 () {
+main_quote="
+Tomorrow is gonna be just like today, and I know that because today is just
+like yesterday!
+
+Amy Dubanowski ~ SuperStore"
+}
+# 1 higher than last quote number ##############################################
+num=$( echo $(($RANDOM % 10)) )
 quote$num
-
 }
