@@ -96,6 +96,7 @@ deployed incorrectly! This is to prevent errors in the deployment of /pg/unity
 and from losing and storing data incorrectly!
 
 $f_final"
+cat "$storage_method - FAILED" > "$deployed_mode"
 common_confirm && drives_menu_start && exit; fi
 
 common_header "💾  PASSED:  All Drive Tokens Are Valid!"; sleep 1.5
@@ -136,6 +137,6 @@ echo "Mounted: Unity              - /pg/unity"
 
 echo "" && common_confirm
 
-cat "$storage_method" > "$deployed_mode"
+cat "$storage_method - VALID" > "$deployed_mode"
 drives_menu_start && exit
 }
