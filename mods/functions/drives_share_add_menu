@@ -32,6 +32,7 @@ common_message "TYPED: $typed" && common_message "⛔️  WARNING: Is less than 
 common_confirm && drives_share_add_menu && exit; fi
 
 drives_blacklist="/pg/tmp/drives_blacklist" && ls -la /pg | awk '{print $9}' > $drives_blacklist
+echo "pg" >> $drives_blacklist && echo "plexguide" >> $drives_blacklist echo "unity" >> $drives_blacklist
 blacklist_final=$(cat $drives_blacklist | grep "\<$typed\>")
 if [[ "$blacklist_final" != "" ]]; then
 common_message "⛔️  WARNING: $typed exists under /pg & cannot use! Try Again!" && common_confirm && drives_share_add_menu && exit; fi
