@@ -133,6 +133,6 @@ common_message "🚀  Deployment Log" "
 💾 The following drives have deployed below:"
 echo "$deploy_log_output"
 
-common_confirm
+echo "" && common_confirm
 drives_menu_start && exit
 }
