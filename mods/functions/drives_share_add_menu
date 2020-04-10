@@ -8,7 +8,7 @@ temp_path="/pg/var/drives/gd/gd.clientid"
 priorentry=$(cat $temp_path)
 
 common_message "🚀 PlexGuide | ADD ~ ShareDrive Interface" "
-💾 No Share Drives on your GSuite? 
+💾 No Share Drives on your GSuite?
    Visit: https://drive.google.com/drive/shared-drives
 
 NOTE: Does NOT have to be the name of your exact ShareDrive, but recommended
@@ -25,7 +25,7 @@ typed=$(echo $typed | awk '{print $1}')
 typed=$(echo "$typed" | awk '{print tolower($0)}')
 lettercount=$(echo $typed | wc -c)
 
-if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_gdrive_menu && exit; fi
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_share_menu && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_share_add_menu && exit; fi
 
 if [[ "$lettercount" -gt "15" || "$lettercount" -lt "3" ]]; then
