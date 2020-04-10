@@ -1,5 +1,6 @@
 drives_share_active_count () {
 
+mkdir -p /pg/var/drives/shared/
 find /pg/var/drives/shared/*/*.token > /pg/tmp/active.count
 rm -rf /pg/var/drives/valid.drives
 
