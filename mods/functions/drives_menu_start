@@ -10,7 +10,7 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 [2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]
 [3] Storage Method      : [$storage_method]
 ------------------------------------------------------------------------------
-[D] Deploy Drives
+[D] Deploy Drives       : [$deployedmode]
 [O] Options
 [R] RClone Settings
 ------------------------------------------------------------------------------
