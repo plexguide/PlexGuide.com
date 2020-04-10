@@ -51,7 +51,7 @@ tee <<-EOF
 [2]  Port Guard: $ports  |  [7]  Vault: Backup & Restore
 [3]  Shield : Google Protection  |  [8]  Cloud: Deploy GCE & Hetzner
 [4]  Drives : Data Mounts        |  [9]  Tools: Misc Products
-[5]  Box    : Apps ~ Programs    |  [10] Settings
+[5]  Apps   : Docker Programs    |  [10] Settings
 [Z]  Exit
 $main_quote
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
