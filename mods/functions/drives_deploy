@@ -103,10 +103,11 @@ common_header "💾  PASSED:  All Drive Tokens Are Valid!"; sleep 1.5
 echo "$storage_method - FAILED" > "/pg/var/drives/deployed.mode"
 
 rm -rf /pg/tmp/deploy.log
-if [[ "$gd_final" == "VALID" ]]; then
+
+common_ifequal "$gdfinal" "VALID" "
   common_header "💾  DEPLOYING:  Unencrypted GDrive ~ /pg/gd"; sleep 1.5
   echo "Mounted: GDrive (Unencrypt) - /pg/gd" >> /pg/tmp/deploy.log
-  drives_deploy_mounts gd; fi
+  drives_deploy_mounts gd"
 
 while read p; do
   common_header "💾  DEPLOYING:  Unencrypted SDrive ~ /pg/$p"; sleep 1.5
