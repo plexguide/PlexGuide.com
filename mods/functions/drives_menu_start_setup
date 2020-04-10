@@ -17,7 +17,7 @@ common_main /pg/tmp/rclone_path NOT-SET temp_token
 
 #primary variables
 common_main /pg/var/drives/storage.method READ-ONLY storage_method
-common_main /pg/var/drives/deployed.mode NONE deployed_mode
+common_main /pg/var/drives/deployed.mode NONE NOT-DEPLOYED
 
 
 #gdrive variables
