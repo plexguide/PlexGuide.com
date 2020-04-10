@@ -34,8 +34,6 @@ cat << "EOF"
 └─────────────────────────────────────┘
 EOF
 
-# remove junk variables on startup
 if [[ -e /pg/tmp ]]; then rm -rf /pg/tmp/*; fi
-
 exit
 }
