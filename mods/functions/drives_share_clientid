@@ -4,7 +4,7 @@ temp_path="/pg/var/drives/shared/$sdselect/sd.clientid"
 priorentry=$(cat $temp_path)
 
 common_message "🚀 PlexGuide | SDrive: $sdselect ClientID Interface" "
-💾 Client-ID for SDrive?
+💾 Client-ID for SDrive? Visit ~ https://console.developers.google.com
 
 Prior Info Saved (If Any): $priorentry
 [Z] To Cancel and Go Back
