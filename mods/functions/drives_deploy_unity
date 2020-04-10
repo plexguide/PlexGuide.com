@@ -33,7 +33,7 @@ EOF
 service_path="/etc/systemd/system/unity.service"
 
 if [[ -e "$service_path" ]]; then
-common_header "💾  NOTICE:  Stopping/Disabling OLD Unity Service - $1"; sleep 1
+common_header "💾  NOTICE:  Stopping/Disabling OLD Unity Service"; sleep 1
 systemctl daemon-reload && systemctl stop unity && systemctl disable unity && rm -rf "$service_path"; fi
 
 cat <<- EOF > "$service_path"
