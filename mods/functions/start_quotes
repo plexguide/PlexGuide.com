@@ -68,21 +68,50 @@ Now, we fight like men! And ladies! And ladies who dress like men!
 Gilgamesh ~ Final Fantasy 5"
 }
 
-quote9 () {
+quote11 () {
 main_quote="
-Tomorrow is gonna be just like today, and I know that because today is just
-like yesterday!
-
-Amy Dubanowski ~ SuperStore"
-
-quote10 () {
-main_quote="
-You don’t win friends with salad!
+It takes two to lie - one to lie and one to listen.
 
 Homer ~ The Simpsons"
 }
 
+quote12 () {
+main_quote="
+Loneliness and cheeseburgers are a dangerous mix.
+
+ComicBook Guy ~ The Simpsons"
+}
+
+quote13 () {
+main_quote="
+I got drunk and then got my picture taken. So that way when I get pulled over
+for drunk driving, I look the same as on my license.
+
+Peter ~ Family Guy"
+}
+
+quote14 () {
+main_quote="
+I had such a crush on her... until I met you, Lois. You’re my silver medal.
+
+Peter ~ Family Guy"
+}
+
+quote15 () {
+main_quote="
+I have never seen a thin person drinking a Diet Coke.
+
+Donald Trump ~ 2012 Twitter"
+}
+
+quote16 () {
+main_quote="
+Are you allowed to impeach a president for gross incompetence.
+
+Donald Trump ~ 2014 Twitter"
+}
+
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % 11)) )
+num=$( echo $(($RANDOM % 18)) )
 quote$num
 }
