@@ -1,6 +1,6 @@
 drives_deploy() {
 
-temp99=""
+temp99=""; gc_final=""; gd_final=""
 drives_menu_start_setup
 
 if [[ -e "/pg/var/drives/gd/token.info" ]]; then
@@ -69,7 +69,7 @@ while read p; do
   if [[ "$quick_check" != "" && "$equick_check" == "" && "$enote" == "yes" ]]; then
     common_header "💾  FAILED:  Encrypted token for $p failed"
     echo "Token: $p" >> /pg/tmp/edrives.bad; sleep 1.5; fi
-done </pg/var/drives/valid.drives; fi 
+done </pg/var/drives/valid.drives; fi
 
 f_log="/pg/tmp/failed_drive_log"
 rm -rf $f_log

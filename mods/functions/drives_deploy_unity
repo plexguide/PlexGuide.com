@@ -7,6 +7,8 @@ unity_script_path="/pg/var/drives/unity.sh"
   unity_build=""
   unity_crypt="c"
 
+if [[ "$gd_final" == "VALID" ]]; then; unity_build=$(echo ${unity_build}/pg/gd=NC:); fi
+
 while read p; do
   unity_build=$(echo ${unity_build}/pg/${p}=NC:)
 done </pg/tmp/drives.list
