@@ -12,7 +12,7 @@ pgnumber=$(cat /pg/var/pg.number)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 $transport | Version: $pgnumber | ID: $serverid
+🌎 READ ONLY Edition | Version: PGX Alpha Build | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🌵 PG Disk Used Space: $used of $capacity | $percentage Used Capacity
