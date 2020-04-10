@@ -1,7 +1,5 @@
 start_quotes() {
 
-num=$( echo $(($RANDOM % 18)) )
-
 quote0 () {
 main_quote="
 Welcome to PlexGuide.com! Started in December of 2016!
@@ -134,5 +132,6 @@ Are you allowed to impeach a president for gross incompetence?
 Donald Trump ~ 2014 Twitter"
 }
 # 1 higher than last quote number ##############################################
+num=$( echo $(($RANDOM % 18)) )
 quote$num
 }
