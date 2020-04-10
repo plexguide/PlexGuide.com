@@ -1,37 +1,7 @@
-quote7 () {
-echo "I don't care what your doing; it's just the idiotic way that your doing
-it!" > /pg/var/startup.quote
-echo "                                                 Vincent ~ Final Fantasy 7" > /pg/var/startup.source
-}
 
-quote8 () {
-echo "Now, we fight like men! And ladies! And ladies who dress like men!" > /pg/var/startup.quote
-echo "                                               Gilgamesh ~ Final Fantasy 5" > /pg/var/startup.source
-}
-
-quote9 () {
-echo "Now, we fight like men! And ladies! And ladies who dress like men!" > /pg/var/startup.quote
-echo "                             Gilgamesh ~ Final Fantasy 5 (ROM Translation)" > /pg/var/startup.source
-}
-
-quote10 () {
-echo "Tomorrow is gonna be just like today, and I know that because today is
-just like yesterday!" > /pg/var/startup.quote
-echo "                                               Amy Dubanowski ~ SuperStore" > /pg/var/startup.source
-}
-
-quote11 () {
-echo "You don’t win friends with salad!" > /pg/var/startup.quote
-echo "                                        Homer, Bart & Marge ~ The Simpsons" > /pg/var/startup.source
-}
-
-quote12 () {
-echo "It takes two to lie: one to lie and one to listen." > /pg/var/startup.quote
-echo "                                                      Homer ~ The Simpsons" > /pg/var/startup.source
-}
 
 quote13 () {
-echo "Loneliness and cheeseburgers are a dangerous mix." > /pg/var/startup.quote
+echo "" > /pg/var/startup.quote
 echo "                                             Comic Book Guy ~ The Simpsons" > /pg/var/startup.source
 }
 

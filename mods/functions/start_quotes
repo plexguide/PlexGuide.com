@@ -1,7 +1,5 @@
 start_quotes() {
 
-i=0
-
 quote0 () {
 main_quote="
 Welcome to PlexGuide.com! Started in December of 2016!
@@ -9,8 +7,7 @@ Welcome to PlexGuide.com! Started in December of 2016!
 Admin9705"
 }
 
-let "i=i+1"
-quote$i () {
+quote1 () {
 main_quote="
 Manbearpig is in there and we all have to kill him while we all have the
 chance, I'm cereal!
@@ -18,16 +15,14 @@ chance, I'm cereal!
 Al Gore ~ SouthPark"
 }
 
-let "i=i+1"
-quote$i () {
+quote2 () {
 main_quote="
 There are no stupid answers, just stupid people
 
 Mr. Garrision ~ SouthPark"
 }
 
-let "i=i+1"
-quote$i () {
+quote3 () {
 main_quote="
 Dad had one great dream! A dream that had been handed down from generation
 to generation of male Bundys. To build their own room and live separately
@@ -36,16 +31,14 @@ from their wives. Sadly... they all failed.
 Al Bundy ~ Married With Children"
 }
 
-let "i=i+1"
-quote$i () {
+quote4 () {
 main_quote="
 I left you plenty of food. It's at the supermarket.
 
 Peggy Bundy ~ Married With Children"
 }
 
-let "i=i+1"
-quote$i () {
+quote5 () {
 main_quote="
 Don't do drugs kids. There is a time and place for everything. It's called
 college.
@@ -53,8 +46,7 @@ college.
 Chef ~ SouthPark"
 }
 
-let "i=i+1"
-quote$i () {
+quote6 () {
 main_quote="
 Look, Al doesn’t like me blowing smoke in his eggs. What am I supposed to do?
 Stop smoking?
@@ -62,31 +54,55 @@ Stop smoking?
 Peggy Bundy ~ Married With Children"
 }
 
-let "i=i+1"
-quote$i () {
+quote7 () {
 main_quote="
 I don't care what your doing; it's just the idiotic way that your doing it!
 
 Vincent ~ Final Fantasy 7"
 }
 
-let "i=i+1"
-quote$i () {
+quote8 () {
 main_quote="
 Now, we fight like men! And ladies! And ladies who dress like men!
 
 Gilgamesh ~ Final Fantasy 5"
 }
 
-let "i=i+1"
-quote$i () {
+quote9 () {
 main_quote="
 Tomorrow is gonna be just like today, and I know that because today is just
 like yesterday!
 
 Amy Dubanowski ~ SuperStore"
+
+quote10 () {
+main_quote="
+You don’t win friends with salad!
+
+Homer ~ The Simpsons"
+}
+
+quote11 () {
+main_quote="
+It takes two to lie: one to lie and one to listen.
+
+Homer ~ The Simpsons"
+}
+
+quote12 () {
+main_quote="
+It takes two to lie: one to lie and one to listen.
+
+Homer ~ The Simpsons"
+}
+
+quote13 () {
+main_quote="
+Loneliness and cheeseburgers are a dangerous mix.
+
+ComicBook Guy ~ The Simpsons"
 }
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % $i)) )
+num=$( echo $(($RANDOM % 14)) )
 quote$num
 }
