@@ -4,7 +4,7 @@ temp_path="/pg/var/drives/gd/gd.clientid"
 priorentry=$(cat $temp_path)
 
 common_message "🚀 PlexGuide | GDrive Client-ID Interface" "
-💾 Client-ID for GDrive?
+💾 Client-ID for GDrive? Visit ~ https://console.developers.google.com
 
 Prior Info Saved (If Any): $priorentry
 [Z] To Cancel and Go Back
