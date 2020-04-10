@@ -2,9 +2,8 @@
 # URL:        PlexGuide.com / PGBlitz.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /pg/mods/functions/common_path_check
+common_path_check
+
 mkdir -p /pg/var/ && rm -rf /pg/var/pg.noinstall
-
-# remove junk variables on startup
-if [[ -e /pg/tmp ]]; then rm -rf /pg/tmp/*; fi
-
 bash /pg/mods/install/main.sh

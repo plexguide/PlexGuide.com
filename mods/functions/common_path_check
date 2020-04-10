@@ -1,0 +1,12 @@
+common_path_check() {
+
+if [[ -e /pg/tmp ]]; then rm -rf /pg/tmp/*; fi
+dir_check=$PWD && dir_check=$(echo $dir_check | grep "/pg")
+
+if [[ $dir_check != "" ]]; then
+source /pg/mods/functions/common_header
+common_header "⛔️  Cannot run PG Commands while SITTING in the /pg directory!"
+exit
+fi
+
+}
