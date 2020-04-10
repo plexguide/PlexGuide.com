@@ -1,11 +1,7 @@
 #!/bin/bash
 ################################################################################
+source /pg/mods/functions/common_path_check
+common_path_check
 
-# ensures the variable directory exist and tells PG it's not an initial install
 mkdir -p /pg/var/ && touch /pg/var/pg.noinstall
-
-# remove junk variables on startup
-if [[ -e /pg/tmp ]]; then rm -rf /pg/tmp/*; fi
-
-# start program
 bash /pg/mods/install/main.sh
