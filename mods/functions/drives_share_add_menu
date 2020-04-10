@@ -8,7 +8,8 @@ temp_path="/pg/var/drives/gd/gd.clientid"
 priorentry=$(cat $temp_path)
 
 common_message "🚀 PlexGuide | ADD ~ ShareDrive Interface" "
-💾 No Share Drives on your Google Account? Create it first!
+💾 No Share Drives on your GSuite? 
+   Visit: https://drive.google.com/drive/shared-drives
 
 NOTE: Does NOT have to be the name of your exact ShareDrive, but recommended
 for better tracking. Must be a whole word, lowercase, and must be between
