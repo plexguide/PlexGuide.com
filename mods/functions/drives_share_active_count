@@ -1,7 +1,12 @@
 drives_share_active_count () {
 
-mkdir -p /pg/var/drives/shared/
-find /pg/var/drives/shared/*/*.token > /pg/tmp/active.count
+mkdir -p /pg/var/drives/shared/ /pg/var/drives/e.tokens
+
+find_shared_check=$(find /pg/var/drives/shared/ -mindepth 1 -type d)
+
+if [[ "find_shared_check" != "" ]]; then
+find /pg/var/drives/shared/*/*.token > /pg/tmp/active.count; else
+"0" > /pg/tmp/active.count"
 rm -rf /pg/var/drives/valid.drives
 
 a=0
