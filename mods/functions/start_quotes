@@ -1,5 +1,7 @@
 start_quotes() {
 
+i=0
+
 quote0 () {
 main_quote="
 Welcome to PlexGuide.com! Started in December of 2016!
@@ -7,7 +9,8 @@ Welcome to PlexGuide.com! Started in December of 2016!
 Admin9705"
 }
 
-quote1 () {
+let "i=i+1"
+quote$i () {
 main_quote="
 Manbearpig is in there and we all have to kill him while we all have the
 chance, I'm cereal!
@@ -15,14 +18,16 @@ chance, I'm cereal!
 Al Gore ~ SouthPark"
 }
 
-quote2 () {
+let "i=i+1"
+quote$i () {
 main_quote="
 There are no stupid answers, just stupid people
 
 Mr. Garrision ~ SouthPark"
 }
 
-quote3 () {
+let "i=i+1"
+quote$i () {
 main_quote="
 Dad had one great dream! A dream that had been handed down from generation
 to generation of male Bundys. To build their own room and live separately
@@ -31,14 +36,16 @@ from their wives. Sadly... they all failed.
 Al Bundy ~ Married With Children"
 }
 
-quote4 () {
+let "i=i+1"
+quote$i () {
 main_quote="
 I left you plenty of food. It's at the supermarket.
 
 Peggy Bundy ~ Married With Children"
 }
 
-quote5 () {
+let "i=i+1"
+quote$i () {
 main_quote="
 Don't do drugs kids. There is a time and place for everything. It's called
 college.
@@ -46,7 +53,8 @@ college.
 Chef ~ SouthPark"
 }
 
-quote6 () {
+let "i=i+1"
+quote$i () {
 main_quote="
 Look, Al doesn’t like me blowing smoke in his eggs. What am I supposed to do?
 Stop smoking?
@@ -54,21 +62,24 @@ Stop smoking?
 Peggy Bundy ~ Married With Children"
 }
 
-quote7 () {
+let "i=i+1"
+quote$i () {
 main_quote="
 I don't care what your doing; it's just the idiotic way that your doing it!
 
 Vincent ~ Final Fantasy 7"
 }
 
-quote8 () {
+let "i=i+1"
+quote$i () {
 main_quote="
 Now, we fight like men! And ladies! And ladies who dress like men!
 
 Gilgamesh ~ Final Fantasy 5"
 }
 
-quote9 () {
+let "i=i+1"
+quote$i () {
 main_quote="
 Tomorrow is gonna be just like today, and I know that because today is just
 like yesterday!
@@ -76,6 +87,6 @@ like yesterday!
 Amy Dubanowski ~ SuperStore"
 }
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % 10)) )
+num=$( echo $(($RANDOM % $i)) )
 quote$num
 }
