@@ -33,7 +33,7 @@ common_confirm && drives_share_add_menu && exit; fi
 
 drives_blacklist="/pg/tmp/drives_blacklist" && ls -la /pg | awk '{print $9}' > $drives_blacklist
 blacklist_final=$(cat $drives_blacklist | grep "\<$typed\>")
-if [[ "$black_final" != "" ]]; then
+if [[ "$blacklist_final" != "" ]]; then
 common_message "⛔️  WARNING: $typed exists under /pg & cannot use! Try Again!" && common_confirm && drives_share_add_menu && exit; fi
 
 common_message "💾  $typed - SD added to PG! Go Configure it!"
