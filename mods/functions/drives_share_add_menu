@@ -37,6 +37,7 @@ if [[ "$blacklist_final" != "" ]]; then
 common_message "⛔️  WARNING: $typed exists under /pg & cannot use! Try Again!" && common_confirm && drives_share_add_menu && exit; fi
 
 common_message "💾  $typed - SD added to PG! Go Configure it!"
+common_fcreate_silent /pg/$typed
 
 # Sort List
 echo "$typed" >> /pg/var/drives/shared/pg.list
