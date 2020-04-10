@@ -8,10 +8,10 @@ common_message "🚀  Drives - Storage Method" "
 
 Upload Method
 
-[1] READ-ONLY      | None    - Useful for a READ-ONLY Server (2nd PLEX & ETC)
-[2] Drives Basic   | Novice  - Daily Cap 750GB - Google Drive Upload Only
-[3] Drives PGBlitz | Complex - Daily Cap None  - Shared Drive Upload Only
-[4] Drives Local   | Simple  - No Data Upload  - Data Stays Local
+[1] READ-ONLY      | None - Useful for a READ-ONLY Server (2nd PLEX & ETC)
+[2] Drives Basic   | NOT READY
+[3] Drives PGBlitz | NOT READY
+[4] Drives Local   | NOT READY
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
@@ -19,9 +19,9 @@ common_number
 
 case $typed in
     1 ) echo "READ-ONLY" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
-    2 ) echo "BASIC" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
-    3 ) echo "PGBLITZ" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
-    4 ) echo "LOCAL" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
+    #2 ) echo "BASIC" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
+    #3 ) echo "PGBLITZ" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
+    #4 ) echo "LOCAL" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
     * ) drives_menu_storage_method && exit ;;
