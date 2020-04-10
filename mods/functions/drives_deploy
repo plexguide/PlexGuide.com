@@ -135,5 +135,7 @@ echo "$deploy_log_output"
 echo "Mounted: Unity              - /pg/unity"
 
 echo "" && common_confirm
+
+echo "$storage_method" > "$deployed_mode"
 drives_menu_start && exit
 }
