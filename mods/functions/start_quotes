@@ -1,7 +1,7 @@
 start_quotes() {
 
 # 1 higher than last quote number
-num=$( echo $(($RANDOM % 6)) )
+num=$( echo $(($RANDOM % 7)) )
 
 quote0 () {
 main_quote="
@@ -28,7 +28,7 @@ Mr. Garrision ~ SouthPark"
 quote3 () {
 main_quote="
 Dad had one great dream! A dream that had been handed down from generation
-to generation of male Bundys. To build their own room and live separately 
+to generation of male Bundys. To build their own room and live separately
 from their wives. Sadly... they all failed.
 
 Al Bundy ~ Married With Children"
