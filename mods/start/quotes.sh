@@ -121,13 +121,7 @@ a radio!" > /pg/var/startup.quote
 echo "                                                        Rodney Dangerfield" > /pg/var/startup.source
 }
 
-quote35 () {
-echo "The quickest way for a parent to get a child’s attention is to sit down
-and look comfortable." > /pg/var/startup.quote
-echo "                                                           Lane Olinghouse" > /pg/var/startup.source
-}
 
-quote36 () {
 echo "Donate Today! My biggest adversary is Mrs. Admin for all the time
 spent on the project!" > /pg/var/startup.quote
 echo "                                                                 Admin9705" > /pg/var/startup.source
@@ -217,16 +211,6 @@ echo "There are two ways this can go down; and in both of them... you die!" > /p
 echo "                                                                Duke Nukem" > /pg/var/startup.source
 }
 
-quote53 () {
-echo "Lead me, follow me, or get the hell out of my way." > /pg/var/startup.quote
-echo "                                        GEN George S. Patton Jr. ~ US Army" > /pg/var/startup.source
-}
-
-quote54 () {
-echo "If you find yourself in a fair fight, you didn't plan your mission
-properly." > /pg/var/startup.quote
-echo "                                             COL David Hackworth ~ US Army" > /pg/var/startup.source
-}
 
 quote55 () {
 echo "Yeah, I'm gonna need you to come in on Saturday. Oh, oh, and I almost
@@ -234,27 +218,8 @@ forgot. Ah, I'm also gonna need you to go ahead and come in on Sunday, too." > /
 echo "                                              Bill Lumbergh ~ Office Space" > /pg/var/startup.source
 }
 
-quote56 () {
-echo "Didn't you get the memo?" > /pg/var/startup.quote
-echo "                                              Bill Lumbergh ~ Office Space" > /pg/var/startup.source
-}
 
-quote57 () {
-echo "No one in this country can pronounce my name right. I mean it's not
-that hard. I mean, 'Ni-i-na-najaad', Niinanajaad." > /pg/var/startup.quote
-echo "                                                      Samir ~ Office Space" > /pg/var/startup.source
-}
 
-quote59 () {
-echo "PC Load Letter? What the f*ck does that mean?." > /pg/var/startup.quote
-echo "                                             Michael Bolton ~ Office Space" > /pg/var/startup.source
-}
-
-quote60 () {
-echo "When you come in on Monday and you're not feeling real well, does
-anyone ever say to you 'Sounds like someone has a case of the Mondays?'" > /pg/var/startup.quote
-echo "                                              Peter Gibbons ~ Office Space" > /pg/var/startup.source
-}
 
 quote62 () {
 echo "Hello Peter what's happening. I'm gonna need you to go ahead and come
@@ -293,10 +258,7 @@ them." > /pg/var/startup.quote
 echo "                                                    Fry ~ British Comedian" > /pg/var/startup.source
 }
 
-quote70 () {
-echo "" > /pg/var/startup.quote
-echo "                                                 " > /pg/var/startup.source
-}
+
 
 # END FUNCTIONS ################################################################
 num=$( echo $(($RANDOM % 71)) )
