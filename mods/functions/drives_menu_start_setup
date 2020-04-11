@@ -89,9 +89,9 @@ else pname_menu="SET"; fi
 else ename_menu="SET"; fi; fi
 
 #temp_rclone_variables
-rclone_MB="M"
-rclone_hours="h"
-rclone_minutes="m"
+rclone_MB=""
+rclone_hours=""
+rclone_minutes=""
 
 # rclone_path
 if [[ "$sdselect" == "gc" || "$sdselect" == "gd" ]]; then
