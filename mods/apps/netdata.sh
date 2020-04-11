@@ -71,4 +71,4 @@ cat <<- EOF > "/pg/tmp/pgrole.yml"
           - apparmor:unconfined
         state: started
         labels: '{{pg_labels}}'
-EOL
+EOF
