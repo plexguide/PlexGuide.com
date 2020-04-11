@@ -1,6 +1,10 @@
 container_start () {
 
-container_start="- name: 'Deploying $pgrole'
+container_start="
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: 'Deploying $pgrole'
       docker_container:
         name: '$pgrole'
         image: '$image'

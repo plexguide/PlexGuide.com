@@ -15,9 +15,6 @@ container_path /var/run/docker.sock /var/run/docker.sock
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/tmp/$pgrole.yml"
-- hosts: localhost
-  gather_facts: false
-  tasks:
     # LABELS ######################################################################
     - name: 'Adding Traefik'
       set_fact:
