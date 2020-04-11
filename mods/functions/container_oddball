@@ -1,8 +1,6 @@
 container_oddball () {
 
 cpath_check=$(cat /pg/tmp/container.path)
-if [[ "$cpath_check" == "" ]]; then
-  echo "  $1:$2" >> /pg/tmp/container.oddball
-else
-  echo "          $1:$2" >> /pg/tmp/container.oddball; fi
+  echo "  $1:
+       - $2" >> /pg/tmp/container.oddball
 }
