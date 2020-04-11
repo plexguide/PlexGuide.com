@@ -9,4 +9,5 @@ common_fcreate_silent /pg/var/apps
 common_main /pg/var/apps/port_status "127.0.0.1:" port_status
 
 container_paths=$(cat "/pg/tmp/container.path")
+container_ending
 }
