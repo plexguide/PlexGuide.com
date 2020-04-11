@@ -1,0 +1,3 @@
+container_path () {
+  echo "$1:$2" >> /pg/tmp/container.path
+}

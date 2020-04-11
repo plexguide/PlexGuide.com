@@ -33,9 +33,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/sys:/host/sys:ro'
-          - '/proc:/host/proc:ro'
-          - '/var/run/docker.sock:/var/run/docker.sock'
+
 
     - name: 'Setting PG ENV'
       set_fact:
