@@ -1,9 +1,17 @@
-
 pgrole="netdata"
 image="netdata/netdata"
 port_inside01="19999"
 port_outside01="19999"
 domain="test.com" ## test until it pulls correct domain
+
+common_fcreate /pg/data/$pgrole
+common_fcreate /pg/var/apps
+
+#primary variables
+common_main /pg/var/apps/port_status "127.0.0.1:" port_status
+
+# docker stop $pgrole
+# docker rm $pgrole
 
 ########################################################## YML EXPORT ##########
 cat <<- EOF > "/pg/tmp/$pgrole.yml"
@@ -39,7 +47,7 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
           PGID: '1000'
 
     # MAIN DEPLOYMENT #############################################################
-    - name: 'Deploying {{pgrole}}'
+    - name: 'Deploying $pgrole'
       docker_container:
         name: '$pgrole'
         image: '$image'
@@ -47,7 +55,7 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
         capabilities:
           - SYS_PTRACE
         published_ports:
-          - 127.0.0.1:$port_inside01:$port_outside01'
+          - '$portstatus$port_inside01:$port_outside01'
         volumes:
           - '/sys:/host/sys:ro'
           - '/proc:/host/proc:ro'
@@ -61,7 +69,5 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
         security_opts:
           - apparmor:unconfined
         state: started
-        labels:
-
-
+        labels: '{{pg_labels}}'
 EOF
