@@ -257,49 +257,6 @@ Lead me, follow me, or get the hell out of my way.
 GEN George S. Patton Jr. ~ US Army"
 }
 
-quote35 () {
-main_quote="
-If you find yourself in a fair fight, you didn't plan your mission properly.
-
-COL David Hackworth ~ US Army"
-
-quote36 () {
-main_quote="
-My wife is really mad at the fact that I have no sense of direction. So I
-packed up my stuff and right.
-
-Porichoygupto - Reddit.com"
-}
-
-quote37 () {
-main_quote="
-I'm reading a book about anti-gravity. It's impossible to put down!
-
-Raheel1122 - Reddit.com"
-}
-
-quote38 () {
-main_quote="
-My daughter screeched - Daaaaaad... you have not listened to one word I have
-said have you!? What a strange way to start a conversation with me...
-
-Madazzahatter ~ Reddit.com"
-}
-
-quote39 () {
-main_quote="
-Didn't you get the memo?
-
-Bill Lumbergh ~ Office Space"
-}
-
-quote40 () {
-main_quote="
-The quickest way for a parent to get a child’s attention is to sit down and
-look comfortable.
-
-Lane Olinghouse"
-}
 # 1 higher than last quote number ##############################################
 num=$( echo $(($RANDOM % 41)) )
 quote$num
