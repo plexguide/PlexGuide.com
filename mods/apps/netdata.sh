@@ -3,18 +3,13 @@ pgrole="netdata"
 image="netdata/netdata"
 port_inside01="19999"
 port_outside01="19999"
+domain="test.com" ## test until it pulls correct domain
 
 ########################################################## YML EXPORT ##########
 cat <<- EOF > "/pg/tmp/$pgrole.yml"
 - hosts: localhost
   gather_facts: false
   tasks:
-    - name: 'Set Known Facts'
-      set_fact:
-        pgrole: 'netdata'
-
-        image: 'netdata/netdata'
-
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
       include_tasks: '/pg/mods/apps/core.yml'
@@ -26,7 +21,7 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
           # traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.enable: 'true'
           traefik.port: '$port_inside'
-          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}},{{tldset}}'
+          traefik.frontend.rule: 'Host:$pgrole.{{domain.stdout}},{{tldset}}'
           traefik.frontend.headers.SSLHost: '{{domain.stdout}}'
           traefik.frontend.headers.SSLRedirect: 'true'
           traefik.frontend.headers.STSIncludeSubdomains: 'true'
