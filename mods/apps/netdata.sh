@@ -5,7 +5,7 @@ port_inside01="19999"
 port_outside01="19999"
 
 ########################################################## YML EXPORT ##########
-cat <<- EOF > "/pg/tmp/pgrole.yml"
+cat <<- EOF > "/pg/tmp/$pgrole.yml"
 - hosts: localhost
   gather_facts: false
   tasks:
