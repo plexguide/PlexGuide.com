@@ -1,6 +1,6 @@
 container_start () {
 
-container_start="    - name: 'Deploying $pgrole'
+container_start="- name: 'Deploying $pgrole'
       docker_container:
         name: '$pgrole'
         image: '$image'
