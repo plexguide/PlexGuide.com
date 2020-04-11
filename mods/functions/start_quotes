@@ -134,7 +134,49 @@ bother you later.
 MsKnowItAll ~ Internet"
 }
 
+quote18 () {
+main_quote="
+Doing nothing is hard, you never know when you're done.
+
+Anonymous"
+}
+
+quote19 () {
+main_quote="
+I love my six pack so much, I protect is with a layer of fat.
+
+Anonymous"
+}
+
+quote20 () {
+main_quote="
+Why is Monday so far from Friday, and Friday so close to Monday?
+
+Anonymous"
+}
+
+quote21 () {
+main_quote="
+Sometimes when I close my eyes, I can't see.
+
+Anonymous"
+}
+
+quote22 () {
+main_quote="
+All my life I thought air was free, until I bought a bag of chips.
+
+Anonymous"
+}
+
+quote23 () {
+main_quote="
+No matter how smart you are you can never convince someone stupid that they
+are stupid.
+
+Anonymous"
+}
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % 18)) )
+num=$( echo $(($RANDOM % 24)) )
 quote$num
 }
