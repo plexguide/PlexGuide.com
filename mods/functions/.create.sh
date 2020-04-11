@@ -6,10 +6,13 @@
 ## if DOESNT EXIST ## avoid replicating # note
 
 pgfunctions="/pg/mods/functions"
-# mkdir -p "$pgfunctions"
+pgprimary="/pg/mods/containers/primary"
+pgcommunity="/pg/mods/containers/community"
 
 ## reads functions and stores to a temporary file
 ls "$pgfunctions" > "$pgfunctions"/.files.sh
+ls "$pgprimary" >> "$pgfunctions"/.files.sh
+ls "$pgfunction" >> "$pgfunctions"/.files.sh
 
 ## remove old master file if it exist
 rm -rf "$pgfunctions"/.master.sh ##

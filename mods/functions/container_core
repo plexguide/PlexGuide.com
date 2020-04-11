@@ -1,4 +1,4 @@
-container_containers() {
+container_core() {
 
 domain="test.com" ## test until it pulls correct domain
 
