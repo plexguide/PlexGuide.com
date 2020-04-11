@@ -15,7 +15,7 @@ read -p "↘️  New Google Account Login? | Press [ENTER]: " typed < /dev/tty
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_share_manage_module && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_share_user_account && exit; fi
 
-gcloud auth login --account = $typed
+gcloud auth login --account $typed
 gcloud info | grep Account: | cut -c 10- > $temp_path
 account=$(cat $temp_path)
 
