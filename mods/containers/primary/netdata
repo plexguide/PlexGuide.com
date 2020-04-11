@@ -1,15 +1,16 @@
 container_netdata () {
 
+# VARIABLES ####################################################################
 pgrole="netdata"
 image="netdata/netdata"
 type="primary"
 port_inside01="19999"
 port_outside01="19999"
 
-# docker stop $pgrole
-# docker rm $pgrole
+# REQUIRED # DO NOT REMOVE #####################################################
 container_core
-########################################################## YML EXPORT ##########
+
+# YML EXPORT ###################################################################
 cat <<- EOF > "/pg/tmp/$pgrole.yml"
 - hosts: localhost
   gather_facts: false
