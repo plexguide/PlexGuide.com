@@ -208,11 +208,6 @@ echo "                                                Duke Nukem ~ Duke Nukem 3D
 }
 
 quote51 () {
-echo "Thank You Mario! But our Princess is another castle!" > /pg/var/startup.quote
-echo "                                                     Toad(s) ~ NES Mario I" > /pg/var/startup.source
-}
-
-quote51 () {
 echo "Get over here!" > /pg/var/startup.quote
 echo "                                                  Scorpion ~ Mortal Kombat" > /pg/var/startup.source
 }
@@ -250,11 +245,6 @@ that hard. I mean, 'Ni-i-na-najaad', Niinanajaad." > /pg/var/startup.quote
 echo "                                                      Samir ~ Office Space" > /pg/var/startup.source
 }
 
-quote58 () {
-echo "I could set this building on fire." > /pg/var/startup.quote
-echo "                                                     Milton ~ Office Space" > /pg/var/startup.source
-}
-
 quote59 () {
 echo "PC Load Letter? What the f*ck does that mean?." > /pg/var/startup.quote
 echo "                                             Michael Bolton ~ Office Space" > /pg/var/startup.source
@@ -263,11 +253,6 @@ echo "                                             Michael Bolton ~ Office Space
 quote60 () {
 echo "When you come in on Monday and you're not feeling real well, does
 anyone ever say to you 'Sounds like someone has a case of the Mondays?'" > /pg/var/startup.quote
-echo "                                              Peter Gibbons ~ Office Space" > /pg/var/startup.source
-}
-
-quote61 () {
-echo "The thing is Bob it's not that I'm lazy, it's that I just don't care." > /pg/var/startup.quote
 echo "                                              Peter Gibbons ~ Office Space" > /pg/var/startup.source
 }
 
@@ -285,11 +270,6 @@ echo "                                                      Samir ~ Office Space
 
 quote64 () {
 echo "I can't believe you like money too. We should hang out." > /pg/var/startup.quote
-echo "                                                      Frito ~ Office Space" > /pg/var/startup.source
-}
-
-quote64 () {
-echo "I can't believe you like money too. We should hang out." > /pg/var/startup.quote
 echo "                                                         Frito ~ Idiocracy" > /pg/var/startup.source
 }
 
@@ -299,21 +279,13 @@ jokes about me behind my back or else I'll stomp you into the ground." > /pg/var
 echo "                                                               Major Payne" > /pg/var/startup.source
 }
 
-quote66 () {
-echo "Heh, heh, heh" > /pg/var/startup.quote
-echo "                                                               Major Payne" > /pg/var/startup.source
-}
-
 quote67 () {
 echo "You know, somebody actually complimented me on my driving today. They
 left a little note on the windscreen, it said ~ Parking Fine." > /pg/var/startup.quote
 echo "                                                 Cooper ~ British Comedian" > /pg/var/startup.source
 }
 
-quote68 () {
-echo "I used to be indecisive but now I am not quite sure." > /pg/var/startup.quote
-echo "                                                 Cooper ~ British Comedian" > /pg/var/startup.source
-}
+
 
 quote69 () {
 echo "An original idea. That can't be too hard. The library must be full of
@@ -322,9 +294,8 @@ echo "                                                    Fry ~ British Comedian
 }
 
 quote70 () {
-echo "Last night, I dreamt I ate a ten pound marshmallow. When I woke up, the
-pillow was gone." > /pg/var/startup.quote
-echo "                                                 Cooper ~ British Comedian" > /pg/var/startup.source
+echo "" > /pg/var/startup.quote
+echo "                                                 " > /pg/var/startup.source
 }
 
 # END FUNCTIONS ################################################################

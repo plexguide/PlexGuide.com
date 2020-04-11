@@ -143,7 +143,7 @@ Anonymous"
 
 quote19 () {
 main_quote="
-I love my six pack so much, I protect is with a layer of fat.
+I love my six pack so much, I protect it with a layer of fat.
 
 Anonymous"
 }
@@ -175,6 +175,56 @@ No matter how smart you are you can never convince someone stupid that they
 are stupid.
 
 Anonymous"
+}
+
+quote24 () {
+main_quote="
+Thank You Mario! But our Princess is another castle!
+
+Toad(s) ~ NES Mario I"
+}
+
+quote25 () {
+main_quote="
+I could set this building on fire.
+
+Milton ~ Office Space"
+}
+
+quote26 () {
+main_quote="
+I can't believe you like money too. We should hang out.
+
+Frito ~ Office Space"
+}
+
+quote27 () {
+main_quote="
+Heh, heh, heh
+
+Major Payne"
+}
+
+quote28 () {
+main_quote="
+The thing is Bob it's not that I'm lazy, it's that I just don't care.
+
+Peter Gibbons ~ Office Space"
+}
+
+quote29 () {
+main_quote="
+I used to be indecisive but now I am not quite sure.
+
+Cooper ~ British Comedian"
+}
+
+quote30 () {
+main_quote="
+Last night, I dreamt I ate a ten pound marshmallow. When I woke up, the
+pillow was gone.
+
+Cooper ~ British Comedian"
 }
 # 1 higher than last quote number ##############################################
 num=$( echo $(($RANDOM % 24)) )
