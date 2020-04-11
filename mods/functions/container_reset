@@ -1,4 +1,5 @@
 container_reset () {
   rm -rf /pg/tmp/container.path && touch /pg/tmp/container.path
   rm -rf /pg/tmp/container.oddball && touch /pg/tmp/container.oddball
+  rm -rf /pg/tmp/container.permissions && touch /pg/tmp/container.permissions 
 }

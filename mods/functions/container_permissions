@@ -1,0 +1,5 @@
+container_permissions () {
+
+container_permissions=$(cat /pg/tmp/container.permissions)
+echo "      $1: $2" >> /pg/tmp/container.permissions
+}
