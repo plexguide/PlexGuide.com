@@ -31,7 +31,7 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
         pg_labels:
           # traefik.frontend.auth.forward.address: '{{gauth}}'
           traefik.enable: 'true'
-          traefik.port: '$port_inside'
+          traefik.port: '$port_inside01'
           traefik.frontend.rule: 'Host:$pgrole.$domain,{{tldset}}'
           traefik.frontend.headers.SSLHost: '$domain'
           traefik.frontend.headers.SSLRedirect: 'true'
