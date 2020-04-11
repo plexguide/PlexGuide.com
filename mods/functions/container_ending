@@ -1,0 +1,11 @@
+container_ending () {
+
+container_ending="        volumes:
+          $container_paths
+        state: started
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - '$pgrole'"
+}

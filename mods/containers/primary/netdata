@@ -52,13 +52,6 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
         security_opts:
           - apparmor:unconfined
         labels: '{{pg_labels}}'
-        volumes:
-          $container_paths
-        state: started
-        restart_policy: unless-stopped
-        networks:
-          - name: plexguide
-            aliases:
-              - '$pgrole'
+        $container_ending
 EOF
 }
