@@ -24,9 +24,9 @@ done </"$pgfunctions"/.functions.sh
 ## adds tempory information to complete master functions file
 while read p; do
   echo "source $pgprimary/$p" >> "$pgfunctions"/.master.sh
-done </"$pgprimary"/.primary.sh
+done </"$pgfunctions"/.primary.sh
 
 ## adds tempory information to complete master functions file
 while read p; do
   echo "source $pgcommunity/$p" >> "$pgfunctions"/.master.sh
-done </"$pgcommunity"/.community.sh
+done </"$pgfunctions"/.community.sh
