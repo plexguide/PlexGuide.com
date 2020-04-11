@@ -12,6 +12,12 @@ container_path /sys /host/sys:ro
 container_path /proc /host/proc:ro
 container_path /var/run/docker.sock /var/run/docker.sock
 
+container_permissions PUID 1000
+container_permissions PGID 1000
+
+container_oddball capabilities SYS_PTRACE
+container_oddball security_opts apparmor:unconfined
+
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/tmp/$pgrole.yml"
@@ -19,14 +25,10 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'
         env:
-          PUID: '1000'
-          PGID: '1000'
-        capabilities:
-          - SYS_PTRACE
-        security_opts:
-          - apparmor:unconfined
+          $container_permissions
         labels:
         $container_traefik
+        $container_oddball
         $container_ending
 EOF
 }
