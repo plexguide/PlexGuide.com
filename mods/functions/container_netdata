@@ -7,8 +7,8 @@ port_inside01="19999"
 port_outside01="19999"
 domain="test.com" ## test until it pulls correct domain
 
-common_fcreate /pg/data/$pgrole
-common_fcreate /pg/var/apps
+common_fcreate_silent /pg/data/$pgrole
+common_fcreate_silent /pg/var/apps
 
 #primary variables
 common_main /pg/var/apps/port_status "127.0.0.1:" port_status
