@@ -14,7 +14,7 @@ pgcommunity="/pg/mods/containers/community"
 ## reads functions and stores to a temporary file
 ls "$pgfunctions" > "$pgfunctions"/.functions.sh
 ls "$pgprimary" >> "$pgfunctions"/.primary.sh
-ls "$pgfunction" >> "$pgfunctions"/.community.sh
+ls "$pgcommunity" >> "$pgfunctions"/.community.sh
 
 ## adds tempory information to complete master functions file
 while read p; do
