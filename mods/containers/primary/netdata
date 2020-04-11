@@ -26,19 +26,7 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
         security_opts:
           - apparmor:unconfined
         labels:
-          # traefik.frontend.auth.forward.address: '{{gauth}}'
-          traefik.enable: 'true'
-          # traefik.port: '$port_inside01'
-          # traefik.frontend.rule: 'Host:$pgrole.$domain,{{tldset}}'
-          traefik.frontend.headers.SSLHost: '$domain'
-          traefik.frontend.headers.SSLRedirect: 'true'
-          traefik.frontend.headers.STSIncludeSubdomains: 'true'
-          traefik.frontend.headers.STSPreload: 'true'
-          traefik.frontend.headers.STSSeconds: '315360000'
-          traefik.frontend.headers.browserXSSFilter: 'true'
-          traefik.frontend.headers.contentTypeNosniff: 'true'
-          traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
-          traefik.frontend.headers.forceSTSHeader: 'true'
+        $container_traefik
         $container_ending
 EOF
 }
