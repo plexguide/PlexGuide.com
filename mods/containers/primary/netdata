@@ -15,25 +15,6 @@ container_path /var/run/docker.sock /var/run/docker.sock
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/tmp/$pgrole.yml"
-    # LABELS ######################################################################
-    - name: 'Adding Traefik'
-      set_fact:
-        pg_labels:
-          # traefik.frontend.auth.forward.address: '{{gauth}}'
-          traefik.enable: 'true'
-          traefik.port: '$port_inside01'
-          traefik.frontend.rule: 'Host:$pgrole.$domain,{{tldset}}'
-          traefik.frontend.headers.SSLHost: '$domain'
-          traefik.frontend.headers.SSLRedirect: 'true'
-          traefik.frontend.headers.STSIncludeSubdomains: 'true'
-          traefik.frontend.headers.STSPreload: 'true'
-          traefik.frontend.headers.STSSeconds: '315360000'
-          traefik.frontend.headers.browserXSSFilter: 'true'
-          traefik.frontend.headers.contentTypeNosniff: 'true'
-          traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
-          traefik.frontend.headers.forceSTSHeader: 'true'
-
-    # MAIN DEPLOYMENT #############################################################
     $container_start
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'
@@ -44,7 +25,20 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
           - SYS_PTRACE
         security_opts:
           - apparmor:unconfined
-        labels: '{{pg_labels}}'
+        labels:
+          # traefik.frontend.auth.forward.address: '{{gauth}}'
+          traefik.enable: 'true'
+          # traefik.port: '$port_inside01'
+          # traefik.frontend.rule: 'Host:$pgrole.$domain,{{tldset}}'
+          traefik.frontend.headers.SSLHost: '$domain'
+          traefik.frontend.headers.SSLRedirect: 'true'
+          traefik.frontend.headers.STSIncludeSubdomains: 'true'
+          traefik.frontend.headers.STSPreload: 'true'
+          traefik.frontend.headers.STSSeconds: '315360000'
+          traefik.frontend.headers.browserXSSFilter: 'true'
+          traefik.frontend.headers.contentTypeNosniff: 'true'
+          traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
+          traefik.frontend.headers.forceSTSHeader: 'true'
         $container_ending
 EOF
 }
