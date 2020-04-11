@@ -37,18 +37,14 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
           traefik.frontend.headers.forceSTSHeader: 'true'
 
     # MAIN DEPLOYMENT #############################################################
-    - name: 'Deploying $pgrole'
-      docker_container:
-        name: '$pgrole'
-        image: '$image'
-        pull: yes
-        capabilities:
-          - SYS_PTRACE
+        $container_start
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'
         env:
           PUID: '1000'
           PGID: '1000'
+        capabilities:
+          - SYS_PTRACE
         security_opts:
           - apparmor:unconfined
         labels: '{{pg_labels}}'
