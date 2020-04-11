@@ -11,6 +11,7 @@ port_outside01="19999"
 container_path /sys /host/sys:ro
 container_path /proc /host/proc:ro
 container_path /var/run/docker.sock /var/run/docker.sock
+
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/tmp/$pgrole.yml"
@@ -45,19 +46,19 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
           - SYS_PTRACE
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'
-        volumes:
-          $container_paths
         env:
           PUID: '1000'
           PGID: '1000'
+        security_opts:
+          - apparmor:unconfined
+        labels: '{{pg_labels}}'
+        volumes:
+          $container_paths
+        state: started
         restart_policy: unless-stopped
         networks:
           - name: plexguide
             aliases:
               - '$pgrole'
-        security_opts:
-          - apparmor:unconfined
-        state: started
-        labels: '{{pg_labels}}'
 EOF
 }
