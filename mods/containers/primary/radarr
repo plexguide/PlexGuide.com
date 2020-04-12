@@ -3,10 +3,10 @@ sonarr () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="sonarr"
-image="linuxserver/sonarr"
-port_inside01="8989"
-port_outside01="8989"
-traefik_intport="8989"
+image="linuxserver/radarr"
+port_inside01="7878"
+port_outside01="7878"
+traefik_intport="7878"
 
 container_path /pg/unity /unity
 container_path /pg/data/$pgrole /config
