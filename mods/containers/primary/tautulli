@@ -10,7 +10,7 @@ traefik_intport="8181"
 
 container_path "/pg/data/plex/database/Library/Application Support/Plex Media Server/Logs" /logs
 container_path /pg/data/$pgrole/scripts /scripts
-container_path /pg/data/$pgrole /config/$pgrole
+container_path /pg/data/$pgrole /config
 container_path /etc/localtime /etc/localtime:ro
 
 container_permissions PUID 1000
