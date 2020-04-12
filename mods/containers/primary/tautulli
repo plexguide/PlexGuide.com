@@ -17,7 +17,7 @@ container_permissions PUID 1000
 container_permissions PGID 1000
 container_permissions TZ Europe/London
 
-common_fcreate_slient '/pg/data/plex/database/Library/Application Support/Plex Media Server/Logs'
+mkdir -p '/pg/data/plex/database/Library/Application Support/Plex Media Server/Logs'
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
