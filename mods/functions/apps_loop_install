@@ -3,6 +3,7 @@ apps_loop_install() {
   i=0
   while read p; do
     let "i=i+1"
+    if [[ "$p" == "plex" ]]; then plexclaim; fi
 
     container_rebuild $p
     ansible-playbook "/pg/apps/$p.yml"
