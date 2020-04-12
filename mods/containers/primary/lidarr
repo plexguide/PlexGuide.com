@@ -1,0 +1,39 @@
+lidarr () {
+
+container_reset
+# VARIABLES ####################################################################
+pgrole="lidarr"
+image="linuxserver/lidarr"
+port_inside01="8686"
+port_outside01="8686"
+traefik_intport="8686"
+
+container_path /pg/data/$pgrole /config
+container_path /etc/localtime etc/localtime:ro
+container_path /pg /pg
+container_path /pg/unity /pg/unity
+
+container_permissions PUID 1000
+container_permissions PGID 1000
+
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '$portstatus$port_inside01:$port_outside01'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_ending
+        $container_oddball
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+EOF
+}
