@@ -2,7 +2,8 @@ apps_loop_install() {
 
   i=0
   while read p; do
-    eval "$p"
+    program="$p"
+    eval "$program"
     let "i=i+1"
     ansible-playbook "/pg/tmp/$p.yml"
 
