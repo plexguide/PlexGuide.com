@@ -33,27 +33,27 @@ $container_header
         $container_ending
 
 ### ALIGN WITH THE A ########################################## EXTRAS #########
-    - name: 'XML Check'
-      stat:
-        path: /pg/data/$pgrole/config/system.xml
-      register: xmlcheck
+      - name: 'XML Check'
+        stat:
+          path: /pg/data/$pgrole/config/system.xml
+        register: xmlcheck
 
-    - name: 'Configuring $pgrole for first time use'
-      block:
+      - name: 'Configuring $pgrole for first time use'
+        block:
 
-      - name: 'Wait 5 Seconds'
-        wait_for:
-          timeout: 5
+        - name: 'Wait 5 Seconds'
+          wait_for:
+            timeout: 5
 
-      - name: 'Stop $pgrole'
-        docker_container:
-          name: '$pgrole'
-          state: stopped
+        - name: 'Stop $pgrole'
+          docker_container:
+            name: '$pgrole'
+            state: stopped
 
-      - name: 'Restart $pgrole'
-        docker_container:
-          name: '$pgrole'
-          state: started
-      when: not xmlcheck.stat.exists
+        - name: 'Restart $pgrole'
+          docker_container:
+            name: '$pgrole'
+            state: started
+        when: not xmlcheck.stat.exists
 EOF
 }
