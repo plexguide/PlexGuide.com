@@ -20,10 +20,13 @@ container_permissions GIDLIST 1000
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
 $container_header
-        - name: "Check"
-          stat:
-            path: "/dev/dri"
-          register: dev_dri
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+    - name: "Check"
+      stat:
+        path: "/dev/dri"
+      register: dev_dri
+
+####### ALIGN WITH THE A ############################## CORE ##################
         $container_start
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'
@@ -36,7 +39,7 @@ $container_header
         $container_oddball
         $container_ending
 
-### ALIGN WITH THE A ########################################## EXTRAS #########
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
     - name: 'XML Check'
       stat:
         path: /pg/data/$pgrole/config/system.xml
