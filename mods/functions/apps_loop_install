@@ -2,9 +2,9 @@ apps_loop_install() {
 
   i=0
   while read p; do
-
+    $p
     let "i=i+1"
-    ansible-playbook "/pg/mods/apps/$app_select/$p.yml"
+    ansible-playbook "/pg/tmp/$p"
 
   done </pg/tmp/appstoinstall.list
 
