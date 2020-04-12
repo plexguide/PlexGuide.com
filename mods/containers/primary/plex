@@ -20,7 +20,6 @@ common_fcreate_silent /pg/transcodes
 common_fcreate_silent /pg/data/plex
 
 common_main /pg/data/plex/plex.claim "" plex_claim
-common_main /pg/data/plex/advertise.ip "" advertise_ip
 
 container_path /etc/localtime /etc/localtime:ro
 container_path /pg/data/$pgrole/database /config
