@@ -33,7 +33,7 @@ advertise_ip=$(hostname -I | awk '{print $1}')
 container_permissions PLEX_UID 1000
 container_permissions PLEX_GID 1000
 container_permissions PLEX_CLAIM $plex_claim
-container_permissions ADVERTISE_IP $advertise_ip
+container_permissions ADVERTISE_IP "$advertise_ip:32400"
 
 # container_oddball devices "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
 container_oddball etc_hosts "{ 'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1' }"
