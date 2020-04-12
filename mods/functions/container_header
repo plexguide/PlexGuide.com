@@ -1,0 +1,7 @@
+container_header () {
+
+container_header="
+- hosts: localhost
+  gather_facts: false
+  tasks:
+}

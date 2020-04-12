@@ -1,0 +1,63 @@
+jackett () {
+
+container_reset
+# VARIABLES ####################################################################
+pgrole="emby"
+image="emby/embyserver"
+port_inside01="8096"
+port_outside01="8096"
+traefik_intport="8096"
+
+container_path /pg /pg
+container_path /pg/data/$pgrole /config/$pgrole
+container_path /etc/localtime /etc/localtime:ro
+
+container_permissions UID 1000
+container_permissions GID 1000
+container_permissions GIDLIST 1000
+
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+        - name: "Check"
+          stat:
+            path: "/dev/dri"
+          register: dev_dri
+        $container_start
+        published_ports:
+          - '$portstatus$port_inside01:$port_outside01'
+        devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+        expose: '8096'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_oddball
+        $container_ending
+
+### ALIGN WITH THE A ########################################## EXTRAS #########
+    - name: 'XML Check'
+      stat:
+        path: /pg/data/$pgrole/config/system.xml
+      register: xmlcheck
+
+    - name: 'Configuring $pgrole for first time use'
+      block:
+
+      - name: 'Wait 5 Seconds'
+        wait_for:
+          timeout: 5
+
+      - name: 'Stop $pgrole'
+        docker_container:
+          name: '$pgrole'
+          state: stopped
+
+      - name: 'Restart $pgrole'
+        docker_container:
+          name: '$pgrole'
+          state: started
+      when: not xmlcheck.stat.exists
+EOF
+}
