@@ -27,6 +27,7 @@ echo "source $pgfunctions/$p" > "$pgfunctions"/.primary_apps.sh
 while read p; do
   echo "source $pgprimary/$p" >> "$pgfunctions"/.master.sh
   echo "source $pgprimary/$p" >> "$pgfunctions"/.primary_apps.sh
+  echo "$p" >> "$pgfunctions"/.primary_apps.sh 
 done </"$pgfunctions"/.primary.sh
   bash "$pgfunctions"/.primary_apps.sh
 
