@@ -1,5 +1,5 @@
 container_path () {
   cpath_check=$(cat /pg/tmp/container.path)
-  if [[ "$cpath_check" == "" ]]; then echo "$1:$2" >> /pg/tmp/container.path
-  else echo "          $1:$2" >> /pg/tmp/container.path; fi
+  if [[ "$cpath_check" == "" ]]; then echo "'$1:$2'" >> /pg/tmp/container.path
+  else echo "          '$1:$2'" >> /pg/tmp/container.path; fi
 }

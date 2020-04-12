@@ -10,6 +10,7 @@ traefik_intport="9000"
 
 container_path /pg/data/$pgrole /data
 container_path /var/run/docker.sock /var/run/docker.sock
+container_path /etc/localtime /etc/localtime:ro
 
 container_permissions PUID 1000
 container_permissions PGID 1000
