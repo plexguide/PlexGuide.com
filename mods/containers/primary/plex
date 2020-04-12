@@ -1,5 +1,21 @@
 plex () {
 
+plexclaim () {
+
+common_message "🌎 Remote Plex Server - Claim the Plex Server" "
+💬 Further Explanation? Visit ~ http://plex.plexguide.com
+------------------------------------------------------------------------------
+To Claim the Plex Server, visit https://www.plex.tv/claim/ and input the
+code below! You have 5 minutes! Messed up? Just re-start this process again!
+
+Re-Installing & Already Claimed? Just PRESS [ENTER]!
+------------------------------------------------------------------------------
+[Z] Exit Interface
+"
+common_number
+echo $typed > /pg/data/plex/plex.claim
+}
+
 container_reset
 # VARIABLES ####################################################################
 pgrole="plex"
@@ -17,6 +33,10 @@ port_inside09="33443/tcp"; port_outside09="33443"
 traefik_intport="32400"
 
 common_fcreate_silent /pg/transcodes
+common_fcreate_silent /pg/data/plex
+
+common_main /pg/data/plex/plex.claim "" plex_claim
+common_main /pg/data/plex/advertise.ip "" advertise_ip
 
 container_path /etc/localtime /etc/localtime:ro
 container_path /pg/data/$pgrole/database /config
