@@ -21,6 +21,10 @@ container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
 $container_header
 ### ALIGN WITH THE A ################################## START - EXTRAS #########
+    - name: 'XML Check ~ $pgrole'
+      stat:
+        path: '/pg/data/$pgrole/config/system.xml'
+      register: xmlcheck
 
 ####### ALIGN WITH THE A ############################## CORE ###################
         $container_start
