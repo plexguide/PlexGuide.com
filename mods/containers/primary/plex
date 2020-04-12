@@ -1,21 +1,5 @@
 plex () {
 
-plex_claim_interface () {
-
-common_message "🌎 Remote Plex Server - Claim the Plex Server" "
-💬 Further Explanation? Visit ~ http://plex.plexguide.com
-------------------------------------------------------------------------------
-To Claim the Plex Server, visit https://www.plex.tv/claim/ and input the
-code below! You have 5 minutes! Messed up? Just re-start this process again!
-
-Re-Installing & Already Claimed? Just PRESS [ENTER]!
-------------------------------------------------------------------------------
-[Z] Exit Interface
-"
-common_number
-echo $typed > /pg/data/plex/plex.claim
-}
-
 container_reset
 # VARIABLES ####################################################################
 pgrole="plex"
