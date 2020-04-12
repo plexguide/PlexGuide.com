@@ -1,0 +1,5 @@
+container_ending () {
+
+docker stop $1
+docker rm $1
+}
