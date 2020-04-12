@@ -1,4 +1,4 @@
-container_ending () {
+container_rebuild () {
 
 docker stop $1
 docker rm $1
