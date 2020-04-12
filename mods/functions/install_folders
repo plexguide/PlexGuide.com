@@ -48,6 +48,7 @@ common_fcreate /pg/coreapps
 common_fcreate /pg/communityapps
 common_fcreate /pg/transfer
 common_fcreate /pg/logs
+common_fcreate /pg/apps
 common_fcreate /pg/var/emergency
 common_fcreate /pg/var/keys # utilized to store rclone keys
 common_fcreate /pg/nzb

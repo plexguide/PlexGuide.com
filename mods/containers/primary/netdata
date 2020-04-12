@@ -20,7 +20,7 @@ container_oddball security_opts apparmor:unconfined
 
 # YML EXPORT ###################################################################
 container_core
-cat <<- EOF > "/pg/tmp/$pgrole.yml"
+cat <<- EOF > "/pg/apps/$pgrole.yml"
     $container_start
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'
