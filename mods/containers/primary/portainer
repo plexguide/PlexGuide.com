@@ -2,8 +2,8 @@ portainer () {
 
 container_reset
 # VARIABLES ####################################################################
-pgrole="netdata"
-image="netdata/netdata"
+pgrole="portainer"
+image="portainer/portainer"
 port_inside01="9000"
 port_outside01="9000"
 traefik_intport="9000"
