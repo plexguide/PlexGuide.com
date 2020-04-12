@@ -1,8 +1,8 @@
-sonarr () {
+radarr () {
 
 container_reset
 # VARIABLES ####################################################################
-pgrole="sonarr"
+pgrole="radarr"
 image="linuxserver/radarr"
 port_inside01="7878"
 port_outside01="7878"
