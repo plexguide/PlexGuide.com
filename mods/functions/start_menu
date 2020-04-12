@@ -71,6 +71,7 @@ case $typed in
     9 ) pgpress_menu && start_menu && exit ;;
     10 ) pgpress_menu && start_menu && exit ;;
     11 ) netdata ;;
+    12 ) jackett ;;
     z ) start_end && exit ;;
     Z ) start_end && exit ;;
     * ) start_menu ;;
