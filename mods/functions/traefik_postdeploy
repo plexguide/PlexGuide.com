@@ -55,7 +55,7 @@ sed -i -e "/oauth/d" /pg/tmp/traefik.rebuild
 sed -i -e "/portainer/d" /pg/tmp/traefik.rebuild
 
 while read p; do
-  to_rebuild=$(find /pg/mods/apps/ -name "$p.yml")
+  to_rebuild=$(find /pg/apps/ -name "$p.yml")
   common_header "🚀  Rebuilding - $p!"; sleep 2
   ansible-playbook "$to_rebuild"
 done </pg/tmp/traefik.rebuild
