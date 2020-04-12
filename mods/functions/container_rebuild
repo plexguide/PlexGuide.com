@@ -1,6 +1,6 @@
 container_rebuild () {
 
+common_header "🚀 Docker: Rebuilding Container ~ $1"
 docker stop $1 >/dev/null 2>&1
 docker rm $1 >/dev/null 2>&1
-common_header "🚀 Docker: Rebuilding Container ~ $1"
 }
