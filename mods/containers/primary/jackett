@@ -33,7 +33,7 @@ $container_header
         $container_ending
 
 ### ALIGN WITH THE A ################################## END - EXTRAS ###########
-    - name: 'XML Check'
+    - name: 'XML Check - $pgrole'
       stat:
         path: /pg/data/$pgrole/config/system.xml
       register: xmlcheck

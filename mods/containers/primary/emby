@@ -27,7 +27,7 @@ $container_header
         path: "/dev/dri"
       register: dev_dri
 
-    - name: 'XML Check'
+    - name: 'XML Check - $pgrole'
       stat:
         path: /pg/data/$pgrole/config/system.xml
       register: xmlcheck
