@@ -5,10 +5,10 @@
     # FACTS #######################################################################
     - name: 'Set Known Facts'
       set_fact:
-        pgrole: ''
+        pgrole: 'jackett'
         intport: '9117'
         extport: '9117'
-        image: ''
+        image: 'linuxserver/jackett'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
@@ -31,7 +31,7 @@
       set_fact:
         pg_volumes:
           - '/pg/data/{{pgrole}}:/config/{{pgrole}}'
-          - ':/etc/localtime:ro'
+          - '/etc/localtime:/etc/localtime:ro'
           - '/pg:/pg'
 
     - name: 'Setting PG ENV'
