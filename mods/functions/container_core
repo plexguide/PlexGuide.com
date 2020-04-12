@@ -13,4 +13,6 @@ container_start
 container_permissions
 container_traefik
 container_ending
+
+container_permissions=$(cat "/pg/tmp/pg/tmp/container.permissions")
 }
