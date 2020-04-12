@@ -11,6 +11,7 @@ common_main /pg/var/apps/port_status "127.0.0.1:" port_status
 container_paths=$(cat "/pg/tmp/container.path")
 container_permissions=$(cat "/pg/tmp/container.permissions")
 
+container_header
 container_start
 container_permissions
 container_traefik
