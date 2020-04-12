@@ -26,6 +26,11 @@ $container_header
         path: "/dev/dri"
       register: dev_dri
 
+    - name: 'XML Check'
+      stat:
+        path: /pg/data/$pgrole/config/system.xml
+      register: xmlcheck
+
 ####### ALIGN WITH THE A ############################## CORE ##################
         $container_start
         published_ports:
@@ -40,13 +45,13 @@ $container_header
         $container_ending
 
 ### ALIGN WITH THE A ################################## END - EXTRAS ###########
-    - name: 'XML Check'
-      stat:
-        path: /pg/data/$pgrole/config/system.xml
-      register: xmlcheck
-
     - name: 'Configuring $pgrole for first time use'
       block:
+
+      - name: 'Pending XML Generation'
+        wait_for:
+          path: '/pg/data/$pgrole/config/system.xml'
+          state: present
 
       - name: 'Wait 5 Seconds'
         wait_for:
@@ -56,6 +61,12 @@ $container_header
         docker_container:
           name: '$pgrole'
           state: stopped
+
+      - name: 'Turn Off Reporting'
+        xml:
+          path: '/pg/data/$pgrole/config/system.xml'
+          xpath: /ServerConfiguration/EnableAnonymousUsageReporting
+          value: 'false'
 
       - name: 'Restart $pgrole'
         docker_container:
