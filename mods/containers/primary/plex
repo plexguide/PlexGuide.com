@@ -1,6 +1,6 @@
 plex () {
 
-plexclaim () {
+plex_claim_interface () {
 
 common_message "🌎 Remote Plex Server - Claim the Plex Server" "
 💬 Further Explanation? Visit ~ http://plex.plexguide.com
