@@ -19,7 +19,10 @@ container_permissions GIDLIST 1000
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
-    $container_start
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+### END
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'
         env:

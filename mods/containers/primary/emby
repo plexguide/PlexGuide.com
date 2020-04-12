@@ -9,6 +9,7 @@ port_outside01="8096"
 traefik_intport="8096"
 
 container_path /pg /pg
+container_path /pg/unity /pg/unity
 container_path /pg/data/$pgrole /config/$pgrole
 container_path /etc/localtime /etc/localtime:ro
 
@@ -21,7 +22,7 @@ container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
 $container_header
 ### ALIGN WITH THE A ################################## START - EXTRAS #########
-    - name: "Check"
+    - name: "/dev/dri Check"
       stat:
         path: "/dev/dri"
       register: dev_dri
@@ -30,6 +31,7 @@ $container_header
       stat:
         path: /pg/data/$pgrole/config/system.xml
       register: xmlcheck
+### END
 
 ####### ALIGN WITH THE A ############################## CORE ##################
         $container_start
