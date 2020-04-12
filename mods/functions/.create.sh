@@ -13,8 +13,8 @@ pgcommunity="/pg/mods/containers/community"
 
 ## reads functions and stores to a temporary file
 ls "$pgfunctions" > "$pgfunctions"/.functions.sh
-ls "$pgprimary" >> "$pgfunctions"/.primary.sh
-ls "$pgcommunity" >> "$pgfunctions"/.community.sh
+ls "$pgprimary" > "$pgfunctions"/.primary.sh
+ls "$pgcommunity" > "$pgfunctions"/.community.sh
 
 ## adds tempory information to complete master functions file
 while read p; do
@@ -25,7 +25,10 @@ done </"$pgfunctions"/.functions.sh
 while read p; do
   echo "source $pgprimary/$p" >> "$pgfunctions"/.master.sh
 done </"$pgfunctions"/.primary.sh
-  bash "$pgfunctions"/.primary.sh
+
+  echo "source $pgfunctions/$p" > "$pgfunctions"/.primary_apps.sh
+  cat "$pgfunctions"/.primary.sh >> "$pgfunctions"/.primary_apps.sh
+  bash "$pgfunctions"/.primary_apps.sh
 
 ## adds tempory information to complete master functions file
 while read p; do
