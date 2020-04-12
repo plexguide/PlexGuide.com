@@ -35,7 +35,7 @@ $container_header
 ####### ALIGN WITH THE A ############################## CORE ###################
         $container_start
         published_ports:
-          - '$portstatus$port_inside01:$port_outside01'
+          - '$portstatus$port_outside01:$port_inside01'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
         env:
           $container_permissions
