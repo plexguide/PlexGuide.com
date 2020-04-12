@@ -1,8 +1,7 @@
 apps_gen_lists() {
 
 echo "primary
-community
-core" > /pg/tmp/list.tmp
+community" > /pg/tmp/list.tmp
 
 while read p; do
 
