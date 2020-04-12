@@ -29,6 +29,7 @@ cat <<- EOF > "/pg/tmp/$pgrole.yml"
         $container_oddball
         $container_ending
 
+### ALIGN WITH THE A ########################################## EXTRAS #########
     - name: 'XML Check'
       stat:
         path: /pg/data/$pgrole/config/system.xml
