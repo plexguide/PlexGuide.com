@@ -25,7 +25,7 @@ common_timer "$delseconds"
 while [[ "$pstatus" == "failed" && "$i" != "0" ]]; do
 
 common_header "🚀  Rebuilding Portainer"; sleep 2
-ansible-playbook /pg/mods/apps/primary/portainer.yml
+ansible-playbook /pg/apps/portainer.yml
 
 common_header "🚀 Standby:  Portainer is loading up!"
 common_timer "10"
