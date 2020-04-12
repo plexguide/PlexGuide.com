@@ -22,7 +22,7 @@ cat <<- EOF > "/pg/apps/$pgrole.yml"
 $container_header
 ### ALIGN WITH THE A ################################## START - EXTRAS #########
 
-####### ALIGN WITH THE A ############################## CORE ###################
+### END
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'
         env:
@@ -32,7 +32,12 @@ $container_header
         $container_oddball
         $container_ending
 
-### ALIGN WITH THE A ################################## END - EXTRAS ###########
+### ALIGN WITH THE A ########################################## EXTRAS #########
+    - name: 'XML Check'
+      stat:
+        path: /pg/data/$pgrole/config/system.xml
+      register: xmlcheck
+
     - name: 'Configuring $pgrole for first time use'
       block:
 
