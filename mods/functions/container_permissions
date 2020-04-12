@@ -1,5 +1,5 @@
 container_permissions () {
   cpath_check=$(cat /pg/tmp/container.permissions)
-  if [[ "$cpath_check" == "" ]]; then echo "$1: $2" >> /pg/tmp/container.permissions
-  else echo "          $1: $2" >> /pg/tmp/container.permissions; fi
+  if [[ "$cpath_check" == "" ]]; then echo "'$1: $2'" >> /pg/tmp/container.permissions
+else echo "          '$1: $2'" >> /pg/tmp/container.permissions; fi
 }
