@@ -34,21 +34,21 @@ $container_header
         $container_ending
 
 ### ALIGN WITH THE A ################################## END - EXTRAS ###########
-    - name: 'Configuring {{pgrole}} for first time use'
+    - name: 'Configuring $pgrole for first time use'
       block:
 
       - name: 'Wait 5 Seconds'
         wait_for:
           timeout: 5
 
-      - name: 'Stop {{pgrole}}'
+      - name: 'Stop $pgrole'
         docker_container:
-          name: '{{pgrole}}'
+          name: '$pgrole'
           state: stopped
 
-      - name: 'Restart {{pgrole}}'
+      - name: 'Restart $pgrole'
         docker_container:
-          name: '{{pgrole}}'
+          name: '$pgrole'
           state: started
       when: not xmlcheck.stat.exists
 EOF
