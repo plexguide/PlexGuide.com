@@ -2,4 +2,5 @@ container_ending () {
 
 docker stop $1
 docker rm $1
+common_header "🚀 Docker: Rebuilding Container ~ $1"
 }

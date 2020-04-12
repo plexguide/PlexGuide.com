@@ -6,6 +6,7 @@ apps_loop_install() {
 
     container_rebuild $p
     ansible-playbook "/pg/apps/$p.yml"
+    common_header "🚀 Docker: Process Complete ~ $p"
 
   done </pg/tmp/appstoinstall.list
 
