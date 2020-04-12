@@ -2,7 +2,7 @@ ombi () {
 
 container_reset
 # VARIABLES ####################################################################
-pgrole="sonarr"
+pgrole="ombi"
 image="linuxserver/ombi"
 port_inside01="3579"
 port_outside01="3579"
