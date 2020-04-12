@@ -24,7 +24,6 @@ common_main /pg/data/plex/advertise.ip "" advertise_ip
 
 container_path /etc/localtime /etc/localtime:ro
 container_path /pg/data/$pgrole/database /config
-container_path /pg/data/$pgrole/
 container_path /tmp /tmp
 container_path /pg /pg
 container_path /pg/transcodes /transcode
