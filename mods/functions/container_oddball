@@ -2,5 +2,5 @@ container_oddball () {
 
 container_oddball=$(cat /pg/tmp/container.oddball)
 echo "$1:
-       - $2" >> /pg/tmp/container.oddball
+           - $2" >> /pg/tmp/container.oddball
 }
