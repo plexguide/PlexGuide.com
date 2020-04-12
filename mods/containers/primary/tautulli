@@ -8,7 +8,7 @@ port_inside01="8181"
 port_outside01="8181"
 traefik_intport="8181"
 
-container_path /pg/data/plex/database/Library/Application Support/Plex Media Server/Logs /logs
+container_path "/pg/data/plex/database/Library/Application Support/Plex Media Server/Logs" /logs
 container_path /pg/data/$pgrole/scripts /scripts
 container_path /pg/data/$pgrole /config/$pgrole
 container_path /etc/localtime /etc/localtime:ro
@@ -17,7 +17,7 @@ container_permissions PUID 1000
 container_permissions PGID 1000
 container_permissions TZ Europe/London
 
-mkdir -p '/pg/data/plex/database/Library/Application Support/Plex Media Server/Logs'
+mkdir -p "/pg/data/plex/database/Library/Application Support/Plex Media Server/Logs"
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
