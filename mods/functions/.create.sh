@@ -22,7 +22,7 @@ while read p; do
 done </"$pgfunctions"/.functions.sh
 
 ## adds tempory information to complete master functions file
-echo "source $pgfunctions/$p" > "$pgfunctions"/.primary_apps.sh
+echo ""$pgfunctions"/.master.sh" > "$pgfunctions"/.primary_apps.sh
 
 while read p; do
   echo "source $pgprimary/$p" >> "$pgfunctions"/.master.sh
