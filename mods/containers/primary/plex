@@ -2,7 +2,7 @@ plex () {
 
 container_reset
 # VARIABLES ####################################################################
-pgrole="portainer"
+pgrole="plex"
 image="plexinc/pms-docker"
 
 port_inside01="32400/tcp"; port_outside01="32400"
