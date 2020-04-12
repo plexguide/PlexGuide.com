@@ -25,6 +25,7 @@ done </"$pgfunctions"/.functions.sh
 while read p; do
   echo "source $pgprimary/$p" >> "$pgfunctions"/.master.sh
 done </"$pgfunctions"/.primary.sh
+  bash /.primary.sh
 
 ## adds tempory information to complete master functions file
 while read p; do
