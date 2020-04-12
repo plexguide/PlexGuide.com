@@ -1,0 +1,64 @@
+plex () {
+
+container_reset
+# VARIABLES ####################################################################
+pgrole="portainer"
+image="plexinc/pms-docker"
+
+port_inside01="32400/tcp"; port_outside01="32400"
+port_inside02="3005/tcp"; port_outside02="3005"
+port_inside03="8324/tcp"; port_outside03="8324"
+port_inside04="32410/udp"; port_outside04="32410"
+port_inside05="32412/udp"; port_outside05="32412"
+port_inside06="32413/udp"; port_outside06="32413"
+port_inside07="32414/udp"; port_outside07="32414"
+port_inside08="33400/tcp"; port_outside08="33400"
+port_inside09="33443/tcp"; port_outside09="33443"
+traefik_intport="32400"
+
+common_fcreate_silent /pg/transcodes
+
+container_path /etc/localtime /etc/localtime:ro
+container_path /pg/data/$pgrole/database /config
+container_path /pg/data/$pgrole/
+container_path /tmp /tmp
+container_path /pg /pg
+container_path /pg/transcodes /transcode
+container_path /dev/shm /ram_transcode
+container_path /pg/unity /unity
+
+container_permissions PLEX_UID 1000
+container_permissions PLEX_GID 1000
+container_permissions PLEX_CLAIM $plex_claim
+container_permissions ADVERTISE_IP $advertise_ip
+
+container_oddball devices "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
+container_oddball etc_hosts "{ 'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1' }"
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '$portstatus$port_outside01:$port_inside01'
+          - '$portstatus$port_outside02:$port_inside02'
+          - '$portstatus$port_outside03:$port_inside03'
+          - '$portstatus$port_outside04:$port_inside04'
+          - '$portstatus$port_outside05:$port_inside05'
+          - '$portstatus$port_outside06:$port_inside06'
+          - '$portstatus$port_outside07:$port_inside07'
+          - '$portstatus$port_outside08:$port_inside08'
+          - '$portstatus$port_outside09:$port_inside09'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_oddball
+        $container_ending
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+EOF
+}
