@@ -31,9 +31,8 @@ $container_header
       stat:
         path: /pg/data/$pgrole/config/system.xml
       register: xmlcheck
-### END
 
-####### ALIGN WITH THE A ############################## CORE ##################
+####### ALIGN WITH THE A ############################## CORE ###################
         $container_start
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'

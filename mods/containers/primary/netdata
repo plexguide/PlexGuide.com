@@ -21,7 +21,10 @@ container_oddball security_opts apparmor:unconfined
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
-    $container_start
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
         published_ports:
           - '$portstatus$port_inside01:$port_outside01'
         env:
@@ -30,5 +33,8 @@ cat <<- EOF > "/pg/apps/$pgrole.yml"
         $container_traefik
         $container_oddball
         $container_ending
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
 EOF
 }
