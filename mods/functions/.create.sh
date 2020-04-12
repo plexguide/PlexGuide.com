@@ -22,12 +22,12 @@ while read p; do
 done </"$pgfunctions"/.functions.sh
 
 ## adds tempory information to complete master functions file
+echo "source $pgfunctions/$p" > "$pgfunctions"/.primary_apps.sh
+
 while read p; do
   echo "source $pgprimary/$p" >> "$pgfunctions"/.master.sh
+  echo "source $pgprimary/$p" >> "$pgfunctions"/.primary_apps.sh
 done </"$pgfunctions"/.primary.sh
-
-  echo "source $pgfunctions/$p" > "$pgfunctions"/.primary_apps.sh
-  cat "$pgfunctions"/.primary.sh >> "$pgfunctions"/.primary_apps.sh
   bash "$pgfunctions"/.primary_apps.sh
 
 ## adds tempory information to complete master functions file
