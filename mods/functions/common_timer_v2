@@ -1,0 +1,12 @@
+common_timer_v2() {
+
+  secs=$1
+  shift
+  msg=$@
+  while [ $secs -gt 0 ]
+  do
+    printf "\r\033[KPending %.d seconds $msg" $((secs--))
+    sleep 1
+  done
+  echo
+}
