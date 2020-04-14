@@ -10,7 +10,7 @@ common_main "$traefik_path"/delay.check 75 delaycheck
 common_main "$traefik_path"/tld.program NOT-SET tld
 touch "$traefik_path"/traefik.deploy
 
-if [[ "$provider" != "NOT-SET" ]]; then
+if [[ "$provider" != "NONE" ]]; then
 
   ls -p "$traefik_path/$provider" | grep -v / > "$traefik_path"/provider.keys
 
