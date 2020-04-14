@@ -30,7 +30,7 @@ if [[ "$provider" != "NONE" ]]; then
   if [[ "" != "$tdocker_check" ]]; then
     def="[B] Destroy Traefik"; else def="[!] Cannot Destroy Traefik - Not Deployed"; fi
 
-  if [[ "" != "$tdocker_check" ) ]]; then
+  if [[ "" != "$tdocker_check" ]]; then
     def="[B] Destroy Traefik" && echo "Deployed" > "$traefik_path"/traefik.deploy && deployedinfo=Deployed; else
     def="[!] Cannot Destroy Traefik" && deployedinfo="Not Deployed" > "$traefik_path"/traefik.deploy; fi
 
