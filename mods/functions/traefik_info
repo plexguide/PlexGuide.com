@@ -16,7 +16,6 @@ container_path /var/run/docker.sock /var/run/docker.sock:ro
 
 container_permissions PUID 1000
 container_permissions PGID 1000
-container_permissions PROVIDER $provider
 
 container_reset
 container_rebuild
@@ -83,6 +82,7 @@ $container_header
           - '$portstatus$port_outside01:$port_inside01'
         env:
           $container_permissions
+          PROVIDER $provider
           $pfillin
         labels:
         $container_traefik
