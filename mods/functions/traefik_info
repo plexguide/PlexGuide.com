@@ -91,6 +91,7 @@ $container_header
 
 EOF
 
+touch /pg/data/traefik/acme/acme.json
 chmod 600 /pg/data/traefik/traefik.toml /pg/data/traefik/acme/acme.json
 chown 1000 /pg/data/traefik/traefik.toml /pg/data/traefik/acme/acme.json
 
