@@ -9,7 +9,7 @@ port_inside02="443"; port_outside02="443"
 
 container_reset
 container_rebuild treafik
-if [ -e "/pg/data/traefik" ]; then rm -rf /pg/data/traefik; fi
+rm -rf /pg/data/traefik
 common_fcreate_silent /pg/data/traefik/acme
 
 i=0
