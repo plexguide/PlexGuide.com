@@ -16,9 +16,15 @@ container_path /var/run/docker.sock /var/run/docker.sock:ro
 
 container_permissions PUID 1000
 container_permissions PGID 1000
+container_permissions PROVIDER $provider
 
 container_reset
 container_rebuild
+
+while read p; do
+  echo -n "      ${p}: " >> /pg/tmp/p.info
+  echo $(cat "/pg/var/traefik/$provider/$p") >> /pg/tmp/p.info
+done </pg/var/traefik/provider.keys
 
 rm -rf /pg/data/traefik/acme/acme.json
 # TRAEFIK.TOML #################################################################

@@ -9,12 +9,12 @@ echo "
       PGID: '1000'
       PROVIDER: $provider" | tee /pg/mods/traefik/provider.yml 1>/dev/null 2>&1
 
-ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
+ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/var/traefik/provider.keys
 
 while read p; do
   echo -n "      ${p}: " >> /pg/mods/traefik/provider.yml
   echo $(cat "/pg/var/traefik/$provider/$p") >> /pg/mods/traefik/provider.yml
-done </pg/tmp/provider.keys
+done </pg/var/traefik/provider.keys
 
 if [[ $(docker ps --format '{{.Names}}' | grep traefik) == "traefik" ]]; then
   docker stop traefik 1>/dev/null 2>&1; docker rm traefik 1>/dev/null 2>&1; fi

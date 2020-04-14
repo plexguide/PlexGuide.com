@@ -10,7 +10,7 @@ touch /pg/var/traefik/traefik.deploy
 
 if [[ "$provider" != "NOT-SET" ]]; then
 
-  ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.keys
+  ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/var/traefik/provider.keys
 
   tnumber=6
   rm -rf /pg/tmp/mini.list && touch /pg/tmp/mini.list
@@ -20,7 +20,7 @@ if [[ "$provider" != "NOT-SET" ]]; then
     if [[ "" == $(cat /pg/var/traefik/$provider/$p) ]]; then tset=" <<< NOT-SET" && xyz=1; else tset=""; fi
     echo "[$tnumber] $p$tset" >> /pg/tmp/mini.list
     let "tnumber++"
-  done </pg/tmp/provider.keys
+  done </pg/var/traefik/provider.keys
   minidisplay=$(cat /pg/tmp/mini.list); fi
 
   if [[ "" != $(docker ps | grep "traefik" ) ]]; then
