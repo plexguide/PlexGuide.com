@@ -1,0 +1,93 @@
+traefik_info () {
+
+traefik_menu_start_setup
+# VARIABLES ####################################################################
+pgrole="traefik"
+image="traefik:1.7"
+port_inside01="80"; port_outside01="80"
+port_inside02="443"; port_outside02="443"
+
+common_fcreate_silent /pg/data/traefik/acme
+
+container_path /pg/data/traefik/traefik.toml /etc/traefik/traefik.toml:ro
+container_path /etc/localtime /etc/localtime:ro
+container_path /pg/data/traefik/acme /etc/traefik/acme
+container_path /var/run/docker.sock /var/run/docker.sock:ro
+
+container_permissions PUID 1000
+container_permissions PGID 1000
+
+container_reset
+container_rebuild
+
+rm -rf /pg/data/traefik/acme/acme.json
+# TRAEFIK.TOML #################################################################
+cat <<- EOF > "/pg/data/traefik/traefik.toml"
+insecureskipverify = true
+logLevel = "WARN"
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+  [entryPoints.http.redirect]
+  entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+  MinVersion = "VersionTLS12"
+  CipherSuites = ["TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256","TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384","TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256","TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"]
+  [entryPoints.monitor]
+  address = ":8081"
+
+[retry]
+
+[acme]
+acmeLogging = true
+email = "$email"
+storage = "/etc/traefik/acme/acme.json"
+entryPoint = "https"
+  [acme.dnsChallenge]
+    provider = "$provider"
+    delayBeforeCheck = "$delaycheck"
+
+[[acme.domains]]
+main = "$domain"
+[[acme.domains]]
+main = "*.$domain"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "$domain"
+watch = true
+exposedbydefault = false
+network = "plexguide"
+EOF
+
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '$portstatus$port_outside01:$port_inside01'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_ending
+        $container_oddball
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+EOF
+
+chmod 600 /pg/data/traefik/traefik.toml /pg/data/traefik/acme/acme.json
+chown 1000 /pg/data/traefik/traefik.toml /pg/data/traefik/acme/acme.json
+
+
+
+}

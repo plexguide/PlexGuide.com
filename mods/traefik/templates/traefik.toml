@@ -1,8 +1,3 @@
-#!/bin/bash
-# URL:        https://plexguide.com - http://github.plexguide.com
-# GNU:        General Public License v3.0
-################################################################################
-
 insecureskipverify = true
 
 logLevel = "WARN"
@@ -37,20 +32,6 @@ entryPoint = "https"
 main = "{{domain.stdout}}"
 [[acme.domains]]
 main = "*.{{domain.stdout}}"
-
-[backends]
-## Cockpit Backend
-[backends.cockpit]
-[backends.cockpit.servers.server]
-url = "https://127.0.0.1:9090"
-
-[frontends]
-## Cockpit Frontend
-[frontends.cockpit]
-backend = "cockpit"
-passHostHeader = true
-[frontends.cockpit.routes.cockpit]
-rule = "Host:cockpit.{{domain.stdout}}"
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
