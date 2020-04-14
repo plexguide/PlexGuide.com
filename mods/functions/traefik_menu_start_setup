@@ -25,10 +25,12 @@ if [[ "$provider" != "NONE" ]]; then
   done <"$traefik_path"/provider.keys
   minidisplay=$(cat /pg/tmp/mini.list); fi
 
-  if [[ "" != $(docker ps | grep "traefik" ) ]]; then
+  tdocker_check=$(docker ps | grep "traefik")
+
+  if [[ "" != "$tdocker_check" ]]; then
     def="[B] Destroy Traefik"; else def="[!] Cannot Destroy Traefik - Not Deployed"; fi
 
-  if [[ "" != $(docker ps | grep "traefik" ) ]]; then
+  if [[ "" != "$tdocker_check" ) ]]; then
     def="[B] Destroy Traefik" && echo "Deployed" > "$traefik_path"/traefik.deploy && deployedinfo=Deployed; else
     def="[!] Cannot Destroy Traefik" && deployedinfo="Not Deployed" > "$traefik_path"/traefik.deploy; fi
 
