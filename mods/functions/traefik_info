@@ -14,7 +14,7 @@ container_rebuild
 
 i=0
 while read p; do
-  if [[ "$i" == "0" ]] then
+  if [[ "$i" == "0" ]]; then
   echo -n "${p}: " >> /pg/mods/traefik/provider.yml; else
   echo -n "      ${p}: " >> /pg/mods/traefik/provider.yml; fi
   ((i++))
