@@ -7,10 +7,10 @@ image="traefik:1.7"
 port_inside01="80"; port_outside01="80"
 port_inside02="443"; port_outside02="443"
 
-common_fcreate_silent /pg/data/traefik/acme
-
 container_reset
 container_rebuild treafik
+if [ -e "/pg/data/traefik" ]; then rm -rf /pg/data/traefik; fi
+common_fcreate_silent /pg/data/traefik/acme
 
 i=0
 while read p; do
@@ -82,6 +82,8 @@ $container_header
           PROVIDER: '$provider'
           $pfillin
         volumes:
+          - '/pg/data/traefik/traefik.toml:/etc/traefik/traefik.toml:ro'
+          - '/etc/localtime:/etc/localtime:ro'
           - '/pg/data/traefik/acme:/etc/traefik/acme'
           - '/var/run/docker.sock:/var/run/docker.sock:ro'
         state: started
