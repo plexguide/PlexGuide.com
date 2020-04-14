@@ -77,15 +77,13 @@ $container_header
           - '$portstatus$port_outside01:$port_inside01'
           - '$portstatus$port_outside02:$port_inside02'
         env:
-          PUID: 1000
-          PGID: 1000
-          PROVIDER: $provider
+          PUID: '1000'
+          PGID: '1000'
+          PROVIDER: '$provider'
           $pfillin
         volumes:
-          - /pg/data/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
-          - /etc/localtime:/etc/localtime:ro
-          - /pg/data/traefik/acme:/etc/traefik/acme
-          - /var/run/docker.sock:/var/run/docker.sock:ro
+          - '/pg/data/traefik/acme:/etc/traefik/acme'
+          - '/var/run/docker.sock:/var/run/docker.sock:ro'
         state: started
         restart_policy: unless-stopped
         networks:
