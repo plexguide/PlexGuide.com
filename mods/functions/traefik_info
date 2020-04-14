@@ -10,7 +10,7 @@ port_inside02="443"; port_outside02="443"
 common_fcreate_silent /pg/data/traefik/acme
 
 container_reset
-container_rebuild
+container_rebuild treafik
 
 i=0
 while read p; do
