@@ -7,11 +7,10 @@ common_message "🚀  Traefik - Reverse Proxy Interface" "
 💬  Further Explanation? Visit ~ http://traefik.plexguide.com
 ------------------------------------------------------------------------------
 $digmessage[1] Top Level Domain App: [$tld]
-[2] HTTPS               : [$tsecurity]
-[3] Domain Provider     : [$provider]
-[4] Domain Name         : [$domain]
-[5] EMail Address       : [$email]
-[6] DNS Delay Check     : [$delaycheck] Seconds
+[2] Domain Provider     : [$provider]
+[3] Domain Name         : [$domain]
+[4] EMail Address       : [$email]
+[5] DNS Delay Check     : [$delaycheck] Seconds
 ------------------------------------------------------------------------------
 $minidisplay
 ------------------------------------------------------------------------------
@@ -28,15 +27,14 @@ common_confirm && traefik_menu_start && exit; fi
 
 case $typed in
     1 ) traefik_menu_start && exit ;;
-    2 ) traefik_security && traefik_menu_start && exit ;;
-    3 ) traefik_providers  && traefik_menu_start && exit ;;
-    4 ) traefik_domain && traefik_menu_start && exit ;;
-    5 ) traefik_email && traefik_menu_start && exit ;;
-    6 ) traefik_delay && traefik_menu_start && exit ;;
-    7 ) menutmp=1 && traefik_keys && traefik_menu_start && exit ;;
-    8 ) menutmp=2 && traefik_keys && traefik_menu_start && exit ;;
-    9 ) menutmp=3 && traefik_keys && traefik_menu_start && exit ;;
-    10) menutmp=4 && traefik_keys && traefik_menu_start && exit ;;
+    2 ) traefik_providers  && traefik_menu_start && exit ;;
+    3 ) traefik_domain && traefik_menu_start && exit ;;
+    4 ) traefik_email && traefik_menu_start && exit ;;
+    5 ) traefik_delay && traefik_menu_start && exit ;;
+    6 ) menutmp=1 && traefik_keys && traefik_menu_start && exit ;;
+    7 ) menutmp=2 && traefik_keys && traefik_menu_start && exit ;;
+    8 ) menutmp=3 && traefik_keys && traefik_menu_start && exit ;;
+    9) menutmp=4 && traefik_keys && traefik_menu_start && exit ;;
     A ) traefik_deploy && traefik_menu_start && exit ;;
     a ) traefik_deploy && traefik_menu_start && exit ;;
     B ) traefik_deploy && traefik_menu_start && exit ;;
