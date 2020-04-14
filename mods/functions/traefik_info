@@ -9,11 +9,6 @@ port_inside02="443"; port_outside02="443"
 
 common_fcreate_silent /pg/data/traefik/acme
 
-container_path /pg/data/traefik/traefik.toml /etc/traefik/traefik.toml:ro
-container_path /etc/localtime /etc/localtime:ro
-container_path /pg/data/traefik/acme /etc/traefik/acme
-container_path /var/run/docker.sock /var/run/docker.sock:ro
-
 container_reset
 container_rebuild
 
@@ -82,9 +77,17 @@ $container_header
           PGID 1000
           PROVIDER $provider
           $pfillin
-        labels:
-        $container_ending
-        $container_oddball
+        volumes:
+          - /pg/data/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+          - /etc/localtime:/etc/localtime:ro
+          - /pg/data/traefik/acme:/etc/traefik/acme
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+        state: started
+        restart_policy: unless-stopped
+        networks:
+          - name: plexguide
+            aliases:
+              - 'traefik'
 
 ### ALIGN WITH THE A ################################## END - EXTRAS ###########
 
