@@ -11,8 +11,12 @@ echo "
 
 ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/var/traefik/provider.keys
 
+i=0
 while read p; do
+  if [[ "$i" == "0" ]] then
+  echo -n "${p}: " >> /pg/mods/traefik/provider.yml; else
   echo -n "      ${p}: " >> /pg/mods/traefik/provider.yml
+  ((i++))
   echo $(cat "/pg/var/traefik/$provider/$p") >> /pg/mods/traefik/provider.yml
 done </pg/var/traefik/provider.keys
 
