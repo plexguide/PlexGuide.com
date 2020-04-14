@@ -11,13 +11,13 @@ common_message "🚀  Standby for Traefik Deployment Validation" "
 NOTE 1: Do NOT EXIT this interface. Please standby for validation checks!
 
 NOTE 2: Standing by for [$tempseconds] + 10 seconds per the set DNS delay
-check! When complete, Portainer will be rebuilt! If that passes,
-then we will rebuild the rest of the containers!
+check! When complete, Portainer will be rebuilt! If that passes, then we will
+rebuild the rest of the containers!
 
 Did you know PG started in late 2016? Frusted by 76TB of 2TB HD's, there had
 to be a way to push it all in the cloud! Starting off from a document known
-as PlexGuide, this is where we are at now today! Plus traditional coders
-are evil, so that's why we are as NOOB friendly as possible!
+as PlexGuide, this is where we are at now today! Plus traditional coders are
+evil, so we are as NOOB friendly as possible!
 
 Standby! Enjoy the work? Please donate @ donate.plexguide.com!
 "
