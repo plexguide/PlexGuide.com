@@ -33,10 +33,10 @@ entryPoint = "http"
 #    provider = "{{provider.stdout}}"
 #    delayBeforeCheck = "{{delaycheck.stdout}}"
 
-[[acme.domains]]
-main = "{{domain.stdout}}"
-[[acme.domains]]
-main = "*.{{domain.stdout}}"
+#[[acme.domains]]
+#main = "{{domain.stdout}}"
+#[[acme.domains]]
+#main = "*.{{domain.stdout}}"
 
 [backends]
 ## Cockpit Backend
