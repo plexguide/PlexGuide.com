@@ -28,10 +28,10 @@ defaultEntryPoints = ["http", "https"]
 acmeLogging = true
 email = "{{email.stdout}}"
 storage = "/etc/traefik/acme/acme.json"
-entryPoint = "https"
-  [acme.dnsChallenge]
-    provider = "{{provider.stdout}}"
-    delayBeforeCheck = "{{delaycheck.stdout}}"
+entryPoint = "http"
+#  [acme.dnsChallenge]
+#    provider = "{{provider.stdout}}"
+#    delayBeforeCheck = "{{delaycheck.stdout}}"
 
 [[acme.domains]]
 main = "{{domain.stdout}}"
