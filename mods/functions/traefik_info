@@ -14,9 +14,6 @@ container_path /etc/localtime /etc/localtime:ro
 container_path /pg/data/traefik/acme /etc/traefik/acme
 container_path /var/run/docker.sock /var/run/docker.sock:ro
 
-container_permissions PUID 1000
-container_permissions PGID 1000
-
 container_reset
 container_rebuild
 
@@ -81,11 +78,11 @@ $container_header
         published_ports:
           - '$portstatus$port_outside01:$port_inside01'
         env:
-          $container_permissions
+          PUID 1000
+          PGID 1000
           PROVIDER $provider
           $pfillin
         labels:
-        $container_traefik
         $container_ending
         $container_oddball
 
