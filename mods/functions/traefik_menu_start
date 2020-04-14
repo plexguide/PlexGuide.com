@@ -21,7 +21,7 @@ $def
 "
 common_number
 
-if [[ "$typed" -ge "$tnumber" && "$domain" != "NONE" ]]; then
+if [[ "$typed" -ge "$tnumber" && "$provider" != "NONE" ]]; then
 common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"
 common_confirm && traefik_menu_start && exit; fi
 
