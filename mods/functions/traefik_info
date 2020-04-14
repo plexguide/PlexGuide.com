@@ -94,6 +94,4 @@ EOF
 chmod 600 /pg/data/traefik/traefik.toml /pg/data/traefik/acme/acme.json
 chown 1000 /pg/data/traefik/traefik.toml /pg/data/traefik/acme/acme.json
 
-
-
 }
