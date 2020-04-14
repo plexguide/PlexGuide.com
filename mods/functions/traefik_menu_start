@@ -21,9 +21,9 @@ $def
 "
 common_number
 
-if [[ "$typed" -ge "$tnumber" ]]; then
-common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"
-common_confirm && traefik_menu_start && exit; fi
+#if [[ "$typed" -ge "$tnumber" ]]; then
+#common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"
+#common_confirm && traefik_menu_start && exit; fi
 
 case $typed in
     1 ) traefik_menu_start && exit ;;
