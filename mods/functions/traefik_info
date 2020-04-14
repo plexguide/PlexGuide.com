@@ -25,6 +25,7 @@ while read p; do
   echo -n "      ${p}: " >> /pg/tmp/p.info
   echo $(cat "/pg/var/traefik/$provider/$p") >> /pg/tmp/p.info
 done </pg/var/traefik/provider.keys
+pfillin=$(/pg/tmp/p.info)
 
 rm -rf /pg/data/traefik/acme/acme.json
 # TRAEFIK.TOML #################################################################
@@ -82,6 +83,7 @@ $container_header
           - '$portstatus$port_outside01:$port_inside01'
         env:
           $container_permissions
+          $pfillin
         labels:
         $container_traefik
         $container_ending
