@@ -1,0 +1,7 @@
+traefik_security() {
+
+ts_path="/pg/var/traefik/traefik.security"
+
+if [[ $(cat $ts_path) != "ON" ]]; then
+  echo "ON" > $ts_path; else "OFF" > $ts_path; fi 
+}
