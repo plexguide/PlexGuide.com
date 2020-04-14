@@ -1,0 +1,5 @@
+common_timer_v2() {
+
+echo "Please Wait - Standing by for $1 Seconds"
+sleep $1
+}
