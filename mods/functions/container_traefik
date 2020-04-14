@@ -1,5 +1,7 @@
 container_traefik () {
 
+common_main /pg/var/traefik/traefik.domain NOT-SET domain
+
 container_traefik="# traefik.frontend.auth.forward.address: '$gauth'
           traefik.enable: 'true'
           traefik.port: '$traefik_intport'

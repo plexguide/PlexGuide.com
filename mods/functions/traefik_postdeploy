@@ -1,5 +1,7 @@
 traefik_postdeploy() {
 
+traefik_menu_start_setup
+
 tempseconds=$(cat /pg/var/traefik/delay.check)
 delseconds=$[${tempseconds}+10]
 i=3
