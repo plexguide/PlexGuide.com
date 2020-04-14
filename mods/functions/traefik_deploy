@@ -2,12 +2,8 @@ traefik_deploy() {
 
 ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/var/traefik/provider.keys
 
-if [[ $(docker ps --format '{{.Names}}' | grep traefik) == "traefik" ]]; then
-  docker stop traefik 1>/dev/null 2>&1; docker rm traefik 1>/dev/null 2>&1; fi
-
-if [ -e "/pg/data/traefik" ]; then rm -rf /pg/data/traefik; fi
-
-ansible-playbook /pg/mods/traefik/traefik.yml
+traefik_info
+ansible-playbook /pg/tmp/traefik.yml
 
 traefik_postdeploy
 
