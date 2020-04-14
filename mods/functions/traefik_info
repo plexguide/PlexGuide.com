@@ -14,9 +14,9 @@ container_rebuild
 
 i=0
 while read p; do
-  if [[ "$i" == "0" ]] then
+  if [[ "$i" == "0" ]]; then
   echo -n "${p}: " >> /pg/tmp/p.info; else
-  echo -n "      ${p}: " >> /pg/tmp/p.info
+  echo -n "      ${p}: " >> /pg/tmp/p.info; fi
   ((i++))
   echo $(cat "/pg/var/traefik/$provider/$p") >> /pg/tmp/p.info
 done </pg/var/traefik/provider.keys
