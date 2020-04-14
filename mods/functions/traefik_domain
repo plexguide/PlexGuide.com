@@ -14,7 +14,7 @@ read -p "↘️  New Domain? | Press [ENTER]: " typed < /dev/tty
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_domain && exit; fi
 
-echo $typed > "$traefik_path"/t.domain
+echo $typed > "$traefik_path/t.domain"
 
 common_message "💾  $typed - New Set Domain!"
 common_confirm && traefik_menu_start && exit
