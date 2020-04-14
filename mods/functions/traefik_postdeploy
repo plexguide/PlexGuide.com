@@ -2,7 +2,7 @@ traefik_postdeploy() {
 
 traefik_menu_start_setup
 
-tempseconds=$(cat /pg/var/traefik/delay.check)
+tempseconds=$(cat "$traefik_path"/delay.check)
 delseconds=$[${tempseconds}+10]
 i=3
 pstatus="failed"
@@ -27,7 +27,7 @@ common_timer_v2 "$delseconds"
 while [[ "$pstatus" == "failed" && "$i" != "0" ]]; do
 
 common_header "🚀  Rebuilding Portainer"; sleep 2
-ansible-playbook /pg/apps/portainer.yml
+ansible-playbook /pg/tmp/portainer.yml
 
 common_header "🚀 Standby:  Portainer is loading up!"
 common_timer_v2 "10"

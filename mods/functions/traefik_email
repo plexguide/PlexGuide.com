@@ -1,11 +1,11 @@
 traefik_email() {
 
-prioremail=$(cat /pg/var/traefik/traefik.email)
+traefik_menu_start_setup
 
 common_message "🚀 PlexGuide | Traefik E-Mail Interface" "
 💾 E-Mail Utilized for Traefik? Not required, but provides domain updates!
 
-Prior Info Saved (If Any): $prioremail
+Prior Info Saved (If Any): $email
 [Z] To Cancel and Go Back
 "
 
@@ -15,7 +15,7 @@ if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_email && exit; fi
 if [[ $(echo $typed | grep "\.") == "" || $(echo $typed | grep "\@") == "" ]]; then common_message "⛔️  WARNING: EMail missing a . or @ ~ Try Again" && common_confirm && traefik_email && exit; fi
 
-echo $typed > /pg/var/traefik/traefik.email
+echo $typed > "$traefik_path"/t.email
 
 common_message "💾  $typed - New Set email!"
 common_confirm && traefik_menu_start && exit

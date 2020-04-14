@@ -1,8 +1,8 @@
 traefik_keys() {
 
-ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/tmp/provider.key.select
+ls -p "$traefik_path/$provider" | grep -v / > /pg/tmp/provider.key.select
 focusedkey=$(sed -n "$menutmp"p /pg/tmp/provider.key.select)
-priorinfo=$(cat /pg/var/traefik/$provider/$focusedkey)
+priorinfo=$(cat "$traefik_path/$provider/$focusedkey")
 if [[ "" -eq "$priorinfo" ]]; then priorinfo="None"; fi
 
 common_message "🚀 PlexGuide | Traefik Variable Interface" "
@@ -16,7 +16,7 @@ read -p "↘️  Set Info - $focusedkey | Press [ENTER]: " typed < /dev/tty
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 if [[  "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_keys && exit; fi
 
-echo $typed > /pg/var/traefik/$provider/$focusedkey
+echo $typed > "$traefik_path/$provider/$focusedkey"
 
 common_message "💾  $typed saved for $provider - $focusedkey"
 common_confirm && traefik_menu_start && exit

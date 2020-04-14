@@ -1,6 +1,6 @@
 traefik_delay() {
 
-priordelay=$(cat /pg/var/traefik/delay.check)
+traefik_menu_start_setup
 
 common_message "🚀 PlexGuide | Traefik Delay Interface" "
 💾 Delay Time Utilized for Traefik?
@@ -12,7 +12,7 @@ result in MISSING the opportunity to validate your https:// certificates!
 
 Delay Traefik DNS Check for how many seconds? Longer is Better! (Default 75)
 
-Prior Delayed Seconds: $priordelay
+Prior Delayed Seconds: $delaycheck
 [Z] To Cancel and Go Back
 "
 
@@ -22,7 +22,7 @@ if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_delay && exit; fi
 if [[ "$typed" -lt "50" || "$typed" -gt "180" ]]; then common_message "⛔️  WARNING: Delay must be between 50 to 180 seconds!" && common_confirm && traefik_delay && exit; fi
 
-echo $typed > /pg/var/traefik/delay.check
+echo $typed > "$traefik_path"/delay.check
 
 common_message "💾  $typed - New Set Delay Seconds!"
 common_confirm && traefik_menu_start && exit

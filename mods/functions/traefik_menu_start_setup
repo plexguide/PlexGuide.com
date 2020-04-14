@@ -1,34 +1,36 @@
 traefik_menu_start_setup () {
 
-common_main /pg/var/traefik/traefik.domain NOT-SET domain
-common_main /pg/var/traefik.provider NONE provider
-common_main /pg/var/traefik/traefik.security OFF tsecurity
-common_main /pg/var/traefik/traefik.email nouser@noreply.com email
-common_main /pg/var/traefik/delay.check 75 delaycheck
-common_main /pg/var/tld.program NOT-SET tld
-touch /pg/var/traefik/traefik.deploy
+traefik_path="/pg/var/traefik"
+common_fcreate_silent $traefik_path
+common_main "$traefik_path"/t.domain NOT-SET domain
+common_main "$traefik_path"/t.provider NONE provider
+common_main "$traefik_path"/t.security OFF tsecurity
+common_main "$traefik_path"/t.email nouser@noreply.com email
+common_main "$traefik_path"/delay.check 75 delaycheck
+common_main "$traefik_path"/tld.program NOT-SET tld
+touch "$traefik_path"/traefik.deploy
 
 if [[ "$provider" != "NOT-SET" ]]; then
 
-  ls -p "/pg/var/traefik/$provider" | grep -v / > /pg/var/traefik/provider.keys
+  ls -p "$traefik_path/$provider" | grep -v / > "$traefik_path"/provider.keys
 
   tnumber=6
   rm -rf /pg/tmp/mini.list && touch /pg/tmp/mini.list
 
   xyz=0
   while read p; do
-    if [[ "" == $(cat /pg/var/traefik/$provider/$p) ]]; then tset=" <<< NOT-SET" && xyz=1; else tset=""; fi
+    if [[ "" == $(cat "$traefik_path/$provider/$p") ]]; then tset=" <<< NOT-SET" && xyz=1; else tset=""; fi
     echo "[$tnumber] $p$tset" >> /pg/tmp/mini.list
     let "tnumber++"
-  done </pg/var/traefik/provider.keys
+  done <"$traefik_path"/provider.keys
   minidisplay=$(cat /pg/tmp/mini.list); fi
 
   if [[ "" != $(docker ps | grep "traefik" ) ]]; then
     def="[B] Destroy Traefik"; else def="[!] Cannot Destroy Traefik - Not Deployed"; fi
 
   if [[ "" != $(docker ps | grep "traefik" ) ]]; then
-    def="[B] Destroy Traefik" && echo "Deployed" > /pg/var/traefik.deploy && deployedinfo=Deployed; else
-    def="[!] Cannot Destroy Traefik" && echo "Not Deployed" && deployedinfo="Not Deployed" > /pg/var/traefik.deploy; fi
+    def="[B] Destroy Traefik" && echo "Deployed" > "$traefik_path"/traefik.deploy && deployedinfo=Deployed; else
+    def="[!] Cannot Destroy Traefik" && echo "Not Deployed" && deployedinfo="Not Deployed" > "$traefik_path"/traefik.deploy; fi
 
   if [[ "$xyz" == "1" ]]; then
     alphadisplay="[!] Cannot Deploy Traefik - Info Not Complete"; else

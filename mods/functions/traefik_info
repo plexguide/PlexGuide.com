@@ -17,8 +17,8 @@ while read p; do
   if [[ "$i" == "0" ]]; then echo -n "${p}: " >> /pg/tmp/p.info
   else echo -n "          ${p}: " >> /pg/tmp/p.info; fi
   i=1
-  echo $(cat "/pg/var/traefik/$provider/$p") >> /pg/tmp/p.info
-done </pg/var/traefik/provider.keys
+  echo $(cat "$traefik_path/$provider/$p") >> /pg/tmp/p.info
+done <"$traefik_path"/provider.keys
 pfillin=$(cat /pg/tmp/p.info)
 
 rm -rf /pg/data/traefik/acme/acme.json
