@@ -3,6 +3,7 @@ traefik_keys() {
 ls -p "$traefik_path/$provider" | grep -v / > /pg/tmp/provider.key.select
 focusedkey=$(sed -n "$menutmp"p /pg/tmp/provider.key.select)
 priorinfo=$(cat "$traefik_path/$provider/$focusedkey")
+echo "TEST - $traefik_path/$provider/$focusedkey"
 if [[ "" -eq "$priorinfo" ]]; then priorinfo="None"; fi
 
 common_message "🚀 PlexGuide | Traefik Variable Interface" "
