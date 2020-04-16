@@ -1,11 +1,10 @@
 #!/bin/bash
+############################################################### PlexGuide.com ##
 mkdir -p /pg/var/
 if [[ -e "/pg/var/pg.noinstall" ]]; then pgcmd=true; else pgcmd=false; fi
 rm -rf /pg/var/pg.noinstall
-
+################################################################################
 if [[ "$pgcmd" != "true" ]]; then
-## Simple Clone Process
-mkdir -p /pg/tmp
 rm -rf /pg/mods
 rm -rf /pg/tmp/checkout
 git clone -b alpha --single-branch https://github.com/plexguide/PlexGuide.com.git /pg/tmp/checkout
@@ -25,7 +24,7 @@ GNUv3 License!
 If you have a chance to donate, please visit https://donate.plexguide.com
 PRESS CTRL+Z to STOP the Installation
 "
-common_timer "1" ## set back to 5
+common_timer_v2 "2" ## set back to 5
 fi
 
 ## delete
