@@ -1,5 +1,4 @@
 #!/bin/bash
-fpath="/pg/mods/functions"
 mkdir -p /pg/var/
 if [[ -e "/pg/var/pg.noinstall" ]]; then pgcmd=true; else pgcmd=false; fi
 rm -rf /pg/var/pg.noinstall
@@ -12,7 +11,7 @@ rm -rf /pg/tmp/checkout
 git clone -b alpha --single-branch https://github.com/plexguide/PlexGuide.com.git /pg/tmp/checkout
 mv -f /pg/tmp/checkout/mods /pg; fi
 ################################################################################
-source "$fpath"/install_sudocheck; install_sudocheck
+fpath="/pg/mods/functions"; source "$fpath"/install_sudocheck; install_sudocheck
 ################################################################################
 bash "$fapth"/.create.sh; source "$fpath"/.master.sh
 ################################################################################
