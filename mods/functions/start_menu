@@ -1,3 +1,5 @@
+#!/bin/bash
+############################################################## PlexGuide.com ###
 start_menu() {
 
 # Call Variables
