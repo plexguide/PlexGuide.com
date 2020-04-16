@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 traefik_menu_start_setup () {
 
 traefik_path="/pg/var/traefik"

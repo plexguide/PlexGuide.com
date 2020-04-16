@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 install_mergerfs() {
 
 	common_header "⌛ INSTALLING: MergerFS"; sleep 2

@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 plex_claim_interface () {
 
 common_message "🌎 Remote Plex Server - Claim the Plex Server" "

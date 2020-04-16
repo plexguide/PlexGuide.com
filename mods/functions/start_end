@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 start_end() {
 
 #source /pg/stage/functions/emergency.sh

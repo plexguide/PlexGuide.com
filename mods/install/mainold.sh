@@ -1,7 +1,5 @@
 #!/bin/bash
-# URL:        PlexGuide.com / PGBlitz.com
-# GNU:        General Public License v3.0
-################################################################################
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 
 }
 existpg() {

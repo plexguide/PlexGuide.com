@@ -1,7 +1,5 @@
 #!/bin/bash
-# URL:        https://plexguide.com - http://github.plexguide.com
-# GNU:        General Public License v3.0
-################################################################################
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 ---
 - hosts: localhost
   gather_facts: True

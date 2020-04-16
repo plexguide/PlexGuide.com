@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 install_gcloud_sdk() {
 
 	common_header "⌛ INSTALLING: Google's Cloud SDK"; sleep 2

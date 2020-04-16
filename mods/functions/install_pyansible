@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 install_pyansible() {
 
   common_header "⌛ Ansible & Python Installing ~ Ignore Warnings"; sleep 2

@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 install_sudocheck() {
   if [[ $EUID -ne 0 ]]; then
 tee <<-EOF

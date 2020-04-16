@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 install_webservercheck() {
 
 	list="lsof lsb-release software-properties-common"

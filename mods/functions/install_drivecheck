@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 install_drivecheck() {
   leftover=$(df / --local | tail -n +2 | awk '{print $4}')
   if [[ "$leftover" -lt "75000000" ]]; then

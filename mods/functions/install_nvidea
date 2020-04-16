@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 install_nvidia() {
 
 	common_header "⌛ INSTALLING: Nvidia Drivers"; sleep 2

@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 traefik_providers() {
 
 maxnumber="16"
@@ -28,7 +30,7 @@ $providers
 "
 common_number
 
-if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi 
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 
 select_info=$(sed -n "$typed"p /pg/tmp/traefik.providers | awk '{print $2}')
 echo "$select_info" > "$traefik_path"/t.provider

@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 install_basepackage() {
 
 	common_header "⌛ Updating the Server - Standby!"
