@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 common_timer() {
   seconds=$1; date1=$((`date +%s` + $seconds));
   while [ "$date1" -ge `date +%s` ]; do

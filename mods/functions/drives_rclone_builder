@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_rclone_builder () {
 
 common_header "💾  Utilizing:  RClone Builder for $basicname"

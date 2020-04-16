@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_deploy_mounts() {
 
 echo $1 > /pg/tmp/sd.select

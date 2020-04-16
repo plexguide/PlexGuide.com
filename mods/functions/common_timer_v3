@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 common_timer_v2() {
 
 echo "Please Wait - Standing by for $1 Seconds"

@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_share_active_count () {
 
 mkdir -p /pg/var/drives/shared/ /pg/var/drives/e.tokens

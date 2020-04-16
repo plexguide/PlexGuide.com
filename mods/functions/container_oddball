@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 container_oddball () {
 
 container_oddball=$(cat /pg/tmp/container.oddball)

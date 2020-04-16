@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_share_add_menu () {
 
 ## TODO - Prevent Duplicate Entries / Prevent Known Folders such as mods, pg

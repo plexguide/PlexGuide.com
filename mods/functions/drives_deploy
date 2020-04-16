@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_deploy() {
 
 temp99=""; gc_final=""; gd_final=""
