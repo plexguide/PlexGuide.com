@@ -10,6 +10,7 @@ rm -rf "$pgfunctions"/.master.sh ##
 pgfunctions="/pg/mods/functions"
 pgprimary="/pg/mods/containers/primary"
 pgcommunity="/pg/mods/containers/community"
+fpath="/pg/mods/functions"
 
 ## reads functions and stores to a temporary file
 ls "$pgfunctions" > "$pgfunctions"/.functions.sh
