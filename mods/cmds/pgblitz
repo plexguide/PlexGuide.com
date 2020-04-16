@@ -1,6 +1,8 @@
 #!/bin/bash
-# URL:        PlexGuide.com / PGBlitz.com
-# GNU:        General Public License v3.0
-################################################################################
+###################################################### PlexGuide.com ###########
+fpath="/pg/mods/functions"
+source "$fpath"/install_sudocheck; install_sudocheck
+source "$fpath"/common_path_check; common_path_check
+
 mkdir -p /pg/var/ && touch /pg/var/pg.noinstall
 bash /pg/mods/install/main.sh
