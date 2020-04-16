@@ -1,0 +1,23 @@
+drives_move_menu () {
+
+common_message "🚀  Shared Drives - Mount Transport Data Interface" "
+💾 Active Drives:  $active_count of $sd_list_track
+
+[A] Add    | An existing Share Drive from PG
+[M] Manage | Ones that have been added to PG
+[R] Remove | An existing Share Drive from PG | Does not delete it!
+[Z] Exit
+"
+common_number
+
+case $typed in
+    A ) drives_share_add_menu && exit ;;
+    a ) drives_share_add_menu && exit ;;
+    M ) drives_share_manage && exit ;;
+    m ) drives_share_manage && exit ;;
+    z ) drives_menu_start && exit ;;
+    Z ) drives_menu_start && exit ;;
+    * ) drives_share_menu && exit ;;
+esac
+
+}
