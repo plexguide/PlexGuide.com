@@ -14,6 +14,7 @@ fpath="/pg/mods/functions"; source "$fpath"/install_sudocheck; install_sudocheck
 ################################################################################
 bash "$fpath"/.create.sh; source "$fpath"/.master.sh
 ################################################################################
+
 #$echo "COMMAND IS - $pgcmd"
 if [[ "$pgcmd" != "true" ]]; then
 
@@ -24,7 +25,7 @@ GNUv3 License!
 If you have a chance to donate, please visit https://donate.plexguide.com
 PRESS CTRL+Z to STOP the Installation
 "
-common_timer_v2 "2" ## set back to 5
+common_timer_v2 "1" ## set back to 5
 fi
 
 ## delete
