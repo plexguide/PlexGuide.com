@@ -1,5 +1,5 @@
 #!/bin/bash
-############################################################### PlexGuide.com ##
+############################################################## PlexGuide.com ###
 fpath="/pg/mods/functions"
 source "$fpath"/install_sudocheck; install_sudocheck
 source "$fpath"/common_path_check; common_path_check

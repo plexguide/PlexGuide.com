@@ -1,5 +1,5 @@
 #!/bin/bash
-############################################################### PlexGuide.com ##
+############################################################## PlexGuide.com ###
 mkdir -p /pg/var/
 if [[ -e "/pg/var/pg.noinstall" ]]; then pgcmd=true; else pgcmd=false; fi
 rm -rf /pg/var/pg.noinstall
