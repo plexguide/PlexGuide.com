@@ -13,7 +13,7 @@ mv -f /pg/tmp/checkout/mods /pg; fi
 ################################################################################
 fpath="/pg/mods/functions"; source "$fpath"/install_sudocheck; install_sudocheck
 ################################################################################
-bash "$fapth"/.create.sh; source "$fpath"/.master.sh
+bash "$fpath"/.create.sh; source "$fpath"/.master.sh
 ################################################################################
 #$echo "COMMAND IS - $pgcmd"
 if [[ "$pgcmd" != "true" ]]; then
