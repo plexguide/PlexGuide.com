@@ -1,7 +1,5 @@
 #!/bin/bash
-# URL:        PlexGuide.com / PGBlitz.com
-# GNU:        General Public License v3.0 
-################################################################################
+############################################################### PlexGuide.com ##
 clear
 rm -rf /pg
 wget -nc https://raw.githubusercontent.com/plexguide/PlexGuide.com/mods/install/main.sh -O- | bash
