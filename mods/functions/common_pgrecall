@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 pgrecall () {
   maindir="/pg/var/install"
   if [[ ! -e "${maindir}/${1}" ]]; then touch "${maindir}/${1}"; fi

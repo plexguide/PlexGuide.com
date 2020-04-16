@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 common_fcreate_silent() {
     mkdir -p "$1"
     chown 1000:1000 "$1"

@@ -1,5 +1,5 @@
 #!/bin/bash
-############################################################## PlexGuide.com ###
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 source /pg/mods/functions/.master.sh
 
 variable () {
