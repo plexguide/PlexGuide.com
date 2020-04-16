@@ -28,7 +28,7 @@ PRESS CTRL+Z to STOP the Installation
 common_timer_v2 "1" ## set back to 5
 fi
 
-## delete
+################################################################################
 mkdir -p /pg/var/install/
 install_check
 
@@ -55,6 +55,6 @@ common_install install_nvidia
 #common_header "⌛ INSTALLING: MergerFS Update"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsupdate
 
+################################################################################
 bash /pg/mods/start/start.sh
-
 exit
