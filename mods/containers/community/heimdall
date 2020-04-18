@@ -1,14 +1,13 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-heimdall () {
+logarr () {
 
 container_reset                  # do not delete this
 # VARIABLES ####################################################################
-pgrole="heimdall"
-image="linuxserver/heimdall"
-port_inside01="443"
-port_outside01="1111"
-traefik_intport="1111"
+pgrole="logarr"
+image="monitorr/logarr:develop"
+port_inside01="80"; port_outside01="7755"
+traefik_intport="7755"
 
 # PATHS ########################################################################
 # 1st - path on your server # 2nd - path of the container
