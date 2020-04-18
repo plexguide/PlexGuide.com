@@ -38,7 +38,7 @@ dockerlist=$(docker container ls --format 'table {{.Names}}' | tail -n +2)
 echo "$typed" >> /pg/tmp/appstoinstall.list
 sed -i -e "/$typed/d" "/pg/tmp/list.tmp"
 
-# recycle menu back to user
+## recycle menu back to user
 apps_interface
 
 }

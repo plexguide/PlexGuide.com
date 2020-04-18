@@ -24,8 +24,8 @@ rm -rf /pg/tmp/appstoinstall.list; touch /pg/tmp/appstoinstall.list
 rm -rf /pg/tmp/appstoinstall.wrap; touch /pg/tmp/appstoinstall.wrap
 
 case $typed in
-    1 ) app_select="primary" && apps_gen_lists && apps_interface ;;
-    2 ) app_select="community" && apps_gen_lists && apps_interface ;;
+    1 ) ls -p /pg/mods/containers/primary/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    2 ) ls -p /pg/mods/containers/community/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     z ) start_menu ;;
     Z ) start_menu ;;
     * ) apps_menu ;;
