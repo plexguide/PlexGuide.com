@@ -22,6 +22,7 @@ done </"$fpath"/.functions.sh
 ## adds tempory information to complete master functions file
 echo "source $fpath/.master.sh" > "$fpath"/.primary_apps.sh
 
+# primary apps
 while read p; do
   echo "source $pgprimary/$p" >> "$fpath"/.master.sh
   echo "source $pgprimary/$p" >> "$fpath"/.primary_apps.sh
@@ -29,7 +30,9 @@ while read p; do
 done </"$fpath"/.primary.sh
   bash "$fpath"/.primary_apps.sh
 
-## adds tempory information to complete master functions file
-while read p; do
-  echo "source $pgcommunity/$p" >> "$fpath"/.master.sh
+# communityapps
+  echo "source $pgcommunity$p" >> "$fpath"/.master.sh
+  echo "source $pgcommunity/$p" >> "$fpath"/.community_apps.sh
+  echo "$p" >> "$fpath"/.community_apps.sh
 done </"$fpath"/.community.sh
+  bash "$fpath"/.community.sh
