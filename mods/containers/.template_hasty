@@ -18,8 +18,8 @@ container_path /etc/localtime /etc/localtime:ro
 
 # PERMISSIONS ##################################################################
 # pay attention, to exactly what's required for permissions
-container_permissions UID 1000
-container_permissions GID 1000
+container_permissions GUID 1000
+container_permissions PGID 1000
 
 # YML EXPORT ###################################################################
 container_core
