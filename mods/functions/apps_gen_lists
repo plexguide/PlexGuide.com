@@ -7,7 +7,7 @@ community" > /pg/tmp/list.tmp
 
 while read p; do
 
-  ls -p /pg/mods/containers/"$p" | grep -v / > "/pg/tmp/$p.list"
+  ls -p /pg/mods/containers/$app_select/"$p" | grep -v / > "/pg/tmp/$p.list"
   fmt -w 79 "/pg/tmp/$p.list" > "/pg/tmp/$p.wrap"
 
   #sed -i -e "/traefik/d" "$set_path"
