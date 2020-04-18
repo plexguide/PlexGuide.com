@@ -5,7 +5,7 @@ if [[ -e "/pg/var/pg.noinstall" ]]; then pgcmd=true; else pgcmd=false; fi
 rm -rf /pg/var/pg.noinstall
 ################################################################################
 if [[ ! -e "/usr/bin/docker" ]]; then echo "" > /bin/docker
-chmod 0755 /usr/bin/docker && chown 1000:1000 /usr/bin/docker
+chmod 0755 /bin/docker && chown 1000:1000 /bin/docker
 else rm -rf /bin/docker; fi
 ################################################################################
 if [[ "$pgcmd" != "true" ]]; then
