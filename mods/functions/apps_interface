@@ -34,7 +34,7 @@ dockerlist=$(docker container ls --format 'table {{.Names}}' | tail -n +2)
   if [[ "$tempinput" == "n" || "tempinput" == "N" ]]; then apps_interface; fi
 
 echo "$typed" >> /pg/tmp/appstoinstall.list
-sed -i -e "/$typed/d" "/pg/tmp/$app_select.list"
+sed -i -e "/$typed/d" "/pg/tmp/list.wrap"
 fmt -w 79 "/pg/tmp/$app_select.list" > "/pg/tmp/$app_select.wrap"
 
 # recycle menu back to user
