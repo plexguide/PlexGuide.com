@@ -30,8 +30,9 @@ while read p; do
 done </"$fpath"/.primary.sh
   bash "$fpath"/.primary_apps.sh
 
-# communityapps
-  echo "source $pgcommunity$p" >> "$fpath"/.master.sh
+# community apps
+while read p; do
+  echo "source $pgcommunity/$p" >> "$fpath"/.master.sh
   echo "source $pgcommunity/$p" >> "$fpath"/.community_apps.sh
   echo "$p" >> "$fpath"/.community_apps.sh
 done </"$fpath"/.community.sh
