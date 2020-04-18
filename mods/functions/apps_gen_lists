@@ -2,26 +2,11 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_gen_lists() {
 
-echo "primary
-community" > /pg/tmp/list.tmp
+ls -p /pg/mods/containers/$app_select/"$p" | grep -v / > "/pg/tmp/$p.list"
 
 while read p; do
-
-  ls -p /pg/mods/containers/$app_select/"$p" | grep -v / > "/pg/tmp/$p.list"
   fmt -w 79 "/pg/tmp/$p.list" > "/pg/tmp/$p.wrap"
-
-  #sed -i -e "/traefik/d" "$set_path"
-  #sed -i -e "/image*/d" "$set_path"
-  #sed -i -e "/templates/d" "$set_path"
-  #sed -i -e "/retry/d" "$set_path"
-  #sed -i "/^test\b/Id" "$set_path"
-  #sed -i -e "/nzbthrottle/d" "$set_path"
-  #sed -i "/^_templates.yml\b/Id" "$set_path"
-  #sed -i -e "/dockergc/d" "$set_path"
   #sed -i -e "/pgui/d" "$set_path"
-
 done </pg/tmp/list.tmp
-
-
 
 }
