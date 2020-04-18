@@ -10,7 +10,10 @@ app_display=$(cat /pg/tmp/wrap.list)
 fmt -w 79 "/pg/tmp/appstoinstall.list" > "/pg/tmp/appstoinstall.wrap"
 apps_to_install=$(cat /pg/tmp/appstoinstall.wrap)
 
-if [[ "$apps_to_install" == "" ]]; then apps_to_install="Nothing Queued"
+## If nothing pending installation, display the nothing queued message
+if [[ "$apps_to_install" == "" ]]; then apps_to_install="Nothing Queued"; fi
+
+## sets up the primary interface
 common_message "🚀 Multi-App Installer | PGX Edition | 📂 App Install ~ $sapp" "
 $app_display
 
@@ -24,11 +27,13 @@ read -p '↘️  Type App to Install | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" == "z" || "$typed" == "Z" ]]; then apps_menu; exit; fi
   if [[ "$typed" == "A" || "$typed" == "a" ]]; then apps_loop_install; exit; fi
 
+# ensures nothing happens if user types a nonexistant app
 existcheck=$(echo $app_display | grep "$typed" -w)
   if [ -z "$existcheck" ]; then echo "";
   read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
   apps_interface; fi
 
+# notifies user that container is already installed
 dockerlist=$(docker container ls --format 'table {{.Names}}' | tail -n +2)
   if [[ "1" = $(echo $dockerlist | grep -c "\<$typed\>") ]]; then tempinput="null";
     while [[ "$tempinput" && "Y" && "$tempinput" != "y" && "$tempinut" != "N" && "$tempinput" != "n" ]]; do
