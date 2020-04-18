@@ -1,8 +1,8 @@
 ##### WANT TO HELP? CLICK THE ★ (STAR LOGO) in the Upper-Right! 
 <p align="center">
-  <a href="https://pgblitz.com/forums" target="_blank"><img src="https://pgblitz.com/wikipics/logo-forums.png" width="160"/>   
+  <a href="https://plexguide.com/forums" target="_blank"><img src="https://pgblitz.com/wikipics/logo-forums.png" width="160"/>   
   <a href="https://github.com/PGBlitz/PGBlitz.com/wiki" target="_blank"><img src="https://pgblitz.com/wikipics/logo-wiki.png" width="160"/>
-  <a href="https://pgblitz.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://pgblitz.com/wikipics/logo-pg-install.png" width="160"/> 
+  <a href="https://pgblitz.com/threads/plexguide-install-instructions.243/" target="_blank"><img src="https://pgblitz.com/wikipics/logo-pg-install.png" width="160"/>
   <a href="https://pgblitz.com/account/upgrades" target="_blank"><img src="https://pgblitz.com/wikipics/logo-donate.png" width="160"/>
 </p>
 
@@ -39,7 +39,7 @@ _**Table of Contents**_
 <p align="center"><b>Manage PGBlitz - AnyTime, Anywhere!</b></p>
 
 **Project Statement:** PGBlitz is an all-in-one media solution that deploys a Media Server through the use of your Local HD or Google Drive; serving as an unlimited back-end storage. PGBlitz utilizes Ansible and Docker to streamline your Media Server, while deploying multiple tools for your Server Operations.
- 
+
 ## 3. Functional Use
 
 1. Deploys multiple programs/app and functional within 10 - 30 seconds
@@ -47,7 +47,7 @@ _**Table of Contents**_
 1. Deploy PGBlitz utilizing Google's GSuite for unlimited space or through the solo or multiple HD editions
 1. Deploys a Reverse Proxy (Traefik) so you can obtain https:// certificates on all your containers
 1. Backup and Restore data through your Google Drive
-1. Aligns data and ports for efficiency 
+1. Aligns data and ports for efficiency
 1. Deploys with a simple installer and a GUI like interface (commands do not have to be typed out)
 
 ## 4. Testimonials
