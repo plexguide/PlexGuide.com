@@ -2,7 +2,7 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_gen_lists() {
 
-ls -p /pg/mods/containers/$app_select/ | grep -v / > "/pg/tmp/$p.list"
+ls -p /pg/mods/containers/$app_select/ | grep -v / > "/pg/tmp/list.tmp"
 
 while read p; do
   fmt -w 79 "/pg/tmp/$p.list" > "/pg/tmp/$p.wrap"
