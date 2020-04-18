@@ -35,4 +35,4 @@ done </"$fpath"/.primary.sh
   echo "source $pgcommunity/$p" >> "$fpath"/.community_apps.sh
   echo "$p" >> "$fpath"/.community_apps.sh
 done </"$fpath"/.community.sh
-  bash "$fpath"/.community.sh
+  bash "$fpath"/.community_apps.sh
