@@ -8,7 +8,7 @@ pgrole="ombi"
 image="linuxserver/ombi"
 port_inside01="3579"
 port_outside01="3579"
-traefik_intport="3579"
+traefik_extport="3579"
 
 container_path /pg/unity /unity
 container_path /pg/data/$pgrole /config

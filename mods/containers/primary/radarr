@@ -8,7 +8,7 @@ pgrole="radarr"
 image="linuxserver/radarr"
 port_inside01="7878"
 port_outside01="7878"
-traefik_intport="7878"
+traefik_extport="7878"
 
 container_path /pg/unity /unity
 container_path /pg/data/$pgrole /config

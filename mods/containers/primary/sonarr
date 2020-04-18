@@ -8,7 +8,7 @@ pgrole="sonarr"
 image="linuxserver/sonarr"
 port_inside01="8989"
 port_outside01="8989"
-traefik_intport="8989"
+traefik_extport="8989"
 
 container_path /pg/unity /unity
 container_path /pg/data/$pgrole /config

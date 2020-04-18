@@ -8,7 +8,7 @@ pgrole="jellyfin"
 image="jellyfin/jellyfin"
 port_inside01="8096"
 port_outside01="9096"
-traefik_intport="9096"
+traefik_extport="9096"
 
 container_path /pg /pg
 container_path /pg/unity /pg/unity

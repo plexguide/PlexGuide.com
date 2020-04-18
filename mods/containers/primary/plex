@@ -16,7 +16,7 @@ port_inside06="32413/udp"; port_outside06="32413"
 port_inside07="32414/udp"; port_outside07="32414"
 port_inside08="33400/tcp"; port_outside08="33400"
 port_inside09="33443/tcp"; port_outside09="33443"
-traefik_intport="32400"
+traefik_extport="32400"
 
 common_fcreate_silent /pg/transcodes
 common_fcreate_silent /pg/data/plex

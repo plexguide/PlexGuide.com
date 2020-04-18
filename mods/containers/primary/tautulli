@@ -8,7 +8,7 @@ pgrole="tautulli"
 image="linuxserver/tautulli"
 port_inside01="8181"
 port_outside01="8181"
-traefik_intport="8181"
+traefik_extport="8181"
 
 container_path "/pg/data/plex/database/Library/Application Support/Plex Media Server/Logs" /logs
 container_path /pg/data/$pgrole/scripts /scripts

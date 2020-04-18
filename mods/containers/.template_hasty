@@ -8,7 +8,7 @@ pgrole="nameoftheapp"            # name this of the exact file name
 image="imagename/imagename"      # image nameto pull
 port_inside01="75000"            # port for inside container
 port_outside01="75000"           # port for outside container / how accessed
-traefik_intport="75000"          # how traefik reaches the external port
+traefik_extport="75000"          # how traefik reaches the external port
 
 # PATHS ########################################################################
 # 1st - path on your server # 2nd - path of the container
