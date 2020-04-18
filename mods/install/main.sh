@@ -4,6 +4,9 @@ mkdir -p /pg/var/
 if [[ -e "/pg/var/pg.noinstall" ]]; then pgcmd=true; else pgcmd=false; fi
 rm -rf /pg/var/pg.noinstall
 ################################################################################
+if [[ ! -e "/usr/bin/docker" ]]; then echo "" > /bin/docker; else
+  rm -rf /bin/docker; fi 
+################################################################################
 if [[ "$pgcmd" != "true" ]]; then
 rm -rf /pg/mods
 rm -rf /pg/tmp/checkout
