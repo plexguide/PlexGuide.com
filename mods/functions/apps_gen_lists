@@ -3,10 +3,8 @@
 apps_gen_lists() {
 
 ls -p /pg/mods/containers/$app_select/ | grep -v / > "/pg/tmp/list.tmp"
+fmt -w 79 "/pg/tmp/list.tmp" > "/pg/tmp/$p.wrap"
 
-while read p; do
-  fmt -w 79 "/pg/tmp/$p.list" > "/pg/tmp/$p.wrap"
-  #sed -i -e "/pgui/d" "$set_path"
-done </pg/tmp/list.tmp
+#sed -i -e "/pgui/d" "$set_path"
 
 }
