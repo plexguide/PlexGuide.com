@@ -2,9 +2,12 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_gen_lists() {
 
-ls -p /pg/mods/containers/$app_select/ | grep -v / > "/pg/tmp/list.tmp"
-fmt -w 79 "/pg/tmp/list.tmp" > "/pg/tmp/$p.wrap"
+wrap_path="/pg/tmp/list.wrap"
 
-#sed -i -e "/pgui/d" "$set_path"
+ls -p /pg/mods/containers/$app_select/ | grep -v / > "/pg/tmp/list.tmp"
+fmt -w 79 "/pg/tmp/list.tmp" > "$wrap_path"
+
+#sed -i -e "/pgui/d" "$wrap_path"
+
 
 }
