@@ -6,7 +6,7 @@ common_message "🚀  PG Applications Interface" "
 💬  Further Explanation? Visit ~ http://apps.plexguide.com
 ------------------------------------------------------------------------------
 [1] Primary
-[2] Community / NOT WORKING YET
+[2] Community
 [3] Personal  / NOT WORKING YET
 ------------------------------------------------------------------------------
 [5] Removal   / NOT WORKING YET
@@ -17,28 +17,18 @@ common_message "🚀  PG Applications Interface" "
 common_number
 
 ## generate apps
-apps_gen_lists
+
 
 ## remove prior pending apps to install list
 rm -rf /pg/tmp/appstoinstall.list; touch /pg/tmp/appstoinstall.list
 rm -rf /pg/tmp/appstoinstall.wrap; touch /pg/tmp/appstoinstall.wrap
 
 case $typed in
-    1 )
-      app_select="primary"
-      apps_interface ;;
-    2 )
-      app_select="community"
-      apps_interface ;;
-    3 )
-      app_select="core"
-      apps_interface ;;
-    z )
-      start_menu ;;
-    Z )
-      start_menu ;;
-    * )
-      apps_menu ;;
+    1 ) app_select="primary" && apps_gen_lists && apps_interface ;;
+    2 ) app_select="community" && apps_gen_lists && apps_interface ;;
+    z ) start_menu ;;
+    Z ) start_menu ;;
+    * ) apps_menu ;;
 esac
 
 }
