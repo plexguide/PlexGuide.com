@@ -5,12 +5,12 @@ apps_interface() {
 installqueuecheck=$(cat /pg/tmp/appstoinstall.list)
 if [ ! -z "$installqueuecheck" ]; then installinfo="| [A] To Install Apps(s)"; else installinfo=""; fi
 
-echo
 fmt -w 79 "/pg/tmp/list.tmp" > "/pg/tmp/wrap.list"
 app_display=$(cat /pg/tmp/wrap.list)
 fmt -w 79 "/pg/tmp/appstoinstall.list" > "/pg/tmp/appstoinstall.wrap"
 apps_to_install=$(cat /pg/tmp/appstoinstall.wrap)
 
+if [[ "$apps_to_install" == "" ]]; then apps_to_install="Nothing Queued"
 common_message "🚀 Multi-App Installer | PGX Edition | 📂 App Install ~ $sapp" "
 $app_display
 
