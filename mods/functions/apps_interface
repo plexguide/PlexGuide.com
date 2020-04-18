@@ -37,8 +37,6 @@ echo "$typed" >> /pg/tmp/appstoinstall.list
 sed -i -e "/$typed/d" "/pg/tmp/$app_select.list"
 fmt -w 79 "/pg/tmp/$app_select.list" > "/pg/tmp/$app_select.wrap"
 
-#apps_menu_select
-
 # recycle menu back to user
 apps_interface
 
