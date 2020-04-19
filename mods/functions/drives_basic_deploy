@@ -7,8 +7,8 @@ drives_menu_start_setup
 
 if [[ "$loopcheck" != "1" ]]; then
   # temporary for file test generation
-  rm -rf /pg/transfer/*
-  mkdir -p /pg/transfer/{01,02,03,04,05,06,07,08}
+  rm -rf /pg/transport/*
+  mkdir -p /pg/transport/{01,02,03,04,05,06,07,08}
   tempfile=$(date +"%T")
   echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget01"
   echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget03"
@@ -45,7 +45,7 @@ done <"$path_upload"/program.list
 echo "TESTING"
 echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 
-# transfer process
+# transport process
 merit_count=0
 while read b; do
   echo "TEST2 - $b"
@@ -62,16 +62,16 @@ while read b; do
     echo "$rclone_long - $rclone_short"
       # execute if not empty
       echo $b
-      common_fcreate_silent "/pg/transfer/${b}"
-      mkdir -p "/pg/transfer/${b}"
-      touch "/pg/transfer/${b}/rclone.log"
-      echo "$rclone_short" > "/pg/transfer/${b}/key.short"
-      echo "$rclone_long" > "/pg/transfer/${b}/key.long"
+      common_fcreate_silent "/pg/transport/${b}"
+      mkdir -p "/pg/transport/${b}"
+      touch "/pg/transport/${b}/rclone.log"
+      echo "$rclone_short" > "/pg/transport/${b}/key.short"
+      echo "$rclone_long" > "/pg/transport/${b}/key.long"
       #echo "TEST4 - $rclone_long"
       if [[ "$rclone_long" != "" ]]; then
         rclone moveto "$rclone_long" gd:"$rclone_short" \
           --config=/pg/var/drives/gd/gd.conf \
-          --log-file="/pg/transfer/${b}/rclone.log" \
+          --log-file="/pg/transport/${b}/rclone.log" \
           --log-level=INFO --stats=5s --stats-file-name-length=0
       fi
   fi
