@@ -32,6 +32,7 @@ while read b; do
     rclone_long=$(sed "${merit_count}q;d" "$path_upload"/upload.short)
     rclone_short=$(sed "${merit_count}q;d" "$path_upload"/upload.short)
 
+    echo "$rclone_long - $rclone_short"
       # execute if not empty
       if [[ "$rclone_long" != "" ]]; then
         rclone moveto "$rclone_long" gd:"$rclone_short" \
