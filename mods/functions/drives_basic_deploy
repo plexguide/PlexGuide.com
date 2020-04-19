@@ -75,11 +75,9 @@ while read b; do
 
 # if completed, then free slot for upload
 
-
-
 done </pg/var/upload/slot.list
 
-
-
+# repeat
+drives_basic_deploy
 
 }
