@@ -23,10 +23,6 @@ done </pg/tmp/edrives.list
 
 # add know programs as read only while sitting in /pg/complete
 drives_known_programs
-add_to_unity=$(cat "$path_known_programs"/program.unity)
-unity_build=$(echo ${unity_build}${add_to_unity})
-echo "$unity_build" > /tmp/test.01
-echo "$add_to_unity" > /tmp/test.02 
 
 # builds unity script
 cat <<- EOF > "$unity_script_path"

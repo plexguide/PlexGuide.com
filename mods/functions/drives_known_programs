@@ -13,7 +13,12 @@ rm -rf "$path_known_programs"/program.unity
 
 # builds a temp file for pgunity to add Read Only's incase
 while read t; do
-    echo -n "/pg/complete/$t=NC" >> "$path_known_programs"/program.unity
+    echo -n ":/pg/complete/$t=NC" >> "$path_known_programs"/program.unity
  done <"$path_known_programs"/program.list
+
+add_to_unity=$(cat "$path_known_programs"/program.unity)
+unity_build=$(echo ${unity_build}${add_to_unity})
+echo "$unity_build" > /tmp/test.03
+echo "$add_to_unity" > /tmp/test.04
 
 }
