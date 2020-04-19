@@ -21,6 +21,9 @@ while read p; do
 done </pg/tmp/edrives.list
   unity_build=${unity_build%?}
 
+# add know programs as read only while sitting in /pg/complete
+drives_known_programs
+
 cat <<- EOF > "$unity_script_path"
 sleep 3
 

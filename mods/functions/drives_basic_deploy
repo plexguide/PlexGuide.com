@@ -9,10 +9,6 @@ drives_menu_start_setup
 path_upload="/pg/var/upload"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 
-# temporary, build function that contains list of programs
-echo "nzbget" > "$path_upload"/program.list
-echo "rutorrent" >> "$path_upload"/program.list
-
 while read z; do
 echo "$(find /pg/complete/$z -type f -printf "\n%AT %p" | awk '{print $2}' | tail -n +2)" >> "$path_upload"/upload.long
 
