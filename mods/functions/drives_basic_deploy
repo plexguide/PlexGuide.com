@@ -17,6 +17,13 @@ echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent11"
 echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent4"
 echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent9"
 
+echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-01"
+echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-02"
+echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-03"
+echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-04"
+echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-05"
+echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-06"
+
 # declare variables and remove
 path_upload="/pg/var/upload"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
@@ -36,6 +43,7 @@ done <"$path_upload"/program.list
 echo "TESTING"
 echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 
+# transfer process
 merit_count=0
 while read b; do
   echo "TEST2 - $b"
@@ -64,6 +72,10 @@ while read b; do
           --log-level=INFO --stats=5s --stats-file-name-length=0
       fi
   fi
+
+# if completed, then free slot for upload
+
+
 
 done </pg/var/upload/slot.list
 
