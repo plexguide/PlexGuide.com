@@ -81,7 +81,8 @@ while read b; do
 done </pg/var/upload/slot.list
 
 # repeat
-drives_basic_deploy
 touch /tmp/.lock
+drives_basic_deploy
+
 
 }
