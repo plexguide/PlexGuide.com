@@ -1,18 +1,30 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-drives_menu_start() {
+drives_basic_deploy() {
 
+# pulls key variables
 drives_menu_start_setup
 
-find /pg/transport -type f -name '*.' | xargs stat -f '%c %N' | sort
+# declare variables and remove
+path_upload="/pg/var/upload"
+mkdir -p $path_upload && rm -rf "$path_upload"/upload.short
 
-find /pg/transport -type f -printf "\n%AT %p" | awk '{print $2}' | tail -n +2
+# temporary, build function that contains list of programs
+echo "nzbget" > "$path_upload"/program.list
+echo "rutorrent" >> "$path_upload"/program.list
 
+echo "$(find /pg/transport -type f -printf "\n%AT %p" | awk '{print $2}' | tail -n +2)" > "$path_upload"/upload.long
 
+# generates short and long paths for upload
+while read z; do
+  while read p; do
+      remove_path="/pg/downloads/$z"
+      echo "${p#*$remove_path}" >> "$path_upload"/upload.short
+    done <"$path_upload"/upload.long
+done <"$path_upload"/program.list
 
-rclone moveto "$upload_file" "/pg/transfer/$folder_num/" \
---exclude="**_HIDDEN~" --exclude=".unionfs/**" \
---exclude="**partial~" --exclude=".unionfs-fuse/**" \
---exclude=".fuse_hidden**" --exclude="**.grab/**" \
+#rclone lsd --config /pg/var/drives/gd/gd.conf gd: | grep "plexguide.com"
 
+#rclone moveto "/pg/transport/01/woof.txt" gd:"/catclan/woof.txt" \
+#  --config=/pg/var/drives/gd/gd.conf
 }
