@@ -7,19 +7,21 @@ drives_menu_start_setup
 
 # declare variables and remove
 path_upload="/pg/var/upload"
-mkdir -p $path_upload && rm -rf "$path_upload"/upload.short
+mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 
 # temporary, build function that contains list of programs
 echo "nzbget" > "$path_upload"/program.list
 echo "rutorrent" >> "$path_upload"/program.list
 
-echo "$(find /pg/transport -type f -printf "\n%AT %p" | awk '{print $2}' | tail -n +2)" > "$path_upload"/upload.long
+while read z; do
+echo "$(find /pg/complete/$z -type f -printf "\n%AT %p" | awk '{print $2}' | tail -n +2)" >> "$path_upload"/upload.long
 
 # generates short and long paths for upload
-while read z; do
   while read p; do
-      remove_path="/pg/downloads/$z"
-      echo "${p#*$remove_path}" >> "$path_upload"/upload.short
+      remove_path="/pg/complete/$z"
+      valid=$(echo $p | grep $z)
+        if [[ "$valid" != "" ]]; then
+          echo "${p#*$remove_path}" >> "$path_upload"/upload.short; fi
     done <"$path_upload"/upload.long
 done <"$path_upload"/program.list
 
