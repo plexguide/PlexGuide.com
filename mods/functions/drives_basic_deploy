@@ -30,8 +30,8 @@ while read b; do
 
     # moves along the merit list
     let "merit_count=merit_count+1"
-    rclone_long=$(sed "${merit_count}q;d" "$path_upload"/upload.short)
-    rclone_short=$(sed "${merit_count}q;d" "$path_upload"/upload.short)
+    rclone_long=$(sed "${merit_count}q;d" /pg/var/upload/upload.long)
+    rclone_short=$(sed "${merit_count}q;d" /pg/var/upload/upload.short)
 
     echo "$rclone_long - $rclone_short"
       # execute if not empty
