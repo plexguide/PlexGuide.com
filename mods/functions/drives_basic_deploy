@@ -80,11 +80,11 @@ done </pg/var/upload/slot.list
 
 # if completed, then free slot for upload
 while read m; do
-  if [[ -e $(/pg/transport/${m}/key.short) ]]; then
+  if [[ -e "/pg/transport/${m}/key.short" ]]; then
     rclone_short=$(cat "/pg/transport/${m}/key.short")
     delete_check=$(rclone ls --config /pg/var/drives/gd/gd.conf --max-depth 1 gd: | grep "${rclone_short}")
     if [[ "$delete_check" != "" ]]; then rm -rf /pg/transport/${m}/* && echo "FREED - {$m}"; fi
-  fi 
+  fi
 
 done </pg/var/upload/slot.list
 
