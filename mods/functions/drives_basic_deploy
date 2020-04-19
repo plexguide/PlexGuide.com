@@ -19,6 +19,7 @@ echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent9"
 path_upload="/pg/var/upload"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 merit_count=0
+mkdir /
 
 while read z; do
 echo "$(find /pg/complete/$z -type f -printf "\n%AT %p" | awk '{print $2}' | tail -n +2)" >> "$path_upload"/upload.long
@@ -47,6 +48,7 @@ while read b; do
 
     echo "$rclone_long - $rclone_short"
       # execute if not empty
+      common_fcreate_silent "/pg/transfer/${b}"
       touch "/pg/transfer/${b}${rclone_short}.log"
       #echo "TEST4 - $rclone_long"
       if [[ "$rclone_long" != "" ]]; then
