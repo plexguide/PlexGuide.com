@@ -67,7 +67,7 @@ case $typed in
     8 ) pgpress_menu && start_menu && exit ;;
     9 ) pgpress_menu && start_menu && exit ;;
     10 ) pgpress_menu && start_menu && exit ;;
-    11 ) traefik_info ;;
+    11 ) drives_basic_deploy && exit ;;
     z ) start_end && exit ;;
     Z ) start_end && exit ;;
     * ) start_menu ;;

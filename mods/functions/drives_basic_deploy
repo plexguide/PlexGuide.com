@@ -8,6 +8,7 @@ drives_menu_start_setup
 # declare variables and remove
 path_upload="/pg/var/upload"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
+merit_count=0
 
 while read z; do
 echo "$(find /pg/complete/$z -type f -printf "\n%AT %p" | awk '{print $2}' | tail -n +2)" >> "$path_upload"/upload.long
@@ -21,8 +22,22 @@ echo "$(find /pg/complete/$z -type f -printf "\n%AT %p" | awk '{print $2}' | tai
     done <"$path_upload"/upload.long
 done <"$path_upload"/program.list
 
-#rclone lsd --config /pg/var/drives/gd/gd.conf gd: | grep "plexguide.com"
+echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 
-#rclone moveto "/pg/transport/01/woof.txt" gd:"/catclan/woof.txt" \
-#  --config=/pg/var/drives/gd/gd.conf
+while read b; do
+  if [[ -e "$(ls /pg/transport/$b)" ]]; then
+
+    # moves along the merit list
+    let "merit_count=merit_count+1"
+    rclone_long=$(sed "${merit_count}q;d" "$path_upload"/upload.short)
+    rclone_short=$(sed "${merit_count}q;d" "$path_upload"/upload.short)
+
+      # execute if not empty
+      if [[ "$rclone_long" != "" ]]; then
+        rclone moveto "$rclone_long" gd:"$rclone_short" \
+          --config=/pg/var/drives/gd/gd.conf
+      fi
+  fi
+done
+
 }
