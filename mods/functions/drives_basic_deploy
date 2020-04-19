@@ -6,7 +6,8 @@ drives_basic_deploy() {
 drives_menu_start_setup
 
 # temporary for file test generation
-mkdir /pg/transfer/{01,02,03,04,05,06,07,08}
+rm -rf /pg/transfer/*
+mkdir -p /pg/transfer/{01,02,03,04,05,06,07,08}
 tempfile=$(date +"%T")
 echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget01"
 echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget03"
