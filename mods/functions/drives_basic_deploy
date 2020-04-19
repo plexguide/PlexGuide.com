@@ -24,6 +24,8 @@ if [[ ! -e "/tmp/.lock" ]]; then
   echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-04"
   echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-05"
   echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-06"
+
+  touch "/tmp/.lock"
 fi
 
 # declare variables and remove
@@ -50,7 +52,6 @@ merit_count=0
 while read b; do
   echo "TEST2 - ${b}"
   dircheck=$(ls "/pg/transport/${b}")
-  echo "DIRCHECK TEST - $dircheck"
 
   if [[ "$dircheck" == "" ]]; then
 
@@ -90,6 +91,5 @@ while read m; do
 done </pg/var/upload/slot.list
 
 # repeat
-touch /tmp/.lock
 drives_basic_deploy
 }
