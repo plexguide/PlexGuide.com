@@ -53,7 +53,7 @@ while read b; do
       echo $b
       common_fcreate_silent "/pg/transfer/${b}"
       mkdir -p "/pg/transfer/${b}"
-      touch "/pg/transfer/${b}$/rclone.log"
+      touch "/pg/transfer/${b}/rclone.log"
       echo "$rclone_short" > "/pg/transfer/${b}/key.short"
       echo "$rclone_long" > "/pg/transfer/${b}/key.long"
       #echo "TEST4 - $rclone_long"
