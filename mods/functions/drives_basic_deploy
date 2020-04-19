@@ -39,7 +39,7 @@ echo "TESTING"
 echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 
 while read b; do
-  #echo "TEST2 - $b"
+  echo "TEST2 - $b"
   if [[ "" == "$(ls /pg/transport/$b)" ]]; then
 
     #echo "TEST3 - $merit_count"
@@ -50,6 +50,7 @@ while read b; do
 
     echo "$rclone_long - $rclone_short"
       # execute if not empty
+      echo $b
       common_fcreate_silent "/pg/transfer/${b}"
       touch "/pg/transfer/${b}${rclone_short}.log"
       #echo "TEST4 - $rclone_long"
