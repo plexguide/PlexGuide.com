@@ -51,7 +51,7 @@ while read b; do
       if [[ "$rclone_long" != "" ]]; then
         rclone moveto "$rclone_long" gd:"$rclone_short" \
           --config=/pg/var/drives/gd/gd.conf \
-          --log-file="/pg/transfer$rclone_short" \
+          --log-file="/pg/transfer/${b}${rclone_short}" \
           --log-level=INFO --stats=5s --stats-file-name-length=0
       fi
   fi
