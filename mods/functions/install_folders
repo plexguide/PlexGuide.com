@@ -17,14 +17,12 @@ common_fcreate /pg/gc/music
 common_fcreate /pg/gc/ebooks
 
 #gdrive
-common_fcreate /pg/gd
 common_fcreate /pg/gd/tv
 common_fcreate /pg/gd/movies
 common_fcreate /pg/gd/music
 common_fcreate /pg/gd/ebooks
 
 #tcrypt
-common_fcreate /pg/sc
 common_fcreate /pg/sc/tv
 common_fcreate /pg/sc/movies
 common_fcreate /pg/sc/music
@@ -46,8 +44,8 @@ common_fcreate /pg/plexguide
 common_fcreate /pg/tmp
 common_fcreate /pg/data # folder to hold container data
 common_fcreate /pg/data/portainer
-common_fcreate /pg/coreapps
-common_fcreate /pg/communityapps
+common_fcreate /pg/complete
+common_fcreate /pg/incomplete
 common_fcreate /pg/transfer
 common_fcreate /pg/logs
 common_fcreate /pg/apps
