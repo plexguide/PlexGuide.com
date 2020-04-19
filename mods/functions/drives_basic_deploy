@@ -67,8 +67,9 @@ while read b; do
       touch "/pg/transport/${b}/rclone.log"
       echo "$rclone_short" > "/pg/transport/${b}/key.short"
       echo "$rclone_long" > "/pg/transport/${b}/key.long"
-      #echo "TEST4 - $rclone_long"
+
       if [[ "$rclone_long" != "" ]]; then
+        echo "TRANSFERING - $rclone_long"
         rclone moveto "$rclone_long" gd:"$rclone_short" \
           --config=/pg/var/drives/gd/gd.conf \
           --log-file="/pg/transport/${b}/rclone.log" \
