@@ -38,6 +38,6 @@ while read b; do
           --config=/pg/var/drives/gd/gd.conf
       fi
   fi
-done
+done </pg/var/upload/slot.list
 
 }
