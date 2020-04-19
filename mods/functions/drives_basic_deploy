@@ -26,6 +26,7 @@ echo "TESTING"
 echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 
 while read b; do
+  echo "TEST2 - $b"
   if [[ -e "$(ls /pg/transport/$b)" ]]; then
 
     # moves along the merit list
