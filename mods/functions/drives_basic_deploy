@@ -5,7 +5,7 @@ drives_basic_deploy() {
 # pulls key variables
 drives_menu_start_setup
 
-if [[ "$x" != "1" ]]; then
+if [[ "$loopcheck" != "1" ]]; then
   # temporary for file test generation
   rm -rf /pg/transfer/*
   mkdir -p /pg/transfer/{01,02,03,04,05,06,07,08}
@@ -49,7 +49,8 @@ echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 merit_count=0
 while read b; do
   echo "TEST2 - $b"
-  if [[ "" == "$(ls /pg/transport/$b)" ]]; then
+  dircheck=$(ls /pg/transport/$b)
+  if [[ "" == "$dircheck" ]]; then
 
     #echo "TEST3 - $merit_count"
     # moves along the merit list
@@ -81,6 +82,6 @@ done </pg/var/upload/slot.list
 
 # repeat
 drives_basic_deploy
-x=1
+loopcheck=1
 
 }
