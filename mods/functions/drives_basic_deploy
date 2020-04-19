@@ -36,6 +36,7 @@ while read b; do
 
     echo "$rclone_long - $rclone_short"
       # execute if not empty
+      echo "TEST3 - $rclone_long"
       if [[ "$rclone_long" != "" ]]; then
         rclone moveto "$rclone_long" gd:"$rclone_short" \
           --config=/pg/var/drives/gd/gd.conf
