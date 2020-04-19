@@ -52,7 +52,6 @@ while read b; do
   dircheck=$(ls /pg/transport/$b)
   if [[ "" == "$dircheck" ]]; then
 
-    #echo "TEST3 - $merit_count"
     # moves along the merit list
     let "merit_count=merit_count+1"
     echo "merit: $merit_count"
