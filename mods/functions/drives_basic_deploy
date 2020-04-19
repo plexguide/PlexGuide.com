@@ -50,8 +50,8 @@ merit_count=0
 while read b; do
   echo "TEST2 - ${b}"
   dircheck=$(ls "/pg/transport/${b}")
-  echo "DIRECHECK TEST - $dircheck"
-
+  echo "DIRCHECK TEST - $dircheck"
+  
   if [[ "$dircheck" == "" ]]; then
 
     # moves along the merit list
