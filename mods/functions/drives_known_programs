@@ -3,7 +3,7 @@
 drives_known_programs() {
 
 # setting things up
-path_known_programs="/pg/var/upload"; mkdir -p "$path_known_program"
+path_known_programs="/pg/var/upload"; mkdir -p "$path_known_programs"
 rm -rf "$path_known_programs"/program.unity
 
 # known programs
