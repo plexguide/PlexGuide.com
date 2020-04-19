@@ -40,9 +40,12 @@ while read b; do
       echo "TEST4 - $rclone_long"
       if [[ "$rclone_long" != "" ]]; then
         rclone moveto "$rclone_long" gd:"$rclone_short" \
-          --config=/pg/var/drives/gd/gd.conf
+          --config=/pg/var/drives/gd/gd.conf \
+          --log-file="/pg/transfer$rclone_short" \
+          --log-level=INFO --stats=5s --stats-file-name-length=0
       fi
   fi
+
 done </pg/var/upload/slot.list
 
 }
