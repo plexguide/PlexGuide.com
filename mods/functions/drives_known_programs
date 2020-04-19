@@ -2,6 +2,7 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_known_programs() {
 
+mkdir -p /pg/var/upload 
 path_known_programs="/pg/var/upload"
 
 # known programs
@@ -15,8 +16,8 @@ rm -rf "$path_known_program"/program.unity
 while read t; do
     echo -n "/pg/complete/$t=NC" >> "$path_known_program"/program.unity
  done <"$path_known_program"/program.list
-add_to_unity=$(cat "$path_known_programs"/program.unity)
 
+add_to_unity=$(cat "$path_known_programs"/program.unity)
 unity_build=$(echo ${unity_build}${add_to_unity})
 
 }
