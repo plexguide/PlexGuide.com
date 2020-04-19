@@ -48,11 +48,11 @@ echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 # transport process
 merit_count=0
 while read b; do
-  echo "TEST2 - $b"
-  dircheck=$(ls /pg/transport/$b)
+  echo "TEST2 - ${b}"
+  dircheck=$(ls "/pg/transport/${b}")
+  echo "DIRECHECK TEST - $dircheck"
 
-  echo "DIRECHECK TEST = $dircheck"
-  if [[ "$dircheck" == "" ]]; then
+  if [[ "$dircheck" != "" ]]; then
 
     # moves along the merit list
     let "merit_count=merit_count+1"
@@ -75,11 +75,9 @@ while read b; do
           --config=/pg/var/drives/gd/gd.conf \
           --log-file="/pg/transport/${b}/rclone.log" \
           --log-level=INFO --stats=5s --stats-file-name-length=0
-      fi
-  fi
+    fi; fi
 
 # if completed, then free slot for upload
-
 done </pg/var/upload/slot.list
 
 # repeat
