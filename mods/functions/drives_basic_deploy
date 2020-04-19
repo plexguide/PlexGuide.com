@@ -39,6 +39,7 @@ echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 merit_count=0
 while read b; do
   echo "TEST2 - $b"
+  sleep 1
   if [[ "" == "$(ls /pg/transport/$b)" ]]; then
 
     #echo "TEST3 - $merit_count"
