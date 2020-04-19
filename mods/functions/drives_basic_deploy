@@ -61,24 +61,26 @@ while read b; do
     let "merit_count=merit_count+1"
     echo "merit: $merit_count"
     rclone_long=$(sed "${merit_count}q;d" /pg/var/upload/upload.long)
-    rclone_short=$(sed "${merit_count}q;d" /pg/var/upload/upload.short)
 
-    echo "$rclone_long - $rclone_short"
-      # execute if not empty
-      echo $b
-      common_fcreate_silent "/pg/transport/${b}"
-      mkdir -p "/pg/transport/${b}"
-      touch "/pg/transport/${b}/rclone.log"
-      echo "$rclone_short" > "/pg/transport/${b}/key.short"
-      echo "$rclone_long" > "/pg/transport/${b}/key.long"
+    if [[ "$rclone_long" != "" ]]; then
+      rclone_short=$(sed "${merit_count}q;d" /pg/var/upload/upload.short)
 
-      if [[ "$rclone_long" != "" ]]; then
-        echo "TRANSFERING - $rclone_long"
-        rclone moveto "$rclone_long" gd:"$rclone_short" \
-          --config=/pg/var/drives/gd/gd.conf \
-          --log-file="/pg/transport/${b}/rclone.log" \
-          --log-level=INFO --stats=5s --stats-file-name-length=0
-    fi; fi
+      echo "$rclone_long - $rclone_short"
+        # execute if not empty
+        echo $b
+        common_fcreate_silent "/pg/transport/${b}"
+        mkdir -p "/pg/transport/${b}"
+        touch "/pg/transport/${b}/rclone.log"
+        echo "$rclone_short" > "/pg/transport/${b}/key.short"
+        echo "$rclone_long" > "/pg/transport/${b}/key.long"
+
+        if [[ "$rclone_long" != "" ]]; then
+          echo "TRANSFERING - $rclone_long"
+          rclone moveto "$rclone_long" gd:"$rclone_short" \
+            --config=/pg/var/drives/gd/gd.conf \
+            --log-file="/pg/transport/${b}/rclone.log" \
+            --log-level=INFO --stats=5s --stats-file-name-length=0
+    fi; fi; fi
 done </pg/var/upload/slot.list
 
 # if completed, then free slot for upload
