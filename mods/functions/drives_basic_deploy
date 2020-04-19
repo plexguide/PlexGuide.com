@@ -8,6 +8,8 @@ drives_menu_start_setup
 if [[ ! -e "/tmp/.lock" ]]; then
   # temporary for file test generation
   rm -rf /pg/transport/*
+  rm -rf /pg/complete/nzbget/*
+  rm -rf /pg/complete/rutorrent/*
   mkdir -p /pg/transport/{01,02,03,04,05,06,07,08}
   tempfile=$(date +"%T")
   echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget01"
