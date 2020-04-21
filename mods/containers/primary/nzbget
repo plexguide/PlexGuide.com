@@ -1,0 +1,238 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+nzbget () {
+
+container_reset
+# VARIABLES ####################################################################
+pgrole="nzbget"
+image="linuxserver/nzbget"
+port_inside01="6789"
+port_outside01="6789"
+traefik_extport="6789"
+
+common_fcreate_silent /pg/complete/nzbget
+common_fcreate_silent /pg/incomplete/nzbget
+common_fcreate_silent /pg/nzb/$pgrole
+common_fcreate_silent /pg/scripts/$pgrole
+
+container_path /pg /pg
+container_path /pg/data/$pgrole /config
+container_path /etc/localtime /etc/localtime:ro
+
+container_permissions PUID 1000
+container_permissions PGID 1000
+container_permissions LC_ALL C
+
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+    - name: 'Checking for existing app data'
+      stat:
+        path: '/pg/data/$pgrole/nzbget.conf'
+      register: confcheck
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '$portstatus$port_outside01:$port_inside01'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_oddball
+        $container_ending
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+    - name: 'Waiting for $pgrole to initialize'
+      wait_for:
+        path: '/pg/data/$pgrole/nzbget.conf'
+        state: present
+        delay: 5
+
+    - name: 'Stopping $pgrole'
+      docker_container:
+        name: '$pgrole'
+        state: stopped
+
+    - name: Set Main Location
+      lineinfile:
+        path: '/pg/data/$pgrole/nzbget.conf'
+        regexp: '^MainDir\s*=.*'
+        line: 'MainDir=/config'
+        state: present
+
+    - name: Set download location
+      lineinfile:
+        path: '/pg/data/$pgrole/nzbget.conf'
+        regexp: '^DestDir\s*=.*'
+        line: 'DestDir=/pg/complete/$pgrole'
+        state: present
+
+    - name: Set incomplete location
+      lineinfile:
+        path: '/pg/data/$pgrole/nzbget.conf'
+        regexp: '^InterDir\s*=.*'
+        line: 'InterDir=/pg/incomplete/$pgrole'
+        state: present
+
+    - name: Set TempDir
+      lineinfile:
+        path: '/pg/data/$pgrole/nzbget.conf'
+        regexp: '^TempDir\s*=.*'
+        line: 'TempDir=/tmp'
+        state: present
+
+    - name: Set NzbDir Location
+      lineinfile:
+        path: '/pg/data/$pgrole/nzbget.conf'
+        regexp: '^NzbDir\s*=.*'
+        line: 'NzbDir=/pg/nzb/$pgrole'
+        state: present
+
+    - name: ScriptDir
+      lineinfile:
+        path: '/pg/data/$pgrole/nzbget.conf'
+        regexp: '^ScriptDir\s*=.*'
+        line: 'ScriptDir=/pg/scripts/$pgrole'
+        state: present
+
+    # FIRST TIME CONFIGURATION #############################################################
+    - name: 'Configuring $pgrole for first time use'
+      block:
+        - name: Lowercase & Set Movie Category
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^Category1.Name\s*=.*'
+            line: 'Category1.Name=movies'
+            state: present
+
+        - name: Set Location of Movies
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^Category1.DestDir\s*=.*'
+            line: 'Category1.DestDir='
+            state: present
+
+        - name: Lowercase & Set TV Category
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^Category2.Name\s*=.*'
+            line: 'Category2.Name=tv'
+            state: present
+
+        - name: Set Location of TV
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^Category2.DestDir\s*=.*'
+            line: 'Category2.DestDir='
+            state: present
+
+        - name: Lowercase & Set Music Category
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^Category3.Name\s*=.*'
+            line: 'Category3.Name=music'
+            state: present
+
+        - name: Set Location of Music
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^Category3.DestDir\s*=.*'
+            line: 'Category3.DestDir='
+            state: present
+
+        - name: Lowercase & Set EBook Category
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^Category4.Name\s*=.*'
+            line: 'Category4.Name=ebooks'
+            state: present
+
+        - name: Set Location of EBooks
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^Category4.DestDir\s*=.*'
+            line: 'Category4.DestDir='
+            state: present
+
+        - name: Lowercase & Set abook Category
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: 'Category5.Name\s*=.*'
+            line: 'Category5.Name=abooks'
+            state: present
+
+        - name: Set Location of aBooks
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: 'Category5.DestDir\s*=.*'
+            line: 'Category5.DestDir='
+            state: present
+
+        - name: Default User
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^ControlUsername\s*=.*'
+            line: 'ControlUsername='
+            state: present
+
+        - name: Default Password
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: 'ControlPassword\s*=.*'
+            line: 'ControlPassword='
+            state: present
+
+        - name: DirectUnpack Set to On
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^DirectUnpack\s*=.*'
+            line: 'DirectUnpack=yes'
+            state: present
+
+        - name: HealthCheck
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^HealthCheck\s*=.*'
+            line: 'HealthCheck=Delete'
+            state: present
+
+        - name: Set DiskSpace
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '^DiskSpace\s*=.*'
+            line: 'DiskSpace=25000'
+            state: present
+
+        - name: Remove Generic Task
+          lineinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            regexp: '{{ item.regexp }}'
+            state: absent
+          with_items:
+            - { regexp: '.Task1\.Time\=' }
+            - { regexp: '.Task1\.WeekDays\=' }
+            - { regexp: '.Task1\.Command\=' }
+            - { regexp: '.Task1\.Param\=' }
+
+        - name: Unpause
+          blockinfile:
+            path: '/pg/data/$pgrole/nzbget.conf'
+            block: |
+              Task1.Time=*,*:00,*:30
+              Task1.WeekDays=1-7
+              Task1.Command=UnpauseDownload
+              Task1.Param=
+            insertafter: '^### SCHEDULER'
+      when: not confcheck.stat.exists
+
+    - name: 'Restart $pgrole'
+      docker_container:
+        name: '$pgrole'
+        state: started
+
+EOF
+}
