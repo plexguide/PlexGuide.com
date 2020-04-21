@@ -5,12 +5,12 @@ sonarr () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="sonarr"
-image="linuxserver/sonarr"
+image="linuxserver/sonarr:preview"
 port_inside01="8989"
 port_outside01="8989"
 traefik_extport="8989"
 
-container_path /pg/unity /unity
+container_path /pg /pg
 container_path /pg/data/$pgrole /config
 container_path /etc/localtime /etc/localtime:ro
 
