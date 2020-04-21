@@ -12,7 +12,7 @@ echo "rutorrent" >> "$path_known_programs"/program.list
 
 # builds a temp file for pgunity to add Read Only's incase
 while read t; do
-    echo -n ":/pg/complete/$t=RW" >> "$path_known_programs"/program.unity
+    echo -n ":/pg/complete/$t=NC" >> "$path_known_programs"/program.unity
     common_fcreate_silent /pg/complete/$t
  done <"$path_known_programs"/program.list
 
