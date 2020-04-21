@@ -14,7 +14,7 @@
         intport: '6789'
         extport: '6789'
         image: 'linuxserver/nzbget'
-
+ 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
       include_tasks: '/opt/coreapps/apps/_core.yml'
