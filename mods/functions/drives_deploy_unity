@@ -36,7 +36,7 @@ chown -R 1000:1000 "/pg/transfer"
 chmod -R 755 "/pg/transfer"
 
 mergerfs -o sync_read,auto_cache,dropcacheonclose=true,use_ino,allow_other,func.getattr=newest,category.create=ff,minfreespace=0,fsname=pgunity \
-/pg/transport=RW:$unity_build /pg/unity
+/pg/transport=RW /pg/unity
 EOF
 ################################################################################
 service_path="/etc/systemd/system/unity.service"
