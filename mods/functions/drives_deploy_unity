@@ -24,6 +24,8 @@ done </pg/tmp/edrives.list
 # add know programs as read only while sitting in /pg/complete
 drives_known_programs
 
+# mergerfs -o func.getattr=newest,category.create=ff,direct_io,use_ino,atomic_o_trunc,big_writes,default_permissions,splice_move,splice_read,splice_write,allow_other,sync_read,minfreespace=0,umask=002,uid=1000,gid=1000,fsname=pgunity,nonempty \
+
 # builds unity script
 cat <<- EOF > "$unity_script_path"
 sleep 3
@@ -33,7 +35,7 @@ chmod -R 755 "/pg/downloads"
 chown -R 1000:1000 "/pg/transfer"
 chmod -R 755 "/pg/transfer"
 
-mergerfs -o func.getattr=newest,category.create=ff,direct_io,use_ino,atomic_o_trunc,big_writes,default_permissions,splice_move,splice_read,splice_write,allow_other,sync_read,minfreespace=0,umask=002,uid=1000,gid=1000,fsname=pgunity,nonempty \
+mergerfs -o sync_read,auto_cache,dropcacheonclose=true,use_ino,allow_other,func.getattr=newest,category.create=ff,minfreespace=0,fsname=pgunity \
 /pg/transport=RW:$unity_build /pg/unity
 EOF
 ################################################################################
