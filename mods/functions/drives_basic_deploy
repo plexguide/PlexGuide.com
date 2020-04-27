@@ -78,7 +78,7 @@ while read b; do
 
           echo "TRANSFERING LOCAL - $rclone_long"
           rclone moveto "$rclone_long" /pg/transfer/"$rclone_short" \
-            # --config=/pg/var/drives/gd/gd.conf \
+            --config=/pg/var/drives/gd/gd.conf \
             #--log-file="/pg/var/transport/${b}/rclone.log" \
             #--log-level=INFO --stats=5s --stats-file-name-length=0
 
