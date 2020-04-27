@@ -7,10 +7,10 @@ drives_menu_start_setup
 
 if [[ ! -e "/tmp/.lock" ]]; then
   # temporary for file test generation
-  rm -rf /pg/transport/*
+  rm -rf /pg/var/transport/*
   rm -rf /pg/complete/nzbget/*
   rm -rf /pg/complete/rutorrent/*
-  mkdir -p /pg/transport/{01,02,03,04,05,06,07,08}
+  mkdir -p /pg/var/transport/{01,02,03,04,05,06,07,08}
   tempfile=$(date +"%T")
   echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget01"
   echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget03"
@@ -53,7 +53,7 @@ echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 merit_count=0
 while read b; do
   echo "TEST2 - ${b}"
-  dircheck=$(ls "/pg/transport/${b}")
+  dircheck=$(ls "/pg/var/transport/${b}")
 
   if [[ "$dircheck" == "" ]]; then
 
@@ -68,29 +68,36 @@ while read b; do
       echo "$rclone_long - $rclone_short"
         # execute if not empty
         echo $b
-        common_fcreate_silent "/pg/transport/${b}"
-        mkdir -p "/pg/transport/${b}"
-        touch "/pg/transport/${b}/rclone.log"
-        echo "$rclone_short" > "/pg/transport/${b}/key.short"
-        echo "$rclone_long" > "/pg/transport/${b}/key.long"
+        common_fcreate_silent "/pg/var/transport/${b}"
+        mkdir -p "/pg/var/transport/${b}"
+        touch "/pg/var/transport/${b}/rclone.log"
+        echo "$rclone_short" > "/pg/var/transport/${b}/key.short"
+        echo "$rclone_long" > "/pg/var/transport/${b}/key.long"
 
         if [[ "$rclone_long" != "" ]]; then
-          echo "TRANSFERING - $rclone_long"
-          rclone moveto "$rclone_long" gd:"$rclone_short" \
+
+          echo "TRANSFERING LOCAL - $rclone_long"
+          rclone moveto "$rclone_long" /pg/transfer/"$rclone_short" \
+            # --config=/pg/var/drives/gd/gd.conf \
+            #--log-file="/pg/var/transport/${b}/rclone.log" \
+            #--log-level=INFO --stats=5s --stats-file-name-length=0
+
+          echo "TRANSFERING GSUITE - $rclone_long"
+          rclone moveto /pg/transfer/"$rclone_short" gd:"$rclone_short" \
             --config=/pg/var/drives/gd/gd.conf \
-            --log-file="/pg/transport/${b}/rclone.log" \
+            --log-file="/pg/var/transport/${b}/rclone.log" \
             --log-level=INFO --stats=5s --stats-file-name-length=0
     fi; fi; fi
 done </pg/var/upload/slot.list
 
 # if completed, then free slot for upload
 while read m; do
-  if [[ -e "/pg/transport/${m}/key.short" ]]; then
-    echo "/pg/transport/${m}/key.short"
-    rclone_short=$(cat "/pg/transport/${m}/key.short")
+  if [[ -e "/pg/var/transport/${m}/key.short" ]]; then
+    echo "/pg/var/transport/${m}/key.short"
+    rclone_short=$(cat "/pg/var/transport/${m}/key.short")
     rclone_short=$(echo ${rclone_short} | cut -c 2-)
     delete_check=$(rclone ls --config /pg/var/drives/gd/gd.conf --max-depth 1 gd: | grep "${rclone_short}")
-    if [[ "$delete_check" != "" ]]; then rm -rf /pg/transport/${m}/* && echo "FREED - {$m}"; fi
+    if [[ "$delete_check" != "" ]]; then rm -rf /pg/var/transport/${m}/* && echo "FREED - {$m}"; fi
   fi
 done </pg/var/upload/slot.list
 
