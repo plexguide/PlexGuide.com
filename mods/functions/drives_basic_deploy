@@ -58,14 +58,14 @@ while read b; do
         if [[ "$longkey" != "" ]]; then
 
           # function to check file sizes overtime
-        filesizecheck() {
-          echo "Checking File Size - $shortkey"
-          echo $(ls -lah "$" | awk '{print $5}') > "/pg/var/drives/sizes$shortkey.1"
-          sleep 2
-          echo $(ls -lah "$longkey" | awk '{print $5}') > "/pg/var/drives/sizes$shortkey.2"
-        }
+      #  filesizecheck() {
+      #    echo "Checking File Size - $longkey"
+      #    echo $(ls -lah "$longkey" | awk '{print $5}') > "/pg/var/drives/sizes$shortkey.1"
+      #    sleep 2
+      #    echo $(ls -lah "$longkey" | awk '{print $5}') > "/pg/var/drives/sizes$shortkey.2"
+      #  }
           # ensures the file size has not changed prior to uploading
-          filesizecheck
+      #    filesizecheck
 
           # if file sizes are a mismatch overtime, create loop to create a recheck pattern; on hold till file sizes are the same
           while [[ $(cat "/pg/var/drives/sizes/$shortkey.1") != $(cat "/pg/var/drives/sizes/$shortkey.2") ]]; do
