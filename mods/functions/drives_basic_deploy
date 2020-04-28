@@ -8,15 +8,6 @@ drives_basic_deploy() {
 # pulls key variables
 drives_menu_start_setup
 
-
-if [[ ! -e "/tmp/.lock" ]]; then
-  # temporary for file test generation
-  rm -rf /pg/var/transport/*
-  mkdir -p /pg/var/transport/{01,02,03,04,05,06,07,08}
-  tempfile=$(date +"%T")
-  touch "/tmp/.lock"
-fi
-
 # declare variables and remove
 path_upload="/pg/var/upload"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
