@@ -8,10 +8,10 @@ drives_basic_deploy() {
 # pulls key variables
 drives_menu_start_setup
 
+
 if [[ ! -e "/tmp/.lock" ]]; then
   # temporary for file test generation
   rm -rf /pg/var/transport/*
-
   mkdir -p /pg/var/transport/{01,02,03,04,05,06,07,08}
   tempfile=$(date +"%T")
   touch "/tmp/.lock"
@@ -22,7 +22,7 @@ path_upload="/pg/var/upload"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 
 while read z; do
-echo "$(find /pg/complete/$z -type f -printf "\n%AT %p" | awk '{print $2}' | tail -n +2)" >> "$path_upload"/upload.long
+echo "$(find /pg/complete/$z -type f -mmin +1 -printf "\n%AT %p" | awk '{print $2}' | tail -n +2)" >> "$path_upload"/upload.long
 
 # generates short and long paths for upload
   while read p; do
@@ -65,9 +65,9 @@ while read b; do
           # function to check file sizes overtime
         filesizecheck() {
           echo "Checking File Size - $rclone_short"
-          echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes/$rclone_short.1"
+          echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes$rclone_short.1"
           sleep 2
-          echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes/$rclone_short.2"
+          echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes$rclone_short.2"
         }
           # ensures the file size has not changed prior to uploading
           filesizecheck
