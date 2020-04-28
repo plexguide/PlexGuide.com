@@ -32,6 +32,7 @@ while read b; do
   echo "TEST2 - ${b}"
   shortkey=$(cat /pg/var/transport/${b}/key.short)
   longkey=$(cat /pg/var/transport/${b}/key.long)
+  echo "SHORT - $shortkey and LONG - $longkey"
   dircheck=$(ls "/pg/var/transport/${b}")
   if [[ "$dircheck" == "" ]]; then
 
