@@ -5,6 +5,9 @@ drives_basic_deploy() {
 # create file folder for sizes
   rm -rf /pg/var/drives/sizes && common_fcreate_silent /pg/var/drives/sizes/
 
+# clears upload list
+  rm -rf /pg/var/transport/*
+
 # pulls key variables
 drives_menu_start_setup
 
