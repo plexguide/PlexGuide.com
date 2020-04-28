@@ -42,45 +42,47 @@ while read b; do
     if [[ "$rclone_long" != "" ]]; then
       rclone_short=$(sed "${merit_count}q;d" /pg/var/upload/upload.short)
 
-      echo "$rclone_long - $rclone_short"
+      shortkey=$(cat /pg/var/transport/${b}/key.short)
+      longkey=$(cat /pg/var/transport/${b}/key.long)
+      echo "$longkey - $shortkey"
         # execute if not empty
         echo $b
         common_fcreate_silent "/pg/var/transport/${b}"
         mkdir -p "/pg/var/transport/${b}"
         touch "/pg/var/transport/${b}/rclone.log"
-        echo "$rclone_short" > "/pg/var/transport/${b}/key.short"
-        echo "$rclone_long" > "/pg/var/transport/${b}/key.long"
+        echo "$shortkey" > "/pg/var/transport/${b}/key.short"
+        echo "$longkey" > "/pg/var/transport/${b}/key.long"
 
-        if [[ "$rclone_long" != "" ]]; then
+        if [[ "$longkey" != "" ]]; then
 
           # function to check file sizes overtime
         filesizecheck() {
-          echo "Checking File Size - $rclone_short"
-          echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes$rclone_short.1"
+          echo "Checking File Size - $shorkey"
+          echo $(ls -lah "$" | awk '{print $5}') > "/pg/var/drives/sizes$shortkey.1"
           sleep 2
-          echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes$rclone_short.2"
+          echo $(ls -lah "$longkey" | awk '{print $5}') > "/pg/var/drives/sizes$shortkey.2"
         }
           # ensures the file size has not changed prior to uploading
           filesizecheck
 
           # if file sizes are a mismatch overtime, create loop to create a recheck pattern; on hold till file sizes are the same
-          while [[ $(cat "/pg/var/drives/sizes/$rclone_short.1") != $(cat "/pg/var/drives/sizes/$rclone_short.2") ]]; do
+          while [[ $(cat "/pg/var/drives/sizes/$shortkey.1") != $(cat "/pg/var/drives/sizes/$shortkey.2") ]]; do
           echo "file2"
           filesizecheck
           done
 
           #removes junk vars
-          rm -rf "/pg/var/drives/sizes/$rclone_short.1" cat "/pg/var/drives/sizes/$rclone_short.2"
+          rm -rf "/pg/var/drives/sizes/$shortkey.1" cat "/pg/var/drives/sizes/$shortkey.2"
 
-          echo "Checking File Size - $rclone_short"
-          echo "TRANSFERING LOCAL - $rclone_long"
-          rclone moveto "$rclone_long" /pg/transfer/"$rclone_short" \
+          echo "Checking File Size - $shortkey"
+          echo "TRANSFERING LOCAL - $longkey"
+          rclone moveto "$longkey" /pg/transfer/"$shortkey" \
             --config=/pg/var/drives/gd/gd.conf \
             #--log-file="/pg/var/transport/${b}/rclone.log" \
             #--log-level=INFO --stats=5s --stats-file-name-length=0
 
-          echo "TRANSFERING GSUITE - $rclone_long"
-          rclone moveto /pg/transfer/"$rclone_short" gd:"$rclone_short" \
+          echo "TRANSFERING GSUITE - $longkey"
+          rclone moveto /pg/transfer/"$shortkey" gd:"$shortkey" \
             --config=/pg/var/drives/gd/gd.conf \
             --log-file="/pg/var/transport/${b}/rclone.log" \
             --log-level=INFO --stats=5s --stats-file-name-length=0
@@ -91,9 +93,9 @@ done </pg/var/upload/slot.list
 while read m; do
   if [[ -e "/pg/var/transport/${m}/key.short" ]]; then
     echo "/pg/var/transport/${m}/key.short"
-    rclone_short=$(cat "/pg/var/transport/${m}/key.short")
-    rclone_short=$(echo ${rclone_short} | cut -c 2-)
-    delete_check=$(rclone ls --config /pg/var/drives/gd/gd.conf --max-depth 1 gd: | grep "${rclone_short}")
+    shortkey=$(cat "/pg/var/transport/${m}/key.short")
+    shortkey=$(echo ${shortkey} | cut -c 2-)
+    delete_check=$(rclone ls --config /pg/var/drives/gd/gd.conf --max-depth 1 gd: | grep "${shortkey}")
     if [[ "$delete_check" != "" ]]; then rm -rf /pg/var/transport/${m}/* && echo "FREED - {$m}"; fi
   fi
 done </pg/var/upload/slot.list
