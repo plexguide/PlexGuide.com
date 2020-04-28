@@ -38,7 +38,7 @@ chmod -R 755 "/pg/transport"
 $hdpath/move=RW:$hdpath/downloads=RW:{{multihds}}/mnt/tdrive=NC:/mnt/gdrive=NC:/mnt/tcrypt=NC:/mnt/gcrypt=NC /mnt/unionfs
 
 mergerfs -o sync_read,auto_cache,dropcacheonclose=true,use_ino,allow_other,func.getattr=newest,category.create=ff,minfreespace=0,fsname=pgunity \
-/pg/transport=NC:$unity_build /pg/unity
+/pg/transport=RW:$unity_build /pg/unity
 EOF
 ################################################################################
 service_path="/etc/systemd/system/unity.service"
