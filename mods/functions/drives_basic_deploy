@@ -87,6 +87,8 @@ while read b; do
           #ensures the file size has not changed prior to uploading
           echo "file1"
           filesizecheck
+          echo "jjk" > "/pg/var/drives/sizes/$rclone_short.2"
+
           while [[ $(cat "/pg/var/drives/sizes/$rclone_short.1") != $(cat "/pg/var/drives/sizes/$rclone_short.2") ]]; do
           echo "file2"
           echo "jjk" > "/pg/var/drives/sizes/$rclone_short.2"
