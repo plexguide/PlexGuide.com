@@ -2,6 +2,9 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_basic_deploy() {
 
+# create file folder for sizes
+  rm -rf /pg/var/drives/sizes && common_fcreate_silent /pg/var/drives/sizes/
+
 # pulls key variables
 drives_menu_start_setup
 
@@ -46,7 +49,6 @@ echo "$(find /pg/complete/$z -type f -printf "\n%AT %p" | awk '{print $2}' | tai
     done <"$path_upload"/upload.long
 done <"$path_upload"/program.list
 
-echo "TESTING"
 echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
 
 # transport process
@@ -76,6 +78,23 @@ while read b; do
 
         if [[ "$rclone_long" != "" ]]; then
 
+        filesizecheck() {
+          echo "Checking File Size - $rclone_short"
+          echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes/$rclone_short.1"
+          sleep 2
+          echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes/$rclone_short.2"
+        }
+          #ensures the file size has not changed prior to uploading
+          echo "file1"
+          filesizecheck
+          while [[ $(cat "/pg/var/drives/sizes/$rclone_short.1") != $(cat "/pg/var/drives/sizes/$rclone_short.2") ]]; do
+          echo "file2"
+          filesizecheck
+          done
+          #removes jnk vars
+          rm -rf "/pg/var/drives/sizes/$rclone_short.1" cat "/pg/var/drives/sizes/$rclone_short.2"
+
+          echo "Checking File Size - $rclone_short"
           echo "TRANSFERING LOCAL - $rclone_long"
           rclone moveto "$rclone_long" /pg/transfer/"$rclone_short" \
             --config=/pg/var/drives/gd/gd.conf \
