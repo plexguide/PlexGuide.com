@@ -78,13 +78,14 @@ while read b; do
 
         if [[ "$rclone_long" != "" ]]; then
 
+          # function to check file sizes overtime
         filesizecheck() {
           echo "Checking File Size - $rclone_short"
           echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes/$rclone_short.1"
           sleep 2
           echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes/$rclone_short.2"
         }
-          #ensures the file size has not changed prior to uploading
+          # ensures the file size has not changed prior to uploading
           filesizecheck
 
           # if file sizes are a mismatch overtime, create loop to create a recheck pattern; on hold till file sizes are the same
