@@ -30,8 +30,9 @@ echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
 merit_count=0
 while read b; do
   echo "TEST2 - ${b}"
+  shortkey=$(cat /pg/var/transport/${b}/key.short)
+  longkey=$(cat /pg/var/transport/${b}/key.long)
   dircheck=$(ls "/pg/var/transport/${b}")
-
   if [[ "$dircheck" == "" ]]; then
 
     # moves along the merit list
@@ -42,8 +43,6 @@ while read b; do
     if [[ "$rclone_long" != "" ]]; then
       rclone_short=$(sed "${merit_count}q;d" /pg/var/upload/upload.short)
 
-      shortkey=$(cat /pg/var/transport/${b}/key.short)
-      longkey=$(cat /pg/var/transport/${b}/key.long)
       echo "$longkey - $shortkey"
         # execute if not empty
         echo $b
@@ -57,7 +56,7 @@ while read b; do
 
           # function to check file sizes overtime
         filesizecheck() {
-          echo "Checking File Size - $shorkey"
+          echo "Checking File Size - $shortkey"
           echo $(ls -lah "$" | awk '{print $5}') > "/pg/var/drives/sizes$shortkey.1"
           sleep 2
           echo $(ls -lah "$longkey" | awk '{print $5}') > "/pg/var/drives/sizes$shortkey.2"
