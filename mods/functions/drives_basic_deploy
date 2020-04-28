@@ -33,7 +33,7 @@ echo "$(find /pg/complete/$z -type f -printf "\n%AT %p" | awk '{print $2}' | tai
     done <"$path_upload"/upload.long
 done <"$path_upload"/program.list
 
-echo "$(ls /pg/transport)" > /pg/var/upload/slot.list
+echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
 
 # transport process
 merit_count=0
