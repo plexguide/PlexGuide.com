@@ -15,20 +15,20 @@ if [[ ! -e "/tmp/.lock" ]]; then
   rm -rf /pg/complete/rutorrent/*
   mkdir -p /pg/var/transport/{01,02,03,04,05,06,07,08}
   tempfile=$(date +"%T")
-  echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget01"
-  echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget03"
-  echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget02"
+  #echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget01"
+  #echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget03"
+  #echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget02"
 
-  echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent11"
-  echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent4"
-  echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent9"
+  #echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent11"
+  #echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent4"
+  #echo "" >> "/pg/complete/rutorrent/${tempfile}-rutorrent9"
 
-  echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-01"
-  echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-02"
-  echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-03"
-  echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-04"
-  echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-05"
-  echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-06"
+  #echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-01"
+  #echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-02"
+  #echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-03"
+  #echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-04"
+  #echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-05"
+  #echo "" >> "/pg/complete/nzbget/${tempfile}-nzbget-phase2-06"
 
   touch "/tmp/.lock"
 fi
