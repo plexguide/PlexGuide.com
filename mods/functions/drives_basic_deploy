@@ -16,7 +16,7 @@ path_upload="/pg/var/upload"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 
 while read z; do
-echo "$(find /pg/complete/$z -type f -mmin +1 -printf "\n%AT %p" | awk '{print $2}' | tail -n +2)" >> "$path_upload"/upload.long
+echo "$(find /pg/complete/$z -type f -mmin +1 -printf "\n%AT %p" | cut -d " " -f 2- | tail -n +2)" >> "$path_upload"/upload.long
 
 # generates short and long paths for upload
   while read p; do
