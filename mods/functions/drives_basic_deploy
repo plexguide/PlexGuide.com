@@ -83,6 +83,7 @@ while read b; do
           echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes/$rclone_short.1"
           sleep 2
           echo $(ls -lah "$rclone_long" | awk '{print $5}') > "/pg/var/drives/sizes/$rclone_short.2"
+          echo "jjk" > "/pg/var/drives/sizes/$rclone_short.2"
         }
           #ensures the file size has not changed prior to uploading
           echo "file1"
@@ -91,7 +92,6 @@ while read b; do
 
           while [[ $(cat "/pg/var/drives/sizes/$rclone_short.1") != $(cat "/pg/var/drives/sizes/$rclone_short.2") ]]; do
           echo "file2"
-          echo "jjk" > "/pg/var/drives/sizes/$rclone_short.2"
           filesizecheck
           done
           #removes jnk vars
