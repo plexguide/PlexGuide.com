@@ -68,15 +68,15 @@ while read b; do
       #    filesizecheck
 
           # if file sizes are a mismatch overtime, create loop to create a recheck pattern; on hold till file sizes are the same
-          while [[ $(cat "/pg/var/drives/sizes/$shortkey.1") != $(cat "/pg/var/drives/sizes/$shortkey.2") ]]; do
-          echo "file2"
-          filesizecheck
-          done
+          #while [[ $(cat "/pg/var/drives/sizes/$shortkey.1") != $(cat "/pg/var/drives/sizes/$shortkey.2") ]]; do
+          #echo "file2"
+          #filesizecheck
+          #done
 
           #removes junk vars
           rm -rf "/pg/var/drives/sizes/$shortkey.1" cat "/pg/var/drives/sizes/$shortkey.2"
 
-          echo "TRANSFERING LOCAL - $longkey"
+          echo "TRANSFERING LOCAL - $longkey /pg/transfer$shortkey"
           rclone moveto "$longkey" /pg/transfer"$shortkey" \
             --config=/pg/var/drives/gd/gd.conf \
             #--log-file="/pg/var/transport/${b}/rclone.log" \
