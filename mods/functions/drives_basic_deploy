@@ -2,14 +2,17 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_basic_deploy() {
 
+# pulls key variables
+  drives_menu_start_setup
+
+# move this later and better script prior to transport deployment / this is just temporary to get it going
+# this needs to use the options from the drives menu; removes and builds number based on options
+  transport_path="/pg/var/transport"
+  mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
+
 # create file folder for sizes
   rm -rf /pg/var/drives/sizes && common_fcreate_silent /pg/var/drives/sizes/
-
-# clears upload list
-  rm -rf /pg/var/transport/*
-
-# pulls key variables
-drives_menu_start_setup
+  echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
 
 # declare variables and remove
 path_upload="/pg/var/upload"
@@ -39,8 +42,6 @@ done <"/pg/var/upload/slot.list"
       remove_path="/pg/complete"
           echo "${p#*$remove_path}" >> "$path_upload"/upload.short
   done <"$path_upload"/upload.long
-
-echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
 
 # starts the upload process
 drives_basic_deploy_transporter

@@ -104,11 +104,4 @@ basic_path="/pg/var/drives/basic"
 mkdir -p "$basic_path"
 common_main "$basic_path"/ubasic.threads 8 ubasic_threads
 
-# move this later and better script prior to transport deployment / this is just temporary to get it going
-transport_path="/pg/var/transport"
-mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
-chown 1000:1000 "$transport_path"/{01,02,03,04,05,06,07,08}
-chmod 0775 "$transport_path"/{01,02,03,04,05,06,07,08}
-
-
 }
