@@ -80,7 +80,7 @@ while read m; do
     if [[ "$delete_check" != "" ]]; then rm -rf /pg/var/transport/${m}/* && echo "FREED - {$m}"; fi
   fi
 done </pg/var/upload/slot.list
-
+sleep .5
 # repeat
 drives_basic_deploy
 }
