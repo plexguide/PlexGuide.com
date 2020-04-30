@@ -47,7 +47,7 @@ drives_basic_deploy_transporter
 
 # if completed, then free slot for upload
 while read m; do
-  drives_basic_deploy_slot_check &>/dev/null &
+  drives_basic_deploy_slot_check
 done </pg/var/upload/slot.list
 
 # repeat

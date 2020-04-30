@@ -38,9 +38,6 @@ drives_basic_deploy_transporter() {
               --log-file="/pg/var/transport/${b}/rclone.log" \
               --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
 
-            # ensures to clean up to clear a slot
-            rm -rf /pg/var/transport/${b}/*
-
       fi; fi; fi
   done </pg/var/upload/slot.list
 }
