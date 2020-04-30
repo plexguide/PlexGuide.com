@@ -62,14 +62,8 @@ while read b; do
           #removes junk vars
           rm -rf "/pg/var/drives/sizes/$shortkey.1" cat "/pg/var/drives/sizes/$shortkey.2"
 
-          echo "TRANSFERING LOCAL - $longkey /pg/transfer$shortkey"
-          rclone moveto "$longkey" /pg/transfer"$shortkey" \
-            --config=/pg/var/drives/gd/gd.conf \
-            #--log-file="/pg/var/transport/${b}/rclone.log" \
-            #--log-level=INFO --stats=5s --stats-file-name-length=0
-
           echo "TRANSFERING GSUITE - $longkey"
-          rclone moveto /pg/transfer"$shortkey" gd:"$shortkey" \
+          rclone moveto "$longkey" gd:"$shortkey" \
             --config=/pg/var/drives/gd/gd.conf \
             --log-file="/pg/var/transport/${b}/rclone.log" \
             --log-level=INFO --stats=5s --stats-file-name-length=0
