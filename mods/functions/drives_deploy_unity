@@ -35,11 +35,11 @@ chmod -R 755 "/pg/downloads"
 chown -R 1000:1000 "/pg/transport"
 chmod -R 755 "/pg/transport"
 
-$hdpath/move=RW:$hdpath/downloads=RW:{{multihds}}/mnt/tdrive=NC:/mnt/gdrive=NC:/mnt/tcrypt=NC:/mnt/gcrypt=NC /mnt/unionfs
 
 mergerfs -o sync_read,auto_cache,dropcacheonclose=true,use_ino,allow_other,func.getattr=newest,category.create=ff,minfreespace=0,fsname=pgunity \
-/pg/transport=RW:$unity_build /pg/unity
+/pg/transport=RW:/pg/complete=RW:$unity_build /pg/unity
 EOF
+# $hdpath/move=RW:$hdpath/downloads=RW:{{multihds}}/mnt/tdrive=NC:/mnt/gdrive=NC:/mnt/tcrypt=NC:/mnt/gcrypt=NC /mnt/unionfs
 ################################################################################
 service_path="/etc/systemd/system/unity.service"
 
