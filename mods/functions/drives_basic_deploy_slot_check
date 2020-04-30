@@ -8,5 +8,5 @@ drives_basic_deploy_slot_check() {
     shortkey=$(echo ${shortkey} | cut -c 2-)
     delete_check=$(rclone ls --config /pg/var/drives/gd/gd.conf --max-depth 1 gd: | grep "${shortkey}")
     if [[ "$delete_check" != "" ]]; then rm -rf /pg/var/transport/${m}/* && echo "FREED - {$m}"; fi
-  fi
+  fi &>/dev/null &
 }
