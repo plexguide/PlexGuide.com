@@ -37,7 +37,7 @@ drives_basic_deploy_transporter() {
               --config=/pg/var/drives/gd/gd.conf \
               --log-file="/pg/var/transport/${b}/rclone.log" \
               --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
-
+            sleep 2
       fi; fi; fi
   done </pg/var/upload/slot.list
 }
