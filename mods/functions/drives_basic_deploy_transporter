@@ -10,7 +10,6 @@ drives_basic_deploy_transporter() {
     dircheck=$(ls "/pg/var/transport/${b}")
     if [[ "$dircheck" == "" ]]; then
 
-
       # moves along the merit list
       let "merit_count=merit_count+1"
       echo "merit: $merit_count"
