@@ -24,6 +24,16 @@ while read l; do
 sed -i -e "/$l/d" "$path_upload"/upload.long
 done <"$path_exempt_programs"/exempt.list
 
+# exempt files already uploading
+while read tmp288; do
+  if [[ -e "/pg/var/transport/${tmp288}/key.long" ]]; then
+  echo "exempting $tmp288"
+  tmp999=$(cat /pg/var/transport/${tmp288}/key.long)
+  grep -v "$tmp999" "$path_upload"/upload.long > "$path_upload"/upload.long.tmp
+  mv "$path_upload"/upload.long.tmp > "$path_upload"/upload.long; fi
+  echo $tmp288
+done <"/pg/var/upload/slot.list"
+
 # generates short files
   while read p; do
       remove_path="/pg/complete"
@@ -32,7 +42,7 @@ done <"$path_exempt_programs"/exempt.list
 
 echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
 
-# starts the upload process 
+# starts the upload process
 drives_basic_deploy_transporter
 
 # if completed, then free slot for upload
