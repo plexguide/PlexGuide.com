@@ -1,0 +1,14 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+
+# List programs to exempt from /pg/complete/{name} from uploading
+# You want /pg/complete/tv to upload but not /pg/complete/nzbget to upload
+# because the files are still processing
+################################################################################
+
+drives_deploy_exempt () {
+  path_exempt_programs="/pg/var/upload"; mkdir -p "$path_exempt_programs"
+  # known programs
+  echo "nzbget" > "$path_exempt_programs"/exempt.list
+  echo "rutorrent" >> "$path_exempt_programs"/exempt.list
+}
