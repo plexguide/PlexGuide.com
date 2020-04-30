@@ -13,24 +13,24 @@ drives_menu_start_setup
 
 # declare variables and remove
 path_upload="/pg/var/upload"
+path_exempt_programs="/pg/var/upload"; mkdir -p "$path_exempt_programs"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 
-while read z; do
-echo "$(find /pg/complete/$z -type f -mmin +1 -printf "\n%AT %p" | cut -d " " -f 2- | tail -n +2)" >> "$path_upload"/upload.long
+#exempt file locations
+find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
 
+#drives_deploy_exempt
+while read l; do
+sed -i -e "/$l/d" "$path_upload"/upload.long
+done <"$path_exempt_programs"/exempt.list
 
-
-# generates short and long paths for upload
+# generates short files
   while read p; do
-      remove_path="/pg/complete/$z"
-      valid=$(echo $p | grep $z)
-        if [[ "$valid" != "" ]]; then
-          echo "${p#*$remove_path}" >> "$path_upload"/upload.short; fi
-    done <"$path_upload"/upload.long
-done <"$path_upload"/program.list
+      remove_path="/pg/complete"
+          echo "${p#*$remove_path}" >> "$path_upload"/upload.short
+  done <"$path_upload"/upload.long
 
 echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
-
 # transport process
 merit_count=0
 while read b; do
