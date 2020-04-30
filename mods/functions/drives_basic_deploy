@@ -4,7 +4,6 @@ drives_basic_deploy() {
 
 # pulls key variables
   drives_menu_start_setup
-
 # move this later and better script prior to transport deployment / this is just temporary to get it going
 # this needs to use the options from the drives menu; removes and builds number based on options
   transport_path="/pg/var/transport"
