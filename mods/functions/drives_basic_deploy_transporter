@@ -29,14 +29,18 @@ drives_basic_deploy_transporter() {
           longkey=$(cat /pg/var/transport/${b}/key.long)
           if [[ "$longkey" != "" ]]; then
 
-            #removes junk vars
-            rm -rf "/pg/var/drives/sizes/$shortkey.1" cat "/pg/var/drives/sizes/$shortkey.2"
+            #removes junk vars / may end up tossing
+            #rm -rf "/pg/var/drives/sizes/$shortkey.1" cat "/pg/var/drives/sizes/$shortkey.2"
 
             echo "TRANSFERING GSUITE - $longkey"
             rclone moveto "$longkey" gd:"$shortkey" \
               --config=/pg/var/drives/gd/gd.conf \
               --log-file="/pg/var/transport/${b}/rclone.log" \
               --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+
+            # ensures to clean up to clear a slot
+            rm -rf /pg/var/transport/${b}/*
+
       fi; fi; fi
   done </pg/var/upload/slot.list
 }
