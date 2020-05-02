@@ -15,7 +15,7 @@
         pgrole: 'nzbhydra'
         intport: '5076'
         extport: '5076'
-        image: 'linuxserver/hydra2'
+        image: 'linuxserver/nzbhydra2'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
