@@ -6,10 +6,14 @@
   <a href="https://pgblitz.com/account/upgrades" target="_blank"><img src="https://pgblitz.com/wikipics/logo-donate.png" width="160"/>
 </p>
 
+# VISIT THE NEW GIHTUBE ~ https://github.com/plexguide/PlexGuide.com
+
+## THIS ONE IS OUTDATED
+
 * 📂 [**[Click Here]**](https://goo.gl/7NR3Da) - Google G-Suite (Unlimited Hard Drive Space & Storage)
 * 📂 [**[Click Here]**](https://controlpanel.newshosting.com/signup/index.php?promo=partners&a_aid=5a65169240efd&a_bid=5ecfe99b) - Top Performance NewsHost! - Blitz Members Receive a 58% Discount
 ----
-### **Reference Shortcut -** http://wiki.pgblitz.com | Discord ( !wiki )
+### **Reference Shortcut -** https://plexguide.com/wiki
 ----
 _**Table of Contents**_
 
@@ -68,7 +72,7 @@ In general, it's best to go down the line on the wiki on how to install PGBlitz 
 [**[Click Here]**](https://github.com/PGBlitz/PGBlitz.com/wiki/Common-Issues) for more information!
 
 ## 7. Conclusion
-Well anyways... welcome to the PGBlitz! Visit our forums @ [**https://pgblitz.com/forums**](https://pgblitz.com/forums).
+Well anyways... welcome to the PlexGuide! Visit our forums @ [**https://plexguide.com/forums**](https://plexguide.com/forums).
 
 <p align="right">
 <a href="https://pgblitz.com" target="_blank"><img src="https://github.com/PGBlitz/Assets/blob/master/logos/blitz-small.png?raw=true" width="75"/>
