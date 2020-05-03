@@ -6,10 +6,6 @@
   <a href="https://pgblitz.com/account/upgrades" target="_blank"><img src="https://pgblitz.com/wikipics/logo-donate.png" width="160"/>
 </p>
 
-# VISIT THE NEW GIHTUBE ~ https://github.com/plexguide/PlexGuide.com
-
-## THIS ONE IS OUTDATED
-
 * 📂 [**[Click Here]**](https://goo.gl/7NR3Da) - Google G-Suite (Unlimited Hard Drive Space & Storage)
 * 📂 [**[Click Here]**](https://controlpanel.newshosting.com/signup/index.php?promo=partners&a_aid=5a65169240efd&a_bid=5ecfe99b) - Top Performance NewsHost! - Blitz Members Receive a 58% Discount
 ----
@@ -33,7 +29,7 @@ _**Table of Contents**_
 <p align="center"><b>PGBlitz Introduction Video</b></p>
 
 <p align="center"><kbd><a href="https://youtu.be/8lotdbpsrUE" /a><img src="https://github.com/PGBlitz/Assets/blob/master/ycovers/introv10.png" width="400"></kbd></p>
-<p align="center"><b>PGBlitz Installation Video</b></p>
+<p align="center"><b>PlexGuide Installation Video</b></p>
 
 [**[Click Here]**](https://pgblitz.com/threads/plexguide-install-instructions.243/) for installation instructions to start the process
 
@@ -47,33 +43,33 @@ _**Table of Contents**_
 ## 3. Functional Use
 
 1. Deploys multiple programs/app and functional within 10 - 30 seconds
-1. Deploy PGBlitz on a remote machine, local machine, VPS, or virtual machines
-1. Deploy PGBlitz utilizing Google's GSuite for unlimited space or through the solo or multiple HD editions
+1. Deploy PlexGuide on a remote machine, local machine, VPS, or virtual machines
+1. Deploy PlexGuide utilizing Google's GSuite for unlimited space or through the solo or multiple HD editions
 1. Deploys a Reverse Proxy (Traefik) so you can obtain https:// certificates on all your containers
 1. Backup and Restore data through your Google Drive
 1. Aligns data and ports for efficiency
 1. Deploys with a simple installer and a GUI like interface (commands do not have to be typed out)
 
 ## 4. Testimonials
-<p align="center"><kbd><img src="https://pgblitz.com/wikipics/pg-assistyou.gif" width="400""></kbd></p>
+<p align="center"><kbd><img src="https://plexguide.com/wikipics/pg-assistyou.gif" width="400""></kbd></p>
 
-[**Dexxa:**](https://pgblitz.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install Plex and link Plex to Google Drive, when i just knew how to install Plex on its on, i tried many ways to mount Google Drive to my Plex and couldn't get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
+[**Dexxa:**](https://plexguide.com/threads/cant-install-plex-guide.1005/#post-5724) Cant believe how it easy it was to install Plex and link Plex to Google Drive, when i just knew how to install Plex on its on, i tried many ways to mount Google Drive to my Plex and couldn't get it to work, but this did it for me in minutes, I'll be using this script from now on, on all my servers, thank you.
 
-[**Cyb3rGh05t:**](https://pgblitz.com/threads/thank-you-pg-team.942/) hi PGBlitz Team, just want to say thank you to the PGBlitz Team :) you did an amazing job:) Everything is really easy to setup an the interface is also very nice :) Thanks for all the hard work an all the support :) you guys rock :) .Keep up that good work. looking further for new features on PGBlitz :) thanks :)
+[**Cyb3rGh05t:**](https://plexguide.com/threads/thank-you-pg-team.942/) hi PGBlitz Team, just want to say thank you to the PGBlitz Team :) you did an amazing job:) Everything is really easy to setup an the interface is also very nice :) Thanks for all the hard work an all the support :) you guys rock :) .Keep up that good work. looking further for new features on PGBlitz :) thanks :)
 
 ## 5. Recommended Reading
 
 In general, it's best to go down the line on the wiki on how to install PGBlitz and run through the steps, but one major goal is to provide a list of reading on some basic fundamentals; which will ensure better execution.
 
-[**[Click Here]**](https://github.com/PGBlitz/PGBlitz.com/wiki/Pre-Reading) to view the list!
+[**[Click Here]**](https://github.com/plexguide/PlexGuide.com/wiki/Pre-Reading) to view the list!
 
 ## 6. Having Issues?
 
-[**[Click Here]**](https://github.com/PGBlitz/PGBlitz.com/wiki/Common-Issues) for more information!
+[**[Click Here]**](https://github.com/plexguide/PlexGuide.com/wiki/Common-Issues) for more information!
 
 ## 7. Conclusion
 Well anyways... welcome to the PlexGuide! Visit our forums @ [**https://plexguide.com/forums**](https://plexguide.com/forums).
 
 <p align="right">
-<a href="https://pgblitz.com" target="_blank"><img src="https://github.com/PGBlitz/Assets/blob/master/logos/blitz-small.png?raw=true" width="75"/>
+<a href="https://plexguide.com" target="_blank"><img src="https://github.com/PGBlitz/Assets/blob/master/logos/blitz-small.png?raw=true" width="75"/>
 </p>
