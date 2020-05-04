@@ -34,7 +34,7 @@ while read tmp288; do
   tmp999=$(cat /pg/var/transport/${tmp288}/key.long)
   grep -v "$tmp999" "$path_upload"/upload.long > "$path_upload"/upload.long.tmp
   mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long; fi
-  echo $tmp288
+  # echo $tmp288
 done <"/pg/var/upload/slot.list"
 
 # generates short files
@@ -45,7 +45,9 @@ done <"/pg/var/upload/slot.list"
 
 # loops if nothing is to upload
 info_check=$(cat "$path_upload"/upload.long)
-if [[ "$info_check" == "" ]]; then drives_basic_deploy && exit; fi 
+if [[ "$info_check" == "" ]]; then
+sleep 1
+drives_basic_deploy && exit; fi
 
 # starts the upload process
 drives_basic_deploy_transporter
