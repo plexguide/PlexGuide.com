@@ -9,7 +9,7 @@ drives_basic_deploy_transporter() {
 
       # moves along the merit list
       let "merit_count=merit_count+1"
-      echo "merit: $merit_count"
+      #echo "merit: $merit_count"
       rclone_long=$(sed "${merit_count}q;d" /pg/var/upload/upload.long)
 
       if [[ "$rclone_long" != "" ]]; then
