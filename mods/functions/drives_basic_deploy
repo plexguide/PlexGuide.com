@@ -43,6 +43,10 @@ done <"/pg/var/upload/slot.list"
           echo "${p#*$remove_path}" >> "$path_upload"/upload.short
   done <"$path_upload"/upload.long
 
+# loops if nothing is to upload
+info_check=$(cat "$path_upload"/upload.long)
+if [[ "$info_check" == "" ]]; then drives_basic_deploy && exit; fi 
+
 # starts the upload process
 drives_basic_deploy_transporter
 
@@ -52,5 +56,5 @@ while read m; do
 done </pg/var/upload/slot.list
 
 # repeat
-drives_basic_deploy
+drives_basic_deploy && exit
 }
