@@ -53,10 +53,10 @@ if [[ "$rclone_long" != "" ]]; then
 
 while read b; do
 
-  #if [[ ! -e "/pg/var/transport/${tmp288}/key.long" ]]; then
-  #  quickcheck=$(cat /pg/var/transport/${b}/key.long)
-  #  if [[ "$quickcheck" == "" ]]; then
-  #    rm -rf /pg/var/transport/${b}/*; fi; fi 
+  if [[ ! -e "/pg/var/transport/${tmp288}/key.long" ]]; then
+    quickcheck=$(cat /pg/var/transport/${b}/key.long)
+    if [[ "$quickcheck" == "" ]]; then
+      rm -rf /pg/var/transport/${b}/*; fi; fi 
 
   if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
     let "merit_count=merit_count+1"
