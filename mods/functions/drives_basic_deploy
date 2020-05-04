@@ -52,6 +52,11 @@ if [[ "$rclone_long" != "" ]]; then
   drives_basic_deploy && exit; fi
 
 while read b; do
+
+  quickcheck=$(cat /pg/var/transport/${b}/key.long)
+  if [[ "$quickcheck" == "" ]]; then
+    rm -rf /pg/var/transport/${b}/*; fi
+
   if [[ ! -e "/pg/var/transport/${tmp288}/key.long" ]]; then
     let "merit_count=merit_count+1"
     sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
@@ -71,8 +76,6 @@ while read b; do
       --config=/pg/var/drives/gd/gd.conf \
       --log-file="/pg/var/transport/${b}/rclone.log" \
       --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
-    else
-      rm -rf /pg/var/transport/${b}/*
     fi
     sleep .5
 
