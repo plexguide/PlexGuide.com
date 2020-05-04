@@ -69,8 +69,6 @@ while read b; do
 done <"$path_upload"/slot.list
 
 echo "FLAG 1"
-# starts the upload process
-drives_basic_deploy_transporter
 
 # if completed, then free slot for upload
 while read m; do
