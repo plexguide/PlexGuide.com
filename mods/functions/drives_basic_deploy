@@ -71,7 +71,7 @@ while read b; do
       --config=/pg/var/drives/gd/gd.conf \
       --log-file="/pg/var/transport/${b}/rclone.log" \
       --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
-    if 
+    fi
     sleep .5
 
 done <"$path_upload"/slot.list
