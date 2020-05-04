@@ -12,6 +12,7 @@ drives_basic_deploy() {
 # create file folder for sizes
   rm -rf /pg/var/drives/sizes && common_fcreate_silent /pg/var/drives/sizes/
   echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
+  rm -rf "/pg/var/upload/slot2.list" && cp "/pg/var/upload/slot.list" "/pg/var/upload/slot2.list"
 
 # declare variables and remove
 path_upload="/pg/var/upload"
@@ -33,9 +34,12 @@ while read tmp288; do
   echo "exempting $tmp288"
   tmp999=$(cat /pg/var/transport/${tmp288}/key.long)
   grep -v "$tmp999" "$path_upload"/upload.long > "$path_upload"/upload.long.tmp
-  mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long; fi
+  mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long
+
+  grep -v "$tmp288" "$path_upload"/slot2.list > "$path_upload"/slot2.list.tmp
+  mv "$path_upload"/slot2.list.tmp "$path_upload"/slot2.list; fi
   # echo $tmp288
-done <"/pg/var/upload/slot.list"
+done <"$path_upload"/slot.list
 
 # generates short files
   while read p; do
