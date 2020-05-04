@@ -4,8 +4,8 @@ drives_basic_deploy_transporter() {
 
   # transport process
   merit_count=0
-
   while read b; do
+    echo "FLAG 2 - $b"
     shortkey="" && longkey=""
     if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
 

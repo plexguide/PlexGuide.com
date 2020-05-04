@@ -51,6 +51,7 @@ if [[ "$info_check" == "" ]]; then
 sleep 1
 drives_basic_deploy && exit; fi
 
+echo "FLAG 1"
 # starts the upload process
 drives_basic_deploy_transporter
 
