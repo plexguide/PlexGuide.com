@@ -34,8 +34,8 @@ drives_basic_deploy_transporter() {
 
           # skip if rclone log exist due to it uploading
           if [[ -e "/pg/var/transport/${b}/rclone.log" ]]; then
-            
-          if [[ "" != "$longkey" ]]; then
+
+          if [[ "" != $(cat "$longkey") ]]; then
             echo "TRANSFERING GSUITE - $longkey"
             rclone moveto "$longkey" gd:"$shortkey" \
               --config=/pg/var/drives/gd/gd.conf \
