@@ -71,6 +71,8 @@ while read b; do
       --config=/pg/var/drives/gd/gd.conf \
       --log-file="/pg/var/transport/${b}/rclone.log" \
       --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+    else
+      rm -rf /pg/var/transport/${b}/*
     fi
     sleep .5
 
