@@ -32,16 +32,13 @@ drives_basic_deploy_transporter() {
 
           echo "SLOT - $b - SHORT - $shortkey and LONG - $longkey"
 
-          # skip if rclone log exist due to it uploading
-          if [[ -e "/pg/var/transport/${b}/rclone.log" ]]; then
-
-          if [[ ! -e "$longkey" ]]; then
+          if [[ ! -e "$longkey" && ! -e "/pg/var/transport/${b}/rclone.log" ]]; then
             echo "TRANSFERING GSUITE - $longkey"
             rclone moveto "$longkey" gd:"$shortkey" \
               --config=/pg/var/drives/gd/gd.conf \
               --log-file="/pg/var/transport/${b}/rclone.log" \
               --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
-      fi; fi; fi; fi
+      fi; fi; fi
       # prevents overwhelming the system
       sleep .5
   done </pg/var/upload/slot.list
