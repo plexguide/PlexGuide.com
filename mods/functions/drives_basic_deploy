@@ -27,6 +27,7 @@ while read l; do
 sed -i -e "/$l/d" "$path_upload"/upload.long
 done <"$path_exempt_programs"/exempt.list
 
+echo "FLAG 0"
 # exempt files already uploading
 rm -rf "$path_upload"/left.upload && touch "$path_upload"/left.upload
 while read tmp288; do
@@ -36,6 +37,7 @@ while read tmp288; do
   mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long; else
   echo "$tmp288" >> "$path_upload"/left.upload
   fi
+  echo "FLAG .5 - $tmp288"
   # echo $tmp288
 done <"$path_upload"/slot.list
 
