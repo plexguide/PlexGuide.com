@@ -19,7 +19,9 @@ path_exempt_programs="/pg/var/upload"; mkdir -p "$path_exempt_programs"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 
 #exempt file locations
-find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
+# find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
+find /pg/complete/ -type f -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
+
 
 #drives_deploy_exempt
 while read l; do
