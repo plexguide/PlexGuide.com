@@ -31,10 +31,9 @@ done <"$path_exempt_programs"/exempt.list
 rm -rf "$path_upload"/left.upload && touch "$path_upload"/left.upload
 while read tmp288; do
   if [[ -e "/pg/var/transport/${tmp288}/key.long" ]]; then
-  echo "exempting $tmp288"
   tmp999=$(cat /pg/var/transport/${tmp288}/key.long)
   grep -v "$tmp999" "$path_upload"/upload.long > "$path_upload"/upload.long.tmp
-  mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long; else 
+  mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long; else
   echo "$tmp288" >> "$path_upload"/left.upload
   fi
   # echo $tmp288

@@ -28,11 +28,7 @@ drives_basic_deploy_transporter() {
           longkey=$(cat /pg/var/transport/${b}/key.long)
           echo "SLOT - $b - SHORT"; fi
 
-      if [[ ! -e "$shortkey" && ! -e "/pg/var/transport/${b}/rclone.log" ]]; then
           drives_basic_deploy_transporter_execute; fi
-
-      # prevents overwhelming the system
-      sleep .5
-    fi
-  done </pg/var/upload/slot.list
+          sleep .5
+  done </pg/var/upload/left.upload
 }
