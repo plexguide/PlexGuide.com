@@ -7,7 +7,6 @@ drives_basic_deploy_slot_check() {
     #shortkey=$(cat "/pg/var/transport/${m}/key.short")
     #shortkey=$(echo ${shortkey} | cut -c 2-)
     # delete_check=$(rclone ls --config /pg/var/drives/gd/gd.conf --max-depth 1 gd: | grep "${shortkey}")
-    echo "CAT 03"
     delete_check=$(cat /pg/var/transport/${m}/key.long)
     if [[ "$delete_check" != "" ]]; then rm -rf /pg/var/transport/${m}/* && echo "FREED - {$m}"; fi
   fi
