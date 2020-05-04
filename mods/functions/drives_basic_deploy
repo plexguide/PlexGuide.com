@@ -64,8 +64,16 @@ while read b; do
 
     shortkey=$(cat /pg/var/transport/${b}/key.short)
     longkey=$(cat /pg/var/transport/${b}/key.long)
-    drives_basic_deploy_transporter_execute
+
+    if [[ "$shortkey" != "" || "$longkey" != "" ]]; then
+    echo "TRANSFERING GSUITE - $longkey"
+    rclone moveto "$longkey" gd:"$shortkey" \
+      --config=/pg/var/drives/gd/gd.conf \
+      --log-file="/pg/var/transport/${b}/rclone.log" \
+      --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+    if 
     sleep .5
+
 done <"$path_upload"/slot.list
 
 echo "FLAG 1"

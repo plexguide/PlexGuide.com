@@ -1,9 +1,0 @@
-#!/bin/bash
-############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-drives_basic_deploy_transporter_execute() {
-echo "TRANSFERING GSUITE - $longkey"
-rclone moveto "$longkey" gd:"$shortkey" \
-  --config=/pg/var/drives/gd/gd.conf \
-  --log-file="/pg/var/transport/${b}/rclone.log" \
-  --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
-}
