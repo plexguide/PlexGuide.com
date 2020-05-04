@@ -53,16 +53,17 @@ if [[ "$rclone_long" != "" ]]; then
 
 while read b; do
 
-  quickcheck=$(cat /pg/var/transport/${b}/key.long)
-  if [[ "$quickcheck" == "" ]]; then
-    rm -rf /pg/var/transport/${b}/*; fi
+  #if [[ ! -e "/pg/var/transport/${tmp288}/key.long" ]]; then
+  #  quickcheck=$(cat /pg/var/transport/${b}/key.long)
+  #  if [[ "$quickcheck" == "" ]]; then
+  #    rm -rf /pg/var/transport/${b}/*; fi; fi 
 
-  if [[ ! -e "/pg/var/transport/${tmp288}/key.long" ]]; then
+  if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
     let "merit_count=merit_count+1"
     sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
     sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
-    echo "$tmp288" >> "$path_upload"/left.upload; fi
-    echo "FLAG .5 - $tmp288"
+    echo "$b" >> "$path_upload"/left.upload; fi
+    echo "FLAG .5 - $b"
 
     common_fcreate_silent "/pg/var/transport/${b}"
     mkdir -p "/pg/var/transport/${b}"
