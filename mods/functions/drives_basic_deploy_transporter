@@ -30,5 +30,5 @@ drives_basic_deploy_transporter() {
 
           drives_basic_deploy_transporter_execute; fi
           sleep .5
-  done </pg/var/upload/left.upload
+  done <"$path_upload"/left.upload
 }
