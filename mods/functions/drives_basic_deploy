@@ -31,6 +31,7 @@ done <"$path_exempt_programs"/exempt.list
 while read tmp288; do
   if [[ -e "/pg/var/transport/${tmp288}/key.long" ]]; then
   echo "exempting $tmp288"
+  ECHO "CAT 04"
   tmp999=$(cat /pg/var/transport/${tmp288}/key.long)
   grep -v "$tmp999" "$path_upload"/upload.long > "$path_upload"/upload.long.tmp
   mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long; fi
