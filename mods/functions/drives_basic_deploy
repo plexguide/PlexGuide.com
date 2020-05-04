@@ -51,6 +51,7 @@ done <"$path_upload"/slot.list
 info_check=$(cat "$path_upload"/upload.long)
 if [[ "$info_check" == "" ]]; then
 sleep 1
+echo "FLAG Z"
 drives_basic_deploy && exit; fi
 
 echo "FLAG 1"
