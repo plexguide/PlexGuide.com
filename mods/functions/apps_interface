@@ -11,7 +11,7 @@ fmt -w 79 "/pg/tmp/appstoinstall.list" > "/pg/tmp/appstoinstall.wrap"
 apps_to_install=$(cat /pg/tmp/appstoinstall.wrap)
 
 # If nothing pending installation, display the nothing queued message
-if [[ "$apps_to_install" == "" ]]; then apps_to_install="*** Nothing Apps Queued ***"; fi
+if [[ "$apps_to_install" == "" ]]; then apps_to_install="*** No Apps Queued ***"; fi
 
 # sets up the primary interface
 common_message "🚀 Multi-App Installer | PGX Edition | 📂 App Install ~ $sapp" "
