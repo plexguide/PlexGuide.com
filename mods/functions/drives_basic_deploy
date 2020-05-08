@@ -54,6 +54,7 @@ mkdir -p "$path_upload"/${b}
 
     if [[ "$transport_loop" == "on" ]]; then
       let "merit_count=merit_count+1"
+      touch /pg/var/transport/${b}/key.short
       sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
       sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
       echo "FLAG .5 - $b"; fi
