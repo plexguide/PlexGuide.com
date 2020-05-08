@@ -66,6 +66,15 @@ mkdir -p "$path_upload"/${b}
           shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
           touch /pg/var/transport/${b}/rclone.log
 
+# size check ###################################################################
+          echo 1 > "/pg/var/transport/${b}/check.1"; echo 2 > "/pg/var/transport/${b}/check.2"
+          while [[ $(cat "/pg/var/transport/${b}/check.1") != $(cat "/pg/var/transport/${b}/check.2") || delay != ]]; do
+            wc -c $(cat /pg/var/transport/${b}/key.long) | awk '{print $1}' > /pg/var/transport/${b}/check.1
+            sleep 4
+            wc -c $(cat /pg/var/transport/${b}/key.long) | awk '{print $1}' > /pg/var/transport/${b}/check.2
+          done
+# transfer process #############################################################
+
           echo "TRANSFERING GSUITE - $longkey"
           rclone moveto "$longkey" gd:"$shortkey" \
             --config=/pg/var/drives/gd/gd.conf \
