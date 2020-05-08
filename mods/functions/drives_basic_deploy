@@ -22,6 +22,11 @@ while read rt; do
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
 
+# generates short files ########################################################
+while read p; do
+  echo "${p#*$remove_path}" >> "$path_upload"/upload.short
+done <"$path_upload"/upload.long
+
 # if nothing to upload #########################################################
 if [[ $(cat "$path_upload"/upload.long) == "" ]]; then echo "NOTHING TO UPLOAD"
 sleep 5; drives_basic_deploy && exit; fi
@@ -37,10 +42,6 @@ while read zg; do
   fi
 done <"$path_upload"/slot.list
 
-# generates short files ########################################################
-while read p; do
-  echo "${p#*$remove_path}" >> "$path_upload"/upload.short
-done <"$path_upload"/upload.long
 # before looping, ensures to reset item to fetch from merit list ###############
 merit_count=0
 
