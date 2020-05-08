@@ -61,13 +61,13 @@ transport_loop="off"
             --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
             fi; fi
 
-# prevents overloading #########################################################      
+# prevents overloading #########################################################
       sleep .5
 done <"$path_upload"/slot.list
 
 # conducting checks, file missing; then clear ##################################
 while read zz; do
-  if [[ ! -e "/pg/var/transport/${zz}/key.long" ]]; then delete_check=$(cat /pg/var/transport/${zz}/key.long)
+  if [[ ! -e $(cat "/pg/var/transport/${zz}/key.long") ]]; then delete_check=$(cat /pg/var/transport/${zz}/key.long)
   if [[ ! -e "$delete_check" ]]; then rm -rf "/pg/var/transport/${zz}/*" && echo "FREED - {$zz}"; fi; fi
 done <"$path_upload"/slot.list
 # repeat #######################################################################
