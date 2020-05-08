@@ -72,9 +72,9 @@ mkdir -p "$path_upload"/${b}
             wc -c $(cat /pg/var/transport/${b}/key.long) | awk '{print $1}' > /pg/var/transport/${b}/check.1
             cat /pg/var/transport/${b}/check.1
             sleep 2
-            echo FLAG 1
             wc -c $(cat /pg/var/transport/${b}/key.long) | awk '{print $1}' > /pg/var/transport/${b}/check.2
             cat /pg/var/transport/${b}/check.2
+            sleep 2
           done
 # transfer process #############################################################
 
