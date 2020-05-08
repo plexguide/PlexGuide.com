@@ -68,7 +68,7 @@ done <"$path_upload"/slot.list
 
 # conducting checks, file missing; then clear ##################################
 while read zz; do
-  if [[ ! -e "/pg/var/transport/${zz}/key.long" ]]
+  if [[ ! -e "/pg/var/transport/${zz}/key.long" ]]; then
   delete_check=$(cat /pg/var/transport/${zz}/key.long)
   if [[ ! -e "$delete_check" ]]; then
     rm -rf /pg/var/transport/${zz}/* && echo "FREED - {$zz}"; fi; fi
