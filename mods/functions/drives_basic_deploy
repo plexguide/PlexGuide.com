@@ -69,10 +69,10 @@ mkdir -p "$path_upload"/${b}
 # size check ###################################################################
           echo 1 > "/pg/var/transport/${b}/check.1"; echo 2 > "/pg/var/transport/${b}/check.2"
           while [[ $(cat "/pg/var/transport/${b}/check.1") != $(cat "/pg/var/transport/${b}/check.2") ]]; do
-            wc -c $(cat /pg/var/transport/${b}/key.long) | awk '{print $1}' > /pg/var/transport/${b}/check.1
+            wc -c $(cat "/pg/var/transport/${b}/key.long") | awk '{print $1}' > /pg/var/transport/${b}/check.1
             cat /pg/var/transport/${b}/check.1
             sleep 2
-            wc -c $(cat /pg/var/transport/${b}/key.long) | awk '{print $1}' > /pg/var/transport/${b}/check.2
+            wc -c $(cat "/pg/var/transport/${b}/key.long") | awk '{print $1}' > /pg/var/transport/${b}/check.2
             cat /pg/var/transport/${b}/check.2
             sleep 2
           done
