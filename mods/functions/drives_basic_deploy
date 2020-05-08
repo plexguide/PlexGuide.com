@@ -29,7 +29,7 @@ sleep 5; drives_basic_deploy && exit; fi
 # exempt items from list #######################################################
 while read zg; do
   if [[ -e "/pg/var/transport/$zg/rclone.log" ]]; then
-    removeitems=$(cat /pg/var/transport/$zg/upload.long)
+    removeitems=$(cat /pg/var/transport/${zg}/key.long)
     if [[ "$removeitems" != "" ]]; then
     sed -i -e "/$removeitems/d" "$path_upload"/upload.long; fi; fi
 done <"$path_upload"/slot.list
