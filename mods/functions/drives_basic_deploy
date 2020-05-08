@@ -10,14 +10,18 @@ drives_basic_deploy() {
   echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
 
 # declare variables and remove clutter #########################################
-  path_upload="/pg/var/upload"; remove_path="/pg/complete"; mkdir -p "$path_exempt_programs"
+  path_upload="/pg/var/upload"; remove_path="/pg/complete"
 
 # creates sorted merit list ####################################################
 # find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
   mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
   find /pg/complete/ -type f -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
 
-# exempt items from list ######################################################
+# if nothing to upload #########################################################
+if [[ $(cat "$path_upload"/upload.long = "" ) ]]; then echo "NOTHING TO UPLOAD"
+sleep 5; drives_basic_deploy && exit
+
+# exempt items from list #######################################################
     while read zg; do
     if [[ -e "/pg/var/transport/$zg/rclone.log" ]]; then
       removeitems=$(cat /pg/var/transport/$zg/upload.long)
@@ -29,58 +33,45 @@ drives_basic_deploy() {
   while read p; do
     remove_path="/pg/complete" && echo "${p#*$remove_path}" >> "$path_upload"/upload.short
   done <"$path_upload"/upload.long
-################################################################################
+# before looping, ensures to reset item to fetch from merit list ###############
+merit=0
 
-# moves along the merit list
-echo "merit: $merit_count"
-
-rclone_long=$(sed "${merit_count}q;d" /pg/var/upload/upload.long)
-if [[ "$rclone_long" != "" ]]; then
-  rclone_short=$(sed "${merit_count}q;d" /pg/var/upload/upload.short); fi
-
-  # loops if nothing is to upload
-  info_check=$(cat "$path_upload"/upload.long)
-  if [[ "$info_check" == "" ]]; then
-  sleep 1
-  echo "FLAG Z"
-  drives_basic_deploy && exit; fi
-
+# start looping through slot folders ###########################################
 while read b; do
+transport_loop="off"
 
   if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
-    quickcheck=$(cat /pg/var/transport/${b}/key.long)
+    quickcheck=$(cat /pg/var/transport/${b}/key.long) && transport_loop="on"
     if [[ "$quickcheck" == "" ]]; then
-      rm -rf /pg/var/transport/${b}/*; fi; fi
+      rm -rf /pg/var/transport/${b}/* && transport_loop="off"; fi; fi
 
-  if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
+  if [[ "$transport_loop" == "on" ]]; then
     let "merit_count=merit_count+1"
     sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
     sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
-    echo "$b" >> "$path_upload"/left.upload; fi
     echo "FLAG .5 - $b"
-
-    common_fcreate_silent "/pg/var/transport/${b}"
-    mkdir -p "/pg/var/transport/${b}"
 
     shortkey=$(cat /pg/var/transport/${b}/key.short)
     longkey=$(cat /pg/var/transport/${b}/key.long)
+    touch /pg/var/transport/${b}/rclone.log
 
-    if [[ "$shortkey" != "" || "$longkey" != "" ]]; then
-    echo "TRANSFERING GSUITE - $longkey"
-    rclone moveto "$longkey" gd:"$shortkey" \
-      --config=/pg/var/drives/gd/gd.conf \
-      --log-file="/pg/var/transport/${b}/rclone.log" \
-      --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+      if [[ "$shortkey" != "" || "$longkey" != "" ]]; then
+      echo "TRANSFERING GSUITE - $longkey"
+      rclone moveto "$longkey" gd:"$shortkey" \
+        --config=/pg/var/drives/gd/gd.conf \
+        --log-file="/pg/var/transport/${b}/rclone.log" \
+        --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+      fi
     fi
     sleep .5
-
 done <"$path_upload"/slot.list
 
 # conducting checks, file missing; then clear ##################################
 while read zz; do
+  if [[ ! -e "/pg/var/transport/${zz}/key.long" ]]
   delete_check=$(cat /pg/var/transport/${zz}/key.long)
   if [[ ! -e "$delete_check" ]]; then
-    rm -rf /pg/var/transport/${zz}/* && echo "FREED - {$zz}"; fi
+    rm -rf /pg/var/transport/${zz}/* && echo "FREED - {$zz}"; fi; fi
 done <"$path_upload"/slot.list
 
 # repeat #######################################################################
