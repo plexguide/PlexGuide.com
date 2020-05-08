@@ -33,7 +33,8 @@ while read zg; do
     if [[ "$removeitems" != "" ]]; then
       grep -v "$removeitems" "$path_upload"/upload.long > "$path_upload"/upload.long.tmp
       mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long
-    #sed -i -e "/$removeitems/d" "$path_upload"/upload.long; fi; fi
+    fi
+  fi
 done <"$path_upload"/slot.list
 
 # generates short files ########################################################
