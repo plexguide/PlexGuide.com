@@ -6,16 +6,16 @@ drives_basic_deploy() {
 transport_path="/pg/var/transport"
 mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
 
+# declare variables and remove clutter #########################################
+path_upload="/pg/var/upload"; remove_path="/pg/complete"
+
 # stores number of upload slots into a stored variable #########################
-echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
+echo "$(ls /pg/var/transport)" > "$path_upload"/slot.list
 
 # clears folder as a double check if there is no rclone.log ####################
 while read rt; do
   if [[ ! -e "/pg/var/transport/$rt/rclone.log" ]]; then
   rm -rf "/pg/var/transport/${rt}/*" ; fi; done <"$path_upload"/slot.list
-
-# declare variables and remove clutter #########################################
-path_upload="/pg/var/upload"; remove_path="/pg/complete"
 
 # creates sorted merit list ####################################################
 # find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
