@@ -18,7 +18,7 @@ mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 find /pg/complete/ -type f -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
 
 # if nothing to upload #########################################################
-if [[ $(cat "$path_upload"/upload.long = "" ) ]]; then echo "NOTHING TO UPLOAD"
+if [[ $(cat "$path_upload"/upload.long == "" ) ]]; then echo "NOTHING TO UPLOAD"
 sleep 5; drives_basic_deploy && exit; fi
 
 # exempt items from list #######################################################
