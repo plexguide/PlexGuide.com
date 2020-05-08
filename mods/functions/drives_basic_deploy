@@ -2,43 +2,37 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_basic_deploy() {
 
-# pulls key variables
-  drives_menu_start_setup
-# move this later and better script prior to transport deployment / this is just temporary to get it going
-# this needs to use the options from the drives menu; removes and builds number based on options
+# temporary ####################################################################
   transport_path="/pg/var/transport"
   mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
 
-# create file folder for sizes
-  rm -rf /pg/var/drives/sizes && common_fcreate_silent /pg/var/drives/sizes/
+# stores number of upload slots into a stored variable #########################
   echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
 
-# declare variables and remove
-path_upload="/pg/var/upload"; path_exempt_programs="/pg/var/upload"; mkdir -p "$path_exempt_programs"
-mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
+# declare variables and remove clutter #########################################
+  path_upload="/pg/var/upload"; remove_path="/pg/complete"; mkdir -p "$path_exempt_programs"
 
-#exempt file locations
+# creates sorted merit list ####################################################
 # find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
-find /pg/complete/ -type f -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
+  mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
+  find /pg/complete/ -type f -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
 
-# generates short files
+# exempt items from list ######################################################
+    while read zg; do
+    if [[ -e "/pg/var/transport/$zg/rclone.log" ]]; then
+      removeitems=$(cat /pg/var/transport/$zg/upload.long)
+      if [[ "$removeitems" != "" ]]; then
+      sed -i -e "/$removeitems/d" "$path_upload"/upload.long; fi; fi
+  done <"$path_upload"/slot.list
+
+# generates short files ########################################################
   while read p; do
-      remove_path="/pg/complete"
-          echo "${p#*$remove_path}" >> "$path_upload"/upload.short
+    remove_path="/pg/complete" && echo "${p#*$remove_path}" >> "$path_upload"/upload.short
   done <"$path_upload"/upload.long
-
-#drives_deploy_exempt
-while read l; do
-sed -i -e "/$l/d" "$path_upload"/upload.long
-done <"$path_exempt_programs"/exempt.list
-
-echo "FLAG 0"
-# exempt files already uploading
-rm -rf "$path_upload"/left.upload && touch "$path_upload"/left.upload
-rm -rf "$path_upload"/left.upload && touch "$path_upload"/left.upload
+################################################################################
 
 # moves along the merit list
-#echo "merit: $merit_count"
+echo "merit: $merit_count"
 
 rclone_long=$(sed "${merit_count}q;d" /pg/var/upload/upload.long)
 if [[ "$rclone_long" != "" ]]; then
@@ -82,13 +76,13 @@ while read b; do
 
 done <"$path_upload"/slot.list
 
-echo "FLAG 1"
+# conducting checks, file missing; then clear ##################################
+while read zz; do
+  delete_check=$(cat /pg/var/transport/${zz}/key.long)
+  if [[ ! -e "$delete_check" ]]; then
+    rm -rf /pg/var/transport/${zz}/* && echo "FREED - {$zz}"; fi
+done <"$path_upload"/slot.list
 
-# if completed, then free slot for upload
-while read m; do
-  drives_basic_deploy_slot_check
-done </pg/var/upload/slot.list
-
-# repeat
+# repeat #######################################################################
 drives_basic_deploy && exit
 }
