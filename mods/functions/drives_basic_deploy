@@ -39,7 +39,7 @@ while read p; do
   echo "${p#*$remove_path}" >> "$path_upload"/upload.short
 done <"$path_upload"/upload.long
 # before looping, ensures to reset item to fetch from merit list ###############
-merit=0
+merit_count=0
 
 # start looping through slot folders ###########################################
 while read b; do
