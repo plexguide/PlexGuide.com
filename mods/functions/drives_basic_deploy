@@ -43,7 +43,9 @@ merit=0
 
 # start looping through slot folders ###########################################
 while read b; do
+
 transport_loop="off"
+mkdir -p "$path_upload"/${b}
 
   if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then transport_loop="on"
 
