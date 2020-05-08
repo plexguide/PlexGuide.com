@@ -11,7 +11,8 @@ echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
 
 # clears folder as a double check if there is no rclone.log ####################
 while read rt; do
-  if [[ ! -e "/pg/var/transport/$rt/rclone.log" ]]; then rm -rf "/pg/var/transport/${rt}/*" ; fi 
+  if [[ ! -e "/pg/var/transport/$rt/rclone.log" ]]; then
+  rm -rf "/pg/var/transport/${rt}/*" ; fi; done 
 
 # declare variables and remove clutter #########################################
 path_upload="/pg/var/upload"; remove_path="/pg/complete"
