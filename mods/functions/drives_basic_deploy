@@ -9,6 +9,10 @@ mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
 # stores number of upload slots into a stored variable #########################
 echo "$(ls /pg/var/transport)" > /pg/var/upload/slot.list
 
+# clears folder as a double check if there is no rclone.log ####################
+while read rt; do
+  if [[ ! -e "/pg/var/transport/$rt/rclone.log" ]]; then rm -rf "/pg/var/transport/${rt}/*" ; fi 
+
 # declare variables and remove clutter #########################################
 path_upload="/pg/var/upload"; remove_path="/pg/complete"
 
@@ -31,7 +35,7 @@ done <"$path_upload"/slot.list
 
 # generates short files ########################################################
 while read p; do
-  remove_path="/pg/complete" && echo "${p#*$remove_path}" >> "$path_upload"/upload.short
+  echo "${p#*$remove_path}" >> "$path_upload"/upload.short
 done <"$path_upload"/upload.long
 # before looping, ensures to reset item to fetch from merit list ###############
 merit=0
@@ -40,7 +44,7 @@ merit=0
 while read b; do
 transport_loop="off"
 
-  if [[ -e "/pg/var/transport/${b}/key.long" ]]; then transport_loop="on"
+  if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then transport_loop="on"
 
     if [[ "$transport_loop" == "on" ]]; then
       let "merit_count=merit_count+1"
