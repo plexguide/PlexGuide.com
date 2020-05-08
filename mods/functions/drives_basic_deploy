@@ -57,8 +57,8 @@ transport_loop="off"
       rclone moveto "$longkey" gd:"$shortkey" \
         --config=/pg/var/drives/gd/gd.conf \
         --log-file="/pg/var/transport/${b}/rclone.log" \
-        --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &; fi
-  fi
+        --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+      fi; fi
     sleep .5
 done <"$path_upload"/slot.list
 
