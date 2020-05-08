@@ -71,6 +71,7 @@ while read zz; do
      then delete_check=$(cat /pg/var/transport/${zz}/key.long)
   if [[ ! -e "$delete_check" && "$delete_check" != "" ]]; then rm -rf "/pg/var/transport/${zz}/*" && echo "FREED - $zz"; fi; fi
 done <"$path_upload"/slot.list
+echo "LOOP CYCLE"
 # repeat #######################################################################
 drives_basic_deploy && exit
 }
