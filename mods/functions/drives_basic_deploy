@@ -40,26 +40,29 @@ merit=0
 while read b; do
 transport_loop="off"
 
-  if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then quickcheck=$(cat /pg/var/transport/${b}/key.long) && transport_loop="on"
-    if [[ "$quickcheck" == "" ]]; then rm -rf /pg/var/transport/${b}/* && transport_loop="off"; fi; fi
+  if [[ -e "/pg/var/transport/${b}/key.long" ]]; then transport_loop="on"
 
-  if [[ "$transport_loop" == "on" ]]; then
-    let "merit_count=merit_count+1"
-    sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
-    sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
-    echo "FLAG .5 - $b"
+    if [[ "$transport_loop" == "on" ]]; then
+      let "merit_count=merit_count+1"
+      sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
+      sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
+      echo "FLAG .5 - $b"; fi
 
-    shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
-    touch /pg/var/transport/${b}/rclone.log
+    if [[ $(cat "/pg/var/transport/${b}/key.long") == "" ]]; then rm -rf /pg/var/transport/${b}/* && transport_loop="off"; fi
 
-      if [[ "$shortkey" != "" || "$longkey" != "" ]]; then
-      echo "TRANSFERING GSUITE - $longkey"
-      rclone moveto "$longkey" gd:"$shortkey" \
-        --config=/pg/var/drives/gd/gd.conf \
-        --log-file="/pg/var/transport/${b}/rclone.log" \
-        --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
-      fi; fi
-    sleep .5
+        if [[ "$transport_loop" == "on" ]]; then
+          shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
+          touch /pg/var/transport/${b}/rclone.log
+
+          echo "TRANSFERING GSUITE - $longkey"
+          rclone moveto "$longkey" gd:"$shortkey" \
+            --config=/pg/var/drives/gd/gd.conf \
+            --log-file="/pg/var/transport/${b}/rclone.log" \
+            --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+            fi; fi
+
+# prevents overloading #########################################################      
+      sleep .5
 done <"$path_upload"/slot.list
 
 # conducting checks, file missing; then clear ##################################
