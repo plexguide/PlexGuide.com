@@ -5,7 +5,7 @@ drives_basic_upload () {
 drives_menu_start_setup
 
 fmt -w 79 "/pg/var/drives/shared/pg.list" > "/pg/tmp/sdlist.wrap"
-if [[ "$dtokeninfo" == "VALID" ]]; then echo -n "gd" >> /pg/tmp/sdlist.wrap; fi
+if [[ "$gdtokeninfo" == "VALID" ]]; then echo -n "gd" >> /pg/tmp/sdlist.wrap; fi
 sdlist=$(cat /pg/tmp/sdlist.wrap)
 
 common_message "🚀  Drive Select Upload - Management Interface" "
