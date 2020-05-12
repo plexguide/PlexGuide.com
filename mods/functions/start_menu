@@ -4,13 +4,15 @@ start_menu() {
 
 # Call Variables
 edition=$(cat /pg/var/pg.edition)
-serverid=$(cat /pg/var/server.id)
 pgnumber=$(cat /pg/var/pg.number)
+
+common_main /pg/var/drives/gd/gd.clientid NOT-SET serverid
+common_main /pg/var/drives/storage.method READ-ONLY storagemethod
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 READ ONLY Edition | Version: PGX Alpha Build | ID: $serverid
+"🌎 $storage_method | Version: PGX Alpha Build | ID: $serverid"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌵 PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 EOF
