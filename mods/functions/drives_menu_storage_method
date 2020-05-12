@@ -21,10 +21,10 @@ common_number
 
 case $typed in
     1 ) echo "READ-ONLY" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
-    #2 ) echo "BASIC" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
+    2 ) echo "BASIC" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     #3 ) echo "PGBLITZ" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     #4 ) echo "LOCAL" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
-    z ) echo "Drives Basic" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
+    z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
     * ) drives_menu_storage_method && exit ;;
 esac
