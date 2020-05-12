@@ -7,7 +7,7 @@ edition=$(cat /pg/var/pg.edition)
 pgnumber=$(cat /pg/var/pg.number)
 
 common_main /pg/var/server.id NOT-SET serverid
-common_main /pg/var/drives/storage.method READ-ONLY storagemethod
+common_main /pg/var/drives/storage.method READ-ONLY storage_method
 
 tee <<-EOF
 
