@@ -11,7 +11,7 @@ common_message "🚀  Drives - Storage Method" "
 Upload Method
 
 [1] READ-ONLY      | None - Useful for a READ-ONLY Server (2nd PLEX & ETC)
-[2] Drives Basic   | 750GB Daily Cap Upload to Targeted Drive 
+[2] Drives Basic   | 750GB Daily Cap Upload to Targeted Drive
 [3] Drives PGBlitz | NOT READY
 [4] Drives Local   | NOT READY
 ------------------------------------------------------------------------------
@@ -24,7 +24,7 @@ case $typed in
     #2 ) echo "BASIC" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     #3 ) echo "PGBLITZ" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     #4 ) echo "LOCAL" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
-    z ) drives_menu_start && exit ;;
+    z ) echo "Drives Basic" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
     * ) drives_menu_storage_method && exit ;;
 esac
