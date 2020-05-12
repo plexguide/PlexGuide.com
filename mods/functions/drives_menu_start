@@ -68,7 +68,7 @@ case $typed in
     1 ) drives_gdrive_menu && exit ;;
     2 ) drives_share_menu && exit ;;
     3 ) drives_menu_storage_method && exit ;;
-    4 ) exit ;;
+    4 ) drives_basic_upload && exit ;;
     d ) drives_deploy && exit ;;
     D ) drives_deploy && exit ;;
     z ) start_menu && exit ;;
