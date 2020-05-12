@@ -11,7 +11,7 @@ common_message "🚀  Drives - Storage Method" "
 Upload Method
 
 [1] READ-ONLY      | None - Useful for a READ-ONLY Server (2nd PLEX & ETC)
-[2] Drives Basic   | 750GB Daily Cap Upload to Targeted Drive
+[2] Drives Basic   | 750GB Daily Cap Upload to To Target Drive
 [3] Drives PGBlitz | NOT READY
 [4] Drives Local   | NOT READY
 ------------------------------------------------------------------------------
