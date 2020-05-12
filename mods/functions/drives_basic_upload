@@ -6,10 +6,11 @@ drives_menu_start_setup
 
 fmt -w 79 "/pg/var/drives/shared/pg.list" > "/pg/tmp/sdlist.wrap"
 if [[ "$gdtokeninfo" == "VALID" ]]; then echo -n "gd" >> /pg/tmp/sdlist.wrap; fi
+if [[ -e "/pg/var/drives/e.tokens" ]]
 sdlist=$(cat /pg/tmp/sdlist.wrap)
 
 common_message "🚀  Drive Select Upload - Management Interface" "
-💾 NOTE: gd = Google Drive
+💾 NOTE: gd = Google Drive | {name}c <<< equals encrypted drive
 
 $sdlist
 
