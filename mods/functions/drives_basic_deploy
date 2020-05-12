@@ -18,9 +18,16 @@ while read rt; do
   rm -rf "/pg/var/transport/${rt}/*" ; fi; done <"$path_upload"/slot.list
 
 # creates sorted merit list ####################################################
-# find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
+
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
-find /pg/complete/ -type f ! \( -path "/pg/complete/nzbget/*" -o -path "/pg/complete/777/*" \) > "$path_upload"/upload.long
+
+# old ##########################################################################
+# find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
+# find /pg/complete/ -type f -mmin +2 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2
+
+find /pg/complete/ -type f\
+ ! \( -path "/pg/complete/nzbget/*" -o -path "/pg/complete/777/*" \)\
+ -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2  > "$path_upload"/upload.long
 
 # generates short files ########################################################
 while read p; do
