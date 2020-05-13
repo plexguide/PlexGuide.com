@@ -2,8 +2,6 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_basic_deploy() {
 
-
-
 # temporary ####################################################################
 transport_path="/pg/var/transport"
 mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
@@ -87,9 +85,9 @@ mkdir -p "$path_upload"/${b}
           #done
 # transfer process #############################################################
 
-          echo "TRANSFERING GSUITE - $longkey - RClonePath - $rclone_path"
-          rclone moveto "$longkey" $drive_upload:"$shortkey" \
-            --config="$rclone_path"  \
+          echo "TRANSFERING GSUITE - $longkey"
+          rclone moveto "$longkey" gd:"$shortkey" \
+            --config=/pg/var/drives/gd/gd.conf \
             --log-file="/pg/var/transport/${b}/rclone.log" \
             --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
             fi; fi
