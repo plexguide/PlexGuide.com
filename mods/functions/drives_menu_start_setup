@@ -43,6 +43,9 @@ common_main /pg/var/rclone/vfs_read_chunk_size_limit 1024 vfs_read_chunk_size_li
 common_main /pg/var/rclone/vfs_read_chunk_size 64 vfs_read_chunk_size #M - rcs XXXXXXXXXX
 common_main /pg/var/rclone/buffer_size 16 buffer_size #M - bs XXXXXXXXXX
 
+#selected drives
+common_main /pg/var/drives/drive.upload NONE drive_upload
+
 #gdrive Interface
 if [[ "$gpassword1" == "NOT-SET" || "$gpassword2" == "NOT-SET" ]]; then
   gpassdisplay="NOT-SET"; else gpassdisplay="SET"; fi

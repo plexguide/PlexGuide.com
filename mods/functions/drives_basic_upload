@@ -24,6 +24,6 @@ existcheck=$(echo $sdlist | grep "$typed" -w)
   read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
   drives_share_manage; fi
 
-echo $typed > /pg/var/drives/basic.upload
+echo $typed > /pg/var/drives/drive.upload
 drives_menu_start
 }

@@ -42,15 +42,13 @@ esac
 # BASIC MENU ###################################################################
 elif [[ "$storage_method" == "BASIC" ]]; then
 
-common_main /pg/var/drives/basic.upload NONE basic_upload
-
 common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ http://drives.plexguide.com
 ------------------------------------------------------------------------------
 [1] Google Drive        : [$gdtokeninfo]
 [2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]
 [3] Storage Method      : [$storage_method]
-[4] Upload Data To      : [$basic_upload]
+[4] Upload Data To      : [$drive_upload]
 ------------------------------------------------------------------------------
 [D] Deploy Drives       : [$deployed_mode]
 [O] Options
