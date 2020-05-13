@@ -87,7 +87,7 @@ mkdir -p "$path_upload"/${b}
           #done
 # transfer process #############################################################
 
-          echo "TRANSFERING GSUITE - $longkey - RPath - $rclone_path"
+          echo "TRANSFERING GSUITE - $longkey - RPath - $rclone_upload"
           rclone moveto "$longkey" $drive_upload$:"$shortkey" \
             --config="$rclone_upload"  \
             --log-file="/pg/var/transport/${b}/rclone.log" \
