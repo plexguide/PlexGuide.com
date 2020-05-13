@@ -5,14 +5,38 @@ drives_deploy_uploader() {
 drives_menu_start_setup
 
 service_path="/etc/systemd/system/uploader.service"
+script_path="/pg/var/drives/uploader.sh"
 
 if [[ -e "$service_path" ]]; then
 common_header "💾  NOTICE:  Stopping/Disabling OLD Service - Uploader"; sleep 1
 systemctl daemon-reload && systemctl stop uploader && systemctl disable uploader && rm -rf "$service_path"; fi
 
-cat <<- EOF > "$service_path"
+cat <<- EOF > "$script_path"
 source /pg/mods/functions/.master.sh
 drives_basic_deploy
+EOF
+
+cat <<- EOF > "$service_path"
+[Unit]
+Description=Uploader Daemon
+After=multi-user.target
+
+[Service]
+Type=notify
+ExecStart=/pg/var/drives/uploader.sh
+
+ExecStop=/pg/var/drives/uploader.sh
+TimeoutSec=60
+User=0
+Group=0
+Restart=on-abort
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
+
 EOF
 
 common_header "💾  NOTICE:  Starting/Enabling NEW Service - uploader" && sleep 1
