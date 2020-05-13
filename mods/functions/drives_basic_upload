@@ -25,5 +25,10 @@ existcheck=$(echo $sdlist | grep "$typed" -w)
   drives_share_manage; fi
 
 echo $typed > /pg/var/drives/drive.upload
+
+# Prepare Variable Needed to Deploy Service for Upload #########################
+if [[ "$typed" == "gc" || "$typed" == "gd" ]]; then
+echo "/pg/var/drives/gd/gd.conf" > /pg/var/drives/drive.rclone; fi
+
 drives_menu_start
 }
