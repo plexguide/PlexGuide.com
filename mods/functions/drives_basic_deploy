@@ -2,8 +2,7 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 drives_basic_deploy() {
 
-
-
+drives_menu_start_setup
 # temporary ####################################################################
 transport_path="/pg/var/transport"
 mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
