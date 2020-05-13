@@ -27,13 +27,9 @@ After=multi-user.target
 [Service]
 Type=notify
 ExecStart=/pg/var/drives/uploader.sh
-User=1000
-Group=1000
 
 ExecStop=/pg/var/drives/uploader.sh
 TimeoutSec=60
-User=1000
-Group=1000
 Restart=on-abort
 RestartSec=5
 StartLimitInterval=60s
