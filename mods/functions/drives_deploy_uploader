@@ -15,8 +15,6 @@ source /pg/mods/functions/.master.sh
 drives_basic_deploy
 EOF
 
-fusermount -u -q /pg/uploader
-common_fcreate /pg/uploader
 common_header "💾  NOTICE:  Starting/Enabling NEW Service - uploader" && sleep 1
 systemctl daemon-reload && systemctl enable uploader | fmt -w 79 && systemctl restart uploader
 
