@@ -25,5 +25,5 @@ existcheck=$(echo $sdlist | grep "$typed" -w)
   drives_share_manage; fi
 
 echo $typed > /pg/var/drives/basic.upload
-drives_share_menu
+drives_menu_start
 }
