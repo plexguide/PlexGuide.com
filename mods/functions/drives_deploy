@@ -129,8 +129,10 @@ while read p; do
   drives_deploy_mounts $p
 done </pg/tmp/edrives.list
 
-deploy_log_output=$(cat /pg/tmp/deploy.log)
+# ENABLE UPLOADER ##############################################################
+drives_deploy_uploader
 
+deploy_log_output=$(cat /pg/tmp/deploy.log)
 # FINAL OUTPUT MESSAGE #########################################################
 common_header "💾  DEPLOYING:  PG Drives Unity"; sleep 2; drives_deploy_unity
 common_header "💾  DEPLOYED:  PG Drives @ /pg/unity"

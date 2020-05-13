@@ -1,0 +1,24 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_deploy_uploader() {
+
+drives_menu_start_setup
+
+service_path="/etc/systemd/system/uploader.service"
+
+if [[ -e "$service_path" ]]; then
+common_header "💾  NOTICE:  Stopping/Disabling OLD Service - Uploader"; sleep 1
+systemctl daemon-reload && systemctl stop uploader && systemctl disable uploader && rm -rf "$service_path"; fi
+
+cat <<- EOF > "$service_path"
+source /pg/mods/functions/.master.sh
+drives_basic_deploy
+EOF
+
+fusermount -u -q /pg/uploader
+common_fcreate /pg/uploader
+common_header "💾  NOTICE:  Starting/Enabling NEW Service - uploader" && sleep 1
+systemctl daemon-reload && systemctl enable uploader | fmt -w 79 && systemctl restart uploader
+
+common_header "💾  ENABLED: Uploader Service" && sleep 1.5
+}
