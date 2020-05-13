@@ -16,6 +16,9 @@ source /pg/mods/functions/.master.sh
 drives_basic_deploy
 EOF
 
+chown 1000:1000 $script_path
+chmod 0755 $script_path
+
 cat <<- EOF > "$service_path"
 [Unit]
 Description=Uploader Daemon
