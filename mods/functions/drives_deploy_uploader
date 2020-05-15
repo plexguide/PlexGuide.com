@@ -25,10 +25,12 @@ Description=Uploader Daemon
 After=multi-user.target
 
 [Service]
-Type=notify
-ExecStart=/pg/var/drives/uploader.sh
+Type=simple
+User=1000
+Group=10000
+ExecStart=/bin/bash /pg/var/drives/uploader.sh
 
-ExecStop=/pg/var/drives/uploader.sh
+ExecStop=/bin/bash /pg/var/drives/uploader.sh
 TimeoutSec=60
 Restart=on-abort
 RestartSec=5
