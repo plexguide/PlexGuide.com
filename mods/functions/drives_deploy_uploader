@@ -31,10 +31,10 @@ Group=0
 ExecStart=/bin/bash /pg/var/drives/uploader.sh
 
 ExecStop=/bin/bash /pg/var/drives/uploader.sh
-TimeoutSec=60
+TimeoutSec=20
 Restart=on-abort
 RestartSec=5
-StartLimitInterval=60s
+StartLimitInterval=20s
 StartLimitBurst=3
 
 [Install]
