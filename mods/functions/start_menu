@@ -2,6 +2,9 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 start_menu() {
 
+# Need for Tally
+drives_menu_start_setup
+
 # Call Variables
 edition=$(cat /pg/var/pg.edition)
 pgnumber=$(cat /pg/var/pg.number)
@@ -14,7 +17,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 EDITION: $storage_method | Version: PGX Alpha Build | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌵 PG Disk Used Space: $used of $capacity | $percentage Used Capacity
+🌵 Used Space: $used of $capacity | $percentage Used Capacity | Daily Tally Upload: {$tally_total}MB
 EOF
 
   # Displays Second Drive If GCE
