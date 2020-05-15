@@ -108,8 +108,13 @@ while read zz; do
   if [[ -e "/pg/var/transport/${zz}/key.long" ]];
      then delete_check=$(cat /pg/var/transport/${zz}/key.long)
   if [[ ! -e "$delete_check" && "$delete_check" != "" ]]; then
+   # tally size ################################################################
+   mkdir -p /pg/var/drives/size
+   cat /pg/var/transport/${zz}/file.size
+
+   # remove junk contents ######################################################
    rm -rf /pg/var/transport/${zz}/*
-   echo "FREED - $zz"
+   # echo "FREED - $zz"
 fi; fi
 done <"$path_upload"/slot.list
 echo "LOOP CYCLE"
