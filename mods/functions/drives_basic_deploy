@@ -121,9 +121,6 @@ echo "LOOP CYCLE"
 # total tally ##################################################################
 tallynumber=$(paste -sd+ /pg/var/drives/size/size.tally | bc)
 echo $(echo "scale=0;$tallynumber/1073741824" | bc) > /pg/var/drives/size/tally.total
-
-done <"$path_upload"/slot.list
-
 # repeat #######################################################################
 drives_basic_deploy && exit
 }
