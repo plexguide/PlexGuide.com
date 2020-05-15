@@ -99,8 +99,9 @@ mkdir -p "$path_upload"/${b}
             --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
 
           # self delete folder info because file stuck or 403; recycles ########
-          if [[ -e $longkey]]; then
-            rm -rf /pg/var/transport/${b}/* && touch /pg/var/drives/file.stuck; fi
+          if [[ -e "$longkey" ]]; then
+            rm -rf /pg/var/transport/${b}/*
+            touch /pg/var/drives/file.stuck; fi
             fi; fi
 
 # prevents overloading #########################################################
