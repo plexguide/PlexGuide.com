@@ -45,9 +45,9 @@ EOF
   if [ "$ports" == "" ]; then ports="[OPEN] Ports  "
 else ports="[CLOSED] Ports"; fi
 
-  if [[ ! -e "/pg/var/drives/file.stuck" ]]; then 
+  if [[ ! -e "/pg/var/drives/file.stuck" ]]; then
   $file_warning="WARNING: Files Stuck / Google 403 ~ plexguide.com/wiki/error107
-  "
+  "; fi
 
 start_quotes
 
