@@ -17,7 +17,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 EDITION: $storage_method | Version: PGX Alpha Build | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌵 Used Space: $used of $capacity | $percentage Used Capacity | Daily Tally Upload: ${tally_total}MB
+🌵 Used Space: $used of $capacity | $percentage Used Capacity | Daily Tally Upload: ${tally_total} MB
 EOF
 
   # Displays Second Drive If GCE
