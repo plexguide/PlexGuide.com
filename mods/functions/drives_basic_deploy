@@ -86,6 +86,11 @@ mkdir -p "$path_upload"/${b}
           #done
 # transfer process #############################################################
 
+          # outputs size of the file for tally #################################
+          if [[ ! -e "/pg/var/transport/${b}/file.size" ]]; then
+          stat -c %s "$longkey" > /pg/var/transport/${b}/file.size; fi
+
+          # transfer process ###################################################
           echo "TRANSFERING GSUITE - $longkey - RPath - $rclone_upload"
           echo "Upload Drive - $drive_upload"
           rclone moveto "$longkey" $drive_upload:"$shortkey" \
