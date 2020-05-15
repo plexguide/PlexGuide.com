@@ -18,7 +18,7 @@ common_main /pg/var/drives/temp.token NOT-SET temp_token
 common_main /pg/tmp/rclone_path NOT-SET temp_token
 
 #tally variables
-common_main /pg/var/drives/size/size.tally 0 size.tally
+common_main /pg/var/drives/size/size.tally 0 size_tally
 common_main /pg/var/drives/size/tally.total 0 tally_total
 
 #primary variables
