@@ -97,6 +97,10 @@ mkdir -p "$path_upload"/${b}
             --config="$rclone_upload"  \
             --log-file="/pg/var/transport/${b}/rclone.log" \
             --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+
+          # self delete folder info because file stuck or 403; recycles ########
+          if [[ -e $longkey]]; then
+            rm -rf /pg/var/transport/${b}/* && touch /pg/var/drives/file.stuck
             fi; fi
 
 # prevents overloading #########################################################
@@ -112,6 +116,7 @@ while read zz; do
    mkdir -p /pg/var/drives/size
    cat /pg/var/transport/${zz}/file.size >> /pg/var/drives/size/size.tally
    # remove junk contents ######################################################
+   rm -rf /pg/var/drives/file.stuck
    rm -rf /pg/var/transport/${zz}/*
    # echo "FREED - $zz"
 fi; fi
