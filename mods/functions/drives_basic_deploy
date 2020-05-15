@@ -110,8 +110,7 @@ while read zz; do
   if [[ ! -e "$delete_check" && "$delete_check" != "" ]]; then
    # tally size ################################################################
    mkdir -p /pg/var/drives/size
-   cat /pg/var/transport/${zz}/file.size
-
+   echo "cat /pg/var/transport/${zz}/file.size" >> /pg/var/drives/size/size.tally
    # remove junk contents ######################################################
    rm -rf /pg/var/transport/${zz}/*
    # echo "FREED - $zz"
