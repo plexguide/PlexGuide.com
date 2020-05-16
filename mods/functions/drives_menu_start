@@ -10,7 +10,7 @@ common_main /pg/var/drives/storage.method READ-ONLY storage_method
 # READ-ONLY MENU ###############################################################
 if [[ "$storage_method" == "READ-ONLY" ]]; then
 common_message "🚀  Drives - Mount Transport Data Interface" "
-💬  Further Explanation? Visit ~ http://drives.plexguide.com
+💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
 [1] Google Drive        : [$gdtokeninfo]
 [2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]
@@ -43,7 +43,7 @@ esac
 elif [[ "$storage_method" == "BASIC" ]]; then
 
 common_message "🚀  Drives - Mount Transport Data Interface" "
-💬  Further Explanation? Visit ~ http://drives.plexguide.com
+💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
 [1] Google Drive        : [$gdtokeninfo]
 [2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]

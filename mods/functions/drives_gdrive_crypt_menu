@@ -5,7 +5,7 @@ drives_gdrive_crypt_menu () {
 drives_menu_start_setup
 
 common_message "🚀  GDrive - Encryption Selection Interface" "
-💬  Further Explanation? Visit ~ http://drives.plexguide.com
+💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
 Enable to read and store (not required) to an encrypted drive?
 

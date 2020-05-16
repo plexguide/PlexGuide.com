@@ -23,7 +23,7 @@ else
 fi
 
 common_message "🚀  $drivename ~ $basicname Authentication" "
-💬  Further Explanation? Visit ~ http://drives.plexguide.com
+💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
 
 https://accounts.google.com/o/oauth2/auth?client_id=$clientdeploy&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
