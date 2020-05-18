@@ -26,7 +26,6 @@ mkdir -p /pg/log/uploader
 if [[ ! -e "$logpath_ucount" ]]; then echo 0 > "$logpath_ucount"; fi
 ucount_plusup=$(cat $logpath_ucount)
 let "ucount_plusup++"; echo "$ucount_plusup" > $logpath_ucount
-echo "---- Uploader Loop Count: $ucount_plusup ----" >> "$logpath_primary"
 echo "" >> $logpath_primary
 
 # creates sorted merit list ####################################################
@@ -47,6 +46,8 @@ done <"$path_upload"/upload.long
 
 # if nothing to upload #########################################################
 if [[ $(cat "$path_upload"/upload.long) == "" ]]; then echo "NOTHING TO UPLOAD"
+echo "Nothing to Upload" >> "$logpath_primary"
+
 sleep 5; drives_basic_deploy && exit; fi
 
 # exempt items from list #######################################################
