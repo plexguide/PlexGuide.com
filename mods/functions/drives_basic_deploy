@@ -23,7 +23,7 @@ while read rt; do
 # generates starting part of the log ###########################################
 mkdir -p /pg/log/uploader
 
-common_main "$logpath_ucount" 0 up_logcount
+if [[ ! -e "$logpath_ucount" ]]; then echo 0 > "$logpath_ucount"; fi
 ucount_plusup=$(cat $logpath_ucount)
 let "ucount_plusup++" > $logpath_ucount
 echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
