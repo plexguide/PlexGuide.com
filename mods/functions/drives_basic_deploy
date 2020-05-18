@@ -9,11 +9,17 @@ mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
 
 # declare variables and remove clutter #########################################
 path_upload="/pg/var/upload"; remove_path="/pg/complete"
-
 logpath_ucount="/pg/log/uploader/log.count"
 logpath_primary="/pg/log/uploader/primary.log"
+
 # stores number of upload slots into a stored variable #########################
 echo "$(ls /pg/var/transport)" > "$path_upload"/slot.list
+
+# ensure contents are clear if key items is missing ############################
+while read z99; do
+  f [[ ! -e "/pg/var/transport/${z99}/key.long" ]]; then
+  rm -rf "/pg/var/transport/${z99}/*"; fi
+done <"$path_upload"/slot.list
 
 # clears folder as a double check if there is no rclone.log ####################
 while read rt; do
