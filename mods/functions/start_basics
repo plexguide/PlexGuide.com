@@ -41,7 +41,7 @@ variable /pg/var/hd.path "/pg/unity"
 common_main /pg/var/drives/size/tally.total 0 "tally_total"
 
 #### Temp Fix - Ficommon_main /pg/var/drives/size/tally.total 0 tally_total
-xes Bugged AppGuardserverht=$(cat /pg/var/server.ht)
+#xes Bugged AppGuardserverht=$(cat /pg/var/server.ht)
 if [ "$serverht" == "NOT-SET" ]; then
 rm /pg/var/server.ht
 touch /pg/var/server.ht
