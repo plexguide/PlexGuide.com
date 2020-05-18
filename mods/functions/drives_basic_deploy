@@ -122,8 +122,9 @@ mkdir -p "$path_upload"/${b}
 done <"$path_upload"/slot.list
 
 # conducting checks, file missing; then clear ##################################
-echo "Transport Checks - Checking for Uploaded Files" >> "$logpath_primary"
+echo "Transport Check: Checking for Uploaded Files" >> "$logpath_primary"
 while read zz; do
+  echo "Transport Checks: Checking Slot - $zz" >> "$logpath_primary"
   if [[ -e "/pg/var/transport/${zz}/key.long" && $(cat "/pg/var/transport/${zz}/key.long") != "" ]]; then
    # tally size ################################################################
    mkdir -p /pg/var/drives/size
@@ -131,7 +132,9 @@ while read zz; do
    # remove junk contents ######################################################
    rm -rf /pg/var/drives/file.stuck
    rm -rf /pg/var/transport/${zz}/*
-   echo "SLOT ${b}: Path Cleared" >> "$logpath_primary"
+   echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
+ else
+   echo "SLOT ${zz}: Being Utilized" >> "$logpath_primary"
  fi
 done <"$path_upload"/slot.list
 
