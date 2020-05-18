@@ -124,9 +124,7 @@ done <"$path_upload"/slot.list
 # conducting checks, file missing; then clear ##################################
 echo "Transport Checks - Checking for Uploaded Files" >> "$logpath_primary"
 while read zz; do
-  if [[ -e "/pg/var/transport/${zz}/key.long" ]];
-     then delete_check=$(cat /pg/var/transport/${zz}/key.long)
-  if [[ ! -e "$delete_check" && "$delete_check" != "" ]]; then
+  if [[ -e "/pg/var/transport/${zz}/key.long" && $(cat "/pg/var/transport/${zz}/key.long") != "" ]]; then
    # tally size ################################################################
    mkdir -p /pg/var/drives/size
    cat /pg/var/transport/${zz}/file.size >> /pg/var/drives/size/size.tally
@@ -134,7 +132,7 @@ while read zz; do
    rm -rf /pg/var/drives/file.stuck
    rm -rf /pg/var/transport/${zz}/*
    echo "SLOT ${b}: Path Cleared" >> "$logpath_primary"
-fi; fi
+ fi
 done <"$path_upload"/slot.list
 
 # total tally ##################################################################
