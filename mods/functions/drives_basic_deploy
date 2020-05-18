@@ -122,6 +122,7 @@ mkdir -p "$path_upload"/${b}
 done <"$path_upload"/slot.list
 
 # conducting checks, file missing; then clear ##################################
+echo "Transport Checks - Checking for Upload Files" >> "$logpath_primary"
 while read zz; do
   if [[ -e "/pg/var/transport/${zz}/key.long" ]];
      then delete_check=$(cat /pg/var/transport/${zz}/key.long)
@@ -132,10 +133,9 @@ while read zz; do
    # remove junk contents ######################################################
    rm -rf /pg/var/drives/file.stuck
    rm -rf /pg/var/transport/${zz}/*
-   # echo "FREED - $zz"
+   echo "SLOT ${b}: Path Cleared" >> "$logpath_primary"
 fi; fi
 done <"$path_upload"/slot.list
-echo "LOOP CYCLE"
 
 # total tally ##################################################################
 tallynumber=$(paste -sd+ /pg/var/drives/size/size.tally | bc)
