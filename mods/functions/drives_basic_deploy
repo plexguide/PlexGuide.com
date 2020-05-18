@@ -59,7 +59,7 @@ while read b; do
 transport_loop="off"
 mkdir -p "$path_upload"/${b}
 
-  if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then transport_loop="on"
+  if [[ ! -e "/pg/var/transport/${b}/key.long" && ! -e "/pg/var/transport/${b}/rclone.log" ]]; then transport_loop="on"
 
     if [[ "$transport_loop" == "on" ]]; then
       let "merit_count=merit_count+1"
@@ -67,8 +67,6 @@ mkdir -p "$path_upload"/${b}
       sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
       sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
       echo "FLAG .5 - $b"; fi
-
-    if [[ $(cat "/pg/var/transport/${b}/key.long") == "" ]]; then rm -rf /pg/var/transport/${b}/* && transport_loop="off"; fi
 
         if [[ "$transport_loop" == "on" ]]; then
           shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
