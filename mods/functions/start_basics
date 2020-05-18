@@ -37,8 +37,8 @@ variable /pg/var/pgclone.transport "NOT-SET"
 variable /pg/var/plex.claim ""
 variable /pg/var/hd.path "/pg/unity"
 
-#### set daily upload Variable
-common_main /pg/var/drives/size/tally.total 0 tally_total
+#### set daily upload variable
+common_main /pg/var/drives/size/tally.total 0 "tally_total"
 
 #### Temp Fix - Ficommon_main /pg/var/drives/size/tally.total 0 tally_total
 xes Bugged AppGuardserverht=$(cat /pg/var/server.ht)
