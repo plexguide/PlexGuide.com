@@ -28,7 +28,7 @@ mkdir -p /pg/log/uploader
 if [[ ! -e "$logpath_ucount" ]]; then echo 0 > "$logpath_ucount"; fi
 ucount_plusup=$(cat $logpath_ucount)
 let "ucount_plusup++"; echo "$ucount_plusup" > $logpath_ucount
-echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
+echo "----------- Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
 echo "" >> $logpath_primary
 
 # creates sorted merit list ####################################################
@@ -73,14 +73,15 @@ while read b; do
 transport_loop="off"
 mkdir -p "$path_upload"/${b}
 
-  if [[ ! -e "/pg/var/transport/${b}/key.long" && ! -e "/pg/var/transport/${b}/rclone.log" ]]; then transport_loop="on"
+  if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then transport_loop="on"
+  echo "SLOT ${b}: Open for Transport" >> "$logpath_primary"
 
     if [[ "$transport_loop" == "on" ]]; then
       let "merit_count=merit_count+1"
       touch /pg/var/transport/${b}/key.short
       sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
       sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
-      echo "FLAG .5 - $b"; fi
+      echo "SLOT ${b}: Generated Long & Short Key" >> "$logpath_primary"; fi
 
         if [[ "$transport_loop" == "on" ]]; then
           shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
@@ -101,10 +102,10 @@ mkdir -p "$path_upload"/${b}
           # outputs size of the file for tally #################################
           if [[ ! -e "/pg/var/transport/${b}/file.size" ]]; then
           stat -c %s "$longkey" > /pg/var/transport/${b}/file.size; fi
-
           # transfer process ###################################################
-          echo "TRANSFERING GSUITE - $longkey - RPath - $rclone_upload"
-          echo "Upload Drive - $drive_upload"
+          #echo "TRANSFERING GSUITE - $longkey - RPath - $rclone_upload"
+          #echo "Upload Drive - $drive_upload"
+          echo "SLOT ${b}: Drive - $drive_upload Uploading $longkey" >> "$logpath_primary"
           rclone moveto "$longkey" $drive_upload:"$shortkey" \
             --config="$rclone_upload"  \
             --log-file="/pg/var/transport/${b}/rclone.log" \
