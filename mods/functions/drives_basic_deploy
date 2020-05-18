@@ -18,13 +18,14 @@ while read rt; do
   if [[ ! -e "/pg/var/transport/$rt/rclone.log" ]]; then
   rm -rf "/pg/var/transport/${rt}/*" ; fi; done <"$path_upload"/slot.list
 
-# generates starting log variabls
+# generates starting log variables
 logpath_ucount="/pg/log/uploader/log.count"
 logpath_primary="/pg/log/uploader/primary.log"
 mkdir -p /pg/log/uploader
 
-common_main "$logpath_ucount" 0 up_logcount
-let "$up_logcount" >> "$logpath_ucount"
+#common_main "$logpath_ucount" 0 up_logcount
+ucount_plusup=$(cat $logpath_ucount)
+let "ucount_plusup++" > $logpath_ucount
 echo "Uploader Loop Count: $logpath_ucount" > "$logpath_primary"
 echo "" >> $logpath_primary
 
