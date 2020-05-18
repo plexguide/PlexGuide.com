@@ -122,7 +122,7 @@ mkdir -p "$path_upload"/${b}
 done <"$path_upload"/slot.list
 
 # conducting checks, file missing; then clear ##################################
-echo "Transport Checks - Checking for Upload Files" >> "$logpath_primary"
+echo "Transport Checks - Checking for Uploaded Files" >> "$logpath_primary"
 while read zz; do
   if [[ -e "/pg/var/transport/${zz}/key.long" ]];
      then delete_check=$(cat /pg/var/transport/${zz}/key.long)
