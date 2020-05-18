@@ -26,7 +26,7 @@ mkdir -p /pg/log/uploader
 if [[ ! -e "$logpath_ucount" ]]; then echo 0 > "$logpath_ucount"; fi
 ucount_plusup=$(cat $logpath_ucount)
 let "ucount_plusup++"; echo "$ucount_plusup" > $logpath_ucount
-echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
+echo "---- Uploader Loop Count: $ucount_plusup ----" >> "$logpath_primary"
 echo "" >> $logpath_primary
 
 # creates sorted merit list ####################################################
