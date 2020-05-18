@@ -15,17 +15,11 @@ logpath_primary="/pg/log/uploader/primary.log"
 # stores number of upload slots into a stored variable #########################
 echo "$(ls /pg/var/transport)" > "$path_upload"/slot.list
 
-# ensure contents are clear if key items is missing ############################
-while read z99; do
-  f [[ ! -e "/pg/var/transport/${z99}/key.long" ]]; then
-  rm -rf "/pg/var/transport/${z99}/*"; fi
-done <"$path_upload"/slot.list
-
 # clears folder as a double check if there is no rclone.log ####################
 while read rt; do
-  if [[ ! -e "/pg/var/transport/$rt/rclone.log" ]]; then
+  if [[ ! -e "/pg/var/transport/$rt/rclone.log" || ! -e "/pg/var/transport/$rt/key.long" ]]; then
   rm -rf "/pg/var/transport/${rt}/*" ; fi
-done <"$path_upload"/slot.list;
+done <"$path_upload"/slot.list
 
 # generates starting part of the log ###########################################
 mkdir -p /pg/log/uploader
