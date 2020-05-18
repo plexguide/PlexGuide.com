@@ -16,7 +16,7 @@
         pgrole: 'xteve'
         intport: '34400'
         extport: '34400'
-        image: 'crobibero/xteve'
+        image: 'alturismo/xteve'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
