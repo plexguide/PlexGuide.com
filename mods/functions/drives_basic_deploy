@@ -84,7 +84,7 @@ mkdir -p "$path_upload"/${b}
 
         if [[ "$transport_loop" == "on" ]]; then
           shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
-          touch /pg/var/transport/${b}/rclone.log
+          #touch /pg/var/transport/${b}/rclone.log
 
 # size check ###################################################################
           #echo 1 > "/pg/var/transport/${b}/check.1"; echo 2 > "/pg/var/transport/${b}/check.2"
