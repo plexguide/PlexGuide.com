@@ -18,8 +18,17 @@ while read rt; do
   if [[ ! -e "/pg/var/transport/$rt/rclone.log" ]]; then
   rm -rf "/pg/var/transport/${rt}/*" ; fi; done <"$path_upload"/slot.list
 
-# creates sorted merit list ####################################################
+# generates starting log variabls
+logpath_ucount="/pg/log/uploader/log.count"
+logpath_primary="/pg/log/uploader/primary.log"
+mkdir -p /pg/log/uploader
 
+common_main "$logpath_ucount" 0 up_logcount
+let "$up_logcount" >> "$logpath_ucount"
+echo "Uploader Loop Count: $logpath_ucount" > "$logpath_primary"
+echo "" >> $logpath_primary
+
+# creates sorted merit list ####################################################
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 
 # old ##########################################################################
