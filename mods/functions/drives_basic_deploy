@@ -10,6 +10,8 @@ mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
 # declare variables and remove clutter #########################################
 path_upload="/pg/var/upload"; remove_path="/pg/complete"
 
+logpath_ucount="/pg/log/uploader/log.count"
+logpath_primary="/pg/log/uploader/primary.log"
 # stores number of upload slots into a stored variable #########################
 echo "$(ls /pg/var/transport)" > "$path_upload"/slot.list
 
@@ -18,15 +20,13 @@ while read rt; do
   if [[ ! -e "/pg/var/transport/$rt/rclone.log" ]]; then
   rm -rf "/pg/var/transport/${rt}/*" ; fi; done <"$path_upload"/slot.list
 
-# generates starting log variables
-logpath_ucount="/pg/log/uploader/log.count"
-logpath_primary="/pg/log/uploader/primary.log"
+# generates starting part of the log ###########################################
 mkdir -p /pg/log/uploader
 
-#common_main "$logpath_ucount" 0 up_logcount
+common_main "$logpath_ucount" 0 up_logcount
 ucount_plusup=$(cat $logpath_ucount)
 let "ucount_plusup++" > $logpath_ucount
-echo "Uploader Loop Count: $logpath_ucount" > "$logpath_primary"
+echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
 echo "" >> $logpath_primary
 
 # creates sorted merit list ####################################################
