@@ -109,13 +109,14 @@ mkdir -p "$path_upload"/${b}
           rclone_upload=$(cat /pg/var/drives/drive.rclone)
           # upload action ######################################################
           echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
-          echo "FLAG 2" >> "$logpath_primary"
           rclone moveto "$longkey" $drive_upload:"$shortkey" \
             --config="$rclone_upload"  \
             --log-file="/pg/var/transport/${b}/rclone.log" \
             --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
           # self delete folder info because file stuck or 403; recycles ########
-          if [[ -e "$longkey" ]]; then
+          upload_checker=$(cat $longkey)
+          echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
+          if [[ -e "$uploader_checker" ]]; then
             rm -rf /pg/var/transport/${b}/*
             touch /pg/var/drives/file.stuck; fi
             fi; fi
