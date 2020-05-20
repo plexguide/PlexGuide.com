@@ -83,6 +83,8 @@ mkdir -p "$path_upload"/${b}
       sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
       echo "SLOT ${b}: Generated Long & Short Key" >> "$logpath_primary"; fi
 
+      echo "FLAG 1" >> "$logpath_primary"
+
         if [[ "$transport_loop" == "on" ]]; then
           shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
           #touch /pg/var/transport/${b}/rclone.log
@@ -106,6 +108,7 @@ mkdir -p "$path_upload"/${b}
           #echo "TRANSFERING GSUITE - $longkey - RPath - $rclone_upload"
           #echo "Upload Drive - $drive_upload"
           echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
+          echo "FLAG 2" >> "$logpath_primary"
           rclone moveto "$longkey" $drive_upload:"$shortkey" \
             --config="$rclone_upload"  \
             --log-file="/pg/var/transport/${b}/rclone.log" \
