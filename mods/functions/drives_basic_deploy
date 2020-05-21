@@ -91,6 +91,7 @@ mkdir -p "$path_upload"/${b}
     drive_upload=$(cat /pg/var/drives/drive.upload); rclone_upload=$(cat /pg/var/drives/drive.rclone)
     # upload action ######################################################
     echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
+    if [[ "$longkey" != "" ]]; then 
     rclone moveto "$longkey" $drive_upload:"$shortkey" \
       --config="$rclone_upload"  \
       --log-file="/pg/var/transport/${b}/rclone.log" \
@@ -101,7 +102,7 @@ mkdir -p "$path_upload"/${b}
     #if [[ -e "$upload_checker" ]]; then
     #  rm -rf /pg/var/transport/${b}/*
     #  touch /pg/var/drives/file.stuck; fi
-  fi
+  fi; fi
       # prevents overloading ###################################################
       sleep .5
 done <"$path_upload"/slot.list
