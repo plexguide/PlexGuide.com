@@ -109,7 +109,7 @@ while read zz; do
   echo "Transport Checks: Checking Slot - $zz" >> "$logpath_primary"
   if [[ -e "/pg/var/transport/${zz}/key.long" ]]; then
    file_path_dir=$(cat "/pg/var/transport/${zz}/key.long")
-   if [[ "$file_path_dir" != "" ]]; then
+   if [[ ! -e "$file_path_dir" ]]; then
      echo "FLAG 3 - $file_path_dir" >> "$logpath_primary"
      # tally size ################################################################
      mkdir -p /pg/var/drives/size
