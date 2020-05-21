@@ -110,7 +110,7 @@ while read zz; do
   if [[ -e "/pg/var/transport/${zz}/key.long" ]]; then
    file_path_dir=$(cat "/pg/var/transport/${zz}/key.long")
    if [[ "$file_path_dir" != "" ]]; then
-     echo "FLAG 3 - $file_path_dir"
+     echo "FLAG 3 - $file_path_dir" >> "$logpath_primary"
      # tally size ################################################################
      mkdir -p /pg/var/drives/size
      cat /pg/var/transport/${zz}/file.size >> /pg/var/drives/size/size.tally
