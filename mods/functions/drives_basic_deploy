@@ -103,11 +103,11 @@ mkdir -p "$path_upload"/${b}
       sleep .5
 done <"$path_upload"/slot.list
 # outputs rclone info ##########################################################
-while read bzz; do
-  if [[ -e "/pg/var/transport/${bzz}/rclone.log" ]]; then
-  rclone_recall=$(tail -2 /pg/var/transport/${bzz}/rclone.log | head -1)
-  echo "SLOT ${bzz} ${rclone_recall}" >> "$logpath_primary"; fi
-done <"$path_upload"/slot.list
+#while read bzz; do
+#  if [[ -e "/pg/var/transport/${bzz}/rclone.log" ]]; then
+#  rclone_recall=$(tail -2 /pg/var/transport/${bzz}/rclone.log | head -1)
+#  echo "SLOT ${bzz} ${rclone_recall}" >> "$logpath_primary"; fi
+#done <"$path_upload"/slot.list
 # conducting checks, file missing; then clear ##################################
 echo "Transport Check: Checking for Uploaded Files" >> "$logpath_primary"
 while read zz; do
