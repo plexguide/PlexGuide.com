@@ -76,14 +76,14 @@ while read b; do
 transport_loop="off"
 mkdir -p "$path_upload"/${b}
   if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
-      echo "SLOT ${b}: Open for Transport" >> "$logpath_primary"
+      echo "SLOT ${b}: Aviliable" >> "$logpath_primary"
       let "merit_count=merit_count+1"
       touch /pg/var/transport/${b}/key.short
       # generates keys base on merit list order ##################################
       sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
       sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
-      echo "SLOT ${b}: Generated Long & Short Key" >> "$logpath_primary"
-      echo "FLAG 1" >> "$logpath_primary"
+      if [[ $(cat /pg/var/transport/${b}/key.short) != "" ]]; then
+      echo "SLOT ${b}: Generated Long & Short Key" >> "$logpath_primary"; fi
       # outputs size of the file for tally #################################
       stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
       # upload variables####################################################
