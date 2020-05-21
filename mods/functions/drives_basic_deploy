@@ -76,33 +76,35 @@ while read b; do
 transport_loop="off"
 mkdir -p "$path_upload"/${b}
   if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
-    echo "SLOT ${b}: Open for Transport" >> "$logpath_primary"
-    let "merit_count=merit_count+1"
-    touch /pg/var/transport/${b}/key.short
-    # generates keys base on merit list order ##################################
-    sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
-    sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
-    echo "SLOT ${b}: Generated Long & Short Key" >> "$logpath_primary"
-    echo "FLAG 1" >> "$logpath_primary"
-    # outputs size of the file for tally #################################
-    stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
-    # upload variables####################################################
-    shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
-    drive_upload=$(cat /pg/var/drives/drive.upload); rclone_upload=$(cat /pg/var/drives/drive.rclone)
-    # upload action ######################################################
-    echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
-    if [[ "$longkey" != "" ]]; then 
-    rclone moveto "$longkey" $drive_upload:"$shortkey" \
-      --config="$rclone_upload"  \
-      --log-file="/pg/var/transport/${b}/rclone.log" \
-      --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
-    # self delete folder info because file stuck or 403; recycles ########
-    upload_checker=$(echo $longkey)
-    echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
-    #if [[ -e "$upload_checker" ]]; then
-    #  rm -rf /pg/var/transport/${b}/*
-    #  touch /pg/var/drives/file.stuck; fi
-  fi; fi
+    minicheck=$(cat /pg/var/transport/${b}/key.long)
+    if [[ "$minicheck" != "" ]]; then
+      echo "SLOT ${b}: Open for Transport" >> "$logpath_primary"
+      let "merit_count=merit_count+1"
+      touch /pg/var/transport/${b}/key.short
+      # generates keys base on merit list order ##################################
+      sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
+      sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
+      echo "SLOT ${b}: Generated Long & Short Key" >> "$logpath_primary"
+      echo "FLAG 1" >> "$logpath_primary"
+      # outputs size of the file for tally #################################
+      stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
+      # upload variables####################################################
+      shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
+      drive_upload=$(cat /pg/var/drives/drive.upload); rclone_upload=$(cat /pg/var/drives/drive.rclone)
+      # upload action ######################################################
+      echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
+      if [[ "$longkey" != "" ]]; then
+      rclone moveto "$longkey" $drive_upload:"$shortkey" \
+        --config="$rclone_upload"  \
+        --log-file="/pg/var/transport/${b}/rclone.log" \
+        --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+      # self delete folder info because file stuck or 403; recycles ########
+      upload_checker=$(echo $longkey)
+      echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
+      #if [[ -e "$upload_checker" ]]; then
+      #  rm -rf /pg/var/transport/${b}/*
+      #  touch /pg/var/drives/file.stuck; fi
+  fi; fi; fi 
       # prevents overloading ###################################################
       sleep .5
 done <"$path_upload"/slot.list
