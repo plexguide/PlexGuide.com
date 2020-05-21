@@ -98,6 +98,10 @@ mkdir -p "$path_upload"/${b}
     #if [[ -e "$upload_checker" ]]; then
     #  rm -rf /pg/var/transport/${b}/*
     #  touch /pg/var/drives/file.stuck; fi
+  else
+    if [[ -e "/pg/var/transport/${b}/rclone.log" ]]; then
+    rclone_recall=$(cat /pg/var/transport/${b}/rclone.log)
+    echo "SLOT ${b} ${rclone_recall}" >> "$logpath_primary"
   fi
 # prevents overloading #########################################################
       sleep .5
