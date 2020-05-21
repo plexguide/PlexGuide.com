@@ -72,7 +72,6 @@ while read b; do
 
 transport_loop="off"
 mkdir -p "$path_upload"/${b}
-
   if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
     echo "SLOT ${b}: Open for Transport" >> "$logpath_primary"
     let "merit_count=merit_count+1"
@@ -108,17 +107,19 @@ done <"$path_upload"/slot.list
 echo "Transport Check: Checking for Uploaded Files" >> "$logpath_primary"
 while read zz; do
   echo "Transport Checks: Checking Slot - $zz" >> "$logpath_primary"
-  if [[ -e "/pg/var/transport/${zz}/key.long" && $(cat "/pg/var/transport/${zz}/key.long") != "" ]]; then
-   # tally size ################################################################
-   mkdir -p /pg/var/drives/size
-   cat /pg/var/transport/${zz}/file.size >> /pg/var/drives/size/size.tally
-   # remove junk contents ######################################################
-   rm -rf /pg/var/drives/file.stuck
-   rm -rf /pg/var/transport/${zz}/*
-   echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
+  if [[ -e "/pg/var/transport/${zz}/key.long" ]]; then
+   file_path_dir=$(cat "/pg/var/transport/${zz}/key.long")
+   if [[ "$file_path_dir" != "" ]]; then
+     # tally size ################################################################
+     mkdir -p /pg/var/drives/size
+     cat /pg/var/transport/${zz}/file.size >> /pg/var/drives/size/size.tally
+     # remove junk contents ######################################################
+     rm -rf /pg/var/drives/file.stuck
+     rm -rf /pg/var/transport/${zz}/*
+     echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
  else
    echo "SLOT ${zz}: Being Utilized" >> "$logpath_primary"
- fi
+ fi; fi 
 done <"$path_upload"/slot.list
 
 # total tally ##################################################################
