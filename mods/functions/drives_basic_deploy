@@ -114,7 +114,7 @@ mkdir -p "$path_upload"/${b}
             --log-file="/pg/var/transport/${b}/rclone.log" \
             --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
           # self delete folder info because file stuck or 403; recycles ########
-          upload_checker=$(cat $longkey)
+          upload_checker=$(echo $longkey)
           echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
           if [[ -e "$upload_checker" ]]; then
             rm -rf /pg/var/transport/${b}/*
