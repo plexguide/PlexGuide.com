@@ -28,7 +28,10 @@ mkdir -p /pg/log/uploader
 if [[ ! -e "$logpath_ucount" ]]; then echo 0 > "$logpath_ucount"; fi
 ucount_plusup=$(cat $logpath_ucount)
 let "ucount_plusup++"; echo "$ucount_plusup" > $logpath_ucount
-echo "----------- Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
+echo "" >> "$logpath_primary"
+echo "--------------------------------------------" >> "$logpath_primary""
+echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
+echo "--------------------------------------------" >> "$logpath_primary""
 echo "" >> $logpath_primary
 
 # creates sorted merit list ####################################################
@@ -103,13 +106,14 @@ mkdir -p "$path_upload"/${b}
       sleep .5
 done <"$path_upload"/slot.list
 # outputs rclone info ##########################################################
-#while read bzz; do
-#  if [[ -e "/pg/var/transport/${bzz}/rclone.log" ]]; then
-#  rclone_recall=$(tail -2 /pg/var/transport/${bzz}/rclone.log | head -1)
-#  echo "SLOT ${bzz} ${rclone_recall}" >> "$logpath_primary"; fi
-#done <"$path_upload"/slot.list
+while read bzz; do
+  if [[ -e "/pg/var/transport/${bzz}/rclone.log" ]]; then
+  rclone_recall=$(tail -2 /pg/var/transport/${bzz}/rclone.log | head -1)
+  echo "SLOT ${bzz} ${rclone_recall}" >> "$logpath_primary"; fi
+done <"$path_upload"/slot.list
 # conducting checks, file missing; then clear ##################################
 echo "Transport Check: Checking for Uploaded Files" >> "$logpath_primary"
+echo "--------------------------------------------" >> "$logpath_primary"
 while read zz; do
   echo "Transport Checks: Checking Slot - $zz" >> "$logpath_primary"
   if [[ -e "/pg/var/transport/${zz}/key.long" ]]; then
