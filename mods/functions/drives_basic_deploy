@@ -101,7 +101,7 @@ mkdir -p "$path_upload"/${b}
   else
     if [[ -e "/pg/var/transport/${b}/rclone.log" ]]; then
     rclone_recall=$(cat /pg/var/transport/${b}/rclone.log)
-    echo "SLOT ${b} ${rclone_recall}" >> "$logpath_primary"
+    echo "SLOT ${b} ${rclone_recall}" >> "$logpath_primary"; fi 
   fi
 # prevents overloading #########################################################
       sleep .5
