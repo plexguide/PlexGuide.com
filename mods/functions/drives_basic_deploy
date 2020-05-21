@@ -76,7 +76,7 @@ while read b; do
 transport_loop="off"
 mkdir -p "$path_upload"/${b}
   if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
-    minicheck=$(cat /pg/var/transport/${b}/key.long)
+    minicheck=$(cat "/pg/var/transport/${b}/key.long")
     if [[ "$minicheck" != "" ]]; then
       echo "SLOT ${b}: Open for Transport" >> "$logpath_primary"
       let "merit_count=merit_count+1"
@@ -103,6 +103,8 @@ mkdir -p "$path_upload"/${b}
       #if [[ -e "$upload_checker" ]]; then
       #  rm -rf /pg/var/transport/${b}/*
       #  touch /pg/var/drives/file.stuck; fi
+    else
+      echo "FLAG BAD" >> "$logpath_primary"
   fi; fi
       # prevents overloading ###################################################
       sleep .5
