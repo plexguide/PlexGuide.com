@@ -116,7 +116,7 @@ mkdir -p "$path_upload"/${b}
           # self delete folder info because file stuck or 403; recycles ########
           upload_checker=$(cat $longkey)
           echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
-          if [[ -e "$uploader_checker" ]]; then
+          if [[ -e "$upload_checker" ]]; then
             rm -rf /pg/var/transport/${b}/*
             touch /pg/var/drives/file.stuck; fi
             fi; fi
