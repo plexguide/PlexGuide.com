@@ -110,6 +110,7 @@ while read zz; do
   if [[ -e "/pg/var/transport/${zz}/key.long" ]]; then
    file_path_dir=$(cat "/pg/var/transport/${zz}/key.long")
    if [[ "$file_path_dir" != "" ]]; then
+     echo "FLAG 3 - $file_path_dir"
      # tally size ################################################################
      mkdir -p /pg/var/drives/size
      cat /pg/var/transport/${zz}/file.size >> /pg/var/drives/size/size.tally
@@ -119,7 +120,7 @@ while read zz; do
      echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
  else
    echo "SLOT ${zz}: Being Utilized" >> "$logpath_primary"
- fi; fi 
+ fi; fi
 done <"$path_upload"/slot.list
 
 # total tally ##################################################################
