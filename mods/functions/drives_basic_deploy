@@ -16,11 +16,11 @@ logpath_primary="/pg/log/uploader/primary.log"
 echo "$(ls /pg/var/transport)" > "$path_upload"/slot.list
 
 # clears folder if key files are missing ####################
-while read rt; do
-  if [[ ! -e "/pg/var/transport/$rt/rclone.log" || ! -e "/pg/var/transport/$rt/key.long" ]]; then
-    rm -rf /pg/var/transport/${rt}/*
-  fi
-done <"$path_upload"/slot.list
+#while read rt; do
+#  if [[ ! -e "/pg/var/transport/$rt/rclone.log" || ! -e "/pg/var/transport/$rt/key.long" ]]; then
+#    rm -rf /pg/var/transport/${rt}/*
+#  fi
+#done <"$path_upload"/slot.list
 
 # generates starting part of the log ###########################################
 mkdir -p /pg/log/uploader
