@@ -32,7 +32,6 @@ echo "" >> "$logpath_primary"
 echo "--------------------------------------------" >> "$logpath_primary"
 echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
 echo "--------------------------------------------" >> "$logpath_primary"
-echo "" >> $logpath_primary
 
 # creates sorted merit list ####################################################
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
@@ -56,6 +55,7 @@ echo "NOTHING TO UPLOAD"
 echo "Nothing to Upload" >> "$logpath_primary"
 sleep 5; drives_basic_deploy && exit; fi
 
+echo "" >> $logpath_primary
 # exempt items from list #######################################################
 while read zg; do
   if [[ -e "/pg/var/transport/$zg/rclone.log" && -e "$path_upload"/upload.long ]]; then
