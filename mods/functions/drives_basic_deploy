@@ -105,7 +105,7 @@ done <"$path_upload"/slot.list
 # outputs rclone info ##########################################################
 while read bzz; do
   if [[ -e "/pg/var/transport/${bzz}/rclone.log" ]]; then
-  rclone_recall=$(cat /pg/var/transport/${bzz}/rclone.log | tail -n +8)
+  rclone_recall=$(tail -2 /pg/var/transport/${bzz}/rclone.log | head -1)
   echo "SLOT ${bzz} ${rclone_recall}" >> "$logpath_primary"; fi
 done <"$path_upload"/slot.list
 # conducting checks, file missing; then clear ##################################
