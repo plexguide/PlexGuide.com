@@ -1,0 +1,26 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_403v2() {
+transport_path="/pg/var/transport"
+path_upload="/pg/var/upload"
+
+while read ff7; do
+  if [[ -e "/pg/var/transport/${ff7}/rclone.log" ]]; then
+    check_line_count=$(wc -l /pg/var/transport/${ff7}/rclone.log)
+    if [[ "$check_line_count" -gt "23" ]]; then
+      check_start=$(cat /pg/var/transport/${ff7}/rclone.log | awk '{ print $5,$6,$7 }' | tail -n 24 | grep "\S" | head -n 1)
+      check_end=$(cat /pg/var/transport/${ff7}/rclone.log | awk '{ print $5,$6,$7 }' | tail -n 24 | grep "\S" | tail -n 1)
+        if [[ "$check_start" != "" || "$check_end" != "" ]]; then
+          if [[ "$check_start" == "$check_end" ]]; then
+            rm -rf /pg/var/transport/*
+            mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
+            touch /pg/var/drives/file.stuck
+          fi
+        fi
+    fi
+  fi
+done <"$path_upload"/slot.list
+
+if [[ -e "/pg/var/drives/file.stuck" ]]; then sleep 300; fi
+
+}
