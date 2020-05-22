@@ -7,6 +7,10 @@ drives_menu_start_setup
 service_path="/etc/systemd/system/uploader.service"
 script_path="/pg/var/drives/uploader.sh"
 
+# remove what's pending uploads in slots
+rm -rf /pg/var/transport/*
+
+# write out-script
 if [[ -e "$service_path" ]]; then
 common_header "💾  NOTICE:  Stopping/Disabling OLD Service - Uploader"; sleep 1
 systemctl daemon-reload && systemctl stop uploader && systemctl disable uploader && rm -rf "$service_path"; fi
