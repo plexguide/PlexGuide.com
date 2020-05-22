@@ -46,7 +46,7 @@ EOF
 else ports="[CLOSED] Ports"; fi
 
 if [[ -e "/pg/var/drives/file.stuck" ]]; then file_warning="
-WARNING: Files Stuck / Google 403 ~ plexguide.com/wiki/error403
+WARNING: GDrive 403 ~ https://plexguide.com/wiki/gdrive-403/
 "; fi
 
 start_quotes

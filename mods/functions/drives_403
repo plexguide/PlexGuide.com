@@ -1,0 +1,20 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_403() {
+transport_path="/pg/var/transport"
+path_upload="/pg/var/upload"
+
+echo "" > /pg/var/drives/catch.403
+while read ff7; do
+cat "/pg/var/transport/${ff7}/rclone.log" >> /pg/var/drives/catch.403
+done <"$path_upload"/slot.list
+
+catch403=$(cat /pg/var/drives/catch.403 | grep "Error 403")
+if [[ "$catch403" != "" ]]; then
+  touch /pg/var/drives/file.stuck
+  wait 300
+  rm -rf /pg/var/transport/*
+  mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
+fi
+
+}
