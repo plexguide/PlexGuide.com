@@ -22,6 +22,6 @@ while read ff7; do
   fi
 done <"$path_upload"/slot.list
 
-if [[ -e "/pg/var/drives/file.stuck" ]]; then sleep 300; fi
+if [[ -e "/pg/var/drives/file.stuck" ]]; then sleep 900; fi
 
 }
