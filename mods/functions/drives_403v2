@@ -6,7 +6,7 @@ path_upload="/pg/var/upload"
 
 while read ff7; do
   if [[ -e "/pg/var/transport/${ff7}/rclone.log" ]]; then
-    check_line_count=$(wc -l /pg/var/transport/${ff7}/rclone.log)
+    check_line_count=$(wc -l /pg/var/transport/${ff7}/rclone.log | awk '{ print $1 }')
     if [[ "$check_line_count" -gt "23" ]]; then
       check_start=$(cat /pg/var/transport/${ff7}/rclone.log | awk '{ print $5,$6,$7 }' | tail -n 24 | grep "\S" | head -n 1)
       check_end=$(cat /pg/var/transport/${ff7}/rclone.log | awk '{ print $5,$6,$7 }' | tail -n 24 | grep "\S" | tail -n 1)
@@ -15,6 +15,7 @@ while read ff7; do
             rm -rf /pg/var/transport/*
             mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
             touch /pg/var/drives/file.stuck
+            echo "Possible - Google 403 Upload Error"
           fi
         fi
     fi
