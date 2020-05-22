@@ -97,7 +97,7 @@ mkdir -p "$path_upload"/${b}
         rclone moveto "$longkey" $drive_upload:"$shortkey" \
           --config="$rclone_upload"  \
           --log-file="/pg/var/transport/${b}/rclone.log" \
-          --log-level=INFO --stats=5s --stats-file-name-length=0 &>/dev/null &
+          --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 &>/dev/null &
         # self delete folder info because file stuck or 403; recycles ########
         upload_checker=$(echo $longkey)
         echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
