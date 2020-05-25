@@ -78,7 +78,7 @@ esac
 elif [[ "$storage_method" == "BLITZ" ]]; then
 
 common_fcreate_silent "/pg/var/keys/${drive_upload}"
-common_main /pg/var/keys/${drive_upload}/key.count 0 $menu_keycount
+common_main /pg/var/keys/${drive_upload}/key.count 0 menu_keycount
 
 common_message "🚀  Drives - Mount Transport Data Interface" "
 💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
