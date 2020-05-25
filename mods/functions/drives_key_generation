@@ -39,7 +39,7 @@ while [ "$count" != "$keys" ]; do
      ((count++))
      rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
      gcloud iam service-accounts create ${drive_upload}-$rand --display-name “plexguide-$count”
-     gcloud iam service-accounts keys create /pg/var/keys/${drive_upload}/plexguide_$count --iam-account ${drive_upload}-$rand@$project.iam.gserviceaccount.com --key-file-type="json"
+     gcloud iam service-accounts keys create /pg/var/keys/${drive_upload}/plexguide_$count --iam-account ${drive_upload}$rand@$project.iam.gserviceaccount.com --key-file-type="json"
      drives_key_build
 done <"/pg/var/keys/${drive_upload}/key.count"
 
