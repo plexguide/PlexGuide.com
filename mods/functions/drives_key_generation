@@ -20,11 +20,12 @@ common_message "🚀  Drives - Key Management Interface" "
 ------------------------------------------------------------------------------
 Generate how many keys? [ 4 - ${maxkeys} ]
 
-4  Keys = 3 TB
-8  Keys = 6 TB <---- Realistic Amount
-12 Keys = 9 TB
-20 Keys = 15TB <---- GCE Feeder
+4  Keys = 3 TB      8  Keys = 6 TB <---- Realistic Amount
+12 Keys = 9 TB      20 Keys = 15TB <---- GCE Feeder
 33 Keys = 25TB
+
+Manage Keys:
+https://console.cloud.google.com/apis/credentials?authuser=1&folder=&organizationId=&project=$upload_projectid
 
 [$pool_quota] of 100 - KeyPool Quota Utilized
 ------------------------------------------------------------------------------
@@ -46,7 +47,7 @@ common_confirm
 drives_menu_start
 fi
 
-read -p "↘️  Generate how many keys? | Press [ENTER]: " typed < /dev/tty
+read -p "↘️  Generate How Many Keys? | Press [ENTER]: " typed < /dev/tty
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_menu_start && exit; fi
 # if [[ "$typed" -gt "50" || "$typed" -lt "4" || "$typed" == "" ]]; then common_message "⛔️  WARNING: INVALID ENTRY" && common_confirm && drives_key_generation && exit; fi
 
