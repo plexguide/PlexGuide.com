@@ -15,13 +15,10 @@ if [[ "$left_quota" -lt "33" ]]; then maxkeys=$left_quota; else maxkeys=33; fi
 if [[ "$left_quota" -lt "4" ]]; then message=1; else message=0; fi
 
 if [[ "$message" == 0 ]]; then
-  output1="Generate how many keys? [ 4 - ${maxkeys} ]"; else
-  output1="⛔️ CANNOT DEPLOY ANY KEYS! KEYS MAXED OUT!"; fi
-
 common_message "🚀  Drives - Key Management Interface" "
 💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
-$output1
+Generate how many keys? [ 4 - ${maxkeys} ]
 
 4  Keys = 3 TB
 8  Keys = 6 TB <---- Realistic Amount
@@ -33,8 +30,24 @@ $output1
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
-read -p "↘️  Generate how many keys? | Press [ENTER]: " typed < /dev/tty
+else
+common_message "🚀  Drives - Key Management Interface" "
+💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
+------------------------------------------------------------------------------
+⛔️ CANNOT DEPLOY ANY KEYS! KEYS MAXED OUT!
 
+In order to deploy using this same project, you must clear delete some keys
+via the options or by visiting the following link below:
+
+https://console.cloud.google.com/apis/credentials?authuser=1&folder=&organizationId=&project=$upload_projectid
+
+⛔️ [$pool_quota] of 100 - KeyPool Quota Utilized
+"
+common_confirm
+drives_menu_start
+fi
+
+read -p "↘️  Generate how many keys? | Press [ENTER]: " typed < /dev/tty
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_menu_start && exit; fi
 # if [[ "$typed" -gt "50" || "$typed" -lt "4" || "$typed" == "" ]]; then common_message "⛔️  WARNING: INVALID ENTRY" && common_confirm && drives_key_generation && exit; fi
 
