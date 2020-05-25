@@ -44,7 +44,6 @@ while [ "$countdown" != "0" ]; do
      ((count++))
      ((tally++))
      ((countdown--))
-     echo "------------------------------------------------------------------------------"
      common_header "💾  PG KEY [$count] - $tally of $keys" && sleep 1
      rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
      gcloud iam service-accounts create ${drive_upload}-$rand --display-name “plexguide-$count”
