@@ -84,6 +84,7 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 [2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]
 [3] Storage Method      : [$storage_method]
 [4] Upload Data To      : [$drive_upload]
+[5] Keys Generated      : [ - VALID ]
 ------------------------------------------------------------------------------
 [D] Deploy Drives       : [$deployed_mode]
 [O] Options
@@ -101,7 +102,7 @@ case $typed in
     1 ) drives_gdrive_menu && exit ;;
     2 ) drives_share_menu && exit ;;
     3 ) drives_menu_storage_method && exit ;;
-    4 ) drives_basic_upload && exit ;;
+    4 ) drives_blitz_upload && exit ;;
     d ) drives_deploy && exit ;;
     D ) drives_deploy && exit ;;
     z ) start_menu && exit ;;
