@@ -35,6 +35,14 @@ echo "FLAG 2"
 
 gcloud config set project ${upload_projectid}
 count=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | sort -V | awk 'END { print }' | awk -F- '{ print $NF}')
+
+key_checker=$(gcloud --account=${upload_email} iam service-accounts list | grep "\(plexguide-${count}\)\>")
+
+if [[ "$key_checker" != "" ]]; then
+  check2=$(echo $key_checker | awk '{print $2}')
+  gcloud --account=${upload_email} iam service-accounts delete $check2
+fi
+
 if [[ "$count" == "" ]]; then count=0; fi
 keys=$typed
 countdown=$typed
