@@ -1,0 +1,8 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_key_generation () {
+
+drives_menu_start_setup
+
+
+}
