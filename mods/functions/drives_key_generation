@@ -4,19 +4,28 @@ drives_key_generation () {
 
 drives_menu_start_setup
 
+pool_quota=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | sort -V | awk 'END { print }' | awk -F- '{ print $NF}')
+if [[ "$pool_quota" == "" ]]; then left_quota=0; else left_quota="$((100-$pool_quota))"; fi
+
+if [[ "$left_quota" -lt "33" ]]; then maxkeys=$left_quota; else maxkeys=33; fi
+if [[ "$left_quota" -lt "4" ]]; then message=1; else message=0; fi
+
+if [[ "$message" == 0 ]]; then
+  output1="Generated how many keys? [ 3 - ${maxkeys} ]"; else
+  output1="⛔️ CANNOT DEPLOY ANY KEYS! KEYS MAXED OUT!"; fi
+
 common_message "🚀  Drives - Key Management Interface" "
 💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
-Generated how many keys? [ 4 - 50 ]
+$output1
 
 4  Keys = 3 TB
 8  Keys = 6 TB <---- Realistic Amount
 12 Keys = 9 TB
 20 Keys = 15TB <---- GCE Feeder
-40 Keys = 30TB
+33 Keys = 25TB
 
-⛔️Avoid creating too many keys! When 600 keys are generated based on the
-current project, you must purge all keys to generate new ones again!
+⛔️ [$left_quota] of 100 - KeyPool Quota Utilized
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
@@ -37,7 +46,6 @@ gcloud config set project ${upload_projectid}
 count=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | sort -V | awk 'END { print }' | awk -F- '{ print $NF}')
 
 key_checker=$(gcloud --account=${upload_email} iam service-accounts list | grep "\(plexguide-${count}\)\>")
-
 if [[ "$key_checker" != "" ]]; then
   check2=$(echo $key_checker | awk '{print $2}')
   gcloud --account=${upload_email} iam service-accounts delete $check2
