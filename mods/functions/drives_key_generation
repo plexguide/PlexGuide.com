@@ -41,8 +41,7 @@ via the options or by visiting the following link below:
 
 https://console.cloud.google.com/apis/credentials?authuser=1&folder=&organizationId=&project=$upload_projectid
 
-⛔️ [$pool_quota] of 100 - KeyPool Quota Utilized
-"
+⛔️ [$pool_quota] of 100 - KeyPool Quota Utilized"
 common_confirm
 drives_menu_start
 fi
