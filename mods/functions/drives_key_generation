@@ -26,7 +26,7 @@ Generate how many keys? [ 4 - ${maxkeys} ]
 20 Keys = 15TB <---- GCE Feeder
 33 Keys = 25TB
 
-⛔️ [$pool_quota] of 100 - KeyPool Quota Utilized
+[$pool_quota] of 100 - KeyPool Quota Utilized
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
