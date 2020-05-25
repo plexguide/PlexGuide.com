@@ -47,7 +47,7 @@ drives_menu_start_setup
 ################################################################################
 # common_header "💾  Utilizing:  RClone Builder for $basicname"
 
-common_fcreate_silent "/pg/var/drives/${drive_upload}/blitz"
+common_fcreate_silent "/pg/var/drives/shared/${drive_upload}/blitz"
 
 sclientid=$(cat "/pg/var/drives/shared/${drive_upload}/sd.clientid")
 sclientsecret=$(cat "/pg/var/drives/shared/${drive_upload}/sd.secret")
