@@ -8,12 +8,10 @@ common_message "🚀  Drives - Storage Method" "
 💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
 
-Upload Method
-
-[1] READ-ONLY      | None - Useful for a READ-ONLY Server (2nd PLEX & ETC)
-[2] Drives Basic   | 750GB Daily Cap Upload to To Target Drive
-[3] Drives PGBlitz | NOT READY
-[4] Drives Local   | NOT READY
+[1] READ-ONLY      | None      | Simple  | Read Only Server (2nd Plex & etc)
+[2] Drives Basic   | 750GB     | Novice  | Basic Upload Requirements
+[3] Drives Blitz   | Unlimited | Complex | Excessive Upload Requirements
+[4] Drives Local   | User HD's | Simple  | Based on Users Hard Drives 
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
