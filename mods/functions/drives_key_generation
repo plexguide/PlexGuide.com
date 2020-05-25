@@ -13,9 +13,7 @@ if [[ "$pool_quota" == "" ]]; then left_quota=100; else left_quota="$((100-$pool
 
 if [[ "$left_quota" -lt "33" ]]; then maxkeys=$left_quota; else maxkeys=33; fi
 if [[ "$left_quota" -lt "4" ]]; then message=1; else message=0; fi
-
-echo "LEFT QUOTA $left_quota - MESSAGE $message"
-
+if [[ "$left_quota" == "100" ]]; then pool_quota=0; fi 
 
 if [[ "$message" == 0 ]]; then
 common_message "🚀  Drives - Key Management Interface" "
