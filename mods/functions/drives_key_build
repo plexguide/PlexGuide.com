@@ -1,0 +1,91 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_key_build () {
+
+drives_menu_start_setup
+
+#  ## what sets if encrypted is on or not
+#  encheck=$(cat /pg/rclone/pgclone.transport)
+#  bencrypted=no
+#  if [ "$encheck" == "sc" ]; then bencrypted=yes; fi
+
+#  downloadpath=$(cat /pg/var/server.hd.path)
+#  tempbuild=$(cat /pg/var/json.tempbuild)
+#  path=/pg/var/keys
+#  rpath=/pg/rclone/blitz.conf
+#  sdrive=$( cat /pg/rclone/blitz.conf | grep team_drive | head -n1 )
+#  sdrive="${sd:13}"
+
+#  if [ "$bencrypted" == "yes" ]; then
+#  PASSWORD=$(cat /pg/rclone/pgclone.password)
+#  SALT=$(cat /pg/rclone/pgclone.salt)
+#  ENC_PASSWORD=`rclone obscure "$PASSWORD"`
+#  ENC_SALT=`rclone obscure "$SALT"`; fi
+
+  ####tempbuild is need in order to call the correct gdsa
+#  mkdir -p $downloadpath/move/$tempbuild
+#  echo "" >> $rpath
+#  echo "[$tempbuild]" >> $rpath
+#  echo "type = drive" >> $rpath
+#  echo "client_id =" >> $rpath
+#  echo "client_secret =" >> $rpath
+#  echo "scope = drive" >> $rpath
+#  echo "root_folder_id =" >> $rpath
+#  echo "service_account_file = /pg/var/keys/processed/$tempbuild" >> $rpath
+#  echo "team_drive = $sdrive" >> $rpath
+
+#  if [ "$bencrypted" == "yes" ]; then
+#  echo "" >> $rpath
+#  echo "[${tempbuild}C]" >> $rpath
+#  echo "type = crypt" >> $rpath
+#  echo "remote = $tempbuild:/encrypt" >> $rpath
+#  echo "filename_encryption = standard" >> $rpath
+#  echo "directory_name_encryption = true" >> $rpath
+#  echo "password = $ENC_PASSWORD" >> $rpath
+#  echo "password2 = $ENC_SALT" >> $rpath; fi
+
+################################################################################
+# common_header "💾  Utilizing:  RClone Builder for $basicname"
+
+common_fcreate_silent "/pg/var/drives/${drive_upload}/blitz"
+
+sclientid=$(cat "/pg/var/drives/${drive_upload}/sd.clientid")
+sclientsecret=$(cat "/pg/var/drives/${drive_upload}/sd.secret")
+sd_rclonepath="/pg/var/drives/${drive_upload}/blitz/$count.conf"
+sd_id=$(cat "/pg/var/drives/${drive_upload}/sd.id")
+sd_path=$(cat )
+
+cat <<- EOF > "$sd_rclonepath"
+# $basicname ~ $drive_upload #####################
+EOF
+echo "[$drive_upload]" >> $sd_rclonepath
+cat <<- EOF >> "$sd_rclonepath"
+client_id = $sclientid
+client_secret = $sclientsecret
+scope = drive
+server_side_across_configs = true
+service_account_file = "/pg/var/keys/${drive_upload}/plexguide_$count"
+team_drive = $sd_id
+EOF
+echo "" >> $sd_rclonepath
+
+################################################################################
+#if [[ "$FIXME" == "YES" ]]; then
+#enc_pass1=$(rclone obscure $password1)
+#enc_pass2=$(rclone obscure $password2)
+#cat <<- EOF >> "$sd_rclonepath"
+# $basicname ~ $drivename ~ CRYPT ####################
+#EOF
+#echo "[$drivename2]" >> $sd_rclonepath
+#cat <<- EOF >> "$sd_rclonepath"
+#type = crypt
+#remote = $drivename:/encrypt
+#filename_encryption = standard
+#directory_name_encryption = true
+#password = $enc_pass1
+#password2 = $enc_pass2
+################################################################################
+EOF
+fi
+
+}

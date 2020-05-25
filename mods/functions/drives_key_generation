@@ -4,5 +4,37 @@ drives_key_generation () {
 
 drives_menu_start_setup
 
+common_message "🚀  Drives - Key Management Interface" "
+💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
+------------------------------------------------------------------------------
+Generated how many keys? [ 4 - 50 ]
+
+4  Keys = 3 TB
+8  Keys = 6 TB <---- Realistic Amount
+12 Keys = 9 TB
+20 Keys = 15TB <---- GCE Feeder
+40 Keys = 30TB
+
+⛔️Avoid creating too many keys! When 600 keys are generated based on the
+current project, you must purge all keys to generate new ones again!
+------------------------------------------------------------------------------
+[Z] Exit Interface
+"
+read -p "↘️  Generate how many keys? | Press [ENTER]: " typed < /dev/tty
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_menu_start && exit; fi
+if [[ "$typed" -gt "50" || "$typed" -lt "4" || "$typed" == "" ]] ; then common_message "⛔️  WARNING: INVALID ENTRY" && common_confirm && drives_key_generation && exit; fi
+
+common_fcreate_silent "/pg/var/keys/${drive_upload}"
+rm -rf "/pg/var/keys/${drive_upload}/*"
+echo "$typed" > "/pg/var/keys/${drive_upload}/key.count"
+
+while [ "$count" != "$keys" ]; do
+     ((count++))
+     rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
+     gcloud iam service-accounts create plexguide_$rand --display-name “plexguide_$count”
+     gcloud iam service-accounts keys create /pg/var/keys/${drive_upload}/plexguide_$count --iam-account plexguide_$rand@$project.iam.gserviceaccount.com --key-file-type="json"
+     drives_key_build
+done <"/pg/var/keys/${drive_upload}/key.count"
 
 }
