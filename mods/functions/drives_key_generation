@@ -62,7 +62,7 @@ count=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print
 ##  gcloud --account=${upload_email} iam service-accounts delete $check2
 #fi
 
-rm -rf /pg/var/drives/shared/${drive_upload}/blitz/*
+rm -rf /pg/var/drives/shared/${drive_upload}/blitz/* /pg/var/drives/shared/${drive_upload}/shared.emails
 if [[ "$count" == "" ]]; then count=0; fi
 keys=$typed
 countdown=$typed
@@ -73,9 +73,10 @@ while [ "$countdown" != "0" ]; do
      ((tally++))
      ((countdown--))
      common_header "💾  PG KEY [$count] - $tally of $keys" && sleep 1
-     rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
+     rand=$(echo $((1 + RANDOM * RANDOM)))
      gcloud iam service-accounts create ${drive_upload}-$rand --display-name “plexguide-$count”
      gcloud iam service-accounts keys create /pg/var/keys/${drive_upload}/plexguide_$count --iam-account ${drive_upload}-$rand@${upload_projectid}.iam.gserviceaccount.com --key-file-type="json"
+     gcloud --account=${upload_email} iam service-accounts >> /pg/var/drives/shared/${drive_upload}/shared.emails
      drives_key_build
 done <"/pg/var/keys/${drive_upload}/key.count"
 
