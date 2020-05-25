@@ -95,7 +95,7 @@ common_message "🚀  Drives - Mount Transport Data Interface" "
 "
 common_number
 
-if [[ "$typed" -gt "$gmenu_number" ]]; then
+if [[ "$typed" -gt "6" ]]; then
 common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"
 common_confirm && drives_menu_start && exit; fi
 
