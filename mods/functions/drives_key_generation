@@ -15,7 +15,7 @@ if [[ "$left_quota" -lt "33" ]]; then maxkeys=$left_quota; else maxkeys=33; fi
 if [[ "$left_quota" -lt "4" ]]; then message=1; else message=0; fi
 
 if [[ "$message" == 0 ]]; then
-  output1="Generate how many keys? [ 3 - ${maxkeys} ]"; else
+  output1="Generate how many keys? [ 4 - ${maxkeys} ]"; else
   output1="⛔️ CANNOT DEPLOY ANY KEYS! KEYS MAXED OUT!"; fi
 
 common_message "🚀  Drives - Key Management Interface" "
