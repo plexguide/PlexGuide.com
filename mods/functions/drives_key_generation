@@ -22,13 +22,15 @@ current project, you must purge all keys to generate new ones again!
 "
 read -p "↘️  Generate how many keys? | Press [ENTER]: " typed < /dev/tty
 
+echo "FLAG 1"
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_menu_start && exit; fi
-if [[ "$typed" -gt "50" || "$typed" -lt "4" || "$typed" == "" ]] ; then common_message "⛔️  WARNING: INVALID ENTRY" && common_confirm && drives_key_generation && exit; fi
+# if [[ "$typed" -gt "50" || "$typed" -lt "4" || "$typed" == "" ]]; then common_message "⛔️  WARNING: INVALID ENTRY" && common_confirm && drives_key_generation && exit; fi
 
 common_fcreate_silent "/pg/var/keys/${drive_upload}"
 rm -rf "/pg/var/keys/${drive_upload}/*"
 echo "$typed" > "/pg/var/keys/${drive_upload}/key.count"
 
+echo "FLAG 2"
 while [ "$count" != "$keys" ]; do
      ((count++))
      rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
