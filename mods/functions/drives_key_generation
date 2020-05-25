@@ -39,7 +39,7 @@ if [[ "$count" == "" ]]; then count=0; fi
 keys=$typed
 countdown=$typed
 
-while [ "$countdown" != "$0" ]; do
+while [ "$countdown" != "0" ]; do
      ((count++))
      ((countdown--))
      rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
