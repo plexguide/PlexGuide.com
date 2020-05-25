@@ -7,11 +7,13 @@ drives_menu_start_setup
 common_message "🚀  Drives - EMail Share Generator" "
 💬  Further Explanation? Visit ~ https://plexguide.com/wiki/sd-emails/
 ------------------------------------------------------------------------------
+
 NOTE1: Visit -
 NOTE2: Copy & Paste the E-Mails into the share from below!
 "
 
 cat /pg/var/drives/shared/${drive_upload}/shared.emails
+echo ""
 common_confirm
 
 drives_menu_start
