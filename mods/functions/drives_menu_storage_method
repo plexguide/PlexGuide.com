@@ -11,7 +11,7 @@ common_message "🚀  Drives - Storage Method" "
 [1] READ-ONLY      | None      | Simple  | Read Only Server (2nd Plex & etc)
 [2] Drives Basic   | 750GB     | Novice  | Basic Upload Requirements
 [3] Drives Blitz   | Unlimited | Complex | Excessive Upload Requirements
-[4] Drives Local   | User HD's | Simple  | Based on Users Hard Drives 
+[4] Drives Local   | User HD's | Simple  | Based on Users Hard Drives
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
@@ -20,7 +20,7 @@ common_number
 case $typed in
     1 ) echo "READ-ONLY" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     2 ) echo "BASIC" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
-    #3 ) echo "PGBLITZ" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
+    3 ) echo "BLITZ" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     #4 ) echo "LOCAL" > /pg/var/drives/storage.method && drives_menu_start && exit ;;
     z ) drives_menu_start && exit ;;
     Z ) drives_menu_start && exit ;;
