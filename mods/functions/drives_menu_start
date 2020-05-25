@@ -108,6 +108,7 @@ case $typed in
     3 ) drives_menu_storage_method && exit ;;
     4 ) drives_blitz_upload && exit ;;
     5 ) drives_key_generation && exit ;;
+    6 ) drives_key_email && exit ;;
     d ) drives_deploy && exit ;;
     D ) drives_deploy && exit ;;
     z ) start_menu && exit ;;
