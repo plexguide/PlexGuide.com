@@ -24,10 +24,10 @@ Generate how many keys? [ 4 - ${maxkeys} ]
 12 Keys = 9 TB      20 Keys = 15TB <---- GCE Feeder
 33 Keys = 25TB
 
+[$pool_quota] of 100 - KeyPool Quota Utilized
+
 Manage Keys:
 https://console.cloud.google.com/apis/credentials?authuser=1&folder=&organizationId=&project=$upload_projectid
-
-[$pool_quota] of 100 - KeyPool Quota Utilized
 ------------------------------------------------------------------------------
 [Z] Exit Interface
 "
