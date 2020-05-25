@@ -85,7 +85,7 @@ echo "" >> $sd_rclonepath
 #password = $enc_pass1
 #password2 = $enc_pass2
 ################################################################################
-EOF
-fi
+#EOF
+#fi
 
 }
