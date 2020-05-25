@@ -62,7 +62,7 @@ count=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print
 ##  gcloud --account=${upload_email} iam service-accounts delete $check2
 #fi
 
-rm -rf "/pg/var/drives/shared/${drive_upload}/blitz/*"
+rm -rf /pg/var/drives/shared/${drive_upload}/blitz/*
 if [[ "$count" == "" ]]; then count=0; fi
 keys=$typed
 countdown=$typed
@@ -78,5 +78,8 @@ while [ "$countdown" != "0" ]; do
      gcloud iam service-accounts keys create /pg/var/keys/${drive_upload}/plexguide_$count --iam-account ${drive_upload}-$rand@${upload_projectid}.iam.gserviceaccount.com --key-file-type="json"
      drives_key_build
 done <"/pg/var/keys/${drive_upload}/key.count"
+
+common_message "🚀  Keys - Process Complete! Add E-Mails to the SD Next!" 
+common_confirm
 
 }
