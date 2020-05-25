@@ -11,7 +11,7 @@ NOTE1: Visit -
 NOTE2: Copy & Paste the E-Mails into the share from below!
 "
 
-cat /pg/var/drives/shared/{$drive_upload}/shared.emails
+cat /pg/var/drives/shared/${drive_upload}/shared.emails
 common_confirm
 
 drives_menu_start
