@@ -73,5 +73,41 @@ case $typed in
     Z ) start_menu && exit ;;
     * ) drives_menu_start && exit ;;
 esac
+
+# BASIC MENU ###################################################################
+elif [[ "$storage_method" == "BLITZ" ]]; then
+
+common_message "🚀  Drives - Mount Transport Data Interface" "
+💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
+------------------------------------------------------------------------------
+[1] Google Drive        : [$gdtokeninfo]
+[2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]
+[3] Storage Method      : [$storage_method]
+[4] Upload Data To      : [$drive_upload]
+------------------------------------------------------------------------------
+[D] Deploy Drives       : [$deployed_mode]
+[O] Options
+[R] RClone Settings
+------------------------------------------------------------------------------
+[Z] Exit Interface
+"
+common_number
+
+if [[ "$typed" -gt "$gmenu_number" ]]; then
+common_message "⛔️  Typed a Selection that does not exist | [PRESS ENTER]"
+common_confirm && drives_menu_start && exit; fi
+
+case $typed in
+    1 ) drives_gdrive_menu && exit ;;
+    2 ) drives_share_menu && exit ;;
+    3 ) drives_menu_storage_method && exit ;;
+    4 ) drives_basic_upload && exit ;;
+    d ) drives_deploy && exit ;;
+    D ) drives_deploy && exit ;;
+    z ) start_menu && exit ;;
+    Z ) start_menu && exit ;;
+    * ) drives_menu_start && exit ;;
+esac
+
 fi
 }
