@@ -37,9 +37,11 @@ gcloud config set project ${upload_projectid}
 count=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | awk 'END { print }' | awk -F- '{ print $NF}')
 if [[ "$count" == "" ]]; then count=0; fi
 keys=$typed
+countdown=$typed
 
-while [ "$count" != "$keys" ]; do
+while [ "$countdown" != "$0" ]; do
      ((count++))
+     ((countdown--))
      rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
      gcloud iam service-accounts create ${drive_upload}-$rand --display-name “plexguide-$count”
      gcloud iam service-accounts keys create /pg/var/keys/${drive_upload}/plexguide_$count --iam-account ${drive_upload}-$rand@${upload_projectid}.iam.gserviceaccount.com --key-file-type="json"
