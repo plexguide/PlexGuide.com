@@ -52,7 +52,7 @@ read -p "↘️  Generate How Many Keys? | Press [ENTER]: " typed < /dev/tty
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_menu_start && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: CANNOT BE BLANK" && common_confirm && drives_key_generation && exit; fi
 if [[ "$typed" -lt "4" ]]; then common_message "⛔️  WARNING: REQUIRES 4 OR MORE KEYS" && common_confirm && drives_key_generation && exit; fi
-if [[ "$typed" -gt "${max_keys}" ]]; then common_message "⛔️  WARNING: EXCEEDS MAX KEYS" && common_confirm && drives_key_generation && exit; fi
+if [[ "$typed" -gt "${maxkeys}" ]]; then common_message "⛔️  WARNING: EXCEEDS MAX KEYS" && common_confirm && drives_key_generation && exit; fi
 
 common_fcreate_silent "/pg/var/keys/${drive_upload}"
 rm -rf "/pg/var/keys/${drive_upload}/*"
