@@ -30,10 +30,11 @@ common_fcreate_silent "/pg/var/keys/${drive_upload}"
 rm -rf "/pg/var/keys/${drive_upload}/*"
 echo "$typed" > "/pg/var/keys/${drive_upload}/key.count"
 upload_projectid=$(cat /pg/var/drives/shared/${drive_upload}/project.name)
+upload_email=$(cat /pg/var/drives/shared/${drive_upload}/e.mail)
 echo "FLAG 2"
 
 gcloud config set project ${upload_projectid}
-count=$(list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | awk 'END { print }' | awk -F- '{ print $NF}' | cut -c1-)
+count=$(gcloud --account=${} iam service-accounts list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | awk 'END { print }' | awk -F- '{ print $NF}' | cut -c2-)
 if [[ "$count" == "" ]]; then count=0; fi
 ((count++))
 keys=$typed
