@@ -4,6 +4,7 @@ drives_key_generation () {
 
 drives_menu_start_setup
 
+gcloud config set project ${upload_projectid}
 pool_quota=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | sort -V | awk 'END { print }' | awk -F- '{ print $NF}')
 if [[ "$pool_quota" == "" ]]; then left_quota=0; else left_quota="$((100-$pool_quota))"; fi
 
@@ -42,7 +43,6 @@ upload_projectid=$(cat /pg/var/drives/shared/${drive_upload}/project.name)
 upload_email=$(cat /pg/var/drives/shared/${drive_upload}/e.mail)
 echo "FLAG 2"
 
-gcloud config set project ${upload_projectid}
 count=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | sort -V | awk 'END { print }' | awk -F- '{ print $NF}')
 
 key_checker=$(gcloud --account=${upload_email} iam service-accounts list | grep "\(plexguide-${count}\)\>")
