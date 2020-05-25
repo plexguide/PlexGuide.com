@@ -33,8 +33,11 @@ upload_projectid=$(cat /pg/var/drives/shared/${drive_upload}/project.name)
 echo "FLAG 2"
 
 gcloud config set project ${upload_projectid}
-count=0
+count=$(list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | awk 'END { print }' | awk -F- '{ print $NF}' | cut -c1-)
+if [[ "$count" == "" ]]; then count=0; fi
+((count++))
 keys=$typed
+
 while [ "$count" != "$keys" ]; do
      ((count++))
      rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
