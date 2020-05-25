@@ -79,7 +79,7 @@ while [ "$countdown" != "0" ]; do
      drives_key_build
 done <"/pg/var/keys/${drive_upload}/key.count"
 
-common_message "🚀  Keys - Process Complete! Add E-Mails to the SD Next!" 
+common_message "🚀  Keys - Process Complete! Add E-Mails to the SD Next!"
 common_confirm
-
+drives_menu_start
 }
