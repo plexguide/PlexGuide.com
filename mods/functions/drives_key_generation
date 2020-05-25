@@ -38,10 +38,15 @@ count=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print
 if [[ "$count" == "" ]]; then count=0; fi
 keys=$typed
 countdown=$typed
+tally=0
+tally_total=$typed
 
 while [ "$countdown" != "0" ]; do
      ((count++))
+     ((tally++))
      ((countdown--))
+     echo "------------------------------------------------------------------------------"
+     common_header "💾  Generating PlexGuide Key [$count] - $tally of $tally_total" && sleep 1
      rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
      gcloud iam service-accounts create ${drive_upload}-$rand --display-name “plexguide-$count”
      gcloud iam service-accounts keys create /pg/var/keys/${drive_upload}/plexguide_$count --iam-account ${drive_upload}-$rand@${upload_projectid}.iam.gserviceaccount.com --key-file-type="json"
