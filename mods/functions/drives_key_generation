@@ -32,7 +32,7 @@ echo "$typed" > "/pg/var/keys/${drive_upload}/key.count"
 upload_projectid=$(cat /pg/var/drives/shared/${drive_upload}/project.name)
 echo "FLAG 2"
 
-gcloud config set project
+gcloud config set project ${upload_projectid}
 count=0
 keys=$typed
 while [ "$count" != "$keys" ]; do
