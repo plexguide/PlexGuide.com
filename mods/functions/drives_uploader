@@ -1,6 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-drives_basic_deploy() {
+drives_uploader() {
 
 drives_menu_start_setup
 # temporary ####################################################################
@@ -56,7 +56,7 @@ done <"$path_upload"/upload.long
 if [[ $(cat "$path_upload"/upload.long) == "" ]]; then
 echo "NOTHING TO UPLOAD"
 echo "Nothing to Upload" >> "$logpath_primary"
-sleep 5; drives_basic_deploy && exit; fi
+sleep 5; drives_uploader && exit; fi
 
 echo "" >> $logpath_primary
 # exempt items from list #######################################################
@@ -144,5 +144,5 @@ done <"$path_upload"/slot.list
 tallynumber=$(paste -sd+ /pg/var/drives/size/size.tally | bc)
 echo $(echo "scale=0;$tallynumber/1073741824" | bc) > /pg/var/drives/size/tally.total
 # repeat #######################################################################
-drives_basic_deploy && exit
+drives_uploader && exit
 }

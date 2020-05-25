@@ -17,7 +17,7 @@ systemctl daemon-reload && systemctl stop uploader && systemctl disable uploader
 
 cat <<- EOF > "$script_path"
 source /pg/mods/functions/.master.sh
-drives_basic_deploy
+drives_uploader
 EOF
 
 chown 1000:1000 $script_path

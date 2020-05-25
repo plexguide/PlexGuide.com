@@ -76,7 +76,7 @@ case $typed in
     8 ) pgpress_menu && start_menu && exit ;;
     9 ) pgpress_menu && start_menu && exit ;;
     10 ) pgpress_menu && start_menu && exit ;;
-    11 ) rm -rf /pg/var/transport/* && echo && drives_basic_deploy && exit ;;
+    11 ) rm -rf /pg/var/transport/* && echo && drives_uploader && exit ;;
     z ) start_end && exit ;;
     Z ) start_end && exit ;;
     * ) start_menu ;;
