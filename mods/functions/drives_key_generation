@@ -31,6 +31,8 @@ rm -rf "/pg/var/keys/${drive_upload}/*"
 echo "$typed" > "/pg/var/keys/${drive_upload}/key.count"
 
 echo "FLAG 2"
+count=0
+keys=$typed
 while [ "$count" != "$keys" ]; do
      ((count++))
      rand=$(echo $((1 + RANDOM * RANDOM * RANDOM)))
