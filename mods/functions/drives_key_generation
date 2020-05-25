@@ -36,8 +36,8 @@ common_message "🚀  Drives - Key Management Interface" "
 ------------------------------------------------------------------------------
 ⛔️ CANNOT DEPLOY ANY KEYS! KEYS MAXED OUT!
 
-In order to deploy using this same project, you must clear delete some keys
-via the options or by visiting the following link below:
+In order to deploy more keys using this same project, delete some service keys
+via PG's options or by visiting the following link below:
 
 https://console.cloud.google.com/apis/credentials?authuser=1&folder=&organizationId=&project=$upload_projectid
 
