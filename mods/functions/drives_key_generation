@@ -9,7 +9,7 @@ upload_email=$(cat /pg/var/drives/shared/${drive_upload}/e.mail)
 
 gcloud config set project ${upload_projectid}
 pool_quota=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | sort -V | awk 'END { print }' | awk -F- '{ print $NF}')
-if [[ "$pool_quota" == "" ]]; then left_quota=0; else left_quota="$((100-$pool_quota))"; fi
+if [[ "$pool_quota" == "" ]]; then left_quota=100; else left_quota="$((100-$pool_quota))"; fi
 
 if [[ "$left_quota" -lt "33" ]]; then maxkeys=$left_quota; else maxkeys=33; fi
 if [[ "$left_quota" -lt "4" ]]; then message=1; else message=0; fi
