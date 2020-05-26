@@ -65,7 +65,7 @@ count=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print
 ##  gcloud --account=${upload_email} iam service-accounts delete $check2
 #fi
 
-rm -rf /pg/var/drives/shared/${drive_upload}/blitz/* /pg/var/drives/shared/${drive_upload}/shared.emails
+rm -rf /pg/var/drives/shared/${drive_upload}/blitz/* /pg/var/keys/${drive_upload}/* /pg/var/drives/shared/${drive_upload}/shared.emails
 if [[ "$count" == "" ]]; then count=0; fi
 keys=$typed
 countdown=$typed
