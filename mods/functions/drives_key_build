@@ -56,9 +56,9 @@ sd_id=$(cat "/pg/var/drives/shared/${drive_upload}/sd.id")
 sd_path=$(cat )
 
 cat <<- EOF > "$sd_rclonepath"
-# $basicname ~ $drive_upload #####################
+# plexguide_$count ~ ${drive_upload}-${count} #####################
 EOF
-echo "[plexguide_$count]" >> $sd_rclonepath
+echo "[${drive_upload}-${count}]" >> $sd_rclonepath
 cat <<- EOF >> "$sd_rclonepath"
 client_id = $sclientid
 client_secret = $sclientsecret
