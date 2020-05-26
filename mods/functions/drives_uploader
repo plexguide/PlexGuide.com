@@ -105,6 +105,8 @@ mkdir -p "$path_upload"/${b}
           if [[ "$lcatch" == "$fnum" ]]; then rpath=${dfg}; fi
         done < /pg/var/drives/blitz.list
         rclone_upload="/pg/var/drives/shared/${rclone_drive}/blitz/$rpath"
+        echo $rclone_upload | head +n 1
+        drive_upload=$(cat $rclone_upload | head -n 1 | cut -c2- | rev | cut -c2- | rev)
         echo "SELECT BLITZ KEY - $rpath" >> $logpath_primary
       fi
       # upload action ######################################################
