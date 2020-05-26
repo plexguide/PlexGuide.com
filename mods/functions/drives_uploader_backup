@@ -1,0 +1,148 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_uploader_backup() {
+
+drives_menu_start_setup
+# temporary ####################################################################
+transport_path="/pg/var/transport"
+mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
+
+# declare variables and remove clutter #########################################
+path_upload="/pg/var/upload"; remove_path="/pg/complete"
+logpath_ucount="/pg/log/uploader/log.count"
+logpath_primary="/pg/log/uploader/primary.log"
+
+# 403 actions
+drives_403v2
+
+# stores number of upload slots into a stored variable #########################
+echo "$(ls /pg/var/transport)" > "$path_upload"/slot.list
+
+# clears folder if key files are missing ####################
+#while read rt; do
+#  if [[ ! -e "/pg/var/transport/$rt/rclone.log" || ! -e "/pg/var/transport/$rt/key.long" ]]; then
+#    rm -rf /pg/var/transport/${rt}/*
+#  fi
+#done <"$path_upload"/slot.list
+
+# generates starting part of the log ###########################################
+mkdir -p /pg/log/uploader
+
+if [[ ! -e "$logpath_ucount" ]]; then echo 0 > "$logpath_ucount"; fi
+ucount_plusup=$(cat $logpath_ucount)
+let "ucount_plusup++"; echo "$ucount_plusup" > $logpath_ucount
+echo "" >> "$logpath_primary"
+echo "--------------------------------------------" >> "$logpath_primary"
+echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
+echo "--------------------------------------------" >> "$logpath_primary"
+
+# creates sorted merit list ####################################################
+mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
+
+# old ##########################################################################
+# find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
+# find /pg/complete/ -type f -mmin +2 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2
+
+find /pg/complete/ -type f\
+ ! \( -path "/pg/complete/nzbget/*" -o -path "/pg/complete/777/*" \)\
+ -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2  > "$path_upload"/upload.long
+
+# generates short files ########################################################
+while read p; do
+  echo "${p#*$remove_path}" >> "$path_upload"/upload.short
+done <"$path_upload"/upload.long
+
+# if nothing to upload #########################################################
+if [[ $(cat "$path_upload"/upload.long) == "" ]]; then
+echo "NOTHING TO UPLOAD"
+echo "Nothing to Upload" >> "$logpath_primary"
+sleep 5; drives_uploader && exit; fi
+
+echo "" >> $logpath_primary
+# exempt items from list #######################################################
+while read zg; do
+  if [[ -e "/pg/var/transport/$zg/rclone.log" && -e "$path_upload"/upload.long ]]; then
+    removeitems=$(cat /pg/var/transport/${zg}/key.long)
+    if [[ "$removeitems" != "" ]]; then
+      grep -v "$removeitems" "$path_upload"/upload.long > "$path_upload"/upload.long.tmp
+      mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long
+    fi
+  fi
+done <"$path_upload"/slot.list
+
+# before looping, ensures to reset item to fetch from merit list ###############
+merit_count=0
+
+# start looping through slot folders ###########################################
+while read b; do
+
+transport_loop="off"
+mkdir -p "$path_upload"/${b}
+  if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
+      echo "SLOT ${b}: Available" >> "$logpath_primary"
+      let "merit_count=merit_count+1"
+      touch /pg/var/transport/${b}/key.short
+      # generates keys base on merit list order ##################################
+      sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
+      sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
+      # outputs size of the file for tally #################################
+      stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
+      # upload variables####################################################
+      shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
+      drive_upload=$(cat /pg/var/drives/drive.upload); rclone_upload=$(cat /pg/var/drives/drive.rclone)
+      # upload action ######################################################
+      minicheck=$(cat "/pg/var/transport/${b}/key.long")
+      if [[ "$minicheck" != "" ]]; then
+        echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
+        rclone moveto "$longkey" $drive_upload:"$shortkey" \
+          --config="$rclone_upload"  \
+          --log-file="/pg/var/transport/${b}/rclone.log" \
+          --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 &>/dev/null &
+        # self delete folder info because file stuck or 403; recycles ########
+        upload_checker=$(echo $longkey)
+        echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
+        #if [[ -e "$upload_checker" ]]; then
+        #  rm -rf /pg/var/transport/${b}/*
+        #  touch /pg/var/drives/file.stuck; fi
+    else
+      a=a
+      #echo "FLAG BAD" >> "$logpath_primary"
+  fi; fi
+      # prevents overloading ###################################################
+      sleep .5
+done <"$path_upload"/slot.list
+# outputs rclone info ##########################################################
+while read bzz; do
+  if [[ -e "/pg/var/transport/${bzz}/rclone.log" ]]; then
+  rclone_recall=$(tail -2 /pg/var/transport/${bzz}/rclone.log | head -1)
+  echo "SLOT ${bzz} ${rclone_recall}" >> "$logpath_primary"; fi
+done <"$path_upload"/slot.list
+# conducting checks, file missing; then clear ##################################
+echo "" >> "$logpath_primary"
+echo "--------------------------------------------" >> "$logpath_primary"
+echo "Transport Check: Checking for Uploaded Files" >> "$logpath_primary"
+echo "--------------------------------------------" >> "$logpath_primary"
+while read zz; do
+  # echo "Transport Checks: Checking Slot - $zz" >> "$logpath_primary"
+  if [[ -e "/pg/var/transport/${zz}/key.long" ]]; then
+   file_path_dir=$(cat "/pg/var/transport/${zz}/key.long")
+   if [[ ! -e "$file_path_dir" ]]; then
+     #echo "FLAG 3 - $file_path_dir" >> "$logpath_primary"
+     # tally size ################################################################
+     mkdir -p /pg/var/drives/size
+     cat /pg/var/transport/${zz}/file.size >> /pg/var/drives/size/size.tally
+     # remove junk contents ######################################################
+     rm -rf /pg/var/drives/file.stuck
+     rm -rf /pg/var/transport/${zz}/*
+     echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
+ else
+   echo "SLOT ${zz}: Being Utilized" >> "$logpath_primary"
+ fi; fi
+done <"$path_upload"/slot.list
+
+# total tally ##################################################################
+tallynumber=$(paste -sd+ /pg/var/drives/size/size.tally | bc)
+echo $(echo "scale=0;$tallynumber/1073741824" | bc) > /pg/var/drives/size/tally.total
+# repeat #######################################################################
+drives_uploader && exit
+}
