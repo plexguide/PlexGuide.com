@@ -75,9 +75,12 @@ while [ "$countdown" != "0" ]; do
      ((count++))
      ((tally++))
      ((countdown--))
+
+     gdsacount
+
      common_header "💾  PG KEY [$count] - $tally of $keys" && sleep 1
-     gcloud iam service-accounts create ${drive_upload}-${count} --display-name “plexguide-$count”
-     gcloud iam service-accounts keys create /pg/var/keys/${drive_upload}/plexguide_$count --iam-account ${drive_upload}-${count}@${upload_projectid}.iam.gserviceaccount.com --key-file-type="json"
+     gcloud --account=${upload_email} iam service-accounts create ${drive_upload}-${count} --display-name “plexguide-$count”
+     gcloud --account=${upload_email} iam service-accounts keys create /pg/var/keys/${drive_upload}/plexguide_$count --iam-account ${drive_upload}-${count}@${upload_projectid}.iam.gserviceaccount.com --key-file-type="json"
      echo "${drive_upload}-${count}@${upload_projectid}.iam.gserviceaccount.com" >> /pg/var/drives/shared/${drive_upload}/shared.emails
      drives_key_build
 done <"/pg/var/keys/${drive_upload}/key.count"
