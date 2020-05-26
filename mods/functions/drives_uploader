@@ -95,7 +95,7 @@ mkdir -p "$path_upload"/${b}
       if [[ "$drive_mode" == "BASIC" ]]; then
         rclone_upload=$(cat /pg/var/drives/drive.rclone)
       elif [[ "$drive_mode" == "BLITZ" ]]; then
-        echo "$(ls /pg/var/drives/shared/$path_upload/blitz/)" > /pg/var/drives/blitz.list
+        echo "$(ls /pg/var/drives/shared/${rclone_drive}/blitz/)" > /pg/var/drives/blitz.list
         prime_number=$(wc -l /pg/var/drives/blitz.list | awk '{print $1}')
         num=$( echo $(($RANDOM % $prime_number)) )
         ((fnum=$num+1))
