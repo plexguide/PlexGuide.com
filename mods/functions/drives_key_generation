@@ -55,17 +55,12 @@ if [[ "$typed" -lt "4" ]]; then common_message "⛔️  WARNING: REQUIRES 4 OR M
 if [[ "$typed" -gt "${maxkeys}" ]]; then common_message "⛔️  WARNING: EXCEEDS MAX KEYS" && common_confirm && drives_key_generation && exit; fi
 
 common_fcreate_silent "/pg/var/keys/${drive_upload}"
-rm -rf "/pg/var/keys/${drive_upload}/*"
+rm -rf /pg/var/keys/${drive_upload}/*
 echo "$typed" > "/pg/var/keys/${drive_upload}/key.count"
 
 count=$(gcloud --account=${upload_email} iam service-accounts list | awk '{print $1}' | sort -u | cut -d'?' -f2- | rev | cut -d'?' -f2- | rev | grep "plexguide" | sort -V | awk 'END { print }' | awk -F- '{ print $NF}')
 
-#key_checker=$(gcloud --account=${upload_email} iam service-accounts list | grep "\(plexguide-${count}\)\>")
-#if [[ "$key_checker" != "" ]]; then
-##  gcloud --account=${upload_email} iam service-accounts delete $check2
-#fi
-
-rm -rf /pg/var/drives/shared/${drive_upload}/blitz/* /pg/var/keys/${drive_upload}/* /pg/var/drives/shared/${drive_upload}/shared.emails
+rm -rf /pg/var/drives/shared/${drive_upload}/blitz/* /pg/var/drives/shared/${drive_upload}/shared.emails
 if [[ "$count" == "" ]]; then count=0; fi
 keys=$typed
 countdown=$typed
