@@ -130,12 +130,9 @@ while read p; do
   drives_deploy_mounts $p
 done </pg/tmp/edrives.list
 
-# GENERATE - BLITZ LIST IF SELECTED ############################################
-if [[ "$storage_method" == "BLITZ" ]]; then
-echo "$path_upload" > /pg/var/drives/shared.drive
-fi
 # ENABLE UPLOADER ##############################################################
 if [[ "$storage_method" == "BLITZ" || "$storage_method" == "BASIC" ]]; then
+echo "$drive_upload" > /pg/var/drives/shared.drive
 drives_deploy_uploader; fi
 
 echo "$storage_method" > /pg/var/drives/storage.method
