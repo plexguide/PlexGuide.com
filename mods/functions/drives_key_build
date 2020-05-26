@@ -60,8 +60,7 @@ cat <<- EOF > "$sd_rclonepath"
 EOF
 echo "[${drive_upload}-${count}]" >> $sd_rclonepath
 cat <<- EOF >> "$sd_rclonepath"
-client_id = $sclientid
-client_secret = $sclientsecret
+type = drive
 scope = drive
 server_side_across_configs = true
 service_account_file = "/pg/var/keys/${drive_upload}/plexguide_$count"
