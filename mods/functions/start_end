@@ -21,8 +21,8 @@ cat << "EOF"
 ┌─────────────────────────────────────┐
 │        EXITING PG Version X         │
 │ ————————————————————————————————————│
-│ Star PG:      github.plexguide.com  │
-│ Donate:       donate.plexguide.com  │
+│ Star PG:      plexguide.com/github  │
+│ Donate:       plexguide.com/donate  │
 │ ————————————————————————————————————│
 │ Restart PlexGuide:      plexguide   │
 │ Update  PlexGuide:      pgupdate    │
@@ -31,8 +31,8 @@ cat << "EOF"
 │ ——————————————————————————————————— │
 │ An Original Admin9705 Project       │
 │                                     │
-│ Dedicated to:                       │    Additional Staff
-│ Deiteq, YasQueen84 & JasMarie       │    Coders: TechButton & vFlagR
+│ Dedicated to:                       │
+│ Deiteq, YasQueen84 & JasMarie       │
 └─────────────────────────────────────┘
 EOF
 
