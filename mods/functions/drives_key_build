@@ -55,14 +55,9 @@ sd_rclonepath="/pg/var/drives/shared/${drive_upload}/blitz/$count.conf"
 sd_id=$(cat "/pg/var/drives/shared/${drive_upload}/sd.id")
 sd_path=$(cat )
 
-cat <<- EOF > "$sd_rclonepath"
-# plexguide_$count ~ ${drive_upload}-${count} #####################
-EOF
-echo "[${drive_upload}-${count}]" >> $sd_rclonepath
 cat <<- EOF >> "$sd_rclonepath"
 type = drive
 scope = drive
-server_side_across_configs = true
 service_account_file = "/pg/var/keys/${drive_upload}/plexguide_$count"
 team_drive = $sd_id
 EOF
