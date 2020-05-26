@@ -132,7 +132,7 @@ done </pg/tmp/edrives.list
 
 # GENERATE - BLITZ LIST IF SELECTED ############################################
 if [[ "$storage_method" == "BLITZ" ]]; then
-echo "$path_upload" > /pg/var/drives/rclone_drive
+echo "$path_upload" > /pg/var/drives/shared.drive
 fi
 # ENABLE UPLOADER ##############################################################
 if [[ "$storage_method" == "BLITZ" || "$storage_method" == "BASIC" ]]; then
