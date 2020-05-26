@@ -102,10 +102,10 @@ mkdir -p "$path_upload"/${b}
         lcatch=0
         while read dfg; do
           let "lcatch++"
-          if [[ "$lcatch" == "$funm" ]]; then rpath=dfg; fi
+          if [[ "$lcatch" == "$fnum" ]]; then rpath=${dfg}; fi
         done < /pg/var/drives/blitz.list
-        rclone_upload=$(cat /pg/var/drives/shared/${rclone_drive}/$rpath)
-        echo "SELECT BLITZ KEY - $rpath" >> "$logpath_primary"
+        rclone_upload="/pg/var/drives/shared/${rclone_drive}/blitz/$rpath"
+        echo "SELECT BLITZ KEY - $rpath" >> $logpath_primary
       fi
       # upload action ######################################################
       minicheck=$(cat "/pg/var/transport/${b}/key.long")
@@ -119,9 +119,6 @@ mkdir -p "$path_upload"/${b}
         # self delete folder info because file stuck or 403; recycles ########
         upload_checker=$(echo $longkey)
         echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
-
-        /pg/var/drives/shared/media/blitz/1.conf
-
         #rclone moveto "/pg/tmp/test.01" media-36: \
         #  --config="/pg/var/drives/shared/media/blitz/36.conf"  \
         #  --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0
