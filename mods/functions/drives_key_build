@@ -56,6 +56,7 @@ sd_id=$(cat "/pg/var/drives/shared/${drive_upload}/sd.id")
 sd_path=$(cat )
 
 cat <<- EOF >> "$sd_rclonepath"
+[${drive_upload}-${count}]
 type = drive
 scope = drive
 service_account_file = "/pg/var/keys/${drive_upload}/plexguide_$count"
