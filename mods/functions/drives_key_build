@@ -49,11 +49,12 @@ drives_menu_start_setup
 
 common_fcreate_silent "/pg/var/drives/shared/${drive_upload}/blitz"
 
-sclientid=$(cat "/pg/var/drives/shared/${drive_upload}/sd.clientid")
-sclientsecret=$(cat "/pg/var/drives/shared/${drive_upload}/sd.secret")
 sd_rclonepath="/pg/var/drives/shared/${drive_upload}/blitz/$count.conf"
 sd_id=$(cat "/pg/var/drives/shared/${drive_upload}/sd.id")
-sd_path=$(cat )
+
+echo "PG Log - ${drive_upload} plexguide$count" >> /pg/var/drives/shared/${drive_upload}/log.final 
+echo "SD-RclonePath: $sd_rclonepath" >> /pg/var/drives/shared/${drive_upload}/log.final
+echo "SD-ID: $sd_id" >> /pg/var/drives/shared/${drive_upload}/log.final
 
 cat <<- EOF >> "$sd_rclonepath"
 [${drive_upload}${count}]
