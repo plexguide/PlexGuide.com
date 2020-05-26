@@ -83,6 +83,9 @@ common_main /pg/var/drives/shared/$sdselect/password.2 NOT-SET spassword2
 #blitz
 common_main /pg/var/drives/blitz.list "" blitz_list
 
+# for all modes
+common_main /pg/var/drives/storage.method "" drive_mode
+
 #sd menu
 if [[ "$spassword1" == "NOT-SET" || "$spassword2" == "NOT-SET" ]]; then
   spassdisplay="NOT-SET"; else spassdisplay="SET"; fi

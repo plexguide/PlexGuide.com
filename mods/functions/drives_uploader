@@ -13,7 +13,11 @@ logpath_ucount="/pg/log/uploader/log.count"
 logpath_primary="/pg/log/uploader/primary.log"
 
 # 403 actions
-drives_403v2
+if [[ "drive_mode" == "BASIC" ]]; then
+drives_403v2; fi
+
+# BLITZ SELECTOR
+
 
 # stores number of upload slots into a stored variable #########################
 echo "$(ls /pg/var/transport)" > "$path_upload"/slot.list
