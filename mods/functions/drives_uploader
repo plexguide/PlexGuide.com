@@ -16,9 +16,6 @@ logpath_primary="/pg/log/uploader/primary.log"
 if [[ "drive_mode" == "BASIC" ]]; then
 drives_403v2; fi
 
-# BLITZ SELECTOR
-
-
 # stores number of upload slots into a stored variable #########################
 echo "$(ls /pg/var/transport)" > "$path_upload"/slot.list
 
@@ -93,10 +90,29 @@ mkdir -p "$path_upload"/${b}
       stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
       # upload variables####################################################
       shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
-      drive_upload=$(cat /pg/var/drives/drive.upload); rclone_upload=$(cat /pg/var/drives/drive.rclone)
+      drive_upload=$(cat /pg/var/drives/drive.upload);
+      # selecting path based on method #####################################
+      if [[ "$drive_mode" == "BASIC" ]]; then
+        rclone_upload=$(cat /pg/var/drives/drive.rclone)
+      elif [[ "$drive_mode" == "BLITZ" ]]; then
+
+        prime_number=$(wc -l /pg/var/drives/blitz.list | awk '{print $1}')
+        num=$( echo $(($RANDOM % $prime_number)) )
+        fnum=((num=$num+1)
+
+        lcatch=0
+        while read dfg; do
+          let "lcatch++"
+          if [[ "$lcatch" == "$funm" ]]; then rpath=dfg; fi
+        done < /pg/var/drives/blitz.list
+        rclone_upload=$(cat /pg/var/drives/shared/${rclone_drive}/$rpath)            
+      fi
       # upload action ######################################################
       minicheck=$(cat "/pg/var/transport/${b}/key.long")
       if [[ "$minicheck" != "" ]]; then
+
+
+
         echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
         rclone moveto "$longkey" $drive_upload:"$shortkey" \
           --config="$rclone_upload"  \
