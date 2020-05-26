@@ -82,6 +82,7 @@ common_main /pg/var/drives/shared/$sdselect/password.2 NOT-SET spassword2
 
 #blitz
 common_main /pg/var/drives/blitz.list "" blitz_list
+common_main /pg/var/drives/shared.drive "" rclone_drive
 
 # for all modes
 common_main /pg/var/drives/storage.method "" drive_mode
