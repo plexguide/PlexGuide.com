@@ -98,20 +98,18 @@ mkdir -p "$path_upload"/${b}
 
         prime_number=$(wc -l /pg/var/drives/blitz.list | awk '{print $1}')
         num=$( echo $(($RANDOM % $prime_number)) )
-        fnum=((num=$num+1)
-
+        ((fnum=$num+1))
         lcatch=0
         while read dfg; do
           let "lcatch++"
           if [[ "$lcatch" == "$funm" ]]; then rpath=dfg; fi
         done < /pg/var/drives/blitz.list
-        rclone_upload=$(cat /pg/var/drives/shared/${rclone_drive}/$rpath)            
+        rclone_upload=$(cat /pg/var/drives/shared/${rclone_drive}/$rpath)
+        echo "SELECT BLITZ KEY - $rpath" >> "$logpath_primary"
       fi
       # upload action ######################################################
       minicheck=$(cat "/pg/var/transport/${b}/key.long")
       if [[ "$minicheck" != "" ]]; then
-
-
 
         echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
         rclone moveto "$longkey" $drive_upload:"$shortkey" \
