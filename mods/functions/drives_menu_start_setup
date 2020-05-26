@@ -80,6 +80,9 @@ common_main /pg/var/drives/shared/${sdselect}/${sdselect}.token NOT-SET svalid_c
 common_main /pg/var/drives/shared/$sdselect/password.1 NOT-SET spassword1
 common_main /pg/var/drives/shared/$sdselect/password.2 NOT-SET spassword2
 
+#blitz
+common_main /pg/var/drives/blitz.list "" blitz_list
+
 #sd menu
 if [[ "$spassword1" == "NOT-SET" || "$spassword2" == "NOT-SET" ]]; then
   spassdisplay="NOT-SET"; else spassdisplay="SET"; fi

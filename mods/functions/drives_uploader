@@ -102,6 +102,8 @@ mkdir -p "$path_upload"/${b}
         upload_checker=$(echo $longkey)
         echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
 
+        /pg/var/drives/shared/media/blitz/1.conf
+
         #rclone moveto "/pg/tmp/test.01" media-36: \
         #  --config="/pg/var/drives/shared/media/blitz/36.conf"  \
         #  --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0
