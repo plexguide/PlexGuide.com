@@ -1,0 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+fpath="/pg/mods/functions"
+clear
+cat /pg/log/uploader/primary.log | tail -n 40
