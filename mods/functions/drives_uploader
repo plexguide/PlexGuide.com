@@ -41,10 +41,10 @@ echo "--------------------------------------------" >> "$logpath_primary"
 mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
 
 # old ##########################################################################
-# find /pg/complete/ -type f -mmin +1 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
+# find /pg/complete/ -type f -mmin +1 -mtime +5 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
 # find /pg/complete/ -type f -mmin +2 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2
 
-find /pg/complete/ -type f\
+find /pg/complete/ -mmin +3 -type f\
  ! \( -path "/pg/complete/nzbget/*" -o -path "/pg/complete/777/*" \)\
  -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2  > "$path_upload"/upload.long
 

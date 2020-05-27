@@ -129,6 +129,8 @@ while read p; do
   echo "Mounted: SDrive (Encrypted) - /pg/$p$temp99" >> /pg/tmp/deploy.log
   drives_deploy_mounts $p
 done </pg/tmp/edrives.list
+# REMOVE WHATS CURRENTLY TRACKED ###############################################
+rm -rf /pg/var/transport/{01,02,03,04,05,06,07,08}
 
 # ENABLE UPLOADER ##############################################################
 if [[ "$storage_method" == "BLITZ" || "$storage_method" == "BASIC" ]]; then
