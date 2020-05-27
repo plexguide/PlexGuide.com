@@ -40,7 +40,7 @@ EOF
   fi
 
   # Declare Ports State
-  ports=$(cat /pg/var/server.ports)
+  ports=$(cat /pg/var/server.port)
 
   if [ "$ports" == "" ]; then ports="[OPEN] Ports  "
 else ports="[CLOSED] Ports"; fi

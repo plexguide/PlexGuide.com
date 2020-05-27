@@ -121,7 +121,7 @@ git clone -b $edition --single-branch https://github.com/MHA-Team/Install.git /o
 git clone https://github.com/MHA-Team/PG-Update.git /opt/pgupdate 1>/dev/null 2>&1
 echo -ne '##########                (40%)\r'
 mkdir -p /pg/var/logs
-echo "" >/pg/var/server.ports
+echo "" >/pg/var/server.port
 echo "51" >/pg/var/pg.pythonstart
 echo -ne '############              (50%)\r'
 touch /pg/var/pg.pythonstart.stored

@@ -29,7 +29,7 @@ variable /pg/var/pgfork.version "NOT-SET"
 variable /pg/var/tld.program "NOT-SET"
 variable /pg/var/plextoken "NOT-SET"
 variable /pg/var/server.ht ""
-variable /pg/var/server.ports "127.0.0.1:"
+variable /pg/var/server.port ""
 variable /pg/var/server.domain "NOT-SET"
 variable /pg/var/tld.type "standard"
 variable /pg/var/transcode.path "standard"
@@ -64,11 +64,11 @@ touch /pg/var/server.id
 touch /pg/var/pg.number
 touch /pg/var/traefik.deployed
 touch /pg/var/server.ht
-touch /pg/var/server.ports
+touch /pg/var/server.port
 touch /pg/var/pg.server.deploy
 
 # For PG UI - Force Variable to Set
-ports=$(cat /pg/var/server.ports)
+ports=$(cat /pg/var/server.port)
 if [ "$ports" == "" ]; then echo "Open" > /pg/var/pg.ports
 else echo "Closed" > /pg/var/pg.ports; fi
 

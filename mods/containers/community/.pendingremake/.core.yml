@@ -24,7 +24,7 @@
   ignore_errors: True
 
 - name: Register Ports
-  shell: 'cat /pg/var/server.ports'
+  shell: 'cat /pg/var/server.port'
   register: ports
   ignore_errors: True
 
