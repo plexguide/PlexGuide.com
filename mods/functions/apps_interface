@@ -11,7 +11,7 @@ fmt -w 79 "/pg/tmp/appstoinstall.list" > "/pg/tmp/appstoinstall.wrap"
 apps_to_install=$(cat /pg/tmp/appstoinstall.wrap)
 
 # sets up the primary interface
-common_message "🚀 Multi-App Installer | PGX Edition | 📂 Apps Interface ~ $sapp" "
+common_message "🚀 App Interface | 📂 App Type ~ $sapp | PGX Edition" "
 $app_display
 
 [Z] Quit & Exit Interface $installinfo"
@@ -26,7 +26,7 @@ existcheck=$(echo $app_display | grep "$typed" -w)
   read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
   apps_interface; fi
 
-selected_app=$typed
+app=$typed
 
 apps_interface_sub
 
