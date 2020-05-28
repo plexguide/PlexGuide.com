@@ -23,6 +23,8 @@ echo "}" >> /pg/mods/functions/apps_install
 case $typed in
     A ) apps_install ;;
     a ) apps_install ;;
+    u ) apps_uninstall ;;
+    U ) apps_uninstall ;;
     z ) apps_menu ;;
     Z ) apps_menu ;;
     * ) apps_interface_sub ;;
