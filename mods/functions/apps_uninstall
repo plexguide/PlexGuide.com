@@ -14,8 +14,8 @@ read -p "↘️  Uninstalled - $app | Press [ENTER]: " typed < /dev/tty
 elif [[ "$typed" == "z" || "$typed" == "Z" || "$typed" == "n" || "$typed" == "N" ]]; then
   apps_interface_sub
 else
-  echo ""
   common_header "INVALID Selection! Please try again!"
+  echo
   common_confirm
 apps_interface_sub; fi
 }
