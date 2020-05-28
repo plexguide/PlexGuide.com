@@ -15,9 +15,13 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 [Z] Quit & Exit Interface $installinfo"
 common_number
 
+deploy_app() {
+    $app
+}
+
 case $typed in
-    A ) echo 'echo "" > tmp' | while read cmd; do eval "$app" ;;
-    a ) echo 'echo "" > tmp' | while read cmd; do eval "$app" ;;
+    A ) deploy_app && exit ;;
+    a ) deploy_app && exit ;;
     M ) drives_share_manage && exit ;;
     m ) drives_share_manage && exit ;;
     z ) drives_menu_start && exit ;;
