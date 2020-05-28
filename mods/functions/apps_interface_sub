@@ -14,8 +14,8 @@ common_message "🚀 App Interface | 📂 App Type ~ $app | PGX Edition" "
 common_number
 
 case $typed in
-    A ) $app && exit ;;
-    a ) $app && exit ;;
+    A ) $($app) && exit ;;
+    a ) $($app) && exit ;;
     M ) drives_share_manage && exit ;;
     m ) drives_share_manage && exit ;;
     z ) drives_menu_start && exit ;;
