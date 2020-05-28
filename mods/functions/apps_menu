@@ -2,9 +2,8 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_menu() {
 
-common_message "🚀  PG Applications Interface" "
-💬  Further Explanation? Visit ~ http://apps.plexguide.com
-------------------------------------------------------------------------------
+common_message "🚀  PG Applications Interface" "💬  Further Explanation? Visit ~ http://apps.plexguide.com
+
 [1] Primary
 [2] Community
 [3] Personal  / NOT WORKING YET
