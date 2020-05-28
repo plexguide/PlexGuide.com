@@ -4,5 +4,5 @@ container_rebuild $app
 ansible-playbook "/pg/apps/$app.yml"
 
 echo ""
-read -p "↘️  Installed $app_select | Press [ENTER]" typed < /dev/tty
+read -p "↘️  Installed $app | Press [ENTER]" typed < /dev/tty
 }
