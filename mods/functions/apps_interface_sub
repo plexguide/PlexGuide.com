@@ -9,7 +9,7 @@ common_message "🚀 App Interface | 📂 App Type ~ $app | PGX Edition" "
 [P] Ports         | Not Ready
 [T] Traefik CNAME | Not Ready
 [U] UnInstall     | Not Ready
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface $installinfo"
 common_number
 
