@@ -14,7 +14,7 @@ common_message "🚀 App Interface | 📂 App Type ~ $app | PGX Edition" "
 common_number
 
 case $typed in
-    A ) $($app) && exit ;;
+    A ) echo 'echo "$app" > tmp' | while read cmd; do eval "$cmd" ; done && exit ;;
     a ) $($app) && exit ;;
     M ) drives_share_manage && exit ;;
     m ) drives_share_manage && exit ;;
