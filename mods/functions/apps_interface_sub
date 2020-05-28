@@ -4,6 +4,7 @@ apps_interface_sub() {
 
 # sets up the primary interface
 common_message "🚀 App Interface | 📂 App Type ~ $app | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
+
 [A] Application   | Install
 [B] Backups       | Not Ready
 [P] Ports         | Not Ready
