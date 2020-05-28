@@ -4,7 +4,6 @@ apps_interface_sub() {
 
 # sets up the primary interface
 common_message "🚀 App Interface | 📂 App Type ~ $app | PGX Edition" "
-
 [A] Application   | Install
 [B] Backups       | Not Ready
 [P] Ports         | Not Ready
