@@ -4,7 +4,7 @@ apps_uninstall() {
 
 common_header "WARNING! Uninstalling the app removes the data also!"
 echo ""
-read -p "↘️  Type [Y] Uninstall or [Z] Exit | Press [ENTER]" typed < /dev/tty
+read -p "↘️  Type [Y] Uninstall or [Z] Exit | Press [ENTER]: " typed < /dev/tty
 
 if [[ "$typed" == "y" || "$typed" == "Y" ]]; then
   docker stop $app
