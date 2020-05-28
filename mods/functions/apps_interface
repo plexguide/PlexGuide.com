@@ -10,8 +10,15 @@ app_display=$(cat /pg/tmp/wrap.list)
 fmt -w 79 "/pg/tmp/appstoinstall.list" > "/pg/tmp/appstoinstall.wrap"
 apps_to_install=$(cat /pg/tmp/appstoinstall.wrap)
 
+# sets message
+if [[ "$sapp" == "primary" ]]; then
+smessage="💬  Further Explanation? Visit ~ https://plexguide.com/wiki/apps-primary"
+elif [[ "$sapp" == "community" ]]
+smessage="💬  Further Explanation? Visit ~ https://plexguide.com/wiki/apps-community"; fi
+
 # sets up the primary interface
-common_message "🚀 App Interface | 📂 App Type ~ $sapp | PGX Edition" "
+common_message "🚀 App Interface | 📂 App Type ~ $sapp | PGX Edition" "$smessage
+
 $app_display
 
 [Z] Quit & Exit Interface $installinfo"
