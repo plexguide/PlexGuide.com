@@ -16,8 +16,8 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 common_number
 
 case $typed in
-    A ) do eval "$app" && exit ;;
-    a ) do eval "$app" && exit ;;
+    A ) do eval "$app" ;;
+    a ) do eval "$app" ;;
     M ) drives_share_manage && exit ;;
     m ) drives_share_manage && exit ;;
     z ) drives_menu_start && exit ;;
