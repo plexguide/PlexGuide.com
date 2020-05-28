@@ -15,11 +15,11 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 [Z] Quit & Exit Interface $installinfo"
 common_number
 
-eval "$app"
+echo "$app" > /pg/tmp/app.deploy
 
 case $typed in
-    A ) eval "$app" && exit ;;
-    a ) eval "$app" && exit ;;
+    A ) bash /pg/tmp/app.deploy && exit ;;
+    a ) bash /pg/tmp/app.deploy "$app" && exit ;;
     M ) drives_share_manage && exit ;;
     m ) drives_share_manage && exit ;;
     z ) drives_menu_start && exit ;;
