@@ -15,13 +15,9 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 [Z] Quit & Exit Interface $installinfo"
 common_number
 
-deploy_app() {
-    $app
-}
-
 case $typed in
-    A ) deploy_app && exit ;;
-    a ) deploy_app && exit ;;
+    A ) eval "$app" && exit ;;
+    a ) eval "$app" && exit ;;
     M ) drives_share_manage && exit ;;
     m ) drives_share_manage && exit ;;
     z ) drives_menu_start && exit ;;
