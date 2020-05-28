@@ -8,6 +8,7 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 [A] Application   | Install
 [B] Backups       | Not Ready
 [P] Ports         | Not Ready
+[S] Shield        | Not Ready
 [T] Traefik CNAME | Not Ready
 [U] UnInstall     | Not Ready
 
