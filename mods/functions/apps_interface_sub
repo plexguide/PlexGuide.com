@@ -1,6 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-apps_interface() {
+apps_interface_sub() {
 
 installqueuecheck=$(cat /pg/tmp/appstoinstall.list)
 if [ ! -z "$installqueuecheck" ]; then installinfo="| [A] To Install Apps(s)"; else installinfo=""; fi
@@ -26,8 +26,17 @@ existcheck=$(echo $app_display | grep "$typed" -w)
   read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
   apps_interface; fi
 
-selected_app=$typed
+# notifies user that container is already installed
+dockerlist=$(docker container ls --format 'table {{.Names}}' | tail -n +2)
+  if [[ "1" = $(echo $dockerlist | grep -c "\<$typed\>") ]]; then tempinput="null";
+    while [[ "$tempinput" && "Y" && "$tempinput" != "y" && "$tempinut" != "N" && "$tempinput" != "n" ]]; do
+    read -p '⛔️  '$typed' is already installed! Reinstall ~ Y or N? ' tempinput < /dev/tty; done; fi
+  if [[ "$tempinput" == "n" || "tempinput" == "N" ]]; then apps_interface; fi
 
-apps_interface_sub
+echo "$typed" >> /pg/tmp/appstoinstall.list
+sed -i -e "/$typed/d" "/pg/tmp/list.tmp"
+
+## recycle menu back to user
+apps_interface
 
 }
