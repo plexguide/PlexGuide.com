@@ -2,10 +2,10 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_interface_sub() {
 
-app_status=$(docker ps | grep -c "\<$app\>")
+app_status=$(docker ps | grep "\<$app\>")
 
-if [[ "$app_status" == "" ]]; then a1="Not Installed"; a1="Re-Install"; fi
-if [[ "$app_status" == "" ]]; then u1=""; u1="
+if [[ "$app_status" == "" ]]; then a1="Not Installed"; else a1="Re-Install"; fi
+if [[ "$app_status" == "" ]]; then u1=""; else u1="
 [U] UnInstall"; fi
 
 # sets up the primary interface
