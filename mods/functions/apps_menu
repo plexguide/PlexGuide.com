@@ -6,11 +6,7 @@ common_message "🚀  PG Applications Interface" "💬  Further Explanation? Vis
 
 [1] Primary
 [2] Community
-[3] Personal  / NOT WORKING YET
-------------------------------------------------------------------------------
-[5] Removal   / NOT WORKING YET
-[6] Auto-Update [XX] / NOT WORKING YET
-------------------------------------------------------------------------------
+
 [Z] Exit Interface
 "
 common_number
