@@ -11,11 +11,11 @@ docker stop $app
 docker rm $app
 echo ""
 read -p "↘️  Uninstalled $app | Press [ENTER]" typed < /dev/tty
-elif [[ "$typed" == "z" | "$typed" == "Z" | "$typed" == "n" | "$typed" == "N" ]]; then
+elif [[ "$typed" == "z" || "$typed" == "Z" || "$typed" == "n" || "$typed" == "N" ]]; then
 apps_interface
 else
 echo ""
 common_header "INVALID Selection! Please try again!"
-common_confirm; fi 
+common_confirm; fi
 
 }
