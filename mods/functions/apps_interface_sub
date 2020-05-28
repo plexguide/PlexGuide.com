@@ -19,7 +19,7 @@ echo "$app" > /pg/tmp/app.deploy
 
 case $typed in
     A ) bash /pg/tmp/app.deploy && exit ;;
-    a ) bash /pg/tmp/app.deploy "$app" && exit ;;
+    a ) bash /pg/tmp/app.deploy && exit ;;
     M ) drives_share_manage && exit ;;
     m ) drives_share_manage && exit ;;
     z ) drives_menu_start && exit ;;
