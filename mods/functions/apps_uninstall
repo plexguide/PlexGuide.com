@@ -7,6 +7,7 @@ echo ""
 read -p "↘️  Type [Y] Uninstall or [Z] Exit | Press [ENTER]: " typed < /dev/tty
 
 if [[ "$typed" == "y" || "$typed" == "Y" ]]; then
+  echo ""
   docker stop $app
   docker rm $app
   echo ""
