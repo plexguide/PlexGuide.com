@@ -1,0 +1,30 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+ports_menu () {
+
+common_message "🚀  Ports - Menu Interface" "
+💬  Further Explanation? Visit ~ https://plexguide.com/wiki/ports/
+------------------------------------------------------------------------------
+[D] By Default Ports: [$default_port]
+[2] Client ID           : [$ci_menu]
+[3] Secret              : [$gc_menu]$pw_menu_option
+------------------------------------------------------------------------------
+[D] Deploy GDrive Token : [$gdtokeninfo]
+------------------------------------------------------------------------------
+[Z] Exit Interface
+"
+common_number
+
+case $typed in
+    1 ) drives_gdrive_crypt_menu && exit ;;
+    2 ) drives_gdrive_clientid && exit ;;
+    3 ) drives_gdrive_secret && exit ;;
+    4 ) drives_gdrive_menu_password && exit ;;
+    d ) drivemain=gdrive && drives_token_deploy && exit ;;
+    D ) drivemain=gdrive && drives_token_deploy && exit ;;
+    z ) drives_menu_start && exit ;;
+    Z ) drives_menu_start && exit ;;
+    * ) drives_gdrive_menu && exit ;;
+esac
+
+}
