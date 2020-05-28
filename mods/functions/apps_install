@@ -1,3 +1,6 @@
 apps_install() {
-$app
+
+container_rebuild $app
+ansible-playbook "/pg/apps/$app.yml"
+
 }
