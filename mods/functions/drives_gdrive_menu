@@ -5,7 +5,7 @@ drives_gdrive_menu () {
 drives_menu_start_setup
 
 common_message "🚀  Drives - Mount Transport Data Interface" "
-💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
+💬  Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
 [1] Utilizing Encryption: [$gdcryptinfo]
 [2] Client ID           : [$ci_menu]

@@ -3,7 +3,7 @@
 ports_menu () {
 
 common_message "🚀  Ports - Menu Interface" "
-💬  Further Explanation? Visit ~ https://plexguide.com/wiki/ports/
+💬  Visit ~ https://plexguide.com/wiki/ports/
 ------------------------------------------------------------------------------
 [D] By Default Ports: [$default_port]
 [2] Client ID           : [$ci_menu]

@@ -9,7 +9,7 @@ common_main /pg/var/drives/storage.method READ-ONLY storage_method
 
 # READ-ONLY MENU ###############################################################
 if [[ "$storage_method" == "READ-ONLY" ]]; then
-common_message "🚀  Drives - Mount Transport Data Interface" "💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
+common_message "🚀  Drives - Mount Transport Data Interface" "💬  Visit ~ https://plexguide.com/wiki/drives/
 
 [1] Google Drive        : [$gdtokeninfo]
 [2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]
@@ -41,7 +41,7 @@ esac
 # BASIC MENU ###################################################################
 elif [[ "$storage_method" == "BASIC" ]]; then
 
-common_message "🚀  Drives - Mount Transport Data Interface" "💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
+common_message "🚀  Drives - Mount Transport Data Interface" "💬  Visit ~ https://plexguide.com/wiki/drives/
 
 [1] Google Drive        : [$gdtokeninfo]
 [2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]
@@ -78,7 +78,7 @@ elif [[ "$storage_method" == "BLITZ" ]]; then
 common_fcreate_silent "/pg/var/keys/${drive_upload}"
 common_main /pg/var/keys/${drive_upload}/key.count 0 menu_keycount
 
-common_message "🚀  Drives - Mount Transport Data Interface" "💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
+common_message "🚀  Drives - Mount Transport Data Interface" "💬  Visit ~ https://plexguide.com/wiki/drives/
 
 [1] Google Drive        : [$gdtokeninfo]
 [2] Share  Drive(s)     : [Active Tokens - $active_count of $sd_list_track]

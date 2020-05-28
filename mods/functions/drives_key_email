@@ -7,7 +7,7 @@ drives_menu_start_setup
 quick_id=$(cat /pg/var/drives/shared/${drive_upload}/sd.id)
 
 common_message "🚀  Drives - EMail Share Generator" "
-💬  Further Explanation? Visit ~ https://plexguide.com/wiki/sd-emails/
+💬  Visit ~ https://plexguide.com/wiki/sd-emails/
 ------------------------------------------------------------------------------
 Visit the link below and copy and share email address to the share drive!
 drive.google.com/drive/u/1/folders/$quick_id

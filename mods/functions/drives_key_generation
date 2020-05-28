@@ -17,7 +17,7 @@ if [[ "$left_quota" == "100" ]]; then pool_quota=0; fi
 
 if [[ "$message" == 0 ]]; then
 common_message "🚀  Drives - Key Management Interface" "
-💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
+💬  Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
 Generate how many keys? [ 4 - ${maxkeys} ]
 
@@ -34,7 +34,7 @@ https://console.cloud.google.com/apis/credentials?authuser=1&folder=&organizatio
 "
 else
 common_message "🚀  Drives - Key Management Interface" "
-💬  Further Explanation? Visit ~ https://plexguide.com/wiki/drives/
+💬  Visit ~ https://plexguide.com/wiki/drives/
 ------------------------------------------------------------------------------
 ⛔️ CANNOT DEPLOY ANY KEYS! KEYS MAXED OUT!
 
