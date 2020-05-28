@@ -2,15 +2,20 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_interface_sub() {
 
+app_status=$(docker ps | grep -c "\<$typed\>")
+
+if [[ "$app_status" == "" ]]; then a1="Not Installed"; a1="Re-Install"; fi
+if [[ "$app_status" == "" ]]; then u1=""; u1="
+[U] UnInstall"; fi
+
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
 
-[A] Application   | Install
+[A] Application   | $a1
 [B] Backups       | Not Ready
 [P] Ports         | Not Ready
 [S] Shield        | Not Ready
-[T] Traefik CNAME | Not Ready
-[U] UnInstall     | Not Ready
+[T] Traefik CNAME | Not Ready$u1
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface $installinfo"

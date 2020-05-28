@@ -4,19 +4,18 @@ apps_uninstall() {
 
 common_header "WARNING! Uninstalling the app removes the data also!"
 echo ""
-read -p "↘️  Type: [y] Uninstall or [z] Exit | Press [ENTER]" typed < /dev/tty
+read -p "↘️  Type [Y] Uninstall or [Z] Exit | Press [ENTER]" typed < /dev/tty
 
 if [[ "$typed" == "y" || "$typed" == "Y" ]]; then
-
-docker stop $app
-docker rm $app
-echo ""
-read -p "↘️  Uninstalled $app | Press [ENTER]: " typed < /dev/tty
+  docker stop $app
+  docker rm $app
+  echo ""
+read -p "↘️  Uninstalled - $app | Press [ENTER]: " typed < /dev/tty
 elif [[ "$typed" == "z" || "$typed" == "Z" || "$typed" == "n" || "$typed" == "N" ]]; then
-apps_interface
+  apps_interface_sub
 else
-echo ""
-common_header "INVALID Selection! Please try again!"
-common_confirm; fi
-
+  echo ""
+  common_header "INVALID Selection! Please try again!"
+  common_confirm
+apps_interface_sub; fi
 }
