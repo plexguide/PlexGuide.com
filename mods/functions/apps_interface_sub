@@ -15,6 +15,7 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 [Z] Quit & Exit Interface $installinfo"
 common_number
 
+echo "source /pg/mods/functions/.master.sh" > /pg/tmp/app.deploy
 echo "$app" > /pg/tmp/app.deploy
 
 case $typed in
