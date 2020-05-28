@@ -16,7 +16,6 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 common_number
 
 echo "apps_install() { $app }" > /pg/mods/functions/apps_install
-
 case $typed in
     A ) apps_install && exit ;;
     a ) apps_install && exit ;;
