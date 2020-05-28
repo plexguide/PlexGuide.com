@@ -16,7 +16,7 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 common_number
 
 echo "source /pg/mods/functions/.master.sh" > /pg/tmp/app.deploy
-echo "$app" > /pg/tmp/app.deploy
+echo "$app" >> /pg/tmp/app.deploy
 
 case $typed in
     A ) bash /pg/tmp/app.deploy && exit ;;
