@@ -24,7 +24,7 @@ case $typed in
     a ) apps_install ;;
     z ) apps_interface ;;
     Z ) apps_interface ;;
-    * ) apps_interface_sub && ;;
+    * ) apps_interface_sub ;;
 esac
 
 apps_interface
