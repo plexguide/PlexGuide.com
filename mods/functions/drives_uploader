@@ -130,7 +130,7 @@ rclone moveto "$longkey $drive_upload:${shortkey}" \
 
         # delete folder info
         var_slot=$(cat /pg/var/transport/$b/var.slot)
-        rm -rf /pg/var/transport/$var_slot/*
+        #rm -rf /pg/var/transport/$var_slot/*
 
         # self delete folder info because file stuck or 403; recycles ########
         upload_checker=$(echo $longkey)
