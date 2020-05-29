@@ -123,13 +123,13 @@ mkdir -p "$path_upload"/${b}
         # store slot information for variable recall
           echo "$b" > /pg/var/transport/$b/var.slot
 
-        # execution of movement
-        rclone moveto "$longkey" $drive_upload:"$shortkey" \
-          --config="$rclone_upload"  \
-          --log-file="/pg/var/transport/${b}/rclone.log" \
-          --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 # &>/dev/null &
+# execution of movement
+rclone moveto "$longkey $drive_upload:${shortkey}" \
+--config="$rclone_upload"  \
+--log-file="/pg/var/transport/${b}/rclone.log" \
+--log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 # &>/dev/null &
 
-        # delete folder info 
+        # delete folder info
         var_slot=$(cat /pg/var/transport/$b/var.slot)
         rm -rf /pg/var/transport/$var_slot/*
 
