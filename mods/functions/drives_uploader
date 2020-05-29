@@ -83,11 +83,11 @@ mkdir -p "$path_upload"/${b}
       echo "SLOT ${b}: Available" >> "$logpath_primary"
       let "merit_count=merit_count+1"
       touch /pg/var/transport/${b}/key.short
+
       # generates keys base on merit list order ##################################
       sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
       sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
-      # outputs size of the file for tally #################################
-      stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
+
       # upload variables####################################################
       shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
       drive_upload=$(cat /pg/var/drives/drive.upload);
@@ -111,6 +111,7 @@ mkdir -p "$path_upload"/${b}
       echo "SELECT BLITZ KEY - $rpath" >> $logpath_primary
       echo "BLITZKEY - $rpath" > /pg/var/transport/$b/blitz.log
       #echo "DRIVE_UPLOAD - $drive_upload" > /pg/var/transport/$b/drive.upload
+
       # upload action ######################################################
       minicheck=$(cat "/pg/var/transport/${b}/key.long")
       if [[ "$minicheck" != "" ]]; then
@@ -121,6 +122,9 @@ echo "rclone moveto "$longkey" $drive_upload:"$shortkey" --config="$rclone_uploa
 
 # store slot information for variable recall
 echo "$b" > /pg/var/transport/$b/var.slot
+
+# outputs size of the file for tally #################################
+stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
 
 # execution of movement
 rclone moveto "$longkey" $drive_upload:"${shortkey}" \
