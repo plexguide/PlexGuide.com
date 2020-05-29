@@ -53,11 +53,9 @@ start_quotes
 
 tee <<-EOF
 $file_warning
-[1]  Traefik: Reverse Proxy      |  [6]  Press: Word Press Deployment
-[2]  Ports  : $ports     |  [7]  Vault: Backup & Restore
-[3]  Shield : Google Protection  |  [8]  Cloud: Deploy GCE & Hetzner
-[4]  Drives : Data Mounts        |  [9]  Tools: Misc Products
-[5]  Apps   : Docker Programs    |  [10] Settings
+[1]  Traefik : Reverse Proxy   | [4]  Press: Word Press Deployment
+[2]  Drives  : Data Mounts     | [5]  Tools: Misc Products
+[3]  Apps    : Docker Programs | [6]  Cloud: Deploy GCE & Hetzner
 [Z]  Exit
 $main_quote
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -67,16 +65,11 @@ read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 ) traefik_menu_start && start_menu && exit ;;
-    2 ) portguard_menu && start_menu && exit ;;
-    3 ) pgshield_menu && start_menu && exit ;;
-    4 ) drives_menu_start && start_menu && exit ;;
-    5 ) apps_menu && start_menu && exit ;;
+    2 ) drives_menu_start && start_menu && exit ;;
+    3 ) apps_menu && start_menu && exit ;;
+    4 ) pgpress_menu && start_menu && exit ;;
+    5 ) pgpress_menu && start_menu && exit ;;
     6 ) pgpress_menu && start_menu && exit ;;
-    7 ) pgpress_menu && start_menu && exit ;;
-    8 ) pgpress_menu && start_menu && exit ;;
-    9 ) pgpress_menu && start_menu && exit ;;
-    10 ) pgpress_menu && start_menu && exit ;;
-    11 ) rm -rf /pg/var/transport/* && echo && drives_uploader && exit ;;
     z ) start_end && exit ;;
     Z ) start_end && exit ;;
     * ) start_menu ;;
