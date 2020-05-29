@@ -15,8 +15,8 @@ common_number
 
 default_ports() {
 if [[ "$default_port" == "ON" ]]; then
-echo "OFF" > /pg/var/defaults/default.port
-else echo "ON" > /pg/var/defaults/default.port; fi
+echo "ON" > /pg/var/defaults/default.port
+else echo "OFF" > /pg/var/defaults/default.port; fi
 }
 
 case $typed in
