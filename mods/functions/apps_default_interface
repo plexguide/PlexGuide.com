@@ -9,8 +9,8 @@ common_main /pg/var/defaults/default.shield ON default_shield
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "Default settings prevent user from setting up a different setting via every
 new app installation.
 
-[P] Ports  | [$default_port]
-[S] Shield | [$default_shield]
+[P] Ports  [$default_port]
+[S] Shield [$default_shield]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface $installinfo"
@@ -31,8 +31,10 @@ else echo "ON" > /pg/var/defaults/default.shield; fi
 case $typed in
     p ) default_ports && apps_default_interface ;;
     P ) default_ports && apps_default_interface ;;
-    z ) default_shield && apps_default_interface ;;
-    Z ) default_shield && apps_default_interface ;;
+    s ) default_shield && apps_default_interface ;;
+    S ) default_shield && apps_default_interface ;;
+    z ) apps_menu ;;
+    Z ) apps_menu ;;
     * ) apps_default_interface ;;
 esac
 
