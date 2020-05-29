@@ -5,9 +5,8 @@ traefik_menu_start() {
 traefik_menu_start_setup
 if [[ "$domain" != "NOT-SET" ]]; then traefik_domaincheck; fi
 
-common_message "🚀  Traefik - Reverse Proxy Interface" "
-💬  Visit ~ http://traefik.plexguide.com
-------------------------------------------------------------------------------
+common_message "🚀  Traefik - Reverse Proxy Interface" "💬  Visit ~ http://plexguide.com/wiki/traefik
+
 $digmessage[1] Top Level Domain App: [$tld]
 [2] Domain Provider     : [$provider]
 [3] Domain Name         : [$domain]
