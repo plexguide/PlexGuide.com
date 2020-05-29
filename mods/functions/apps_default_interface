@@ -2,6 +2,9 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_default_interface() {
 
+common_main /pg/var/defaults/default.port OFF default_port
+common_main /pg/var/drives/default.shield ON default_shield
+
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "Default settings prevent user from setting up a different setting via every
 new app installation.
@@ -15,8 +18,8 @@ common_number
 
 default_ports() {
 if [[ "$default_port" == "ON" ]]; then
-echo "ON" > /pg/var/defaults/default.port
-else echo "OFF" > /pg/var/defaults/default.port; fi
+echo "OFF" > /pg/var/defaults/default.port
+else echo "ON" > /pg/var/defaults/default.port; fi
 }
 
 case $typed in
