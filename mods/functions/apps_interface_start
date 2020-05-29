@@ -1,0 +1,9 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+apps_interface_start() {
+
+common_fcreate_silent /pg/var/defaults
+common_main /pg/var/defaults/default.port OFF default_port
+common_main /pg/var/defaults/default.shield ON default_shield
+
+}
