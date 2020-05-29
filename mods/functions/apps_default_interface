@@ -3,12 +3,12 @@
 apps_default_interface() {
 
 # sets up the primary interface
-common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "
-Default settings prevent user from setting up a different setting via every
+common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "Default settings prevent user from setting up a different setting via every
 new app installation.
 
 [P] Ports  | [$default_port]
 [S] Shield | [$default_shield]
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface $installinfo"
 common_number
