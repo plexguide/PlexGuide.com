@@ -4,7 +4,7 @@ apps_menu() {
 
 common_fcreate_silent /pg/var/defaults
 common_main /pg/var/defaults/default.port OFF default_port
-common_main /pg/var/drives/default.shield ON default_shield
+common_main /pg/var/defaults/default.shield ON default_shield
 
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ http://apps.plexguide.com
 

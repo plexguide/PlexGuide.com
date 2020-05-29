@@ -3,7 +3,7 @@
 apps_default_interface() {
 
 common_main /pg/var/defaults/default.port OFF default_port
-common_main /pg/var/drives/default.shield ON default_shield
+common_main /pg/var/defaults/default.shield ON default_shield
 
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "Default settings prevent user from setting up a different setting via every
@@ -22,11 +22,17 @@ echo "OFF" > /pg/var/defaults/default.port
 else echo "ON" > /pg/var/defaults/default.port; fi
 }
 
+default_ports() {
+if [[ "$default_shield" == "ON" ]]; then
+echo "OFF" > /pg/var/defaults/default.shield
+else echo "ON" > /pg/var/defaults/default.shield; fi
+}
+
 case $typed in
     p ) default_ports && apps_default_interface ;;
     P ) default_ports && apps_default_interface ;;
-    z ) apps_menu ;;
-    Z ) apps_menu ;;
+    z ) default_shield && apps_default_interface ;;
+    Z ) default_shield && apps_default_interface ;;
     * ) apps_default_interface ;;
 esac
 
