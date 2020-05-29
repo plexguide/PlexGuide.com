@@ -116,13 +116,11 @@ mkdir -p "$path_upload"/${b}
       if [[ "$minicheck" != "" ]]; then
 
         # logging information
-        echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
-        echo "rclone moveto "$longkey" $drive_upload:"$shortkey" --config="$rclone_upload"  \
-                  --log-file=/pg/var/transport/${b}/rclone.log \
-                  --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0" > /pg/var/transport/$b/rclone.info
+echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
+echo "rclone moveto "$longkey" $drive_upload:"$shortkey" --config="$rclone_upload" --log-file=/pg/var/transport/${b}/rclone.log --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0" > /pg/var/transport/$b/rclone.info
 
-        # store slot information for variable recall
-          echo "$b" > /pg/var/transport/$b/var.slot
+# store slot information for variable recall
+echo "$b" > /pg/var/transport/$b/var.slot
 
 # execution of movement
 rclone moveto "$longkey $drive_upload:${shortkey}" \
