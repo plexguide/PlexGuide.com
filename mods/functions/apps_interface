@@ -2,6 +2,8 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_interface() {
 
+apps_interface_start
+
 installqueuecheck=$(cat /pg/tmp/appstoinstall.list)
 if [ ! -z "$installqueuecheck" ]; then installinfo="| [A] To Install Apps(s)"; else installinfo=""; fi
 
@@ -34,6 +36,14 @@ existcheck=$(echo $app_display | grep "$typed" -w)
   apps_interface; fi
 
 app=$typed
+
+common_fcreate_silent /pg/data/$app
+
+if [[ ! -e "/pg/data/$app/port.setting" ]]; then
+echo "$default_port" > /pg/data/$app/port.setting; fi
+
+if [[ ! -e "/pg/data/$app/shield.setting" ]]; then 
+echo "$default_port" > /pg/data/$app/shield.setting; fi
 
 apps_interface_sub
 
