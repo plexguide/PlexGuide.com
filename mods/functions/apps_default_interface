@@ -22,7 +22,7 @@ echo "OFF" > /pg/var/defaults/default.port
 else echo "ON" > /pg/var/defaults/default.port; fi
 }
 
-default_ports() {
+default_shield() {
 if [[ "$default_shield" == "ON" ]]; then
 echo "OFF" > /pg/var/defaults/default.shield
 else echo "ON" > /pg/var/defaults/default.shield; fi
