@@ -1,0 +1,22 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+apps_default_interface() {
+
+# sets up the primary interface
+common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "
+Default settings prevent user from setting up a different setting via every
+new app installation.
+
+[P] Ports         | OFF (NOT READY)
+[S] Shield        | ON  (NOT READY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Quit & Exit Interface $installinfo"
+common_number
+
+case $typed in
+    z ) apps_default_interface ;;
+    Z ) apps_default_interface ;;
+    * ) apps_interface_sub ;;
+esac
+
+}
