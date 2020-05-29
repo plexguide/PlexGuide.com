@@ -107,10 +107,10 @@ mkdir -p "$path_upload"/${b}
         rclone_upload="/pg/var/drives/shared/${rclone_drive}/blitz/$rpath"
         #echo $rclone_upload | head +n 1
         drive_upload=$(cat $rclone_upload | head -n 1 | cut -c2- | rev | cut -c2- | rev)
-        echo "SELECT BLITZ KEY - $rpath" >> $logpath_primary
-        echo "BLITZKEY - $rpath" > /pg/var/transport/$b/blitz.log
-        echo "DRIVE_UPLOAD - $drive_upload" > /pg/var/transport/$b/drive.upload
       fi
+      echo "SELECT BLITZ KEY - $rpath" >> $logpath_primary
+      echo "BLITZKEY - $rpath" > /pg/var/transport/$b/blitz.log
+      #echo "DRIVE_UPLOAD - $drive_upload" > /pg/var/transport/$b/drive.upload
       # upload action ######################################################
       minicheck=$(cat "/pg/var/transport/${b}/key.long")
       if [[ "$minicheck" != "" ]]; then
