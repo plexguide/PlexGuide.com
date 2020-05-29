@@ -123,7 +123,7 @@ echo "rclone moveto "$longkey" $drive_upload:"$shortkey" --config="$rclone_uploa
 echo "$b" > /pg/var/transport/$b/var.slot
 
 # execution of movement
-rclone moveto $longkey $drive_upload:${shortkey} \
+rclone moveto "$longkey" $drive_upload:"${shortkey}" \
 --config=$rclone_upload  \
 --log-file=/pg/var/transport/${b}/rclone.log \
 --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 # &>/dev/null &
