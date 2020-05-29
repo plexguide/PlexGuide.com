@@ -120,21 +120,23 @@ mkdir -p "$path_upload"/${b}
                   --log-file=/pg/var/transport/${b}/rclone.log \
                   --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0" > /pg/var/transport/$b/rclone.info
 
+        # store slot information for variable recall
+          echo "$b" > /pg/var/transport/$b/var.slot
+
         # execution of movement
         rclone moveto "$longkey" $drive_upload:"$shortkey" \
           --config="$rclone_upload"  \
           --log-file="/pg/var/transport/${b}/rclone.log" \
-          --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 &>/dev/null &
+          --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 # &>/dev/null &
+
+        # delete folder info 
+        var_slot=$(cat /pg/var/transport/$b/var.slot)
+        rm -rf /pg/var/transport/$var_slot/*
 
         # self delete folder info because file stuck or 403; recycles ########
         upload_checker=$(echo $longkey)
         echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
-        #rclone moveto "/pg/tmp/test.01" media-36: \
-        #  --config="/pg/var/drives/shared/media/blitz/36.conf"  \
-        #  --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0
-        #if [[ -e "$upload_checker" ]]; then
-        #  rm -rf /pg/var/transport/${b}/*
-        #  touch /pg/var/drives/file.stuck; fi
+
     else
       a=a
       #echo "FLAG BAD" >> "$logpath_primary"
