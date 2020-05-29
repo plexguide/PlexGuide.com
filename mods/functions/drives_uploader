@@ -130,7 +130,7 @@ stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
 rclone moveto "$longkey" $drive_upload:"${shortkey}" \
 --config=$rclone_upload  \
 --log-file=/pg/var/transport/${b}/rclone.log \
---log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 # &>/dev/null &
+--log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 &>/dev/null &
 
         # delete folder info
         var_slot=$(cat /pg/var/transport/$b/var.slot)
