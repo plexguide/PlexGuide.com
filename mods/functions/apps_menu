@@ -2,10 +2,17 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_menu() {
 
+common_fcreate_silent /pg/var/defaults
+common_main /pg/var/defaults/default.port OFF default_port
+common_main /pg/var/drives/default.shield ON default_shield
+
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ http://apps.plexguide.com
 
 [1] Primary
 [2] Community
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[D] Default Settings
+[R] Redeploy All Apps
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
 common_number
@@ -14,6 +21,8 @@ rm -rf /pg/tmp/appstoinstall.list && touch /pg/tmp/appstoinstall.list
 case $typed in
     1 ) sapp="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     2 ) sapp="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    d ) apps_default_interface ;;
+    D ) apps_default_interface ;;
     z ) start_menu ;;
     Z ) start_menu ;;
     * ) apps_menu ;;
