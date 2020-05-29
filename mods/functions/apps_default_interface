@@ -13,10 +13,18 @@ new app installation.
 [Z] Quit & Exit Interface $installinfo"
 common_number
 
+default_ports() {
+if [[ "$default_port" == "ON" ]]; then
+echo "OFF" > /pg/var/defaults/default.port
+else echo "ON" > /pg/var/defaults/default.port; fi
+}
+
 case $typed in
-    z ) apps_default_interface ;;
-    Z ) apps_default_interface ;;
-    * ) apps_interface_sub ;;
+    p ) default_ports && apps_default_interface ;;
+    P ) default_ports && apps_default_interface ;;
+    z ) apps_menu ;;
+    Z ) apps_menu ;;
+    * ) apps_default_interface ;;
 esac
 
 }
