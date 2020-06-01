@@ -79,10 +79,7 @@ echo "$b" > /pg/var/transport/$b/var.slot
 stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
 
 # execution of movement
-rclone moveto "$longkey" $drive_upload:"${shortkey}" \
---config="$rclone_upload" \
---log-file="/pg/var/transport/${b}/rclone.log" \
---log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 &>/dev/null &
+drives_uploader_rclone
 
         # delete folder info
         var_slot=$(cat /pg/var/transport/$b/var.slot)
@@ -97,7 +94,7 @@ rclone moveto "$longkey" $drive_upload:"${shortkey}" \
       #echo "FLAG BAD" >> "$logpath_primary"
   fi; fi
       # prevents overloading ###################################################
-      sleep .5
+      sleep 1
 done <"$path_upload"/slot.list
 
 # outputs rclone info ##########################################################
