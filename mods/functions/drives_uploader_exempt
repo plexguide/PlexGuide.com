@@ -1,0 +1,15 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_uploader_exempt() {
+
+# exempt items from list #######################################################
+while read zg; do
+  if [[ -e "/pg/var/transport/$zg/rclone.log" && -e "$path_upload"/upload.long ]]; then
+    removeitems=$(cat /pg/var/transport/${zg}/key.long)
+    if [[ "$removeitems" != "" ]]; then
+      grep -v "$removeitems" "$path_upload"/upload.long > "$path_upload"/upload.long.tmp
+      mv "$path_upload"/upload.long.tmp "$path_upload"/upload.long
+    fi
+  fi
+done <"$path_upload"/slot.list
+}

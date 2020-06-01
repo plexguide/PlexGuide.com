@@ -1,0 +1,8 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_uploader_tally() {
+# total tally ##################################################################
+tallynumber=$(paste -sd+ /pg/var/drives/size/size.tally | bc)
+echo $(echo "scale=0;$tallynumber/1073741824" | bc) > /pg/var/drives/size/tally.total
+################################################################################
+}

@@ -1,0 +1,32 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_uploader_slotcheck() {
+
+# conducting checks, file missing; then clear ##################################
+echo "" >> "$logpath_primary"
+echo "--------------------------------------------" >> "$logpath_primary"
+echo "Transport Check: Checking for Uploaded Files" >> "$logpath_primary"
+echo "--------------------------------------------" >> "$logpath_primary"
+while read zz; do
+  # echo "Transport Checks: Checking Slot - $zz" >> "$logpath_primary"
+  if [[ -e "/pg/var/transport/${zz}/key.long" ]]; then
+   file_path_dir=$(cat "/pg/var/transport/${zz}/key.long")
+   if [[ ! -e "$file_path_dir" ]]; then
+     #echo "FLAG 3 - $file_path_dir" >> "$logpath_primary"
+     # tally size ################################################################
+     mkdir -p /pg/var/drives/size
+     cat /pg/var/transport/${zz}/file.size >> /pg/var/drives/size/size.tally
+     # remove junk contents ######################################################
+     rm -rf /pg/var/drives/file.stuck
+     rm -rf /pg/var/transport/${zz}/*
+     echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
+ else
+   echo "SLOT ${zz}: Being Utilized" >> "$logpath_primary"
+ fi; fi
+done <"$path_upload"/slot.list
+
+# total tally ##################################################################
+drives_uploader_tally
+# repeat #######################################################################
+drives_uploader && exit
+}

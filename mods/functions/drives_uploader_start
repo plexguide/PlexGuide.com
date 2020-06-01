@@ -1,0 +1,20 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_uploader_start() {
+
+# temporary ####################################################################
+transport_path="/pg/var/transport"
+mkdir -p "$transport_path"/{01,02,03,04,05,06,07,08}
+
+# declare variables and remove clutter #########################################
+path_upload="/pg/var/upload"; remove_path="/pg/complete"
+logpath_ucount="/pg/log/uploader/log.count"
+logpath_primary="/pg/log/uploader/primary.log"
+
+# 403 actions
+if [[ "drive_mode" == "BASIC" ]]; then
+drives_403v2; fi
+
+# stores number of upload slots into a stored variable #########################
+echo "$(ls /pg/var/transport)" > "$path_upload"/slot.list
+}
