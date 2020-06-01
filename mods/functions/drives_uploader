@@ -8,39 +8,11 @@ drives_menu_start_setup
 # temporary ####################################################################
 drives_uploader_start
 
-# clears folder if key files are missing ####################
-#while read rt; do
-#  if [[ ! -e "/pg/var/transport/$rt/rclone.log" || ! -e "/pg/var/transport/$rt/key.long" ]]; then
-#    rm -rf /pg/var/transport/${rt}/*
-#  fi
-#done <"$path_upload"/slot.list
-
 # generates starting part of the log ###########################################
-mkdir -p /pg/log/uploader
+drives_uploader_log1
 
-if [[ ! -e "$logpath_ucount" ]]; then echo 0 > "$logpath_ucount"; fi
-ucount_plusup=$(cat $logpath_ucount)
-let "ucount_plusup++"; echo "$ucount_plusup" > $logpath_ucount
-echo "" >> "$logpath_primary"
-echo "--------------------------------------------" >> "$logpath_primary"
-echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
-echo "--------------------------------------------" >> "$logpath_primary"
-
-# creates sorted merit list ####################################################
-mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
-
-# old ##########################################################################
-# find /pg/complete/ -type f -mmin +1 -mtime +5 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
-# find /pg/complete/ -type f -mmin +2 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2
-
-find /pg/complete/ -mmin +4 -type f\
- ! \( -path "/pg/complete/nzbget/*" -o -path "/pg/complete/777/*" \)\
- -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2  > "$path_upload"/upload.long
-
-# generates short files ########################################################
-while read p; do
-  echo "${p#*$remove_path}" >> "$path_upload"/upload.short
-done <"$path_upload"/upload.long
+# keygen #######################################################################
+drives_uploader_slot
 
 # if nothing to upload #########################################################
 if [[ $(cat "$path_upload"/upload.long) == "" ]]; then
@@ -97,9 +69,8 @@ mkdir -p "$path_upload"/${b}
       minicheck=$(cat "/pg/var/transport/${b}/key.long")
       if [[ "$minicheck" != "" ]]; then
 
-        # logging information
-echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
-echo "rclone moveto "$longkey" $drive_upload:"$shortkey" --config="$rclone_upload" --log-file=/pg/var/transport/${b}/rclone.log --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0" > /pg/var/transport/$b/rclone.info
+# logging information
+drives_uploader_log2
 
 # store slot information for variable recall
 echo "$b" > /pg/var/transport/$b/var.slot

@@ -1,0 +1,20 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_uploader_slot_keygen() {
+
+# creates sorted merit list ####################################################
+mkdir -p $path_upload && rm -rf "$path_upload"/{upload.short,upload.long}
+
+# old ##########################################################################
+# find /pg/complete/ -type f -mmin +1 -mtime +5 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2 > "$path_upload"/upload.long
+# find /pg/complete/ -type f -mmin +2 -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2
+
+find /pg/complete/ -mmin +4 -type f\
+ ! \( -path "/pg/complete/nzbget/*" -o -path "/pg/complete/777/*" \)\
+ -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2  > "$path_upload"/upload.long
+
+# generates short files ########################################################
+while read p; do
+  echo "${p#*$remove_path}" >> "$path_upload"/upload.short
+done <"$path_upload"/upload.long
+}
