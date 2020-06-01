@@ -12,7 +12,7 @@ drives_uploader_start
 drives_uploader_log1
 
 # keygen #######################################################################
-drives_uploader_slot
+drives_uploader_slot_keygen
 
 # if nothing to upload #########################################################
 if [[ $(cat "$path_upload"/upload.long) == "" ]]; then
