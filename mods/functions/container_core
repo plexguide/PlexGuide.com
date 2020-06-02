@@ -8,7 +8,7 @@ common_fcreate_silent /pg/data/$pgrole
 common_fcreate_silent /pg/var/apps
 
 #primary variables
-common_main /pg/var/apps/port_status "127.0.0.1:" port_status
+common_main /pg/data/$pgrole/port.info "" portcheck_add
 
 container_paths=$(cat "/pg/tmp/container.path")
 container_permissions=$(cat "/pg/tmp/container.permissions")
