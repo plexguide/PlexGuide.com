@@ -7,7 +7,7 @@ container_reset
 pgrole="netdata"
 image="netdata/netdata"
 port_inside01="19999"
-port_outside01="19999"
+port_outside01="${port_add}19999"
 traefik_extport="19999"
 
 container_path /sys /host/sys:ro
