@@ -21,7 +21,7 @@ drives_uploader_log2() {
 
 drives_uploader_log3() {
 if [[ "" != $(cat /pg/var/transport/$b/rclone.log) ]]; then
-  rclone_stats=$(cat /pg/var/transport/$b/rclone.log | tail -n2 | grep "/")
+  rclone_stats=$(cat /pg/var/transport/$b/rclone.log | tail -n2 | grep "/" | awk '{print $5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16}' )
   echo "SLOT ${b}: $rclone_stats" >> "$logpath_primary"
 fi
 }
