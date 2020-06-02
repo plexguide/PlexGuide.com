@@ -20,11 +20,7 @@ drives_uploader_log2() {
 }
 
 drives_uploader_log3() {
-  if [[ ! -e "/pg/var/transport/$b/rclone.log" ]]; then
-  echo "SELECT BLITZ KEY - $rpath" >> $logpath_primary
-  echo "BLITZKEY - $rpath" > /pg/var/transport/$b/blitz.log
-  #echo "DRIVE_UPLOAD - $drive_upload" > /pg/var/transport/$b/drive.upload
-else
+  if [[ "" != "$(cat pg/var/transport/$b/rclone.log)" ]]; then
   rclone_stats=$(cat /pg/var/transport/$b/rclone.log | tail -n2 | grep "/")
   echo "$rpath - $rclone_stats" >> "$logpath_primary"
 fi
