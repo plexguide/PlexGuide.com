@@ -14,4 +14,6 @@ container_reset () {
     if [[ "$app_port_status" == "CLOSED" ]]; then port_add="127.0.0.1:"; else port_add=""
   fi; fi
 
+  echo "$port_add" - "$app_port_status"
+  common_confirm
 }
