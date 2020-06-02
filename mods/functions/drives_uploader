@@ -38,8 +38,7 @@ mkdir -p "$path_upload"/${b}
       touch /pg/var/transport/${b}/key.short
 
       # generates keys base on merit list order ##################################
-      sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
-      sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
+      drives_uploader_merit_list
 
       # upload variables####################################################
       shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
@@ -61,9 +60,8 @@ mkdir -p "$path_upload"/${b}
         #echo $rclone_upload | head +n 1
         drive_upload=$(cat $rclone_upload | head -n 1 | cut -c2- | rev | cut -c2- | rev)
       fi
-      echo "SELECT BLITZ KEY - $rpath" >> $logpath_primary
-      echo "BLITZKEY - $rpath" > /pg/var/transport/$b/blitz.log
-      #echo "DRIVE_UPLOAD - $drive_upload" > /pg/var/transport/$b/drive.upload
+
+drives_uploader_log3
 
       # upload action ######################################################
       minicheck=$(cat "/pg/var/transport/${b}/key.long")

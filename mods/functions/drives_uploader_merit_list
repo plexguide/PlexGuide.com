@@ -1,0 +1,7 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_uploader_merit_list() {
+  # generates keys base on merit list order ##################################
+  sed "${merit_count}q;d" "$path_upload"/upload.long >> /pg/var/transport/${b}/key.long
+  sed "${merit_count}q;d" "$path_upload"/upload.short >> /pg/var/transport/${b}/key.short
+}

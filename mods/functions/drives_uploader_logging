@@ -6,15 +6,21 @@ drives_uploader_log1() {
 mkdir -p /pg/log/uploader
 
 if [[ ! -e "$logpath_ucount" ]]; then echo 0 > "$logpath_ucount"; fi
-ucount_plusup=$(cat $logpath_ucount)
-let "ucount_plusup++"; echo "$ucount_plusup" > $logpath_ucount
-echo "" >> "$logpath_primary"
-echo "--------------------------------------------" >> "$logpath_primary"
-echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
-echo "--------------------------------------------" >> "$logpath_primary"
+  ucount_plusup=$(cat $logpath_ucount)
+  let "ucount_plusup++"; echo "$ucount_plusup" > $logpath_ucount
+  echo "" >> "$logpath_primary"
+  echo "--------------------------------------------" >> "$logpath_primary"
+  echo "Uploader Loop Count: $ucount_plusup" >> "$logpath_primary"
+  echo "--------------------------------------------" >> "$logpath_primary"
 }
 
 drives_uploader_log2() {
-echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
-echo "rclone moveto "$longkey" $drive_upload:"$shortkey" --config="$rclone_upload" --log-file=/pg/var/transport/${b}/rclone.log --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0" > /pg/var/transport/$b/rclone.info
+  echo "SLOT ${b}: Drive - $drive_upload - Upload Path $shortkey" >> "$logpath_primary"
+  echo "rclone moveto "$longkey" $drive_upload:"$shortkey" --config="$rclone_upload" --log-file=/pg/var/transport/${b}/rclone.log --log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0" > /pg/var/transport/$b/rclone.info
+}
+
+drives_uploader_log3() {
+  echo "SELECT BLITZ KEY - $rpath" >> $logpath_primary
+  echo "BLITZKEY - $rpath" > /pg/var/transport/$b/blitz.log
+  #echo "DRIVE_UPLOAD - $drive_upload" > /pg/var/transport/$b/drive.upload
 }
