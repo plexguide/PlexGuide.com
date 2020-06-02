@@ -1,3 +1,5 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_install() {
 
 container_rebuild $app
