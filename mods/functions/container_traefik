@@ -9,6 +9,8 @@ if [[ -e "/pg/data/$app/port.setting" ]]; then
   if [[ "$app_port_status" == "CLOSED" ]]; then port_add="127.0.0.1:"; else port_add=""
 fi; fi
 
+echo "$app"
+
 container_traefik="# traefik.frontend.auth.forward.address: '$gauth'
           traefik.enable: 'true'
           traefik.port: '${port_add}$traefik_extport'
