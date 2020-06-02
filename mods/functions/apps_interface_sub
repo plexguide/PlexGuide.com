@@ -40,5 +40,5 @@ case $typed in
     * ) apps_interface_sub ;;
 esac
 
-apps_menu
+apps_interface_sub 
 }
