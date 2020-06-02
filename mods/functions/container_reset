@@ -8,7 +8,8 @@ container_reset () {
   rm -rf /pg/tmp/container.path && touch /pg/tmp/container.path
   rm -rf /pg/tmp/container.oddball && touch /pg/tmp/container.oddball
   rm -rf /pg/tmp/container.permissions && touch /pg/tmp/container.permissions
-  
+
+  app=$pgrole
   if [[ -e "/pg/data/$app/port.setting" ]]; then
     app_port_status=$(cat /pg/data/$app/port.setting)
     if [[ "$app_port_status" == "CLOSED" ]]; then port_add="127.0.0.1:"; else port_add=""
