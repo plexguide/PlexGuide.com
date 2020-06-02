@@ -9,7 +9,7 @@ if [[ "$app_status" == "" ]]; then u1=""; else u1="
 [U] UnInstall"; fi
 
 if [[ "$app_status" != "Not Installed" && -e "/pg/data/$app/apply.settings" ]]; then app_warning="
-WARNING: ReInstall to Apply Recent Changes"; fi
+⛔️  WARNING: Re-Install to Apply Recent Changes"; fi
 
 port_display=$(cat /pg/data/$app/port.setting)
 shield_display=$(cat /pg/data/$app/shield.setting)
