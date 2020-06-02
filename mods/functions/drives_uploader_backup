@@ -79,7 +79,7 @@ while read b; do
 transport_loop="off"
 mkdir -p "$path_upload"/${b}
   if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
-      if [[ ! -e "/pg/var/transport/${b}/rclone.log" ]]; then 
+      if [[ ! -e "/pg/var/transport/${b}/rclone.log" ]]; then
       echo "SLOT ${b}: Available" >> "$logpath_primary"; fi
       let "merit_count=merit_count+1"
       touch /pg/var/transport/${b}/key.short
@@ -135,7 +135,7 @@ while read zz; do
      # remove junk contents ######################################################
      rm -rf /pg/var/drives/file.stuck
      rm -rf /pg/var/transport/${zz}/*
-     echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
+     # echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
  else
    echo "SLOT ${zz}: Being Utilized" >> "$logpath_primary"
  fi; fi
