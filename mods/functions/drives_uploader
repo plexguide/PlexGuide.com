@@ -42,11 +42,9 @@ while read b; do
 
       # selecting path based on method #########################################
       drives_uploader_path_method
-      drives_uploader_log3
 
-      # upload action ##########################################################
-      minicheck=$(cat "/pg/var/transport/${b}/key.long")
-        if [[ "$minicheck" != "" ]]; then
+        # upload action ########################################################
+        if [[ $(cat "/pg/var/transport/${b}/key.long") != "" ]]; then
 
         # logging information
         drives_uploader_log2
@@ -60,17 +58,16 @@ while read b; do
         # execution of movement#################################################
         drives_uploader_rclone
 
+        # log status ###########################################################
+        drives_uploader_log3
+
         # delete folder info ###################################################
         var_slot=$(cat /pg/var/transport/$b/var.slot)
-        #rm -rf /pg/var/transport/$var_slot/*
 
         # self delete folder info because file stuck or 403; recycles ##########
         upload_checker=$(echo $longkey)
-        echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
-
     else
         a=a
-        #echo "FLAG BAD" >> "$logpath_primary"
     fi
   fi
   # prevents overloading ###################################################
