@@ -10,5 +10,5 @@ container_reset () {
   rm -rf /pg/tmp/container.permissions && touch /pg/tmp/container.permissions
 
 if [[ ! -e "/pg/data/$pgrole/port.info" ]]; then echo "" > "/pg/data/$pgrole/port.info"; fi
-portcheck_add=$(cat "/pg/data/$pgrole/port.info")
+common_main /pg/data/$pgrole/port.info "" portcheck_add
 }
