@@ -9,6 +9,4 @@ container_reset () {
   rm -rf /pg/tmp/container.oddball && touch /pg/tmp/container.oddball
   rm -rf /pg/tmp/container.permissions && touch /pg/tmp/container.permissions
 
-if [[ ! -e "/pg/data/$pgrole/port.info" ]]; then echo "" > "/pg/data/$pgrole/port.info"; fi
-common_main /pg/data/$pgrole/port.info "" portcheck_add
 }
