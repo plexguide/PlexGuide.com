@@ -20,6 +20,9 @@ container_permissions PGID 1000
 container_oddball capabilities SYS_PTRACE
 container_oddball security_opts apparmor:unconfined
 
+# DO NOT CHANGE - AFFECTS CLOSING & OPENING PORTS - NOT NEEDED, THEN ERASE #####
+common_main /pg/data/$pgrole/port.info "" portcheck_add
+
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"

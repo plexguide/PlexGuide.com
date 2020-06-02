@@ -2,9 +2,6 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 container_start () {
 
-#primary variables
-common_main /pg/data/$pgrole/port.info "" portcheck_add
-
 container_start="
     - name: 'Deploying $pgrole'
       docker_container:
