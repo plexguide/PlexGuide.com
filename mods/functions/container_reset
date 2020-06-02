@@ -9,5 +9,6 @@ container_reset () {
   rm -rf /pg/tmp/container.oddball && touch /pg/tmp/container.oddball
   rm -rf /pg/tmp/container.permissions && touch /pg/tmp/container.permissions
 
-  port_add=$(cat "/pg/data/$app/port.info")
+  if [[ -e "/pg/data/$app/port.info" ]]; then
+  port_add=$(cat "/pg/data/$app/port.info"); fi
 }
