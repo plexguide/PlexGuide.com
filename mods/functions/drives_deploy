@@ -14,7 +14,7 @@ drives_menu_start_setup
 if [[ -e "/pg/var/drives/gd/token.info" ]]; then
   gdcheck=$(cat /pg/var/drives/gd/gd.info)
     if [[ "$gdcheck" == "VALID" ]]; then
-      common_header "💾  TESTING: Unencrypted GDrive Token"; sleep 1.5
+      common_header "💾  TESTING: Unencrypted GDrive Token"; sleep 0
       gdr_check=$(rclone lsd --config /pg/var/drives/gd/gd.conf gd: | grep "plexguide.com")
       if [[ "$gdr_check" != "" ]]; then common_header "💾  PASSED:  Unencrypted Token gd is [VALID]" && gd_final="VALID"
     else
@@ -22,7 +22,7 @@ if [[ -e "/pg/var/drives/gd/token.info" ]]; then
     fi
     ############################################################################
     if [[ -e "/pg/var/drives/gd/token.encrypted" ]]; then
-      common_header "💾  TESTING: Encrypted GDrive Token"; sleep .5
+      common_header "💾  TESTING: Encrypted GDrive Token"; sleep 0
       gdrc_check=$(rclone lsd --config /pg/var/drives/gd/gd.conf gc: | grep "plexguide.com")
       if [[ "$gdrc_check" != "" ]]; then common_header "💾  PASSED:  Encrypted Token gd is [VALID]"
       gc_final="VALID"
@@ -70,10 +70,10 @@ while read p; do
 
   if [[ "$quick_check" != "" && "$equick_check" != "" && "$enote" == "yes" ]]; then
     common_header "💾  PASSED:  Unencrypted & Encrypted Token $p is valid"
-    echo "$p" >> /pg/tmp/drives.list && echo "$p" >> /pg/tmp/edrives.list; sleep 1.5; fi
+    echo "$p" >> /pg/tmp/drives.list && echo "$p" >> /pg/tmp/edrives.list; sleep 0; fi
   if [[ "$quick_check" != "" && "$equick_check" == "" && "$enote" == "yes" ]]; then
     common_header "💾  FAILED:  Encrypted token for $p failed"
-    echo "Token: $p" >> /pg/tmp/edrives.bad; sleep 1.5; fi
+    echo "Token: $p" >> /pg/tmp/edrives.bad; sleep 0; fi
 done </pg/var/drives/valid.drives; fi
 
 f_log="/pg/tmp/failed_drive_log"
@@ -102,30 +102,30 @@ $f_final"
 echo "$storage_method - FAILED" > "/pg/var/drives/deployed.mode"
 common_confirm && drives_menu_start && exit; fi
 
-common_header "💾  PASSED:  All Drive Tokens Are Valid!"; sleep 1.5
+common_header "💾  PASSED:  All Drive Tokens Are Valid!"; sleep 0
 echo "$storage_method - FAILED" > "/pg/var/drives/deployed.mode"
 
 rm -rf /pg/tmp/deploy.log
 
 if [[ "$gd_final" == "VALID" ]]; then
-  common_header "💾  DEPLOYING:  Unencrypted GDrive ~ /pg/gd"; sleep 1.5
+  common_header "💾  DEPLOYING:  Unencrypted GDrive ~ /pg/gd"; sleep 0
   echo "Mounted: GDrive (Unencrypt) - /pg/gd" >> /pg/tmp/deploy.log
   drives_deploy_mounts gd; fi
 
 while read p; do
-  common_header "💾  DEPLOYING:  Unencrypted SDrive ~ /pg/$p"; sleep 1.5
+  common_header "💾  DEPLOYING:  Unencrypted SDrive ~ /pg/$p"; sleep 0
   drives_deploy_mounts $p
   echo "Mounted: SDrive (Unencrypt) - /pg/$p" >> /pg/tmp/deploy.log
 done </pg/tmp/drives.list
 
 if [[ "$gc_final" == "VALID" ]]; then
-  common_header "💾  DEPLOYING:  Encrypted GDrive ~ /pg/gc"; sleep 1.5
+  common_header "💾  DEPLOYING:  Encrypted GDrive ~ /pg/gc"; sleep 0
   echo "Mounted: GDrive (Encrypted) - /pg/gc" >> /pg/tmp/deploy.log
   drives_deploy_mounts gc; fi
 
 while read p; do
   temp99="c"
-  common_header "💾  DEPLOYING:  Encrypted SDrive ~ /pg/$p$temp99"; sleep 1.5
+  common_header "💾  DEPLOYING:  Encrypted SDrive ~ /pg/$p$temp99"; sleep 0
   echo "Mounted: SDrive (Encrypted) - /pg/$p$temp99" >> /pg/tmp/deploy.log
   drives_deploy_mounts $p
 done </pg/tmp/edrives.list
