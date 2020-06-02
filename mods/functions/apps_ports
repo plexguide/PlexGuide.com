@@ -2,9 +2,9 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_ports() {
 
-#port_display=$(cat "/pg/data/$app/port.setting" >/dev/null 2>&1)
-#if [[ "$port_display" == "OFF" ]]; then echo "ON" > "/pg/data/$app/port.setting"
-#else echo "OFF" > "/pg/data/$app/port.setting"; fi
+port_display=$(cat "/pg/data/$app/port.setting")
+if [[ "$port_display" == "OFF" ]]; then echo "ON" > "/pg/data/$app/port.setting"
+else echo "OFF" > "/pg/data/$app/port.setting"; fi
 
 touch "/pg/data/$app/apply.settings"
 }
