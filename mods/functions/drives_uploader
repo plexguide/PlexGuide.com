@@ -17,7 +17,7 @@ drives_uploader_slot_keygen
 # if nothing to upload #########################################################
 if [[ $(cat "$path_upload"/upload.long) == "" ]]; then
 
-path_sanity_check=$(find /pg/complete/ -mmin +1 -type f\
+path_sanity_check=$(find /pg/complete/ -type f\
  ! \( -path "/pg/complete/nzbget/*" -o -path "/pg/complete/777/*" \)\
  -printf "\n%AT %p" | sort -k1 | cut -d " " -f 2- | tail -n +2)
 
@@ -25,10 +25,10 @@ path_sanity_check=$(find /pg/complete/ -mmin +1 -type f\
     echo "NOTHING TO UPLOAD"
     echo "Nothing to Upload" >> "$logpath_primary"
   else
-    echo "ITEMS PENDING UPLOAD; MUST BE 4 MINUTES OLD"
-    echo "Items pending upload; Must be 4 Minutes Old" >> "$logpath_primary"
+    echo "ITEMS PENDING UPLOAD - MUST BE 4 MINUTES OLD"
+    echo "Items Pending Upload - Must Be 4 Minutes Old" >> "$logpath_primary"
   fi
-  
+
 sleep 5; drives_uploader && exit; fi
 
 echo "" >> $logpath_primary
