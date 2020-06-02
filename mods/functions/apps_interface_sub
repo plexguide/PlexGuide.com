@@ -33,6 +33,8 @@ case $typed in
     a ) apps_install ;;
     u ) apps_uninstall ;;
     U ) apps_uninstall ;;
+    p ) apps_ports ;;
+    P ) apps_ports ;;
     z ) apps_menu ;;
     Z ) apps_menu ;;
     * ) apps_interface_sub ;;
