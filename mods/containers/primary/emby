@@ -7,7 +7,7 @@ container_reset
 pgrole="emby"
 image="emby/embyserver"
 port_inside01="8096"
-port_outside01="8096"
+port_outside01="${port_add}8096"
 traefik_extport="8096"
 
 container_path /pg /pg
