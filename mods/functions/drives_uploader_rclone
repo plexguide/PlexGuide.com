@@ -6,5 +6,5 @@ drives_uploader_rclone() {
 rclone moveto "$longkey" $drive_upload:"${shortkey}" \
 --config="$rclone_upload" \
 --log-file="/pg/var/transport/${b}/rclone.log" \
---log-level=INFO --stats-one-line --stats=5s --stats-file-name-length=0 &>/dev/null &
+--log-level=INFO --stats-one-line --stats=1s --stats-file-name-length=0 &>/dev/null &
 }
