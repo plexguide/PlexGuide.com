@@ -46,34 +46,35 @@ while read b; do
 
       # upload action ##########################################################
       minicheck=$(cat "/pg/var/transport/${b}/key.long")
-      if [[ "$minicheck" != "" ]]; then
+        if [[ "$minicheck" != "" ]]; then
 
-      # logging information
-      drives_uploader_log2
+        # logging information
+        drives_uploader_log2
 
-      # store slot information for variable recall
-      echo "$b" > /pg/var/transport/$b/var.slot
+        # store slot information for variable recall
+        echo "$b" > /pg/var/transport/$b/var.slot
 
-      # outputs size of the file for tally #################################
-      stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
+        # outputs size of the file for tally ###################################
+        stat -c %s "$longkey" > /pg/var/transport/${b}/file.size
 
-      # execution of movement
-      drives_uploader_rclone
+        # execution of movement#################################################
+        drives_uploader_rclone
 
-      # delete folder info
-      var_slot=$(cat /pg/var/transport/$b/var.slot)
-      #rm -rf /pg/var/transport/$var_slot/*
+        # delete folder info ###################################################
+        var_slot=$(cat /pg/var/transport/$b/var.slot)
+        #rm -rf /pg/var/transport/$var_slot/*
 
-      # self delete folder info because file stuck or 403; recycles ########
-      upload_checker=$(echo $longkey)
-      echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
+        # self delete folder info because file stuck or 403; recycles ##########
+        upload_checker=$(echo $longkey)
+        echo "FLAG 2 - $upload_checker" >> "$logpath_primary"
 
     else
         a=a
         #echo "FLAG BAD" >> "$logpath_primary"
-    fi; fi
-      # prevents overloading ###################################################
-      sleep 1
+    fi
+  fi
+  # prevents overloading ###################################################
+  sleep 1
 done <"$path_upload"/slot.list
 
 # outputs rclone info ##########################################################
