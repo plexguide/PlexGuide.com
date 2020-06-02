@@ -3,8 +3,13 @@
 apps_ports() {
 
 port_display=$(cat "/pg/data/$app/port.setting")
-if [[ "$port_display" == "OPEN" ]]; then echo "CLOSED" > "/pg/data/$app/port.setting"
-else echo "OPEN" > "/pg/data/$app/port.setting"; fi
+if [[ "$port_display" == "OPEN" ]]; then
+  echo "CLOSED" > "/pg/data/$app/port.setting"
+  echo "127.0.0.1:" > "/pg/data/$app/port.info"
+else
+  echo "OPEN" > "/pg/data/$app/port.setting"
+  echo "" > "/pg/data/$app/port.info"
+fi
 
 touch "/pg/data/$app/apply.settings"
 }
