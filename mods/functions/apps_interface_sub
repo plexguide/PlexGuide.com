@@ -19,7 +19,7 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 
 [A] Application   | ${a1}
 [B] Backups       | Not Ready
-[P] Ports         | [$port_display] - Not Ready
+[P] Ports         | [$port_display]
 [S] Shield        | [$shield_display] - Not Ready
 [T] Traefik CNAME | Not Ready${u1}
 $app_warning
