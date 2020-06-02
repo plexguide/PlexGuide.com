@@ -7,9 +7,6 @@ domain="test.com"
 common_fcreate_silent /pg/data/$pgrole
 common_fcreate_silent /pg/var/apps
 
-#primary variables
-common_main /pg/data/$pgrole/port.info "" portcheck_add
-
 container_paths=$(cat "/pg/tmp/container.path")
 container_permissions=$(cat "/pg/tmp/container.permissions")
 
