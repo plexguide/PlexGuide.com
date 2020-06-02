@@ -30,6 +30,7 @@ merit_count=0
 # start looping through slot folders ###########################################
 while read b; do
 
+  # log status ###########################################################
   transport_loop="off"
   mkdir -p "$path_upload"/${b}
     if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
@@ -58,18 +59,15 @@ while read b; do
         # execution of movement#################################################
         drives_uploader_rclone
 
-        # log status ###########################################################
-        drives_uploader_log3
-
         # delete folder info ###################################################
         var_slot=$(cat /pg/var/transport/$b/var.slot)
 
         # self delete folder info because file stuck or 403; recycles ##########
         upload_checker=$(echo $longkey)
-    else
-        a=a
     fi
-  fi
+  else 
+    drives_uploader_log3
+fi
   # prevents overloading ###################################################
   sleep 1
 done <"$path_upload"/slot.list
