@@ -19,7 +19,7 @@ while read zz; do
      # remove junk contents ######################################################
      rm -rf /pg/var/drives/file.stuck
      rm -rf /pg/var/transport/${zz}/*
-     echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
+     #echo "SLOT ${zz}: Path Cleared" >> "$logpath_primary"
  else
    echo "SLOT ${zz}: Being Utilized" >> "$logpath_primary"
  fi; fi
