@@ -77,7 +77,7 @@ while read p; do
 done </pg/var/drives/valid.drives; fi
 
 # if uploading using blitz #####################################################
-if [[ "$storage_method" == "BLITZ"; then
+if [[ "$storage_method" == "BLITZ" ]]; then
 sd_key_check=$(ls /pg/var/drives/shared/media/blitz | head -n +1)
 sd_key_upload=$(cat /pg/var/drives/shared/$drive_upload/$sd_key_check | head -n +1 | cut -c2- | rev | cut -c2- | rev)
 quick_check2=$(rclone lsd --config /pg/var/drives/shared/$drive_upload/$sd_key_check ${sd_key_upload}: | grep "plexguide.com")
