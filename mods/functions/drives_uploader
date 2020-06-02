@@ -65,11 +65,11 @@ while read b; do
         # self delete folder info because file stuck or 403; recycles ##########
         upload_checker=$(echo $longkey)
     fi
-  else 
+  else
     drives_uploader_log3
 fi
   # prevents overloading ###################################################
-  sleep 1
+  sleep .2
 done <"$path_upload"/slot.list
 
 # outputs rclone info ##########################################################
