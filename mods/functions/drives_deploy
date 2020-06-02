@@ -81,12 +81,13 @@ if [[ "$storage_method" == "BLITZ" ]]; then
 sd_key_check=$(ls /pg/var/drives/shared/$drive_upload/blitz | head -n +1)
 sd_key_upload=$(cat /pg/var/drives/shared/$drive_upload/blitz/$sd_key_check | head -n +1 | cut -c2- | rev | cut -c2- | rev)
 quick_check2=$(rclone lsd --config /pg/var/drives/shared/$drive_upload/blitz/$sd_key_check ${sd_key_upload}: | grep "plexguide.com")
+common_header "💾  TESTING: SD Blitz key for ${sd_key_upload}"
 
   if [[ "$quick_check2" == "" ]]; then
     common_header "💾  FAILED:  Blitz Key for ${sd_key_upload} failed"
     sd_key="INVALID"
   else
-    common_header "💾  PASSED:  SD Blitz Key $p is valid"; fi; fi
+    common_header "💾  PASSED:  SD Blitz Key ${sd_key_upload} is valid"; fi; fi
 
 f_log="/pg/tmp/failed_drive_log"
 rm -rf $f_log
