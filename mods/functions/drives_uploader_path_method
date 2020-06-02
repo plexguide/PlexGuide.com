@@ -1,0 +1,26 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+drives_uploader_path_method() {
+
+# upload variables####################################################
+shortkey=$(cat /pg/var/transport/${b}/key.short); longkey=$(cat /pg/var/transport/${b}/key.long)
+drive_upload=$(cat /pg/var/drives/drive.upload);
+# selecting path based on method #####################################
+if [[ "$drive_mode" == "BASIC" ]]; then
+  rclone_upload=$(cat /pg/var/drives/drive.rclone)
+elif [[ "$drive_mode" == "BLITZ" ]]; then
+  echo "$(ls /pg/var/drives/shared/${rclone_drive}/blitz/)" > /pg/var/drives/blitz.list
+  prime_number=$(wc -l /pg/var/drives/blitz.list | awk '{print $1}')
+  num=$( echo $(($RANDOM % $prime_number)) )
+  ((fnum=$num+1))
+  lcatch=0
+  while read dfg; do
+    let "lcatch++"
+    if [[ "$lcatch" == "$fnum" ]]; then rpath=${dfg}; fi
+  done < /pg/var/drives/blitz.list
+  rclone_upload="/pg/var/drives/shared/${rclone_drive}/blitz/$rpath"
+  #echo $rclone_upload | head +n 1
+  drive_upload=$(cat $rclone_upload | head -n 1 | cut -c2- | rev | cut -c2- | rev)
+fi
+
+}
