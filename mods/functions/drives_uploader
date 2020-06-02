@@ -34,7 +34,7 @@ while read b; do
   transport_loop="off"
   mkdir -p "$path_upload"/${b}
     if [[ ! -e "/pg/var/transport/${b}/key.long" ]]; then
-        echo "SLOT ${b}: Available" >> "$logpath_primary"
+        #echo "SLOT ${b}: Available" >> "$logpath_primary"
         let "merit_count=merit_count+1"
         touch /pg/var/transport/${b}/key.short
 
