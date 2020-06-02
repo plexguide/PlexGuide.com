@@ -20,8 +20,7 @@ container_permissions PGID 1000
 container_oddball capabilities SYS_PTRACE
 container_oddball security_opts apparmor:unconfined
 
-if [[ -e "/pg/data/$pgrole/port.info" ]]; then
-port_add=$(cat "/pg/data/$pgrole/port.info"); fi
+port_add=$(cat "/pg/data/$pgrole/port.info")
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
