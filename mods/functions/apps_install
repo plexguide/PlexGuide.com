@@ -5,6 +5,8 @@ apps_install() {
 container_rebuild $app
 ansible-playbook "/pg/apps/$app.yml"
 
+rm -rf "/pg/data/$app/apply.settings"
 echo ""
 read -p "↘️  Installed $app | Press [ENTER]" typed < /dev/tty
+
 }
