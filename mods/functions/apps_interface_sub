@@ -8,6 +8,9 @@ if [[ "$app_status" == "" ]]; then a1="Not Installed"; else a1="Re-Install"; fi
 if [[ "$app_status" == "" ]]; then u1=""; else u1="
 [U] UnInstall"; fi
 
+if [[ "$app_status" != "Not Installed" ]]; then app_warning="
+WARNING: ReInstall to Apply Recent Changes"
+
 port_display=$(cat /pg/data/$app/port.setting)
 shield_display=$(cat /pg/data/$app/shield.setting)
 
@@ -19,7 +22,7 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 [P] Ports         | [$port_display] - Not Ready
 [S] Shield        | [$shield_display] - Not Ready
 [T] Traefik CNAME | Not Ready${u1}
-
+$app_warning
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface $installinfo"
 common_number
@@ -40,5 +43,5 @@ case $typed in
     * ) apps_interface_sub ;;
 esac
 
-apps_interface_sub 
+apps_interface_sub
 }
