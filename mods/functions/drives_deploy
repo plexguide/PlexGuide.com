@@ -91,7 +91,7 @@ quick_check2=$(rclone lsd --config /pg/var/drives/shared/$drive_upload/$sd_key_c
 f_log="/pg/tmp/failed_drive_log"
 rm -rf $f_log
 
-if [[ "$sd_key" == "INVALID"; then echo "[${sd_key_upload}] SD Blitz Key ~ FAILED" >> $f_log; fi
+if [[ "$sd_key" == "INVALID" ]]; then echo "[${sd_key_upload}] SD Blitz Key ~ FAILED" >> $f_log; fi
 if [[ "$gd_final" == "INVALID" ]]; then echo "[GD] Unencrypt ~ FAILED" >> $f_log; fi
 if [[ "$gc_final" == "INVALID" ]]; then echo "[GC] Encrypted ~ FAILED" >> $f_log; fi
 
