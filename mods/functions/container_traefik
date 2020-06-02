@@ -6,7 +6,7 @@ traefik_menu_start_setup
 
 container_traefik="# traefik.frontend.auth.forward.address: '$gauth'
           traefik.enable: 'true'
-          traefik.port: '$traefik_extport'
+          traefik.port: '${port_add}$traefik_extport'
           traefik.frontend.rule: 'Host:$pgrole.$domain'
           traefik.frontend.headers.SSLHost: '$domain'
           traefik.frontend.headers.SSLRedirect: 'true'
