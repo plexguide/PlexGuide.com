@@ -9,4 +9,6 @@ container_reset () {
   rm -rf /pg/tmp/container.oddball && touch /pg/tmp/container.oddball
   rm -rf /pg/tmp/container.permissions && touch /pg/tmp/container.permissions
 
+if [[ ! -e "/pg/data/$pgrole/port.info" ]]; then echo "OPEN" > "/pg/data/$pgrole/port.info"; fi
+port_add=$(cat "/pg/data/$pgrole/port.info")
 }
