@@ -4,6 +4,29 @@ shield_setup() {
 
 shield_setup_start
 
+# WebClient ID Entry ###########################################################
+shield_web_client() {
+temp_path="/pg/var/shield/web.client"
+priorentry=$(cat $temp_path)
+
+common_message "🚀 PlexGuide | Shield: WebClient-ID Interface" "
+💾 WebClient-ID for Shield? Visit ~ https://console.developers.google.com
+
+Prior Info Saved (If Any): $priorentry
+[Z] To Cancel and Go Back
+"
+
+read -p "↘️  New WebClient-ID? | Press [ENTER]: " typed < /dev/tty
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then shield_setup && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && shield_web_client && exit; fi
+
+echo $typed > $temp_path
+common_message "💾  $typed - WebClient Set!"
+common_confirm && shield_setup && exit
+}
+
+# Main Interface Execution #####################################################
 oauth_traefik=$(docker ps | grep "traefik" )
 #if [[ "$oauth_traefik" == "" ]]; then
 #common_header "Cannot Configure Until Traefik is Deployed!"
