@@ -48,7 +48,7 @@ $container_header
 ####### ALIGN WITH THE A ############################## CORE ###################
         $container_start
         published_ports:
-          - '$portstatus$port_outside01:$port_inside01'
+          - '${portcheck_add}${port_outside01}:${port_inside01}'
           - '$portstatus$port_outside02:$port_inside02'
           - '$portstatus$port_outside03:$port_inside03'
           - '$portstatus$port_outside04:$port_inside04'

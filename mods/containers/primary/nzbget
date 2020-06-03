@@ -37,7 +37,7 @@ $container_header
 ####### ALIGN WITH THE A ############################## CORE ###################
         $container_start
         published_ports:
-          - '$portstatus$port_outside01:$port_inside01'
+          - '${portcheck_add}${port_outside01}:${port_inside01}'
         env:
           $container_permissions
         labels:
