@@ -9,12 +9,10 @@ shield_web_client() {
 temp_path="/pg/var/shield/web.client"
 priorentry=$(cat $temp_path)
 
-common_message "🚀 PlexGuide | Shield: WebClient-ID Interface" "
-💾 WebClient-ID for Shield? Visit ~ https://console.developers.google.com
+common_message "🚀 PlexGuide | Shield: WebClient-ID Interface" "💾 WebClient-ID for Shield? Visit ~ https://console.developers.google.com
 
 Prior Info Saved (If Any): $priorentry
-[Z] To Cancel and Go Back
-"
+[Z] Cancel"
 
 read -p "↘️  New WebClient-ID? | Press [ENTER]: " typed < /dev/tty
 
