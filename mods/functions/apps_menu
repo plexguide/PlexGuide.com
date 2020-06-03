@@ -10,6 +10,7 @@ common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ http:/
 [2] Community
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [D] Default Settings
+[S] Shield Setup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
 common_number
@@ -20,6 +21,8 @@ case $typed in
     2 ) sapp="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     d ) apps_default_interface ;;
     D ) apps_default_interface ;;
+    s ) shield_setup ;;
+    S ) shield_setup ;;
     z ) start_menu ;;
     Z ) start_menu ;;
     * ) apps_menu ;;

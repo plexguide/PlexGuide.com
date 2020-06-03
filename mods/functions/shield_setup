@@ -1,0 +1,29 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+shield_setup() {
+
+shield_setup_start
+
+oauth_traefik=$(docker ps | grep "traefik" )
+#if [[ "$oauth_traefik" == "" ]]; then
+#common_header "Cannot Configure Until Traefik is Deployed!"
+#common_confirm; apps_menu; fi
+
+common_message "🚀  Shield Setup Interface" "💬 More Info? Visit ~ https://plexguide.com/wiki/shield
+
+[1] Web Client        [$shield_wc]
+[2] Web Secret        [$shield_ws]
+[3] Authorize Users   [$shield_uc]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[D] Deploy Shield     [NOT-DEPLOYED]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface"
+common_number
+
+case $typed in
+    z ) apps_menu ;;
+    Z ) apps_menu ;;
+    * ) shield_setup ;;
+esac
+
+}

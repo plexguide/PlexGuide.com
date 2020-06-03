@@ -1,0 +1,14 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+shield_setup_start() {
+
+common_fcreate_silent /pg/var/shield
+common_main /pg/var/shield/web.client NOT-SET shield_wc
+common_main /pg/var/shield/web.secret NOT-SET shield_ws
+common_main /pg/var/shield/user.count 0 shield_uc
+
+oauth_docker=$(docker ps | grep "oauth")
+if [[ "$oauth_docker" == "" ]]; then oauth_display="NOT-DEPLOYED"; else
+oauth_display="DEPLOYED"; fi 
+
+}
