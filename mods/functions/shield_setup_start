@@ -9,6 +9,12 @@ common_main /pg/var/shield/user.count 0 shield_uc
 
 oauth_docker=$(docker ps | grep "oauth")
 if [[ "$oauth_docker" == "" ]]; then oauth_display="NOT-DEPLOYED"; else
-oauth_display="DEPLOYED"; fi 
+oauth_display="DEPLOYED"; fi
+
+if [[ "$shield_wc" != "NOT-SET" ]]; then shield_wc_display="SET"
+else shield_wc_display="NOT-SET"; fi
+
+if [[ "$shield_ws" != "NOT-SET" ]]; then shield_ws_display="SET"
+else shield_ws_display="NOT-SET"; fi   
 
 }

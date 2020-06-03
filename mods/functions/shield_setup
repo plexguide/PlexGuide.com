@@ -52,8 +52,8 @@ oauth_traefik=$(docker ps | grep "traefik" )
 
 common_message "🚀  Shield Setup Interface" "💬 More Info? Visit ~ https://plexguide.com/wiki/shield
 
-[1] Web Client        [$shield_wc]
-[2] Web Secret        [$shield_ws]
+[1] Web Client        [$shield_wc_display]
+[2] Web Secret        [$shield_ws_display]
 [3] Authorize Users   [$shield_uc]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [D] Deploy Shield     [NOT-DEPLOYED]
