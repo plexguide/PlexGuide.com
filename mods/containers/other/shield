@@ -1,6 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-netdata () {
+shield () {
 
 container_reset
 
@@ -39,7 +39,11 @@ $container_header
         env:
           $container_permissions
         labels:
-        $container_traefik
+          traefik.enable: 'true'
+          traefik.port: '${traefik_extport}'
+          traefik.backend: 'oauth'
+          traefik.frontend.rule: 'Host:oauth.{$domain--fix}'
+          traefik.frontend.auth.forward.address: 'http://oauth:4181'
         $container_oddball
         $container_ending
 
