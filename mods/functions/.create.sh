@@ -14,6 +14,7 @@ rm -rf "$fpath"/.master.sh ##
 ls "$fpath" > "$fpath"/.functions.sh
 ls "$pgprimary" > "$fpath"/.primary.sh
 ls "$pgcommunity" > "$fpath"/.community.sh
+ls "$pgother" > "$fpath"/.other.sh
 
 # adds tempory information to complete master functions file
 while read p; do
