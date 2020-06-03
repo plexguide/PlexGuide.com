@@ -23,6 +23,7 @@ done </"$fpath"/.functions.sh
 # adds tempory information to complete master functions file
 echo "source $fpath/.master.sh" > "$fpath"/.primary_apps.sh
 echo "source $fpath/.master.sh" > "$fpath"/.community_apps.sh
+echo "source $fpath/.master.sh" > "$fpath"/.other_apps.sh
 
 # builds apps for primary apps
 while read p; do
