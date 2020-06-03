@@ -18,13 +18,16 @@ traefik_check=$(docker ps | grep "traefik")
 if [[ "$traefik_check" == "" ]]; then traefik_display=""; else traefik_display="
 [T] Traefik CNAME | Not Ready"; fi
 
+shield_check=$(docker ps | grep "oauth")
+if [[ "$shield_check" == "" ]]; then shield_display2=""; else shield_display2="
+[S] Shield        | [$shield_display] - Not Ready"; fi
+
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
 
 [A] Application   | ${a1}
 [B] Backups       | Not Ready
-[P] Ports         | [$port_display]
-[S] Shield        | [$shield_display] - Not Ready${traefik_display}${u1}
+[P] Ports         | [$port_display]${shield_display2}${traefik_display}${u1}
 $app_warning
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface $installinfo"
