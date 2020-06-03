@@ -2,8 +2,6 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_install() {
 
-source /pg/mods/containers/primary/$app
-
 container_rebuild $app
 ansible-playbook "/pg/apps/$app.yml"
 
