@@ -45,8 +45,8 @@ common_confirm && shield_setup && exit
 }
 
 # Authorize Users ##############################################################
-shield_deploy(){
-  
+shield_deploy() {
+
 }
 
 # Deploy Shield ################################################################
