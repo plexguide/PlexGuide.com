@@ -2,7 +2,12 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_install() {
 
+# DO NOT CHANGE - AFFECTS CLOSING & OPENING PORTS - NOT NEEDED, THEN ERASE #####
+common_main /pg/data/$pgrole/port.info "" portcheck_add
+
+# forces function refresh of function output ###################################
 bash /pg/mods/functions/.primary_apps.sh
+
 container_rebuild $app
 ansible-playbook "/pg/apps/$app.yml"
 
