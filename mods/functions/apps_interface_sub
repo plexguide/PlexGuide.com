@@ -14,14 +14,17 @@ if [[ "$a1" != "Not Installed" && -e "/pg/data/$app/apply.settings" ]]; then app
 port_display=$(cat /pg/data/$app/port.setting)
 shield_display=$(cat /pg/data/$app/shield.setting)
 
+traefik_check=$(docker ps | grep "traefik")
+if [[ "$traefik_check" == "" ]]; then traefik_display=""; else traefik_display="
+[T] Traefik CNAME | Not Ready"; fi
+
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
 
 [A] Application   | ${a1}
 [B] Backups       | Not Ready
 [P] Ports         | [$port_display]
-[S] Shield        | [$shield_display] - Not Ready
-[T] Traefik CNAME | Not Ready${u1}
+[S] Shield        | [$shield_display] - Not Ready${traefik_display}${u1}
 $app_warning
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface $installinfo"
