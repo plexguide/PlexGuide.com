@@ -16,9 +16,9 @@ new app installation.
 common_number
 
 default_ports() {
-if [[ "$default_port" == "ON" ]]; then
-echo "OFF" > /pg/var/defaults/default.port
-else echo "ON" > /pg/var/defaults/default.port; fi
+if [[ "$default_port" == "OPEN" ]]; then
+echo "CLOSED" > /pg/var/defaults/default.port
+else echo "OPEN" > /pg/var/defaults/default.port; fi
 }
 
 default_shield() {

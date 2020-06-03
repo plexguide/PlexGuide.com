@@ -7,7 +7,7 @@ container_reset
 pgrole="emby"
 image="emby/embyserver"
 port_inside01="8096"
-port_outside01="${port_add}8096"
+port_outside01="8096"
 traefik_extport="8096"
 
 container_path /pg /pg
@@ -37,7 +37,7 @@ $container_header
 ####### ALIGN WITH THE A ############################## CORE ###################
         $container_start
         published_ports:
-          - '$portstatus$port_outside01:$port_inside01'
+          - '${portcheck_add}${port_outside01}:${port_inside01}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
         expose: '8096'
         env:
