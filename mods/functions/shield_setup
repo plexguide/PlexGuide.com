@@ -44,6 +44,7 @@ common_message "🚀  Shield Setup Interface" "💬 More Info? Visit ~ https://p
 common_number
 
 case $typed in
+    1 ) shield_web_client ;;
     z ) apps_menu ;;
     Z ) apps_menu ;;
     * ) shield_setup ;;
