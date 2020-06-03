@@ -44,6 +44,14 @@ common_message "💾  $typed - WebSecret Set!"
 common_confirm && shield_setup && exit
 }
 
+# Authorize Users ##############################################################
+shield_deploy(){
+  
+}
+
+# Deploy Shield ################################################################
+
+
 # Main Interface Execution #####################################################
 oauth_traefik=$(docker ps | grep "traefik" )
 #if [[ "$oauth_traefik" == "" ]]; then
@@ -64,6 +72,8 @@ common_number
 case $typed in
     1 ) shield_web_client ;;
     2 ) shield_web_secret ;;
+    d ) shield_deploy ;;
+    D ) sheild_deploy ;;
     z ) apps_menu ;;
     Z ) apps_menu ;;
     * ) shield_setup ;;

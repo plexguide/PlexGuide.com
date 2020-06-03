@@ -4,6 +4,7 @@
 # paths
 pgprimary="/pg/mods/containers/primary"
 pgcommunity="/pg/mods/containers/community"
+pgother="/pg/mods/containers/other"
 fpath="/pg/mods/functions"
 
 # remove old master file if it exist
@@ -38,3 +39,11 @@ while read p; do
   echo "$p" >> "$fpath"/.community_apps.sh
 done </"$fpath"/.community.sh
   bash "$fpath"/.community_apps.sh
+
+# other apps not accessiable to the users
+while read p; do
+  echo "source $pgother/$p" >> "$fpath"/.master.sh
+  echo "source $pgother/$p" >> "$fpath"/.other_apps.sh
+  echo "$p" >> "$fpath"/.other_apps.sh
+done </"$fpath"/.other.sh
+  bash "$fpath"/.other_apps.sh
