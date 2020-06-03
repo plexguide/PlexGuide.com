@@ -1,25 +1,30 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-logarr () {
+netdata () {
 
-container_reset                  # do not delete this
+container_reset
+
+shield_secret=$(openssl rand -hex 16)
 # VARIABLES ####################################################################
-pgrole="logarr"
-image="monitorr/logarr:develop"
-port_inside01="80"; port_outside01="7755"
-traefik_extport="7755"
+pgrole="shield"
+image="thomseddon/traefik-forward-auth"
+port_inside01="4181"
+port_outside01="4181"
+traefik_extport="4181"
 
-# PATHS ########################################################################
-# 1st - path on your server # 2nd - path of the container
-container_path /pg /pg
-container_path /pg/data/$pgrole /config/$pgrole
-container_path /pg/data/$pgrole/logs /var/log/logarrlogs
 container_path /etc/localtime /etc/localtime:ro
 
-# PERMISSIONS ##################################################################
-# pay attention, to exactly what's required for permissions
 container_permissions PUID 1000
 container_permissions PGID 1000
+
+container_oddball CLIENT_ID ///var
+container_oddball CLIENT_SECRET ///var
+container_oddball SECRET ${shield_secret}
+container_oddball COOKIE_DOMAIN ///var
+container_oddball INSECURE_COOKIE True
+container_oddball LIFETIME 2592000
+container_oddball AUTH_HOST oauth.///domain
+container_oddball WHITELIST ///var/whitelist
 
 # YML EXPORT ###################################################################
 container_core
@@ -40,6 +45,5 @@ $container_header
 
 ### ALIGN WITH THE A ################################## END - EXTRAS ###########
 
-### END OF FILE ################################################################
 EOF
 }
