@@ -63,7 +63,8 @@ common_number
 
 case $typed in
     1 ) shield_web_client ;;
-    z ) shield_web_secret ;;
+    2 ) shield_web_secret ;;
+    z ) apps_menu ;;
     Z ) apps_menu ;;
     * ) shield_setup ;;
 esac
