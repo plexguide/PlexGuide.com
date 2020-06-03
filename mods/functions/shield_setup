@@ -24,6 +24,26 @@ common_message "💾  $typed - WebClient Set!"
 common_confirm && shield_setup && exit
 }
 
+# WebClient ID Entry ###########################################################
+shield_web_secret() {
+temp_path="/pg/var/shield/web.secret"
+priorentry=$(cat $temp_path)
+
+common_message "🚀 PlexGuide | Shield: WebSecret-ID Interface" "💾 WebSecret-ID for Shield? Visit ~ https://console.developers.google.com
+
+Prior Info Saved (If Any): $priorentry
+[Z] Cancel"
+
+read -p "↘️  New WebSecret-ID? | Press [ENTER]: " typed < /dev/tty
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then shield_setup && exit; fi
+if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && shield_web_secret && exit; fi
+
+echo $typed > $temp_path
+common_message "💾  $typed - WebSecret Set!"
+common_confirm && shield_setup && exit
+}
+
 # Main Interface Execution #####################################################
 oauth_traefik=$(docker ps | grep "traefik" )
 #if [[ "$oauth_traefik" == "" ]]; then
@@ -43,7 +63,7 @@ common_number
 
 case $typed in
     1 ) shield_web_client ;;
-    z ) apps_menu ;;
+    z ) shield_web_secret ;;
     Z ) apps_menu ;;
     * ) shield_setup ;;
 esac
