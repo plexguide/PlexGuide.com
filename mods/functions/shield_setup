@@ -114,7 +114,7 @@ if [[ $(cat /pg/var/shield/user.list | grep "\<$typed\>") == "" ]]; then
 shield_email_remove="$typed"
 common_header "$shield_email_remove - Is this Correct? [Y/N]"
 common_number
-if [[ "$typed" != "y" || "$typed" != "Y" ]]; then shield_remove_user && exit; fi
+if [[ "$typed" == "n" || "$typed" == "N" ]]; then shield_remove_user && exit; fi
 common_header "🚀  $shield_email_add - Removed User"
 common_confirm
 shield_user_interface && exit
