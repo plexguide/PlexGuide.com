@@ -85,12 +85,12 @@ if [[ $(cat /pg/var/shield/user.list | grep "\<$typed\>") ]]; then
 shield_email_add="$typed"
 common_header "$shield_email_add - Is this Correct? [Y/N]"
 common_number
-if [[ "$typed" != "y" || "$typed" != "Y" ]]; then shield_add_user && exit; fi
-if [[ $(cat /pg/var/shield/user.list) == "" ]]; then echo $shield_email_add > /pg/var/shield/user.list
-else echo $shield_email_add >> /pg/var/shield/user.list; fi
+if [[ "$typed" == "y" || "$typed" == "Y" ]]; then
+  if [[ $(cat /pg/var/shield/user.list) == "" ]]; then echo $shield_email_add > /pg/var/shield/user.list
+  else echo $shield_email_add >> /pg/var/shield/user.list; fi
 common_header "🚀  $shield_email_add - User Added"
-common_confirm
-shield_user_interface && exit
+common_confirm && shield_user_interface && exit
+else shield_add_user && exit; fi
 }
 
 # Users Management - Remove a User #############################################
