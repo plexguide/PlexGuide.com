@@ -4,7 +4,7 @@ container_traefik () {
 
 traefik_menu_start_setup
 
-if [[ /pg/data/$pgrole/shield.setting == "ON" ]]; then
+if [[ $(cat "/pg/data/$pgrole/shield.setting") == "ON" ]]; then
 container_traefik="  traefik.enable: 'true'
           traefik.port: '$traefik_extport'
           traefik.frontend.rule: 'Host:$pgrole.$domain'
@@ -20,16 +20,16 @@ container_traefik="  traefik.enable: 'true'
           traefik.frontend.headers.forceSTSHeader: 'true'"
 else
   container_traefik="  traefik.enable: 'true'
-            traefik.port: '$traefik_extport'
-            traefik.frontend.rule: 'Host:$pgrole.$domain'
-            traefik.frontend.headers.SSLHost: '$domain'
-            traefik.frontend.headers.SSLRedirect: 'true'
-            traefik.frontend.headers.STSIncludeSubdomains: 'true'
-            traefik.frontend.headers.STSPreload: 'true'
-            traefik.frontend.headers.STSSeconds: '315360000'
-            traefik.frontend.headers.browserXSSFilter: 'true'
-            traefik.frontend.headers.contentTypeNosniff: 'true'
-            traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
-            traefik.frontend.headers.forceSTSHeader: 'true'"
+          traefik.port: '$traefik_extport'
+          traefik.frontend.rule: 'Host:$pgrole.$domain'
+          traefik.frontend.headers.SSLHost: '$domain'
+          traefik.frontend.headers.SSLRedirect: 'true'
+          traefik.frontend.headers.STSIncludeSubdomains: 'true'
+          traefik.frontend.headers.STSPreload: 'true'
+          traefik.frontend.headers.STSSeconds: '315360000'
+          traefik.frontend.headers.browserXSSFilter: 'true'
+          traefik.frontend.headers.contentTypeNosniff: 'true'
+          traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
+          traefik.frontend.headers.forceSTSHeader: 'true'"
 fi
 }
