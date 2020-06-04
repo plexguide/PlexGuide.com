@@ -7,7 +7,7 @@ container_reset
 shield_secret=$(openssl rand -hex 16)
 
 # forces function refresh of function output ###################################
-
+shield_setup_start
 # VARIABLES ####################################################################
 pgrole="shield"
 image="thomseddon/traefik-forward-auth"
