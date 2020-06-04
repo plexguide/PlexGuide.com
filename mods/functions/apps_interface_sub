@@ -20,7 +20,7 @@ if [[ "$traefik_check" == "" ]]; then traefik_display=""; else traefik_display="
 
 shield_check=$(docker ps | grep "shield")
 if [[ "$shield_check" == "" ]]; then shield_display2=""; else shield_display2="
-[S] Shield        | [$shield_display2]"; fi
+[S] Shield        | [$shield_display]"; fi
 
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
@@ -44,6 +44,8 @@ case $typed in
     U ) apps_uninstall ;;
     p ) apps_ports ;;
     P ) apps_ports ;;
+    s ) apps_shield ;;
+    S ) apps_shield ;;
     z ) apps_menu ;;
     Z ) apps_menu ;;
     * ) apps_interface_sub ;;
