@@ -125,7 +125,8 @@ shield_deploy() {
  a=a
 }
 # WARNINGS #####################################################################
-if [[ $(docker ps | grep "\<traefik\>") == "" ]]; then shield_warning="
+if [[ $(docker ps | grep "\<traefik\>") == "" ]]; then
+shield_warning="
 
 ⛔️  WARNING: Traefik Not Deployed & Will Fail"
 fi
