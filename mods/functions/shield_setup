@@ -124,12 +124,6 @@ else shield_remove_user && exit; fi
 shield_deploy() {
  a=a
 }
-# WARNINGS #####################################################################
-if [[ $(docker ps | grep "\<traefik\>") != "traefik" ]]; then
-shield_warning="
-
-⛔️  WARNING: Traefik Not Deployed & Will Fail"
-fi
 
 # Main Interface Execution #####################################################
 oauth_traefik=$(docker ps | grep "traefik" )
