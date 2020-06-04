@@ -8,7 +8,7 @@ if [[ "$domain" != "NOT-SET" ]]; then traefik_domaincheck; fi
 common_message "🚀  Traefik - Reverse Proxy Interface" "💬  Visit ~ http://plexguide.com/wiki/traefik${digmessage}
 
 [1] Top Level Domain App: [$tld]
-[2] Domain Provider     : [$provider]
+[2] Domain Provider     : [$provider]   << HIGHLY RECOMMEND TO USE CLOUDFLARE!
 [3] Domain Name         : [$domain]
 [4] EMail Address       : [$email]
 [5] DNS Delay Check     : [$delaycheck] Seconds
