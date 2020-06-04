@@ -12,7 +12,7 @@ shield_secret=$(openssl rand -hex 16)
     echo -n "$p," >> /pg/var/shield/whitelist.emails
   done </pg/var/shield/user.list
   if [[ -e "/pg/var/shield/whitelist.emails" ]]; then
-  whitelist_emails=$(cat /pg/var/shield/whitelist.emails); fi
+  whitelist_emails=$(cat /pg/var/shield/whitelist.emails | rev | cut -c2- | rev); fi
 
 # VARIABLES ####################################################################
 pgrole="shield"
