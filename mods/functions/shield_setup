@@ -91,6 +91,7 @@ common_number
 case $typed in
     1 ) shield_web_client ;;
     2 ) shield_web_secret ;;
+    3 ) shield_user_interface ;;
     d ) shield_deploy ;;
     D ) sheild_deploy ;;
     z ) apps_menu ;;
