@@ -147,8 +147,8 @@ case $typed in
     1 ) shield_web_client ;;
     2 ) shield_web_secret ;;
     3 ) shield_user_interface ;;
-    d ) shield_deploy ;;
-    D ) sheild_deploy ;;
+    d ) ansible-playbook "/pg/apps/${shield}.yml" && common_header "🚀 Docker: Process Complete ~ $p" && common_confirm ;;
+    D ) ansible-playbook "/pg/apps/${shield}.yml" && common_header "🚀 Docker: Process Complete ~ $p" && common_confirm ;;
     z ) apps_menu ;;
     Z ) apps_menu ;;
     * ) shield_setup ;;
