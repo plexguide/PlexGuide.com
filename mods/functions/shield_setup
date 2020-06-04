@@ -56,7 +56,7 @@ common_message "🚀  Shield User Interface" "💬 Current Authorized Users: $sh
 
 [1] User: Add
 [2] User: Remove a Users
-[3] User: Remove All & Remove Shield [NOT WORKING YET]${shield_warning}
+[3] User: Remove All & Remove Shield [NOT WORKING YET]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
 common_number
@@ -136,7 +136,7 @@ common_message "🚀  Shield Setup Interface" "💬 More Info? Visit ~ https://p
 
 [1] Web Client        [$shield_wc_display]
 [2] Web Secret        [$shield_ws_display]
-[3] Authorize Users   [$shield_uc]
+[3] Authorize Users   [$shield_uc]${shield_warning}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [D] Deploy Shield     [NOT-DEPLOYED]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
