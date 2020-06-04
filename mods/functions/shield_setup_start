@@ -3,6 +3,8 @@
 shield_setup_start_uc() {
   if [[ -e "/pg/var/shield/user.list" ]]; then
   wc -l /pg/var/shield/user.list | awk '{print $1}' > /pg/var/shield/user.count; fi
+  if [[ -e "/pg/var/shield/user.list" && $(cat /pg/var/shield/user.list) == "" ]]; then
+  echo 0 > /pg/var/shield/user.count; fi 
 }
 
 shield_setup_start() {
