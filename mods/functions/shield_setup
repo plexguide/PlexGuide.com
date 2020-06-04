@@ -47,6 +47,11 @@ common_confirm && shield_setup && exit
 # Users Management - Main Interface ############################################
 shield_user_interface() {
 shield_setup_start
+
+  # Updates Authorized User Count
+  shield_setup_start_uc
+  shield_uc=$(cat /pg/var/shield/user.count)
+
 common_message "🚀  Shield User Interface" "💬 Current Authorized Users: $shield_uc
 
 [1] User: Add

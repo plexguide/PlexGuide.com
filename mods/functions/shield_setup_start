@@ -1,7 +1,13 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+shield_setup_start_uc() {
+  if [[ -e "/pg/var/shield/user.list" ]]; then
+  wc -l /pg/var/shield/user.list | awk '{print $1}' > /pg/var/shield/user.count; fi
+}
+
 shield_setup_start() {
 
+shield_setup_start_uc
 common_fcreate_silent /pg/var/shield
 common_main /pg/var/shield/web.client NOT-SET shield_wc
 common_main /pg/var/shield/web.secret NOT-SET shield_ws
