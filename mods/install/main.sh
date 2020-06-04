@@ -21,14 +21,12 @@ bash "$fpath"/.create.sh; source "$fpath"/.master.sh
 #$echo "COMMAND IS - $pgcmd"
 if [[ "$pgcmd" != "true" ]]; then
 
-common_message "🌎 INSTALLING: PlexGuide.com GNUv3 License" "
-By Installing PlexGuide, you are agreeing to the terms and conditions of the
+common_message "🌎 INSTALLING: PlexGuide.com GNUv3 License" "By Installing PlexGuide, you are agreeing to the terms and conditions of the
 GNUv3 License!
 
 If you have a chance to donate, please visit https://donate.plexguide.com
 
-At anytime you can PRESS CTRL+Z to STOP the Installation
-"
+At anytime you can PRESS CTRL+Z to STOP the Installation"
 common_timer_v2 "1" ## set back to 5
 fi
 
