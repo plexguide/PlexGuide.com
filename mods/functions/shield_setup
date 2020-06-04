@@ -74,10 +74,10 @@ common_number
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then shield_user_interface && exit; fi
 common_header "$typed - Is this Correct? [Y/N]"
 common_number
-if [[ "$typed" != "y" || "$typed" == "Y" ]]; then shield_user_interface && exit; fi
+if [[ "$typed" != "y" || "$typed" == "Y" ]]; then shield_add_user && exit; fi
 if [[ $(cat /pg/var/shield/user.list) == "" ]]; then echo $typed > /pg/var/shield/user.list
 else echo $typed >> /pg/var/shield/user.list; fi
-shield_user_interface && exit
+shield_add_user && exit
 }
 
 # Deploy Shield ################################################################
