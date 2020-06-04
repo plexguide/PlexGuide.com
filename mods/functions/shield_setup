@@ -115,6 +115,7 @@ shield_email_remove="$typed"
 common_header "$shield_email_remove - Is this Correct? [Y/N]"
 common_number
 if [[ "$typed" == "y" || "$typed" == "Y" ]]; then
+sed -i -e "/${shield_email_remove}/d" /pg/var/shield/user.list
 common_header "🚀  $shield_email_remove - Removed User"
 common_confirm && shield_user_interface && exit
 else shield_remove_user && exit; fi
