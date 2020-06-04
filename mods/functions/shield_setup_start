@@ -15,7 +15,6 @@ common_main /pg/var/shield/web.client NOT-SET shield_wc
 common_main /pg/var/shield/web.secret NOT-SET shield_ws
 common_main /pg/var/shield/user.count 0 shield_uc
 common_main /pg/var/shield/user.list "" shield_ul
-common_main /pg/var/traefik/t.domain NOT-SET sdomain
 
 oauth_docker=$(docker ps | grep "oauth")
 if [[ "$oauth_docker" == "" ]]; then oauth_display="NOT-DEPLOYED"; else
