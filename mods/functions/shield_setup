@@ -1,7 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 shield_setup() {
-
 shield_setup_start
 
 # WebClient ID Entry ###########################################################
