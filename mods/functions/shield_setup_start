@@ -6,6 +6,7 @@ common_fcreate_silent /pg/var/shield
 common_main /pg/var/shield/web.client NOT-SET shield_wc
 common_main /pg/var/shield/web.secret NOT-SET shield_ws
 common_main /pg/var/shield/user.count 0 shield_uc
+common_main /pg/var/shield/user.list "" shield_ul
 
 oauth_docker=$(docker ps | grep "oauth")
 if [[ "$oauth_docker" == "" ]]; then oauth_display="NOT-DEPLOYED"; else
@@ -15,6 +16,9 @@ if [[ "$shield_wc" != "NOT-SET" ]]; then shield_wc_display="SET"
 else shield_wc_display="NOT-SET"; fi
 
 if [[ "$shield_ws" != "NOT-SET" ]]; then shield_ws_display="SET"
-else shield_ws_display="NOT-SET"; fi   
+else shield_ws_display="NOT-SET"; fi
+
+# forces function refresh of function output ###################################
+bash /pg/mods/functions/.other.sh
 
 }

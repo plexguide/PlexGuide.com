@@ -44,13 +44,32 @@ common_message "💾  $typed - WebSecret Set!"
 common_confirm && shield_setup && exit
 }
 
-# Authorize Users ##############################################################
-shield_deploy() {
- a=a
+# Users Management - Main Interface ############################################
+shield_user_interface() {
+shield_setup_start
+common_message "🚀  Shield User Interface" "💬 Current Authorized Users: $shield_uc
+
+[1] User: Add
+[2] User: Remove a Users
+[3] User: Remove All & Removes Shield
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface"
+common_number
+
+case $typed in
+    #1 ) shield_add_user && shield_user_interface && exit ;;
+    #2 ) shield_remove_user && shield_user_interface && exit ;;
+    #3 ) shield_remove_all && shield_user_interface && exit ;;
+    z ) shield_setup && exit ;;
+    Z ) shield_setup && exit ;;
+    * ) shield_user_interface && exit ;;
+esac
 }
 
 # Deploy Shield ################################################################
-
+shield_deploy() {
+ a=a
+}
 
 # Main Interface Execution #####################################################
 oauth_traefik=$(docker ps | grep "traefik" )
