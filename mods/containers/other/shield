@@ -25,15 +25,14 @@ container_path /etc/localtime /etc/localtime:ro
 
 container_permissions PUID 1000
 container_permissions PGID 1000
-
-container_oddball CLIENT_ID test1
-container_oddball CLIENT_SECRET test2
-container_oddball SECRET ${shield_secret}
-container_oddball COOKIE_DOMAIN test.com
-container_oddball INSECURE_COOKIE True
-container_oddball LIFETIME 2592000
-container_oddball AUTH_HOST oauth.test.com
-container_oddball WHITELIST ${whitelist_emails}
+container_permissions CLIENT_ID test1
+container_permissions CLIENT_SECRET test2
+container_permissions SECRET ${shield_secret}
+container_permissions COOKIE_DOMAIN test.com
+container_permissions INSECURE_COOKIE True
+container_permissions LIFETIME 2592000
+container_permissions AUTH_HOST oauth.test.com
+container_permissions WHITELIST ${whitelist_emails}
 
 # YML EXPORT ###################################################################
 container_core
@@ -53,7 +52,7 @@ $container_header
           traefik.backend: 'oauth'
           traefik.frontend.rule: 'Host:oauth.test.com'
           traefik.frontend.auth.forward.address: 'http://oauth:4181'
-        $container_oddball
+        $container_permissions
         $container_ending
 
 ### ALIGN WITH THE A ################################## END - EXTRAS ###########
