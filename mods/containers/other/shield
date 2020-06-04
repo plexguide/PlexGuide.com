@@ -7,7 +7,7 @@ container_reset
 shield_secret=$(openssl rand -hex 16)
 
   # FOR WHITELIST
-  rm -rf /pg/var/pgshield.compiled
+  rm -rf /pg/var/shield/whitelist.emails
   while read p; do
     echo -n "$p," >> /pg/var/shield/whitelist.emails
   done </pg/var/shield/user.list
