@@ -4,6 +4,10 @@ container_traefik () {
 
 traefik_menu_start_setup
 
+if [[ ! -e "/pg/data/$pgrole/shield.setting" ]]; then
+apps_interface_start
+cat /pg/var/defaults/default.port > "/pg/data/$pgrole/shield.setting"; fi
+
 if [[ $(cat "/pg/data/$pgrole/shield.setting") == "ON" ]]; then
 container_traefik="  traefik.enable: 'true'
           traefik.port: '$traefik_extport'
