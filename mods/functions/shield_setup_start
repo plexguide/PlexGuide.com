@@ -29,7 +29,7 @@ else shield_ws_display="NOT-SET"; fi
 # WARNINGS #####################################################################
 if [[ $(docker ps | grep "\<traefik\>") != "traefik" ]]; then
 shield_warning="
-⛔️  WARNING: Traefik Not Deployed & Will Fail"; fi
+⛔️ WARNING: Traefik Not Deployed & Will Fail"; fi
 # forces function refresh of function output ###################################
 bash /pg/mods/functions/.other_apps.sh
 
