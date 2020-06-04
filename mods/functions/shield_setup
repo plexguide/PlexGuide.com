@@ -72,12 +72,14 @@ common_header "🚀  Adding User - Type Exact GMail Address to Add or [Z] to Exi
 common_number
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then shield_user_interface && exit; fi
-common_header "$typed - Is this Correct? [Y/N]"
+if [[ "$typed" == "" ]]; then shield_add_user && exit; fi
+shield_email_add="$typed"
+common_header "$shield_email_add - Is this Correct? [Y/N]"
 common_number
 if [[ "$typed" != "y" || "$typed" == "Y" ]]; then shield_add_user && exit; fi
-if [[ $(cat /pg/var/shield/user.list) == "" ]]; then echo $typed > /pg/var/shield/user.list
-else echo $typed >> /pg/var/shield/user.list; fi
-common_header "🚀  $typed - User Added"
+if [[ $(cat /pg/var/shield/user.list) == "" ]]; then echo $shield_email_add > /pg/var/shield/user.list
+else echo $shield_email_add >> /pg/var/shield/user.list; fi
+common_header "🚀  $shield_email_add - User Added"
 common_confirm
 shield_user_interface && exit
 }
