@@ -23,15 +23,16 @@ traefik_extport="4181"
 
 container_path /etc/localtime /etc/localtime:ro
 
+common_main /pg/var/traefik/t.domain NOT-SET sdomain
 container_permissions PUID 1000
 container_permissions PGID 1000
-container_permissions CLIENT_ID test1
-container_permissions CLIENT_SECRET test2
+container_permissions CLIENT_ID $shield_wc
+container_permissions CLIENT_SECRET ${shield_ws}
 container_permissions SECRET ${shield_secret}
-container_permissions COOKIE_DOMAIN test.com
+container_permissions COOKIE_DOMAIN ${sdomain}
 container_permissions INSECURE_COOKIE True
 container_permissions LIFETIME 2592000
-container_permissions AUTH_HOST oauth.test.com
+container_permissions AUTH_HOST shield.${sdomain}
 container_permissions WHITELIST ${whitelist_emails}
 
 # YML EXPORT ###################################################################
@@ -49,9 +50,9 @@ $container_header
         labels:
           traefik.enable: 'true'
           traefik.port: '${traefik_extport}'
-          traefik.backend: 'oauth'
-          traefik.frontend.rule: 'Host:oauth.test.com'
-          traefik.frontend.auth.forward.address: 'http://oauth:4181'
+          traefik.backend: 'shield'
+          traefik.frontend.rule: 'Host:shield.${sdomain}'
+          traefik.frontend.auth.forward.address: 'http://shield:4181'
         $container_ending
 
 ### ALIGN WITH THE A ################################## END - EXTRAS ###########
