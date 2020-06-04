@@ -6,8 +6,6 @@ digip=$(dig $domain | grep $domain | grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9]
 digcheck=$(echo $(ifconfig | grep $digip))
 
 if [[ "$digcheck" == "" ]]; then digmessage="
-⛔️ WARNING ~ Domain Check Failing - IPV4 A correct? Ignore if Using CloudFlare
-
-"; else digmessage=""; fi
+⛔️ WARNING ~ Domain Check Failing - IPV4 A correct? Ignore if Using CloudFlare"; else digmessage=""; fi
 
 }
