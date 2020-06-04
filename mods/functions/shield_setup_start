@@ -27,7 +27,7 @@ if [[ "$shield_ws" != "NOT-SET" ]]; then shield_ws_display="SET"
 else shield_ws_display="NOT-SET"; fi
 
 # WARNINGS #####################################################################
-if [[ $(docker ps | grep "\<traefik\>") != "traefik" ]]; then
+if [[ $(docker ps | grep -w "traefik" | awk '{print $12}' | grep "traefik") != "traefik" ]]; then
 shield_warning="
 ⛔️ WARNING: Traefik Not Deployed & Shield Will Fail"; fi
 # forces function refresh of function output ###################################
