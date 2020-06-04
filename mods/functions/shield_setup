@@ -56,7 +56,7 @@ common_message "🚀  Shield User Interface" "💬 Current Authorized Users: $sh
 
 [1] User: Add
 [2] User: Remove a Users
-[3] User: Remove All & Removes Shield
+[3] User: Remove All & Remove Shield
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
 common_number
