@@ -1,0 +1,13 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+apps_shield() {
+
+shield_check=$(cat "/pg/data/$app/shield.setting")
+if [[ "$shield_check" == "ON" ]]; then
+  echo "OFF" > "/pg/data/$app/shield.setting"
+else
+  echo "OPEN" > "/pg/data/$app/shield.setting"
+fi
+
+touch "/pg/data/$app/apply.settings"
+}
