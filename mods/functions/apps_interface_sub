@@ -18,7 +18,7 @@ traefik_check=$(docker ps | grep "traefik")
 if [[ "$traefik_check" == "" ]]; then traefik_display=""; else traefik_display="
 [T] Traefik CNAME | Not Ready"; fi
 
-shield_check=$(docker ps | grep "oauth")
+shield_check=$(docker ps | grep "shield")
 if [[ "$shield_check" == "" ]]; then shield_display2=""; else shield_display2="
 [S] Shield        | [$shield_display] - Not Ready"; fi
 
