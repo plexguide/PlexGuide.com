@@ -4,10 +4,10 @@ container_traefik () {
 
 traefik_menu_start_setup
 
-container_traefik="          traefik.frontend.auth.forward.address: 'http://shield:4181'
-          traefik.enable: 'true'
+container_traefik="traefik.enable: 'true'
           traefik.port: '$traefik_extport'
           traefik.frontend.rule: 'Host:$pgrole.$domain'
+          traefik.frontend.auth.forward.address: 'http://shield:4181'
           traefik.frontend.headers.SSLHost: '$domain'
           traefik.frontend.headers.SSLRedirect: 'true'
           traefik.frontend.headers.STSIncludeSubdomains: 'true'
