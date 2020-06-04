@@ -63,7 +63,7 @@ common_number
 
 case $typed in
     1 ) shield_add_user && shield_user_interface && exit ;;
-    #2 ) shield_remove_user && shield_user_interface && exit ;;
+    2 ) shield_remove_user && shield_user_interface && exit ;;
     #3 ) shield_remove_all && shield_user_interface && exit ;;
     z ) shield_setup && exit ;;
     Z ) shield_setup && exit ;;
@@ -81,14 +81,41 @@ if [[ "$typed" == "" ]]; then shield_add_user && exit; fi
 if [[ $(echo $typed | grep '@') == "" ]]; then shield_add_user && exit; fi
 if [[ $(cat /pg/var/shield/user.list | grep "\<$typed\>") ]]; then
   common_header "WARNING: User Already Exists! Exiting!"
-  common_confirm && shield_user_interface && exit; fi 
+  common_confirm && shield_user_interface && exit; fi
 shield_email_add="$typed"
 common_header "$shield_email_add - Is this Correct? [Y/N]"
 common_number
-if [[ "$typed" != "y" || "$typed" == "Y" ]]; then shield_add_user && exit; fi
+if [[ "$typed" != "y" || "$typed" != "Y" ]]; then shield_add_user && exit; fi
 if [[ $(cat /pg/var/shield/user.list) == "" ]]; then echo $shield_email_add > /pg/var/shield/user.list
 else echo $shield_email_add >> /pg/var/shield/user.list; fi
 common_header "🚀  $shield_email_add - User Added"
+common_confirm
+shield_user_interface && exit
+}
+
+# Users Management - Remove a User #############################################
+shield_remove_user () {
+
+user_wrap=$(fmt -w 79 "/pg/var/shield/user.list")
+
+common_message "🚀  Shield Remove User" "💬 Type Exact Address of User to Remove!
+
+$user_wrap
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface"
+common_number
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then shield_user_interface && exit; fi
+if [[ "$typed" == "" ]]; then shield_add_remove_user && exit; fi
+if [[ $(echo $typed | grep '@') == "" ]]; then shield_remove_user && exit; fi
+if [[ $(cat /pg/var/shield/user.list | grep "\<$typed\>") == "" ]]; then
+  common_header "WARNING: User Does Not Exist! Resetting"
+  common_confirm && shield_remove_user && exit; fi
+shield_email_remove="$typed"
+common_header "$shield_email_remove - Is this Correct? [Y/N]"
+common_number
+if [[ "$typed" != "y" || "$typed" != "Y" ]]; then shield_remove_user && exit; fi
+common_header "🚀  $shield_email_add - Removed User"
 common_confirm
 shield_user_interface && exit
 }
