@@ -57,13 +57,22 @@ common_message "🚀  Shield User Interface" "💬 Current Authorized Users: $sh
 common_number
 
 case $typed in
-    #1 ) shield_add_user && shield_user_interface && exit ;;
+    1 ) shield_add_user && shield_user_interface && exit ;;
     #2 ) shield_remove_user && shield_user_interface && exit ;;
     #3 ) shield_remove_all && shield_user_interface && exit ;;
     z ) shield_setup && exit ;;
     Z ) shield_setup && exit ;;
     * ) shield_user_interface && exit ;;
 esac
+}
+
+# Users Management - Add Users #################################################
+shield_add_user () {
+common_header "🚀  Adding User - Type Exact GMail Address to Add or [Z] to Exit!"
+common_number
+
+if [[ "$typed" == "Z" || "$typed" == "z" ]]; then shield_user_interface && exit; fi
+
 }
 
 # Deploy Shield ################################################################
