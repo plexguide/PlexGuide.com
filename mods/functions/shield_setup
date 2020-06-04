@@ -131,11 +131,11 @@ oauth_traefik=$(docker ps | grep "traefik" )
 #common_header "Cannot Configure Until Traefik is Deployed!"
 #common_confirm; apps_menu; fi
 
-common_message "🚀  Shield Setup Interface" "💬 More Info? Visit ~ https://plexguide.com/wiki/shield
+common_message "🚀  Shield Setup Interface" "💬 More Info? Visit ~ https://plexguide.com/wiki/shield${shield_warning}
 
 [1] Web Client        [$shield_wc_display]
 [2] Web Secret        [$shield_ws_display]
-[3] Authorize Users   [$shield_uc]${shield_warning}
+[3] Authorize Users   [$shield_uc]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [D] Deploy Shield     [NOT-DEPLOYED]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
