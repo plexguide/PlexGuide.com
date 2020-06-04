@@ -4,7 +4,7 @@ traefik_menu_start() {
 
 traefik_menu_start_setup
 if [[ "$domain" != "NOT-SET" ]]; then traefik_domaincheck; fi
-if [[ "$provider" != "cloudflare" ]]; then cf_recommend="<< HIGHLY RECOMMEND TO USE CLOUDFLARE!"; fi
+if [[ "$provider" != "cloudflare" ]]; then cf_recommend="<< HIGHLY RECOMMEND TO USE CLOUDFLARE!"; else cf_recommend=""; fi
 
 common_message "🚀  Traefik - Reverse Proxy Interface" "💬  Visit ~ http://plexguide.com/wiki/traefik${digmessage}
 
