@@ -52,7 +52,6 @@ $container_header
           traefik.backend: 'oauth'
           traefik.frontend.rule: 'Host:oauth.test.com'
           traefik.frontend.auth.forward.address: 'http://oauth:4181'
-        $container_permissions
         $container_ending
 
 ### ALIGN WITH THE A ################################## END - EXTRAS ###########
