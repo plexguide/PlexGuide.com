@@ -78,6 +78,7 @@ common_number
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then shield_user_interface && exit; fi
 if [[ "$typed" == "" ]]; then shield_add_user && exit; fi
+if [[ $(echo $typed | grep '@') == "" ]]; then shield_add_user && exit; fi
 shield_email_add="$typed"
 common_header "$shield_email_add - Is this Correct? [Y/N]"
 common_number
