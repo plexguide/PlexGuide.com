@@ -347,31 +347,65 @@ main_quote="
 Please, send me endless photos of cute kittens! PM me anytime! I really need
 the love ~ https://plexguide.com/members/datamonkeh.16
 
-PG Member - Datamonkeh"
+Member - Datamonkeh"
 }
 
 quote47 () {
 main_quote="
 Si vis pacem, para bellum ~ If you want peace, prepare for war.
 
-Latin Phrase / PG Member - ALPHA"
+Latin Phrase | Member: ALPHA"
 }
 
 quote48 () {
 main_quote="
 Train, say your prayers, eat your vitamins, and believe in yourself!
 
-Hulk Hogan / PG Member - andrewbakes1882"
+Hulk Hogan | Member: andrewbakes1882"
 }
 
 quote49 () {
 main_quote="
 hahahaha!!
 
-PG Member - Xployt"
+PG Member - ALPHA"
+}
+
+quote50 () {
+main_quote="
+Quality is not an act, it is a habit.
+
+Aristotle | Member: Xployt"
+}
+
+quote51 () {
+main_quote="
+damn it I can't think of anything decent I've said....
+
+Xployt | Member: Datamonkeh"
+
+quote52 () {
+main_quote="
+Have you tried unplugging it, and plugging it back in?
+
+Every Nerd Daily | Member: StudSeth"
+}
+
+quote53 () {
+main_quote="
+If at first you don't succeed; call it version 1.0
+
+Member: Armin"
+}
+
+quote54 () {
+main_quote="
+Wait... You still measure in terabytes?
+
+Member: Datamonkeh"
 }
 
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % 49)) )
+num=$( echo $(($RANDOM % 55)) )
 quote$num
 }
