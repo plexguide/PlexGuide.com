@@ -350,7 +350,14 @@ the love ~ https://plexguide.com/members/datamonkeh.16/
 PG Member - Datamonkeh"
 }
 
+quote47 () {
+main_quote="
+Si vis pacem, para bellum ~ If you want peace, prepare for war
+
+Latin Phrase / PG Member - ALPHA"
+}
+
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % 47)) )
+num=$( echo $(($RANDOM % 48)) )
 quote$num
 }
