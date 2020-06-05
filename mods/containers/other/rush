@@ -1,0 +1,54 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+rush () {
+
+# VARIABLES ####################################################################
+pgrole="rush"
+
+common_fcreate_silent /pg/var/rush
+# YML EXPORT ###################################################################
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+    - name: Install pip requirements
+      pip:
+        requirements: /pg/mods/rush/requirements.txt
+        executable: pip3
+
+    - name: Set as Executable
+      file:
+        path: /pg/mods/rush/rush.py
+        owner: '1000'
+        group: '1000'
+        mode: a+x
+
+    - name: "Create SymLink"
+      file:
+        src: "/pg/mods/rush/rush.py"
+        dest: "/bin/rush"
+        state: link
+
+####### ALIGN WITH THE A ############################## CORE ###################
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+EOF
+}
+
+rush_execute() {
+
+# After Actions ################################################################
+service_path="/etc/systemd/system/rush.service"
+
+if [[ -e "$service_path" ]]; then
+common_header "💾  NOTICE:  Stopping/Disabling OLD Rush Service"; sleep 1
+systemctl daemon-reload && systemctl stop rush && systemctl disable rush && rm -rf "$service_path"; fi
+
+cp /pg/mods/rush/rush.service "$service_path"
+common_header "💾  NOTICE:  Enabling/Starting NEW Rush Service" && sleep 1
+systemctl daemon-reload && systemctl enable rush && systemctl restart rush
+
+common_header "💾  ENABLED: Rush Service"
+common_confirm
+}
