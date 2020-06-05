@@ -1,5 +1,3 @@
-# /etc/systemd/system/rush.service
-
 [Unit]
 Description=Rush
 After=network-online.target
@@ -10,8 +8,8 @@ Group=1000
 Type=simple
 Environment="LC_ALL=C.UTF-8"
 Environment="LANG=C.UTF-8"
-WorkingDirectory=/opt/rush/
-ExecStart=/usr/bin/python3 /opt/rush/rush.py run
+WorkingDirectory=/pg/mods/rush/
+ExecStart=/usr/bin/python3 /pg/mods/rush/rush.py run
 Restart=always
 RestartSec=10
 
