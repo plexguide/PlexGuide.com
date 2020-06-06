@@ -8,7 +8,7 @@ common_main /pg/data/$pgrole/cname.traefik "$app" cname_fill
 
 if [[ ! -e "/pg/data/$pgrole/shield.setting" ]]; then
 apps_interface_start
-cat /pg/var/defaults/default.port > "/pg/data/$pgrole/shield.setting"; fi
+cat /pg/var/defaults/default.shield > "/pg/data/$pgrole/shield.setting"; fi
 
 if [[ $(cat "/pg/data/$pgrole/shield.setting") == "ON" ]]; then
 container_traefik="  traefik.enable: 'true'
