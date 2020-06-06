@@ -49,22 +49,21 @@ echo "$app" >> /pg/mods/functions/apps_install
 echo "}" >> /pg/mods/functions/apps_install
 
 case $typed in
-    A ) apps_install ;;
-    a ) apps_install ;;
-    u ) apps_uninstall ;;
-    U ) apps_uninstall ;;
-    i ) apps_image ;;
-    I ) apps_image ;;
-    p ) apps_ports ;;
-    P ) apps_ports ;;
-    s ) apps_shield ;;
-    S ) apps_shield ;;
-    t ) apps_cname ;;
-    T ) apps_cname ;;
-    z ) apps_menu ;;
-    Z ) apps_menu ;;
-    * ) apps_interface_sub ;;
+    A ) apps_install && apps_interface_sub && exit ;;
+    a ) apps_install && apps_interface_sub && exit ;;
+    u ) apps_uninstall && apps_interface_sub && exit ;;
+    U ) apps_uninstall && apps_interface_sub && exit ;;
+    i ) apps_image && apps_interface_sub && exit ;;
+    I ) apps_image && apps_interface_sub && exit ;;
+    p ) apps_ports && apps_interface_sub && exit ;;
+    P ) apps_ports && apps_interface_sub && exit ;;
+    s ) apps_shield && apps_interface_sub && exit ;;
+    S ) apps_shield && apps_interface_sub && exit ;;
+    t ) apps_cname && apps_interface_sub && exit ;;
+    T ) apps_cname && apps_interface_sub && exit ;;
+    z ) apps_menu && apps_interface_sub && exit ;;
+    Z ) apps_menu && apps_interface_sub && exit ;;
+    * ) apps_interface_sub && exit ;;
 esac
 
-apps_interface_sub && exit
 }
