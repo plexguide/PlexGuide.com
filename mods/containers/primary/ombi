@@ -5,7 +5,6 @@ ombi () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="ombi"
-image="linuxserver/ombi"
 port_inside01="3579"
 port_outside01="3579"
 traefik_extport="3579"
@@ -16,7 +15,11 @@ container_path /etc/localtime /etc/localtime:ro
 
 container_permissions PUID 1000
 container_permissions PGID 1000
-
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/ombi latest
+linuxserver/ombi development
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
