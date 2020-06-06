@@ -52,6 +52,8 @@ case $typed in
     a ) apps_install ;;
     u ) apps_uninstall ;;
     U ) apps_uninstall ;;
+    i ) apps_image ;;
+    I ) apps_image ;;
     p ) apps_ports ;;
     P ) apps_ports ;;
     s ) apps_shield ;;

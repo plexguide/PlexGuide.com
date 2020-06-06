@@ -1,6 +1,13 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_image() {
-a=a
+# sets up the primary interface
+temp_display=$(cat /pg/images/$app.images)
+common_message "🚀 Image Selection ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
+
+$temp_display
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Quit & Exit Interface $installinfo"
+common_number
 
 }
