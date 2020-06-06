@@ -26,8 +26,8 @@ cat << "EOF"
 │ ————————————————————————————————————│
 │ Restart PlexGuide:      plexguide   │
 │ Update  PlexGuide:      pgupdate    │
-│ View PG Blitz Logs:     pgtransfer  │
-│ Download Your PG Fork:  pgfork      │
+│ View PG Blitz Logs:     pglog       │
+│ Download Your PG Fork:              │
 │ ——————————————————————————————————— │
 │ An Original Admin9705 Project       │
 │                                     │
