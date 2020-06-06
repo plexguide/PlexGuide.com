@@ -8,14 +8,12 @@ apps_cname_change_confirm () {
   common_header "Correct? [y|n]? $cname_set"
   common_number
   case $typed in
-      y ) a=a ;;
-      Y ) a=a ;;
+      y ) echo "$cname_set" > /pg/data/$app/cname.traefik ;;
+      Y ) echo "$cname_set" > /pg/data/$app/cname.traefik ;;
       n ) apps_cname_change && exit ;;
       N ) apps_cname_change && exit ;;
       * ) apps_cname_change_confirm && exit ;;
   esac
-
-  #echo "$cname_set" > /pg/data/$app/cname.traefik
 
   common_header "CNAME [$cname_set] set for [$app]"
   common_confirm
