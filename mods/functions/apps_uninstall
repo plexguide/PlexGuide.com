@@ -3,7 +3,6 @@
 apps_uninstall() {
 
 common_header "WARNING! Uninstalling the app removes the data also!"
-echo ""
 read -p "↘️  Type [Y] Uninstall or [Z] Exit | Press [Enter]: " typed < /dev/tty
 
 if [[ "$typed" == "y" || "$typed" == "Y" ]]; then
@@ -17,6 +16,5 @@ elif [[ "$typed" == "z" || "$typed" == "Z" || "$typed" == "n" || "$typed" == "N"
 else
   common_header "INVALID Selection! Please try again!"
   echo
-  common_confirm
-apps_interface_sub; fi
+  common_confirm && apps_uninstall && exit; fi
 }
