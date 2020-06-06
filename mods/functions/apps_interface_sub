@@ -1,6 +1,9 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_interface_sub() {
+
+apps_interface_start
+  
 common_fcreate_silent "/pg/data/$app"
 app_status=$(docker ps | grep "\<$app\>")
 
@@ -27,7 +30,7 @@ traefik_display="
 shield_check=$(docker ps | grep "shield")
 if [[ "$shield_check" == "" ]]; then shield_display2="";
 else
-shield_display=$(cat /pg/data/$app/shield.setting)  
+shield_display=$(cat /pg/data/$app/shield.setting)
 shield_display2="
 [S] Shield         [$shield_display]"; fi
 
