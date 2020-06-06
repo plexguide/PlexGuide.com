@@ -5,7 +5,7 @@ apps_cname() {
 common_main /pg/data/$app/cname.traefik "$app" cname
 
 apps_cname_change_confirm () {
-  common_header "Is this correct? [y|n]? $cname_set"
+  common_header "Correct? [y|n]? $cname_set"
   case $typed in
       y ) a=a ;;
       Y ) a=a ;;
@@ -22,8 +22,8 @@ apps_cname_change_confirm () {
 }
 
 apps_cname_change () {
-  common_header "New Subdomain [$app]? Type [Z] to exit!"
-
+  common_header "New Subdomain [$app]? Type [Z] to Exit!"
+  common_number
   if [[ "$typed" == "z" || "$typed" == "Z" ]]; then apps_cname && exit; fi
   if [[ "$typed" == "" ]]; then common_header "⛔️  WARNING: Cannot Be Blank" && common_confirm && apps_cname_change && exit; fi
 
