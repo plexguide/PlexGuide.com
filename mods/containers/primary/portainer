@@ -5,7 +5,6 @@ portainer () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="portainer"
-image="portainer/portainer"
 port_inside01="9000"
 port_outside01="9000"
 traefik_extport="9000"
@@ -16,7 +15,10 @@ container_path /etc/localtime /etc/localtime:ro
 
 container_permissions PUID 1000
 container_permissions PGID 1000
-
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+portainer/portainer latest
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
