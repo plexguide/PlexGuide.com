@@ -406,7 +406,22 @@ Wait... You still measure in terabytes?
 Member: Datamonkeh"
 }
 
+quote55 () {
+main_quote="
+I was so hungover when I got on a bus once I asked for a double instead of a 
+return, true story
+
+Member: Xployt"
+}
+
+quote56 () {
+main_quote="
+Life is like riding a bicycle. To keep your balance, you must keep moving.
+
+Albert Einstein | Member: STiCKYFiNGAZ#5163"
+}
+
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % 55)) )
+num=$( echo $(($RANDOM % 56)) )
 quote$num
 }
