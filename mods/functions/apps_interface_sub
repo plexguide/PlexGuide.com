@@ -15,7 +15,7 @@ port_display=$(cat /pg/data/$app/port.setting)
 shield_display=$(cat /pg/data/$app/shield.setting)
 
 traefik_check=$(docker ps | grep "traefik")
-if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then echo "$app" > "/pg/data/$app/cname.traefik"; fi
+if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then echo "$app" > "/pg/data/$app/cname.traefik2"; fi
 if [[ "$traefik_check" == "" ]]; then traefik_display=""; else
 cname=$(cat "/pg/data/$app/cname.traefik")
 traefik_display="
