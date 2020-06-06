@@ -27,7 +27,7 @@ if [[ "$shield_check" == "" ]]; then shield_display2=""; else shield_display2="
 if [[ -e "/pg/images/$app.images" ]]; then
   if [[ ! -e "/pg/data/$app/image.set" ]]; then
   cat "/pg/images/$app.images" | head -n +1 > "/pg/data/$app/image.temp"; fi
-  cat "/pg/images/$app.images" | awk '{print $1 ":"$2'} > "/pg/data/$app/image.set"
+  cat "/pg/data/$app/image.temp" | awk '{print $1 ":"$2'} > "/pg/data/$app/image.set"
   images_display=$(cat /pg/data/$app/image.set)
 else images_display="N/A"; fi
 
