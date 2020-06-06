@@ -19,7 +19,7 @@ container_permissions PUID 1000
 container_permissions PGID 1000
 
 # IMAGES EXPORT - 1ST is DEFAULT ###############################################
-cat <<- EOF > "/pg/apps/$pgrole.images"
+cat <<- EOF > "/pg/images/$pgrole.images"
 linuxserver/radarr preview
 linuxserver/radarr nightly
 linuxserver/radarr latest
