@@ -4,6 +4,11 @@ apps_interface_sub() {
 common_fcreate_silent "/pg/data/$app"
 app_status=$(docker ps | grep "\<$app\>")
 
+if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then
+  echo "$app" > "/pg/data/$app/cname.traefik"; fi
+if [[ $(cat /pg/data/$app/cname.traefik) == "" ]]; then
+  echo "$app" > "/pg/data/$app/cname.traefik"; fi 
+
 if [[ "$app_status" == "" ]]; then a1="Not Installed"; else a1="Re-Install"; fi
 if [[ "$app_status" == "" ]]; then u1=""; else u1="
 [U] UnInstall"; fi
@@ -15,7 +20,6 @@ port_display=$(cat /pg/data/$app/port.setting)
 shield_display=$(cat /pg/data/$app/shield.setting)
 
 traefik_check=$(docker ps | grep "traefik")
-if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then echo "$app" > "/pg/data/$app/cname.traefik"; fi
 if [[ "$traefik_check" == "" ]]; then traefik_display=""; else
 cname=$(cat "/pg/data/$app/cname.traefik")
 traefik_display="
