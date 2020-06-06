@@ -14,7 +14,7 @@ if [[ "$a1" != "Not Installed" && -e "/pg/data/$app/apply.settings" ]]; then app
 port_display=$(cat /pg/data/$app/port.setting)
 shield_display=$(cat /pg/data/$app/shield.setting)
 
-if [[ -e "/pg/data/$app/cname.traefik" ]]; then echo $app > /pg/data/$app/cname.traefik; fi
+if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then echo $app > /pg/data/$app/cname.traefik; fi
 common_main /pg/data/$app/cname.traefik $app cname
 traefik_check=$(docker ps | grep "traefik")
 if [[ "$traefik_check" == "" ]]; then traefik_display=""; else traefik_display="
