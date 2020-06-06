@@ -18,9 +18,12 @@ container_path /etc/localtime /etc/localtime:ro
 container_permissions PUID 1000
 container_permissions PGID 1000
 
-container_images linuxserver/radarr preview
-container_images linuxserver/radarr nightly
-container_images linuxserver/radarr latest 
+# IMAGES EXPORT - 1ST is DEFAULT ###############################################
+cat <<- EOF > "/pg/apps/$pgrole.images"
+linuxserver/radarr preview
+linuxserver/radarr nightly
+linuxserver/radarr latest
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
