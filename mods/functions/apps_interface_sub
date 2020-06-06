@@ -7,7 +7,7 @@ app_status=$(docker ps | grep "\<$app\>")
 if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then
   echo "$app" > "/pg/data/$app/cname.traefik"; fi
 if [[ $(cat /pg/data/$app/cname.traefik) == "" ]]; then
-  echo "$app" > "/pg/data/$app/cname.traefik"; fi 
+  echo "$app" > "/pg/data/$app/cname.traefik"; fi
 
 if [[ "$app_status" == "" ]]; then a1="Not Installed"; else a1="Re-Install"; fi
 if [[ "$app_status" == "" ]]; then u1=""; else u1="
@@ -17,7 +17,6 @@ if [[ "$a1" != "Not Installed" && -e "/pg/data/$app/apply.settings" ]]; then app
 ⛔️  WARNING: Re-Install to Apply Recent Changes"; else app_warning=""; fi
 
 port_display=$(cat /pg/data/$app/port.setting)
-shield_display=$(cat /pg/data/$app/shield.setting)
 
 traefik_check=$(docker ps | grep "traefik")
 if [[ "$traefik_check" == "" ]]; then traefik_display=""; else
@@ -26,7 +25,10 @@ traefik_display="
 [T] Traefik CNAME  [$cname]"; fi
 
 shield_check=$(docker ps | grep "shield")
-if [[ "$shield_check" == "" ]]; then shield_display2=""; else shield_display2="
+if [[ "$shield_check" == "" ]]; then shield_display2="";
+else
+shield_display=$(cat /pg/data/$app/shield.setting)  
+shield_display2="
 [S] Shield         [$shield_display]"; fi
 
 if [[ ! -e "/pg/data/$app/image.set" ]]; then
