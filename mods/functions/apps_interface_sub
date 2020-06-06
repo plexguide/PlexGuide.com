@@ -18,11 +18,11 @@ if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then echo $app > /pg/data/$app/cnam
 common_main /pg/data/$app/cname.traefik $app cname
 traefik_check=$(docker ps | grep "traefik")
 if [[ "$traefik_check" == "" ]]; then traefik_display=""; else traefik_display="
-[T] Traefik CNAME | [$cname]"; fi
+[T] Traefik CNAME   [$cname]"; fi
 
 shield_check=$(docker ps | grep "shield")
 if [[ "$shield_check" == "" ]]; then shield_display2=""; else shield_display2="
-[S] Shield        | [$shield_display]"; fi
+[S] Shield          [$shield_display]"; fi
 
 if [[ -e "/pg/images/$app.images" ]]; then
   if [[ ! -e "/pg/data/$app/image.set" ]]; then
@@ -33,10 +33,10 @@ else images_display="N/A"; fi
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
 
-[A] Application   | ${a1}
-[B] Backups       | Not Ready
-[I] Images        | [$images_display]
-[P] Ports         | [$port_display]${shield_display2}${traefik_display}${u1}
+[A] Application     ${a1}
+[B] Backups         Not Ready
+[I] Images          [$images_display]
+[P] Ports           [$port_display]${shield_display2}${traefik_display}${u1}
 $app_warning
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface $installinfo"
