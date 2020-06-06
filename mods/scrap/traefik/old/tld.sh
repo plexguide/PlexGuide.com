@@ -58,7 +58,7 @@ tee <<-EOF
 EOF
 
 # Standby
-read -p 'Type an Application Name | Press [ENTER] | [Z] Exit: ' typed </dev/tty
+read -p 'Type an Application Name | Press [Enter] | [Z] Exit: ' typed </dev/tty
 
 if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then exit; fi
 
@@ -136,4 +136,4 @@ if [ -e "/opt/communityapps/$new.yml" ]; then ansible-playbook /opt/communityapp
 echo "standard" >/pg/var/tld.type
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-read -p '✅️ Process Complete! Acknowledge Info | Press [ENTER] ' name </dev/tty
+read -p '✅️ Process Complete! Acknowledge Info | Press [Enter] ' name </dev/tty

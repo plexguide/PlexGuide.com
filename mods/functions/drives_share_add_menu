@@ -21,7 +21,7 @@ on your end!
 [Z] To Cancel and Go Back
 "
 
-read -p "↘️  Name an Existing ShareDrive | Press [ENTER]: " typed < /dev/tty
+read -p "↘️  Name an Existing ShareDrive | Press [Enter]: " typed < /dev/tty
 
 typed=$(echo $typed | awk '{print $1}')
 typed=$(echo "$typed" | awk '{print tolower($0)}')

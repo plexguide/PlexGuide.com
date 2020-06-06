@@ -1,5 +1,5 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 common_number() {
-  read -p '↘️  Type Selection | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Selection | Press [Enter]: ' typed < /dev/tty
 }

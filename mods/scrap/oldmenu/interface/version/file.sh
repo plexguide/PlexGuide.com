@@ -27,7 +27,7 @@ echo ""
 echo "To QUIT, type >>> exit"
 break=no
 while [ "$break" == "no" ]; do
-read -p '↘️  Type [PG Version] | PRESS ENTER: ' typed
+read -p '↘️  Type [PG Version] | Press ENTER: ' typed
 storage=$(grep $typed /pg/var/ver.temp)
 
 if [ "$typed" == "exit" ]; then

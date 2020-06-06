@@ -60,7 +60,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Number | Press [Enter]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then exit;
 elif [ "$typed" == "2" ]; then manualuser && ansible-playbook /pg/pgblitz/menu/cron/cron.yml;
 elif [ "$typed" == "3" ]; then dailyrandom && ansible-playbook /pg/pgblitz/menu/cron/cron.yml;

@@ -49,4 +49,4 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p 'Continue? | Press [ENTER] ' name < /dev/tty
+read -p 'Continue? | Press [Enter] ' name < /dev/tty

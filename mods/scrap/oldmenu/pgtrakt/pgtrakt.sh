@@ -34,7 +34,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [Enter] ' typed < /dev/tty
     question1; fi
 }
 
@@ -49,7 +49,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [Enter] ' typed < /dev/tty
     question1; fi
 }
 
@@ -75,7 +75,7 @@ HD - 720p/1080p
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Type Sonarr Location | Press [Enter]: ' typed < /dev/tty
 
   if [ "$typed" == "exit" ]; then question1;
 else
@@ -90,7 +90,7 @@ Quality Set Is: $typed
 EOF
 
 echo "$typed" > /pg/var/pgtrak.sprofile
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 question1
 fi
 
@@ -118,7 +118,7 @@ HD - 720p/1080p
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Type Radarr Location | Press [Enter]: ' typed < /dev/tty
 
   if [ "$typed" == "exit" ]; then question1;
 else
@@ -133,7 +133,7 @@ Quality Set Is: $typed
 EOF
 
 echo "$typed" > /pg/var/pgtrak.rprofile
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 question1
 fi
 
@@ -159,9 +159,9 @@ continuing, please follow the current steps.
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type API Client | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Type API Client | Press [Enter]: ' typed < /dev/tty
 echo $typed > /pg/var/pgtrak.client
-read -p '↘️ Type API Secret | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Type API Secret | Press [Enter]: ' typed < /dev/tty
 echo $typed > /pg/var/pgtrak.secret
 
   if [ "$typed" == "exit" ]; then question1;
@@ -179,7 +179,7 @@ INFO: Messed up? Rerun this API Interface to update the information!
 
 EOF
 
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 question1
 fi
 
@@ -202,7 +202,7 @@ Examples:
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type Sonarr Location | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Type Sonarr Location | Press [Enter]: ' typed < /dev/tty
 
   if [ "$typed" == "exit" ]; then question1;
 else
@@ -257,7 +257,7 @@ EOF
 #fi
 
 echo "$typed" > /pg/var/pgtrak.spath
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 echo ""
 question1
   else
@@ -272,7 +272,7 @@ your location.
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 echo "" && question1
   fi
 fi
@@ -292,7 +292,7 @@ actively scanning your movies.
 
 Go Back? Type > exit
 EOF
-read -p '↘️ Type Radarr Location | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️ Type Radarr Location | Press [Enter]: ' typed < /dev/tty
 
   if [ "$typed" == "exit" ]; then question1;
 else
@@ -347,7 +347,7 @@ EOF
 #fi
 
 echo "$typed" > /pg/var/pgtrak.rpath
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 echo ""
 question1
   else
@@ -362,7 +362,7 @@ your location.
 Advice: Exit PG and (Test) Type >>> mkdir $typed/testfolder
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 echo "" && question1
   fi
 fi
@@ -382,14 +382,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [Enter] ' typed < /dev/tty
     exit; fi; fi
 }
 
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
+read -p '⛔️ ERROR - BAD INPUT! | Press [Enter] ' typed < /dev/tty
 question1
 }
 
@@ -405,7 +405,7 @@ tee <<-EOF
 2 - True
 
 EOF
-  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
+  read -p 'Type Number | Press [Enter] ' typed < /dev/tty
     if [ "$typed" == "1" ]; then echo "False" > /pg/var/pgtrakt/video.transcodes && question1;
   elif [ "$typed" == "2" ]; then echo "True" > /pg/var/pgtrakt/video.transcodes && question1;
     else badinput; fi
@@ -422,7 +422,7 @@ tee <<-EOF
 Set a Number from 1 - 99
 
 EOF
-  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
+  read -p 'Type Number | Press [Enter] ' typed < /dev/tty
     if [[ "$typed" -ge "1" && "$typed" -le "99" ]]; then echo "$typed" > /pg/var/pgtrakt/multiple.ips && question1;
     else badinput; fi
 }
@@ -438,7 +438,7 @@ tee <<-EOF
 Set a Number from 5 - 999 Mintues
 
 EOF
-  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
+  read -p 'Type Number | Press [Enter] ' typed < /dev/tty
     if [[ "$typed" -ge "1" && "$typed" -le "999" ]]; then echo "$typed" > /pg/var/pgtrakt/kick.minutes && question1;
     else badinput; fi
 }
@@ -475,7 +475,7 @@ Z - EXIT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Number | Press [Enter]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then api;
 elif [ "$typed" == "2" ]; then spath;
@@ -495,7 +495,7 @@ tee <<-EOF
 
 EOF
 
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
   echo
   question1
   else
@@ -508,7 +508,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 echo
 fi
 
@@ -520,7 +520,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -p '🌎 Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+read -p '🌎 Acknowledge Info | Press [Enter] ' typed < /dev/tty
 echo
 fi
 

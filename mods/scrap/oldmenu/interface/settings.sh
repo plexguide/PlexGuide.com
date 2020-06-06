@@ -30,7 +30,7 @@ tee <<-EOF
 EOF
 
 # Standby
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type a Number | Press [Enter]: ' typed < /dev/tty
 
 case $typed in
     1 )

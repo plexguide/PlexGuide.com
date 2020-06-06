@@ -39,7 +39,7 @@ if [ "$menu" == "2" ]; then
   break=no
   while [ "$break" == "no" ]; do
   echo ""
-  read -p 'Type a Sever ID & Then Press [ENTER]: ' typed
+  read -p 'Type a Sever ID & Then Press [Enter]: ' typed
   #typed=typed+0
     echo ""
     echo "-------------------------------------------------"

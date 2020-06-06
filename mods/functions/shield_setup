@@ -13,7 +13,7 @@ common_message "🚀 PlexGuide | Shield: WebClient-ID Interface" "💾 WebClient
 Prior Info Saved (If Any): $priorentry
 [Z] Cancel"
 
-read -p "↘️  New WebClient-ID? | Press [ENTER]: " typed < /dev/tty
+read -p "↘️  New WebClient-ID? | Press [Enter]: " typed < /dev/tty
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then shield_setup && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && shield_web_client && exit; fi
@@ -33,7 +33,7 @@ common_message "🚀 PlexGuide | Shield: WebSecret-ID Interface" "💾 WebSecret
 Prior Info Saved (If Any): $priorentry
 [Z] Cancel"
 
-read -p "↘️  New WebSecret-ID? | Press [ENTER]: " typed < /dev/tty
+read -p "↘️  New WebSecret-ID? | Press [Enter]: " typed < /dev/tty
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then shield_setup && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && shield_web_secret && exit; fi

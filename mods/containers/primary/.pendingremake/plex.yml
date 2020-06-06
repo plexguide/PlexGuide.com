@@ -266,7 +266,7 @@
 
     - name: Notify User
       pause:
-        prompt: "\nWebTools Installed! [PRESS ENTER] to Continue"
+        prompt: "\nWebTools Installed! [Press ENTER] to Continue"
       when:
         - webtools.stat.exists == False
 

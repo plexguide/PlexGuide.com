@@ -21,7 +21,7 @@ into the browser, it will just work!
 [Z] Exit Interface
 "
 
-read -p '↘️  Token | PRESS [ENTER]: ' token </dev/tty
+read -p '↘️  Token | Press [Enter]: ' token </dev/tty
 echo $token > /pg/var/drives/temp.token
 if [[ "$token" == "exit" || "$token" == "Exit" || "$token" == "z" || "$token" == "Z" ]]; then drives_gdrive_menu && exit; fi
 curl --request POST --data "code=$token&client_id=$clone_clientid&client_secret=$clone_secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /pg/var/drives/${token_deploy}/token.info

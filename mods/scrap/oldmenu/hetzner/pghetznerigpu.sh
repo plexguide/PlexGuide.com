@@ -50,7 +50,7 @@ Your Operations System	 : $(lsb_release -sd)
 EOF
 
 # Standby
-read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
+read -p 'Type a Number | Press [Enter]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
 	sed -i '/blacklist i915/s/^#*/#/g' /etc/modprobe.d/blacklist-hetzner.conf

@@ -26,7 +26,7 @@ GNUv3 License!
 
 If you have a chance to donate, please visit https://donate.plexguide.com
 
-At anytime you can PRESS CTRL+Z to STOP the Installation"
+At anytime you can Press CTRL+Z to STOP the Installation"
 common_timer_v2 "1" ## set back to 5
 fi
 

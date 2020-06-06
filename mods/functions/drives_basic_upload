@@ -16,12 +16,12 @@ $sdlist
 
 [Z] Exit Interface"
 
-read -p '↘️  Type Drive to Upload To | Press [ENTER]: ' typed < /dev/tty
+read -p '↘️  Type Drive to Upload To | Press [Enter]: ' typed < /dev/tty
   if [[ "$typed" == "z" || "$typed" == "Z" ]]; then drives_share_menu; exit; fi
 
 existcheck=$(echo $sdlist | grep "$typed" -w)
   if [ -z "$existcheck" ]; then echo "";
-  read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
+  read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [Enter]' badinput < /dev/tty
   drives_share_manage; fi
 
 echo $typed > /pg/var/drives/drive.upload

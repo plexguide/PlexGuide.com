@@ -135,7 +135,7 @@
     {{info7}}
     {{info8}}
     {{info9}}
-    \n\nType a [NUMBER] Choice & Press [ENTER]"
+    \n\nType a [NUMBER] Choice & Press [Enter]"
       register: choice
       until: "{{choices}}"
       retries: 99

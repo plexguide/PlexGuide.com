@@ -25,7 +25,7 @@ What would you like to do now? Select from the two option below.
 [ Z ] EXIT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  read -p '↘️  Type Y | N or Z | Press [ENTER]: ' typed </dev/tty
+  read -p '↘️  Type Y | N or Z | Press [Enter]: ' typed </dev/tty
 
   case $typed in
     Y) ovpgex ;;
@@ -83,7 +83,7 @@ doneokay
 }
 badinput1() {
   echo
-  read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed </dev/tty
+  read -p '⛔️ ERROR - Bad Input! | Press [Enter] ' typed </dev/tty
   overwrittingpg
 }
 ### FUNCTIONS END #####################################################
@@ -164,7 +164,7 @@ We are doing this to ensure that your installation continues to work!
 Please wait one moment, while PG now checks and set everything up for you!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed </dev/tty
+    read -p 'Confirm Info | Press [Enter] ' typed </dev/tty
     sudocheck && base && repo && packlist && editionpg && value && ending
 fi
 }

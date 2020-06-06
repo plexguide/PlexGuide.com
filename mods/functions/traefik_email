@@ -11,7 +11,7 @@ Prior Info Saved (If Any): $email
 [Z] To Cancel and Go Back
 "
 
-read -p "↘️  New email? | Press [ENTER]: " typed < /dev/tty
+read -p "↘️  New email? | Press [Enter]: " typed < /dev/tty
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_email && exit; fi

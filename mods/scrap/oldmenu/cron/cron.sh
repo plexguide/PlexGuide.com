@@ -28,7 +28,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Number | Press [Enter]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then ansible-playbook /pg/pgblitz/menu/cron/remove.yml && exit;
 elif [ "$typed" == "2" ]; then break="on";
 else badinput; fi
@@ -57,7 +57,7 @@ DAILY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type Number | Press [Enter]: ' typed < /dev/tty
   if [[ "$typed" -ge "0" && "$typed" -le "7" ]]; then echo $typed > /pg/var/cron/cron.day && break=1;
 elif [ "$typed" == "8" ]; then echo "*/1" > /pg/var/cron/$program.cron.day && break=1;
 else badinput; fi
@@ -80,7 +80,7 @@ Type an HOUR from [0 to 23]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type a Number | Press [ENTER]: ' typed < /dev/tty
+  read -p '↘️  Type a Number | Press [Enter]: ' typed < /dev/tty
   if [[ "$typed" -ge "0" && "$typed" -le "23" ]]; then echo $typed > /pg/var/cron/cron.hour && break=1;
 else badinput; fi
 }
