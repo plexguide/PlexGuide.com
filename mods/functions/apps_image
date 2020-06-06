@@ -3,11 +3,14 @@
 apps_image() {
 # sets up the primary interface
 temp_display=$(cat /pg/images/$app.images)
-common_message "🚀 Image Selection ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
+common_message "🚀 Image Selection ~ $app | 📂 App Type ~ $sapp | PGX Edition" "
 
 $temp_display
+
+NOTE:  Type the image:tag to utilize for deployment! If not listed, you can
+still type any other one as long as it exists!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[Z] Quit & Exit Interface $installinfo"
+[Z] Quit & Exit Interface"
 common_number
 
 }
