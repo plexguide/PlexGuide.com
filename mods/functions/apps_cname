@@ -23,7 +23,7 @@ apps_cname_change_confirm () {
 }
 
 apps_cname_change () {
-  common_header "New Subdomain [$app]? Type [Z] to Exit!"
+  common_header "What is the New Subdomain >>> $app? Type [Z] to Exit!"
   common_number
   if [[ "$typed" == "z" || "$typed" == "Z" ]]; then apps_cname && exit; fi
   if [[ "$typed" == "" ]]; then common_header "⛔️  WARNING: Cannot Be Blank" && common_confirm && apps_cname_change && exit; fi
