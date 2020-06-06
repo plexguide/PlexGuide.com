@@ -14,4 +14,15 @@ $temp_display
 [Z] Quit & Exit Interface"
 common_number
 
+function docker_tag_exists() {
+    curl --silent -f -lSL https://index.docker.io/v1/repositories/$1/tags/$2 > /dev/null
+}
+
+quick_check=$(echo $typed | tr : " ")
+if docker_tag_exists $abc; then
+    echo exist
+else
+    echo not exists
+fi
+
 }
