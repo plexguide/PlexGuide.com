@@ -15,7 +15,7 @@ apps_cname_change_confirm () {
       * ) apps_cname_change_confirm && exit ;;
   esac
 
-  echo "$cname_set" > /pg/data/$app/cname.traefik
+  #echo "$cname_set" > /pg/data/$app/cname.traefik
 
   common_header "CNAME [$cname_set] set for [$app]"
   common_confirm
