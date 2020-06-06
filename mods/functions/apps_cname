@@ -5,8 +5,7 @@ apps_cname() {
 common_main /pg/data/$app/cname.traefik $app cname
 
 apps_cname_change_confirm () {
-  common_header "Correct? [y|n]? $cname_set"
-  common_number
+  read -p 'Correct? $cname_set - [y|n] | Press [Enter]: ' typed </dev/tty
   case $typed in
       y ) a=a ;;
       Y ) a=a ;;
