@@ -2,7 +2,7 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_cname() {
 
-common_main /pg/data/$app/cname.traefik $app cname
+#common_main /pg/data/$app/cname.traefik $app cname
 
 apps_cname_change_confirm () {
   common_header "Correct? [y|n]? $cname_set"
