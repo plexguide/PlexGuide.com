@@ -2,7 +2,7 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_cname() {
 
-common_main /pg/data/$app/cname.traefik "$app" cname
+common_main /pg/data/$app/cname.traefik $app cname
 
 apps_cname_change_confirm () {
   common_header "Correct? [y|n]? $cname_set"
@@ -40,7 +40,7 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 Current Traefik CNAME: $cname
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface"
-read -p 'Change the Current CNAME? [y|n] | PRESS [ENTER] ' typed </dev/tty
+read -p 'Change the Current CNAME? [y|n] | PRESS [ENTER]: ' typed </dev/tty
 
 case $typed in
     n ) apps_interface_sub && exit ;;
