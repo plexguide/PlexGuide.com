@@ -5,7 +5,6 @@ logarr () {
 container_reset                  # do not delete this
 # VARIABLES ####################################################################
 pgrole="logarr"
-image="monitorr/logarr:develop"
 port_inside01="80"; port_outside01="7755"
 traefik_extport="7755"
 
@@ -20,7 +19,11 @@ container_path /etc/localtime /etc/localtime:ro
 # pay attention, to exactly what's required for permissions
 container_permissions PUID 1000
 container_permissions PGID 1000
-
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+monitorr/logarr latest
+monitorr/logarr develop
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
