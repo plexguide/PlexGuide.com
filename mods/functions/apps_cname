@@ -36,11 +36,11 @@ apps_cname_change () {
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/cname
 
-Change the Current CNAME? [y|n]
 Current Traefik CNAME: $cname
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[Z] Quit & Exit Interface"
-common_number
+[Z] Quit & Exit Interface
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+read -p 'Change the Current CNAME? [y|n] | PRESS [ENTER] ' typed </dev/tty
 
 case $typed in
     n ) apps_interface_sub && exit ;;
