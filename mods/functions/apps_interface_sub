@@ -24,12 +24,11 @@ shield_check=$(docker ps | grep "shield")
 if [[ "$shield_check" == "" ]]; then shield_display2=""; else shield_display2="
 [S] Shield         [$shield_display]"; fi
 
-#if [[ -e "/pg/images/$app.images" ]]; then
-#  if [[ ! -e "/pg/data/$app/image.set" ]]; then
-#  cat "/pg/images/$app.images" | head -n +1 > "/pg/data/$app/image.temp"; fi
-#  cat "/pg/data/$app/image.temp" | awk '{print $1 ":"$2'} > "/pg/data/$app/image.set"
-#  images_display=$(cat /pg/data/$app/image.set)
-#else images_display="N/A"; fi
+if [[ -e "/pg/images/$app.images" ]]; then
+  if [[ ! -e "/pg/data/$app/image.set" ]]; then
+  cat "/pg/images/$app.images" | head -n +1 > "/pg/data/$app/image.temp"; fi
+  cat "/pg/data/$app/image.temp" | awk '{print $1 ":"$2'} > "/pg/data/$app/image.set"
+  else images_display="N/A"; fi
 
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
