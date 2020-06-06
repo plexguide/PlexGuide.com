@@ -9,4 +9,5 @@ container_reset () {
   rm -rf /pg/tmp/container.oddball && touch /pg/tmp/container.oddball
   rm -rf /pg/tmp/container.permissions && touch /pg/tmp/container.permissions
 
+  rm -rf /pg/apps/$pgrole.images
 }
