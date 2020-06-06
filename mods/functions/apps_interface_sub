@@ -17,7 +17,7 @@ shield_display=$(cat /pg/data/$app/shield.setting)
 traefik_check=$(docker ps | grep "traefik")
 if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then echo $app > "/pg/data/$app/cname.traefik"; fi
 if [[ "$traefik_check" == "" ]]; then traefik_display=""; else
-common_main /pg/data/$pgrole/cname.traefik "$app" cname_fill
+common_main /pg/data/$pgrole/cname.traefik "$app" cname
 traefik_display="
 [T] Traefik CNAME  [$cname]"; fi
 
