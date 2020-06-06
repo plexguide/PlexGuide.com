@@ -6,6 +6,7 @@ common_main /pg/data/$app/cname.traefik "$app" cname
 
 apps_cname_change_confirm () {
   common_header "Correct? [y|n]? $cname_set"
+  common_number
   case $typed in
       y ) a=a ;;
       Y ) a=a ;;
