@@ -8,7 +8,7 @@ common_message "🚀  PG Drives - Project Name" "
 What's the name of your new project? It's recommended to name your project
 after $sdselect. Not required, but best to keep in sync!
 
-* One word, 2-14 characters, no spaces, all lowercase, no special characters
+* One word, 5-14 characters, no spaces, all lowercase, no special characters
 
 Examples: pgserver01 - techbuttton22 - vtechr97 - admin9705rulez
 ------------------------------------------------------------------------------
@@ -28,8 +28,8 @@ lettercount=$(echo $typed | wc -c)
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_share_name_label_select && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_share_name_label_create_project && exit; fi
 
-if [[ "$lettercount" -gt "15" || "$lettercount" -lt "3" ]]; then
-common_message "TYPED: $typed" && common_message "⛔️  WARNING: Is less than 2 or more than 14 characters! Try Again!"
+if [[ "$lettercount" -gt "15" || "$lettercount" -lt "5" ]]; then
+common_message "TYPED: $typed" && common_message "⛔️  WARNING: Is less than 5 or more than 14 characters! Try Again!"
 common_confirm && drives_share_name_label_create_project && exit; fi
 
 temp_project=$typed

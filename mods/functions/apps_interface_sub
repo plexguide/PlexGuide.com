@@ -14,9 +14,10 @@ if [[ "$a1" != "Not Installed" && -e "/pg/data/$app/apply.settings" ]]; then app
 port_display=$(cat /pg/data/$app/port.setting)
 shield_display=$(cat /pg/data/$app/shield.setting)
 
+common_main /pg/data/$app/cname.traefik "$app" cname
 traefik_check=$(docker ps | grep "traefik")
 if [[ "$traefik_check" == "" ]]; then traefik_display=""; else traefik_display="
-[T] Traefik CNAME | Not Ready"; fi
+[T] Traefik CNAME | [$cname]"; fi
 
 shield_check=$(docker ps | grep "shield")
 if [[ "$shield_check" == "" ]]; then shield_display2=""; else shield_display2="
@@ -46,10 +47,12 @@ case $typed in
     P ) apps_ports ;;
     s ) apps_shield ;;
     S ) apps_shield ;;
+    t ) apps_cname ;;
+    T ) apps_cname ;;
     z ) apps_menu ;;
     Z ) apps_menu ;;
     * ) apps_interface_sub ;;
 esac
 
-apps_interface_sub
+apps_interface_sub && exit
 }
