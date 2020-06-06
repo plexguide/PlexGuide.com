@@ -5,7 +5,6 @@ netdata () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="netdata"
-image="netdata/netdata"
 port_inside01="19999"
 port_outside01="19999"
 traefik_extport="19999"
@@ -19,7 +18,10 @@ container_permissions PGID 1000
 
 container_oddball capabilities SYS_PTRACE
 container_oddball security_opts apparmor:unconfined
-
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+netdata/netdata latest
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
