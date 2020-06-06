@@ -34,9 +34,9 @@ else images_display="N/A"; fi
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
 
-[A] Application     ${a1}
-[B] Backups         Not Ready
-[I] Images          [$images_display]
+[A] Application     [${a1}]
+[B] Backups         [Not Ready]
+[I] Image           [$images_display]
 [P] Ports           [$port_display]${shield_display2}${traefik_display}${u1}
 $app_warning
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
