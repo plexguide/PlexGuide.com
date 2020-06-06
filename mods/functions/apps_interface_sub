@@ -24,11 +24,17 @@ shield_check=$(docker ps | grep "shield")
 if [[ "$shield_check" == "" ]]; then shield_display2=""; else shield_display2="
 [S] Shield        | [$shield_display]"; fi
 
+if [[ -e "/pg/images/$app" ]]; then
+  if [[ ! -e "/pg/data/$app/image.set" ]]; then
+  cat /pg/images/radarr.images | head -n +1 > /pg/data/$app/image.set; fi
+else images_display="N/A"; fi 
+
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
 
 [A] Application   | ${a1}
 [B] Backups       | Not Ready
+[I] Images        | {$images_display}
 [P] Ports         | [$port_display]${shield_display2}${traefik_display}${u1}
 $app_warning
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
