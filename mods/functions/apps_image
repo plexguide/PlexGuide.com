@@ -5,8 +5,8 @@ apps_image() {
 temp_display=$(cat /pg/images/$app.images | awk '{print $1 ":"$2'})
 common_message "🚀 Image Selection ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬 INSTRUCTIONS
 
-Type the [image:tag] to utilize for deployment! If not listed, you
-can still type the name of any other related container as long as it exist!
+Type the [image:tag] to utilize for deployment! If not listed, you can still
+type the name of any other related container as long as it exist!
 
 $temp_display
 
