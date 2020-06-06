@@ -38,8 +38,7 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 
 Current Traefik CNAME: $cname
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[Z] Quit & Exit Interface
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+[Z] Quit & Exit Interface"
 read -p 'Change the Current CNAME? [y|n] | PRESS [ENTER] ' typed </dev/tty
 
 case $typed in
