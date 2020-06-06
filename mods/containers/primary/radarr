@@ -5,7 +5,6 @@ radarr () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="radarr"
-image="linuxserver/radarr:preview"
 port_inside01="7878"
 port_outside01="7878"
 traefik_extport="7878"
@@ -18,7 +17,7 @@ container_path /etc/localtime /etc/localtime:ro
 container_permissions PUID 1000
 container_permissions PGID 1000
 
-# IMAGES EXPORT - 1ST is DEFAULT ###############################################
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
 linuxserver/radarr preview
 linuxserver/radarr nightly

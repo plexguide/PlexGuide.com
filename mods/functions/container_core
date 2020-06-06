@@ -11,6 +11,7 @@ container_paths=$(cat "/pg/tmp/container.path")
 container_permissions=$(cat "/pg/tmp/container.permissions")
 
 # DO NOT CHANGE - AFFECTS CLOSING & OPENING PORTS ##############################
+image=$(cat pg/data/$pgrole/image.set)
 common_main /pg/data/$pgrole/port.info "" portcheck_add
 
 container_header
