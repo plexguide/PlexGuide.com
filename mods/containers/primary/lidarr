@@ -17,7 +17,11 @@ container_path /pg/unity /pg/unity
 
 container_permissions PUID 1000
 container_permissions PGID 1000
-
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/lidarr preview
+linuxserver/lidarr latest
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
