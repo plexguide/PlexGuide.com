@@ -2,8 +2,8 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_image() {
 # sets up the primary interface
-temp_display=$(cat /pg/images/$app.images)
-common_message "🚀 Image Selection ~ $app | 📂 App Type ~ $sapp | PGX Edition" "NOTE:  Type the image:tag to utilize for deployment! If not listed, you can
+temp_display=$(cat /pg/images/$app.images | awk '{print $1 ":"$2'})
+common_message "🚀 Image Selection ~ $app | 📂 App Type ~ $sapp | PGX Edition" "NOTE:  Type the [image:tag] to utilize for deployment! If not listed, you can
 still type any other one as long as it exists!
 
 $temp_display
