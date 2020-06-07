@@ -1656,9 +1656,7 @@ if __name__ == "__main__":
     f = Figlet(font='graffiti')
     print(f.renderText('Traktarr'))
 
-    print("""
-Welcome to Traktarr for PG!
-""")
+    print("""Welcome to Traktarr for PGX! - https://plexguide.com/wiki/traktarr""")
 
     # Register the signal handlers
     signal.signal(signal.SIGTERM, exit_handler)

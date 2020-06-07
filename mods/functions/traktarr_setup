@@ -112,7 +112,7 @@ continuing, please follow the current steps.
 * Visit - https://trakt.tv/oauth/applications
 * Click - New Applications
 * Name  - Any Name of Your Choice
-* Redirect UI - https://google.com
+* Redirect UI - urn:ietf:wg:oauth:2.0:oob
 * Permissions - Click /checkin and /scrobble
 * Click - Save App
 * Copy the Client ID & Secret for the Next Steps!
