@@ -49,7 +49,7 @@ common_fcreate_silent /pg/var/token
 echo "$pw" > /pg/var/token/plex.pw
 echo "$user" > /pg/var/token/plex.user
 
-ansible-playbook /pg/mods/containers/other/token
+ansible-playbook /pg/apps/token.yml
 
 token=$(cat /pg/var/token/plex.token)
   if [ "$token" != "" ]; then

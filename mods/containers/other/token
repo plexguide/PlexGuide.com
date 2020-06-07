@@ -2,9 +2,8 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 token() {
 
-################################################################################
----
-# Reference: https://github.com/Arcanemagus/plex-api/wiki/Plex.tv
+cat <<- EOF > "/pg/apps/token.yml"
+$container_header
 
 - hosts: localhost
   gather_facts: false
@@ -43,4 +42,5 @@ token() {
   - name: Save Token
     shell: "echo {{plexauth}} > /pg/var/plexguide/plex.token"
     ignore_errors: yes
+EOF
 }
