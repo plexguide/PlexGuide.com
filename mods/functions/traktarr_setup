@@ -26,9 +26,9 @@ echo "$typed" > /pg/var/traktarr/radarr.min.year
 path_check() {
 common_message "🚀  Set a Valid Path" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
 
-Set a Valid Path! It should mirror $1's Paths! Type exactly starting with the
-/ in path, as shown below! Setting the wrong path will overload Sonarr and
-Radarr with the incorrect paths!
+Set a Valid Path! It should mirror $1's Paths! Type exactly starting with
+the / in path, as shown below! Setting the wrong path will overload Sonarr
+and Radarr with the incorrect paths!
 
 EXAMPLES:
 /pg/unity/tv     /pg/unity/movies
