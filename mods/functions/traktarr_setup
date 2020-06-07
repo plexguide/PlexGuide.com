@@ -43,8 +43,10 @@ if [[ -e "$typed/pg.test" ]]; then
   if [[ "$1" == "Radarr" ]]; then echo $typed > /pg/var/traktarr/radarr.path; fi
   rm -rf $typed/pg.test
   common_header "💬 $typed is VALID for $1"
+  common_confirm
 else
   common_header "⛔️ WARNING! Path is Invalid! Try Again!"
+  common_confirm
   path_check $1
 fi
 }
