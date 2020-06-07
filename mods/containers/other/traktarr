@@ -1,11 +1,11 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-rush () {
+traktarr () {
 
 # VARIABLES ####################################################################
-pgrole="rush"
+pgrole="traktarr"
 
-common_fcreate_silent /pg/var/rush
+common_fcreate_silent /pg/var/traktarr
 # YML EXPORT ###################################################################
 cat <<- EOF > "/pg/apps/$pgrole.yml"
 $container_header
@@ -13,20 +13,20 @@ $container_header
 
     - name: Install pip requirements
       pip:
-        requirements: /pg/mods/rush/requirements.txt
+        requirements: /pg/mods/traktarr/requirements.txt
         executable: pip3
 
     - name: Set as Executable
       file:
-        path: /pg/mods/rush/rush.py
+        path: /pg/mods/traktarr/traktarr.py
         owner: '1000'
         group: '1000'
         mode: a+x
 
     - name: "Create SymLink"
       file:
-        src: "/pg/mods/rush/rush.py"
-        dest: "/bin/rush"
+        src: "/pg/mods/traktarr/traktarr.py"
+        dest: "/bin/traktarr"
         state: link
 
 ####### ALIGN WITH THE A ############################## CORE ###################
@@ -36,18 +36,18 @@ $container_header
 EOF
 }
 
-rush_execute() {
+traktarr_execute() {
 
 # After Actions ################################################################
-service_path="/etc/systemd/system/rush.service"
+service_path="/etc/systemd/system/traktarr.service"
 
 if [[ -e "$service_path" ]]; then
-common_header "💾  NOTICE:  Stopping/Disabling OLD Rush Service"; sleep 1
-systemctl daemon-reload && systemctl stop rush && systemctl disable rush && rm -rf "$service_path"; fi
+common_header "💾  NOTICE:  Stopping/Disabling OLD Traktarr Service"; sleep 1
+systemctl daemon-reload && systemctl stop traktarr && systemctl disable traktarr && rm -rf "$service_path"; fi
 
-cp /pg/mods/rush/rush.service "$service_path"
-common_header "💾  NOTICE:  Enabling/Starting NEW Rush Service" && sleep 1
-systemctl daemon-reload && systemctl enable rush && systemctl restart rush
+cp /pg/mods/traktarr/traktarr.service "$service_path"
+common_header "💾  NOTICE:  Enabling/Starting NEW Traktarr Service" && sleep 1
+systemctl daemon-reload && systemctl enable traktarr && systemctl restart traktarr
 
 common_header "💾  ENABLED: Rush Service"
 common_confirm
