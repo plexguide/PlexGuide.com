@@ -9,6 +9,9 @@ traktarr_vars() {
   common_main /pg/var/traktarr/radarr.min.time 15 radarr_time
   common_main /pg/var/traktarr/sonarr.path "" abc
   common_main /pg/var/traktarr/radarr.path "" cde
+  common_main /pg/var/traktarr/sonarr.profile Any sonarr_profile
+  common_main /pg/var/traktarr/sonarr.profile Any radarr_profile
+
 }
 
 sonarr_year() {
@@ -67,6 +70,41 @@ else
 fi
 }
 
+profile_check() {
+common_message "🚀  Set $1's Profile" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
+
+Set a Valid Profile! If using Custom, you must add it to $1's profiles
+(case sensitive) for it to work!
+
+[1] Any           [2] HD - 720p/1080p      [3] HD-1080p
+[4] HD-720p       [5] SD                   [6] Ultra-HD
+[7] Custom1       [8] Custom2              [7] Custom3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface"
+common_number
+
+if [[ "$1" == "Sonarr" ]]; then fgh="sonarr"; fi
+if [[ "$1" == "Radarr" ]]; then fgh="radarr"; fi
+
+case $typed in
+    1 ) echo "Any" > /pg/var/traktarr/$fgh.profile ;;
+    2 ) echo "HD - 720p/1080p" > /pg/var/traktarr/$fgh.profile ;;
+    3 ) echo "HD-1080p" > /pg/var/traktarr/$fgh.profile ;;
+    4 ) echo "HD-720p" > /pg/var/traktarr/$fgh.profile ;;
+    5 ) echo "SD" > /pg/var/traktarr/$fgh.profile ;;
+    6 ) echo "Ultra-HD" > /pg/var/traktarr/$fgh.profile ;;
+    7 ) echo "Custom1" > /pg/var/traktarr/$fgh.profile ;;
+    8 ) echo "Custom2" > /pg/var/traktarr/$fgh.profile ;;
+    9 ) echo "Custom3" > /pg/var/traktarr/$fgh.profile ;;
+    10 ) traktarr_setup && exit ;;
+    * ) profile_check ;;
+esac
+
+  common_header "💬 New Profile Set for $1"
+  common_confirm
+  traktarr_setup && exit
+}
+
 traktarr_vars
 if [[ ! -e "/pg/var/token/plex.token" ]]; then touch /pg/var/token/plex.token; fi
 if [[ $(cat "/pg/var/token/plex.token") == "" ]]; then plex_token; fi
@@ -78,11 +116,11 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 
 [1] Trakt API-Key
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[2] Sonarr Path  - $sonarr_path       [3]  Sonarr Quality  - OUTPUT
+[2] Sonarr Path  - $sonarr_path       [3]  Sonarr Profile  - $sonarr_profile
 [5] Minimum Year - $sonarr_year          [6]  Minimum RunTime - $sonarr_time
 [A] Sonarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[7] Radarr Path  - $radarr_path       [8]  Radarr Quality  - OUTPUT
+[7] Radarr Path  - $radarr_path       [8]  Radarr Profile  - $radarr_profile
 [9] Minimum Year - $radarr_year         [10]  Minimum RunTime - $radarr_time
 [B] Radarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -96,6 +134,8 @@ case $typed in
     9 ) radarr_year && traktarr_setup && exit ;;
     6 ) sonarr_time && traktarr_setup && exit ;;
     10 ) radarr_time && traktarr_setup && exit ;;
+    3 ) profile_check Sonarr && traktarr_setup && exit ;;
+    8 ) radarr_time && traktarr_setup && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) traktarr_setup && exit ;;
