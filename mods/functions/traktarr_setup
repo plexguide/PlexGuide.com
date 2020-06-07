@@ -5,7 +5,20 @@ traktarr_setup() {
 if [[ ! -e "/pg/var/token/plex.token" ]]; then touch /pg/var/token/plex.token; fi
 if [[ $(cat "/pg/var/token/plex.token") == "" ]]; then plex_token; fi
 
+common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
 
+[1] Trakt API-Key
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[2] Sonarr Path  - NOT SET       [3]  Sonarr Quality  - OUTPUT
+[5] Minimum Year - 1950          [6]  Minimum RunTime - 15 Minutes
+[A] Additional Options (NOT READY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[7] Radarr Path  - NOT SET       [8]  Radarr Quality  - OUTPUT
+[9] Minimum Year - 1950          [10] Minimum RunTime - 15 Minutes
+[B] Additional Options (NOT READY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface"
+common_number
 
 echo
 echo "Adding More Later"
