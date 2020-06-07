@@ -11,11 +11,11 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [2] Sonarr Path  - NOT SET       [3]  Sonarr Quality  - OUTPUT
 [5] Minimum Year - 1950          [6]  Minimum RunTime - 15 Minutes
-[A] Additional Options (NOT READY)
+[A] Sonarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [7] Radarr Path  - NOT SET       [8]  Radarr Quality  - OUTPUT
 [9] Minimum Year - 1950          [10] Minimum RunTime - 15 Minutes
-[B] Additional Options (NOT READY)
+[B] Radarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
 common_number
