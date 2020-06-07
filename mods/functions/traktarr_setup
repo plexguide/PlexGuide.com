@@ -2,6 +2,9 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 traktarr_setup() {
 
+plex_token
+
+# if statement if token doesn't exist to exit 
 common_message "🚀  Shield Setup Interface" "💬 More Info? Visit ~ https://plexguide.com/wiki/traktarr
 
 [A] Trakt-API Keys   [NOT-READY]
