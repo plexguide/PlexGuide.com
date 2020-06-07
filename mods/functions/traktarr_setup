@@ -21,7 +21,7 @@ echo "$typed" > /pg/var/traktarr/sonarr.min.year
 sonarr_time() {
 common_header "What is the Minimum Minutes REQUIRED for a TV Show? [0-60]"
 common_number
-  if [[ "$typed" == "" || "$typed" -le "0" || "$typed" -ge "61" ]]; then sonarr_time; fi
+  if [[ "$typed" == "" || "$typed" -le "-1" || "$typed" -ge "61" ]]; then sonarr_time; fi
 echo "$typed" > /pg/var/traktarr/sonarr.min.time
 }
 
@@ -35,7 +35,7 @@ echo "$typed" > /pg/var/traktarr/radarr.min.year
 radarr_time() {
 common_header "What is the Minimum Minutes REQUIRED for a Movie? [0-60]"
 common_number
-  if [[ "$typed" == "" || "$typed" -le "0" || "$typed" -ge "61" ]]; then radarr_time; fi
+  if [[ "$typed" == "" || "$typed" -le "-1" || "$typed" -ge "61" ]]; then radarr_time; fi
 echo "$typed" > /pg/var/traktarr/radarr.min.time
 }
 
@@ -95,7 +95,7 @@ case $typed in
     5 ) sonarr_year && traktarr_setup && exit ;;
     9 ) radarr_year && traktarr_setup && exit ;;
     6 ) sonarr_time && traktarr_setup && exit ;;
-    10 ) radarr_radarr && traktarr_setup && exit ;;
+    10 ) radarr_time && traktarr_setup && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) traktarr_setup && exit ;;
