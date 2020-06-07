@@ -1,0 +1,17 @@
+[Unit]
+Description=Rush
+After=network-online.target
+
+[Service]
+User=1000
+Group=1000
+Type=simple
+Environment="LC_ALL=C.UTF-8"
+Environment="LANG=C.UTF-8"
+WorkingDirectory=/pg/mods/rush/
+ExecStart=/usr/bin/python3 /pg/mods/rush/rush.py run
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
