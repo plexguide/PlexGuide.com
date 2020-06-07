@@ -5,6 +5,8 @@ traktarr_setup() {
 traktarr_vars() {
   common_main /pg/var/traktarr/sonarr.min.year 1960 sonarr_year
   common_main /pg/var/traktarr/radarr.min.year 1960 radarr_year
+  common_main /pg/var/traktarr/sonarr.min.time 10 sonarr_time
+  common_main /pg/var/traktarr/radarr.min.time 15 radarr_time
   common_main /pg/var/traktarr/sonarr.path "" abc
   common_main /pg/var/traktarr/radarr.path "" cde
 }
@@ -16,11 +18,25 @@ common_number
 echo "$typed" > /pg/var/traktarr/sonarr.min.year
 }
 
+sonarr_time() {
+common_header "What is the Minimum Minutes REQUIRED for a TV Show? [0-60]"
+common_number
+  if [[ "$typed" == "" || "$typed" -le "0" || "$typed" -ge "61" ]]; then sonarr_time; fi
+echo "$typed" > /pg/var/traktarr/sonarr.min.time
+}
+
 radarr_year() {
 common_header "Set a Minimum Year for Radarr to Seek!"
 common_number
   if [[ "$typed" == "" || "$typed" -le "1899" || "$typed" -ge "2021" ]]; then radarr_year; fi
 echo "$typed" > /pg/var/traktarr/radarr.min.year
+}
+
+radarr_time() {
+common_header "What is the Minimum Minutes REQUIRED for a Movie? [0-60]"
+common_number
+  if [[ "$typed" == "" || "$typed" -le "0" || "$typed" -ge "61" ]]; then radarr_time; fi
+echo "$typed" > /pg/var/traktarr/radarr.min.time
 }
 
 path_check() {
@@ -63,11 +79,11 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 [1] Trakt API-Key
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [2] Sonarr Path  - $sonarr_path       [3]  Sonarr Quality  - OUTPUT
-[5] Minimum Year - $sonarr_year          [6]  Minimum RunTime - 15 Minutes
+[5] Minimum Year - $sonarr_year          [6]  Minimum RunTime - $sonarr_time
 [A] Sonarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [7] Radarr Path  - $radarr_path       [8]  Radarr Quality  - OUTPUT
-[9] Minimum Year - $radarr_year         [10]  Minimum RunTime - 15 Minutes
+[9] Minimum Year - $radarr_year         [10]  Minimum RunTime - $radarr_time
 [B] Radarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
@@ -78,6 +94,8 @@ case $typed in
     7 ) path_check Radarr && traktarr_setup && exit ;;
     5 ) sonarr_year && traktarr_setup && exit ;;
     9 ) radarr_year && traktarr_setup && exit ;;
+    6 ) sonarr_time && traktarr_setup && exit ;;
+    10 ) radarr_radarr && traktarr_setup && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) traktarr_setup && exit ;;
