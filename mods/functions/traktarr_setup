@@ -2,19 +2,6 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 traktarr_setup() {
 
-traktarr_vars() {
-  common_main /pg/var/traktarr/sonarr.min.year 1960 sonarr_year
-  common_main /pg/var/traktarr/radarr.min.year 1960 radarr_year
-  common_main /pg/var/traktarr/sonarr.min.time 10 sonarr_time
-  common_main /pg/var/traktarr/radarr.min.time 15 radarr_time
-  common_main /pg/var/traktarr/sonarr.path "" path_sonarr
-  common_main /pg/var/traktarr/radarr.path "" path_radarr
-  common_main /pg/var/traktarr/sonarr.profile Any sonarr_profile
-  common_main /pg/var/traktarr/radarr.profile Any radarr_profile
-  common_main /pg/var/traktarr/client.id "" trakt_client_id
-  common_main /pg/var/traktarr/secret.id "" trakt_secret_id
-}
-
 sonarr_year() {
 common_header "Set a Minimum Year for Sonarr to Seek!"
 common_number
