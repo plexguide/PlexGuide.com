@@ -14,19 +14,19 @@ $container_header
 
     - name: Install pip requirements
       pip:
-        requirements: /pg/mods/traktarr/requirements.txt
+        requirements: /pg/var/traktarr/requirements.txt
         executable: pip3
 
     - name: Set as Executable
       file:
-        path: /pg/mods/traktarr/traktarr.py
+        path: /pg/var/traktarr/traktarr.py
         owner: '1000'
         group: '1000'
         mode: a+x
 
     - name: "Create SymLink"
       file:
-        src: "/pg/mods/traktarr/traktarr.py"
+        src: "/pg/var/traktarr/traktarr.py"
         dest: "/bin/traktarr"
         state: link
 
@@ -46,10 +46,10 @@ if [[ -e "$service_path" ]]; then
 common_header "💾  NOTICE:  Stopping/Disabling OLD Traktarr Service"; sleep 1
 systemctl daemon-reload && systemctl stop traktarr && systemctl disable traktarr && rm -rf "$service_path"; fi
 
-cp /pg/mods/traktarr/traktarr.service "$service_path"
+cp -f /pg/var/traktarr/traktarr.service "$service_path"
 common_header "💾  NOTICE:  Enabling/Starting NEW Traktarr Service" && sleep 1
 systemctl daemon-reload && systemctl enable traktarr && systemctl restart traktarr
 
-common_header "💾  ENABLED: Rush Service"
+common_header "💾  ENABLED: Traktarr Service"
 common_confirm
 }
