@@ -6,6 +6,7 @@ traktarr () {
 pgrole="traktarr"
 
 common_fcreate_silent /pg/var/traktarr
+common_copy /pg/mods/traktarr/* /pg/var/traktarr
 # YML EXPORT ###################################################################
 cat <<- EOF > "/pg/apps/$pgrole.yml"
 $container_header
