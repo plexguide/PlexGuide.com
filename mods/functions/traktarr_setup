@@ -11,6 +11,8 @@ traktarr_vars() {
   common_main /pg/var/traktarr/radarr.path "" cde
   common_main /pg/var/traktarr/sonarr.profile Any sonarr_profile
   common_main /pg/var/traktarr/radarr.profile Any radarr_profile
+  common_main /pg/var/traktarr/client.id "" client_id
+  common_main /pg/var/traktarr/secret.id "" secret_id
 
 }
 
@@ -102,6 +104,42 @@ esac
   traktarr_setup && exit
 }
 
+trakt_api() {
+common_message "📁 Trakt API-Key" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
+
+NOTE: In order for this to work, you must retrieve your API Key! Prior to
+continuing, please follow the current steps.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+* Visit - https://trakt.tv/oauth/applications
+* Click - New Applications
+* Name  - Any Name of Your Choice
+* Redirect UI - https://google.com
+* Permissions - Click /checkin and /scrobble
+* Click - Save App
+* Copy the Client ID & Secret for the Next Steps!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface
+"
+
+read -p '↘️ Type API Client | Press [ENTER]: ' typed1 < /dev/tty
+if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi
+echo ""
+read -p '↘️ Type API Secret | Press [ENTER]: ' typed2 < /dev/tty
+if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi
+
+echo $typed1 > /pg/var/traktarr/client.id
+echo $typed2 > /pg/var/traktarr/secret.id
+
+common_message "📁 Trakt API-Key" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
+
+The following information has been saved:
+
+Client: $typed1
+Secret: $typed2"
+common_confirm
+traktarr_setup && exit
+}
+
 traktarr_vars
 if [[ ! -e "/pg/var/token/plex.token" ]]; then touch /pg/var/token/plex.token; fi
 if [[ $(cat "/pg/var/token/plex.token") == "" ]]; then plex_token; fi
@@ -125,6 +163,7 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 common_number
 
 case $typed in
+    1 ) trakt_api && traktarr_setup && exit ;;
     2 ) path_check Sonarr && traktarr_setup && exit ;;
     7 ) path_check Radarr && traktarr_setup && exit ;;
     5 ) sonarr_year && traktarr_setup && exit ;;
