@@ -48,6 +48,7 @@ $container_header
 
 EOF
 
+# JSON EXPORT ##################################################################
 cat <<- EOF > "/pg/var/traktarr/config.json"
 {
   "core": {
