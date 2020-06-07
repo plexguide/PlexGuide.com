@@ -12,11 +12,13 @@ common_copy /pg/mods/traktarr/* /pg/var/traktarr
 if [[ -e /pg/data/radarr/config.xml ]]; then
 cat /pg/data/radarr/config.xml config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/radarr.api;
 else echo "" /pg/var/traktarr/radarr.api; fi
+radarr_api=$(cat /pg/var/traktarr/radarr.api)
 
 if [[ -e /pg/data/sonarr/config.xml ]]; then
 cat /pg/data/sonarr/config.xml config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/sonarr.api;
 else echo "" /pg/var/traktarr/sonarr.api; fi
-  
+sonarr_api=$(cat /pg/var/traktarr/sonarr.api)
+
 # YML EXPORT ###################################################################
 cat <<- EOF > "/pg/apps/$pgrole.yml"
 $container_header
@@ -45,6 +47,112 @@ $container_header
 ### ALIGN WITH THE A ################################## END - EXTRAS ###########
 
 EOF
+
+cat <<- EOF > "/pg/var/traktarr/config.json"
+{
+  "core": {
+    "debug": false
+  },
+  "notifications": {
+    "verbose": false
+  },
+  "automatic": {
+    "movies": {
+      "anticipated": 3,
+      "boxoffice": 10,
+      "interval": 24,
+      "popular": 3,
+      "trending": 2
+    },
+    "shows": {
+      "anticipated": 10,
+      "interval": 48,
+      "popular": 1,
+      "trending": 2
+    }
+  },
+  "filters": {
+    "movies": {
+      "disabled_for": [],
+      "allowed_countries": [
+        "us",
+        "gb",
+        "ca"
+      ],
+      "allowed_languages": [
+        "en"
+      ],
+      "blacklisted_genres": [
+        "documentary",
+        "music",
+        "short",
+        "sporting-event",
+        "film-noir",
+        "fan-film"
+      ],
+      "blacklisted_min_runtime": 60,
+      "blacklisted_max_runtime": 0,
+      "blacklisted_min_year": 2000,
+      "blacklisted_max_year": 2019,
+      "blacklisted_title_keywords": [
+        "untitled",
+        "barbie",
+        "ufc"
+      ],
+      "rotten_tomatoes": 80
+    },
+    "shows": {
+      "disabled_for": [],
+      "allowed_countries": [
+        "us",
+        "gb",
+        "ca"
+      ],
+      "allowed_languages": [],
+      "blacklisted_genres": [
+        "news",
+        "documentary",
+        "special-interest"
+      ],
+      "blacklisted_networks": [
+        "twitch",
+        "youtube",
+        "espn",
+        "fox sports",
+        "yahoo!"
+      ],
+      "blacklisted_min_runtime": 15,
+      "blacklisted_max_runtime": 0,
+      "blacklisted_min_year": 2010,
+      "blacklisted_max_year": 2019,
+      "blacklisted_title_keywords": []
+    }
+  },
+  "radarr": {
+    "api_key": "${radarr_api}",
+    "quality": "HD-1080p",
+    "minimum_availability": "released",
+    "url": "http://localhost:7878/",
+    "root_folder": "/movies/"
+  },
+  "sonarr": {
+    "api_key": "${sonarr_api}",
+    "language": "English",
+    "quality": "HD-1080p",
+    "url": "http://localhost:8989/",
+    "root_folder": "/tv/",
+    "tags": {}
+  },
+  "omdb": {
+    "api_key": ""
+  },
+  "trakt": {
+    "client_id": "",
+    "client_secret": ""
+  }
+}
+EOF
+
 }
 
 traktarr_execute() {
