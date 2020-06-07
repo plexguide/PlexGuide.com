@@ -42,7 +42,7 @@ common_number
 
 case $typed in
     5 ) sonarr_year && traktarr_setup && exit ;;
-    6 ) radarr_year && traktarr_setup && exit ;;
+    9 ) radarr_year && traktarr_setup && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) traktarr_setup && exit ;;
