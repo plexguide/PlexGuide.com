@@ -2,7 +2,7 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 shield () {
 
-container_fcreate_silent /pg/var/shield
+common_fcreate_silent /pg/var/shield
 
 shield_secret=$(openssl rand -hex 16)
   common_folders
