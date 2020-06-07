@@ -17,7 +17,7 @@ case $typed in
     Z ) start_menu && exit ;;
     * ) plex_token && exit ;;
 esac
-
+echo
 read -p 'Enter the PLEX User Name | Press [ENTER]: ' user < /dev/tty
 read -p 'Enter the PLEX User Pass | Press [ENTER]: ' pw < /dev/tty
 
@@ -58,7 +58,6 @@ tee <<-EOF
 ✅️  PG - PlexToken Generation Succeeded!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 2
 start_menu && exit
 else
 tee <<-EOF

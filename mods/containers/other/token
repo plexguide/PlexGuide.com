@@ -40,7 +40,7 @@ $container_header
       plexauth: "{{plextoken.json.user.authToken | regex_replace('\n', '') }}"
 
   - name: Save Token
-    shell: "echo {{plexauth}} > /pg/var/plexguide/plex.token"
+    shell: "echo {{plexauth}} > /pg/var/token/plex.token"
     ignore_errors: yes
 EOF
 }
