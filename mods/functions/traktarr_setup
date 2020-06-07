@@ -43,7 +43,7 @@ if [[ -e "$typed/pg.test" ]]; then
   if [[ "$1" == "Radarr" ]]; then echo $typed > /pg/var/traktarr/radarr.path; fi
   rm -rf $typed/pg.test
 else
-  common_message "⛔️ WARNING! Path is Invalid! Try Again!"
+  common_header "⛔️ WARNING! Path is Invalid! Try Again!"
   path_check $1
 fi
 }
