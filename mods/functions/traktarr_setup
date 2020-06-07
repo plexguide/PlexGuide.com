@@ -135,7 +135,7 @@ case $typed in
     6 ) sonarr_time && traktarr_setup && exit ;;
     10 ) radarr_time && traktarr_setup && exit ;;
     3 ) profile_check Sonarr && traktarr_setup && exit ;;
-    8 ) radarr_time && traktarr_setup && exit ;;
+    8 ) profile_check Radarr && traktarr_setup && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) traktarr_setup && exit ;;
