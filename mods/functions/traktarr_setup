@@ -10,7 +10,7 @@ traktarr_vars() {
   common_main /pg/var/traktarr/sonarr.path "" abc
   common_main /pg/var/traktarr/radarr.path "" cde
   common_main /pg/var/traktarr/sonarr.profile Any sonarr_profile
-  common_main /pg/var/traktarr/sonarr.profile Any radarr_profile
+  common_main /pg/var/traktarr/radarr.profile Any radarr_profile
 
 }
 
