@@ -2,8 +2,10 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 traktarr_setup() {
 
-if [[ ! -e "/pg/var/token/plex.token" ]]; then touch /pg/var/token/plex.token; fi 
+if [[ ! -e "/pg/var/token/plex.token" ]]; then touch /pg/var/token/plex.token; fi
 if [[ $(cat "/pg/var/token/plex.token") == "" ]]; then plex_token; fi
+
+
 
 echo
 echo "Adding More Later"

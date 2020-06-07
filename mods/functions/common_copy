@@ -1,7 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 common_copy() {
-tee <<-EOF
 
 cp -rf $1 $2
 chown -R 1000:1000 $2
