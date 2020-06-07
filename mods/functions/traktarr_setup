@@ -71,8 +71,8 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 common_number
 
 case $typed in
-    2 ) path_check Sonarr ;;
-    7 ) path_check Radarr ;;
+    2 ) path_check Sonarr && traktarr_setup && exit ;;
+    7 ) path_check Radarr && traktarr_setup && exit ;;
     5 ) sonarr_year && traktarr_setup && exit ;;
     9 ) radarr_year && traktarr_setup && exit ;;
     z ) start_menu && exit ;;
