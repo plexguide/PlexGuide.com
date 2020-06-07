@@ -8,6 +8,7 @@ pgrole="traktarr"
 common_fcreate_silent /pg/var/traktarr
 common_copy /pg/mods/traktarr/* /pg/var/traktarr
 
+traktarr_vars
 # API KEY EXTRACT FOR SONARR AND RADARR ########################################
 if [[ -e /pg/data/radarr/config.xml ]]; then
 cat /pg/data/radarr/config.xml config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/radarr.api;
@@ -91,9 +92,9 @@ cat <<- EOF > "/pg/var/traktarr/config.json"
         "film-noir",
         "fan-film"
       ],
-      "blacklisted_min_runtime": 60,
+      "blacklisted_min_runtime": ${radarr_time},
       "blacklisted_max_runtime": 0,
-      "blacklisted_min_year": 2000,
+      "blacklisted_min_year": ${radarr_year},
       "blacklisted_max_year": 2020,
       "blacklisted_title_keywords": [
         "untitled",
@@ -122,34 +123,34 @@ cat <<- EOF > "/pg/var/traktarr/config.json"
         "fox sports",
         "yahoo!"
       ],
-      "blacklisted_min_runtime": 15,
+      "blacklisted_min_runtime": ${sonarr_time},
       "blacklisted_max_runtime": 0,
-      "blacklisted_min_year": 2010,
-      "blacklisted_max_year": 2019,
+      "blacklisted_min_year": ${sonarr_year},
+      "blacklisted_max_year": 2021,
       "blacklisted_title_keywords": []
     }
   },
   "radarr": {
     "api_key": "${radarr_api}",
-    "quality": "HD-1080p",
+    "quality": "${sonarr_profile}",
     "minimum_availability": "released",
-    "url": "http://localhost:7878/",
-    "root_folder": "${radarr_path}"
+    "url": "http://0.0.0.0:7878",
+    "root_folder": "${path_radarr}"
   },
   "sonarr": {
     "api_key": "${sonarr_api}",
     "language": "English",
-    "quality": "HD-1080p",
-    "url": "http://localhost:8989/",
-    "root_folder": "${sonarr_path}",
+    "quality": "${sonarr_profile}",
+    "url": "http://0.0.0.0:8989",
+    "root_folder": "${path_sonarr}",
     "tags": {}
   },
   "omdb": {
     "api_key": ""
   },
   "trakt": {
-    "client_id": "${trakt_id}",
-    "client_secret": "${trakt_secret}"
+    "client_id": "${trakt_client_id}",
+    "client_secret": "${trakt_secret_id}"
   }
 }
 EOF
@@ -157,6 +158,8 @@ EOF
 }
 
 traktarr_execute() {
+
+ansible-playbook /pg/apps/traktarr.yml
 
 # After Actions ################################################################
 service_path="/etc/systemd/system/traktarr.service"
