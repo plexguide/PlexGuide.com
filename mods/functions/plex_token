@@ -2,6 +2,71 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 plex_token() {
 
-a=a
+# if statement if token doesn't exist to exit
+# sets up the primary interface
+common_message "🚀 PlexToken Interface | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/plextoken
 
+[G] Generate Token
+[Z] Quit & Exit Interface"
+common_number
+
+case $typed in
+    G ) a=a ;;
+    g ) a=a ;;
+    z ) start_menu && exit ;;
+    Z ) start_menu && exit ;;
+    * ) plex_token && exit ;;
+esac
+
+read -p 'Enter the PLEX User Name | Press [ENTER]: ' user < /dev/tty
+read -p 'Enter the PLEX User Pass | Press [ENTER]: ' pw < /dev/tty
+
+common_message "🚀 PlexToken Interface | PGX Edition" "⚠️  Information Correct?
+
+User Name: $user
+User Pass: $pw
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[G] Generate Token
+[Z] Quit & Exit Interface"
+common_number
+
+case $typed in
+    G ) a=a ;;
+    g ) a=a ;;
+    z ) start_menu && exit ;;
+    Z ) start_menu && exit ;;
+    * ) plex_token && exit ;;
+esac
+
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🍖 NOM NOM - Got It! Generating the Plex Token!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NOTE: If the token is bad, this process will repeat again!
+EOF
+
+common_fcreate_silent /pg/var/token
+echo "$pw" > /pg/var/token/plex.pw
+echo "$user" > /pg/var/token/plex.user
+
+ansible-playbook /pg/mods/containers/other/token
+
+token=$(cat /pg/var/token/plex.token)
+  if [ "$token" != "" ]; then
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅️  PG - PlexToken Generation Succeeded!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+sleep 2
+start_menu && exit
+else
+tee <<-EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⛔️  PG - PlexToken Generation Failed!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NOTE: Process will repeat until you succeed or exit!
+EOF
+read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
+plex_token && exit; fi
 }

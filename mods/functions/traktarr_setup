@@ -3,22 +3,4 @@
 traktarr_setup() {
 
 plex_token
-
-# if statement if token doesn't exist to exit 
-common_message "🚀  Shield Setup Interface" "💬 More Info? Visit ~ https://plexguide.com/wiki/traktarr
-
-[A] Trakt-API Keys   [NOT-READY]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[1] Sonarr-API       [NOT-READY]     [2] Sonarr-Profile   [NOT-READY]
-[3] Radarr-API       [NOT-READY]     [4] Radarr-Profile   [NOT-READY]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[D] Deploy Traktarr  [NOT-READY]
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[Z] Exit Interface"
-common_number
-
-case $typed in
-    * ) start_menu && exit ;;
-esac
-
 }

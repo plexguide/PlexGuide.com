@@ -1,0 +1,46 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+token() {
+
+################################################################################
+---
+# Reference: https://github.com/Arcanemagus/plex-api/wiki/Plex.tv
+
+- hosts: localhost
+  gather_facts: false
+  tasks:
+
+  - name: Recall User
+    shell: "cat /pg/var/token/plex.user"
+    register: user
+
+  - name: Recall PW
+    shell: "cat /pg/var/token/plex.pw"
+    register: pw
+
+  - name: Blank Out Token
+    shell: "echo '' > /pg/var/token/plex.token"
+    ignore_errors: yes
+
+  - name: Token Generation
+    uri:
+      url: https://plex.tv/users/sign_in.json
+      method: POST
+      status_code: 201
+      headers:
+        X-Plex-Product: "plexguide"
+        X-Plex-Version: "1.0.0"
+        X-Plex-Client-Identifier: "XXX"
+        Content-Type: "application/x-www-form-urlencoded; charset=utf-8"
+      password: '{{pw.stdout}}'
+      user: '{{user.stdout}}'
+    register: plextoken
+
+  - name: Set Token
+    set_fact:
+      plexauth: "{{plextoken.json.user.authToken | regex_replace('\n', '') }}"
+
+  - name: Save Token
+    shell: "echo {{plexauth}} > /pg/var/plexguide/plex.token"
+    ignore_errors: yes
+}
