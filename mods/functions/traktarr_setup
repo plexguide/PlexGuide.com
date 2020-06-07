@@ -1,0 +1,22 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+traktarr_setup() {
+
+common_message "🚀  Shield Setup Interface" "💬 More Info? Visit ~ https://plexguide.com/wiki/traktarr
+
+[1] Sonarr-API        [NOT-READY]
+[2] Sonarr-Profile    [NOT-READY]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[3] Radarr-API        [NOT-READY]
+[4] Radarr-Profile    [$shield_uc]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[D] Deploy Traktarr   [NOT-READY]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface"
+common_number
+
+case $typed in
+    * ) start_menu && exit ;;
+esac
+
+}

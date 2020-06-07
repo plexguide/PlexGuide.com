@@ -53,9 +53,9 @@ start_quotes
 
 tee <<-EOF
 $file_warning
-[1]  Traefik : Reverse Proxy   | [4]  Press: Word Press Deployment
-[2]  Drives  : Data Mounts     | [5]  Tools: Misc Products
-[3]  Apps    : Docker Programs | [6]  Cloud: Deploy GCE & Hetzner
+[1]  Traefik : Reverse Proxy   | [4]  Press:    Word Press Deployment
+[2]  Drives  : Data Mounts     | [5]  Cloud:    Deploy GCE & Hetzner
+[3]  Apps    : Docker Programs | [6]  Tool :    Traktarr
 [Z]  Exit
 $main_quote
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
