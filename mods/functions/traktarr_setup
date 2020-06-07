@@ -10,8 +10,7 @@ traktarr_vars() {
 sonarr_year() {
 common_header "Set a Minimum Year for Sonarr to Seek!"
 common_number
-  if [[ "$sonarr_year" == "" || "$sonarr_year" -lt "1900" || "$sonarr_year" -gt "2020" ]]; then
-  sonarr_year && exit; fi
+  if [[ "$sonarr_year" == "" || "$sonarr_year" -lt "1900" || "$sonarr_year" -gt "2020" ]]; then sonarr_year && exit; fi
 echo "$typed" > /pg/var/traktarr/sonarr.min.year
 }
 
