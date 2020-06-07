@@ -3,6 +3,7 @@
 shield () {
 
 common_fcreate_silent /pg/var/shield
+touch /pg/var/shield/user.list
 
 shield_secret=$(openssl rand -hex 16)
   # common_folders
