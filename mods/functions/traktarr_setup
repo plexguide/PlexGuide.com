@@ -37,7 +37,7 @@ EXAMPLES:
 [Z] Exit Interface"
 common_number
 touch $typed/pg.test
-if [[ "$typed" == "Z" || or "$typed" || "z" ]]; then traktarr_setup && exit; fi
+if [[ "$typed" == "Z" ||  "$typed" == "z" ]]; then traktarr_setup && exit; fi
 if [[ -e "$typed/pg.test" ]]; then
   if [[ "$1" == "Sonarr" ]]; then echo $typed > /pg/var/traktarr/sonarr.path; fi
   if [[ "$1" == "Radarr" ]]; then echo $typed > /pg/var/traktarr/radarr.path; fi
