@@ -99,9 +99,6 @@ case $typed in
     10 ) traktarr_setup && exit ;;
     * ) profile_check ;;
 esac
-
-  common_header "💬 New Profile Set for $1"
-  common_confirm
   traktarr_setup && exit
 }
 
