@@ -4,11 +4,14 @@ traktarr_setup() {
 
 traktarr_vars() {
   common_main /pg/var/traktarr/sonarr.min.year 1960 sonarr_year
+  common_main /pg/var/traktarr/radarr.min.year 1960 radarr_year
 }
 
 sonarr_year() {
-common_header "Set Minimum Year for Sonarr to Seek!"
+common_header "Set a Minimum Year for Sonarr to Seek!"
 common_number
+  if [[ "$sonarr_year" == "" || "$sonarr_year" -lt "2020" || "$sonarr_year" -gt "2020" ]]; then
+  sonarr_year && exit; fi 
 echo "$typed" > /pg/var/traktarr/sonarr.min.year
 }
 
@@ -25,14 +28,14 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 [A] Sonarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [7] Radarr Path  - NOT SET       [8]  Radarr Quality  - OUTPUT
-[9] Minimum Year - 1950          [10] Minimum RunTime - 15 Minutes
+[9] Minimum Year - $radarr_year         [10] Minimum RunTime - 15 Minutes
 [B] Radarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
 common_number
 
 case $typed in
-    5 ) sonarr_year && exit ;;
+    5 ) sonarr_year && traktarr_setup && exit ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     * ) traktarr_setup && exit ;;
