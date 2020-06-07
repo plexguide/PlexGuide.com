@@ -49,6 +49,9 @@ plexinc/pms-docker latest
 plexinc/pms-docker plexpass
 plexinc/pms-docker public
 plexinc/pms-docker beta
+linuxserver/plex latest
+linuxserver/plex public
+linuxserver/plex docker
 EOF
 # YML EXPORT ###################################################################
 container_core
