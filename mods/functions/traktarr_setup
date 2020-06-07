@@ -2,6 +2,18 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 traktarr_setup() {
 
+traktarr_vars() {
+  common_main /pg/var/traktarr/sonarr.min.year 1960 $sonarr_year
+
+}
+
+sonarr_year() {
+common_header "Set Minimum Year for Sonarr to Seek!"
+common_number
+echo "$typed" > /pg/var/traktarr/sonarr.min.year
+}
+
+traktarr_vars
 if [[ ! -e "/pg/var/token/plex.token" ]]; then touch /pg/var/token/plex.token; fi
 if [[ $(cat "/pg/var/token/plex.token") == "" ]]; then plex_token; fi
 
@@ -10,7 +22,7 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 [1] Trakt API-Key
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [2] Sonarr Path  - NOT SET       [3]  Sonarr Quality  - OUTPUT
-[5] Minimum Year - 1950          [6]  Minimum RunTime - 15 Minutes
+[5] Minimum Year - $sonarr_year          [6]  Minimum RunTime - 15 Minutes
 [A] Sonarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [7] Radarr Path  - NOT SET       [8]  Radarr Quality  - OUTPUT
@@ -20,7 +32,10 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 [Z] Exit Interface"
 common_number
 
-echo
-echo "Adding More Later"
-common_confirm
+case $typed in
+    5 ) sonarr_year && exit ;;
+    z ) start_menu && exit ;;
+    Z ) start_menu && exit ;;
+    * ) traktarr_setup && exit ;;
+esac
 }
