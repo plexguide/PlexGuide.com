@@ -52,9 +52,9 @@ echo "$user" > /pg/var/token/plex.user
 ansible-playbook /pg/apps/token.yml
 
 token=$(cat /pg/var/token/plex.token)
+echo ""
   if [ "$token" != "" ]; then
 tee <<-EOF
-echo ""
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️  PG - PlexToken Generation Succeeded!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -63,7 +63,6 @@ common_confirm
 start_menu && exit
 else
 tee <<-EOF
-echo ""
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️  PG - PlexToken Generation Failed!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
