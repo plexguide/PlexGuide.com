@@ -5,6 +5,8 @@ traktarr_setup() {
 traktarr_vars() {
   common_main /pg/var/traktarr/sonarr.min.year 1960 sonarr_year
   common_main /pg/var/traktarr/radarr.min.year 1960 radarr_year
+  common_main /pg/var/traktarr/sonarr.path "" abc
+  common_main /pg/var/traktarr/radarr.path "" cde
 }
 
 sonarr_year() {
@@ -21,6 +23,31 @@ common_number
 echo "$typed" > /pg/var/traktarr/radarr.min.year
 }
 
+path_check() {
+common_message "🚀  Set a Valid Path" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
+
+Set a Valid Path! It should mirror $1's Paths! Type exactly starting with the
+/ in path, as shown below! Setting the wrong path will overload Sonarr and
+Radarr with the incorrect paths!
+
+EXAMPLES:
+/pg/unity/tv     /pg/unity/movies
+/local/hd/tv     /local/hd/movies
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface"
+common_number
+touch $typed/pg.test
+if [[ "$typed" == "Z" || or "$typed" || "z" ]]; then traktarr_setup && exit; fi
+if [[ -e "$typed/pg.test" ]]; then
+  if [[ "$1" == "Sonarr" ]]; then echo $typed > /pg/var/traktarr/sonarr.path; fi
+  if [[ "$1" == "Radarr" ]]; then echo $typed > /pg/var/traktarr/radarr.path; fi
+  rm -rf $typed/pg.test
+else
+  common_message "⛔️ WARNING! Path is Invalid! Try Again!"
+  path_check $1
+fi
+}
+
 traktarr_vars
 if [[ ! -e "/pg/var/token/plex.token" ]]; then touch /pg/var/token/plex.token; fi
 if [[ $(cat "/pg/var/token/plex.token") == "" ]]; then plex_token; fi
@@ -34,13 +61,15 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 [A] Sonarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [7] Radarr Path  - NOT SET       [8]  Radarr Quality  - OUTPUT
-[9] Minimum Year - $radarr_year         [10] Minimum RunTime - 15 Minutes
+[9] Minimum Year - $radarr_year         [10]  Minimum RunTime - 15 Minutes
 [B] Radarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
 common_number
 
 case $typed in
+    2 ) path_check Sonarr ;;
+    7 ) path_check Radarr ;;
     5 ) sonarr_year && traktarr_setup && exit ;;
     9 ) radarr_year && traktarr_setup && exit ;;
     z ) start_menu && exit ;;
