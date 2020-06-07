@@ -159,6 +159,7 @@ EOF
 
 traktarr_execute() {
 
+traktarr_vars
 ansible-playbook /pg/apps/traktarr.yml
 
 # After Actions ################################################################
