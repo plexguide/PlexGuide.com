@@ -66,7 +66,7 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 [5] Minimum Year - $sonarr_year          [6]  Minimum RunTime - 15 Minutes
 [A] Sonarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[7] Radarr Path  - $radarr_path      [8]  Radarr Quality  - OUTPUT
+[7] Radarr Path  - $radarr_path       [8]  Radarr Quality  - OUTPUT
 [9] Minimum Year - $radarr_year         [10]  Minimum RunTime - 15 Minutes
 [B] Radarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
