@@ -4,7 +4,6 @@ traktarr_setup() {
 
 traktarr_vars() {
   common_main /pg/var/traktarr/sonarr.min.year 1960 $sonarr_year
-
 }
 
 sonarr_year() {
