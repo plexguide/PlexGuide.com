@@ -33,6 +33,7 @@ container_path /pg/unity /unity
 advertise_ip=$(hostname -I | awk '{print $1}')
 container_permissions PLEX_UID 1000
 container_permissions PLEX_GID 1000
+container_permissions VERSION docker
 container_permissions PLEX_CLAIM $plex_claim
 container_permissions ADVERTISE_IP "http://$advertise_ip:32400"
 
