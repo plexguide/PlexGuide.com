@@ -5,11 +5,11 @@ apps_install() {
 # forces function refresh of function output ###################################
 bash /pg/mods/functions/.primary_apps.sh
 
-container_rebuild $app
-ansible-playbook "/pg/apps/$app.yml"
+container_rebuild $1
+ansible-playbook "/pg/apps/$1.yml"
 
-rm -rf "/pg/data/$app/apply.settings"
+rm -rf "/pg/data/$1/apply.settings"
 echo ""
-read -p "↘️  Installed $app | Press [Enter]" typed < /dev/tty
+read -p "↘️  Installed $1 | Press [Enter]" typed < /dev/tty
 
 }
