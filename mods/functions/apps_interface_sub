@@ -53,8 +53,8 @@ $app_warning
 common_number
 
 case $typed in
-    A ) echo "FLAG 0" && apps_install && echo "FLAG 1" && apps_interface_sub && echo "FLAG 2" && exit ;;
-    a ) echo "FLAG 0" && apps_install && echo "FLAG 1" && apps_interface_sub && echo "FLAG 2" && exit ;;
+    A ) apps_install && apps_interface_sub && exit ;;
+    a ) apps_install && apps_interface_sub && exit ;;
     u ) apps_uninstall && apps_interface_sub && exit ;;
     U ) apps_uninstall && apps_interface_sub && exit ;;
     i ) apps_image && apps_interface_sub && exit ;;

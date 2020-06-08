@@ -15,7 +15,7 @@ common_main /pg/var/drives/storage.method READ-ONLY storage_method
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 EDITION: $storage_method | Version: PGX Alpha Build | ID: $serverid
+🌎 EDITION: $storage_method | Version: PGX Build $build_number | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌵 Used Space: $used of $capacity | $percentage Capacity | Daily Upload: ${tally_total} GB
 EOF
