@@ -147,7 +147,7 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 [9] Minimum Year  - $radarr_year      [10]  Minimum RunTime - $radarr_time
 [B] Radarr Options (NOT READY)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[D] Deploy Traktarr                    [Z] Exit Interface"
+[D] Deploy Traktarr           [Z] Exit Interface"
 common_number
 
 case $typed in
