@@ -146,11 +146,11 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [2] Sonarr Path    - $sonarr_path    [3]  Sonarr Profile  - $sonarr_profile
 [5] Minimum Year   - $sonarr_year       [6]  Minimum RunTime - $sonarr_time
-[A] Extra Configs  $sonarr_api
+[A] Extra Configs  $warning_sonarr
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [7] Radarr Path    - $radarr_path    [8]  Radarr Profile  - $radarr_profile
 [9] Minimum Year   - $radarr_year      [10]  Minimum RunTime - $radarr_time
-[B] Extra Configs  $radarr_api
+[B] Extra Configs  $warning_radarr
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [D] Deploy Traktarr            [Z]  Exit Interface"
 common_number
