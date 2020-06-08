@@ -134,14 +134,14 @@ cat <<- EOF > "/pg/var/traktarr/config.json"
     "api_key": "${radarr_api}",
     "quality": "${sonarr_profile}",
     "minimum_availability": "released",
-    "url": "http://localhost:7878",
+    "url": "http://0.0.0.0:7878",
     "root_folder": "${path_radarr}"
   },
   "sonarr": {
     "api_key": "${sonarr_api}",
     "language": "English",
     "quality": "${sonarr_profile}",
-    "url": "http://localhost:8989",
+    "url": "http://0.0.0.0:8989",
     "root_folder": "${path_sonarr}",
     "tags": {}
   },
