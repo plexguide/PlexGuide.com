@@ -135,9 +135,9 @@ if [[ $(cat /pg/var/traktarr/radarr.path) == "" ]]; then radarr_path="NOT SET"; 
 if [[ $(cat /pg/var/traktarr/secret.id) == "" || $(cat /pg/var/traktarr/client.id) == "" ]]; then
   api_display="NOT SET"; else api_display="SET"; fi
 
-if [[ "$radarr_api" == "" ]]; then warning_radarr="⛔️ WARNING! Radarr Never Deployed! Movie Search will Fail!"
+if [[ "$radarr_api" == "" ]]; then common_header "⛔️ WARNING! Radarr Never Deployed! Movie Search will Fail!" && common_confirm
 else warning_radarr=""; fi
-if [[ "$sonarr_api" == "" ]]; then warning_sonarr="⛔️ WARNING! Sonarr Never Deployed! TV Search will Fail!"
+if [[ "$sonarr_api" == "" ]]; then common_header "⛔️ WARNING! Sonarr Never Deployed! TV Search will Fail!" && common_confirm
 else warning_sonarr=""; fi
 
 common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
@@ -146,11 +146,11 @@ common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://ple
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [2] Sonarr Path    - $sonarr_path    [3]  Sonarr Profile  - $sonarr_profile
 [5] Minimum Year   - $sonarr_year       [6]  Minimum RunTime - $sonarr_time
-[A] Extra Configs  $warning_sonarr
+[A] Extra Configs
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [7] Radarr Path    - $radarr_path    [8]  Radarr Profile  - $radarr_profile
 [9] Minimum Year   - $radarr_year      [10]  Minimum RunTime - $radarr_time
-[B] Extra Configs  $warning_radarr
+[B] Extra Configs
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [D] Deploy Traktarr            [Z]  Exit Interface"
 common_number
