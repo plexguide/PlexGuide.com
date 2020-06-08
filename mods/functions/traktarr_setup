@@ -107,11 +107,10 @@ continuing, please follow the current steps.
 [Z] Exit Interface
 "
 
-if [[ -e "/pg/tmp/traktarr.warning" ]]; then rm -rf "/pg/tmp/traktarr.warning";
 read -p '↘️  Type API Client | Press [ENTER]: ' typed1 < /dev/tty
 if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi
 read -p '↘️  Type API Secret | Press [ENTER]: ' typed2 < /dev/tty
-if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi; fi
+if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi
 
 echo $typed1 > /pg/var/traktarr/client.id
 echo $typed2 > /pg/var/traktarr/secret.id
@@ -136,10 +135,11 @@ if [[ $(cat /pg/var/traktarr/radarr.path) == "" ]]; then radarr_path="NOT SET"; 
 if [[ $(cat /pg/var/traktarr/secret.id) == "" || $(cat /pg/var/traktarr/client.id) == "" ]]; then
   api_display="NOT SET"; else api_display="SET"; fi
 
-if [[ "$radarr_api" == "" ]]; then common_header "⛔️ WARNING! Radarr Never Deployed! Movie Search will Fail!" && common_confirm
-else warning_radarr=""; fi
-if [[ "$sonarr_api" == "" ]]; then common_header "⛔️ WARNING! Sonarr Never Deployed! TV Search will Fail!" && common_confirm
-else warning_sonarr=""; fi
+if [[ -e "/pg/tmp/traktarr.warning" ]]; then rm -rf "/pg/tmp/traktarr.warning";
+  if [[ "$radarr_api" == "" ]]; then common_header "⛔️ WARNING! Radarr Never Deployed! Movie Search will Fail!" && common_confirm
+  else warning_radarr=""; fi
+  if [[ "$sonarr_api" == "" ]]; then common_header "⛔️ WARNING! Sonarr Never Deployed! TV Search will Fail!" && common_confirm
+else warning_sonarr=""; fi; fi 
 
 common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
 
