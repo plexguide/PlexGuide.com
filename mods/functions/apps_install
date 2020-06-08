@@ -3,7 +3,7 @@
 apps_install() {
 
 # forces function refresh of function output ###################################
-#bash /pg/mods/functions/.primary_apps.sh
+bash /pg/mods/functions/.primary_apps.sh
 
 container_rebuild $app
 ansible-playbook "/pg/apps/$app.yml"
