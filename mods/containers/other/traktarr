@@ -11,12 +11,12 @@ common_copy /pg/mods/traktarr/* /pg/var/traktarr
 traktarr_vars
 # API KEY EXTRACT FOR SONARR AND RADARR ########################################
 if [[ -e /pg/data/radarr/config.xml ]]; then
-cat /pg/data/radarr/config.xml config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/radarr.api;
+cat /pg/data/radarr/config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/radarr.api;
 else echo "" /pg/var/traktarr/radarr.api; fi
 radarr_api=$(cat /pg/var/traktarr/radarr.api)
 
 if [[ -e /pg/data/sonarr/config.xml ]]; then
-cat /pg/data/sonarr/config.xml config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/sonarr.api;
+cat /pg/data/sonarr/config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/sonarr.api;
 else echo "" /pg/var/traktarr/sonarr.api; fi
 sonarr_api=$(cat /pg/var/traktarr/sonarr.api)
 

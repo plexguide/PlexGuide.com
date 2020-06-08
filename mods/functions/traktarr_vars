@@ -11,4 +11,6 @@ traktarr_vars() {
   common_main /pg/var/traktarr/radarr.profile Any radarr_profile
   common_main /pg/var/traktarr/client.id "" trakt_client_id
   common_main /pg/var/traktarr/secret.id "" trakt_secret_id
+  common_main /pg/var/traktarr/sonarr.api "" sonarr_api
+  common_main /pg/var/traktarr/radarr.api "" radarr_api
 }
