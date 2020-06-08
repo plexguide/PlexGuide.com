@@ -52,9 +52,9 @@ $app_warning
 [Z] Quit & Exit Interface $installinfo"
 common_number
 
-echo "apps_install() {" > /pg/mods/functions/apps_install
-echo "$app" >> /pg/mods/functions/apps_install
-echo "}" >> /pg/mods/functions/apps_install
+#echo "apps_install() {" > /pg/mods/functions/apps_install
+#echo "$app" >> /pg/mods/functions/apps_install
+#echo "}" >> /pg/mods/functions/apps_install
 
 case $typed in
     A ) echo "FLAG 0" && apps_install && echo "FLAG 1" && apps_interface_sub && echo "FLAG 2" && exit ;;
