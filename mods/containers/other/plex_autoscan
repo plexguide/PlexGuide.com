@@ -111,4 +111,18 @@ cat <<- EOF > "/pg/var/plex_autoscan/config.json"
 }
 EOF
 
+# After Actions ################################################################
+service_path="/etc/systemd/system/plex_autoscan.service"
+
+if [[ -e "$service_path" ]]; then
+common_header "💾  NOTICE:  Stopping/Disabling OLD PAS Service"; sleep 1
+systemctl daemon-reload && systemctl stop plex_autoscan && systemctl disable plex_autoscan && rm -rf "$service_path"; fi
+
+cp -f /pg/var/plex_autoscan/plex_autoscan.service "$service_path"
+common_header "💾  NOTICE:  Enabling/Starting NEW PAS Service" && sleep 1
+systemctl daemon-reload && systemctl enable plex_autoscan && systemctl restart plex_autoscan
+
+common_header "💾  ENABLED: PAS Service"
+common_confirm
+
 }
