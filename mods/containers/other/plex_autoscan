@@ -8,7 +8,7 @@ pgrole="plex_autoscan"
 common_fcreate_silent /pg/var/plex_autoscan
 common_copy /pg/mods/plex_autoscan/* /pg/var/plex_autoscan
 
-traktarr_vars
+plex_autoscan_vars
 ################################################################################
 
 # JSON EXPORT ##################################################################
