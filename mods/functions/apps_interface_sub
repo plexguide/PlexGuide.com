@@ -3,7 +3,7 @@
 apps_interface_sub() {
 
 apps_interface_start
-  
+
 common_fcreate_silent "/pg/data/$app"
 app_status=$(docker ps | grep "\<$app\>")
 
@@ -57,8 +57,8 @@ echo "$app" >> /pg/mods/functions/apps_install
 echo "}" >> /pg/mods/functions/apps_install
 
 case $typed in
-    A ) apps_install && apps_interface_sub && exit ;;
-    a ) apps_install && apps_interface_sub && exit ;;
+    A ) echo "FLAG 0" && apps_install && echo "FLAG 1" && apps_interface_sub && echo "FLAG 2" && exit ;;
+    a ) echo "FLAG 0" && apps_install && echo "FLAG 1" && apps_interface_sub && echo "FLAG 2" && exit ;;
     u ) apps_uninstall && apps_interface_sub && exit ;;
     U ) apps_uninstall && apps_interface_sub && exit ;;
     i ) apps_image && apps_interface_sub && exit ;;
