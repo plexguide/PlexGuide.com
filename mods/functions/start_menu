@@ -11,7 +11,7 @@ pgnumber=$(cat /pg/var/pg.number)
 
 common_main /pg/var/server.id NOT-SET serverid
 common_main /pg/var/drives/storage.method READ-ONLY storage_method
-common_fcreate_silent /pg/var/version/pg.build 
+common_fcreate_silent /pg/var/version
 common_main /pg/var/version/pg.build NULL build_number
 
 tee <<-EOF
