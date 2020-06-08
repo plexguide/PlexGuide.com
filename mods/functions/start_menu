@@ -69,7 +69,7 @@ case $typed in
     3 ) apps_menu && start_menu && exit ;;
     4 ) pgpress_menu && start_menu && exit ;;
     5 ) pgpress_menu && start_menu && exit ;;
-    6 ) traktarr_setup && start_menu && exit ;;
+    6 ) touch "/pg/tmp/traktarr.warning" && traktarr_setup && start_menu && exit ;;
     z ) start_end && exit ;;
     Z ) start_end && exit ;;
     * ) start_menu ;;

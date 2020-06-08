@@ -107,10 +107,11 @@ continuing, please follow the current steps.
 [Z] Exit Interface
 "
 
+if [[ -e "/pg/tmp/traktarr.warning" ]]; then rm -rf "/pg/tmp/traktarr.warning";
 read -p '↘️  Type API Client | Press [ENTER]: ' typed1 < /dev/tty
 if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi
 read -p '↘️  Type API Secret | Press [ENTER]: ' typed2 < /dev/tty
-if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi
+if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi; fi
 
 echo $typed1 > /pg/var/traktarr/client.id
 echo $typed2 > /pg/var/traktarr/secret.id
