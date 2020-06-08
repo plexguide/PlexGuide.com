@@ -160,6 +160,10 @@ case $typed in
     10 ) radarr_time && traktarr_setup && exit ;;
     3 ) profile_check Sonarr && traktarr_setup && exit ;;
     8 ) profile_check Radarr && traktarr_setup && exit ;;
+    A ) common_header "Not Ready" && common_confirm && traktarr_setup ;;
+    a ) common_header "Not Ready" && common_confirm && traktarr_setup ;;
+    b ) common_header "Not Ready" && common_confirm && traktarr_setup ;;
+    B ) common_header "Not Ready" && common_confirm && traktarr_setup ;;
     z ) start_menu && exit ;;
     Z ) start_menu && exit ;;
     d ) traktarr_execute && traktarr_setup && exit ;;
