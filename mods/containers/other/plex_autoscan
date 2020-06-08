@@ -2,8 +2,14 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 plex_autoscan () {
 
+# VARIABLES ####################################################################
+pgrole="plex_autoscan"
+
 common_fcreate_silent /pg/var/plex_autoscan
 common_copy /pg/mods/plex_autoscan/* /pg/var/plex_autoscan
+
+traktarr_vars
+################################################################################
 
 # JSON EXPORT ##################################################################
 cat <<- EOF > "/pg/var/plex_autoscan/config.json"
@@ -111,6 +117,11 @@ cat <<- EOF > "/pg/var/plex_autoscan/config.json"
 }
 EOF
 
+plex_autoscan_execute() {
+
+plex_autoscan_vars
+ansible-playbook /pg/apps/plex_autoscan.yml
+
 # After Actions ################################################################
 service_path="/etc/systemd/system/plex_autoscan.service"
 
@@ -124,5 +135,6 @@ systemctl daemon-reload && systemctl enable plex_autoscan && systemctl restart p
 
 common_header "💾  ENABLED: PAS Service"
 common_confirm
+}
 
 }
