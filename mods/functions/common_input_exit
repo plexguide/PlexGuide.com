@@ -1,5 +1,5 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-common_input() {
+common_input_exit() {
   read -p '$1 | [Z] to Exit | Press [ENTER]: ' typed < /dev/tty
 }
