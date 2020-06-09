@@ -17,8 +17,8 @@ cat <<- EOF > "/pg/var/plex_autoscan/config.json"
   "DOCKER_NAME": "",
   "GOOGLE": {
     "ENABLED": false,
-    "CLIENT_ID": "",
-    "CLIENT_SECRET": "",
+    "CLIENT_ID": "${pas_client_id}",
+    "CLIENT_SECRET": "${pas_client_secret}",
     "ALLOWED": {
       "FILE_PATHS": [],
       "FILE_EXTENSIONS": true,
@@ -44,7 +44,7 @@ cat <<- EOF > "/pg/var/plex_autoscan/config.json"
   "PLEX_ANALYZE_TYPE": "basic",
   "PLEX_FIX_MISMATCHED": false,
   "PLEX_FIX_MISMATCHED_LANG": "en",
-  "PLEX_DATABASE_PATH": "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db",
+  "PLEX_DATABASE_PATH": "/pg/data/plex/database/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db",
   "PLEX_EMPTY_TRASH": false,
   "PLEX_EMPTY_TRASH_CONTROL_FILES": [
     "/mnt/unionfs/mounted.bin"
@@ -56,7 +56,7 @@ cat <<- EOF > "/pg/var/plex_autoscan/config.json"
   "PLEX_SCANNER": "/usr/lib/plexmediaserver/Plex\\ Media\\ Scanner",
   "PLEX_SUPPORT_DIR": "/var/lib/plexmediaserver/Library/Application\\ Support",
   "PLEX_USER": "plex",
-  "PLEX_TOKEN": "",
+  "PLEX_TOKEN": "{$pas_token}",
   "PLEX_CHECK_BEFORE_SCAN": false,
   "PLEX_WAIT_FOR_EXTERNAL_SCANNERS": true,
   "RCLONE": {
@@ -88,14 +88,14 @@ cat <<- EOF > "/pg/var/plex_autoscan/config.json"
   ],
   "SERVER_IP": "0.0.0.0",
   "SERVER_MAX_FILE_CHECKS": 10,
-  "SERVER_PASS": "9c4b81fe234e4d6eb9011cefe514d915",
+  "SERVER_PASS": "${pas_server_pass}",
   "SERVER_PATH_MAPPINGS": {
       "/mnt/unionfs/": [
           "~/media/fused/"
       ]
   },
   "SERVER_PORT": 3468,
-  "SERVER_SCAN_DELAY": 180,
+  "SERVER_SCAN_DELAY": 30,
   "SERVER_SCAN_FOLDER_ON_FILE_EXISTS_EXHAUSTION": false,
   "SERVER_SCAN_PRIORITIES": {
     "1": [
