@@ -41,9 +41,10 @@ if [[ ! -e "/pg/data/$app/image.set" ]]; then
 else images_display=$(cat "/pg/data/$app/image.set"); fi
 
 # for plex claim token process
+if [[ "$app" == "plex" ]]; then
 if [[ "$plex_token_status" == "" ]]; then plex_token_display="NO TOKEN"; else plex_token_display="TOKEN SET"; fi
-if [[ "$app" == "plex" ]]; then plex_token_final="
-[C] Claim Token    [$plex_token_display]"; fi
+plex_token_final="
+[C] Claim Token    [$plex_token_display]"; else "$plex_token_final" == ""; fi
 
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
