@@ -14,16 +14,16 @@ backup_time() {
 
   backup_time_hour() {
   common_input_exit "💬 Type an Hour [ 0 - 23 ]"
-    if [ "$type" == "Z" ] || [ "$type" == "z" ]; then backup_start && exit; fi
-    if [ "$type" -lt "0" ] || [ "$type" -gt "23" ]; then
+    if [[ "$type" == "Z" || [ "$type" == "z" ]]; then backup_start && exit; fi
+    if [[ "$type" -lt "0" || "$type" -gt "23" ]]; then
       common_header "⛔️  WARNING: - Not Within Range!" && common_confirm; fi
       backup_hour=$hour
   }
 
   backup_time_minute() {
     common_input_exit "💬 Type a Minute [ 0 - 59 ]"
-      if [ "$type" == "Z" ] || [ "$type" == "z" ]; then backup_start && exit ; fi
-      if [ "$type" -lt "0" ] || [ "$type" -gt "59" ]; then
+      if [[ "$type" == "Z" ]] || [[ "$type" == "z" ]]; then backup_start && exit ; fi
+      if [[ "$type" -lt "0" ]] || [[ "$type" -gt "59" ]]; then
         common_header "⛔️  WARNING: - Not Within Range!" && common_confirm; fi
       backup_minute=$typed
   }
