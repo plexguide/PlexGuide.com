@@ -28,10 +28,10 @@ backup_time() {
       backup_minute=$typed
   }
 
-  echo 
+  echo
   backup_time_hour
   backup_time_minute
-  echo "$backup_hour" > "/pg/backup/$app.hour"
+  echo "$backup_hour" > "/pg/backup/$app.hour" 
   echo "$backup_minute" > "/pg/backup/$app.minute"
   common_header "$app - Time Backup Set: $backup_hour:$backup_minute"
 
