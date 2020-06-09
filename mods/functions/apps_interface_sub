@@ -11,10 +11,11 @@ app_status=$(docker ps | grep "\<$app\>")
 if [[ "$app" == "plex" && $plex_token_final == "" ]]; then
 ptoken_final="
 [C] Claim Token    [NO TOKEN]"
-elif [[ "$app" == "plex" && $plex_token_final != "" ]]
+elif [[ "$app" == "plex" && $plex_token_final != "" ]]; then
 ptoken_final="
 [C] Claim Token    [TOKEN SET]"
-else ptoken_final=""; fi
+else ptoken_final=""
+fi
 
 if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then
   echo "$app" > "/pg/data/$app/cname.traefik"; fi
