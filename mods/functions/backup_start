@@ -50,13 +50,15 @@ backup_time_display () {
 # CRON FUNCTIONS ###############################################################
 cron_add () {
 cat <<- EOF >> /var/spool/cron/crontabs/root
-# PGX ${app}
+# PGX ${app} app 
 ${backup_minute} ${backup_hour} * * 3 echo ${app} && echo "$current_time" > /tmp/test.info
+
 EOF
 }
 
 cron_remove() {
-  a=a
+  crontab -u root -l | grep -v "PGX $app app" | crontab -u root -
+  crontab -u root -l | grep -v "echo $app &&" | crontab -u root -
 }
 # PRIMARY FUNCTION RECALL ######################################################
 backup_vars
