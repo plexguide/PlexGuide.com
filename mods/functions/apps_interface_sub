@@ -9,12 +9,12 @@ app_status=$(docker ps | grep "\<$app\>")
 
 # for plex claim token process
 if [[ "$app" == "plex" && $plex_token_final == "" ]]; then
-plex_token_final="
+ptoken_final="
 [C] Claim Token    [NO TOKEN]"
 elif [[ "$app" == "plex" && $plex_token_final != "" ]]
-plex_token_final="
+ptoken_final="
 [C] Claim Token    [TOKEN SET]"
-else plex_token_final=""; fi
+else ptoken_final=""; fi
 
 if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then
   echo "$app" > "/pg/data/$app/cname.traefik"; fi
@@ -53,7 +53,7 @@ else images_display=$(cat "/pg/data/$app/image.set"); fi
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
 
 [A] Application    [${a1}]
-[B] Backups        [Not Ready]$plex_token_final
+[B] Backups        [Not Ready]${ptoken_final}
 [I] Image          [$images_display]
 [P] Ports          [$port_display]${shield_display2}${traefik_display}${u1}
 $app_warning
