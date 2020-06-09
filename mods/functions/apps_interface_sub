@@ -60,8 +60,8 @@ common_number
 case $typed in
     A ) apps_install && apps_interface_sub && exit ;;
     a ) apps_install && apps_interface_sub && exit ;;
-    c ) plex_token_display && apps_interface_sub && exit ;;
-    C ) plex_token_display && apps_interface_sub && exit ;;
+    c ) plex_claim_interface && apps_interface_sub && exit ;;
+    C ) plex_claim_interface && apps_interface_sub && exit ;;
     u ) apps_uninstall && apps_interface_sub && exit ;;
     U ) apps_uninstall && apps_interface_sub && exit ;;
     i ) apps_image && apps_interface_sub && exit ;;
