@@ -1,5 +1,0 @@
-#!/bin/bash
-############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-common_input() {
-  read -p '$1 | Press [ENTER]: ' typed < /dev/tty
-}
