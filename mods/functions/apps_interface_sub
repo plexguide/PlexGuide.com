@@ -8,10 +8,10 @@ common_fcreate_silent "/pg/data/$app"
 app_status=$(docker ps | grep "\<$app\>")
 
 # for plex claim token process
-if [[ "$app" == "plex" && $plex_token_final == "" ]]; then
+if [[ "$app" == "plex" && $plex_token_status == "" ]]; then
 ptoken_final="
 [C] Claim Token    [NO TOKEN]"
-elif [[ "$app" == "plex" && $plex_token_final != "" ]]; then
+elif [[ "$app" == "plex" && $plex_token_status != "" ]]; then
 ptoken_final="
 [C] Claim Token    [TOKEN SET]"
 else ptoken_final=""
