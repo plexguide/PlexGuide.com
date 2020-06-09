@@ -13,7 +13,6 @@ backup_vars () {
 backup_time() {
 
   backup_time_hour() {
-    echo ""
     read -p '💬 Type Hour   [ 0 - 23 ] | Type [Z] Exit | Press [ENTER]: ' typed < /dev/tty
     if [[ "$typed" == "Z" || "$typed" == "z" ]]; then backup_start && exit; fi
     if [[ "$typed" -lt "0" || "$typed" -gt "23" ]]; then
@@ -29,6 +28,7 @@ backup_time() {
       backup_minute=$typed
   }
 
+  echo 
   backup_time_hour
   backup_time_minute
   echo "$backup_hour" > "/pg/backup/$app.hour"
