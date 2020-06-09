@@ -97,7 +97,7 @@ elif [[ "$backup_freq" == "SUN-SAT" ]]; then freq_display="Weekends"; fi
 cron_add () {
 cat <<- EOF >> /var/spool/cron/crontabs/root
 # PGX ${app} app
-${backup_minute} ${backup_hour} * * 3 echo ${app} && echo "$current_time" > /tmp/test.info
+${backup_minute} ${backup_hour} * * ${backup_freq} echo ${app} && echo "$current_time" > /tmp/test.info
 EOF
 }
 
