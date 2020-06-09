@@ -50,9 +50,8 @@ backup_time_display () {
 # CRON FUNCTIONS ###############################################################
 cron_add () {
 cat <<- EOF >> /var/spool/cron/crontabs/root
-# PGX ${app} app 
+# PGX ${app} app
 ${backup_minute} ${backup_hour} * * 3 echo ${app} && echo "$current_time" > /tmp/test.info
-
 EOF
 }
 
