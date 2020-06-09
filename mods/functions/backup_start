@@ -1,22 +1,44 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 backup_start() {
+  common_fcreate_silent "/pg/backup/$app"
+  common_fcreate_silent "/pg/log/backup/$app"
+
+backup_vars () {
+  common_main "/pg/backup/$app.minute" "" backup_minute
+  common_main "/pg/backup/$app.hour" "" backup_hour
+}
 
 backup_time() {
-common_input 💬  Type an Hour [ 0 - 23 ]
 
-[T] Time      | 13:05
-[F] Frequency | Monthly
-[L] Location  | /pg/backup
-[Z] Exit
-"
-common_number
+  backup_time_hour() {
+  common_input_exit "💬 Type an Hour [ 0 - 23 ]"
+    if [ "$type" == "Z" ] || [ "$type" == "z" ]; then backup_start && exit; fi
+    if [ "$type" -lt "0" ] || [ "$type" -gt "23" ]; then
+      common_header "⛔️  WARNING: - Not Within Range!" && common_confirm; fi
+      backup_hour=$hour
+  }
+
+  backup_time_minute() {
+    common_input_exit "💬 Type a Minute [ 0 - 59 ]"
+      if [ "$type" == "Z" ] || [ "$type" == "z" ]; then backup_start && exit ; fi
+      if [ "$type" -lt "0" ] || [ "$type" -gt "59" ]; then
+        common_header "⛔️  WARNING: - Not Within Range!" && common_confirm; fi
+      backup_minute=$typed
+  }
+
+  backup_time_hour
+  backup_time_minute
+  echo "$backup_hour" > "/pg/backup/$app.hour"
+  echo "$backup_minute" > "/pg/backup/$app.minute"
+  common_header "$app - Time Backup Set: $backup_hour:$backup_minute"
 
 }
 
+backup_vars
 common_message "🚀  Backup Interface - $app" "💬  Visit ~ https://plexguide.com/wiki/backup
 
-[T] Time      | 13:05
+[T] Time      | $backup_hour:$backup_minute
 [F] Frequency | Monthly
 [L] Location  | /pg/backup
 [Z] Exit
@@ -24,6 +46,8 @@ common_message "🚀  Backup Interface - $app" "💬  Visit ~ https://plexguide.
 common_number
 
 case $typed in
+    t ) backup_time && backup_start && exit ;;
+    T ) backup_time && backup_start && exit ;;
     * ) exit ;;
 esac
 
