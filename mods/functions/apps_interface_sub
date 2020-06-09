@@ -42,14 +42,14 @@ else images_display=$(cat "/pg/data/$app/image.set"); fi
 
 # for plex claim token process
 if [[ "$plex_token_status" == "" ]]; then plex_token_display="NO TOKEN"; else plex_token_display="TOKEN SET"
-if [[ "$app" == "plex" ]]; then plex_token_display="
-[C] Claim Token    [$plex_token_status]"; fi; fi 
+if [[ "$app" == "plex" ]]; then plex_token_final="
+[C] Claim Token    [$plex_token_display]"; fi; fi
 
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
 
 [A] Application    [${a1}]
-[B] Backups        [Not Ready]$plex_token_display
+[B] Backups        [Not Ready]$plex_token_final
 [I] Image          [$images_display]
 [P] Ports          [$port_display]${shield_display2}${traefik_display}${u1}
 $app_warning
