@@ -1,0 +1,18 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+backup_start() {
+
+common_message "🚀  Backup Interface - $app" "💬  Visit ~ https://plexguide.com/wiki/backup
+
+[T] Time      | 13:05
+[F] Frequency | Monthly
+[L] Location  | /pg/backup
+[Z] Exit
+"
+common_number
+
+case $typed in
+    * ) exit ;;
+esac
+
+}
