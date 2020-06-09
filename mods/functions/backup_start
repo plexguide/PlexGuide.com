@@ -48,11 +48,14 @@ backup_time_display () {
 
 # CRON FUNCTIONS ###############################################################
 cron_add () {
-  a=a
+cat <<- EOF >> /var/spool/cron/crontabs/root
+# PGX ${app}
+${backup_minute} ${backup_hour} * * 3 echo ${app} && a=a 
+EOF
 }
 
 cron_remove() {
-  a=a 
+  a=a
 }
 # PRIMARY FUNCTION RECALL ######################################################
 backup_vars
