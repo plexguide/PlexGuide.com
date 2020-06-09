@@ -7,6 +7,13 @@ apps_interface_start
 common_fcreate_silent "/pg/data/$app"
 app_status=$(docker ps | grep "\<$app\>")
 
+# for plex claim token process
+if [[ "$app" != "plex" ]]; then $plex_token_final == ""
+else
+if [[ "$plex_token_status" == "" ]]; then plex_token_display="NO TOKEN"; else plex_token_display="TOKEN SET"; fi
+plex_token_final="
+[C] Claim Token    [$plex_token_display]"; fi
+
 if [[ ! -e "/pg/data/$app/cname.traefik" ]]; then
   echo "$app" > "/pg/data/$app/cname.traefik"; fi
 if [[ $(cat /pg/data/$app/cname.traefik) == "" ]]; then
@@ -39,13 +46,6 @@ if [[ ! -e "/pg/data/$app/image.set" ]]; then
   cat "/pg/data/$app/image.temp" | awk '{print $1 ":"$2'} > "/pg/data/$app/image.set"
   images_display=$(cat "/pg/data/$app/image.set")
 else images_display=$(cat "/pg/data/$app/image.set"); fi
-
-# for plex claim token process
-if [[ "$app" != "plex" ]]; then $plex_token_final == ""
-else
-if [[ "$plex_token_status" == "" ]]; then plex_token_display="NO TOKEN"; else plex_token_display="TOKEN SET"; fi
-plex_token_final="
-[C] Claim Token    [$plex_token_display]"; fi
 
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
