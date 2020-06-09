@@ -11,7 +11,7 @@ backup_vars () {
   current_time=$(date +"%T")
 }
 
-# FUNCITONS ####################################################################
+# STANDARD FUNCTIONS ###########################################################
 backup_time() {
 
   backup_time_hour() {
@@ -70,6 +70,9 @@ case $typed in
     * ) backup_frequency ;;
 esac
 }
+# KEY FUNCTIONS ################################################################
+
+
 # DISPLAY FUNCTIONS ############################################################
 backup_time_display () {
   if [ "$backup_hour" == "" ] || [ "$backup_minute" == "" ]; then
