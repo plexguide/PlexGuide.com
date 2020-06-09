@@ -2,8 +2,8 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 backup_start()
 # CRITICAL GENERATION ##########################################################
-common_fcreate_silent /pg/backup/${app}
-common_fcreate_silent /pg/log/backup/${app}
+common_fcreate_silent /pg/backup/$app
+common_fcreate_silent /pg/log/backup/$app
 backup_vars () {
   common_main "/pg/backup/$app.minute" "" backup_minute
   common_main "/pg/backup/$app.hour" "" backup_hour
