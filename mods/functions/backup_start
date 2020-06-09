@@ -113,10 +113,11 @@ common_message "🚀  Backup Interface - $app" "💬  Visit ~ https://plexguide.
 
 CURRENT TIME: $current_time
 
+[K] Key           | [Google]
 [T] Time          | $time_display
 [F] Frequency     | $backup_freq
-[L] Process Path  | /pg/backup
-[M] Manual Backup | 
+[P] Process Path  | /pg/backup
+[M] Manual Backup
 [Z] Save & Exit
 "
 common_number
