@@ -75,20 +75,22 @@ backup_drive_select() {
 
 # ADD GDRIVE TO THE LIST #######################################################
 rm -rf /pg/tmp/backup.list && touch /pg/tmp/backup.list
-if [[ -e /pg/var/drives/gd/gd.token && -e /pg/var/drives/gd/gd.conf ]]; then
-if [[ $(cat /pg/var/drives/gd.token == "VALID" ) ]]; then
+if [[ -e /pg/var/drives/gd/gd.info ]]; then
+if [[ $(cat /pg/var/drives/gd/gd.info) == "VALID" ]]; then echo -n "gd" >> /pg/tmp/backup.list; fi; fi
 
+ls /pg/var/drives/shared > /tmp/tmp.slist
+while read info; do
+  if [[ -e /pg/var/drives/shared/$info/$info.token && -e /pg/var/drives/shared/$info/$info.conf ]]; then
+  if [[ $(cat /pg/var/drives/shared/$info/$info.token) == "VALID" ]]; then echo -n "$info" >> /pg/tmp/backup.list; fi; fi
+done < "/tmp/tmp.slist"
+
+display_select_drives=$(cat /pg/tmp/backup.list)
 common_message "🚀  Drive Select Interface - $app" "💬  Only Unencrypted Mounts Utilized
 
-DRIVE KEY: NONE
+$display_select_drives
 
-[K] Key           | [Google]
-[T] Time          | $time_display
-[F] Frequency     | $backup_freq
-[P] Process Path  | /pg/backup
-[M] Manual Backup
-[Z] Save & Exit
-"
+------------------------------------------------------------------------------
+[Z] Save & Exit"
 }
 # DISPLAY FUNCTIONS ############################################################
 backup_time_display () {
