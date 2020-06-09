@@ -17,7 +17,7 @@ backup_time() {
     read -p '💬 Type Hour   [ 0 - 23 ] | Type [Z] Exit | Press [ENTER]: ' typed < /dev/tty
     if [[ "$typed" == "Z" || "$typed" == "z" ]]; then backup_start && exit; fi
     if [[ "$typed" -lt "0" || "$typed" -gt "23" ]]; then
-      common_header "⛔️  WARNING: - Not Within Range!" && common_confirm && echo; fi
+      common_header "⛔️  WARNING: - Not Within Range!" && common_confirm && echo && backup_time_hour; fi
       backup_hour=$typed
   }
 
@@ -25,7 +25,7 @@ backup_time() {
     read -p '💬 Type Minute [ 0 - 59 ] | Type [Z] Exit | Press [ENTER]: ' typed < /dev/tty
       if [[ "$typed" == "Z" || "$typed" == "z" ]]; then backup_start && exit ; fi
       if [[ "$typed" -lt "0" || "$typed" -gt "59" ]]; then
-        common_header "⛔️  WARNING: - Not Within Range!" && common_confirm && echo; fi
+        common_header "⛔️  WARNING: - Not Within Range!" && common_confirm && echo && backup_time_minute; fi
       backup_minute=$typed
   }
 
