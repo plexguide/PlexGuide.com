@@ -31,7 +31,7 @@ backup_time() {
   echo
   backup_time_hour
   backup_time_minute
-  echo "$backup_hour" > "/pg/backup/$app.hour" 
+  echo "$backup_hour" > "/pg/backup/$app.hour"
   echo "$backup_minute" > "/pg/backup/$app.minute"
   common_header "$app - Time Backup Set: $backup_hour:$backup_minute"
 
@@ -46,6 +46,14 @@ backup_time_display () {
   fi
 }
 
+# CRON FUNCTIONS ###############################################################
+cron_add () {
+  a=a
+}
+
+cron_remove() {
+  a=a 
+}
 # PRIMARY FUNCTION RECALL ######################################################
 backup_vars
 backup_time_display
@@ -55,13 +63,15 @@ common_message "🚀  Backup Interface - $app" "💬  Visit ~ https://plexguide.
 [T] Time      | $time_display
 [F] Frequency | Monthly
 [L] Location  | /pg/backup
-[Z] Exit
+[Z] Save & Exit
 "
 common_number
 
 case $typed in
     t ) backup_time && backup_start && exit ;;
     T ) backup_time && backup_start && exit ;;
+    z ) cron_remove && cron_add && exit ;;
+    Z ) cron_remove && cron_add && exit ;;
     * ) exit ;;
 esac
 
