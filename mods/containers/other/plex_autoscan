@@ -47,7 +47,7 @@ cat <<- EOF > "/pg/var/plex_autoscan/config.json"
   "PLEX_DATABASE_PATH": "/pg/data/plex/database/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db",
   "PLEX_EMPTY_TRASH": false,
   "PLEX_EMPTY_TRASH_CONTROL_FILES": [
-    "/mnt/unionfs/mounted.bin"
+    "/pg/unity/mounted.bin"
   ],
   "PLEX_EMPTY_TRASH_MAX_FILES": 100,
   "PLEX_EMPTY_TRASH_ZERO_DELETED": false,
