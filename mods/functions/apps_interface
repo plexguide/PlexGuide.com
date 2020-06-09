@@ -25,14 +25,14 @@ $app_display
 
 [Z] Quit & Exit Interface $installinfo"
 
-read -p '↘️  Type the Application | Press [Enter]: ' typed < /dev/tty
+read -p '↘️  Type the Application | Press [ENTER]: ' typed < /dev/tty
   if [[ "$typed" == "z" || "$typed" == "Z" ]]; then apps_menu; exit; fi
   if [[ "$typed" == "A" || "$typed" == "a" ]]; then apps_loop_install; exit; fi
 
 # ensures nothing happens if user types a nonexistant app
 existcheck=$(echo $app_display | grep "$typed" -w)
   if [ -z "$existcheck" ]; then echo "";
-  read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [Enter]' badinput < /dev/tty
+  read -p '⛔️  '$typed' <<< does not exist or has been selected | Press [ENTER]' badinput < /dev/tty
   apps_interface; fi
 
 app=$typed

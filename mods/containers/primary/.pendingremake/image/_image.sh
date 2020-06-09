@@ -9,7 +9,7 @@
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - BAD INPUT! | Press [Enter] ' typed < /dev/tty
+read -p '⛔️ ERROR - BAD INPUT! | Press [ENTER] ' typed < /dev/tty
 question1
 }
 
@@ -38,7 +38,7 @@ while read p; do
   count=$[count+1]
 done </opt/coreapps/apps/image/$image
 echo ""
-read -p '🚀  Type Number | Press [Enter]: ' typed < /dev/tty
+read -p '🚀  Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [[ "$typed" -ge "1" && "$typed" -lt "$count" ]]; then
   mkdir -p /pg/var/image

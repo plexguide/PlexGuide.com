@@ -12,7 +12,7 @@ Prior Info Saved (If Any): $priorentry
 [Z] To Cancel and Go Back
 "
 
-read -p "↘️  New Google Account Login? | Press [Enter]: " typed < /dev/tty
+read -p "↘️  New Google Account Login? | Press [ENTER]: " typed < /dev/tty
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_share_manage_module && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && drives_share_user_account && exit; fi

@@ -18,7 +18,7 @@ Prior Delayed Seconds: $delaycheck
 [Z] To Cancel and Go Back
 "
 
-read -p "↘️  New Delay? | Press [Enter]: " typed < /dev/tty
+read -p "↘️  New Delay? | Press [ENTER]: " typed < /dev/tty
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: Cannot Be Blank" && common_confirm && traefik_delay && exit; fi

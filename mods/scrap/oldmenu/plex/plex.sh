@@ -11,13 +11,13 @@
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - BAD INPUT! | Press [Enter] ' typed < /dev/tty
+read -p '⛔️ ERROR - BAD INPUT! | Press [ENTER] ' typed < /dev/tty
 
 }
 
 badinput2 () {
 echo
-read -p '⛔️ ERROR - BAD INPUT! | Press [Enter] ' typed < /dev/tty
+read -p '⛔️ ERROR - BAD INPUT! | Press [ENTER] ' typed < /dev/tty
 question2
 }
 # FIRST QUESTION
@@ -35,7 +35,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [Enter]: ' typed < /dev/tty
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then echo public > /pg/var/plex.extension && question2;
 elif [ "$typed" == "2" ]; then echo plexpass > /pg/var/plex.extension && question2;
 else badinput; fi
@@ -59,7 +59,7 @@ Z - EXIT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [Enter]: ' typed < /dev/tty
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   echo ""
   if [ "$typed" == "1" ]; then echo remote > /pg/var/plex.server && question3;
 elif [ "$typed" == "2" ]; then echo local > /pg/var/plex.server;
@@ -82,7 +82,7 @@ this step as you won't need to claim it again.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Plex Server Claim Number | Press [Enter]: ' typed < /dev/tty
+  read -p 'Plex Server Claim Number | Press [ENTER]: ' typed < /dev/tty
   echo $typed > /pg/var/plex.claim && break=on;
 }
 

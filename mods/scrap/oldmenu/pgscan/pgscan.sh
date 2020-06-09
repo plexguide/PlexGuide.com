@@ -42,7 +42,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | Press [Enter] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
     exit; fi
 }
 
@@ -59,14 +59,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | Press [Enter] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
     exit; fi; fi
 }
 
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - BAD INPUT! | Press [Enter] ' typed < /dev/tty
+read -p '⛔️ ERROR - BAD INPUT! | Press [ENTER] ' typed < /dev/tty
 question1
 }
 
@@ -86,7 +86,7 @@ Z - EXIT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p '↘️  Type Number | Press [Enter]: ' typed < /dev/tty
+  read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then ansible-playbook /pg/pgblitz/menu/pgscan/pgscan.yml && question1;
 elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then exit;

@@ -23,12 +23,12 @@ tee <<-EOF
 EOF
 
 # Standby
-read -p 'Type a Number | Press [Enter]: ' typed < /dev/tty
+read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "1" ]; then
   sudo wget -qO- bench.sh | bash
   echo ""
-  read -p '🌍 Process Complete | Press [Enter] ' typed < /dev/tty
+  read -p '🌍 Process Complete | Press [ENTER] ' typed < /dev/tty
   question1
 elif [ "$typed" == "2" ]; then
   echo ""
@@ -36,14 +36,14 @@ elif [ "$typed" == "2" ]; then
   echo ""
   ./bench.sh -a
   echo ""
-  read -p '🌍 Process Complete | Press [Enter] ' typed < /dev/tty
+  read -p '🌍 Process Complete | Press [ENTER] ' typed < /dev/tty
   question1
 elif [ "$typed" == "3" ]; then
   pip install speedtest-cli
   echo ""
   speedtest-cli
   echo ""
-  read -p '🌍 Process Complete | Press [Enter] ' typed < /dev/tty
+  read -p '🌍 Process Complete | Press [ENTER] ' typed < /dev/tty
   question1
 elif [[ "$typed" == "z" || "$typed" == "Z" ]]; then
   exit

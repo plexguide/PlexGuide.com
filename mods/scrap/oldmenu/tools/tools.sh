@@ -70,7 +70,7 @@ tee <<-EOF
 EOF
 
 # Standby
-read -p 'Type a Number | Press [Enter]: ' typed < /dev/tty
+read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
   bash /pg/stage/pgcloner/pgpatrol.sh

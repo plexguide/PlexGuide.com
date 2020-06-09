@@ -20,7 +20,7 @@ Z - EXIT
 EOF
 
 # Standby
-read -p 'Type a Number | Press [Enter]: ' typed < /dev/tty
+read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "1" ]; then
     echo gce > /pg/var/type.choice

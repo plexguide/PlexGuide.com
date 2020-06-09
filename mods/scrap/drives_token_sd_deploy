@@ -38,7 +38,7 @@ into the browser, it will just work!
 [Z] Exit
 "
 
-read -p '↘️  Token | Press [Enter]: ' token </dev/tty
+read -p '↘️  Token | Press [ENTER]: ' token </dev/tty
 echo "$token" > /pg/var/drives/temp.token
 if [[ "$token" == "z" || "$token" == "Z" ]]; then
   if [[ "drivemain" == "gdrive" ]]; then drives_gdrive_menu && exit; else

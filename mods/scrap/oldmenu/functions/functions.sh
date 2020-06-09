@@ -9,12 +9,12 @@
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - Bad Input! | Press [Enter] ' typed < /dev/tty
+read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed < /dev/tty
 }
 
 badinput1 () {
 echo
-read -p '⛔️ ERROR - Bad Input! | Press [Enter] ' typed < /dev/tty
+read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed < /dev/tty
 question1
 }
 

@@ -21,7 +21,7 @@ tee <<-EOF
 EOF
 
 # Standby
-read -p '🌏  TYPE Server ID | Press [Enter]: ' typed < /dev/tty
+read -p '🌏  TYPE Server ID | Press [ENTER]: ' typed < /dev/tty
 
   if [ "$typed" == "" ]; then
 tee <<-EOF

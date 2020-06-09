@@ -14,7 +14,7 @@ main() {
 blockdeploycheck() {
   if [[ $(cat /pg/var/traefik.provider) == "NOT-SET" || $(cat /pg/var/server.domain) == "NOT-SET" || $(cat /pg/var/traefik/traefik.email) == "NOT-SET" ]]; then
     echo
-    read -p 'Blocking Deployment! Must Configure Everything! | Press [Enter]' typed </dev/tty
+    read -p 'Blocking Deployment! Must Configure Everything! | Press [ENTER]' typed </dev/tty
     traefikstart
   fi
 }
@@ -39,7 +39,7 @@ EOF
   typed2=999999999
   while [[ "$typed2" -lt "30" || "$typed2" -gt "120" ]]; do
     echo "To quit, type >>> z or exit"
-    read -p 'Type Number Between 30 through 120 | Press [Enter]: ' typed2 </dev/tty
+    read -p 'Type Number Between 30 through 120 | Press [ENTER]: ' typed2 </dev/tty
     if [[ "$typed2" == "exit" || "$typed2" == "Exit" || "$typed2" == "EXIT" || "$typed2" == "z" || "$typed2" == "Z" ]]; then traefikstart; fi
     echo
   done
@@ -58,7 +58,7 @@ seconds as a result of the check.
 
 EOF
   echo "$typed2" >/pg/var/server.delaycheck
-  read -p 'Acknowledge Info | Press [Enter] ' typed </dev/tty
+  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
 
 }
 
@@ -73,7 +73,7 @@ destroytraefik() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p 'Acknowledge Info | Press [Enter] ' typed </dev/tty
+  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
 }
 
 domaininterface() {
@@ -86,7 +86,7 @@ domaininterface() {
 
 To quit, type >>> z or exit
 EOF
-  read -p 'Input Value | Press [Enter]: ' typed </dev/tty
+  read -p 'Input Value | Press [ENTER]: ' typed </dev/tty
   if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then traefikstart; fi
   if [[ $(echo ${typed} | grep "\.") == "" ]]; then
 
@@ -97,7 +97,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Acknowledge Info | Press [Enter] ' typed </dev/tty
+    read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
     domaininterface
     bash /opt/traefik/traefik.sh
     exit
@@ -114,7 +114,7 @@ take affect!
 
 EOF
   echo $typed >/pg/var/server.domain
-  read -p 'Acknowledge Info | Press [Enter] ' typed </dev/tty
+  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
 
 }
 
@@ -152,7 +152,7 @@ EOF
 
   while true; do
     echo "Deploy Traefik?"
-    read -p 'y or n? | Press [Enter]: ' typed2 </dev/tty
+    read -p 'y or n? | Press [ENTER]: ' typed2 </dev/tty
     if [[ "$typed2" == "n" || "$typed2" == "N" || "$typed2" == "No" || "$typed2" == "NO" ]]; then traefikstart; fi
     if [[ "$typed2" == "y" || "$typed2" == "Y" || "$typed2" == "Yes" || "$typed2" == "YES" ]]; then
       traefikbuilder
@@ -173,7 +173,7 @@ emailinterface() {
 
 To quit, type >>> z or exit
 EOF
-  read -p 'Input Value | Press [Enter]: ' typed </dev/tty
+  read -p 'Input Value | Press [ENTER]: ' typed </dev/tty
   if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then traefikstart; fi
 
   ### fix bug if user doesn't type .
@@ -186,7 +186,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Acknowledge Info | Press [Enter] ' typed </dev/tty
+    read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
     emailinterface
     bash /opt/traefik/traefik.sh
     exit
@@ -201,7 +201,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Acknowledge Info | Press [Enter] ' typed </dev/tty
+    read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
     emailinterface
     bash /opt/traefik/traefik.sh
     exit
@@ -219,7 +219,7 @@ the email name changes to take affect!
 
 EOF
   echo $typed >/pg/var/traefik/traefik.email
-  read -p 'Acknowledge Info | Press [Enter] ' typed </dev/tty
+  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
 
 }
 
@@ -286,7 +286,7 @@ EOF
 EOF
 
   # Standby
-  read -p 'Type a Number | Press [Enter]: ' typed </dev/tty
+  read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
   # Prompt User To Input Information Based on Greater > 4 & Less Than pnum++
   if [[ "$typed" -ge "6" && "$typed" -le "$pnum" ]]; then layoutprompt; fi
@@ -304,13 +304,13 @@ layoutprompt() {
 
 To quit, type >>> z or exit
 EOF
-  read -p 'Input Value | Press [Enter]: ' typed </dev/tty
+  read -p 'Input Value | Press [ENTER]: ' typed </dev/tty
   if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then traefikstart; fi
 
   echo "$typed" >"/pg/var/traefik/$provider7/$process5"
   echo
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  read -p 'Information Stored | Press [Enter] ' typed </dev/tty
+  read -p 'Information Stored | Press [ENTER] ' typed </dev/tty
 
 }
 
@@ -436,7 +436,7 @@ There are multiple reason for failure! Visit wiki or discord!
 
 EOF
 
-    read -p 'Acknowledge Info | Press [Enter] ' name </dev/tty
+    read -p 'Acknowledge Info | Press [ENTER] ' name </dev/tty
 
     tee <<-EOF
 
@@ -450,7 +450,7 @@ NOTE 2: Subdomains will provide insecure warnings
 
 EOF
 
-    read -p 'Try Again! Acknowledge Info | Press [Enter] ' name </dev/tty
+    read -p 'Try Again! Acknowledge Info | Press [ENTER] ' name </dev/tty
     traefikstart
   fi
 
@@ -519,7 +519,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p '✅️ Traefik - Containers Rebuilt! Acknowledge Info | Press [Enter] ' name </dev/tty
+  read -p '✅️ Traefik - Containers Rebuilt! Acknowledge Info | Press [ENTER] ' name </dev/tty
 
 }
 
@@ -550,7 +550,7 @@ EOF
   while [[ "$typed2" -lt "1" || "$typed2" -gt "$pnum" ]]; do
     echo "[Z] Exit"
     echo ""
-    read -p 'Type Number | Press [Enter]: ' typed2 </dev/tty
+    read -p 'Type Number | Press [ENTER]: ' typed2 </dev/tty
     if [[ "$typed2" == "exit" || "$typed2" == "Exit" || "$typed2" == "EXIT" || "$typed2" == "z" || "$typed2" == "Z" ]]; then traefikstart; fi
     echo
   done
@@ -566,7 +566,7 @@ NOTE: Make all changes first.  Traefik must be deployed/redeployed for
 this to take affect!
 
 EOF
-  read -p 'Acknowledge Info | Press [Enter] ' typed </dev/tty
+  read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
 }
 
 traefikbuilder() {

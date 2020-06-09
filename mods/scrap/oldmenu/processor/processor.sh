@@ -23,7 +23,7 @@ Z. EXIT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-read -p 'Type a Number | Press [Enter]: ' typed < /dev/tty
+read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 )
@@ -39,7 +39,7 @@ case $typed in
         echo ""
         cpufreq-info
         echo ""
-        read -p '🌍  Done? | Press [Enter] ' typed < /dev/tty
+        read -p '🌍  Done? | Press [ENTER] ' typed < /dev/tty
         ;;
     z )
         exit ;;

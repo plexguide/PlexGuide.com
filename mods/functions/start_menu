@@ -63,7 +63,7 @@ $main_quote
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   # Standby
-read -p '↘️  Type Number | Press [Enter]: ' typed < /dev/tty
+read -p '↘️  Type Number | Press [ENTER]: ' typed < /dev/tty
 
 case $typed in
     1 ) traefik_menu_start && start_menu && exit ;;

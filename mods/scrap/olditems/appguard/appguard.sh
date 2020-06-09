@@ -30,12 +30,12 @@ Z. EXIT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  read -p 'Type a Number | Press [Enter]: ' typed < /dev/tty
+  read -p 'Type a Number | Press [ENTER]: ' typed < /dev/tty
   if [ "$typed" == "1" ]; then
     if [ "$guard" == "DISABLED" ]; then
     echo ""
-    read -p '↘️ [Type] a USERNAME! | Press [Enter] ' user < /dev/tty
-    read -p '↘️ [Type] a PASSWORD! | Press [Enter] ' pw < /dev/tty
+    read -p '↘️ [Type] a USERNAME! | Press [ENTER] ' user < /dev/tty
+    read -p '↘️ [Type] a PASSWORD! | Press [ENTER] ' pw < /dev/tty
     htpasswd -cbs /pg/var/server.ht $user $pw
 tee <<-EOF
 

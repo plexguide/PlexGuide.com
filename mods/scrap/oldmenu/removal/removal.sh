@@ -58,7 +58,7 @@ $running
 
 💬 Quitting? TYPE > exit
 EOF
-read -p '🌍 Type APP for QUEUE | Press [Enter]: ' typed < /dev/tty
+read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 
 if [ "$typed" == "exit" ]; then exit; fi
 

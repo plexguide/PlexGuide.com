@@ -145,7 +145,7 @@ if [ "$menu" == "4" ]; then
     cat /pg/var/projects.list | cut -d' ' -f1 | tail -n +2 > /pg/var/project.cut
     echo ""
     echo "NOTE: Type the Name of the Project you want to utilize!"
-    read -p 'Type the Name of the Project to Utlize & Press [Enter]: ' typed
+    read -p 'Type the Name of the Project to Utlize & Press [ENTER]: ' typed
     list=$(cat /pg/var/project.cut | grep $typed)
     echo ""
 
@@ -287,7 +287,7 @@ if [ "$menu" == "5" ]; then
     echo ""
     echo "NOTE: More Processors = Faster Credit Drain"
     echo ""
-    read -p 'Type a Number 2, 4 or 6 | Press [Enter]: ' typed
+    read -p 'Type a Number 2, 4 or 6 | Press [ENTER]: ' typed
     tcheck=$(echo $prange | grep $typed)
     echo ""
 
@@ -399,7 +399,7 @@ while [ "$break" == "off" ]; do
   echo "--------------------------------------------------------"
   cat /pg/tmp/regions.print
   echo "" && echo ""
-  read -p 'Type the Name of an IP Region | Press [Enter]: ' typed
+  read -p 'Type the Name of an IP Region | Press [ENTER]: ' typed
   echo ""
   tcheck=$(echo $prange | grep $typed)
 
@@ -520,7 +520,7 @@ break=off
   cat /pg/tmp/zones.print
   echo ""
   echo ""
-  read -p 'Type a Server Zone Name | Press [Enter]: ' typed
+  read -p 'Type a Server Zone Name | Press [ENTER]: ' typed
   echo ""
   tcheck=$(echo $prange | grep $typed)
   echo ""

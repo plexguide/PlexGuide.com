@@ -48,7 +48,7 @@ common_confirm
 drives_menu_start
 fi
 
-read -p "↘️  Generate How Many Keys? | Press [Enter]: " typed < /dev/tty
+read -p "↘️  Generate How Many Keys? | Press [ENTER]: " typed < /dev/tty
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then drives_menu_start && exit; fi
 if [[ "$typed" == "" ]]; then common_message "⛔️  WARNING: CANNOT BE BLANK" && common_confirm && drives_key_generation && exit; fi
 if [[ "$typed" -lt "4" ]]; then common_message "⛔️  WARNING: REQUIRES 4 OR MORE KEYS" && common_confirm && drives_key_generation && exit; fi
