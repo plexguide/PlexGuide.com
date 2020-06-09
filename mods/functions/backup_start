@@ -7,6 +7,7 @@ common_fcreate_silent /pg/log/backup/$app
 backup_vars () {
   common_main /pg/backup/$app.minute "" backup_minute
   common_main /pg/backup/$app.hour "" backup_hour
+  current_time=$(date +"%T")
 }
 
 # FUNCITONS ####################################################################
@@ -50,7 +51,7 @@ backup_time_display () {
 cron_add () {
 cat <<- EOF >> /var/spool/cron/crontabs/root
 # PGX ${app}
-${backup_minute} ${backup_hour} * * 3 echo ${app} && a=a 
+${backup_minute} ${backup_hour} * * 3 echo ${app} && a=a
 EOF
 }
 
@@ -62,6 +63,8 @@ backup_vars
 backup_time_display
 # PRIMARY INTERFACE ############################################################
 common_message "🚀  Backup Interface - $app" "💬  Visit ~ https://plexguide.com/wiki/backup
+
+CURRENT TIME: $current_time
 
 [T] Time      | $time_display
 [F] Frequency | Monthly
