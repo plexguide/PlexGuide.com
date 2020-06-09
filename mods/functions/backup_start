@@ -71,8 +71,25 @@ case $typed in
 esac
 }
 # KEY FUNCTIONS ################################################################
+backup_drive_select() {
 
+# ADD GDRIVE TO THE LIST #######################################################
+rm -rf /pg/tmp/backup.list && touch /pg/tmp/backup.list
+if [[ -e /pg/var/drives/gd/gd.token && -e /pg/var/drives/gd/gd.conf ]]; then
+if [[ $(cat /pg/var/drives/gd.token == "VALID" ) ]]; then
 
+common_message "🚀  Drive Select Interface - $app" "💬  Only Unencrypted Mounts Utilized
+
+DRIVE KEY: NONE
+
+[K] Key           | [Google]
+[T] Time          | $time_display
+[F] Frequency     | $backup_freq
+[P] Process Path  | /pg/backup
+[M] Manual Backup
+[Z] Save & Exit
+"
+}
 # DISPLAY FUNCTIONS ############################################################
 backup_time_display () {
   if [ "$backup_hour" == "" ] || [ "$backup_minute" == "" ]; then
