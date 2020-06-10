@@ -17,10 +17,10 @@ shield_secret=$(openssl rand -hex 16)
 
 # VARIABLES ####################################################################
 pgrole="shield"
+image="thomseddon/traefik-forward-auth"
 port_inside01="4181"
 port_outside01="4181"
 traefik_extport="4181"
-image="thomseddon:traefik-forward-auth"
 
 container_path /etc/localtime /etc/localtime:ro
 
