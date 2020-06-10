@@ -102,16 +102,17 @@ $container_header
         value: scripts
         state: present
 
+    - name: Set host_whitelist
+      ini_file:
+        path: '/pg/data/$pgrole/sabnzbd.ini'
+        section: misc
+        option: host_whitelist
+        value: '$sab_sub.$sab_domain,'
+        state: present
+
     # FIRST TIME CONFIGURATION ###########################################################
     - name: 'Configuring $pgrole for first time use'
       block:
-        - name: Set host_whitelist
-          ini_file:
-            path: '/pg/data/$pgrole/sabnzbd.ini'
-            section: misc
-            option: host_whitelist
-            value: '$sab_sub.$sab_domain,'
-            state: present
 
         - name: Set direct_unpack
           ini_file:
