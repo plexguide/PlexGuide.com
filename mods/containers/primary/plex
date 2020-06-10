@@ -38,7 +38,7 @@ container_permissions PLEX_CLAIM $plex_claim
 container_permissions ADVERTISE_IP "http://$advertise_ip:32400"
 
 # For PMS
-if [[ $(cat "/pg/data/plex/image.set" | grep "linuxserver" == "" ]]; then
+if [[ $(cat "/pg/data/plex/image.set" | grep "linuxserver" == "") ]]; then
 echo "plex" > "/pg/data/plex/plex.docker.user"; else
 echo "abc" > "/pg/data/plex/plex.docker.user"; fi 
 
