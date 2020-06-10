@@ -20,6 +20,9 @@ container_path /etc/localtime /etc/localtime:ro
 
 container_permissions PUID 1000
 container_permissions PGID 1000
+
+common_main /pg/data/sabnzbd/cname.traefik sabnzbd sab_sub
+common_main /pg/var/traefik/t.domain NOT-SET sab_domain
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
 linuxserver/sabnzbd latest
@@ -102,13 +105,13 @@ $container_header
     # FIRST TIME CONFIGURATION ###########################################################
     - name: 'Configuring $pgrole for first time use'
       block:
-      #  - name: Set host_whitelist
-      #    ini_file:
-      #      path: '/pg/data/$pgrole/sabnzbd.ini'
-      #      section: misc
-      #      option: host_whitelist
-      #      value: 'sabnzbd.{{domain.stdout}},'
-      #      state: present
+        - name: Set host_whitelist
+          ini_file:
+            path: '/pg/data/$pgrole/sabnzbd.ini'
+            section: misc
+            option: host_whitelist
+            value: 'sab_sub.sab_domain,'
+            state: present
 
         - name: Set direct_unpack
           ini_file:
@@ -147,7 +150,7 @@ $container_header
             path: '/pg/data/$pgrole/sabnzbd.ini'
             section: misc
             option: action_on_unwanted_extensions
-            value: 2
+            value: '2'
             state: present
 
         - name: set pause_on_pwrar - aborts encrypted rar rather than pausing
@@ -155,7 +158,7 @@ $container_header
             path: '/pg/data/$pgrole/sabnzbd.ini'
             section: misc
             option: pause_on_pwrar
-            value: 2
+            value: '2'
             state: present
 
         - name: set new_nzb_on_failure - try a new nzb if it fails
@@ -163,7 +166,7 @@ $container_header
             path: '/pg/data/$pgrole/sabnzbd.ini'
             section: misc
             option: new_nzb_on_failure
-            value: 1
+            value: '1'
             state: present
 
         - name: set flat_unpack
@@ -171,7 +174,7 @@ $container_header
             path: '/pg/data/$pgrole/sabnzbd.ini'
             section: misc
             option: flat_unpack
-            value: 1
+            value: '1'
             state: present
 
         - name: set download_free
