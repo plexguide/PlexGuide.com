@@ -36,6 +36,10 @@ container_permissions INSECURE_COOKIE True
 container_permissions LIFETIME 2592000
 container_permissions AUTH_HOST shield.${sdomain}
 container_permissions WHITELIST ${whitelist_emails}
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+thomseddon/traefik-forward-auth latest
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
