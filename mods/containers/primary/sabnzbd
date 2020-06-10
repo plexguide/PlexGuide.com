@@ -110,7 +110,7 @@ $container_header
             path: '/pg/data/$pgrole/sabnzbd.ini'
             section: misc
             option: host_whitelist
-            value: 'sab_sub.sab_domain,'
+            value: '$sab_sub.$sab_domain,'
             state: present
 
         - name: Set direct_unpack
