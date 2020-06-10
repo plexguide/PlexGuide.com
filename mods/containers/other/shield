@@ -17,7 +17,6 @@ shield_secret=$(openssl rand -hex 16)
 
 # VARIABLES ####################################################################
 pgrole="shield"
-image="thomseddon/traefik-forward-auth"
 port_inside01="4181"
 port_outside01="4181"
 traefik_extport="4181"
@@ -38,7 +37,10 @@ container_permissions INSECURE_COOKIE True
 container_permissions LIFETIME 2592000
 container_permissions AUTH_HOST shield.${sdomain}
 container_permissions WHITELIST ${whitelist_emails}
-
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+thomseddon traefik-forward-auth
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
