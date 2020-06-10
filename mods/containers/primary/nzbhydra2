@@ -1,6 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-netdata () {
+nzbhydra2 () {
 
 container_reset
 # VARIABLES ####################################################################
