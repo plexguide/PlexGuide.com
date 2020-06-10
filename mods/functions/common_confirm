@@ -1,5 +1,5 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 common_confirm() {
-  read -p 'Confirm Information | PRESS [ENTER] ' typed </dev/tty
+  read -p 'Confirm Information | Press [ENTER] ' typed </dev/tty
 }

@@ -1,0 +1,6 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+container_images () {
+
+echo "$1 $2" >> /pg/apps/$pgrole.images
+}

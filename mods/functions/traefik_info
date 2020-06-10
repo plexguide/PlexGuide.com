@@ -23,6 +23,11 @@ while read p; do
 done <"$traefik_path"/provider.keys
 pfillin=$(cat /pg/tmp/p.info)
 
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+traefik traefik:1.7
+EOF
+
 rm -rf /pg/data/traefik/acme/acme.json
 # TRAEFIK.TOML #################################################################
 cat <<- EOF > "/pg/data/traefik/traefik.toml"

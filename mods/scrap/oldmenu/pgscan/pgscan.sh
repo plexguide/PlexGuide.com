@@ -42,7 +42,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
     exit; fi
 }
 
@@ -59,14 +59,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
     exit; fi; fi
 }
 
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
+read -p '⛔️ ERROR - BAD INPUT! | Press [ENTER] ' typed < /dev/tty
 question1
 }
 

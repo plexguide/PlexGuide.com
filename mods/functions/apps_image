@@ -1,0 +1,36 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+apps_image() {
+# sets up the primary interface
+if [[ -e /pg/images/$app.images ]]; then
+temp_display=$(cat /pg/images/$app.images | awk '{print $1 ":"$2'})
+common_message "🚀 Image Selection ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬 INSTRUCTIONS
+
+Type the [image:tag] to utilize for deployment! If not listed, you can still
+type the name of any other related container as long as it exist!
+
+$temp_display
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Quit & Exit Interface"
+common_number
+
+function docker_tag_exists() {
+    curl --silent -f -lSL https://index.docker.io/v1/repositories/$1/tags/$2 > /dev/null
+}
+
+quick_check1=$(echo $typed | tr : " " | awk '{print $1}')
+quick_check2=$(echo $typed | tr : " " | awk '{print $2}')
+  if docker_tag_exists $quick_check1 $quick_check2; then
+      echo "$typed" > /pg/data/$app/image.set
+      common_header "🚀  PASSED: Setting [$app] image > [$typed]"
+      touch "/pg/data/$app/apply.settings"
+      common_confirm
+  else
+      common_header "⛔️  WARNING: $typed - does not exist!"
+      common_confirm
+  fi
+
+fi
+apps_interface_sub && exit
+}

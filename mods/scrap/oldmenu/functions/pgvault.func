@@ -43,7 +43,7 @@ initial2 () {
 final () {
   echo
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-  read -p '✅ Process Complete! | PRESS [ENTER] ' typed < /dev/tty
+  read -p '✅ Process Complete! | Press [ENTER] ' typed < /dev/tty
   echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   bash /pg/pgvault/pgvault.sh
   exit

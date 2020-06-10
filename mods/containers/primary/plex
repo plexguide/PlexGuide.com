@@ -5,7 +5,6 @@ plex () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="plex"
-image="plexinc/pms-docker"
 
 port_inside01="32400/tcp"; port_outside01="32400"
 port_inside02="3005/tcp"; port_outside02="3005"
@@ -34,6 +33,7 @@ container_path /pg/unity /unity
 advertise_ip=$(hostname -I | awk '{print $1}')
 container_permissions PLEX_UID 1000
 container_permissions PLEX_GID 1000
+container_permissions VERSION docker
 container_permissions PLEX_CLAIM $plex_claim
 container_permissions ADVERTISE_IP "http://$advertise_ip:32400"
 
@@ -44,6 +44,20 @@ echo "abc" > "/pg/data/plex/plex.docker.user"; fi
 
 # container_oddball devices "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
 container_oddball etc_hosts "{ 'analytics.plex.tv': '127.0.0.1', 'metrics.plex.tv': '127.0.0.1' }"
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/tautulli latest
+linuxserver/tautulli develop
+EOF
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/plex latest
+linuxserver/plex public
+plexinc/pms-docker latest
+plexinc/pms-docker plexpass
+plexinc/pms-docker public
+plexinc/pms-docker beta
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"

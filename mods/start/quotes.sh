@@ -218,48 +218,41 @@ forgot. Ah, I'm also gonna need you to go ahead and come in on Sunday, too." > /
 echo "                                              Bill Lumbergh ~ Office Space" > /pg/var/startup.source
 }
 
-
-
-
-quote62 () {
+quote53 () {
 echo "Hello Peter what's happening. I'm gonna need you to go ahead and come
 in tomorrow. So if you could be here at around....9 that'd be great." > /pg/var/startup.quote
 echo "                                              Bill Lumbergh ~ Office Space" > /pg/var/startup.source
 }
 
-quote63 () {
+quote54 () {
 echo "Why does it say paper jam when there is no paper jam? I swear to God
 one of these days I am just kicking this piece of sh*t out the window!" > /pg/var/startup.quote
 echo "                                                      Samir ~ Office Space" > /pg/var/startup.source
 }
 
-quote64 () {
+quote55 () {
 echo "I can't believe you like money too. We should hang out." > /pg/var/startup.quote
 echo "                                                         Frito ~ Idiocracy" > /pg/var/startup.source
 }
 
-quote65 () {
+quote56 () {
 echo "One! Don't you feel dumb. Two! Look at you. Three! Don't you ever make
 jokes about me behind my back or else I'll stomp you into the ground." > /pg/var/startup.quote
 echo "                                                               Major Payne" > /pg/var/startup.source
 }
 
-quote67 () {
+quote57 () {
 echo "You know, somebody actually complimented me on my driving today. They
 left a little note on the windscreen, it said ~ Parking Fine." > /pg/var/startup.quote
 echo "                                                 Cooper ~ British Comedian" > /pg/var/startup.source
 }
 
-
-
-quote69 () {
+quote58 () {
 echo "An original idea. That can't be too hard. The library must be full of
 them." > /pg/var/startup.quote
 echo "                                                    Fry ~ British Comedian" > /pg/var/startup.source
 }
 
-
-
 # END FUNCTIONS ################################################################
-num=$( echo $(($RANDOM % 71)) )
+num=$( echo $(($RANDOM % 59)) )
 quote$num

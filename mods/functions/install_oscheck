@@ -13,7 +13,7 @@ common_message "⛔️  WARNING: OS Check" "
 Supported: UB 16-18 and Debian 9 & 10
 This server may not be supported due to detecting an incorrect OS!
 
-PRESS CTRL+Z to STOP the Installation
+Press CTRL+Z to STOP the Installation
 "
 			common_confirm; fi
 ## Issues: Incorrect OS
@@ -39,7 +39,7 @@ common_message "⛔️  WARNING: OS Check" "
 Supported: UB 16-18 and Debian 9 & 10
 This server may not be supported due to detecting an incorrect OS!
 
-PRESS CTRL+Z to STOP the Installation
+Press CTRL+Z to STOP the Installation
 "
 common_confirm; fi
 

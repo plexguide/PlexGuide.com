@@ -5,7 +5,6 @@ tautulli () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="tautulli"
-image="linuxserver/tautulli"
 port_inside01="8181"
 port_outside01="8181"
 traefik_extport="8181"
@@ -20,6 +19,11 @@ container_permissions PGID 1000
 container_permissions TZ Europe/London
 
 mkdir -p "/pg/data/plex/database/Library/Application Support/Plex Media Server/Logs"
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/tautulli latest
+linuxserver/tautulli develop
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"

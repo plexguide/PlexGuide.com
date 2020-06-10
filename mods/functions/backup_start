@@ -1,0 +1,157 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+backup_start() {
+# CRITICAL GENERATION ##########################################################
+common_fcreate_silent /pg/backup/$app
+common_fcreate_silent /pg/log/backup/$app
+backup_vars () {
+  common_main /pg/backup/$app.minute "" backup_minute
+  common_main /pg/backup/$app.hour "" backup_hour
+  common_main /pg/backup/$app.freq "" backup_freq
+  current_time=$(date +"%T")
+}
+
+# STANDARD FUNCTIONS ###########################################################
+backup_time() {
+
+  backup_time_hour() {
+    read -p '💬 Type Hour   [ 0 - 23 ] | Type [Z] Exit | Press [ENTER]: ' typed < /dev/tty
+    if [[ "$typed" == "Z" || "$typed" == "z" ]]; then backup_start && exit; fi
+    if [[ "$typed" -lt "0" || "$typed" -gt "23" ]]; then
+      common_header "⛔️  WARNING: Minute $typed - Not Within Range!" && common_confirm && echo && backup_time_hour; fi
+      backup_hour=$typed
+  }
+
+  backup_time_minute() {
+    read -p '💬 Type Minute [ 0 - 59 ] | Type [Z] Exit | Press [ENTER]: ' typed < /dev/tty
+      if [[ "$typed" == "Z" || "$typed" == "z" ]]; then backup_start && exit ; fi
+      if [[ "$typed" -lt "0" || "$typed" -gt "59" ]]; then
+        common_header "⛔️  WARNING: Minute $typed - Not Within Range!" && common_confirm && echo && backup_time_minute; fi
+      backup_minute=$typed
+  }
+
+  echo
+  backup_time_hour
+  backup_time_minute
+  echo "$backup_hour" > "/pg/backup/$app.hour"
+  echo "$backup_minute" > "/pg/backup/$app.minute"
+  common_header "$app - Time Backup Set: $backup_hour:$backup_minute"
+
+}
+
+backup_frequency() {
+common_message "🚀  Backup Frequency - $app" "💬  Visit ~ https://plexguide.com/wiki/backup
+
+[0] Sunday    [1] Monday   [2] Tuesday
+[3] Wednesday [4] Thursday [5] Friday
+[6] Saturday
+
+[A] Daily     [B] Weekdays [C] Weekends
+[Z] Save & Exit
+"
+common_number
+
+case $typed in
+    0 ) echo "0" > /pg/backup/$app.freq ;;
+    1 ) echo "1" > /pg/backup/$app.freq ;;
+    2 ) echo "2" > /pg/backup/$app.freq ;;
+    3 ) echo "3" > /pg/backup/$app.freq ;;
+    4 ) echo "4" > /pg/backup/$app.freq ;;
+    5 ) echo "5" > /pg/backup/$app.freq ;;
+    6 ) echo "6" > /pg/backup/$app.freq ;;
+    A ) echo "*" > /pg/backup/$app.freq ;;
+    a ) echo "*" > /pg/backup/$app.freq ;;
+    B ) echo "1-5" > /pg/backup/$app.freq ;;
+    b ) echo "1-5" > /pg/backup/$app.freq ;;
+    c ) echo "SUN-SAT" > /pg/backup/$app.freq ;;
+    c ) echo "SUN-SAT" > /pg/backup/$app.freq ;;
+    z ) backup_start ;;
+    Z ) backup_start ;;
+    * ) backup_frequency ;;
+esac
+}
+# KEY FUNCTIONS ################################################################
+backup_drive_select() {
+
+# ADD GDRIVE TO THE LIST #######################################################
+rm -rf /pg/tmp/backup.list && touch /pg/tmp/backup.list
+if [[ -e /pg/var/drives/gd/gd.info ]]; then
+if [[ $(cat /pg/var/drives/gd/gd.info) == "VALID" ]]; then echo -n "gd" >> /pg/tmp/backup.list; fi; fi
+
+ls /pg/var/drives/shared > /tmp/tmp.slist
+while read info; do
+  if [[ -e /pg/var/drives/shared/$info/$info.token && -e /pg/var/drives/shared/$info/$info.conf ]]; then
+  if [[ $(cat /pg/var/drives/shared/$info/$info.token) == "VALID" ]]; then echo -n "$info" >> /pg/tmp/backup.list; fi; fi
+done < "/tmp/tmp.slist"
+
+display_select_drives=$(cat /pg/tmp/backup.list)
+common_message "🚀  Drive Select Interface - $app" "💬  Only Unencrypted Mounts Utilized
+
+$display_select_drives
+
+------------------------------------------------------------------------------
+[Z] Save & Exit"
+}
+# DISPLAY FUNCTIONS ############################################################
+backup_time_display () {
+  if [ "$backup_hour" == "" ] || [ "$backup_minute" == "" ]; then
+    time_display="NOT-SET"
+  else
+    time_display="$backup_hour:$backup_minute"
+  fi
+}
+
+backup_freq_display () {
+  if [[ "$backup_freq" == "" ]]; then
+    time_display="NOT-SET"
+elif [[ "$backup_freq" == "0" ]]; then freq_display="Sunday"
+elif [[ "$backup_freq" == "1" ]]; then freq_display="Monday"
+elif [[ "$backup_freq" == "2" ]]; then freq_display="Tuesday"
+elif [[ "$backup_freq" == "3" ]]; then freq_display="Wednesday"
+elif [[ "$backup_freq" == "4" ]]; then freq_display="Thursday"
+elif [[ "$backup_freq" == "5" ]]; then freq_display="Friday"
+elif [[ "$backup_freq" == "6" ]]; then freq_display="Saturday"
+elif [[ "$backup_freq" == "*" ]]; then freq_display="Daily"
+elif [[ "$backup_freq" == "1-5" ]]; then freq_display="Weekdays"
+elif [[ "$backup_freq" == "SUN-SAT" ]]; then freq_display="Weekends"; fi
+}
+# CRON FUNCTIONS ###############################################################
+cron_add () {
+cat <<- EOF >> /var/spool/cron/crontabs/root
+# PGX ${app} app
+${backup_minute} ${backup_hour} * * ${backup_freq} echo ${app} && echo "$current_time" > /tmp/test.info
+EOF
+}
+
+cron_remove() {
+  crontab -u root -l | grep -v "PGX $app app" | crontab -u root -
+  crontab -u root -l | grep -v "echo $app &&" | crontab -u root -
+}
+# PRIMARY FUNCTION RECALL ######################################################
+backup_vars
+backup_time_display
+# PRIMARY INTERFACE ############################################################
+common_message "🚀  Backup Interface - $app" "💬  Visit ~ https://plexguide.com/wiki/backup
+
+CURRENT TIME: $current_time
+
+[K] Key           | [Google]
+[T] Time          | $time_display
+[F] Frequency     | $backup_freq
+[P] Process Path  | /pg/backup
+[M] Manual Backup
+[Z] Save & Exit
+"
+common_number
+
+case $typed in
+    t ) backup_time && backup_start && exit ;;
+    T ) backup_time && backup_start && exit ;;
+    f ) backup_frequency && backup_start && exit ;;
+    F ) backup_frequency && backup_start && exit ;;
+    z ) cron_remove && cron_add && exit ;;
+    Z ) cron_remove && cron_add && exit ;;
+    * ) exit ;;
+esac
+
+}

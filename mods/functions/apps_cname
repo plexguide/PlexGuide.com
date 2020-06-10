@@ -2,30 +2,29 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_cname() {
 
-common_main /pg/data/$app/cname.traefik "$app" cname
+#common_main /pg/data/$app/cname.traefik $app cname
 
 apps_cname_change_confirm () {
   common_header "Correct? [y|n]? $cname_set"
   common_number
   case $typed in
-      y ) a=a ;;
-      Y ) a=a ;;
+      y ) echo "$cname_set" > /pg/data/$app/cname.traefik ;;
+      Y ) echo "$cname_set" > /pg/data/$app/cname.traefik ;;
       n ) apps_cname_change && exit ;;
       N ) apps_cname_change && exit ;;
       * ) apps_cname_change_confirm && exit ;;
   esac
 
-  echo "$cname_set" > /pg/data/$app/cname.traefik
-
   common_header "CNAME [$cname_set] set for [$app]"
   common_confirm
+  touch "/pg/data/$app/apply.settings"
   apps_interface_sub && exit
 }
 
 apps_cname_change () {
-  common_header "New Subdomain [$app]? Type [Z] to Exit!"
+  common_header "What is the New Subdomain >>> $app? Type [Z] to Exit!"
   common_number
-  if [[ "$typed" == "z" || "$typed" == "Z" ]]; then apps_cname && exit; fi
+  if [[ "$typed" == "z" || "$typed" == "Z" ]]; then apps_interface_sub && exit; fi
   if [[ "$typed" == "" ]]; then common_header "⛔️  WARNING: Cannot Be Blank" && common_confirm && apps_cname_change && exit; fi
 
   typed=$(echo $typed | awk '{print $1}')
@@ -34,20 +33,5 @@ apps_cname_change () {
   apps_cname_change_confirm
 }
 
-# sets up the primary interface
-common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/cname
-
-Current Traefik CNAME: $cname
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[Z] Quit & Exit Interface"
-read -p 'Change the Current CNAME? [y|n] | PRESS [ENTER] ' typed </dev/tty
-
-case $typed in
-    n ) apps_interface_sub && exit ;;
-    N ) apps_interface_sub && exit ;;
-    y ) apps_cname_change && exit ;;
-    y ) apps_cname_change && exit ;;
-    * ) apps_cname && exit ;;
-esac
-
+apps_cname_change && exit
 }

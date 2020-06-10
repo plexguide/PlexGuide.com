@@ -34,8 +34,8 @@ EOF
   if [ "$typed" == "1" ]; then
     if [ "$guard" == "DISABLED" ]; then
     echo ""
-    read -p '↘️ [Type] a USERNAME! | PRESS [ENTER] ' user < /dev/tty
-    read -p '↘️ [Type] a PASSWORD! | PRESS [ENTER] ' pw < /dev/tty
+    read -p '↘️ [Type] a USERNAME! | Press [ENTER] ' user < /dev/tty
+    read -p '↘️ [Type] a PASSWORD! | Press [ENTER] ' pw < /dev/tty
     htpasswd -cbs /pg/var/server.ht $user $pw
 tee <<-EOF
 

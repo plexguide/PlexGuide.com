@@ -2,10 +2,11 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 shield () {
 
-container_reset
+common_fcreate_silent /pg/var/shield
+touch /pg/var/shield/user.list
 
 shield_secret=$(openssl rand -hex 16)
-
+  # common_folders
   # FOR WHITELIST
   rm -rf /pg/var/shield/whitelist.emails
   while read p; do
@@ -14,6 +15,7 @@ shield_secret=$(openssl rand -hex 16)
   if [[ -e "/pg/var/shield/whitelist.emails" ]]; then
   whitelist_emails=$(cat /pg/var/shield/whitelist.emails | rev | cut -c2- | rev); fi
 
+container_reset
 # VARIABLES ####################################################################
 pgrole="shield"
 image="thomseddon/traefik-forward-auth"
@@ -37,7 +39,6 @@ container_permissions INSECURE_COOKIE True
 container_permissions LIFETIME 2592000
 container_permissions AUTH_HOST shield.${sdomain}
 container_permissions WHITELIST ${whitelist_emails}
-
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"

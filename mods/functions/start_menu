@@ -11,11 +11,13 @@ pgnumber=$(cat /pg/var/pg.number)
 
 common_main /pg/var/server.id NOT-SET serverid
 common_main /pg/var/drives/storage.method READ-ONLY storage_method
+common_fcreate_silent /pg/var/version
+common_main /pg/var/version/pg.build NULL build_number
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌎 EDITION: $storage_method | Version: PGX Alpha Build | ID: $serverid
+🌎 EDITION: $storage_method | Version: PGX Build $build_number | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌵 Used Space: $used of $capacity | $percentage Capacity | Daily Upload: ${tally_total} GB
 EOF
@@ -53,9 +55,9 @@ start_quotes
 
 tee <<-EOF
 $file_warning
-[1]  Traefik : Reverse Proxy   | [4]  Press: Word Press Deployment
-[2]  Drives  : Data Mounts     | [5]  Tools: Misc Products
-[3]  Apps    : Docker Programs | [6]  Cloud: Deploy GCE & Hetzner
+[1]  Traefik: Reverse Proxy   | [4]  Press: Word Press Deployment
+[2]  Drives : Data Mounts     | [5]  Cloud: Deploy GCE & Hetzner
+[3]  Apps   : Docker Programs | [6]  Tool : Traktarr
 [Z]  Exit
 $main_quote
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -69,7 +71,7 @@ case $typed in
     3 ) apps_menu && start_menu && exit ;;
     4 ) pgpress_menu && start_menu && exit ;;
     5 ) pgpress_menu && start_menu && exit ;;
-    6 ) pgpress_menu && start_menu && exit ;;
+    6 ) touch "/pg/tmp/traktarr.warning" && traktarr_setup && start_menu && exit ;;
     z ) start_end && exit ;;
     Z ) start_end && exit ;;
     * ) start_menu ;;

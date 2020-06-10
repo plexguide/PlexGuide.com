@@ -7,5 +7,6 @@
 ################################################################################
 drives_deploy_exempt () {
   echo "nzbget" > "$path_exempt_programs"/exempt.list
+  echo "sabnzbd" >> "$path_exempt_programs"/exempt.list
   echo "rutorrent" >> "$path_exempt_programs"/exempt.list
 }

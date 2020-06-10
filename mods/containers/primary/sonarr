@@ -5,7 +5,6 @@ sonarr () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="sonarr"
-image="linuxserver/sonarr:preview"
 port_inside01="8989"
 port_outside01="8989"
 traefik_extport="8989"
@@ -17,7 +16,12 @@ container_path /etc/localtime /etc/localtime:ro
 
 container_permissions PUID 1000
 container_permissions PGID 1000
-
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/sonarr preview
+linuxserver/sonarr nightly
+linuxserver/sonarr latest
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"

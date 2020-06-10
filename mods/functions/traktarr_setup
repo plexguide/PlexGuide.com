@@ -1,0 +1,179 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+traktarr_setup() {
+
+sonarr_year() {
+common_header "Set a Minimum Year for Sonarr to Seek!"
+common_number
+  if [[ "$typed" == "" || "$typed" -le "1899" || "$typed" -ge "2021" ]]; then sonarr_year; fi
+echo "$typed" > /pg/var/traktarr/sonarr.min.year
+}
+
+sonarr_time() {
+common_header "What is the Minimum Minutes REQUIRED for a TV Show? [0-60]"
+common_number
+  if [[ "$typed" == "" || "$typed" -le "-1" || "$typed" -ge "61" ]]; then sonarr_time; fi
+echo "$typed" > /pg/var/traktarr/sonarr.min.time
+}
+
+radarr_year() {
+common_header "Set a Minimum Year for Radarr to Seek!"
+common_number
+  if [[ "$typed" == "" || "$typed" -le "1899" || "$typed" -ge "2021" ]]; then radarr_year; fi
+echo "$typed" > /pg/var/traktarr/radarr.min.year
+}
+
+radarr_time() {
+common_header "What is the Minimum Minutes REQUIRED for a Movie? [0-60]"
+common_number
+  if [[ "$typed" == "" || "$typed" -le "-1" || "$typed" -ge "61" ]]; then radarr_time; fi
+echo "$typed" > /pg/var/traktarr/radarr.min.time
+}
+
+path_check() {
+common_message "🚀  Set a Valid Path" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
+
+Set a Valid Path! It should mirror $1's Paths! Type exactly starting with
+the / in path, as shown below! Setting the wrong path will overload $1
+with the incorrect paths!
+
+EXAMPLES:
+/pg/unity/tv     /pg/unity/movies
+/local/hd/tv     /local/hd/movies
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface"
+common_number
+touch $typed/pg.test
+if [[ "$typed" == "Z" ||  "$typed" == "z" ]]; then traktarr_setup && exit; fi
+if [[ -e "$typed/pg.test" ]]; then
+  if [[ "$1" == "Sonarr" ]]; then echo $typed > /pg/var/traktarr/sonarr.path; fi
+  if [[ "$1" == "Radarr" ]]; then echo $typed > /pg/var/traktarr/radarr.path; fi
+  rm -rf $typed/pg.test
+  common_header "💬 $typed is VALID for $1"
+  common_confirm
+else
+  common_header "⛔️ WARNING! Path is Invalid! Try Again!"
+  common_confirm
+  path_check $1
+fi
+}
+
+profile_check() {
+common_message "🚀  Set $1's Profile" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
+
+Set a Valid Profile! If using Custom, you must add it to $1's profiles
+(case sensitive) for it to work!
+
+[1] Any           [2] HD - 720p/1080p      [3] HD-1080p
+[4] HD-720p       [5] SD                   [6] Ultra-HD
+[7] Custom1       [8] Custom2              [7] Custom3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface"
+common_number
+
+if [[ "$1" == "Sonarr" ]]; then fgh="sonarr"; fi
+if [[ "$1" == "Radarr" ]]; then fgh="radarr"; fi
+
+case $typed in
+    1 ) echo "Any" > /pg/var/traktarr/$fgh.profile ;;
+    2 ) echo "HD - 720p/1080p" > /pg/var/traktarr/$fgh.profile ;;
+    3 ) echo "HD-1080p" > /pg/var/traktarr/$fgh.profile ;;
+    4 ) echo "HD-720p" > /pg/var/traktarr/$fgh.profile ;;
+    5 ) echo "SD" > /pg/var/traktarr/$fgh.profile ;;
+    6 ) echo "Ultra-HD" > /pg/var/traktarr/$fgh.profile ;;
+    7 ) echo "Custom1" > /pg/var/traktarr/$fgh.profile ;;
+    8 ) echo "Custom2" > /pg/var/traktarr/$fgh.profile ;;
+    9 ) echo "Custom3" > /pg/var/traktarr/$fgh.profile ;;
+    10 ) traktarr_setup && exit ;;
+    * ) profile_check ;;
+esac
+  traktarr_setup && exit
+}
+
+trakt_api() {
+common_message "📁 Trakt API-Key" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
+
+NOTE: In order for this to work, you must retrieve your API Key! Prior to
+continuing, please follow the current steps.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+* Visit - https://trakt.tv/oauth/applications
+* Click - New Applications
+* Name  - Any Name of Your Choice
+* Redirect UI - urn:ietf:wg:oauth:2.0:oob
+* Permissions - Click /checkin and /scrobble
+* Click - Save App
+* Copy the Client ID & Secret for the Next Steps!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Z] Exit Interface
+"
+
+read -p '↘️  Type API Client | Press [ENTER]: ' typed1 < /dev/tty
+if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi
+read -p '↘️  Type API Secret | Press [ENTER]: ' typed2 < /dev/tty
+if [[ "$typed1" == "Z" ||  "$typed1" == "z" ]]; then traktarr_setup && exit; fi
+
+echo $typed1 > /pg/var/traktarr/client.id
+echo $typed2 > /pg/var/traktarr/secret.id
+
+common_message "📁 Trakt API-Key" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
+
+The following information has been saved:
+
+Client: $typed1
+Secret: $typed2"
+common_confirm
+traktarr_setup && exit
+}
+
+traktarr_vars
+if [[ ! -e "/pg/var/token/plex.token" ]]; then touch /pg/var/token/plex.token; fi
+if [[ $(cat "/pg/var/token/plex.token") == "" ]]; then plex_token; fi
+
+if [[ $(cat /pg/var/traktarr/sonarr.path) == "" ]]; then sonarr_path="NOT SET"; else sonarr_path="SET    "; fi
+if [[ $(cat /pg/var/traktarr/radarr.path) == "" ]]; then radarr_path="NOT SET"; else radarr_path="SET    "; fi
+
+if [[ $(cat /pg/var/traktarr/secret.id) == "" || $(cat /pg/var/traktarr/client.id) == "" ]]; then
+  api_display="NOT SET"; else api_display="SET"; fi
+
+if [[ -e "/pg/tmp/traktarr.warning" ]]; then rm -rf "/pg/tmp/traktarr.warning";
+  if [[ "$radarr_api" == "" ]]; then common_header "⛔️ WARNING! Radarr Never Deployed! Movie Search will Fail!" && common_confirm
+  else warning_radarr=""; fi
+  if [[ "$sonarr_api" == "" ]]; then common_header "⛔️ WARNING! Sonarr Never Deployed! TV Search will Fail!" && common_confirm
+else warning_sonarr=""; fi; fi 
+
+common_message "🚀  Traktarr PG Interface" "💬 More Info? Visit ~ http://plexguide.com/wiki/traktarr
+
+[1] Trakt API Key - $api_display
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[2] Sonarr Path    - $sonarr_path    [3]  Sonarr Profile  - $sonarr_profile
+[5] Minimum Year   - $sonarr_year       [6]  Minimum RunTime - $sonarr_time
+[A] Extra Configs
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[7] Radarr Path    - $radarr_path    [8]  Radarr Profile  - $radarr_profile
+[9] Minimum Year   - $radarr_year      [10]  Minimum RunTime - $radarr_time
+[B] Extra Configs
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[D] Deploy Traktarr            [Z]  Exit Interface"
+common_number
+
+case $typed in
+    1 ) trakt_api && traktarr_setup && exit ;;
+    2 ) path_check Sonarr && traktarr_setup && exit ;;
+    7 ) path_check Radarr && traktarr_setup && exit ;;
+    5 ) sonarr_year && traktarr_setup && exit ;;
+    9 ) radarr_year && traktarr_setup && exit ;;
+    6 ) sonarr_time && traktarr_setup && exit ;;
+    10 ) radarr_time && traktarr_setup && exit ;;
+    3 ) profile_check Sonarr && traktarr_setup && exit ;;
+    8 ) profile_check Radarr && traktarr_setup && exit ;;
+    A ) common_header "Not Ready" && common_confirm && traktarr_setup ;;
+    a ) common_header "Not Ready" && common_confirm && traktarr_setup ;;
+    b ) common_header "Not Ready" && common_confirm && traktarr_setup ;;
+    B ) common_header "Not Ready" && common_confirm && traktarr_setup ;;
+    z ) start_menu && exit ;;
+    Z ) start_menu && exit ;;
+    d ) traktarr_execute && traktarr_setup && exit ;;
+    D ) traktarr_execute && traktarr_setup && exit ;;
+    * ) traktarr_setup && exit ;;
+esac
+}

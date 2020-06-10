@@ -287,7 +287,7 @@ if [ "$menu" == "5" ]; then
     echo ""
     echo "NOTE: More Processors = Faster Credit Drain"
     echo ""
-    read -p 'Type a Number 2, 4 or 6 | PRESS [ENTER]: ' typed
+    read -p 'Type a Number 2, 4 or 6 | Press [ENTER]: ' typed
     tcheck=$(echo $prange | grep $typed)
     echo ""
 
@@ -399,7 +399,7 @@ while [ "$break" == "off" ]; do
   echo "--------------------------------------------------------"
   cat /pg/tmp/regions.print
   echo "" && echo ""
-  read -p 'Type the Name of an IP Region | PRESS [ENTER]: ' typed
+  read -p 'Type the Name of an IP Region | Press [ENTER]: ' typed
   echo ""
   tcheck=$(echo $prange | grep $typed)
 
@@ -520,7 +520,7 @@ break=off
   cat /pg/tmp/zones.print
   echo ""
   echo ""
-  read -p 'Type a Server Zone Name | PRESS [ENTER]: ' typed
+  read -p 'Type a Server Zone Name | Press [ENTER]: ' typed
   echo ""
   tcheck=$(echo $prange | grep $typed)
   echo ""

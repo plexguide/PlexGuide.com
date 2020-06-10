@@ -5,7 +5,6 @@ nzbget () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="nzbget"
-image="linuxserver/nzbget"
 port_inside01="6789"
 port_outside01="6789"
 traefik_extport="6789"
@@ -22,7 +21,11 @@ container_path /etc/localtime /etc/localtime:ro
 container_permissions PUID 1000
 container_permissions PGID 1000
 container_permissions LC_ALL C
-
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/nzbget latest
+linuxserver/nzbget testing
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"

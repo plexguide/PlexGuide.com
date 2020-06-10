@@ -5,7 +5,6 @@ jellyfin () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="jellyfin"
-image="jellyfin/jellyfin"
 port_inside01="8096"
 port_outside01="9096"
 traefik_extport="9096"
@@ -18,7 +17,11 @@ container_path /etc/localtime /etc/localtime:ro
 container_permissions UID 1000
 container_permissions GID 1000
 container_permissions GIDLIST 1000
-
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/jellyfin latest
+linuxserver/jellyfin nightly
+EOF
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"

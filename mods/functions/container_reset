@@ -4,9 +4,11 @@ container_reset () {
 
   common_fcreate_silent /pg/data/$pgrole
   common_fcreate_silent /pg/apps
+  common_fcreate_silent /pg/images
 
   rm -rf /pg/tmp/container.path && touch /pg/tmp/container.path
   rm -rf /pg/tmp/container.oddball && touch /pg/tmp/container.oddball
   rm -rf /pg/tmp/container.permissions && touch /pg/tmp/container.permissions
 
+  rm -rf /pg/apps/$pgrole.images
 }

@@ -34,7 +34,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
     question1; fi
 }
 
@@ -49,7 +49,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
     question1; fi
 }
 
@@ -382,14 +382,14 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed < /dev/tty
+    read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
     exit; fi; fi
 }
 
 # BAD INPUT
 badinput () {
 echo
-read -p '⛔️ ERROR - BAD INPUT! | PRESS [ENTER] ' typed < /dev/tty
+read -p '⛔️ ERROR - BAD INPUT! | Press [ENTER] ' typed < /dev/tty
 question1
 }
 
@@ -405,7 +405,7 @@ tee <<-EOF
 2 - True
 
 EOF
-  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
+  read -p 'Type Number | Press [ENTER] ' typed < /dev/tty
     if [ "$typed" == "1" ]; then echo "False" > /pg/var/pgtrakt/video.transcodes && question1;
   elif [ "$typed" == "2" ]; then echo "True" > /pg/var/pgtrakt/video.transcodes && question1;
     else badinput; fi
@@ -422,7 +422,7 @@ tee <<-EOF
 Set a Number from 1 - 99
 
 EOF
-  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
+  read -p 'Type Number | Press [ENTER] ' typed < /dev/tty
     if [[ "$typed" -ge "1" && "$typed" -le "99" ]]; then echo "$typed" > /pg/var/pgtrakt/multiple.ips && question1;
     else badinput; fi
 }
@@ -438,7 +438,7 @@ tee <<-EOF
 Set a Number from 5 - 999 Mintues
 
 EOF
-  read -p 'Type Number | PRESS [ENTER] ' typed < /dev/tty
+  read -p 'Type Number | Press [ENTER] ' typed < /dev/tty
     if [[ "$typed" -ge "1" && "$typed" -le "999" ]]; then echo "$typed" > /pg/var/pgtrakt/kick.minutes && question1;
     else badinput; fi
 }

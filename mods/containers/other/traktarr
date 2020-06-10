@@ -1,0 +1,178 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+traktarr () {
+
+# VARIABLES ####################################################################
+pgrole="traktarr"
+
+common_fcreate_silent /pg/var/traktarr
+common_copy /pg/mods/traktarr/* /pg/var/traktarr
+
+traktarr_vars
+# API KEY EXTRACT FOR SONARR AND RADARR ########################################
+if [[ -e /pg/data/radarr/config.xml ]]; then
+cat /pg/data/radarr/config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/radarr.api;
+else echo "" > /pg/var/traktarr/radarr.api; fi
+radarr_api=$(cat /pg/var/traktarr/radarr.api)
+
+if [[ -e /pg/data/sonarr/config.xml ]]; then
+cat /pg/data/sonarr/config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/sonarr.api;
+else echo "" > /pg/var/traktarr/sonarr.api; fi
+sonarr_api=$(cat /pg/var/traktarr/sonarr.api)
+
+# YML EXPORT ###################################################################
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+    - name: Install pip requirements
+      pip:
+        requirements: /pg/var/traktarr/requirements.txt
+        executable: pip3
+
+    - name: Set as Executable
+      file:
+        path: /pg/var/traktarr/traktarr.py
+        owner: '1000'
+        group: '1000'
+        mode: a+x
+
+    - name: "Create SymLink"
+      file:
+        src: "/pg/var/traktarr/traktarr.py"
+        dest: "/bin/traktarr"
+        state: link
+
+####### ALIGN WITH THE A ############################## CORE ###################
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+EOF
+
+# JSON EXPORT ##################################################################
+cat <<- EOF > "/pg/var/traktarr/config.json"
+{
+  "core": {
+    "debug": false
+  },
+  "notifications": {
+    "verbose": false
+  },
+  "automatic": {
+    "movies": {
+      "anticipated": 3,
+      "boxoffice": 10,
+      "interval": 24,
+      "popular": 3,
+      "trending": 2
+    },
+    "shows": {
+      "anticipated": 10,
+      "interval": 48,
+      "popular": 1,
+      "trending": 2
+    }
+  },
+  "filters": {
+    "movies": {
+      "disabled_for": [],
+      "allowed_countries": [
+        "us",
+        "gb",
+        "ca"
+      ],
+      "allowed_languages": [
+        "en"
+      ],
+      "blacklisted_genres": [
+        "documentary",
+        "music",
+        "short",
+        "sporting-event",
+        "film-noir",
+        "fan-film"
+      ],
+      "blacklisted_min_runtime": ${radarr_time},
+      "blacklisted_max_runtime": 0,
+      "blacklisted_min_year": ${radarr_year},
+      "blacklisted_max_year": 2020,
+      "blacklisted_title_keywords": [
+        "untitled",
+        "barbie",
+        "ufc"
+      ],
+      "rotten_tomatoes": 80
+    },
+    "shows": {
+      "disabled_for": [],
+      "allowed_countries": [
+        "us",
+        "gb",
+        "ca"
+      ],
+      "allowed_languages": [],
+      "blacklisted_genres": [
+        "news",
+        "documentary",
+        "special-interest"
+      ],
+      "blacklisted_networks": [
+        "twitch",
+        "youtube",
+        "espn",
+        "fox sports",
+        "yahoo!"
+      ],
+      "blacklisted_min_runtime": ${sonarr_time},
+      "blacklisted_max_runtime": 0,
+      "blacklisted_min_year": ${sonarr_year},
+      "blacklisted_max_year": 2021,
+      "blacklisted_title_keywords": []
+    }
+  },
+  "radarr": {
+    "api_key": "${radarr_api}",
+    "quality": "${sonarr_profile}",
+    "minimum_availability": "released",
+    "url": "http://0.0.0.0:7878",
+    "root_folder": "${path_radarr}"
+  },
+  "sonarr": {
+    "api_key": "${sonarr_api}",
+    "language": "English",
+    "quality": "${sonarr_profile}",
+    "url": "http://0.0.0.0:8989",
+    "root_folder": "${path_sonarr}",
+    "tags": {}
+  },
+  "omdb": {
+    "api_key": ""
+  },
+  "trakt": {
+    "client_id": "${trakt_client_id}",
+    "client_secret": "${trakt_secret_id}"
+  }
+}
+EOF
+
+}
+
+traktarr_execute() {
+
+traktarr_vars
+ansible-playbook /pg/apps/traktarr.yml
+
+# After Actions ################################################################
+service_path="/etc/systemd/system/traktarr.service"
+
+if [[ -e "$service_path" ]]; then
+common_header "💾  NOTICE:  Stopping/Disabling OLD Traktarr Service"; sleep 1
+systemctl daemon-reload && systemctl stop traktarr && systemctl disable traktarr && rm -rf "$service_path"; fi
+
+cp -f /pg/var/traktarr/traktarr.service "$service_path"
+common_header "💾  NOTICE:  Enabling/Starting NEW Traktarr Service" && sleep 1
+systemctl daemon-reload && systemctl enable traktarr && systemctl restart traktarr
+
+common_header "💾  ENABLED: Traktarr Service"
+common_confirm
+}

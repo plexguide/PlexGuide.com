@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Docker cloud bug ?, working directory is not set acording to the config
+cd ..
+
+docker build --build-arg BRANCH=${SOURCE_BRANCH} --build-arg COMMIT=${SOURCE_COMMIT} -f ${DOCKERFILE_PATH} -t ${IMAGE_NAME} .

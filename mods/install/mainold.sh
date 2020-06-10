@@ -164,7 +164,7 @@ We are doing this to ensure that your installation continues to work!
 Please wait one moment, while PG now checks and set everything up for you!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-    read -p 'Confirm Info | PRESS [ENTER] ' typed </dev/tty
+    read -p 'Confirm Info | Press [ENTER] ' typed </dev/tty
     sudocheck && base && repo && packlist && editionpg && value && ending
 fi
 }

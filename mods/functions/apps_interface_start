@@ -6,5 +6,6 @@ common_fcreate_silent /pg/var/defaults
 
 common_main /pg/var/defaults/default.port OPEN default_port
 common_main /pg/var/defaults/default.shield ON default_shield
+common_main /pg/data/plex/plex.claim "" plex_token_status
 
 }
