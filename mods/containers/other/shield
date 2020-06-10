@@ -28,8 +28,6 @@ common_main /pg/var/traefik/t.domain NOT-SET sdomain
 common_main /pg/var/shield/web.client NOT-SET shield_wc
 common_main /pg/var/shield/web.secret NOT-SET shield_ws
 
-container_permissions PUID 1000
-container_permissions PGID 1000
 container_permissions CLIENT_ID $shield_wc
 container_permissions CLIENT_SECRET ${shield_ws}
 container_permissions SECRET ${shield_secret}
