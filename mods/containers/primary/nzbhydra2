@@ -4,7 +4,7 @@ nzbhydra2 () {
 
 container_reset
 # VARIABLES ####################################################################
-pgrole="netdata"
+pgrole="nzbhydra2"
 port_inside01="5076"
 port_outside01="5076"
 traefik_extport="5076"
