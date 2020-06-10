@@ -15,6 +15,7 @@ shield_secret=$(openssl rand -hex 16)
   if [[ -e "/pg/var/shield/whitelist.emails" ]]; then
   whitelist_emails=$(cat /pg/var/shield/whitelist.emails | rev | cut -c2- | rev); fi
 
+container_reset
 # VARIABLES ####################################################################
 pgrole="shield"
 image="thomseddon/traefik-forward-auth"
@@ -43,7 +44,7 @@ $container_header
 ### ALIGN WITH THE A ################################## START - EXTRAS #########
 
 ####### ALIGN WITH THE A ############################## CORE ###################
-        
+        $container_start
         published_ports:
           - '${portcheck_add}${port_outside01}:${port_inside01}'
         env:
