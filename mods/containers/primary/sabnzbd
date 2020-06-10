@@ -34,7 +34,7 @@ $container_header
     - name: 'Checking for existing app data'
       stat:
         path: '/pg/data/$pgrole/sabnzbd.ini'
-      register: confcheck
+      register: inicheck
 
 ####### ALIGN WITH THE A ############################## CORE ###################
         $container_start
