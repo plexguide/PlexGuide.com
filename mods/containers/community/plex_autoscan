@@ -17,7 +17,7 @@ container_path /etc/localtime /etc/localtime:ro
 container_permissions PUID 1000
 container_permissions PGID 1000
 
-container_docker_user
+#container_docker_user
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
 sabrsorensen/alpine-plex_autoscan
