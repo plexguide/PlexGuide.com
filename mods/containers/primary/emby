@@ -14,8 +14,8 @@ container_path /pg/unity /pg/unity
 container_path /pg/data/$pgrole /config
 container_path /etc/localtime /etc/localtime:ro
 
-container_permissions UID 1000
-container_permissions GID 1000
+container_permissions PUID 1000
+container_permissions PGID 1000
 container_permissions GIDLIST 1000
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
