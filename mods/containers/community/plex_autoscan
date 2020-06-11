@@ -73,7 +73,7 @@ cat <<- EOF > "/pg/var/plex_autoscan/config.json"
    "PLEX_LOCAL_URL": "http://plex:32400",
    "PLEX_SCANNER": "/usr/lib/plexmediaserver/Plex\\ Media\\ Scanner",
    "PLEX_SUPPORT_DIR": "/config/Library/Application\\ Support",
-   "PLEX_USER": "{$$plex_docker_user}",
+   "PLEX_USER": "{$plex_docker_user}",
    "PLEX_TOKEN": "{$pas_token}",,
    "PLEX_CHECK_BEFORE_SCAN": true,
    "PLEX_WAIT_FOR_EXTERNAL_SCANNERS": false,
