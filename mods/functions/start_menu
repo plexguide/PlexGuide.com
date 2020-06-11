@@ -13,14 +13,13 @@ common_main /pg/var/server.id NOT-SET serverid
 common_main /pg/var/drives/storage.method READ-ONLY storage_method
 common_fcreate_silent /pg/var/version
 common_main /pg/var/version/pg.build NULL build_number
-build_number=$(cat /pg/var/version/pg.build)
 
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌎 EDITION: $storage_method | Version: PGX Build $build_number | ID: $serverid
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌵 Used Space: $used of $capacity | $percentage Capacity | Daily Upload: ${tally_total} GB
+🌵 Used Space: $used of $capacity | $percentage Capacity | Total Uploaded: ${tally_total} GB
 EOF
 
   # Displays Second Drive If GCE
