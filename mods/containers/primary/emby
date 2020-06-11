@@ -11,7 +11,7 @@ traefik_extport="8096"
 
 container_path /pg /pg
 container_path /pg/unity /pg/unity
-container_path /pg/data/$pgrole /config/$pgrole
+container_path /pg/data/$pgrole/config /config/$pgrole
 container_path /etc/localtime /etc/localtime:ro
 
 container_permissions UID 1000
