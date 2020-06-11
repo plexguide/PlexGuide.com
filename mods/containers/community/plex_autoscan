@@ -1,6 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-plex_auto_scan () {
+plex_autoscan () {
 
 container_reset
 # VARIABLES ####################################################################

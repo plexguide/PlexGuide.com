@@ -1,6 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-plex_autoscan () {
+plex_autoscan_trash () {
 
 # VARIABLES ####################################################################
 pgrole="plex_autoscan"
