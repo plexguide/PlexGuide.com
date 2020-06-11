@@ -28,7 +28,7 @@ mrdoob/pascan deverlop
 EOF
 
 # JSON EXPORT ##################################################################
-cat <<- EOF > "/pg/data/$pgrole/config/config.json"
+cat <<- EOF > "/pg/data/$pgrole/config.json"
 {
    "DOCKER_NAME":"plex",
    "GOOGLE": {
