@@ -22,6 +22,7 @@ container_permissions PGID 1000
 #container_docker_user
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
+pguide/pas latest
 sabrsorensen/alpine-plex_autoscan latest
 mrdoob/pascan latest
 mrdoob/pascan deverlop
