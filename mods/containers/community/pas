@@ -1,6 +1,29 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-plex_autoscan () {
+pas () {
+
+container_reset
+# VARIABLES ####################################################################
+pgrole="plex_autoscan "
+port_inside01="3468"
+port_outside01="3468"
+traefik_extport="3468"
+
+container_path /pg /pg
+container_path /pg/unity /pg/unity
+container_path /pg/data/$pgrole /config
+container_path /etc/localtime /etc/localtime:ro
+
+container_permissions PUID 1000
+container_permissions PGID 1000
+
+#container_docker_user
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+sabrsorensen/alpine-plex_autoscan
+mrdoob/pascan:latest
+mrdoob/pascan:deverlop
+EOF
 
 # JSON EXPORT ##################################################################
 cat <<- EOF > "/pg/var/plex_autoscan/config.json"
