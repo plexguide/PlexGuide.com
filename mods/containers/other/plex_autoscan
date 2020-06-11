@@ -137,7 +137,7 @@ $container_header
         env:
           $container_permissions
         labels:
-        $container_traefik
+        #$container_traefik
         $container_oddball
         $container_ending
 
