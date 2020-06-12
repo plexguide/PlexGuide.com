@@ -13,6 +13,10 @@ app_display=$(cat /pg/tmp/wrap.list)
 fmt -w 79 "/pg/tmp/appstoinstall.list" > "/pg/tmp/appstoinstall.wrap"
 apps_to_install=$(cat /pg/tmp/appstoinstall.wrap)
 
+if [[ "$apps_to_install" == "" ]]; then
+common_header "'⛔️ WARNING! No Apps in this section! - https://plexguide.com/wiki/no-apps"
+apps_menu && exit; fi
+
 # sets message
 if [[ "$sapp" == "primary" ]]; then
 smessage="💬  Visit ~ https://plexguide.com/wiki/apps-primary"
