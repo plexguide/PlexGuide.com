@@ -39,7 +39,7 @@ if [[ -e /pg/var/traefik/t.domain ]]; then
     if [[ "$info_port" != "" ]]; then access="1"
   echo "Domain & Port - yourdomain.com:$info_port"; fi; fi; fi
 
-if [[ "$access"="0" ]]; then
+if [[ "$access" == "0" ]]; then
   echo "⛔️ WARNING! Your Settings Prevent App Access! Please Review & Fix"; fi
 
 rm -rf "/pg/data/$app/apply.settings"
