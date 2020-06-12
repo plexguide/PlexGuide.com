@@ -16,6 +16,7 @@ common_main /pg/var/drives/gd/gd.secret "" pas_secret
 
 common_fcreate_silent /pg/data/$pgrole/config/
 
+container_path /pg /pg
 container_path /pg/unity /data
 container_path /pg/data/$pgrole /config
 container_path /etc/localtime /etc/localtime:ro
