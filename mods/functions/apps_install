@@ -8,6 +8,11 @@ bash /pg/mods/functions/.primary_apps.sh
 container_rebuild $app
 ansible-playbook "/pg/apps/$app.yml"
 
+if [[ -e /pg/var/apps_info/$app/port.outside01 ]]; then
+  info_port=$(cat /pg/var/apps_info/$app/port.outside01)
+  if [[ "$info_port" != "" ]]; then
+  echo "Port Access - IP:$info_port"; fi 
+
 rm -rf "/pg/data/$app/apply.settings"
 echo ""
 read -p "↘️  Installed $app | Press [ENTER]" typed < /dev/tty

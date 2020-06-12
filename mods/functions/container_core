@@ -6,12 +6,15 @@ domain="test.com"
 
 common_fcreate_silent /pg/data/$pgrole
 common_fcreate_silent /pg/var/apps
+common_fcreate_silent /pg/var/apps_info/$app
+
+if [[ "$port_outside01" != "" ]]; then echo "$port_outside01" > /pg/var/apps_info/$app/port.outside01; fi 
 
 container_paths=$(cat "/pg/tmp/container.path")
 container_permissions=$(cat "/pg/tmp/container.permissions")
 
 # DO NOT CHANGE - AFFECTS CLOSING & OPENING PORTS ##############################
-if [[ -e "/pg/data/$pgrole/image.set" ]]; then image=$(cat /pg/data/$pgrole/image.set); fi 
+if [[ -e "/pg/data/$pgrole/image.set" ]]; then image=$(cat /pg/data/$pgrole/image.set); fi
 common_main /pg/data/$pgrole/port.info "" portcheck_add
 
 container_header
