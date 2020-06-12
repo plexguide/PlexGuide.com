@@ -36,7 +36,7 @@ EOF
 # JSON EXPORT ##################################################################
 cat <<- EOF > "/pg/data/$pgrole/config.json"
 {
-   "DOCKER_NAME":"plex",
+   "DOCKER_NAME": "plex",
    "GOOGLE": {
      "ENABLED": false,
      "CLIENT_ID": "${pas_client}",
@@ -116,8 +116,13 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
    "SERVER_PASS": "f59eea22dfb5b9d6745a1b9905344504",
    "SERVER_PATH_MAPPINGS":{
      "/pg/unity/": [
-       "/home/user/media/fused/"
-     ]
+         "/pg/unity/tv/",
+         "My Drive/tv/"
+     ],
+     "/pg/unity/": [
+         "/pg/unity/movies/",
+         "My Drive/movies/"
+     ],
    },
    "SERVER_PORT": 3468,
    "SERVER_SCAN_DELAY": 15,
@@ -130,6 +135,10 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
 }
 
 EOF
+
+
+
+
 
 # YML EXPORT ###################################################################
 container_core
