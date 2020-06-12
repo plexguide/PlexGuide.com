@@ -136,10 +136,6 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
 
 EOF
 
-
-
-
-
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"
