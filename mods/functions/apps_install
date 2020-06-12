@@ -15,6 +15,8 @@ info_port_setting=""
 info_port=""
 access="0"
 
+echo "ALPHA BITE ME" > /pg/doesntexist/9029e09wr09wej/adjfkl
+
 # Checking Port to See if OPEN or CLOSED if it exists ##########################
 if [[ -e /pg/var/apps_info/$app/port.setting ]]; then
   info_port_setting=$(cat /pg/data/$app/port.setting); fi
