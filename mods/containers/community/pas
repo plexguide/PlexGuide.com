@@ -16,10 +16,12 @@ common_main /pg/var/drives/gd/gd.secret "" pas_secret
 
 common_fcreate_silent /pg/data/$pgrole/config/
 
-container_path /pg /pg
-container_path /pg/unity /pg/unity
+container_path /pg/unity /data
 container_path /pg/data/$pgrole /config
 container_path /etc/localtime /etc/localtime:ro
+container_path /pgdata/plex/database/Library/Application Support/Plex Media Server/Plug-in Support/Databases /plexDb
+container_path /usr/bin /programs
+container_path /var/run/docker.sock /var/run/docker.sock
 
 container_permissions PUID 1000
 container_permissions PGID 1000
