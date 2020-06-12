@@ -4,6 +4,12 @@ apps_interface_sub() {
 
 apps_interface_start
 
+if [[ ! -e "/pg/data/$app/port.setting" ]]; then
+cat /pg/var/defaults/default.port > /pg/data/$app/port.setting; fi
+
+if [[ ! -e "/pg/data/$app/shield.setting" ]]; then
+cat /pg/var/defaults/default.shield > /pg/data/$app/shield.setting; fi
+
 common_fcreate_silent "/pg/data/$app"
 app_status=$(docker ps | grep "\<$app\>")
 
