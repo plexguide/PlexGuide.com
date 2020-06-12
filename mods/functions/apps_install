@@ -48,5 +48,7 @@ read -p "↘️  Installed $app | Press [ENTER]" typed < /dev/tty
 
 # Generates a CMD in hte /bin/ to execute faster ###############################
 apps_command
+chown -R 1000:1000 "/pg/pg-$app"
+chmod -R 0755 "/pg/pg-$app"
 
 }
