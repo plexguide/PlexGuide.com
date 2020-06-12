@@ -8,10 +8,12 @@ bash /pg/mods/functions/.primary_apps.sh
 container_rebuild $app
 ansible-playbook "/pg/apps/$app.yml"
 
+container_header "💬 Access Information - https://plexguide.com/wiki/access"
+
 if [[ -e /pg/var/apps_info/$app/port.outside01 ]]; then
   info_port=$(cat /pg/var/apps_info/$app/port.outside01)
   if [[ "$info_port" != "" ]]; then
-  echo "Port Access - IP:$info_port"; fi; fi 
+  echo "Port Access - IP:$info_port"; fi; fi
 
 rm -rf "/pg/data/$app/apply.settings"
 echo ""
