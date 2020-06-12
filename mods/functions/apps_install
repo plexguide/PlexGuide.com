@@ -19,7 +19,7 @@ access="0"
 if [[ -e /pg/var/apps_info/$app/port.setting ]]; then
   info_port_setting=$(cat /pg/data/$app/port.setting); fi
 
-if [[ -e /pg/var/apps_info/$app/port.outside01 && $info_port_setting="OPEN" ]]; then
+if [[ -e /pg/var/apps_info/$app/port.outside01 && $info_port_setting == "OPEN" ]]; then
   info_port=$(cat /pg/var/apps_info/$app/port.outside01)
   if [[ "$info_port" != "" ]]; then
   access="1"
