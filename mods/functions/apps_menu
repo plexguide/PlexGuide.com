@@ -8,6 +8,7 @@ common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ http:/
 
 [1] Primary
 [2] Community
+[3] Personal
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [D] Default Settings
 [S] Shield Setup
@@ -19,6 +20,7 @@ rm -rf /pg/tmp/appstoinstall.list && touch /pg/tmp/appstoinstall.list
 case $typed in
     1 ) sapp="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     2 ) sapp="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    3 ) sapp="personal" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     d ) apps_default_interface ;;
     D ) apps_default_interface ;;
     s ) shield_setup ;;
