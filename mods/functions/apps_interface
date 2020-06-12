@@ -16,7 +16,9 @@ apps_to_install=$(cat /pg/tmp/appstoinstall.wrap)
 if [[ "$sapp" == "primary" ]]; then
 smessage="💬  Visit ~ https://plexguide.com/wiki/apps-primary"
 elif [[ "$sapp" == "community" ]]; then
-smessage="💬  Visit ~ https://plexguide.com/wiki/apps-community"; fi
+smessage="💬  Visit ~ https://plexguide.com/wiki/apps-community"
+elif [[ "$sapp" == "community" ]]; then
+smessage="💬  Visit ~ https://plexguide.com/wiki/apps-personal"; fi
 
 # sets up the primary interface
 common_message "🚀 App Interface | 📂 App Type ~ $sapp | PGX Edition" "$smessage
