@@ -4,6 +4,7 @@ apps_interface() {
 
 apps_interface_start
 
+touch /pg/tmp/appstoinstall.list /pg/tmp/list.tmp
 installqueuecheck=$(cat /pg/tmp/appstoinstall.list)
 if [ ! -z "$installqueuecheck" ]; then installinfo="| [A] To Install Apps(s)"; else installinfo=""; fi
 
