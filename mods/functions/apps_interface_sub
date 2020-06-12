@@ -68,8 +68,10 @@ $app_warning
 [Z] Quit & Exit Interface $installinfo"
 common_number
 
-if [[ "$typed" == "Z" || "$typed" == "z" ]] && [[ "$express" == "ON" ]]; then exit; fi 
+# Used when User Deploys App in Express Mode ###################################
+if [[ "$typed" == "Z" || "$typed" == "z" ]] && [[ "$express" == "ON" ]]; then start_end && exit; fi
 
+# Standard Deployment (Non-Express) ############################################
 case $typed in
     A ) apps_install && apps_interface_sub && exit ;;
     a ) apps_install && apps_interface_sub && exit ;;
