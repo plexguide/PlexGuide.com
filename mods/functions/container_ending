@@ -21,6 +21,7 @@ cat <<- EOF > "/bin/pg-$pgrole"
 
 source /pg/mods/functions/.master.sh
 app=$pgrole
+sapp="EXPRESS"
 
 apps_interface_start
 apps_interface_sub
