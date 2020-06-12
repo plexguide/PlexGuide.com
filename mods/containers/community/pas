@@ -1,6 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-plex_autoscan () {
+pas () {
 
 container_reset
 # VARIABLES ####################################################################
@@ -8,6 +8,11 @@ pgrole="plex_autoscan"
 port_inside01="3468"
 port_outside01="3468"
 traefik_extport="3468"
+
+common_main /pg/var/drives/gd/plex.docker.user "" pas_user
+common_main /pg/var/token/plex.token "" pas_plextoken
+common_main /pg/var/drives/gd/gd.clientid "" pas_client
+common_main /pg/var/drives/gd/gd.secret "" pas_secret
 
 common_fcreate_silent /pg/data/$pgrole/config/
 
@@ -34,8 +39,8 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
    "DOCKER_NAME":"plex",
    "GOOGLE": {
      "ENABLED": false,
-     "CLIENT_ID": "${pas_client_id}",
-     "CLIENT_SECRET": "${pas_client_secret}",,
+     "CLIENT_ID": "${pas_client}",
+     "CLIENT_SECRET": "${pas_secret}",,
      "ALLOWED": {
        "FILE_PATHS": [
          "My Drive/Media/Movies/",
@@ -76,8 +81,8 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
    "PLEX_LOCAL_URL": "http://plex:32400",
    "PLEX_SCANNER": "/usr/lib/plexmediaserver/Plex\\ Media\\ Scanner",
    "PLEX_SUPPORT_DIR": "/config/Library/Application\\ Support",
-   "PLEX_USER": "{$plex_docker_user}",
-   "PLEX_TOKEN": "{$pas_token}",,
+   "PLEX_USER": "{$pas_user}",
+   "PLEX_TOKEN": "{$pas_plextoken}",,
    "PLEX_CHECK_BEFORE_SCAN": true,
    "PLEX_WAIT_FOR_EXTERNAL_SCANNERS": false,
    "RCLONE": {
