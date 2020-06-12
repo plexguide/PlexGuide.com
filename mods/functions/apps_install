@@ -8,7 +8,7 @@ bash /pg/mods/functions/.primary_apps.sh
 container_rebuild $app
 ansible-playbook "/pg/apps/$app.yml"
 
-container_header "💬 Access Information - https://plexguide.com/wiki/access"
+common_header "💬 Access Information - https://plexguide.com/wiki/access"
 
 if [[ -e /pg/var/apps_info/$app/port.outside01 ]]; then
   info_port=$(cat /pg/var/apps_info/$app/port.outside01)
