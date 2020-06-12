@@ -49,7 +49,4 @@ else echo ""; fi
 rm -rf "/pg/data/$app/apply.settings"
 read -p "↘️  Installed $app | Press [ENTER]" typed < /dev/tty
 
-# Generates a CMD in hte /bin/ to execute faster ###############################
-apps_command
-
 }
