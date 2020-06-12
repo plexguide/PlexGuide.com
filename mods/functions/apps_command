@@ -9,7 +9,7 @@ cat <<- EOF > "/bin/pg-$app"
 
 source /pg/mods/functions/.master.sh
 app=$app
-apps_interface
+apps_interface_sub 
 
 EOF
 }
