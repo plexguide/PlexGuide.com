@@ -43,7 +43,7 @@ if [[ "$access" == "0" ]]; then
   echo "⛔️ WARNING! Your Settings Prevent App Access! Please Review & Fix"; fi
 
 if [[ "$express" != "ON" ]]; then
-  common_header "💬 NOTE - To deploy $app faster, type pg-$app via CMD Line ";
+  common_header "💬 NOTE - To Deploy [$app] Faster, Type via CMD Line >>> pg-$app";
 else echo ""; fi
 
 rm -rf "/pg/data/$app/apply.settings"
