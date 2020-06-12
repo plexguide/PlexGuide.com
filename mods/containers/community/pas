@@ -1,10 +1,10 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-plex_autoscan () {
+pas () {
 
 container_reset
 # VARIABLES ####################################################################
-pgrole="plex_autoscan"
+pgrole="pas"
 port_inside01="3468"
 port_outside01="3468"
 traefik_extport="3468"
@@ -114,7 +114,7 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
       "Thumbs.db"
    ],
    "SERVER_IP": "0.0.0.0",
-   "SERVER_PASS": "${pas_server_pass}",
+   "SERVER_PASS": "http://pas:3468/f59eea22dfb5b9d6745a1b9905344504",
    "SERVER_PATH_MAPPINGS":{
      "/pg/unity/": [
        "/home/user/media/fused/"
