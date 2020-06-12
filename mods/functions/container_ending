@@ -10,4 +10,15 @@ container_ending="volumes:
           - name: plexguide
             aliases:
               - '$pgrole'"
+
+# CMD EXPORT ###################################################################
+cat <<- EOF > "/bin/pg-$pgrole"
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+
+source /pg/mods/functions/.master.sh
+app=$pgrole
+apps_interface_sub
+
+EOF
 }
