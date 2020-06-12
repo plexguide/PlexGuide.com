@@ -36,7 +36,7 @@ if [[ -e /pg/var/traefik/traefik.deploy ]]; then
 if [[ -e /pg/var/traefik/t.domain ]]; then
   info_domain=$(cat /pg/var/traefik/t.domain)
   if [[ "$info_domain" != "" || "$info_domain" != "NOT-SET" ]]; then
-    if [[ "$info_port" != "" ]]; then access="1"
+    if [[ "$info_port_setting" != "CLOSED" ]]; then access="1"
   echo "Domain & Port - yourdomain.com:$info_port"; fi; fi; fi
 
 if [[ "$access" == "0" ]]; then
