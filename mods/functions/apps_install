@@ -13,14 +13,14 @@ common_header "💬 Access Information - https://plexguide.com/wiki/access"
 if [[ -e /pg/var/apps_info/$app/port.outside01 ]]; then
   info_port=$(cat /pg/var/apps_info/$app/port.outside01)
   if [[ "$info_port" != "" ]]; then
-  echo "Port Access - IP:$info_port"; fi; fi
+  echo "Port Access -   IP:$info_port"; fi; fi
 
 if [[ -e /pg/var/traefik/traefik.deploy ]]; then
   if [[ $(cat /pg/var/traefik/traefik.deploy) == "Deployed" ]]; then
     if [[ -e /pg/data/$app/cname.traefik ]]; then
       if [[ $(cat /pg/data/$app/cname.traefik) != "" ]]; then
       info_cname=$(cat /pg/data/$app/cname.traefik)
-  echo "Domain Access   : $info_cname"; fi; fi; fi; fi
+  echo "Domain Access - $info_cname"; fi; fi; fi; fi
 
 rm -rf "/pg/data/$app/apply.settings"
 echo ""
