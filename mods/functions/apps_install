@@ -17,7 +17,7 @@ access="0"
 
 # Checking Port to See if OPEN or CLOSED if it exists ##########################
 if [[ -e /pg/var/apps_info/$app/port.setting ]]; then
-  info_port_setting=$(cat /pg/var/apps/$app/port.setting); fi
+  info_port_setting=$(cat /pg/data/$app/port.setting); fi
 
 if [[ -e /pg/var/apps_info/$app/port.outside01 && $info_port_setting="OPEN" ]]; then
   info_port=$(cat /pg/var/apps_info/$app/port.outside01)
