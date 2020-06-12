@@ -42,11 +42,9 @@ if [[ -e /pg/var/traefik/t.domain ]]; then
 if [[ "$access" == "0" ]]; then
   echo "⛔️ WARNING! Your Settings Prevent App Access! Please Review & Fix"; fi
 
-echo ""
-
 if [[ "$express" != "ON" ]]; then
-  echo ""
-  echo "💬 NOTE - To deploy $app faster, type pg-$app via CMD Line "; fi
+  common_header "💬 NOTE - To deploy $app faster, type pg-$app via CMD Line ";
+else echo ""; fi
 
 rm -rf "/pg/data/$app/apply.settings"
 read -p "↘️  Installed $app | Press [ENTER]" typed < /dev/tty
