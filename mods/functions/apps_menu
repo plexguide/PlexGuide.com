@@ -17,6 +17,7 @@ common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ http:/
 common_number
 
 rm -rf /pg/tmp/appstoinstall.list && touch /pg/tmp/appstoinstall.list
+touch /pg/tmp/list.tmp
 case $typed in
     1 ) sapp="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     2 ) sapp="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
