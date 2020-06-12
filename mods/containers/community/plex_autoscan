@@ -82,7 +82,7 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
    "PLEX_SCANNER": "/usr/lib/plexmediaserver/Plex\\ Media\\ Scanner",
    "PLEX_SUPPORT_DIR": "/config/Library/Application\\ Support",
    "PLEX_USER": "{$pas_user}",
-   "PLEX_TOKEN": "{$pas_plextoken}",,
+   "PLEX_TOKEN": "{$pas_plextoken}",
    "PLEX_CHECK_BEFORE_SCAN": true,
    "PLEX_WAIT_FOR_EXTERNAL_SCANNERS": false,
    "RCLONE": {
