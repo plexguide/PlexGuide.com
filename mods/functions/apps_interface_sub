@@ -68,6 +68,8 @@ $app_warning
 [Z] Quit & Exit Interface $installinfo"
 common_number
 
+if [[ "$typed" == "Z" || "$typed" == "z" ]] && [[ "$express" == "ON" ]]; then exit; fi 
+
 case $typed in
     A ) apps_install && apps_interface_sub && exit ;;
     a ) apps_install && apps_interface_sub && exit ;;
