@@ -8,7 +8,8 @@ cat <<- EOF > "/bin/pg-$app"
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 
 source /pg/mods/functions/.master.sh
-$app
+app=$app
+apps_interface
 
 EOF
 }
