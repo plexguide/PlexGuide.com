@@ -40,7 +40,7 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
    "GOOGLE": {
      "ENABLED": false,
      "CLIENT_ID": "${pas_client}",
-     "CLIENT_SECRET": "${pas_secret}",,
+     "CLIENT_SECRET": "${pas_secret}",
      "ALLOWED": {
        "FILE_PATHS": [
          "pg/gd/tv",
