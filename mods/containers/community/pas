@@ -43,9 +43,8 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
      "CLIENT_SECRET": "${pas_secret}",,
      "ALLOWED": {
        "FILE_PATHS": [
-         "My Drive/Media/Movies/",
-         "My Drive/Media/TV/",
-         "My Drive/Media/Music/"
+         "pg/gd/tv",
+         "pg/gd/movies"
        ],
        "FILE_EXTENSIONS": true,
        "FILE_EXTENSIONS_LIST": [
@@ -114,7 +113,7 @@ cat <<- EOF > "/pg/data/$pgrole/config.json"
       "Thumbs.db"
    ],
    "SERVER_IP": "0.0.0.0",
-   "SERVER_PASS": "http://pas:3468/f59eea22dfb5b9d6745a1b9905344504",
+   "SERVER_PASS": "f59eea22dfb5b9d6745a1b9905344504",
    "SERVER_PATH_MAPPINGS":{
      "/pg/unity/": [
        "/home/user/media/fused/"
