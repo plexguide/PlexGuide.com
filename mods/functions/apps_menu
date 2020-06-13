@@ -51,7 +51,7 @@ esac
 
 echo $abc > /pg/var/repos/repo.personal1
 
-common_header "💬 $typed/personal is now set as the personal repo!"
+common_header "💬 $abc/personal is now set as the personal repo!"
 common_confirm
 
 apps_menu && exit
