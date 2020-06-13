@@ -20,7 +20,7 @@ common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/
 common_number
 
 case $typed in
-    1 ) apps_repos_change personal && apps_menu && exit ;;
+    1 ) apps_repos_change && apps_menu && exit ;;
     z ) apps_menu && exit ;;
     Z ) apps_menu && exit ;;
     * ) apps_repos && exit ;;
@@ -30,8 +30,8 @@ esac
 
 apps_repos_change () {
 
-repo1=$(cat /pg/var/repos/repo.${1}1)
-repo2=$(cat /pg/var/repos/repo.${1}2)
+repo1=$(cat /pg/var/repos/repo.personal1)
+repo2=$(cat /pg/var/repos/repo.personal2)
 
 common_message "🚀  Change Default App Repos" "💬 Current Repo: $repo1/$repo2
 
