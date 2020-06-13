@@ -35,8 +35,8 @@ repo2=$(cat /pg/var/repos/repo.personal2)
 
 common_message "🚀  Change Default App Repos" "💬 Current Repo: $repo1/$repo2
 
-Change the Following Repo? [y/n]
-"
+Change the Following Repo? [y/n]"
+common_number
 case $typed in
     y ) apps_menu && exit ;;
     Y ) apps_menu && exit ;;
