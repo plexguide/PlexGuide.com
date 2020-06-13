@@ -12,5 +12,6 @@ common_main /pg/data/plex/plex.claim "" plex_token_status
 
 common_main /pg/var/repos/repo.personal1 plexguide personal1
 common_main /pg/var/repos/repo.personal2 personal personal2
+common_main /pg/var/repos/repo.personal3 v1 personal3
 
 }

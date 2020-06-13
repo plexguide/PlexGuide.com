@@ -8,7 +8,7 @@ repos_part1 () {
 apps_interface_start
 common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
 
-[1] Personal - $personal1/$personal2 (B: $branch)
+[1] Personal - $personal1/$personal2 (B: $personal3)
 [Z] Exit"
 
 common_number
@@ -26,6 +26,7 @@ repos_part2 () {
 
 repo1=$(cat /pg/var/repos/repo.personal1)
 repo2=$(cat /pg/var/repos/repo.personal2)
+repo3=$(cat /pg/var/repos/repo.personal3)
 
 common_message "🚀  Change Default App Repos" "💬 Current Repo: $repo1/$repo2
 
