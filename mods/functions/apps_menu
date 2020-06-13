@@ -16,17 +16,34 @@ common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/
 
 [1] Personal - $personal1/$personal2
 [Z] Exit"
-EOF
+
+common_number
 
 case $typed in
-    1 ) apps_repos_change personal && exit ;;
+    1 ) apps_repos_change personal && apps_menu && exit ;;
     z ) apps_menu && exit ;;
     Z ) apps_menu && exit ;;
     * ) apps_repos && exit ;;
 esac
+
 }
 
-apps_repos_change {
+apps_repos_change () {
+
+repo1=$(cat /pg/var/repos/repo.${1}1)
+repo2=$(cat /pg/var/repos/repo.${1}2)
+
+common_message "🚀  Change Default App Repos" "💬 Current Repo: $repo1/$repo2
+
+Change the Following Repo? [y/n]
+"
+case $typed in
+    y ) apps_menu && exit ;;
+    Y ) apps_menu && exit ;;
+    n ) apps_menu && exit ;;
+    N ) apps_menu && exit ;;
+    * ) apps_repos_change && exit ;;
+esac
 
 }
 
@@ -41,6 +58,7 @@ common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexgu
 [S] Shield Setup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
+
 common_number
 
 rm -rf /pg/tmp/appstoinstall.list && touch /pg/tmp/appstoinstall.list
