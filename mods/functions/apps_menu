@@ -11,6 +11,37 @@ personal_blank () {
   apps_menu && exit; fi
 }
 
+apps_repos_git () {
+common_message "🚀  Repo Information" "TIP: Fork the personal repo via github.com/plexguide/$repo2.
+
+What is your GITHUB username?"
+common_number
+apps_repos_set
+
+abc=$typed
+common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abc/personal
+
+[Y/N] or [Z] Exit"
+
+common_number
+case $typed in
+    y ) a=a ;;
+    Y ) a=a ;;
+    n ) apps_repos_git && exit ;;
+    N ) apps_repos_git && exit ;;
+    z ) apps_menu && exit ;;
+    Z ) apps_menu && exit ;;
+    * ) apps_repos_git && exit ;;
+esac
+
+echo $abc > /pg/var/repos/repo.personal1
+
+common_header "💬 $abc/personal is now set as the personal repo!"
+common_confirm
+
+apps_repos && exit
+}
+
 app_repos () {
 common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
 
@@ -49,39 +80,6 @@ case $typed in
     * ) apps_repos_change && exit ;;
 esac
 }
-
-apps_repos_git () {
-common_message "🚀  Repo Information" "TIP: Fork the personal repo via github.com/plexguide/$repo2.
-
-What is your GITHUB username?"
-common_number
-apps_repos_set
-
-abc=$typed
-common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abc/personal
-
-[Y/N] or [Z] Exit"
-
-common_number
-case $typed in
-    y ) a=a ;;
-    Y ) a=a ;;
-    n ) apps_repos_git && exit ;;
-    N ) apps_repos_git && exit ;;
-    z ) apps_menu && exit ;;
-    Z ) apps_menu && exit ;;
-    * ) apps_repos_git && exit ;;
-esac
-
-echo $abc > /pg/var/repos/repo.personal1
-
-common_header "💬 $abc/personal is now set as the personal repo!"
-common_confirm
-
-apps_repos && exit
-}
-
-
 
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
 
