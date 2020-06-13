@@ -54,7 +54,7 @@ echo $abc > /pg/var/repos/repo.personal1
 common_header "💬 $abc/personal is now set as the personal repo!"
 common_confirm
 
-apps_menu && exit
+apps_repos && exit
 }
 
 apps_repos_change () {
