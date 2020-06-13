@@ -67,8 +67,8 @@ common_number
 case $typed in
     y ) apps_repos_set && exit ;;
     Y ) apps_repos_set && exit ;;
-    n ) apps_menu && exit ;;
-    N ) apps_menu && exit ;;
+    n ) apps_repos_change && exit ;;
+    N ) apps_repos_change && exit ;;
     * ) apps_repos_change && exit ;;
 esac
 }
