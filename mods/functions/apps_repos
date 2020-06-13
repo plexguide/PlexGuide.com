@@ -102,6 +102,9 @@ common_message "🚀  Repo Information" "TIP: Find your branch via github.com/$r
 
 What is the Branch Version?"
 common_number
+
+If [[ "$typed" == "" ]]; then repos_part6; fi 
+
 repos_part7
 }
 
@@ -125,7 +128,7 @@ esac
 
 echo $abcd > /pg/var/repos/repo.personal3
 
-common_header "💬 $repo3 is the branch for $repo1/$repo2"
+common_header "💬 $abcd is the branch for $repo1/$repo2"
 common_confirm
 
 repos_part1
