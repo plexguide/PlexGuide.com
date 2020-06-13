@@ -1,6 +1,8 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_repos() {
+a=a
+}
 
 repos_part1 () {
 common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
@@ -73,5 +75,4 @@ common_confirm
 
 repos_part1
 exit
-}
 }
