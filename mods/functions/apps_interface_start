@@ -4,9 +4,13 @@ apps_interface_start() {
 
 common_fcreate_silent /pg/var/defaults
 common_fcreate_silent /pg/data/$app
+common_fcreate_silent /pg/var/repos
 
 common_main /pg/var/defaults/default.port OPEN default_port
 common_main /pg/var/defaults/default.shield ON default_shield
 common_main /pg/data/plex/plex.claim "" plex_token_status
+
+common_main /pg/var/repos/repo.personal1 plexguide personal1
+common_main /pg/var/repos/repo.personal2 personal personal2
 
 }

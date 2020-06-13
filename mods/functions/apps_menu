@@ -2,6 +2,8 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 apps_menu() {
 
+apps_interface_start
+
 personal_blank () {
   if [[ $(ls /pg/mods/containers/personal) == "" ]]; then
   common_header "⛔️ WARNING! No Personnal Apps Detected! - plexguide.com/wiki/no-apps"
@@ -12,19 +14,21 @@ personal_blank () {
 app_repos () {
 common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
 
-[1] Personal - plexguide/personal
+[1] Personal - $personal1/$personal2
 [Z] Exit"
 EOF
 
 case $typed in
-    1 ) apps_menu && exit ;;
+    1 ) apps_repos_change personal && exit ;;
     z ) apps_menu && exit ;;
     Z ) apps_menu && exit ;;
     * ) apps_repos && exit ;;
 esac
 }
 
-apps_interface_start
+apps_repos_change {
+
+}
 
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
 
