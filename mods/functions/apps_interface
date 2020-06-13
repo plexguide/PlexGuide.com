@@ -15,6 +15,7 @@ apps_to_install=$(cat /pg/tmp/appstoinstall.wrap)
 
 if [[ "$apps_to_install" == "" ]]; then
 common_header "'⛔️ WARNING! No Apps in this section! - https://plexguide.com/wiki/no-apps"
+common_confirm
 apps_menu && exit; fi
 
 # sets message
