@@ -36,7 +36,7 @@ What is your GITHUB username?"
 common_number
 
 common_header "💬 $typed/personal <<< Is this repo correct [y/n]? [Z] To Exit!"
-common_confirm
+common_number
 case $typed in
     y ) a=a ;;
     Y ) a=a ;;
