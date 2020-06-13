@@ -98,7 +98,7 @@ esac
 }
 
 repos_part6 () {
-common_message "🚀  Repo Information" "TIP: Find your branch via github.com/$repo1/$repo2.
+common_message "🚀  Repo Information" "TIP: Find your branch via github.com/$repo1/$repo2
 
 What is the Branch Version?"
 common_number
@@ -108,7 +108,7 @@ repos_part7
 repos_part7 () {
 
 abcd=$typed
-common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abcd/personal
+common_message "🚀  Default Branch" "💬  Branch Change Correct? >>> $abcd
 
 [Y/N] or [Z] Exit"
 
