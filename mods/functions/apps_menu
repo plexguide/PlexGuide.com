@@ -47,6 +47,33 @@ esac
 
 }
 
+apps_repos_set () {
+common_message "🚀  Repo Information" "TIP: Ensure that you forked the personal repo via
+github.com/plexguide/personal. From here, all we need is your username.
+
+What is your GITHUB username?"
+common_number
+
+common_header "💬 $typed/personal <<< Is this repo correct? [Z] To Exit!"
+
+case $typed in
+    y ) a=a ;;
+    Y ) a=a ;;
+    n ) apps_repos_set && exit ;;
+    N ) apps_repos_set && exit ;;
+    z ) apps_menu && exit ;;
+    Z ) apps_menu && exit ;;
+    * ) apps_repos_change && exit ;;
+esac
+
+echo $typed > /pg/var/repos/repo.personal1
+
+common_header "💬 $typed/personal is now set as the personal repo!"
+common_confirm
+
+apps_menu && exit 
+}
+
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
 
 [1] Primary
