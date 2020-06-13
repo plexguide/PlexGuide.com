@@ -4,7 +4,7 @@ apps_menu() {
 
 personal_blank () {
   if [[ $(ls /pg/mods/containers/personal) == "" ]]; then
-  common_header "'⛔️ WARNING! No Personnal Apps Detected! - https://plexguide.com/wiki/no-apps"
+  common_header "⛔️ WARNING! No Personnal Apps Detected! - plexguide.com/wiki/no-apps"
   common_confirm
   apps_menu && exit; fi
 }
