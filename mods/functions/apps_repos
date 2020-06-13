@@ -88,8 +88,8 @@ common_number
 case $typed in
     y ) repos_part6 ;;
     Y ) repos_part6 ;;
-    n ) repos_part1 && exit ;;
-    N ) repos_part1 && exit ;;
+    n ) repos_check1 && exit ;;
+    N ) repos_check1 && exit ;;
     z ) repos_part5 && exit ;;
     Z ) repos_part5 && exit ;;
     * ) repos_part5 && exit ;;
@@ -128,6 +128,15 @@ echo $abcd > /pg/var/repos/repo.personal3
 common_header "💬 $abcd is the branch for $repo1/$repo2"
 common_confirm
 
-repos_part1
+repos_check1
 exit
+}
+
+repos_check1 () {
+
+rm -rf /pg/tmp/install2
+common_fcreate_silent /pg/tmp/install2
+git clone -b ${repos_3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/tmp/install2
+
+repos_part1
 }
