@@ -36,7 +36,7 @@ What is your GITHUB username?"
 common_number
 
 common_header "💬 $typed/personal <<< Is this repo correct [y/n]? [Z] To Exit!"
-
+common_confirm
 case $typed in
     y ) a=a ;;
     Y ) a=a ;;
@@ -63,7 +63,9 @@ repo2=$(cat /pg/var/repos/repo.personal2)
 common_message "🚀  Change Default App Repos" "💬 Current Repo: $repo1/$repo2
 
 Change the Following Repo? [y/n]"
+
 common_number
+
 case $typed in
     y ) apps_repos_set && exit ;;
     Y ) apps_repos_set && exit ;;
