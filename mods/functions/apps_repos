@@ -138,6 +138,7 @@ echo FLAG 0
 exist_check=$(curl https://github.com/${repos_1}/${repos_2}/tree/${repos_3} | grep "Page not found")
 echo FLAG 1
 if [[ "$exist_check" == "" ]]; then
+echo FLAG 2
 rm -rf /pg/tmp/install2
 common_fcreate_silent /pg/tmp/install2
 git clone -b ${repos_3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/tmp/install2
@@ -146,6 +147,7 @@ common_message "💬 VALID!" "URL: https://github.com/${repos_1}/${repos_2}/tree
 
 This REPO/BRANCH is valid!"
 else
+echo FLAG 3
 common_message "⛔️ WARNING! DOES NOT EXIST" "URL: https://github.com/${repos_1}/${repos_2}/tree/${repos_3}
 
 This REPO/BRANCH does not exist! Please check and ensure that your values are
