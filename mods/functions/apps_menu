@@ -37,12 +37,9 @@ common_number
 apps_repos_set
 
 abc=$typed
-common_message "🚀  Default App Repos" "💬  Repo Correct >>> $abc/personal
+common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abc/personal
 
-[Y] Yes
-[N] No
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[Z] Exit"
+[Y] Yes  [N] No  [Z] Exit"
 
 common_number
 case $typed in
