@@ -8,7 +8,7 @@ repos_part1 () {
 apps_interface_start
 common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
 
-[1] Personal - $personal1/$personal2
+[1] Personal - $personal1/$personal2 (B: $branch)
 [Z] Exit"
 
 common_number
@@ -73,6 +73,58 @@ esac
 echo $abc > /pg/var/repos/repo.personal1
 
 common_header "💬 $abc/personal is now set as the personal repo!"
+common_confirm
+
+repos_part5
+}
+
+repos_part5 () {
+common_message "🚀  Branch Info" "💬 Change the Branch Version? Branch: $repo3
+
+[Y/N] or [Z] Exit"
+
+common_number
+case $typed in
+    y ) repos_part6 ;;
+    Y ) repos_part6 ;;
+    n ) repos_part1 && exit ;;
+    N ) repos_part1 && exit ;;
+    z ) repos_part5 && exit ;;
+    Z ) repos_part5 && exit ;;
+    * ) repos_part5 && exit ;;
+esac
+
+}
+
+repos_part6 () {
+common_message "🚀  Repo Information" "TIP: Find your branch via github.com/$repo1/$repo2.
+
+What is the Branch Version?"
+common_number
+repos_part7
+}
+
+repos_part7 () {
+
+abcd=$typed
+common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abcd/personal
+
+[Y/N] or [Z] Exit"
+
+common_number
+case $typed in
+    y ) a=a ;;
+    Y ) a=a ;;
+    n ) repos_part6 && exit ;;
+    N ) repos_part6 && exit ;;
+    z ) apps_menu && exit ;;
+    Z ) apps_menu && exit ;;
+    * ) repos_part7 && exit ;;
+esac
+
+echo $abcd > /pg/var/repos/repo.personal3
+
+common_header "💬 $repo3 is the branch for $repo1/$repo2"
 common_confirm
 
 repos_part1
