@@ -28,24 +28,6 @@ esac
 
 }
 
-apps_repos_change () {
-
-repo1=$(cat /pg/var/repos/repo.personal1)
-repo2=$(cat /pg/var/repos/repo.personal2)
-
-common_message "🚀  Change Default App Repos" "💬 Current Repo: $repo1/$repo2
-
-Change the Following Repo? [y/n]"
-common_number
-case $typed in
-    y ) apps_repos && exit ;;
-    Y ) apps_repos && exit ;;
-    n ) apps_menu && exit ;;
-    N ) apps_menu && exit ;;
-    * ) apps_repos_change && exit ;;
-esac
-}
-
 apps_repos_set () {
 common_message "🚀  Repo Information" "TIP: Ensure that you forked the personal repo via
 github.com/plexguide/personal. From here, all we need is your username.
@@ -71,6 +53,24 @@ common_header "💬 $typed/personal is now set as the personal repo!"
 common_confirm
 
 apps_menu && exit
+}
+
+apps_repos_change () {
+
+repo1=$(cat /pg/var/repos/repo.personal1)
+repo2=$(cat /pg/var/repos/repo.personal2)
+
+common_message "🚀  Change Default App Repos" "💬 Current Repo: $repo1/$repo2
+
+Change the Following Repo? [y/n]"
+common_number
+case $typed in
+    y ) apps_repos_set && exit ;;
+    Y ) apps_repos_set && exit ;;
+    n ) apps_menu && exit ;;
+    N ) apps_menu && exit ;;
+    * ) apps_repos_change && exit ;;
+esac
 }
 
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
