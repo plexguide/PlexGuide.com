@@ -51,7 +51,7 @@ esac
 }
 
 apps_repos_git () {
-common_message "🚀  Repo Information" "TIP: Fork the personal repo via github.com/plexguide/personal.
+common_message "🚀  Repo Information" "TIP: Fork the personal repo via github.com/plexguide/$repo2.
 
 What is your GITHUB username?"
 common_number
