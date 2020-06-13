@@ -39,7 +39,7 @@ apps_repos_set
 abc=$typed
 common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abc/personal
 
-[Y] Yes  [N] No  [Z] Exit"
+[y/n] or [Z] Exit"
 
 common_number
 case $typed in
