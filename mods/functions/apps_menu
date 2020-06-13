@@ -14,13 +14,14 @@ common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/
 
 [1] Personal - plexguide/personal
 [Z] Exit"
-EOF 
+EOF
 
 case $typed in
     1 ) apps_menu && exit ;;
     z ) apps_menu && exit ;;
     Z ) apps_menu && exit ;;
-
+    * ) apps_repos && exit ;;
+esac
 }
 
 apps_interface_start
