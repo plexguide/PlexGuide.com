@@ -102,9 +102,6 @@ common_message "🚀  Repo Information" "TIP: Find your branch via github.com/$r
 
 What is the Branch Version?"
 common_number
-
-If [[ "$typed" == "" ]]; then repos_part6; fi 
-
 repos_part7
 }
 
