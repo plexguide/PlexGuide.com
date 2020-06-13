@@ -36,7 +36,8 @@ What is your GITHUB username?"
 common_number
 apps_repos_set
 
-common_header "💬 $typed/personal <<< Is this repo correct [y/n]? [Z] To Exit!"
+abc=$typed
+common_header "💬 $abc/personal <<< Is this repo correct [Y/N]? [Z] To Exit!"
 common_number
 case $typed in
     y ) a=a ;;
@@ -48,7 +49,7 @@ case $typed in
     * ) apps_repos_change && exit ;;
 esac
 
-echo $typed > /pg/var/repos/repo.personal1
+echo $abc > /pg/var/repos/repo.personal1
 
 common_header "💬 $typed/personal is now set as the personal repo!"
 common_confirm
