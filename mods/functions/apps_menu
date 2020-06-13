@@ -35,7 +35,7 @@ github.com/plexguide/personal. From here, all we need is your username.
 What is your GITHUB username?"
 common_number
 
-common_header "💬 $typed/personal <<< Is this repo correct? [Z] To Exit!"
+common_header "💬 $typed/personal <<< Is this repo correct [y/n]? [Z] To Exit!"
 
 case $typed in
     y ) a=a ;;
