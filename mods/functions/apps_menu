@@ -37,7 +37,13 @@ common_number
 apps_repos_set
 
 abc=$typed
-common_header "💬 $abc/personal <<< Is this repo correct [Y/N]? [Z] To Exit!"
+common_message "🚀  Default App Repos" "💬  Repo Correct >>> $abc/personal
+
+[Y] Yes
+[N] No
+------------------------------------------------------------------------------
+[Z] Exit"
+
 common_number
 case $typed in
     y ) a=a ;;
