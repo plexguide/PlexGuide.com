@@ -134,8 +134,9 @@ exit
 
 repos_check1 () {
 
+echo FLAG 0
 exist_check=$(curl https://github.com/${repos_1}/${repos_2}/tree/${repos_3} | grep "Page not found")
-
+echo FLAG 1
 if [[ "$exist_check" == "" ]]; then
 rm -rf /pg/tmp/install2
 common_fcreate_silent /pg/tmp/install2
