@@ -68,8 +68,8 @@ Change the Following Repo? [y/n]"
 common_number
 
 case $typed in
-    y ) apps_repos_set && exit ;;
-    Y ) apps_repos_set && exit ;;
+    y ) apps_repos_git && exit ;;
+    Y ) apps_repos_git && exit ;;
     n ) apps_repos_change && exit ;;
     N ) apps_repos_change && exit ;;
     * ) apps_repos_change && exit ;;
