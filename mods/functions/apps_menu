@@ -46,7 +46,7 @@ case $typed in
     N ) apps_repos_git && exit ;;
     z ) apps_menu && exit ;;
     Z ) apps_menu && exit ;;
-    * ) apps_repos_change && exit ;;
+    * ) apps_repos_git && exit ;;
 esac
 
 echo $abc > /pg/var/repos/repo.personal1
