@@ -1,0 +1,77 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+apps_repos() {
+
+repos_part1 () {
+common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
+
+[1] Personal - $personal1/$personal2
+[Z] Exit"
+
+common_number
+
+case $typed in
+    1 ) repos_part2 && apps_menu && exit ;;
+    z ) apps_menu && exit ;;
+    Z ) apps_menu && exit ;;
+    * ) repos_part1 && exit ;;
+esac
+
+}
+
+repos_part2 () {
+
+repo1=$(cat /pg/var/repos/repo.personal1)
+repo2=$(cat /pg/var/repos/repo.personal2)
+
+common_message "🚀  Change Default App Repos" "💬 Current Repo: $repo1/$repo2
+
+Change the Following Repo? [Y/N] or [Z] Exit"
+
+common_number
+
+case $typed in
+    y ) repos_part3 && exit ;;
+    Y ) repos_part3 && exit ;;
+    n ) repos_part2 && exit ;;
+    N ) repos_part2 && exit ;;
+    z ) apps_menu && exit ;;
+    Z ) apps_menu && exit ;;
+    * ) repos_part2 && exit ;;
+esac
+}
+
+repos_part3 () {
+common_message "🚀  Repo Information" "TIP: Fork the personal repo via github.com/plexguide/$repo2.
+
+What is your GITHUB username?"
+common_number
+}
+
+repos_part4 () {
+
+abc=$typed
+common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abc/personal
+
+[Y/N] or [Z] Exit"
+
+common_number
+case $typed in
+    y ) a=a ;;
+    Y ) a=a ;;
+    n ) repos_part3 && exit ;;
+    N ) repos_part3 && exit ;;
+    z ) apps_menu && exit ;;
+    Z ) apps_menu && exit ;;
+    * ) repos_part4 && exit ;;
+esac
+
+echo $abc > /pg/var/repos/repo.personal1
+
+common_header "💬 $abc/personal is now set as the personal repo!"
+common_confirm
+
+repos_part1
+exit
+}
+}
