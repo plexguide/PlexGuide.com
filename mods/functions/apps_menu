@@ -26,8 +26,6 @@ case $typed in
     * ) repos_part1 && exit ;;
 esac
 
-}
-
 repos_part2 () {
 
 repo1=$(cat /pg/var/repos/repo.personal1)
@@ -82,6 +80,8 @@ common_confirm
 
 repos_part1
 exit
+}
+
 }
 
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
