@@ -134,9 +134,23 @@ exit
 
 repos_check1 () {
 
+exist_check=$(curl https://github.com/${repos_1}/${repos_2}/tree/${repos_3} | grep "Page not found")
+
+if [[ "$exist_check" == "" ]]; then
 rm -rf /pg/tmp/install2
 common_fcreate_silent /pg/tmp/install2
 git clone -b ${repos_3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/tmp/install2
 
+common_message "💬 VALID!" "URL: https://github.com/${repos_1}/${repos_2}/tree/${repos_3}
+
+This REPO/BRANCH is valid!"
+else
+common_message "⛔️ WARNING! DOES NOT EXIST" "URL: https://github.com/${repos_1}/${repos_2}/tree/${repos_3}
+
+This REPO/BRANCH does not exist! Please check and ensure that your values are
+valid! No change have been made."
+fi
+
+common_confirm
 repos_part1
 }
