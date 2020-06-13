@@ -11,38 +11,7 @@ personal_blank () {
   apps_menu && exit; fi
 }
 
-apps_repos_git () {
-common_message "🚀  Repo Information" "TIP: Fork the personal repo via github.com/plexguide/$repo2.
-
-What is your GITHUB username?"
-common_number
-apps_repos_set
-
-abc=$typed
-common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abc/personal
-
-[Y/N] or [Z] Exit"
-
-common_number
-case $typed in
-    y ) a=a ;;
-    Y ) a=a ;;
-    n ) apps_repos_git && exit ;;
-    N ) apps_repos_git && exit ;;
-    z ) apps_menu && exit ;;
-    Z ) apps_menu && exit ;;
-    * ) apps_repos_git && exit ;;
-esac
-
-echo $abc > /pg/var/repos/repo.personal1
-
-common_header "💬 $abc/personal is now set as the personal repo!"
-common_confirm
-
-apps_repos && exit
-}
-
-app_repos () {
+repos_part1 () {
 common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
 
 [1] Personal - $personal1/$personal2
@@ -51,15 +20,15 @@ common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/
 common_number
 
 case $typed in
-    1 ) apps_repos_change && apps_menu && exit ;;
+    1 ) repos_part2 && apps_menu && exit ;;
     z ) apps_menu && exit ;;
     Z ) apps_menu && exit ;;
-    * ) apps_repos && exit ;;
+    * ) repos_part1 && exit ;;
 esac
 
 }
 
-apps_repos_change () {
+repos_part2 () {
 
 repo1=$(cat /pg/var/repos/repo.personal1)
 repo2=$(cat /pg/var/repos/repo.personal2)
@@ -71,14 +40,48 @@ Change the Following Repo? [Y/N] or [Z] Exit"
 common_number
 
 case $typed in
-    y ) apps_repos_git && exit ;;
-    Y ) apps_repos_git && exit ;;
-    n ) apps_repos_change && exit ;;
-    N ) apps_repos_change && exit ;;
+    y ) repos_part3 && exit ;;
+    Y ) repos_part3 && exit ;;
+    n ) repos_part2 && exit ;;
+    N ) repos_part2 && exit ;;
     z ) apps_menu && exit ;;
     Z ) apps_menu && exit ;;
-    * ) apps_repos_change && exit ;;
+    * ) repos_part2 && exit ;;
 esac
+}
+
+repos_part3 () {
+common_message "🚀  Repo Information" "TIP: Fork the personal repo via github.com/plexguide/$repo2.
+
+What is your GITHUB username?"
+common_number
+}
+
+repos_part4 () {
+
+abc=$typed
+common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abc/personal
+
+[Y/N] or [Z] Exit"
+
+common_number
+case $typed in
+    y ) a=a ;;
+    Y ) a=a ;;
+    n ) repos_part3 && exit ;;
+    N ) repos_part3 && exit ;;
+    z ) apps_menu && exit ;;
+    Z ) apps_menu && exit ;;
+    * ) repos_part4 && exit ;;
+esac
+
+echo $abc > /pg/var/repos/repo.personal1
+
+common_header "💬 $abc/personal is now set as the personal repo!"
+common_confirm
+
+repos_part1
+exit
 }
 
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
@@ -101,8 +104,8 @@ case $typed in
     1 ) sapp="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     2 ) sapp="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     3 ) personal_blank && sapp="personal" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
-    C ) app_repos && exit ;;
-    c ) app_repos && exit ;;
+    C ) repos_part1 && exit ;;
+    c ) repos_part1 && exit ;;
     d ) apps_default_interface ;;
     D ) apps_default_interface ;;
     s ) shield_setup ;;
