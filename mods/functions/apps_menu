@@ -9,14 +9,29 @@ personal_blank () {
   apps_menu && exit; fi
 }
 
+app_repos () {
+common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
+
+[1] Personal - plexguide/personal
+[Z] Exit"
+
+case $typed in
+    1 ) apps_menu && exit ;;
+    z ) apps_menu && exit ;;
+    Z ) apps_menu && exit ;;
+
+EOF
+}
+
 apps_interface_start
 
-common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ http://apps.plexguide.com
+common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
 
 [1] Primary
 [2] Community
 [3] Personal
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[C] Change Default App Repos
 [D] Default Settings
 [S] Shield Setup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -29,6 +44,7 @@ case $typed in
     1 ) sapp="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     2 ) sapp="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     3 ) personal_blank && sapp="personal" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    4 ) app_repos ;;
     d ) apps_default_interface ;;
     D ) apps_default_interface ;;
     s ) shield_setup ;;
