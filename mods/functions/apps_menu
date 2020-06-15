@@ -43,7 +43,6 @@ fi
 
 echo "TIME DIFF $timediff | to Pull $to_pull"
 pull_check
-pull_actions
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
 
 [1] Primary
