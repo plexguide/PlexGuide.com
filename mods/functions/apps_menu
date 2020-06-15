@@ -62,7 +62,16 @@ common_number
 rm -rf /pg/tmp/appstoinstall.list && touch /pg/tmp/appstoinstall.list
 touch /pg/tmp/list.tmp
 
-if [[ "$typed" == "1" || "$typed" == "2" || "$typed" == "3" ]]; then pull_actions; fi 
+if [[ "$typed" == "1" || "$typed" == "2" || "$typed" == "3" ]]; then
+common_header "🚀  Pulling Latest App Repos - FLAG 1"
+
+common_header "💬 Pulling Personal Repo"
+rm -rf /pg/var/personal
+rm -rf /pg/var/personal
+git clone -b ${personal3} --single-branch https://github.com/${personal1}/${personal2}.git /pg/var/personal
+common_fcreate_silent /pg/var/personal
+
+common_header "🚀  Application Pulls Complete"; fi
 
 case $typed in
     1 ) app="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
