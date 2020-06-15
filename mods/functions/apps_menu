@@ -68,7 +68,7 @@ case $typed in
     4 ) repos_part1 && exit ;;
     6 ) apps_default_interface ;;
     5 ) shield_setup ;;
-    9 ) pull_actions && app="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    9 ) app="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     z ) start_menu ;;
     Z ) start_menu ;;
     * ) apps_menu ;;
