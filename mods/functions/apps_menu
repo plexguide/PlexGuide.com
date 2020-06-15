@@ -38,6 +38,7 @@ git clone -b ${personal3} --single-branch https://github.com/${personal1}/${pers
 common_fcreate_silent /pg/var/personal
 bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
 bash /pg/mods/functions/.personal_apps.sh 1>/dev/null 2>&1
+cp -f /pg/var/personal/* /pg/mods/containers/personal/ 1>/dev/null 2>&1
 common_header "🚀  Application Pulls Complete"
 fi
 }
