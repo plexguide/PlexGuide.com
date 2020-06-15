@@ -73,6 +73,7 @@ common_fcreate_silent /pg/var/personal
 
 common_header "🚀  Application Pulls Complete"; fi
 
+echo "FLAG 2"
 case $typed in
     1 ) app="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     2 ) app="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
