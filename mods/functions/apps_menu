@@ -11,6 +11,23 @@ personal_blank () {
   apps_menu && exit; fi
 }
 
+pull_check () {
+pullcheck=$(date +%s)
+common_main /pg/var/defaults/pull.check $pullcheck stored_check
+common_main /pg/var/defaults/pull.check $pullcheck current_check
+common_main /pg/var/defaults/pull.check Daily user_check
+timediff=$(expr $current_check-$stored_check)
+
+if [[ "$user_check" == "Daily" ]]; then
+a=a
+elif [[ "$user_check" == "Weekly" ]]; then
+a=a
+elif [[ "$user_check" == "Immediate" ]]; then to_pull=on
+elif [[ "$user_check" == "Off" ]]; then to_pull=off; fi
+
+}
+
+pull_check
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
 
 [1] Primary
