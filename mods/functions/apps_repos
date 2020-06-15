@@ -33,8 +33,7 @@ common_message "🚀  Default App Repos" "💬 Current Update Frequency: $user_c
 [3] Weekly
 [4] Immediate (Not Recommended - Developer)
 [5] Off       (Not Recommended - No Updates)
-[Z] Exit
-  "
+[Z] Exit"
 
 common_number
 
@@ -44,8 +43,8 @@ case $typed in
     3 ) echo "Weekly" >> /pg/var/defaults/user.check && apps_menu && repos_part1 && exit ;;
     4 ) echo "Immediate" >> /pg/var/defaults/user.check && apps_menu && repos_part1 && exit ;;
     5 ) echo "Off" >> /pg/var/defaults/user.check && apps_menu && repos_part1 && exit ;;
-    z ) apps_menu && repos_part1 && exit ;;
-    Z ) apps_menu && repos_part1 && exit ;;
+    z ) repos_part1 && repos_part1 && exit ;;
+    Z ) repos_part1 && repos_part1 && exit ;;
     * ) repo_time && exit ;;
 esac
 }
