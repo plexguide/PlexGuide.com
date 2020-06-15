@@ -16,7 +16,7 @@ pull_check=$(date +%s)
 echo "PULLCHECK $pull_check"
 common_main /pg/var/defaults/pull.check "$pull_check" stored_check
 common_main /pg/var/defaults/user.check Daily user_check
-timediff=$(expr ${pull_check}-${stored_check})
+timediff=$(($pull_check-$stored_check))
 
 if [[ "$user_check" == "Daily" ]]; then
 a=a
@@ -26,7 +26,7 @@ elif [[ "$user_check" == "Immediate" ]]; then to_pull=on
 elif [[ "$user_check" == "Off" ]]; then to_pull=off; fi
 }
 
-echo $timediff
+echo "TIME DIFF $timediff"
 pull_check
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
 
