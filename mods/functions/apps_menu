@@ -29,7 +29,7 @@ elif [[ "$user_check" == "Off" ]]; then to_pull=off; fi
 
 pull_actions () {
 if to_pull=on; then
-common_haeader "🚀  Pulling Latest App Repos"
+common_header "🚀  Pulling Latest App Repos"
 
 common_header "💬 Pulling Personal Repo"
 rm -rf /pg/var/personal
