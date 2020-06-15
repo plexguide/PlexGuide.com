@@ -138,11 +138,8 @@ repos_1=Admin9705
 repos_2=personal
 repos_3=jjj
 
-echo FLAG 0
-exist_check=$(curl https://github.com/${repos_1}/${repos_2}/tree/${repos_3} | grep "Page not found")
-echo FLAG 1
+exist_check=$(curl -s https://github.com/${repos_1}/${repos_2}/tree/${repos_3} | grep "Page not found")
 if [[ "$exist_check" == "" ]]; then
-echo FLAG 2
 rm -rf /pg/tmp/install2
 common_fcreate_silent /pg/tmp/install2
 git clone -b ${repos_3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/tmp/install2
