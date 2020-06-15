@@ -12,11 +12,11 @@ fpath="/pg/mods/functions"
 rm -rf "$fpath"/.master.sh ##
 
 # reads functions and stores to a temporary file
-ls "$fpath" > "$fpath"/.functions.sh 1>/dev/null 2>&1
-ls "$pgprimary" > "$fpath"/.primary.sh 1>/dev/null 2>&1
-ls "$pgcommunity" > "$fpath"/.community.sh 1>/dev/null 2>&1
-ls "$pgpersonal" > "$fpath"/.personal.sh 1>/dev/null 2>&1
-ls "$pgother" > "$fpath"/.other.sh 1>/dev/null 2>&1
+ls "$fpath" > "$fpath"/.functions.sh 
+ls "$pgprimary" > "$fpath"/.primary.sh
+ls "$pgcommunity" > "$fpath"/.community.sh
+ls "$pgpersonal" > "$fpath"/.personal.sh
+ls "$pgother" > "$fpath"/.other.sh
 
 # adds tempory information to complete master functions file
 while read p; do
