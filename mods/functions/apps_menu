@@ -27,7 +27,7 @@ elif [[ "$user_check" == "Immediate" ]]; then to_pull=on
 elif [[ "$user_check" == "Off" ]]; then to_pull=off; fi
 }
 
-echo "TIME DIFF $timediff"
+echo "TIME DIFF $timediff | to Pull $to_pull"
 pull_check
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
 
