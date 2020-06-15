@@ -56,7 +56,8 @@ common_install install_nvidia
 # Copy Apps ####################################################################
 common_fcreate_silent /pg/var/personal
 common_fcreate_silent /pg/mods/containers/personal
-cp -f /pg/var/personal/* /pg/mods/containers/personal/ 1>/dev/null 2>&1
+rm -rf /pg/mods/containers/personal/*
+cp -f /pg/var/personal/* /pg/mods/containers/personal 1>/dev/null 2>&1
 
 ############# DO NOT ACTIVE TILL PGUNION
 #common_header "⌛ INSTALLING: MergerFS Update"; sleep 2
