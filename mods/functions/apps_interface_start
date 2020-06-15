@@ -21,4 +21,6 @@ common_main /pg/var/repos/repo.community3 v1 community3
 common_main /pg/var/repos/repo.primary1 plexguide primary1
 common_main /pg/var/repos/repo.primary2 primary primary2
 common_main /pg/var/repos/repo.primary3 v1 primary3
+
+common_main /pg/var/defaults/user.check Daily user_check
 }
