@@ -136,6 +136,7 @@ common_message "💬 VALID!" "URL: https://github.com/${repo1}/${repo2}/tree/${r
 
 This REPO/BRANCH is valid!"
 echo $abcd > /pg/var/repos/repo.personal3
+echo $repo2 > /pg/var/repos/repo.personal2
 echo $abc > /pg/var/repos/repo.personal1
 rm -rf /pg/tmp/install2
 rm -rf /pg/var/personal
