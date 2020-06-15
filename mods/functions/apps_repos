@@ -9,6 +9,7 @@ apps_interface_start
 common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
 
 [1] Personal - $personal1/$personal2 ($personal3)
+[2] Pull     - [Daily]
 [Z] Exit"
 
 common_number
