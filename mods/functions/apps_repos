@@ -71,9 +71,7 @@ case $typed in
     * ) repos_part4 && exit ;;
 esac
 
-echo $abc > /pg/var/repos/repo.personal1
-
-common_header "💬 $abc/personal is now set as the personal repo!"
+common_header "💬 Tracking $abc/personal as the personal repo!"
 common_confirm
 
 repos_part5
@@ -123,9 +121,7 @@ case $typed in
     * ) repos_part7 && exit ;;
 esac
 
-echo $abcd > /pg/var/repos/repo.personal3
-
-common_header "💬 $abcd is the branch for $repo1/$repo2"
+common_header "💬 Tracking $abcd as the branch for $repo1/$repo2"
 common_confirm
 
 repos_check1
@@ -134,11 +130,7 @@ exit
 
 repos_check1 () {
 
-repos_1=Admin9705
-repos_2=personal
-repos_3=jjj
-
-exist_check=$(curl -s https://github.com/${repos_1}/${repos_2}/tree/${repos_3} | grep "Page not found")
+exist_check=$(curl -s https://github.com/${repos}/${repo2}/tree/${repo3} | grep "Page not found")
 if [[ "$exist_check" == "" ]]; then
 rm -rf /pg/tmp/install2
 common_fcreate_silent /pg/tmp/install2
@@ -147,6 +139,10 @@ git clone -b ${repos_3} --single-branch https://github.com/${repo1}/${repo2}.git
 common_message "💬 VALID!" "URL: https://github.com/${repos_1}/${repos_2}/tree/${repos_3}
 
 This REPO/BRANCH is valid!"
+echo $abcd > /pg/var/repos/repo.personal3
+echo $abc > /pg/var/repos/repo.personal1
+
+
 else
 echo FLAG 3
 common_message "⛔️ WARNING! DOES NOT EXIST" "URL: https://github.com/${repos_1}/${repos_2}/tree/${repos_3}
