@@ -134,9 +134,14 @@ exit
 
 repos_check1 () {
 
+repos_1=Admin9705
+repos_2=personal
+repos_3=jjj
+
 echo FLAG 0
 exist_check=$(curl https://github.com/${repos_1}/${repos_2}/tree/${repos_3} | grep "Page not found")
 echo FLAG 1
+echo "EXIST= $exist_check"
 if [[ "$exist_check" == "" ]]; then
 echo FLAG 2
 rm -rf /pg/tmp/install2

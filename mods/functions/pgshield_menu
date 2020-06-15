@@ -1,8 +1,0 @@
-#!/bin/bash
-############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-pgshield_menu() {
-
-common_header "⌛ Not Ready"
-common_confirm
-
-}
