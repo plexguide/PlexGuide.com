@@ -31,14 +31,14 @@ pull_actions () {
 if to_pull=on; then
 common_message "🚀  Pulling Latest App Repos"
 
-common_message "💬 Pulling Personal Repo"
+common_header "💬 Pulling Personal Repo"
 rm -rf /pg/var/personal
 rm -rf /pg/var/personal
 git clone -b ${personal3} --single-branch https://github.com/${personal1}/${personal2}.git /pg/var/personal
 common_fcreate_silent /pg/var/personal
 
-common_message "🚀  Application Pulls Complete"
-fi 
+common_header "🚀  Application Pulls Complete"
+fi
 }
 
 echo "TIME DIFF $timediff | to Pull $to_pull"
