@@ -61,26 +61,14 @@ common_number
 
 rm -rf /pg/tmp/appstoinstall.list && touch /pg/tmp/appstoinstall.list
 touch /pg/tmp/list.tmp
-
-if [[ "$typed" == "1" || "$typed" == "2" || "$typed" == "3" ]]; then
-common_header "🚀  Pulling Latest App Repos - FLAG 1"
-
-common_header "💬 Pulling Personal Repo"
-rm -rf /pg/var/personal
-rm -rf /pg/var/personal
-git clone -b ${personal3} --single-branch https://github.com/${personal1}/${personal2}.git /pg/var/personal
-common_fcreate_silent /pg/var/personal
-
-common_header "🚀  Application Pulls Complete"; fi
-
-echo "FLAG 2"
 case $typed in
-    1 ) app="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
-    2 ) app="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
-    3 ) personal_blank && sapp="personal" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    1 ) pull_actions && app="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    2 ) pull_actions && sapp="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    3 ) pull_actions && personal_blank && sapp="personal" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     4 ) repos_part1 && exit ;;
     6 ) apps_default_interface ;;
     5 ) shield_setup ;;
+    9 ) pull_actions && app="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     z ) start_menu ;;
     Z ) start_menu ;;
     * ) apps_menu ;;
