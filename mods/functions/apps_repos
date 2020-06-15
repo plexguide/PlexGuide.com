@@ -55,7 +55,7 @@ repos_part4
 
 repos_part4 () {
 
-abc=$typed
+abc=$typed; repo1=$typed
 common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abc/personal
 
 [Y/N] or [Z] Exit"
@@ -105,7 +105,7 @@ repos_part7
 
 repos_part7 () {
 
-abcd=$typed
+abcd=$typed; repo3=$typed
 common_message "🚀  Default Branch" "💬  Branch Change Correct? >>> $abcd
 
 [Y/N] or [Z] Exit"
@@ -121,7 +121,7 @@ case $typed in
     * ) repos_part7 && exit ;;
 esac
 
-common_header "💬 Tracking $abcd as the branch for $repo1/$repo2"
+common_header "💬 Tracking $abcd as the branch for $abc/$repo2"
 common_confirm
 
 repos_check1
