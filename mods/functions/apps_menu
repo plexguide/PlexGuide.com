@@ -13,15 +13,14 @@ personal_blank () {
 
 pull_check () {
 pull_check=$(date +%s)
-echo "PULLCHECK $pull_check"
 common_main /pg/var/defaults/pull.check "$pull_check" stored_check
 common_main /pg/var/defaults/user.check Daily user_check
 timediff=$(($pull_check-$stored_check))
 
 if [[ "$user_check" == "Daily" ]]; then
-a=a
+  if [[ "$timediff" -gt 604800 ]]; then to_pull=on; else to_pull="off"; fi 
 elif [[ "$user_check" == "Weekly" ]]; then
-a=a
+  if [[ "$timediff" -gt 604800 ]]; then to_pull=on; else to_pull="off"; fi
 elif [[ "$user_check" == "Immediate" ]]; then to_pull=on
 elif [[ "$user_check" == "Off" ]]; then to_pull=off; fi
 }
