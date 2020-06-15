@@ -17,10 +17,9 @@ common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexgu
 [2] Community
 [3] Personal
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[4] Repos   | Set
-[5] Repos   | Pull [daily]
-[6] Shield  | Settings
-[7] Default | Settings
+[4] Repos   Settings
+[5] Shield  Settings
+[6] Default Settings
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface"
 
@@ -33,8 +32,8 @@ case $typed in
     2 ) sapp="community" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     3 ) personal_blank && sapp="personal" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     4 ) repos_part1 && exit ;;
-    7 ) apps_default_interface ;;
-    6 ) shield_setup ;;
+    6 ) apps_default_interface ;;
+    5 ) shield_setup ;;
     z ) start_menu ;;
     Z ) start_menu ;;
     * ) apps_menu ;;
