@@ -62,7 +62,7 @@ common_number
 rm -rf /pg/tmp/appstoinstall.list && touch /pg/tmp/appstoinstall.list
 touch /pg/tmp/list.tmp
 
-if [[ "$typed" == "1" || "$typed" == "2" || "$typed" =="3" ]]; then pull_actions; fi 
+if [[ "$typed" == "1" || "$typed" == "2" || "$typed" == "3" ]]; then pull_actions; fi 
 
 case $typed in
     1 ) app="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
