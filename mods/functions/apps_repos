@@ -139,7 +139,6 @@ This REPO/BRANCH is valid!"
 echo $abcd > /pg/var/repos/repo.personal3
 echo $repo2 > /pg/var/repos/repo.personal2
 echo $abc > /pg/var/repos/repo.personal1
-rm -rf /pg/tmp/install2
 rm -rf /pg/var/personal
 git clone -b ${repo3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/var/personal
 common_fcreate_silent /pg/var/personal
