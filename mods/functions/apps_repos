@@ -6,17 +6,21 @@ a=a
 
 repos_part1 () {
 apps_interface_start
-common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
+common_message "🚀  App Repo Modification Pull" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
 
-[1] Personal - $personal1/$personal2 ($personal3)
-[2] Pull     - $user_check
+[1] Primary   - $primary1/$primary2 ($primary3)
+[2] Community - $community1/$community2 ($community3)
+[3] Personal  - $personal1/$personal2 ($personal3)
+[4] Pull      - $user_check
 [Z] Exit"
 
 common_number
 
 case $typed in
-    1 ) repos_part2 && apps_menu && exit ;;
-    2 ) repo_time && apps_menu && exit ;;
+    1 ) rtype="primary" && repos_part2 && apps_menu && exit ;;
+    2 ) rtype="community" && repos_part2 && apps_menu && exit ;;
+    3 ) rtype="personal" && repos_part2 && apps_menu && exit ;;
+    4 ) repo_time && apps_menu && exit ;;
     z ) apps_menu && exit ;;
     Z ) apps_menu && exit ;;
     * ) repos_part1 && exit ;;
@@ -51,11 +55,11 @@ esac
 
 repos_part2 () {
 
-repo1=$(cat /pg/var/repos/repo.personal1)
-repo2=$(cat /pg/var/repos/repo.personal2)
-repo3=$(cat /pg/var/repos/repo.personal3)
+repo1=$(cat /pg/var/repos/repo.${rtype}1)
+repo2=$(cat /pg/var/repos/repo.${rtype}2)
+repo3=$(cat /pg/var/repos/repo.${rtype}3)
 
-common_message "🚀  Change Default App Repos" "💬 Current Repo: $repo1/$repo2 ($repo3)
+common_message "🚀  Change App Repos - ${rtype}" "💬 Current Repo: $repo1/$repo2 ($repo3)
 
 Change the Following Repo? [Y/N] or [Z] Exit"
 
@@ -73,7 +77,7 @@ esac
 }
 
 repos_part3 () {
-common_message "🚀  Repo Information" "TIP: Fork the personal repo via github.com/plexguide/$repo2.
+common_message "🚀  Repo Information" "TIP: Fork the ${rtype} repo via github.com/plexguide/$repo2.
 
 What is your GITHUB username?"
 common_number
@@ -83,7 +87,7 @@ repos_part4
 repos_part4 () {
 
 abc=$typed; repo1=$typed
-common_message "🚀  Default App Repos" "💬  Repo Change Correct? >>> $abc/personal
+common_message "🚀  App Repo - ${rtype}" "💬  Repo Change Correct? >>> $abc/personal
 
 [Y/N] or [Z] Exit"
 
@@ -98,7 +102,7 @@ case $typed in
     * ) repos_part4 && exit ;;
 esac
 
-common_header "💬 Tracking $abc/personal as the personal repo!"
+common_header "💬 Tracking $abc/personal as the ${rtype} repo!"
 common_confirm
 
 repos_part5
@@ -162,17 +166,18 @@ if [[ "$exist_check" == "" ]]; then
 common_message "💬 VALID!" "URL: https://github.com/${repo1}/${repo2}/tree/${repo3}
 
 This REPO/BRANCH is valid!"
-echo $abcd > /pg/var/repos/repo.personal3
-echo $repo2 > /pg/var/repos/repo.personal2
-echo $abc > /pg/var/repos/repo.personal1
-rm -rf /pg/var/personal
-rm -rf /pg/mods/containers/personal
-git clone -b ${repo3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/var/personal
-common_fcreate_silent /pg/var/personal
-common_fcreate_silent /pg/mods/containers/personal
+
+echo $abcd > /pg/var/repos/repo.${rtype}3
+echo $repo2 > /pg/var/repos/repo.${rtype}2
+echo $abc > /pg/var/repos/repo.${rtype}1
+rm -rf /pg/var/${rtype}
+rm -rf /pg/mods/containers/${rtype}
+git clone -b ${repo3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/var/${rtype}
+common_fcreate_silent /pg/var/${rtype}
+common_fcreate_silent /pg/mods/containers/${rtype}
 bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
-bash /pg/mods/functions/.personal_apps.sh 1>/dev/null 2>&1
-cp -f /pg/var/personal/* /pg/mods/containers/personal/ 1>/dev/null 2>&1
+bash /pg/mods/functions/.${rtype}_apps.sh 1>/dev/null 2>&1
+cp -f /pg/var/personal/* /pg/mods/containers/${rtype}/ 1>/dev/null 2>&1
 common_header "💬 Downloaded - https://github.com/${repo1}/${repo2}/tree/${repo3}"
 else
 echo FLAG 3
