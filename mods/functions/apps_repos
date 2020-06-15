@@ -142,9 +142,9 @@ echo $abc > /pg/var/repos/repo.personal1
 rm -rf /pg/var/personal
 git clone -b ${repo3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/var/personal
 common_fcreate_silent /pg/var/personal
-cp -f /pg/var/personal/* /pg/mods/containers/personal/ 1>/dev/null 2>&1
 bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
 bash /pg/mods/functions/.personal_apps.sh 1>/dev/null 2>&1
+cp -f /pg/var/personal/* /pg/mods/containers/personal/ 1>/dev/null 2>&1
 common_header "💬 Downloaded - https://github.com/${repo1}/${repo2}/tree/${repo3}"
 else
 echo FLAG 3
