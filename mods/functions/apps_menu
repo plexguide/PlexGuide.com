@@ -24,7 +24,7 @@ elif [[ "$user_check" == "Weekly" ]]; then
   if [[ "$timediff" -gt 604800 ]]; then to_pull="ON"; else to_pull="OFF"; fi
 elif [[ "$user_check" == "Hourly" ]]; then
   if [[ "$timediff" -gt 3600 ]]; then to_pull="ON"; else to_pull="OFF"; fi
-elif [[ "$user_check" == "Immediate" ]]; then to_pull=on
+elif [[ "$user_check" == "Immediate" ]]; then to_pull=ON
 elif [[ "$user_check" == "Off" ]]; then to_pull="OFF"; fi
 }
 
