@@ -17,18 +17,19 @@ common_main /pg/var/defaults/pull.check "$pull_check" stored_check
 common_main /pg/var/defaults/user.check Daily user_check
 timediff=$(($pull_check-$stored_check))
 
+to_pull="NULL"
 if [[ "$user_check" == "Daily" ]]; then
-  if [[ "$timediff" -gt 86400 ]]; then to_pull=on; else to_pull="off"; fi
+  if [[ "$timediff" -gt 86400 ]]; then to_pull="on"; else to_pull="OFF"; fi
 elif [[ "$user_check" == "Weekly" ]]; then
-  if [[ "$timediff" -gt 604800 ]]; then to_pull=on; else to_pull="off"; fi
+  if [[ "$timediff" -gt 604800 ]]; then to_pull="on"; else to_pull="OFF"; fi
 elif [[ "$user_check" == "Hourly" ]]; then
-  if [[ "$timediff" -gt 3600 ]]; then to_pull=on; else to_pull="off"; fi
+  if [[ "$timediff" -gt 3600 ]]; then to_pull="ON"; else to_pull="OFF"; fi
 elif [[ "$user_check" == "Immediate" ]]; then to_pull=on
-elif [[ "$user_check" == "Off" ]]; then to_pull=off; fi
+elif [[ "$user_check" == "Off" ]]; then to_pull="OFF"; fi
 }
 
 pull_actions () {
-if to_pull=on; then
+if to_pull=ON; then
 common_header "🚀  Pulling Latest App Repos"
 
 common_header "💬 Pulling Personal Repo"
