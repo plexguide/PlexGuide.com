@@ -9,7 +9,7 @@ apps_interface_start
 common_message "🚀  Default App Repos" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
 
 [1] Personal - $personal1/$personal2 ($personal3)
-[2] Pull     - [Daily]
+[2] Pull     - $user_check
 [Z] Exit"
 
 common_number
@@ -21,6 +21,29 @@ case $typed in
     * ) repos_part1 && exit ;;
 esac
 
+}
+
+repo_time () {
+common_main /pg/var/defaults/user.check Daily user_check
+common_message "🚀  Default App Repos" "💬 Current Update Frequency: $user_check
+
+  [1] Hourly
+  [2] Daily     (Default)
+  [3] Weekly
+  [4] Immediate (Not Recommended - Developer)
+  [5] Off       (Not Recommended - No Updates)
+  [Z] Exit"
+
+common_number
+
+case $typed in
+    1 ) echo "Hourly" >> /pg/var/defaults/user.check && apps_menu && exit ;;
+    2 ) echo "Daily" >> /pg/var/defaults/user.check && apps_menu && repos_part1 && exit ;;
+    3 ) echo "Weekly" >> /pg/var/defaults/user.check && apps_menu && repos_part1 && exit ;;
+    4 ) echo "Immediate" >> /pg/var/defaults/user.check && apps_menu && repos_part1 && exit ;;
+    5 ) echo "Off" >> /pg/var/defaults/user.check &&apps_menu && repos_part1 && exit ;;
+    * ) repo_time && exit ;;
+esac
 }
 
 repos_part2 () {
