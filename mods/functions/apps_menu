@@ -12,11 +12,10 @@ personal_blank () {
 }
 
 pull_check () {
-pullcheck=$(date +%s)
+pull_check=$(date +%s)
 common_main /pg/var/defaults/pull.check $pullcheck stored_check
-common_main /pg/var/defaults/pull.check $pullcheck current_check
 common_main /pg/var/defaults/pull.check Daily user_check
-timediff=$(expr $current_check-$stored_check)
+timediff=$(expr ${pull_check}-${stored_check})
 
 if [[ "$user_check" == "Daily" ]]; then
 a=a
