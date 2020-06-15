@@ -18,9 +18,11 @@ common_main /pg/var/defaults/user.check Daily user_check
 timediff=$(($pull_check-$stored_check))
 
 if [[ "$user_check" == "Daily" ]]; then
-  if [[ "$timediff" -gt 604800 ]]; then to_pull=on; else to_pull="off"; fi 
+  if [[ "$timediff" -gt 86400 ]]; then to_pull=on; else to_pull="off"; fi
 elif [[ "$user_check" == "Weekly" ]]; then
   if [[ "$timediff" -gt 604800 ]]; then to_pull=on; else to_pull="off"; fi
+elif [[ "$user_check" == "Hourly" ]]; then
+  if [[ "$timediff" -gt 3600 ]]; then to_pull=on; else to_pull="off"; fi
 elif [[ "$user_check" == "Immediate" ]]; then to_pull=on
 elif [[ "$user_check" == "Off" ]]; then to_pull=off; fi
 }
