@@ -29,7 +29,7 @@ elif [[ "$user_check" == "Off" ]]; then to_pull="OFF"; fi
 }
 
 pull_actions () {
-if [[ "$to_pull" == "ON"]]; then
+if [[ "$to_pull" == "ON" ]]; then
 common_header "🚀  Pulling Latest App Repos"
 
 common_header "💬 Pulling Personal Repo"
