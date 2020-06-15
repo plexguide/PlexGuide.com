@@ -28,6 +28,7 @@ elif [[ "$user_check" == "Off" ]]; then to_pull=off; fi
 }
 
 pull_actions () {
+if to_pull=on; then
 common_message "🚀  Pulling Latest App Repos"
 
 common_message "💬 Pulling Personal Repo"
@@ -37,6 +38,7 @@ git clone -b ${personal3} --single-branch https://github.com/${personal1}/${pers
 common_fcreate_silent /pg/var/personal
 
 common_message "🚀  Application Pulls Complete"
+fi 
 }
 
 echo "TIME DIFF $timediff | to Pull $to_pull"
