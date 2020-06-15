@@ -28,12 +28,12 @@ repo_time () {
 common_main /pg/var/defaults/user.check Daily user_check
 common_message "🚀  Default App Repos" "💬 Current Update Frequency: $user_check
 
-  [1] Hourly
-  [2] Daily     (Default)
-  [3] Weekly
-  [4] Immediate (Not Recommended - Developer)
-  [5] Off       (Not Recommended - No Updates)
-  [Z] Exit
+[1] Hourly
+[2] Daily     (Default)
+[3] Weekly
+[4] Immediate (Not Recommended - Developer)
+[5] Off       (Not Recommended - No Updates)
+[Z] Exit
   "
 
 common_number
