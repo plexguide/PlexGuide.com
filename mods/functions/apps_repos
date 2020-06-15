@@ -134,7 +134,7 @@ exist_check=$(curl -s https://github.com/${repo1}/${repo2}/tree/${repo3} | grep 
 if [[ "$exist_check" == "" ]]; then
 rm -rf /pg/tmp/install2
 common_fcreate_silent /pg/tmp/install2
-git clone -b ${repos_3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/tmp/install2
+git clone -b ${repo3} --single-branch https://github.com/${repo1}/${repo2}.git /pg/tmp/install2
 
 common_message "💬 VALID!" "URL: https://github.com/${repo1}/${repo2}/tree/${repo3}
 
