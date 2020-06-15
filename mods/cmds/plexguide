@@ -6,3 +6,7 @@ source "$fpath"/common_path_check; common_path_check
 
 mkdir -p /pg/var/ && touch /pg/var/pg.noinstall
 bash /pg/mods/install/main.sh
+
+common_fcreate_silent /pg/var/personal
+common_fcreate_silent /pg/mods/containers/personal
+cp -f /pg/var/personal/* /pg/mods/containers/personal/
