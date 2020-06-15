@@ -24,9 +24,9 @@ elif [[ "$user_check" == "Weekly" ]]; then
 a=a
 elif [[ "$user_check" == "Immediate" ]]; then to_pull=on
 elif [[ "$user_check" == "Off" ]]; then to_pull=off; fi
-
 }
 
+echo $timediff
 pull_check
 common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps
 
