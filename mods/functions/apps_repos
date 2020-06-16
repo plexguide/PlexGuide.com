@@ -59,7 +59,7 @@ repo2=$(cat /pg/var/repos/repo.${rtype}2)
 
 common_message "🚀  Repo Information" "TIP: Fork the ${rtype} repo via github.com/$repo1.
 
-💬 1st Part = Project -- 2nd Part = Branch Name | Format Examples Below:
+💬 1st Part = Project -- 2nd Part = Branch Name | Example Formats Below
 
 Admin9705/myproject dev
 Doob/mysecret v2
