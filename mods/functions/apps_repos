@@ -74,7 +74,7 @@ repos_part3
 
 repos_part3 () {
 
-"abc"=$typed; repo1="$typed"
+abc="$typed"; repo1="$typed"
 common_message "🚀  App Repo - ${rtype}" "💬  Repo Change Correct? >>> $abc
 
 [Y/N] or [Z] Exit"
