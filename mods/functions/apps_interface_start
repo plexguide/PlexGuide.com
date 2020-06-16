@@ -10,17 +10,14 @@ common_main /pg/var/defaults/default.port OPEN default_port
 common_main /pg/var/defaults/default.shield ON default_shield
 common_main /pg/data/plex/plex.claim "" plex_token_status
 
-common_main /pg/var/repos/repo.personal1 plexguide personal1
-common_main /pg/var/repos/repo.personal2 personal personal2
-common_main /pg/var/repos/repo.personal3 v1 personal3
+common_main /pg/var/repos/repo.personal1 plexguide/personal personal1
+common_main /pg/var/repos/repo.personal2 v1 personal2
 
-common_main /pg/var/repos/repo.community1 plexguide community1
-common_main /pg/var/repos/repo.community2 community community2
-common_main /pg/var/repos/repo.community3 v1 community3
+common_main /pg/var/repos/repo.community1 plexguide/community community1
+common_main /pg/var/repos/repo.community2 v1 community2
 
-common_main /pg/var/repos/repo.primary1 plexguide primary1
-common_main /pg/var/repos/repo.primary2 primary primary2
-common_main /pg/var/repos/repo.primary3 v1 primary3
+common_main /pg/var/repos/repo.primary1 plexguide/primary primary1
+common_main /pg/var/repos/repo.primary2 v1 primary2
 
 common_main /pg/var/defaults/user.check Daily user_check
 }
