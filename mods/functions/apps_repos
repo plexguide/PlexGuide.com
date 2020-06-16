@@ -6,7 +6,7 @@ a=a
 
 repos_part1 () {
 apps_interface_start
-common_message "🚀  App Repo Modification Pull" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
+common_message "🚀 App Repo Modification Pull" "💬 More Info? Visit ~ plexguide.com/wiki/app-repos
 
 [1] Primary   - $primary1 ($primary2)
 [2] Community - $community1 ($community2)
