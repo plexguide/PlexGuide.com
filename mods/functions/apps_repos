@@ -61,8 +61,9 @@ common_message "🚀  Repo Information" "TIP: Fork the ${rtype} repo via github.
 
 💬 1st Part = Project -- 2nd Part = Branch Name | Example Formats Below
 
+plexguide/${rtype} v1
 Admin9705/${rtype} v1
-Doob/mysecret v2
+Doob/mysecret dev
 
 What is the Forked Project and Branch Name? (Case Sensitive)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
