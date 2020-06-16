@@ -61,10 +61,10 @@ common_message "🚀  Repo Information" "TIP: Fork the ${rtype} repo via github.
 
 💬 1st Part = Project -- 2nd Part = Branch Name | Example Formats Below
 
-Admin9705/myproject dev
+Admin9705/${rtype} v1
 Doob/mysecret v2
 
-What is the Forked Project and Branch Name?
+What is the Forked Project and Branch Name? (Case Sensitive)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Current: $repo1 $repo2"
 common_number
