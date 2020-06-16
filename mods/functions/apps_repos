@@ -60,12 +60,14 @@ repo2=$(cat /pg/var/repos/repo.${rtype}2)
 common_message "🚀  Repo Information" "TIP: Fork the ${rtype} repo via github.com/$repo1.
 
 Current - github.com/$repo1 Branch: $repo2
-Your forked project called? 1st Part ~ Project | 2nd Part ~ Branch Name
+1st Part = Project ---- 2nd Part = Branch Name
 
 Format Examples below:
-$repo2 v1
+$repo1 v1
 Admin9705/myproject dev
-Doob/$repo2 v2"
+Doob/mysecret v2
+
+What is your forked project and version called?"
 common_number
 repos_part3
 }
