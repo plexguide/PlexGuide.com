@@ -23,7 +23,6 @@ smessage="💬  Visit ~ https://plexguide.com/wiki/apps-personal"; fi
 
 # sets up the primary interface
 common_message "🚀 App Interface | 📂 App Type ~ $sapp | PGX Edition" "$smessage
-
 $app_display
 
 [Z] Quit & Exit Interface $installinfo"
