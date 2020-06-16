@@ -90,9 +90,6 @@ case $typed in
     * ) repos_part3 && exit ;;
 esac
 
-common_header "💬 $abc set in lieu of plexguide/${rtype} repo!"
-common_confirm
-
 repos_check
 }
 
