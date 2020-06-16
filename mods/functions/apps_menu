@@ -34,7 +34,8 @@ common_header "🚀  Pulling Latest App Repos"
 
 common_header "💬 Pulling Personal Repo"
 rm -rf /pg/var/personal
-git clone -b ${personal3} --single-branch https://github.com/${personal1}/${personal2}.git /pg/var/personal
+echo "-b ${personal2} --single-branch https://github.com/${personal1}.git /pg/var/personal"
+git clone -b ${personal2} --single-branch https://github.com/${personal1}.git /pg/var/personal
 common_fcreate_silent /pg/var/personal
 bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
 bash /pg/mods/functions/.personal_apps.sh 1>/dev/null 2>&1
