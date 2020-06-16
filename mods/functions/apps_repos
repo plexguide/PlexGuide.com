@@ -64,8 +64,8 @@ common_message "🚀  Repo Information" "TIP: Fork the ${rtype} repo via github.
 Admin9705/myproject dev
 Doob/mysecret v2
 
-Current - $repo1 $repo2
-What is your forked project and version called?"
+Current: $repo1 $repo2
+What is the Forked Project and Branch Name?"
 common_number
 repos_part3
 }
