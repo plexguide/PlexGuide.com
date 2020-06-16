@@ -58,15 +58,13 @@ repo1=$(cat /pg/var/repos/repo.${rtype}1)
 repo2=$(cat /pg/var/repos/repo.${rtype}2)
 
 common_message "🚀  Repo Information" "TIP: Fork the ${rtype} repo via github.com/$repo1.
-Current - github.com/$repo1 Branch: $repo2
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬 1st Part = Project -- 2nd Part = Branch Name | Format Examples Below:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-$repo1 v1
 Admin9705/myproject dev
 Doob/mysecret v2
 
+Current - $repo1 $repo2
 What is your forked project and version called?"
 common_number
 repos_part3
