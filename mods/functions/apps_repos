@@ -74,7 +74,7 @@ repos_part3
 
 repos_part3 () {
 
-abc=$typed; repo1=$typed
+"abc"=$typed; repo1="$typed"
 common_message "🚀  App Repo - ${rtype}" "💬  Repo Change Correct? >>> $abc
 
 [Y/N] or [Z] Exit"
@@ -90,7 +90,7 @@ case $typed in
     * ) repos_part3 && exit ;;
 esac
 
-common_header "💬 $abc is set in lieu of the plexguide/${rtype} repo!"
+common_header "💬 $abc set in lieu of plexguide/${rtype} repo!"
 common_confirm
 
 repos_check
@@ -98,8 +98,8 @@ repos_check
 
 repos_check () {
 
-part1=$(echo $abc | awk '{print $1}')
-part2=$(echo $abc | awk '{print $1}')
+part1=$(echo "$abc" | awk '{print $1}')
+part2=$(echo "$abc" | awk '{print $2}')
 
 exist_check=$(curl -s https://github.com/${part1}/tree/${part2} | grep "Page not found")
 if [[ "$exist_check" == "" ]]; then
