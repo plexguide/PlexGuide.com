@@ -8,7 +8,11 @@ common_fcreate_silent /pg/data/$pgrole
 common_fcreate_silent /pg/var/apps
 common_fcreate_silent /pg/var/apps_info/$pgrole
 
-if [[ "$port_outside01" != "" ]]; then echo "$port_outside01" > /pg/var/apps_info/$pgrole/port.outside01; fi 
+echo "source /pg/var/community/" > /pg/tmp/$pgrole
+echo "$pgrole" >> /pg/tmp/$pgrole
+bash /pg/tmp/$pgrole
+
+if [[ "$port_outside01" != "" ]]; then echo "$port_outside01" > /pg/var/apps_info/$pgrole/port.outside01; fi
 
 container_paths=$(cat "/pg/tmp/container.path")
 container_permissions=$(cat "/pg/tmp/container.permissions")
