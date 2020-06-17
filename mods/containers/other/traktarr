@@ -19,7 +19,9 @@ if [[ -e /pg/data/sonarr/config.xml ]]; then
 cat /pg/data/sonarr/config.xml | grep ApiKey | cut -c 11- | rev | cut -c 10- | rev > /pg/var/traktarr/sonarr.api;
 else echo "" > /pg/var/traktarr/sonarr.api; fi
 sonarr_api=$(cat /pg/var/traktarr/sonarr.api)
-
+# CMD EXPORT ###################################################################
+chown -R 1000:1000 "/bin/pg-$pgrole"
+chmod -R 0755 "/bin/pg-$pgrole"
 # YML EXPORT ###################################################################
 cat <<- EOF > "/pg/apps/$pgrole.yml"
 $container_header
