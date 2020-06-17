@@ -47,7 +47,7 @@ case $typed in
     2 ) echo "Daily" > /pg/var/defaults/user.check && repos_part1 && exit ;;
     3 ) echo "Weekly" > /pg/var/defaults/user.check && repos_part1 && exit ;;
     4 ) echo "30 Seconds" > /pg/var/defaults/user.check && repos_part1 && exit ;;
-    5 ) echo "Immediate" > /pg/var/defaults/user.check && repos_part1 && exit ;;
+    5 ) echo "X" > /pg/var/defaults/user.check && repos_part1 && exit ;;
     6 ) echo "Off" > /pg/var/defaults/user.check && repos_part1 && exit ;;
     z ) repos_part1 && repos_part1 && exit ;;
     Z ) repos_part1 && repos_part1 && exit ;;
@@ -118,6 +118,7 @@ bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
 bash /pg/mods/functions/.${rtype}_apps.sh 1>/dev/null 2>&1
 cp -f /pg/var/personal/* /pg/mods/containers/${rtype}/ 1>/dev/null 2>&1
 common_header "💬 Downloaded - https://github.com/${part1}/tree/${part2}"
+echo $(date +%s) > /pg/var/defaults/pull.check
 else
 echo FLAG 3
 common_message "⛔️ WARNING! DOES NOT EXIST" "URL: https://github.com/${part1}/tree/${part2}
