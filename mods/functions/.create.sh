@@ -2,9 +2,9 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 
 # paths
-pgprimary="/pg/mods/containers/primary"
-pgcommunity="/pg/mods/containers/community"
-pgpersonal="/pg/mods/containers/personal"
+pgprimary="/pg/var/primary"
+pgcommunity="/pg/var/community"
+pgpersonal="/pg/var/personal"
 pgother="/pg/mods/containers/other"
 fpath="/pg/mods/functions"
 
@@ -16,7 +16,7 @@ ls "$fpath" > "$fpath"/.functions.sh
 ls "$pgprimary" > "$fpath"/.primary.sh
 ls "$pgcommunity" > "$fpath"/.community.sh
 ls "$pgpersonal" > "$fpath"/.personal.sh
-ls "$pgother" > "$fpath"/.other.sh 
+ls "$pgother" > "$fpath"/.other.sh
 
 # adds tempory information to complete master functions file
 while read p; do
