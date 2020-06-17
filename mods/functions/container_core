@@ -8,10 +8,10 @@ common_fcreate_silent /pg/data/$pgrole
 common_fcreate_silent /pg/var/apps
 common_fcreate_silent /pg/var/apps_info/$pgrole
 
-common_file_permissions /pg/mods/functions/.master.sh
-echo "/pg/mods/functions/.master.sh" > "/pg/tmp/$pgrole"
-common_file_permissions /pg/tmp/$pgrole
-bash "/pg/tmp/$pgrole"
+#common_file_permissions /pg/mods/functions/.master.sh
+#echo "/pg/mods/functions/.master.sh" > "/pg/tmp/$pgrole"
+#common_file_permissions /pg/tmp/$pgrole
+#bash "/pg/tmp/$pgrole"
 
 if [[ "$port_outside01" != "" ]]; then echo "$port_outside01" > /pg/var/apps_info/$pgrole/port.outside01; fi
 
