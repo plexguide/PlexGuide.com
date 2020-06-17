@@ -421,7 +421,42 @@ Life is like riding a bicycle. To keep your balance, you must keep moving.
 Albert Einstein | Member: STiCKYFiNGAZ#5163"
 }
 
+quote57 () {
+main_quote="
+To be idiot is to be Elon Musk.
+
+Member: Alpha"
+}
+
+quote58 () {
+main_quote="
+wisword=$(/usr/games/fortune -as | sed "s/^/ /")
+
+Member: Doob"
+}
+
+quote59 () {
+main_quote="
+Life is like riding a bicycle. To keep your balance, you must keep moving.
+
+Elon Musk | Member: StudSeth"
+}
+
+quote60 () {
+main_quote="
+When something is important enough, you do it even if the odds are not in
+your favor.
+
+Elon Musk | Member: MP-JT"
+}
+
+quote61 () {
+main_quote="
+Life is 10 percent what happens to you and 90 percent how you respond to it.
+
+Lou Holtz | Member: STiCKYFiNGAZ"
+}
 # 1 higher than last quote number ##############################################
-num=$( echo $(($RANDOM % 56)) )
+num=$( echo $(($RANDOM % 62)) )
 quote$num
 }
