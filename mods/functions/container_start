@@ -2,8 +2,9 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 container_start () {
 
+if [[ "$pgrole" != "" ]]; then 
 if [[ ! -e /pg/data/$pgrole/image.set ]]; then
-cat /pg/images/$pgrole.images | head -n +1 > /pg/data/$pgrole/image.set; fi 
+cat /pg/images/$pgrole.images | head -n +1 > /pg/data/$pgrole/image.set; fi; fi
 
 setimage=$(cat "/pg/data/$pgrole/image.set")
 container_start="
