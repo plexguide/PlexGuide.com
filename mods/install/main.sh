@@ -54,8 +54,33 @@ common_install install_gcloud_sdk
 common_install install_nvidia
 
 # Pull Apps First Time # Personal Not Required #################################
-if [[ ! -e /pg/var/]]
+if [[ ! -e /pg/var/.first.app.pull ]]; then
+common_header "🚀  Pulling Applications for the 1st Time"
+apps_interface_start
+sapp=primary
+repo1=$(cat /pg/var/repos/repo.${sapp}1)
+repo2=$(cat /pg/var/repos/repo.${sapp}2)
+common_header "💬 Pulling Repo - $sapp"
+rm -rf /pg/var/$sapp
+git clone -b ${repo2} --single-branch https://github.com/${repo1}.git /pg/var/$sapp
+common_fcreate_silent /pg/var/$sapp
+bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
+bash /pg/mods/functions/.$sapp_apps.sh 1>/dev/null 2>&1
+cp -f /pg/var/$sapp/* /pg/mods/containers/$sapp/ 1>/dev/null 2>&1
 
+sapp=community
+repo1=$(cat /pg/var/repos/repo.${sapp}1)
+repo2=$(cat /pg/var/repos/repo.${sapp}2)
+common_header "💬 Pulling Repo - $sapp"
+rm -rf /pg/var/$sapp
+git clone -b ${repo2} --single-branch https://github.com/${repo1}.git /pg/var/$sapp
+common_fcreate_silent /pg/var/$sapp
+bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
+bash /pg/mods/functions/.$sapp_apps.sh 1>/dev/null 2>&1
+cp -f /pg/var/$sapp/* /pg/mods/containers/$sapp/ 1>/dev/null 2>&1
+
+touch /pg/var/.first.app.pull
+fi
 ############# DO NOT ACTIVE TILL PGUNION
 #common_header "⌛ INSTALLING: MergerFS Update"; sleep 2
 #ansible-playbook /pg/mods/ymls/pg.yml --tags mergerfsupdate
