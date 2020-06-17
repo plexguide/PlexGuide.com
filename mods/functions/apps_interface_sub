@@ -61,6 +61,7 @@ if [[ ! -e "/pg/data/$app/image.set" ]]; then
   image1=$(cat "/pg/data/$app/image.split" | awk '{print $1}')
   image2=$(cat "/pg/data/$app/image.split" | awk '{print $2}')
 else
+  cat "/pg/data/$app/image.set" | awk '{print $1 ":"$2'} > "/pg/data/$app/image.split"
   image1=$(cat "/pg/data/$app/image.split" | awk '{print $1}')
   image2=$(cat "/pg/data/$app/image.split" | awk '{print $2}'); fi
 
