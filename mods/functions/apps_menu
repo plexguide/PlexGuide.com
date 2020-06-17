@@ -47,9 +47,8 @@ echo $(date +%s) > /pg/var/defaults/pull.check
 fi
 }
 
-echo "TIME DIFF $timediff | to Pull $to_pull"
 pull_check
-common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps | PULL: $to_pull
+common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps | PULL: $to_pull | TIME DIFF $timediff 
 
 [1] Apps:      Primary
 [2] Apps:      Community
