@@ -64,6 +64,9 @@ common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexgu
 
 common_number
 
+common_fcreate_silent /pg/mods/containers/personal
+common_fcreate_silent /pg/mods/containers/primary
+common_fcreate_silent /pg/mods/containers/community
 rm -rf /pg/tmp/appstoinstall.list && touch /pg/tmp/appstoinstall.list
 touch /pg/tmp/list.tmp
 case $typed in
