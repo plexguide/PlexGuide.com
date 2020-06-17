@@ -2,7 +2,7 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 container_start () {
 
-setimage=$(cat "/pg/data/$pgrole/image.set"
+setimage=$(cat "/pg/data/$pgrole/image.set")
 
 container_start="
     - name: 'Deploying $pgrole'
