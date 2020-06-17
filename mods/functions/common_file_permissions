@@ -1,0 +1,8 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+common_file_permissions() {
+
+chown -R 1000:1000 $1
+chmod -R 0755 $1
+
+}
