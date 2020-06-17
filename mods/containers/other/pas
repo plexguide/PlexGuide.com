@@ -9,12 +9,13 @@ port_inside01="3468"
 port_outside01="3468"
 traefik_extport="3468"
 
+common_fcreate_silent /pg/data/$pgrole/config/
+common_fcreate_silent /pg/var/token
+
 common_main /pg/var/drives/gd/plex.docker.user "" pas_user
 common_main /pg/var/token/plex.token "" pas_plextoken
 common_main /pg/var/drives/gd/gd.clientid "" pas_client
 common_main /pg/var/drives/gd/gd.secret "" pas_secret
-
-common_fcreate_silent /pg/data/$pgrole/config/
 
 container_path /pg /pg
 container_path /pg/unity /data
