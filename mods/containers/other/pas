@@ -11,6 +11,8 @@ traefik_extport="3468"
 
 common_fcreate_silent /pg/data/$pgrole/config/
 common_fcreate_silent /pg/var/token
+common_fcreate_silent /pg/var/drives/gc
+common_fcreate_silent /pg/var/drives/gd
 
 common_main /pg/var/drives/gd/plex.docker.user "" pas_user
 common_main /pg/var/token/plex.token "" pas_plextoken
