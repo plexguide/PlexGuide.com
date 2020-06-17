@@ -35,8 +35,9 @@ common_message "🚀  Default App Repos" "💬 Current Update Frequency: $user_c
 [1] Hourly
 [2] Daily     (Default)
 [3] Weekly
-[4] Immediate (Not Recommended - Developer)
-[5] Off       (Not Recommended - No Updates)
+[4] 30 Seconds (Not Recommended - Developer)
+[5] Immediate  (Not Recommended - Developer)
+[6] Off        (Not Recommended - No Updates)
 [Z] Exit"
 
 common_number
@@ -45,8 +46,9 @@ case $typed in
     1 ) echo "Hourly" > /pg/var/defaults/user.check && repos_part1 && exit ;;
     2 ) echo "Daily" > /pg/var/defaults/user.check && repos_part1 && exit ;;
     3 ) echo "Weekly" > /pg/var/defaults/user.check && repos_part1 && exit ;;
-    4 ) echo "Immediate" > /pg/var/defaults/user.check && repos_part1 && exit ;;
-    5 ) echo "Off" > /pg/var/defaults/user.check && repos_part1 && exit ;;
+    4 ) echo "30 Seconds" > /pg/var/defaults/user.check && repos_part1 && exit ;;
+    5 ) echo "Immediate" > /pg/var/defaults/user.check && repos_part1 && exit ;;
+    6 ) echo "Off" > /pg/var/defaults/user.check && repos_part1 && exit ;;
     z ) repos_part1 && repos_part1 && exit ;;
     Z ) repos_part1 && repos_part1 && exit ;;
     * ) repo_time && exit ;;
