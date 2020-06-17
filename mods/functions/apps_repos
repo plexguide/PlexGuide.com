@@ -120,7 +120,6 @@ cp -f /pg/var/personal/* /pg/mods/containers/${rtype}/ 1>/dev/null 2>&1
 common_header "💬 Downloaded - https://github.com/${part1}/tree/${part2}"
 echo $(date +%s) > /pg/var/defaults/pull.check
 else
-echo FLAG 3
 common_message "⛔️ WARNING! DOES NOT EXIST" "URL: https://github.com/${part1}/tree/${part2}
 
 This REPO/BRANCH does not exist! Please check and ensure that your values are
