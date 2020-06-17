@@ -56,13 +56,13 @@ shield_display2="
 [S] Shield         [$shield_display]"; fi
 
 if [[ ! -e "/pg/data/$app/image.set" ]]; then
-  cat "/pg/images/$app.images" | head -n +1 > "/pg/data/$app/image.temp"
-  cat "/pg/data/$app/image.temp" | awk '{print $1 ":"$2'} > "/pg/data/$app/image.set"
-  image1=$(cat "/pg/data/$app/image.set" | awk '{print $1}')
-  image2=$(cat "/pg/data/$app/image.set" | awk '{print $2}')
+  cat "/pg/images/$app.images" | head -n +1 > "/pg/data/$app/image.set"
+  cat "/pg/data/$app/image.set" | awk '{print $1 ":"$2'} > "/pg/data/$app/image.split"
+  image1=$(cat "/pg/data/$app/image.split" | awk '{print $1}')
+  image2=$(cat "/pg/data/$app/image.split" | awk '{print $2}')
 else
-  image1=$(cat "/pg/data/$app/image.set" | awk '{print $1}')
-  image2=$(cat "/pg/data/$app/image.set" | awk '{print $2}'); fi
+  image1=$(cat "/pg/data/$app/image.split" | awk '{print $1}')
+  image2=$(cat "/pg/data/$app/image.split" | awk '{print $2}'); fi
 
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
