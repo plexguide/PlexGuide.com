@@ -2,15 +2,17 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 container_start () {
 
-if [[ "$pgrole" != "" ]]; then 
+if [[ "$pgrole" != "" ]]; then
 if [[ ! -e /pg/data/$pgrole/image.set ]]; then
 cat /pg/images/$pgrole.images | head -n +1 > /pg/data/$pgrole/image.set; fi; fi
 
-setimage=$(cat "/pg/data/$pgrole/image.set")
+image1=$(cat "/pg/data/$pgrole/image.set" | awk '{print $1}')
+image2=$(cat "/pg/data/$pgrole/image.set" | awk '{print $2}')
+
 container_start="
     - name: 'Deploying $pgrole'
       docker_container:
         name: '$pgrole'
-        image: '$setimage'
+        image: '$image1:$image2'
         pull: yes"
 }
