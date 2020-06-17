@@ -31,7 +31,7 @@ elif [[ "$user_check" == "Off" ]]; then to_pull="OFF"; fi
 pull_actions () {
 if [[ "$to_pull" == "ON" ]]; then
 
-if [[ "$sapp" == "" ]]; then echo BAD PULL - CANCEL; apps_interface_start && exit  
+if [[ "$sapp" == "" ]]; then echo BAD PULL - CANCEL; apps_interface_start && exit; fi  
 repo1=$(cat /pg/var/repos/repo.${sapp}1)
 repo2=$(cat /pg/var/repos/repo.${sapp}2)
 common_header "💬 Pulling $sapp Repo"
