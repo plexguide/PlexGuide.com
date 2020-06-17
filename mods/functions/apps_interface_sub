@@ -4,6 +4,11 @@ apps_interface_sub() {
 
 apps_interface_start
 
+common_file_permissions /pg/mods/functions/.master.sh
+echo "/pg/mods/functions/.master.sh" > "/pg/tmp/$app"
+common_file_permissions /pg/tmp/$app
+bash "/pg/tmp/$app"
+
 if [[ ! -e "/pg/data/$app/port.setting" ]]; then
 cat /pg/var/defaults/default.port > /pg/data/$app/port.setting; fi
 
