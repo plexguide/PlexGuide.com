@@ -58,7 +58,8 @@ shield_display2="
 if [[ ! -e "/pg/data/$app/image.set" ]]; then
   cat "/pg/images/$app.images" | head -n +1 > "/pg/data/$app/image.temp"
   cat "/pg/data/$app/image.temp" | awk '{print $1 ":"$2'} > "/pg/data/$app/image.set"
-  images_display=$(cat "/pg/data/$app/image.set")
+  image1=$(cat "/pg/data/$app/image.set" | awk '{print $1}')
+  image2=$(cat "/pg/data/$app/image.set" | awk '{print $2}')
 else images_display=$(cat "/pg/data/$app/image.set"); fi
 
 # sets up the primary interface
@@ -66,7 +67,7 @@ common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition"
 
 [A] Application    [${a1}]
 [B] Backups        [Not Ready]${ptoken_final}
-[I] Image          [$images_display]
+[I] Image          [$image1:$image2]
 [P] Ports          [$port_display]${shield_display2}${traefik_display}${u1}
 $app_warning
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
