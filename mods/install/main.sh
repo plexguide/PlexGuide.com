@@ -56,6 +56,7 @@ common_install install_nvidia
 # Pull Apps First Time # Personal Not Required #################################
 if [[ ! -e /pg/var/.first.app.pull ]]; then
 common_header "🚀  Pulling Applications for the 1st Time"
+sleep 1.5
 apps_interface_start
 sapp=primary
 repo1=$(cat /pg/var/repos/repo.${sapp}1)
@@ -78,8 +79,9 @@ common_fcreate_silent /pg/var/$sapp
 bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
 bash /pg/mods/functions/.$sapp_apps.sh 1>/dev/null 2>&1
 cp -f /pg/var/$sapp/* /pg/mods/containers/$sapp/ 1>/dev/null 2>&1
-
 touch /pg/var/.first.app.pull
+common_header "🚀  First Time App Pull Completed!"
+sleep 1.5
 fi
 ############# DO NOT ACTIVE TILL PGUNION
 #common_header "⌛ INSTALLING: MergerFS Update"; sleep 2
