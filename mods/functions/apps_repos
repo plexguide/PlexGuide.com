@@ -108,7 +108,7 @@ echo "$part1" > /pg/var/repos/repo.${rtype}1
 echo "$part2" > /pg/var/repos/repo.${rtype}2
 
 rm -rf /pg/var/${rtype}
-rm -rf /pg/mods/containers/${rtype}
+#rm -rf /pg/mods/containers/${rtype}
 git clone -b ${part2} --single-branch https://github.com/${part1}.git /pg/var/${rtype}
 common_fcreate_silent /pg/var/${rtype}
 common_fcreate_silent /pg/mods/containers/${rtype}
