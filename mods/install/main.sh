@@ -67,7 +67,6 @@ git clone -b ${repo2} --single-branch https://github.com/${repo1}.git /pg/var/$s
 common_fcreate_silent /pg/var/$sapp
 bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
 bash /pg/mods/functions/.$sapp_apps.sh 1>/dev/null 2>&1
-cp -f /pg/var/$sapp/* /pg/mods/containers/$sapp/ 1>/dev/null 2>&1
 
 sapp=community
 repo1=$(cat /pg/var/repos/repo.${sapp}1)
@@ -78,7 +77,6 @@ git clone -b ${repo2} --single-branch https://github.com/${repo1}.git /pg/var/$s
 common_fcreate_silent /pg/var/$sapp
 bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
 bash /pg/mods/functions/.$sapp_apps.sh 1>/dev/null 2>&1
-cp -f /pg/var/$sapp/* /pg/mods/containers/$sapp/ 1>/dev/null 2>&1
 touch /pg/var/.first.app.pull
 common_header "🚀  First Time App Pull Completed!"
 sleep 1.5

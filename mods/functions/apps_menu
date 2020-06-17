@@ -61,19 +61,16 @@ common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexgu
 
 common_number
 
-common_fcreate_silent /pg/mods/containers/personal
-common_fcreate_silent /pg/mods/containers/primary
-common_fcreate_silent /pg/mods/containers/community
 rm -rf /pg/tmp/appstoinstall.list && touch /pg/tmp/appstoinstall.list
 touch /pg/tmp/list.tmp
 case $typed in
-    1 ) sapp="primary" && pull_actions && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
-    2 ) sapp="community" && pull_actions && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
-    3 ) sapp="personal" && pull_actions && personal_blank && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    1 ) sapp="primary" && pull_actions && ls -p /pg/var/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    2 ) sapp="community" && pull_actions && ls -p /pg/var/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    3 ) sapp="personal" && pull_actions && personal_blank && ls -p /pg/var/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     4 ) repos_part1 && exit ;;
     6 ) apps_default_interface ;;
     5 ) shield_setup ;;
-    9 ) app="primary" && ls -p /pg/mods/containers/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
+    9 ) app="primary" && ls -p /pg/var/$sapp/ | grep -v / > "/pg/tmp/list.tmp" && apps_interface ;;
     z ) start_menu ;;
     Z ) start_menu ;;
     * ) apps_menu ;;
