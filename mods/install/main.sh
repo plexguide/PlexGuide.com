@@ -77,8 +77,6 @@ git clone -b ${repo2} --single-branch https://github.com/${repo1}.git /pg/var/$s
 common_fcreate_silent /pg/var/$sapp
 bash /pg/mods/functions/.create.sh 1>/dev/null 2>&1
 bash /pg/mods/functions/.$sapp_apps.sh 1>/dev/null 2>&1
-common_header "🚀  First Time App Pull Completed!"
-sleep 1.5
 
 sapp=personal
 repo1=$(cat /pg/var/repos/repo.${sapp}1)
