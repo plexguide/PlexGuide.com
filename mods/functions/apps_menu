@@ -34,7 +34,7 @@ if [[ "$to_pull" == "ON" ]]; then
 if [[ "$sapp" == "" ]]; then echo BAD PULL - CANCEL; apps_interface_start && exit; fi
 repo1=$(cat /pg/var/repos/repo.${sapp}1)
 repo2=$(cat /pg/var/repos/repo.${sapp}2)
-common_header "💬 Pulling $sapp Repo"
+common_header "💬 Pulling Repo - $sapp"
 rm -rf /pg/var/$sapp
 echo "clone -b ${repo2} --single-branch https://github.com/${repo1}.git /pg/var/$sapp"
 git clone -b ${repo2} --single-branch https://github.com/${repo1}.git /pg/var/$sapp
