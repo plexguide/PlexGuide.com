@@ -2,8 +2,10 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 container_start () {
 
-setimage=$(cat "/pg/data/$pgrole/image.set")
+if [[ ! -e /pg/data/$pgrole/image.set ]]; then
+cat /pg/images/$pgrole.images | head -n +1 > /pg/data/$pgrole/image.set; fi 
 
+setimage=$(cat "/pg/data/$pgrole/image.set")
 container_start="
     - name: 'Deploying $pgrole'
       docker_container:
