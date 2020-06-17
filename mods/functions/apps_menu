@@ -48,7 +48,7 @@ fi
 }
 
 pull_check
-common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps | PULL: $to_pull | TIME DIFF $timediff 
+common_message "🚀  PG Applications Interface" "💬 More Info? Visit ~ plexguide.com/wiki/apps | PULL: $to_pull | TIME DIFF $timediff
 
 [1] Apps:      Primary
 [2] Apps:      Community
@@ -79,5 +79,7 @@ case $typed in
     Z ) start_menu ;;
     * ) apps_menu ;;
 esac
+
+apps_menu && exit
 
 }
