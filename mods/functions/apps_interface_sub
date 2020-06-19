@@ -65,13 +65,12 @@ else
   image1=$(cat "/pg/data/$app/image.split" | awk '{print $1}')
   image2=$(cat "/pg/data/$app/image.split" | awk '{print $2}'); fi
 
-image_display=$(cat "/pg/data/$app/image.set")
 # sets up the primary interface
 common_message "🚀 App Interface ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬  Visit ~ https://plexguide.com/wiki/$app
 
 [A] Application    [${a1}]
 [B] Backups        [Not Ready]${ptoken_final}
-[I] Image          [$image_display]
+[I] Image          [$image1:$image2]
 [P] Ports          [$port_display]${shield_display2}${traefik_display}${u1}
 $app_warning
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
