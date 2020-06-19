@@ -18,6 +18,7 @@ shield_secret=$(openssl rand -hex 16)
 container_reset
 # VARIABLES ####################################################################
 pgrole="shield"
+tempimage="thomseddon/traefik-forward-auth:latest"
 port_inside01="4181"
 port_outside01="4181"
 traefik_extport="4181"
@@ -42,11 +43,6 @@ container_permissions WHITELIST ${whitelist_emails}
 # CMD EXPORT ###################################################################
 chown -R 1000:1000 "/bin/pg-$pgrole"
 chmod -R 0755 "/bin/pg-$pgrole"
-
-# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
-cat <<- EOF > "/pg/images/$pgrole.images"
-thomseddon/traefik-forward-auth:latest
-EOF
 
 # YML EXPORT ###################################################################
 container_core
