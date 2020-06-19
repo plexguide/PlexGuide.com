@@ -31,14 +31,14 @@ $container_header
 
     - name: Set as Executable
       file:
-        path: /pg/var/traktarr/traktarr.py
+        path: "/pg/mods/traktarr/traktarr.py"
         owner: '1000'
         group: '1000'
         mode: a+x
 
     - name: "Create SymLink"
       file:
-        src: "/pg/var/traktarr/traktarr.py"
+        src: "/pg/mods/traktarr/traktarr.py"
         dest: "/bin/traktarr"
         state: link
 
@@ -168,7 +168,7 @@ if [[ -e "$service_path" ]]; then
 common_header "💾  NOTICE:  Stopping/Disabling OLD Traktarr Service"; sleep 1
 systemctl daemon-reload && systemctl stop traktarr && systemctl disable traktarr && rm -rf "$service_path"; fi
 
-cp -f /pg/var/traktarr/traktarr.service "$service_path"
+cp -f /pg/mods/traktarr/traktarr.service "$service_path"
 common_header "💾  NOTICE:  Enabling/Starting NEW Traktarr Service" && sleep 1
 systemctl daemon-reload && systemctl enable traktarr && systemctl restart traktarr
 
