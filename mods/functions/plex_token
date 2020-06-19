@@ -60,6 +60,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 common_confirm
+traktarr_setup
 else
 tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -68,5 +69,5 @@ tee <<-EOF
 NOTE: Process will repeat until you succeed or exit!
 EOF
 read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
-plex_token && exit; fi
+plex_token; fi
 }
