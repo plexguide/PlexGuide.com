@@ -38,8 +38,8 @@ docker_tag_exists () {
         common_confirm
     fi
   else
-    echo "$typed" > /pg/data/$app/image.set
-    common_header "🚀 PASSED: Setting [$app] image > [$finaltyped]"
+    echo "$finaltyped" > /pg/data/$app/image.set
+    common_header "🚀 PASSED: Image = [$finaltyped]"
     touch "/pg/data/$app/apply.settings"
     common_confirm
   fi
