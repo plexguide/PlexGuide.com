@@ -8,7 +8,7 @@ common_main "$traefik_path"/t.domain NOT-SET domain
 common_main "$traefik_path"/t.provider NONE provider
 common_main "$traefik_path"/t.security OFF tsecurity
 common_main "$traefik_path"/t.email nouser@noreply.com email
-common_main "$traefik_path"/delay.check 75 delaycheck
+common_main "$traefik_path"/delay.check 10 delaycheck
 common_main "$traefik_path"/tld.program NOT-SET tld
 touch "$traefik_path"/traefik.deploy
 
