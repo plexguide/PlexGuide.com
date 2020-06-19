@@ -18,9 +18,11 @@ common_number
 gitlab=0
 if [[ $(echo $typed | grep "gitlab") != "" ]]; then
 common_header "🚀 GITLAB Image Detected! Cannot verify, but accepted input!"
-common_confirm
-else
-curl --silent -f -lSL https://index.docker.io/v1/repositories/$1/tags/$2 > /dev/null; fi
+common_confirm; fi
+
+docker_tag_exists () {
+  curl --silent -f -lSL https://index.docker.io/v1/repositories/$1/tags/$2 > /dev/null
+}
 
   if [[ "$gitlab" == "0" ]]; then
   quick_check1=$(echo $typed | tr : " " | awk '{print $1}')
