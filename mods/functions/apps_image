@@ -3,7 +3,7 @@
 apps_image() {
 # sets up the primary interface
 if [[ -e /pg/images/$app.images ]]; then
-temp_display=$(cat /pg/images/$app.images | awk '{print $1 ":"$2'})
+temp_display=$(cat /pg/images/$app.images)
 common_message "🚀 Image Selection ~ $app | 📂 App Type ~ $sapp | PGX Edition" "💬 INSTRUCTIONS
 
 Type the [image:tag] to utilize for deployment! If not listed, you can still
