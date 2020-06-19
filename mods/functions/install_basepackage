@@ -8,18 +8,19 @@ install_basepackage() {
 	echo -ne '(0  %)\r'
 	apt-get update -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-	echo -ne '(20 %)\r'
+	echo -ne '(10 %)\r'
 	apt-get upgrade -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
+		echo -ne '(30 %)\r'
 	apt-get dist-upgrade -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '(40 %)\r'
+		echo -ne '(50 %)\r'
 	apt-get autoremove -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '(60 %)\r'
+		echo -ne '(70 %)\r'
 	apt-get install $package_list -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
-		echo -ne '(80 %)\r'
+		echo -ne '(85 %)\r'
 	apt-get purge unattended-upgrades -yqq >/dev/null 2>&1
 		export DEBIAN_FRONTEND=noninteractive
 		echo -ne '(100%)\r'; echo -ne '\n'
