@@ -29,8 +29,8 @@ docker_tag_exists () {
   quick_check1=$(echo $typed | tr : " " | awk '{print $1}')
   quick_check2=$(echo $typed | tr : " " | awk '{print $2}')
     if docker_tag_exists $quick_check1 $quick_check2; then
-        echo "$typed" > /pg/data/$app/image.set
-        common_header "🚀  PASSED: Setting [$app] image > [$typed]"
+        echo "$finaltyped" > /pg/data/$app/image.set
+        common_header "🚀  PASSED: Setting [$app] image > [$finaltyped]"
         touch "/pg/data/$app/apply.settings"
         common_confirm
     else
