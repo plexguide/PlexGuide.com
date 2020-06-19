@@ -14,7 +14,7 @@ $temp_display
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Quit & Exit Interface"
 common_number
-
+finaltyped=$typed
 gitlab=0
 if [[ $(echo $typed | grep "gitlab") != "" ]]; then
 gitlab=1
@@ -39,7 +39,7 @@ docker_tag_exists () {
     fi
   else
     echo "$typed" > /pg/data/$app/image.set
-    common_header "🚀  PASSED: Setting [$app] image > [$typed]"
+    common_header "🚀 PASSED: Setting [$app] image > [$finaltyped]"
     touch "/pg/data/$app/apply.settings"
     common_confirm
   fi
