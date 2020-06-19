@@ -29,13 +29,13 @@ Generate how many keys? [ 4 - ${maxkeys} ]
 
 Manage Keys:
 https://console.cloud.google.com/apis/credentials?authuser=1&folder=&organizationId=&project=$upload_projectid
-------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface
 "
 else
 common_message "🚀  Drives - Key Management Interface" "
 💬  Visit ~ https://plexguide.com/wiki/drives/
-------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ CANNOT DEPLOY ANY KEYS! KEYS MAXED OUT!
 
 In order to deploy more keys using this same project, delete some service keys
