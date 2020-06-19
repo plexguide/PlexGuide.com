@@ -40,10 +40,6 @@ container_permissions LIFETIME 2592000
 container_permissions AUTH_HOST shield.${sdomain}
 container_permissions WHITELIST ${whitelist_emails}
 
-# CMD EXPORT ###################################################################
-chown -R 1000:1000 "/bin/pg-$pgrole"
-chmod -R 0755 "/bin/pg-$pgrole"
-
 # YML EXPORT ###################################################################
 container_core
 cat <<- EOF > "/pg/apps/$pgrole.yml"

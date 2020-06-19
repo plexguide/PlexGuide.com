@@ -12,9 +12,6 @@ container_ending="volumes:
               - '$pgrole'"
 
 # CMD EXPORT ###################################################################
-chown -R 1000:1000 "/bin/pg-$pgrole"
-chmod -R 0755 "/bin/pg-$pgrole"
-
 cat <<- EOF > "/bin/pg-$pgrole"
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
@@ -28,4 +25,7 @@ apps_interface_start
 apps_interface_sub
 
 EOF
+
+chown -R 1000:1000 "/bin/pg-$pgrole"
+chmod -R 0755 "/bin/pg-$pgrole"
 }

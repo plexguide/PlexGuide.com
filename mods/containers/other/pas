@@ -30,10 +30,6 @@ container_path /var/run/docker.sock /var/run/docker.sock
 container_permissions PUID 1000
 container_permissions PGID 1000
 
-# CMD EXPORT ###################################################################
-chown -R 1000:1000 "/bin/pg-$pgrole"
-chmod -R 0755 "/bin/pg-$pgrole"
-
 #container_docker_user
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
