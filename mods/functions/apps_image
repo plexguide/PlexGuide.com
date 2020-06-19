@@ -17,6 +17,7 @@ common_number
 
 gitlab=0
 if [[ $(echo $typed | grep "gitlab") != "" ]]; then
+gitlab=1
 common_header "🚀 GITLAB Image Detected! Cannot verify, but accepted input!"
 common_confirm; fi
 
