@@ -36,7 +36,7 @@ fi
 
 common_message "🚀  $drivename ~ $basicname Authentication" "
 💬  Visit ~ https://plexguide.com/wiki/drives/
-------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 https://accounts.google.com/o/oauth2/auth?client_id=$clientdeploy&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
 
@@ -46,7 +46,7 @@ to right click the top of it with copy and paste options.
 
 PUTTY USERS: Just select and highlight! DO NOT RIGHT CLICK! When you paste
 into the browser, it will just work!
-------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit
 "
 

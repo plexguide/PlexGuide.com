@@ -33,7 +33,7 @@ else priorproject="NOT-SET"; fi
 
 common_header "🚀  Project Select - $sdselect | Prior Project: $priorproject"
 utilize_project_output
-echo "------------------------------------------------------------------------------"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "[Z] Exit"
 echo ""
 common_number

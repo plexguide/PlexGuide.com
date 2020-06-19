@@ -6,13 +6,13 @@ drives_menu_start_setup
 
 common_message "🚀  Drives - Storage Method" "
 💬  Visit ~ https://plexguide.com/wiki/drives/
-------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [1] READ-ONLY      | None      | Simple  | Read Only Server (2nd Plex & etc)
 [2] Drives Basic   | 750GB     | Novice  | Basic Upload Requirements
 [3] Drives Blitz   | Unlimited | Complex | Excessive Upload Requirements
 [4] Drives Local   | User HD's | Simple  | Based on Users Hard Drives
-------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit Interface
 "
 common_number

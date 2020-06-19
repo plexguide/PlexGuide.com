@@ -15,7 +15,7 @@ tokeninfo="/pg/var/drives/shared/${drivename}/token.info"
 
 common_message "🚀  Drives - $drivename SDrive Identifer" "
 💬  Visit ~ https://plexguide.com/wiki/drives/
-------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 https://accounts.google.com/o/oauth2/auth?client_id=$clientdeploy&redirect_uri=urn:ietf:wg:oauth:2.0:oob&scope=https://www.googleapis.com/auth/drive&response_type=code
 
