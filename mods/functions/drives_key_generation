@@ -18,7 +18,7 @@ if [[ "$left_quota" == "100" ]]; then pool_quota=0; fi
 if [[ "$message" == 0 ]]; then
 common_message "🚀  Drives - Key Management Interface" "
 💬  Visit ~ https://plexguide.com/wiki/drives/
-------------------------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Generate how many keys? [ 4 - ${maxkeys} ]
 
 4  Keys = 3 TB      8  Keys = 6 TB <---- Realistic Amount
