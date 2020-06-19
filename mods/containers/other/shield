@@ -2,6 +2,7 @@
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 shield () {
 
+touch /pg/images/shield.images # prevents display errors
 common_fcreate_silent /pg/var/shield
 touch /pg/var/shield/user.list
 
