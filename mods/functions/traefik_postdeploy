@@ -52,16 +52,16 @@ common_timer_v2 "$delseconds"
 
 common_header "🚀  Rebuilding other Apps for Traefik Changes!"; sleep 2
 bash /pg/mods/functions/.create.sh
-docker ps --format '{{.Names}}' > /pg/tmp/traefik.rebuild
-sed -i -e "/traefik/d" /pg/tmp/traefik.rebuild
-sed -i -e "/watchtower/d" /pg/tmp/traefik.rebuild
-sed -i -e "/shield/d" /pg/tmp/traefik.rebuild
+docker ps --format '{{.Names}}' > /pg/data/traefik.rebuild
+sed -i -e "/traefik/d" /pg/data/traefik.rebuild
+sed -i -e "/watchtower/d" /pg/data/traefik.rebuild
+sed -i -e "/shield/d" /pg/data/traefik.rebuild
 
 while read p; do
   to_rebuild=$(find /pg/apps/ -name "$p.yml")
   common_header "🚀  Rebuilding - $p!"; sleep 2
   ansible-playbook "$to_rebuild"
-done </pg/tmp/traefik.rebuild
+done </pg/data/traefik.rebuild
 common_message "🚀  Rebuilding Apps Completed!" "
 NOTE: Testing an app? Make sure to clear the browser or utilize igcognito
 mode! Failing to do so will possibly result in seeing https failing; even

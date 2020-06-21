@@ -19,9 +19,9 @@ echo "[1] acme-dns
 [13] ovh
 [14] route53
 [15] vscale
-[16] vultr" > /pg/tmp/traefik.providers
+[16] vultr" > /pg/data/traefik.providers
 
-providers=$(cat /pg/tmp/traefik.providers)
+providers=$(cat /pg/data/traefik.providers)
 
 common_message "🚀  Traefik - Select a Provider" "
 $providers
@@ -32,13 +32,13 @@ common_number
 
 if [[ "$typed" == "Z" || "$typed" == "z" ]]; then traefik_menu_start && exit; fi
 
-select_info=$(sed -n "$typed"p /pg/tmp/traefik.providers | awk '{print $2}')
+select_info=$(sed -n "$typed"p /pg/data/traefik.providers | awk '{print $2}')
 echo "$select_info" > "$traefik_path"/t.provider
 
 while read p; do
   abc=$(echo "$p" | awk '{print $2}')
   mkdir -p "/pg/var/traefik/$abc"
-done </pg/tmp/traefik.providers
+done </pg/data/traefik.providers
 
 efg=acme-dns
   touch "$traefik_path/$efg/ACME_DNS_API_BASE"
