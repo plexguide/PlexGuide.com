@@ -6,7 +6,7 @@ traefik_menu_start_setup
 ls -p "$traefik_path/$provider" | grep -v / > "$traefik_path"/provider.keys
 
 traefik_info
-ansible-playbook /pg/data/traefik.yml
+ansible-playbook /pg/data/traefik/traefik.yml
 
 traefik_postdeploy
 

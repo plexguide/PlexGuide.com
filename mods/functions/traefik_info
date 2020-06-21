@@ -74,7 +74,7 @@ EOF
 
 # YML EXPORT ###################################################################
 container_core
-cat <<- EOF > "/pg/data/traefik.yml"
+cat <<- EOF > "/pg/data/traefik/traefik.yml"
 $container_header
 ### ALIGN WITH THE A ################################## START - EXTRAS #########
 
