@@ -5,12 +5,12 @@ traefik_postdeploy() {
 traefik_menu_start_setup
 
 tempseconds=$(cat "$traefik_path"/delay.check)
-delseconds=$[${tempseconds}+8]
+delseconds=$[${tempseconds}+5]
 i=3
 pstatus="failed"
 
 common_message "🚀  Standby for Traefik Deployment" "
-NOTE 1: Standing by for [$tempseconds] + 10 seconds per the set DNS delay
+NOTE 1: Standing by for [$tempseconds] + 5 seconds per the set DNS delay
 check!
 
 NOTE 2: If using GoDaddy; if there is a txt file there prior to deployment,
@@ -49,7 +49,6 @@ common_timer_v2 "$delseconds"
 #done
 
 #if [[ "$pstatus" == "success" ]]; then
-
 
 common_header "🚀  Rebuilding other Apps for Traefik Changes!"; sleep 2
 bash /pg/mods/functions/.create.sh
