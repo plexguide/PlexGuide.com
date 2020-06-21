@@ -9,55 +9,52 @@ delseconds=$[${tempseconds}+10]
 i=3
 pstatus="failed"
 
-common_message "🚀  Standby for Traefik Deployment Validation" "
-NOTE 1: Do NOT EXIT this interface. Please standby for validation checks!
+common_message "🚀  Standby for Traefik Deployment" "
+NOTE 1: Standing by for [$tempseconds] + 10 seconds per the set DNS delay
+check!
 
-NOTE 2: Standing by for [$tempseconds] + 10 seconds per the set DNS delay
-check! Portainer will then rebuild for checks!
-
-NOTE 3: If using GoDaddy; if there is a txt file there prior to deployment,
+NOTE 2: If using GoDaddy; if there is a txt file there prior to deployment,
 this may fail. You may have to remove it and then deploy again!
 
 PG started in late 2016. Frusted by 76TB of 2TB HD's, there had to be a way to
 push data to the cloud! It all started from a google document known as
 plexguide! We want to be NOOB friendly as possible; linux is frustrating!
 
-Standby! Enjoy the work? Please donate @ donate.plexguide.com!
+Standby! Enjoy the work? Please donate via plexguide.com/donate
 "
 
 common_timer_v2 "$delseconds"
 
-while [[ "$pstatus" == "failed" && "$i" != "0" ]]; do
+# while [[ "$pstatus" == "failed" && "$i" != "0" ]]; do
 
-common_header "🚀  Rebuilding Portainer"; sleep 2
-ansible-playbook /pg/apps/portainer.yml
+#common_header "🚀  Rebuilding Portainer"; sleep 2
+#ansible-playbook /pg/apps/portainer.yml
 
-common_header "🚀 Standby:  Portainer is loading up!"
-common_timer_v2 "10"
+#common_header "🚀 Standby:  Portainer is loading up!"
+#common_timer_v2 "10"
 
-rm -rf /pg/tmp/p.check
-wget -q "https://portainer.$domain" -O "/pg/tmp/p.check"
+#rm -rf /pg/tmp/p.check
+#wget -q "https://portainer.$domain" -O "/pg/tmp/p.check"
 
-if [[ "$i" == "1" ]]; then failmessage="Exiting!" && checkmessage="NOTE: Process Failed"; else
-failmessage="Retrying in 5 Seconds!" && checkmessage="NOTE: Attempting to check again!"; fi
+#if [[ "$i" == "1" ]]; then failmessage="Exiting!" && checkmessage="NOTE: Process Failed"; else
+#failmessage="Retrying in 5 Seconds!" && checkmessage="NOTE: Attempting to check again!"; fi
 
-if [[ $(cat /pg/tmp/p.check) != "" ]]; then pstatus="success"; else let "i=i-1";
-common_message "⛔️  FAILED ~ https://portainer.$domain not detected!" "
-$checkmessage
+#if [[ $(cat /pg/tmp/p.check) != "" ]]; then pstatus="success"; else let "i=i-1";
+#common_message "⛔️  FAILED ~ https://portainer.$domain not detected!" "
+#$checkmessage
 
-$i tries left! $failmessage"
-sleep 5; fi
+#$i tries left! $failmessage"
+#sleep 5; fi
 
-done
+#done
 
-if [[ "$pstatus" == "success" ]]; then
+#if [[ "$pstatus" == "success" ]]; then
 common_header "🚀  Rebuilding other Apps for Traefik Changes!"; sleep 2
 
 docker ps --format '{{.Names}}' > /pg/tmp/traefik.rebuild
 sed -i -e "/traefik/d" /pg/tmp/traefik.rebuild
 sed -i -e "/watchtower/d" /pg/tmp/traefik.rebuild
-sed -i -e "/oauth/d" /pg/tmp/traefik.rebuild
-sed -i -e "/portainer/d" /pg/tmp/traefik.rebuild
+sed -i -e "/shield/d" /pg/tmp/traefik.rebuild
 
 while read p; do
   to_rebuild=$(find /pg/apps/ -name "$p.yml")
@@ -70,17 +67,18 @@ mode! Failing to do so will possibly result in seeing https failing; even
 though it's not; it is usually due to caching an old page!
 "
 common_confirm && traefik_menu_start && exit
-else
-common_message "⛔️  Portainer Check: FAILED" "
-REASON 1 - CloudFlare: portainer is not set in the CNAME or A Records
-REASON 2 - DuckDNS   : Forgot to create a portainer or * - A Record
-REASON 3 - Firewall  : Everything is blocked
-REASON 4 - DelayValue: Set too low; CF users reported using 90 to work
-REASON 5 - OverUse   : Deployed too much; hit LetsEncrypt Weekly Limit
-REASON 6 - User      : PG Locally; Route is not enable to reach server
-REASON 7 - User      : Bad values input or failed to read the wiki
-REASON 8 - User      : Forgot to point DOMAIN to CORRECT IP ADDRESS
+#else
+#common_message "⛔️  Portainer Check: FAILED" "
+#REASON 1 - CloudFlare: portainer is not set in the CNAME or A Records
+#REASON 2 - DuckDNS   : Forgot to create a portainer or * - A Record
+#REASON 3 - Firewall  : Everything is blocked
+#REASON 4 - DelayValue: Set too low; CF users reported using 90 to work
+#REASON 5 - OverUse   : Deployed too much; hit LetsEncrypt Weekly Limit
+#REASON 6 - User      : PG Locally; Route is not enable to reach server
+#REASON 7 - User      : Bad values input or failed to read the wiki
+#REASON 8 - User      : Forgot to point DOMAIN to CORRECT IP ADDRESS
 
-There are multiple reason for failure! Visit the forums or wiki!"
-common_confirm && traefik_menu_start && exit; fi
+#There are multiple reason for failure! Visit the forums or wiki!"
+#common_confirm && traefik_menu_start && exit
+#fi
 }

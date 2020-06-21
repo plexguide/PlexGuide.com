@@ -12,7 +12,7 @@ validates your Traefik container! Setting it too low may result
 in the provider being unable to validate your traefik container, which may
 result in MISSING the opportunity to validate your https:// certificates!
 
-Delay Traefik DNS Check for how many seconds? Longer is Better! (Default 75)
+Delay Traefik DNS Check for how many seconds? Longer is Better! (Default 10)
 
 Prior Delayed Seconds: $delaycheck
 [Z] To Cancel and Go Back
