@@ -5,7 +5,7 @@ traefik_postdeploy() {
 traefik_menu_start_setup
 
 tempseconds=$(cat "$traefik_path"/delay.check)
-delseconds=$[${tempseconds}+10]
+delseconds=$[${tempseconds}+8]
 i=3
 pstatus="failed"
 
@@ -49,8 +49,10 @@ common_timer_v2 "$delseconds"
 #done
 
 #if [[ "$pstatus" == "success" ]]; then
-common_header "🚀  Rebuilding other Apps for Traefik Changes!"; sleep 2
 
+
+common_header "🚀  Rebuilding other Apps for Traefik Changes!"; sleep 2
+bash /pg/mods/functions/.create.sh
 docker ps --format '{{.Names}}' > /pg/tmp/traefik.rebuild
 sed -i -e "/traefik/d" /pg/tmp/traefik.rebuild
 sed -i -e "/watchtower/d" /pg/tmp/traefik.rebuild
