@@ -273,7 +273,7 @@ echo "                              Dracula, Castlevania ~ Symphony of the Night
 }
 
 quote50 () {
-echo "It's time to kick ass and chew bubble gun... and I'm all out of gum." > /var/plexguide/startup.quote
+echo "It's time to kick ass and chew bubble gum... and I'm all out of gum." > /var/plexguide/startup.quote
 echo "                                                Duke Nukem ~ Duke Nukem 3D" > /var/plexguide/startup.source
 }
 
