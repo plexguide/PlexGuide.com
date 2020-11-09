@@ -122,7 +122,7 @@ if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then
 
   if [[ "$tldtype" == "standard" ]]; then
     if [ -e "/opt/coreapps/apps/$old.yml" ]; then ansible-playbook /opt/coreapps/apps/$old.yml; fi
-    if [ -e "/opt/communityapps/$old.yml" ]; then ansible-playbook /opt/communityapps/apps/$old.yml; fi
+    if [ -e "/opt/communityapps/apps/$old.yml" ]; then ansible-playbook /opt/communityapps/apps/$old.yml; fi
   elif [[ "$tldtype" == "wordpress" ]]; then
     echo "$old" >/tmp/wp_id
     ansible-playbook /opt/pgpress/wordpress.yml
@@ -132,7 +132,7 @@ if [[ "$old" != "$new" && "$old" != "NOT-SET" ]]; then
 fi
 
 if [ -e "/opt/coreapps/apps/$new.yml" ]; then ansible-playbook /opt/coreapps/apps/$new.yml; fi
-if [ -e "/opt/communityapps/$new.yml" ]; then ansible-playbook /opt/communityapps/apps/$new.yml; fi
+if [ -e "/opt/communityapps/apps/$new.yml" ]; then ansible-playbook /opt/communityapps/apps/$new.yml; fi
 echo "standard" >/pg/var/tld.type
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
