@@ -1,61 +1,63 @@
 #!/bin/bash
-############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
 
-#!/bin/bash
+# Create necessary folders
+echo "Creating necessary folders, please wait..."
+for folder in "/pg/tmp" "/pg/var" "/pg/data"; do
+  if [ -d "${folder}" ]; then
+    echo "${folder} already exists, skipping creation."
+  else
+    echo "Creating ${folder}..."
+    mkdir -p "${folder}"
+  fi
+done
+
+# Delete all contents in /pg/tmp if it exists
+if [ -d "/pg/tmp" ]; then
+  echo "Deleting all contents in /pg/tmp, please wait..."
+  rm -rf /pg/tmp/*
+fi
 
 # Update the package list and install necessary dependencies
-sudo apt-get update
-sudo apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+echo "Updating package list and installing necessary dependencies, please wait..."
+sudo apt-get update > /dev/null
+sudo apt-get install -y software-properties-common pv > /dev/null
 
-# Install Python (Python 3.10 in this example)
-PYTHON_VERSION=3.10.0
-wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz
-tar -xf Python-${PYTHON_VERSION}.tar.xz
-cd Python-${PYTHON_VERSION}
-./configure --enable-optimizations
-make -j $(nproc)
-sudo make altinstall
-wget https://bootstrap.pypa.io/get-pip.py
-sudo python3.10 get-pip.py
-
-# Specify the version of Ansible to install (optional)
-ANSIBLE_VERSION=4.11.0
-
-# Install Ansible
-sudo apt-add-repository --yes --update ppa:ansible/ansible-${ANSIBLE_VERSION}
-sudo apt-get update
-sudo apt-get install -y ansible
-
-# Specify the version of Docker to install (optional)
-DOCKER_VERSION=20.10.12~3-0~ubuntu-focal
+# Check if Docker is already installed
+if [ "$(command -v docker)" ]; then
+  # Docker is already installed
+  echo "Docker is already installed on this system."
+  # Check if a specific version of Docker is installed
+  if [ "$1" ]; then
+    if docker --version | grep -qF "$1"; then
+      # The specified version of Docker is already installed
+      echo "Docker version $1 is already installed on this system."
+      exit 0
+    fi
+  fi
+  exit 0
+fi
 
 # Install Docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-sudo apt-get update
-sudo apt-get install -y docker-ce=${DOCKER_VERSION} docker-ce-cli=${DOCKER_VERSION} containerd.io
+echo "Installing Docker..."
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
 
-# Add current user to the docker group
-sudo usermod -aG docker $USER
+# Check if a specific version of Docker needs to be installed
+if [ "$1" ]; then
+  # Install a specific version of Docker
+  echo "Installing Docker version $1..."
+  sudo apt-get install -y docker-ce="$1"
+fi
 
-# Confirm the installed versions
-python --version
-ansible --version
-docker --version
+# Test Docker installation
+echo "Testing Docker installation..."
+sudo docker run hello-world
 
-# Create directories if they do not exist
-for dir in ['/pg/var', '/pg/test1', '/pg/test2']:
-    if not os.path.exists(dir):
-        print(f"Creating directory {dir}")
-        os.makedirs(dir)
-    else:
-        print(f"Directory {dir} already exists, skipping")
+sleep 2
 
-# Confirm the directories have been created
-for dir in ['/pg/var', '/pg/test1', '/pg/test2']:
-    print(f"{dir} permissions: {os.stat(dir).st_mode & 0o777:o}")
-EOF
-)
-
-# Execute the Python script
-python3 -c "$python_script"
+# Check if hello-world container ran successfully
+if [[ "$(docker ps -lq)" == *"hello-world"* ]]; then
+    echo "Script ran successfully!"
+else
+    echo "Error: Script encountered an issue."
+fi
