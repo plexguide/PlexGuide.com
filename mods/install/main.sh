@@ -15,7 +15,7 @@ if [ -f "app.py" ]; then
 fi
 
 # Reset port 5000
-sudo fuser -k 5000/tcp
+#sudo fuser -k 5000/tcp
 
 # Force remove /pg/var/yes
 sudo rm -f /pg/var/yes
